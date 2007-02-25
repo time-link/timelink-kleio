@@ -1,0 +1,48 @@
+$Id: todo.txt,v 1.2 2006/05/16 10:52:51 Joaquim Exp $
+$Date: 2006/05/16 10:52:51 $ 
+$Author: Joaquim $
+$Log: todo.txt,v $
+Revision 1.2  2006/05/16 10:52:51  Joaquim
+update dos ficheiros prolog
+
+Revision 1.1  2004/04/08 14:45:24  ltiago
+Source code has passed from Joaquim to Tiago.
+Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
+File build.xml, web.xml and velocity.properties were changed
+
+Revision 1.1.1.1  2001/04/19 23:25:44  jrc
+New Repository.
+
+Revision 1.1.1.1  2001/04/18 23:34:39  jrc
+CVS repository moved from llinux to MacOSX.
+
+Revision 1.6  2001/01/18 21:06:50  jrc
+Minor update.
+
+Revision 1.5  2001/01/14 00:45:26  jrc
+Cleaned version can handle casamentos. More files under source control.
+Minor bugs cleaned in various prolog files.
+
+Still missing: new xml format not implemented. No default relations.
+No vocabulary reports.
+
+
+CVS running from Windows. Translator running on Windows.
+
+
+Things to DO
+
+- priorities: clean the xml specs and clean gactoxml accordingly.
+-             start the database import sequence.
+- no clean way to handle diferent layouts for data and sources.
+- Should keep all data files under source control.
+	
+- problem with the file name when in the current directory (data files).
+Currently requires ./file.cli notation.
+
+- How to generalize for objects and other enclosed groups in the FRA model.
+
+- Automatic sex generation and automatic kinship
+
+ -- 15/11/2000 text the gacto.str on the lousa files on /extra/mhk.users
+
