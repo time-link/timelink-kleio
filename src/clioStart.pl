@@ -1,4 +1,3 @@
-% ?-chdir('c:/clioinput').
 ?-consult(basicio).
 ?-consult(clioUtil).
 ?-consult(compatibilitySWI).
