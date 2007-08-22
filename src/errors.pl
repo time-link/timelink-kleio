@@ -50,11 +50,13 @@
 */
 error_out(Mess):-
    get_value(data_file,DataFile),
+   break_fname(DataFile,_,Source_file,_,_),
    get_prop(line,number,N),
    get_prop(line,last,Last),
    get_prop(line,text,Line),
+   N2 is N-1,
    report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
-  report([nl,write('ERROR: '),perr(Mess),N2 is N-1, % we always get at least a line later
+  report([nl,write('ERROR: '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), % we always get at least a line later
            write('Near line: '),write(N2),tab(1),write(Last),
            write('Near line: '),write(N) ,tab(1),write(Line),
            nl,
