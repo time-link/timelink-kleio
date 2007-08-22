@@ -3,7 +3,7 @@
 :-op(210,xfy,and).
 :-op(210,xfy,or).
 /*
-    This file contains the inference rules for automatic relations and atributes.
+    This file contains the inference rules for automatic relations and attributes.
 
     This corresponds to the new model of inferencing,
     based on path_matching predicate.
@@ -47,11 +47,11 @@
         PATH is a list of with the following elements:
 
         sequence(C)
-            matches a sequence of groups in cluding a empty one
+            matches a sequence of groups including an empty one
         group(Name,ID)
-            matches Name(ID) it is usefull to extract a Group name.
+            matches Name(ID) it is useful to extract a Group name.
         extends(Class,ID)
-            will match any Name(ID) in Name is a group that extends Class.
+            will match any Name(ID) if Name is a group that extends Class.
         clause(C)
             will call the C predicate in Prolog
             
@@ -61,23 +61,23 @@
         newscope.  -- clean current scope (forgets previous actor and objects).
    */
    % male actor and direct parents
-   if [sequence(_path),extends(actorm,N),pai(P)]
+   if [sequence(_),extends(actorm,N),pai(P)]
    then
         relation(parentesco,pai,P,N).
         
-   if [sequence(_path),extends(actorm,N),mae(M)]
+   if [sequence(_),extends(actorm,N),mae(M)]
    then
         relation(parentesco,mae,M,N). 
 
 
    % female actor and direct parents
-   if [sequence(_path),extends(actorf,N),pai(P)]
+   if [sequence(_),extends(actorf,N),pai(P)]
    then
-        relation(parentesco,filha,N,P).
+        relation(parentesco,pai,P,N).
         
-   if [sequence(_path),extends(actorf,N),mae(M)]
+   if [sequence(_),extends(actorf,N),mae(M)]
    then
-        relation(parentesco,filha,N,M).            
+        relation(parentesco,mae,M,N).            
    
    %direct parents as a couple
    if [sequence(Path),pai(P)] and [sequence(Path),mae(M)]
@@ -97,7 +97,7 @@
 
    % male actor and wife (up to three previous marriages.)
 
-    if [sequence(_path),extends(actorm,N),mulher(M)]
+    if [sequence(_),extends(actorm,N),mulher(M)]
     then
         relation(parentesco,marido,N,M) and
         attribute(N,ec,c) and
@@ -2243,7 +2243,7 @@ if [kleio(K),fonte(F),rol(R),fogo(FG),n(N)] and
  /*
     procuradores in baptisms
     sometimes godfathers and godmothers are represented by procuradores
-    we generate a socibility relation
+    we generate a sociability relation
     */
 
  if [kleio(K),fonte(F),bap(B),mad(M)] and
@@ -2340,7 +2340,10 @@ if [sequence(_Path),acto(_P),'presente-f'(M)]
         relation(parentesco,marido,Ma,N).
    if [sequence(Path),obito(O),n(N)] and [sequence(Path),obito(O),mulher(Me)]
    then
-        relation(parentesco,mulher,Me,N).
+        relation(parentesco,marido,N,Me).
+ 	if [sequence(_),obito(_),n(N)] 
+	then
+		attribute(N,morto,agora).
 
 
 
