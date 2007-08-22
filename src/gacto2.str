@@ -332,7 +332,10 @@ note
 part name=group-element; position=value; guaranteed=value; also=obs
 
 note =================================================
-
+note relation-type: pseudo group to flag the translator that a group name defines
+note                the function of the actor in the act. Actor introducing groups
+note                extend this one
+part name=relation-type
 note ================================================
 note Elements for numerical dates
 note   Day - a two digit representation of day
@@ -391,7 +394,7 @@ part	 name=fonte;
       also=tipo,loc,localizacao,ref,data,ano,obs;
       part=acto,amz,nom,pauta,hab,proc,beneficio,chanc, encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
-          gov,familia,po,fim,devassa,cartaperdao,denuncia
+          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula
 
 
 note *****************************************************************
@@ -856,7 +859,8 @@ part name=escritura; source=pt-acto;
   arbitrary=devedor, devedora, credor, credora, fiador, fiadora, test,
              comprador,compradora, vendedor, vendedora, louvado,
              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
-             senhorio, senhoria, rendeiro, rendeira,
+             senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria, testador,testadora, contraente,contraentef,renunciante,renunciantef,
+             procurador,procuradora,
              foreiro,foreira,constituinte,constituintef,outorgante,outorgantef,referido,referida,
              divida, garantia,fianca, bem, doacao, arrendamento, aforamento,siza
 
@@ -894,6 +898,13 @@ part name=siza;source=object;
 
 note *****************************************************************
 note Notariais - aforamento -- colocar as condicoes em atr
+note *****************************************************************
+
+part name=aforamento; source=bem
+
+
+note *****************************************************************
+note Notariais - arrendamento -- colocar as condicoes em atr
 note *****************************************************************
 
 part name=aforamento; source=bem
@@ -1112,6 +1123,17 @@ part name=perdao; source=abstraction;
   position=dia,mes,ano;
   guaranteed=tipo,descricao;
   also=obs
+
+note *****************************************************************
+note Matricula de doentes em Hospital
+note doc group matricula Matricula de doentes no Hospital das Caldas
+note *****************************************************************
+part name=matricula; source=pt-acto;
+ position=id,dia,mes,ano,fol;
+ guaranteed=id;
+ also=obs;
+ part=enfermo,enferma,referido,referida
+
 
 note *****************************************************************
 note Actores
@@ -1503,8 +1525,12 @@ part name=senhorio; source=actorm;
 part name=rendeiro; source=actorm;
 part name=foreiro; source=actorm;
 part name=constituinte; source=actorm;
-part name=outorgantem; source=actorm;
-
+part name=outorgante; source=actorm;
+part name=arrendatario; source=actorm;
+part name=testador; source=actorm;
+part name=contraente; source=actorm;
+part name=renunciante; source=actorm;
+part name=procurador; source=actorm;
 note
 note cargos para o registos de governos
 note
@@ -1703,6 +1729,8 @@ part name=denunciante; source=actorm;
 	guaranteed=nome;
 	part=acus,caso
 part name=acusado; source=actorm;
+
+part name=enfermo; source=actorm;
 	
 
 note *****************************************************************
@@ -1853,6 +1881,7 @@ part  name=procuradora-pad3;source=actorf
 part  name=procuradora-mad3;source=actorf
 part  name=procuradora-pad4;source=actorf
 part  name=procuradora-mad4;source=actorf
+part  name=enferma;source=actorf
 note doc group present-f mulher presente num acto.
 part  name=presente-f;source=actorf
 
@@ -1877,14 +1906,20 @@ part name=rendeira; source=actorf;
 part name=foreira; source=actorf;
 part name=constituintef; source=actorf;
 part name=outorgantef; source=actorf;
+part name=arrendataria; source=actorf;
 part name=acusada; source=actorf;
+part name=testadora; source=actorf;
+part name=contraentef; source=actorf;
+part name=renunciantef; source=actorf;
+part name=procuradora; source=actorf;
+
 part name=perdoante; source= person;
      guaranteed=nome;
      position=nome,sexo;
      also=obs,mesmo_que,id;
      repeat=ls,atr,rel
-part name=perdoante-m; source= actorm; position=nome
-part name=perdoante-f; source= actorf; position=nome
+part name=perdoantem; source= actorm; position=nome
+part name=perdoantef; source= actorf; position=nome
 part name=perdoado; source=actorm; position=nome
 part name=perdoada; source=actorf; position=nome
 part name=vitima; source=person;
