@@ -1310,7 +1310,7 @@ The structure of person related data like attributes and relations with other
        clio_element_extends(Element,SElement),
        rch_get_attribute(SElement,Attributes,Attr).
    elementMapping(GroupClass,Element,Attr):-
-       rch_class(GroupClass,_,Super,_,_),
+       rch_class(_,GroupClass,Super,_,_),
        class_attributes(Super,Attributes),
        rch_get_attribute(Element,Attributes,Attr).
 
