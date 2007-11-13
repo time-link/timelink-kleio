@@ -941,9 +941,9 @@ note *****************************************************************
 note Notariais - siza
 note *****************************************************************
 part name=siza;source=object;
-     guaranteed=valor;juiz,escrivao,depositario,data;
-     also=obs;
-     position=valor,juiz,escrivao,depositario,data;
+     guaranteed=valor,juiz,escrivao,depositario,data;
+     also=obs,id;
+     position=valor,juiz,escrivao,depositario,data
 
 part name=sisa; source=siza
 
