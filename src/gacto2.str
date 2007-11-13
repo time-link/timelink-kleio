@@ -3,7 +3,7 @@ Note Generic structure for the Source-Act-Person model
 Note   Now with geoentities
 Note ================================================
 Note
-Note $Revision: 74 $ $Date: 2007-08-22 15:21:29 +0100 (Wed, 22 Aug 2007) $ $Author: joaquim.carvalho $
+Note $Revision$ $Date$ $Author$
 Note =================================================================================================
 Note History
 NOTE -------
@@ -945,6 +945,7 @@ part name=siza;source=object;
      also=obs,id;
      position=valor,juiz,escrivao,depositario,data
 
+
 part name=sisa; source=siza
 
 note *****************************************************************
@@ -1207,7 +1208,7 @@ part name=memoria58;source=pt-acto;
 	part=freguesia
 
 part name=freguesia; source=geoentity;
-	part=ls,rel,gref,provincia,comarca,termoc,lugar,idonatario,pdonatario,
+	part=atr,rel,gref,provincia,comarca,termoc,lugar,idonatario,pdonatario,
 		igreja,irmandade,bispado,confraria
 
 part name=gref; source=geoentity
@@ -1216,7 +1217,7 @@ part name=provincia; source=geoentity
 part name=termoc; source=geoentity
 part name=bispado; source=geoentity
 part name=comarca; source=geoentity
-part name=igreja; source=object; part=ls,rel
+part name=igreja; source=object; part=atr,rel
 part name=irmandade; source=object
 part name=confraria;source=object
 part name=idonatario;source=object
