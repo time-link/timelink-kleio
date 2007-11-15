@@ -356,7 +356,7 @@ part name=relation-type
 note ================================================
 note Elements for numerical dates
 note   Day - a two digit representation of day
-note   Month - a two digit representation of month
+note   Month - a two digit representation of monthgact
 note   Year - a four digit representation of year
 note   Date - a eight digit representation of a date
 note                    yyyymmdd
@@ -409,9 +409,9 @@ part	 name=fonte;
       source=historical-source;
       guaranteed=id;
       also=tipo,loc,localizacao,ref,data,ano,obs;
-      part=acto,amz,nom,pauta,hab,proc,beneficio,chanc, encarte,rol,escritura,
+      part=acto,amz,nom,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
-          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,memoria58
+          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,memoria58,eleicao
 
 
 note *****************************************************************
@@ -494,11 +494,11 @@ note ****************************************************************
 note  doc group denuncia Denuncia de um caso como nos cadernos dos promotores da inquisicao
 note ****************************************************************
 part name=denuncia;
-  source=pt-acto;
-  repeat=denunciante;
-  guaranteed=id,dia,mes,ano,fol;
-  also=inquiridor,escrivao,obs;
-  position=id,dia,mes,ano
+     source=pt-acto;
+     repeat=denunciante;
+     guaranteed=id,dia,mes,ano,fol;
+     also=inquiridor,escrivao,obs;
+     position=id,dia,mes,ano
 
 
 note ****************************************************************
@@ -526,18 +526,30 @@ note *****************************************************************
 note  doc group vereacao actas de vereacao
 note *****************************************************************
 
-part 	name=vereacao;
+part name=vereacao;
      source=pt-acto;
      repeat=assunto;
      guaranteed=id,dia,mes,ano,fol;
      position=id,dia,mes,ano,fol;
      also=obs
 
+     
 note *****************************************************************
-note  doc group pautas das vereacoes (criadas por Ana Isabel 02-11-2007)
+note  doc group pautas das vereacoes (criada por Ana Isabel 02-11-2007)
 note *****************************************************************
 
-part 	name=pauta;
+part name=pauta;
+     source=pt-acto;
+     repeat=n,referido,referida
+     guaranteed=id,dia,mes,ano,loc;
+     position=id,dia,mes,ano,loc;
+     also=obs
+     
+note *****************************************************************
+note  doc group eleicoes das corporacoes de oficios (criada por Ana Isabel 09-11-2007)
+note *****************************************************************
+     
+part name=eleicao;
      source=pt-acto;
      repeat=n,referido,referida
      guaranteed=id,dia,mes,ano,loc;
@@ -806,20 +818,24 @@ part name=causa;source=group-element
 
 
 note *****************************************************************
-note Arrematacoes de bens concelhios (Castelo Branco 1807-1829)
+note Arrematacoes de bens concelhios (Castelo Branco 1807-1829); alterado por Ana Isabel (12-11-07)
 note *****************************************************************
-part  name=ar; source=pt-acto;
+part name=ar; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
-     arbitrary=proparr,bemarr
+     arbitrary=proparr,bemarr,fornarr,rendarr;
 
 part name=proparr; source=object;
      guaranteed=name;
      position=name;
-     also=valor,condicao,obs,id,mesmo_que;
+     also=valor,prazo,condicao,obs,id,mesmo_que;
      part=arrem,fiador;
 
 part name=bemarr; source=proparr
+
+part name=fornarr; source=proparr
+
+part name=rendarr; source=proparr
 
 
 note *****************************************************************
@@ -940,11 +956,12 @@ part name=fianca; source=garantia;
 note *****************************************************************
 note Notariais - siza
 note *****************************************************************
-part name=siza;source=object;
-     guaranteed=valor,juiz,escrivao,depositario,data;
-     also=obs,id;
-     position=valor,juiz,escrivao,depositario,data
-
+part name=siza; source=object;
+     guaranteed=valor;
+     position=valor,juiz,escrivao,depositario,data;
+     also=juiz,escrivao,depositario,data,obs,id
+     
+     
 
 part name=sisa; source=siza
 
