@@ -2,9 +2,9 @@
 	===============================================================================
  	gactoxml.pl Generic translator for Sources that follow
 
- $Id: gactoxml.pl,v 1.2 2006/05/16 10:52:46 Joaquim Exp $
- $Date: 2006/05/16 10:52:46 $
- $Author: Joaquim $
+ $Id$
+ $Date$
+ $Author$
 
  History:
  ========
@@ -272,7 +272,7 @@ The structure of person related data like attributes and relations with other
 
    db_init:-
    	report( [
-   		writeln('Generic Act translation module with geoentities (XML). $Revision: 1.2 $ $Date: 2006/05/16 10:52:46 $'),
+   		writeln('Generic Act translation module with geoentities (XML). $Revision$ $Date$'),
    		writeln('     Joaquim Ramos de Carvalho (joaquim@dei.uc.pt) ')
    		] ),
    	get_value(data_file,D),

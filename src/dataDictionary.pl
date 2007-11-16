@@ -1,7 +1,7 @@
 % vim: filetype=prolog ts=3
-% $Date: 2006/05/16 10:52:43 $ 
-% $Author: Joaquim $
-% $Id: dataDictionary.pl,v 1.2 2006/05/16 10:52:43 Joaquim Exp $
+% $Date$ 
+% $Author$
+% $Id$
 % $Log: dataDictionary.pl,v $
 % Revision 1.2  2006/05/16 10:52:43  Joaquim
 % update dos ficheiros prolog

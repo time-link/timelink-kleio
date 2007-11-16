@@ -1,8 +1,8 @@
 % vim: filetype=prolog
 % ClioInput quick and dirty shell para o SWI prolog
-% $Id: swiShell.pl,v 1.2 2006/05/16 10:52:51 Joaquim Exp $
-% $Date: 2006/05/16 10:52:51 $
-% $Author: Joaquim $
+% $Id$
+% $Date$
+% $Author$
 % $Log: swiShell.pl,v $
 % Revision 1.2  2006/05/16 10:52:51  Joaquim
 % update dos ficheiros prolog

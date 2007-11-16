@@ -16,9 +16,9 @@
 %    compile_command is called by processLine and calls predicates
 %    in stru code and data diccionary.
 %
-%    $Author: Joaquim $
-%    $Date: 2006/05/16 10:52:51 $
-%    $Id: struSyntax.pl,v 1.2 2006/05/16 10:52:51 Joaquim Exp $
+%    $Author$
+%    $Date$
+%    $Id$
 %    
 %    History
 %       stable OCT 90.

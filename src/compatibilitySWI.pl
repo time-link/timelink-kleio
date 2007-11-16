@@ -1,8 +1,8 @@
 %% vim: filetype=prolog ts=3
 % ****************************************************
-% $Id: compatibilitySWI.pl,v 1.2 2006/05/16 10:52:42 Joaquim Exp $
-% $Date: 2006/05/16 10:52:42 $
-% $Author: Joaquim $
+% $Id$
+% $Date$
+% $Author$
 % $Log: compatibilitySWI.pl,v $
 % Revision 1.2  2006/05/16 10:52:42  Joaquim
 % update dos ficheiros prolog

@@ -6,9 +6,9 @@
 		  called by the syntactic analyser for data
 	     files.
 
- $Id: dataCode.pl,v 1.2 2006/05/16 10:52:43 Joaquim Exp $
- $Date: 2006/05/16 10:52:43 $
- $Author: Joaquim $
+ $Id$
+ $Date$
+ $Author$
  
  History:
  ========

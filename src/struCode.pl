@@ -1,7 +1,7 @@
 % vim: filetype=prolog ts=3
-% $Date: 2006/05/16 10:52:50 $ 
-% $Author: Joaquim $
-% $Id: struCode.pl,v 1.2 2006/05/16 10:52:50 Joaquim Exp $
+% $Date$ 
+% $Author$
+% $Id$
 % $Log: struCode.pl,v $
 % Revision 1.2  2006/05/16 10:52:50  Joaquim
 % update dos ficheiros prolog

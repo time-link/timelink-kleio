@@ -8,7 +8,7 @@
     This corresponds to the new model of inferencing,
     based on path_matching predicate.
 
-    $Id: inference.pl,v 1.2 2006/05/16 10:52:47 Joaquim Exp $
+    $Id$
     $Log: inference.pl,v $
     Revision 1.2  2006/05/16 10:52:47  Joaquim
     update dos ficheiros prolog
@@ -36,7 +36,7 @@
     Revision 1.1  2002/06/01 12:08:43  jrc
     new style inference rules.
 
-    $Author: Joaquim $
+    $Author$
 
     an inference rule:
      if PATH then ACTION

@@ -1,7 +1,7 @@
 % vim: filetype=prolog
-% $Id: topLevel.pl,v 1.2 2006/05/16 10:52:51 Joaquim Exp $
-% $Date: 2006/05/16 10:52:51 $
-% $Author: Joaquim $
+% $Id$
+% $Date$
+% $Author$
 % $Log: topLevel.pl,v $
 % Revision 1.2  2006/05/16 10:52:51  Joaquim
 % update dos ficheiros prolog
@@ -109,7 +109,7 @@
 %  clio_version(V) where V is the version
 %******************************************************
 %  %
-clio_version('ClioInput - version $Revision: 1.2 $ SWI $Date: 2006/05/16 10:52:51 $').
+clio_version('ClioInput - version $Revision$ SWI $Date$').
 
 %******************************************************
 %  clio_init :- initialization procedures

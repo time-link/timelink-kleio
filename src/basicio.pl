@@ -1,7 +1,7 @@
 % vim: filetype=prolog
-% $Id: basicio.pl,v 1.2 2006/05/16 10:51:13 joaquim Exp $
-% $Date: 2006/05/16 10:51:13 $
-% $Author: joaquim $
+% $Id$
+% $Date$
+% $Author$
 % $Log: basicio.pl,v $
 % Revision 1.2  2006/05/16 10:51:13  joaquim
 % update dos ficheiros prolog

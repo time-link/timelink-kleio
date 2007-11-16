@@ -1,7 +1,7 @@
 % vim: filetype=prolog
-% $Id: lexical.pl,v 1.2 2006/05/16 10:52:50 Joaquim Exp $
-% $Date: 2006/05/16 10:52:50 $
-% $Author: Joaquim $
+% $Id$
+% $Date$
+% $Author$
 % $Log: lexical.pl,v $
 % Revision 1.2  2006/05/16 10:52:50  Joaquim
 % update dos ficheiros prolog
