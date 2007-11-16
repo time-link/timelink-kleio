@@ -5,11 +5,11 @@
   =========
   Error reporting for kleio predicates
 
- $Id: errors.pl,v 1.2 2006/05/16 10:52:44 Joaquim Exp $
+ $Id$
 
- $Date: 2006/05/16 10:52:44 $
- $Revision: 1.2 $
- $Author: Joaquim $
+ $Date$
+ $Revision$
+ $Author$
  $Log: errors.pl,v $
  Revision 1.2  2006/05/16 10:52:44  Joaquim
  update dos ficheiros prolog
@@ -48,13 +48,17 @@
  cvs keywords.
 
 */
+error_our(Mess):-
+   get_prop(line,number,N),
+   get_prop(line,previous,number,N),
+   !. % skipping repeated error in the same line.
 error_out(Mess):-
    get_value(data_file,DataFile),
    break_fname(DataFile,_,Source_file,_,_),
    get_prop(line,number,N),
    get_prop(line,last,Last),
    get_prop(line,text,Line),
-   % should check if the error in the same line as the last reported and skip if true
+   set_prop(line,previous,N),
    N2 is N-1,
    report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
   report([nl,write('ERROR: '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), % we always get at least a line later
