@@ -411,7 +411,7 @@ part	 name=fonte;
       also=tipo,loc,localizacao,ref,data,ano,obs;
       part=acto,amz,nom,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
-          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,memoria58,eleicao
+          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,memoria58,eleicao,juramento
 
 
 note *****************************************************************
@@ -556,13 +556,13 @@ part name=eleicao;
      position=id,dia,mes,ano,loc;
      also=obs
      
-note *****************************************************************
+tnote *****************************************************************
 note  doc group juramento e licencas de oficios (criada por Ana Isabel 02-1-2008)
 note *****************************************************************
      
 part name=juramento;
      source=pt-acto;
-     repeat=n,referido,referida
+     repeat=n,referido,referido, abonador, abonadora;
      guaranteed=id,dia,mes,ano,loc;
      position=id,dia,mes,ano,loc;
      also=obs
