@@ -2376,7 +2376,14 @@ then
 if [sequence(Path),memoria58(Mid),freguesia(F),confraria(P)]
 then
     relation(geografica,'contem',F,P).
-
+/*
+--- nova regra
+*/
+if [kleio(K),fonte(F),juramento(J),abonador(A)] and
+   [kleio(K),fonte(F),juramento(J),n(N)]
+then
+   relation(sociabilidade,abonador,A,N).
+	   
  /*
 
     scope rules
