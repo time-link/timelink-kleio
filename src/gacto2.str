@@ -557,12 +557,12 @@ part name=eleicao;
      also=obs
      
 note *****************************************************************
-note  doc group juramento e licencas de oficios (criada por Ana Isabel 02-1-2008)
+note  doc group juramentos e licencas de oficios (criada por Ana Isabel 02-01-2008)
 note *****************************************************************
      
 part name=juramento;
      source=pt-acto;
-     repeat=n,referido,referido, abonador, abonadora;
+     repeat=n,referido,referido, abonador, abonadora, escrivao
      guaranteed=id,dia,mes,ano,loc;
      position=id,dia,mes,ano,loc;
      also=obs
