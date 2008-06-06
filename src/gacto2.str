@@ -933,9 +933,9 @@ part name=escritura; source=pt-acto;
              comprador,compradora, vendedor, vendedora, louvado,
              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
              senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,contraente,contraentef,renunciante,renunciantef,
-             procurador,procuradora,escrivao, arrematante, arrematantef,
+             procurador,procuradora,escrivao,arrematante, arrematantef,
              foreiro,foreira,constituinte,constituintef,outorgante,outorgantef,referido,referida,
-             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,siza,sisa,prazo,escrivao,abonador,abonadora
+             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,siza,sisa,prazo,escrivao,abonador,abonadora,tabeliao, abonador, abonadora
 
 element name=sumario; source=summary
 element name=fol; source=ref;
@@ -1200,7 +1200,7 @@ part name=cartaperdao; source=pt-acto;
  guaranteed=id;
  also=cota,local,tipo,tabeliao,obs;
  part=perdoante,perdoante-m,perdoante-f,perdoado,perdoada,vitima,vitima-m,vitima-f,
-      crime,perdao,test,referido,referida
+      crime,perdao,test,referido,referida,tabeliao
 
 
 part name=crime; source=abstraction;
@@ -1211,7 +1211,7 @@ part name=crime; source=abstraction;
 part name=perdao; source=abstraction;
   position=dia,mes,ano;
   guaranteed=tipo,descricao;
-  also=obs
+  also=obs,id;
 
 note *****************************************************************
 note Matricula de doentes em Hospital
@@ -1649,6 +1649,7 @@ part name=contraente; source=actorm;
 part name=renunciante; source=actorm;
 part name=procurador; source=actorm;
 part name=escrivao; source=actorm;
+part name=tabeliao; source=actorm;
 part name=arrematante; source=actorm;
     part=fianca
 part name=abonador; source=actorm;
