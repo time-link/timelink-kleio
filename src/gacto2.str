@@ -1014,6 +1014,7 @@ part name=lc; source=pt-acto;
 		debitado,
 		recebedor,recebedor1,recebedor2,
 		recebedor-proc,recebedor1-proc,recebedor2-proc,
+		referido,
 		local
 		
 part name=local; source=geoentity; part=atr,rel
@@ -1627,7 +1628,7 @@ part  name=procurador-mad3;source=actorm
 part  name=procurador-pad4;source=actorm
 part  name=procurador-mad4;source=actorm
 part  name=presente;source=actorm
-part  name=
+
 part 	name=referido;
      source=male;
      guaranteed=nome;
