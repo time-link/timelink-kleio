@@ -2352,28 +2352,28 @@ if [sequence(_Path),acto(_P),'presente-f'(M)]
 
 */
 % memorias paroquiais de 1758
-if [sequence(Path),memoria58(Mid),freguesia(F),provincia(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),provincia(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),comarca(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),comarca(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),termoc(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),termoc(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),bispado(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),bispado(P)]
 then
     relation(geografica,'pertence-eccel',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),lugar(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),lugar(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),igreja(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),igreja(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),irmandade(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),irmandade(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),memoria58(Mid),freguesia(F),confraria(P)]
+if [sequence(Path),extends(memoria58,Mid),freguesia(F),confraria(P)]
 then
     relation(geografica,'contem',F,P).
 /*
@@ -2383,11 +2383,33 @@ if [kleio(K),fonte(F),juramento(J),abonador(A)] and
    [kleio(K),fonte(F),juramento(J),n(N)]
 then
    relation(sociabilidade,abonador,A,N).
-	   
- /*
+	  
+	
+/*===================================
+	lc Letras de cambio
+=====================================*/
+if [kleio(K),fonte(F),lc(L),recebedor(R)] and
+	[kleio(K),fonte(F),lc(L),'recebedor-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),recebedor1(R)] and
+	[kleio(K),fonte(F),lc(L),'recebedor1-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).	
+if [kleio(K),fonte(F),lc(L),recebedor2(R)] and
+	[kleio(K),fonte(F),lc(L),'recebedor2-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),recebedor3(R)] and
+	[kleio(K),fonte(F),lc(L),'recebedor3-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+	
+
+ /************************************************************
 
     scope rules
-*/
+***************************************************************/
 if [sequence(_path),extends('historical-act',_act)]
 then newscope.
 
