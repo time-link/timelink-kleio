@@ -232,7 +232,7 @@ part name=historical-source;
 note ============================================================
 note GeoEntity: a spatial entity
 note doc group an entity that repreent a spatial entity in the sense of
-note    a conceptual representation of space. A ge-entity is not an object
+note    a conceptual representation of space. A geo-entity is not an object
 note     that has a particular position in place. it is rather something like
 note      the parish of X, the place Y, the region W.
 note ============================================================
@@ -411,7 +411,8 @@ part	 name=fonte;
       also=tipo,loc,localizacao,ref,data,ano,obs;
       part=acto,amz,nom,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
-          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,memoria58,eleicao,juramento
+          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
+	  memoria58,apontamentosd,eleicao,juramento,lc
 
 
 note *****************************************************************
@@ -422,7 +423,7 @@ part 	name=pt-acto; source=historical-act;
      repeat=actorm,
          actorf,object,abstraction,ls,rel;
      position=id,dia,mes,ano;
-     guaranteed=id,dia,mes,ano;
+     gualcranteed=id,dia,mes,ano;
      also=loc,obs
 
 note ****************************************************************
@@ -997,6 +998,25 @@ note *****************************************************************
 part name=arrendamento; source=bem
 
 
+note *****************************************************************
+note dynCoopNet grupos associados ao projecto de base de dados de
+note letrad de cambio
+note doc group lc letra de cambio
+note *****************************************************************
+part name=lc; source=pt-acto;
+	position=id,dia,mes,ano,local;
+	guaranteed=id,dia,mes,ano,local;
+	also=obs;
+	part=atr,rel,
+		destinatario,destinatario1,destinatario2,
+		remetente,
+		beneficiario,
+		debitado,
+		recebedor,recebedor1,recebedor2,
+		recebedor-proc,recebedor1-proc,recebedor2-proc,
+		local
+		
+part name=local; source=geoentity; part=atr,rel
 
 note *****************************************************************
 note Governos.
@@ -1235,6 +1255,9 @@ part name=memoria58;source=pt-acto;
 	also=obs;
 	part=freguesia
 
+note doc group sinonimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes.
+part name=apontamentosd; source=memoria58
+	
 part name=freguesia; source=geoentity;
 	part=atr,rel,gref,provincia,comarca,termoc,lugar,idonatario,pdonatario,
 		igreja,irmandade,bispado,confraria
@@ -1604,6 +1627,7 @@ part  name=procurador-mad3;source=actorm
 part  name=procurador-pad4;source=actorm
 part  name=procurador-mad4;source=actorm
 part  name=presente;source=actorm
+part  name=
 part 	name=referido;
      source=male;
      guaranteed=nome;
@@ -1855,6 +1879,21 @@ part name=acusado; source=actorm;
 part name=enfermo; source=actorm;
 
 
+note *****************************************************************
+note Letras de cambios
+note *****************************************************************
+part name=destinatario;source=actorm
+part name=destinatario1;source=actorm
+part name=destinatario2;source=actorm
+part name=remetente;source=actorm
+part name=beneficiario;source=actorm
+part name=debitado;source=actorm
+part name=recebedor;source=actorm
+part name=recebedor1;source=actorm
+part name=recebedor2;source=actorm
+part name=recebedor-proc;source=actorm
+part name=recebedor1-proc;source=actorm
+part name=recebedor2-proc;source=actorm
 note *****************************************************************
 note Definicao generica de um actor feminino.
 note           nota: todos os parentes aqui enumerados tem de aparecer
