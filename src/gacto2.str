@@ -423,7 +423,7 @@ part 	name=pt-acto; source=historical-act;
      repeat=actorm,
          actorf,object,abstraction,ls,rel;
      position=id,dia,mes,ano;
-     gualcranteed=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
      also=loc,obs
 
 note ****************************************************************
@@ -570,7 +570,7 @@ part name=juramento;
 
 
 note *****************************************************************
-note  doc group hab Habilitacoes da Ordem de Cristo (A particular historical act).
+note  doc group hab Habilitacoes da Ordem de Cristo e Santo Of’cio (A particular historical act).
 note *****************************************************************
 part 	name=hab;
  source=pt-acto;
@@ -618,7 +618,7 @@ note Arrolamentos e subsequente processo de eleicao das camaras
 note *****************************************************************
 part	name=arrolamento;
  source=pt-acto;
- repeat=rv,rp;
+ repeat=rv,rp, referido, referida;
  guaranteed=id,dia,mes,ano;
  position=id,ano,mes,dia;
  also=obs
@@ -869,6 +869,17 @@ part name=ordenancas; source=lista;
      position=id,dia,mes,ano;
      also=obs,loc;
      arbitrary=n
+     
+     
+note *****************************************************************
+note Lista de credito (criada por Ana Isabel 27-06-2008)
+note *****************************************************************
+
+part name=credito; source=lista;
+     guaranteed=id,dia,mes,ano;
+     position=id,dia,mes,ano;
+     also=obs,loc;
+     arbitrary=n, credor,credora,devedor,devedora,procurador,procuradora
 
 note *****************************************************************
 note Lista de milicias e auxiliares (criada por Ana Isabel 16-10-2007)
@@ -919,7 +930,7 @@ part name=fogo; source=object;
        guaranteed=id,local;
        also=obs;
        position=id;
-     arbitrary=n,mulher,filho,filha,irmao,irma,genro,nora,afilhado,afilhada,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,fim
+     arbitrary=n,mulher,filho,filha,irmao,irma,genro,nora,afilhado,afilhada,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,sobrinho,sobrinha,sogra,sogro,neto,neta,fim;
 element name=local; source=loc
 
 note *****************************************************************
@@ -931,12 +942,12 @@ part name=escritura; source=pt-acto;
   guaranteed=id,dia,mes,ano,loc;
   also=tipo,fol,sumario,obs;
   arbitrary=devedor, devedora, credor, credora, fiador, fiadora, test,
-             comprador,compradora, vendedor, vendedora, louvado,
+             comprador,compradora,vendedor,vendedora, louvado,
              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
-             senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,contraente,contraentef,renunciante,renunciantef,
-             procurador,procuradora,escrivao,arrematante, arrematantef,
-             foreiro,foreira,constituinte,constituintef,outorgante,outorgantef,referido,referida,
-             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,siza,sisa,prazo,escrivao,abonador,abonadora,tabeliao, abonador, abonadora
+             senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,testamentario,testamentaria,testamenteiro,testamenteira, contraente,contraentef,renunciante,renunciantef,
+             procurador,procuradora,escrivao,arrematante,arrematantef,
+             foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
+             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,siza,sisa,prazo,escrivao,abonador,abonadora,tabeliao,quitante,quitantef,quitado,quitada
 
 element name=sumario; source=summary
 element name=fol; source=ref;
@@ -974,7 +985,6 @@ part name=siza; source=object;
      also=juiz,escrivao,depositario,data,obs,id
      
      
-
 part name=sisa; source=siza
 
 note *****************************************************************
@@ -997,6 +1007,16 @@ note *****************************************************************
 
 part name=arrendamento; source=bem
 
+
+note *****************************************************************
+note Notariais - obra (contratacao de obras publicas e privadas)(criado por Ana Isabel)
+note *****************************************************************
+part name=obra; source=object;
+     guaranteed=name;
+     position=name,tipo,id;
+     also=desc,tipo,id,obs,local;
+     arbitrary=atr,rel
+     
 
 note *****************************************************************
 note dynCoopNet grupos associados ao projecto de base de dados de
@@ -1617,6 +1637,9 @@ part  name=criado; source=actorm
 part  name=escravo; source=actorm
 part  name=engeitado; source=actorm
 part  name=enjeitado; source=actorm
+part  name=sobrinho; source=actorm
+part  name=sogro; source=actorm
+part  name=neto; source=actorm
 part  name=procurador-pad;source=actorm
 part  name=procurador-mad;source=actorm
 part  name=procurador-pad1;source=actorm
@@ -1666,18 +1689,24 @@ part name=dotante; source=actorm;
 part name=senhorio; source=actorm;
 part name=rendeiro; source=actorm;
 part name=foreiro; source=actorm;
+part name=enfiteuta; source=actorm;
+part name=subenfiteuta; source=actorm;
 part name=constituinte; source=actorm;
 part name=outorgante; source=actorm;
 part name=arrendatario; source=actorm;
 part name=testador; source=actorm;
+part name=testamentario; source=actorm;
+part name=testamenteiro; source=actorm;
 part name=contraente; source=actorm;
 part name=renunciante; source=actorm;
 part name=procurador; source=actorm;
 part name=escrivao; source=actorm;
 part name=tabeliao; source=actorm;
 part name=arrematante; source=actorm;
-    part=fianca
+part name=quitante; source=actorm;
+part name=quitado; source=actorm
 part name=abonador; source=actorm;
+
 note
 note cargos para o registos de governos
 note
@@ -2027,13 +2056,16 @@ part 	name=referida;	source=female;
      also=obs,mesmo_que,id;
      repeat=ls,atr,rel
 
-part	name=na;		source=actorf
+part  name=na; source=actorf
 part  name=nora;  source=actorf
 part  name=afilhada; source=actorf
-part  name=criada; source=actorf
+part  name=criada;source=actorf
 part  name=escrava;  source=actorf
 part  name=engeitada;  source=actorf
 part  name=enjeitada;  source=actorf
+part  name=sobrinha;source=actorf
+part  name=sogra;source=actorf
+part  name=neta;source=actorf
 part  name=procuradora-pad;source=actorf
 part  name=procuradora-mad;source=actorf
 part  name=procuradora-pad1;source=actorf
@@ -2067,16 +2099,23 @@ part name=dotada; source=actorf;
 part name=senhoria; source=actorf;
 part name=rendeira; source=actorf;
 part name=foreira; source=actorf;
+part name=enfiteutaf; source=actorf;
+part name=subenfiteutaf; source=actorf;
 part name=constituintef; source=actorf;
 part name=outorgantef; source=actorf;
 part name=arrendataria; source=actorf;
 part name=acusada; source=actorf;
 part name=testadora; source=actorf;
+part name=testamentaria; source=actorf;
+part name=testamenteira; source=actorf;
 part name=contraentef; source=actorf;
 part name=renunciantef; source=actorf;
 part name=procuradora; source=actorf;
 part name=arrematantef; source=actorf;
 part name=abonadora; source=actorf;
+part name=quitantef; source=actorf;
+part name=quitada; source=actorf;
+
 
 part name=perdoante; source= person;
      guaranteed=nome;
