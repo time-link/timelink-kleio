@@ -1029,8 +1029,17 @@ part name=lc; source=pt-acto;
 	also=obs;
 	part=atr,rel,
 		destinatario,destinatario1,destinatario2,
-		remetente,
-		beneficiario,
+		remetente,		  		
+		beneficiario,beneficiario-representante,beneficiario-procurador,
+		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
+		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
+		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
+		tomador,tomador1,tomador2,tomador3,
+		dador,dador1,dador2,
+		pagador,pagador-representante,pagador1,pagador1-representante,pagador2,pagador2-representante,
+		cobrador,
+		endossante,
+		endossado,
 		debitado,
 		recebedor,recebedor1,recebedor2,
 		recebedor-proc,recebedor1-proc,recebedor2-proc,
@@ -1917,6 +1926,33 @@ part name=destinatario1;source=actorm
 part name=destinatario2;source=actorm
 part name=remetente;source=actorm
 part name=beneficiario;source=actorm
+part name=beneficiario-representante;source=actorm
+part name=beneficiario-procurador;source=actorm
+part name=beneficiario1;source=actorm
+part name=beneficiario1-representante;source=actorm
+part name=beneficiario1-procurador;source=actorm
+part name=beneficiario2;source=actorm
+part name=beneficiario2-representante;source=actorm
+part name=beneficiario2-procurador;source=actorm
+part name=beneficiario3;source=actorm
+part name=beneficiario3-representante;source=actorm
+part name=beneficiario3-procurador;source=actorm
+part name=tomador;source=actorm
+part name=tomador1;source=actorm
+part name=tomador2;source=actorm
+part name=tomador3;source=actorm
+part name=pagador;source=actorm
+part name=pagador-representante;source=actorm
+part name=pagador1;source=actorm
+part name=pagador1-representante;source=actorm
+part name=pagador2;source=actorm
+part name=pagador2-representante;source=actorm
+part name=dador;source=actorm
+part name=dador1;source=actorm
+part name=dador2;source=actorm
+part name=cobrador;source=actorm
+part name=endossante;source=actorm
+part name=endossado;source=actorm
 part name=debitado;source=actorm
 part name=recebedor;source=actorm
 part name=recebedor1;source=actorm
@@ -1924,6 +1960,7 @@ part name=recebedor2;source=actorm
 part name=recebedor-proc;source=actorm
 part name=recebedor1-proc;source=actorm
 part name=recebedor2-proc;source=actorm
+part name=referido;source=actorm
 note *****************************************************************
 note Definicao generica de um actor feminino.
 note           nota: todos os parentes aqui enumerados tem de aparecer
@@ -2435,6 +2472,7 @@ part name=rel; source=relation;
         guaranteed=tipo,valor,nomedest,iddest;
         also=data,obs;
         identification=yes
+
 
 
 
