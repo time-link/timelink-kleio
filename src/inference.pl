@@ -2404,6 +2404,10 @@ if [kleio(K),fonte(F),lc(L),recebedor3(R)] and
 	[kleio(K),fonte(F),lc(L),'recebedor3-proc'(P)]
 then
 	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
 	
 
  /************************************************************
