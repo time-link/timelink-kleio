@@ -1028,23 +1028,35 @@ part name=lc; source=pt-acto;
 	guaranteed=id,dia,mes,ano,local;
 	also=obs;
 	part=atr,rel,
-		destinatario,destinatario1,destinatario2,
-		remetente,		  		
 		beneficiario,beneficiario-representante,beneficiario-procurador,
 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
-		tomador,tomador1,tomador2,tomador3,
-		dador,dador1,dador2,
-		pagador,pagador-representante,pagador1,pagador1-representante,pagador2,pagador2-representante,pagador3,pagador3-representante,
-		cobrador,cobrador1,cobrador2,
+		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
+		cobrador,cobrador1,cobrador2,cobrador3,cobrador4,
+		destinatario,destinatario1,destinatario2,
+		dador,dador1,dador2,dador3,dador4,
+		debitado,
 		endossante,
 		endossado,
-		debitado,
-		recebedor,recebedor1,recebedor2,
-		recebedor-proc,recebedor1-proc,recebedor2-proc,
+		local,
+		pagador,pagador-representante,
+		pagador1,pagador1-representante,
+		pagador2,pagador2-representante,
+		pagador3,pagador3-representante,
+		pagador4,pagador4-representante,
+		recebedor,recebedor-proc,
+		recebedor1,recebedor1-proc,
+		recebedor2,recebedor2-proc,
+		recebedor3,recebedor3-proc,
+		recebedor4,recebedor4-proc,
 		referido,
-		local
+		remetente,
+		tomador,tomador-representante,
+		tomador1,tomador1-representante,
+		tomador2,tomador2-representante,
+		tomador3,tomador3-representante,
+		tomador4,tomador4-representante
 		
 part name=local; source=geoentity; part=atr,rel
 
@@ -1937,10 +1949,19 @@ part name=beneficiario2-procurador;source=actorm
 part name=beneficiario3;source=actorm
 part name=beneficiario3-representante;source=actorm
 part name=beneficiario3-procurador;source=actorm
+part name=beneficiario4;source=actorm
+part name=beneficiario4-representante;source=actorm
+part name=beneficiario4-procurador;source=actorm
 part name=tomador;source=actorm
+part name=tomador-representante;source=actorm
 part name=tomador1;source=actorm
+part name=tomador1-representante;source=actorm
 part name=tomador2;source=actorm
+part name=tomador2-representante;source=actorm
 part name=tomador3;source=actorm
+part name=tomador3-representante;source=actorm
+part name=tomador4;source=actorm
+part name=tomador4-representante;source=actorm
 part name=pagador;source=actorm
 part name=pagador-representante;source=actorm
 part name=pagador1;source=actorm
@@ -1949,21 +1970,31 @@ part name=pagador2;source=actorm
 part name=pagador2-representante;source=actorm
 part name=pagador3;source=actorm
 part name=pagador3-representante;source=actorm
+part name=pagador4;source=actorm
+part name=pagador4-representante;source=actorm
 part name=dador;source=actorm
 part name=dador1;source=actorm
 part name=dador2;source=actorm
+part name=dador3;source=actorm
+part name=dador4;source=actorm
 part name=cobrador;source=actorm
 part name=cobrador1;source=actorm
 part name=cobrador2;source=actorm
+part name=cobrador3;source=actorm
+part name=cobrador4;source=actorm
 part name=endossante;source=actorm
 part name=endossado;source=actorm
 part name=debitado;source=actorm
 part name=recebedor;source=actorm
 part name=recebedor1;source=actorm
 part name=recebedor2;source=actorm
+part name=recebedor3;source=actorm
+part name=recebedor4;source=actorm
 part name=recebedor-proc;source=actorm
 part name=recebedor1-proc;source=actorm
 part name=recebedor2-proc;source=actorm
+part name=recebedor3-proc;source=actorm
+part name=recebedor4-proc;source=actorm
 part name=referido;source=actorm
 note *****************************************************************
 note Definicao generica de um actor feminino.
