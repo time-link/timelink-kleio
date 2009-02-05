@@ -2388,6 +2388,70 @@ then
 /*===================================
 	lc Letras de cambio
 =====================================*/
+if [kleio(K),fonte(F),lc(L),beneficiario(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario1(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario1-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario2(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario2-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario3(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario3-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario4(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario4-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario(R)] and
+	[kleio(K),fonte(F),lc(L),'beneficiario-procurador'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),dador(R)] and
+	[kleio(K),fonte(F),lc(L),'dador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),dador1(R)] and
+	[kleio(K),fonte(F),lc(L),'dador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),dador2(R)] and
+	[kleio(K),fonte(F),lc(L),'dador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),dador3(R)] and
+	[kleio(K),fonte(F),lc(L),'dador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),dador4(R)] and
+	[kleio(K),fonte(F),lc(L),'dador4-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador1(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador2(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador3(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),pagador4(R)] and
+	[kleio(K),fonte(F),lc(L),'pagador4-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
 if [kleio(K),fonte(F),lc(L),recebedor(R)] and
 	[kleio(K),fonte(F),lc(L),'recebedor-proc'(P)]
 then
@@ -2404,8 +2468,28 @@ if [kleio(K),fonte(F),lc(L),recebedor3(R)] and
 	[kleio(K),fonte(F),lc(L),'recebedor3-proc'(P)]
 then
 	relation(sociabilidade,procurador,P,R).
-if [kleio(K),fonte(F),lc(L),pagador(R)] and
-	[kleio(K),fonte(F),lc(L),'pagador-representante'(P)]
+if [kleio(K),fonte(F),lc(L),recebedor4(R)] and
+	[kleio(K),fonte(F),lc(L),'recebedor4-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),tomador(R)] and
+	[kleio(K),fonte(F),lc(L),'tomador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),tomador1(R)] and
+	[kleio(K),fonte(F),lc(L),'tomador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),tomador2(R)] and
+	[kleio(K),fonte(F),lc(L),'tomador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),tomador3(R)] and
+	[kleio(K),fonte(F),lc(L),'tomador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),lc(L),tomador4(R)] and
+	[kleio(K),fonte(F),lc(L),'tomador4-representante'(P)]
 then
 	relation(confianca,procurador,P,R).
 	
