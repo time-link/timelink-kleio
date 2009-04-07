@@ -135,7 +135,7 @@ stru(Filename):-
       report([nl,write('Processing structure:'),write(Filename),nl]),
       initStru(Filename),
       retractall(gDoc(_,_)),
-      retractall(eDoc(_,_)),
+      retractall(eDoc(_,_,_)),
       ptime(readlines(cmd)),
       seen,
 		report([perror_count]),

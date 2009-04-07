@@ -404,6 +404,10 @@ note *****************************************************************
 note doc group fonte Este constitui o grupo principal para os documentos
          historicos portugueses. Admite qualquer dos actos definidos aqui.
 note *****************************************************************
+note doc element id elemento obrigatorio, identifica unicamente a fonte na base de dados,
+note doc element tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
+note doc element loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
+note doc element ref cota ou outra referencia de localizacao da fonte
 
 part	 name=fonte;
       source=historical-source;
@@ -563,7 +567,7 @@ note *****************************************************************
      
 part name=juramento;
      source=pt-acto;
-     repeat=n,referido,referido, abonador, abonadora, escrivao
+     repeat=n,referido,referida, abonador, abonadora, escrivao
      guaranteed=id,dia,mes,ano,loc;
      position=id,dia,mes,ano,loc;
      also=obs

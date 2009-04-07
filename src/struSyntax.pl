@@ -158,8 +158,6 @@ val(terminus,solum,V)        -->sicNon(V).
 val(exitus,nomen,V)          -->[(name,V)].
 
 
-
-
 skipRest-->[(_,_)].
 skipRest-->[(_,_)],skipRest.
 skipRest-->[].
@@ -188,8 +186,8 @@ getDocText([N|R])     -->[(_,C)],getDocText(R),{name(N,[C])},!.
 getDocText([])        -->[],!.
 %
 %
-storeGroupDoc(A):- assert(A,true).
-storeElementDoc(A):- assert(A,true).
+storeGroupDoc(gdoc(G,DOC)):- assert(gdoc(G,DOC)),put_value(lastGroupDoc,G).
+storeElementDoc(edoc(E,DOC)):- (get_value(lastGroupDoc,G);G='*'),assert(edoc(G,E,DOC)).
 
 
 

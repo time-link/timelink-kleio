@@ -558,7 +558,7 @@ group_to_html(File,G):-
          ;
          true
          ),
-    (clause(gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'));true),
+    (clause(gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'),show_edocs(G));true),
     writeln('<blockquote>'),
     writelist0(['Minimal:<b>  ',G,'$']),show_positional(C,L),write('</b>'),
     writelist0(['Typical:<b>  ',G,'$']),show_locus(C,L),write('</b>'),
@@ -574,6 +574,15 @@ group_to_html(File,G):-
    % told,
     tell(O).
 
+	 
+show_edocs(G):-	 
+	write('<DL>'),
+	 clause(edoc(G,E,Doc),true),
+	 write('<DT>'),write(E),write('</DT>'),
+	 list_to_a0(Doc,SDoc),write('<DD>'),write(SDoc),write('</DD>'),writeln('<br>'),
+	 fail.
+show_edocs(_):-!.
+	 
   % mostra todos os Locus (elementos posicionais) que sao certe (obrigatorios)
 
 show_positional(Certe,Locus):-
