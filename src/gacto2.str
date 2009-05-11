@@ -1037,7 +1037,11 @@ part name=lc; source=pt-acto;
 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
-		cobrador,cobrador1,cobrador2,cobrador3,cobrador4,
+		cobrador,cobrador-representante,
+		cobrador1,cobrador-representante1,
+		cobrador2,cobrador-representante2,
+		cobrador3,cobrador-representante3,
+		cobrador4,cobrador-representante4,
 		destinatario,destinatario1,destinatario2,
 		dador,dador-representante,
 		dador1,dador1-representante,
@@ -1994,10 +1998,15 @@ part name=dador3-representante;source=actorm
 part name=dador4;source=actorm
 part name=dador4-representante;source=actorm
 part name=cobrador;source=actorm
+part name=cobrador-representante;source=actorm
 part name=cobrador1;source=actorm
+part name=cobrador-representante1;source=actorm
 part name=cobrador2;source=actorm
+part name=cobrador-representante2;source=actorm
 part name=cobrador3;source=actorm
+part name=cobrador-representante3;source=actorm
 part name=cobrador4;source=actorm
+part name=cobrador-representante4;source=actorm
 part name=endossante;source=actorm
 part name=endossado;source=actorm
 part name=debitado;source=actorm
