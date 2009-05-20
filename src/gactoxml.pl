@@ -574,7 +574,7 @@ The structure of person related data like attributes and relations with other
       !.
 
    object_export(G,ID) :-
-   	(belement_aspect(core,id,[]) ->  IdElement=[id([ID],[],[])]; IdElement=[]),
+   	(belement_aspect(core,id,[]) ->  IdElement=[id([ID],[],[]),type([G],[],[]) ]; IdElement=[type([G],[],[])]),
    	group_to_xml(G,ID,IdElement),
    	process_function_in_act(G,ID),
    	report(writeln(G-ID-'** was stored with function in ACT verify act')),
