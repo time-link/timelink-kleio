@@ -296,7 +296,7 @@ note			and relations. They have a type to distinguish categories
 note			of objects.
 note ===========================================================
 part name=object;
-     guaranteed=name,type;
+     guaranteed=name;
      position=name,type;
      also=obs,id;
      arbitrary=atr,ls,rel
@@ -951,7 +951,15 @@ part name=escritura; source=pt-acto;
              senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,testamentario,testamentaria,testamenteiro,testamenteira,contraente,contraentef,renunciante,renunciantef,
              procurador,procuradora,escrivao,arrematante,arrematantef,
              foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
-             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,siza,sisa,prazo,obra,escrivao,abonador,abonadora,tabeliao,quitante,quitantef,quitado,quitada
+             divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
+				 demanda,defesa,sentenca,escambo,
+				 siza,sisa,prazo,obra,escrivao,abonador,
+				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf
+
+				 
+part name=demanda; source=abstraction;
+part name=sentenca; source=abstraction;
+part name=defesa; source=abstraction;
 
 element name=sumario; source=summary
 element name=fol; source=ref;
@@ -1010,6 +1018,13 @@ note Notariais - arrendamento -- colocar as condicoes em atr (criado por Ana Isa
 note *****************************************************************
 
 part name=arrendamento; source=bem
+
+note *****************************************************************
+note Notariais - escambo -- colocar as condicoes em atr (criado para Amelia)
+note *****************************************************************
+
+part name=escambo; source=bem
+
 
 
 note *****************************************************************
@@ -1740,6 +1755,9 @@ part name=arrematante; source=actorm;
 part name=quitante; source=actorm;
 part name=quitado; source=actorm
 part name=abonador; source=actorm;
+part name=demandador; source=actorm;
+part name=escambador; source=actorm;
+part name=reu;source=actorm;
 
 note
 note cargos para o registos de governos
@@ -2211,6 +2229,9 @@ part name=arrematantef; source=actorf;
 part name=abonadora; source=actorf;
 part name=quitantef; source=actorf;
 part name=quitada; source=actorf;
+part name=demandadora; source=actorf;
+part name=escambadora; source=actorf;
+part name=reuf; source=actorf;
 
 
 part name=perdoante; source= person;
