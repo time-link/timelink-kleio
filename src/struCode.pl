@@ -55,7 +55,7 @@
 %    
 %  execParam(C,P,V) takes appropriate action for each param-value pair
 %    
-%  check_complete(CMD,Result) Ñ checks if CMD has all the 
+%  check_complete(CMD,Result) -- checks if CMD has all the 
 %      params it must have it returns OK in result
 %       
 %    History
@@ -278,7 +278,7 @@ execParam(exitus,nomen,N):-
 %*************************************************************
 % 
 %***********************************************************
-% check_complete(CMD,Result) Ñ checks if CMD has all the 
+% check_complete(CMD,Result) -- checks if CMD has all the 
 %      params it must have it returns OK in result
 %    if the command has not all the params then it returns
 %    notOk and set the property status  to
