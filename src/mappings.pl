@@ -278,6 +278,22 @@ class aforamento super good table aforamentos
      and
         obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
 
+mapping escambo to class escambo.
+class escambo super good table escambos
+   with attributes
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+     and
+        name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
+     and
+        type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0 
+     and
+        loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
+     and
+        description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0 
+     and
+        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+
+		  
 mapping caso to class caso.
 class caso super object table casos
    with attributes
