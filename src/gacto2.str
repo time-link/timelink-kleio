@@ -1330,10 +1330,10 @@ part name=apontamentosd; source=memoria58
 	
 part name=freguesia; source=geoentity;
 	part=atr,rel,gref,provincia,comarca,termoc,lugar,idonatario,pdonatario,
-		igreja,irmandade,bispado,confraria
+		igreja,irmandade,bispado,confraria,referido
 
 part name=gref; source=geoentity
-part name=lugar; source=geoentity
+part name=lugar; source=geoentity; part=referido
 part name=provincia; source=geoentity
 part name=termoc; source=geoentity
 part name=bispado; source=geoentity
