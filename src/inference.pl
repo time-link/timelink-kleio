@@ -2492,26 +2492,26 @@ if [kleio(K),fonte(F),lc(L),tomador4(R)] and
 	[kleio(K),fonte(F),lc(L),'tomador4-representante'(P)]
 then
 	relation(confianca,procurador,P,R).
-if [kleio(K),fonte(F),lc(L),dador(R)] and
-	[kleio(K),fonte(F),lc(L),beneficiario(P)]
+if [kleio(K),fonte(F),lc(L),beneficiario(R)] and
+	[kleio(K),fonte(F),lc(L),dador(P)]
 then
-	relation(financeira,'beneficiario-dador',P,R).
-if [kleio(K),fonte(F),lc(L),dador1(R)] and
-	[kleio(K),fonte(F),lc(L),beneficiario1(P)]
+	relation(financeira,'dador-beneficiario',P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario1(R)] and
+	[kleio(K),fonte(F),lc(L),dador1(P)]
 then
-	relation(financeira,'beneficiario1-dador1',P,R).
-if [kleio(K),fonte(F),lc(L),dador2(R)] and
-	[kleio(K),fonte(F),lc(L),beneficiario2(P)]
+	relation(financeira,'dador1-beneficiario1',P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario2(R)] and
+	[kleio(K),fonte(F),lc(L),dador2(P)]
 then
-	relation(financeira,'beneficiario2-dador2',P,R).
-if [kleio(K),fonte(F),lc(L),dador3(R)] and
-	[kleio(K),fonte(F),lc(L),beneficiario3(P)]
+	relation(financeira,'dador2-beneficiario1',P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario3(R)] and
+	[kleio(K),fonte(F),lc(L),dador3(P)]
 then
-	relation(financeira,'beneficiario3-dador3',P,R).
-if [kleio(K),fonte(F),lc(L),dador4(R)] and
-	[kleio(K),fonte(F),lc(L),beneficiario4(P)]
+	relation(financeira,'dador3-beneficiario3',P,R).
+if [kleio(K),fonte(F),lc(L),beneficiario4(R)] and
+	[kleio(K),fonte(F),lc(L),dador4(P)]
 then
-	relation(financeira,'beneficiario4-dador4',P,R).
+	relation(financeira,'dador4-beneficiario4',P,R).
 if [kleio(K),fonte(F),lc(L),pagador(R)] and
 	[kleio(K),fonte(F),lc(L),tomador(P)]
 then
