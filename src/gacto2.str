@@ -1329,8 +1329,8 @@ note doc group sinonimo de memoria58 para uso do Alexandre Pinto em fontes semel
 part name=apontamentosd; source=memoria58
 	
 part name=freguesia; source=geoentity;
-	part=atr,rel,gref,provincia,comarca,couto,termoc,lugar,idonatario,pdonatario,
-		igreja,irmandade,bispado,confraria,referido
+	part=atr,rel,gref,provincia,comarca,couto,termoc,lugar,mosteiro,idonatario,pdonatario,
+		igreja,irmandade,bispado,confraria,convento,referido
 
 part name=gref; source=geoentity
 part name=lugar; source=geoentity; part=referido
@@ -1340,6 +1340,8 @@ part name=bispado; source=geoentity
 part name=comarca; source=geoentity
 part name=couto; source=geoentity
 part name=igreja; source=object; part=atr,rel
+part name=convento; source=object; part=atr,rel
+part name=mosteiro; source=object; part=atr,rel
 part name=irmandade; source=object
 part name=confraria;source=object
 part name=idonatario;source=object
