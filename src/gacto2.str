@@ -1052,6 +1052,7 @@ part name=lc; source=pt-acto;
 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
+		beneficiario5,beneficiario5-representante,beneficiario5-procurador,
 		cobrador,cobrador-representante,
 		cobrador1,cobrador-representante1,
 		cobrador2,cobrador-representante2,
@@ -1986,6 +1987,9 @@ part name=beneficiario3-procurador;source=actorm
 part name=beneficiario4;source=actorm
 part name=beneficiario4-representante;source=actorm
 part name=beneficiario4-procurador;source=actorm
+part name=beneficiario5;source=actorm
+part name=beneficiario5-representante;source=actorm
+part name=beneficiario5-procurador;source=actorm
 part name=tomador;source=actorm
 part name=tomador-representante;source=actorm
 part name=tomador1;source=actorm
