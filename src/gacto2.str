@@ -1330,7 +1330,7 @@ note doc group sinonimo de memoria58 para uso do Alexandre Pinto em fontes semel
 part name=apontamentosd; source=memoria58
 	
 part name=freguesia; source=geoentity;
-	part=atr,rel,gref,provincia,comarca,couto,termoc,lugar,mosteiro,idonatario,pdonatario,
+	part=atr,rel,gref,provincia,comarca,couto,honra,hospital,termoc,lugar,misericordia,mosteiro,idonatario,pdonatario,
 		igreja,irmandade,bispado,confraria,convento,referido
 
 part name=gref; source=geoentity
@@ -1339,14 +1339,17 @@ part name=provincia; source=geoentity
 part name=termoc; source=geoentity
 part name=bispado; source=geoentity
 part name=comarca; source=geoentity
-part name=couto; source=geoentity
+part name=couto; source=geoentity; part=referido
+part name=honra; source=geoentity; part=referido
 part name=igreja; source=object; part=atr,rel
 part name=convento; source=object; part=atr,rel
 part name=mosteiro; source=object; part=atr,rel
+part name=misericordia; source=object; part=atr,rel
+part name=hospital; source=object; part=atr,rel
 part name=irmandade; source=object
 part name=confraria;source=object
 part name=idonatario;source=object
-part name=pdonatario;source=person
+part name=pdonatario;source=person; part=referido
 
 note *****************************************************************
 note Actores
