@@ -1334,13 +1334,13 @@ part name=freguesia; source=geoentity;
 		igreja,irmandade,bispado,confraria,convento,referido
 
 part name=gref; source=geoentity
-part name=lugar; source=geoentity; part=referido
+part name=lugar; source=geoentity; part=referido,atr,ls
 part name=provincia; source=geoentity
 part name=termoc; source=geoentity
 part name=bispado; source=geoentity
 part name=comarca; source=geoentity
-part name=couto; source=geoentity; part=referido
-part name=honra; source=geoentity; part=referido
+part name=couto; source=geoentity; part=referido,atr,ls
+part name=honra; source=geoentity; part=referido,atr,ls
 part name=igreja; source=object; part=atr,rel
 part name=convento; source=object; part=atr,rel
 part name=mosteiro; source=object; part=atr,rel
@@ -1349,7 +1349,7 @@ part name=hospital; source=object; part=atr,rel
 part name=irmandade; source=object
 part name=confraria;source=object
 part name=idonatario;source=object
-part name=pdonatario;source=person; part=referido
+part name=pdonatario;source=person; part=referido,ls,atr,rel
 
 note *****************************************************************
 note Actores
