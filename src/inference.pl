@@ -2182,50 +2182,33 @@ then relation(parentesco,marido,Husband,Wife).
     
     godfathers and godmothers in baptisms
     */
-if [sequence(Path),mad(Mad)] and [sequence(Path),pmad(PMad)] then
-relation(parentesco,pai,PMad,Mad).
-if [sequence(Path),mad(Mad)] and [sequence(Path),mmad(MMad)] then
-relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad(Mad)] and [sequence(Path),mrmad(MrMad)] then
-relation(parentesco,marido,MrMad,Mad).
-if [sequence(Path),pad(Pad)] and [sequence(Path),ppad(PPad)] then
-relation(parentesco,pai,PPad,Pad).
+if [sequence(Path),mad(Mad)]   and [sequence(Path),pmad(PMad)]   then relation(parentesco,pai,PMad,Mad).
+if [sequence(Path),mad(Mad)]   and [sequence(Path),mmad(MMad)]   then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),pad(Pad)]   and [sequence(Path),mpad(MPad)]   then relation(parentesco,mae,MPad,Pad).
+if [sequence(Path),ppad(PPad)] and [sequence(Path),mpad(MPad)]   then relation(parentesco,marido,PPad,MPad).
+if [sequence(Path),pmad(PMad)] and [sequence(Path),mmad(MMad)]   then relation(parentesco,marido,PMad,MMad).
+if [sequence(Path),mad(Mad)]   and [sequence(Path),mrmad(MrMad)] then relation(parentesco,marido,MrMad,Mad).
+if [sequence(Path),pad(Pad)]   and [sequence(Path),ppad(PPad)]   then relation(parentesco,pai,PPad,Pad).
 
-if [sequence(Path),mad1(Mad)] and [sequence(Path),pmad1(PMad)] then
-relation(parentesco,pai,PMad,Mad).
-if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then
-relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad1(Mad)] and [sequence(Path),mrmad1(MrMad)] then
-relation(parentesco,marido,MrMad,Mad).
-if [sequence(Path),pad1(Pad)] and [sequence(Path),ppad1(PPad)] then
-relation(parentesco,pai,PPad,Pad).
+if [sequence(Path),mad1(Mad)] and [sequence(Path),pmad1(PMad)] then relation(parentesco,pai,PMad,Mad).
+if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),mad1(Mad)] and [sequence(Path),mrmad1(MrMad)] then relation(parentesco,marido,MrMad,Mad).
+if [sequence(Path),pad1(Pad)] and [sequence(Path),ppad1(PPad)] then relation(parentesco,pai,PPad,Pad).
 
-if [sequence(Path),mad2(Mad)] and [sequence(Path),pmad2(PMad)] then
-relation(parentesco,pai,PMad,Mad).
-if [sequence(Path),mad2(Mad)] and [sequence(Path),mmad2(MMad)] then
-relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad2(Mad)] and [sequence(Path),mrmad2(MrMad)] then
-relation(parentesco,marido,MrMad,Mad).
-if [sequence(Path),pad2(Pad)] and [sequence(Path),ppad2(PPad)] then
-relation(parentesco,pai,PPad,Pad).
+if [sequence(Path),mad2(Mad)] and [sequence(Path),pmad2(PMad)] then relation(parentesco,pai,PMad,Mad).
+if [sequence(Path),mad2(Mad)] and [sequence(Path),mmad2(MMad)] then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),mad2(Mad)] and [sequence(Path),mrmad2(MrMad)] then relation(parentesco,marido,MrMad,Mad).
+if [sequence(Path),pad2(Pad)] and [sequence(Path),ppad2(PPad)] then relation(parentesco,pai,PPad,Pad).
 
-if [sequence(Path),mad3(Mad)] and [sequence(Path),pmad3(PMad)] then
-relation(parentesco,pai,PMad,Mad).
-if [sequence(Path),mad3(Mad)] and [sequence(Path),mmad3(MMad)] then
-relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad3(Mad)] and [sequence(Path),mrmad3(MrMad)] then
-relation(parentesco,marido,MrMad,Mad).
-if [sequence(Path),pad3(Pad)] and [sequence(Path),ppad3(PPad)] then
-relation(parentesco,pai,PPad,Pad).
+if [sequence(Path),mad3(Mad)] and [sequence(Path),pmad3(PMad)] then relation(parentesco,pai,PMad,Mad).
+if [sequence(Path),mad3(Mad)] and [sequence(Path),mmad3(MMad)] then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),mad3(Mad)] and [sequence(Path),mrmad3(MrMad)] then relation(parentesco,marido,MrMad,Mad).
+if [sequence(Path),pad3(Pad)] and [sequence(Path),ppad3(PPad)] then relation(parentesco,pai,PPad,Pad).
 
-if [sequence(Path),mad4(Mad)] and [sequence(Path),pmad4(PMad)] then
-relation(parentesco,pai,PMad,Mad).
-if [sequence(Path),mad4(Mad)] and [sequence(Path),mmad4(MMad)] then
-relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad4(Mad)] and [sequence(Path),mrmad4(MrMad)] then
-relation(parentesco,marido,MrMad,Mad).
-if [sequence(Path),pad4(Pad)] and [sequence(Path),ppad4(PPad)] then
-relation(parentesco,pai,PPad,Pad).
+if [sequence(Path),mad4(Mad)] and [sequence(Path),pmad4(PMad)] then relation(parentesco,pai,PMad,Mad).
+if [sequence(Path),mad4(Mad)] and [sequence(Path),mmad4(MMad)] then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),mad4(Mad)] and [sequence(Path),mrmad4(MrMad)] then relation(parentesco,marido,MrMad,Mad).
+if [sequence(Path),pad4(Pad)] and [sequence(Path),ppad4(PPad)] then relation(parentesco,pai,PPad,Pad).
 
 /*    rois (household lists) */
 if [kleio(_K),fonte(_F),rol(_R),fogo(FG),n(N)] then
@@ -2363,7 +2346,7 @@ then
     relation(geografica,'pertence-civil',F,P).
 if [sequence(Path),extends(memoria58,Mid),freguesia(F),bispado(P)]
 then
-    relation(geografica,'pertence-eccel',F,P).
+    relation(geografica,'pertence-eccle',F,P).
 if [sequence(Path),extends(memoria58,Mid),freguesia(F),lugar(P)]
 then
     relation(geografica,'contem',F,P).
