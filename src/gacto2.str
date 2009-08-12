@@ -954,12 +954,16 @@ part name=escritura; source=pt-acto;
              divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
 				 demanda,defesa,sentenca,escambo,
 				 siza,sisa,prazo,obra,escrivao,abonador,
-				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf
+				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf,
+				 inquiricao,inquirido,inquirida,inquiridor,
+				 apelacao,apelado,apelante,apelantef
 
 				 
 part name=demanda; source=abstraction;
 part name=sentenca; source=abstraction;
 part name=defesa; source=abstraction;
+part name=inquiricao; source=abstraction;
+part name=apelacao; source=abstraction;
 
 element name=sumario; source=summary
 element name=fol; source=ref;
@@ -1765,6 +1769,10 @@ part name=abonador; source=actorm;
 part name=demandador; source=actorm;
 part name=escambador; source=actorm;
 part name=reu;source=actorm;
+part name=inquirido; source=actorm;
+part name=inquiridor; source=actorm;
+part name=apelante; source=actorm;
+part name=apelado; source=actorm;
 
 note
 note cargos para o registos de governos
@@ -2242,7 +2250,8 @@ part name=quitada; source=actorf;
 part name=demandadora; source=actorf;
 part name=escambadora; source=actorf;
 part name=reuf; source=actorf;
-
+part name=inquirida; source=actorf;
+part name=apelantef; source=actorf;
 
 part name=perdoante; source= person;
      guaranteed=nome;
