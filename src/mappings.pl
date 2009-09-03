@@ -125,7 +125,7 @@ class attribute super entity table attributes
         obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
       
 mapping item to class item.
-class item super entity table items
+class item super object table items
   with attributes
         id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
       and
