@@ -789,7 +789,7 @@ The structure of person related data like attributes and relations with other
         \+ used_id(Id),
         assert(used_id(Id)),!.
 
-   get_group_id(Group,Id,Id0) :- check_id_prefix(Id0,Id),put_value(Group,Id),\+ used_id(Id),asset(used_id(Id)),!. % If everything fails accept the kleio auto id
+   get_group_id(Group,Id,Id0) :- check_id_prefix(Id0,Id),put_value(Group,Id),\+ used_id(Id),assert(used_id(Id)),!. % If everything fails accept the kleio auto id
 
    /*
       cehck if there is a name space prefix to ad to the id.
