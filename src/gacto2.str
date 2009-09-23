@@ -955,6 +955,7 @@ part name=escritura; source=pt-acto;
 				 demanda,defesa,sentenca,escambo,
 				 siza,sisa,prazo,obra,escrivao,abonador,
 				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf,
+				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef
 
@@ -1773,6 +1774,7 @@ part name=inquirido; source=actorm;
 part name=inquiridor; source=actorm;
 part name=apelante; source=actorm;
 part name=apelado; source=actorm;
+part name=vedor; source=actorm;
 
 note
 note cargos para o registos de governos
