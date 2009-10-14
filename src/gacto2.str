@@ -416,7 +416,7 @@ part	 name=fonte;
       part=acto,amz,nom,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
-	  memoria58,apontamentosd,eleicao,juramento,lc
+	  memoria58,apontamentosd,eleicao,juramento,lc,crisma
 
 
 note *****************************************************************
@@ -938,6 +938,14 @@ part name=fogo; source=object;
 element name=local; source=loc
 
 note *****************************************************************
+note Crismas
+note *****************************************************************
+part name=crisma; source=pt-acto;
+     guaranteed=id,dia,mes,ano;
+     position=id,dia,mes,ano;
+     arbitrary=n,pad,ppad,mad,pmad,mrmad,referido,referida    
+
+note *****************************************************************
 note Notariais - escrituras
 note *****************************************************************
 
@@ -1281,6 +1289,7 @@ note *****************************************************************
 part name=familia; source=pt-acto;
  position=name;
  guaranteed=name;
+ also=id,obs;
  part=linha
 
 part name=linha; source=object;
