@@ -2192,6 +2192,7 @@ if [sequence(Path),pad(Pad)]   and [sequence(Path),ppad(PPad)]   then relation(p
 
 if [sequence(Path),mad1(Mad)] and [sequence(Path),pmad1(PMad)] then relation(parentesco,pai,PMad,Mad).
 if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then relation(parentesco,mae,MMad,Mad).
+if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then relation(parentesco,mae,MMad,Mad).
 if [sequence(Path),mad1(Mad)] and [sequence(Path),mrmad1(MrMad)] then relation(parentesco,marido,MrMad,Mad).
 if [sequence(Path),pad1(Pad)] and [sequence(Path),ppad1(PPad)] then relation(parentesco,pai,PPad,Pad).
 
@@ -2229,69 +2230,84 @@ if [kleio(K),fonte(F),rol(R),fogo(FG),n(N)] and
     we generate a sociability relation
     */
 
- if [kleio(K),fonte(F),bap(B),mad(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-mad'(PM)] then
-    relation(sociabilidade,procuradora,PM,M).
- if [kleio(K),fonte(F),bap(B),mad(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-mad'(PM)] then
-    relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-pad'(PM)] then
-    relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-pad'(PM)] then
+ if [kleio(K),fonte(F),bap(B),n(N),mad(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-mad'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
 
-  if [kleio(K),fonte(F),bap(B),mad1(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-mad1'(PM)] then
-    relation(sociabilidade,procuradora,PM,M).
- if [kleio(K),fonte(F),bap(B),mad1(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-mad1'(PM)] then
+ if [kleio(K),fonte(F),bap(B),n(N),mad(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-mad'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad1(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-pad1'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-pad'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad1(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-pad1'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-pad'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
 
-  if [kleio(K),fonte(F),bap(B),mad2(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-mad2'(PM)] then
-    relation(sociabilidade,procuradora,PM,M).
- if [kleio(K),fonte(F),bap(B),mad2(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-mad2'(PM)] then
-    relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad2(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-pad2'(PM)] then
-    relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad2(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-pad2'(PM)] then
+  if [kleio(K),fonte(F),bap(B),n(N),mad1(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-mad1'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
 
-  if [kleio(K),fonte(F),bap(B),mad3(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-mad3'(PM)] then
-    relation(sociabilidade,procuradora,PM,M).
- if [kleio(K),fonte(F),bap(B),mad3(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-mad3'(PM)] then
+ if [kleio(K),fonte(F),bap(B),n(N),mad1(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-mad1'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad3(M)] and
-    [kleio(K),fonte(F),bap(B),'procurador-pad3'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad1(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-pad1'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),bap(B),pad3(M)] and
-    [kleio(K),fonte(F),bap(B),'procuradora-pad3'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad1(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-pad1'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
 
- if [kleio(K),fonte(F),b(B),mad4(M)] and
-    [kleio(K),fonte(F),b(B),'procuradora-mad4'(PM)] then
+  if [kleio(K),fonte(F),bap(B),n(N),mad2(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-mad2'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
- if [kleio(K),fonte(F),b(B),mad4(M)] and
-    [kleio(K),fonte(F),b(B),'procurador-mad4'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),mad2(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-mad2'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [sequence(S),pad4(M)] and
-    [sequence(S),'procurador-pad4'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad2(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-pad2'(PM)] then
     relation(sociabilidade,procurador,PM,M).
- if [kleio(K),fonte(F),b(B),pad4(M)] and
-    [kleio(K),fonte(F),b(B),'procuradora-pad4'(PM)] then
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad2(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-pad2'(PM)] then
+    relation(sociabilidade,procuradora,PM,M).
+
+  if [kleio(K),fonte(F),bap(B),n(N),mad3(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-mad3'(PM)] then
+    relation(sociabilidade,procuradora,PM,M).
+
+ if [kleio(K),fonte(F),bap(B),n(N),mad3(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-mad3'(PM)] then
+    relation(sociabilidade,procurador,PM,M).
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad3(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procurador-pad3'(PM)] then
+    relation(sociabilidade,procurador,PM,M).
+
+ if [kleio(K),fonte(F),bap(B),n(N),pad3(M)] and
+    [kleio(K),fonte(F),bap(B),n(N),'procuradora-pad3'(PM)] then
+    relation(sociabilidade,procuradora,PM,M).
+
+ if [kleio(K),fonte(F),b(B),n(N),mad(M)] and
+    [kleio(K),fonte(F),b(B),n(N),'procuradora-mad'(PM)] then
+    relation(sociabilidade,procuradora,PM,M).
+
+ if [kleio(K),fonte(F),b(B),n(N),mad(M)] and
+    [kleio(K),fonte(F),b(B),n(N),'procurador-mad'(PM)] then
+    relation(sociabilidade,procurador,PM,M).
+
+ if [kleio(K),fonte(F),b(B),n(N),pad(M)] and
+    [kleio(K),fonte(F),b(B),n(N),'procurador-pad'(PM)] then
+    relation(sociabilidade,procurador,PM,M).
+
+ if [kleio(K),fonte(F),b(B),n(N),pad(M)] and
+    [kleio(K),fonte(F),b(B),n(N),'procuradora-pad4'(PM)] then
     relation(sociabilidade,procuradora,PM,M).
 
  /*
@@ -2546,3 +2562,5 @@ then newscope.
 if [kleio(_K),fonte(_F),rol(_R),fogo(_FG)]
 then newscope.
 
+if [kleio(_K),fonte(_F),crisma(_R),n(_N)]
+then newscope.
