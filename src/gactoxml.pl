@@ -279,7 +279,7 @@ The structure of person related data like attributes and relations with other
    	break_fname(D,Path,_File,Base,_Ext),
    	path_sep(Sep),
    	list_to_a0([Path,Sep,Base],SOURCE),writeln(path-Path-sep-Sep-base-Base),
-   	put_value(source,SOURCE),
+   	put_value(source_file,SOURCE),
    	concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
    	open_file_write(XMLFILE),
    	% prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
@@ -333,10 +333,16 @@ The structure of person related data like attributes and relations with other
    	  */
      change_to_ids:-
       get_value(data_file,D),
-      get_value(source,SOURCE),
+		report([writeln('** data file'-D)]),
+      get_value(source_file,SOURCE),
       concat(SOURCE,'.org',Original),
+		report([writeln('** original file'-Original)]),
       concat(SOURCE,'.old',Last),
+		report([writeln('** old file'-Last)]),
+ 
       concat(SOURCE,'.ids',Ids),
+				report([writeln('** original file'-Ids)]),
+ 
       (exists_file(Last) ->delete_file(Last);true),
       (exists_file(Original)->rename_file(D,Last);rename_file(D,Original)),
       rename_file(Ids,D),!.
@@ -784,7 +790,7 @@ The structure of person related data like attributes and relations with other
    		  repeat,
         gensymbol(Seed,Gid),
         (atom(Aid)->AAid=Aid;term_to_atom(Aid,AAid)),
-        list_to_a0([AAid,'-',Gid],Id), % we assumed that the ancestor's id is prefixed so we do not check
+        list_to_a0([AAid,'-',Gid],Id), % we assumed that the ancestor''s id is prefixed so we do not check
         put_value(Group,Id),
         \+ used_id(Id),
         assert(used_id(Id)),!.
