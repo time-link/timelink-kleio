@@ -10,168 +10,6 @@ NOTE -------
 Note Revision 1.2  2006/05/16 10:52:44  Joaquim
 Note update dos ficheiros prolog
 Note
-Note Revision 1.8  2006/03/27 20:50:34  jrc
-Note New abstraction group, similar to object. Acts can now take ls/atr and rel. Some new grupo documentation.
-Note
-Note Revision 1.7  2005/10/17 21:15:57  jrc
-Note changed the enclosed groups of generic actor "n" so that it can be used as a female or as a male actor. Alhotugh it could be used as female, with the sex=f element in practice it only allowed for male type sub groups (mulher, noiva) and not female type sub groups (marido, noivo). Now it can take both.
-Note
-Note Revision 1.6  2005/06/05 22:11:15  jrc
-Note changed to make baptisms of type "b" capable of automatic processing of "procurador-pad" and "procurador-mad".
-Note
-Note Revision 1.5  2005/05/16 11:34:47  jrc
-Note Corrected a bug where "noivo" e "noiva" were doubly defined as "actors" and as "patente". Now noivo is an actorm and noiva a parentef
-Note
-Note Revision 1.4  2005/03/10 14:42:04  joaquim
-Note snapshot commit for purpose of moving the cvs directory.
-Note
-Note Revision 1.3  2004/05/11 14:19:49  joaquim
-Note Update gacto2.str from a uncommited version. Recent changes had been lost in the move to Tiago.
-Note
-Note
-Note Revision 1.1  2004/04/08 14:45:24  ltiago
-Note Source code has passed from Joaquim to Tiago.
-Note Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
-Note File build.xml, web.xml and velocity.properties were changed
-Note
-Note Revision 1.3  2002/09/22 18:12:51  jrc
-Note Stripped of autorels and rch mappings pseudo-groups.
-Note
-Note Revision 1.2  2002/09/21 19:14:16  jrc
-Note removed the auto relation mappings.
-Note
-Note Revision 1.1  2002/09/21 16:44:40  jrc
-Note nnew version of gacto.str, without the pseudo groups.
-Note
-Note Revision 1.21  2002/06/23 10:34:42  jrc
-Note Added referido,referida,test to hab. Added po as a synonim for hab.
-Note
-Note Revision 1.20  2002/06/23 10:24:49  jrc
-Note gov and familia sources added (governments and genealogies).
-Note                  obtio
-Note Revision 1.19  2002/05/28 11:31:23  jrc
-Note update para sincronizar os fins de linha
-Note
-Note Revision 1.18  2002/04/07 21:03:40  jrc
-Note Referido, referida and test no longer extend actorm and actorf since that interferes with the generation of automatic relations.
-Note
-Note Revision 1.17  2002/04/05 15:41:16  jrc
-Note Added referida to baptisms
-Note In n actor sexo is flagged as 'also'.
-Note
-Note Revision 1.16  2002/03/26 13:50:58  jrc
-Note Corrected missing mpad in b$.
-Note Corrected position attribute in referida$
-Note
-Note Revision 1.15  2002/03/26 12:56:27  jrc
-Note Referido atributes corrected. referida now extends actorf. Fixed bug with mmad in b$
-Note
-Note Revision 1.14  2002/03/23 18:19:31  jrc
-Note Referido added to amz documents
-Note
-Note Revision 1.13  2002/03/08 19:07:19  jrc
-Note Adapted for Soure baptisms (b) and preliminary handling of fogos.
-Note
-Note Revision 1.12  2002/02/24 20:47:06  jrc
-Note Auto relation for baptisms, lousa style.
-Note
-Note Revision 1.11  2002/02/10 19:45:50  jrc
-Note maintenaince version.
-Note
-Note Revision 1.10  2001/10/14 18:26:18  jrc
-Note test actor added to baptisms
-Note
-Note Revision 1.9  2001/10/14 12:13:19  jrc Note Merged with some notes and corrections from the session with M.Thaller in 4 Sept 2001 Note
-Note Revision 1.8  2001/10/02 06:53:27  jrc
-Note Obitos. Incomplete. Group elements are not dealt with properly.
-Note
-Note Revision 1.7  2001/09/13 13:35:17  jrc
-Note Baptisms (Lousa, sec.XVIII added). Missing: auto rels
-Note for baptism actors.
-Note
-Note Revision 1.6  2001/09/11 08:33:25  jrc
-Note Introduzidos termos nos casamentos (Lousa, 1770-) em tudo semelhante aos casamentos. O celebrante nos casamentos passou a opcional.
-Note
-Note Revision 1.4  2001/07/24 08:46:29  jrc
-Note loc field added to casamentos.
-Note test actor added.
-Note
-Note Revision 1.3  2001/05/13 22:38:37  jrc
-Note Corrected spellings in comments.
-Note
-Note Revision 1.2  2001/04/20 11:05:18  jrc
-Note Corrected a quote in a log message.
-Note
-Note Revision 1.1.1.1  2001/04/19 23:25:43  jrc
-Note New Repository.
-Note
-Note Revision 1.1.1.1  2001/04/18 23:34:39  jrc
-Note CVS repository moved from llinux to MacOSX.
-Note
-Note Revision 1.33  2001/04/12 16:28:16  jrc
-Note Several changes to acommodate particularities in Rosario Castico files.
-Note
-Note Revision 1.32  2001/03/25 19:29:42  jrc
-Note fixed problem with ID of objects
-Note
-Note Revision 1.31  2001/03/05 02:44:22  jrc
-Note Automatic relations framework implemented.
-Note
-Note Revision 1.30  2001/02/15 14:53:17  jrc
-Note rmerce related element mapping
-Note
-Note Revision 1.29  2001/02/14 04:48:02  jrc
-Note Corrected several problems with element mapping.
-Note
-Note Revision 1.28  2001/02/12 15:14:04  jrc
-Note Cleaned the element mapping comments.
-Note
-Note Revision 1.27  2001/02/11 21:40:37  jrc
-Note Fixed bug with mapping of destination element in relation group.
-Note
-Note Revision 1.26  2001/02/11 01:38:12  jrc
-Note Added mapping valor->value.
-Note
-Note Revision 1.25  2001/02/08 23:58:25  jrc
-Note Changed element-mapping for date. Now it is a varchar(24).
-Note
-Note Revision 1.24  2001/02/08 16:19:10  jrc
-Note The "obs" element in act rmerce is not required (moved from "guaranteed" to "also").
-Note ).
-Note
-Note Revision 1.23  2001/02/08 14:10:16  jrc
-Note Corrected problem with handling of ts actor in acts let.
-Note
-Note Revision 1.22  2001/02/07 14:27:50  jrc
-Note Interim release. Better compliance to the XML export specs.
-Note
-Note Revision 1.21  2001/01/26 14:06:46  jrc
-Note Interim version with element and group mapping, and overall xml structure
-Note as specific.
-Note
-Note Still missing: infered relations, same_as treatment, object mapping (no
-Note RCH class defined for it) and consolidation listings. Output of group to class mappings not yet done.
-Note
-Note Known issues: iso chars in xml code must cleaned or encoding declared
-Note  (kleio group?), bad implementation of relation-type pseudo-groups.
-Note
-Note Revision 1.20  2001/01/18 21:04:19  jrc
-Note New acts: rmerce (registo de merces) e let (leitura de baichareis).
-Note Corrected indentification attribute of element id.
-Note
-Note Revision 1.19  2001/01/15 18:46:11  jrc
-Note Mapping for rch classes and column types added.
-Note Connection between portuguese element names and
-Note standard element names added.
-Note
-Note Revision 1.18  2001/01/14 05:15:44  jrc
-Note Minor update of typos.
-Note
-Note Revision 1.17  2001/01/14 00:43:13  jrc
-Note Fixed problem with "casamentos". Now casamentos takes what normally are
-Note kin as actors.
-Note
-Note
 Note TODO
 note		reorganize so that in the portuguese section
 note		the base classes for actors and parents go
@@ -217,7 +55,7 @@ note
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix;
  position=structure,translator,obs;
- part=historical-source,fonte
+ part=historical-source,fonte,source
 
 note ============================================================
 note Basic historical source group
@@ -253,7 +91,7 @@ part 	name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
      also=loc,ref,obs,day,month,year;
-     arbitrary=person,object,abstraction,ls,atr,rel
+     part=person,object,abstraction,ls,atr,rel
 
 note ============================================================
 note A person
@@ -263,7 +101,7 @@ part	name=person ;
  guaranteed=name,sex;
  also=id,obs,same_as;
  position=name,sex,id,same_as;
- arbitrary=atr,rel,ls
+ part=atr,rel,ls
 
 note ============================================================
 nota A Female person
@@ -299,7 +137,7 @@ part name=object;
      guaranteed=name;
      position=name,type;
      also=obs,id;
-     arbitrary=atr,ls,rel
+     part=atr,ls,rel
 
 note ============================================================
 note abstraction Base class for abstractions
@@ -397,13 +235,58 @@ note USER DEFINITIONS START HERE
 note ================================================
 
 note *****************************************************************
+note English Historical Sources
+note *****************************************************************
+
+part name=source;source=historical-source;
+    arbitrary=qentry
+
+	 
+note Frank Theuma quarentine registration
+
+part name=qentry;source=historical-act;
+	 guaranteed=day,month,year;
+	 also=id,obs;
+    position=day,month,year,loc;
+    arbitrary=vessel,captain,voyage,cargo
+	 
+part name=vessel;
+	source=object;
+	guaranteed=name,type,nationality;
+	position=name,type,nationality
+	 
+
+part name=captain; source=male;
+	
+part name=voyage;source=abstraction;
+	position=origin,destination;
+	guaranteed=origin,destination
+	
+
+part name=cargo;source=object;
+	arbitrary=owner,receiver,citem
+	
+	
+
+part name=citem; source=object;
+	position=name,quantity;
+	guaranteed=name
+	
+
+part name=owner;source=male
+part name=receiver;source=male
+
+
+note *****************************************************************
 note Portuguese Historical Sources
 note *****************************************************************
 
 note *****************************************************************
 note doc group fonte Este constitui o grupo principal para os documentos
          historicos portugueses. Admite qualquer dos actos definidos aqui.
-note *****************************************************************
+note loc group fonte pt fonte
+note loc group fonte en source
+note loc group fonte fr source
 note doc element id elemento obrigatorio, identifica unicamente a fonte na base de dados,
 note doc element tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
 note doc element loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
@@ -413,10 +296,12 @@ part	 name=fonte;
       source=historical-source;
       guaranteed=id;
       also=tipo,loc,localizacao,ref,data,ano,obs;
-      part=acto,amz,nom,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
+      arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
-	  memoria58,apontamentosd,eleicao,juramento,lc,crisma
+	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docponteficio,docepiscopal,qentry
+
+
 
 
 note *****************************************************************
@@ -424,7 +309,7 @@ note doc group 'pt-acto' Forma generica de acto.
 note *****************************************************************
 
 part 	name=pt-acto; source=historical-act;
-     repeat=actorm,
+     arbitrary=actorm,
          actorf,object,abstraction,ls,rel;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
@@ -438,6 +323,8 @@ part 	name=funcao-em-acto; source=relation-type;
 
 note ****************************************************************
 note doc group fim fim indica o fim de um acto
+note loc fim pt fim
+note loc fim en end
 note ****************************************************************
 part 	name=fim; source=end;
      also=obs
@@ -462,11 +349,13 @@ element name=iddest; source=destination
 
 note ****************************************************************
 note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
+note loc acto pt acto
+note lc actor en act
 note ****************************************************************
 part name=acto;
   source=pt-acto;
   position=id,tipo,dia,mes,ano,loc,obs;
-  repeat=presente,presente-f,referido,referida,item
+  repeat=presente,presente-f,referido,referida,item,ls,atr,rel
 
 part name=item; source=object;
     repeat=presente,presente-f,referido,referida;
@@ -476,6 +365,8 @@ part name=item; source=object;
 
 note ****************************************************************
 note  doc group devassa Devassas temporais nas visitas pastorais
+note loc devassa pt devassa
+note loc devassa en visitation
 note ****************************************************************
 part name=devassa;
  source=pt-acto;
@@ -776,37 +667,15 @@ note *****************************************************************
 part name=bap; source=pt-acto;
   position=id,dia,mes,ano,fol,local,celebrante;
   guaranteed=id,dia,mes,ano;
-  repeat=n,pn,ppn,mpn,mn,pmn,mmn,
-          mad,mmad,pmad,mrmad,procurador-mad,procuradora-mad,
-          mad1,mmad1,pmad1,mrmad1,procurador-mad1,procuradora-mad1,
-          mad2,mmad2,pmad2,mrmad2,procurador-mad2,procuradora-mad2,
-          mad3,mmad3,pmad3,mrmad3,procurador-mad3,procuradora-mad3,
-          mad4,mmad4,pmad4,mrmad4,procurador-mad4,procuradora-mad4,
-          pad,ppad,mpad,procurador-pad, procuradora-pad,
-          pad1,ppad1,mpad1,procurador-pad1, procuradora-pad1,
-          pad2,ppad2,mpad2,procurador-pad2, procuradora-pad2,
-          pad3,ppad3,mpad3,procurador-pad3, procuradora-pad3,
-          pad4,ppad4,mpad4,procurador-pad4, procuradora-pad4,
-
+  repeat=n,
           test,referido,referida
 
 nota doc group b Baptimos, versao original usada em Soure.
 part name=b; source=pt-acto;
   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
   guaranteed=id,dia,mes,ano;
-  repeat=n,pai,mae,ppai,mpai,pmae,mmae,
-      pad,ppad,mpad,procuradora-pad,
-      pad1,ppad1,mpad1,procuradora-pad1,
-      pad2,ppad2,mpad2,procuradora-pad2,
-      pad3,ppad3,mpad3,procuradora-pad3,
-      pad4,ppad4,mpad4,procuradora-pad4,
-
-      mad,pmad,mmad,mpad,mrmad,
-      mad1,pmad1,mmad1,mpad1,mrmad1,
-      mad2,pmad2,mmad2,mpad2,mrmad2,
-      mad3,pmad3,mmad3,mpad3,mrmad3,
-      mad4,pmad4,mmad4,mpad4,mrmad4,
-      referido,referida,test,procurador-pad,procurador-mad,procuradora-mad
+  repeat=n,
+      referido,referida,test
 
 note *****************************************************************
 note doc group obito Obitos
@@ -943,7 +812,7 @@ note *****************************************************************
 part name=crisma; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
-     arbitrary=n,pad,ppad,mad,pmad,mrmad,referido,referida    
+     arbitrary=n,referido,referida
 
 note *****************************************************************
 note Notariais - escrituras
@@ -953,7 +822,7 @@ part name=escritura; source=pt-acto;
   position=id,dia,mes,ano,tipo;
   guaranteed=id,dia,mes,ano,loc;
   also=tipo,fol,sumario,obs;
-  arbitrary=devedor, devedora, credor, credora, fiador, fiadora, test,
+  arbitrary=atr,ls,devedor, devedora, credor, credora, fiador, fiadora, test,
              comprador,compradora,vendedor,vendedora, louvado,
              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
              senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,testamentario,testamentaria,testamenteiro,testamenteira,contraente,contraentef,renunciante,renunciantef,
@@ -965,7 +834,8 @@ part name=escritura; source=pt-acto;
 				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf,
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
-				 apelacao,apelado,apelante,apelantef
+				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
+				 beneficiario,autoridade
 
 				 
 part name=demanda; source=abstraction;
@@ -1051,12 +921,12 @@ part name=obra; source=object;
      
 
 note *****************************************************************
-note dynCoopNet grupos associados ao projecto de base de dados de
+note DyncoopNet grupos associados ao projecto de base de dados de
 note letrad de cambio
 note doc group lc letra de cambio
 note *****************************************************************
 part name=lc; source=pt-acto;
-	position=id,dia,mes,ano,local;
+	position=id,dia,mes,ano,local; 
 	guaranteed=id,dia,mes,ano,local;
 	also=obs;
 	part=atr,rel,
@@ -1102,6 +972,21 @@ part name=lc; source=pt-acto;
 		
 part name=local; source=geoentity; part=atr,rel
 
+
+part name=carta; source=pt-acto;
+	position=id,dia,mes,ano,loc;
+	also=resumo,refere,obs;
+	part=receptor,emissor,evento
+	
+part name=evento; source=pt-acto;
+	position=description,dia,mes,ano;
+	guaranteed=description;
+	also=obs;
+	part=dador,informador,defector,beneficiario,representante,tomador,referido,
+		intermediario,topico,local,pagador,comerciante
+
+part name=topico; source=abstraction
+	
 note *****************************************************************
 note Governos.
 note *****************************************************************
@@ -1317,6 +1202,26 @@ part name=perdao; source=abstraction;
   position=dia,mes,ano;
   guaranteed=tipo,descricao;
   also=obs,id;
+  
+note ****************************************************************
+note doc group docregio Documento regio
+note loc docregio pt carta régia
+note loc docregio en royal chart
+note loc docregio fr charte royale
+note ****************************************************************
+
+part name=docregio; source=pt-acto;
+  repeat=atr,ls,rel,item,autor,destinatario,beneficiario,referido,referida,bem
+
+note ****************************************************************
+note doc group docponteficio Documento Pontefício
+note loc docponteficio pt documento ponteficio
+note loc docponteficio en papal chart
+note loc docponteficio fr papal document
+
+part name=docponteficio; source=docregio
+
+part name=docepiscopal; source=docregio
 
 note *****************************************************************
 note Matricula de doentes em Hospital
@@ -1484,7 +1389,19 @@ part name=actorm;
                      mpmmulher3,
                  mmmulher3,
                      pmmmulher3,
-                     mmmmulher3
+                     mmmmulher3,
+         pn,ppn,mpn,mn,pmn,mmn,
+         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procuradora-pad1,
+              pad2,ppad2,mpad2,procuradora-pad2,
+             pad3,ppad3,mpad3,procuradora-pad3,
+             pad4,ppad4,mpad4,procuradora-pad4,
+
+              mad,pmad,mmad,mpad,mrmad,
+              mad1,pmad1,mmad1,mpad1,mrmad1,
+              mad2,pmad2,mmad2,mpad2,mrmad2,
+              mad3,pmad3,mmad3,mpad3,mrmad3,
+              mad4,pmad4,mmad4,mpad4,mrmad4
 
 
 
@@ -1698,7 +1615,19 @@ part	 name=n;
                   mpmnoivo,
               mmnoivo,
                   pmmnoivo,
-                  mmmnoivo
+                  mmmnoivo,
+         pn,ppn,mpn,mn,pmn,mmn,
+         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procuradora-pad1,
+              pad2,ppad2,mpad2,procuradora-pad2,
+             pad3,ppad3,mpad3,procuradora-pad3,
+             pad4,ppad4,mpad4,procuradora-pad4,
+
+              mad,pmad,mmad,mpad,mrmad,
+              mad1,pmad1,mmad1,mpad1,mrmad1,
+              mad2,pmad2,mmad2,mpad2,mrmad2,
+              mad3,pmad3,mmad3,mpad3,mrmad3,
+              mad4,pmad4,mmad4,mpad4,mrmad4
 
 part  name=noivo; source=actorm
 part  name=afilhado; source=actorm
@@ -1784,6 +1713,14 @@ part name=inquiridor; source=actorm;
 part name=apelante; source=actorm;
 part name=apelado; source=actorm;
 part name=vedor; source=actorm;
+part name=autor; source=actorm;
+part name=autoridade; source=actorm;
+part name=beneficiario; source=actorm;
+part name=padroeiro; source=actorm;
+part name=apresentado; source=actorm;
+part name=confirmante; source=actorm;
+part name=comerciante; source=actorm;
+
 
 note
 note cargos para o registos de governos
@@ -2067,6 +2004,18 @@ part name=recebedor1-proc;source=actorm
 part name=recebedor2-proc;source=actorm
 part name=recebedor3-proc;source=actorm
 part name=recebedor4-proc;source=actorm
+note ***********************************
+note cartas comerciais dyncoopnet
+note ***********************************
+note informador,defector,beneficiario,representante,tomador,referido,
+note		intermediario,topico,local
+part name=informador;source=actorm
+part name=defector;source=actorm
+part name=intermediario;source=actorm
+part name=receptor;source=actorm
+part name=emissor;source=actorm
+part name=representate;source=actorm
+
 note *****************************************************************
 note Definicao generica de um actor feminino.
 note           nota: todos os parentes aqui enumerados tem de aparecer
@@ -2187,7 +2136,19 @@ part 	name=actorf;
                   mpmnoivo,
               mmnoivo,
                   pmmnoivo,
-                  mmmnoivo
+                  mmmnoivo,
+         pn,ppn,mpn,mn,pmn,mmn,
+         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procuradora-pad1,
+              pad2,ppad2,mpad2,procuradora-pad2,
+             pad3,ppad3,mpad3,procuradora-pad3,
+             pad4,ppad4,mpad4,procuradora-pad4,
+
+              mad,pmad,mmad,mpad,mrmad,
+              mad1,pmad1,mmad1,mpad1,mrmad1,
+              mad2,pmad2,mmad2,mpad2,mrmad2,
+              mad3,pmad3,mmad3,mpad3,mrmad3,
+              mad4,pmad4,mmad4,mpad4,mrmad4
 
 note *****************************************************************
 note Actores femininos: especificados
