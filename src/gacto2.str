@@ -936,6 +936,7 @@ part name=lc; source=pt-acto;
 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
 		beneficiario5,beneficiario5-representante,beneficiario5-procurador,
+		beneficiario6,beneficiario6-representante,beneficiario6-procurador,
 		cobrador,cobrador-representante,
 		cobrador1,cobrador-representante1,
 		cobrador2,cobrador-representante2,
@@ -984,12 +985,13 @@ part name=evento; source=pt-acto;
 	also=obs;
 	part=informador,defector,representante,referido,
 		intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
-				beneficiario,beneficiario-representante,beneficiario-procurador,
+		beneficiario,beneficiario-representante,beneficiario-procurador,
 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
 		beneficiario5,beneficiario5-representante,beneficiario5-procurador,
+		beneficiario6,beneficiario6-representante,beneficiario6-procurador,
 		cobrador,cobrador-representante,
 		cobrador1,cobrador-representante1,
 		cobrador2,cobrador-representante2,
@@ -1020,7 +1022,8 @@ part name=evento; source=pt-acto;
 		tomador1,tomador1-representante,
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
-		tomador4,tomador4-representante
+		tomador4,tomador4-representante,
+		vendedor,comprador,transportador
 
 part name=topico; source=abstraction
 	position=subject,description;
@@ -1989,6 +1992,9 @@ part name=beneficiario4-procurador;source=actorm
 part name=beneficiario5;source=actorm
 part name=beneficiario5-representante;source=actorm
 part name=beneficiario5-procurador;source=actorm
+part name=beneficiario6;source=actorm
+part name=beneficiario6-representante;source=actorm
+part name=beneficiario6-procurador;source=actorm
 part name=tomador;source=actorm
 part name=tomador-representante;source=actorm
 part name=tomador1;source=actorm
@@ -2059,6 +2065,9 @@ part name=agente_financeiro;source=actorm
 part name=agente_seguros;source=actorm
 part name=cheater;source=actorm
 part name=fonte_info;source=actorm
+part name=vendedor;source=actorm
+part name=comprador;source=actorm
+part name=transportador;source=actorm
 
 note *****************************************************************
 note Definicao generica de um actor feminino.

@@ -2552,6 +2552,14 @@ if [kleio(K),fonte(F),lc(L),pagador4(R)] and
 then
 	relation(financeira,'dador4-tomador4',P,R).
 		
+/*===================================
+	carta Correspondencia Comercial (Dyncoopnet)
+=====================================*/
+if [kleio(K),fonte(F),carta(L),comprador(R)] and
+	[kleio(K),fonte(F),lc(L),vendedor(P)]
+then
+	relation(comercial,'vendedor-comprador',P,R).
+		
  /************************************************************
 
     scope rules
