@@ -970,9 +970,8 @@ part name=lc; source=pt-acto;
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
 		tomador4,tomador4-representante
-		
-part name=local; source=geoentity; part=atr,rel
 
+part name=local; source=geoentity; part=atr,rel
 
 part name=carta; source=pt-acto;
 	position=id,dia,mes,ano,loc;
@@ -1029,6 +1028,7 @@ part name=topico; source=abstraction
 	position=subject,description;
 	guaranteed=subject,description;
 	also=obs
+	
 	
 note *****************************************************************
 note Governos.

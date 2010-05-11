@@ -2540,7 +2540,7 @@ if [kleio(K),fonte(F),lc(L),pagador1(R)] and
 then
 	relation(financeira,'dador1-tomador1',P,R).
 if [kleio(K),fonte(F),lc(L),pagador2(R)] and
-	[kleio(K),fonte(F),lc(L),dador2(P)]
+	[kleio(K),fonte(F),lc(L),dador2(P)]                    
 then
 	relation(financeira,'dador2-tomador2',P,R).
 if [kleio(K),fonte(F),lc(L),pagador3(R)] and
@@ -2556,7 +2556,7 @@ then
 	carta Correspondencia Comercial (Dyncoopnet)
 =====================================*/
 if [kleio(K),fonte(F),carta(L),comprador(R)] and
-	[kleio(K),fonte(F),lc(L),vendedor(P)]
+	[kleio(K),fonte(F),carta(L),vendedor(P)]
 then
 	relation(comercial,'vendedor-comprador',P,R).
 		
