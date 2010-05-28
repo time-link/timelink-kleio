@@ -1009,6 +1009,7 @@ part name=evento; source=pt-acto;
 		debitado,
 		endossante,
 		endossado,
+		fretador,
 		pagador,pagador-representante,
 		pagador1,pagador1-representante,
 		pagador2,pagador2-representante,
@@ -2062,6 +2063,7 @@ note		intermediario,topico,local
 part name=informador;source=actorm
 part name=defector;source=actorm
 part name=intermediario;source=actorm
+part name=fretador;source=actorm
 part name=receptor;source=actorm
 part name=emissor;source=actorm
 part name=representante;source=actorm
