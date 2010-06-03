@@ -835,7 +835,7 @@ part name=escritura; source=pt-acto;
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
-				 beneficiario,autoridade
+				 beneficiario,autoridade,renda
 
 				 
 part name=demanda; source=abstraction;
@@ -843,6 +843,7 @@ part name=sentenca; source=abstraction;
 part name=defesa; source=abstraction;
 part name=inquiricao; source=abstraction;
 part name=apelacao; source=abstraction;
+part name=renda; source=abstraction;
 
 element name=sumario; source=summary
 element name=fol; source=ref;
