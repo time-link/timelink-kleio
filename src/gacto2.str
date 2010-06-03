@@ -361,7 +361,7 @@ part name=item; source=object;
     repeat=presente,presente-f,referido,referida;
     guaranteed=titulo;
     position=titulo;
-    also=resumo,id
+    also=resumo,id,obs
 
 note ****************************************************************
 note  doc group devassa Devassas temporais nas visitas pastorais
@@ -853,8 +853,8 @@ note *****************************************************************
 part name=bem; source=object;
      guaranteed=name;
      position=name,tipo,id;
-     also=desc,tipo,id,obs,local;
-     arbitrary=atr,rel
+     also=desc,tipo,id,obs,loc;
+     arbitrary=atr,rel,local
 
 element name=desc; source=description;
 
@@ -1259,7 +1259,11 @@ note loc docregio fr charte royale
 note ****************************************************************
 
 part name=docregio; source=pt-acto;
-  repeat=atr,ls,rel,item,autor,destinatario,beneficiario,referido,referida,bem
+  position=id,dia,mes,ano;
+  guaranteed=id,tipo,fol,loc,sumario;
+  also=obs;
+  repeat=atr,ls,rel,item,autor,destinatario,beneficiario,referido,referida,
+  			bem,demanda,sentenca,defesa,tabeliao,procurador
 
 note ****************************************************************
 note doc group docponteficio Documento Ponteficio
