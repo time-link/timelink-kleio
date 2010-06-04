@@ -299,7 +299,7 @@ part	 name=fonte;
       arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
-	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docponteficio,docepiscopal,qentry
+	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docponteficio,docepiscopal,automed
 
 
 
@@ -313,7 +313,7 @@ part 	name=pt-acto; source=historical-act;
          actorf,object,abstraction,ls,rel;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
-     also=loc,obs
+     also=ref,loc,obs
 
 note ****************************************************************
 note funcao-em-acto   -- tipo de relacao entre actor e acto
@@ -403,7 +403,7 @@ note ****************************************************************
 part name=nom;
  source=pt-acto;
  repeat=n,referido;
- guaranteed=id,dia,mes,ano
+ guaranteed=id,dia,mes,ano;
  also=fols,subs,esmola,obs;
  position=id,dia,mes,ano,fol,subs,esmola
 
@@ -854,7 +854,7 @@ note *****************************************************************
 part name=bem; source=object;
      guaranteed=name;
      position=name,tipo,id;
-     also=desc,tipo,id,obs,loc;
+     also=desc,tipo,id,obs,local;
      arbitrary=atr,rel,local
 
 element name=desc; source=description;
@@ -1259,12 +1259,14 @@ note loc docregio en royal chart
 note loc docregio fr charte royale
 note ****************************************************************
 
+
 part name=docregio; source=pt-acto;
   position=id,dia,mes,ano;
   guaranteed=id,tipo,fol,loc,sumario;
   also=obs;
   repeat=atr,ls,rel,item,autor,destinatario,beneficiario,referido,referida,
   			bem,demanda,sentenca,defesa,tabeliao,procurador
+
 
 note ****************************************************************
 note doc group docponteficio Documento Ponteficio
@@ -1323,6 +1325,34 @@ part name=confraria;source=object
 part name=idonatario;source=object
 part name=pdonatario;source=person; part=referido,ls,atr,rel
 
+
+
+note *********************** TOMBOS *********************************
+note doc group automed Auto de medicao, corresponde a um acto ocorrido num dia determinado
+note doc element id elemento obrigatorio, identifica unicamente o auto de medicao
+note doc element loc local onde decorre o auto de medicao
+part name=automed;source=pt-acto;
+	  position=id,dia,mes,ano,loc;
+	  also=obs;
+	  part=terra;
+	  
+part name=terra;source=geoentity;
+		part=atr,rel,proprietario,med
+
+	 
+part name=med;source=abstraction;
+	  position=cardinal,length;
+	  guaranteed=length;
+	  also=obs;
+	  part=conf,marco
+	  
+part name=conf;
+    source=object;
+	part=referido, referida
+
+part name=marco;
+    source=object
+    
 note *****************************************************************
 note Actores
 note    Os grupos seguintes definem o modo como os parentem se podem
@@ -1773,6 +1803,7 @@ part name=padroeiro; source=actorm;
 part name=apresentado; source=actorm;
 part name=confirmante; source=actorm;
 part name=comerciante; source=actorm;
+part name=proprietario; source=actorm;
 
 
 note
