@@ -1017,6 +1017,7 @@ part name=evento; source=pt-acto;
 		pagador3,pagador3-representante,
 		pagador4,pagador4-representante,
 		pagador5,pagador5-representante,
+		receptor,
 		recebedor,recebedor-proc,
 		recebedor1,recebedor1-proc,
 		recebedor2,recebedor2-proc,
@@ -1030,7 +1031,7 @@ part name=evento; source=pt-acto;
 		tomador4,tomador4-representante,
 		vendedor,comprador,transportador
 
-part name=topico; source=abstraction
+part name=topico; source=abstraction;
 	position=subject,description;
 	guaranteed=subject,description;
 	also=obs
