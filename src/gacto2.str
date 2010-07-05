@@ -977,7 +977,7 @@ part name=local; source=geoentity; part=atr,rel
 part name=carta; source=pt-acto;
 	position=id,dia,mes,ano,loc;
 	also=resumo,refere,obs;
-	part=receptor,emissor,evento,topico
+	part=receptor,emissor,evento,topico,emissor-representante
 
 part name=adenda; source=pt-acto;
 	position=id,dia,mes,ano,loc;
@@ -1029,7 +1029,8 @@ part name=evento; source=pt-acto;
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
 		tomador4,tomador4-representante,
-		vendedor,comprador,transportador
+		vendedor,comprador,transportador,
+		emissor
 
 part name=topico; source=abstraction;
 	position=subject,description;
