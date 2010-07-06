@@ -835,8 +835,8 @@ part name=escritura; source=pt-acto;
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
-				 beneficiario,autoridade,renda
-
+				 beneficiario,beneficiaria,autoridade,renda,
+				 juiz
 				 
 part name=demanda; source=abstraction;
 part name=sentenca; source=abstraction;
@@ -986,7 +986,7 @@ part name=adenda; source=pt-acto;
 part name=evento; source=pt-acto;
 	position=description,dia,mes,ano;
 	guaranteed=description;
-	also=obs;
+	also=obs,id;
 	part=informador,defector,representante,referido,
 		intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
 		beneficiario,beneficiario-representante,beneficiario-procurador,
@@ -1030,7 +1030,8 @@ part name=evento; source=pt-acto;
 		tomador3,tomador3-representante,
 		tomador4,tomador4-representante,
 		vendedor,comprador,transportador,
-		emissor
+		emissor,emissor-representante
+
 
 part name=topico; source=abstraction;
 	position=subject,description;
@@ -1801,11 +1802,13 @@ part name=vedor; source=actorm;
 part name=autor; source=actorm;
 part name=autoridade; source=actorm;
 part name=beneficiario; source=actorm;
+part name=beneficiaria; source=actorf;
 part name=padroeiro; source=actorm;
 part name=apresentado; source=actorm;
 part name=confirmante; source=actorm;
 part name=comerciante; source=actorm;
 part name=proprietario; source=actorm;
+part name=juiz; source=actorm;
 
 
 note
@@ -2104,6 +2107,7 @@ part name=intermediario;source=actorm
 part name=fretador;source=actorm
 part name=receptor;source=actorm
 part name=emissor;source=actorm
+part name=emissor-representante;source=actorm
 part name=representante;source=actorm
 part name=agente_financeiro;source=actorm
 part name=agente_seguros;source=actorm
