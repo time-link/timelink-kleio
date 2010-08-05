@@ -377,7 +377,7 @@ part name=devassa;
 
 part name=acus; source=object;
   guaranteed=idcaso;
-  position=idcaso;
+  position=idcaso, obs;
   also=literal,origem,obs,id
 
 part name=caso; source=object;
@@ -1248,7 +1248,7 @@ part name=cartaperdao; source=pt-acto;
 part name=crime; source=abstraction;
   position=dia,mes,ano;
   guaranteed=forma,tipo,subtipo;
-  also=objecto,local,descricao,tempo,instrumento,pronuncia,ocorrencia,situacao,obs
+  also=id,objecto,local,descricao,tempo,instrumento,pronuncia,ocorrencia,situacao,obs
 
 part name=perdao; source=abstraction;
   position=dia,mes,ano;
