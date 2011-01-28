@@ -299,7 +299,7 @@ part	 name=fonte;
       arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
-	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docponteficio,docepiscopal,automed
+	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed
 
 
 
@@ -839,6 +839,7 @@ part name=escritura; source=pt-acto;
 				 juiz
 				 
 part name=demanda; source=abstraction;
+part name=acusacao; source=abstraction;
 part name=sentenca; source=abstraction;
 part name=defesa; source=abstraction;
 part name=inquiricao; source=abstraction;
@@ -1267,17 +1268,17 @@ part name=docregio; source=pt-acto;
   position=id,dia,mes,ano;
   guaranteed=id,tipo,fol,loc,sumario;
   also=obs;
-  repeat=atr,ls,rel,item,autor,destinatario,beneficiario,referido,referida,
-  			bem,demanda,sentenca,defesa,tabeliao,procurador
+  repeat=atr,ls,rel,item,autor,destinatario,destinataria,beneficiario,beneficiaria,referido,referida,
+  			bem,demanda,acusacao,sentenca,defesa,tabeliao,procurador,test,juiz,demandador,reu
 
 
 note ****************************************************************
-note doc group docponteficio Documento Ponteficio
-note loc docponteficio pt documento ponteficio
-note loc docponteficio en papal chart
-note loc docponteficio fr papal document
+note doc group docpontificio Documento Ponteficio
+note loc docpontificio pt documento ponteficio
+note loc docpontificio en papal chart
+note loc docpontificio fr papal document
 
-part name=docponteficio; source=docregio
+part name=docpontificio; source=docregio
 
 part name=docepiscopal; source=docregio
 
@@ -1802,14 +1803,12 @@ part name=vedor; source=actorm;
 part name=autor; source=actorm;
 part name=autoridade; source=actorm;
 part name=beneficiario; source=actorm;
-part name=beneficiaria; source=actorf;
 part name=padroeiro; source=actorm;
 part name=apresentado; source=actorm;
 part name=confirmante; source=actorm;
 part name=comerciante; source=actorm;
 part name=proprietario; source=actorm;
 part name=juiz; source=actorm;
-
 
 note
 note cargos para o registos de governos
@@ -2325,6 +2324,9 @@ part name=escambadora; source=actorf;
 part name=reuf; source=actorf;
 part name=inquirida; source=actorf;
 part name=apelantef; source=actorf;
+
+part name=beneficiaria; source=actorf;
+part name=destinataria; source=actorf;
 
 part name=perdoante; source= person;
      guaranteed=nome;
