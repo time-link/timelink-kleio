@@ -388,4 +388,45 @@ class perdao super abstraction table perdoes
         descricao column descricao baseclass descricao coltype varchar colsize 1024 colprecision 0 pkey 0
       and
          obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
-				
+
+
+mapping carta to class carta.
+class carta super act table cartas
+   with attributes
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+     and
+        date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
+     and
+        loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
+     and
+        resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0 
+     and
+        refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
+     and
+        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        
+mapping evento to class evento.
+class evento super act table eventos
+   with attributes
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+     and
+        date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
+     and
+        description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0
+     and
+        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        
+mapping adenda to class adenda.
+class adenda super act table adendas
+   with attributes
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+     and
+        date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
+     and
+        loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
+     and
+        resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0 
+     and
+        refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
+     and
+        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .

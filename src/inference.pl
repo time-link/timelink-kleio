@@ -2559,6 +2559,171 @@ if [kleio(K),fonte(F),carta(L),comprador(R)] and
 	[kleio(K),fonte(F),carta(L),vendedor(P)]
 then
 	relation(comercial,'vendedor-comprador',P,R).
+
+if [kleio(K),fonte(F),carta(L),beneficiario(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario1(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario1-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario2(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario2-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario3(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario3-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario4(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario4-representante'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario(R)] and
+	[kleio(K),fonte(F),carta(L),'beneficiario-procurador'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),dador(R)] and
+	[kleio(K),fonte(F),carta(L),'dador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),dador1(R)] and
+	[kleio(K),fonte(F),carta(L),'dador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),dador2(R)] and
+	[kleio(K),fonte(F),carta(L),'dador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),dador3(R)] and
+	[kleio(K),fonte(F),carta(L),'dador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),dador4(R)] and
+	[kleio(K),fonte(F),carta(L),'dador4-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),pagador(R)] and
+	[kleio(K),fonte(F),carta(L),'pagador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),pagador1(R)] and
+	[kleio(K),fonte(F),carta(L),'pagador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),pagador2(R)] and
+	[kleio(K),fonte(F),carta(L),'pagador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),pagador3(R)] and
+	[kleio(K),fonte(F),carta(L),'pagador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),pagador4(R)] and
+	[kleio(K),fonte(F),carta(L),'pagador4-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),recebedor(R)] and
+	[kleio(K),fonte(F),carta(L),'recebedor-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),recebedor1(R)] and
+	[kleio(K),fonte(F),carta(L),'recebedor1-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).	
+if [kleio(K),fonte(F),carta(L),recebedor2(R)] and
+	[kleio(K),fonte(F),carta(L),'recebedor2-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),recebedor3(R)] and
+	[kleio(K),fonte(F),carta(L),'recebedor3-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),recebedor4(R)] and
+	[kleio(K),fonte(F),carta(L),'recebedor4-proc'(P)]
+then
+	relation(sociabilidade,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),tomador(R)] and
+	[kleio(K),fonte(F),carta(L),'tomador-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),tomador1(R)] and
+	[kleio(K),fonte(F),carta(L),'tomador1-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),tomador2(R)] and
+	[kleio(K),fonte(F),carta(L),'tomador2-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),tomador3(R)] and
+	[kleio(K),fonte(F),carta(L),'tomador3-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),tomador4(R)] and
+	[kleio(K),fonte(F),carta(L),'tomador4-representante'(P)]
+then
+	relation(confianca,procurador,P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario(R)] and
+	[kleio(K),fonte(F),carta(L),dador(P)]
+then
+	relation(financeira,'dador-beneficiario',P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario1(R)] and
+	[kleio(K),fonte(F),carta(L),dador1(P)]
+then
+	relation(financeira,'dador1-beneficiario1',P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario2(R)] and
+	[kleio(K),fonte(F),carta(L),dador2(P)]
+then
+	relation(financeira,'dador2-beneficiario1',P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario3(R)] and
+	[kleio(K),fonte(F),carta(L),dador3(P)]
+then
+	relation(financeira,'dador3-beneficiario3',P,R).
+if [kleio(K),fonte(F),carta(L),beneficiario4(R)] and
+	[kleio(K),fonte(F),carta(L),dador4(P)]
+then
+	relation(financeira,'dador4-beneficiario4',P,R).
+if [kleio(K),fonte(F),carta(L),pagador(R)] and
+	[kleio(K),fonte(F),carta(L),tomador(P)]
+then
+	relation(financeira,'tomador-pagador',P,R).
+if [kleio(K),fonte(F),carta(L),pagador1(R)] and
+	[kleio(K),fonte(F),carta(L),tomador1(P)]
+then
+	relation(financeira,'tomador1-pagador1',P,R).
+if [kleio(K),fonte(F),carta(L),pagador2(R)] and
+	[kleio(K),fonte(F),carta(L),tomador2(P)]
+then
+	relation(financeira,'tomador2-pagador3',P,R).
+if [kleio(K),fonte(F),carta(L),pagador3(R)] and
+	[kleio(K),fonte(F),carta(L),tomador3(P)]
+then
+	relation(financeira,'tomador3-pagador3',P,R).
+if [kleio(K),fonte(F),carta(L),pagador4(R)] and
+	[kleio(K),fonte(F),carta(L),tomador4(P)]
+then
+	relation(financeira,'tomador4-pagador4',P,R).
+if [kleio(K),fonte(F),carta(L),pagador(R)] and
+	[kleio(K),fonte(F),carta(L),dador(P)]
+then
+	relation(financeira,'dador-tomador',P,R).
+if [kleio(K),fonte(F),carta(L),pagador1(R)] and
+	[kleio(K),fonte(F),carta(L),dador1(P)]
+then
+	relation(financeira,'dador1-tomador1',P,R).
+if [kleio(K),fonte(F),carta(L),pagador2(R)] and
+	[kleio(K),fonte(F),carta(L),dador2(P)]                    
+then
+	relation(financeira,'dador2-tomador2',P,R).
+if [kleio(K),fonte(F),carta(L),pagador3(R)] and
+	[kleio(K),fonte(F),carta(L),dador3(P)]
+then
+	relation(financeira,'dador3-tomador3',P,R).
+if [kleio(K),fonte(F),carta(L),pagador4(R)] and
+	[kleio(K),fonte(F),carta(L),dador4(P)]
+then
+	relation(financeira,'dador4-tomador4',P,R).
 		
  /************************************************************
 
