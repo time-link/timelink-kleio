@@ -430,3 +430,14 @@ class adenda super act table adendas
         refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
         obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        
+mapping topico to class topico.
+class topico super object table topicos
+   with attributes
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
+     and
+        subject column subject baseclass subject coltype varchar colsize 1024 colprecision 0 pkey 0
+     and
+        description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0
+     and
+        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .

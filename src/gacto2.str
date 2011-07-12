@@ -972,6 +972,7 @@ part name=lc; source=pt-acto;
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
 		tomador4,tomador4-representante
+		tomador5,tomador5-representante
 
 part name=local; source=geoentity; part=atr,rel
 
@@ -1031,6 +1032,7 @@ part name=evento; source=pt-acto;
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
 		tomador4,tomador4-representante,
+		tomador5,tomador5-representante,
 		vendedor,comprador,transportador,
 		emissor,emissor-representante
 
@@ -2051,6 +2053,8 @@ part name=tomador3;source=actorm
 part name=tomador3-representante;source=actorm
 part name=tomador4;source=actorm
 part name=tomador4-representante;source=actorm
+part name=tomador5;source=actorm
+part name=tomador5-representante;source=actorm
 part name=pagador;source=actorm
 part name=pagador-representante;source=actorm
 part name=pagador1;source=actorm
