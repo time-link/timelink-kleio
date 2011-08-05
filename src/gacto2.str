@@ -927,6 +927,8 @@ note DyncoopNet grupos associados ao projecto de base de dados de
 note letrad de cambio
 note doc group lc letra de cambio
 note *****************************************************************
+part name=local; source=geoentity; part=atr,rel
+
 part name=lc; source=pt-acto;
 	position=id,dia,mes,ano,local; 
 	guaranteed=id,dia,mes,ano,local;
@@ -971,10 +973,8 @@ part name=lc; source=pt-acto;
 		tomador1,tomador1-representante,
 		tomador2,tomador2-representante,
 		tomador3,tomador3-representante,
-		tomador4,tomador4-representante
+		tomador4,tomador4-representante,
 		tomador5,tomador5-representante
-
-part name=local; source=geoentity; part=atr,rel
 
 part name=carta; source=pt-acto;
 	position=id,dia,mes,ano,loc;
