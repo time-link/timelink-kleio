@@ -829,14 +829,14 @@ part name=escritura; source=pt-acto;
              procurador,procuradora,escrivao,arrematante,arrematantef,
              foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
              divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
-				 demanda,defesa,sentenca,escambo,
+				 demanda,acusacao,destinatario,requerente,defesa,sentenca,escambo,
 				 siza,sisa,prazo,obra,escrivao,abonador,
 				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf,
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
-				 beneficiario,beneficiaria,autoridade,renda,
-				 juiz
+				 beneficiario,beneficiaria,autor,autoridade,renda,
+				 juiz,item
 				 
 part name=demanda; source=abstraction;
 part name=acusacao; source=abstraction;
@@ -1812,6 +1812,7 @@ part name=confirmante; source=actorm;
 part name=comerciante; source=actorm;
 part name=proprietario; source=actorm;
 part name=juiz; source=actorm;
+part name=requerente;source=actorm;
 
 note
 note cargos para o registos de governos
