@@ -829,9 +829,9 @@ part name=escritura; source=pt-acto;
              procurador,procuradora,escrivao,arrematante,arrematantef,
              foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
              divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
-				 demanda,acusacao,destinatario,requerente,defesa,sentenca,escambo,
+				 demanda,acusacao,destinatario,requerente,requerido,defesa,sentenca,escambo,
 				 siza,sisa,prazo,obra,escrivao,abonador,
-				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,escambador,escambadora,reu,reuf,
+				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,demandado,escambador,escambadora,reu,reuf,
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
@@ -1271,8 +1271,9 @@ part name=docregio; source=pt-acto;
   position=id,dia,mes,ano;
   guaranteed=id,tipo,fol,loc,sumario;
   also=obs;
-  repeat=atr,ls,rel,item,autor,destinatario,destinataria,beneficiario,beneficiaria,referido,referida,
-  			bem,demanda,acusacao,sentenca,defesa,tabeliao,procurador,test,juiz,demandador,reu
+  repeat=atr,ls,rel,item,autor,autorf,destinatario,destinataria,beneficiario,beneficiaria,referido,referida,
+  			bem,demanda,acusacao,sentenca,defesa,tabeliao,procurador,test,juiz,demandador,reu,
+  			apresentado,padroeiro,autoridade,divida
 
 
 note ****************************************************************
@@ -1796,6 +1797,7 @@ part name=quitante; source=actorm;
 part name=quitado; source=actorm
 part name=abonador; source=actorm;
 part name=demandador; source=actorm;
+part name=demandado; source=actorm;
 part name=escambador; source=actorm;
 part name=reu;source=actorm;
 part name=inquirido; source=actorm;
@@ -1813,6 +1815,7 @@ part name=comerciante; source=actorm;
 part name=proprietario; source=actorm;
 part name=juiz; source=actorm;
 part name=requerente;source=actorm;
+part name=requerido;source=actorm;
 
 note
 note cargos para o registos de governos
@@ -2330,6 +2333,7 @@ part name=escambadora; source=actorf;
 part name=reuf; source=actorf;
 part name=inquirida; source=actorf;
 part name=apelantef; source=actorf;
+part name=autorf; source=actorf;
 
 part name=beneficiaria; source=actorf;
 part name=destinataria; source=actorf;
