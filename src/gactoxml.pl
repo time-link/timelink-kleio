@@ -1724,7 +1724,8 @@ The structure of person related data like attributes and relations with other
 
 
    xclean_chars([],[]):-!.
-   xclean_chars([C|More],[C|CMore]):-C > 19, C < 128, !, xclean_chars(More,CMore).
+      xclean_chars([47|More],[92,47|CMore]):-!, xclean_chars(More,CMore). % escape the slash
+   xclean_chars([C|More],[C|CMore]):-C > 19, C < 256, !, xclean_chars(More,CMore).
    xclean_chars([10|More],[10|CMore]):-!, xclean_chars(More,CMore).
    xclean_chars([13|More],[13|CMore]):-!, xclean_chars(More,CMore).
    xclean_chars([_|More],[46|CMore]):-!, xclean_chars(More,CMore).
