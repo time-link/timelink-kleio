@@ -130,17 +130,16 @@ clio_init:-
 % %
 stru(Filename):-
       open_file_read(Filename),
-      see(Filename),
+      set_input(Filename),
 		put_value(stru_file,Filename),
       report([nl,write('Processing structure:'),write(Filename),nl]),
       initStru(Filename),
       retractall(gDoc(_,_)),
       retractall(eDoc(_,_,_)),
       ptime(readlines(cmd)),
-      seen,
-		report([perror_count]),
-      closeStru(Filename).
-      %close(Filename). SWI generates an error when closing after a seen
+	  report([perror_count]),
+      closeStru(Filename),
+      close(Filename).
 
 %******************************************************
 %  dat:  starts the processing of kleio data file
@@ -151,16 +150,15 @@ stru(Filename):-
 
 dat(Filename):-
       open_file_read(Filename),
-      see(Filename),
+      set_input(Filename),
       put_value(data_file,Filename),
       report([nl,write('Processing data file:'),write(Filename),nl,
       writeln('-------------------------------------------')]),
       initData(Filename),
       ptime(readlines(dat)),
-      seen,
 		report([perror_count]),
-      closeData(Filename).
-      %close(Filename).SWI generates an error when closing after a seen
+      closeData(Filename),
+      close(Filename). % SWI generates an error when closing after a seen
 
 
 %******************************************************
@@ -316,8 +314,9 @@ processLine(cmd,[(Tok,Command)|Tokens]):-
 
 processLine(cmd,eof):-
    report([write('End of File'),nl]),
-   retract(cmd(OldCmd,OldTokens)),!,
-   compile_command(OldCmd,OldTokens),!.
+   (retract(cmd(OldCmd,OldTokens)) -> (!,compile_command(OldCmd,OldTokens))
+        ;
+        true).
 
 
 %  clean_commands - erases any temporary command information %

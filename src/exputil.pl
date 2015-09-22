@@ -46,26 +46,26 @@ rmore_els([E|M],Extra):-
 rcomm(_,[],[]):-!.
 rcomm(_,mult([[],[]]),[]):-!.
 rcomm(E,[A|B],X):-
-    append(['Comentário ao campo'-E,':' |[A|B]],['.'],X),!.
+    append(['Comentario ao campo'-E,':' |[A|B]],['.'],X),!.
 
 rcomm(E,mult([A|B]),X):-
     join_mult([A|B],C),
-    append(['Comentários ao campo'-E,':' |C],['.'],X),!.
+    append(['Comentarios ao campo'-E,':' |C],['.'],X),!.
 
 rorg(_,[],[]):-!.
 rorg(_,mult([[],[]]),[]):-!.
 rorg(E,[A|B],X):-
-    append(['Expressão original do campo'-E,':' |[A|B]],['.'],X),!.
+    append(['Expressï¿½o original do campo'-E,':' |[A|B]],['.'],X),!.
 rorg(E,mult([A|B]),X):-
     join_mult([A|B],C),
-    append(['Expressões originais do campo'-E,':' |C],['.'],X),!.
+    append(['Expressï¿½es originais do campo'-E,':' |C],['.'],X),!.
 
 rcore(_,[],[]):-!.
 rcore(_,mult([[],[]]),[]):-!.
 rcore(E,[A|B],X):-
     append(['Campo adicional'-E,':' |[A|B]],['.'],X),!.
 rcore(E,mult([A|_]),X):-
-    append(['Campo adicional de várias entradas '-E,':' |A],['.'],X),!.
+    append(['Campo adicional de vï¿½rias entradas '-E,':' |A],['.'],X),!.
 
 
 

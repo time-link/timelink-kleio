@@ -158,7 +158,7 @@ val(terminus,solum,V)        -->sicNon(V).
 val(exitus,nomen,V)          -->[(name,V)].
 
 
-skipRest-->[(_,_)].
+%skipRest-->[(_,_)].
 skipRest-->[(_,_)],skipRest.
 skipRest-->[].
 
@@ -169,7 +169,7 @@ skipRest-->[].
 %
 inlineDoc-->groupDoc(gdoc(G,DOC)),{storeGroupDoc(gdoc(G,DOC)),!}.
 inlineDoc-->elementDoc(E),{storeElementDoc(E),!}.
-inlineDoc-->{!}.
+%inlineDoc-->{!}.
 groupDoc(gdoc(G,DOC)) -->docKeyword,groupDocKeyword,groupDocName(G),getDocText(DOC),!.
 elementDoc(edoc(E,DOC)) -->docKeyword,elementDocKeyword,elementDocName(E),getDocText(DOC),!.
 

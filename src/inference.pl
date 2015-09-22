@@ -2724,6 +2724,20 @@ if [kleio(K),fonte(F),carta(L),pagador4(R)] and
 	[kleio(K),fonte(F),carta(L),dador4(P)]
 then
 	relation(financeira,'dador4-tomador4',P,R).
+
+/**************************************************
+Geogorio Lopes
+***************************************************/
+if [kleio(K),fonte(F),pas(P),mestre(M)] and
+   [kleio(K),fonte(F),pas(P),extends(person,X),ls(LS)]
+   then
+    relation(viagem,'viajou-com-mestre',X,M).
+ if [kleio(K),fonte(F),pas(P),sequence(_),extends(person,X),ls(LS1)] and
+    [kleio(K),fonte(F),pas(P),sequence(_),extends(person,Y),ls(LS2)]
+    then
+     relation(viagem,'viajou junto com',X,Y).
+
+
 		
  /************************************************************
 

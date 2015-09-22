@@ -59,7 +59,7 @@ readl2((Char,Type),[(Char,Type)|Rest],Next):-
 %                  
 %/*********************************************
 %%
-getchar(Byte):-get0(Byte), Byte > -1,!.
+getchar(Byte):-get_code(Byte), Byte > -1,!.
 getchar(eof):-!.
 
 %/*********************************************
@@ -74,13 +74,13 @@ getchar(eof):-!.
 
 
 getchar2((Byte,Type)):-
-		  get_byte(Byte),% changed from get0(Byte) 11-1-2001
+		  get_code(Byte),% changed from get_byte(Byte) 22-9-2015
 		  Byte > -1,
 		  chartype(Byte,Type),
-		  (Byte = 13 -> skip_nl ; true), !. % skip_nl added 11-1-2001
+		  (Byte = 13 -> skip_nl ; true), !. % skip_nl added 22-9-2015
 getchar2(eof):-!.
 
-skip_nl :- peek_byte(10),get_byte(_).
+skip_nl :- peek_code(10),get_code(_).
 skip_nl.
 
 %/*********************************************

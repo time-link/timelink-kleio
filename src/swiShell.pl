@@ -121,7 +121,7 @@ check_arg(echo,E) :-
 check_arg(echo,yes).
 
 traduzir D :-
-     trad(D,'gacto.str').
+     trad(D,'gacto2.str').
 
 
 traduzir D estrutura E :-
@@ -253,8 +253,8 @@ layout(linuxppc) :-
 		put_value(stru_dir,'/home/jrc/develop/mhk/trans/rch/clio/src/').
 
 layout(macosx) :-
-		put_value(data_dir,'/Users/jrc/develop/rch/mhk_users/'),
-		put_value(stru_dir,'/Users/jrc/develop/rch/clio/src/').
+		put_value(data_dir,'/Users/jrc/develop/mhk_users/testes/sources/'),
+		put_value(stru_dir,'/Users/jrc/develop/mhk_users/testes/stru/').
 
 
 layout(windows) :-
