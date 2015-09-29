@@ -90,7 +90,7 @@ skip_nl.
 %%
 
 putchar(eof):-nl,write('EOF'),nl,!.
-putchar(X):-put(X),!. 
+putchar(X):-put_code(X),!.
 
 
 %/*********************************************
@@ -101,7 +101,7 @@ putchar(X):-put(X),!.
 %%
         
 putchar2(eof):-nl,write('EOF'),nl,!.
-putchar2((X,_)):-put(X),!.         
+putchar2((X,_)):-put_code(X),!.
 
 %/*********************************************
 % get_codes(CharList,CodeLisT)

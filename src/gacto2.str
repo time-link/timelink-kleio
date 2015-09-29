@@ -310,7 +310,7 @@ note doc group 'pt-acto' Forma generica de acto.
 note *****************************************************************
 
 part 	name=pt-acto; source=historical-act;
-     arbitrary=actorm,
+     arbitrary=celebrante,actorm,
          actorf,object,abstraction,ls,rel;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
@@ -538,7 +538,7 @@ part  name=cas,termo;
    guaranteed=id,dia,mes,ano,fol;
    position=id,dia,mes,ano,fol,loc,celebrante;
    also=celebrante,obs;
-   repeat=test,referida,referido,
+   repeat=celebrante,test,referida,referido,
                   noivo,
                      pnoivo,
                          ppnoivo,
@@ -666,16 +666,16 @@ note doc group bap Baptismos (variante usada nos registos da Lousa
       por Rosario Campos)
 note *****************************************************************
 part name=bap; source=pt-acto;
-  position=id,dia,mes,ano,fol,local;
+  position=id,dia,mes,ano,fol,local,celebrante;
   guaranteed=id,dia,mes,ano;
-  repeat=n,
+  repeat=celebrante,n,
           test,referido,referida
 
 nota doc group b Baptimos, versao original usada em Soure.
 part name=b; source=pt-acto;
   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
   guaranteed=id,dia,mes,ano;
-  repeat=n,
+  repeat=celebrante,n,
       referido,referida,test
 
 note *****************************************************************
@@ -686,7 +686,7 @@ part name=obito; source=pt-acto;
   position=id,dia,mes,ano,fol,celebrante;
   guaranteed=id,mes,ano;
   also=obs;
-  repeat=n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
+  repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
 
 note doc group o Estilo usado em Soure, sem o id do obito, mas aceita o id opcionalmente.
 part name=o; source=obito;
@@ -731,8 +731,8 @@ note *****************************************************************
 part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
+     arbitrary=n,referido,referida,celebrante
      also=obs,loc;
-     arbitrary=n
 
 note *****************************************************************
 note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
@@ -1732,6 +1732,7 @@ part	 name=n;
               mad3,pmad3,mmad3,mpad3,mrmad3,
               mad4,pmad4,mmad4,mpad4,mrmad4
 
+part  name=celebrante; source=actorm
 part  name=noivo; source=actorm
 part  name=afilhado; source=actorm
 part  name=genro; source=actorm

@@ -12,7 +12,8 @@
 :-op(203,xfy,colsize).
 :-op(203,xfy,colprecision).
 :-op(203,xfy,pkey).
-
+:-discontiguous(mapping/1).
+:-discontiguous(class/1).
 
 mapping geoentity to class geoentity.
 class geoentity super entity table geoentities

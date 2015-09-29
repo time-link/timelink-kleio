@@ -267,7 +267,16 @@ The structure of person related data like attributes and relations with other
    ?-dynamic(carel/4).
    ?-dynamic(carelnot/2).
    ?-dynamic(used_id/1).
+   /*
+   verificar porque estas nao estao definidas e o interprete sugere que sejam dadas como dynamic
+   Ordem de consulta dos ficheiros?
 
+   ?-dynamic(alphaname/3).
+   ?-dynamic(cdir/1).
+   ?-dynamic(get_fname/2).
+   ?-dynamic(get_prop/4).
+
+      */
 
 
    db_init:-
@@ -295,7 +304,7 @@ The structure of person related data like attributes and relations with other
    			 )
    	),
    
-   	xml_write('<?xml version=\'1.0\'?>'),
+   	xml_write('<?xml version=\'1.0\'?>'), xml_nl,
    	del_props(rclass), % erase cache of class mappings
       del_props(act),    % erase any act context that may have survived last translation
       del_props(person),
@@ -503,7 +512,7 @@ The structure of person related data like attributes and relations with other
    	================================================================================
 
       Predicates in this area are called by the group_export
-      switchboard. They recieve the actual group name used in
+      switchboard. They receive the actual group name used in
       the clio source file  and the auto-generated clio ID
       (which can be used or not).
 
@@ -598,6 +607,10 @@ The structure of person related data like attributes and relations with other
    attribute_export(G,ID) :-
    	get_ancestor(_Anc,AncId),
    	(get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+   	  clio_aspect(core,tipo,T),
+   	  clio_aspect(core,valor,V),
+   	  assert(attribute_cache(AncId,ID,T,V)),
+   	   % report(writeln('** caching attribute info '-G-ID-T-V)),
       group_to_xml(G,ID,[id([ID],[],[]),entity([AncId],[],[]),date([Date],[],[])]).
 
 
@@ -978,13 +991,20 @@ The structure of person related data like attributes and relations with other
       clean_paths(P).
 
    clean_paths(Pattern):-
-      %report([writeln('***** auto rels 2 clean_paths for'-Pattern)]),
+      % report([writeln('***** auto rels 2 clean_paths for'-Pattern)]),
       group_path(P),
       path_matching(P,Pattern),
-     % report([writeln('***** auto rels 2 removing path '-P)]),
+      % report([writeln('***** auto rels 2 removing path '-P)]),
       retract(group_path(P)),
       fail.
    clean_paths(_):-!.
+
+   clean_attribute_cache:-
+        retract(attribute_cache(D,LSID,T,V)),
+        % report([writeln('***** removing attribute cache '-D-T-V)]),
+        fail.
+   clean_attribute_cache:-!.
+
 
    apply_inference_rules:-
       if Condition then Action,
@@ -996,7 +1016,7 @@ The structure of person related data like attributes and relations with other
 
    apply_inference_rules:-
       if Condition then newscope,
-      %report([writeln('***** auto rels 2 new scope testing for:'-Condition)]),
+      % report([writeln('***** auto rels 2 new scope testing for:'-Condition)]),
       condition_test(Condition),
       do_action(newscope),
       fail.
@@ -1028,8 +1048,9 @@ The structure of person related data like attributes and relations with other
    	export_auto_attribute(ID,Type,Value),!.
 
    do_action(newscope):-
-      report([writeln('***** auto rels 2 new scope')]),
-      clean_paths([kleio(_),sequence(_S)]).
+      % report([writeln('***** auto rels 2 new scope')]),
+      clean_paths([kleio(_),sequence(_S)])
+      ,clean_attribute_cache.
 
 
    path_matching(Path,Pattern):-
@@ -1056,6 +1077,7 @@ The structure of person related data like attributes and relations with other
 
    path_matching([Group|MorePath],[Group|MorePattern],FinalPath,FinalPattern):-!,
       path_matching(MorePath,MorePattern,FinalPath,FinalPattern).
+
 
 
    export_auto_rel((_Origin,OriginID),(_Destination,DestinationID),Type,Value) :-!,
@@ -1334,6 +1356,8 @@ The structure of person related data like attributes and relations with other
        rch_get_attribute(Element,Attributes,Attr).
 
    /** the class of an element in a group */
+   elementClass(relation,Element,undef):-  % optimizing shortcut for dest names in rel$ to avoid search to matching class which is undefined
+       clio_element_extends(Element,destname),!.
    elementClass(GroupClass,Element,Class):-
       elementMapping(GroupClass,Element,Attr),
       atr_select(baseclass,Attr,Class),!.
@@ -1444,7 +1468,7 @@ The structure of person related data like attributes and relations with other
    								'" TYPE="',Type,
    								'" SIZE="',Length1,
    								'" PRECISION="',Precision1,
-   								'" PKEY="',PK,'" />']),
+   								'" PKEY="',PK,'" ></ATTRIBUTE>']),
       xml_nl,!.
 
    /** DEPRECATED: see rattributes2_xml*/
@@ -1475,7 +1499,7 @@ The structure of person related data like attributes and relations with other
    								'" TYPE="',Type,
    								'" SIZE="',Length1,
    								'" PRECISION="',Precision1,
-   								'" PKEY="',PK,'" />']),
+   								'" PKEY="',PK,'" ></ATTRIBUTE>']),
       xml_nl,
    	rattribute_xml(More,Pkeys).
    rattribute_xml([],_):-!.
@@ -1491,7 +1515,7 @@ The structure of person related data like attributes and relations with other
    rch_element_class(Element,Element,Column,Type,Length,Precision,Mapping) :-
    		  clio_super('element-mapping',Mapping),
    		  clio_group_param(Mapping,pars,[Element,Column,Type,Length,Precision]),!.
-   rch_element_class(Element,SElement,Column,Type,Length,Precision,Mapping) :-
+     rch_element_class(Element,SElement,Column,Type,Length,Precision,Mapping) :-
    		  clio_element_extends(Element,SElement),
    		  rch_element_class(SElement,SElement,Column,Type,Length,Precision,Mapping),!.
    rch_element_class(_,_,undef,undef,undef,undef,undef) :-!.
@@ -1630,34 +1654,33 @@ The structure of person related data like attributes and relations with other
 
    el_to_xml(_Class,id):-!.  /* we skip id elements because they were exported previously and part of the builtin els */
    el_to_xml(GClass,El) :-
-   	clio_aspect(core,El,Core0),
-   	((GClass='relation',El='iddest')->
-          (writelistln(['   ** checking rel dest for prefix '| Core0]),
-            Core0 = IdDest,
-           (is_list(IdDest) -> list_to_a0(IdDest,SID0); SID0 = IdDest),
-         	 check_id_prefix(SID0,Core)
-         	 )
-        ;
-         	Core = Core0
-    ),
-   	clio_aspect(original,El,Original),
-   	clio_aspect(comment,El,Comment),
-    aspect_to_xml(core,Core,CoreXML),
-   	aspect_to_xml(original,Original,OriginalXML),
-   	aspect_to_xml(comment,Comment,CommentXML),
-      /* in the new scheme if a group element is not mapped to an attribute of the group class then
-         it is not possible to find the elementClass of the group element. we use undef to mark those.
-         Note that DBClass in idb only fetches the group element that are mapped to class attributes */
-      (isNewMappingMode -> (elementClass(GClass,El,Class)->true;Class=undef)  ;
-                           rch_element_class(El,Class,_col,_type,_length,_precision,_mapping)),
-   	xml_write( [ '   <ELEMENT NAME="' , El , '" CLASS="',Class,'">' ]),
-      xml_nl,
-      xml_write(['   '|CoreXML]),
-   	(OriginalXML \= [] -> (xml_write(['   '|OriginalXML]), xml_nl);true),
-   	(CommentXML \= [] -> (xml_write(['   '|CommentXML]), xml_nl);true),
-   	xml_write( [ '   </ELEMENT>' ]),
-      xml_nl.
-
+      	clio_aspect(core,El,Core0),
+      	((GClass='relation',El='iddest')->
+             (writelistln(['   ** checking rel dest for prefix '| Core0]),
+               Core0 = IdDest,
+              (is_list(IdDest) -> list_to_a0(IdDest,SID0); SID0 = IdDest),
+            	 check_id_prefix(SID0,Core)
+            	 )
+           ;
+            	Core = Core0
+       ),
+      	clio_aspect(original,El,Original),
+      	clio_aspect(comment,El,Comment),
+       aspect_to_xml(core,Core,CoreXML),
+      	aspect_to_xml(original,Original,OriginalXML),
+      	aspect_to_xml(comment,Comment,CommentXML),
+         /* in the new scheme if a group element is not mapped to an attribute of the group class then
+            it is not possible to find the elementClass of the group element. we use undef to mark those.
+            Note that DBClass in idb only fetches the group element that are mapped to class attributes */
+         (isNewMappingMode -> (elementClass(GClass,El,Class)->true;Class=undef)  ;
+                              rch_element_class(El,Class,_col,_type,_length,_precision,_mapping)),
+      	xml_write( [ '   <ELEMENT NAME="' , El , '" CLASS="',Class,'">' ]),
+         xml_nl,
+         xml_write(['   '|CoreXML]),
+      	(OriginalXML \= [] -> (xml_write(['   '|OriginalXML]), xml_nl);true),
+      	(CommentXML \= [] -> (xml_write(['   '|CommentXML]), xml_nl);true),
+      	xml_write( [ '   </ELEMENT>' ]),
+         xml_nl.
    iel_to_xml(GClass,Name,Core,Original,Comment) :-     %  used to output infered elements
       (isNewMappingMode -> elementClass(GClass,Name,Class)  ;
                            rch_element_class(Name,Class,_col,_type,_length,_precision,_mapping)),
@@ -1690,7 +1713,7 @@ The structure of person related data like attributes and relations with other
       append(P1,[']]></',Aspect,'>'],XML),!.
 
    /*
-     xml_write(List) : writes a list of attom to the current xml output file
+     xml_write(List) : writes a list of atom to the current xml output file
      ================
    */
 
@@ -1719,12 +1742,12 @@ The structure of person related data like attributes and relations with other
        name(Atomic,Chars),
        xclean_chars(Chars,CChars),
        name(CAtomic,CChars),
-       write(CAtomic).
-   xcleanwrite(Functor):-!,write(Functor).
+       write_term(CAtomic,[quoted(false)]).
+   xcleanwrite(Functor):-!,write_term(Functor,[quoted(false)]).
 
 
    xclean_chars([],[]):-!.
-      xclean_chars([47|More],[92,47|CMore]):-!, xclean_chars(More,CMore). % escape the slash
+      xclean_chars([47|More],[47|CMore]):-!, xclean_chars(More,CMore). % escape the slash
    xclean_chars([C|More],[C|CMore]):-C > 19, C < 256, !, xclean_chars(More,CMore).
    xclean_chars([10|More],[10|CMore]):-!, xclean_chars(More,CMore).
    xclean_chars([13|More],[13|CMore]):-!, xclean_chars(More,CMore).

@@ -254,7 +254,7 @@ layout(linuxppc) :-
 
 layout(macosx) :-
 		put_value(data_dir,'/Users/jrc/develop/mhk_users/testes/sources/'),
-		put_value(stru_dir,'/Users/jrc/develop/mhk_users/testes/stru/').
+		put_value(stru_dir,'/Users/jrc/develop/mhk-git/clio/src/').
 
 
 layout(windows) :-

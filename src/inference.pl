@@ -95,6 +95,15 @@
     then
         relation(parentesco,filha,F,N).
 
+   % brothers and sisters
+       if [sequence(_Path),extends(person,N),irmao(F)]
+       then
+           relation(parentesco,irmao,F,N).
+
+       if [sequence(_Path),extends(person,N),irma(F)]
+       then
+           relation(parentesco,irma,F,N).
+
    % male actor and wife (up to three previous marriages.)
 
     if [sequence(_),extends(actorm,N),mulher(M)]
@@ -2351,28 +2360,28 @@ if [sequence(_Path),acto(_P),'presente-f'(M)]
 
 */
 % memorias paroquiais de 1758
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),provincia(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),provincia(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),comarca(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),comarca(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),termoc(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),termoc(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),bispado(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),bispado(P)]
 then
     relation(geografica,'pertence-eccle',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),lugar(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),lugar(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),igreja(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),igreja(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),irmandade(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),irmandade(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(Path),extends(memoria58,Mid),freguesia(F),confraria(P)]
+if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),confraria(P)]
 then
     relation(geografica,'contem',F,P).
 /*
@@ -2726,24 +2735,140 @@ then
 	relation(financeira,'dador4-tomador4',P,R).
 
 /**************************************************
-Geogorio Lopes
+Gegorio Lopes
 ***************************************************/
 if [kleio(K),fonte(F),pas(P),mestre(M)] and
-   [kleio(K),fonte(F),pas(P),extends(person,X),ls(LS)]
+   [kleio(K),fonte(F),pas(P),sequence(_),extends(person,X), ls(LSID)
+   % ,clause(report([writeln('**** detectando viajante e mestre'-M-X)]))
+   , clause(attribute_cache(X,LSID,[viaja],[sim]))
+   , clause(report([writeln('**** viajante com mestre detectado!')]))
+   ]
+
    then
     relation(viagem,'viajou-com-mestre',X,M).
- if [kleio(K),fonte(F),pas(P),sequence(_),extends(person,X),ls(LS1)] and
-    [kleio(K),fonte(F),pas(P),sequence(_),extends(person,Y),ls(LS2)]
+ if [kleio(K),fonte(F),pas(P),sequence(_),extends(person,X),ls(LS1)
+       %,clause(report([writeln('**** detectando viajante')]))
+       , clause(attribute_cache(X,LS1,[viaja],[sim]))
+       %, clause(report([writeln('**** viajantes detectado!')]))
+       ] and
+    [kleio(K),fonte(F),pas(P),sequence(_),extends(person,Y),ls(LS2)
+       , clause(Y\=X)
+       %,clause(report([writeln('**** detectando viajante')]))
+       , clause(attribute_cache(Y,LS2,[viaja],[sim]))
+       , clause(report([writeln('**** viajante detectado!')]))]
     then
      relation(viagem,'viajou junto com',X,Y).
+/*
+A relação do celebrante com todos as pessoas referidas no acto, ou sou com algumas, ou varia com tipo de acto para tipo de acto — é isto, varia de ato para ato, então necessitamos para cada tipo de ato que relações se geram com o celebrante. A relação chama-se - sociabilidade/celebrou acto
+*/
+
+% b batismos
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),pn(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),mn(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),pad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),ppad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),mad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),b(B),celebrante(C)] and
+   [kleio(K),fonte(F),b(B),n(_),pmad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+
+% bap batismos
+
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),pn(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),mn(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),pad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),ppad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),mad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),bap(B),celebrante(C)] and
+   [kleio(K),fonte(F),bap(B),n(_),pmad(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+
+% casamentos
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),noivo(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),pnoivo(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),mnoivo(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),noiva(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),pnoiva(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),mnoiva(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),cas(Cas),celebrante(C)] and
+   [kleio(K),fonte(F),cas(Cas),test(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
 
 
-		
+% obitos
+if [kleio(K),fonte(F),o(C),celebrante(C)] and
+   [kleio(K),fonte(F),o(C),n(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+if [kleio(K),fonte(F),obito(C),celebrante(C)] and
+   [kleio(K),fonte(F),obito(C),n(N)]
+then
+    relation(sociabilidade,'celebrou ato',C,N).
+
  /************************************************************
 
     scope rules
 ***************************************************************/
-if [sequence(_path),extends('historical-act',_act)]
+if [sequence(_Path),extends('historical-act',_Act)]
 then newscope.
 
 if [kleio(_K),fonte(_F),rol(_R),fogo(_FG)]
