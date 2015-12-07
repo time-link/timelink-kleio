@@ -5,39 +5,6 @@
 /*
     This file contains the inference rules for automatic relations and attributes.
 
-    This corresponds to the new model of inferencing,
-    based on path_matching predicate.
-
-    $Id$
-    $Log: inference.pl,v $
-    Revision 1.2  2006/05/16 10:52:47  Joaquim
-    update dos ficheiros prolog
-
-    Revision 1.5  2006/03/27 20:43:39  jrc
-    Added inference rules for "n" to account for female "n" actors.
-
-    Revision 1.4  2005/06/05 22:10:20  jrc
-    changed to make baptisms of type "b" capable of automatic processing of "procurador-pad" and "procurador-mad". corrected a bug regarding this in baptisms type "bap".
-
-    Revision 1.3  2005/05/16 11:36:07  jrc
-    New rules handle bug in the generation of sutmatic kinship in marriages and also cleanup parent son relations, that are now recorded on the parent side, and not on the child side.
-
-    Revision 1.2  2005/03/10 14:42:16  joaquim
-    snapshot commit for purpose of moving the cvs directory.
-
-    Revision 1.1  2004/04/08 14:45:24  ltiago
-    Source code has passed from Joaquim to Tiago.
-    Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
-    File build.xml, web.xml and velocity.properties were changed
-
-    Revision 1.2  2002/09/22 18:08:13  jrc
-    Rules updated.
-
-    Revision 1.1  2002/06/01 12:08:43  jrc
-    new style inference rules.
-
-    $Author$
-
     an inference rule:
      if PATH then ACTION
      or
