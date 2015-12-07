@@ -55,7 +55,7 @@ note
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix;
  position=structure,translator,obs;
- part=historical-source,fonte,source
+ part=historical-source,fonte
 
 note ============================================================
 note Basic historical source group
@@ -91,7 +91,7 @@ part 	name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
      also=loc,ref,obs,day,month,year;
-     part=person,object,abstraction,ls,atr,rel
+     arbitrary=person,object,abstraction,ls,atr,rel
 
 note ============================================================
 note A person
@@ -101,7 +101,7 @@ part	name=person ;
  guaranteed=name,sex;
  also=id,obs,same_as;
  position=name,sex,id,same_as;
- part=atr,rel,ls
+ arbitrary=atr,rel,ls
 
 note ============================================================
 nota A Female person
@@ -109,7 +109,7 @@ note	having this group is the fons/source line
 nota    notifies the translator that sex=female
 nota ============================================================
 
-part 	name=female;
+part 	name=female ;
   source=person;
  guaranteed=name;
  also=obs,id,same_as;
@@ -121,7 +121,7 @@ note	having this group is the fons/source line
 nota    notifies the translator that sex=male
 nota ============================================================
 
-part 	name=male;
+part 	name=male ;
  source=person;
  guaranteed=name;
  also=obs,id,same_as;
@@ -137,7 +137,7 @@ part name=object;
      guaranteed=name;
      position=name,type;
      also=obs,id;
-     part=atr,ls,rel
+     arbitrary=atr,ls,rel
 
 note ============================================================
 note abstraction Base class for abstractions
@@ -152,9 +152,9 @@ note Attribute
 note ============================================================
 
 part	name=attribute ;
- 	guaranteed=type,value ;
- 	also=obs,date ;
- 	position=type,value,date
+ guaranteed=type,value ;
+ also=obs,date ;
+ position=type,value,date
 
 note ============================================================
 note Relation
@@ -233,49 +233,6 @@ note ================================================
 note ================================================
 note USER DEFINITIONS START HERE
 note ================================================
-
-note *****************************************************************
-note English Historical Sources
-note *****************************************************************
-
-part name=source;source=historical-source;
-    arbitrary=qentry
-
-	 
-note Frank Theuma quarentine registration
-
-part name=qentry;source=historical-act;
-	 guaranteed=day,month,year;
-	 also=id,obs;
-    position=day,month,year,loc;
-    arbitrary=vessel,captain,voyage,cargo
-	 
-part name=vessel;
-	source=object;
-	guaranteed=name,type,nationality;
-	position=name,type,nationality
-	 
-
-part name=captain; source=male;
-	
-part name=voyage;source=abstraction;
-	position=origin,destination;
-	guaranteed=origin,destination
-	
-
-part name=cargo;source=object;
-	arbitrary=owner,receiver,citem
-	
-	
-
-part name=citem; source=object;
-	position=name,quantity;
-	guaranteed=name
-	
-
-part name=owner;source=male
-part name=receiver;source=male
-
 
 note *****************************************************************
 note Portuguese Historical Sources
