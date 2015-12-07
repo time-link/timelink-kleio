@@ -2201,7 +2201,6 @@ if [sequence(Path),pad(Pad)]   and [sequence(Path),ppad(PPad)]   then relation(p
 
 if [sequence(Path),mad1(Mad)] and [sequence(Path),pmad1(PMad)] then relation(parentesco,pai,PMad,Mad).
 if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then relation(parentesco,mae,MMad,Mad).
-if [sequence(Path),mad1(Mad)] and [sequence(Path),mmad1(MMad)] then relation(parentesco,mae,MMad,Mad).
 if [sequence(Path),mad1(Mad)] and [sequence(Path),mrmad1(MrMad)] then relation(parentesco,marido,MrMad,Mad).
 if [sequence(Path),pad1(Pad)] and [sequence(Path),ppad1(PPad)] then relation(parentesco,pai,PPad,Pad).
 
