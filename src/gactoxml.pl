@@ -281,8 +281,8 @@ The structure of person related data like attributes and relations with other
 
    db_init:-
    	report( [
-   		writeln('Generic Act translation module with geoentities (XML). $Revision$ $Date$'),
-   		writeln('     Joaquim Ramos de Carvalho (joaquim@dei.uc.pt) ')
+   		writeln('Generic Act translation module with geoentities (XML).'),
+   		writeln('     Joaquim Ramos de Carvalho (joaquim@uc.pt) ')
    		] ),
    	get_value(data_file,D),
    	break_fname(D,Path,_File,Base,_Ext),
@@ -333,7 +333,7 @@ The structure of person related data like attributes and relations with other
    	xml_close.
 
 
-   	/* we now renmae the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
+   	/* we now rename the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
    	  If org already exists we rename .cli to .old. If .old exists we discard it and rename .cli to .old.
 
    	  The end result is: .cli is the last pretty printed translation with sucess.
@@ -442,11 +442,12 @@ The structure of person related data like attributes and relations with other
    		writeln('kleio translation started'),
    		writeln('=========================')
    		]),
-   	get_aspects(core,[structure,translator,autorels,obs,prefix],[S,_T,AR,O,SP]),
+   	get_aspects(core,[structure,translator,autorels,obs,prefix,transcount],[S,_T,AR,O,SP,TC]),
    	report([
    		writelist0ln(['Structure: '|S]),
    		writelist0ln(['Prefix: '|SP]),
    		writelist0ln(['Autorel: '|SP]),
+   		writelist0ln(['Translation count: '|TC]),
    		writelist0ln(['Obs: '|O])
    		]
    		),
@@ -456,8 +457,20 @@ The structure of person related data like attributes and relations with other
    	clio_data_file(Data),
    	list_to_a0(O,OS),
    	list_to_a0(SP,Space),
+   	list_to_a0(TC,TransCountString),
    	(SP = [_H|_T] -> put_value(useIdPrefix,yes);  put_value(useIdPrefix,no)),
    	put_value(idPrefix,Space),
+   	(atom_number(TransCountString,TransCount) ->
+   	    put_value(transcount,TransCount);
+   	    (report([
+   	      writelist0ln(['Translation count not set or invalid, counting as zero: '|TC])
+   	       ]),
+   	       put_value(transcount,0)
+   	    )
+   	    ),
+   	get_value(transcount,OldTC),
+   	NewTC is OldTC+1,
+   	put_value(transcount,NewTC),
     now(Year,Month,Day,Hour,Minute,Seconds),
    	Date=Year-Month-Day,
    	Time=Hour:Minute:Seconds,
@@ -803,7 +816,10 @@ The structure of person related data like attributes and relations with other
    		  repeat,
         gensymbol(Seed,Gid),
         (atom(Aid)->AAid=Aid;term_to_atom(Aid,AAid)),
-        list_to_a0([AAid,'-',Gid],Id), % we assumed that the ancestor''s id is prefixed so we do not check
+         % we assumed that the ancestor''s id is prefixed so we do not check
+        ((get_value(transcount,TransCount),TransCount>1) ->
+            list_to_a0([AAid,'-',Gid,'-',TransCount],Id);
+            list_to_a0([AAid,'-',Gid],Id)),
         put_value(Group,Id),
         \+ used_id(Id),
         assert(used_id(Id)),!.

@@ -26,20 +26,28 @@ clioPP2(G,ID):-
 	clio_group_param(G,locus,Locus),
 	clio_bclass(G,Class),
 	(\+ member(Class,[attribute,relation,kleio,'historical-source'])->nl;true),
-	put_value(idout,false),
+	put_value(idout,false),  % used to check if the id of the group will be output
 	tab(Ident),writelist0([G,'$']),
-	clioPP_locus(0,Locus,N),
-	clioPP_elements(N,Locus), 
-	(\+ member(Class,[attribute,relation,'group-element',kleio])
+	clioPP_locus(0,Locus,N), % this can set idout to true
+	clioPP_elements(N,Locus), % this can set idout to true
+	(\+ member(Class,[attribute,relation,'group-element',kleio]) % check if we need to print the id, except for groups not relevant
 		->( 
-			(get_value(idout,false)->
+			(get_value(idout,false)->  % if the id was not output so far, output it now.
 				(remove_id_prefix(ID,NID),
 				writelist0(['/id=',NID]))
 			;
-				true)
+				true) % id was previously output
 			)
 		;true
-		),nl.
+		),
+	(G=='kleio' ->
+	    (
+	        (get_value(transcount,Transcount)->true;Transcount=1),
+	        writelist0(['/transcount=',Transcount]))
+	    ;
+	        true),
+
+	nl.
 
 clioPP2(G,I):-
 	writelistln(['*******- problems in clioPP2: unexpected fail',group,G,id,I]),!.
@@ -73,7 +81,7 @@ clioPP_elements(PreviousElements,Locus):-
 	clio_elements(Els),
 	list_to_set(Els,SEls),
 	member(L,SEls),
-	\+ member(L,Locus),
+	\+ member(L,[transcount|Locus]),%we don't show here the locus element nor the transcount pseudo element
 	clioPP_check_id_element(L),
 	clio_aspect(core,L,Core0),
 	(get_value(doslash,true)->write('/');true),
