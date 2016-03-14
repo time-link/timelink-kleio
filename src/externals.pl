@@ -144,7 +144,7 @@
 %     
 % History:
 %   This modules documents features in use before but not documented
-%   previously. The call back predicates of the translator recieved
+%   previously. The call back predicates of the translator received
 %   new names and were enumerated for the first time here. Before
 %   now the export modules called the Clio translator add hoc
 %   using the source listing to detect which predicates to call
