@@ -10,7 +10,7 @@
 %         property of atom cds, we store now each field
 %         as a separate property to decrease the amount of
 %         data being moved around.
-%	  dataCode.p was also reviewed to take profit
+%	  dataCode.pl was also reviewed to take profit
 %         of the new organization.
 %******************************************************
 %%
