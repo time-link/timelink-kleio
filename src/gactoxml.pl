@@ -442,7 +442,7 @@ The structure of person related data like attributes and relations with other
    		writeln('kleio translation started'),
    		writeln('=========================')
    		]),
-   	get_aspects(core,[structure,translator,autorels,obs,prefix,transcount],[S,_T,AR,O,SP,TC]),
+   	get_aspects(core,[structure,translator,autorels,obs,prefix,translations],[S,_T,AR,O,SP,TC]),
    	report([
    		writelist0ln(['Structure: '|S]),
    		writelist0ln(['Prefix: '|SP]),

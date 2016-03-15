@@ -43,7 +43,7 @@ clioPP2(G,ID):-
 	(G=='kleio' ->
 	    (
 	        (get_value(transcount,Transcount)->true;Transcount=1),
-	        writelist0(['/transcount=',Transcount]))
+	        writelist0(['/translations=',Transcount]))
 	    ;
 	        true),
 
@@ -81,7 +81,7 @@ clioPP_elements(PreviousElements,Locus):-
 	clio_elements(Els),
 	list_to_set(Els,SEls),
 	member(L,SEls),
-	\+ member(L,[transcount|Locus]),%we don't show here the locus element nor the transcount pseudo element
+	\+ member(L,[translations|Locus]),%we don't show here the locus element nor the transcount pseudo element
 	clioPP_check_id_element(L),
 	clio_aspect(core,L,Core0),
 	(get_value(doslash,true)->write('/');true),
