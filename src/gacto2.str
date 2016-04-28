@@ -760,7 +760,7 @@ part name=rol; source=pt-acto;
 part name=fogo; source=object;
        guaranteed=id,local;
        also=obs;
-       position=id;
+       position=id,local;
      arbitrary=n,mulher,filho,filha,irmao,irma,genro,nora,afilhado,afilhada,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,sobrinho,sobrinha,sogra,sogro,neto,neta,fim;
 element name=local; source=loc
 
