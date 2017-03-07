@@ -180,6 +180,7 @@ elementDocKeyword       -->[(name,element)].
 elementDocName(G)       -->[(name,G)].
 
 getDocText([N,' '|R]) -->[(name,N)],getDocText(R),!.
+getDocText([N,' '|R]) -->[(number,N)],getDocText(R),!.
 getDocText(['"',N,'"',' '|R]) -->[(string,N)],getDocText(R),!.
 getDocText([N|R])     -->[(dataflag,Nb)],getDocText(R),{data_flag_char(Nb,C),name(N,[C])},!.
 getDocText([N|R])     -->[(_,C)],getDocText(R),{name(N,[C])},!.

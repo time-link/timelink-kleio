@@ -772,8 +772,8 @@ The structure of person related data like attributes and relations with other
    		========
    */
    get_date(DATE):-
-   		  belement_aspect(core,date,[DATE]),
-   		  number(DATE).
+   		  belement_aspect(core,date,[A_DATE]),
+   		  is_a_number(A_DATE,DATE).
 
 
 
@@ -783,13 +783,15 @@ The structure of person related data like attributes and relations with other
    */
 
    get_y_m_d(DATE):-
-   		  belement_aspect(core,day,[DAY]),
-   		  belement_aspect(core,month,[MONTH]),
-   		  belement_aspect(core,year,[YEAR]),
-   		  number(DAY),number(MONTH),number(YEAR),
+   		  belement_aspect(core,day,[A_DAY]),
+   		  belement_aspect(core,month,[A_MONTH]),
+   		  belement_aspect(core,year,[A_YEAR]),
+   		  is_a_number(A_DAY,DAY),is_a_number(A_MONTH,MONTH),is_a_number(A_YEAR,YEAR),
    		  DATE is YEAR*10000+MONTH*100+DAY.
 
 
+    is_a_number(Number,Number):-number(Number),!.
+    is_a_number(Atom,Number):-atom_number(Atom,Number),!.
    /*
 
    	get_group_id:  Rules for determinig the id of a group

@@ -169,10 +169,11 @@ nameChar(C)        -->[(C,T)],
 %%
 
 num(V)-->numberList(L),[(C,point)],numberList(R),
-           {!, append(L,[C|R],N), name(V,N)}.
+           {!, append(L,[C|R],N), atom_codes(V,N)}.
 num(V)-->numberList(L),[(C,point)],
-           {!,append(L,[C],N),name(V,N)}.
-num(V)-->numberList(L),{!,name(V,L)}.
+           {!,append(L,[C],N),atom_codes(V,N)}.
+% TODO change bellow name for atom_codes in order to avoid loosing trailing zeros in numbers.
+num(V)-->numberList(L),{!,atom_codes(V,L)}.
 
 numberList([C|R])-->[(C,digit)],numberList(R).
 numberList([C])  -->[(C,digit)].
