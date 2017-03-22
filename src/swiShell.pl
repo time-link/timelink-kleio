@@ -81,7 +81,8 @@ trad_stru_only(StruFile):-
     break_fname(StruFile,P,_File,Base,_),
     put_value(stru_dir,P),
 	% chdir(P),
-    list_to_a0([Base,'.','rpt'],Report),
+	path_sep(Sep),
+    list_to_a0([P,Sep,Base,'.','rpt'],Report),
     prepare_report(Report),
     stru(StruFile),
     close_report_file,!.
