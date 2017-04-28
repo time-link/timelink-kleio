@@ -95,22 +95,36 @@
         attribute(M,morta,antes).
 
     % in marriages we have to do it differently because there are all at the same level.
+    % since 2016 marriages also have parents inside groom and bride.
 
     if [sequence(Path),cas(C),noivo(N)] and [sequence(Path),cas(C),mulher1(M)]
     then
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
 
+    if [sequence(Path),cas(C),noivo(N),mulher1(M)]
+        then
+            relation(parentesco,foi-marido,N,M) and
+            attribute(M,morta,antes).
+
     if [sequence(Path),cas(C),noivo(N)] and [sequence(Path),cas(C),mulher2(M)]
     then
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
 
+    if [sequence(Path),cas(C),noivo(N),mulher2(M)]
+        then
+            relation(parentesco,foi-marido,N,M) and
+            attribute(M,morta,antes).
+
     if [sequence(Path),cas(C),noivo(N)] and [sequence(Path),cas(C),mulher3(M)]
     then
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
-
+    if [sequence(Path),cas(C),noivo(N),mulher3(M)]
+      then
+          relation(parentesco,foi-marido,N,M) and
+          attribute(M,morta,antes).
 
 
 
@@ -171,8 +185,17 @@
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
+     if [sequence(Path),cas(C),noiva(N),marido1(M)]
+      then
+          relation(parentesco,foi-mulher,N,M) and
+          attribute(M,morto,antes).
 
     if [sequence(Path),cas(C),noiva(N)] and [sequence(Path),cas(C),marido2(M)]
+    then
+        relation(parentesco,foi-mulher,N,M) and
+        attribute(M,morto,antes).
+
+    if [sequence(Path),cas(C),noiva(N),marido2(M)]
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
@@ -181,11 +204,19 @@
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
+     if [sequence(Path),cas(C),noiva(N),marido3(M)]
+     then
+         relation(parentesco,foi-mulher,N,M) and
+         attribute(M,morto,antes).
 
     if [sequence(Path),cas(C),noiva(N)] and [sequence(Path),cas(C),marido4(M)]
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
+    if [sequence(Path),cas(C),noiva(N),marido4(M)]
+        then
+            relation(parentesco,foi-mulher,N,M) and
+            attribute(M,morto,antes).
 
     % noiva e noiva (groom and bride in portuguese marriages)
     if [sequence(X),cas(C),noivo(Noivo)] and

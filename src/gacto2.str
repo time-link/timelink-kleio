@@ -45,10 +45,9 @@ note ================================================
 database name=kleio; first=kleio; identification=no
 
 note ===============================================
-note Kleio group: this is the top level group of all
-note              'gacto' sources
-note
-note             specific historical sources must be added
+note doc group Kleio group: this is the top level group of all
+note              'gacto' sources.
+note             Specific historical sources must be added
 note             to the part parameter of this group.
 note
 
@@ -113,7 +112,7 @@ part 	name=female ;
   source=person;
  guaranteed=name;
  also=obs,id,same_as;
- position=name,id,same_as
+ position=name,sex
 
 note ============================================================
 nota A Male person
@@ -125,7 +124,7 @@ part 	name=male ;
  source=person;
  guaranteed=name;
  also=obs,id,same_as;
- position=name,same_as
+ position=name,sex
 
 note ============================================================
 note Object Base class for objects
@@ -688,8 +687,8 @@ note *****************************************************************
 part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
-     arbitrary=n,referido,referida,celebrante
-     also=obs,loc;
+     arbitrary=n,referido,referida,celebrante;
+     also=obs,loc
 
 note *****************************************************************
 note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
@@ -761,7 +760,7 @@ part name=fogo; source=object;
        guaranteed=id,local;
        also=obs;
        position=id,local;
-     arbitrary=n,mulher,filho,filha,irmao,irma,genro,nora,afilhado,afilhada,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,sobrinho,sobrinha,sogra,sogro,neto,neta,fim;
+     arbitrary=n,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,fim;
 element name=local; source=loc
 
 note *****************************************************************
@@ -1461,7 +1460,9 @@ part name=actorm;
               mad1,pmad1,mmad1,mpad1,mrmad1,
               mad2,pmad2,mmad2,mpad2,mrmad2,
               mad3,pmad3,mmad3,mpad3,mrmad3,
-              mad4,pmad4,mmad4,mpad4,mrmad4
+              mad4,pmad4,mmad4,mpad4,mrmad4,
+         sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+         criada,criado,engeitado,engeitada
 
 
 
@@ -1676,42 +1677,36 @@ part	 name=n;
               mmnoivo,
                   pmmnoivo,
                   mmmnoivo,
-         pn,ppn,mpn,mn,pmn,mmn,
+         pn,ppn,mpn,
+         mn,pmn,mmn,
          pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
             pad1,ppad1,mpad1,procuradora-pad1,
-              pad2,ppad2,mpad2,procuradora-pad2,
-             pad3,ppad3,mpad3,procuradora-pad3,
-             pad4,ppad4,mpad4,procuradora-pad4,
+            pad2,ppad2,mpad2,procuradora-pad2,
+            pad3,ppad3,mpad3,procuradora-pad3,
+            pad4,ppad4,mpad4,procuradora-pad4,
 
               mad,pmad,mmad,mpad,mrmad,
               mad1,pmad1,mmad1,mpad1,mrmad1,
               mad2,pmad2,mmad2,mpad2,mrmad2,
               mad3,pmad3,mmad3,mpad3,mrmad3,
-              mad4,pmad4,mmad4,mpad4,mrmad4
+              mad4,pmad4,mmad4,mpad4,mrmad4,
+              sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+              criada,criado,engeitada,engeitado
 
-part  name=celebrante; source=actorm
-part  name=noivo; source=actorm
-part  name=afilhado; source=actorm
-part  name=genro; source=actorm
-part  name=criado; source=actorm
-part  name=escravo; source=actorm
-part  name=engeitado; source=actorm
-part  name=enjeitado; source=actorm
-part  name=sobrinho; source=actorm
-part  name=sogro; source=actorm
-part  name=neto; source=actorm
-part  name=procurador-pad;source=actorm
-part  name=procurador-mad;source=actorm
-part  name=procurador-pad1;source=actorm
-part  name=procurador-mad1;source=actorm
-part  name=procurador-pad2;source=actorm
-part  name=procurador-mad2;source=actorm
-part  name=procurador-pad3;source=actorm
-part  name=procurador-mad3;source=actorm
-part  name=procurador-pad4;source=actorm
-part  name=procurador-mad4;source=actorm
+part  name=celebrante; source=male
+note  ---- name=noivo; source=actorm;part=pnoivo,mnoivo,mulher1,mulher2,mulher3
+part  name=procurador-pad;source=male
+part  name=procurador-mad;source=male
+part  name=procurador-pad1;source=male
+part  name=procurador-mad1;source=male
+part  name=procurador-pad2;source=male
+part  name=procurador-mad2;source=male
+part  name=procurador-pad3;source=male
+part  name=procurador-mad3;source=male
+part  name=procurador-pad4;source=male
+part  name=procurador-mad4;source=male
 part  name=presente;source=actorm
-part  name=mestre;source=actorm
+part  name=mestre;source=male
 
 part 	name=referido;
      source=male;
@@ -2228,7 +2223,9 @@ part 	name=actorf;
               mad1,pmad1,mmad1,mpad1,mrmad1,
               mad2,pmad2,mmad2,mpad2,mrmad2,
               mad3,pmad3,mmad3,mpad3,mrmad3,
-              mad4,pmad4,mmad4,mpad4,mrmad4
+              mad4,pmad4,mmad4,mpad4,mrmad4,
+              sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+              criada,criado,engeitado,engeitada
 
 note *****************************************************************
 note Actores femininos: especificados
@@ -2241,25 +2238,16 @@ part 	name=referida;	source=female;
      repeat=ls,atr,rel
 
 part  name=na; source=actorf
-part  name=nora;  source=actorf
-part  name=afilhada; source=actorf
-part  name=criada;source=actorf
-part  name=escrava;  source=actorf
-part  name=engeitada;  source=actorf
-part  name=enjeitada;  source=actorf
-part  name=sobrinha;source=actorf
-part  name=sogra;source=actorf
-part  name=neta;source=actorf
-part  name=procuradora-pad;source=actorf
-part  name=procuradora-mad;source=actorf
-part  name=procuradora-pad1;source=actorf
-part  name=procuradora-mad1;source=actorf
-part  name=procuradora-pad2;source=actorf
-part  name=procuradora-mad2;source=actorf
-part  name=procuradora-pad3;source=actorf
-part  name=procuradora-mad3;source=actorf
-part  name=procuradora-pad4;source=actorf
-part  name=procuradora-mad4;source=actorf
+part  name=procuradora-pad;source=female
+part  name=procuradora-mad;source=female
+part  name=procuradora-pad1;source=female
+part  name=procuradora-mad1;source=female
+part  name=procuradora-pad2;source=female
+part  name=procuradora-mad2;source=female
+part  name=procuradora-pad3;source=female
+part  name=procuradora-mad3;source=female
+part  name=procuradora-pad4;source=female
+part  name=procuradora-mad4;source=female
 part  name=enferma;source=actorf
 note doc group present-f mulher presente num acto.
 part  name=presente-f;source=actorf
@@ -2352,200 +2340,195 @@ part name=parentef;
 note *****************************************************************
 note Parentes classificados por genero
 note *****************************************************************
+note TODO falta verificar se todos os part estão bem feitos
 
-part name=pai;     			source=parentem
-part 	name=ppai;     		source=parentem
-part 		name=pppai;			source=parentem
-part			name=ppppai;	source=parentem
-part 			name=mpppai;	source=parentef
-part 		name=mppai;   		source=parentef
-part			name=pmppai;	source=parentem
-part			name=mmppai;   source=parentem
-part 	name=mpai;     		source=parentef
-part 		name=pmpai;   		source=parentem
-part			name=ppmpai;	source=parentem
-part 			name=mpmpai;	source=parentef
-part 		name=mmpai;   		source=parentef
-part			name=pmmpai;	source=parentem
-part			name=mmmpai;	source=parentef
 
-part name=mae;     			source=parentef
-part 	name=pmae;     		source=parentem
-part 		name=ppmae;			source=parentem
+part name= pai;  source=parentem;pars=ppai, mpai
+part    name= ppai;  source=parentem;pars=pppai, mppai
+part        name= pppai;  source=parentem;pars=ppppai, mpppai
+part        name= mppai;  source=parentef;pars=pmppai, mmppai
+part    name= mpai;  source=parentef;pars=pmpai, mmpai
+part        name= pmpai;  source=parentem;pars=ppmpai, mpmpai
+part        name= mmpai;  source=parentef;pars=pmmpai, mmmpai
+
+
+part name=mae;     			source=parentef; part=pmae,mmae
+part 	name=pmae;     		source=parentem; part=ppmae,mpmae
+part 		name=ppmae;			source=parentem; part=pppmae,mppmae
 part			name=pppmae;	source=parentem
 part 			name=mppmae;	source=parentef
-part 		name=mpmae;   		source=parentef
+part 		name=mpmae;   		source=parentef; part=pmpmae, mmpmae
 part			name=pmpmae;	source=parentem
 part			name=mmpmae;   source=parentem
-part 	name=mmae;     		source=parentef
-part 		name=pmmae;   		source=parentem
+part 	name=mmae;     		source=parentef; part=pmmae,mmmae
+part 		name=pmmae;   		source=parentem; part=ppmmae,mpmmae
 part			name=ppmmae;	source=parentem
 part 			name=mpmmae;	source=parentef
-part 		name=mmmae;   		source=parentef
+part 		name=mmmae;   		source=parentef; part=pmmmae,mmmmae
 part			name=pmmmae;	source=parentem
 part			name=mmmmae;	source=parentef
 
-part name=marido;     			source=parentem
-part 	name=pmarido;     		source=parentem
-part 		name=ppmarido;			source=parentem
+part name=marido;     			source=parentem; part=pmarido,mmarido
+part 	name=pmarido;     		source=parentem; part=ppmarido,mpmarido
+part 		name=ppmarido;			source=parentem; part=pppmarido,mppmarido
 part			name=pppmarido;	source=parentem
 part 			name=mppmarido;	source=parentef
-part 		name=mpmarido;   		source=parentef
+part 		name=mpmarido;   		source=parentef; part=pmpmarido,mmpmarido
 part			name=pmpmarido;	source=parentem
 part			name=mmpmarido;   source=parentem
-part 	name=mmarido;     		source=parentef
+part 	name=mmarido;     		source=parentef; part=pmmarido,mmmarido
 part 		name=pmmarido;   		source=parentem
 part			name=ppmmarido;	source=parentem
 part 			name=mpmmarido;	source=parentef
-part 		name=mmmarido;   		source=parentef
+part 		name=mmmarido;   		source=parentef; part=pmmmarido, mmmmarido
 part			name=pmmmarido;	source=parentem
 part			name=mmmmarido;	source=parentef
 
-part name=marido1;     			source=parentem
+part name=marido1;     			source=parentem; part=pmarido1,mmarido1
 part 	name=pmarido1;     		source=parentem
-part 		name=ppmarido1;		source=parentem
+part 		name=ppmarido1;		source=parentem; part=pppmarido1,mppmarido1
 part			name=pppmarido1;	source=parentem
 part 			name=mppmarido1;	source=parentef
-part 		name=mpmarido1;   	source=parentef
+part 		name=mpmarido1;   	source=parentef; part=pmpmarido1,mmpmarido1
 part			name=pmpmarido1;	source=parentem
 part			name=mmpmarido1;  source=parentem
-part 	name=mmarido1;     		source=parentef
-part 		name=pmmarido1;   	source=parentem
+part 	name=mmarido1;     		source=parentef; part=pmpmarido1,mmpmarido1
+part 		name=pmmarido1;   	source=parentem; part=ppmmarido1,mpmmarido1
 part			name=ppmmarido1;	source=parentem
 part 			name=mpmmarido1;	source=parentef
-part 		name=mmmarido1;   	source=parentef
+part 		name=mmmarido1;   	source=parentef; part=pmmmarido1,mmmmarido1
 part			name=pmmmarido1;	source=parentem
 part			name=mmmmarido1;	source=parentef
 
-part name=marido2;     			source=parentem
+part name=marido2;     			source=parentem; part=pmarido2,mmarido2
 part 	name=pmarido2;     		source=parentem
-part 		name=ppmarido2;		source=parentem
+part 		name=ppmarido2;		source=parentem; part=pppmarido2,mppmarido2
 part			name=pppmarido2;	source=parentem
 part 			name=mppmarido2;	source=parentef
-part 		name=mpmarido2;   	source=parentef
+part 		name=mpmarido2;   	source=parentef; part=pmpmarido2,mmpmarido2
 part			name=pmpmarido2;	source=parentem
 part			name=mmpmarido2;  source=parentem
-part 	name=mmarido2;     		source=parentef
-part 		name=pmmarido2;   	source=parentem
+part 	name=mmarido2;     		source=parentef; part=pmpmarido2,mmpmarido2
+part 		name=pmmarido2;   	source=parentem; part=ppmmarido2,mpmmarido2
 part			name=ppmmarido2;	source=parentem
 part 			name=mpmmarido2;	source=parentef
-part 		name=mmmarido2;   	source=parentef
+part 		name=mmmarido2;   	source=parentef; part=pmmmarido2,mmmmarido2
 part			name=pmmmarido2;	source=parentem
 part			name=mmmmarido2;	source=parentef
 
-part name=marido3;     			source=parentem
+part name=marido3;     			source=parentem; part=pmarido3,mmarido3
 part 	name=pmarido3;     		source=parentem
-part 		name=ppmarido3;		source=parentem
+part 		name=ppmarido3;		source=parentem; part=pppmarido3,mppmarido3
 part			name=pppmarido3;	source=parentem
 part 			name=mppmarido3;	source=parentef
-part 		name=mpmarido3;   	source=parentef
+part 		name=mpmarido3;   	source=parentef; part=pmpmarido3,mmpmarido3
 part			name=pmpmarido3;	source=parentem
 part			name=mmpmarido3;  source=parentem
-part 	name=mmarido3;     		source=parentef
-part 		name=pmmarido3;   	source=parentem
+part 	name=mmarido3;     		source=parentef; part=pmpmarido3,mmpmarido3
+part 		name=pmmarido3;   	source=parentem; part=ppmmarido3,mpmmarido3
 part			name=ppmmarido3;	source=parentem
 part 			name=mpmmarido3;	source=parentef
-part 		name=mmmarido3;   	source=parentef
+part 		name=mmmarido3;   	source=parentef; part=pmmmarido3,mmmmarido3
 part			name=pmmmarido3;	source=parentem
 part			name=mmmmarido3;	source=parentef
 
-part name=mulher;     			source=parentef
-part 	name=pmulher;     		source=parentem
-part 		name=ppmulher;			source=parentem
+part name=mulher;     			source=parentef; part=pmulher,mmulher
+part 	name=pmulher;     		source=parentem; part=ppmulher,mpmulher
+part 		name=ppmulher;		source=parentem; part=pppmulher,mppmulher
 part			name=pppmulher;	source=parentem
 part 			name=mppmulher;	source=parentef
-part 		name=mpmulher;   		source=parentef
+part 		name=mpmulher;   	source=parentef; part=pmpmulher,mmpmulher
 part			name=pmpmulher;	source=parentem
-part			name=mmpmulher;   source=parentef
-part 	name=mmulher;     		source=parentef
-part 		name=pmmulher;   		source=parentem
+part			name=mmpmulher; source=parentef
+part 	name=mmulher;     		source=parentef; part=pmmulher,mmmulher
+part 		name=pmmulher;   	source=parentem; part= ppmmulher,mpmmulher
 part			name=ppmmulher;	source=parentem
 part 			name=mpmmulher;	source=parentef
-part 		name=mmmulher;   		source=parentef
+part 		name=mmmulher;   	source=parentef; part=pmmmulher,mmmmulher
 part			name=pmmmulher;	source=parentem
 part			name=mmmmulher;	source=parentef
 
-part name=mulher1;     			source=parentef
-part 	name=pmulher1;     		source=parentem
-part 		name=ppmulher1;		source=parentem
+part name=mulher1;     			source=parentef; part=pmulher1,mmulher1
+part 	name=pmulher1;     		source=parentem; part=ppmulher1,mpmulher1
+part 		name=ppmulher1;		source=parentem; part=pppmulher1,mppmulher1
 part			name=pppmulher1;	source=parentem
 part 			name=mppmulher1;	source=parentef
-part 		name=mpmulher1;   	source=parentef
+part 		name=mpmulher1;   	source=parentef; part=pmpmulher1,mmpmulher1
 part			name=pmpmulher1;	source=parentem
-part			name=mmpmulher1;  source=parentem
-part 	name=mmulher1;     		source=parentef
-part 		name=pmmulher1;   	source=parentem
+part			name=mmpmulher1; source=parentef
+part 	name=mmulher1;     		source=parentef; part=pmmulher1,mmmulher1
+part 		name=pmmulher1;   	source=parentem; part= ppmmulher1,mpmmulher1
 part			name=ppmmulher1;	source=parentem
 part 			name=mpmmulher1;	source=parentef
-part 		name=mmmulher1;   	source=parentef
+part 		name=mmmulher1;   	source=parentef; part=pmmmulher1,mmmmulher1
 part			name=pmmmulher1;	source=parentem
 part			name=mmmmulher1;	source=parentef
 
-part name=mulher2;     			source=parentef
-part 	name=pmulher2;     		source=parentem
-part 		name=ppmulher2;		  source=parentem
+part name=mulher2;     			source=parentef; part=pmulher2,mmulher2
+part 	name=pmulher2;     		source=parentem; part=ppmulher2,mpmulher2
+part 		name=ppmulher2;		source=parentem; part=pppmulher2,mppmulher2
 part			name=pppmulher2;	source=parentem
 part 			name=mppmulher2;	source=parentef
-part 		name=mpmulher2;   	source=parentef
+part 		name=mpmulher2;   	source=parentef; part=pmpmulher2,mmpmulher2
 part			name=pmpmulher2;	source=parentem
-part			name=mmpmulher2;  source=parentem
-part 	name=mmulher2;     		source=parentef
-part 		name=pmmulher2;   	source=parentem
+part			name=mmpmulher2; source=parentef
+part 	name=mmulher2;     		source=parentef; part=pmmulher2,mmmulher2
+part 		name=pmmulher2;   	source=parentem; part= ppmmulher2,mpmmulher2
 part			name=ppmmulher2;	source=parentem
 part 			name=mpmmulher2;	source=parentef
-part 		name=mmmulher2;   	source=parentef
+part 		name=mmmulher2;   	source=parentef; part=pmmmulher2,mmmmulher2
 part			name=pmmmulher2;	source=parentem
 part			name=mmmmulher2;	source=parentef
 
-part name=mulher3;     			source=parentef
-part 	name=pmulher3;     		source=parentem
-part 		name=ppmulher3;		source=parentem
+part name=mulher3;     			source=parentef; part=pmulher3,mmulher3
+part 	name=pmulher3;     		source=parentem; part=ppmulher3,mpmulher3
+part 		name=ppmulher3;		source=parentem; part=pppmulher3,mppmulher3
 part			name=pppmulher3;	source=parentem
 part 			name=mppmulher3;	source=parentef
-part 		name=mpmulher3;   	source=parentef
+part 		name=mpmulher3;   	source=parentef; part=pmpmulher3,mmpmulher3
 part			name=pmpmulher3;	source=parentem
-part			name=mmpmulher3;  source=parentem
-part 	name=mmulher3;     		source=parentef
-part 		name=pmmulher3;   	source=parentem
+part			name=mmpmulher3; source=parentef
+part 	name=mmulher3;     		source=parentef; part=pmmulher3,mmmulher3
+part 		name=pmmulher3;   	source=parentem; part= ppmmulher3,mpmmulher3
 part			name=ppmmulher3;	source=parentem
 part 			name=mpmmulher3;	source=parentef
-part 		name=mmmulher3;   	source=parentef
+part 		name=mmmulher3;   	source=parentef; part=pmmmulher3,mmmmulher3
 part			name=pmmmulher3;	source=parentem
 part			name=mmmmulher3;	source=parentef
 
-part name=noiva;     			source=parentef
-part 	name=pnoiva;     			source=parentem
-part 		name=ppnoiva;			source=parentem
+part name=noiva;     			source=parentef; part=pnoiva,mnoiva,marido1,marido2,marido3
+part 	name=pnoiva;     			source=parentem; part=ppnoiva,mpnoiva
+part 		name=ppnoiva;			source=parentem; part=pppnoiva,mppnoiva
 part			name=pppnoiva;		source=parentem
 part 			name=mppnoiva;		source=parentef
-part 		name=mpnoiva;   		source=parentef
+part 		name=mpnoiva;   		source=parentef; part=pmpnoiva,mmpnoiva
 part			name=pmpnoiva;		source=parentem
 part			name=mmpnoiva;   	source=parentem
-part 	name=mnoiva;     			source=parentef
-part 		name=pmnoiva;   		source=parentem
+part 	name=mnoiva;     			source=parentef; part=pmnoiva,mmnoiva
+part 		name=pmnoiva;   		source=parentem; part=ppmnoiva,mpmnoiva
 part			name=ppmnoiva;		source=parentem
 part 			name=mpmnoiva;		source=parentef
-part 		name=mmnoiva;   		source=parentef
+part 		name=mmnoiva;   		source=parentef; part=pmmnoiva,mmmnoiva
 part			name=pmmnoiva;		source=parentem
 part			name=mmmnoiva;		source=parentef
 
-note this was combecause there is a conflict between "noivo"
+note this was commented because there is a conflict between "noivo"
 note    as actorm and noivo as parentem
-note part name=noivo;     			source=parentem
-part 	name=pnoivo;     			source=parentem
-part 		name=ppnoivo;			source=parentem
+part name=noivo;     			source=parentem; part=pnoivo,mnoivo,mulher1,mulher2,mulher3
+part 	name=pnoivo;     			source=parentem; part=ppnoivo, mpnoivo
+part 		name=ppnoivo;			source=parentem; part=pppnoivo, mppnoivo
 part			name=pppnoivo;		source=parentem
 part 			name=mppnoivo;		source=parentef
-part 		name=mpnoivo;   		source=parentef
+part 		name=mpnoivo;   		source=parentef; part=pmpnoivo,mmpnoivo
 part			name=pmpnoivo;		source=parentem
 part			name=mmpnoivo;   	source=parentem
-part 	name=mnoivo;     			source=parentef
-part 		name=pmnoivo;   		source=parentem
-part			name=ppmnoivo;		source=parentem
-part 			name=mpmnoivo;		source=parentef
-part 		name=mmnoivo;   		source=parentef
-part			name=pmmnoivo;		source=parentem
-part			name=mmmnoivo;		source=parentef
+part name= mnoivo;  source=parentef;pars=pmnoivo, mmnoivo
+part name= pmnoivo;  source=parentem;pars=ppmnoivo, mpmnoivo
+part name= ppmnoivo;  source=parentem;pars=pppmnoivo, mppmnoivo
+part name= mpmnoivo;  source=parentef;pars=pmpmnoivo, mmpmnoivo
+part name= mmnoivo;  source=parentef;pars=pmmnoivo, mmmnoivo
+part name= pmmnoivo;  source=parentem;pars=ppmmnoivo, mpmmnoivo
+part name= mmmnoivo;  source=parentef;pars=pmmmnoivo, mmmmnoivo
 part name=irma;					source=parentef
 part name=filho;     			source=parentem
 part name=filha;     			source=parentef
@@ -2562,51 +2545,71 @@ part name=merfofilha;			source=parentef
 
 part name=irmao;					source=parentem
 
-part name=pn; source=parentem
-part name=mn; source=parentef
+part name=pn; source=parentem; part=ppn,mpn
+part name=mn; source=parentef; part=pmn,mmn
 part name=ppn; source= parentem
 part name=mpn; source= parentef
 part name=pmn; source= parentem
 part name=mmn; source= parentef
-part name=pad; source= parentem
-part name=mad; source= parentef
+part name=pad; source= parentem; part=ppad,mpad
+part name=mad; source= parentef; part=pmad,mmad,mrmad
 part name=ppad; source= parentem
 part name=pmad; source= parentem
 part name=mpad; source= parentef
 part name=mmad; source= parentef
 part name=mrmad; source= parentem
 
-part name=pad1; source= parentem
-part name=mad1; source= parentef
+part name=pad1; source= parentem; part=ppad1,mpad1
+part name=mad1; source= parentef; part=pmad1,mmad1,mrmad1
 part name=ppad1; source= parentem
 part name=pmad1; source= parentem
 part name=mpad1; source= parentef
 part name=mmad1; source= parentef
 part name=mrmad1; source= parentem
 
-part name=pad2; source= parentem
-part name=mad2; source= parentef
+part name=pad2; source= parentem; part=ppad2,mpad2
+part name=mad2; source= parentef; part=pmad2,mmad2,mrmad2
 part name=ppad2; source= parentem
 part name=pmad2; source= parentem
 part name=mpad2; source= parentef
 part name=mmad2; source= parentef
 part name=mrmad2; source= parentem
 
-part name=pad3; source= parentem
-part name=mad3; source= parentef
+part name=pad3; source= parentem; part=ppad3,mpad3
+part name=mad3; source= parentef; part=pmad3,mmad3,mrmad3
 part name=ppad3; source= parentem
 part name=pmad3; source= parentem
 part name=mpad3; source= parentef
 part name=mmad3; source= parentef
 part name=mrmad3; source= parentem
 
-part name=pad4; source= parentem
-part name=mad4; source= parentef
+part name=pad4; source= parentem; part=ppad4,mpad4
+part name=mad4; source= parentef; part=pmad4,mmad4,mrmad4
 part name=ppad4; source= parentem
 part name=pmad4; source= parentem
 part name=mpad4; source= parentef
 part name=mmad4; source= parentef
 part name=mrmad4; source= parentem
+
+part  name=afilhado; source=male
+part  name=genro; source=male
+part  name=criado; source=male
+part  name=escravo; source=male
+part  name=engeitado; source=male
+part  name=enjeitado; source=male
+part  name=sobrinho; source=male
+part  name=sogro; source=male
+part  name=neto; source=male
+
+part  name=nora;  source=female
+part  name=afilhada; source=female
+part  name=criada;source=female
+part  name=escrava;  source=female
+part  name=engeitada;  source=female
+part  name=enjeitada;  source=female
+part  name=sobrinha;source=female
+part  name=sogra;source=female
+part  name=neta;source=female
 
 
 note *****************************************************************
