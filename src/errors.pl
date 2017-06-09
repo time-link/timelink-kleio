@@ -89,7 +89,7 @@ check_continuation:-
 check_continuation:-
    nl,report(
         [writeln('*** ERROR: MAXIMUM NUMBER OF ERRORS REACHED. TRANSLATION ABORTED.')]),
-   abort, !.
+   fail, !.
 
 perror_count :-
 		  error_count(N2),
