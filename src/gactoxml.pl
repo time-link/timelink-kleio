@@ -267,6 +267,7 @@ The structure of person related data like attributes and relations with other
    ?-dynamic(carel/4).
    ?-dynamic(carelnot/2).
    ?-dynamic(used_id/1).
+   ?-dynamic(attribute_cache/4).
    /*
    verificar porque estas nao estao definidas e o interprete sugere que sejam dadas como dynamic
    Ordem de consulta dos ficheiros?
@@ -961,14 +962,13 @@ The structure of person related data like attributes and relations with other
    %check_arel_scope(P1,P2) :- writeln('** not in scope '-P1-P2),!,fail.
 
    /*
-      This is an experiment in a new model for auto relations:
 
    Relations are defined based on paths
    A path is a list of groupName(ID) | sequence(C) | group(Name,ID) |extends(Class,ID) | clause(C).
    ID is usually a variable that is bound to actual IDs when the match is done
    sequence(C) matches a sequence of groups including a empty one
-   group(Name,ID) matches Name(ID) it is usefull to extract a Group name.
-   extends(Class,ID) will match any Name(ID) in Name is a group that extends Class.
+   group(Name,ID) matches Name(ID) it is useful to extract a Group name.
+   extends(Class,ID) will match any Name(ID) if Name is a group that extends Class.
    clause(C) will call the C predicate in Prolog
 
    example (using the sequence(P) place holder to signify the same context:
@@ -976,7 +976,7 @@ The structure of person related data like attributes and relations with other
    path_matching(P,[sequence(Prefix),n(N),mulher(M)]),
    writeln(relation/kin/husband/N/M),fail.
 
-   This generates functional relational for heads of households.
+   This generates functional relation for heads of households.
    group_path(PX),
    path_matching(PX,[kleio(K),fonte(F),rol(R),fogo(FG),n(N)]),
    writeln(relation/function/head-of-household/N/FG),fail.
@@ -1093,10 +1093,12 @@ The structure of person related data like attributes and relations with other
       call(C),
       path_matching(Path,MorePattern,FinalPath,FinalPattern).
 
+   path_matching(Path,[attribute(Entity,Attribute,Value)|MorePattern],FinalPath,FinalPattern) :-
+      clause(attribute_cache(Entity,_,[Attribute],[Value])),
+      path_matching(Path,MorePattern,FinalPath,FinalPattern).
+
    path_matching([Group|MorePath],[Group|MorePattern],FinalPath,FinalPattern):-!,
       path_matching(MorePath,MorePattern,FinalPath,FinalPattern).
-
-
 
    export_auto_rel((_Origin,OriginID),(_Destination,DestinationID),Type,Value) :-!,
    	rch_class(relation,Class,Super,Table,Mapping),
@@ -1138,8 +1140,8 @@ The structure of person related data like attributes and relations with other
       xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
       xml_nl,
       xml_write(['</GROUP>']),
-      report([writelist0ln(['   ** auto rel: from ',OriginID,
-                            ' to ',DestinationID,' ',Type,'/',Value])]),
+      report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,
+                            ' to ',DestinationID])]),
       !.
 
    export_auto_attribute(Entity,Type,Value) :- !,

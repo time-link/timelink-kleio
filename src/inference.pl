@@ -27,6 +27,91 @@
         attribute(id,type,value). -- generate an attribute
         newscope.  -- clean current scope (forgets previous actor and objects).
    */
+
+   % relations for family processing
+      if [sequence(_),extends(person,N),extends('kin-father',P)]
+      then
+           relation('*family','parent',P,N).
+
+      if [sequence(_),extends(person,N),extends('kin-mother',M)]
+      then
+           relation('*family','parent',M,N).
+
+
+       %direct parents as a couple for family processing
+       if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
+       then
+            relation('*family','co-parent',P,M) and
+            relation('*family','co-parent',M,P).
+
+
+        % sons and daughters for family processing
+        if [sequence(_Path),extends(person,N),extends('kin-son',F)]
+        then
+            relation('*family','parent',N,F).
+
+        if [sequence(_Path),extends(person,N),extends('kin-daughter',F)]
+        then
+            relation('*family','parent',N,F).
+
+
+         % co-parents from son-parent relations
+         if [sequence(_Path),extends(person,P),extends('kin-son',F)] and
+            [sequence(_Path),extends(person,M),extends('kin-son',F)] and
+             clause(P\=M)
+         then
+             relation('*family','co-parent',P,M) and
+             relation('*family', 'co-parent',P,M).
+
+         if [sequence(_Path),extends(person,P),extends('kin-daughter',F)] and
+            [sequence(_Path),extends(person,M),extends('kin-daughter',F)] and
+             clause(P\=M)
+         then
+             relation('*family','co-parent',P,M) and
+             relation('*family', 'co-parent',P,M).
+
+        % nested groups like son/daugther inside wife inside actor
+        % r1
+        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-son',F)]
+              then
+                   relation('*family','co-parent',P,M) and
+                   relation('*family','co-parent',M,P).
+        % r2
+       if [sequence(Path),extends('female',P),extends('kin-wife',M),extends('kin-daughter',F)]
+             then
+                  relation('*family','co-parent',P,M) and
+                  relation('*family','co-parent',M,P).
+
+        % nested groups like son/daugther inside husband inside actor
+        % r3
+        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-son',_)]
+              then
+                   relation('*family','co-parent',P,M) and
+                   relation('*family','co-parent',M,P).
+       % r4
+       if [sequence(Path),extends('female',M),extends('kin-husband',P),extends('kin-daughter',_)]
+             then
+                  relation('*family','co-parent',P,M) and
+                  relation('*family','co-parent',M,P).
+
+
+  % signaling of husband wife couples. Overlaps with co-parent but includes also husband-wife occurrences without children
+        %direct parents as a couple for family processing
+        if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
+            then
+                 relation('*family','couple',P,M) and
+                 relation('*family','couple',M,P).
+
+         if [sequence(Path),extends('male',P),extends('kin-wife',M)]
+            then
+                 relation('*family','couple',P,M) and
+                 relation('*family','couple',M,P).
+
+       if [sequence(Path),extends('female',P),extends('kin-husband',M)]
+             then
+                  relation('*family','couple',P,M) and
+                  relation('*family','couple',M,P).
+
    % male actor and direct parents
    if [sequence(_),extends(actorm,N),pai(P)]
    then
@@ -34,7 +119,10 @@
         
    if [sequence(_),extends(actorm,N),mae(M)]
    then
-        relation(parentesco,mae,M,N). 
+        relation(parentesco,mae,M,N).
+
+
+
 
 
    % female actor and direct parents
@@ -44,7 +132,9 @@
         
    if [sequence(_),extends(actorf,N),mae(M)]
    then
-        relation(parentesco,mae,M,N).            
+        relation(parentesco,mae,M,N).
+
+
    
    %direct parents as a couple
    if [sequence(Path),pai(P)] and [sequence(Path),mae(M)]
@@ -52,7 +142,7 @@
         relation(parentesco,marido,P,M) and 
         attribute(P,ec,c) and
         attribute(M,ec,c).
-        
+
     % sons and daughters
     if [sequence(_Path),extends(person,N),filho(F)]
     then
@@ -229,6 +319,10 @@
     % pnoiva,mnoiva, pnoivo,mnoivo.
         
  /* ========================================== */
+ /* The following rules are generated with the
+   make_auto_relation_clauses2 predicate
+   in gactoxml.pl
+   */
 
  /* BEGIN Auto-relation pai (levels 4) v2.1 16-5-2005
   ----------------------------------------- */

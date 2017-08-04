@@ -1,3 +1,4 @@
+?- style_check(-singleton).
 ?-consult(basicio).
 ?-consult(clioUtil).
 ?-consult(compatibilitySWI).

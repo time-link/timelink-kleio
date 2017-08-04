@@ -23,8 +23,8 @@ check_command_line :-
 	trad1(DF,SF),
 	halt.
 
-check_command_line:-
-	writeln('usage: swipl -f clioStart.pl -- [-sf StruFile] -df DataFile [-echo (yes|no)]').
+check_command_line:-!.
+%	writeln('usage: swipl -f clioStart.pl -- [-sf StruFile] -df DataFile [-echo (yes|no)]').
 
 
 check_arg(strufile,SF) :-
@@ -184,7 +184,7 @@ layout(macosx) :-
 layout(windows) :-
 		  put_value(data_dir,'../mhk_users/'),
 		  put_value(stru_dir,'../clio/src/').
-:-pclio_version.
+%:-pclio_version.
 
 :-check_command_line.
 

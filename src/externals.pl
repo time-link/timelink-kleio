@@ -197,8 +197,9 @@ clio_group_param(G,P,V):-get_group_prop(G,P,V).
 clio_super(Super,Group):-clio_group_param(Group,fons,Super).
 clio_extends(Group,Super):-clio_group_param(Group,fons,Super).
 clio_extends(Group,Super):-clio_group_param(Group,fons,F),clio_extends(F,Super).
-							% this defined the base class of a group, i.e.,
-							%   the root of the fons/source hierarchy for this group
+% this defined the base class of a group, i.e.,
+%   the root of the fons/source hierarchy for this group
+% this means: get a super class of Group that has no super class.
 clio_bclass(Group,Bclass) :-
 		clio_extends(Group,Bclass),
 		\+ clio_super(_,Bclass),!.
