@@ -56,15 +56,15 @@
 
 
          % co-parents from son-parent relations
-         if [sequence(_Path),extends(person,P),extends('kin-son',F)] and
-            [sequence(_Path),extends(person,M),extends('kin-son',F)] and
+         if [sequence(Path),extends(person,P),extends('kin-son',F)] and
+            [sequence(Path),extends(person,M),extends('kin-son',F)] and
              clause(P\=M)
          then
              relation('*family','co-parent',P,M) and
              relation('*family', 'co-parent',P,M).
 
-         if [sequence(_Path),extends(person,P),extends('kin-daughter',F)] and
-            [sequence(_Path),extends(person,M),extends('kin-daughter',F)] and
+         if [sequence(Path),extends(person,P),extends('kin-daughter',F)] and
+            [sequence(Path),extends(person,M),extends('kin-daughter',F)] and
              clause(P\=M)
          then
              relation('*family','co-parent',P,M) and
@@ -76,38 +76,72 @@
               then
                    relation('*family','co-parent',P,M) and
                    relation('*family','co-parent',M,P).
+        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-daugther',F)]
+              then
+                   relation('*family','co-parent',P,M) and
+                   relation('*family','co-parent',M,P).
         % r2
-       if [sequence(Path),extends('female',P),extends('kin-wife',M),extends('kin-daughter',F)]
+       if [sequence(Path),extends('female',P),extends('kin-husband',M),extends('kin-daughter',F)]
+             then
+                  relation('*family','co-parent',P,M) and
+                  relation('*family','co-parent',M,P).
+       if [sequence(Path),extends('female',P),extends('kin-husband',M),extends('kin-son',F)]
              then
                   relation('*family','co-parent',P,M) and
                   relation('*family','co-parent',M,P).
 
-        % nested groups like son/daugther inside husband inside actor
+      % parent-child from nested groups like son/daugther inside wife inside actor
+      % r1
+      if [sequence(Path),extends('person',P),extends('kin-wife',_),extends('kin-son',F)]
+            then
+                 relation('*family','parent',P,F).
+      if [sequence(Path),extends('person',P),extends('kin-wife',_),extends('kin-daughter',F)]
+            then
+                 relation('*family','parent',P,F).
+
+      % r2
+     if [sequence(Path),extends('person',P),extends('kin-husband',_),extends('kin-daughter',F)]
+           then
+                relation('*family','parent',P,F).
+     if [sequence(Path),extends('person',P),extends('kin-husband',_),extends('kin-son',F)]
+           then
+                relation('*family','parent',P,F).
+
+
+        % co-parents from nested groups like son/daugther inside husband inside actor
         % r3
-        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-son',_)]
+        if [sequence(Path),extends('person',P),extends('kin-wife',M),extends('kin-son',_)]
               then
                    relation('*family','co-parent',P,M) and
                    relation('*family','co-parent',M,P).
        % r4
-       if [sequence(Path),extends('female',M),extends('kin-husband',P),extends('kin-daughter',_)]
+       if [sequence(Path),extends('person',M),extends('kin-husband',P),extends('kin-daughter',_)]
+             then
+                  relation('*family','co-parent',P,M) and
+                  relation('*family','co-parent',M,P).
+       if [sequence(Path),extends('person',M),extends('kin-husband',P),extends('kin-son',_)]
              then
                   relation('*family','co-parent',P,M) and
                   relation('*family','co-parent',M,P).
 
-
   % signaling of husband wife couples. Overlaps with co-parent but includes also husband-wife occurrences without children
         %direct parents as a couple for family processing
+        if [sequence(Path),extends('kin-husband',P)] and [sequence(Path),extends('kin-wife',M)]
+            then
+                 relation('*family','couple',P,M) and
+                 relation('*family','couple',M,P).
+
         if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
             then
                  relation('*family','couple',P,M) and
                  relation('*family','couple',M,P).
 
-         if [sequence(Path),extends('male',P),extends('kin-wife',M)]
+         if [sequence(Path),extends('person',P),extends('kin-wife',M)]
             then
                  relation('*family','couple',P,M) and
                  relation('*family','couple',M,P).
 
-       if [sequence(Path),extends('female',P),extends('kin-husband',M)]
+       if [sequence(Path),extends('person',P),extends('kin-husband',M)]
              then
                   relation('*family','couple',P,M) and
                   relation('*family','couple',M,P).
@@ -120,10 +154,6 @@
    if [sequence(_),extends(actorm,N),mae(M)]
    then
         relation(parentesco,mae,M,N).
-
-
-
-
 
    % female actor and direct parents
    if [sequence(_),extends(actorf,N),pai(P)]

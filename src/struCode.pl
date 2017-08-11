@@ -71,7 +71,7 @@
 %******************************************************
 %  %
 initStru(_):-
-    setcount(errors,1),
+    initErrorCount,
     %put_value(max_errors,12),
    clean_commands,   % clean previous cmds %
    !.

@@ -109,7 +109,7 @@
 %  clio_version(V) where V is the version
 %******************************************************
 %  %
-clio_version('ClioInput - version $Revision$ SWI $Date$').
+clio_version('ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@').
 
 %******************************************************
 %  clio_init :- initialization procedures
@@ -118,7 +118,7 @@ clio_version('ClioInput - version $Revision$ SWI $Date$').
 %  %
 clio_init:-
     put_value(echo,no),  % echo initialy off %
-    setcount(errors,1), % error count %
+    initErrorCount, % error count %
     put_value(max_errors,1000), % maximum number of errors %
     set_report(off),
     !.  
@@ -156,7 +156,7 @@ dat(Filename):-
       writeln('-------------------------------------------')]),
       initData(Filename),
       ptime(readlines(dat)),
-		report([perror_count]),
+	  % report([perror_count]), % must be called after final checks in gactoxml.pl
       closeData(Filename),
       close(Filename). % SWI generates an error when closing after a seen
 

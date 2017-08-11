@@ -94,7 +94,7 @@ initData(FileName):-
     delCD, %cleans temporary data storage%
     createCD, % creates an empty data storage structure%
     initGroupCounters, 
-    setcount(errors,1),
+    initErrorCount,
     %put_value(max_errors,100),
     db_init, % call user defined database initialization code %
     !.

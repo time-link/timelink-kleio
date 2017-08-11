@@ -268,6 +268,9 @@ The structure of person related data like attributes and relations with other
    ?-dynamic(carelnot/2).
    ?-dynamic(used_id/1).
    ?-dynamic(attribute_cache/4).
+   ?-dynamic(same_as_cached/8).
+   ?-dynamic(xsame_as_cached/8).
+   ?-dynamic(same_as_cached_id/1).
    /*
    verificar porque estas nao estao definidas e o interprete sugere que sejam dadas como dynamic
    Ordem de consulta dos ficheiros?
@@ -325,11 +328,13 @@ The structure of person related data like attributes and relations with other
      */
    db_close:-
       do_auto_rels,  do_auto_rels2,
-   	report([writeln('** Translation finished.')]),
+      process_cached_same_as,
    	(get_value(clioPP,true)->clioPP_close;true),
    	error_count(E),
    	( E = 0 -> change_to_ids;true),
    	xml_write(['</KLEIO>']),
+    report([perror_count]),
+   	report([writeln('Translation finished.')]),
    	xml_nl,
    	xml_close.
 
@@ -343,15 +348,15 @@ The structure of person related data like attributes and relations with other
    	  */
      change_to_ids:-
       get_value(data_file,D),
-		report([writeln('** data file'-D)]),
+		report([writeln('** Processed file'-D)]),
       get_value(source_file,SOURCE),
       concat(SOURCE,'.org',Original),
-		report([writeln('** original file'-Original)]),
+		report([writeln('** Original file'-Original)]),
       concat(SOURCE,'.old',Last),
-		report([writeln('** old file'-Last)]),
+		report([writeln('** Previous version'-Last)]),
  
       concat(SOURCE,'.ids',Ids),
-				report([writeln('** original file'-Ids)]),
+				report([writeln('** Temp file with ids'-Ids)]),
  
       (exists_file(Last) ->delete_file(Last);true),
       (exists_file(Original)->rename_file(D,Last);rename_file(D,Original)),
@@ -405,10 +410,8 @@ The structure of person related data like attributes and relations with other
    set_autorel_mode(1):-put_value(autorelmode,1),!.
    set_autorel_mode(2):-put_value(autorelmode,2),!.
    set_autorel_mode(''):-!.
-   set_autorel_mode(O):-	report([
-   		writelist0ln(['*** WARNING bad autorel mode =',O])
-   		]
-   		),!.
+   set_autorel_mode(O):-
+   		warning_out(['bad autorel mode =',O]),!.
 
    /** this saves the current path with the ids created by this translator modules
        current path for each processed group is stored as a group_path(Path) clause
@@ -561,7 +564,8 @@ The structure of person related data like attributes and relations with other
    */
    historical_act_export(Group,Id):-
       do_auto_rels2,
-      report([writelist0ln(['** Processing act ',Group,'$',Id])]),
+      get_prop(line,number,N),
+      report([writelist0ln([N,': ',Group,'$',Id])]),
       del_props(act),
       del_props(person),
       set_prop(act,id,Id),
@@ -570,11 +574,11 @@ The structure of person related data like attributes and relations with other
                (get_y_m_d(Date2) -> Date = Date2 ;
                         (get_prop(source,date,Date3) -> Date = Date3 ;
                               (Date = 0,
-                                    report([writelist0ln(['* Warning: No date in act ',
+                                    warning_out(['* Warning: No date in act ',
                                                          Group,'(',Id,')'
-                                                         ]
-                                                      )
-                                          ])
+                                                ]
+                                               )
+
                               )
                         )
                   )
@@ -598,24 +602,27 @@ The structure of person related data like attributes and relations with other
       (member(sex,Els) -> SexElement = []; SexElement=[sex([S],[],[])]),
    	(belement_aspect(core,id,[]) -> IdElement=[id([ID],[],[])];IdElement = [] ),
    	append(SexElement,IdElement, ExtraElements ),
+   	assertz(same_as_cached_id(ID)),
    	group_to_xml(G,ID,ExtraElements),
    	process_function_in_act(G,ID),
       !.
 
    object_export(G,ID) :-
    	(belement_aspect(core,id,[]) ->  IdElement=[id([ID],[],[]),type([G],[],[]) ]; IdElement=[type([G],[],[])]),
+   	assertz(same_as_cached_id(ID)),
    	group_to_xml(G,ID,IdElement),
    	process_function_in_act(G,ID),
-   	report(writeln(G-ID-'** was stored with function in ACT verify act')),
+   	% report(writeln(G-ID-'** was stored with function in ACT verify act')),
       !.
 
    geoentity_export(G,ID) :-
    	(belement_aspect(core,id,[]) 
 				->  IdElement=[id([ID],[],[]),type([G],[],[])]
 				;   IdElement=[type([G],[],[])]),
+    assertz(same_as_cached_id(ID)),
    	group_to_xml(G,ID,IdElement),
    	process_function_in_act(G,ID),
-   	report(writeln(G-ID-'** was stored with function in ACT verify act')),
+   	% report(writeln(G-ID-'** was stored with function in ACT verify act')),
       !.
 			
    attribute_export(G,ID) :-
@@ -653,16 +660,16 @@ The structure of person related data like attributes and relations with other
    		tests if an element named same_as (or a specialization of such an element)
    		exists in the current group. If so , generates a relation between the current group and
    		the group whose id is the value of the same-as element.
-   		This is used both in person and in objects
+   		This is used both in person and in objects, and geoentities?
    */
    process_same_as(_Group,Id):-
    	belement_aspect(core,same_as,[SameId]),
-           writelistln(['   ** processing_same_as for ',Id]),
+    writelistln(['   ** processing_same_as for ',Id]),
    	(is_list(SameId) -> list_to_a0(SameId,SID0); SID0 = SameId),
    	check_id_prefix(SID0,SID),
    	gensymbol(rela,Rid),
    	get_ancestor(_anc,AncID),
-           get_prop(act,date,Date),
+    get_prop(act,date,Date),
    	rch_class(relation,Class,Super,Table,Mapping),
    	ensure_class(relation,Class,Super,Table,Mapping),
       inccount(group,GroupNumber),
@@ -670,8 +677,71 @@ The structure of person related data like attributes and relations with other
       length(P,CurrentLevel),
       ThisLevel is CurrentLevel+1,
       get_prop(line,number,N),
-      xml_nl,
-   	xml_write(['<RELATION ID="',AncID-Rid,'" ORG="',Id,'" DEST="',SID,'" TYPE="META" VALUE="same_as"/>']),
+      assertz(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date)),
+      (clause(same_as_cached_id(SID),true)->true;warning_out(['destination id of "same as" not found. Will check again at the end of file.'])),
+      !.
+
+  /* xsame_as elements differ in the checks made. The same type of relation is generated, but no test is made if the
+       destination id exists in this file. Also the destination id does not receive the prefix of the kleio file if any.
+       */
+  process_same_as(_Group,Id):-
+   	belement_aspect(core,xsame_as,[SameId]),
+    writelistln(['   ** Processing EXTERNAL same_as for ',Id]),
+   	(is_list(SameId) -> list_to_a0(SameId,SID); SID = SameId),
+   	gensymbol(rela,Rid),
+   	get_ancestor(_anc,AncID),
+    get_prop(act,date,Date),
+   	rch_class(relation,Class,Super,Table,Mapping),
+   	ensure_class(relation,Class,Super,Table,Mapping),
+      inccount(group,GroupNumber),
+      clio_path(P),
+      length(P,CurrentLevel),
+      ThisLevel is CurrentLevel+1,
+      get_prop(line,number,N),
+      assertz(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date)),
+      !.
+   process_same_as(_,_).
+
+
+
+
+   /* Process the cached same as */
+
+   process_cached_same_as:-
+    %report([writeln('**** SAME AS checks STARTED...')]),
+    p_cached_same.
+
+
+    p_cached_same:-
+        clause(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
+        p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
+        %report([write('  ** Testing'-Id-same_as-SID)]),
+        (clause(same_as_cached_id(Id),true)->
+            true
+            %report([write(' Origin OK')])
+            ;
+            error_out([' Could not find same_as id ',Id,' referred in line ',N,'. If  original reference is on another file use xsame_as'])),
+         (clause(same_as_cached_id(SID),true)->
+             true %report([write(' Destination OK')])
+             ;
+             error_out([' Could not find same_as id ',SID,' referred in line ',N,'. If  original reference is on another file use xsame_as'],noline)),
+          % report([nl]),
+          fail.
+
+          % and now the external references
+    p_cached_same:-
+        clause(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
+        p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
+        warning_out([' "SAME AS" TO EXTERNAL REFERENCE EXPORTED (',SID,' AT LINE ',N,') CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.']),
+          fail.
+      p_cached_same:-
+        retractall(same_as_cached(_,_,_,_,_,_,_,_)),
+        retractall(xsame_as_cached(_,_,_,_,_,_,_,_)),
+        retractall(same_as_cached_id(_)).
+
+p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
+    xml_nl,
+  	xml_write(['<RELATION ID="',AncID-Rid,'" ORG="',Id,'" DEST="',SID,'" TYPE="META" VALUE="same_as"/>']),
    	xml_nl,
       xml_write(['<GROUP ID="',AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'"  CLASS="relation" LINE="',N,'">']),
       xml_nl,
@@ -701,10 +771,7 @@ The structure of person related data like attributes and relations with other
       xml_nl,
       xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
       xml_nl,
-      xml_write(['</GROUP>']),
-      !.
-
-   process_same_as(_,_).
+      xml_write(['</GROUP>']),!.
 
    process_function_in_act(Group,Id):-
    	gensymbol(rela,Rid),
@@ -830,7 +897,7 @@ The structure of person related data like attributes and relations with other
    get_group_id(Group,Id,Id0) :- check_id_prefix(Id0,Id),put_value(Group,Id),\+ used_id(Id),assert(used_id(Id)),!. % If everything fails accept the kleio auto id
 
    /*
-      cehck if there is a name space prefix to ad to the id.
+      Check if there is a name space prefix to ad to the id.
       these prefixes are registered in "prefix" element of the kleio group.
      */
 
@@ -877,7 +944,7 @@ The structure of person related data like attributes and relations with other
 
    /*
 
-      Automatic relation handling.
+      Automatic relation handling DEPRECATED THIS IS NOT USED ANYMORE.
 
       From the gacto.str file:
       note Usage
@@ -992,17 +1059,18 @@ The structure of person related data like attributes and relations with other
    writeln(relation/Name/I/FG),fail.
    */
 
-   /** this is the new experimental mechanism for inferencing relations.
+   /** this is the new  mechanism for inferencing relations.
    It is done at act scope level.
    */
    do_auto_rels2:-get_value(autorelmode,N), N \= 2,!.
    do_auto_rels2:-
-      report([writeln('**** auto rels 2 STARTED.')]),
+      %report([writeln('**** auto rels 2 STARTED.')]),
       apply_inference_rules,
       %clean_paths,
       !.
    do_auto_rels2:-
-      report([writeln('**** auto rels 2 FINISHED.')]),!.
+      %report([writeln('**** auto rels 2 FINISHED.')]),
+      !.
 
    clean_paths:-
       group_path(P),
@@ -1140,8 +1208,7 @@ The structure of person related data like attributes and relations with other
       xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
       xml_nl,
       xml_write(['</GROUP>']),
-      report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,
-                            ' to ',DestinationID])]),
+      % report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,  ' to ',DestinationID])]),
       !.
 
    export_auto_attribute(Entity,Type,Value) :- !,
@@ -1238,7 +1305,7 @@ The structure of person related data like attributes and relations with other
       assert(carelnot(Person,Person2)),fail.
    /*
 
-            This is a utiltiy to generate auto-relation definitions for families for the gacto.str file.
+            This is a utility to generate auto-relation definitions for families for the gacto.str file.
             Usage: make_auto_relation_clauses(Actor,Sex,Levels).
 
             For different languages check the prefix while calling make_parent_clause and check inside that predicate

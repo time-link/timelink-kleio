@@ -48,11 +48,24 @@
  cvs keywords.
 
 */
-error_our(Mess):-
+
+initErrorCount:-
+    setcount(errors,1),
+    setcount(warnings,1).
+
+error_out(Mess):- %not sure this is a good idea, so changed the name to disable
    get_prop(line,number,N),
    get_prop(line,previous,number,N),
    !. % skipping repeated error in the same line.
+
 error_out(Mess):-
+    p_error_warn_context('ERROR',Mess).
+
+warning_out(Mess):-
+    p_error_warn_context('WARNING',Mess).
+
+
+p_error_warn_context(TYPE,Mess):-
    get_value(data_file,DataFile),
    break_fname(DataFile,_,Source_file,_,_),
    get_prop(line,number,N),
@@ -61,17 +74,16 @@ error_out(Mess):-
    set_prop(line,previous,N),
    N2 is N-1,
    report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
-  report([nl,write('ERROR: '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), % we always get at least a line later
+  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), % we always get at least a line later
            write('Near line: '),write(N2),tab(1),write(Last),
            write('Near line: '),write(N) ,tab(1),write(Line),
            nl,
        true]),
-
-   check_continuation,!.
+   check_continuation(TYPE),!.
 
 error_out(Mess,noline):-
-   report([nl,write('ERROR: '),perr(Mess)]),
-   check_continuation,!.
+   report([nl,write('ERROR: '),perr(Mess),nl]),
+   check_continuation('ERROR'),!.
 
 perr(X):-
   atomic(X),
@@ -82,17 +94,25 @@ perr(X):-
    functor(X,_,_),
    writeln(X),!.
 
-check_continuation:-
+check_continuation('ERROR'):-
    inccount(errors,N),
    get_value(max_errors,M),
    N =< M,!.
-check_continuation:-
+check_continuation('ERROR'):-
    nl,report(
         [writeln('*** ERROR: MAXIMUM NUMBER OF ERRORS REACHED. TRANSLATION ABORTED.')]),
    fail, !.
+check_continuation('ERROR'):- % don't think this is ever reached
+   inccount(errors,N).
+check_continuation('WARNING'):-
+   inccount(warnings,N),!.
+
+
 
 perror_count :-
 		  error_count(N2),
-		  writelistln([N2,' errors.']),!.
+		  warning_count(N3),
+		  writelistln([N2,' errors. ',N3,' warnings.']),!.
 
 error_count(E) :- getcount(errors,N),E is N-1.
+warning_count(E) :- getcount(warnings,N),E is N-1.

@@ -218,6 +218,7 @@ element name=origin
 element name=destination
 element name=entity
 element name=same_as
+element name=xsame_as
 element name=name
 element name=sex
 element name=destname
@@ -299,6 +300,7 @@ element name=localizacao; source=loc
 element name=cota; source=ref;
 element name=nome; source=name
 element name=mesmo_que; source=same_as
+element name=xmesmo_que; source=xsame_as
 element name=sexo; source=sex
 element name=nomedest; source=destname
 element name=iddest; source=destination
@@ -619,7 +621,7 @@ part  name=cas,termo;
 
 note *****************************************************************
 note doc group bap Baptismos (variante usada nos registos da Lousa
-      por Rosario Campos e em Óbidos)
+      por Rosario Campos e em ?bidos)
 note *****************************************************************
 part name=bap; source=pt-acto;
   position=id,dia,mes,ano,fol,local,celebrante;
@@ -670,7 +672,7 @@ part name=ar; source=pt-acto;
 part name=proparr; source=object;
      guaranteed=name;
      position=name;
-     also=valor,prazo,condicao,obs,id,mesmo_que;
+     also=valor,prazo,condicao,obs,id,mesmo_que,xmesmo_que;
      part=arrem,fiador;
 
 part name=bemarr; source=proparr
@@ -1342,7 +1344,7 @@ part name=actorm;
   source=male;
   position=nome,sexo;
   guaranteed=nome;
-  also=id,obs,mesmo_que,sexo;
+  also=id,obs,mesmo_que,xmesmo_que,sexo;
   repeat=atr,ls,rel,referido,referida,
           pai,
               ppai,
@@ -1450,17 +1452,18 @@ part name=actorm;
                      pmmmulher3,
                      mmmmulher3,
          pn,ppn,mpn,mn,pmn,mmn,
-         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
-            pad1,ppad1,mpad1,procuradora-pad1,
-              pad2,ppad2,mpad2,procuradora-pad2,
-             pad3,ppad3,mpad3,procuradora-pad3,
-             pad4,ppad4,mpad4,procuradora-pad4,
+         pad,ppad,mpad,
+            procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procurador-pad1,procuradora-pad1,
+            pad2,ppad2,mpad2,procurador-pad2,procuradora-pad2,
+            pad3,ppad3,mpad3,procurador-pad3,procuradora-pad3,
+            pad4,ppad4,mpad4,procurador-pad4,procuradora-pad4,
 
-              mad,pmad,mmad,mpad,mrmad,
-              mad1,pmad1,mmad1,mpad1,mrmad1,
-              mad2,pmad2,mmad2,mpad2,mrmad2,
-              mad3,pmad3,mmad3,mpad3,mrmad3,
-              mad4,pmad4,mmad4,mpad4,mrmad4,
+            mad,pmad,mmad,mpad,mrmad,
+            mad1,pmad1,mmad1,mpad1,mrmad1,procurador-mad1,procuradora-mad1,
+            mad2,pmad2,mmad2,mpad2,mrmad2,procurador-mad2,procuradora-mad2,
+            mad3,pmad3,mmad3,mpad3,mrmad3,procurador-mad3,procuradora-mad3,
+            mad4,pmad4,mmad4,mpad4,mrmad4,procurador-mad4,procuradora-mad4,
          sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
          criada,criado,engeitado,engeitada
 
@@ -1477,7 +1480,7 @@ note      por isso reproduzimos aqui os parentescos aplicaveis a ambos os sexos.
 part	 name=n;
          source=actorm;
          position=nome,sexo;
-      also=sexo,id,mesmo_que,obs;
+      also=sexo,id,mesmo_que,xmesmo_que,obs;
          guaranteed=nome;
            repeat=atr,ls,rel,referido,referida,
                    pai,
@@ -1679,41 +1682,44 @@ part	 name=n;
                   mmmnoivo,
          pn,ppn,mpn,
          mn,pmn,mmn,
-         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
-            pad1,ppad1,mpad1,procuradora-pad1,
-            pad2,ppad2,mpad2,procuradora-pad2,
-            pad3,ppad3,mpad3,procuradora-pad3,
-            pad4,ppad4,mpad4,procuradora-pad4,
+        pad,ppad,mpad,
+            procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procurador-pad1,procuradora-pad1,
+            pad2,ppad2,mpad2,procurador-pad2,procuradora-pad2,
+            pad3,ppad3,mpad3,procurador-pad3,procuradora-pad3,
+            pad4,ppad4,mpad4,procurador-pad4,procuradora-pad4,
 
-              mad,pmad,mmad,mpad,mrmad,
-              mad1,pmad1,mmad1,mpad1,mrmad1,
-              mad2,pmad2,mmad2,mpad2,mrmad2,
-              mad3,pmad3,mmad3,mpad3,mrmad3,
-              mad4,pmad4,mmad4,mpad4,mrmad4,
-              sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+            mad,pmad,mmad,mpad,mrmad,
+            mad1,pmad1,mmad1,mpad1,mrmad1,procurador-mad1,procuradora-mad1,
+            mad2,pmad2,mmad2,mpad2,mrmad2,procurador-mad2,procuradora-mad2,
+            mad3,pmad3,mmad3,mpad3,mrmad3,procurador-mad3,procuradora-mad3,
+            mad4,pmad4,mmad4,mpad4,mrmad4,procurador-mad4,procuradora-mad4,
+	     sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
               criada,criado,engeitada,engeitado
-
-part  name=celebrante; source=male
-note  ---- name=noivo; source=actorm;part=pnoivo,mnoivo,mulher1,mulher2,mulher3
-part  name=procurador-pad;source=male
-part  name=procurador-mad;source=male
-part  name=procurador-pad1;source=male
-part  name=procurador-mad1;source=male
-part  name=procurador-pad2;source=male
-part  name=procurador-mad2;source=male
-part  name=procurador-pad3;source=male
-part  name=procurador-mad3;source=male
-part  name=procurador-pad4;source=male
-part  name=procurador-mad4;source=male
-part  name=presente;source=actorm
-part  name=mestre;source=male
 
 part 	name=referido;
      source=male;
      guaranteed=nome;
      position=nome,sexo;
-     also=obs,mesmo_que,id;
+     also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
+
+part  name=celebrante; source=referido
+note  ---- name=noivo; source=actorm;part=pnoivo,mnoivo,mulher1,mulher2,mulher3
+part  name=procurador-pad;source=referido
+part  name=procurador-mad;source=referido
+part  name=procurador-pad1;source=referido
+part  name=procurador-mad1;source=referido
+part  name=procurador-pad2;source=referido
+part  name=procurador-mad2;source=referido
+part  name=procurador-pad3;source=referido
+part  name=procurador-mad3;source=referido
+part  name=procurador-pad4;source=referido
+part  name=procurador-mad4;source=referido
+part  name=presente;source=actorm
+part  name=mestre;source=referido
+
+
 
 
 part 	name=eleitor; source=actorm
@@ -1728,7 +1734,7 @@ part	name=rp; source=actorm;
       guaranteed=nordem,nome
 
 part 	name=arrem; source=n;
-      also=id,mesmo_que,obs,cota
+      also=id,mesmo_que, xmesmo_que,obs,cota
 
 
 note notariais
@@ -1966,18 +1972,18 @@ part name=ts; source=n
 note usado em cas (casamentos)
 part name=test; source=male;
          position=nome,sexo;
-      also=sexo,id,mesmo_que,obs;
+      also=sexo,id,mesmo_que,xmesmo_que,obs;
          guaranteed=nome;
       repeat=ls,atr,rel
 note usado nas devassas
 part name=testo; source=actorm;
 	position=nome,sexo;
-	also=id,mesmo_que,obs,sexo;
+	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
 	part=acus,caso
 part name=denunciante; source=actorm;
 	position=nome,sexo;
-	also=id,mesmo_que,obs,sexo;
+	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
 	part=acus,caso
 part name=acusado; source=actorm;
@@ -2100,7 +2106,7 @@ part 	name=actorf;
      source=female;
      position=nome,sexo;
      guaranteed=nome;
-     also=sexo,obs,mesmo_que,id;
+     also=sexo,obs,mesmo_que,xmesmo_que,id;
      repeat=atr,ls,rel,referido,referida,
          pai,
               ppai,
@@ -2234,27 +2240,27 @@ note *****************************************************************
 part 	name=referida;	source=female;
      guaranteed=nome;
      position=nome,sexo;
-     also=obs,mesmo_que,id;
+     also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
 
 part  name=na; source=actorf
-part  name=procuradora-pad;source=female
-part  name=procuradora-mad;source=female
-part  name=procuradora-pad1;source=female
-part  name=procuradora-mad1;source=female
-part  name=procuradora-pad2;source=female
-part  name=procuradora-mad2;source=female
-part  name=procuradora-pad3;source=female
-part  name=procuradora-mad3;source=female
-part  name=procuradora-pad4;source=female
-part  name=procuradora-mad4;source=female
+part  name=procuradora-pad;source=referida
+part  name=procuradora-mad;source=referida
+part  name=procuradora-pad1;source=referida
+part  name=procuradora-mad1;source=referida
+part  name=procuradora-pad2;source=referida
+part  name=procuradora-mad2;source=referida
+part  name=procuradora-pad3;source=referida
+part  name=procuradora-mad3;source=referida
+part  name=procuradora-pad4;source=referida
+part  name=procuradora-mad4;source=referida
 part  name=enferma;source=actorf
 note doc group present-f mulher presente num acto.
 part  name=presente-f;source=actorf
 
 part name=testa; source=actorf;
 	position=nome,sexo;
-	also=id,mesmo_que,obs,sexo;
+	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
 	part=acus,caso
 
@@ -2300,7 +2306,7 @@ part name=destinataria; source=actorf;
 part name=perdoante; source= person;
      guaranteed=nome;
      position=nome,sexo;
-     also=obs,mesmo_que,id;
+     also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
 part name=perdoantem; source= actorm; position=nome
 part name=perdoantef; source= actorf; position=nome
@@ -2309,7 +2315,7 @@ part name=perdoada; source=actorf; position=nome
 part name=vitima; source=person;
      guaranteed=nome;
      position=nome,sexo;
-     also=obs,mesmo_que,id;
+     also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
 part name=vitima-m; source= actorm; position=nome
 part name=vitima-f; source= actorf; position=nome
@@ -2323,7 +2329,7 @@ part name=parentem;
  source=male;
  position=nome,sexo;
  guaranteed=nome;
- also=obs,mesmo_que,id,sexo;
+ also=obs,mesmo_que,xmesmo_que,id,sexo;
  repeat=atr,ls,rel
 
 note TODO this is related to family processing maybe could go into generic part
@@ -2342,7 +2348,7 @@ part name=parentef;
   source=female;
  guaranteed=nome;
  position=nome,sexo;
- also=obs,mesmo_que,id,sexo;
+ also=obs,mesmo_que,xmesmo_que,id,sexo;
  repeat=atr,ls,rel
 
 note TODO this is related to family processing maybe could go into generic part
@@ -2354,7 +2360,7 @@ part name=kin-daughter; source=parentef
 note *****************************************************************
 note Parentes classificados por genero
 note *****************************************************************
-note TODO falta verificar se todos os part estão bem feitos
+note TODO falta verificar se todos os part est?o bem feitos
 
 part name= pai;  source=kin-father;pars=ppai, mpai
 part    name= ppai;  source=kin-father;pars=pppai, mppai

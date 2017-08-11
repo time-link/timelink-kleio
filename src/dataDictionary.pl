@@ -436,7 +436,7 @@ copy_fons_g(Group,Groups):-
    forall(member(G,Groups),copy_group(G,Group)),!.
 copy_fons_g(Group,_Groups):-
    \+ clioGroup(Group,_ID),
-   report([nl,write('** WARNING copy_fons - undefined fons group'),write(Group),nl]),!.
+   warning_out(['copy_fons - undefined fons group',Group]),!.
 
 %*************************************************************
 % copy_fons_e(Element,Elements)
@@ -449,7 +449,7 @@ copy_fons_e(Element,Elements):-
    forall(member(E,Elements),copy_element(E,Element)),!.
 copy_fons_e(Element,_Elements):-
    \+ clioElement(Element,_ID),
-   report([nl,write('** WARNING copy_fons - undefined fons element'),write(Element),nl]),!.
+   warning_out('copy_fons - undefined fons element'),!.
 
 %*************************************************************
 % all_groups(List) - list of all the currently defined groups
