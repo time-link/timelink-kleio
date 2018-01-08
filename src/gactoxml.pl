@@ -1247,7 +1247,7 @@ p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
       xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
       xml_nl,
       xml_write(['</GROUP>']),
-      report([writelist0ln(['   ** Automatic attribute: ',Entity,'/',Type,'/',Value])]),
+      %report([writelist0ln(['   ** Automatic attribute: ',Entity,'/',Type,'/',Value])]),
       !.
 
 

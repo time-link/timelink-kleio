@@ -9,8 +9,8 @@
 %
 % trailing "/" or "\" on dir names please.
 %
-:- put_value(stru_dir,'/Users/jrc/develop/rch/clio/src/').
-:- put_value(data_dir,'/Users/jrc/develop/rch/mhk_users/').
+:- put_value(stru_dir,'/Users/jrc/develop/mhk-git/clio/src/').
+:- put_value(data_dir,'/Users/jrc/develop/mhk-git/mhk_users/').
 :- put_value(echo,yes).
 :- put_value(max_errors,1000).
 
@@ -179,11 +179,19 @@ layout(linuxppc) :-
 layout(macosx) :-
 		put_value(data_dir,'/Users/jrc/develop/mhk_users/testes/sources/'),
 		put_value(stru_dir,'/Users/jrc/develop/mhk-git/clio/src/').
-
-
 layout(windows) :-
-		  put_value(data_dir,'../mhk_users/'),
-		  put_value(stru_dir,'../clio/src/').
+        		  put_value(data_dir,'../mhk_users/'),
+        		  put_value(stru_dir,'../clio/src/').
+cdweb:-
+    cd('/Users/jrc/develop/apache-tomcat/webapps/mhk/WEB-INF/clio/src'),pwd.
+cddev:-
+    get_value(stru_dir,S),
+    cd(S),pwd.
+
+
+
+
+
 %:-pclio_version.
 
 :-check_command_line.

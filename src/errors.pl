@@ -53,9 +53,9 @@ initErrorCount:-
     setcount(errors,1),
     setcount(warnings,1).
 
-error_out(Mess):- %not sure this is a good idea, so changed the name to disable
+xxxerror_out(Mess):- %not sure this is a good idea, so changed the name to disable
    get_prop(line,number,N),
-   get_prop(line,previous,number,N),
+   get_prop(line,previous,N),
    !. % skipping repeated error in the same line.
 
 error_out(Mess):-
@@ -82,7 +82,7 @@ p_error_warn_context(TYPE,Mess):-
    check_continuation(TYPE),!.
 
 error_out(Mess,noline):-
-   report([nl,write('ERROR: '),perr(Mess),nl]),
+   report([write('ERROR: '),perr(Mess),nl]),
    check_continuation('ERROR'),!.
 
 perr(X):-
@@ -111,8 +111,9 @@ check_continuation('WARNING'):-
 
 perror_count :-
 		  error_count(N2),
-		  warning_count(N3),
-		  writelistln([N2,' errors. ',N3,' warnings.']),!.
+		  warning_count(N3),!,
+		  writelistln([N2,' errors. ']),
+		  writelistln([N3,' warnings.']),!.
 
 error_count(E) :- getcount(errors,N),E is N-1.
 warning_count(E) :- getcount(warnings,N),E is N-1.
