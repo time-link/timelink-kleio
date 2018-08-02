@@ -156,7 +156,7 @@ now(Year,Month,Day,Hour,Minute,Second):-
 break_fname(FullName,Path,FileName,Base,Extension):-
     path_sep(Sep),
     stringof(Chars_Full_Name,FullName),reverse(Chars_Full_Name,RCFN),
-    (append(RFileName,[Sep|RPATH],RCFN)->true;(RFileName=RCFN,RPATH=[])),
+    (append(RFileName,[Sep|RPATH],RCFN)->true;(RFileName=RCFN,RPATH=['.'])),
     reverse(RFileName,CharsFileName),reverse(RPATH,CPATH),
     stringof(CharsFileName,FileName),stringof(CPATH,Path),
     (append(CharsBase,['.'|Cext],CharsFileName)->

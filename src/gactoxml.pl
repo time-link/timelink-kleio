@@ -21,7 +21,7 @@
  process_function in object groups is now Ok.
  Also changed the way by which the mapping of a element of a group was determined.
  Previously the mapping was found directly or by trying to see if the element extended another
- element for which a mapping was known. Now another techinque is used: the mapping is also
+ element for which a mapping was known. Now another techinque is used: the mappings is also
  searched in the super class of the group's class.
 
  Revision 1.4  2005/05/16 11:43:17  jrc
@@ -294,6 +294,7 @@ The structure of person related data like attributes and relations with other
    	list_to_a0([Path,Sep,Base],SOURCE),writeln(path-Path-sep-Sep-base-Base),
    	put_value(source_file,SOURCE),
    	concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
+   	writeln(xmlfile-XMLFILE),
    	open_file_write(XMLFILE),
    	% prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
 
@@ -353,7 +354,7 @@ The structure of person related data like attributes and relations with other
       concat(SOURCE,'.org',Original),
 		report([writeln('** Original file'-Original)]),
       concat(SOURCE,'.old',Last),
-		report([writeln('** Previous version'-Last)]),
+	   report([writeln('** Previous version'-Last)]),
  
       concat(SOURCE,'.ids',Ids),
 				report([writeln('** Temp file with ids'-Ids)]),
@@ -725,6 +726,7 @@ The structure of person related data like attributes and relations with other
              true %report([write(' Destination OK')])
              ;
              error_out([' Could not find same_as id ',SID,' referred in line ',N,'. If  original reference is on another file use xsame_as'],noline)),
+
           % report([nl]),
           fail.
 
@@ -1819,6 +1821,7 @@ p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
    xml_close:-
            !,
    	get_value(xmlfile,XMLFILE),
+   	writelistln(['xml data file',XMLFILE]),
    	close_file(XMLFILE).
 
    xcleanwrite([]):-!.

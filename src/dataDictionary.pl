@@ -661,8 +661,8 @@ clean_groups(_F):-
 
 remove_groups([G|Other]):-
    forall(retract(clioGroup(G,ID)),del_props(ID)),
-   report([write('** Previous definition of group '),write(G),
-           write(' deleted.'),nl]),
+   %report([write('** Previous definition of group '),write(G),
+   %        write(' deleted.'),nl]),
    remove_groups(Other),!.
 remove_groups([]):-!.
 %*************************************************************
@@ -677,8 +677,8 @@ clean_elements(_F):-
 
 remove_elements([E|Other]):-
    forall(retract(clioElement(E,ID)),del_props(ID)),
-   report([write('** Previous definition of element '),write(E),
-           write(' deleted.'),nl]),
+   %report([write('** Previous definition of element '),write(E),
+   %        write(' deleted.'),nl]),
    remove_elements(Other),!.
 remove_elements([]):-!.
 

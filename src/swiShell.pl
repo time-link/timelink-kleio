@@ -9,10 +9,17 @@
 %
 % trailing "/" or "\" on dir names please.
 %
-:- put_value(stru_dir,'/Users/jrc/develop/mhk-git/clio/src/').
-:- put_value(data_dir,'/Users/jrc/develop/mhk-git/mhk_users/').
-:- put_value(echo,yes).
-:- put_value(max_errors,1000).
+default_value(stru_dir,SD):- getenv(kleio_stru_dir,SD),!.
+default_value(stru_dir,'~/clio/src/'):-!.
+default_value(data_dir,SD):- getenv(kleio_data_dir,SD),!.
+default_value(data_dir,'~/mhk_users/'):-!.
+
+
+set_defaults :-
+        default_value(stru_dir,SD),put_value(stru_dir,SD),
+        default_value(data_dir,DD),put_value(data_dir,DD),
+        put_value(echo,yes),
+        put_value(max_errors,1000).
 
 check_command_line :-
 	check_arg(strufile,SF),
@@ -79,6 +86,7 @@ trad1(DatFile,StruFile):-
 trad_stru_only(StruFile):-
     writeln(structure-StruFile),
     break_fname(StruFile,P,_File,Base,_),
+    writeln((StruFile,P,_File,Base,_)),
     put_value(stru_dir,P),
 	% chdir(P),
 	path_sep(Sep),
@@ -194,5 +202,6 @@ cddev:-
 
 %:-pclio_version.
 
+:- set_defaults.
 :-check_command_line.
 

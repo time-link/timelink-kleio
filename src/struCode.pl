@@ -105,16 +105,16 @@ init_command(C):-
 
 close_command(nomino,S):-
     check_complete(nomino,S),
-    report([write(' nomino command'),write(S)]),
+    %report([write(' nomino command'),write(S)]),
     create_stru(S), % store structure information%
     del_props(nomino),!.
 close_command(pars,S):-
     check_complete(pars,S),
-    report([writelistln([' pars',S])]),
+    %report([writelistln([' pars',S])]),
     del_props(pars),!.
 close_command(terminus,S):-
     check_complete(terminus,S),
-    report([writelistln([' terminus',S])]),
+    %report([writelistln([' terminus',S])]),
     del_props(terminus),!.
 close_command(exitus,ok):-!.
 
@@ -190,7 +190,7 @@ execParam(nomino,P,V):-
   
 execParam(pars,nomen,NameList):-
    set_prop(pars,nomen,NameList),
-   report([writelist(['Reading pars for:'|NameList])]),
+   %report([writelist(['Reading pars for:'|NameList])]),
    create_groups(NameList),!.
 %*************************************************************
 % a group of params have their value stored as properties
@@ -234,7 +234,7 @@ execParam(pars,P,V):-
   
 execParam(terminus,nomen,NameList):-
    set_prop(terminus,nomen,NameList),
-   report([writelist(['Reading terminus for:'|NameList])]),
+   %report([writelist(['Reading terminus for:'|NameList])]),
    create_elements(NameList),!.
 %*************************************************************
 % a group of params have their value stored as properties
