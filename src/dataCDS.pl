@@ -146,10 +146,6 @@ setCDField(Field,Value):-
 setCDField(Field,_Value):-
     error_out(['** SetCDField: ilegal field:',Field, '(internal error)']),!.
 
-
-
-
-
 %******************************************************
 %  getCDField(Field,Value) returns value for Field in CDS
 %******************************************************

@@ -20,4 +20,4 @@
 ?-consult(verif).
 ?-consult(clioPP).
 ?-consult(swiShell).
-
+?-consult(clioThreads).

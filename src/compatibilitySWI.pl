@@ -51,7 +51,7 @@
 %       writeln (X) writes X and adds a carriage return
 %       writelist0(L). writes on the atoms of a list
 %       writelist0ln(L) same but with a return at the end
-%       writelist(L) wirte the members of list L with a space in between
+%       writelist(L) write the members of list L with a space in between
 %       writelistln(L) same but with return at the end
 %       ptime(C) show the time it takes to execute a predicate
 %

@@ -161,6 +161,36 @@ prepare_report(R):-
    set_report(on),
    report([pclio_version]),!.
 
+%%  dict_of_files(-D) is det.
+%   List files recursively under the working directory, and
+%   unify D with the result in the form of the dict with
+%        <subdirectory name> - <sub list> for subdirectories.
+%
+% ?- dict_of_files(D).
+% by Kuniaki Mukai
+
+ignore_special_dots((.)).
+ignore_special_dots((..)).
+
+%
+dict_of_files(X):- directory_files((.), Files),
+                directory_files(Files, X, []).
+%
+directory_files([], X, X).
+directory_files([F|R], X, Y):- ignore_special_dots(F), !,
+           directory_files(R, X, Y).
+directory_files([D|R], [D-Z|X], Y):- exists_directory(D), !,
+                directory_files(D, Files),
+                working_directory(_, D),
+                directory_files(Files, Z, []),
+                working_directory(_, (..)),
+                directory_files(R, X, Y).
+directory_files([F|R], [F|X], Y):- directory_files(R, X, Y).
+
+
+
+
+
 %******************************************************
 %  pclio_version prints version,
 %    compiler version, date and time
