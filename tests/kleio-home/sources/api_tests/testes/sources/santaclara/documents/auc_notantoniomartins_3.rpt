@@ -1,0 +1,90 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 17-55
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniomartins_3.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1580am/tipo=escrituras notariais/loc=auc, notarial cota: v i-es-9-5-53/obs=notario antonio martins, abril a dezembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1580am
+4:       escritura$not1580am-e1/30/4/1580/arrendamento de rendas e obrigacao/fol=12v-14/loc=locutorio/sumario=contrato de arrendamento e obrigacao celebrado nas pousadas de diogo marmeleiro entre mosteiro de santa clara, representado por seu procurador diogo marmeleiro, e diogo fernandes, das tercas de penacova por tempo de dois anos
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1580am-e1
+6:          senhoria$nome desconhecido/id=not1580am-e1-per1
+7:             ls$cargo/abadessa
+8: 
+9:          rendeiro$diogo fernandes/id=not1580am-e1-per2
+10:             ls$residencia/vale maior, vila de penacova
+11: 
+12:             referido$diogo marmeleiro/id=not1580am-e1-per3
+13:                ls$titulo/fidalgo
+14:                ls$titulo/cavaleiro da ordem de santiago
+15:                rel$profissional/vedor/nome desconhecido/not1580am-e1-per1
+16:                rel$sociabilidade/procurador geral/nome desconhecido/not1580am-e1-per1
+17: 
+18:          bem$tercas de penacova
+bem-not1580am-e1-obj1- ** was stored with function in ACT verify act
+19:             atr$localizacao/penacova
+20:             atr$renda/cento e setenta e oito mil reais
+21:             atr$duracao/dois anos
+22: 
+23:          test$antonio rodrigues/m/id=not1580am-e1-per4
+24:             rel$profissional/solicitador/nome desconhecido/not1580am-e1-per1
+25:             ls$residencia/pacos junto ao mosteiro
+26:             ls$cargo/solicitador do mosteiro
+27: 
+28:          test$manuel ?/m/obs=duvida nao se le segundo nome/id=not1580am-e1-per5
+29:             rel$profissional/criado/diogo marmeleiro/not1580am-e1-per3
+30: 
+31:          test$diogo luis/m/id=not1580am-e1-per6
+32:             rel$profissional/criado/miguel barros/not1580am-e1-per7
+33: 
+34:          referido$miguel barros/id=not1580am-e1-per7
+35:             ls$cargo/mordomo do santo oficio
+36:             ls$residencia/coimbra
+37: 
+38:       escritura$not1580am-e2/1/6/1580/arrendamento e obrigacao/fol=74-75v/loc=locutorio/sumario=contrato de arrendamento e obrigacao celebrado nas pousadas de diogo marmeleiro entre mosteiro de santa clara e diogo dias, da terca da renda de sao pedro de gouveia por tempo de dois anos
+39: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1580am-e2
+40:          senhoria$nome desconhecido/id=not1580am-e2-per1
+41:             ls$cargo/abadessa
+42: 
+43:          rendeiro$diogo dias/id=not1580am-e2-per2
+44:             ls$profissao/mercador
+45:             ls$residencia/gouveia%vila de gouveia
+46: 
+47:          bem$terca da renda de sao pedro de gouveia por tempo de dois anos
+bem-not1580am-e2-obj1- ** was stored with function in ACT verify act
+48:             atr$localizacao/vila de gouveia
+49:             atr$renda/cento e cinco mil reais
+50:             atr$foro/trinta e seis alqueires de castanhas boas e peladas/obs=pela medida velha e levadas ao mosteiro pelo natal
+51:             atr$duracao/dois anos
+52: 
+53:          test$diogo vaz/m/id=not1580am-e2-per3
+54:             ls$profissao/tabeliao/obs=tabeliao de notas
+55: 
+56:          test$andre joao/m/id=not1580am-e2-per4
+57:             ls$profissao/sombreireiro
+58: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniomartins_3.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniomartins_3.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniomartins_3.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniomartins_3.ids

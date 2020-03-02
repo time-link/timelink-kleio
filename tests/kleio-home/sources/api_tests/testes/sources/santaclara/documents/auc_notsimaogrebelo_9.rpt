@@ -1,0 +1,217 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-27
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_9.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1672-1673/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-112, notarios simao gomes rebelo e francisco gomes pinheiro, setembro a maio
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1672-1673
+4:       escritura$not1673-e1/3/4/1673/arrendamento de rendas/fol=100v-102/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara da cidade de coimbra e manuel rodrigues, da renda dos carvalhais
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1673-e1
+6:          senhoria$isabel velhasques/id=not1673-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          rendeiro$manuel rodrigues/id=not1673-e1-per2
+11:             ls$profissao/cerieiro
+12:             ls$residencia/curvieira
+13: 
+14:          bem$renda dos carvalhais
+bem-not1673-e1-obj1- ** was stored with function in ACT verify act
+15:             atr$localizacao/carvalhais
+16:             atr$renda/novidades/obs=anualmente, no celeiro do mosteiro, em tr�s pagas iguais: dia de natal, pascoa e s. miguel de setembro
+17:             atr$renda/quarenta e cinco mil reis em dinheiro de contado em moedas de prata correntes
+18:             atr$renda/seis pedras de linho
+19:             atr$renda/quatro moios de milho
+20:             atr$renda/um moio de trigo
+21:             atr$renda/oito alqueires de feijoes
+22:             atr$renda/trinta galinhas
+23:             atr$renda/doze carradas de palha
+24:             atr$duracao/dois anos
+25: 
+26:          fiador$manuel fernandes/id=bot1673-e1-per3
+27:             ls$residencia/ribeira de frades
+28: 
+29:          garantia$vinte aguilhadas de terra/obs=bens que estao estimados em setenta mil reis
+garantia-not1673-e1-obj2- ** was stored with function in ACT verify act
+30:             rel$posse/pertence/manuel fernandes/bot1673-e1-per3
+31: 
+32:          test$briolanja de aragao/f/id=not1673-e1-per4
+33:             ls$cargo/escriva
+34:             ls$assina/sim
+35: 
+36:          test$joana de jesus/f/id=not1673-e1-per5
+37:             ls$cargo/vigaria
+38:             ls$assina/sim
+39: 
+40:          test$antonio fernandes/m/id=not1673-e1-per6
+41:             rel$profissional/solicitador/isabel velhasques/not1673-e1-per1
+42: 
+43:          test$antonio rodrigues/m/id=not1673-e1-per7
+44:             ls$cargo/escrivao das execucoes
+45: 
+46:          test$isabel perestrela/f/id=not1673-e1-per8
+47:             ls$condicao/freira professa
+48:             ls$assina/sim
+49: 
+50:          test$jacinta de tavora/f/id=not1673-e1-per9
+51:             ls$condicao/freira professa
+52:             ls$assina/sim
+53: 
+54:          test$luisa de meneses e silva/f/id=not1673-e1-per10
+55:             ls$condicao/freira professa
+56:             ls$assina/sim
+57: 
+58:          test$isabel de vasconcelos/f/id=not1673-e1-per11
+59:             ls$condicao/freira professa
+60:             ls$assina/sim
+61: 
+62:       escritura$not1673-e2/5/5/1673/arrendamento de rendas/fol=131v-133/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos clebrado entre mosteiro de santa clara da cidade de coimbra, antonio de seabra ribeiro e simao joao, da renda de sangalhos: foros, racoes e dizimos
+63: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1673-e2
+64:          senhoria$isabel de velhasques/id=not1673-e2-per1
+65:             ls$cargo/abadessa
+66:             ls$assina/sim
+67: 
+68:          rendeiro$antonio de seabra ribeiro/id=not1673-e2-per2
+69:             ls$residencia/sao lourenco do bairro
+70: 
+71:          rendeiro$simao joao/id=not1673-e2-per3
+72:             ls$residencia/sa, termo da vila de sangalhos
+73: 
+74:          bem$renda de sangalhos foros racoes e dizimos
+bem-not1673-e2-obj1- ** was stored with function in ACT verify act
+75:             atr$localizacao/sangalhos
+76:             atr$renda/novidades e ordinarias antigas/obs=anualmente; nao refere as quantidades
+77:             atr$renda/quinhentos e doze mil reis em dinheiro de contado moedas de prata correntes/obs=pagos em quatro pagas iguais: natal, pascoa, s. joao baptista e s. miguel de setembro
+78:             atr$duracao/dois anos
+79: 
+80:          test$briolanja de aragao/f/id=not1673-e2-per4
+81:             ls$cargo/escriva
+82:             ls$assina/sim
+83: 
+84:          test$joana de jesus/f/id=not1673-e2-per5
+85:             ls$cargo/vigaria
+86:             ls$assina/sim
+87: 
+88:          test$antonio rodrigues/m/id=not1673-e2-per6
+89:             ls$cargo/escrivao das execucoes da universidade
+90:             rel$profissional/escrivao das execucoes/isabel de velhasques/not1673-e2-per1
+91: 
+92:          test$antonio fernandes/id=not1673-e2-per7
+93:             rel$profissional/solicitador/isabel de velhasques/not1673-e2-per1
+94: 
+95:          test$isabel perestrela/f/id=not1673-e2-per8
+96:             ls$condicao/freira professa
+97:             ls$assina/sim
+98: 
+99:          test$jacinta de tavora/f/id=not1673-e2-per9
+100:             ls$condicao/freira professa
+101:             ls$assina/sim
+102: 
+103:          test$luisa de meneses e silva/f/id=not1673-e2-per10
+104:             ls$condicao/freira professa
+105:             ls$assina/sim
+106: 
+107:          test$isabel de vasconcelos/f/id=not1673-e2-per11
+108: 
+109:          test$antonio de seabra ribeiro/f/id=not1673-e2-per12
+110: 
+111:       escritura$not1673-e3/5/5/1673/fianca/fol=133v-134/loc=grade do locutorio/sumario=contrato de fianca celebrado entre mosteiro de santa clara da cidade de coimbra, antonio barreto de castilho e pedro gomes
+112: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1673-e3
+113:          fiador$antonio barreto de castilho/id=not1673-e3-per1
+114:             ls$residencia/coimbra
+115:             rel$sociabilidade/fiador/antonio de seabra ribeiro/not1673-e2-per2
+116:             rel$sociabilidade/fiador/simao joao/not1673-e2-per3
+117: 
+118:          fiador$pedro gomes/id=not1673-e3-per2
+119:             ls$residencia/termo da vila de sangalhos
+120:             rel$sociabilidade/fiador/antonio de seabra ribeiro/not1673-e2-per2
+121:             rel$sociabilidade/fiador/simao joao/not1673-e2-per3
+122: 
+123:          test$antonio fernandes/m/id=not1673-e3-per3
+124:             rel$profissional/solicitador/isabel de velhasques/not1673-e2-per1
+125: 
+126:       escritura$not1673-e4/5/5/1673/arrendamento de rendas/fol=134-136/loc=grade do locutorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara da cidade de coimbra e antonio de seabra ribeiro, da renda de sao martinho de montemor-o-velho
+127: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1673-e4
+128:          senhoria$isabel de velhasques/id=not1673-e4-per1
+129:             ls$cargo/abadessa
+130:             ls$assina/sim
+131: 
+132:          rendeiro$antonio de seabra ribeiro/id=not1673-e4-per2
+133:             ls$residencia/sao lourenco do bairro%vila de sao lourenco do bairro
+134: 
+135:          bem$renda de sao martinho de montemor o velho
+bem-not1673-e4-obj1- ** was stored with function in ACT verify act
+136:             atr$localizacao/sao martinho de montemor o velho
+137:             atr$renda/quatrocentos e quarenta reis em dinheiro de contado/obs=tudo pago em quatro pagas iguais: natal, pascoa, s. joao baptista e s.miguel de setembro
+138:             atr$renda/noventa pedras de linho galego
+139:             atr$renda/dois moios de cevada
+140:             atr$renda/quarenta alqueires de legumes
+141:             atr$renda/vinte e cinco alqueires feijoes brancos
+142:             atr$renda/quinze alqueires de graos
+143:             atr$renda/vinte e cinco galinhas
+144:             atr$renda/ordinarias costumadas ao vigario cura tesoureiro da igreja de sao martinho
+145:             atr$renda/ordinarias costumadas ao cura de ceia
+146:             atr$duracao/dois anos
+147: 
+148:          fiador$antonio barreto castilho/id=not1673-e4-per3
+149:             ls$residencia/coimbra
+150: 
+151:          test$briolanja de aragao/f/id=not1673-e4-per4
+152:             ls$cargo/escriva
+153:             ls$assina/sim
+154: 
+155:          test$joana de jesus/f/id=not1673-e4-per5
+156:             ls$cargo/vigaria
+157:             ls$assina/sim
+158: 
+159:          test$antonio fernandes/f/id=not1673-e4-per6
+160:             rel$profissional/solicitador/isabel de velhasques/not1673-e4-per1
+161: 
+162:          test$antonio rodrigues/m/id=not1673-e4-per6a
+163: 
+164:          test$isabel perestrela/f/id=not1673-e4-per7a
+165:             ls$condicao/freira professa
+166:             ls$assina/sim
+167: 
+168:          test$jacinta de tavora/f/id=not1673-e4-per8a
+169:             ls$condicao/freira professa
+170:             ls$assina/sim
+171: 
+172:          test$luisa de meneses e silva/f/id=not1673-e4-per9a
+173:             ls$condicao/freira professa
+174:             ls$assina/sim
+175: 
+176:          test$isabel de vasconcelos/f/id=not1673-e4-per10a
+177:             ls$condicao/freira professa
+178:             ls$assina/sim
+179: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_9.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_9.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_9.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_9.ids

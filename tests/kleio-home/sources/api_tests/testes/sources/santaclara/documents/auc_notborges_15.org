@@ -1,0 +1,104 @@
+kleio$gacto2.str
+   fonte$not1615/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-74, notario tome borges, setembro a dezembro
+
+      escritura$not1615-e1/24/9/1615/fol=2v-3/loc=porta do coro/sumario=angela da cruz, criada de dona maria da cunha, freira do mosteiro de santa clara de coimbra, nomeia procuradores, francisco gomes, simiao monteiro osžrio e isabel fernandes, para que em seu nome tomem posse de umas casas que ela comprou no burgo do mosteiro e as fa‡am despejar
+
+         constituintef$angela da cruz/id=not1615-e1-per1
+            rel$profissional/criada/maria da cunha/not1615-e1-per2
+
+            referida$maria da cunha/id=not1615-e1-per2
+               ls$condicao/freira professa
+
+         procurador$francisco gomes/id=not1615-e1-per3
+            rel$sociabilidade/procurador/angela da cruz/not1615-e1-per1
+
+         procurador$simiao monteiro osorio/id=not1615-e1-per4
+            rel$sociabilidade/procurador/angela da cruz/not1615-e1-per1
+
+         procurador$isabel fernandes/id=not1615-e1-per5
+            rel$sociabilidade/procuradora/angela da cruz/not1615-e1-per1
+
+         test$martim goncalves/m/id=not1615-e1-per6/obs=assinou pela constituinte%por ser mulher e dizer que nao sabia assinar
+            ls$titulo/doutor
+            ls$residencia/coimbra
+
+         test$antonio dias/m/id=not1615-e1-per7
+            ls$residencia/penacova%vila de pencova
+            ls$profissao/barqueiro
+
+         test$miguel francisco/m/id=not1615-e1-per8
+            ls$profissao/criado/obs=do tabeliao
+
+      escritura$not1615-e2/27/9/1615/procuracao/fol=3-4/loc=grade do parlatorio/sumario=dona arcangela da silva, freira professa do mosteiro de santa clara de coimbra, nomeia procurador antonio vaz de macedo, para que em seu nome arrecade do tesoureiro da alfandega da cidade de lisboa dez mil reais de ten‡a regia
+
+         constituintef$arcangela da silva/id=not1615-e2-per1
+            ls$condicao/freira professa
+            ls$titulo/dona
+            ls$assina/sim
+
+         procurador$antonio vaz de macedo/id=not1615-e2-per2
+            rel$sociabilidade/procurador/arcangela da silva/not1615-e2-per1
+            ls$residencia/lisboa
+
+         procurador$simiao monteiro/m/id=not1615-e2-per3
+            rel$sociabilidade/procurador/arcangela da silva/not1615-e2-per1
+
+         test$miguel francisco/m/id=not1615-e2-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1615-e3-tbb
+
+         referido$tome borges/id=1615-e3-tbb
+            ls$profissao/tabeliao
+
+      escritura$not1615-e3/27/9/1615/procuracao/fol=4-5/loc=grade do parlatorio/sumario=dona maria de castro corte real, freira professa do mosteiro de santa clara de coimbra, nomeia procurador antžnio vaz de macedo, para que em seu nome arrecade do tesoureiro da alfândega da cidade de lisboa dez mil reais de ten‡a regia
+
+         constituintef$maria de castro corte real/id=not1615-e3-per1
+            ls$condicao/freira professa
+            ls$titulo/dona
+            ls$assina/sim
+
+         procurador$antonio vaz de macedo/id=not1615-e3-per2
+            rel$sociabilidade/procurador/maria de castro corte real/not1615-e3-per1
+            ls$residencia/lisboa
+
+         procurador$simiao monteiro/m/id=not1615-e3-per3
+            rel$sociabilidade/procurador/maria de castro corte real/not1615-e3-per1
+
+         test$miguel francisco/m/id=not1615-e3-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1615-e3-tbb
+
+         referido$tome borges/mesmo_que=1615-e3-tbb/id=not1615-e3-per5
+            rel$profissional/criado/tome borges/1615-e3-tbb
+
+      escritura$not1615-e4/25/10/1615/procuracao/fol=51v-53/loc=grade do parlatorio/sumario=madalena da cruz, recolhida no mosteiro de santa clara de coimbra, nomeia seus procuradores, ivo duarte e manuel fernandes, para que demandem diante de quaisquer julgadores de antonio anriques os trinta mil reais que este lhe deve
+
+         constituintef$madalena da cruz/id=not1615-e4-per1
+            ls$condicao/recolhida/obs=no mosteiro de santa clara
+
+         procurador$ivo duarte/id=not1615-e4-per2
+            rel$sociabilidade/procurador/madalena da cruz/not1615-e4-per1
+            ls$profissao/advogado
+            ls$residencia/coimbra
+
+         procurador$manuel fernandes/id=not1615-e4-per3
+            rel$sociabilidade/procurador/madalena da cruz/not1615-e4-per1
+
+            referido$antonio anriques/id=not1615-e4-per4
+               ls$residencia/termo de penacova
+               rel$economica/devedor/madalena da cruz/not1615-e4-per1
+
+         test$domingos fernandes/m/id=not1615-e4-per5/obs=assinou pela constituinte
+            ls$alcunha/piolho
+            ls$profissao/mercador
+
+         test$antonio jorge/m/id=not1615-e4-per6
+            ls$profissao/alfaiate
+            ls$residencia/coimbra
+
+         test$miguel francisco/m/id=not1615-e4-per7
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1615-e4-tab
+
+         referido$tome borges/id=1615-e4-tab
+            ls$profissao/tabeliao

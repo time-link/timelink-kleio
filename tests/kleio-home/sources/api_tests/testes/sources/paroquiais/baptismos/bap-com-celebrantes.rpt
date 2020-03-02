@@ -1,0 +1,33 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 22-0
+
+Processing data file bap-com-celebrantes.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: lousa
+Autorel: lousa
+Translation count: 15
+Obs: 
+** Processing source fonte$lousa-baptismos1714-c
+
+WARNING: bap-com-celebrantes.cli line 3 Element value exceeds database field length: type=freguesia de sao silvestre da lousalousa. Size:40 limit: 32
+Near lines: 3 
+Near line: 4       bap$b1714-1/6/1/1714/fl.117v./igreja de sao silvestre/joao lopes serra(padre)/obs=com licenca do padre manuel lopes serraassina joao lopes serra
+
+6: bap$lousa-b1714-1
+29: bap$lousa-b1714-2
+53: bap$lousa-b1714-3
+*** End of File
+** Processed file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.cli
+** Original file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.org
+** Previous version- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.old
+** Temp file with ids- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.ids
+0  errors. 
+1  warnings.
+Translation finished.

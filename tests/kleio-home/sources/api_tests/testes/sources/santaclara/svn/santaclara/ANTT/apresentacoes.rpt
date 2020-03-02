@@ -1,0 +1,52 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 21-54
+
+Processing data file apresentacoes.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$ap.pt-tt-cscc-17-part
+7: escritura$ap1422.1.m10-12
+56: escritura$ap1422.2.m10-12a
+
+ERROR: apresentacoes.cli line 68 ** Error: missing element(s) in rel(rel-3) must have: iddest
+Near lines: 68 	
+Near line: 69 	   test$lopo alvares
+
+
+ERROR: apresentacoes.cli line 71 ** Error: missing element(s) in rel(rel-4) must have: iddest
+Near lines: 71 	
+Near line: 72 	   test$luis vasques
+
+93: escritura$ap1422.3.m10-12b
+
+ERROR: apresentacoes.cli line 105 ** Error: missing element(s) in rel(rel-8) must have: iddest nomedest
+Near lines: 105 	
+Near line: 106 	   test$pedro afonso
+
+135: escritura$ap1430.1.m10-25
+
+WARNING: apresentacoes.cli line 134 Element value exceeds database field length: loc=as gradizelas de ferro dentro da igreja do mosteiro de santa clara. Size:66 limit: 64
+Near lines: 134 			
+Near line: 135 	   padroeiro$mosteiro de santa clara/id=1422.ap1.msc
+
+
+ERROR: apresentacoes.cli line 135 ** ID already used in this file: 1422.ap1.msc
+Near lines: 135 	   padroeiro$mosteiro de santa clara/id=1422.ap1.msc
+Near line: 136 	       ls$titulo/padroeiro/obs=igreja de santa maria de podentes do bispado de coimbra
+
+183: escritura$ap1441.1.m11-06
+*** End of File
+4  errors. 
+1  warnings.
+Translation finished.

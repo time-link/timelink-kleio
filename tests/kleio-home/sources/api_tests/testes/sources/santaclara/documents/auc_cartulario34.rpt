@@ -1,0 +1,3617 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 1-55
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario34.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto.str
+=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$escrituras1534-1593/tipo=escrituras/loc=auc/obs=livro de escrituras de aforamento n.34, santa clara de coimbra, cota:iii-1.d-16-3-35, tabeliaes: anrique brandao; antonio dias; goncalo fernandes; antonio morais; joao toscano; goncalo gil
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$escrituras1534-1593
+4:       escritura$esc1544-e1/17/4/1544/contrato de renuncia e emprazamento/fol=0/loc=porta da cerca/sumario=contrato de renuncia e emprazamento por tempo de tres anos celebrado entre mosteiro de santa clara da cidade de coimbra, tome afonso e isabel dias, de umas casas sobradadas sitas no lugar de condeixa
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1544-e1
+6:          senhoria$margarida de castro/id=esc1544-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$titulo/dona
+9: 
+10:          renunciante$tome afonso/id=esc1544-e1-per2
+11:             ls$profissao/almocreve
+12: 
+13:          foreira$isabel dias/id=esc1544-e1-per3
+14:             rel$parentesco/filha/tome afonso/esc1544-e1-per2
+15: 
+16:          prazo$casas sobradadas
+prazo-esc1544-e1-obj1- ** was stored with function in ACT verify act
+17:             atr$localizacao/lugar de condeixa
+18:             atr$foro/cem reais/obs=por sao miguel de setembro
+19: 
+20:          test$antonio fernandes/m/id=esc1544-e1-per4
+21:             ls$profissao/alfaiate/obs=assinou por isabel dias
+22: 
+23:          test$diogo de figueiredo/m/id=esc1544-e1-per5
+24:             rel$profissional/vedor/margarida de castro/esc1544-e1-per1
+25: 
+26:          test$antonio fernandes/m/id=esc1544-e1-per6/obs=assinou por isabel dias diogo de figueiredo
+27:             ls$profissao/alfaiate
+28:             rel$profissional/vedor/margarida de castro/esc1544-e1-per1
+29: 
+30:          test$alvaro de figueiredo/m/id=not1544-e1-per7
+31:             ls$titulo/cidadao
+32:             ls$residencia/coimbra
+33:             rel$profissional/criado/margarida de castro/esc1544-e1-per1
+34: 
+35:       escritura$esc1504-e2/5/10/1504/contrato de renuncia e emprazamento/obs=duvida no mes/fol=1-2/loc=porta da cerca/sumario=contrato de aforamento para sempre celebrado entre mosteiro de santa clara da cidade de coimbra, joao afonso e sua mulher, guiomar eanes, de �um casal de herdade que sua sogra, margarida eanes, lhes deu em casamento
+36: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1504-e2
+37:          senhoria$margarida de meneses/id=esc1504-e2-per1
+38:             ls$cargo/abadessa
+39:             ls$titulo/dona
+40: 
+41:          foreiro$joao afonso/id=esc1504-e2-per2
+42:             ls$residencia/sangalhos
+43: 
+44:          foreira$guiomar eanes/id=esc1504-e2-per3
+45:             rel$parentesco/mulher/joao afonso/esc1504-e2-per2
+46:             ls$residencia/sangalhos
+47: 
+48:             referida$margarida eanes/id=esc1504-e2-per4
+49:                rel$parentesco/sogra/joao afonso/esc1504-e2-per2
+50: 
+51:          prazo$um casal de herdade
+prazo-esc1504-e2-obj1- ** was stored with function in ACT verify act
+52:             atr$racao/um oitavo e o dizimo do costume
+53:             atr$foro/dez alqueires de pao meado/obs=metade de trigo e outra metade de milho
+54:             atr$fogaca/tres alqueires de trigo pela medida nova
+55:             atr$fogaca/um capao/obs=por dia de natal
+56:             atr$fogaca/duas galinhas/obs=por dia de natal
+57:             atr$multa/seis mil reais
+58: 
+59:          test$joao afonso/m/id=esc1504-e2-per5
+60:             rel$profissional/trabalhador/margarida de meneses/esc1504-e2-per1
+61: 
+62:          test$gregorio pires/m/id=esc1504-e2-per6
+63:             rel$profissional/hortelao/margarida de meneses/esc1504-e2-per1
+64: 
+65:       escritura$esc1544-e3/1/4/1544/contrato de aforamento/fol=2-3/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra, alvaro fernandes e sua mulher, isabel seabra, de um mato bravio sito junto a ermida de sao joao
+66: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1544-e3
+67:          foreira$margarida de castro/id=esc1544-e3-per1
+68:             ls$cargo/abadessa
+69:             ls$assina/sim
+70: 
+71:          foreiro$alvaro fernandes/id=esc1544-e3-per2
+72: 
+73:          foreira$isabel seabra/id=esc1544-e3-per3
+74:             rel$parentesco/mulher/alvaro fernandes/esc1544-e3-per2
+75: 
+76:          aforamento$um mato bravio
+aforamento-esc1544-e3-obj1- ** was stored with function in ACT verify act
+77:             atr$localizacao/junto ermida de sao joao
+78:             atr$foro e pensao/uma galinha boa/obs=paga ao mordomo do mosteiro
+79:             atr$novidade/um nono
+80:             atr$multa/vinte mil reais por incumprimento
+81: 
+82:          test$isabel de meneses/f/id=esc1544-e3-per4
+83:             ls$cargo/vigaria
+84:             ls$assina/sim
+85:             ls$titulo/dona
+86: 
+87:          test$catarina de sousa/f/id=esc1544-e3-per5
+88:             ls$titulo/dona
+89: 
+90:          test$diogo de figueiredo/m/id=esc1544-e3-per6
+91:             rel$profissional/vedor/margarida de castro/esc1544-e3-per1
+92: 
+93:          test$antonio fernandes/m/id=esc1544-e3-per7
+94:             ls$profissao/alfaiate
+95: 
+96:          test$jorge ?/m/obs=nome rasgado/id=esc1544-e3-per8
+97:             ls$residencia/pacos do mosteiro
+98: 
+99:       escritura$esc1544-e4/28/5/1544/emprazamento/fol=3-4/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e lourenco afonso, de umas casas sobradadas com um cortinhal
+100: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1544-e4
+101:          senhoria$margarida de castro/id=esc1544-e4-per1
+102:             ls$cargo/abadessa
+103:             ls$titulo/dona
+104:             ls$assina/sim
+105: 
+106:          foreiro$lourenco afonso/id=esc1544-e4-per2
+107:             ls$profissao/lavrador
+108:             ls$residencia/vila de gouveia
+109: 
+110:             referido$pedro goncalves/id=esc1544-e4-per3/obs=deixou as casas sobradadas a lourenco afonso em dote de casamento
+111:                rel$parentesco/sogro/lourenco afonso/esc1544-e4-per2
+112: 
+113:             referida$branca rodrigues/id=esc1544-e4-per4
+114:                rel$parentesco/mulher/pedro goncalves/esc1544-e4-per3
+115: 
+116:          prazo$umas casas sobradadas com um cortinhol
+prazo-esc1544-e4-obj1- ** was stored with function in ACT verify act
+117:             atr$foro e pensao/seis reais
+118:             atr$foro/uma galinha
+119:             atr$foro/uma jeira com seus bois/obs=primeira paga por dia de natal do ano seguinte
+120:             atr$multa/vinte cruzados de ouro
+121: 
+122:          test$gaspar simoes/m/id=esc1544-e4-per5
+123:             ls$residencia/fermoselhe
+124: 
+125:          test$antonio fernandes/m/id=esc1544-e4-per6
+126:             ls$profissao/alfaiate
+127:             ls$residencia/circuito do mosteiro
+128:             rel$profissional/criado/margarida de castro/esc1544-e4-per1
+129: 
+130:       escritura$escr1544-e4/28/5/1544/contrato de emprazamento/fol=4v-5v/loc=porta da portaria/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e lourenco afonso, de umas casas sobradadas com um cortinhal
+131: 
+**** auto rels 2 STARTED.
+** Processing act escritura$escr1544-e4
+132:          senhoria$margarida de castro/id=escr1544-e4-per1
+133:             ls$cargo/abadessa
+134:             ls$titulo/dona
+135:             ls$assina/sim
+136: 
+137:          foreiro$domingos bras/id=escr1553-e4-per2
+138:             ls$residencia/sangalhos
+139:             ls$profissao/serralheiro
+140: 
+141:          prazo$um mato maninho
+prazo-escr1544-e4-obj1- ** was stored with function in ACT verify act
+142:             atr$localizacao/sangalhos
+143:             atr$foro/um capao
+144:             atr$foro/uma galinha boa
+145:             atr$foro/um alqueire de trigo
+146:             atr$racao/um oitavo
+147:             atr$foro/dois arrateis de cera
+148: 
+149:          test$tristao do vale/m/id=escr1553-e4-per3
+150:             ls$profissao/alfaiate
+151:             ls$residencia/coimbra
+152: 
+153:          test$fernao simoes/m/id=escr1553-e4-per4
+154:             ls$titulo/bacharel
+155:             ls$cargo/vigario/obs=de sangalhos
+156: 
+157:       escritura$esc1553-e5/9/9/1553/aforamento/fol=5v-6v/loc=porta da portaria/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e tristao de vale, de um mato sito na costa de beringel, limite de sangalhos
+158: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1553-e5
+159:          senhoria$joana da silva/id=esc1553-e5-per1
+160:             ls$cargo/abadessa
+161:             ls$titulo/dona
+162:             ls$assina/sim
+163: 
+164:          foreiro$tristao de vale/id=esc1553-e5-per2
+165:             ls$profissao/alfaiate
+166:             ls$residencia/coimbra
+167: 
+168:          aforamento$um mato
+aforamento-esc1553-e5-obj1- ** was stored with function in ACT verify act
+169:             atr$localizacao/costa de beringel limite de sangalhos
+170:             atr$foro/um capao
+171:             atr$foro/um arratel de cera
+172:             atr$racao/um oitavo/obs=por dia de sao miguel
+173: 
+174:          test$fabiao simoes/m/id=esc1553-e5-per3
+175:             ls$titulo/bacharel
+176:             ls$cargo/vigario/obs=de sangalhos
+177: 
+178:          test$domingos bras/m/id=esc1553-e5-per4
+179:             ls$residencia/sangalhos
+180: 
+181:       escritura$esc1554-e6/19/1/1554/emprazamento/fol=6v-8/loc=porta do mosteiro a grade de ferro/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e
+182: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1554-e6
+183:          senhoria$joana da silva/id=esc1554-e6-per1
+184:             ls$cargo/abadessa
+185:             ls$titulo/dona
+186:             ls$assina/sim
+187: 
+188:          foreiro$fernao de sa pereira/id=esc1554-e6-per2
+189:             ls$titulo/fidalgo/obs=da casa do rei
+190:             ls$residencia/quinta do pinheiro vila da lousa
+191: 
+192:          foreira$$ana de faria/id=esc1554-e6-per3
+193:             rel$parentesco/mulher/fernao de sa pereira/esc1554-e6-per2
+194: 
+195:          subenfiteuta$pedro mateus/id=esc1554-e6-per4
+196: 
+197:             referida$ines afonso/id=esc1554-e6-per5
+198:                rel$parentesco/mulher/pedro mateus/esc1554-e6-per4
+199:                rel$sociabilidade/procuradora/pedro mateus/esc1554-e6-per4
+200: 
+201:          prazo$casa terras e uma vinha
+prazo-esc1554-e6-obj1- ** was stored with function in ACT verify act
+202:             atr$localizacao/quinta do pinheiro lousa
+203:             atr$foro/dez alqueires de castanhas verdes/obs=ate dia de todos-os-santos/obs=o foro e pago por pedro mateus e fernao de sa
+204:             atr$foro/um alqueire de centeio
+205:             atr$foro/um alqueire de trigo
+206:             atr$foro/uma galinha
+207:             atr$foro/seis ovos
+208:             atr$foro/dois alqueires de nozes
+209:             atr$racao/um quarto da novidade
+210:             atr$racao/um nono de vinho
+211: 
+212:          test$maria de sousa/f/id=esc1554-e6-per6
+213:             ls$cargo/vigaria
+214:             ls$titulo/dona
+215:             ls$assina/sim
+216: 
+217:          test$joana de melo/f/id=esc1554-e6-per7
+218:             ls$cargo/escriva
+219:             ls$titulo/dona
+220:             ls$assina/sim
+221: 
+222:          test$filipa de mendonca/f/id=esc1554-e6-per8
+223:             ls$cargo/mordoma
+224:             ls$titulo/dona
+225:             ls$assina/sim
+226: 
+227:          test$marta/f/id=esc1554-e6-per9
+228:             ls$cargo/porteira
+229:             ls$titulo/dona
+230:             ls$assina/sim
+231: 
+232:          test$leonor da silveira/f/id=esc1554-e6-per10
+233:             ls$titulo/discreta
+234:             ls$titulo/dona
+235:             ls$assina/sim
+236: 
+237:          test$anrique mendes/m/id=esc1554-e6-per11
+238:             rel$profissional/feitor/joana da silva/esc1554-e6-per1
+239:             ls$cargo/feitor do mosteiro
+240: 
+241:          test$antonio dias/m/id=esc1554-e6-per12
+242:             ls$profissao/almocreve
+243:             ls$residencia/aveiro
+244: 
+245:       escritura$esc1526-e7/17/4/1526/aforamento/fol=8v-9v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e diogo pires, de uma vinha em urzelhe
+246: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1526-e7
+247:          senhoria$maria de meneses/id=esc1526-e7-per1
+248:             ls$cargo/abadessa
+249:             ls$titulo/dona
+250:             ls$assina/sim
+251: 
+252:          foreiro$diogo pires/id=esc1526-e7-per2
+253:             ls$profissao/moleiro
+254:             ls$residencia/urzelhe
+255: 
+256:          foreira$catarina pires/id=esc1526-e7-per3
+257:             rel$parentesco/mulher/diogo pires/esc1526-e7-per2
+258: 
+259:          aforamento$uma vinha
+aforamento-esc1526-e7-obj1- ** was stored with function in ACT verify act
+260:             atr$localizacao/urzelhe
+261:             atr$racao/um oitavo do vinho
+262:             atr$foro/tres almudes de vinho a bica do lagar do mosteiro
+263:             atr$multa/dez mil reais
+264: 
+265:          test$pedro anes/m/id=esc1526-e7-per4
+266:             rel$profissional/mordomo/maria de meneses/esc1526-e7-per1/obs=em urzelhe
+267:             ls$cargo/mordomo do mosteiro
+268: 
+269:          test$joao pires/m/id=esc1526-e7-per5
+270:             ls$profissao/lavrador
+271:             ls$residencia/urzelhe
+272: 
+273:       escritura$esc1526-e8/17/4/1526/aforamento/fol=10-11/loc=porta da cerca/sumario=contrato de aforamento celebrado entre mosteiro de santa clara da cidade de coimbra, diogo fernandes, dinis fernandes e joam fernandez, de umas vinhas sitas no limite de urzelhe
+274: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1526-e8
+275:          senhoria$maria de meneses/id=esc1526-e8-per1
+276:             ls$cargo/abadessa
+277:             ls$titulo/dona
+278:             ls$assina/sim
+279: 
+280:          foreiro$diogo fernandes/id=esc1526-e8-per2
+281:             ls$residencia/termo de miranda
+282: 
+283:          foreiro$dinis fernandes/id=esc1526-e8-per3
+284:             ls$residencia/termo de miranda
+285:             rel$parentesco/irmao/diogo fernandes/esc1526-e8-per2
+286: 
+287:          foreiro$joao fernandes/id=ess1526-e8-per4
+288:             ls$residencia/termo de miranda
+289:             rel$parentesco/irmao/diogo fernandes/esc1526-e8-per2
+290:             rel$parentesco/irmao/dinis fernandes/esc1526-e8-per3
+291: 
+292:          aforamento$umas vinhas
+aforamento-esc1526-e8-obj1- ** was stored with function in ACT verify act
+293:             atr$localizacao/limite de urzelhe
+294:             atr$foro/um almude de vinho
+295:             atr$racao/um oitavo de todo o vinho
+296:             atr$multa/dez mil reais
+297: 
+298:          test$pedro anes/m/id=esc1526-e8-per5
+299:             ls$residencia/urzelhe
+300:             rel$profissional/mordomo/maria de meneses/esc1526-e8-per1
+301: 
+302:          test$joao pires/m/id=esc1526-e8-per6
+303:             ls$residencia/urzelhe
+304: 
+305:       escritura$esc1526-e9/22/6/1526/aforamento/fol=11v-13/loc=grade de ferro/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e joao eanes de um casal com suas casas, terras e currais, sito em portunhos, termo da vila de anca
+306: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1526-e9
+307:          senhoria$maria de meneses/id=esc1526-e9-per1
+308:             ls$cargo/abadessa
+309:             ls$titulo/dona
+310:             ls$assina/sim
+311: 
+312:          foreiro$joao eanes/id=esc1526-e9-per2
+313:             ls$profissao/lavrador
+314:             ls$residencia/portunhos, termo da vila de anca
+315: 
+316:          foreira$beatriz eanes/id=esc1526-e9-per3
+317:             rel$parentesco/mulher/joao eanes/esc1526-e9-per2
+318:             ls$residencia/portunhos, termo da vila de anca
+319: 
+320:          aforamento$um casal com suas casas terras e currais
+aforamento-esc1526-e9-obj1- ** was stored with function in ACT verify act
+321:             atr$localizacao/portunhos, termo da vila de anca
+322:             atr$racao/um setimo
+323:             atr$foro e pensao/doze alqueires de pao meado metade trigo e metade cevada pela medida nova
+324:             atr$fogaca/dois alqueires de trigo proprio pela medida nova/obs=por sao miguel de setembro
+325:             atr$fogaca/um capao bom
+326:             atr$fogaca/dez ovos
+327:             atr$multa/vinte mil reais
+328: 
+329:          test$antao gil/m/id=esc1526-e9-per4
+330:             rel$profissional/carneireiro/maria de meneses/esc1526-e9-per1
+331: 
+332:          test$fernao martins/m/id=esc1526-e9-per5
+333:             ls$profissao/pedreiro dos azulejos/obs=duvida na profissao
+334: 
+335:       escritura$esc1528-e10/31/1/1528/aforamento/fol=13v-15/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e jeronimo ?, de quatro casas, uma vinha e um pedaco de chao, sitos em abiul
+336: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1528-e10
+337:          senhoria$maria de meneses/id=esc1528-e10-per1
+338:             ls$cargo/abadessa
+339:             ls$titulo/dona
+340:             ls$assina/sim
+341: 
+342:          foreiro$jeronimo ?/id=esc1528-e10-per2
+343:             ls$cargo/escudeiro da casa do rei
+344:             ls$residencia/abiul
+345: 
+346:          prazo$quatro casas uma vinha e um pedaco de chao
+prazo-esc1528-e10-obj1- ** was stored with function in ACT verify act
+347:             atr$localizacao/abiul
+348:             atr$foro e pensao/setecentos reais/obs=a primeira pessoa
+349:             atr$foro e pensao/novecentos reais/obs=a segunda pessoa
+350:             atr$foro e pensao/mil reais/obs=a terceira pessoa
+351: 
+352:          test$diogo de figueiredo/m/id=esc1528-e10-per3
+353:             ls$titulo/cavaleiro fidalgo
+354:             rel$profissional/vedor/maria de meneses/esc1528-e10-per1
+355: 
+356:          test$jorge fernandes/m/id=esc1528-e10-per4
+357:             ls$profissao/trabalhador
+358:             ls$residencia/pacos do mosteiro
+359: 
+360:       escritura$esc1528-e11/16/4/1528/aforamento/fol=15v-17/loc=grades de ferro/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e joao gomes, de quatro courelas de terra sitas em penela
+361: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1528-e11
+362:          senhoria$maria de meneses/id=esc1528-e11-per1
+363:             ls$cargo/abadessa
+364:             ls$titulo/dona
+365:             ls$assina/sim
+366: 
+367:          foreiro$joao gomes/id=esc1528-e11-per2
+368:             ls$residencia/penela
+369: 
+370:          foreira$isabel rodrigues/id=esc1528-e11-per3
+371:             rel$parentesco/mulher/joao gomes/esc1528-e11-per2
+372: 
+373:          aforamento$quatro courelas de terra
+aforamento-esc1528-e11-obj1- ** was stored with function in ACT verify act
+374:             atr$localizacao/penela
+375:             atr$foro e pensao/quarenta e quatro alqueires de bom trigo/obs=em dia de santa maria de agosto, de dois em dois anos
+376: 
+377:          test$joao vaz/m/id=esc1528-e11-per4
+378:             ls$titulo/bacharel
+379: 
+380:          test$diogo de figueredo/m/id=esc1528-e11-per5
+381:             ls$cargo/escudeiro
+382:             ls$titulo/cavaleiro fidalgo
+383:             rel$profissional/vedor/maria de meneses/esc1528-e11-per1
+384: 
+385:       escritura$esc1529-e12/22/2/1529/aforamento/fol=17-19/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e domingos pires, de duas moendas sitas em orelhudo
+386: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1529-e12
+387:          senhoria$maria de meneses/id=esc1529-e12-per1
+388:             ls$cargo/abadessa
+389:             ls$titulo/dona
+390:             ls$assina/sim
+391: 
+392:          foreiro$domingos pires/id=esc1529-e12-per2
+393:             ls$profissao/moleiro
+394: 
+395:          foreira$beatriz eanes/id=esc1529-e12-per3
+396:             rel$parentesco/mulher/domingos pires/esc1529-e12-per2
+397: 
+398:             referido$francisco pires/id=esc1529-e12-per4
+399:                rel$parentesco/pai/domingos pires/esc1529-e12-per2
+400: 
+401:          aforamento$duas moendas
+aforamento-esc1529-e12-obj1- ** was stored with function in ACT verify act
+402:             atr$localizacao/orelhudo
+403:             atr$foro/vinte e quatro alqueires de trigo bom/obs=por dia de s. miguel de setembro
+404: 
+405:          test$diogo rodrigues/m/id=esc1529-e12-per5
+406:             ls$profissao/lavrador
+407: 
+408:          test$diogo de figueiredo/m/id=esc1529-e12-per6
+409:             ls$titulo/cavaleiro fidalgo
+410:             rel$profissional/vedor/maria de meneses/esc1529-e12-per1
+411: 
+412:       escritura$esc1529-e13/3/11/1529/aforamento/fol=19v-21/loc=grades de ferro/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e antonio rodrigues, de uma vinha e um olival sitos em coimbra
+413: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1529-e13
+414:          senhoria$margarida de castro/id=esc1529-e13-per1
+415:             ls$cargo/abadessa
+416:             ls$titulo/dona
+417:             ls$assina/sim
+418: 
+419:          foreiro$antonio rodrigues/id=esc1529-e13-per2
+420:             ls$titulo/cidadao
+421:             ls$residencia/coimbra
+422: 
+423:          aforamento$uma vinha e um olival
+aforamento-esc1529-e13-obj1- ** was stored with function in ACT verify act
+424:             atr$localizacao/coimbra
+425:             atr$racao/um oitavo do vinho
+426:             atr$racao/? de azeite
+427:             atr$multa/quatro mil reais da moeda corrente
+428: 
+429:          test$francisco afonso/m/id=esc1529-e13-per3
+430:             ls$profissao/moleiro
+431:             ls$residencia/circuitos dos pacos
+432: 
+433:          test$bras eanes/m/id=esc1529-e13-per4
+434:             rel$profissional/hortelao/margarida de castro/esc1529-e13-per1
+435:             ls$profissao/hortelao
+436: 
+437:          test$jorge anes/m/id=esc1529-e13-per5
+438:             ls$profissao/carpinteiro
+439:             ls$residencia/pacos do mosteiro
+440: 
+441:       escritura$esc1529-e14/14/12/1529/aforamento/fol=21-22v/loc=grades de ferro/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e fernao de alvares, de uns matos no lugar de sangalhos
+442: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1529-e14
+443:          senhoria$margarida de castro/id=esc1529-e14-per1
+444:             ls$cargo/abadessa
+445:             ls$titulo/dona
+446:             ls$assina/sim
+447: 
+448:          foreiro$fernao de alvares/id=esc1529-e14-per2
+449:             ls$profissao/lavrador
+450:             ls$residencia/sangalhos
+451: 
+452:          foreira$leonor fernandes/id=esc1529-e14-per3
+453:             rel$parentesco/mulher/fernao de alvares/esc1529-e14-per2
+454: 
+455:          aforamento$uns matos
+aforamento-esc1529-e14-obj1- ** was stored with function in ACT verify act
+456:             atr$localizacao/sangalhos
+457:             atr$foro/uma galinha/obs=por dia de natal; o folio esta parcialmente rasgado, pelo que parte do foro se perdeu
+458:             atr$multa/mil reais da moeda corrente
+459: 
+460:          test$pedro anes/m/id=esc1529-e14-per4
+461:             rel$profissional/mordomo/margarida de castro/esc1529-e14-per1/obs=no lugar de sangalhos
+462: 
+463:          test$joao gil/m/id=esc1529-e14-per5
+464:             rel$sociabilidade/procurador/margarida de castro/esc1529-e14-per1
+465:             ls$residencia/nos pacos do mosteiro
+466: 
+467:       escritura$esc1529-e15/19/12/1529/aforamento/fol=23-25/loc=grades de ferro/sumario=contrato de renuncia e novo emprazamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra, afonso dias e joao simao, de um casal de herdade no termo de miranda
+468: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1529-e15
+469:          senhoria$margarida de castro/id=esc1529-e15-per1
+470:             ls$cargo/abadessa
+471:             ls$titulo/dona
+472:             ls$assina/sim
+473: 
+474:          renunciante$afonso dias/id=esc1529-e15-per2
+475:             ls$profissao/trabalhador
+476: 
+477:          foreiro$joao simao/id=esc1529-e15-per3
+478:             ls$profissao/lavrador
+479:             ls$residencia/ribeira
+480: 
+481:          aforamento$um casal de herdade
+aforamento-esc1529-e15-obj1- ** was stored with function in ACT verify act
+482:             atr$localizacao/termo de miranda
+483:             atr$racao/um oitavo de toda a novidade
+484:             atr$foro/quatro alqueires de trigo
+485:             atr$fogaca/um alqueire de trigo
+486:             atr$fogaca/um capao
+487:             atr$fogaca/dez ovos/obs=por dia de s. miguel de setembro
+488:             atr$multa/dez mil reais
+489: 
+490:          test$nome desconhecido/m/id=esc1529-e15-per4
+491:             ls$titulo/clerigo de missa
+492: 
+493:          test$pedro anes/m/id=esc1529-e15-per5
+494:             rel$profissional/mordomo/margarida de castro/esc1529-e15-per1
+495:             ls$cargo/mordomo do mosteiro/obs=mordomo no lugar de urzelhe
+496: 
+497:          test$pedro anes/m/id=esc1529-e15-per6
+498: 
+499:       escritura$esc1518-e16/18/2/1518/renuncia e novo emprazamento/fol=25-26v/loc=grades de ferro/sumario=contrato de renuncia e novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra, pedro anes e gaspar fernandes, de umas casas sitas em coimbra, na rua nova
+500: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1518-e16
+501:          senhoria$margarida de meneses/id=esc1518-e16-per1
+502:             ls$cargo/abadessa
+503:             ls$titulo/dona
+504:             ls$assina/sim
+505: 
+506:          renunciante$pedro anes/id=esc1518-e16-per2
+507:             ls$profissao/ferreiro
+508:             ls$residencia/coimbra
+509: 
+510:          foreiro$gaspar fernandes/id=esc1518-e16-per3
+511: 
+512:          foreira$maria pires/id=esc1518-e16-per4
+513:             rel$parentesco/mulher/gaspar fernandes/esc1518-e16-per3
+514: 
+515:          prazo$casas
+prazo-esc1518-e16-obj1- ** was stored with function in ACT verify act
+516:             atr$localizacao/coimbra, rua nova
+517:             atr$foro/duzentos e cinquenta mil reais na moeda corrente/obs=por dia de s. miguel de setembro
+518:             atr$multa/quatro mil reais
+519: 
+520:          test$joao goncalves/m/id=esc1518-e16-per5
+521:             rel$profissional/vedor/margarida de meneses/esc1518-e16-per1
+522:             ls$cargo/vedor do mosteiro
+523: 
+524:          test$antao gil/m/id=esc1518-e16-per6
+525:             rel$profissional/carneireiro/margarida de meneses/esc1518-e16-per1
+526: 
+527:       escritura$esc1533-e17/25/8/1533/renuncia e novo emprazamento/fol=27-29/loc=grades de ferro da portaria do mosteiro/sumario=contrato de renuncia e novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra, simao lopes e joao martins, de um casal com suas propriedades e matos no lugar da cruz, termo de coimbra
+528: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1533-e17
+529:          senhoria$margarida de castro/id=esc1533-e17-per1
+530:             ls$cargo/abadessa
+531:             ls$titulo/dona
+532:             ls$assina/sim
+533: 
+534:          renunciante$simao lopes/id=esc1533-e17-per2
+535:             ls$residencia/pacos do mosteiro
+536:             rel$profissional/oficial/margarida de castro/esc1533-e17-per1
+537: 
+538:          renunciantef$beatriz fernandes/id=esc1533-e17-per3
+539:             ls$residencia/pacos do mosteiro
+540:             rel$parentesco/mulher/simao lopes/esc1533-e17-per2
+541: 
+542:          foreiro$joao martins/id=esc1533-e17-per4
+543: 
+544:          prazo$um casal com sua propriedades e matos
+prazo-esc1533-e17-obj1- ** was stored with function in ACT verify act
+545:             atr$localizacao/no lugar da cruz termo de coimbra
+546:             atr$racao/um nono das novidades
+547:             atr$racao/uma galinha
+548:             atr$racao/vinte paes/obs=por dia de s. miguel de setembro
+549: 
+550:          test$afonso dias/m/id=esc1533-e17-per5
+551:             ls$residencia/coimbra
+552: 
+553:          test$? rodrigues/m/id=esc1533-e17-per6
+554:             ls$residencia/almalagues
+555: 
+556:          test$simao afonso/m/id=esc1533-e17-per7
+557:             ls$residencia/ponte da barca
+558: 
+559:          test$diogo de figueiredo/m/id=esc1533-e17-per8
+560:             rel$profissional/vedor/margarida de castro/esc1533-e17-per1
+561:             ls$cargo/vedor do mosteiro
+562: 
+563:          test$heitor fernandes/m/obs=duvida no primeiro nome/id=esc1533-e17-per9
+564: 
+565:       escritura$esc1545-e18/18/4/1545/emprazamento/fol=30-31/loc=porta da cerca/sumario=contrato de emprazamento celebrado entre o mosteiro de santa clara da cidade de coimbra e alvaro pires, de um casal de herdade sito no lugar de abiul
+566: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e18
+567:          senhoria$margarida de castro/id=esc1545-e18-per1
+568:             ls$cargo/abadessa
+569:             ls$titulo/dona
+570:             ls$assina/sim
+571: 
+572:          foreiro$alvaro pires/id=esc1545-e18-per2
+573:             ls$profissao/trabalhador
+574:             ls$residencia/abiul%vila de abiul
+575: 
+576:          prazo$um casal de herdade
+prazo-esc1545-e18-obj1- ** was stored with function in ACT verify act
+577:             atr$localizacao/lugar de abiul
+578:             atr$racao/um oitavo
+579:             atr$foro/sete alqueires de trigo/obs=por dia de s. miguel de setembro
+580:             atr$foro/dois capoes bons
+581:             atr$foro/uma galinha
+582:             atr$multa/vinte mil reais
+583: 
+584:          test$isabel de meneses/f/id=esc1545-e18-per3
+585:             ls$cargo/vigaria
+586:             ls$titulo/dona
+587:             ls$assina/sim
+588: 
+589:          test$maria de noronha/f/id=esc1545-e18-per4
+590:             ls$titulo/freira
+591:             ls$titulo/dona
+592:             ls$assina/sim
+593: 
+594:          test$joana da silva/f/id=esc1545-e18-per5
+595:             ls$titulo/freira
+596:             ls$assina/sim
+597: 
+598:          test$gaspar nogueira/m/obs=duvida no segundo nome/id=esc1545-e18-per6
+599:             ls$titulo/bacharel
+600:             ls$residencia/coimbra
+601: 
+602:          test$simao lopes/m/id=esc1545-e18-per7
+603:             rel$profissional/criado/margarida de castro/esc1545-e18-per1
+604:             ls$residencia/mosteiro de santa clara/obs=o tabeliao tera querido dizer nos circuitos do mosteiro
+605: 
+606:          test$antonia de castro/f/id=esc1545-e18-per8
+607:             ls$cargo/sacrista
+608:             ls$titulo/dona
+609:             ls$assina/sim
+610: 
+611:       escritura$esc1545-e19/12/5/1545/emprazamento/fol=31v-32v/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e joao alvares, de uma hortinha sita nos pacos, perto do hospital de santa isabel
+612: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e19
+613:          senhoria$margarida de castro/id=esc1545-e19-per1
+614:             ls$cargo/abadessa
+615:             ls$titulo/dona
+616:             ls$assina/sim
+617: 
+618:          foreiro$joao alvares/id=esc1545-e19-per2
+619:             ls$residencia/pacos de santa clara
+620: 
+621:          aforamento$uma hortinha
+aforamento-esc1545-e19-obj1- ** was stored with function in ACT verify act
+622:             atr$localizacao/pacos junto ao hospital de santa isabel
+623:             atr$racao/uma galinha boa/obs=por s. miguel de setembro
+624:             atr$multa/vinte mil reais
+625: 
+626:          test$anrique mendes/m/id=esc1545-e19-per3
+627:             rel$profissional/feitor/margarida de castro/esc1545-e19-per1
+628:             ls$cargo/feitor do mosteiro
+629: 
+630:          test$diogo de figueiredo/m/id=esc1545-e19-per4
+631: 
+632:          test$andre pires/m/id=esc1545-e19-per5
+633:             ls$profissao/lavrador
+634:             ls$residencia/orelhudo
+635: 
+636:          test$isabel de meneses/f/id=esc1545-e19-per6
+637:             ls$cargo/vigaria
+638:             ls$titulo/dona
+639:             ls$assina/sim
+640: 
+641:          test$maria de noronha/f/id=esc1545-e19-per7
+642:             ls$titulo/freira
+643:             ls$titulo/dona
+644:             ls$assina/sim
+645: 
+646:          test$joana da silva/f/id=esc1545-e19-per8
+647:             ls$titulo/freira
+648:             ls$assina/sim
+649: 
+650:          test$antonia de castro/f/id=esc1545-e19-per9
+651:             ls$cargo/sacrista
+652:             ls$titulo/dona
+653:             ls$assina/sim
+654: 
+655:       escritura$esc1545-e20/12/5/1545/aforamento/fol=32v-34/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e andre pires de um quarto de casal
+656: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e20
+657:          senhoria$margarida de castro/id=esc1545-e20-per1
+658:             ls$cargo/abadessa
+659:             ls$titulo/dona
+660:             ls$assina/sim
+661: 
+662:          foreiro$andre pires/id=esc1545-e20-per2
+663:             ls$profissao/lavrador
+664:             ls$residencia/lugar de casconha
+665: 
+666:          foreira$maria afonso/id=esc1545-e20-per3
+667:             rel$parentesco/mulher/andre pires/esc1545-e20-per2
+668: 
+669:             referido$simao pires/id=esc1545-e20-per4
+670:                rel$parentesco/pai/andre pires/esc1545-e20-per2
+671:                ls$residencia/lugar de casconha
+672: 
+673:          aforamento$um quarto de casal
+aforamento-esc1545-e20-obj1- ** was stored with function in ACT verify act
+674:             atr$foro/um alqueire de trigo/obs=pago na eira por dia de s. miguel de setembro
+675:             atr$foro/um alqueire de milho/obs=pago na eira por dia de s. miguel de setembro
+676:             atr$foro/duas fogacas de trigo
+677:             atr$foro/uma galinha
+678:             atr$foro/um quinto de todo o pao que houver
+679:             atr$racao/um oitavo de alqueires de toda a novidade
+680: 
+681:          test$isabel de meneses/f/id=esc1545-e20-per5
+682:             ls$cargo/vigaria
+683:             ls$titulo/dona
+684:             ls$assina/sim
+685: 
+686:          test$leonor da silveira/f/id=esc1545-e20-per6
+687:             ls$cargo/mordoma
+688:             ls$titulo/dona
+689:             ls$assina/sim
+690: 
+691:          test$joana da silva/f/id=esc1545-e20-per7
+692:             ls$cargo/mordoma
+693:             ls$titulo/dona
+694:             ls$assina/sim
+695: 
+696:          test$leonor de castro/f/id=esc1545-e20-per8
+697:             ls$cargo/porteira
+698:             ls$titulo/dona
+699:             ls$assina/sim
+700: 
+701:          test$maria de noronha/f/id=esc1545-e20-per9
+702:             ls$cargo/porteira
+703:             ls$titulo/dona
+704:             ls$assina/sim
+705: 
+706:          test$cezilia de mendonca/f/id=esc1545-e20-per10
+707:             ls$cargo/sacrista
+708:             ls$titulo/dona
+709:             ls$assina/sim
+710: 
+711:          test$antonia de castro/f/id=esc1545-e20-per11
+712:             ls$cargo/sacrista
+713:             ls$titulo/dona
+714:             ls$assina/sim
+715: 
+716:          test$anrique mendes/m/id=esc1545-e20-per12
+717:             rel$profissional/feitor/margarida de castro/esc1545-e20-per1
+718:             ls$cargo/feitor do mosteiro
+719: 
+720:          test$diogo de figueiredo/m/id=esc1545-e20-per13
+721:             rel$profissional/vedor/margarida de castro/esc1545-e20-per1
+722:             ls$cargo/vedor do mosteiro
+723: 
+724:          test$simao lopes/m/id=esc1545-e20-per14
+725:             ls$residencia/orelhudo
+726: 
+727:       escritura$esc1545-e21/12/5/1545/aforamento/fol=34-36/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e smao lopes, de varias parcelas de um casal que, no todo, fazem um casal
+728: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e21
+729:          senhoria$margarida de castro/id=esc1545-e21-per1
+730:             ls$cargo/abadessa
+731:             ls$titulo/dona
+732:             ls$assina/sim
+733: 
+734:          foreiro$simao lopes/id=esc1545-e21-per2
+735:             ls$profissao/lavrador
+736:             ls$residencia/orelhudo
+737: 
+738:          foreira$catarina pires/id=esc1545-e21-per3
+739:             rel$parentesco/mulher/simao lopes/esc1545-e21-per2
+740: 
+741:          aforamento$varias parcelas de casal que no todo fazem um casal
+aforamento-esc1545-e21-obj1- ** was stored with function in ACT verify act
+742:             atr$foro/quatro alqueires de trigo/obs=pagos na eira
+743:             atr$foro/dois alqueires de milho
+744:             atr$foro/um capao bom
+745:             atr$foro/seis fogacas/obs=por dia de s. miguel de setembro, pagas ao feitor do mosteiro
+746:             atr$foro/um quinto de todo o pao
+747:             atr$foro/um oitavo dos legumes
+748: 
+749:          test$isabel de meneses/f/id=esc1545-e21-per4
+750:             ls$cargo/vigaria
+751:             ls$titulo/dona
+752:             ls$assina/sim
+753: 
+754:          test$leonor da silveira/f/id=esc1545-e21-per5
+755:             ls$cargo/mordoma
+756:             ls$titulo/dona
+757:             ls$assina/sim
+758: 
+759:          test$joana da silva/f/id=esc1545-e21-per6
+760:             ls$cargo/mordoma
+761:             ls$titulo/dona
+762:             ls$assina/sim
+763: 
+764:          test$leonor de castro/f/id=esc1545-e21-per7
+765:             ls$cargo/porteira
+766:             ls$titulo/dona
+767:             ls$assina/sim
+768: 
+769:          test$maria de noronha/f/id=esc1545-e21-per8
+770:             ls$cargo/porteira
+771:             ls$titulo/dona
+772:             ls$assina/sim
+773: 
+774:          test$cezilia de mendonca/f/id=esc1545-e21-per9
+775:             ls$cargo/sacrista
+776:             ls$titulo/dona
+777:             ls$assina/sim
+778: 
+779:          test$antonia de castro/f/id=esc1545-e21-per10
+780:             ls$cargo/sacrista
+781:             ls$titulo/dona
+782:             ls$assina/sim
+783: 
+784:          test$anrique mendes/m/id=esc1545-e21-per11
+785:             rel$profissional/feitor/margarida de castro/esc1545-e20-per1
+786:             ls$cargo/feitor do mosteiro
+787: 
+788:          test$diogo de figueiredo/m/id=esc1545-e21-per12
+789:             rel$profissional/vedor/margarida de castro/esc1545-e20-per1
+790:             ls$cargo/vedor do mosteiro
+791: 
+792:          test$simao lopes/m/id=esc1545-e21-per13
+793:             ls$residencia/orelhudo
+794: 
+795:          test$joao alvares/m/id=esc1545-e21-per14
+796:             rel$profissional/solicitador/margarida de castro/esc1545-e21-per1
+797:             ls$cargo/solicitador do mosteiro
+798: 
+799:       escritura$esc1545-e22/18/6/1545/emprazamento/fol=36-37/loc=porta da cerca/sumario=contrato de novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra ecristovao lopes, de umas casas sitas nos pacos
+800: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e22
+801:          senhoria$margarida de castro/id=esc1545-e22-per1
+802:             ls$cargo/abadessa
+803:             ls$titulo/dona
+804:             ls$assina/sim
+805: 
+806:          foreiro$cristovao lopes/id=esc1545-e22-per2
+807:             ls$profissao/almocreve
+808:             ls$residencia/pacos do mosteiro
+809: 
+810:          prazo$umas casas
+prazo-esc1545-e22-obj1- ** was stored with function in ACT verify act
+811:             atr$localizacao/pacos
+812:             atr$pensao/cento e cinquenta reais
+813: 
+814:          test$isabel de meneses/f/id=esc1545-e22-per3
+815:             ls$cargo/vigaria
+816:             ls$titulo/dona
+817:             ls$assina/sim
+818: 
+819:          test$leonor da silveira/f/id=esc1545-e22-per4
+820:             ls$cargo/mordoma
+821:             ls$titulo/dona
+822: 
+823:          test$joana da silva/f/id=esc1545-e22-per5
+824:             ls$cargo/mordoma
+825:             ls$titulo/dona
+826: 
+827:          test$cezilia de mendonca/f/id=esc1545-e22-per6
+828:             ls$cargo/sacrista
+829:             ls$titulo/dona
+830: 
+831:          test$antonia de castro/f/id=esc1545-e22-per7
+832:             ls$cargo/sacrista
+833:             ls$titulo/dona
+834: 
+835:          test$leonor de castro/f/id=esc1545-e22-per8
+836:             ls$cargo/porteira
+837:             ls$titulo/dona
+838: 
+839:          test$maria de noronha/f/id=esc1545-e22-per9
+840:             ls$cargo/porteira
+841:             ls$titulo/dona
+842: 
+843:          test$francisco vaz/m/id=esc1545-e22-per10
+844:             ls$profissao/pedreiro
+845:             ls$residencia/pacos de santa clara
+846: 
+847:          test$fabiao vaz/m/id=esc1545-e22-per11
+848:             rel$parentesco/filho/francisco vaz/esc1545-e22-per10
+849:             ls$profissao/pedreiro
+850:             ls$residencia/pacos de santa clara
+851: 
+852:          test$francisco gomes/m/id=esc1545-e22-per12
+853:             ls$profissao/ferreiro
+854:             ls$residencia/pacos de santa clara
+855: 
+856:       escritura$esc1545-e23/18/6/1545/emprazamento/fol=37-38/loc=porta da cerca/sumario=contrato de novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra e francisco gomes, de umas casas sitas nos pacos do mosteiro
+857: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e23
+858:          senhoria$margarida de castro/id=esc1545-e23-per1
+859:             ls$cargo/abadessa
+860:             ls$titulo/dona
+861:             ls$assina/sim
+862: 
+863:          foreiro$francisco gomes/id=esc1545-e23-per2
+864:             ls$profissao/ferreiro
+865:             ls$residencia/pacos de santa clara
+866: 
+867:          foreira$joana dias/id=esc1545-e23-per3
+868:             rel$parentesco/mulher/francisco gomes/esc1545-e23-per2
+869: 
+870:          prazo$umas casas
+prazo-esc1545-e23-obj1- ** was stored with function in ACT verify act
+871:             atr$localizacao/pacos
+872:             atr$pensao/cento e dez reais/obs=por s. miguel de setembro
+873: 
+874:          test$isabel de meneses/f/id=esc1545-e23-per4
+875:             ls$cargo/vigaria
+876:             ls$titulo/dona
+877:             ls$assina/sim
+878: 
+879:          test$leonor da silveira/f/id=esc1545-e23-per5
+880:             ls$cargo/mordoma
+881:             ls$titulo/dona
+882: 
+883:          test$joana da silva/f/id=esc1545-e23-per6
+884:             ls$cargo/mordoma
+885:             ls$titulo/dona
+886: 
+887:          test$cezilia de mendonca/f/id=esc1545-e23-per7
+888:             ls$cargo/sacrista
+889:             ls$titulo/dona
+890: 
+891:          test$antonia de castro/f/id=esc1545-e23-per8
+892:             ls$cargo/sacrista
+893:             ls$titulo/dona
+894: 
+895:          test$leonor de castro/f/id=esc1545-e23-per9
+896:             ls$cargo/porteira
+897:             ls$titulo/dona
+898: 
+899:          test$maria de noronha/f/id=esc1545-e23-per10
+900:             ls$cargo/porteira
+901:             ls$titulo/dona
+902: 
+903:          test$francisco vaz/m/id=esc1545-e23-per11
+904:             ls$profissao/pedreiro
+905:             ls$residencia/pacos de santa clara
+906: 
+907:          test$fabiao vaz/m/id=esc1545-e23-per12
+908:             rel$parentesco/filho/francisco vaz/esc1545-e23-per11
+909:             ls$profissao/pedreiro
+910:             ls$residencia/pacos de santa clara
+911: 
+912:          test$cristovao lopes/m/id=esc1545-e23-per13
+913:             ls$profissao/almocreve
+914:             ls$residencia/pacos de santa clara
+915: 
+916:       escritura$esc1545-e24/19/6/1545/emprazamento/fol=38-39/loc=porta da cerca/sumario=contrato de novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra e domingos goncalves, de umas casas sitas nos pacos do mosteiro
+917: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e24
+918:          senhoria$margarida de castro/id=esc1545-e24-per1
+919:             ls$cargo/abadessa
+920:             ls$titulo/dona
+921:             ls$assina/sim
+922: 
+923:          foreiro$domingos goncalves/id=esc1545-e24-per2
+924:             ls$profissao/sapateiro
+925:             ls$residencia/pacos
+926: 
+927:          foreira$ana francisca/id=esc1545-e24-per3
+928:             rel$parentesco/mulher/domingos goncalves/esc1545-e24-per2
+929: 
+930:          prazo$ums casas
+prazo-esc1545-e24-obj1- ** was stored with function in ACT verify act
+931:             atr$localizacao/pacos do mosteiro
+932:             atr$pensao/cento e dez reais/obs=por s. miguel de setembro
+933: 
+934:          test$isabel de meneses/f/id=esc1545-e24-per4
+935:             ls$cargo/vigaria
+936:             ls$titulo/dona
+937:             ls$assina/sim
+938: 
+939:          test$leonor da silveira/f/id=esc1545-e24-per5
+940:             ls$cargo/mordoma
+941:             ls$titulo/dona
+942: 
+943:          test$joana da silva/f/id=esc1545-e24-per6
+944:             ls$cargo/mordoma
+945:             ls$titulo/dona
+946: 
+947:          test$cezilia de mendonca/f/id=esc1545-e24-per7
+948:             ls$cargo/sacrista
+949:             ls$titulo/dona
+950: 
+951:          test$antonia de castro/f/id=esc1545-e24-per8
+952:             ls$cargo/sacrista
+953:             ls$titulo/dona
+954: 
+955:          test$leonor de castro/f/id=esc1545-e24-per9
+956:             ls$cargo/porteira
+957:             ls$titulo/dona
+958: 
+959:          test$maria de noronha/f/id=esc1545-e24-per10
+960:             ls$cargo/porteira
+961:             ls$titulo/dona
+962: 
+963:          test$antonio fernandes/m/id=esc1545-e24-per11
+964:             rel$profissional/criado/margarida de castro/esc1545-e24-per1
+965:             ls$residencia/pacos
+966: 
+967:          test$lourenco pires/m/id=esc1545-e24-per12
+968:             ls$profissao/barqueiro
+969:             ls$residencia/pacos
+970: 
+971:          test$joao fernandes/m/id=esc1545-e24-per13
+972:             ls$profissao/barqueiro
+973:             ls$residencia/pacos
+974: 
+975:       escritura$esc1545-e25/19/6/1545/emprazamento/fol=39-40v/loc=porta da cerca/sumario=contrato de renuncia e novo emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra e simao rodrigues, de umas casas sitas nos pacos
+976: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e25
+977:          senhoria$margarida de castro/id=esc1545-e25-per1
+978:             ls$cargo/abadessa
+979:             ls$titulo/dona
+980:             ls$assina/sim
+981: 
+982:          renunciante$simao rodrigues/id=esc1545-e25-per2
+983:             ls$profissao/barqueiro
+984: 
+985:          foreiro$lourenco lopes/id=esc1545-e25-per3
+986:             rel$parentesco/genro/simao rodrigues/esc1545-e25-per2
+987:             ls$profissao/barqueiro
+988: 
+989:          prazo$casas
+prazo-esc1545-e25-obj1- ** was stored with function in ACT verify act
+990:             atr$localizacao/pacos
+991:             atr$foro/cem reais/obs=por s. miguel de setembro
+992: 
+993:          test$isabel de meneses/f/id=esc1545-e25-per4
+994:             ls$cargo/vigaria
+995:             ls$titulo/dona
+996:             ls$assina/sim
+997: 
+998:          test$leonor da silveira/f/id=esc1545-e25-per5
+999:             ls$cargo/mordoma
+1000:             ls$titulo/dona
+1001: 
+1002:          test$joana da silva/f/id=esc1545-e25-per6
+1003:             ls$cargo/mordoma
+1004:             ls$titulo/dona
+1005: 
+1006:          test$cezilia de mendonca/f/id=esc1545-e25-per7
+1007:             ls$cargo/sacrista
+1008:             ls$titulo/dona
+1009: 
+1010:          test$antonia de castro/f/id=esc1545-e25-per8
+1011:             ls$cargo/sacrista
+1012:             ls$titulo/dona
+1013: 
+1014:          test$leonor de castro/f/id=esc1545-e25-per9
+1015:             ls$cargo/porteira
+1016:             ls$titulo/dona
+1017: 
+1018:          test$maria de noronha/f/id=esc1545-e25-per10
+1019:             ls$cargo/porteira
+1020:             ls$titulo/dona
+1021: 
+1022:          test$antonio fernandes/m/id=esc1545-e25-per11
+1023:             rel$profissional/criado/margarida de castro/esc1545-e25-per1
+1024:             ls$residencia/pacos
+1025: 
+1026:          test$joao goncalves/m/id=esc1545-e25-per12
+1027:             ls$profissao/barqueiro
+1028:             ls$residencia/pacos
+1029: 
+1030:          test$domingos goncalves/m/id=esc1545-e25-per13
+1031:             ls$profissao/sapateiro
+1032:             ls$residencia/pacos
+1033: 
+1034:       escritura$esc1545-e26/1/7/1545/emprazamento/fol=40v-41v/loc=porta da cerca/sumario=contrato de emprazamento em quatro vidas celebrado entre mosteiro de santa clara da cidade de coimbra e pedro goncalves, de umas casas sitas nos pacos
+1035: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e26
+1036:          senhoria$margarida de castro/id=esc1545-e26-per1
+1037:             ls$cargo/abadessa
+1038:             ls$titulo/dona
+1039:             ls$assina/sim
+1040: 
+1041:          foreiro$pedro goncalves/id=esc1545-e26-per2
+1042:             ls$profissao/boeiro
+1043:             ls$residencia/pacos
+1044: 
+1045:          foreira$branda duarte/id=esc1545-e26-per3
+1046:             rel$parentesco/mulher/pedro goncalves/esc1545-e26-per2
+1047:             ls$residencia/pacos
+1048: 
+1049:          prazo$umas casas
+prazo-esc1545-e26-obj1- ** was stored with function in ACT verify act
+1050:             atr$localizacao/pacos
+1051:             atr$pensao/cento e vinte reais/obs=por s. miguel de setembro
+1052: 
+1053:          test$isabel de meneses/f/id=esc1545-e26-per4
+1054:             ls$cargo/vigaria
+1055:             ls$titulo/dona
+1056:             ls$assina/sim
+1057: 
+1058:          test$leonor da silveira/f/id=esc1545-e26-per5
+1059:             ls$cargo/mordoma
+1060:             ls$titulo/dona
+1061: 
+1062:          test$joana da silva/f/id=esc1545-e26-per6
+1063:             ls$cargo/mordoma
+1064:             ls$titulo/dona
+1065: 
+1066:          test$cezilia de mendonca/f/id=esc1545-e26-per7
+1067:             ls$cargo/sacrista
+1068:             ls$titulo/dona
+1069: 
+1070:          test$antonia de castro/f/id=esc1545-e26-per8
+1071:             ls$cargo/sacrista
+1072:             ls$titulo/dona
+1073: 
+1074:          test$leonor de castro/f/id=esc1545-e26-per9
+1075:             ls$cargo/porteira
+1076:             ls$titulo/dona
+1077: 
+1078:          test$maria de noronha/f/id=esc1545-e26-per10
+1079:             ls$cargo/porteira
+1080:             ls$titulo/dona
+1081: 
+1082:          test$joao alvares/m/id=esc1545-e26-per11
+1083:             rel$profissional/criado/margarida de castro/esc1545-e26-per1
+1084: 
+1085:          test$duarte fernandes/m/id=esc1545-e26-per12
+1086:             ls$cargo/escudeiro
+1087:             ls$residencia/vila de avelas
+1088: 
+1089:          test$fernando bras/m/id=esc1545-e26-per13
+1090:             ls$cargo/escudeiro
+1091:             ls$residencia/vila de avelas
+1092: 
+1093:       escritura$esc1545-e27/3/7/1545/emprazamento/fol=41v-42v/loc=porta da cerca/sumario=contrato de renuncia e novo emprazamento em quatro vidas celebrado entre mosteiro de santa clara da cidade de coimbra e
+1094: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e27
+1095:          senhoria$margarida de castro/id=sc1545-e27-per1
+1096:             ls$cargo/abadessa
+1097:             ls$titulo/dona
+1098:             ls$assina/sim
+1099: 
+1100:          renunciante$afonso andre/id=esc1545-e27-per2
+1101:             ls$residencia/pacos
+1102: 
+1103:          renunciantef$beatriz pires/id=esc1545-e27-per3
+1104:             rel$parentesco/mulher/afonso andre/esc1545-e27-per2
+1105:             ls$residencia/pacos
+1106: 
+1107:          foreiro$pedro goncalves/id=esc1545-e27-per4
+1108:             ls$profissao/boeiro
+1109: 
+1110:          prazo$um pedaco de umas casas
+prazo-esc1545-e27-obj1- ** was stored with function in ACT verify act
+1111:             atr$foro/oitenta reais/obs=por s. miguel de setembro
+1112: 
+1113:          test$joao alvares/m/id=esc1545-e27-per5
+1114:             rel$profissional/criado/margarida de castro/esc1545-e27-per1
+1115: 
+1116:          test$joao anes/m/id=esc1545-e27-per6
+1117:             ls$residencia/pacos de santa clara
+1118: 
+1119:          test$diogo de figueiredo/m/id=esc1545-e27-per7
+1120:             ls$residencia/pacos de santa clara
+1121: 
+1122:       escritura$esc1545-e28/6/6/1545/aforamento/fol=42v-44/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e francisco vaz, de um chao sito nos pacos
+1123: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e28
+1124:          senhoria$margarida de castro/id=esc1545-e28-per1
+1125:             ls$cargo/abadessa
+1126:             ls$titulo/dona
+1127:             ls$assina/sim
+1128: 
+1129:          foreiro$francisco vaz/id=esc1545-e28-per2
+1130:             ls$profissao/pedreiro
+1131: 
+1132:          aforamento$um chao
+aforamento-esc1545-e28-obj1- ** was stored with function in ACT verify act
+1133:             atr$localizacao/pacos
+1134:             atr$foro/cem reais/obs=por s.miguel de setembro
+1135: 
+1136:          test$isabel de meneses/f/id=esc1545-e28-per3
+1137:             ls$cargo/vigaria
+1138:             ls$titulo/dona
+1139:             ls$assina/sim
+1140: 
+1141:          test$leonor da silveira/f/id=esc1545-e28-per4
+1142:             ls$cargo/mordoma
+1143:             ls$titulo/dona
+1144: 
+1145:          test$joana da silva/f/id=esc1545-e28-per5
+1146:             ls$cargo/mordoma
+1147:             ls$titulo/dona
+1148: 
+1149:          test$cezilia de mendonca/f/id=esc1545-e28-per6
+1150:             ls$cargo/sacrista
+1151:             ls$titulo/dona
+1152: 
+1153:          test$antonia de castro/f/id=esc1545-e28-per7
+1154:             ls$cargo/sacrista
+1155:             ls$titulo/dona
+1156: 
+1157:          test$leonor de castro/f/id=esc1545-e28-per8
+1158:             ls$cargo/porteira
+1159:             ls$titulo/dona
+1160: 
+1161:          test$maria de noronha/f/id=esc1545-e28-per9
+1162:             ls$cargo/porteira
+1163:             ls$titulo/dona
+1164: 
+1165:          test$duarte fernandes/m/id=esc1545-e28-per10
+1166:             ls$cargo/escudeiro
+1167:             ls$residencia/vila de avelas
+1168: 
+1169:          test$fernando bras/m/id=esc1545-e28-per11
+1170:             ls$cargo/escudeiro
+1171:             ls$residencia/vila de avelas
+1172: 
+1173:          test$joao alvares/m/id=esc1545-e28-per12
+1174:             rel$profissional/criado/margarida de castro/esc1545-e28-per1
+1175: 
+1176:       escritura$esc1545-e29/6/7/1545/emprazamento/fol=44-45/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre o mosteiro de santa clara da cidade de coimbra e ambrosio dias, de umas casas sitas nos pacos
+1177: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e29
+1178:          senhoria$margarida de castro/id=esc1545-e29-per1
+1179:             ls$cargo/abadessa
+1180:             ls$titulo/dona
+1181:             ls$assina/sim
+1182: 
+1183:          foreiro$ambrosio dias/id=esc1545-e29-per2
+1184:             ls$profissao/almocreve
+1185:             ls$residencia/pacos junto ao mosteiro
+1186: 
+1187:          foreira$ana fernandes/id=esc1545-e29-per3
+1188:             rel$parentesco/mulher/ambrosio dias/esc1545-e29-per2
+1189: 
+1190:          prazo$umas casas
+prazo-esc1545-e29-obj1- ** was stored with function in ACT verify act
+1191:             atr$localizacao/pacos
+1192:             atr$pensao/cento e vinte reais/obs=por s. miguel de setembro
+1193: 
+1194:          test$isabel de meneses/f/id=esc1545-e29-per4
+1195:             ls$cargo/vigaria
+1196:             ls$titulo/dona
+1197:             ls$assina/sim
+1198: 
+1199:          test$leonor da silveira/f/id=esc1545-e29-per5
+1200:             ls$cargo/mordoma
+1201:             ls$titulo/dona
+1202: 
+1203:          test$joana da silva/f/id=esc1545-e29-per6
+1204:             ls$cargo/mordoma
+1205:             ls$titulo/dona
+1206: 
+1207:          test$cezilia de mendonca/f/id=esc1545-e29-per7
+1208:             ls$cargo/sacrista
+1209:             ls$titulo/dona
+1210: 
+1211:          test$antonia de castro/f/id=esc1545-e29-per8
+1212:             ls$cargo/sacrista
+1213:             ls$titulo/dona
+1214: 
+1215:          test$leonor de castro/f/id=esc1545-e29-per9
+1216:             ls$cargo/porteira
+1217:             ls$titulo/dona
+1218: 
+1219:          test$maria de noronha/f/id=esc1545-e29-per10
+1220:             ls$cargo/porteira
+1221:             ls$titulo/dona
+1222: 
+1223:          test$joao alvares/m/id=esc1545-e29-per11
+1224:             rel$profissional/criado/margarida de castro/esc1545-e29-per1
+1225: 
+1226:          test$duarte fernandes/m/id=esc1545-e29-per12
+1227:             ls$cargo/escudeiro
+1228: 
+1229:          test$fernando bras/m/id=esc1545-e29-per13
+1230:             ls$cargo/escudeiro
+1231: 
+1232:       escritura$esc1545-e30/7/7/1545/emprazamento/fol=45-46/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e francisco? fernan? luis, de umas casas sitas nos pacos
+1233: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e30
+1234:          senhoria$margarida de castro/id=esc1545-e30-per1
+1235:             ls$cargo/abadessa
+1236:             ls$titulo/dona
+1237:             ls$assina/sim
+1238: 
+1239:          foreiro$francisco luis/obs=duvida no primeiro nome/id=esc1545-e30-per2
+1240:             ls$profissao/trabalhador
+1241:             ls$residencia/pacos
+1242: 
+1243:          foreira$catarina pires/id=esc1545-e30-per3
+1244:             rel$parentesco/mulher/francisco luis/esc1545-e30-per2
+1245: 
+1246:          prazo$umas casas
+prazo-esc1545-e30-obj1- ** was stored with function in ACT verify act
+1247:             atr$localizacao/pacos
+1248:             atr$pensao/cem reais/obs=por s. miguel de setembro
+1249: 
+1250:          test$isabel de meneses/f/id=esc1545-e30-per4
+1251:             ls$cargo/vigaria
+1252:             ls$titulo/dona
+1253:             ls$assina/sim
+1254: 
+1255:          test$leonor da silveira/f/id=esc1545-e30-per5
+1256:             ls$cargo/mordoma
+1257:             ls$titulo/dona
+1258: 
+1259:          test$joana da silva/f/id=esc1545-e30-per6
+1260:             ls$cargo/mordoma
+1261:             ls$titulo/dona
+1262: 
+1263:          test$cezilia de mendonca/f/id=esc1545-e30-per7
+1264:             ls$cargo/sacrista
+1265:             ls$titulo/dona
+1266: 
+1267:          test$antonia de castro/f/id=esc1545-e30-per8
+1268:             ls$cargo/sacrista
+1269:             ls$titulo/dona
+1270: 
+1271:          test$leonor de castro/f/id=esc1545-e30-per9
+1272:             ls$cargo/porteira
+1273:             ls$titulo/dona
+1274: 
+1275:          test$maria de noronha/f/id=esc1545-e30-per10
+1276:             ls$cargo/porteira
+1277:             ls$titulo/dona
+1278: 
+1279:          test$joao alvares/m/id=esc1545-e30-per11
+1280:             rel$profissional/criado/margarida de castro/esc1545-e30-per1
+1281:             ls$residencia/pacos
+1282: 
+1283:          test$joao goncalves/m/id=esc1545-e30-per12
+1284:             ls$profissao/boeiro
+1285:             ls$residencia/pacos
+1286: 
+1287:       escritura$esc1545-e31/8/7/1545/emprazamento/fol=46-47/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e bras eanes, de um olival sito na varzea
+1288: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e31
+1289:          senhoria$margarida de castro/id=esc1545-e31-per1
+1290:             ls$cargo/abadessa
+1291:             ls$titulo/dona
+1292:             ls$assina/sim
+1293: 
+1294:          foreiro$bras eanes/id=esc1545-e31-per2
+1295:             rel$profissional/hortelao/margarida de castro/esc1545-e31-per1
+1296:             ls$residencia/pacos
+1297:             ls$profissao/hortelao
+1298: 
+1299:          prazo$um olival
+prazo-esc1545-e31-obj1- ** was stored with function in ACT verify act
+1300:             atr$localizacao/varzea
+1301:             atr$racao/um quinto dos alqueires de toda a novidade
+1302: 
+1303:          test$isabel de meneses/f/id=esc1545-e31-per3
+1304:             ls$cargo/vigaria
+1305:             ls$titulo/dona
+1306:             ls$assina/sim
+1307: 
+1308:          test$leonor da silveira/f/id=esc1545-e31-per4
+1309:             ls$cargo/mordoma
+1310:             ls$titulo/dona
+1311: 
+1312:          test$joana da silva/f/id=esc1545-e31-per5
+1313:             ls$cargo/mordoma
+1314:             ls$titulo/dona
+1315: 
+1316:          test$cezilia de mendonca/f/id=esc1545-e31-per6
+1317:             ls$cargo/sacrista
+1318:             ls$titulo/dona
+1319: 
+1320:          test$antonia de castro/f/id=esc1545-e31-per7
+1321:             ls$cargo/sacrista
+1322:             ls$titulo/dona
+1323: 
+1324:          test$leonor de castro/f/id=esc1545-e31-per8
+1325:             ls$cargo/porteira
+1326:             ls$titulo/dona
+1327: 
+1328:          test$maria de noronha/f/id=esc1545-e31-per9
+1329:             ls$cargo/porteira
+1330:             ls$titulo/dona
+1331: 
+1332:          test$anrique mendes/m/id=esc1545-e31-per10
+1333:             rel$profissional/criado/margarida de castro/esc1545-e31-per1
+1334:             ls$profissao/criado
+1335: 
+1336:          test$antonio fernandes/m/id=esc1545-e31-per11
+1337:             rel$profissional/criado/margarida de castro/esc1545-e31-per1
+1338: 
+1339:       escritura$esc1545-e32/9/7/1545/emprazamento/fol=47-48/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e afonso andre, de umas casas sitas nos pacos
+1340: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e32
+1341:          senhoria$margarida de castro/id=esc1545-e32-per1
+1342:             ls$cargo/abadessa
+1343:             ls$titulo/dona
+1344:             ls$assina/sim
+1345: 
+1346:          foreiro$afonso andre/id=esc1545-e32-per2
+1347: 
+1348:          prazo$umas casas
+prazo-esc1545-e32-obj1- ** was stored with function in ACT verify act
+1349:             atr$localizacao/pacos
+1350:             atr$pensao/cem reais/obs=por s. miguel de setembro
+1351: 
+1352:          test$isabel de meneses/f/id=esc1545-e32-per3
+1353:             ls$cargo/vigaria
+1354:             ls$titulo/dona
+1355:             ls$assina/sim
+1356: 
+1357:          test$leonor da silveira/f/id=esc1545-e32-per4
+1358:             ls$cargo/mordoma
+1359:             ls$titulo/dona
+1360: 
+1361:          test$joana da silva/f/id=esc1545-e32-per5
+1362:             ls$cargo/mordoma
+1363:             ls$titulo/dona
+1364: 
+1365:          test$cezilia de mendonca/f/id=esc1545-e32-per6
+1366:             ls$cargo/sacrista
+1367:             ls$titulo/dona
+1368: 
+1369:          test$antonia de castro/f/id=esc1545-e32-per7
+1370:             ls$cargo/sacrista
+1371:             ls$titulo/dona
+1372: 
+1373:          test$leonor de castro/f/id=esc1545-e32-per8
+1374:             ls$cargo/porteira
+1375:             ls$titulo/dona
+1376: 
+1377:          test$maria de noronha/f/id=esc1545-e32-per9
+1378:             ls$cargo/porteira
+1379:             ls$titulo/dona
+1380: 
+1381:          test$anrique mendes/m/id=esc1545-e32-per10
+1382:             rel$profissional/feitor/margarida de castro/esc1545-e32-per1
+1383:             ls$cargo/feitor do mosteiro
+1384: 
+1385:          test$fabiao vaz/m/id=esc1545-e32-per11
+1386:             ls$profissao/pedreiro
+1387:             ls$residencia/pacos
+1388: 
+1389:       escritura$esc1545-e33/10/7/1545/emprazamento/fol=48-49/loc=porta da cerca/sumario=o mosteiro de santa clara da cidade de coimbra, a pedido de lopo de martins, cavaleiro fidalgo, empraza a branca sim�es umas casas sitas nos pacos
+1390: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e33
+1391:          senhoria$margarida de castro/id=esc1545-e33-per1
+1392:             ls$cargo/abadessa
+1393:             ls$titulo/dona
+1394:             ls$assina/sim
+1395: 
+1396:          test$lopo martins/id=esc1545-e33-per2/obs=e quem pede a abadessa para que esta empraze as casas a sua criada
+1397: 
+1398:          foreira$branca simoes/id=esc1545-e33-per3
+1399:             ls$orfa/sim%moca orfa
+1400:             rel$profissional/criada/lopo martins/esc1545-e33-per2
+1401:             ls$profissao/criada
+1402: 
+1403:          aforamento$umas casas
+aforamento-esc1545-e33-obj1- ** was stored with function in ACT verify act
+1404:             atr$localizacao/pacos
+1405:             atr$foro/oitenta reais/obs=por s. miguel de setembro
+1406: 
+1407:          test$isabel de meneses/f/id=esc1545-e33-per4
+1408:             ls$cargo/vigaria
+1409:             ls$titulo/dona
+1410:             ls$assina/sim
+1411: 
+1412:          test$leonor da silveira/f/id=esc1545-e33-per5
+1413:             ls$cargo/mordoma
+1414:             ls$titulo/dona
+1415: 
+1416:          test$joana da silva/f/id=esc1545-e33-per6
+1417:             ls$cargo/mordoma
+1418:             ls$titulo/dona
+1419: 
+1420:          test$cezilia de mendonca/f/id=esc1545-e33-per7
+1421:             ls$cargo/sacrista
+1422:             ls$titulo/dona
+1423: 
+1424:          test$antonia de castro/f/id=esc1545-e33-per8
+1425:             ls$cargo/sacrista
+1426:             ls$titulo/dona
+1427: 
+1428:          test$leonor de castro/f/id=esc1545-e33-per9
+1429:             ls$cargo/porteira
+1430:             ls$titulo/dona
+1431: 
+1432:          test$maria de noronha/f/id=esc1545-e33-per10
+1433:             ls$cargo/porteira
+1434:             ls$titulo/dona
+1435: 
+1436:          test$anrique mendes/m/id=esc1545-e33-per11
+1437:             ls$residencia/coimbra
+1438: 
+1439:          test$antonio fernandes/m/id=esc1545-e33-per12
+1440:             ls$residencia/coimbra
+1441: 
+1442:       escritura$esc1545-e34/10/7/1545/emprazamento/fol=49-50/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e catarina jorge, de umas casas com um pequeno quintal
+1443: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e34
+1444:          senhoria$margarida de castro/id=esc1545-e34-per1
+1445:             ls$cargo/abadessa
+1446:             ls$titulo/dona
+1447:             ls$assina/sim
+1448: 
+1449:          foreira$catarina jorge/id=esc1545-e34-per2
+1450: 
+1451:             referido$jorge anes/id=esc1545-e34-per3
+1452:                rel$parentesco/pai/catarina jorge/esc1545-e34-per2
+1453: 
+1454:          prazo$umas casas com um pequeno quintal
+prazo-esc1545-e34-obj1- ** was stored with function in ACT verify act
+1455:             atr$pensao/oitenta reais/obs=das casas
+1456:             atr$pensao/vinte reais/obs=do quintal
+1457: 
+1458:          test$isabel de meneses/f/id=esc1545-e34-per4
+1459:             ls$cargo/vigaria
+1460:             ls$titulo/dona
+1461:             ls$assina/sim
+1462: 
+1463:          test$leonor da silveira/f/id=esc1545-e34-per5
+1464:             ls$cargo/mordoma
+1465:             ls$titulo/dona
+1466: 
+1467:          test$joana da silva/f/id=esc1545-e34-per6
+1468:             ls$cargo/mordoma
+1469:             ls$titulo/dona
+1470: 
+1471:          test$cezilia de mendonca/f/id=esc1545-e34-per7
+1472:             ls$cargo/sacrista
+1473:             ls$titulo/dona
+1474: 
+1475:          test$antonia de castro/f/id=esc1545-e34-per8
+1476:             ls$cargo/sacrista
+1477:             ls$titulo/dona
+1478: 
+1479:          test$leonor de castro/f/id=esc1545-e34-per9
+1480:             ls$cargo/porteira
+1481:             ls$titulo/dona
+1482: 
+1483:          test$maria de noronha/f/id=esc1545-e34-per10
+1484:             ls$cargo/porteira
+1485:             ls$titulo/dona
+1486: 
+1487:          test$anrique mendes/m/id=esc1545-e34-per11
+1488:             ls$residencia/coimbra
+1489: 
+1490:          test$antonio fernandes/m/id=esc1545-e34-per12
+1491:             ls$residencia/coimbra
+1492: 
+1493:       escritura$esc1545-e35/14/7/1545/emprazamento/fol=50-51/loc=porta da cerca/sumario=contrato de emprazamento em quatro vidas celebrado entre mosteiro de santa clara da cidade de coimbra e alvaro botelho, de um prazo sito na vila de leiria
+1494: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e35
+1495:          senhoria$margarida de castro/id=esc1545-e35-per1
+1496:             ls$cargo/abadessa
+1497:             ls$titulo/dona
+1498:             ls$assina/sim
+1499: 
+1500:          foreiro$alvaro botelho/id=esc1545-e35-per2
+1501:             ls$titulo/fidalgo
+1502:             ls$residencia/vila de leiria
+1503: 
+1504:          foreira$antonia pereira/id=esc1545-e35-per3
+1505:             rel$parentesco/mulher/alvaro botelho/esc1545-e35-per2
+1506: 
+1507:          prazo$um prazo
+prazo-esc1545-e35-obj1- ** was stored with function in ACT verify act
+1508:             atr$localizacao/vila de leiria
+1509:             atr$foro/mil e trezentos reais/obs=primeira vida; por s. miguel de setembro
+1510:             atr$foro/mil e quatrocentos reais/obs=segunda vida; por s. miguel de setembro
+1511:             atr$foro/mil e oitocentos reais/obs=terceira vida; por s. miguel de setembro
+1512: 
+1513:          test$diogo de figueiredo/m/id=esc1545-e35-per4
+1514:             rel$profissional/vedor/margarida de castro/esc1545-e35-per1
+1515:             ls$cargo/vedor do mosteiro
+1516: 
+1517:          test$anrique mendes/m/id=esc1545-e35-per5
+1518:             rel$profissional/feitor/margarida de castro/esc1545-e35-per1
+1519:             ls$cargo/feitor do mosteiro
+1520: 
+1521:          test$isabel de meneses/f/id=esc1545-e35-per6
+1522:             ls$cargo/vigaria
+1523:             ls$titulo/dona
+1524:             ls$assina/sim
+1525: 
+1526:          test$leonor da silveira/f/id=esc1545-e35-per7
+1527:             ls$cargo/mordoma
+1528:             ls$titulo/dona
+1529: 
+1530:          test$joana da silva/f/id=esc1545-e35-per8
+1531:             ls$cargo/mordoma
+1532:             ls$titulo/dona
+1533: 
+1534:          test$cezilia de mendonca/f/id=esc1545-e35-per9
+1535:             ls$cargo/sacrista
+1536:             ls$titulo/dona
+1537: 
+1538:          test$antonia de castro/f/id=esc1545-e35-per10
+1539:             ls$cargo/sacrista
+1540:             ls$titulo/dona
+1541: 
+1542:          test$leonor de castro/f/id=esc1545-e35-per11
+1543:             ls$cargo/porteira
+1544:             ls$titulo/dona
+1545: 
+1546:          test$maria de noronha/f/id=esc1545-e35-per12
+1547:             ls$cargo/porteira
+1548:             ls$titulo/dona
+1549: 
+1550:       escritura$esc1545-e36/15/7/1545/aforamento/fol=51-52v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e joao alvares, de um casal inteiro sito no lugar de sangalhos
+1551: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e36
+1552:          senhoria$margarida de castro/id=esc1545-e36-per1
+1553:             ls$cargo/abadessa
+1554:             ls$titulo/dona
+1555:             ls$assina/sim
+1556: 
+1557:          foreiro$joao alvares/id=esc1545-e36-per2
+1558:             ls$profissao/lavrado
+1559:             ls$residencia/sangalhos
+1560: 
+1561:          aforamento$um casal inteiro
+aforamento-esc1545-e36-obj1- ** was stored with function in ACT verify act
+1562:             atr$localizacao/sangalhos
+1563:             atr$foro/dez alqueires de pao cinco de trigo e cinco de milho
+1564:             atr$foro/trez alqueires de trigo de fogaca/obs=por dia de natal
+1565:             atr$foro/tres galinhas
+1566:             atr$foro/um capao
+1567:             atr$racao/um oitavo de toda a novidade
+1568:             atr$multa/cem cruzados de ouro
+1569: 
+1570:          test$simao pires/m/id=esc1545-e36-per3
+1571:             rel$profissional/mordomo/margarida de castro/esc1545-e36-per1
+1572:             ls$cargo/mordomo do mosteiro/obs=mordomo em sangalhos
+1573: 
+1574:          test$anrique mendes/m/id=esc1545-e36-per4
+1575:             rel$profissional/feitor/margarida de castro/esc1545-e36-per1
+1576:             ls$cargo/feitor do mosteiro
+1577: 
+1578:          test$antonio fernandes/m/id=esc1545-e36-per5
+1579:             rel$profissional/criado/margarida de castro/esc1545-e36-per1
+1580: 
+1581:          test$isabel de meneses/f/id=esc1545-e36-per6
+1582:             ls$cargo/vigaria
+1583:             ls$titulo/dona
+1584:             ls$assina/sim
+1585: 
+1586:          test$leonor da silveira/f/id=esc1545-e36-per7
+1587:             ls$cargo/mordoma
+1588:             ls$titulo/dona
+1589: 
+1590:          test$joana da silva/f/id=esc1545-e36-per8
+1591:             ls$cargo/mordoma
+1592:             ls$titulo/dona
+1593: 
+1594:          test$cezilia de mendonca/f/id=esc1545-e36-per9
+1595:             ls$cargo/sacrista
+1596:             ls$titulo/dona
+1597: 
+1598:          test$antonia de castro/f/id=esc1545-e36-per10
+1599:             ls$cargo/sacrista
+1600:             ls$titulo/dona
+1601: 
+1602:          test$leonor de castro/f/id=esc1545-e36-per11
+1603:             ls$cargo/porteira
+1604:             ls$titulo/dona
+1605: 
+1606:          test$maria de noronha/f/id=esc1545-e36-per12
+1607:             ls$cargo/porteira
+1608:             ls$titulo/dona
+1609: 
+1610:       escritura$esc1545-e37/16/7/1545/aforamento/fol=52v-53v/loc=porta da cerca/sumario=contrato de novo emprazameno em tres pessoas celebrado entre mosteiro de santa clara da cidade de coimbra e jorge, de umas casas sitas em viseu
+1611: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e37
+1612:          senhoria$margarida de castro/id=esc1545-e37-per1
+1613:             ls$cargo/abadessa
+1614:             ls$titulo/dona
+1615:             ls$assina/sim
+1616: 
+1617:          foreiro$jorge/id=esc145-e37-per2
+1618:             ls$residencia/viseu
+1619: 
+1620:             referido$vasco anes/id=esc1545-e37-per3
+1621:                rel$parentesco/pai/jorge/esc145-e37-per2
+1622:                ls$profissao/tosador
+1623:                ls$residencia/viseu
+1624: 
+1625:             referida$isabel lourenco/id=esc1545-e37-per4
+1626:                rel$parentesco/mulher/vasco anes/esc1545-e37-per3
+1627:                rel$parentesco/mae/jorge/esc145-e37-per2
+1628:                ls$residencia/viseu
+1629: 
+1630:             referido$nome desconhecido/id=esc1545-e37-per5
+1631:                ls$cargo/tesoureiro de viseu/obs=duvida no lugar
+1632: 
+1633:          test$pedro gomes/m/id=esc1545-e37-per6
+1634:             rel$profissional/criado/nome desconhecido/esc1545-e37-per5
+1635: 
+1636:          test$antonio fernandes/m/id=esc1545-e37-per7
+1637:             ls$profissao/alfaiate
+1638:             rel$profissional/criado/margarida de castro/esc1545-e37-per1
+1639: 
+1640:          test$isabel de meneses/f/id=esc1545-e37-per8
+1641:             ls$cargo/vigaria
+1642:             ls$titulo/dona
+1643:             ls$assina/sim
+1644: 
+1645:          test$leonor da silveira/f/id=esc1545-e37-per9
+1646:             ls$cargo/mordoma
+1647:             ls$titulo/dona
+1648: 
+1649:          test$joana da silva/f/id=esc1545-e37-per10
+1650:             ls$cargo/mordoma
+1651:             ls$titulo/dona
+1652: 
+1653:          test$cezilia de mendonca/f/id=esc1545-e37-per11
+1654:             ls$cargo/sacrista
+1655:             ls$titulo/dona
+1656: 
+1657:          test$antonia de castro/f/id=esc1545-e37-per12
+1658:             ls$cargo/sacrista
+1659:             ls$titulo/dona
+1660: 
+1661:          test$leonor de castro/f/id=esc1545-e37-per13
+1662:             ls$cargo/porteira
+1663:             ls$titulo/dona
+1664: 
+1665:          test$maria de noronha/f/id=esc1545-e37-per14
+1666:             ls$cargo/porteira
+1667:             ls$titulo/dona
+1668: 
+1669:       escritura$esc1545-e38/16/10/1545/aforamento/fol=53v-54v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e bras eanes, de uma leira de mato e terra
+1670: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e38
+1671:          senhoria$margarida de castro/id=esc1545-e38-per1
+1672:             ls$cargo/abadessa
+1673:             ls$titulo/dona
+1674:             ls$assina/sim
+1675: 
+1676:          foreiro$bras eanes/id=esc1545-e38-per2
+1677:             rel$profissional/hortelao/margarida de castro/esc1545-e38-per1
+1678:             ls$residencia/pacos
+1679: 
+1680:          aforamento$uma leira de mato e terra
+aforamento-esc1545-e38-obj1- ** was stored with function in ACT verify act
+1681:             atr$racao/um sexto
+1682:             atr$racao/uma galinha
+1683: 
+1684:          test$isabel de meneses/f/id=esc1545-e38-per3
+1685:             ls$cargo/vigaria
+1686:             ls$titulo/dona
+1687:             ls$assina/sim
+1688: 
+1689:          test$leonor da silveira/f/id=esc1545-e38-per4
+1690:             ls$cargo/mordoma
+1691:             ls$titulo/dona
+1692: 
+1693:          test$joana da silva/f/id=esc1545-e38-per5
+1694:             ls$cargo/mordoma
+1695:             ls$titulo/dona
+1696: 
+1697:          test$cezilia de mendonca/f/id=esc1545-e38-per6
+1698:             ls$cargo/sacrista
+1699:             ls$titulo/dona
+1700: 
+1701:          test$antonia de castro/f/id=esc1545-e38-per7
+1702:             ls$cargo/sacrista
+1703:             ls$titulo/dona
+1704: 
+1705:          test$leonor de castro/f/id=esc1545-e38-per8
+1706:             ls$cargo/porteira
+1707:             ls$titulo/dona
+1708: 
+1709:          test$maria de noronha/f/id=esc1545-e38-per9
+1710:             ls$cargo/porteira
+1711:             ls$titulo/dona
+1712: 
+1713:          test$fernao luis/m/id=esc1545-e38-per10
+1714:             ls$profissao/trabalhador
+1715:             ls$residencia/pacos
+1716: 
+1717:          test$luis afonso/m/id=esc1545-e38-per11
+1718:             ls$profissao/almocreve
+1719: 
+1720:       escritura$esc1545-e39/16/10/1545/aforamento/fol=54v-55/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e fernao luis, de um mato sito no lugar da cruz
+1721: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e39
+1722:          senhoria$margarida de castro/id=esc1545-e39-per1
+1723:             ls$cargo/abadessa
+1724:             ls$titulo/dona
+1725:             ls$assina/sim
+1726: 
+1727:          foreiro$fernao luis/id=esc1545-e39-per2
+1728:             ls$profissao/trabalhador
+1729:             ls$residencia/pacos
+1730: 
+1731:          aforamento$um mato
+aforamento-esc1545-e39-obj1- ** was stored with function in ACT verify act
+1732:             atr$localizacao/lugar da cruz
+1733:             atr$racao/um sexto da novidade
+1734:             atr$racao/uma galinha boa/obs=por s. miguel de setembro
+1735: 
+1736:          test$isabel de meneses/f/id=esc1545-e39-per3
+1737:             ls$cargo/vigaria
+1738:             ls$titulo/dona
+1739:             ls$assina/sim
+1740: 
+1741:          test$leonor da silveira/f/id=esc1545-e39-per4
+1742:             ls$cargo/mordoma
+1743:             ls$titulo/dona
+1744: 
+1745:          test$joana da silva/f/id=esc1545-e39-per5
+1746:             ls$cargo/mordoma
+1747:             ls$titulo/dona
+1748: 
+1749:          test$cezilia de mendonca/f/id=esc1545-e39-per6
+1750:             ls$cargo/sacrista
+1751:             ls$titulo/dona
+1752: 
+1753:          test$antonia de castro/f/id=esc1545-e39-per7
+1754:             ls$cargo/sacrista
+1755:             ls$titulo/dona
+1756: 
+1757:          test$leonor de castro/f/id=esc1545-e39-per8
+1758:             ls$cargo/porteira
+1759:             ls$titulo/dona
+1760: 
+1761:          test$maria de noronha/f/id=esc1545-e39-per9
+1762:             ls$cargo/porteira
+1763:             ls$titulo/dona
+1764: 
+1765:          test$bras eanes/m/id=esc1545-e39-per10
+1766:             rel$profissional/hortelao/margarida de castro/esc1545-e39-per1
+1767:             ls$profissao/hortelao
+1768: 
+1769:          test$luis afonso/m/id=esc1545-e39-per11
+1770:             ls$residencia/lourosa/obs=duvida
+1771: 
+1772:       escritura$esc1546-e40/18/11/1546/aforamento/fol=55v-56v/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e tristao do vale, de uma vinha e um mato sitos no lugar de amoreira, sangalhos/obs=testemunhas sumidas
+1773: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e40
+1774:          senhoria$margarida de castro/id=esc1546-e40-per1
+1775:             ls$cargo/abadessa
+1776:             ls$titulo/dona
+1777:             ls$assina/sim
+1778: 
+1779:          foreiro$tristao do vale/id=esc1546-e40-per2
+1780:             ls$profissao/alfaiate
+1781:             ls$residencia/coimbra
+1782: 
+1783:          foreira$filipa gomes/id=esc1546-e40-per3
+1784:             rel$parentesco/mulher/tristao do vale/esc1546-e40-per2
+1785: 
+1786:          aforamento$uma vinha e um mato
+aforamento-esc1546-e40-obj1- ** was stored with function in ACT verify act
+1787:             atr$localizacao/lugar de amoreira sangalhos
+1788:             atr$foro/paga o dizimo
+1789:             atr$racao/oitavo do vinho
+1790: 
+1791:       escritura$esc1553-e41/2/3/1553/emprazamento/fol=58-60/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e rui gomes, de nove jeiras e cinco aguilhadas de terra, sitas em montemor-o-velho
+1792: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1553-e41
+1793:          senhoria$joana da silva/id=esc1553-e41-per1
+1794:             ls$cargo/abadessa
+1795:             ls$titulo/dona
+1796:             ls$assina/sim
+1797: 
+1798:          foreiro$rui gomes/id=esc1553-e41-per2
+1799:             ls$residencia/montemor o velho
+1800: 
+1801:          foreira$joana fernandes/id=esc1553-e41-per3
+1802:             rel$parentesco/mulher/rui gomes/esc1553-e41-per2
+1803: 
+1804:          prazo$nove jeiras e cinco aguilhadas de terra
+prazo-esc1553-e41-obj1- ** was stored with function in ACT verify act
+1805:             atr$localizacao/montemor o velho
+1806:             atr$foro/dizimo das terras para para a igreja de sao martinho de montemor o velho
+1807:             atr$foro/uma galinha/obs=por s. miguel de setembro
+1808:             atr$racao/um quinto
+1809:             atr$multa/vinte mil reais ou cem cruzados de ouro/obs=aparecem as duas multas, provavelmente engano do tabeliao
+1810: 
+1811:          test$maria de sousa/f/id=esc1553-e41-per4
+1812:             ls$cargo/vigaria
+1813:             ls$titulo/dona
+1814:             ls$assina/sim
+1815: 
+1816:          test$joana de melo/f/id=esc1553-e41-per5
+1817:             ls$cargo/escriva
+1818:             ls$titulo/dona
+1819:             ls$assina/sim
+1820: 
+1821:          test$secula de meneses/f/obs=duvida primeiro nome/id=esc1553-e41-per6
+1822:             ls$cargo/mordoma
+1823:             ls$titulo/dona
+1824:             ls$assina/sim
+1825: 
+1826:          test$marta da silva/f/id=esc1553-e41-per7
+1827:             ls$cargo/mordoma
+1828:             ls$titulo/dona
+1829:             ls$assina/sim
+1830: 
+1831:          test$margarida da silva/f/id=esc1553-e41-per8
+1832:             ls$cargo/mordoma
+1833:             ls$titulo/dona
+1834:             ls$assina/sim
+1835: 
+1836:          test$cezilia de mendonca/f/id=esc1553-e41-per9
+1837:             ls$titulo/dona
+1838:             ls$assina/sim
+1839: 
+1840:          test$bastiao de nabais/m/id=esc1553-e41-per10
+1841:             rel$sociabilidade/procurador/joana da silva/esc1553-e41-per1
+1842: 
+1843:          test$joao fernandes/m/id=esc1553-e41-per11
+1844:             ls$profissao/sapateiro
+1845:             ls$residencia/coimbra
+1846: 
+1847:       escritura$esc1545-e42/29/1/1545/emprazamento/fol=60v-62/loc=porta da portaria/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e gaspar fernandes, de um olival com seus matos sito em coimbra
+1848: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e42
+1849:          senhoria$margarida de castro/id=esc1545-e42-per1
+1850:             ls$cargo/abadessa
+1851:             ls$titulo/dona
+1852:             ls$assina/sim
+1853: 
+1854:          foreiro$gaspar fernandes/id=esc1545-e42-per2
+1855:             ls$profissao/sapateiro
+1856:             ls$residencia/coimbra
+1857: 
+1858:          foreira$margarida pires/id=esc1545-e42-per3
+1859:             ls$residencia/coimbra
+1860: 
+1861:          prazo$um olival com seus matos
+prazo-esc1545-e42-obj1- ** was stored with function in ACT verify act
+1862:             atr$localizacao/coimbra
+1863:             atr$racao/cinco alqueires de azeite bom/obs=por s. miguel de setembro
+1864:             atr$foro/duzentos reais/obs=por s. miguel de setembro
+1865:             atr$multa/vinte cruzados
+1866: 
+1867:          test$marcal de macedo/m/id=esc1545-e42-per4
+1868:             ls$titulo/cavaleiro/obs=da casa do rei
+1869:             ls$residencia/coimbra
+1870: 
+1871:          test$lourenco fernandes/m/id=esc1545-e42-per5
+1872:             rel$profissional/criado/marcal de macedo/esc1545-e42-per4
+1873:             ls$residencia/coimbra
+1874: 
+1875:          test$joao fernandes/m/id=esc1545-e42-per6
+1876:             ls$residencia/coimbra
+1877: 
+1878:       escritura$esc1552-e43/17/10/1552/aforamento/fol=62-63v/loc=grade/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e fernao heitor(?), de um assento de moinhos de pao e um lagar de azeite
+1879: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1552-e43
+1880:          senhoria$joana da silva/id=esc1552-e43-per1
+1881:             ls$cargo/abadessa
+1882:             ls$titulo/dona
+1883:             ls$assina/sim
+1884: 
+1885:          foreiro$fernao heitor/obs=duvida no segundo nome/id=esc1552-e43-per2
+1886:             ls$titulo/licenciado
+1887:             ls$residencia/coimbra
+1888: 
+1889:          aforamento$um assento de moinhos de pao e um lagar de azeite
+aforamento-esc1552-e43-obj1- ** was stored with function in ACT verify act
+1890:             atr$foro/quatorze alqueires de trigo bom/obs=pagos no assento por s. miguel de setembro
+1891:             atr$multa/vinte cruzados
+1892: 
+1893:          test$antonio anes/m/id=esc1552-e43-per3
+1894:             ls$cargo/procurador/obs=nao refere constituinte
+1895:             ls$residencia/pacos
+1896: 
+1897:          test$jorge domingues/m/id=esc1552-e43-per4
+1898: 
+1899:       escritura$esc1545-e44/16/10/1545/aforamento/fol=63v-64v/loc=grade/sumario=contrato de compra e aforamento em fatiosim celebrado entre mosteiro de santa clara da cidade de coimbra e fernao luis, de um mato sito no portal da cancela(?)
+1900: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e44
+1901:          senhoria$margarida de castro/id=esc1545-e44-per1
+1902:             ls$cargo/abadessa
+1903:             ls$titulo/dona
+1904:             ls$assina/sim
+1905: 
+1906:          vendedor$bastiao lopes/id=esc1545-e44-per2
+1907:             ls$profissao/lavrador
+1908:             ls$residencia/lugar da cruz
+1909: 
+1910:          comprador$fernao luis/id=esc1545-e44-per3
+1911:             ls$profissao/trabalhador
+1912:             ls$residencia/pacos
+1913:             rel$economica/foreiro/margarida de castro/esc1545-e44-per1
+1914: 
+1915:          aforamento$um mato
+aforamento-esc1545-e44-obj1- ** was stored with function in ACT verify act
+1916:             atr$localizacao/portal da cancela/obs=duvida
+1917:             atr$racao/o sexto da novidade
+1918:             atr$racao/uma galinha boa/obs=por s. miguel de setembro
+1919: 
+1920:          test$leonor da silveira/f/id=esc1545-e44-per4
+1921:             ls$cargo/mordoma
+1922:             ls$titulo/dona
+1923:             ls$assina/sim
+1924: 
+1925:          test$joana da silva/f/id=esc1545-e44-per5
+1926:             ls$cargo/mordoma
+1927:             ls$titulo/dona
+1928:             ls$assina/sim
+1929: 
+1930:          test$secula de mendonca/f/id=esc1545-e44-per6
+1931:             ls$cargo/escriva
+1932:             ls$titulo/dona
+1933:             ls$assina/sim
+1934: 
+1935:          test$antonia de castro/f/id=esc1545-e44-per7
+1936:             ls$cargo/escriva
+1937:             ls$titulo/dona
+1938:             ls$assina/sim
+1939: 
+1940:          test$leonor de castro/f/id=esc1545-e44-per8
+1941:             ls$cargo/porteira
+1942:             ls$titulo/dona
+1943:             ls$assina/sim
+1944: 
+1945:          test$maria de noronha/f/id=esc1545-e44-per9
+1946:             ls$cargo/porteira
+1947:             ls$titulo/dona
+1948:             ls$assina/sim
+1949: 
+1950:          test$bras eanes/m/id=esc1545-e44-per10
+1951:             rel$profissional/hortelao/margarida de castro/esc1545-e44-per1
+1952:             ls$residencia/pacos
+1953:             ls$profissao/hortelao
+1954: 
+1955:          test$luis afonso/m/id=esc1545-e44-per11
+1956:             ls$residencia/lugar de lourosa besteiros
+1957:             ls$profissao/almocreve
+1958: 
+1959:       escritura$esc1545-e45/29/9/1545/aforamento/fol=64v-65v/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e afonso pires, de dois trecos de um casal
+1960: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e45
+1961:          senhoria$margarida de castro/id=esc1545-e45-per1
+1962:             ls$cargo/abadessa
+1963:             ls$titulo/dona
+1964:             ls$assina/sim
+1965: 
+1966:          foreiro$afonso pires/id=esc1545-e45-per2
+1967:             ls$profissao/lavrador
+1968:             ls$residencia/sangalhos
+1969: 
+1970:          foreira$margarida pires/id=esc1545-e45-per3
+1971:             rel$parentesco/mulher/afonso pires/esc1545-e45-per2
+1972:             ls$residencia/sangalhos
+1973: 
+1974:             referido$afonso pires/id=esc1545-e45-per4
+1975:                rel$parentesco/pai/afonso pires/esc1545-e45-per2
+1976: 
+1977:             referida$maria alvares/id=esc1545-e45-per5
+1978:                rel$parentesco/mae/afonso pires/esc1545-e45-per2
+1979:                rel$parentesco/mulher/afonso pires/esc1545-e45-per4
+1980: 
+1981:          aforamento$dois tercos de um casal
+aforamento-esc1545-e45-obj1- ** was stored with function in ACT verify act
+1982:             atr$foro/tres alqueires de trigo
+1983:             atr$fogaca/dois alqueires de trigo
+1984:             atr$fogaca/dois alqueires de milho
+1985:             atr$fogaca/duas galinhas/obs=por dia de natal
+1986:             atr$fogaca/um capao/obs=por dia de natal
+1987:             atr$racao/um oitavo das novidades
+1988: 
+1989:          test$leonor da silveira/f/id=esc1545-e45-per6
+1990:             ls$cargo/mordoma
+1991:             ls$titulo/dona
+1992:             ls$assina/sim
+1993: 
+1994:          test$joana da silva/f/id=esc1545-e45-per7
+1995:             ls$cargo/mordoma
+1996:             ls$titulo/dona
+1997:             ls$assina/sim
+1998: 
+1999:          test$secula de mendonca/f/id=esc1545-e45-per8
+2000:             ls$cargo/sacrista
+2001:             ls$titulo/dona
+2002:             ls$assina/sim
+2003: 
+2004:          test$antonia de castro/f/id=esc1545-e45-per9
+2005:             ls$cargo/sacrista
+2006:             ls$titulo/dona
+2007:             ls$assina/sim
+2008: 
+2009:          test$leonor de castro/f/id=esc1545-e45-per10
+2010:             ls$cargo/porteira
+2011:             ls$titulo/dona
+2012:             ls$assina/sim
+2013: 
+2014:          test$anrique mendes/m/id=esc1545-e45-per11
+2015:             ls$cargo/escudeiro
+2016:             rel$profissional/feitor/margarida de castro/esc1545-e45-per1
+2017:             ls$cargo/feitor do mosteiro
+2018: 
+2019:          test$simao pires/m/id=esc1545-e45-per12
+2020:             rel$profissional/mordomo/margarida de castro/esc1545-e45-per1
+2021: 
+2022:       escritura$esc1545-e46/19/10/1545/aforamento/fol=65v-66v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e martim pires, de um casal com suas terras sito no lugar da cruz
+2023: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e46
+2024:          senhoria$margarida de castro/id=esc1545-e46-per1
+2025:             ls$cargo/abadessa
+2026:             ls$titulo/dona
+2027:             ls$assina/sim
+2028: 
+2029:          foreiro$martim pires/id=esc1545-e46-per2
+2030:             ls$profissao/lavrador
+2031:             ls$residencia/povoa da cruz
+2032: 
+2033:          aforamento$um casal com suas terras
+aforamento-esc1545-e46-obj1- ** was stored with function in ACT verify act
+2034:             atr$localizacao/lugar da cruz
+2035:             atr$foro/um alqueire de trigo/obs=pago na eira
+2036:             atr$foro/uma galinha
+2037:             atr$foro/vinte paes/obs=por s. miguel de setembro
+2038:             atr$racao/um quinto das novidades
+2039:             atr$racao/um oitavo do azeite
+2040:             atr$racao/um oitavo do vinho
+2041: 
+2042:          test$leonor da silveira/f/id=esc1545-e46-per3
+2043:             ls$cargo/mordoma
+2044:             ls$titulo/dona
+2045:             ls$assina/sim
+2046: 
+2047:          test$joana da silva/f/id=esc1545-e46-per4
+2048:             ls$cargo/mordoma
+2049:             ls$titulo/dona
+2050:             ls$assina/sim
+2051: 
+2052:          test$secula de mendonca/f/id=esc1545-e46-per5
+2053:             ls$cargo/sacrista
+2054:             ls$titulo/dona
+2055:             ls$assina/sim
+2056: 
+2057:          test$antonia de castro/f/id=esc1545-e46-per6
+2058:             ls$cargo/sacrista
+2059:             ls$titulo/dona
+2060:             ls$assina/sim
+2061: 
+2062:          test$leonor de castro/f/id=esc1545-e46-per7
+2063:             ls$cargo/porteira
+2064:             ls$titulo/dona
+2065:             ls$assina/sim
+2066: 
+2067:          test$maria de noronha/f/id=esc1545-e46-per8
+2068:             ls$cargo/porteira
+2069:             ls$titulo/dona
+2070:             ls$assina/sim
+2071: 
+2072:          test$bastiao pais/m/id=esc1545-e46-per9
+2073:             ls$profissao/pedreiro
+2074: 
+2075:          test$francisco vaz/m/id=esc1545-e46-per10
+2076:             ls$profissao/pedreiro
+2077:             ls$residencia/pacos do mosteiro
+2078: 
+2079:          test$joao alvares/m/id=esc1545-e46-per11
+2080:             rel$profissional/criado/margarida de castro/esc1545-e46-per1
+2081:             ls$residencia/pacos do mosteiro
+2082: 
+2083:       escritura$esc1545-e47/19/10/1545/aforamento/fol=67-67v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre o mosteiro de santa clara de coimbra e pedro anes, de meio casal, terras, vinhas, casas e currais
+2084: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e47
+2085:          senhoria$margarida de castro/id=esc1545-e47-per1
+2086:             ls$cargo/abadessa
+2087:             ls$titulo/dona
+2088:             ls$assina/sim
+2089: 
+2090:          foreiro$pedro anes/id=esc1545-e47-per2
+2091:             ls$profissao/lavrador
+2092:             ls$residencia/carregais do campo termo de coimbra
+2093: 
+2094:          foreira$beatriz lopes/id=esc1545-e47-per3
+2095:             rel$parentesco/mulher/pedro anes/esc1545-e47-per2
+2096: 
+2097:             referido$alvaro anes/id=esc1545-e47-per4
+2098:                rel$parentesco/irmao/pedro anes/esc1545-e47-per2
+2099:                atr$morto/antes
+2100: 
+2101:          aforamento$meio casal
+2102: 
+aforamento-esc1545-e47-obj1- ** was stored with function in ACT verify act
+2103:          aforamento$terras
+2104: 
+aforamento-esc1545-e47-obj2- ** was stored with function in ACT verify act
+2105:          aforamento$vinhas
+2106: 
+aforamento-esc1545-e47-obj3- ** was stored with function in ACT verify act
+2107:          aforamento$casas
+2108: 
+aforamento-esc1545-e47-obj4- ** was stored with function in ACT verify act
+2109:          aforamento$currais
+aforamento-esc1545-e47-obj5- ** was stored with function in ACT verify act
+2110:             atr$foro/dois alqueires de milho
+2111:             atr$foro/dois alqueires de trigo
+2112:             atr$fogaca/um alqueire de trigo/obs=do seu proprio
+2113:             atr$foro/um capao
+2114:             atr$foro/uma galinha
+2115:             atr$foro/dez ovos/obs=por s. miguel de setembro
+2116:             atr$racao/um quarto de toda a novidade
+2117: 
+2118:          test$leonor da silveira/f/id=esc1545-e47-per5
+2119:             ls$cargo/mordoma
+2120:             ls$titulo/dona
+2121:             ls$assina/sim
+2122: 
+2123:          test$joana da silva/f/id=esc1545-e47-per6
+2124:             ls$cargo/mordoma
+2125:             ls$titulo/dona
+2126:             ls$assina/sim
+2127: 
+2128:          test$secula de mendonca/f/id=esc1545-e47-per7
+2129:             ls$cargo/sacrista
+2130:             ls$titulo/dona
+2131:             ls$assina/sim
+2132: 
+2133:          test$antonia de castro/f/id=esc1545-e47-per8
+2134:             ls$cargo/sacrista
+2135:             ls$titulo/dona
+2136:             ls$assina/sim
+2137: 
+2138:          test$leonor de castro/f/id=esc1545-e47-per9
+2139:             ls$cargo/porteira
+2140:             ls$titulo/dona
+2141:             ls$assina/sim
+2142: 
+2143:          test$maria de noronha/f/id=esc1545-e47-per10
+2144:             ls$cargo/porteira
+2145:             ls$titulo/dona
+2146:             ls$assina/sim
+2147: 
+2148:          test$anrique mendes/m/id=esc1545-e47-per11
+2149:             ls$cargo/escudeiro
+2150:             ls$residencia/coimbra
+2151:             rel$profissional/feitor/margarida de castro/esc1545-e47-per1
+2152:             ls$cargo/feitor do mosteiro
+2153: 
+2154:          test$joao anes/m/id=esc1545-e47-per12
+2155:             rel$profissional/feitor/margarida de castro/esc1545-e47-per1
+2156:             ls$residencia/pacos de santa clara
+2157:             ls$cargo/feitor do mosteiro
+2158: 
+2159:          test$francisco vaz/m/id=esc1545-e47-per13
+2160:             ls$profissao/pedreiro
+2161:             ls$residencia/pacos do mosteiro
+2162: 
+2163:       escritura$esc1546-e48/6/3/1546/emprazamento/fol=68-68v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e nuno fernandes e maria francisca, de umas casas sobradadas sitas nos pacos do mosteiro
+2164: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e48
+2165:          senhoria$margarida de castro/id=esc1546-e48-per1
+2166:             ls$cargo/abadessa
+2167:             ls$titulo/dona
+2168:             ls$assina/sim
+2169: 
+2170:          foreiro$nuno fernandes/id=esc1546-e48-per2/obs=primeira pessoa
+2171:             ls$residencia/pacos do mosteiro
+2172: 
+2173:          foreira$maria francisca/id=esc1546-e48-per3/obs=segunda pessoa
+2174: 
+2175:          aforamento$casas sobradadas/obs=onde vive maria francisca
+aforamento-esc1546-e48-obj1- ** was stored with function in ACT verify act
+2176:             atr$localizacao/pacos do mosteiro
+2177:             atr$pensao/duzentos reais/obs=por s. miguel de setembro
+2178: 
+2179:          referido$jorge anes/id=esc1546-e48-per4
+2180:             ls$residencia/pacos do mosteiro
+2181: 
+2182:          referido$domingos fernandes/id=esc1546-e48-per5
+2183:             ls$residencia/pacos do mosteiro
+2184: 
+2185:          referido$joao martins/id=esc1546-e48-per6
+2186: 
+2187:          test$pedro goncalves/m/id=esc1546-e48-per7
+2188:             ls$profissao/boeiro
+2189:             ls$residencia/circuito de santa clara
+2190: 
+2191:          test$francisco vaz/m/id=esc1546-e48-per8
+2192:             ls$profissao/pedreiro
+2193:             ls$residencia/pacos
+2194: 
+2195:          test$jorge anes/m/id=esc1546-e48-per9
+2196:             ls$residencia/pacos
+2197: 
+2198:       escritura$esc1546-e49/29/3/1546/emprazamento/fol=68v-69v/loc=porta da cerca/sumario=contrato de renuncia e novo emprazamento em tres vidas celebrado entre o mosteiro de santa clara da cidade de coimbra e antonio lopes, de umas casas terreas sitas nos pacos do mosteiro
+2199: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e49
+2200:          senhoria$margarida de castro/id=esc1546-e49-per1
+2201:             ls$cargo/abadessa
+2202:             ls$titulo/dona
+2203:             ls$assina/sim
+2204: 
+2205:          renunciante$ambrosio dias/obs=duvida no segundo nome/id=esc1546-e49-per2
+2206: 
+2207:          foreiro$antonio lopes/id=esc1546-e49-per3
+2208:             ls$profissao/trabalhador
+2209:             ls$residencia/pacos de santa clara
+2210: 
+2211:             referido$diogo de figueirdo/id=esc1546-e49-per4
+2212:                rel$profissional/vedor/margarida de castro/esc1546-e49-per1
+2213: 
+2214:             referido$pedro goncalves/id=esc1546-e49-per5
+2215:                ls$profissao/boeiro
+2216: 
+2217:          prazo$casas terreas
+prazo-esc1546-e49-obj1- ** was stored with function in ACT verify act
+2218:             atr$localizacao/pacos do mosteiro
+2219:             atr$foro/cento e vinte reais/obs=por dia de s. miguel de setembro
+2220: 
+2221:          test$anrique mendes/m/id=esc1546-e49-per6
+2222:             rel$profissional/feitor/margarida de castro/esc1546-e49-per1
+2223:             ls$residencia/coimbra
+2224: 
+2225:          test$joao fernandes/m/id=esc1546-e49-per7
+2226:             ls$residencia/vila nova da barca
+2227: 
+2228:       escritura$esc1546-e50/30/4/1546/aforamento/fol=69v-72/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e joao alvares, de umas propriedades sitas no lugar de sangalhos
+2229: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e50
+2230:          senhoria$margarida de castro/id=esc1546-e50-per1
+2231:             ls$cargo/abadessa
+2232:             ls$titulo/dona
+2233:             ls$assina/sim
+2234: 
+2235:          foreiro$joao alvares/id=esc1546-e50-per2
+2236:             ls$residencia/lugar das macadas, termo do concelho da castinheira
+2237: 
+2238:          foreira$isabel alvares/id=esc1546-e50-per3
+2239:             rel$parentesco/mulher/joao alvares/esc1546-e50-per2
+2240: 
+2241:          aforamento$uma vinha
+aforamento-esc1546-e50-obj1- ** was stored with function in ACT verify act
+2242:             atr$localizacao/sangalhos
+2243: 
+2244:          aforamento$um pedaco de cortinhal
+2245: 
+aforamento-esc1546-e50-obj2- ** was stored with function in ACT verify act
+2246:          aforamento$meia jeira de terra
+2247: 
+aforamento-esc1546-e50-obj3- ** was stored with function in ACT verify act
+2248:          aforamento$meia jeira de terra
+aforamento-esc1546-e50-obj4- ** was stored with function in ACT verify act
+2249:             atr$localizacao/ribeira de sangalhos
+2250: 
+2251:          aforamento$uma vinha
+2252: 
+aforamento-esc1546-e50-obj5- ** was stored with function in ACT verify act
+2253:          aforamento$meia jeira de terra/obs=comprada a jorge pires
+aforamento-esc1546-e50-obj6- ** was stored with function in ACT verify act
+2254:             atr$localizacao/lugar de azenha
+2255: 
+2256:          aforamento$uma terra
+2257: 
+aforamento-esc1546-e50-obj7- ** was stored with function in ACT verify act
+2258:          aforamento$uma vinha/obs=comprada a antonio jorge
+2259: 
+aforamento-esc1546-e50-obj8- ** was stored with function in ACT verify act
+2260:          aforamento$uma terra/obs=comprada a joao pires
+2261: 
+aforamento-esc1546-e50-obj9- ** was stored with function in ACT verify act
+2262:          aforamento$meio casal
+aforamento-esc1546-e50-obj10- ** was stored with function in ACT verify act
+2263:             atr$foro/um alqueire de trigo bom/obs=por s. miguel de setembro
+2264:             atr$racao/um oitavo da novidade
+2265:             atr$terradego/trez mil e cinquenta reais/obs=pelas propriedades compradas e ja recebidos
+2266: 
+2267:          referido$jorge pires/id=esc1546-e50-per4
+2268:             rel$profissional/vendedor/joao alvares/esc1546-e50-per2
+2269: 
+2270:          referido$antonio jorge/id=esc1546-e50-per5
+2271:             rel$profissional/vendedor/joao alvares/esc1546-e50-per2
+2272: 
+2273:          referido$joao pires/id=esc1546-e50-per6
+2274:             rel$profissional/vendedor/joao alvares/esc1546-e50-per2
+2275: 
+2276:          test$anrique mendes/m/id=esc1546-e50-per7
+2277:             rel$profissional/feitor/margarida de castro/esc1546-e50-per1
+2278:             ls$residencia/coimbra
+2279: 
+2280:          test$francisco vaz/m/id=esc1546-e50-per8
+2281:             ls$profissao/pedreiro
+2282:             ls$residencia/pacos
+2283: 
+2284:          referido$francisco vaz/id=esc1546-e50-per9
+2285:             rel$parentesco/pai/francisco vaz/esc1546-e50-per8
+2286: 
+2287:       escritura$esc1546-e51/29/4/1546/aforamento/fol=72-73/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e rodrigo afonso, de dois matos maninhos sitos em vila nova da barca, montemor-o-velho
+2288: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e51
+2289:          senhoria$margarida de castro/id=esc1546-e51-per1
+2290:             ls$cargo/abadessa
+2291:             ls$titulo/dona
+2292:             ls$assina/sim
+2293: 
+2294:          foreiro$rodrigo afonso/id=esc1546-e51-per2
+2295:             ls$profissao/lavrador
+2296:             ls$residencia/vila nova da barca montemor o velho
+2297: 
+2298:          foreira$catarina goncalves/id=esc1547-e51-per3
+2299:             rel$parentesco/mulher/rodrigo afonso/esc1546-e51-per2
+2300: 
+2301:          aforamento$dois matos maninhos
+aforamento-esc1546-e51-obj1- ** was stored with function in ACT verify act
+2302:             atr$localizacao/vila nova da barca montemor o velho
+2303:             atr$foro/um capao/obs=por dia de natal
+2304:             atr$foro/dez ovos/obs=por dia de natal
+2305: 
+2306:          test$anrique mendes/m/id=esc1546-e51-per4
+2307:             rel$profissional/feitor/margarida de castro/esc1546-e51-per1
+2308:             ls$cargo/feitor do mosteiro
+2309: 
+2310:          test$joao alvares/m/id=esc1546-e51-per5
+2311:             rel$profissional/solicitador/margarida de castro/esc1546-e51-per1
+2312:             ls$residencia/pacos de santa clara
+2313:             ls$cargo/solicitador do mosteiro
+2314: 
+2315:       escritura$esc1546a-e51/12/7/1546/aforamento/fol=73-74/loc=porta da cerca/sumario=contrato de novo eforamento em fatiosim celebrado entre mosteiro de santa clara da cidade de coimbra e duarte de morais, de uma casa sita em penacova
+2316: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546a-e51
+2317:          senhoria$margarida de castro/id=esc1546a-e51-per1
+2318:             ls$cargo/abadessa
+2319:             ls$titulo/dona
+2320:             ls$assina/sim
+2321: 
+2322:          foreiro$duarte de morais/id=esc1546a-e51-per2
+2323: 
+2324:          aforamento$uma casa
+aforamento-esc1546a-e51-obj1- ** was stored with function in ACT verify act
+2325:             atr$localizacao/penacova
+2326:             atr$foro/vinte e cinco reais/obs=duvida no pagamento
+2327:             atr$foro/uma galinha
+2328: 
+2329:          test$pedro cabrita/m/obs=duvida no segundo nome/id=esc1546a-e51-per3
+2330: 
+2331:          test$simao/m/id=esc1546a-e51-per4
+2332:             ls$residencia/lugar da palha/obs=duvida
+2333: 
+2334:          referido$afonso alvares/id=esc1546a-e51-per5
+2335:             rel$parentesco/pai/simao/esc1546a-e51-per4
+2336: 
+2337:       escritura$esc1549-e52/19/10/1549/aforamento/fol=74v-75/loc=grade e portaria/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e pedro afonso, de uma casa terrea
+2338: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1549-e52
+2339:          senhoria$margarida de castro/id=esc1549-e52-per1
+2340:             ls$cargo/abadessa
+2341:             ls$titulo/dona
+2342:             ls$assina/sim
+2343: 
+2344:          foreiro$pedro afonso/id=esc1549-e52-per2
+2345:             ls$profissao/lavrador
+2346:             ls$residencia/quimbres, montemor o velho
+2347: 
+2348:          foreira$beatriz vaz/id=esc1549-e52-per3
+2349:             rel$parentesco/mulher/pedro afonso/esc1549-e52-per2
+2350: 
+2351:          aforamento$uma casa terrea
+aforamento-esc1549-e52-obj1- ** was stored with function in ACT verify act
+2352:             atr$foro/uma galinha boa
+2353: 
+2354:          test$joao alvares/m/id=esc1549-e52-per4
+2355:             ls$residencia/pacos de santa clara
+2356:             rel$profissional/solicitador/margarida de castro/esc1549-e52-per1
+2357:             ls$cargo/solicitador do mosteiro
+2358: 
+2359:          test$bastiao de nabais/m/id=esc1549-e52-per5
+2360:             ls$residencia/pacos de santa clara
+2361:             ls$cargo/familiar do mosteiro
+2362: 
+2363:       escritura$esc1549-e53/28/11/1549/aforamento/fol=75-76/loc=grade e portaria/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e simao fernandes, um casal
+2364: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1549-e53
+2365:          senhoria$margarida de castro/id=esc1549-e53-per1
+2366:             ls$cargo/abadessa
+2367:             ls$titulo/dona
+2368:             ls$assina/sim
+2369: 
+2370:          foreiro$simao fernandes/id=esc1549-e53-per2
+2371:             ls$profissao/lavrador
+2372:             ls$residencia/portunhos, termo da vila de anca
+2373: 
+2374:             referido$joao fernandes/id=esc1549-e53-per3/obs=antigo foreiro
+2375:                rel$parentesco/pai/simao fernandes/esc1549-e53-per2
+2376: 
+2377:          aforamento$um casal
+aforamento-esc1549-e53-obj1- ** was stored with function in ACT verify act
+2378:             atr$foro/seis alqueires de trigo/obs=pela medida nova
+2379:             atr$foro/seis alqueires de cevada/obs=pela medida nova
+2380:             atr$fogaca/dois alqueires de trigo
+2381:             atr$fogaca/um capao
+2382:             atr$fogaca/dez ovos
+2383:             atr$racao/um setimo da novidade
+2384:             atr$racao/uma galinha
+2385:             atr$racao/cinco ovos
+2386:             atr$multa/cinquenta cruzados
+2387: 
+2388:          test$joao alvares/m/id=esc1549-e53-per4
+2389:             rel$profissional/solicitador/margarida de castro/esc1549-e53-per1
+2390:             ls$cargo/solicitador do mosteiro
+2391: 
+2392:          test$francisco da costa/m/id=esc1549-e53-per5
+2393: 
+2394:          referido$joao rodrigues/id=esc1549-e53-per6
+2395:             rel$profissional/patrao/francisco da costa/esc1549-e53-per5
+2396: 
+2397:       escritura$esc1549-e54/5/12/1549/aforamento/fol=76-77v/loc=grade de ferro da portaria/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e diogo goncalves, de meio casal
+2398: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1549-e54
+2399:          senhoria$margarida de castro/id=esc1549-e54-per1
+2400:             ls$cargo/abadessa
+2401:             ls$titulo/dona
+2402:             ls$assina/sim
+2403: 
+2404:          foreiro$diogo goncalves/id=esc1549-e54-per2
+2405:             ls$profissao/lavrador
+2406:             ls$residencia/casais de vila nova, termo de montemor o velho
+2407: 
+2408:          foreira$isabel lourenco/id=esc1549-e54-per3
+2409:             rel$parentesco/mulher/diogo goncalves/esc1549-e54-per2
+2410: 
+2411:          aforamento$meio casal
+aforamento-esc1549-e54-obj1- ** was stored with function in ACT verify act
+2412:             atr$racao/um setimo
+2413:             atr$foro/tres alqueires de pao meado
+2414:             atr$foro/um alqueire e meio de trigo
+2415:             atr$foro/um alqueire de meio de milho
+2416:             atr$fogaca/trez quartos de seu proprio trigo
+2417:             atr$fogaca/uma galinha boa/obs=por s. miguel de setembro
+2418:             atr$racao/das terras que houver no campo pagara um quarto
+2419: 
+2420:       escritura$esc1550-e55/16/1/1550/aforamento/fol=78v-79/loc=grade de ferro da portaria/sumario=contrato de renuncia e aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra, cristovao lopes e antonio rodrigues
+2421: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1550-e55
+2422:          senhoria$margarida de castro/id=esc1550-e55-per1
+2423:             ls$cargo/abadessa
+2424:             ls$titulo/dona
+2425:             ls$assina/sim
+2426: 
+2427:          renunciante$cristovao lopes/id=esc1550-e55-per2
+2428:             rel$profissional/azemel/margarida de castro/esc1550-e55-per1
+2429: 
+2430:          renunciantef$maria dias/id=esc1550-e55-per3
+2431:             rel$parentesco/mulher/cristovao lopes/esc1550-e55-per2
+2432: 
+2433:          foreiro$antonio rodrigues/id=esc1550-e55-per4
+2434:             ls$profissao/forneiro
+2435: 
+2436:          foreira$catarina dias/id=esc1550-e55-per5
+2437:             rel$parentesco/mulher/antonio rodrigues/esc1550-e55-per4
+2438: 
+2439:          aforamento$um pedaco de chao/obs=para nele se fazerem umas casas
+aforamento-esc1550-e55-obj1- ** was stored with function in ACT verify act
+2440:             atr$localizacao/junto ao lagar de azeite do olival do mosteiro
+2441:             atr$foro/trezentos reais/obs=por dia de pascoa
+2442: 
+2443:          test$manuel jorge/m/id=esc1550-e55-per6
+2444: 
+2445:          referido$jorge anes/id=esc1550-e55-per7
+2446:             rel$parentesco/pai/manuel jorge/esc1550-e55-per6
+2447:             ls$profissao/carpinteiro
+2448: 
+2449:          test$jorge anes/m/id=esc1550-e55-per8
+2450:             ls$residencia/pacos do mosteiro
+2451: 
+2452:          test$marcos fernandes/m/id=esc1550-e55-per9
+2453:             ls$residencia/pacos do mosteiro
+2454: 
+2455:       escritura$esc1547-e56/11/1/1547/aforamento/fol=79-80/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara de coimbra e luis bras, de um mato maninho sito no lugar de sangalhos, uma agua e moendas
+2456: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e56
+2457:          senhoria$margarida de castro/id=esc1547-e56-per1
+2458:             ls$cargo/abadessa
+2459:             ls$titulo/dona
+2460:             ls$assina/sim
+2461: 
+2462:          foreiro$luis bras/id=esc1547-e56-per2
+2463:             ls$profissao/tabeliao do arcediagado de vouga
+2464:             ls$residencia/famalicao/obs=do concelho de agueda; duvida
+2465: 
+2466:          foreira$filipa ?/id=esc1547-e56-per3
+2467:             rel$parentesco/mulher/luis bras/esc1547-e56-per2
+2468: 
+2469:          aforamento$uma agua e moendas
+2470: 
+aforamento-esc1547-e56-obj1- ** was stored with function in ACT verify act
+2471:          aforamento$um mato maninho
+aforamento-esc1547-e56-obj2- ** was stored with function in ACT verify act
+2472:             atr$localizacao/sangalhos
+2473:             atr$foro/seis arrateis de cera boa/obs=paga ao rendeiro do mosteiro por dia de s. miguel de setembro
+2474:             atr$racao/um oitavo de toda a novidade
+2475:             atr$foro/dizimo
+2476:             atr$foro/quatro arrateis/obs=caso faca mais moendas na dita agua
+2477: 
+2478:          test$anrique mendes/m/id=esc1547-e56-per4
+2479:             rel$profissional/feitor/margarida de castro/esc1547-e56-per1
+2480:             ls$residencia/coimbra
+2481:             ls$cargo/feitor do mosteiro
+2482: 
+2483:          test$domingos/m/id=esc1547-e56-per5
+2484: 
+2485:          referido$gabriel afonso/m/id=esc1547-e56-per6
+2486:             rel$parentesco/pai/domingos/esc1547-e56-per5
+2487:             ls$residencia/carvalhal, freguesia da igreja de pala do concelho de mortagua
+2488: 
+2489:       escritura$esc1547-e57/12/1/1547/aforamento/fol=80v-81v/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e francisco pires, de uns matos maninhos sitos no vale da estrada
+2490: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e57
+2491:          senhoria$margarida de castro/id=esc1547-e57-per1
+2492:             ls$cargo/abadessa
+2493:             ls$titulo/dona
+2494:             ls$assina/sim
+2495: 
+2496:          foreiro$francisco pires/id=esc1547-e57-per2
+2497:             ls$profissao/lavrador
+2498:             ls$residencia/sangalhos
+2499: 
+2500:          aforamento$uns matos maninhos
+aforamento-esc1547-e57-obj1- ** was stored with function in ACT verify act
+2501:             atr$localizacao/vale da estrada
+2502:             atr$foro/duas galinhas boas/obs=por s. miguel de setembro
+2503:             atr$foro/trinta ovos de galinha
+2504:             atr$racao/um oitavo de toda a novidade e o dizimo/obs=no celeiro de sangalhos
+2505: 
+2506:          test$anrique mendes/m/id=esc1547-e57-per3
+2507:             rel$profissional/feitor/margarida de castro/esc1547-e57-per1
+2508:             ls$cargo/feitor do mosteiro
+2509: 
+2510:          test$fernao simoes/m/id=esc1547-e57-per4
+2511:             ls$cargo/vigario/obs=de sangalhos
+2512:             ls$residencia/sangalhos
+2513: 
+2514:          test$joao martins/m/id=esc1547-e57-per5
+2515:             ls$residencia/sangalhos
+2516: 
+2517:       escritura$esc1547-e58/12/1/1547/aforamento/fol=81v-82/loc=porta da cerca/sumario=contrato de aforamento para sempre celebrado entre mosteiro de santa clara de coimbra e joao martins, de uns matos maninhos sitos no vale da estrada
+2518: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e58
+2519:          senhoria$margarida de castro/id=esc1547-e58-per1
+2520:             ls$cargo/abadessa
+2521:             ls$titulo/dona
+2522:             ls$assina/sim
+2523: 
+2524:          foreiro$joao martins/id=esc1547-e58-per2
+2525:             ls$residencia/sangalhos
+2526: 
+2527:          aforamento$matos maninhos
+aforamento-esc1547-e58-obj1- ** was stored with function in ACT verify act
+2528:             atr$localizacao/vale da estrada
+2529:             atr$foro/trinta ovos de galinha/obs=por s. miguel de setembro
+2530:             atr$foro/duas galinhas boas
+2531:             atr$racao/um oitavo da novidade
+2532: 
+2533:          test$anrique mendes/m/id=esc1547-e58-per3
+2534:             rel$profissional/feitor/margarida de castro/esc1547-e57-per1
+2535:             ls$cargo/feitor do mosteiro
+2536: 
+2537:          test$fernao simoes/m/id=esc1547-e58-per4
+2538:             ls$cargo/vigario/obs=de sangalhos
+2539:             ls$residencia/sangalhos
+2540: 
+2541:          test$francisco pires/m/id=esc1547-e58-per5
+2542:             ls$residencia/sangalhos
+2543: 
+2544:       escritura$esc1547-e59/24/1/1547/aforamento/fol=82v-83v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e alvaro anes, de um mato maninho sito no vale da estrada, sangalhos
+2545: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e59
+2546:          senhoria$margarida de castro/id=esc1547-e59-per1
+2547:             ls$cargo/abadessa
+2548:             ls$titulo/dona
+2549:             ls$assina/sim
+2550: 
+2551:          foreiro$alvaro anes/id=esc1547-e59-per2
+2552:             ls$profissao/lavrador
+2553:             ls$residencia/termo de recardaes
+2554: 
+2555:          aforamento$um mato maninho
+aforamento-esc1547-e59-obj1- ** was stored with function in ACT verify act
+2556:             atr$localizacao/vale da estrada, limite de sangalhos
+2557:             atr$foro/uma galinha boa/obs=por natal e entregue ao mordomo do mosteiro
+2558:             atr$racao/um oitavo de toda a novidade/obs=racao do pao levada ao celeiro de sangalhos
+2559: 
+2560:          test$simao lopes/m/id=esc1547-e59-per3
+2561:             rel$profissional/mordomo/margarida de castro/esc1547-e59-per1
+2562:             ls$residencia/sangalhos
+2563: 
+2564:          test$diogo afonso/m/id=esc1547-e59-per4
+2565:             ls$profissao/lavrador
+2566:             ls$residencia/povoa do salgueiro, lugar de sangalhos
+2567: 
+2568:       escritura$esc1547-e60/24/1/1547/aforamento/fol=83v-84v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e diogo afonso, de um mato maninho sito na povoa do salgueiro, lugar de sangalhos
+2569: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e60
+2570:          senhoria$margarida de castro/id=esc1547-e60-per1
+2571:             ls$cargo/abadessa
+2572:             ls$titulo/dona
+2573:             ls$assina/sim
+2574: 
+2575:          foreiro$diogo afonso/id=esc1547-e60-per2
+2576:             ls$profissao/lavrador
+2577:             ls$residencia/povoa do salgueiro, termo de sangalhos
+2578: 
+2579:          aforamento$um mato maninho
+aforamento-esc1547-e60-obj1- ** was stored with function in ACT verify act
+2580:             atr$localizacao/povoa do salgueiro, termo de sangalhos
+2581:             atr$foro/um capao bom/obs=pago, por dia de natal, ao mordomo do mosteiro
+2582:             atr$racao/um nono de toda a novidade/obs=obrigados a levarem a racao ao celeiro de sangalhos
+2583: 
+2584:          test$simao pires/m/id=esc1547-e60-per3
+2585:             ls$residencia/sangalhos
+2586:             rel$profissional/mordomo/margarida de castro/esc1547-e60-per1
+2587: 
+2588:          test$alvaro anes/m/id=esc1547-e60-per4
+2589:             ls$residencia/recardaes
+2590: 
+2591:       escritura$esc1547-e61/28/10/1547/emprazamento/fol=84v-86/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e isabel lopes, de um casal sito no termo da cidade de leiria
+2592: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e61
+2593:          senhoria$margarida de castro/id=esc1547-e61-per1
+2594:             ls$cargo/abadessa
+2595:             ls$titulo/dona
+2596:             ls$assina/sim
+2597: 
+2598:          foreira$isabel lopes/id=esc1547-e61-per2
+2599:             ls$residencia/termo de coimbra
+2600: 
+2601:          foreiro$francisco dias/id=esc1547-e61-per3
+2602:             ls$residencia/termo de coimbra
+2603:             rel$parentesco/marido/isabel lopes/esc1547-e61-per2
+2604: 
+2605:             referido$francisco fernandes/id=esc1547-e61-per4/obs=antigo foreiro
+2606:                ls$morto/antes
+2607: 
+2608:             referida$mecia pestana/id=esc1547-e61-per5/obs=primeira foreira
+2609: 
+2610:             referido$jorge bras/id=esc1547-e61-per6
+2611:                rel$profissional/feitor/margarida de castro/esc1547-e61-per1
+2612: 
+2613:             referido$pedro de figueiredo/id=esc1547-e61-per7
+2614:                ls$titulo/mestre de artes
+2615:                ls$profissao/lente na universidade de coimbra
+2616: 
+2617:          prazo$um casal
+prazo-esc1547-e61-obj1- ** was stored with function in ACT verify act
+2618:             atr$localizacao/termo da cidade de leiria
+2619:             atr$foro/mil reais em dinheiro
+2620:             atr$foro/duas galinhas/obs=por s. miguel de setembro, pagas dentro do mosteiro e nao ao feitor
+2621:             atr$multa/trinta cruzados de ouro
+2622: 
+2623:          test$jeronimo de figueiredo/m/id=esc1547-e61-per8/obs=assina por isabel lopes
+2624:             ls$naturalidade/lisboa
+2625:             rel$profissional/criado/pedro de figueiredo/esc1547-e61-per7
+2626: 
+2627:          test$andre afonso/m/id=esc1547-e61-per9
+2628:             ls$profissao/lavrador
+2629:             ls$residencia/orelhudo
+2630: 
+2631:          test$joao pires/m/id=esc1547-61-per10
+2632:             rel$profissional/criado/pedro de figueiredo/esc1547-e61-per7
+2633: 
+2634:          test$antonio vaz/m/id=esc1547-e61-per11
+2635:             ls$profissao/alfaiate
+2636:             ls$residencia/pacos de santa clara
+2637: 
+2638:       escritura$esc1547-e62/5/11/1547/aforamento/fol=86v-87v/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e diogo fernandes, de uma jeira de terra partida em duas partes e tres aguilhadas
+2639: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e62
+2640:          senhoria$margarida de castro/id=esc1547-e62-per1
+2641:             ls$cargo/abadessa
+2642:             ls$titulo/dona
+2643:             ls$assina/sim
+2644: 
+2645:          foreiro$diogo fernandes/id=esc1547-e62-per2
+2646:             ls$profissao/lavrador
+2647:             ls$residencia/vila nova da barca termo de montemor o velho
+2648: 
+2649:          aforamento$uma jeira de terra partida em duas partes
+2650: 
+aforamento-esc1547-e62-obj1- ** was stored with function in ACT verify act
+2651:          aforamento$tres aguilhadas de terra
+aforamento-esc1547-e62-obj2- ** was stored with function in ACT verify act
+2652:             atr$foro/uma galinha boa/obs=por s. miguel de setembro
+2653:             atr$racao/um quarto de toda a novidade
+2654:             atr$multa/vinte cruzados
+2655: 
+2656:          test$anrique mendes/m/id=esc1547-e62-per3
+2657:             rel$profissional/feitor/margarida de castro/esc1547-e62-per1
+2658:             ls$cargo/feitor do mosteiro
+2659: 
+2660:          test$antonio vaz/m/id=esc1547-e62-per4
+2661:             ls$profissao/alfaiate
+2662:             ls$residencia/pacos do mosteiro
+2663: 
+2664:       escritura$esc1547-e63/10/11/1547/emprazamento/fol=87v-88v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e pedro martinho, de umas casas sitas nos pacos de santa clara
+2665: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e63
+2666:          senhoria$margariada de castro/id=esc1547-e63-per1
+2667:             ls$cargo/abadessa
+2668:             ls$titulo/dona
+2669:             ls$assina/sim
+2670: 
+2671:          foreiro$pedro martinho/id=esc1547-e63-per2
+2672:             ls$profissao/relojoeiro
+2673:             ls$residencia/pacos de santa clara
+2674: 
+2675:          aforamento$umas casas
+aforamento-esc1547-e63-obj1- ** was stored with function in ACT verify act
+2676:             atr$localizacao/pacos de santa clara
+2677:             atr$pensao/cento e quarenta reais/obs=por s. miguel de setembro
+2678: 
+2679:          test$joao alvares/m/id=esc1547-e63-per3
+2680:             rel$profissional/solicitador/margariada de castro/esc1547-e63-per1
+2681:             ls$residencia/pacos de santa clara
+2682:             ls$cargo/solicitador do mosteiro
+2683: 
+2684:          test$diogo pires/m/id=esc1547-e63-per4
+2685:             ls$residencia/urzelhe
+2686: 
+2687:          test$joao pires/m/id=esc1547-e63-per5
+2688:             ls$profissao/lavrador
+2689:             ls$residencia/lombo, termo da vila de miranda
+2690: 
+2691:       escritura$esc1547-e64/14/11/1547/emprazamento/fol=88v-89/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e luisa rodrigues, de umas casas terreas sitas nos pacos do mosteiro
+2692: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e64
+2693:          senhoria$margarida de castro/id=esc1547-e64-per1
+2694:             ls$cargo/abadessa
+2695:             ls$titulo/dona
+2696:             ls$assina/sim
+2697: 
+2698:          foreira$luisa rodrigues/id=esc1547-e64-per2
+2699:             ls$residencia/pacos de santa clara
+2700: 
+2701:          foreiro$gaspar coelho/id=esc1547-e64-per3
+2702:             rel$parentesco/marido/luisa rodrigues/esc1547-e64-per2
+2703: 
+2704:          prazo$umas casas terreas
+prazo-esc1547-e64-obj1- ** was stored with function in ACT verify act
+2705:             atr$localizacao/pacos do mosteiro
+2706:             atr$foro/cento e vinte reais/obs=por s. miguel de setembro
+2707: 
+2708:          test$fernao vaz/m/id=esc1547-e64-per4
+2709:             ls$profissao/pedreiro
+2710:             ls$residencia/pacos do mosteiro
+2711: 
+2712:          test$antonio fernandes/m/id=esc1547-e64-per5
+2713:             rel$profissional/solicitador/margarida de castro/esc1547-e64-per1
+2714:             ls$residencia/pacos do mosteiro
+2715:             ls$cargo/solicitador do mosteiro
+2716: 
+2717:          test$antonio vaz/m/id=esc1545-e64-per6
+2718:             ls$profissao/estudante/obs=no mosteiro de lorvao
+2719:             ls$residencia/coimbra
+2720: 
+2721:       escritura$esc1547-e65/29/11/1547/emprazamento/fol=89v-90/loc=porta da portaria da grade de ferro/sumario=contrato de novo emprazamento em uma vida celebrado entre mosteiro de santa clara da cidade de coimbra e beatriz de mendonca, de um casal sito na vila de gouveia
+2722: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e65
+2723:          senhoria$margarida de castro/id=esc1547-e65-per1
+2724:             ls$cargo/abadessa
+2725:             ls$titulo/dona
+2726:             ls$assina/sim
+2727: 
+2728:          foreira$beatriz de mendonca/id=esc1547-e65-per2
+2729:             ls$ec/viuva
+2730: 
+2731:             referido$belchior de macedo/id=esc1547-e65-per3
+2732:                rel$parentesco/marido/beatriz de mendonca/esc1547-e65-per2
+2733: 
+2734:          prazo$um casal
+prazo-esc1547-e65-obj1- ** was stored with function in ACT verify act
+2735:             atr$localizacao/vila de gouveia
+2736:             atr$foro/trezentos reais/obs=por s. joao baptista
+2737: 
+2738:          test$anrique mendes/m/id=esc1547-e65-per3a
+2739:             rel$profissional/feitor/margarida de castro/esc1547-e65-per1
+2740:             ls$cargo/feitor do mosteiro
+2741: 
+2742:          test$nicolau/m/id=esc1547-e65-per4
+2743:             rel$profissional/criado/anrique mendes/esc1547-e65-per3a
+2744: 
+2745:          test$francisdo afonso/m/id=esc1547-e65-per5
+2746:             ls$profissao/moleiro
+2747:             ls$residencia/pacos de santa clara
+2748: 
+2749:       escritura$esc1547-e66/12/12/1547/aforamento/fol=90-91v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e fernao afonso, de tres quartos de casal mais um quarto de casal
+2750: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e66
+2751:          senhoria$margarida de castro/id=esc1547-e66-per1
+2752:             ls$cargo/abadessa
+2753:             ls$titulo/dona
+2754:             ls$assina/sim
+2755: 
+2756:          foreiro$fernao de afonso/id=esc1547-e66-per2
+2757:             ls$profissao/lavrador
+2758:             ls$residencia/povoa do porto dos judeus, termo da vila de penela
+2759: 
+2760:          foreira$leonor eanes/id=esc1547-e66-per3
+2761:             rel$parentesco/mulher/fernao de afonso/esc1547-e66-per2
+2762: 
+2763:             referido$fernao de afonso/id=esc1547-e66-per4
+2764:                rel$parentesco/pai/fernao de afonso/esc1547-e66-per2
+2765: 
+2766:          aforamento$tres quartos de casal
+2767: 
+aforamento-esc1547-e66-obj1- ** was stored with function in ACT verify act
+2768:          aforamento$um quarto de casal
+aforamento-esc1547-e66-obj2- ** was stored with function in ACT verify act
+2769:             atr$racao/um setimo de toda a novidade
+2770:             atr$foro/quatro alqueires de pao meado/obs=pago na eira
+2771:             atr$foro/dois alqueires de trigo/obs=pago na eira
+2772:             atr$foro/dois alqueires de centeio/obs=pago na eira
+2773:             atr$foro/dois capoes bons
+2774:             atr$foro/dois cabritos
+2775:             atr$foro/doze ovos/obs=por dia de pascoa
+2776: 
+2777:          test$anrique mendes/m/id=esc1547-e66-per5
+2778:             rel$profissional/feitor/margarida de castro/esc1547-e66-per1
+2779:             ls$cargo/feitor do mosteiro
+2780: 
+2781:          test$francisco simoes/m/id=esc1547-e66-per6
+2782:             ls$titulo/bacharel
+2783:             ls$residencia/sangalhos
+2784:             ls$cargo/vigario/obs=de sangalhos
+2785: 
+2786:          test$simao pires/m/id=esc1547-e66-per7
+2787:             rel$profissional/mordomo/margarida de castro/esc1547-e66-per1
+2788:             ls$residencia/sangalhos
+2789: 
+2790:       escritura$esc1547-e67/20/12/1547/aforamento/fol=91v-92v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e afonso vaz, de uma agua e dois pedacos de matos maninhos
+2791: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e67
+2792:          senhoria$margarida de castro/id=esc1547-e67-per1
+2793:             ls$cargo/abadessa
+2794:             ls$titulo/dona
+2795:             ls$assina/sim
+2796: 
+2797:          foreiro$afonso vaz/id=esc1547-e67-per2
+2798:             ls$residencia/casal da rua sangalhos
+2799: 
+2800:             referido$vasco afonso/id=esc1547-e67-per3
+2801:                rel$parentesco/pai/afonso vaz/esc1547-e67-per2
+2802:                ls$residencia/casal da rua sangalhos
+2803: 
+2804:          aforamento$uma agua e dois pedacos de matos maninhos
+aforamento-esc1547-e67-obj1- ** was stored with function in ACT verify act
+2805:             atr$foro/dois alqueires de trigo
+2806:             atr$foro/cinco reais
+2807:             atr$foro/um capao bom/obs=por s. miguel de setembro
+2808:             atr$racao/um oitavo de toda a novidade
+2809:             atr$multa/trinta cruzados
+2810: 
+2811:          test$anrique mendes/m/id=esc1547-e67-per4
+2812:             ls$residencia/pacos de santa clara
+2813:             rel$profissional/feitor/margarida de castro/esc1547-e67-per1
+2814:             ls$cargo/feitor do mosteiro
+2815: 
+2816:          test$ambrosio dias/m/id=esc1547-e67-per5
+2817:             ls$residencia/pacos de santa clara
+2818: 
+2819:       escritura$esc1548-e68/3/1/1548/aforamento/fol=92v-93v/loc=porta da cerca/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e bastioa lucas, de um casal sito em penacova
+2820: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1548-e68
+2821:          senhoria$margarida de castro/id=esc1548-e68-per1
+2822:             ls$cargo/abadessa
+2823:             ls$titulo/dona
+2824:             ls$assina/sim
+2825: 
+2826:          foreiro$bastiao lucas/id=esc1548-e68-per2
+2827:             ls$profissao/lavrador
+2828:             ls$residencia/casal dos terceiros termo de penacova
+2829: 
+2830:             referido$lucas eanes/id=esc1548-e68-per3/obs=antigo foreiro
+2831:                rel$parentesco/pai/bastiao lucas/esc1548-e68-per2
+2832: 
+2833:             referida$catarina eanes/id=esc1548-e68-per4
+2834:                rel$parentesco/mulher/lucas eanes/esc1548-e68-per3
+2835:                rel$parentesco/mae/bastiao lucas/esc1548-e68-per2
+2836: 
+2837:          aforamento$um casal
+aforamento-esc1548-e68-obj1- ** was stored with function in ACT verify act
+2838:             atr$localizacao/penacova
+2839:             atr$foro/um alqueire de trigo/obs=por s. miguel de setembro
+2840:             atr$foro/um alqueire de centeio/obs=por s. miguel de setembro
+2841:             atr$foro/uma galinha
+2842:             atr$foro/dez ovos
+2843:             atr$racao/um nono da novidade
+2844:             atr$multa/trinta cruzados
+2845: 
+2846:          test$anrique mendes/m/id=esc1548-e68-per5
+2847:             rel$profissional/feitor/margarida de castro/esc1548-e68-per1
+2848:             ls$cargo/feitor do mosteiro
+2849: 
+2850:          test$lourenco anes/m/id=esc1548-e68-per6
+2851:             ls$profissao/lavrador
+2852:             ls$residencia/penacova
+2853: 
+2854:       escritura$esc1545-e69/8/6/1545/aforamento/fol=94-94v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e antonio fernandes, de umas casas sitas nos circuitos do mosteiro
+2855: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e69
+2856:          senhoria$margarida de castro/id=esc1545-e69-per1
+2857:             ls$cargo/abadessa
+2858:             ls$titulo/dona
+2859:             ls$assina/sim
+2860: 
+2861:          foreiro$antonio fernandes/id=esc1545-e69-per2
+2862:             rel$profissional/criado/margarida de castro/esc1545-e69-per1
+2863:             ls$residencia/circuito do mosteiro
+2864: 
+2865:          aforamento$umas casas
+aforamento-esc1545-e69-obj1- ** was stored with function in ACT verify act
+2866:             atr$localizacao/circuitos do mosteiro
+2867:             atr$racao/um setimo da novidade
+2868:             atr$foro/dois capoes/obs=por s. miguel de setembro
+2869: 
+2870:          test$isabel de meneses/f/id=esc1545-e69-per3
+2871:             ls$cargo/vigaria
+2872:             ls$titulo/dona
+2873:             ls$assina/sim
+2874: 
+2875:          test$leonor da silveira/f/id=esc1545-e69-per4
+2876:             ls$cargo/mordoma
+2877:             ls$titulo/dona
+2878:             ls$assina/sim
+2879: 
+2880:          test$leonor de castro/f/id=esc1545-e69-per5
+2881:             ls$cargo/porteira
+2882:             ls$titulo/dona
+2883:             ls$assina/sim
+2884: 
+2885:          test$maria de noronha/f/id=esc1545-e69-per6
+2886:             ls$cargo/porteira
+2887:             ls$titulo/dona
+2888:             ls$assina/sim
+2889: 
+2890:          test$antonia de castro/f/id=esc1545-e69-per7
+2891:             ls$cargo/sacrista
+2892:             ls$titulo/dona
+2893:             ls$assina/sim
+2894: 
+2895:          test$cezilia de mendonca/f/id=esc1545-e69-per8
+2896:             ls$cargo/sacrista
+2897:             ls$titulo/dona
+2898:             ls$assina/sim
+2899: 
+2900:          test$antonio anes/m/id=esc1545-e69-per9
+2901:             ls$profissao/alfaiate
+2902:             ls$residencia/pacos do mosteiro
+2903: 
+2904:          test$fabiao vaz/f/id=esc1545-e69-per10
+2905:             ls$profissao/pedreiro
+2906:             ls$residencia/pacos do mosteiro
+2907: 
+2908:       escritura$esc1545-e70/13/11/1545/emprazamento/fol=95-96/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre o mosteiro de santa clara da cidade de coimbra e diogo de oliveira, de uma marinha sita no termo da vila de aveiro
+2909: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e70
+2910:          senhoria$margarida de castro/id=esc1545-e70-per1
+2911:             ls$cargo/abadessa
+2912:             ls$titulo/dona
+2913:             ls$assina/sim
+2914: 
+2915:          foreiro$diogo de oliveira/id=esc1545-e70-per2
+2916:             ls$titulo/cavaleiro fidalgo/obs=da casa do rei em montemor o velho
+2917: 
+2918:          prazo$uma marinha
+prazo-esc1545-e70-obj1- ** was stored with function in ACT verify act
+2919:             atr$localizacao/termo da vila de aveiro
+2920:             atr$foro/dois mil e quinhentos reais/obs=por dia de natal; pagam esta quantia a primeira e segunda pessoas
+2921:             atr$foro/quatro mil reais/obs=quantia a pagar pela terceira pessoa
+2922: 
+2923:          test$secula de meneses/f/id=esc1545-e70-per3
+2924:             ls$cargo/mordoma
+2925:             ls$titulo/dona
+2926:             ls$assina/sim
+2927: 
+2928:          test$maria de sousa/f/id=esc1545-e70-per4
+2929:             ls$cargo/mordoma
+2930:             ls$titulo/dona
+2931:             ls$assina/sim
+2932: 
+2933:          test$isabel de castro/f/id=esc1545-e70-per5
+2934:             ls$cargo/porteira
+2935:             ls$titulo/dona
+2936:             ls$assina/sim
+2937: 
+2938:          test$joana da silva/f/id=esc1545-e70-per6
+2939:             ls$cargo/porteira
+2940:             ls$titulo/dona
+2941:             ls$assina/sim
+2942: 
+2943:          test$antonia de castro/f/id=esc1545-e70-per7
+2944:             ls$cargo/sacrista
+2945:             ls$titulo/dona
+2946:             ls$assina/sim
+2947: 
+2948:          test$ana de meneses/f/id=esc1545-e70-per8
+2949:             ls$cargo/sacrista
+2950:             ls$titulo/dona
+2951:             ls$assina/sim
+2952: 
+2953:          test$joao alvares/m/id=esc1545-e70-per9
+2954:             rel$profissional/feitor/margarida de castro/esc1545-e70-per1
+2955:             ls$cargo/feitor do mosteiro
+2956: 
+2957:          test$diogo fernandes/m/id=esc1545-e70-per10
+2958:             ls$profissao/cavouqueiro
+2959: 
+2960:          test$francisco vaz/m/id=esc1545-e70-per11
+2961:             ls$profissao/pedreiro
+2962: 
+2963:       escritura$esc1545-e71/13/11/1545/emprazamento/fol=96-97/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e diogo fernandes, de umas casas sitas nos pacos do mosteiro
+2964: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1545-e71
+2965:          senhoria$margarida de castro/id=esc1545-e71-per1
+2966:             ls$cargo/abadessa
+2967:             ls$titulo/dona
+2968:             ls$assina/sim
+2969: 
+2970:          foreiro$diogo fernandes/id=esc1545-e71-per2
+2971:             ls$profissao/cavouqueiro
+2972:             ls$residencia/pacos do mosteiro
+2973: 
+2974:          foreira$catarina brasseia/id=esc1545-e71-per3
+2975:             rel$parentesco/mulher/diogo fernandes/esc1545-e71-per2
+2976: 
+2977:          prazo$umas casas
+prazo-esc1545-e71-obj1- ** was stored with function in ACT verify act
+2978:             atr$localizacao/pacos do mosteiro
+2979:             atr$foro/cento e vinte reais/obs=por s. miguel de setembro
+2980: 
+2981:          test$joana da silva/f/id=esc1545-e71-per4
+2982:             ls$cargo/vigaria
+2983:             ls$titulo/dona
+2984:             ls$assina/sim
+2985: 
+2986:          test$secula de meneses/f/id=esc1545-e71-per5
+2987:             ls$cargo/mordoma
+2988:             ls$titulo/dona
+2989:             ls$assina/sim
+2990: 
+2991:          test$maria de sousa/f/id=esc1545-e71-per6
+2992:             ls$cargo/mordoma
+2993:             ls$titulo/dona
+2994:             ls$assina/sim
+2995: 
+2996:          test$isabel de castro/f/id=esc1545-e71-per7
+2997:             ls$cargo/porteira
+2998:             ls$titulo/dona
+2999:             ls$assina/sim
+3000: 
+3001:          test$joana da silva/f/id=esc1545-e71-per8
+3002:             ls$cargo/porteira
+3003:             ls$titulo/dona
+3004:             ls$assina/sim
+3005: 
+3006:          test$antonia de castro/f/id=esc1545-e71-per9
+3007:             ls$cargo/sacrista
+3008:             ls$titulo/dona
+3009:             ls$assina/sim
+3010: 
+3011:          test$ana de meneses/f/id=esc1545-e71-per10
+3012:             ls$cargo/sacrista
+3013:             ls$titulo/dona
+3014:             ls$assina/sim
+3015: 
+3016:          test$joao alvares/m/id=esc1545-e71-per11
+3017:             ls$profissao/pedreiro
+3018: 
+3019:          test$fabiao vaz/m/id=esc1545-e71-per12
+3020:             ls$profissao/pedreiro
+3021: 
+3022:          test$diogo de figueiredo/m/id=esc1545-e71-per13
+3023:             rel$profissional/vedor/margarida de castro/esc1545-e71-per1
+3024:             ls$cargo/vedor do mosteiro
+3025: 
+3026:       escritura$esc1546-e72/16/1/1546/emprazamento/fol=97-98v/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e isabel teixeira, de um prazo de certos casais sito na vila de torres novas
+3027: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e72
+3028:          senhoria$margarida de castro/id=esc1546-e72-per1
+3029:             ls$cargo/abadessa
+3030:             ls$titulo/dona
+3031:             ls$assina/sim
+3032: 
+3033:          constituintef$isabel teixeira/id=esc1546-e72-per2
+3034:             rel$economica/foreira/margarida de castro/esc1546-e72-per1
+3035: 
+3036:          procurador$simao mendes/id=esc1546-e72-per3
+3037:             ls$cargo/beneficiado/obs=da igreja de sao joao da vila de tomar
+3038:             rel$sociabilidade/procurador/isabel teixeira/esc1546-e72-per2
+3039:             ls$residencia/tomar%vila de tomar
+3040: 
+3041:             referido$fernao rodrigues/id=esc1546-e72-per4
+3042:                ls$profissao/pintor
+3043:                ls$residencia/vila de tomar
+3044:                rel$sociabilidade/testemunha de procuracao/isabel teixeira/esc1546-e72-per2/obs=testemunha a procuracao
+3045: 
+3046:             referido$andre fernandes/id=esc1546-e72-per5
+3047:                ls$residencia/tomar
+3048: 
+3049:             referido$bartolomeu fernandes/id=esc1546-e72-per6
+3050:                ls$residencia/tomar
+3051:                rel$sociabilidade/testemunha de procuracao/isabel teixeira/esc1546-e72-per2/obs=testemunha a procuracao
+3052:                rel$parentesco/filho/andre fernandes/esc1546-e72-per5
+3053:                ls$profissao/trabalhador
+3054: 
+3055:             referido$martim alvares/id=esc1546-e72-per7
+3056:                ls$residencia/vila de tomar
+3057:                ls$profissao/pedreiro
+3058:                rel$sociabilidade/testemunha de procuracao/isabel teixeira/esc1546-e72-per2/obs=testemunha a procuracao
+3059: 
+3060:             referido$artur de figueiredo/id=esc1546-e72-per8
+3061:                rel$parentesco/marido/isabel teixeira/esc1546-e72-per2
+3062:                ls$titulo/fidalgo
+3063:                ls$morto/antes
+3064: 
+3065:          prazo$um prazo de certos casais
+prazo-esc1546-e72-obj1- ** was stored with function in ACT verify act
+3066:             atr$localizacao/torres novas%vila de torres novas
+3067:             atr$foro/quatro mil e seiscentos reais/obs=por dia de pascoa
+3068: 
+3069:          test$joana da silva/f/id=esc1546-e72-per9
+3070:             ls$cargo/vigaria
+3071:             ls$titulo/dona
+3072:             ls$assina/sim
+3073: 
+3074:          test$secula de meneses/f/id=esc1546-e72-per10
+3075:             ls$cargo/mordoma
+3076:             ls$titulo/dona
+3077:             ls$assina/sim
+3078: 
+3079:          test$maria de sousa/f/id=esc1546-e72-per11
+3080:             ls$cargo/mordoma
+3081:             ls$titulo/dona
+3082:             ls$assina/sim
+3083: 
+3084:          test$isabel de castro/f/id=esc1546-e72-per12
+3085:             ls$cargo/porteira
+3086:             ls$titulo/dona
+3087:             ls$assina/sim
+3088: 
+3089:          test$joana da silva/f/id=esc1546-e72-per13
+3090:             ls$cargo/porteira
+3091:             ls$titulo/dona
+3092:             ls$assina/sim
+3093: 
+3094:          test$antonia de castro/f/id=esc1546-e72-per14
+3095:             ls$cargo/sacrista
+3096:             ls$titulo/dona
+3097:             ls$assina/sim
+3098: 
+3099:          test$ana de meneses/f/id=esc1546-e72-per15
+3100:             ls$cargo/sacrista
+3101:             ls$titulo/dona
+3102:             ls$assina/sim
+3103: 
+3104:          test$jeronima de castro/f/id=esc1546-e72-per16
+3105:             ls$cargo/porteira
+3106:             ls$titulo/dona
+3107:             ls$assina/sim
+3108: 
+3109:          test$diogo de figueiredo/m/id=esc1546-e72-per17
+3110:             ls$residencia/pacos de santa clara
+3111:             rel$profissional/vedor/margarida de castro/esc1546-e72-per1
+3112:             ls$cargo/vedor do mosteiro
+3113: 
+3114:          test$joao alvares/m/id=esc1546-e72-per18
+3115:             ls$residencia/pacos de santa clara
+3116:             rel$profissional/solicitador/margarida de castro/esc1546-e72-per1
+3117:             ls$cargo/solicitador do mosteiro
+3118: 
+3119:          test$antonio fernandes/m/id=esc1546-e72-per19
+3120:             ls$residencia/pacos de santa clara
+3121:             ls$profissao/alfaiate
+3122: 
+3123:          test$bras eanes/m/id=esc1546-e72-per20
+3124:             ls$residencia/pacos de santa clara
+3125:             ls$profissao/hortelao
+3126: 
+3127:       escritura$esc1546-e73/18/11/1546/aforamento/fol=98v-100/loc=porta da cerca/sumario=contrato de novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra e tristao do vale, de uma vinha com seu mato sitos no lugar da amoreira, concelho de sangalhos
+3128: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e73
+3129:          senhoria$margarida de castro/id=esc1546-e73-per1
+3130:             ls$cargo/abadessa
+3131:             ls$titulo/dona
+3132:             ls$assina/sim
+3133: 
+3134:          foreiro$tristao do vale/id=esc1546-e73-per2
+3135:             ls$profissao/alfaiate
+3136:             ls$residencia/coimbra
+3137: 
+3138:          foreira$filipa gomes/id=esc1546-e73-per3
+3139:             rel$parentesco/mulher/tristao do vale/esc1546-e73-per2
+3140: 
+3141:          aforamento$uma vinha com seu mato
+aforamento-esc1546-e73-obj1- ** was stored with function in ACT verify act
+3142:             atr$localizacao/lugar da amoreira concelho de sangalhos
+3143:             atr$foro/dizimo
+3144:             atr$racao/um oitavo
+3145: 
+3146:          test$anrique mendes/m/id=ec1546-e73-per3
+3147:             ls$profissao/escudeiro
+3148:             rel$profissional/feitor/margarida de castro/esc1546-e73-per1
+3149:             ls$cargo/feitor do mosteiro
+3150: 
+3151:          test$baltasar machado/m/id=esc1546-e73-per4
+3152:             rel$profissional/criado/margarida de castro/esc1546-e73-per1
+3153: 
+3154:          test$garcia de meneses/m/id=esc1546-e73-per5
+3155:             ls$profissao/estudante
+3156:             ls$residencia/coimbra
+3157: 
+3158:       escritura$esc1546-e74/23/11/1546/renuncia e emprazamento/fol=100-101/loc=porta da cerca/sumario=contrato de renuncia e novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e marcos fernandes, de um chao encabecado nas casas onde seu pai vivia
+3159: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e74
+3160:          senhoria$margarida de castro/id=esc1546-e74-per1
+3161:             ls$cargo/abadessa
+3162:             ls$titulo/dona
+3163:             ls$assina/sim
+3164: 
+3165:          foreiro$marcos fernandes/id=esc1546-e74-per2
+3166:             ls$profissao/boeiro
+3167:             ls$residencia/pacos de santa clara
+3168: 
+3169:             referido$filipe goncalves/id=esc1546-e74-per3
+3170:                rel$parentesco/pai/marcos fernandes/esc1546-e74-per2
+3171:                ls$residencia/pacos de santa clara
+3172: 
+3173:             referida$maria jorge/id=esc1546-e74-per4
+3174:                rel$parentesco/mae/marcos fernandes/esc1546-e74-per2
+3175:                ls$residencia/pacos de santa clara
+3176: 
+3177:          prazo$um chao
+prazo-esc1546-e74-obj1- ** was stored with function in ACT verify act
+3178:             atr$localizacao/pacos de santa clara
+3179:             atr$foro/um capao/obs=por s. miguel de setembro
+3180:             atr$racao/um quarto da novidade
+3181: 
+3182:          test$anrique mendes/m/id=esc1546-e74-per5
+3183:             rel$profissional/feitor/margarida de castro/esc1546-e74-per1
+3184:             ls$cargo/feitor do mosteiro
+3185: 
+3186:          test$francisco vaz/m/id=esc1546-e74-per6
+3187:             ls$profissao/pedreiro
+3188:             ls$residencia/pacos do mosteiro
+3189: 
+3190:          test$simao pires/m/id=esc1546-e74-per7
+3191:             ls$residencia/sangalhos
+3192:             rel$profissional/mordomo/margarida de castro/esc1546-e74-per1
+3193: 
+3194:       escritura$esc1546-e75/24/11/1546/emprazamento/fol=101-102v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e cristovao fernandes, de uma monta
+3195: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1546-e75
+3196:          senhoria$margarida de castro/id=esc1546-e75-per1
+3197:             ls$cargo/abadessa
+3198:             ls$titulo/dona
+3199:             ls$assina/sim
+3200: 
+3201:          foreiro$cristovao fernandes/id=esc1546-e75-per2
+3202:             ls$residencia/gouveia%vila de gouveia
+3203: 
+3204:          foreira$beatriz lopes/id=esc1546-e75-per3
+3205:             rel$parentesco/mulher/cristovao fernandes/esc1546-e75-per2
+3206: 
+3207:          prazo$uma monta
+prazo-esc1546-e75-obj1- ** was stored with function in ACT verify act
+3208:             atr$foro/um alqueire de trigo limpo/obs=por dia de natal
+3209:             atr$racao/um oitavo
+3210: 
+3211:          test$anrique mendes/m/id=esc1546-e75-per4
+3212:             rel$profissional/feitor/margarida de castro/esc1546-e75-per1
+3213:             ls$cargo/feitor do mosteiro
+3214: 
+3215:          referido$moncao/id=esc1546-e75-per5
+3216:             ls$titulo/doutor
+3217: 
+3218:          test$bastiao lopes/m/id=esc1546-e75-per6a
+3219:             ls$naturalidade/carvalhal
+3220:             rel$profissional/criado/moncao/esc1546-e75-per5
+3221: 
+3222:       escritura$esc1547-e76/7/1/1547/emprazamento/fol=102v-103v/loc=porta da cerca/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e bras eanes, de umas casas sitas nos pacos
+3223: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e76
+3224:          senhoria$margarida de castro/id=esc1547-e76-per1
+3225:             ls$cargo/abadessa
+3226:             ls$titulo/dona
+3227:             ls$assina/sim
+3228: 
+3229:          foreiro$bras eanes/id=esc1547-e76-per2
+3230:             rel$profissional/hortelao/margarida de castro/esc1547-e76-per1
+3231:             ls$profissao/hortelao
+3232: 
+3233:          prazo$umas casas
+prazo-esc1547-e76-obj1- ** was stored with function in ACT verify act
+3234:             atr$localizacao/pacos
+3235:             atr$foro/duzentos reais/obs=por s. miguel de setembro
+3236: 
+3237:          test$simao pires/m/id=esc1547-e76-per3
+3238:             ls$profissao/barqueiro
+3239: 
+3240:          test$duarte lopes/m/id=esc1547-e76-per4
+3241:             ls$profissao/barqueiro
+3242: 
+3243:       escritura$esc1547-e77/7/1/1547/emprazamento/fol=103v-105/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e andre afonso, de um olival com terra, sito no lugar de orelhudo
+3244: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e77
+3245:          senhoria$margarida de castro/id=esc1547-e77-per1
+3246:             ls$cargo/abadessa
+3247:             ls$titulo/dona
+3248:             ls$assina/sim
+3249: 
+3250:          foreiro$afonso andre/id=esc1547-e77-per2
+3251:             ls$profissao/lavrador
+3252:             ls$residencia/orelhudo
+3253: 
+3254:          foreira$catarina alvares/id=esc1547-e77-per3
+3255:             rel$parentesco/mulher/afonso andre/esc1547-e77-per2
+3256: 
+3257:          prazo$um olival com terra
+prazo-esc1547-e77-obj1- ** was stored with function in ACT verify act
+3258:             atr$localizacao/lugar do orelhudo
+3259:             atr$foro/um alqueire de azeite bom/obs=de dois em dois anos, pago ate dia de entrudo
+3260:             atr$racao/um oitavo de toda a novidade e azeitona
+3261:             atr$racao/uma galinha boa/obs=por s. miguel de setembro
+3262: 
+3263:          test$simao pires/m/id=esc1547-e77-per4
+3264:             ls$profissao/barqueiro
+3265: 
+3266:          test$duarte lopes/m/id=esc1547-e77-per5
+3267:             ls$profissao/barqueiro
+3268: 
+3269:          test$anrique mendes/m/id=esc1547-e77-per6
+3270:             rel$profissional/feitor/margarida de castro/esc1547-e77-per1
+3271:             ls$cargo/feitor do mosteiro
+3272: 
+3273:       escritura$esc1547-e78/8/7/1547/emprazamento/fol=105-106v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e joao dias, de um lote de terras
+3274: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e78
+3275:          senhoria$margarida de castro/id=esc1547-e78-per1
+3276:             ls$cargo/abadessa
+3277:             ls$titulo/dona
+3278:             ls$assina/sim
+3279: 
+3280:          foreiro$joao dias/id=esc1547-e78-per2
+3281:             ls$profissao/tabeliao
+3282:             ls$residencia/montemor o velho
+3283: 
+3284:             referido$pedro%mestre pero/id=esc1547-e78-per3
+3285:                rel$economica/antigo foreiro/margarida de castro/esc1547-e78-per1
+3286:                ls$titulo/mestre
+3287:                rel$parentesco/sogro/joao dias/esc1547-e78-per2
+3288:                ls$morto/antes
+3289: 
+3290:             referida$ines de abreu/id=esc1547-e78-per4
+3291:                rel$economica/antigo foreira/margarida de castro/esc1547-e78-per1
+3292:                ls$morta/antes
+3293: 
+3294:          prazo$um lote de terras
+prazo-esc1547-e78-obj1- ** was stored with function in ACT verify act
+3295:             atr$foro/uma galinha boa/obs=por s. miguel de setembro
+3296:             atr$racao/um terco de toda a novidade mais o dizimo
+3297: 
+3298:          test$gabriel fernandes/m/id=esc1547-e78-per5
+3299:             ls$profissao/sapateiro
+3300:             ls$residencia/pacos do mosteiro
+3301: 
+3302:          test$lopo afonso/m/id=esc1547-e78-per6
+3303:             ls$profissao/lavrador
+3304:             ls$residencia/lugar de fala
+3305: 
+3306:          test$pedro afonso/m/id=esc1547-e78-per7
+3307:             rel$profissional/azemel/margarida de castro/esc1547-e78-per1
+3308:             ls$residencia/pacos
+3309: 
+3310:       escritura$esc1547-e79/13/7/1547/emprazamento/fol=106v-107v/loc=porta da cerca/sumario=contrato de novo emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e tristao borges, de dois linhares e um chao pardieiro de uma casa terrea, sitos na vila de gouveia
+3311: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e79
+3312:          senhoria$margarida de castro/id=esc1547-e79-per1
+3313:             ls$cargo/abadessa
+3314:             ls$titulo/dona
+3315:             ls$assina/sim
+3316: 
+3317:          foreiro$tristao borges/id=esc1547-e79-per2
+3318:             ls$residencia/nespereira
+3319: 
+3320:          prazo$dois linhares e um chao pardieiro de uma casa terrea
+prazo-esc1547-e79-obj1- ** was stored with function in ACT verify act
+3321:             atr$localizacao/vila de gouveia
+3322:             atr$foro/cinco alqueires de pao tres de trigo e dois de centeio
+3323:             atr$foro/uma galinha boa
+3324: 
+3325:          test$anrique mendes/m/id=esc1547-e79-per3
+3326:             rel$profissional/feitor/margarida de castro/esc1547-e79-per1
+3327:             ls$residencia/circuito de santa clara
+3328:             ls$cargo/feitor do mosteiro
+3329: 
+3330:          test$luis eanes/m/id=esc1547-e79-per4
+3331:             ls$profissao/trabalhador
+3332:             ls$residencia/circuito de santa clara
+3333: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario34.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario34.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario34.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario34.ids

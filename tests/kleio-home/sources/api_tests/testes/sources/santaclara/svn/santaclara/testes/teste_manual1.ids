@@ -1,0 +1,23 @@
+kleio$gacto2-str/translations=1
+   fonte$ofm,provincia de portugal,santa clara de coimbra, regios/data=1316-1376/tipo=cartas regias/loc=dgarq-ofm.cscc.regios.maco1
+
+      docregio$docreg1370.1/6/11/1370/UNDEFINED=carta regia/fol=mc.7/loc=tentugal/sumario=dom fernando impede os juizes de montemor de venderem o trigo do mosteiro de santa clara, que esta guardado no celeiro da igreja de sao martinho de montemor para seu mantimento, e que elas pediram para nao ser vendido nem usado/obs=perg., got.cursivo
+
+         autor$d.fernando/id=1370reg.fernando/obs=proibe os juizes de venderem o trigo do mosteiro de santa clara
+
+         destinatario$nome desconhecido/obs=acusados de venderem trigo do mantimento de santa clara do celeiro da igreja de sao martinho de montemor/id=docreg1370.1-per1
+            ls$cargo/juizes/obs=de Montemor
+
+         beneficiario$mosteiro de santa clara/id=1370reg.msc/obs=tem trigo, milho e cevada no celeiro da igreja de sao martinho em montemor, e pedem ao rei que nao o use nem deixe usar porque e cereal do mantimento do mosteiro
+
+            referido$alvaro goncalves/id=1370reg.msc-per2
+               ls$cargo/corregedor
+               rel$sociabilidade/vassalo/fernando/1370reg.fernando
+
+         item$carta de merce/id=docreg1370.1-obj1
+
+         tabeliao$lourenco afonso/id=docreg1370.1-per3
+
+         bem$igreja de sao martinho/bem de raiz, urbano/1370reg.ism/desc=igreja de sao martinho de montemor/local=montemor o velho/obs=em causa esta o trigo guardado em celeiro da igreja de montemor
+            atr$localizacao/montemor
+            rel$posse/pertence ao mosteiro/mosteiro de santa clara/1370reg.msc

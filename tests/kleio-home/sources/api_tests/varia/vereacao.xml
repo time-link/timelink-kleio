@@ -1,0 +1,1529 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/system/conf/kleio/stru/gacto2.str" SOURCE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/varia/vereacao.cli" TRANSLATOR="gactoxml2.str" WHEN="2019-6-19 11:39:21" OBS="" SPACE="cbr">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-vereacoes-1793" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-vereacoes-1793</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[Não sabemos]]></core>   </ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[vereacoes]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[AHMC]]></core>   </ELEMENT>
+   <ELEMENT NAME="data" CLASS="date">
+         <core><![CDATA[17930000]]></core>         <original><![CDATA[1793]]></original>
+   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1793]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930000]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/varia/vereacao.cli]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="acto">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-v1793-1" NAME="acto" CLASS="act" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>acto</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-vereacoes-1793</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[vereacao]]></core>   </ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[21]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[2]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1793]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[f. 17]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[acto]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="presente">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-v1793-1-per1" NAME="presente" CLASS="person" ORDER="3" LEVEL="3" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[jose correia de melo]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="origin" COLUMN="origin" CLASS="origin" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-v1793-1-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-v1793-1-per1-att1-5" NAME="ls" CLASS="attribute" ORDER="5" LEVEL="4" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-att1-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[preside a vereacao]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per1-att1-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-att2-5" NAME="ls" CLASS="attribute" ORDER="6" LEVEL="4" LINE="9">
+    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-att2-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[juiz de fora (servindo de ....)]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per1-att2-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-att3-5" NAME="ls" CLASS="attribute" ORDER="7" LEVEL="4" LINE="11">
+    <ELEMENT NAME="line" CLASS="line"><core>11</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-att3-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[fidalgo da casa real]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per1-att3-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-per1" NAME="pai" CLASS="person" ORDER="8" LEVEL="4" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pai</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio de melo]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[teste, nao está presente, só para testar geração de famílias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-rela2" NAME="relation"  ORDER="9" LEVEL="5" CLASS="relation" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per1-per2" NAME="mae" CLASS="person" ORDER="10" LEVEL="4" LINE="15">
+    <ELEMENT NAME="line" CLASS="line"><core>15</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mae</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria correia]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[teste, nao está presente, só para testar geração de famílias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-rela3" NAME="relation"  ORDER="11" LEVEL="5" CLASS="relation" LINE="15">
+    <ELEMENT NAME="line" CLASS="line"><core>15</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per1-per3" NAME="filho" CLASS="person" ORDER="12" LEVEL="4" LINE="17">
+    <ELEMENT NAME="line" CLASS="line"><core>17</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>filho</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joaquim correira de melo]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[teste, nao está presente, só para testar geração de famílias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-rela4" NAME="relation"  ORDER="13" LEVEL="5" CLASS="relation" LINE="17">
+    <ELEMENT NAME="line" CLASS="line"><core>17</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>filho</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per1-per4" NAME="filha" CLASS="person" ORDER="14" LEVEL="4" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>filha</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria correia de melo]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[teste, nao está presente, só para testar geração de famílias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-rela5" NAME="relation"  ORDER="15" LEVEL="5" CLASS="relation" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>filha</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per1-per5" NAME="mulher" CLASS="person" ORDER="16" LEVEL="4" LINE="21">
+    <ELEMENT NAME="line" CLASS="line"><core>21</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mulher</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joaquina correia de melo]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[teste, nao está presente, só para testar geração de famílias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per1-rela6" NAME="relation"  ORDER="17" LEVEL="5" CLASS="relation" LINE="21">
+    <ELEMENT NAME="line" CLASS="line"><core>21</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mulher</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per1-rela6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per2" NAME="presente" CLASS="person" ORDER="18" LEVEL="3" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[domingos de macedo]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela7" NAME="relation"  ORDER="19" LEVEL="4" CLASS="relation" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per2-att4-5" NAME="ls" CLASS="attribute" ORDER="20" LEVEL="4" LINE="24">
+    <ELEMENT NAME="line" CLASS="line"><core>24</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per2-att4-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[escrivao da camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per2-att4-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per3" NAME="presente" CLASS="person" ORDER="21" LEVEL="3" LINE="26">
+    <ELEMENT NAME="line" CLASS="line"><core>26</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[correio]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela8" NAME="relation"  ORDER="22" LEVEL="4" CLASS="relation" LINE="26">
+    <ELEMENT NAME="line" CLASS="line"><core>26</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per4" NAME="presente" CLASS="person" ORDER="23" LEVEL="3" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[osorio]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela9" NAME="relation"  ORDER="24" LEVEL="4" CLASS="relation" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per5" NAME="presente" CLASS="person" ORDER="25" LEVEL="3" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>25</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[botelho]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela10" NAME="relation"  ORDER="26" LEVEL="4" CLASS="relation" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>26</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per6" NAME="presente" CLASS="person" ORDER="27" LEVEL="3" LINE="31">
+    <ELEMENT NAME="line" CLASS="line"><core>31</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>27</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[nogueira]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela11" NAME="relation"  ORDER="28" LEVEL="4" CLASS="relation" LINE="31">
+    <ELEMENT NAME="line" CLASS="line"><core>31</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per6</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>28</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per6</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per6-att5-5" NAME="ls" CLASS="attribute" ORDER="29" LEVEL="4" LINE="33">
+    <ELEMENT NAME="line" CLASS="line"><core>33</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per6-att5-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>29</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador geral]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per6-att5-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-per7" NAME="presente-f" CLASS="person" ORDER="30" LEVEL="3" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente-f</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>30</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria sutil]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[nao esta realmente presente so para testar o formato]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela12" NAME="relation"  ORDER="31" LEVEL="4" CLASS="relation" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per7</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>31</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente-f</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per7</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-per7-att6-5" NAME="ls" CLASS="attribute" ORDER="32" LEVEL="4" LINE="36">
+    <ELEMENT NAME="line" CLASS="line"><core>36</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-per7-att6-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>32</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[dona]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-per7-att6-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="object" SUPER="entity" TABLE="objects" GROUP="object">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+<CLASS NAME="item" SUPER="object" TABLE="items" GROUP="item">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="titulo" COLUMN="titulo" CLASS="titulo" TYPE="varchar" SIZE="128" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="resumo" COLUMN="resumo" CLASS="resumo" TYPE="varchar" SIZE="2048" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="cbr-v1793-1-obj1" NAME="item" CLASS="item" ORDER="33" LEVEL="3" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>item</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>item</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>33</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="titulo" CLASS="titulo">
+         <core><![CDATA[certidao de intimacao de acordao]]></core>   </ELEMENT>
+   <ELEMENT NAME="resumo" CLASS="resumo">
+         <core><![CDATA[ O bacharel Domingos de Macedo e Freitas cavaleiro professo na Ordem de Christo cidadam incorporado na nobreza da cidade servindo de escrivao da camera nesta cidade de Coimbra nos impedimentos do proprietario escrivao da camera Antonio Joaquim de Macedo em cumprimento do acordao que decorre transcripto neste livro de folhas quinze the folhas dezaseis em veriacao de vinte e dois de Janeiro do anno corrente de mil e setecentos e noventa e tres extrahi copia do seo theor e com carta deregida aos thezoureiros publicos lhe intimei todo e seo conthiudo e determinacao do mesmo acordao para cada hum satisfazer na parte que lhes respeitava de que forao sabedores e asinarao na copia do mesmo acordao que fica o [fl. 18] cartorio da camera autuado nos auttos da exzecucao do referido acordao por alguns dos quais foi apresentada a conta que consta junto ao mesmo treslado ou copia e os mais protestos ao junta la na presente veriacao de hoje ao que no satisfazerao e do referido dei conta na prezente vereacao para o illustrissimo senado proceder como lhe parecer justo para o bem da seguranca da real fazenda indagando por sumario de testemunhas abonatorias o estabelecimento e abonacao dos dittos depozitarios por me nao constar a mim escrivao informacao suficiente para o illustrissimo senado se deliberar sobre a sua conservacao ou expulssaco com a declaracam que o referido (É) acha intimado ao doutor Joao Henrriques Seco thezoureiro da decima por determinar o senado verbalmente que primeiro se apurasem as contas dos mais thezoureiros a vista do que mandou o illustrissimo senado que na primeira inmediata veriacao daria providencia sobre a materia sugeita e para constar do referido por fee de mim escrivao passei a presente e me reporto aos autos da exzecucao do mencionado acordao de 22 de Janeiro de 1793.]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[item]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela13" NAME="relation"  ORDER="34" LEVEL="4" CLASS="relation" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>34</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>item</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-obj1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela13</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-obj1-per8" NAME="referido" CLASS="person" ORDER="35" LEVEL="4" LINE="39">
+    <ELEMENT NAME="line" CLASS="line"><core>39</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>referido</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>35</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[domingos de macedo e freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-rela14" NAME="relation"  ORDER="36" LEVEL="5" CLASS="relation" LINE="39">
+    <ELEMENT NAME="line" CLASS="line"><core>39</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>36</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>referido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-rela14</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-obj1-per8-att7-5" NAME="ls" CLASS="attribute" ORDER="37" LEVEL="5" LINE="40">
+    <ELEMENT NAME="line" CLASS="line"><core>40</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per8-att7-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>37</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[cavaleiro da ordem de cristo]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per8-att7-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per8-att8-5" NAME="ls" CLASS="attribute" ORDER="38" LEVEL="5" LINE="41">
+    <ELEMENT NAME="line" CLASS="line"><core>41</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per8-att8-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>38</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[escrivao da camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[por impedimento do proprietario]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per8-att8-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per8-att9-5" NAME="ls" CLASS="attribute" ORDER="39" LEVEL="5" LINE="42">
+    <ELEMENT NAME="line" CLASS="line"><core>42</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per8-att9-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>39</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[nobre]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[cidadao incorporado na nobreza da cidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per8-att9-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per8-att10-5" NAME="ls" CLASS="attribute" ORDER="40" LEVEL="5" LINE="44">
+    <ELEMENT NAME="line" CLASS="line"><core>44</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per8-att10-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>40</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per8-att10-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per9" NAME="referido" CLASS="person" ORDER="41" LEVEL="4" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>referido</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>41</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio joaquim de macedo]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-rela15" NAME="relation"  ORDER="42" LEVEL="5" CLASS="relation" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per9</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>42</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>referido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-obj1-per9</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-rela15</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-obj1-per9-att11-5" NAME="ls" CLASS="attribute" ORDER="43" LEVEL="5" LINE="47">
+    <ELEMENT NAME="line" CLASS="line"><core>47</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per9-att11-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per9</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>43</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[escrivao da camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[proprietario]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per9-att11-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per9]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per10" NAME="referido" CLASS="person" ORDER="44" LEVEL="4" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>referido</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>44</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joaquim henriques seco]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-rela16" NAME="relation"  ORDER="45" LEVEL="5" CLASS="relation" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per10</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>45</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>referido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-obj1-per10</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-rela16</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-obj1-per10-att12-5" NAME="ls" CLASS="attribute" ORDER="46" LEVEL="5" LINE="49">
+    <ELEMENT NAME="line" CLASS="line"><core>49</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per10-att12-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per10</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>46</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[doutor]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per10-att12-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per10]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-obj1-per10-att13-5" NAME="ls" CLASS="attribute" ORDER="47" LEVEL="5" LINE="51">
+    <ELEMENT NAME="line" CLASS="line"><core>51</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-obj1-per10-att13-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1-obj1-per10</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>47</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[tesoureiro da decima]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-1-obj1-per10-att13-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-1-obj1-per10]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930221]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-1-rela17" NAME="relation"  ORDER="48" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>48</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela17</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela18" NAME="relation"  ORDER="49" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>49</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela18</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela19" NAME="relation"  ORDER="50" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>50</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela19</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela20" NAME="relation"  ORDER="51" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>51</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela20</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela21" NAME="relation"  ORDER="52" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>52</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela21</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela22" NAME="relation"  ORDER="53" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>53</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela22</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela23" NAME="relation"  ORDER="54" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>54</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela23</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela24" NAME="relation"  ORDER="55" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>55</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela24</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela25" NAME="relation"  ORDER="56" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>56</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela25</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela26" NAME="relation"  ORDER="57" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>57</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela26</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela27" NAME="relation"  ORDER="58" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>58</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela27</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela28" NAME="relation"  ORDER="59" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>59</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela28</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela29" NAME="relation"  ORDER="60" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>60</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela29</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra1" NAME="ls"  ORDER="61" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>61</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>ec</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>c</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra2" NAME="ls"  ORDER="62" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>62</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>ec</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>c</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela30" NAME="relation"  ORDER="63" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>63</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>filho</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela30</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela31" NAME="relation"  ORDER="64" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>64</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>filha</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela31</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-rela32" NAME="relation"  ORDER="65" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>65</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-rela32</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra3" NAME="ls"  ORDER="66" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>66</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>ec</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>c</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra4" NAME="ls"  ORDER="67" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>67</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>ec</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>c</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per1-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra5" NAME="ls"  ORDER="68" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>68</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra6" NAME="ls"  ORDER="69" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>69</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra7" NAME="ls"  ORDER="70" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>70</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra8" NAME="ls"  ORDER="71" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>71</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra9" NAME="ls"  ORDER="72" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>72</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra10" NAME="ls"  ORDER="73" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>73</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-1-atra11" NAME="ls"  ORDER="74" LEVEL="3" CLASS="attribute" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>74</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-1-per7</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-1-atra11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2" NAME="acto" CLASS="act" ORDER="75" LEVEL="2" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>acto</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-vereacoes-1793</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>75</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[juramento de posse dos almotaces]]></core>   </ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[3]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1793]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[f.18v]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[para os meses de marco e abril]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[acto]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per1" NAME="presente" CLASS="person" ORDER="76" LEVEL="3" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>76</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[francisco quaresma]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-rela33" NAME="relation"  ORDER="77" LEVEL="4" CLASS="relation" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>77</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-rela33</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2-per1-att1-5" NAME="ls" CLASS="attribute" ORDER="78" LEVEL="4" LINE="55">
+    <ELEMENT NAME="line" CLASS="line"><core>55</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per1-att1-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>78</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[bacharel]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per1-att1-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per1-att2-5" NAME="ls" CLASS="attribute" ORDER="79" LEVEL="4" LINE="56">
+    <ELEMENT NAME="line" CLASS="line"><core>56</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per1-att2-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>79</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[almotace]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[marco e abril]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per1-att2-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per1-att3-5" NAME="ls" CLASS="attribute" ORDER="80" LEVEL="4" LINE="58">
+    <ELEMENT NAME="line" CLASS="line"><core>58</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per1-att3-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>80</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per1-att3-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per2" NAME="presente" CLASS="person" ORDER="81" LEVEL="3" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>81</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[jose joaquim de araujo tavares]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-rela34" NAME="relation"  ORDER="82" LEVEL="4" CLASS="relation" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>82</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-rela34</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2-per2-att4-5" NAME="ls" CLASS="attribute" ORDER="83" LEVEL="4" LINE="60">
+    <ELEMENT NAME="line" CLASS="line"><core>60</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per2-att4-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>83</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[bacharel]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per2-att4-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per2-att5-5" NAME="ls" CLASS="attribute" ORDER="84" LEVEL="4" LINE="61">
+    <ELEMENT NAME="line" CLASS="line"><core>61</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per2-att5-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>84</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[almotace]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[marco e abril]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per2-att5-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per2-att6-5" NAME="ls" CLASS="attribute" ORDER="85" LEVEL="4" LINE="63">
+    <ELEMENT NAME="line" CLASS="line"><core>63</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per2-att6-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>85</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per2-att6-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-per3" NAME="presente" CLASS="person" ORDER="86" LEVEL="3" LINE="64">
+    <ELEMENT NAME="line" CLASS="line"><core>64</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>presente</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>86</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[domingos de macedo e fretias]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-rela35" NAME="relation"  ORDER="87" LEVEL="4" CLASS="relation" LINE="64">
+    <ELEMENT NAME="line" CLASS="line"><core>64</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>87</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>presente</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>acto</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>cbr-v1793-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-rela35</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2-per3-att7-5" NAME="ls" CLASS="attribute" ORDER="88" LEVEL="4" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-per3-att7-5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>88</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[escrivao da camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[com comissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[cbr-v1793-2-per3-att7-5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[cbr-v1793-2-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17930301]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="cbr-v1793-2-atra12" NAME="ls"  ORDER="89" LEVEL="5" CLASS="attribute" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>89</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-2-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-atra12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2-atra13" NAME="ls"  ORDER="90" LEVEL="5" CLASS="attribute" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>90</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-2-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-atra13</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP>
+<GROUP ID="cbr-v1793-2-atra14" NAME="ls"  ORDER="91" LEVEL="5" CLASS="attribute" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>cbr-v1793-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>91</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>assina</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>sim</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>cbr-v1793-2-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>cbr-v1793-2-atra14</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17930301</core></ELEMENT>
+</GROUP></KLEIO>

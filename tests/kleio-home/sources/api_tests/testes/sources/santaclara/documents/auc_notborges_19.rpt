@@ -1,0 +1,130 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 19-53
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_19.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto.str
+=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1622tb/tipo=escrituras notariais/loc=auc,notarial cota v i-es-9-3-81, notario tome borges de agosto a novembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1622tb
+4:       escritura$not1622tb-e1/21/10/1622/procuracao/fol=111-111v/loc=grade do parlatorio/sumario=dona isabel de noronha, freira professa do mosteiro de santa clara de coimbra, nomeia procurador, antonio monteiro, para que ele em seu nome requeira a sua majestade e vedores de sua fazenda na cidade de lisboa, ou em qualquer outro tribunal ou senado, os trinta mil reais de tenca regia paga no almoxarifado da vila de tomar, do mesmo modo, havendo respeito por ser uma freira velha pobre e doente se transfira a mesma ten�a para o almoxarifado de coimbra
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1622tb-e1
+6:          constituintef$isabel de noronha/id=not1622tb-e1-per1
+7:             ls$condicao/freira professa
+8:             ls$assina/sim/obs=autografa muito bela
+9: 
+10:          procurador$antonio monteiro/id=not1622tb-e1-per2
+11:             ls$profissao/escrivao
+12:             ls$residencia/lisboa
+13:             rel$sociabilidade/procurador/isabel de noronha/not1622tb-e1-per1
+14: 
+15:          test$nome desconhecido/m/id=not1622tb-e1-per3/obs=documento parcialmente fragmentado
+16:             ls$profissao/sapateiro
+17: 
+18:          referido$mosteiro de santa clara de coimbra/id=not1622tb-e1-per4
+19: 
+20:          test$francisco de pascoa/m/id=not1622tb-e1-per5
+21:             rel$profissional/olicitador/mosteiro de santa clara de coimbra/not1622tb-e1-per4
+22: 
+23:          test$pedro alvares/m/id=not1622tb-e1-per6
+24:             ls$profissao/criado/obs=do tabeliao
+25:             rel$profissional/criado/tome borges/1622-e1-tomeb
+26: 
+27:          referido$tome borges/id=1622-e1-tomeb
+28: 
+29:          test$domingos de azevedo/m/id=not1622tb-e1-per7
+30: 
+31:       escritura$not1622tb-e2/20/11/1622/dote de ingesso/fol=181v-184v/loc=grade do parlatorio/sumario=contrato de dote de entrada de freira no mosteiro de santa clara de coimbra celebrado entre pedro barbosa homem e o mesmo mosteiro
+32: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1622tb-e2
+33:          dotante$pedro barbosa homem/id=not1622tb-e2-per1
+34:             ls$residencia/coimbra
+35:             rel$profissional/juiz dos tombos/mosteiro de santa clara de coimbra/not1622tb-e2-per2
+36: 
+37:             referido$mosteiro de santa clara de coimbra/id=not1622tb-e2-per2
+38: 
+39:          dotada$vicencia de figueiredo barbosa/id=not1622tb-e2-per3/obs=deseja entrar no mosteiro para nele ser freira de veu preto. esta entrara imediatamente no ano de noviciado com o habito da religiao
+40:             rel$parentesco/irma/pedro barbosa homem/not1622tb-e2-per1
+41: 
+42:          bem$cento e cinquenta mil reais/obs=pedro barbosa lavrara gratuitamente os tombos durante o tempo de um ano
+43: 
+bem-not1622tb-e2-obj1- ** was stored with function in ACT verify act
+44:          test$luis de braga/m/id=not1622tb-e2-per4
+45:             ls$profissao/padre
+46:             ls$titulo/frei
+47:             ls$cargo/funcionario superior de certas ordens religiosas
+48:             ls$ordem/sao francisco/obs=da provincia de portugal
+49: 
+50:          test$francisco de paiva/m/id=not1622tb-e2-per5
+51:             rel$profissional/solicitador/mosteiro de santa clara de coimbra/not1622tb-e2-per2
+52: 
+53:          test$? francisco/m/id=not1622tb-e2-per6/obs=no primeiro nome documento fragmentado
+54:             rel$profissional/criado/pedro barbosa homem/not1622tb-e2-per1
+55: 
+56:          test$pedro alvares/m/id=not1622tb-e2-per7
+57:             ls$profissao/criado/obs=do tabeliao
+58:             rel$profissional/criado/tome borges/1622-e2-tom
+59: 
+60:          referido$tome borges/id=1622-e2-tom
+61: 
+62:          test$ines de noronha/f/id=not1622tb-e2-per8
+63:             ls$cargo/abadessa
+64:             ls$nomeprof/ines do deserto/obs=nome de profissao
+65:             ls$assina/sim
+66: 
+67:          test$maria de vasconcelos/f/id=not1622tb-e2-per9
+68:             ls$cargo/vigaria
+69:             ls$nomeprof/maria do presepio/obs=nome de profissao
+70:             ls$assina/sim
+71:             ls$titulo/soror
+72: 
+73:          test$inocencia de jesus/f/id=not1622tb-e2-per10
+74:             ls$condicao/freira professa
+75:             ls$assina/sim
+76:             ls$titulo/dona
+77: 
+78:          test$cezilia da conceicao/f/id=not1622tb-e2-per11
+79:             ls$condicao/freira professa
+80:             ls$assina/sim
+81:             ls$titulo/dona
+82: 
+83:          test$leonor de milao/f/id=not1622tb-e2-per12
+84:             ls$cargo/escriva
+85:             ls$assina/sim
+86:             ls$titulo/dona
+87: 
+88:          test$francisca evangelista/f/id=not1622tb-e2-per13
+89:             ls$condicao/freira professa
+90:             ls$assina/sim
+91: 
+92:          test$mariana do espirito santo/f/id=not1622tb-e2-per14
+93:             ls$condicao/freira professa
+94:             ls$assina/sim
+95: 
+96:          test$antonia da paixao/f/id=not1622tb-e2-per15
+97:             ls$condicao/freira professa
+98:             ls$assina/sim
+99: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_19.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_19.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_19.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_19.ids

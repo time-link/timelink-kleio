@@ -1,0 +1,127 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-23
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_7.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1649-1650/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-109, notarios simao gomes rebelo e joao antunes da fonseca, agosto a abril
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1649-1650
+4:       escritura$not1649-e1/31/8/1649/procuracao/fol=11v-12v/loc=pousadas do tabeliao/sumario=domingos de freitas, mestre de obras do novo mosteiro de santa clara da cidade de coimbra, constitui procuradores, pedro de freitas, pedro farncisco, diogo do vale, agostinho de faria, pedro machado e ant�nio de castro, para que em seu nome resolvam quest�es relacionadas com devedores e contendores do seu constituinte, como, p.e., causa que corre vai para tr�s anos com clerigos da irmandade de s. pedro de vila real, sobre a obra da igreja
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1649-e1
+6:          referido$mosteiro de santa clara de coimbra/id=not1649-e1-per1
+7: 
+8:          constituinte$domingos de freitas/id=not1649-e1-per2
+9:             ls$profissao/mestre de obras
+10:             rel$profissional/mestre de obras/mosteiro de santa clara de coimbra/not1649-e1-per1
+11:             ls$naturalidade/guimaraes
+12: 
+13:          procurador$pedro de freitas/id=not1649-e1-per3
+14:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+15:             rel$parentesco/irmao/domingos de freitas/not1649-e1-per2
+16: 
+17:          procurador$pedro francisco/id=not1649-e1-per4
+18:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+19:             ls$profissao/oficial da cantaria
+20:             rel$profissional/aparelhador/domingos de freitas/not1649-e1-per2
+21: 
+22:          procurador$diogo do vale/id=not1649-e1-per5
+23:             ls$titulo/licenciado
+24:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+25:             ls$naturalidade/vila real
+26: 
+27:          procurador$agostinho de faria/id=not1649-e1-per6
+28:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+29:             ls$residencia/braga
+30:             ls$titulo/licenciado
+31: 
+32:          procurador$pedro machado/id=not1649-e1-per7
+33:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+34:             ls$residencia/braga
+35:             ls$titulo/licenciado
+36: 
+37:          procurador$antonio de castro/id=not1649-e1-per8
+38:             rel$sociabilidade/procurador/domingos de freitas/not1649-e1-per2
+39:             ls$residencia/sao martinho de sande, termo da vila de guimaraes
+40:             ls$titulo/licenciado
+41:             ls$profissao/aparelhador de obras
+42: 
+43:          test$manuel gomes/m/id=not1649-e1-per9
+44: 
+45:          test$gaspar dos reis/m/id=not1649-e1-per10
+46: 
+47:       escritura$not1650-e2/8/3/1650/arrendamento de rendas/fol=110v-113v/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara da cidade de coimbra e manuel goncalves cardoso, das rendas, ra��es e dizimas da igreja de sao martinho, sita em montemor-o-velho
+48: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1650-e2
+49:          senhoria$helena da silva/id=not1650-e2-per1
+50:             ls$cargo/abadessa
+51:             ls$assina/sim
+52: 
+53:          rendeiro$manuel goncalves cardoso/id=not1650-e2-per2
+54:             ls$residencia/gatoes, termo de montemor o velho
+55: 
+56:          bem$rendas racoes e dizimas da igreja de sao martinho
+bem-not1650-e2-obj1- ** was stored with function in ACT verify act
+57:             atr$localizacao/sao martinho, montemor o velho
+58:             atr$renda/setecentos mil reis em dinheiro de contado
+59:             atr$renda/noventa pedras de linho
+60:             atr$renda/quarenta alquieres de legumes
+61:             atr$renda/vinte e cinco alqueires de feijao
+62:             atr$renda/vinte e cinco alqueires de graos
+63:             atr$renda/dois moios e meio de cevada
+64:             atr$renda/seis redes de palha
+65:             atr$renda/galinhas
+66:             atr$renda/mil reis/obs=para fabrica da igreja de sao martinho
+67:             atr$duracao/dois anos
+68: 
+69:          test$serafina de vilhena/f/id=not1650-e2-per3
+70:             ls$cargo/vigaria
+71:             ls$assina/sim
+72: 
+73:          test$juliana de gusmao/f/id=not1650-e2-per4
+74:             ls$cargo/escriva
+75:             ls$assina/sim
+76: 
+77:          test$antonio fernandes/m/id=not1650-e2-per5
+78:             rel$profissional/solicitador/helena da silva/not1650-e2-per1
+79: 
+80:          test$lazaro cruz/m/id=not1650-e2-per6
+81:             rel$profissional/criado/helena da silva/not1650-e2-per1
+82: 
+83:          test$maria das chagas/f/id=not1650-e2-per7
+84:             ls$condicao/freira professa
+85:             ls$assina/sim
+86: 
+87:          test$lourenca da silva/f/id=not1650-e2-per8
+88:             ls$condicao/freira professa
+89:             ls$assina/sim
+90: 
+91:          test$paula de vilhena/f/id=not1650-e2-per9
+92:             ls$condicao/freira professa
+93:             ls$assina/sim
+94: 
+95:          test$manuel lobo de azambaia/id=not1650-e2-per10
+96: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_7.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_7.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_7.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_7.ids

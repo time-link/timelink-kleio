@@ -1,0 +1,104 @@
+ClioInput - version $Revision: 751 $ SWI $Date: 2009-04-07 16:23:08 +0100 (Tue, 07 Apr 2009) $
+21-5-2009 0-1
+
+Processing data file:/Users/jrc/develop/mhk_users/santajusta/documents/teste3.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML). $Revision: 179 $ $Date: 2007-11-16 19:14:12 +0000 (Fri, 16 Nov 2007) $
+     Joaquim Ramos de Carvalho (joaquim@dei.uc.pt) 
+** New document: kleio
+1: kleio$gacto.str/prefix=sj
+=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: sj
+Autorel: sj
+Obs: 
+2:    fonte$teste3
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$sj-teste3
+4:       escritura$teste3.1/4/7/1407/emprazamento/fol=cx.6, mc.35, n.802/loc=coimbra/sumario=a colegiada de santa justa de coimbra, empraza a joao de lima e a sua mulher, maria dias, uma leira de que foi uma vinha/obs=perg., mau, got. cursivo, sinal notarial
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$sj-teste3.1
+6:          senhorio$colegiada de santa justa/mesmo_que=colsj/id=teste3.1-per1
+7: 
+8:             referido$vasco afonso/id=teste3.1-per1-per2
+9:                ls$cargo/prior de santa justa
+10: 
+11:             referido$goncalo peres/id=teste3.1-per1-per3
+12:                ls$cargo/racoeiro de santa justa
+13: 
+14:             referido$goncalo/id=teste3.1-per1-per4
+15:                ls$cargo/racoeiro de santa justa
+16: 
+17:             referido$joao de lourosa/id=teste3.1-per1-per5
+18:                ls$cargo/racoeiro de santa justa
+19: 
+20:             referido$gil vicente/id=teste3.1-per1-per6
+21:                ls$cargo/racoeiro de santa justa
+22: 
+23:             referido$vasco domingues/id=teste3.1-per1-per7
+24:                ls$cargo/racoeiro de santa justa
+25: 
+26:             referido$andre vicente/id=teste3.1-per1-per8
+27:                ls$cargo/racoeiro de santa justa
+28: 
+29:          enfiteuta$joao de lima/id=teste3.1-per9
+30: 
+31:          enfiteutaf$maria dias/id=teste3.1-per10
+32:             rel$parentesco/mulher/joao de lima/1407.e2.joao
+33: 
+34:          test$alvaro esteves/id=teste3.1-per11
+35:             ls$residencia/freguesia de santa justa
+36:             ls$profissao/ourives
+37: 
+38:          test$martim anes/id=teste3.1-per12
+39:             ls$residencia/freguesia de santa justa
+40:             ls$profissao/criado
+41: 
+42:          test$rodrigo anes/id=teste3.1-per13
+43:             ls$residencia/freguesia de santa justa
+44:             ls$naturalidade/buarcos
+45: 
+46:          test$alvaro goncalves/id=teste3.1-per14
+47:             ls$residencia/freguesia de santa justa
+48:             ls$profissao/almocreve
+49: 
+50:          test$joao domingues/id=teste3.1-per15
+51:             ls$residencia/freguesia de santa justa
+52:             ls$profissao/forneiro de santa justa
+53: 
+54:          escrivao$fernando afonso/id=teste3.1-per16
+55:             ls$intitulacao/escrivao da parte do rei para escrever as escrituras de pedro afonso
+56: 
+57:          tabeliao$pedro afonso/id=teste3.1-per17
+58:             ls$intitulacao/?/obs=ilegivel
+59:             ls$sinal/sim
+60: 
+61:             referido$joao alpoi/id=teste3.1-per17-per18
+62: 
+63:             referido$joao domingues/id=teste3.1-per17-per19
+64:                ls$alcunha/da ponte
+65:                ls$cargo/portageiro
+66: 
+67:          prazo$1 leira de terra/obs=onde ja existiu uma vinha
+prazo-sj-teste3.1-obj1- ** was stored with function in ACT verify act
+68:             atr$localizacao/?/obs=ilegivel
+69:             atr$confrontacoes/parte de uma parte com estrada publica
+70:             atr$confrontacoes/da outra parte com azinhaga que vai antre essa leira e a vinha que foi de joao alpoi
+71:             atr$confrontacoes/da outra parte com a terra dos filhos de joao domingues da ponte
+72:             rel$posse/pertenceu/joao domingues/1407.e2.joaodomingues/obs=usufruto
+73:             rel$posse/pertence/colegiada de santa justa/colsj
+74:             rel$posse/por emprazamento/joao de lima/1407.e2.joao
+75:             atr$benfeitorias/plantar nova vinha
+76:             atr$renda principal tipo/?/obs=ilegivel
+77:             atr$renda principal valor/?/obs=ilegivel
+78:             atr$pagamento da renda principal/natal
+79:             atr$caucao/25 libras de moeda antiga
+80: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+***** auto rels 2 new scope
+** Translation finished.

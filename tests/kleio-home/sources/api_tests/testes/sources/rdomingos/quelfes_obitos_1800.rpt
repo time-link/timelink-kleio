@@ -1,0 +1,842 @@
+ClioInput - version $Revision$ SWI $Date$
+23-5-2017 21-37
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2: fonte$obitos1795-1819/registos paroquiais/1800/loc=antt/obs=o livro inicia-se em 1795 e termina em 1819
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$obitos1795-1819
+4: obito$quelfes1800-o1/6/1/1800/fl.25v./jose rodrigues guedelha (cura)
+5: 
+**** auto rels 2 STARTED.
+** Processing act obito$quelfes1800-o1
+6: n$catarina de jesus/f
+7: ls$residencia/marim, quelfes
+8: ls$testamento/nao
+9: locs$igreja de sao sebastiao de quelfes
+10: sacr$sim/obs=com todos os sacramentos da obrigacao
+11: 
+12: marido$jose rodrigues da costa
+13: ls$residencia/marim, quelfes
+14: 
+15: obito$quelfes1800-o2/15/2/1800/fl.25v./jose rodrigues guedelha (cura)
+16: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o1-per2 to quelfes1800-o1-per1 parentesco/marido
+   ** Automatic attribute: quelfes1800-o1-per1/morto/agora
+** Processing act obito$quelfes1800-o2
+17: n$francisco/m
+18: ls$residencia/marim, quelfes
+19: ls$idade_aprox/menor
+20: locs$igreja de sao sebastiao de quelfes
+21: pai$jose da costa
+22: ls$residencia/marim, quelfes
+23: mae$catarina de jesus
+24: 
+25: 
+26: 
+27: obito$quelfes1800-o3/24/2/1800/fl.26/jose rodrigues guedelha (cura)
+28: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o2-per2 to quelfes1800-o2-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o2-per2/ec/c
+   ** Automatic attribute: quelfes1800-o2-per3/ec/c
+   ** auto rel: from quelfes1800-o2-per2 to quelfes1800-o2-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o2-per3 to quelfes1800-o2-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o2-per1/morto/agora
+** Processing act obito$quelfes1800-o3
+29: n$agostinha/f/id=quelfes1800-03-agostinha
+30: ls$residencia/marim, quelfes
+31: ls$idade_aprox/menor
+32: ls$enjeitada/sim
+33: locs$igreja de sao sebastiao de quelfes
+34: 
+35: pai$nome desconhecido
+36: mae$nome desconhecido
+37: 
+38: referida$angelica maria/id=quelfes1800-o3-referida
+39: ls$residencia/marim, quelfes
+40: rel$sociabilidade/ama/agostinha/quelfes1800-o3-agostinha
+41: 
+42: referido$antonio dos santos/id=quelfes1800-o3-referido
+43: rel$parentesco/marido/angelica maria/quelfes1800-o3-referida
+44: 
+45: obito$quelfes1800-o4/10/3/1800/fl.26/jose rodrigues guedelha (cura)
+46: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o3-per1 to quelfes1800-o3-per2 parentesco/marido
+   ** Automatic attribute: quelfes1800-o3-per1/ec/c
+   ** Automatic attribute: quelfes1800-o3-per2/ec/c
+   ** auto rel: from quelfes1800-o3-per1 to quelfes1800-03-agostinha parentesco/pai
+   ** auto rel: from quelfes1800-o3-per2 to quelfes1800-03-agostinha parentesco/mae
+   ** Automatic attribute: quelfes1800-03-agostinha/morto/agora
+** Processing act obito$quelfes1800-o4
+47: n$joao martins pastor/m
+48: ls$pobre/sim
+49: sacr$sim/obs=com todos os sacramentos da obrigacao
+50: locs$igreja de sao sebastiao de quelfes
+51: 
+52: obito$quelfes1800-o5/12/4/1800/fl.26/jose rodrigues guedelha (cura)
+53: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o4-per1/morto/agora
+** Processing act obito$quelfes1800-o5
+54: n$teresa de jesus/f
+55: ls$residencia/brancanes, quelfes
+56: ls$testamento/nao
+57: locs$igreja de sao sebastiao de quelfes
+58: sacr$sim/obs=com todos os sacramentos da obrigacao
+59: 
+60: marido$joao martins
+61: ls$residencia/brancanes, quelfes
+62: 
+63: obito$quelfes1800-o6/12/5/1800/fl.26v./jose rodrigues guedelha (cura)
+64: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o5-per2 to quelfes1800-o5-per1 parentesco/marido
+   ** Automatic attribute: quelfes1800-o5-per1/morto/agora
+** Processing act obito$quelfes1800-o6
+65: n$barbara/f
+66: ls$residencia/brancanes, quelfes
+67: ls$idade_aprox/menor
+68: locs$igreja de sao sebastiao de quelfes
+69: pai$manuel goncalves
+70: ls$residencia/brancanes, quelfes
+71: mae$francisca maria
+72: 
+73: obito$quelfes1800-o7/3/6/1800/fl.26v./jose rodrigues guedelha (cura)
+74: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o6-per2 to quelfes1800-o6-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o6-per2/ec/c
+   ** Automatic attribute: quelfes1800-o6-per3/ec/c
+   ** auto rel: from quelfes1800-o6-per2 to quelfes1800-o6-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o6-per3 to quelfes1800-o6-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o6-per1/morto/agora
+** Processing act obito$quelfes1800-o7
+75: n$joao rodrigues/m
+76: ls$residencia/marim, quelfes
+77: ls$ec/s
+78: locs$igreja de sao sebastiao de quelfes
+79: sacr$sim/obs=com todos os sacramentos da obrigacao
+80: mae$margarida rodrigues
+81: ls$residencia/marim, quelfes
+82: 
+83: 
+84: obito$quelfes1800-o8/25/6/1800/fl.26v./jose rodrigues guedelha (cura)
+85: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o7-per2 to quelfes1800-o7-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o7-per1/morto/agora
+** Processing act obito$quelfes1800-o8
+86: n$jose/m
+87: ls$residencia/quatrim, quelfes
+88: ls$idade_aprox/menor
+89: locs$igreja de sao sebastiao de quelfes
+90: pai$elias dos santos
+91: ls$residencia/quatrim, quelfes
+92: mae$maria teresa
+93: 
+94: obito$quelfes1800-o9/12/7/1800/fl.26v. e 27/jose rodrigues guedelha (cura)
+95: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o8-per2 to quelfes1800-o8-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o8-per2/ec/c
+   ** Automatic attribute: quelfes1800-o8-per3/ec/c
+   ** auto rel: from quelfes1800-o8-per2 to quelfes1800-o8-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o8-per3 to quelfes1800-o8-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o8-per1/morto/agora
+** Processing act obito$quelfes1800-o9
+96: n$martinho/m
+97: ls$residencia/boavista, quelfes
+98: ls$idade_aprox/menor
+99: sacr$nao/obs=nao recebeu os sacramentos porque nao deu lugar a se chamar o paroco por ter de repente a sua morte
+100: locs$igreja de sao sebastiao de quelfes
+101: pai$martinho domingues
+102: ls$residencia/boavista, quelfes
+103: mae$maria da conceicao
+104: 
+105: obito$quelfes1800-o10/6/8/1800/fl.27/jose rodrigues guedelha (cura)
+106: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o9-per2 to quelfes1800-o9-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o9-per2/ec/c
+   ** Automatic attribute: quelfes1800-o9-per3/ec/c
+   ** auto rel: from quelfes1800-o9-per2 to quelfes1800-o9-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o9-per3 to quelfes1800-o9-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o9-per1/morto/agora
+** Processing act obito$quelfes1800-o10
+107: n$maria/f
+108: ls$residencia/peares, quelfes
+109: ls$idade_aprox/menor
+110: locs$igreja de sao sebastiao de quelfes
+111: pai$manuel goncalves
+112: ls$residencia/peares, quelfes
+113: mae$maria palermo
+114: 
+115: obito$quelfes1800-o11/7/8/1800/fl.27/jose rodrigues guedelha (cura)
+116: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o10-per2 to quelfes1800-o10-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o10-per2/ec/c
+   ** Automatic attribute: quelfes1800-o10-per3/ec/c
+   ** auto rel: from quelfes1800-o10-per2 to quelfes1800-o10-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o10-per3 to quelfes1800-o10-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o10-per1/morto/agora
+** Processing act obito$quelfes1800-o11
+117: n$jeronima/f
+118: ls$residencia/marim, quelfes
+119: ls$idade_aprox/menor
+120: locs$igreja de sao sebastiao de quelfes
+121: pai$francisco afonso
+122: ls$residencia/marim, quelfes
+123: mae$juliana maria
+124: 
+125: obito$quelfes1800-o12/12/8/1800/fl.27/jose rodrigues guedelha (cura)
+126: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o11-per2 to quelfes1800-o11-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o11-per2/ec/c
+   ** Automatic attribute: quelfes1800-o11-per3/ec/c
+   ** auto rel: from quelfes1800-o11-per2 to quelfes1800-o11-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o11-per3 to quelfes1800-o11-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o11-per1/morto/agora
+** Processing act obito$quelfes1800-o12
+127: n$manuel/m
+128: ls$residencia/ana velha, quelfes
+129: ls$idade_aprox/menor
+130: locs$igreja de sao sebastiao de quelfes
+131: pai$manuel pereira
+132: ls$residencia/ana velha, quelfes
+133: mae$domingas de jesus
+134: 
+135: obito$quelfes1800-o13/12/8/1800/fl.27v./jose rodrigues guedelha (cura)
+136: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o12-per2 to quelfes1800-o12-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o12-per2/ec/c
+   ** Automatic attribute: quelfes1800-o12-per3/ec/c
+   ** auto rel: from quelfes1800-o12-per2 to quelfes1800-o12-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o12-per3 to quelfes1800-o12-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o12-per1/morto/agora
+** Processing act obito$quelfes1800-o13
+137: n$manuel/m
+138: ls$residencia/marim, quelfes
+139: ls$idade_aprox/menor
+140: locs$igreja de sao sebastiao de quelfes
+141: pai$jose nunes
+142: ls$residencia/marim, quelfes
+143: mae$rosa de jesus
+144: 
+145: obito$quelfes1800-o14/18/8/1800/fl.27v./jose rodrigues guedelha (cura)
+146: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o13-per2 to quelfes1800-o13-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o13-per2/ec/c
+   ** Automatic attribute: quelfes1800-o13-per3/ec/c
+   ** auto rel: from quelfes1800-o13-per2 to quelfes1800-o13-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o13-per3 to quelfes1800-o13-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o13-per1/morto/agora
+** Processing act obito$quelfes1800-o14
+147: n$manuel/m
+148: ls$residencia/igreja, quelfes
+149: ls$idade_aprox/menor
+150: locs$igreja de sao sebastiao de quelfes
+151: pai$antonio martins
+152: ls$residencia/igreja, quelfes
+153: mae$maria da conceicao
+154: 
+155: obito$quelfes1800-o15/21/8/1800/fl.27v./jose rodrigues guedelha (cura)
+156: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o14-per2 to quelfes1800-o14-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o14-per2/ec/c
+   ** Automatic attribute: quelfes1800-o14-per3/ec/c
+   ** auto rel: from quelfes1800-o14-per2 to quelfes1800-o14-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o14-per3 to quelfes1800-o14-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o14-per1/morto/agora
+** Processing act obito$quelfes1800-o15
+157: n$lourenco rodrigues/m/id=quelfes1800-o15-lourenco
+158: ls$residencia/boavista, quelfes
+159: ls$ec/v
+160: sacr$sim/obs=com todos os sacramentos da obrigacao
+161: locs$igreja de sao sebastiao de quelfes
+162: testamento$sim
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:163:*** Current group testamenteiro cannot be linked with previous group testamento(gro-1)
+
+
+ERROR: quelfes_obitos_1800.cli line 162 *** Current group testamenteiro cannot be linked with previous group testamento(gro-1)
+Near line: 162 testamento$sim
+Near line: 163 testamenteiro$francisco da costa/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:163:***testamenteiro group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 162 ***testamenteiro group not stored.
+Near line: 162 testamento$sim
+Near line: 163 testamenteiro$francisco da costa/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:163:** Failure. Could not process group -testamenteiro
+
+
+ERROR: quelfes_obitos_1800.cli line 162 ** Failure. Could not process group -testamenteiro
+Near line: 162 testamento$sim
+Near line: 163 testamenteiro$francisco da costa/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:163:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 162 ** Failure: undefined element. 
+Near line: 162 testamento$sim
+Near line: 163 testamenteiro$francisco da costa/m
+
+163: testamenteiro$francisco da costa/m
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:164:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 163 ** Failure: undefined element. 
+Near line: 163 testamenteiro$francisco da costa/m
+Near line: 164 ls$residencia/boavista, quelfes
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:164:*** Current group ls cannot be linked with previous group testamento(gro-2)
+
+
+ERROR: quelfes_obitos_1800.cli line 163 *** Current group ls cannot be linked with previous group testamento(gro-2)
+Near line: 163 testamenteiro$francisco da costa/m
+Near line: 164 ls$residencia/boavista, quelfes
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:164:***ls group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 163 ***ls group not stored.
+Near line: 163 testamenteiro$francisco da costa/m
+Near line: 164 ls$residencia/boavista, quelfes
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:164:** Failure. Could not process group -ls
+
+
+ERROR: quelfes_obitos_1800.cli line 163 ** Failure. Could not process group -ls
+Near line: 163 testamenteiro$francisco da costa/m
+Near line: 164 ls$residencia/boavista, quelfes
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:164:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 163 ** Failure: undefined element. 
+Near line: 163 testamenteiro$francisco da costa/m
+Near line: 164 ls$residencia/boavista, quelfes
+
+164: ls$residencia/boavista, quelfes
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ** Failure: undefined element. 
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:*** Current group rel cannot be linked with previous group testamento(gro-3)
+
+
+ERROR: quelfes_obitos_1800.cli line 164 *** Current group rel cannot be linked with previous group testamento(gro-3)
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:***rel group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ***rel group not stored.
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:** Failure. Could not process group -rel
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ** Failure. Could not process group -rel
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ** Failure: undefined element. 
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ** Failure: undefined element. 
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:165:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 164 ** Failure: undefined element. 
+Near line: 164 ls$residencia/boavista, quelfes
+Near line: 165 rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+
+165: rel$parentesco/genro/lourenco rodrigues/quelfes1800-o15-lourenco
+166: 
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:167:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 166 ** Failure: undefined element. 
+Near line: 166 
+Near line: 167 obito$quelfes1800-o16/23/8/1800/fl.28/jose rodrigues guedelha (cura)
+
+167: obito$quelfes1800-o16/23/8/1800/fl.28/jose rodrigues guedelha (cura)
+168: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o15-lourenco/morto/agora
+** Processing act obito$quelfes1800-o16
+169: n$jose/m
+170: ls$residencia/marim, quelfes
+171: ls$idade_aprox/menor
+172: locs$igreja de sao sebastiao de quelfes
+173: pai$manuel domingues
+174: ls$residencia/marim, quelfes
+175: mae$rita de jesus
+176: 
+177: obito$quelfes1800-o17/4/9/1800/fl.28/jose rodrigues guedelha (cura)
+178: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o16-per2 to quelfes1800-o16-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o16-per2/ec/c
+   ** Automatic attribute: quelfes1800-o16-per3/ec/c
+   ** auto rel: from quelfes1800-o16-per2 to quelfes1800-o16-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o16-per3 to quelfes1800-o16-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o16-per1/morto/agora
+** Processing act obito$quelfes1800-o17
+179: n$antonia/f
+180: ls$residencia/ana velha, quelfes
+181: ls$idade_aprox/menor
+182: locs$igreja de sao sebastiao de quelfes
+183: pai$manuel martins
+184: ls$residencia/ana velha, quelfes
+185: mae$antonia maria
+186: 
+187: obito$quelfes1800-o18/12/9/1800/fl.28/jose rodrigues guedelha (cura)
+188: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o17-per2 to quelfes1800-o17-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o17-per2/ec/c
+   ** Automatic attribute: quelfes1800-o17-per3/ec/c
+   ** auto rel: from quelfes1800-o17-per2 to quelfes1800-o17-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o17-per3 to quelfes1800-o17-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o17-per1/morto/agora
+** Processing act obito$quelfes1800-o18
+189: n$maria/f
+190: ls$residencia/montemor, quelfes
+191: ls$idade_aprox/menor
+192: locs$igreja de sao sebastiao de quelfes
+193: pai$jose martins zorra
+194: ls$residencia/montemor, quelfes
+195: mae$maria do rosario
+196: 
+197: obito$quelfes1800-o19/16/9/1800/fl.28v./jose rodrigues guedelha (cura)
+198: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o18-per2 to quelfes1800-o18-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o18-per2/ec/c
+   ** Automatic attribute: quelfes1800-o18-per3/ec/c
+   ** auto rel: from quelfes1800-o18-per2 to quelfes1800-o18-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o18-per3 to quelfes1800-o18-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o18-per1/morto/agora
+** Processing act obito$quelfes1800-o19
+199: n$jose/m
+200: ls$residencia/quatrim, quelfes
+201: ls$idade_aprox/menor
+202: locs$igreja de sao sebastiao de quelfes
+203: pai$francisco das chagas
+204: ls$residencia/quatrim, quelfes
+205: mae$juliana maria palermo
+206: 
+207: obito$quelfes1800-o20/22/9/1800/fl.28v./jose rodrigues guedelha (cura)
+208: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o19-per2 to quelfes1800-o19-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o19-per2/ec/c
+   ** Automatic attribute: quelfes1800-o19-per3/ec/c
+   ** auto rel: from quelfes1800-o19-per2 to quelfes1800-o19-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o19-per3 to quelfes1800-o19-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o19-per1/morto/agora
+** Processing act obito$quelfes1800-o20
+209: n$jose/m
+210: ls$residencia/montemor, quelfes
+211: ls$idade_aprox/menor
+212: locs$igreja de sao sebastiao de quelfes
+213: pai$francisco marques
+214: ls$residencia/montemor, quelfes
+215: mae$ana maria
+216: 
+217: obito$quelfes1800-o21/22/9/1800/fl.28v./jose rodrigues guedelha (cura)
+218: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o20-per2 to quelfes1800-o20-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o20-per2/ec/c
+   ** Automatic attribute: quelfes1800-o20-per3/ec/c
+   ** auto rel: from quelfes1800-o20-per2 to quelfes1800-o20-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o20-per3 to quelfes1800-o20-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o20-per1/morto/agora
+** Processing act obito$quelfes1800-o21
+219: n$joana maria/f
+220: ls$residencia/ana velha, quelfes
+221: ls$testamento/nao
+222: locs$igreja de sao sebastiao de quelfes
+223: sacr$sim/obs=com todos os sacramentos da obrigacao
+224: marido$silvestre martins
+225: ls$residencia/ana velha, quelfes
+226: 
+227: obito$quelfes1800-o22/8/10/1800/fl.28v. e 29/jose rodrigues guedelha (cura)
+228: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o21-per2 to quelfes1800-o21-per1 parentesco/marido
+   ** Automatic attribute: quelfes1800-o21-per1/morto/agora
+** Processing act obito$quelfes1800-o22
+229: n$antonio/m
+230: ls$residencia/igreja, quelfes
+231: ls$idade_aprox/menor
+232: locs$igreja de sao sebastiao de quelfes
+233: pai$antonio bento
+234: ls$residencia/igreja, quelfes
+235: mae$isabel de faria
+236: 
+237: obito$quelfes1800-o23/15/10/1800/fl.29/jose rodrigues guedelha (cura)
+238: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o22-per2 to quelfes1800-o22-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o22-per2/ec/c
+   ** Automatic attribute: quelfes1800-o22-per3/ec/c
+   ** auto rel: from quelfes1800-o22-per2 to quelfes1800-o22-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o22-per3 to quelfes1800-o22-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o22-per1/morto/agora
+** Processing act obito$quelfes1800-o23
+239: n$manuel/m
+240: ls$residencia/ana velha, quelfes
+241: ls$idade_aprox/menor
+242: locs$igreja de sao sebastiao de quelfes
+243: pai$jose pinheiro
+244: ls$residencia/ana velha, quelfes
+245: mae$joaquina maria
+246: 
+247: obito$quelfes1800-o24/17/10/1800/fl.29/jose rodrigues guedelha (cura)
+248: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o23-per2 to quelfes1800-o23-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o23-per2/ec/c
+   ** Automatic attribute: quelfes1800-o23-per3/ec/c
+   ** auto rel: from quelfes1800-o23-per2 to quelfes1800-o23-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o23-per3 to quelfes1800-o23-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o23-per1/morto/agora
+** Processing act obito$quelfes1800-o24
+249: n$manuel rodrigues ruivo/m/id=quelfes1800-o24-manuel
+250: ls$residencia/boavista, quelfes
+251: ls$testamento/sim
+252: locs$igreja de sao sebastiao de quelfes
+253: sacr$sim/obs=com todos os sacramentos da obrigacao
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:254:*** Current group testamenteiro cannot be linked with previous group sacr(gro-1)
+
+
+ERROR: quelfes_obitos_1800.cli line 253 *** Current group testamenteiro cannot be linked with previous group sacr(gro-1)
+Near line: 253 sacr$sim/obs=com todos os sacramentos da obrigacao
+Near line: 254 testamenteiro$francisco martins ruivo/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:254:***testamenteiro group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 253 ***testamenteiro group not stored.
+Near line: 253 sacr$sim/obs=com todos os sacramentos da obrigacao
+Near line: 254 testamenteiro$francisco martins ruivo/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:254:** Failure. Could not process group -testamenteiro
+
+
+ERROR: quelfes_obitos_1800.cli line 253 ** Failure. Could not process group -testamenteiro
+Near line: 253 sacr$sim/obs=com todos os sacramentos da obrigacao
+Near line: 254 testamenteiro$francisco martins ruivo/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:254:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 253 ** Failure: undefined element. 
+Near line: 253 sacr$sim/obs=com todos os sacramentos da obrigacao
+Near line: 254 testamenteiro$francisco martins ruivo/m
+
+254: testamenteiro$francisco martins ruivo/m
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ** Failure: undefined element. 
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:*** Current group rel cannot be linked with previous group sacr(gro-2)
+
+
+ERROR: quelfes_obitos_1800.cli line 254 *** Current group rel cannot be linked with previous group sacr(gro-2)
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:***rel group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ***rel group not stored.
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:** Failure. Could not process group -rel
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ** Failure. Could not process group -rel
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ** Failure: undefined element. 
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ** Failure: undefined element. 
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:255:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 254 ** Failure: undefined element. 
+Near line: 254 testamenteiro$francisco martins ruivo/m
+Near line: 255 rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+
+255: rel$parentesco/filho/manuel rodrigues ruivo/quelfes1800-o24-manuel
+256: 
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:257:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 256 ** Failure: undefined element. 
+Near line: 256 
+Near line: 257 obito$quelfes1800-o25/4/11/1800/fl.29/jose rodrigues guedelha (cura)
+
+257: obito$quelfes1800-o25/4/11/1800/fl.29/jose rodrigues guedelha (cura)
+258: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o24-manuel/morto/agora
+** Processing act obito$quelfes1800-o25
+259: n$antonio/m
+260: ls$residencia/montemor, quelfes
+261: ls$idade_aprox/menor
+262: locs$igreja de sao sebastiao de quelfes
+263: pai$jose martins
+264: ls$residencia/montemor, quelfes
+265: mae$joana teresa
+266: 
+267: obito$quelfes1800-o26/6/11/1800/fl.29v./jose rodrigues guedelha (cura)
+268: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o25-per2 to quelfes1800-o25-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o25-per2/ec/c
+   ** Automatic attribute: quelfes1800-o25-per3/ec/c
+   ** auto rel: from quelfes1800-o25-per2 to quelfes1800-o25-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o25-per3 to quelfes1800-o25-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o25-per1/morto/agora
+** Processing act obito$quelfes1800-o26
+269: n$maria/f
+270: ls$residencia/alecrineira, quelfes
+271: ls$idade_aprox/maior
+272: ls$ec/s
+273: sacr$nao/obs=nao recebeu os sacramentos por morrer de repente
+274: locf$em casa/obs=e se achou em sua casa, e nao se enterrou nesta igreja por nao estar seu corpo capaz de vir (por ela?), e foi queimado em casa por ordem do guarda mor da saude por estar ja corrompido
+275: 
+276: obito$quelfes1800-o27/7/11/1800/fl.29v./jose rodrigues guedelha (cura)
+277: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o26-per1/morto/agora
+** Processing act obito$quelfes1800-o27
+278: n$jose da costa/m
+279: ls$residencia/marim, quelfes
+280: ls$testamento/sim
+281: locs$igreja de sao sebastiao de quelfes
+282: sacr$sim/obs=com todos os sacramentos da obrigacao
+283: mulher$maria das dores
+284: ls$residencia/marim, quelfes
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:285:*** Current group testamenteiro cannot be linked with previous group ls(att-78)
+
+
+ERROR: quelfes_obitos_1800.cli line 284 *** Current group testamenteiro cannot be linked with previous group ls(att-78)
+Near line: 284 ls$residencia/marim, quelfes
+Near line: 285 testamenteiro$pedro afonso/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:285:***testamenteiro group not stored.
+
+
+ERROR: quelfes_obitos_1800.cli line 284 ***testamenteiro group not stored.
+Near line: 284 ls$residencia/marim, quelfes
+Near line: 285 testamenteiro$pedro afonso/m
+
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:285:** Failure. Could not process group -testamenteiro
+
+
+ERROR: quelfes_obitos_1800.cli line 284 ** Failure. Could not process group -testamenteiro
+Near line: 284 ls$residencia/marim, quelfes
+Near line: 285 testamenteiro$pedro afonso/m
+
+285: testamenteiro$pedro afonso/m
+
+/Users/jrc/develop/mhk_users/testes/sources/rdomingos/quelfes_obitos_1800.cli:286:** Failure: undefined element. 
+
+
+ERROR: quelfes_obitos_1800.cli line 285 ** Failure: undefined element. 
+Near line: 285 testamenteiro$pedro afonso/m
+Near line: 286 ls$residencia/quatrim, moncarapacho
+
+286: ls$residencia/quatrim, moncarapacho
+287: ls$freguesia/moncarapacho, olhao
+288: 
+289: obito$quelfes1800-o28/16/11/1800/fl.29v. e 30/jose rodrigues guedelha (cura)
+290: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o27-per1 to quelfes1800-o27-per2 parentesco/marido
+   ** Automatic attribute: quelfes1800-o27-per1/morto/agora
+** Processing act obito$quelfes1800-o28
+291: n$jose/m
+292: ls$residencia/montemor, quelfes
+293: ls$idade_aprox/menor
+294: locs$igreja de sao sebastiao de quelfes
+295: pai$joao rodrigues
+296: ls$residencia/montemor, quelfes
+297: mae$gertrudes maria
+298: 
+299: obito$quelfes1800-o29/18/11/1800/fl.30/jose rodrigues guedelha (cura)
+300: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o28-per2 to quelfes1800-o28-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o28-per2/ec/c
+   ** Automatic attribute: quelfes1800-o28-per3/ec/c
+   ** auto rel: from quelfes1800-o28-per2 to quelfes1800-o28-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o28-per3 to quelfes1800-o28-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o28-per1/morto/agora
+** Processing act obito$quelfes1800-o29
+301: n$barbara viegas/f
+302: ls$ec/v
+303: ls$residencia/montemor, quelfes
+304: ls$testamento/nao
+305: locs$igreja de sao sebastiao de quelfes
+306: sacr$sim/obs=com todos os sacramentos da obrigacao
+307: 
+308: obito$quelfes1800-o30/20/11/1800/fl.30/jose rodrigues guedelha (cura)
+309: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o29-per1/morto/agora
+** Processing act obito$quelfes1800-o30
+310: n$francisco/m
+311: ls$residencia/boavista, quelfes
+312: ls$idade_aprox/menor
+313: locs$igreja de sao sebastiao de quelfes
+314: pai$inacio rodrigues
+315: ls$residencia/boavista, quelfes
+316: mae$iria de jesus
+317: 
+318: obito$quelfes1800-o31/20/11/1800/fl.30 e 30v./jose rodrigues guedelha (cura)
+319: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o30-per2 to quelfes1800-o30-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o30-per2/ec/c
+   ** Automatic attribute: quelfes1800-o30-per3/ec/c
+   ** auto rel: from quelfes1800-o30-per2 to quelfes1800-o30-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o30-per3 to quelfes1800-o30-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o30-per1/morto/agora
+** Processing act obito$quelfes1800-o31
+320: n$margarida rodrigues/f
+321: ls$ec/v
+322: ls$residencia/marim, quelfes
+323: ls$testamento/nao
+324: locs$igreja de sao sebastiao de quelfes
+325: sacr$sim/obs=com todos os sacramentos da obrigacao
+326: 
+327: obito$quelfes1800-o32/23/12/1800/fl.30v./jose rodrigues guedelha (cura)
+328: 
+**** auto rels 2 STARTED.
+   ** Automatic attribute: quelfes1800-o31-per1/morto/agora
+** Processing act obito$quelfes1800-o32
+329: n$miguel domingues/m
+330: ls$residencia/boavista, quelfes
+331: ls$testamento/nao
+332: locs$igreja de sao sebastiao de quelfes
+333: sacr$sim/obs=com todos os sacramentos da obrigacao
+334: mulher$angelica maria
+335: ls$residencia/boavista, quelfes
+336: 
+337: obito$quelfes1800-o33/29/12/1800/fl.30v./jose rodrigues guedelha (cura)
+338: 
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o32-per1 to quelfes1800-o32-per2 parentesco/marido
+   ** Automatic attribute: quelfes1800-o32-per1/morto/agora
+** Processing act obito$quelfes1800-o33
+339: n$manuel/m
+340: ls$ec/s
+341: ls$residencia/boavista, quelfes
+342: locs$igreja de sao sebastiao de quelfes
+343: sacr$sim/obs=com todos os sacramentos da obrigacao
+344: pai$sebastiao viegas
+345: ls$residencia/boavista, quelfes
+346: mae$maria de sao jose*** End of File
+33  errors.
+**** auto rels 2 STARTED.
+   ** auto rel: from quelfes1800-o33-per2 to quelfes1800-o33-per3 parentesco/marido
+   ** Automatic attribute: quelfes1800-o33-per2/ec/c
+   ** Automatic attribute: quelfes1800-o33-per3/ec/c
+   ** auto rel: from quelfes1800-o33-per2 to quelfes1800-o33-per1 parentesco/pai
+   ** auto rel: from quelfes1800-o33-per3 to quelfes1800-o33-per1 parentesco/mae
+   ** Automatic attribute: quelfes1800-o33-per1/morto/agora
+** Translation finished.

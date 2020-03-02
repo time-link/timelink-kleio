@@ -1,0 +1,2692 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+23-4-2019 11-4
+
+Processing structure:gacto2.str
+1: Note =================================================
+2: Note Generic structure for the Source-Act-Person model
+3: Note   Now with geoentities
+4: Note This is user specific stru file for test purposes
+5: Note ================================================
+6: Note
+7: Note $Revision$ $Date$ $Author$
+8: Note =================================================================================================
+9: Note History
+10: NOTE -------
+11: Note Revision 1.2  2006/05/16 10:52:44  Joaquim
+12: Note update dos ficheiros prolog
+13: Note
+14: Note TODO
+15: note		reorganize so that in the portuguese section
+16: note		the base classes for actors and parents go
+17: note		first and groups and actors related to the same source
+18: note		come together after.
+19: note
+20: note For kleio compatibility
+21: note     - anchor all groups in a parent group all the way up to the root
+22: note     - portuguese groups should always repeat element names in portuguese
+23: note       from the groups they extend.
+24: note     - No blank lines inside parameter lists
+25: note     - Source/fons does not work as expected.
+26: note
+27: note  The name parameter in the database command designates
+28: note  the target source file.
+29: note  the read commands specify the structure file and the
+30: note    data file.
+31: 
+32: note ================================================
+33: note ==============  SYSTEM DEFINITIONS =============
+34: note ================================================
+35: 
+36: note ================================================
+37: note THIS SECTION CONTAINS SYSTEM PARAMETERS
+38: note IN NORMAL SITUATIONS THIS SHOULD NOT BE CHANGED
+39: note ================================================
+40: 
+41: note ================================================
+42: note Database command. We use the kleio group as toplevel
+43: note                   group for all sources
+44: note
+45: note ================================================
+46: database name=kleio; first=kleio; identification=no
+47: 
+Creating new structure definition for: kleio
+48: note ===============================================
+49: note doc group Kleio group: this is the top level group of all
+50: note              'gacto' sources.
+51: note             Specific historical sources must be added
+52: note             to the part parameter of this group.
+53: note
+54: 
+55: part 	name=kleio;
+56:  also=structure,translator,autorels,obs,prefix,translations;
+57:  position=structure,translator,obs;
+58:  part=historical-source,fonte
+59: 
+60: note ============================================================
+61: note Basic historical source group
+62: note ============================================================
+63: 
+64: part name=historical-source;
+65:   guaranteed=id;
+66:   also=type,date,year,loc,ref,obs;
+67:   position=id,year,type,ref;
+68:   part=historical-act
+69: 
+70: note ============================================================
+71: note GeoEntity: a spatial entity
+72: note doc group an entity that repreent a spatial entity in the sense of
+73: note    a conceptual representation of space. A geo-entity is not an object
+74: note     that has a particular position in place. it is rather something like
+75: note      the parish of X, the place Y, the region W.
+76: note ============================================================
+77: 
+78: part name=geoentity;
+79:   position=name;
+80:    also=type,id,obs;
+81:   part=ls,atr,rel
+82: 
+83: 
+84: 
+85: 
+86: note ============================================================
+87: note Basic historical act group
+88: note ============================================================
+89: 
+90: part 	name=historical-act;
+91:      guaranteed=id,type,date;
+92:      position=id,type,date;
+93:      also=loc,ref,obs,day,month,year;
+94:      arbitrary=person,object,abstraction,ls,atr,rel
+95: 
+96: note ============================================================
+97: note A person
+98: note	base class por persons
+99: note ============================================================
+100: part	name=person ;
+101:  guaranteed=name,sex;
+102:  also=id,obs,same_as;
+103:  position=name,sex,id,same_as;
+104:  arbitrary=atr,rel,ls
+105: 
+106: note ============================================================
+107: nota A Female person
+108: note	having this group is the fons/source line
+109: nota    notifies the translator that sex=female
+110: nota ============================================================
+111: 
+112: part 	name=female ;
+113:   source=person;
+114:  guaranteed=name;
+115:  also=obs,id,same_as;
+116:  position=name,sex
+117: 
+118: note ============================================================
+119: nota A Male person
+120: note	having this group is the fons/source line
+121: nota    notifies the translator that sex=male
+122: nota ============================================================
+123: 
+124: part 	name=male ;
+125:  source=person;
+126:  guaranteed=name;
+127:  also=obs,id,same_as;
+128:  position=name,sex
+129: 
+130: note ============================================================
+131: note Object Base class for objects
+132: note       Objects are similar to person, they take attributes
+133: note			and relations. They have a type to distinguish categories
+134: note			of objects.
+135: note ===========================================================
+136: part name=object;
+137:      guaranteed=name;
+138:      position=name,type;
+139:      also=obs,id;
+140:      arbitrary=atr,ls,rel
+141: 
+142: note ============================================================
+143: note abstraction Base class for abstractions
+144: note       Abstractions are similar to objects, they take attributes
+145: note			and relations. They have a type to distinguish categories
+146: note			of objects.
+147: note ===========================================================
+148: part name=abstraction; source=object
+149: 
+150: note ============================================================
+151: note Attribute
+152: note ============================================================
+153: 
+154: part	name=attribute ;
+155:  guaranteed=type,value ;
+156:  also=obs,date ;
+157:  position=type,value,date
+158: 
+159: note ============================================================
+160: note Relation
+161: note ============================================================
+162: 
+163: part 	name=relation ;
+164:  guaranteed=type,value,destname,destination ;
+165:  also=obs,date
+166: 
+167: note
+168: note =============================================================
+169: note End - pseudo group to mark the end of acts
+170: note
+171: note    Having this group in source / fons path notifies
+172: note    the translator that the current act is finished
+173: note
+174: note    This is usefull because sometimes new acts begin
+175: note    with long multi-line elements and the translator
+176: note    echoes the new act before producing the previous act
+177: note    reports.
+178: note =============================================================
+179: 
+180: part name=end; also=id ; position=id
+181: 
+182: note
+183: note =============================================================
+184: note group-element - pseudo group for element entered as groups
+185: note    e.g. in obitos
+186: note
+187: part name=group-element; position=value; guaranteed=value; also=obs
+188: 
+189: note =================================================
+190: note relation-type: pseudo group to flag the translator that a group name defines
+191: note                the function of the actor in the act. Actor introducing groups
+192: note                extend this one
+193: part name=relation-type
+194: note ================================================
+195: note Elements for numerical dates
+196: note   Day - a two digit representation of day
+197: note   Month - a two digit representation of monthgact
+198: note   Year - a four digit representation of year
+199: note   Date - a eight digit representation of a date
+200: note                    yyyymmdd
+201: note ================================================
+202: element name=day; type=number
+203: element name=month; type=number
+204: element name=year; type=number
+205: element name=date;type=number
+206: 
+207: note ================================================
+208: note Other base elements.
+209: note    By declaring them here we allow national
+210: note    language variations to be declared later on.
+211: note ================================================
+212: element name=id; identification=yes
+213: element name=type
+214: element name=loc
+215: element name=obs
+216: element name=ref
+217: element name=value
+218: element name=origin
+219: element name=destination
+220: element name=entity
+221: element name=same_as
+222: element name=xsame_as
+223: element name=name
+224: element name=sex
+225: element name=destname
+226: element name=destination
+227: element name=summary;
+228: element name=description;
+229: 
+230: note ================================================
+231: note ======= END OF SYSTEM DEFINITIONS ==============
+232: note ================================================
+233: 
+234: note ================================================
+235: note USER DEFINITIONS START HERE
+236: note ================================================
+237: 
+238: note *****************************************************************
+239: note Portuguese Historical Sources
+240: note *****************************************************************
+241: 
+242: note *****************************************************************
+243: note doc group fonte Este constitui o grupo principal para os documentos
+244:          historicos portugueses. Admite qualquer dos actos definidos aqui.
+245: note loc group fonte pt fonte
+246: note loc group fonte en source
+247: note loc group fonte fr source
+248: note doc element id elemento obrigatorio, identifica unicamente a fonte na base de dados,
+249: note doc element tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
+250: note doc element loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
+251: note doc element ref cota ou outra referencia de localizacao da fonte
+252: 
+253: part	 name=fonte;
+254:       source=historical-source;
+255:       guaranteed=id;
+256:       also=tipo,loc,localizacao,ref,data,ano,obs;
+257:       arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
+258:             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
+259:           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
+260: 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
+261: 	  pas
+262: 
+263: 
+264: 
+265: 
+266: note *****************************************************************
+267: note doc group 'pt-acto' Forma generica de acto.
+268: note *****************************************************************
+269: 
+270: part 	name=pt-acto; source=historical-act;
+271:      arbitrary=celebrante,actorm,
+272:          actorf,object,abstraction,ls,rel;
+273:      position=id,dia,mes,ano;
+274:      guaranteed=id,dia,mes,ano;
+275:      also=ref,loc,obs
+276: 
+277: note ****************************************************************
+278: note funcao-em-acto   -- tipo de relacao entre actor e acto
+279: note ****************************************************************
+280: part 	name=funcao-em-acto; source=relation-type;
+281:      repeat=actorm,actorf
+282: 
+283: note ****************************************************************
+284: note doc group fim fim indica o fim de um acto
+285: note loc fim pt fim
+286: note loc fim en end
+287: note ****************************************************************
+288: part 	name=fim; source=end;
+289:      also=obs
+290: 
+291: note ****************************************************************
+292: note Equivalencia entre o nome dos elementos em portugues e em ingles
+293: note ****************************************************************
+294: element name=dia; source=day
+295: element name=mes; source=month
+296: element name=ano; source=year
+297: element name=data; source=date
+298: element name=tipo; source=type
+299: element name=valor; source=value
+300: element name=localizacao; source=loc
+301: element name=cota; source=ref;
+302: element name=nome; source=name
+303: element name=mesmo_que; source=same_as
+304: element name=xmesmo_que; source=xsame_as
+305: element name=sexo; source=sex
+306: element name=nomedest; source=destname
+307: element name=iddest; source=destination
+308: 
+309: 
+310: note ****************************************************************
+311: note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
+312: note loc acto pt acto
+313: note lc actor en act
+314: note ****************************************************************
+315: part name=acto;
+316:   source=pt-acto;
+317:   position=id,tipo,dia,mes,ano,loc,obs;
+318:   repeat=presente,presente-f,referido,referida,item,ls,atr,rel
+319: 
+320: part name=item; source=object;
+321:     repeat=presente,presente-f,referido,referida;
+322:     guaranteed=titulo;
+323:     position=titulo;
+324:     also=resumo,id,obs
+325: 
+326: note ****************************************************************
+327: note  doc group devassa Devassas temporais nas visitas pastorais
+328: note loc devassa pt devassa
+329: note loc devassa en visitation
+330: note ****************************************************************
+331: part name=devassa;
+332:  source=pt-acto;
+333:  repeat=testo,testa,referido;
+334:  guaranteed=id,dia,mes,ano,fol;
+335:  also=folio,visdor,secretario,obs;
+336:  position=id,dia,mes,ano
+337: 
+338: part name=acus; source=object;
+339:   guaranteed=idcaso;
+340:   position=idcaso, obs;
+341:   also=literal,origem,obs,id
+342: 
+343: part name=caso; source=object;
+344:    position=id,tipo;
+345:    certe=id,tipo;
+346:    also=obs;
+347:    repeat=acusado,acusada,referido,referida
+348: 
+349: note ****************************************************************
+350: note  doc group denuncia Denuncia de um caso como nos cadernos dos promotores da inquisicao
+351: note ****************************************************************
+352: part name=denuncia;
+353:      source=pt-acto;
+354:      repeat=denunciante;
+355:      guaranteed=id,dia,mes,ano,fol;
+356:      also=inquiridor,escrivao,obs;
+357:      position=id,dia,mes,ano
+358: 
+359: 
+360: note ****************************************************************
+361: note doc group nom Nomeacoes de irmaos numa misericordia (A particular historical act)
+362: note ****************************************************************
+363: part name=nom;
+364:  source=pt-acto;
+365:  repeat=n,referido;
+366:  guaranteed=id,dia,mes,ano;
+367:  also=fols,subs,esmola,obs;
+368:  position=id,dia,mes,ano,fol,subs,esmola
+369: 
+370: note *****************************************************************
+371: note  doc group amz Assentos da mesa numa misericordia (A particular historical act)
+372: note *****************************************************************
+373: 
+374: part 	name=amz;
+375:      source=pt-acto;
+376:      repeat=eleito,eleitor,referido;
+377:      guaranteed=id,dia,mes,ano,fol;
+378:      position=id,dia,mes,ano,fol;
+379:      also=resumo,obs
+380: 
+381: note *****************************************************************
+382: note  doc group vereacao actas de vereacao
+383: note *****************************************************************
+384: 
+385: part name=vereacao;
+386:      source=pt-acto;
+387:      repeat=assunto;
+388:      guaranteed=id,dia,mes,ano,fol;
+389:      position=id,dia,mes,ano,fol;
+390:      also=obs
+391: 
+392:      
+393: note *****************************************************************
+394: note  doc group pautas das vereacoes (criada por Ana Isabel 02-11-2007)
+395: note *****************************************************************
+396: 
+397: part name=pauta;
+398:      source=pt-acto;
+399:      repeat=n,referido,referida;
+400:      guaranteed=id,dia,mes,ano,loc;
+401:      position=id,dia,mes,ano,loc;
+402:      also=obs
+403:      
+404: note *****************************************************************
+405: note  doc group eleicoes das corporacoes de oficios (criada por Ana Isabel 09-11-2007)
+406: note *****************************************************************
+407:      
+408: part name=eleicao;
+409:      source=pt-acto;
+410:      repeat=n,referido,referida;
+411:      guaranteed=id,dia,mes,ano,loc;
+412:      position=id,dia,mes,ano,loc;
+413:      also=obs
+414:      
+415: note *****************************************************************
+416: note  doc group juramentos e licencas de oficios (criada por Ana Isabel 02-01-2008)
+417: note *****************************************************************
+418:      
+419: part name=juramento;
+420:      source=pt-acto;
+421:      repeat=n,referido,referida, abonador, abonadora, escrivao;
+422:      guaranteed=id,dia,mes,ano,loc;
+423:      position=id,dia,mes,ano,loc;
+424:      also=obs
+425: 
+426: 
+427: note *****************************************************************
+428: note  doc group hab Habilitacoes da Ordem de Cristo e Santo Oficio (A particular historical act).
+429: note *****************************************************************
+430: part 	name=hab;
+431:  source=pt-acto;
+432:  repeat=n,referido,referida,test;
+433:  guaranteed=id,cota,data;
+434:  position=id,cota,data;
+435:  also=obs
+436: 
+437: note ** variante usada pela Rosario Castico na Lousa
+438: part name=proc; source=hab;
+439:      position=id,dia,mes,ano,loc;
+440:      guaranteed=id,dia,mes,ano
+441: 
+442: note ** variante para os processos de ordenacao sacerdotal, a mesma coisa que hab
+443: part name=po; source=hab
+444: 
+445: note *****************************************************************
+446: note  doc group beneficio Beneficios colacoes numa colegiada
+447: note *****************************************************************
+448: part 	name=beneficio;
+449:  source=pt-acto;
+450:  repeat=n;
+451:  guaranteed=id,dia,mes,ano,loc;
+452:  position=id,dia,mes,ano,loc;
+453:  also=resumo,obs
+454: 
+455: note *****************************************************************
+456: note doc group chanc  Chancelarias
+457: note *****************************************************************
+458: part 	name=chanc;
+459:  source=pt-acto;
+460:  repeat=n,referido,referida,item;
+461:  guaranteed=id,dia,mes,ano,loc;
+462:  position=id,dia,mes,ano,loc;
+463:  also=resumo,obs
+464: 
+465: note *****************************************************************
+466: note doc group encarte Encartes
+467: note *****************************************************************
+468: part 	name=encarte;
+469:  source=chanc;
+470: 
+471: note *****************************************************************
+472: note Arrolamentos e subsequente processo de eleicao das camaras
+473: note *****************************************************************
+474: part	name=arrolamento;
+475:  source=pt-acto;
+476:  repeat=rv,rp, referido, referida;
+477:  guaranteed=id,dia,mes,ano;
+478:  position=id,ano,mes,dia;
+479:  also=obs
+480: 
+481: 
+482: note *****************************************************************
+483: note doc group capela Extincao de capelas segundo as chancelarias regias (D.Jose)
+484: note *****************************************************************
+485: part	name=capela;
+486:  source=pt-acto;
+487:  repeat=n;
+488:  guaranteed=id,dia,mes,ano,loc;
+489:  position=id,dia,mes,ano,loc;
+490:  also=obs,resumo
+491: 
+492: note *****************************************************************
+493: note doc group cas Casamentos
+494: note *****************************************************************
+495: part  name=cas,termo;
+496:    source=pt-acto;
+497:    guaranteed=id,dia,mes,ano,fol;
+498:    position=id,dia,mes,ano,fol,loc,celebrante;
+499:    also=celebrante,obs;
+500:    repeat=celebrante,test,referida,referido,
+501:                   noivo,
+502:                      pnoivo,
+503:                          ppnoivo,
+504:                              pppnoivo,
+505:                              mppnoivo,
+506:                          mpnoivo,
+507:                              pmpnoivo,
+508:                              mmpnoivo,
+509:                      mnoivo,
+510:                          pmnoivo,
+511:                              ppmnoivo,
+512:                              mpmnoivo,
+513:                          mmnoivo,
+514:                              pmmnoivo,
+515:                              mmmnoivo,
+516:                      mulher1,
+517:                          pmulher1,
+518:                              ppmulher1,
+519:                                  pppmulher1,
+520:                                  mppmulher1,
+521:                              mpmulher1,
+522:                                  pmpmulher1,
+523:                                  mmpmulher1,
+524:                          mmulher1,
+525:                              pmmulher1,
+526:                                  ppmmulher1,
+527:                                  mpmmulher1,
+528:                              mmmulher1,
+529:                                  pmmmulher1,
+530:                                  mmmmulher1,
+531:                      mulher2,
+532:                          pmulher2,
+533:                              ppmulher2,
+534:                                  pppmulher2,
+535:                                  mppmulher2,
+536:                              mpmulher2,
+537:                                  pmpmulher2,
+538:                                  mmpmulher2,
+539:                          mmulher2,
+540:                              pmmulher2,
+541:                                  ppmmulher2,
+542:                                  mpmmulher2,
+543:                              mmmulher2,
+544:                                  pmmmulher2,
+545:                                  mmmmulher2,
+546:                      mulher3,
+547:                          pmulher3,
+548:                              ppmulher3,
+549:                                  pppmulher3,
+550:                                  mppmulher3,
+551:                              mpmulher3,
+552:                                  pmpmulher3,
+553:                                  mmpmulher3,
+554:                          mmulher3,
+555:                              pmmulher3,
+556:                                  ppmmulher3,
+557:                                  mpmmulher3,
+558:                              mmmulher3,
+559:                                  pmmmulher3,
+560:                                  mmmmulher3,
+561:                   noiva,
+562:                      pnoiva,
+563:                          ppnoiva,
+564:                              pppnoiva,
+565:                              mppnoiva,
+566:                          mpnoiva,
+567:                              pmpnoiva,
+568:                              mmpnoiva,
+569:                      mnoiva,
+570:                          pmnoiva,
+571:                              ppmnoiva,
+572:                              mpmnoiva,
+573:                          mmnoiva,
+574:                              pmmnoiva,
+575:                              mmmnoiva,
+576: 
+577:                      marido1,
+578:                          pmarido1,
+579:                              ppmarido1,
+580:                                  pppmarido1,
+581:                                  mppmarido1,
+582:                              mpmarido1,
+583:                                  pmpmarido1,
+584:                                  mmpmarido1,
+585:                          mmarido1,
+586:                              pmmarido1,
+587:                                  ppmmarido1,
+588:                                  mpmmarido1,
+589:                              mmmarido1,
+590:                                  pmmmarido1,
+591:                                  mmmmarido1,
+592:                      marido2,
+593:                          pmarido2,
+594:                              ppmarido2,
+595:                                  pppmarido2,
+596:                                  mppmarido2,
+597:                              mpmarido2,
+598:                                  pmpmarido2,
+599:                                  mmpmarido2,
+600:                          mmarido2,
+601:                              pmmarido2,
+602:                                  ppmmarido2,
+603:                                  mpmmarido2,
+604:                              mmmarido2,
+605:                                  pmmmarido2,
+606:                                  mmmmarido2,
+607:                      marido3,
+608:                          pmarido3,
+609:                              ppmarido3,
+610:                                  pppmarido3,
+611:                                  mppmarido3,
+612:                              mpmarido3,
+613:                                  pmpmarido3,
+614:                                  mmpmarido3,
+615:                          mmarido3,
+616:                              pmmarido3,
+617:                                  ppmmarido3,
+618:                                  mpmmarido3,
+619:                              mmmarido3,
+620:                                  pmmmarido3,
+621:                                  mmmmarido3
+622: 
+623: note *****************************************************************
+624: note doc group bap Baptismos (variante usada nos registos da Lousa
+625:       por Rosario Campos e em ?bidos)
+626: note *****************************************************************
+627: part name=bap; source=pt-acto;
+628:   position=id,dia,mes,ano,fol,local,celebrante;
+629:   guaranteed=id,dia,mes,ano;
+630:   repeat=celebrante,n,
+631:           test,referido,referida
+632: 
+633: nota doc group b Baptimos, versao original usada em Soure.
+634: part name=b; source=pt-acto;
+635:   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
+636:   guaranteed=id,dia,mes,ano;
+637:   repeat=celebrante,n,
+638:       referido,referida,test
+639: 
+640: note *****************************************************************
+641: note doc group obito Obitos
+642: note
+643: note *****************************************************************
+644: part name=obito; source=pt-acto;
+645:   position=id,dia,mes,ano,fol,celebrante;
+646:   guaranteed=id,mes,ano;
+647:   also=obs;
+648:   repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
+649: 
+650: note doc group o Estilo usado em Soure, sem o id do obito, mas aceita o id opcionalmente.
+651: part name=o; source=obito;
+652:     position=dia,mes,ano;
+653:     guaranteed=dia,mes,ano;
+654:     also=obs,id
+655: 
+656: 
+657: part name=sacr;source=group-element
+658: part name=testamento;source=group-element
+659: part name=locs;source=group-element
+660: part name=locf;source=group-element
+661: part name=oficios;source=group-element
+662: part name=causa;source=group-element
+663: 
+664: 
+665: note *****************************************************************
+666: note Arrematacoes de bens concelhios (Castelo Branco 1807-1829); alterado por Ana Isabel (12-11-07)
+667: note *****************************************************************
+668: part name=ar; source=pt-acto;
+669:      guaranteed=id,dia,mes,ano;
+670:      position=id,dia,mes,ano;
+671:      arbitrary=proparr,bemarr,fornarr,rendarr;
+672: 
+673: part name=proparr; source=object;
+674:      guaranteed=name;
+675:      position=name;
+676:      also=valor,prazo,condicao,obs,id,mesmo_que,xmesmo_que;
+677:      part=arrem,fiador;
+678: 
+679: part name=bemarr; source=proparr
+680: 
+681: part name=fornarr; source=proparr
+682: 
+683: part name=rendarr; source=proparr
+684: 
+685: 
+686: note *****************************************************************
+687: note Lista generica
+688: note *****************************************************************
+689: 
+690: part name=lista; source=pt-acto;
+691:      guaranteed=id,dia,mes,ano;
+692:      position=id,dia,mes,ano;
+693:      arbitrary=n,referido,referida,celebrante;
+694:      also=obs,loc
+695: 
+696: note *****************************************************************
+697: note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
+698: note *****************************************************************
+699: 
+700: part name=ordenancas; source=lista;
+701:      guaranteed=id,dia,mes,ano;
+702:      position=id,dia,mes,ano;
+703:      also=obs,loc;
+704:      arbitrary=n
+705:      
+706:      
+707: note *****************************************************************
+708: note Lista de credito (criada por Ana Isabel 27-06-2008)
+709: note *****************************************************************
+710: 
+711: part name=credito; source=lista;
+712:      guaranteed=id,dia,mes,ano;
+713:      position=id,dia,mes,ano;
+714:      also=obs,loc;
+715:      arbitrary=n, credor,credora,devedor,devedora,procurador,procuradora
+716: 
+717: note *****************************************************************
+718: note Lista de milicias e auxiliares (criada por Ana Isabel 16-10-2007)
+719: note *****************************************************************
+720: 
+721: 
+722: part name=milicias; source=ordenancas
+723: 
+724: 
+725: note *****************************************************************
+726: note Registo de merces
+727: note *****************************************************************
+728: part name=rmerce; source=pt-acto;
+729:        guaranteed=id,dia,mes,ano,cota,merce;
+730:        also=obs;
+731:        position=id,dia,mes,ano,cota,merce,obs;
+732:        arbitrary=n
+733: 
+734: note ** sinonym used by Rosario Castico
+735: part name=merce; source=rmerce;
+736: 
+737: 
+738: note *****************************************************************
+739: note Leitura de bachareis: inquiricoes de genere com testemunhas
+740: note *****************************************************************
+741: part name=let; source=pt-acto;
+742:        guaranteed=id,data,cota;
+743:        also=obs;
+744:        position=id;
+745:        arbitrary=n,ts
+746: 
+747: note sinonimo usado por Rosario Castico nos dados da Lousa
+748: part name=lbach;source=let;
+749:          guaranteed=id,dia,mes,ano,loc;
+750:          also=obs;
+751:          position=id,dia,mes,ano,loc
+752: 
+753: note *****************************************************************
+754: note Rois de confessados
+755: note *****************************************************************
+756: 
+757: part name=rol; source=pt-acto;
+758:      guaranteed=id,dia,mes,ano;
+759:      position=id,dia,mes,ano;
+760:      arbitrary=fogo
+761: 
+762: part name=fogo; source=object;
+763:        guaranteed=id,local;
+764:        also=obs;
+765:        position=id,local;
+766:      arbitrary=n,criado,criada,engeitado,engeitada,enjeitado,enjeitada,escravo,escrava,fim;
+767: element name=local; source=loc
+768: 
+769: note *****************************************************************
+770: note Crismas
+771: note *****************************************************************
+772: part name=crisma; source=pt-acto;
+773:      guaranteed=id,dia,mes,ano;
+774:      position=id,dia,mes,ano;
+775:      arbitrary=n,referido,referida
+776: 
+777: note *****************************************************************
+778: note Notariais - escrituras
+779: note *****************************************************************
+780: 
+781: part name=escritura; source=pt-acto;
+782:   position=id,dia,mes,ano,tipo;
+783:   guaranteed=id,dia,mes,ano,loc;
+784:   also=tipo,fol,sumario,obs;
+785:   arbitrary=atr,ls,devedor, devedora, credor, credora, fiador, fiadora, test,
+786:              comprador,compradora,vendedor,vendedora, louvado,
+787:              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
+788:              senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,testamentario,testamentaria,testamenteiro,testamenteira,contraente,contraentef,renunciante,renunciantef,
+789:              procurador,procuradora,escrivao,arrematante,arrematantef,
+790:              foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
+791:              divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
+792: 				 demanda,acusacao,destinatario,requerente,requerido,defesa,sentenca,escambo,
+793: 				 siza,sisa,prazo,obra,escrivao,abonador,
+794: 				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,demandado,escambador,escambadora,reu,reuf,
+795: 				 vedor,
+796: 				 inquiricao,inquirido,inquirida,inquiridor,
+797: 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
+798: 				 beneficiario,beneficiaria,autor,autoridade,renda,
+799: 				 juiz,item
+800: 				 
+801: part name=demanda; source=abstraction;
+802: part name=acusacao; source=abstraction;
+803: part name=sentenca; source=abstraction;
+804: part name=defesa; source=abstraction;
+805: part name=inquiricao; source=abstraction;
+806: part name=apelacao; source=abstraction;
+807: part name=renda; source=abstraction;
+808: 
+809: element name=sumario; source=summary
+810: element name=fol; source=ref;
+811: 
+812: note *****************************************************************
+813: note Notariais - bens
+814: note *****************************************************************
+815: part name=bem; source=object;
+816:      guaranteed=name;
+817:      position=name,tipo,id;
+818:      also=desc,tipo,id,obs,local;
+819:      arbitrary=atr,rel,local
+820: 
+821: element name=desc; source=description;
+822: 
+823: note *****************************************************************
+824: note Notariais - dividas
+825: note *****************************************************************
+826: 
+827: part name=divida; source=object;
+828:     guaranteed=valor,juro;
+829:     position=valor,juro;
+830:     also=id,prazo,moeda,valorn,obs
+831: 
+832: part name=garantia; source=bem;
+833: 
+834: part name=fianca; source=garantia;
+835: 
+836: note *****************************************************************
+837: note Notariais - siza
+838: note *****************************************************************
+839: part name=siza; source=object;
+840:      guaranteed=valor;
+841:      position=valor,juiz,escrivao,depositario,data;
+842:      also=juiz,escrivao,depositario,data,obs,id
+843:      
+844:      
+845: part name=sisa; source=siza
+846: 
+847: note *****************************************************************
+848: note Notariais - aforamento -- colocar as condicoes em atr
+849: note *****************************************************************
+850: 
+851: part name=aforamento; source=bem
+852: 
+853: 
+854: note *****************************************************************
+855: note Notariais - prazo -- colocar as condicoes em atr (criado por Ana Isabel)
+856: note *****************************************************************
+857: 
+858: part name=prazo; source=aforamento
+859: 
+860: 
+861: note *****************************************************************
+862: note Notariais - arrendamento -- colocar as condicoes em atr (criado por Ana Isabel)
+863: note *****************************************************************
+864: 
+865: part name=arrendamento; source=bem
+866: 
+867: note *****************************************************************
+868: note Notariais - escambo -- colocar as condicoes em atr (criado para Amelia)
+869: note *****************************************************************
+870: 
+871: part name=escambo; source=bem
+872: 
+873: 
+874: 
+875: note *****************************************************************
+876: note Notariais - obra (contratacao de obras publicas e privadas)(criado por Ana Isabel)
+877: note *****************************************************************
+878: part name=obra; source=object;
+879:      guaranteed=name;
+880:      position=name,tipo,id;
+881:      also=desc,tipo,id,obs,local;
+882:      arbitrary=atr,rel
+883:      
+884: 
+885: note *****************************************************************
+886: note DyncoopNet grupos associados ao projecto de base de dados de
+887: note letrad de cambio
+888: note doc group lc letra de cambio
+889: note *****************************************************************
+890: part name=local; source=geoentity; part=atr,rel
+891: 
+892: part name=lc; source=pt-acto;
+893: 	position=id,dia,mes,ano,local; 
+894: 	guaranteed=id,dia,mes,ano,local;
+895: 	also=obs;
+896: 	part=atr,rel,
+897: 		beneficiario,beneficiario-representante,beneficiario-procurador,
+898: 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
+899: 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
+900: 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
+901: 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
+902: 		beneficiario5,beneficiario5-representante,beneficiario5-procurador,
+903: 		beneficiario6,beneficiario6-representante,beneficiario6-procurador,
+904: 		cobrador,cobrador-representante,
+905: 		cobrador1,cobrador-representante1,
+906: 		cobrador2,cobrador-representante2,
+907: 		cobrador3,cobrador-representante3,
+908: 		cobrador4,cobrador-representante4,
+909: 		destinatario,destinatario1,destinatario2,
+910: 		dador,dador-representante,
+911: 		dador1,dador1-representante,
+912: 		dador2,dador2-representante,
+913: 		dador3,dador3-representante,
+914: 		dador4,dador4-representante,
+915: 		debitado,
+916: 		endossante,
+917: 		endossado,
+918: 		local,
+919: 		pagador,pagador-representante,
+920: 		pagador1,pagador1-representante,
+921: 		pagador2,pagador2-representante,
+922: 		pagador3,pagador3-representante,
+923: 		pagador4,pagador4-representante,
+924: 		pagador5,pagador5-representante,
+925: 		recebedor,recebedor-proc,
+926: 		recebedor1,recebedor1-proc,
+927: 		recebedor2,recebedor2-proc,
+928: 		recebedor3,recebedor3-proc,
+929: 		recebedor4,recebedor4-proc,
+930: 		referido,
+931: 		remetente,
+932: 		tomador,tomador-representante,
+933: 		tomador1,tomador1-representante,
+934: 		tomador2,tomador2-representante,
+935: 		tomador3,tomador3-representante,
+936: 		tomador4,tomador4-representante,
+937: 		tomador5,tomador5-representante
+938: 
+939: part name=carta; source=pt-acto;
+940: 	position=id,dia,mes,ano,loc;
+941: 	also=resumo,refere,obs;
+942: 	part=receptor,emissor,evento,topico,emissor-representante
+943: 
+944: part name=adenda; source=pt-acto;
+945: 	position=id,dia,mes,ano,loc;
+946: 	also=resumo,refere,obs;
+947: 	part=evento
+948: 
+949: part name=evento; source=pt-acto;
+950: 	position=description,dia,mes,ano;
+951: 	guaranteed=description;
+952: 	also=obs,id;
+953: 	part=informador,defector,representante,referido,
+954: 		intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
+955: 		beneficiario,beneficiario-representante,beneficiario-procurador,
+956: 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
+957: 		beneficiario2,beneficiario2-representante,beneficiario2-procurador,
+958: 		beneficiario3,beneficiario3-representante,beneficiario3-procurador,
+959: 		beneficiario4,beneficiario4-representante,beneficiario4-procurador,
+960: 		beneficiario5,beneficiario5-representante,beneficiario5-procurador,
+961: 		beneficiario6,beneficiario6-representante,beneficiario6-procurador,
+962: 		cobrador,cobrador-representante,
+963: 		cobrador1,cobrador-representante1,
+964: 		cobrador2,cobrador-representante2,
+965: 		cobrador3,cobrador-representante3,
+966: 		cobrador4,cobrador-representante4,
+967: 		destinatario,destinatario1,destinatario2,
+968: 		dador,dador-representante,
+969: 		dador1,dador1-representante,
+970: 		dador2,dador2-representante,
+971: 		dador3,dador3-representante,
+972: 		dador4,dador4-representante,
+973: 		debitado,
+974: 		endossante,
+975: 		endossado,
+976: 		fretador,
+977: 		pagador,pagador-representante,
+978: 		pagador1,pagador1-representante,
+979: 		pagador2,pagador2-representante,
+980: 		pagador3,pagador3-representante,
+981: 		pagador4,pagador4-representante,
+982: 		pagador5,pagador5-representante,
+983: 		receptor,
+984: 		recebedor,recebedor-proc,
+985: 		recebedor1,recebedor1-proc,
+986: 		recebedor2,recebedor2-proc,
+987: 		recebedor3,recebedor3-proc,
+988: 		recebedor4,recebedor4-proc,
+989: 		remetente,
+990: 		tomador,tomador-representante,
+991: 		tomador1,tomador1-representante,
+992: 		tomador2,tomador2-representante,
+993: 		tomador3,tomador3-representante,
+994: 		tomador4,tomador4-representante,
+995: 		tomador5,tomador5-representante,
+996: 		vendedor,comprador,transportador,
+997: 		emissor,emissor-representante
+998: 
+999: 
+1000: part name=topico; source=abstraction;
+1001: 	position=subject,description;
+1002: 	guaranteed=subject,description;
+1003: 	also=id,obs
+1004: 	
+1005: 	
+1006: note *****************************************************************
+1007: note Governos.
+1008: note *****************************************************************
+1009: part name=gov; source=pt-acto;
+1010:  position=id, dia,mes,ano,diaf,mesf,anof,obs;
+1011:  guaranteed=id,dia,mes,ano;
+1012:  part=pm,
+1013:  minAdj,
+1014:  minDefNac,
+1015:  minSemPasta,
+1016:  minCoordInterter,
+1017:  secEstAdm,
+1018:  secEstAssEcon,
+1019:  minAdmInt,
+1020:  minJust,
+1021:  subsecEstAdmJudic,
+1022:  minCoordEcon,
+1023:  secEstFin,
+1024:  subsecEstOrc,
+1025:  secEstOrc,
+1026:  subsecEstTes,
+1027:  secEstTes,
+1028:  secEstPlanEcon,
+1029:  secEstIndEEner,
+1030:  secEstAgri,
+1031:  secEstComExtETur,
+1032:  secEstPesc,
+1033:  minNegEstr,
+1034:  secEstNegEstr,
+1035:  minEquiSocEAmb,
+1036:  secEstObPub,
+1037:  secEstTranECom,
+1038:  secEstHabEUrb,
+1039:  secEstMarMer,
+1040:  secEstAmb,
+1041:  minEduECult,
+1042:  secEstAdmEsc,
+1043:  secEstAssCultEInvCient,
+1044:  secEstDespEAccSocEsc,
+1045:  secEstRefEdu,
+1046:  minTrab,
+1047:  secEstEmig,
+1048:  secEstTrab,
+1049:  minAssSoc,
+1050:  secEstSau,
+1051:  secEstSegSoc,
+1052:  minComSoc,
+1053:  minEcon,
+1054:  secEstAbastEPrec,
+1055:  secEstOrientPedag,
+1056:  secEstEmpreg,
+1057:  minIndETecn,
+1058:  secEstIndETecn,
+1059:  subsecEstProgInd,
+1060:  subsecEstAdmInt,
+1061:  subsecEstAdmInd,
+1062:  secEstAdmInt,
+1063:  subsecEstFomCoop,
+1064:  subsecEstAdjMinComExt,
+1065:  secEstInvPub,
+1066:  subsecEstSeg,
+1067:  secEstConstCiv,
+1068:  secEstRecHidESanBas,
+1069:  secEstDespEJuv,
+1070:  secEstDescol,
+1071:  minHabUrbEConst,
+1072:  vpm,
+1073:  subsecEst,
+1074:  secEstPopEmpreg,
+1075:  secEstIntegAdm,
+1076:  secEstFlor,
+1077:  minComETur,
+1078:  secEstTur,
+1079:  secEstPlan,
+1080:  minRepRegAutMad,
+1081:  minRepRegAutAcor,
+1082:  secEstAdmLocEReg,
+1083:  secEstAdmPub,
+1084:  secEstCultEEducPerm,
+1085:  secEstCoopExt,
+1086:  minPlanECoordEcon,
+1087:  secEstPlanRecHum,
+1088:  subsecEstComInt,
+1089:  secEstEnsSupEInvCient,
+1090:  secEstEstrAgra,
+1091:  minAgriEPesc,
+1092:  secEstFomAgra,
+1093:  secEstJust,
+1094:  secEstRecupSoc,
+1095:  secEstComAlim,
+1096:  secEstComNAlim,
+1097:  subsecEstDefCons,
+1098:  secEstEnerEMin,
+1099:  secEstIndLig,
+1100:  secEstIndPes,
+1101:  secEstFormProf,
+1102:  secEstRetorn,
+1103:  secEstInf,
+1104:  minCoop,
+1105:  minFin,
+1106:  secEstCoopEconComPaisSoc,
+1107:  secEstAdjPMAssAdm,
+1108:  secEstAdjPMAssPol,
+1109:  secEstComEIndAgri,
+1110:  secEstIndLigEPes,
+1111:  secEstAdmEEquiEsc,
+1112:  secEstEnsSup,
+1113:  minFin,
+1114:  subsecEstFin,
+1115:  secEstOrc,
+1116:  secEstTes,
+1117:  subsecEstAmb,
+1118:  subsecEstComSoc,
+1119:  secEstComSoc,
+1120:  secEstAdmInt,
+1121:  subsecEstTur,
+1122:  minEquipSocEAmb,
+1123:  subsecEstTran,
+1124:  subsecEstAdjPM,
+1125:  minObPub,
+1126:  subsecEstObPub,
+1127:  minComExt,
+1128:  secEstComExt,
+1129:  subsecEstComExt,
+1130:  minComInt,
+1131:  secEstComInt,
+1132:  secEstAbast,
+1133:  secEstJuvEDesp,
+1134:  subsecEstAdmInt,
+1135:  minTranECom,
+1136:  secEstCult,
+1137:  secEstAdmRegELoc,
+1138:  secEstPlanEOrc,
+1139:  subsecEstPlan,
+1140:  subsecEstInvPub,
+1141:  subsecEstAdjMinFin,
+1142:  minEquiSoc,
+1143:  minEduEInvCient,
+1144:  secEstInvCient,
+1145:  subsecEstAdjMinAgriEPesc,
+1146:  subsecEstAdjMinPesc,
+1147:  subsecEstAdjMinTrab,
+1148:  subsecEstTrab,
+1149:  secEstTrab,
+1150:  secEstCoop,
+1151:  subsecEstAdjMinHabUrbEConst,
+1152:  subsecEstHabUrbEConst,
+1153:  subsecEstConstCiv,
+1154:  subsecEstEstrAgra,
+1155:  secEstAdjPM,
+1156:  subsecEstAdjPM,
+1157:  minEst,
+1158:  secEstPopEEmpreg,
+1159:  secEstCoordEcon,
+1160:  secEstJust,
+1161:  subsecEstFlor,
+1162:  ma,
+1163:  mab,
+1164:  mc,
+1165:  me,
+1166:  mej,
+1167:  mf,
+1168:  mfo,
+1169:  mg,
+1170:  mi,
+1171:  mip,
+1172:  mj,
+1173:  mm,
+1174:  mmu,
+1175:  mco,
+1176:  mop,
+1177:  mopci,
+1178:  mp,
+1179:  mr,
+1180:  mt,
+1181:  mtps,
+1182:  pc,
+1183:  mipba
+1184: 
+1185: note *****************************************************************
+1186: note felgaio -
+1187: note doc group felgaio Formato preparado para o registo das genealogias
+1188:       do Felgueiras Gaio.
+1189: note *****************************************************************
+1190: part name=familia; source=pt-acto;
+1191:  position=name;
+1192:  guaranteed=name;
+1193:  also=id,obs;
+1194:  part=linha
+1195: 
+1196: part name=linha; source=object;
+1197:  position=numero;
+1198:  guaranteed=numero;
+1199:  part=n
+1200: 
+1201: note *****************************************************************
+1202: note Cartas de perdao
+1203: note *****************************************************************
+1204: part name=cartaperdao; source=pt-acto;
+1205:  position=id,dia,mes,ano;
+1206:  guaranteed=id;
+1207:  also=cota,local,tipo,tabeliao,obs;
+1208:  part=perdoante,perdoante-m,perdoante-f,perdoado,perdoada,vitima,vitima-m,vitima-f,
+1209:       crime,perdao,test,referido,referida,tabeliao
+1210: 
+1211: 
+1212: part name=crime; source=abstraction;
+1213:   position=dia,mes,ano;
+1214:   guaranteed=forma,tipo,subtipo;
+1215:   also=id,objecto,local,descricao,tempo,instrumento,pronuncia,ocorrencia,situacao,obs
+1216: 
+1217: part name=perdao; source=abstraction;
+1218:   position=dia,mes,ano;
+1219:   guaranteed=tipo,descricao;
+1220:   also=obs,id;
+1221:   
+1222: note ****************************************************************
+1223: note doc group docregio Documento regio
+1224: note loc docregio pt carta regia
+1225: note loc docregio en royal chart
+1226: note loc docregio fr charte royale
+1227: note ****************************************************************
+1228: 
+1229: 
+1230: part name=docregio; source=pt-acto;
+1231:   position=id,dia,mes,ano;
+1232:   guaranteed=id,tipo,fol,loc,sumario;
+1233:   also=obs;
+1234:   repeat=atr,ls,rel,item,autor,autorf,destinatario,destinataria,beneficiario,beneficiaria,referido,referida,
+1235:   			bem,demanda,acusacao,sentenca,defesa,tabeliao,procurador,test,juiz,demandador,reu,
+1236:   			apresentado,padroeiro,autoridade,divida
+1237: 
+1238: 
+1239: note ****************************************************************
+1240: note doc group docpontificio Documento Ponteficio
+1241: note loc docpontificio pt documento ponteficio
+1242: note loc docpontificio en papal chart
+1243: note loc docpontificio fr papal document
+1244: 
+1245: part name=docpontificio; source=docregio
+1246: 
+1247: part name=docepiscopal; source=docregio
+1248: 
+1249: note *****************************************************************
+1250: note Matricula de doentes em Hospital
+1251: note doc group matricula Matricula de doentes no Hospital das Caldas
+1252: note *****************************************************************
+1253: part name=matricula; source=pt-acto;
+1254:  position=id,dia,mes,ano,fol;
+1255:  guaranteed=id;
+1256:  also=obs;
+1257:  part=enfermo,enferma,referido,referida
+1258: 
+1259: 
+1260: 
+1261: note ******************** SISTER             *************************
+1262: note *****************************************************************
+1263: note memorias paroquiais de 1758
+1264: note doc group Formato para registo das memorias paroquiais de 1758
+1265: part name=memoria58;source=pt-acto;
+1266: 	position=id,dia,mes,ano;
+1267: 	guaranteed=id;
+1268: 	also=obs;
+1269: 	part=freguesia
+1270: 
+1271: note doc group sinonimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes.
+1272: part name=apontamentosd; source=memoria58
+1273: 	
+1274: part name=freguesia; source=geoentity;
+1275: 	part=atr,rel,gref,provincia,comarca,couto,honra,hospital,termoc,lugar,misericordia,mosteiro,idonatario,pdonatario,
+1276: 		igreja,irmandade,bispado,confraria,convento,referido
+1277: 
+1278: part name=gref; source=geoentity
+1279: part name=lugar; source=geoentity; part=referido,atr,ls
+1280: part name=provincia; source=geoentity
+1281: part name=termoc; source=geoentity
+1282: part name=bispado; source=geoentity
+1283: part name=comarca; source=geoentity
+1284: part name=couto; source=geoentity; part=referido,atr,ls
+1285: part name=honra; source=geoentity; part=referido,atr,ls
+1286: part name=igreja; source=object; part=atr,rel
+1287: part name=convento; source=object; part=atr,rel
+1288: part name=mosteiro; source=object; part=atr,rel
+1289: part name=misericordia; source=object; part=atr,rel
+1290: part name=hospital; source=object; part=atr,rel
+1291: part name=irmandade; source=object
+1292: part name=confraria;source=object
+1293: part name=idonatario;source=object
+1294: part name=pdonatario;source=person; part=referido,ls,atr,rel
+1295: 
+1296: 
+1297: 
+1298: note *********************** TOMBOS *********************************
+1299: note doc group automed Auto de medicao, corresponde a um acto ocorrido num dia determinado
+1300: note doc element id elemento obrigatorio, identifica unicamente o auto de medicao
+1301: note doc element loc local onde decorre o auto de medicao
+1302: part name=automed;source=pt-acto;
+1303: 	  position=id,dia,mes,ano,loc;
+1304: 	  also=obs;
+1305: 	  part=terra;
+1306: 	  
+1307: part name=terra;source=geoentity;
+1308: 		part=atr,rel,proprietario,med
+1309: 
+1310: 	 
+1311: part name=med;source=abstraction;
+1312: 	  position=cardinal,length;
+1313: 	  guaranteed=length;
+1314: 	  also=obs;
+1315: 	  part=conf,marco
+1316: 	  
+1317: part name=conf;
+1318:     source=object;
+1319: 	part=referido, referida
+1320: 
+1321: part name=marco;
+1322:     source=object
+1323:     
+1324: note *****************************************************************
+1325: note gregorio Lopes / Lia Nunes
+1326: note *****************************************************************
+1327: 
+1328: part name=pas; source=pt-acto;
+1329:      guaranteed=id,dia,mes,ano,fol,local,destino,num;
+1330:      position=id,dia,mes,ano,fol,local,destino;
+1331:      also=obs;
+1332:      arbitrary=mestre,n,referido,referida;
+1333:      
+1334:     
+1335: note *****************************************************************
+1336: note Actores
+1337: note    Os grupos seguintes definem o modo como os parentem se podem
+1338: note    suceder aos actores dos actos.
+1339: note *****************************************************************
+1340: note Definicao generica de um actor masculino.
+1341: note           nota: todos os parentes aqui enumerados tem de aparecer
+1342: note           associados a parentef ou a parentem
+1343: note *****************************************************************
+1344: part name=actorm;
+1345:   source=male;
+1346:   position=nome,sexo;
+1347:   guaranteed=nome;
+1348:   also=id,obs,mesmo_que,xmesmo_que,sexo;
+1349:   repeat=atr,ls,rel,referido,referida,
+1350:           pai,
+1351:               ppai,
+1352:                   pppai,
+1353:                       ppppai,
+1354:                      mpppai,
+1355:                   mppai,
+1356:                      pmppai,
+1357:                      mmppai,
+1358:               mpai,
+1359:                   pmpai,
+1360:                      ppmpai,
+1361:                      mpmpai,
+1362:                   mmpai,
+1363:                      pmmpai,
+1364:                      mmmpai,
+1365:           mae,
+1366:               pmae,
+1367:                   ppmae,
+1368:                       pppmae,
+1369:                       mppmae,
+1370:                   mpmae,
+1371:                       pmpmae,
+1372:                       mmpmae,
+1373:               mmae,
+1374:                   pmmae,
+1375:                      ppmmae,
+1376:                      mpmmae,
+1377:                   mmmae,
+1378:                      pmmmae,
+1379:                      mmmmae,
+1380:           filho,
+1381:                  fofilho,
+1382:                  fafilho,
+1383:                  merfilho,
+1384:                  mrfafilho,
+1385:                  merfofilho,
+1386:           filha,
+1387:                  fofilha,
+1388:                  fafilha,
+1389:                  mrfilha,
+1390:                  mrfafilha,
+1391:                  merfofilha,
+1392: 
+1393:          irmao,
+1394:          irma,
+1395:           mulher,
+1396:               pmulher,
+1397:                  ppmulher,
+1398:                      pppmulher,
+1399:                      mppmulher,
+1400:                  mpmulher,
+1401:                      pmpmulher,
+1402:                      mmpmulher,
+1403:               mmulher,
+1404:                  pmmulher,
+1405:                      ppmmulher,
+1406:                      mpmmulher,
+1407:                  mmmulher,
+1408:                      pmmmulher,
+1409:                      mmmmulher,
+1410:           mulher1,
+1411:               pmulher1,
+1412:                  ppmulher1,
+1413:                      pppmulher1,
+1414:                      mppmulher1,
+1415:                  mpmulher1,
+1416:                      pmpmulher1,
+1417:                      mmpmulher1,
+1418:               mmulher1,
+1419:                  pmmulher1,
+1420:                      ppmmulher1,
+1421:                      mpmmulher1,
+1422:                  mmmulher1,
+1423:                      pmmmulher1,
+1424:                      mmmmulher1,
+1425:           mulher2,
+1426:               pmulher2,
+1427:                  ppmulher2,
+1428:                      pppmulher2,
+1429:                      mppmulher2,
+1430:                  mpmulher2,
+1431:                      pmpmulher2,
+1432:                      mmpmulher2,
+1433:               mmulher2,
+1434:                  pmmulher2,
+1435:                      ppmmulher2,
+1436:                      mpmmulher2,
+1437:                  mmmulher2,
+1438:                      pmmmulher2,
+1439:                      mmmmulher2,
+1440:           mulher3,
+1441:               pmulher3,
+1442:                  ppmulher3,
+1443:                      pppmulher3,
+1444:                      mppmulher3,
+1445:                  mpmulher3,
+1446:                      pmpmulher3,
+1447:                      mmpmulher3,
+1448:               mmulher3,
+1449:                  pmmulher3,
+1450:                      ppmmulher3,
+1451:                      mpmmulher3,
+1452:                  mmmulher3,
+1453:                      pmmmulher3,
+1454:                      mmmmulher3,
+1455:          pn,ppn,mpn,mn,pmn,mmn,
+1456:          pad,ppad,mpad,
+1457:             procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+1458:             pad1,ppad1,mpad1,procurador-pad1,procuradora-pad1,
+1459:             pad2,ppad2,mpad2,procurador-pad2,procuradora-pad2,
+1460:             pad3,ppad3,mpad3,procurador-pad3,procuradora-pad3,
+1461:             pad4,ppad4,mpad4,procurador-pad4,procuradora-pad4,
+1462: 
+1463:             mad,pmad,mmad,mpad,mrmad,
+1464:             mad1,pmad1,mmad1,mpad1,mrmad1,procurador-mad1,procuradora-mad1,
+1465:             mad2,pmad2,mmad2,mpad2,mrmad2,procurador-mad2,procuradora-mad2,
+1466:             mad3,pmad3,mmad3,mpad3,mrmad3,procurador-mad3,procuradora-mad3,
+1467:             mad4,pmad4,mmad4,mpad4,mrmad4,procurador-mad4,procuradora-mad4,
+1468:          sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+1469:          criada,criado,engeitado,engeitada
+1470: 
+1471: 
+1472: 
+1473: note *****************************************************************
+1474: note Actores masculinos: especificados
+1475: note *****************************************************************
+1476: 
+1477: note n -- actor generico, normalmente do sexo masculino mas o sexo
+1478: note      pode ser explicitamente fornecido a seguir ao nome
+1479: note      por isso reproduzimos aqui os parentescos aplicaveis a ambos os sexos.
+1480: 
+1481: part	 name=n;
+1482:          source=actorm;
+1483:          position=nome,sexo;
+1484:       also=sexo,id,mesmo_que,xmesmo_que,obs;
+1485:          guaranteed=nome;
+1486:            repeat=atr,ls,rel,referido,referida,
+1487:                    pai,
+1488:                        ppai,
+1489:                            pppai,
+1490:                                ppppai,
+1491:                               mpppai,
+1492:                            mppai,
+1493:                               pmppai,
+1494:                               mmppai,
+1495:                        mpai,
+1496:                            pmpai,
+1497:                               ppmpai,
+1498:                               mpmpai,
+1499:                            mmpai,
+1500:                               pmmpai,
+1501:                               mmmpai,
+1502:                    mae,
+1503:                        pmae,
+1504:                            ppmae,
+1505:                                pppmae,
+1506:                                mppmae,
+1507:                            mpmae,
+1508:                                pmpmae,
+1509:                                mmpmae,
+1510:                        mmae,
+1511:                            pmmae,
+1512:                               ppmmae,
+1513:                               mpmmae,
+1514:                            mmmae,
+1515:                               pmmmae,
+1516:                               mmmmae,
+1517:                    filho,
+1518:                           fofilho,
+1519:                           fafilho,
+1520:                           merfilho,
+1521:                           mrfafilho,
+1522:                           merfofilho,
+1523:                    filha,
+1524:                           fofilha,
+1525:                           fafilha,
+1526:                           mrfilha,
+1527:                           mrfafilha,
+1528:                           merfofilha,
+1529: 
+1530:                   irmao,
+1531:                   irma,
+1532:                    mulher,
+1533:                        pmulher,
+1534:                           ppmulher,
+1535:                               pppmulher,
+1536:                               mppmulher,
+1537:                           mpmulher,
+1538:                               pmpmulher,
+1539:                               mmpmulher,
+1540:                        mmulher,
+1541:                           pmmulher,
+1542:                               ppmmulher,
+1543:                               mpmmulher,
+1544:                           mmmulher,
+1545:                               pmmmulher,
+1546:                               mmmmulher,
+1547:                    mulher1,
+1548:                        pmulher1,
+1549:                           ppmulher1,
+1550:                               pppmulher1,
+1551:                               mppmulher1,
+1552:                           mpmulher1,
+1553:                               pmpmulher1,
+1554:                               mmpmulher1,
+1555:                        mmulher1,
+1556:                           pmmulher1,
+1557:                               ppmmulher1,
+1558:                               mpmmulher1,
+1559:                           mmmulher1,
+1560:                               pmmmulher1,
+1561:                               mmmmulher1,
+1562:                    mulher2,
+1563:                        pmulher2,
+1564:                           ppmulher2,
+1565:                               pppmulher2,
+1566:                               mppmulher2,
+1567:                           mpmulher2,
+1568:                               pmpmulher2,
+1569:                               mmpmulher2,
+1570:                        mmulher2,
+1571:                           pmmulher2,
+1572:                               ppmmulher2,
+1573:                               mpmmulher2,
+1574:                           mmmulher2,
+1575:                               pmmmulher2,
+1576:                               mmmmulher2,
+1577:                    mulher3,
+1578:                        pmulher3,
+1579:                           ppmulher3,
+1580:                               pppmulher3,
+1581:                               mppmulher3,
+1582:                           mpmulher3,
+1583:                               pmpmulher3,
+1584:                               mmpmulher3,
+1585:                        mmulher3,
+1586:                           pmmulher3,
+1587:                               ppmmulher3,
+1588:                               mpmmulher3,
+1589:                           mmmulher3,
+1590:                               pmmmulher3,
+1591:                               mmmmulher3,
+1592:                   noiva,
+1593:                    pnoiva,
+1594:                         ppnoiva,
+1595:                             pppnoiva,
+1596:                             mppnoiva,
+1597:                         mpnoiva,
+1598:                             pmpnoiva,
+1599:                             mmpnoiva,
+1600:                    mnoiva,
+1601:                        pmnoiva,
+1602:                            ppmnoiva,
+1603:                            mpmnoiva,
+1604:                        mmnoiva,
+1605:                            pmmnoiva,
+1606:                            mmmnoiva,
+1607: 
+1608:           marido,
+1609:               pmarido,
+1610:                  ppmarido,
+1611:                      pppmarido,
+1612:                      mppmarido,
+1613:                  mpmarido,
+1614:                      pmpmarido,
+1615:                      mmpmarido,
+1616:               mmarido,
+1617:                  pmmarido,
+1618:                      ppmmarido,
+1619:                      mpmmarido,
+1620:                  mmmarido,
+1621:                      pmmmarido,
+1622:                      mmmmarido,
+1623:           marido1,
+1624:               pmarido1,
+1625:                  ppmarido1,
+1626:                      pppmarido1,
+1627:                      mppmarido1,
+1628:                  mpmarido1,
+1629:                      pmpmarido1,
+1630:                      mmpmarido1,
+1631:               mmarido1,
+1632:                  pmmarido1,
+1633:                      ppmmarido1,
+1634:                      mpmmarido1,
+1635:                  mmmarido1,
+1636:                      pmmmarido1,
+1637:                      mmmmarido1,
+1638:           marido2,
+1639:               pmarido2,
+1640:                  ppmarido2,
+1641:                      pppmarido2,
+1642:                      mppmarido2,
+1643:                  mpmarido2,
+1644:                      pmpmarido2,
+1645:                      mmpmarido2,
+1646:               mmarido2,
+1647:                   pmmarido2,
+1648:                      ppmmarido2,
+1649:                      mpmmarido2,
+1650:                  mmmarido2,
+1651:                      pmmmarido2,
+1652:                      mmmmarido2,
+1653:           marido3,
+1654:               pmarido3,
+1655:                  ppmarido3,
+1656:                      pppmarido3,
+1657:                      mppmarido3,
+1658:                  mpmarido3,
+1659:                      pmpmarido3,
+1660:                      mmpmarido3,
+1661:               mmarido3,
+1662:                  pmmarido3,
+1663:                      ppmmarido3,
+1664:                      mpmmarido3,
+1665:                  mmmarido3,
+1666:                      pmmmarido3,
+1667:                      mmmmarido3,
+1668: 
+1669:          noivo,
+1670:           pnoivo,
+1671:                ppnoivo,
+1672:                    pppnoivo,
+1673:                    mppnoivo,
+1674:                mpnoivo,
+1675:                    pmpnoivo,
+1676:                    mmpnoivo,
+1677:           mnoivo,
+1678:               pmnoivo,
+1679:                   ppmnoivo,
+1680:                   mpmnoivo,
+1681:               mmnoivo,
+1682:                   pmmnoivo,
+1683:                   mmmnoivo,
+1684:          pn,ppn,mpn,
+1685:          mn,pmn,mmn,
+1686:         pad,ppad,mpad,
+1687:             procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+1688:             pad1,ppad1,mpad1,procurador-pad1,procuradora-pad1,
+1689:             pad2,ppad2,mpad2,procurador-pad2,procuradora-pad2,
+1690:             pad3,ppad3,mpad3,procurador-pad3,procuradora-pad3,
+1691:             pad4,ppad4,mpad4,procurador-pad4,procuradora-pad4,
+1692: 
+1693:             mad,pmad,mmad,mpad,mrmad,
+1694:             mad1,pmad1,mmad1,mpad1,mrmad1,procurador-mad1,procuradora-mad1,
+1695:             mad2,pmad2,mmad2,mpad2,mrmad2,procurador-mad2,procuradora-mad2,
+1696:             mad3,pmad3,mmad3,mpad3,mrmad3,procurador-mad3,procuradora-mad3,
+1697:             mad4,pmad4,mmad4,mpad4,mrmad4,procurador-mad4,procuradora-mad4,
+1698: 	     sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+1699:               criada,criado,engeitada,engeitado
+1700: 
+1701: part 	name=referido;
+1702:      source=male;
+1703:      guaranteed=nome;
+1704:      position=nome,sexo;
+1705:      also=obs,mesmo_que,xmesmo_que,id;
+1706:      repeat=ls,atr,rel
+1707: 
+1708: part  name=celebrante; source=referido
+1709: note  ---- name=noivo; source=actorm;part=pnoivo,mnoivo,mulher1,mulher2,mulher3
+1710: part  name=procurador-pad;source=referido
+1711: part  name=procurador-mad;source=referido
+1712: part  name=procurador-pad1;source=referido
+1713: part  name=procurador-mad1;source=referido
+1714: part  name=procurador-pad2;source=referido
+1715: part  name=procurador-mad2;source=referido
+1716: part  name=procurador-pad3;source=referido
+1717: part  name=procurador-mad3;source=referido
+1718: part  name=procurador-pad4;source=referido
+1719: part  name=procurador-mad4;source=referido
+1720: part  name=presente;source=actorm
+1721: part  name=mestre;source=referido
+1722: 
+1723: 
+1724: 
+1725: 
+1726: part 	name=eleitor; source=actorm
+1727: part 	name=eleito; source=actorm
+1728: 
+1729: part	name=rv; source=actorm;
+1730:       position=nordem,nome;
+1731:       guaranteed=nordem,nome
+1732: 
+1733: part	name=rp; source=actorm;
+1734:       position=nordem,nome;
+1735:       guaranteed=nordem,nome
+1736: 
+1737: part 	name=arrem; source=n;
+1738:       also=id,mesmo_que, xmesmo_que,obs,cota
+1739: 
+1740: 
+1741: note notariais
+1742: part name=devedor;source=actorm;
+1743: part name=credor;source=actorm;
+1744: part name=fiador; source=actorm;
+1745: part name=comprador; source=actorm;
+1746: part name=vendedor; source=actorm;
+1747: part name=louvado; source=actorm;
+1748: part name=doador; source=actorm;
+1749: part name=donatario; source=actorm;
+1750: part name=dotado; source=actorm;
+1751: part name=dotante; source=actorm;
+1752: part name=senhorio; source=actorm;
+1753: part name=rendeiro; source=actorm;
+1754: part name=foreiro; source=actorm;
+1755: part name=enfiteuta; source=actorm;
+1756: part name=subenfiteuta; source=actorm;
+1757: part name=constituinte; source=actorm;
+1758: part name=outorgante; source=actorm;
+1759: part name=arrendatario; source=actorm;
+1760: part name=testador; source=actorm;
+1761: part name=testamentario; source=actorm;
+1762: part name=testamenteiro; source=actorm;
+1763: part name=contraente; source=actorm;
+1764: part name=renunciante; source=actorm;
+1765: part name=procurador; source=actorm;
+1766: part name=escrivao; source=actorm;
+1767: part name=tabeliao; source=actorm;
+1768: part name=arrematante; source=actorm;
+1769: part name=quitante; source=actorm;
+1770: part name=quitado; source=actorm
+1771: part name=abonador; source=actorm;
+1772: part name=demandador; source=actorm;
+1773: part name=demandado; source=actorm;
+1774: part name=escambador; source=actorm;
+1775: part name=reu;source=actorm;
+1776: part name=inquirido; source=actorm;
+1777: part name=inquiridor; source=actorm;
+1778: part name=apelante; source=actorm;
+1779: part name=apelado; source=actorm;
+1780: part name=vedor; source=actorm;
+1781: part name=autor; source=actorm;
+1782: part name=autoridade; source=actorm;
+1783: part name=beneficiario; source=actorm;
+1784: part name=padroeiro; source=actorm;
+1785: part name=apresentado; source=actorm;
+1786: part name=confirmante; source=actorm;
+1787: part name=comerciante; source=actorm;
+1788: part name=proprietario; source=actorm;
+1789: part name=juiz; source=actorm;
+1790: part name=requerente;source=actorm;
+1791: part name=requerido;source=actorm;
+1792: 
+1793: note
+1794: note cargos para o registos de governos
+1795: note
+1796: note
+1797: part name=pm; source=actorm
+1798: note part name=minAdj; source=actorm
+1799: note part name=minDefNac; source=actorm
+1800: note part name=minSemPasta; source=actorm
+1801: note part name=minCoordInterter; source=actorm
+1802: note part name=secEstAdm; source=actorm
+1803: note part name=secEstAssEcon; source=actorm
+1804: note part name=minAdmInt; source=actorm
+1805: note part name=minJust; source=actorm
+1806: note part name=subsecEstAdmJudic; source=actorm
+1807: note part name=minCoordEcon; source=actorm
+1808: note part name=secEstFin; source=actorm
+1809: note part name=secEstOrc; source=actorm
+1810: note part name=subsecEstOrc; source=actorm
+1811: note part name=secEstTes; source=actorm
+1812: note part name=subsecEstTes; source=actorm
+1813: note part name=secEstPlanEcon; source=actorm
+1814: note part name=secEstIndEEner; source=actorm
+1815: note part name=secEstAgri; source=actorm
+1816: note part name=secEstComExtETur; source=actorm
+1817: note part name=secEstPesc; source=actorm
+1818: note part name=minNegEstr; source=actorm
+1819: note part name=secEstNegEstr; source=actorm
+1820: note part name=minEquiSocEAmb; source=actorm
+1821: note part name=secEstObPub; source=actorm
+1822: note part name=secEstTranECom; source=actorm
+1823: note part name=secEstHabEUrb; source=actorm
+1824: note part name=secEstMarMer; source=actorm
+1825: note part name=secEstAmb; source=actorm
+1826: note part name=minEduECult; source=actorm
+1827: note part name=secEstAdmEsc; source=actorm
+1828: note part name=secEstAssCultEInvCient; source=actorm
+1829: note part name=secEstDespEAccSocEsc; source=actorm
+1830: note part name=secEstRefEdu; source=actorm
+1831: note part name=minTrab; source=actorm
+1832: note part name=secEstEmig; source=actorm
+1833: note part name=secEstTrab; source=actorm
+1834: note part name=minAssSoc; source=actorm
+1835: note part name=secEstSau; source=actorm
+1836: note part name=secEstSegSoc; source=actorm
+1837: note part name=minComSoc; source=actorm
+1838: note part name=minEcon; source=actorm
+1839: note part name=secEstAbastEPrec; source=actorm
+1840: note part name=secEstOrientPedag; source=actorm
+1841: note part name=secEstEmpreg; source=actorm
+1842: note part name=minIndETecn; source=actorm
+1843: note part name=secEstIndETecn; source=actorm
+1844: note part name=subsecEstProgInd; source=actorm
+1845: note part name=subsecEstAdmInt; source=actorm
+1846: note part name=secEstAdmInt; source=actorm
+1847: note part name=subsecEstFomCoop; source=actorm
+1848: note part name=subsecEstAdjMinComExt; source=actorm
+1849: note part name=secEstInvPub; source=actorm
+1850: note part name=subsecEstSeg; source=actorm
+1851: note part name=secEstConstCiv; source=actorm
+1852: note part name=secEstRecHidESanBas; source=actorm
+1853: note part name=secEstDespEJuv; source=actorm
+1854: note part name=secEstDescol; source=actorm
+1855: note part name=minHabUrbEConst; source=actorm
+1856: note part name=vpm; source=actorm
+1857: note part name=secEstPopEmpreg; source=actorm
+1858: note part name=secEstIntegAdm; source=actorm
+1859: note part name=secEstFlor; source=actorm
+1860: note part name=minComETur; source=actorm
+1861: note part name=secEstTur; source=actorm
+1862: note part name=subsecEst; source=actorm
+1863: note part name=secEstPlan; source=actorm
+1864: note part name=minRepRegAutMad; source=actorm
+1865: note part name=minRepRegAutAcor; source=actorm
+1866: note part name=secEstAdmLocEReg; source=actorm
+1867: note part name=secEstAdmPub; source=actorm
+1868: note part name=secEstCultEEducPerm; source=actorm
+1869: note part name=secEstCoopExt; source=actorm
+1870: note part name=minPlanECoordEcon; source=actorm
+1871: note part name=secEstPlanRecHum; source=actorm
+1872: note part name=subsecEstComInt; source=actorm
+1873: note part name=secEstEnsSupEInvCient; source=actorm
+1874: note part name=secEstEstrAgra; source=actorm
+1875: note part name=minAgriEPesc; source=actorm
+1876: note part name=secEstFomAgra; source=actorm
+1877: note part name=secEstJust; source=actorm
+1878: note part name=secEstRecupSoc; source=actorm
+1879: note part name=secEstComAlim; source=actorm
+1880: note part name=secEstComNAlim; source=actorm
+1881: note part name=subsecEstDefCons; source=actorm
+1882: note part name=secEstEnerEMin; source=actorm
+1883: note part name=secEstIndLig; source=actorm
+1884: note part name=secEstIndPes; source=actorm
+1885: note part name=secEstFormProf; source=actorm
+1886: note part name=secEstRetorn; source=actorm
+1887: note part name=secEstInf; source=actorm
+1888: note part name=minCoop; source=actorm
+1889: note part name=minFin; source=actorm
+1890: note part name=secEstCoopEconComPaisSoc; source=actorm
+1891: note part name=secEstAdjPMAssAdm; source=actorm
+1892: note part name=secEstAdjPMAssPol; source=actorm
+1893: note part name=secEstComEIndAgri; source=actorm
+1894: note part name=secEstIndLigEPes; source=actorm
+1895: note part name=secEstAdmEEquiEsc; source=actorm
+1896: note part name=secEstEnsSup; source=actorm
+1897: note part name=ma; source=actorm
+1898: note part name=mab; source=actorm
+1899: note part name=mc; source=actorm
+1900: note part name=me; source=actorm
+1901: note part name=mej; source=actorm
+1902: note part name=mf; source=actorm
+1903: note part name=mfo; source=actorm
+1904: note part name=mg; source=actorm
+1905: note part name=mi; source=actorm
+1906: note part name=mip; source=actorm
+1907: note part name=mj; source=actorm
+1908: note part name=mm; source=actorm
+1909: note part name=mmu; source=actorm
+1910: note part name=mco; source=actorm
+1911: note part name=mop; source=actorm
+1912: note part name=mopci; source=actorm
+1913: note part name=mipba; source=actorm
+1914: note part name=mp; source=actorm
+1915: note part name=mr; source=actorm
+1916: note part name=mt; source=actorm
+1917: note part name=mtps; source=actorm
+1918: note part name=pc; source=actorm
+1919: note part name=subsecEstFin; source=actorm
+1920: note part name=secEstOrc; source=actorm
+1921: note part name=secEstTes; source=actorm
+1922: note part name=subsecEstAmb; source=actorm
+1923: note part name=subsecEstComSoc; source=actorm
+1924: note part name=secEstComSoc; source=actorm
+1925: note part name=secEstAdmInt; source=actorm
+1926: note part name=secEstAdmInd; source=actorm
+1927: note part name=subsecEstTur; source=actorm
+1928: note part name=minEquipSocEAmb; source=actorm
+1929: note part name=subsecEstTran; source=actorm
+1930: note part name=subsecEstAdjPM; source=actorm
+1931: note part name=minObPub; source=actorm
+1932: note part name=subsecEstObPub; source=actorm
+1933: note part name=minComExt; source=actorm
+1934: note part name=secEstComExt; source=actorm
+1935: note part name=subsecEstComExt; source=actorm
+1936: note part name=minComInt; source=actorm
+1937: note part name=secEstComInt; source=actorm
+1938: note part name=secEstAbast; source=actorm
+1939: note part name=secEstJuvEDesp; source=actorm
+1940: note part name=subsecEstAdmInt; source=actorm
+1941: note part name=subsecEstAdmInd; source=actorm
+1942: note part name=minTranECom; source=actorm
+1943: note part name=secEstCult; source=actorm
+1944: note part name=secEstAdmRegELoc; source=actorm
+1945: note part name=secEstPlanEOrc; source=actorm
+1946: note part name=subsecEstPlan; source=actorm
+1947: note part name=subsecEstInvPub; source=actorm
+1948: note part name=subsecEstAdjMinFin; source=actorm
+1949: note part name=minEquiSoc; source=actorm
+1950: note part name=minEduEInvCient; source=actorm
+1951: note part name=secEstInvCient; source=actorm
+1952: note part name=subsecEstAdjMinAgriEPesc; source=actorm
+1953: note part name=subsecEstAdjMinPesc; source=actorm
+1954: note part name=subsecEstAdjMinTrab; source=actorm
+1955: note part name=subsecEstTrab; source=actorm
+1956: note part name=secEstTrab; source=actorm
+1957: note part name=secEstCoop; source=actorm
+1958: note part name=subsecEstAdjMinHabUrbEConst; source=actorm
+1959: note part name=subsecEstHabUrbEConst; source=actorm
+1960: note part name=subsecEstConstCiv; source=actorm
+1961: note part name=subsecEstEstrAgra; source=actorm
+1962: note part name=secEstAdjPM; source=actorm
+1963: note part name=subsecEstAdjPM; source=actorm
+1964: note part name=minEst; source=actorm
+1965: note part name=secEstPopEEmpreg; source=actorm
+1966: note part name=secEstCoordEcon; source=actorm
+1967: note part name=secEstJust; source=actorm
+1968: note part name=subsecEstFlor; source=actorm
+1969: 
+1970: note Usado em let (leitura de bachareis)
+1971: part name=ts; source=n
+1972: 
+1973: note usado em cas (casamentos)
+1974: part name=test; source=male;
+1975:          position=nome,sexo;
+1976:       also=sexo,id,mesmo_que,xmesmo_que,obs;
+1977:          guaranteed=nome;
+1978:       repeat=ls,atr,rel
+1979: note usado nas devassas
+1980: part name=testo; source=actorm;
+1981: 	position=nome,sexo;
+1982: 	also=id,mesmo_que,xmesmo_que,obs,sexo;
+1983: 	guaranteed=nome;
+1984: 	part=acus,caso
+1985: part name=denunciante; source=actorm;
+1986: 	position=nome,sexo;
+1987: 	also=id,mesmo_que,xmesmo_que,obs,sexo;
+1988: 	guaranteed=nome;
+1989: 	part=acus,caso
+1990: part name=acusado; source=actorm;
+1991: 
+1992: part name=enfermo; source=actorm;
+1993: 
+1994: 
+1995: note *****************************************************************
+1996: note Letras de cambios
+1997: note *****************************************************************
+1998: part name=destinatario;source=actorm
+1999: part name=destinatario1;source=actorm
+2000: part name=destinatario2;source=actorm
+2001: part name=remetente;source=actorm
+2002: part name=beneficiario;source=actorm
+2003: part name=beneficiario-representante;source=actorm
+2004: part name=beneficiario-procurador;source=actorm
+2005: part name=beneficiario1;source=actorm
+2006: part name=beneficiario1-representante;source=actorm
+2007: part name=beneficiario1-procurador;source=actorm
+2008: part name=beneficiario2;source=actorm
+2009: part name=beneficiario2-representante;source=actorm
+2010: part name=beneficiario2-procurador;source=actorm
+2011: part name=beneficiario3;source=actorm
+2012: part name=beneficiario3-representante;source=actorm
+2013: part name=beneficiario3-procurador;source=actorm
+2014: part name=beneficiario4;source=actorm
+2015: part name=beneficiario4-representante;source=actorm
+2016: part name=beneficiario4-procurador;source=actorm
+2017: part name=beneficiario5;source=actorm
+2018: part name=beneficiario5-representante;source=actorm
+2019: part name=beneficiario5-procurador;source=actorm
+2020: part name=beneficiario6;source=actorm
+2021: part name=beneficiario6-representante;source=actorm
+2022: part name=beneficiario6-procurador;source=actorm
+2023: part name=tomador;source=actorm
+2024: part name=tomador-representante;source=actorm
+2025: part name=tomador1;source=actorm
+2026: part name=tomador1-representante;source=actorm
+2027: part name=tomador2;source=actorm
+2028: part name=tomador2-representante;source=actorm
+2029: part name=tomador3;source=actorm
+2030: part name=tomador3-representante;source=actorm
+2031: part name=tomador4;source=actorm
+2032: part name=tomador4-representante;source=actorm
+2033: part name=tomador5;source=actorm
+2034: part name=tomador5-representante;source=actorm
+2035: part name=pagador;source=actorm
+2036: part name=pagador-representante;source=actorm
+2037: part name=pagador1;source=actorm
+2038: part name=pagador1-representante;source=actorm
+2039: part name=pagador2;source=actorm
+2040: part name=pagador2-representante;source=actorm
+2041: part name=pagador3;source=actorm
+2042: part name=pagador3-representante;source=actorm
+2043: part name=pagador4;source=actorm
+2044: part name=pagador4-representante;source=actorm
+2045: part name=pagador5;source=actorm
+2046: part name=pagador5-representante;source=actorm
+2047: part name=dador;source=actorm
+2048: part name=dador-representante;source=actorm
+2049: part name=dador1;source=actorm
+2050: part name=dador1-representante;source=actorm
+2051: part name=dador2;source=actorm
+2052: part name=dador2-representante;source=actorm
+2053: part name=dador3;source=actorm
+2054: part name=dador3-representante;source=actorm
+2055: part name=dador4;source=actorm
+2056: part name=dador4-representante;source=actorm
+2057: part name=cobrador;source=actorm
+2058: part name=cobrador-representante;source=actorm
+2059: part name=cobrador1;source=actorm
+2060: part name=cobrador-representante1;source=actorm
+2061: part name=cobrador2;source=actorm
+2062: part name=cobrador-representante2;source=actorm
+2063: part name=cobrador3;source=actorm
+2064: part name=cobrador-representante3;source=actorm
+2065: part name=cobrador4;source=actorm
+2066: part name=cobrador-representante4;source=actorm
+2067: part name=endossante;source=actorm
+2068: part name=endossado;source=actorm
+2069: part name=debitado;source=actorm
+2070: part name=recebedor;source=actorm
+2071: part name=recebedor1;source=actorm
+2072: part name=recebedor2;source=actorm
+2073: part name=recebedor3;source=actorm
+2074: part name=recebedor4;source=actorm
+2075: part name=recebedor-proc;source=actorm
+2076: part name=recebedor1-proc;source=actorm
+2077: part name=recebedor2-proc;source=actorm
+2078: part name=recebedor3-proc;source=actorm
+2079: part name=recebedor4-proc;source=actorm
+2080: note ***********************************
+2081: note cartas comerciais dyncoopnet
+2082: note ***********************************
+2083: note informador,defector,beneficiario,representante,tomador,referido,
+2084: note		intermediario,topico,local
+2085: part name=informador;source=actorm
+2086: part name=defector;source=actorm
+2087: part name=intermediario;source=actorm
+2088: part name=fretador;source=actorm
+2089: part name=receptor;source=actorm
+2090: part name=emissor;source=actorm
+2091: part name=emissor-representante;source=actorm
+2092: part name=representante;source=actorm
+2093: part name=agente_financeiro;source=actorm
+2094: part name=agente_seguros;source=actorm
+2095: part name=cheater;source=actorm
+2096: part name=fonte_info;source=actorm
+2097: part name=vendedor;source=actorm
+2098: part name=comprador;source=actorm
+2099: part name=transportador;source=actorm
+2100: 
+2101: note *****************************************************************
+2102: note Definicao generica de um actor feminino.
+2103: note           nota: todos os parentes aqui enumerados tem de aparecer
+2104: note           associados a parentef ou a parentem
+2105: note *****************************************************************
+2106: part 	name=actorf;
+2107:      source=female;
+2108:      position=nome,sexo;
+2109:      guaranteed=nome;
+2110:      also=sexo,obs,mesmo_que,xmesmo_que,id;
+2111:      repeat=atr,ls,rel,referido,referida,
+2112:          pai,
+2113:               ppai,
+2114:                   pppai,
+2115:                       ppppai,
+2116:                      mpppai,
+2117:                   mppai,
+2118:                      pmppai,
+2119:                      mmppai,
+2120:               mpai,
+2121:                   pmpai,
+2122:                      ppmpai,
+2123:                      mpmpai,
+2124:                   mmpai,
+2125:                      pmmpai,
+2126:                      mmmpai,
+2127:           mae,
+2128:               pmae,
+2129:                   ppmae,
+2130:                       pppmae,
+2131:                       mppmae,
+2132:                   mpmae,
+2133:                       pmpmae,
+2134:                       mmpmae,
+2135:               mmae,
+2136:                   pmmae,
+2137:                      ppmmae,
+2138:                      mpmmae,
+2139:                   mmmae,
+2140:                      pmmmae,
+2141:                      mmmmae,
+2142:           filho,
+2143:           filha,
+2144:          irmao,
+2145:          irma,
+2146:           marido,
+2147:               pmarido,
+2148:                  ppmarido,
+2149:                      pppmarido,
+2150:                      mppmarido,
+2151:                  mpmarido,
+2152:                      pmpmarido,
+2153:                      mmpmarido,
+2154:               mmarido,
+2155:                  pmmarido,
+2156:                      ppmmarido,
+2157:                      mpmmarido,
+2158:                  mmmarido,
+2159:                      pmmmarido,
+2160:                      mmmmarido,
+2161:           marido1,
+2162:               pmarido1,
+2163:                  ppmarido1,
+2164:                      pppmarido1,
+2165:                      mppmarido1,
+2166:                  mpmarido1,
+2167:                      pmpmarido1,
+2168:                      mmpmarido1,
+2169:               mmarido1,
+2170:                  pmmarido1,
+2171:                      ppmmarido1,
+2172:                      mpmmarido1,
+2173:                  mmmarido1,
+2174:                      pmmmarido1,
+2175:                      mmmmarido1,
+2176:           marido2,
+2177:               pmarido2,
+2178:                  ppmarido2,
+2179:                      pppmarido2,
+2180:                      mppmarido2,
+2181:                  mpmarido2,
+2182:                      pmpmarido2,
+2183:                      mmpmarido2,
+2184:               mmarido2,
+2185:                  pmmarido2,
+2186:                      ppmmarido2,
+2187:                      mpmmarido2,
+2188:                  mmmarido2,
+2189:                      pmmmarido2,
+2190:                      mmmmarido2,
+2191:           marido3,
+2192:               pmarido3,
+2193:                  ppmarido3,
+2194:                      pppmarido3,
+2195:                      mppmarido3,
+2196:                  mpmarido3,
+2197:                      pmpmarido3,
+2198:                      mmpmarido3,
+2199:               mmarido3,
+2200:                  pmmarido3,
+2201:                      ppmmarido3,
+2202:                      mpmmarido3,
+2203:                  mmmarido3,
+2204:                      pmmmarido3,
+2205:                      mmmmarido3,
+2206: 
+2207:          noivo,
+2208:           pnoivo,
+2209:                ppnoivo,
+2210:                    pppnoivo,
+2211:                    mppnoivo,
+2212:                mpnoivo,
+2213:                    pmpnoivo,
+2214:                    mmpnoivo,
+2215:           mnoivo,
+2216:               pmnoivo,
+2217:                   ppmnoivo,
+2218:                   mpmnoivo,
+2219:               mmnoivo,
+2220:                   pmmnoivo,
+2221:                   mmmnoivo,
+2222:          pn,ppn,mpn,mn,pmn,mmn,
+2223:          pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+2224:             pad1,ppad1,mpad1,procuradora-pad1,
+2225:               pad2,ppad2,mpad2,procuradora-pad2,
+2226:              pad3,ppad3,mpad3,procuradora-pad3,
+2227:              pad4,ppad4,mpad4,procuradora-pad4,
+2228: 
+2229:               mad,pmad,mmad,mpad,mrmad,
+2230:               mad1,pmad1,mmad1,mpad1,mrmad1,
+2231:               mad2,pmad2,mmad2,mpad2,mrmad2,
+2232:               mad3,pmad3,mmad3,mpad3,mrmad3,
+2233:               mad4,pmad4,mmad4,mpad4,mrmad4,
+2234:               sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+2235:               criada,criado,engeitado,engeitada
+2236: 
+2237: note *****************************************************************
+2238: note Actores femininos: especificados
+2239: note *****************************************************************
+2240: 
+2241: part 	name=referida;	source=female;
+2242:      guaranteed=nome;
+2243:      position=nome,sexo;
+2244:      also=obs,mesmo_que,xmesmo_que,id;
+2245:      repeat=ls,atr,rel
+2246: 
+2247: part  name=na; source=actorf
+2248: part  name=procuradora-pad;source=referida
+2249: part  name=procuradora-mad;source=referida
+2250: part  name=procuradora-pad1;source=referida
+2251: part  name=procuradora-mad1;source=referida
+2252: part  name=procuradora-pad2;source=referida
+2253: part  name=procuradora-mad2;source=referida
+2254: part  name=procuradora-pad3;source=referida
+2255: part  name=procuradora-mad3;source=referida
+2256: part  name=procuradora-pad4;source=referida
+2257: part  name=procuradora-mad4;source=referida
+2258: part  name=enferma;source=actorf
+2259: note doc group present-f mulher presente num acto.
+2260: part  name=presente-f;source=actorf
+2261: 
+2262: part name=testa; source=actorf;
+2263: 	position=nome,sexo;
+2264: 	also=id,mesmo_que,xmesmo_que,obs,sexo;
+2265: 	guaranteed=nome;
+2266: 	part=acus,caso
+2267: 
+2268: note notariais
+2269: part name=devedora;source=actorf;
+2270: part name=credora;source=actorf;
+2271: part name=fiadora; source=actorf;
+2272: part name=compradora; source=actorf;
+2273: part name=vendedora; source=actorf;
+2274: part name=doadora; source=actorf;
+2275: part name=donataria; source=actorf;
+2276: part name=dotantef; source=actorf;
+2277: part name=dotada; source=actorf;
+2278: part name=senhoria; source=actorf;
+2279: part name=rendeira; source=actorf;
+2280: part name=foreira; source=actorf;
+2281: part name=enfiteutaf; source=actorf;
+2282: part name=subenfiteutaf; source=actorf;
+2283: part name=constituintef; source=actorf;
+2284: part name=outorgantef; source=actorf;
+2285: part name=arrendataria; source=actorf;
+2286: part name=acusada; source=actorf;
+2287: part name=testadora; source=actorf;
+2288: part name=testamentaria; source=actorf;
+2289: part name=testamenteira; source=actorf;
+2290: part name=contraentef; source=actorf;
+2291: part name=renunciantef; source=actorf;
+2292: part name=procuradora; source=actorf;
+2293: part name=arrematantef; source=actorf;
+2294: part name=abonadora; source=actorf;
+2295: part name=quitantef; source=actorf;
+2296: part name=quitada; source=actorf;
+2297: part name=demandadora; source=actorf;
+2298: part name=escambadora; source=actorf;
+2299: part name=reuf; source=actorf;
+2300: part name=inquirida; source=actorf;
+2301: part name=apelantef; source=actorf;
+2302: part name=autorf; source=actorf;
+2303: 
+2304: part name=beneficiaria; source=actorf;
+2305: part name=destinataria; source=actorf;
+2306: 
+2307: part name=perdoante; source= person;
+2308:      guaranteed=nome;
+2309:      position=nome,sexo;
+2310:      also=obs,mesmo_que,xmesmo_que,id;
+2311:      repeat=ls,atr,rel
+2312: part name=perdoantem; source= actorm; position=nome
+2313: part name=perdoantef; source= actorf; position=nome
+2314: part name=perdoado; source=actorm; position=nome
+2315: part name=perdoada; source=actorf; position=nome
+2316: part name=vitima; source=person;
+2317:      guaranteed=nome;
+2318:      position=nome,sexo;
+2319:      also=obs,mesmo_que,xmesmo_que,id;
+2320:      repeat=ls,atr,rel
+2321: part name=vitima-m; source= actorm; position=nome
+2322: part name=vitima-f; source= actorf; position=nome
+2323: 
+2324: note *****************************************************************
+2325: note Parente masculino, definicao generica
+2326: note *****************************************************************
+2327: 
+2328: note TODO the concept of male kin should go also into the generic part
+2329: part name=parentem;
+2330:  source=male;
+2331:  position=nome,sexo;
+2332:  guaranteed=nome;
+2333:  also=obs,mesmo_que,xmesmo_que,id,sexo;
+2334:  repeat=atr,ls,rel
+2335: 
+2336: note TODO this is related to family processing maybe could go into generic part
+2337: 
+2338: part name=kin-father; source=parentem
+2339: part name=kin-husband; source=parentem
+2340: part name=kin-son; source=parentem
+2341: 
+2342: note *****************************************************************
+2343: note Parente feminino, definicao generica
+2344: note *****************************************************************
+2345: 
+2346: note TODO the concept of female kin should go into generic part
+2347: 
+2348: part name=parentef;
+2349:   source=female;
+2350:  guaranteed=nome;
+2351:  position=nome,sexo;
+2352:  also=obs,mesmo_que,xmesmo_que,id,sexo;
+2353:  repeat=atr,ls,rel
+2354: 
+2355: note TODO this is related to family processing maybe could go into generic part
+2356: 
+2357: part name=kin-mother; source=parentef
+2358: part name=kin-wife; source=parentef
+2359: part name=kin-daughter; source=parentef
+2360: 
+2361: note *****************************************************************
+2362: note Parentes classificados por genero
+2363: note *****************************************************************
+2364: note TODO falta verificar se todos os part est?o bem feitos
+2365: 
+2366: part name= pai;  source=kin-father;pars=ppai, mpai
+2367: part    name= ppai;  source=kin-father;pars=pppai, mppai
+2368: part        name= pppai;  source=kin-father;pars=ppppai, mpppai
+2369: part        name= mppai;  source=kin-mother;pars=pmppai, mmppai
+2370: part    name= mpai;  source=kin-mother;pars=pmpai, mmpai
+2371: part        name= pmpai;  source=kin-father;pars=ppmpai, mpmpai
+2372: part        name= mmpai;  source=kin-mother;pars=pmmpai, mmmpai
+2373: 
+2374: 
+2375: part name=mae;     			source=kin-mother; part=pmae,mmae
+2376: part 	name=pmae;     		source=kin-father; part=ppmae,mpmae
+2377: part 		name=ppmae;			source=kin-father; part=pppmae,mppmae
+2378: part			name=pppmae;	source=kin-father
+2379: part 			name=mppmae;	source=kin-mother
+2380: part 		name=mpmae;   		source=kin-mother; part=pmpmae, mmpmae
+2381: part			name=pmpmae;	source=kin-father
+2382: part			name=mmpmae;   source=kin-mother
+2383: part 	name=mmae;     		source=kin-mother; part=pmmae,mmmae
+2384: part 		name=pmmae;   		source=kin-father; part=ppmmae,mpmmae
+2385: part			name=ppmmae;	source=kin-father
+2386: part 			name=mpmmae;	source=kin-mother
+2387: part 		name=mmmae;   		source=kin-mother; part=pmmmae,mmmmae
+2388: part			name=pmmmae;	source=kin-father
+2389: part			name=mmmmae;	source=kin-mother
+2390: 
+2391: part name=marido;     			source=kin-husband; part=pmarido,mmarido
+2392: part 	name=pmarido;     		source=kin-father; part=ppmarido,mpmarido
+2393: part 		name=ppmarido;			source=kin-father; part=pppmarido,mppmarido
+2394: part			name=pppmarido;	source=kin-father
+2395: part 			name=mppmarido;	source=kin-mother
+2396: part 		name=mpmarido;   		source=kin-mother; part=pmpmarido,mmpmarido
+2397: part			name=pmpmarido;	source=kin-father
+2398: part			name=mmpmarido;   source=kin-father
+2399: part 	name=mmarido;     		source=kin-mother; part=pmmarido,mmmarido
+2400: part 		name=pmmarido;   		source=kin-father
+2401: part			name=ppmmarido;	source=kin-father
+2402: part 			name=mpmmarido;	source=kin-mother
+2403: part 		name=mmmarido;   		source=kin-mother; part=pmmmarido, mmmmarido
+2404: part			name=pmmmarido;	source=kin-father
+2405: part			name=mmmmarido;	source=kin-mother
+2406: 
+2407: part name=marido1;     			source=kin-husband; part=pmarido1,mmarido1
+2408: part 	name=pmarido1;     		source=kin-father
+2409: part 		name=ppmarido1;		source=kin-father; part=pppmarido1,mppmarido1
+2410: part			name=pppmarido1;	source=kin-father
+2411: part 			name=mppmarido1;	source=kin-mother
+2412: part 		name=mpmarido1;   	source=kin-mother; part=pmpmarido1,mmpmarido1
+2413: part			name=pmpmarido1;	source=kin-father
+2414: part			name=mmpmarido1;  source=kin-father
+2415: part 	name=mmarido1;     		source=kin-mother; part=pmpmarido1,mmpmarido1
+2416: part 		name=pmmarido1;   	source=kin-father; part=ppmmarido1,mpmmarido1
+2417: part			name=ppmmarido1;	source=kin-father
+2418: part 			name=mpmmarido1;	source=kin-mother
+2419: part 		name=mmmarido1;   	source=kin-mother; part=pmmmarido1,mmmmarido1
+2420: part			name=pmmmarido1;	source=kin-father
+2421: part			name=mmmmarido1;	source=kin-mother
+2422: 
+2423: part name=marido2;     			source=kin-husband; part=pmarido2,mmarido2
+2424: part 	name=pmarido2;     		source=kin-father
+2425: part 		name=ppmarido2;		source=kin-father; part=pppmarido2,mppmarido2
+2426: part			name=pppmarido2;	source=kin-father
+2427: part 			name=mppmarido2;	source=kin-mother
+2428: part 		name=mpmarido2;   	source=kin-mother; part=pmpmarido2,mmpmarido2
+2429: part			name=pmpmarido2;	source=kin-father
+2430: part			name=mmpmarido2;  source=kin-father
+2431: part 	name=mmarido2;     		source=kin-mother; part=pmpmarido2,mmpmarido2
+2432: part 		name=pmmarido2;   	source=kin-father; part=ppmmarido2,mpmmarido2
+2433: part			name=ppmmarido2;	source=kin-father
+2434: part 			name=mpmmarido2;	source=kin-mother
+2435: part 		name=mmmarido2;   	source=kin-mother; part=pmmmarido2,mmmmarido2
+2436: part			name=pmmmarido2;	source=kin-father
+2437: part			name=mmmmarido2;	source=kin-mother
+2438: 
+2439: part name=marido3;     			source=kin-husband; part=pmarido3,mmarido3
+2440: part 	name=pmarido3;     		source=kin-father
+2441: part 		name=ppmarido3;		source=kin-father; part=pppmarido3,mppmarido3
+2442: part			name=pppmarido3;	source=kin-father
+2443: part 			name=mppmarido3;	source=kin-mother
+2444: part 		name=mpmarido3;   	source=kin-mother; part=pmpmarido3,mmpmarido3
+2445: part			name=pmpmarido3;	source=kin-father
+2446: part			name=mmpmarido3;  source=kin-father
+2447: part 	name=mmarido3;     		source=kin-mother; part=pmpmarido3,mmpmarido3
+2448: part 		name=pmmarido3;   	source=kin-father; part=ppmmarido3,mpmmarido3
+2449: part			name=ppmmarido3;	source=kin-father
+2450: part 			name=mpmmarido3;	source=kin-mother
+2451: part 		name=mmmarido3;   	source=kin-mother; part=pmmmarido3,mmmmarido3
+2452: part			name=pmmmarido3;	source=kin-father
+2453: part			name=mmmmarido3;	source=kin-mother
+2454: 
+2455: part name=mulher;     			source=kin-wife; part=pmulher,mmulher,filha,filho
+2456: part 	name=pmulher;     		source=kin-father; part=ppmulher,mpmulher
+2457: part 		name=ppmulher;		source=kin-father; part=pppmulher,mppmulher
+2458: part			name=pppmulher;	source=kin-father
+2459: part 			name=mppmulher;	source=kin-mother
+2460: part 		name=mpmulher;   	source=kin-mother; part=pmpmulher,mmpmulher
+2461: part			name=pmpmulher;	source=kin-father
+2462: part			name=mmpmulher; source=kin-mother
+2463: part 	name=mmulher;     		source=kin-mother; part=pmmulher,mmmulher
+2464: part 		name=pmmulher;   	source=kin-father; part= ppmmulher,mpmmulher
+2465: part			name=ppmmulher;	source=kin-father
+2466: part 			name=mpmmulher;	source=kin-mother
+2467: part 		name=mmmulher;   	source=kin-mother; part=pmmmulher,mmmmulher
+2468: part			name=pmmmulher;	source=kin-father
+2469: part			name=mmmmulher;	source=kin-mother
+2470: 
+2471: part name=mulher1;     			source=kin-wife; part=pmulher1,mmulher1
+2472: part 	name=pmulher1;     		source=kin-father; part=ppmulher1,mpmulher1
+2473: part 		name=ppmulher1;		source=kin-father; part=pppmulher1,mppmulher1
+2474: part			name=pppmulher1;	source=kin-father
+2475: part 			name=mppmulher1;	source=kin-mother
+2476: part 		name=mpmulher1;   	source=kin-mother; part=pmpmulher1,mmpmulher1
+2477: part			name=pmpmulher1;	source=kin-father
+2478: part			name=mmpmulher1; source=kin-mother
+2479: part 	name=mmulher1;     		source=kin-mother; part=pmmulher1,mmmulher1
+2480: part 		name=pmmulher1;   	source=kin-father; part= ppmmulher1,mpmmulher1
+2481: part			name=ppmmulher1;	source=kin-father
+2482: part 			name=mpmmulher1;	source=kin-mother
+2483: part 		name=mmmulher1;   	source=kin-mother; part=pmmmulher1,mmmmulher1
+2484: part			name=pmmmulher1;	source=kin-father
+2485: part			name=mmmmulher1;	source=kin-mother
+2486: 
+2487: part name=mulher2;     			source=kin-wife; part=pmulher2,mmulher2
+2488: part 	name=pmulher2;     		source=kin-father; part=ppmulher2,mpmulher2
+2489: part 		name=ppmulher2;		source=kin-father; part=pppmulher2,mppmulher2
+2490: part			name=pppmulher2;	source=kin-father
+2491: part 			name=mppmulher2;	source=kin-mother
+2492: part 		name=mpmulher2;   	source=kin-mother; part=pmpmulher2,mmpmulher2
+2493: part			name=pmpmulher2;	source=kin-father
+2494: part			name=mmpmulher2; source=kin-mother
+2495: part 	name=mmulher2;     		source=kin-mother; part=pmmulher2,mmmulher2
+2496: part 		name=pmmulher2;   	source=kin-father; part= ppmmulher2,mpmmulher2
+2497: part			name=ppmmulher2;	source=kin-father
+2498: part 			name=mpmmulher2;	source=kin-mother
+2499: part 		name=mmmulher2;   	source=kin-mother; part=pmmmulher2,mmmmulher2
+2500: part			name=pmmmulher2;	source=kin-father
+2501: part			name=mmmmulher2;	source=kin-mother
+2502: 
+2503: part name=mulher3;     			source=kin-wife; part=pmulher3,mmulher3
+2504: part 	name=pmulher3;     		source=kin-father; part=ppmulher3,mpmulher3
+2505: part 		name=ppmulher3;		source=kin-father; part=pppmulher3,mppmulher3
+2506: part			name=pppmulher3;	source=kin-father
+2507: part 			name=mppmulher3;	source=kin-mother
+2508: part 		name=mpmulher3;   	source=kin-mother; part=pmpmulher3,mmpmulher3
+2509: part			name=pmpmulher3;	source=kin-father
+2510: part			name=mmpmulher3; source=kin-mother
+2511: part 	name=mmulher3;     		source=kin-mother; part=pmmulher3,mmmulher3
+2512: part 		name=pmmulher3;   	source=kin-father; part= ppmmulher3,mpmmulher3
+2513: part			name=ppmmulher3;	source=kin-father
+2514: part 			name=mpmmulher3;	source=kin-mother
+2515: part 		name=mmmulher3;   	source=kin-mother; part=pmmmulher3,mmmmulher3
+2516: part			name=pmmmulher3;	source=kin-father
+2517: part			name=mmmmulher3;	source=kin-mother
+2518: 
+2519: part name=noiva;     			source=kin-wife; part=pnoiva,mnoiva,marido1,marido2,marido3
+2520: part 	name=pnoiva;     			source=kin-father; part=ppnoiva,mpnoiva
+2521: part 		name=ppnoiva;			source=kin-father; part=pppnoiva,mppnoiva
+2522: part			name=pppnoiva;		source=kin-father
+2523: part 			name=mppnoiva;		source=kin-mother
+2524: part 		name=mpnoiva;   		source=kin-mother; part=pmpnoiva,mmpnoiva
+2525: part			name=pmpnoiva;		source=kin-father
+2526: part			name=mmpnoiva;   	source=kin-father
+2527: part 	name=mnoiva;     			source=kin-mother; part=pmnoiva,mmnoiva
+2528: part 		name=pmnoiva;   		source=kin-father; part=ppmnoiva,mpmnoiva
+2529: part			name=ppmnoiva;		source=kin-father
+2530: part 			name=mpmnoiva;		source=kin-mother
+2531: part 		name=mmnoiva;   		source=kin-mother; part=pmmnoiva,mmmnoiva
+2532: part			name=pmmnoiva;		source=kin-father
+2533: part			name=mmmnoiva;		source=kin-mother
+2534: 
+2535: note this was commented because there is a conflict between "noivo"
+2536: note    as actorm and noivo as parentem
+2537: part name=noivo;     			source=kin-husband; part=pnoivo,mnoivo,mulher1,mulher2,mulher3
+2538: part 	name=pnoivo;     			source=kin-father; part=ppnoivo, mpnoivo
+2539: part 		name=ppnoivo;			source=kin-father; part=pppnoivo, mppnoivo
+2540: part			name=pppnoivo;		source=kin-father
+2541: part 			name=mppnoivo;		source=kin-mother
+2542: part 		name=mpnoivo;   		source=kin-mother; part=pmpnoivo,mmpnoivo
+2543: part			name=pmpnoivo;		source=kin-father
+2544: part			name=mmpnoivo;   	source=kin-father
+2545: part name= mnoivo;  source=kin-mother;pars=pmnoivo, mmnoivo
+2546: part name= pmnoivo;  source=kin-father;pars=ppmnoivo, mpmnoivo
+2547: part name= ppmnoivo;  source=kin-father;pars=pppmnoivo, mppmnoivo
+2548: part name= mpmnoivo;  source=kin-mother;pars=pmpmnoivo, mmpmnoivo
+2549: part name= mmnoivo;  source=kin-mother;pars=pmmnoivo, mmmnoivo
+2550: part name= pmmnoivo;  source=kin-father;pars=ppmmnoivo, mpmmnoivo
+2551: part name= mmmnoivo;  source=kin-mother;pars=pmmmnoivo, mmmmnoivo
+2552: part name=irma;					source=parentef
+2553: 
+2554: note TODO The following groups must be nested, otherwise ambiguity is possible.
+2555: note TODO
+2556: part name=filho;     			source=kin-son;pars=fofilho,fafilho,merfilho
+2557: part name=fofilho;				source=kin-son;pars=merfofilho
+2558: part name=fafilho;				source=kin-daughter;pars=merfafilho
+2559: part name=merfilho;				source=kin-wife
+2560: part name=mrfafilho;				source=kin-husband
+2561: part name=merfofilho;			source=kin-wife
+2562: 
+2563: part name=filha;     			source=kin-daughter;pars=fofilha,fafilha,mrfilha
+2564: part name=fofilha;				source=kin-son;pars=merfofilha
+2565: part name=fafilha;				source=kin-daughter;pars=mrfafilha
+2566: part name=mrfilha; 				source=kin-husband
+2567: part name=mrfafilha; 			source=kin-husband
+2568: part name=merfofilha;			source=kin-wife
+2569: 
+2570: part name=irmao;					source=parentem
+2571: 
+2572: part name=pn; source=kin-father; part=ppn,mpn
+2573: part name=mn; source=kin-mother; part=pmn,mmn
+2574: part name=ppn; source= kin-father
+2575: part name=mpn; source= kin-mother
+2576: part name=pmn; source= kin-father
+2577: part name=mmn; source= kin-mother
+2578: part name=pad; source= parentem; part=ppad,mpad
+2579: part name=mad; source= parentef; part=pmad,mmad,mrmad
+2580: part name=ppad; source= kin-father
+2581: part name=pmad; source= kin-father
+2582: part name=mpad; source= kin-mother
+2583: part name=mmad; source= kin-mother
+2584: part name=mrmad; source= kin-father
+2585: 
+2586: part name=pad1; source= parentem; part=ppad1,mpad1
+2587: part name=mad1; source= parentef; part=pmad1,mmad1,mrmad1
+2588: part name=ppad1; source= kin-father
+2589: part name=pmad1; source= kin-father
+2590: part name=mpad1; source= kin-mother
+2591: part name=mmad1; source= kin-mother
+2592: part name=mrmad1; source= kin-father
+2593: 
+2594: part name=pad2; source= parentem; part=ppad2,mpad2
+2595: part name=mad2; source= parentef; part=pmad2,mmad2,mrmad2
+2596: part name=ppad2; source= kin-father
+2597: part name=pmad2; source= kin-father
+2598: part name=mpad2; source= kin-mother
+2599: part name=mmad2; source= kin-mother
+2600: part name=mrmad2; source= kin-father
+2601: 
+2602: part name=pad3; source= parentem; part=ppad3,mpad3
+2603: part name=mad3; source= parentef; part=pmad3,mmad3,mrmad3
+2604: part name=ppad3; source= kin-father
+2605: part name=pmad3; source= kin-father
+2606: part name=mpad3; source= kin-mother
+2607: part name=mmad3; source= kin-mother
+2608: part name=mrmad3; source= kin-father
+2609: 
+2610: part name=pad4; source= parentem; part=ppad4,mpad4
+2611: part name=mad4; source= parentef; part=pmad4,mmad4,mrmad4
+2612: part name=ppad4; source= kin-father
+2613: part name=pmad4; source= kin-father
+2614: part name=mpad4; source= kin-mother
+2615: part name=mmad4; source= kin-mother
+2616: part name=mrmad4; source= kin-father
+2617: 
+2618: part  name=afilhado; source=male
+2619: part  name=genro; source=male
+2620: part  name=criado; source=male
+2621: part  name=escravo; source=male
+2622: part  name=engeitado; source=male
+2623: part  name=enjeitado; source=male
+2624: part  name=sobrinho; source=male
+2625: part  name=sogro; source=male
+2626: part  name=neto; source=male
+2627: 
+2628: part  name=nora;  source=female
+2629: part  name=afilhada; source=female
+2630: part  name=criada;source=female
+2631: part  name=escrava;  source=female
+2632: part  name=engeitada;  source=female
+2633: part  name=enjeitada;  source=female
+2634: part  name=sobrinha;source=female
+2635: part  name=sogra;source=female
+2636: part  name=neta;source=female
+2637: 
+2638: 
+2639: note *****************************************************************
+2640: note Atributos
+2641: note *****************************************************************
+2642: part name=ls; source=attribute;
+2643:         position=tipo,valor,data;
+2644:         guaranteed=tipo,valor;
+2645:         also=data,obs;
+2646:         identification=yes
+2647: part name=atr; source=ls
+2648: 
+2649: note *****************************************************************
+2650: note  Relacoes
+2651: note *****************************************************************
+2652: part name=rel; source=relation;
+2653:         position=tipo,valor,nomedest,iddest;
+2654:         guaranteed=tipo,valor,nomedest,iddest;
+2655:         also=data,obs;
+2656:         identification=yes
+2657: 
+2658: 
+2659: 
+2660: 
+2661: 
+2662: 
+2663: 
+2664: 
+2665: 
+2666: 
+2667: 
+2668: 
+2669: 
+2670: 
+2671: 
+2672: 
+2673: 
+2674: 
+2675: 
+2676: 
+2677: 
+2678: 
+2679: 
+2680: 
+2681: 
+2682: 
+2683: 
+2684: End of File
+0  errors. 
+0  warnings.
+-----------End of structure --------

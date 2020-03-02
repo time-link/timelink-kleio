@@ -1,0 +1,81 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 4-39
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notjoaobaptista_2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1654/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-110, notario joao baptista, marco a novembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1654
+4:       escritura$not1654-e1/14/8/1654/dote de ingresso/fol=97v-99/loc=grade do parlatorio/sumario=contrato de dote celebrado entre mosteiro de santa clara e ant�nio de macedo velasques, para ingresso no mesmo mosteiro de sua filha, ana maria
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1654-e1
+6:          dotante$antonio de macedo velasques/id=not1654-e1-per1
+7:             ls$titulo/cidadao
+8:             ls$residencia/coimbra
+9: 
+10:          dotada$ana maria/id=not1654-e1-per2
+11:             rel$parentesco/filha/antonio de macedo velasques/not1654-e1-per1
+12: 
+13:             referida$antonia/id=not1654-e1-per3/obs=na patente do padre provincial vem com outro nome, ana de carvalho
+14:                rel$parentesco/mulher/antonio de macedo velasques/not1654-e1-per1
+15:                rel$parentesco/mae/ana maria/not1654-e1-per2
+16: 
+17:             referido$afonso correia/id=not1654.e1-per3
+18:                ls$titulo/frei
+19:                ls$cargo/vigario
+20: 
+21:          bem$trezentos mil reis em dinheiro de contado
+22: 
+bem-not1654-e1-obj1- ** was stored with function in ACT verify act
+23:          test$luisa de melo/f/id=not1654-e1-per4
+24:             ls$cargo/abadessa
+25:             ls$assina/sim
+26: 
+27:          test$isabel carvalho/f/id=not1654-e1-per5
+28:             ls$cargo/vigaria
+29:             ls$assina/sim
+30: 
+31:          test$joana de melo/id=f(not1654-e1-per6
+32:             ls$cargo/escriva
+33:             ls$assina/sim
+34: 
+35:          test$alvaro pereira/m/id=not1654-e1-per7
+36:             ls$profissao/pedreiro
+37:             ls$residencia/patio de santa clara
+38: 
+39:          test$joana de almada/f/id=not1654-e1-per8
+40:             ls$condicao/freira professa
+41:             ls$assina/sim
+42: 
+43:          test$ana maria da silveira/f/id=not1654-e1-per9
+44:             ls$condicao/freira professa
+45:             ls$assina/sim
+46: 
+47:          test$isabel de velhasques/f/id=not1654-e1-per10
+48:             ls$condicao/freira professa
+49:             ls$assina/sim
+50: 
+51:          test$matias da costa/m/id=not1654-e1-per11
+52: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notjoaobaptista_2.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notjoaobaptista_2.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notjoaobaptista_2.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notjoaobaptista_2.ids

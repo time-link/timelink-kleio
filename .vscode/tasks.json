@@ -1,0 +1,105 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run tests ",
+            "type": "shell",
+            "command": "./aux/run_tests.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "compare test results ",
+            "type": "shell",
+            "command": "./aux/compare_test_results.sh > compare_test_results.diff",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "prepare tests ",
+            "type": "shell",
+            "command": "./aux/prepare_tests.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "start dev server",
+            "type": "shell",
+            "command": "./aux/kleio_start_server.sh dev/serverStart.pl",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "stop dev server",
+            "type": "shell",
+            "command": "./aux/kleio_stop_server.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "reference translation ",
+            "type": "shell",
+            "command": "./aux/kleio_translate_reference.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        },
+        {
+            "label": "update dev code",
+            "type": "shell",
+            "command": "rm dev/*; cp ../src/*.str dev/; cp ../src/*.pl dev/",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd":"./tests/"
+            }
+            
+        }
+    ]
+}

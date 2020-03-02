@@ -1,0 +1,90 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 14-33
+
+Processing data file perdoes_ega.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: ega
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$perdoes-notariais-ega
+5: cartaperdao$perd-1
+
+ERROR: perdoes_ega.cli line 18 ** ID already used in this file: perd1
+Near lines: 18 vitima$joam antunes feliciano/m/id=perd1
+Near line: 19 	ls$idade_aprox/maior
+
+
+ERROR: perdoes_ega.cli line 23 ** Failure: undefined element. m
+
+Near lines: 23 
+Near line: 24 perdoado$antonio goncalves/m/id=perd3
+
+
+WARNING: perdoes_ega.cli line 33 Element value exceeds database field length: ano=16790. Size:5 limit: 4
+Near lines: 33 
+Near line: 34 perdao$24/10/1680/tipo=livremente/descricao= e pera o dito joam amtunes, com sua molher estavao amigos do dito antonio gonsalves elle nam quer mal algum; E por ser homem que vive do seu trabalho; e ainda que fora muito riquo lhe perdoara como por perdoado ttem e no dito livramento sendo lhe (...)gasttarao o dito remedio, elle dito joam amtunes lhe perdoava com sua molher por amor de deos, e delle nam querem cousa alguma, nem de seo livramento ainda que nelle fique culpado em  sentenca final, em alguma cousa pera elles perdoamtes o que de lhe nam querem nem de seos herdeiros.  /obs= DUVIDA NA DATA
+
+
+ERROR: perdoes_ega.cli line 46 *** Current group cartap cannot be linked with previous group ls(att-20)
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 46 ***cartap group not stored.
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 46 ** Failure. Could not process group cartap
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 46 ** ls unknown element: cota.
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 46 ** ls unknown element: local.
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 46 ** ls unknown element: tabeliao.
+Near lines: 46 
+Near line: 47 cartap$0000/data=16862003/cota=0000/local=casa do licenciado simao dias/tabeliao=gabriel de figueiredo/tipo=partes
+
+
+ERROR: perdoes_ega.cli line 49 ** ID already used in this file: perd1
+Near lines: 49 perdoante$simois antunes/m/id=perd1
+Near line: 50 	ls$residencia/amixieira%termo da ega
+
+
+ERROR: perdoes_ega.cli line 56 ** ID already used in this file: perd1
+Near lines: 56 vitima$simois antunes/m/id=perd1
+Near line: 57 	ls$idade_aprox/maior
+
+
+ERROR: perdoes_ega.cli line 60 ** Failure: undefined element. m
+
+Near lines: 60 
+Near line: 61 perdoado$antonio francisco goteira/m/id=perd2
+
+
+ERROR: perdoes_ega.cli line 61 ** ID already used in this file: perd2
+Near lines: 61 perdoado$antonio francisco goteira/m/id=perd2
+Near line: 62 	ls$residencia/picoto
+
+*** End of File
+12  errors. 
+1  warnings.
+Translation finished.

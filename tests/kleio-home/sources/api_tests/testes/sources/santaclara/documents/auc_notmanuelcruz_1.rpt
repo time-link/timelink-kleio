@@ -1,0 +1,82 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 4-41
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmanuelcruz_1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1628-1629/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-5-84, notario manuel bernardes da cruz, novembro a agosto
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1628-1629
+4:       escritura$not1629-e1/26/6/1629/arrendamento de rendas/fol=120-121/loc=grade do locutorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara da cidade de coimbra e dinis fernandes, da renda de urzelhe
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1629-e1
+6:          senhoria$inocencia de jesus/id=not1629-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          rendeiro$dinis fernandes/id=not1629-e1-per2
+11:             ls$residencia/almalagues
+12: 
+13:          arrendamento$renda de urzelhe
+arrendamento-not1629-e1-obj1- ** was stored with function in ACT verify act
+14:             atr$localizacao/urzelhe
+15:             atr$renda/cem mil reais em dinheiro de contado
+16:             atr$renda/dez moios de trigo
+17:             atr$renda/cinco moios de centeio
+18:             atr$renda/quatro moios de milho metade painco e metade miudo
+19:             atr$renda/uma carga de cerejas e outra de frutas da melhor
+20:             atr$renda/cinquenta alqueires de azeite
+21: 
+22:          test$goncalo soares/m/obs=duvida no primeiro nome/id=not1629-e1-per3
+23: 
+24:          test$manuel de almada/m/id=not1629-e1-per4
+25:             ls$titulo/licenciado
+26: 
+27:          test$agostinho pinto/m/id=not1629-e1-per5
+28:             rel$profissional/executor/inocencia de jesus/not1629-e1-per1
+29: 
+30:          test$francisca evangelista/f/id=not1629-e1-per6
+31:             ls$cargo/escriva
+32:             ls$assina/sim
+33: 
+34:          test$olimpia dos anjos/f/id=not1629-e1-per7
+35:             ls$titulo/soror
+36:             ls$assina/sim
+37: 
+38:          test$eugenia dos reis/f/id=not1629-e1-per8
+39:             ls$condicao/freira professa
+40:             ls$assina/sim
+41: 
+42:          test$isabel da rainha santa/f/id=not1629-e1-per9
+43:             ls$condicao/freira professa
+44:             ls$assina/sim
+45: 
+46:          test$francisca das chagas/f/id=not1629-e1-per10
+47:             ls$condicao/freira professa
+48:             ls$assina/sim
+49: 
+50:          test$ana do deserto/f/id=not1629-e1-per11
+51:             ls$condicao/freira professa
+52:             ls$assina/sim
+53: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmanuelcruz_1.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmanuelcruz_1.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmanuelcruz_1.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmanuelcruz_1.ids

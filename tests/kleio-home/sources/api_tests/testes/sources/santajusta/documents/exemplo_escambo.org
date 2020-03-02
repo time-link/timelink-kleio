@@ -1,0 +1,68 @@
+kleio$gacto/prefix=sj
+	fonte$avexplorescex/1324-1441/escambo/1324-1441/loc=cx.4, mc.22, n.439;cx.4, mc.22, n.443;cx.5, mc.27, n.624;cx.5, mc.27, n.623;cx.5, mc.26, n.532;cx.2, mc.11, n.211;cx.5, mc.27, n.630;cx.4, mc.21, n.420;cx.4, mc.21, n.418;cx.6, mc.36, n.820;cx.3, mc.16, n.349;cx.6, mc.33, n.766;/obs=
+	
+
+escritura$avesc1324.1/7/11/1324/escambo/fol=cx.4, m.22, n.439/loc=coimbra, igreja de santa justa/sumario=francisco afonso, prior da colegiada de santa justa, faz escambo de uma casa na rua de oleiros com estevao pais, recebendo deste em troca o direito de um quarto de uma vinha no lugar da varzea/obs=perg., bom, got. cursivo, sinal notarial, carta partida por abc
+
+escambador$prior e cabido da colegiada de santa justa/id=1324.es1.colsj
+	referido$francisco afonso
+		ls$cargo/prior de santa justa
+	
+referido$paio antoninho/id=1324.es1.paio
+	ls$morto/antes
+	ls$residencia/coimbra
+		
+escambador$estevao pais/id=1324.es1.estevao
+	ls$residencia/coimbra
+	rel$parentesco/filho/paio antoninho/1324.es1.paio
+	
+test$bartolomeu martins
+	ls$cargo/prior de oliveira
+	
+test$bras peres
+	ls$cargo/capelao
+	
+test$estevao anes
+	ls$alcunha/rebolinho
+	ls$profissao/pedreiro
+	
+test$pero bucheiro
+
+tabeliao$domingos nogueira
+	ls$intitulacao/publico tabeliao do rei na cidade de coimbra
+	ls$sinal/sim
+	
+referido$infante d pedro/id=1324.es1.infante
+	ls$titulo/infante
+
+referido$francisco anes/id=1324.es1.francisco
+	ls$residencia/coimbra
+	rel$sociabilidade/amo/infante d pedro/1324.es1.infante
+
+referido$lourenco
+	ls$residencia/coimbra
+	ls$profissao/oleiro
+	ls$alcunha/magro
+	
+demanda$nao pagamento do dizimo/obs=ai Ž preciso especificarmos
+sentenca$a favor de danta justa/obs=porque nao tinham documentos
+defesa$mudanca local de residencia/obs=foram viver para obidos
+
+escambo$1 casa
+	atr$localizacao/rua de oleiros/obs=arrabalde de coimbra
+	atr$confrontacoes/soao e avrego/parte com casas e cortinhal de francisco anes, amo do infante d pedro
+	atr$confrontacoes/agiao/parte com rua publica
+	atr$confrontacoes/travessia/parte com casa de lourenco magro, oleiro
+	rel$posse/pertence/colegiada de santa justa/1324.es1.colsj
+	rel$posse/por escambo/estevao pais/1324.es1.estevao
+	atr$duracao/para sempre
+	atr$caucao/pague o dobro
+	
+escambo$1 quarto do direito de uma vinha
+	atr$localizacao/varzea
+	rel$posse/pertenceu/paio antoninho/1324.es1.paio
+	rel$posse/pertence/estevao pais/1324.es1.estevao/obs=heranca
+	rel$posse/por escambo/colegiada de santa justa/1324.es1.colsj
+	atr$duracao/para sempre
+	atr$caucao/pague o dobro
+

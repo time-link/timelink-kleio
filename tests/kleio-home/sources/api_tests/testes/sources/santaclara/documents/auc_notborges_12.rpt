@@ -1,0 +1,143 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 17-59
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_12.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1613tb/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-69, notario tome borges, julho a dezembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1613tb
+4:       escritura$not1613tb-e1/9/9/1613/emprazamento/fol=71v-74/loc=grade do parlatorio/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara de coimbra e fernao dias, de um casal com suas perten�as sito em vale de milho, termo da vila de abiul
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1613tb-e1
+6:          senhoria$catarina de noronha/id=not1613tb-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          foreiro$fernao dias/id=not1613tb-e1-per2
+11:             ls$profissao/larador
+12:             ls$residencia/vale de milho, termo da vila de abiul
+13: 
+14:          foreira$catarina rodrigues/id=not1613tb-e1-per3
+15:             ls$residencia/vale de milho, termo da vila de abiul
+16: 
+17:          prazo$casal com suas pertencas
+prazo-not1613tb-e1-obj1- ** was stored with function in ACT verify act
+18:             atr$localizacao/vale de milho, termo da vila de abiul
+19:             atr$foro/nove alqueires de trigo
+20: 
+21:          test$jorge fernandes/m/id=not1613tb-e1-per4
+22:             rel$profissional/solicitador/catarina de noronha/not1613tb-e1-per1
+23: 
+24:          test$antonio duarte/m/id=not1613tb-e1-per5
+25:             ls$residencia/burgo do mosteiro de santa clara
+26: 
+27:          test$francisco fernandes/m/id=not1613tb-e1-per6
+28:             ls$profissao/mestre de obras de pedreiro
+29:             ls$residencia/coimbra
+30: 
+31:          test$antonia pereira/f/id=not1613tb-e1-per7
+32: 
+33:          test$arcangela da silva/f/id=not1613tb-e1-per8
+34:             ls$titulo/dona
+35:             ls$assina/sim
+36:             ls$condicao/freira professa
+37: 
+38:          test$leonor de milao/f/id=not1613tb-e1-per9
+39:             ls$condicao/freira professa
+40:             ls$assina/sim
+41: 
+42:          test$inocencia de sa/f/id=not1613tb-e1-per10
+43:             ls$cargo/vigaria
+44:             ls$assina/sim
+45: 
+46:          test$francisca de noronha/f/id=not1613tb-e1-per11
+47:             ls$cargo/escriva
+48:             ls$assina/sim
+49: 
+50:       escritura$not1613tb-e2/2/10/1613/arrendamento de rendas/fol=108-111/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e joao alvares, de uns terradegos sitos em sangalhos e algumas pensoes, ate ao dia em que finde o abadessado de dona catarina de noronha
+51: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1613tb-e2
+52:          senhoria$catarina de noronha/id=not1613tb-e2-per1
+53:             ls$cargo/abadessa
+54:             ls$assina/sim
+55: 
+56:          rendeiro$joao alvares/id=not1613tb-e2-per2
+57:             ls$profissao/barbeiro
+58:             ls$residencia/vila nova da barca
+59: 
+60:          bem$terradegos
+bem-not1613tb-e2-obj1- ** was stored with function in ACT verify act
+61:             atr$localizacao/sangalhos
+62:             atr$foro/cinquenta mil reais
+63: 
+64:          test$pedro andre/m/id=not1613tb-e2-per3
+65:             rel$profissional/criado/catarina de noronha/not1613tb-e2-per1
+66: 
+67:          test$domingos abreu/m/id=not1613tb-e2-per4
+68:             ls$profissao/sapateiro
+69:             ls$residencia/vila nova da barca, termo da vila de montemor o velho
+70: 
+71:          test$manuel tome/m/id=not1613tb-e2-per5
+72:             ls$profissao/lavrador
+73:             ls$residencia/vila de amoreira, termo da vila de sangalhos
+74: 
+75:          test$inocencia de sa/f/id=not1613tb-e2-per6
+76:             ls$cargo/vigaria
+77:             ls$assina/sim
+78: 
+79:          test$francisca de noronha/f/id=not1613tb-e2-per7
+80:             ls$cargo/escriva
+81:             ls$assina/sim
+82: 
+83:          test$jeronima de sousa/f/id=not1613tb-e2-per8
+84:             ls$condicao/freira professa
+85:             ls$assina/sim
+86: 
+87:          test$leonor de milao/f/id=not1613tb-e2-per9
+88:             ls$condicao/freira professa
+89:             ls$assina/sim
+90: 
+91:          test$antonia pereira/f/id=not1613tb-e2-per10
+92: 
+93:          test$arcangela da silva/f/id=not1613tb-e2-per11
+94: 
+95:       escritura$not1613tb-e3/15/10/1613/procuracao/fol=135v-137/loc=porta da cerca/sumario=francisca moreira, recolhida no mosteiro de santa clara de coimbra, nomeia procurador, o senhor fernao gomes de quadros, para que em seu nome arrecade tudo o que a ela pertence do dinheiro que ficou de seu pai e que esta nas maos de sebastiao ximenes de castela
+96: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1613tb-e3
+97:          constituintef$francisca moreira/id=not1613tb-e3-per1/obs=recolhida no mosteiro de santa clara
+98: 
+99:             referido$fernao gomes de quadros/id=not1613tb-e3-per2
+100:                ls$titulo/fidalgo/obs=da casa de sua majestade
+101:                ls$residencia/cidade de tanger nas partes de africa
+102: 
+103:             referido$gaspar moreira/id=not1613tb-e3-per3
+104:                rel$parentesco/pai/francisca moreira/not1613tb-e3-per1
+105:                ls$morto/antes
+106: 
+107:             referido$sebastiao ximenes de castela/id=not1613tb-e3-per4/obs=o dinheiro da constituinte esta na posse deste
+108:                ls$naturalidade/castela
+109: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_12.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_12.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_12.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_12.ids

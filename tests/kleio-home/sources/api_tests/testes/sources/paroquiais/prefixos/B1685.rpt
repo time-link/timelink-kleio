@@ -1,0 +1,50 @@
+ClioInput - version $Revision: 751 $ SWI $Date: 2009-04-07 16:23:08 +0100 (Tue, 07 Apr 2009) $
+7-11-2009 17-45
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/paroquiais/prefixos/B1685.CLI
+-------------------------------------------
+Generic Act translation module with geoentities (XML). $Revision: 851 $ $Date: 2009-09-18 17:00:12 +0100 (Fri, 18 Sep 2009) $
+     Joaquim Ramos de Carvalho (joaquim@dei.uc.pt) 
+** New document: kleio
+1: kleio$gacto.str/prefix=soure=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: soure
+Autorel: soure
+Obs: 
+2: fonte$baptismos 1685/tipo=reg paroquiais3: 	/localizacao=fol. 30-34/data=168500004: 	/obs=existem baptismos anteriores mas em muito5: 		mau estado.6: 		VERSAO ABREVIADA. USAR O TRADUTOR CORRECTO7: 		**** auto rels 2 STARTED.
+** Processing source fonte$soure-baptismos 1685
+8: b$b1685.1/8/7/1685/0/0/0/manuel cordeiro**** auto rels 2 STARTED.
+** Processing act b$soure-b1685.1
+9: 	n$maria/f10: 		pai$manuel madeira/m11: 			ls$residencia/alencarce12: 		mae$domingas joao/f13: 		pad$antonio jorge/m/id=b1685.1-pad14: 			ls$residencia/alencarce15: 		mad$maria/f/id=b1685.1-mad16: 			ls$ec/s17: 			ls$residencia/alencarce18: 		referido$antonio jorge/mesmo_que=b1685.1-pad19: 			rel$parentesco/marido/maria/b1685.1-mad20: 			21: b$b1685.2/28/7/1685/0/0/0/manuel cordeiro**** auto rels 2 STARTED.
+   ** auto rel: from soure-b1685.1-per1-per2 to soure-b1685.1-per1 parentesco/pai
+   ** auto rel: from soure-b1685.1-per1-per3 to soure-b1685.1-per1 parentesco/mae
+   ** auto rel: from soure-b1685.1-per1-per2 to soure-b1685.1-per1-per3 parentesco/marido
+   ** Automatic attribute: soure-b1685.1-per1-per2/ec/c
+   ** Automatic attribute: soure-b1685.1-per1-per3/ec/c
+***** auto rels 2 new scope
+** Processing act b$soure-b1685.2
+22: 	n$maria/f23: 		pai$matias rodrigues/m24: 			ls$residencia/casa velha25: 		mae$maria donana?#verificar/f26: 		pad$antonio da fonseca/m27: 			ls$residencia/cumieira, freguesia de Penela%termo de penela28: 			ls$freguesia/penela%termo de penela29: 		mad$maria pereira/f30: 			pmad$manuel simoes/m31: 				ls$residencia/casa velha32: 				33: b$b1685.3/2/8/1685/0/0/0/manuel cordeiro**** auto rels 2 STARTED.
+   ** auto rel: from soure-b1685.2-per1-per2 to soure-b1685.2-per1 parentesco/pai
+   ** auto rel: from soure-b1685.2-per1-per3 to soure-b1685.2-per1 parentesco/mae
+   ** auto rel: from soure-b1685.2-per1-per2 to soure-b1685.2-per1-per3 parentesco/marido
+   ** Automatic attribute: soure-b1685.2-per1-per2/ec/c
+   ** Automatic attribute: soure-b1685.2-per1-per3/ec/c
+   ** auto rel: from soure-b1685.2-per1-per6 to soure-b1685.2-per1-per5 parentesco/pai
+***** auto rels 2 new scope
+** Processing act b$soure-b1685.3
+34: 	n$ana/f35: 		pai$antonio joao/m36: 			ls$residencia/montais37: 		mae$maria de oliveira/f38: 		pad$domingos simoes/m39: 			ls$residencia/sobral40: 			ls$profissao/padre41: 		mad$ana velho/f42: 			mrmad$nomes desconhecido/m43: 				ls$profissao/boticario44: 				ls$residencia/soure45: 				46: b$1685.4/3/8/1685/0/0/0/mnanuel cordeiro**** auto rels 2 STARTED.
+   ** auto rel: from soure-b1685.3-per1-per2 to soure-b1685.3-per1 parentesco/pai
+   ** auto rel: from soure-b1685.3-per1-per3 to soure-b1685.3-per1 parentesco/mae
+   ** auto rel: from soure-b1685.3-per1-per2 to soure-b1685.3-per1-per3 parentesco/marido
+   ** Automatic attribute: soure-b1685.3-per1-per2/ec/c
+   ** Automatic attribute: soure-b1685.3-per1-per3/ec/c
+   ** auto rel: from soure-b1685.3-per1-per6 to soure-b1685.3-per1-per5 parentesco/marido
+***** auto rels 2 new scope
+** Processing act b$soure-1685.4
+47: 	n$mari48: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+***** auto rels 2 new scope
+** Translation finished.

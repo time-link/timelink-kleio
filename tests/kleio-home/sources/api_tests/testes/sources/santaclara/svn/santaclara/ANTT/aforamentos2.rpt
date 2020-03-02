@@ -1,0 +1,105 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 21-54
+
+Processing data file aforamentos2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$af2.pt-tt-cscc-17-part
+7: escritura$af1455.1.m11-39a
+
+WARNING: aforamentos2.cli line 6 Element value exceeds database field length: loc=casas de morada de joao domingues sapateiro, aldeia de urzelhe, termo da vila de miranda. Size:88 limit: 64
+Near lines: 6 
+Near line: 7          senhorio$mosteiro de santa clara/id=1455.af1.msc
+
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+
+ERROR: aforamentos2.cli line 52 ** ID already used in this file: af2.pt-tt-cscc-17-part
+Near lines: 52 
+Near line: 53       escritura$af1455.1.m11-39a/3/4/1455/aforamento/fol=dgarq.ofm.scc.mc.11 n.39/loc=casas de morada de joao domingues sapateiro, aldeia de urzelhe, termo da vila de miranda/sumario=aforamento inserido num documento de renuncia em que joao domingues e a sua mulher entregam ao procurador do mosteiro de santa clara bens que tem em urzelhe e que ele afora a fernao martins da azenha e a sua mulher maria tome, com a condicao de que estes paguem rendas ao antigos proprietarios alem do foro que devem pagar ao mosteiro/obs=perg., razoavel, got.cursivo,trasladada do documento r1455.1.m11-39.3.4.1455
+
+** Processing source fonte$af2.pt-tt-cscc-17-part
+
+ERROR: aforamentos2.cli line 54 ** ID already used in this file: af1455.1.m11-39a
+Near lines: 54 
+Near line: 55          senhorio$mosteiro de santa clara/id=1455.af1.msc
+
+55: escritura$af1455.1.m11-39a
+
+WARNING: aforamentos2.cli line 54 Element value exceeds database field length: loc=casas de morada de joao domingues sapateiro, aldeia de urzelhe, termo da vila de miranda. Size:88 limit: 64
+Near lines: 54 
+Near line: 55          senhorio$mosteiro de santa clara/id=1455.af1.msc
+
+
+ERROR: aforamentos2.cli line 56 ** ID already used in this file: 1455.af1.msc
+Near lines: 56 
+Near line: 57          procurador$joao peres/id=af1455.1.m11-39a-per1
+
+
+ERROR: aforamentos2.cli line 57 ** ID already used in this file: af1455.1.m11-39a-per1
+Near lines: 57          procurador$joao peres/id=af1455.1.m11-39a-per1
+Near line: 58             rel$sociabilidade/procurador/mosteiro de santa clara/1455.af1.msc
+
+
+ERROR: aforamentos2.cli line 60 ** ID already used in this file: 1455.af1.fernao
+Near lines: 60          foreiro$fernao martins da azenha/id=1455.af1.fernao
+Near line: 61             ls$residencia/azenha/obs=toponimo associado ao patronimico
+
+
+ERROR: aforamentos2.cli line 63 ** ID already used in this file: af1455.1.m11-39a-per2
+Near lines: 63          foreira$maria tome/id=af1455.1.m11-39a-per2
+Near line: 64             rel$parentesco/mulher/fernao martins da azenha/1455.af1.fernao
+
+
+ERROR: aforamentos2.cli line 67 ** ID already used in this file: af1455.1.m11-39a-per3
+Near lines: 67          test$afonso anes monteiro/id=af1455.1.m11-39a-per3
+Near line: 68             ls$cargo/juiz/obs=juiz que ora e
+
+
+ERROR: aforamentos2.cli line 71 ** ID already used in this file: af1455.1.m11-39a-per4
+Near lines: 71          test$joao goncalves de ordem/id=af1455.1.m11-39a-per4
+Near line: 72             ls$residencia/urzelhe
+
+
+ERROR: aforamentos2.cli line 74 ** ID already used in this file: af1455.1.m11-39a-per5
+Near lines: 74          test$vasco gomes/id=af1455.1.m11-39a-per5
+Near line: 75             ls$residencia/urzelhe
+
+
+ERROR: aforamentos2.cli line 77 ** ID already used in this file: af1455.1.m11-39a-per6
+Near lines: 77          test$ascenso vasques/id=af1455.1.m11-39a-per6
+Near line: 78             ls$residencia/ribeira de bera/obs=termo da cidade de coimbra
+
+
+ERROR: aforamentos2.cli line 80 ** ID already used in this file: af1455.1.m11-39a-per7
+Near lines: 80          tabeliao$goncalo anes/obs=30 reais pelo registo/id=af1455.1.m11-39a-per7
+Near line: 81             ls$intitulacao/tabeliao por el rei nosso senhor em a dita vila e termo de miranda
+
+
+ERROR: aforamentos2.cli line 84 ** ID already used in this file: 1455.af1.joao
+Near lines: 84 
+Near line: 85          aforamento$bens
+
+*** End of File
+12  errors. 
+2  warnings.
+Translation finished.

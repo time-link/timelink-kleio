@@ -1,0 +1,574 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 21-54
+
+Processing data file testamentos.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$t.pt-tt-cscc-17-part
+7: escritura$t1421.1.m2-21
+54: escritura$t1371.1.m7-08b
+111: escritura$t1375.1.m7-19
+229: escritura$t1386.1.m8-08a
+250: escritura$t1399.1.m8-40a
+284: escritura$t1406.1.m9-23
+
+WARNING: testamentos.cli line 379 Element value exceeds database field length: name=20 paes, 1 canteiro de vinho, 12 de peixotas, e carne de carneiro. Size:65 limit: 64
+Near lines: 379 
+Near line: 380          bem$quantia para pagamento de dividas/obs=mando que se alguma manceba e mancebo vier que lhe diga que lhe devo alguma soldada de algum tempo que me serviu que lha pague da cama de todos os bens
+
+
+WARNING: testamentos.cli line 388 Element value exceeds database field length: name=...abotoaduras e dos outros panos e vestiduras de mulher e joias de mulher. Size:74 limit: 64
+Near lines: 388          bem$...abotoaduras e dos outros panos e vestiduras de mulher e joias de mulher
+Near line: 389             rel$posse/pertence/fernao vasques/1406.t1.fernao
+
+436: escritura$t1407.1.m9-23a
+466: escritura$t1415.1.m9-40
+
+WARNING: testamentos.cli line 465 Element value exceeds database field length: loc=coimbra, cama de maria anes, em moradas que foram de fernao vasques, ja alta noite as dez horas manhecentes. Size:107 limit: 64
+Near lines: 465 
+Near line: 466          testadora$maria anes/id=1415.t1.maria
+
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+
+ERROR: testamentos.cli line 597 ** ID already used in this file: t.pt-tt-cscc-17-part
+Near lines: 597 
+Near line: 598       escritura$t1421.1.m2-21/24/5/1421/testamento/fol=dgarq.ofm.scc.mc.2 n.21/loc=paco da enfermaria no mosteiro de santa clara/sumario=maria anes rectifica o testamento, anulando as doacoes feitas anteriormente a ines fernandes e ao mosteiro de sao domingos, e para as quais tinha contraido dividas; dizendo que as doacoes deviam ser revogadas e seus bens entregues a filha catarina fernandes, dona do mosteiro de santa clara/obs=perg., bom, got.cursivo, sinal notarial
+
+** Processing source fonte$t.pt-tt-cscc-17-part
+
+ERROR: testamentos.cli line 599 ** ID already used in this file: t1421.1.m2-21
+Near lines: 599 
+Near line: 600          testadora$maria anes/id=1421.t1.maria
+
+600: escritura$t1421.1.m2-21
+
+ERROR: testamentos.cli line 600 ** ID already used in this file: 1421.t1.maria
+Near lines: 600          testadora$maria anes/id=1421.t1.maria
+Near line: 601             ls$doente/sim
+
+
+ERROR: testamentos.cli line 606 ** ID already used in this file: 1421.t1.fernao
+Near lines: 606             referido$fernao vasques/id=1421.t1.fernao
+Near line: 607                ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 610 ** ID already used in this file: t1421.1.m2-21-per1
+Near lines: 610          testamenteira$catarina fernandes/id=t1421.1.m2-21-per1
+Near line: 611             ls$titulo/dona/obs=do mosteiro de santa clara
+
+
+ERROR: testamentos.cli line 616 ** ID already used in this file: t1421.1.m2-21-per1-per2
+Near lines: 616             referida$ines fernandes/id=t1421.1.m2-21-per1-per2
+Near line: 617                ls$profissao/criada
+
+
+ERROR: testamentos.cli line 621 ** ID already used in this file: t1421.1.m2-21-per1-per3
+Near lines: 621             referido$mosteiro de sao domingos/id=t1421.1.m2-21-per1-per3
+Near line: 622                rel$sociabilidade/antigo herdeiro/maria anes/1421.t1.maria
+
+
+ERROR: testamentos.cli line 624 ** ID already used in this file: t1421.1.m2-21-per4
+Near lines: 624          test$estevao/id=t1421.1.m2-21-per4
+Near line: 625             ls$titulo/mestre
+
+
+ERROR: testamentos.cli line 629 ** ID already used in this file: t1421.1.m2-21-per5
+Near lines: 629          test$joao de coimbra/id=t1421.1.m2-21-per5
+Near line: 630             ls$titulo/frei
+
+
+ERROR: testamentos.cli line 633 ** ID already used in this file: t1421.1.m2-21-per6
+Near lines: 633          test$alvaro anes/id=t1421.1.m2-21-per6
+Near line: 634             ls$titulo/clerigo
+
+
+ERROR: testamentos.cli line 636 ** ID already used in this file: t1421.1.m2-21-per7
+Near lines: 636          test$afonso anes/id=t1421.1.m2-21-per7
+Near line: 637             ls$profissao/azemel/obs=do mosteiro
+
+
+ERROR: testamentos.cli line 639 ** ID already used in this file: t1421.1.m2-21-per8
+Near lines: 639          test$pedro afonso/id=t1421.1.m2-21-per8
+Near line: 640             ls$residencia/coimbra/obs=mosteiro de santa clara
+
+
+ERROR: testamentos.cli line 642 ** ID already used in this file: t1421.1.m2-21-per9
+Near lines: 642          tabeliao$fernao martins/id=t1421.1.m2-21-per9
+Near line: 643             ls$intitulacao/publico tabeliao de nosso senhor el rei em a dita cidade de coimbra
+
+
+ERROR: testamentos.cli line 646 ** ID already used in this file: t1371.1.m7-08b
+Near lines: 646 
+Near line: 647          testadora$maria gesteira/mesmo_que=1372.p1.maria2/obs=tambem maria de geesteira/id=t1371.1.m7-08b-per1
+
+647: escritura$t1371.1.m7-08b
+
+ERROR: testamentos.cli line 647 ** ID already used in this file: t1371.1.m7-08b-per1
+Near lines: 647          testadora$maria gesteira/mesmo_que=1372.p1.maria2/obs=tambem maria de geesteira/id=t1371.1.m7-08b-per1
+Near line: 648             ls$motivacoes/obrigacao pela alma de outrem/obs=da parte dos seus bens para rogarem pela alma de joao de prol
+
+
+ERROR: testamentos.cli line 651 ** ID already used in this file: t1371.1.m7-08b-per1-per2
+Near lines: 651 
+Near line: 652             referido$goncalo abril/id=t1371.1.m7-08b-per1-per3
+
+
+ERROR: testamentos.cli line 652 ** ID already used in this file: t1371.1.m7-08b-per1-per3
+Near lines: 652             referido$goncalo abril/id=t1371.1.m7-08b-per1-per3
+Near line: 653                ls$cargo/alvazil geral/obs=de coimbra
+
+
+ERROR: testamentos.cli line 656 ** ID already used in this file: t1371.1.m7-08b-per4
+Near lines: 656 
+Near line: 657          test$esteves anes/id=t1371.1.m7-08b-per5
+
+
+ERROR: testamentos.cli line 657 ** ID already used in this file: t1371.1.m7-08b-per5
+Near lines: 657          test$esteves anes/id=t1371.1.m7-08b-per5
+Near line: 658             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 660 ** ID already used in this file: t1371.1.m7-08b-per6
+Near lines: 660          test$joao martins/id=t1371.1.m7-08b-per6
+Near line: 661             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 663 ** ID already used in this file: t1371.1.m7-08b-per7
+Near lines: 663          test$alvaro martins/id=t1371.1.m7-08b-per7
+Near line: 664             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 666 ** ID already used in this file: t1371.1.m7-08b-per8
+Near lines: 666          test$afonso colaco/id=t1371.1.m7-08b-per8
+Near line: 667             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 669 ** ID already used in this file: t1371.1.m7-08b-per9
+Near lines: 669          test$goncalo martins/id=t1371.1.m7-08b-per9
+Near line: 670             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 672 ** ID already used in this file: t1371.1.m7-08b-per10
+Near lines: 672          test$lourenco goncalves/id=t1371.1.m7-08b-per10
+Near line: 673             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 675 ** ID already used in this file: t1371.1.m7-08b-per11
+Near lines: 675          test$martim afonso/id=t1371.1.m7-08b-per11
+Near line: 676             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 678 ** ID already used in this file: t1371.1.m7-08b-per12
+Near lines: 678          test$martim goncalves/id=t1371.1.m7-08b-per12
+Near line: 679             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 681 ** ID already used in this file: t1371.1.m7-08b-per13
+Near lines: 681          test$estevao peres/id=t1371.1.m7-08b-per13
+Near line: 682             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 684 ** ID already used in this file: t1371.1.m7-08b-per14
+Near lines: 684          test$gomes lourenco/id=t1371.1.m7-08b-per14
+Near line: 685             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 687 ** ID already used in this file: t1371.1.m7-08b-per15
+Near lines: 687          test$joao porcalho/id=t1371.1.m7-08b-per15
+Near line: 688             ls$cargo/procurador
+
+
+ERROR: testamentos.cli line 690 ** ID already used in this file: t1371.1.m7-08b-per16
+Near lines: 690          test$joao anes/id=t1371.1.m7-08b-per16
+Near line: 691             ls$cargo/procurador
+
+
+ERROR: testamentos.cli line 693 ** ID already used in this file: t1371.1.m7-08b-per17
+Near lines: 693          test$joao afonso/id=t1371.1.m7-08b-per17
+Near line: 694             ls$cargo/procurador
+
+
+ERROR: testamentos.cli line 696 ** ID already used in this file: t1371.1.m7-08b-per18
+Near lines: 696          test$vasco lourenco/id=t1371.1.m7-08b-per18
+Near line: 697             ls$profissao/inquiridor
+
+
+ERROR: testamentos.cli line 699 ** ID already used in this file: t1371.1.m7-08b-per19
+Near lines: 699          tabeliao$nuno fernandes/id=t1371.1.m7-08b-per19
+Near line: 700             ls$intitulacao/tabeliao da dita cidade de coimbra
+
+
+ERROR: testamentos.cli line 703 ** ID already used in this file: t1375.1.m7-19
+Near lines: 703 
+Near line: 704          testadora$beatriz duraes/id=1375.t1.beatriz
+
+704: escritura$t1375.1.m7-19
+
+ERROR: testamentos.cli line 704 ** ID already used in this file: 1375.t1.beatriz
+Near lines: 704          testadora$beatriz duraes/id=1375.t1.beatriz
+Near line: 705             ls$residencia/cernache
+
+
+ERROR: testamentos.cli line 712 ** ID already used in this file: 1375.t1.ismc
+Near lines: 712 
+Near line: 713          testamentario$nome desconhecido/id=1375.t1.nd2
+
+
+ERROR: testamentos.cli line 713 ** ID already used in this file: 1375.t1.nd2
+Near lines: 713          testamentario$nome desconhecido/id=1375.t1.nd2
+Near line: 714             rel$sociabilidade/abade/beatriz duraes/1375.t1.beatriz
+
+
+ERROR: testamentos.cli line 716 ** ID already used in this file: 1375.t1.gil
+Near lines: 716          testamentario$gil/id=1375.t1.gil
+Near line: 717             rel$parentesco/sobrinho/beatriz duraes/1375.t1.beatriz
+
+
+ERROR: testamentos.cli line 719 ** ID already used in this file: 1375.t1.ines
+Near lines: 719          testamentaria$ines/id=1375.t1.ines
+Near line: 720             rel$parentesco/filha/basto/1375.t1.basto
+
+
+ERROR: testamentos.cli line 722 ** ID already used in this file: 1375.t1.basto
+Near lines: 722             referido$basto/id=1375.t1.basto
+Near line: 723                rel$parentesco/pai/ines/1375.t1.ines
+
+
+ERROR: testamentos.cli line 726 ** ID already used in this file: 1375.t1.domingos
+Near lines: 726 
+Near line: 727          testamentaria$maria do campo/id=1375.t1.maria1
+
+
+ERROR: testamentos.cli line 728 ** ID already used in this file: 1375.t1.maria1
+Near lines: 728 
+Near line: 729          testamentaria$maria martins/id=1375.t1.maria2
+
+
+ERROR: testamentos.cli line 730 ** ID already used in this file: 1375.t1.maria2
+Near lines: 730 
+Near line: 731          testamentaria$maria domingues/id=1375.t1.maria3
+
+
+ERROR: testamentos.cli line 731 ** ID already used in this file: 1375.t1.maria3
+Near lines: 731          testamentaria$maria domingues/id=1375.t1.maria3
+Near line: 732             ls$residencia/vila sota?/obs=duvida no nome
+
+
+ERROR: testamentos.cli line 734 ** ID already used in this file: 1375.t1.marinha
+Near lines: 734          testamentaria$marinha/id=1375.t1.marinha/obs=viveu com beatriz duraes
+Near line: 735             ls$titulo/dona
+
+
+ERROR: testamentos.cli line 737 ** ID already used in this file: 1375.t1.maria4
+Near lines: 737          testamenteira$maria anes/id=1375.t1.maria4/obs=que receba a terca de todos os seus bens, e caso nao os possa receber que os de para a sua alma
+Near line: 738             rel$parentesco/filha/beatriz duraes/1375.t1.beatriz
+
+
+ERROR: testamentos.cli line 740 ** ID already used in this file: 1375.t1.nd3
+Near lines: 740          testamentario$nome desconhecido/id=1375.t1.nd3/obs=parentes e parentas, tios e tias
+Near line: 741             rel$parentesco/parentes, parentas, tios, tias/beatriz duraes/1375.t1.beatriz
+
+
+ERROR: testamentos.cli line 743 ** ID already used in this file: t1375.1.m7-19-per1
+Near lines: 743          test$joao domingues/id=t1375.1.m7-19-per1
+Near line: 744             ls$residencia/cernache
+
+
+ERROR: testamentos.cli line 746 ** ID already used in this file: t1375.1.m7-19-per2
+Near lines: 746          test$joao estevao/id=t1375.1.m7-19-per2
+Near line: 747             ls$titulo/clerigo
+
+
+ERROR: testamentos.cli line 750 ** ID already used in this file: t1375.1.m7-19-per3
+Near lines: 750          test$vasco domingues/id=t1375.1.m7-19-per3
+Near line: 751             rel$sociabilidade/homem/nome desconhecido/1375.t1.nd1/obs=homem do prior de cernache
+
+
+ERROR: testamentos.cli line 753 ** ID already used in this file: 1375.t1.nd1
+Near lines: 753          referido$nome desconhecido/id=1375.t1.nd1
+Near line: 754             ls$cargo/prior/obs=de cernache
+
+
+ERROR: testamentos.cli line 756 ** ID already used in this file: t1375.1.m7-19-per4
+Near lines: 756          test$afonso peres/id=t1375.1.m7-19-per4
+Near line: 757             ls$titulo/mancebo de fernao vasques
+
+
+ERROR: testamentos.cli line 760 ** ID already used in this file: 1375.t1.fernao
+Near lines: 760          referido$fernao vasques/id=1375.t1.fernao
+Near line: 761             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 763 ** ID already used in this file: t1375.1.m7-19-per5
+Near lines: 763          tabeliao$goncalo martins/obs=vinte soldos pelo registo/id=t1375.1.m7-19-per5
+Near line: 764             ls$intitulacao/tabeliao de nosso senhor el rei na dita cidade de coimbra
+
+
+ERROR: testamentos.cli line 821 ** ID already used in this file: t1386.1.m8-08a
+Near lines: 821 
+Near line: 822          testadora$clara anes/id=1386.t1.clara
+
+822: escritura$t1386.1.m8-08a
+
+ERROR: testamentos.cli line 823 ** ID already used in this file: 1386.t1.clara
+Near lines: 823 
+Near line: 824             referido$vicente peres/mesmo_que=1386.cv1.vicente/obs=recebeu do testamenteiro de clara anes cem libras de moeda de portugal os quais o dito vicente peres dera por todos os bens assim moveis como de raiz que a dita passada acontecera na sua terca/id=1386.t1.clara-per1
+
+
+ERROR: testamentos.cli line 825 ** ID already used in this file: 1386.t1.clara-per1
+Near lines: 825 
+Near line: 826          testamenteiro$pedro/id=1386.t1.pedro
+
+
+ERROR: testamentos.cli line 826 ** ID already used in this file: 1386.t1.pedro
+Near lines: 826          testamenteiro$pedro/id=1386.t1.pedro
+Near line: 827             ls$titulo/frei
+
+
+ERROR: testamentos.cli line 830 ** ID already used in this file: t1386.1.m8-08a-per2
+Near lines: 830          test$gordo/obs=o gordo almocreve/id=t1386.1.m8-08a-per2
+Near line: 831             ls$profissao/almocreve
+
+
+ERROR: testamentos.cli line 833 ** ID already used in this file: t1386.1.m8-08a-per3
+Near lines: 833          test$alvaro goncalves/id=t1386.1.m8-08a-per3
+Near line: 834             ls$residencia/virnagueira
+
+
+ERROR: testamentos.cli line 837 ** ID already used in this file: t1386.1.m8-08a-per4
+Near lines: 837 
+Near line: 838          tabeliao$joao esteves/id=t1386.1.m8-08a-per5
+
+
+ERROR: testamentos.cli line 838 ** ID already used in this file: t1386.1.m8-08a-per5
+Near lines: 838          tabeliao$joao esteves/id=t1386.1.m8-08a-per5
+Near line: 839             ls$intitulacao/tabeliao da dita cidade de coimbra
+
+
+ERROR: testamentos.cli line 842 ** ID already used in this file: t1399.1.m8-40a
+Near lines: 842 
+Near line: 843          testadora$joana peres/id=1399.t1.joana/obs=da poder aos testamenteiros para venderem todos os seus bens moveis e de raiz por sua alma e de seu marido
+
+843: escritura$t1399.1.m8-40a
+
+ERROR: testamentos.cli line 843 ** ID already used in this file: 1399.t1.joana
+Near lines: 843          testadora$joana peres/id=1399.t1.joana/obs=da poder aos testamenteiros para venderem todos os seus bens moveis e de raiz por sua alma e de seu marido
+Near line: 844             ls$alcunha/passareira
+
+
+ERROR: testamentos.cli line 849 ** ID already used in this file: 1399.t1.martim
+Near lines: 849             referido$martim domingues/id=1399.t1.martim
+Near line: 850                ls$alcunha/passareiro
+
+
+ERROR: testamentos.cli line 855 ** ID already used in this file: t1399.1.m8-40a-per1
+Near lines: 855 
+Near line: 856          testamenteira$maria gomes/mesmo_que=1399.cv1.maria1/id=t1399.1.m8-40a-per2
+
+
+ERROR: testamentos.cli line 857 ** ID already used in this file: t1399.1.m8-40a-per2
+Near lines: 857 
+Near line: 858          test$afonso galego/id=t1399.1.m8-40a-per3
+
+
+ERROR: testamentos.cli line 858 ** ID already used in this file: t1399.1.m8-40a-per3
+Near lines: 858          test$afonso galego/id=t1399.1.m8-40a-per3
+Near line: 859             ls$residencia/coimbra
+
+
+ERROR: testamentos.cli line 862 ** ID already used in this file: t1399.1.m8-40a-per4
+Near lines: 862          test$goncalo mateus?/obs=duvida no segundo nome/id=t1399.1.m8-40a-per4
+Near line: 863             ls$residencia/coimbra
+
+
+ERROR: testamentos.cli line 866 ** ID already used in this file: t1399.1.m8-40a-per5
+Near lines: 866          test$joao martins claro/id=t1399.1.m8-40a-per5
+Near line: 867             ls$residencia/coimbra
+
+
+ERROR: testamentos.cli line 869 ** ID already used in this file: t1399.1.m8-40a-per6
+Near lines: 869          test$joao rodrigues/id=t1399.1.m8-40a-per6
+Near line: 870             ls$residencia/coimbra
+
+
+ERROR: testamentos.cli line 872 ** ID already used in this file: t1399.1.m8-40a-per7
+Near lines: 872          tabeliao$lourenco goncalves/id=t1399.1.m8-40a-per7
+Near line: 873             ls$intitulacao/tabeliao da dita cidade de coimbra
+
+
+ERROR: testamentos.cli line 876 ** ID already used in this file: t1406.1.m9-23
+Near lines: 876 
+Near line: 877          testador$fernao vasques/id=1406.t1.fernao
+
+877: escritura$t1406.1.m9-23
+
+ERROR: testamentos.cli line 877 ** ID already used in this file: 1406.t1.fernao
+Near lines: 877          testador$fernao vasques/id=1406.t1.fernao
+Near line: 878             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 885 ** ID already used in this file: 1406.t1.diogo
+Near lines: 885 
+Near line: 886          testamenteira$maria anes/id=1406.t1.maria
+
+
+ERROR: testamentos.cli line 886 ** ID already used in this file: 1406.t1.maria
+Near lines: 886          testamenteira$maria anes/id=1406.t1.maria
+Near line: 887             rel$parentesco/mulher/fernao vasques/1406.t1.fernao
+
+
+ERROR: testamentos.cli line 890 ** ID already used in this file: 1406.t1.joao1
+Near lines: 890          testamenteiro$joao vicente/id=1406.t1.joao1
+Near line: 891             ls$profissao/sapateiro/obs=foi sapateiro que serve na se
+
+
+ERROR: testamentos.cli line 894 ** ID already used in this file: 1406.t1.domingos
+Near lines: 894 
+Near line: 895          testamentaria$igreja de cernache/id=1406.t1.igrcer
+
+
+ERROR: testamentos.cli line 896 ** ID already used in this file: 1406.t1.igrcer
+Near lines: 896 
+Near line: 897          testamentario$mosteiro de sao domingos/id=1406.t1.msd
+
+
+ERROR: testamentos.cli line 898 ** ID already used in this file: 1406.t1.msd
+Near lines: 898 
+Near line: 899          testamentario$mosteiro de sao francisco/id=1406.t1.msf
+
+
+ERROR: testamentos.cli line 900 ** ID already used in this file: 1406.t1.msf
+Near lines: 900 
+Near line: 901          testamentario$mosteiro de santa cruz/id=1406.t1.mscruz
+
+
+ERROR: testamentos.cli line 902 ** ID already used in this file: 1406.t1.mscruz
+Near lines: 902 
+Near line: 903          testamentario$mosteiro de santa clara/id=1406.t1.msc/obs=a terca dos bens para santa clara sera definido depois de maria anes escolher as propriedades que quer em sua posse
+
+
+ERROR: testamentos.cli line 904 ** ID already used in this file: 1406.t1.msc
+Near lines: 904 
+Near line: 905          testamentaria$catarina fernandes/id=1606.t1.catarina
+
+
+ERROR: testamentos.cli line 905 ** ID already used in this file: 1606.t1.catarina
+Near lines: 905          testamentaria$catarina fernandes/id=1606.t1.catarina
+Near line: 906             rel$parentesco/filha/fernao vasques/1406.t1.fernao
+
+
+ERROR: testamentos.cli line 909 ** ID already used in this file: t1406.1.m9-23-per1
+Near lines: 909          test$joao esteves/id=t1406.1.m9-23-per1
+Near line: 910             ls$profissao/sapateiro
+
+
+ERROR: testamentos.cli line 913 ** ID already used in this file: t1406.1.m9-23-per2
+Near lines: 913          test$gil vicente/id=t1406.1.m9-23-per2
+Near line: 914             ls$profissao/sapateiro
+
+
+ERROR: testamentos.cli line 917 ** ID already used in this file: t1406.1.m9-23-per3
+Near lines: 917          test$goncalo lourenco/id=t1406.1.m9-23-per3
+Near line: 918             ls$profissao/sapateiro
+
+
+ERROR: testamentos.cli line 921 ** ID already used in this file: t1406.1.m9-23-per4
+Near lines: 921          test$joao do couto/id=t1406.1.m9-23-per4
+Near line: 922             ls$profissao/sapateiro
+
+
+ERROR: testamentos.cli line 925 ** ID already used in this file: t1406.1.m9-23-per5
+Near lines: 925          test$afonso anes/id=t1406.1.m9-23-per5
+Near line: 926             ls$titulo/besteiro
+
+
+ERROR: testamentos.cli line 929 ** ID already used in this file: t1406.1.m9-23-per6
+Near lines: 929          test$joao vicente/id=t1406.1.m9-23-per6
+Near line: 930             ls$profissao/jubeteiro
+
+
+ERROR: testamentos.cli line 933 ** ID already used in this file: t1406.1.m9-23-per7
+Near lines: 933          tabeliao$martim de pinho/id=t1406.1.m9-23-per7
+Near line: 934             ls$intitulacao/tabeliao de el rei na dita cidade
+
+
+ERROR: testamentos.cli line 937 ** ID already used in this file: t1406.1.m9-23-per7-per8
+Near lines: 937             referida$maria fernandes/id=t1406.1.m9-23-per7-per8
+Near line: 938                ls$profissao/criada
+
+
+ERROR: testamentos.cli line 943 ** ID already used in this file: 1406.t1.cems
+Near lines: 943 
+Near line: 944             referido$nomes desconhecidos/id=1406.t1.nd/obs=pobres, envergonhados e presos
+
+
+ERROR: testamentos.cli line 945 ** ID already used in this file: 1406.t1.nd
+Near lines: 945 
+Near line: 946             referido$joao bartolomeu/id=1406.t1.joao2
+
+
+ERROR: testamentos.cli line 946 ** ID already used in this file: 1406.t1.joao2
+Near lines: 946             referido$joao bartolomeu/id=1406.t1.joao2
+Near line: 947                rel$economica/antigo foreiro/fernao vasques/1406.t1.fernao
+
+
+WARNING: testamentos.cli line 972 Element value exceeds database field length: name=20 paes, 1 canteiro de vinho, 12 de peixotas, e carne de carneiro. Size:65 limit: 64
+Near lines: 972 
+Near line: 973          bem$quantia para pagamento de dividas/obs=mando que se alguma manceba e mancebo vier que lhe diga que lhe devo alguma soldada de algum tempo que me serviu que lha pague da cama de todos os bens
+
+
+WARNING: testamentos.cli line 981 Element value exceeds database field length: name=...abotoaduras e dos outros panos e vestiduras de mulher e joias de mulher. Size:74 limit: 64
+Near lines: 981          bem$...abotoaduras e dos outros panos e vestiduras de mulher e joias de mulher
+Near line: 982             rel$posse/pertence/fernao vasques/1406.t1.fernao
+
+
+ERROR: testamentos.cli line 1028 ** ID already used in this file: t1407.1.m9-23a
+Near lines: 1028 
+Near line: 1029          testador$fernao vasques/mesmo_que=1406.t1.fernao/obs=disse que se as partes suso conteudas no dito testamento nao quiserem estas nas partilhas conteudas em o dito testamento dos bens de raiz por a guisa que ele mandava que as partissem por tal guisa que a sua terca dele ficasse juntamente em um lugar/id=t1407.1.m9-23a-per1
+
+1029: escritura$t1407.1.m9-23a
+
+ERROR: testamentos.cli line 1029 ** ID already used in this file: t1407.1.m9-23a-per1
+Near lines: 1029          testador$fernao vasques/mesmo_que=1406.t1.fernao/obs=disse que se as partes suso conteudas no dito testamento nao quiserem estas nas partilhas conteudas em o dito testamento dos bens de raiz por a guisa que ele mandava que as partissem por tal guisa que a sua terca dele ficasse juntamente em um lugar/id=t1407.1.m9-23a-per1
+Near line: 1030             ls$profissao/tabeliao
+
+
+ERROR: testamentos.cli line 1033 ** ID already used in this file: t1407.1.m9-23a-per2
+Near lines: 1033          test$domingos anes/id=t1407.1.m9-23a-per2
+Near line: 1034             ls$residencia/feteira/obs=coimbra
+
+
+ERROR: testamentos.cli line 1036 ** ID already used in this file: t1407.1.m9-23a-per3
+Near lines: 1036          test$martim domingues/id=t1407.1.m9-23a-per3
+Near line: 1037             ls$residencia/torre de bera
+
+
+ERROR: testamentos.cli line 1039 ** ID already used in this file: t1407.1.m9-23a-per4
+Near lines: 1039          test$lourenco conde?/obs=duvida no segundo nome/id=t1407.1.m9-23a-per4
+Near line: 1040             ls$residencia/fervencas/obs=do julgado de miranda
+
+*** ERROR: MAXIMUM NUMBER OF ERRORS REACHED. TRANSLATION ABORTED.
+*** End of File
+100  errors. 
+5  warnings.
+Translation finished.

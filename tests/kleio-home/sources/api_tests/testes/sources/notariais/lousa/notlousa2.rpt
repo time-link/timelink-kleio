@@ -1,0 +1,334 @@
+ClioInput - version $Revision$ SWI $Date$
+23-5-2017 18-39
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/notariais/lousa/notlousa2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$1not96/1731/notariais/v-1ªd-8-1-nº96
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$1not96
+4:       escritura$lnot96-1/13/3/1731/doacao/loc=?
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-1
+6:          doadora$francisca/id=lnot96-1-per1
+7: 
+8:          doadora$catarina feia/id=lnot96-1-per2
+9: 
+10:          dotada$teodora regina arnault/id=lnot96-1-per3
+11:             atr$titulo/dona
+12:             atr$residencia/rivo
+13: 
+14:       escritura$lnot96-2/14/3/1731/compra/loc=?
+15: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-2
+16:          comprador$joaquim da franca/id=lnot96-2-per1
+17:             atr$residencia/lousa
+18: 
+19:          vendedor$antonio da serra/id=lnot96-2-per2
+20:             atr$residencia/favarica
+21:             atr$titulo/reverendo
+22:             atr$profissao/padre
+23: 
+24:          bem$um pedaco de mato e vinha
+25: 
+bem-lnot96-2-obj1- ** was stored with function in ACT verify act
+26:       escritura$lnot96-3/18/3/1731/aforamento/loc=?
+27: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-3
+28:          arrendatario$franco baeto/id=lnot96-3-per1
+29:             atr$residencia/moita
+30: 
+31:          arrendataria$nome desconhecido/id=lnot96-3-per2
+32:             rel$parentesco/mulher/franco baeto/lnot96-3-per1
+33:             atr$residencia/moita
+34: 
+35:          foreiro$antonio luis/id=lnot96-3-per3
+36: 
+37:          foreira$nome desconhecido/id=lnot96-3-per4
+38:             rel$parentesco/mulher/antonio luis/lnot96-3-per3
+39: 
+40:          bem$terra/desc=leva de semeadura 5 alqueires de pao/local=limite da ponte do areal
+41: 
+bem-lnot96-3-obj1- ** was stored with function in ACT verify act
+42:       escritura$lnot96-4/25/3/1731/doacao/loc=?
+43: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-4
+44:          doadora$antonia solteira/id=lnot96-4-per1
+45:             rel$parentesco/filha/antonio vaz/lnot96-4-per4
+46:             atr$residencia/ponte velha
+47: 
+48:          dotado$luis seco/id=lnot96-4-per2
+49: 
+50:          dotada$ines seca/id=lnot96-4-per3
+51:             rel$parentesco/irma/antonia solteira/lnot96-4-per1
+52:             rel$parentesco/mulher/luis seco/lnot96-4-per2
+53: 
+54:          bem$todos os bens moveis e de raiz
+55: 
+bem-lnot96-4-obj1- ** was stored with function in ACT verify act
+56:       escritura$lnot96-5/4/4/1731/procuracao/loc=?
+57: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-5
+58:          outorgante$simao rodrigues de pisao/id=lnot96-5-per1
+59:             atr$residencia/gaiate
+60: 
+61:          procurador$jose francisco/id=lnot96-5-per2
+62:             atr$residencia/montemor o velho
+63: 
+64:       escritura$lnot96-6/7/4/1731/compra/loc=?
+65: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-6
+66:          comprador$joaquim de franca/id=lnot96-6-per1
+67:             atr$residencia/lousa
+68: 
+69:          vendedora$maria coelho/id=lnot96-6-per2
+70:             atr$residencia/favarica
+71: 
+72:          bem$oliveiras com terra
+73: 
+bem-lnot96-6-obj1- ** was stored with function in ACT verify act
+74:       escritura$lnot96-7/3/6/1731/compra/loc=?
+75: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-7
+76:          comprador$antonio correia/id=lnot96-7-per1
+77:             atr$residencia/espinheiro
+78: 
+79:          vendedor$antonio simoes/id=lnot96-7-per2
+80:             atr$residencia/val de neira
+81: 
+82:          vendedora$nome desconhecido/id=lnot96-7-per3
+83:             rel$parentesco/mulher/antonio simoes/lnot96-7-per2
+84:             atr$residencia/val de neira
+85: 
+86:          bem$um talho de terra/desc=leva de semeadura 1 alqueire e meio de pao/local=limite da lousa
+87: 
+bem-lnot96-7-obj1- ** was stored with function in ACT verify act
+88:       escritura$lnot96-8/3/6/1731/procuracao/loc=?
+89: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-8
+90:          outorgante$simao fernandes/id=lnot96-8-per1
+91:             atr$residencia/cova de lobo
+92: 
+93:          outorgante$manuel simoes/id=lnot96-8-per2
+94:             atr$residencia/cova de lobo
+95: 
+96:          outorgante$antonio fernandes/id=lnot96-8-per3
+97:             atr$alcunha/o novo
+98:             atr$residencia/cova de lobo
+99: 
+100:          outorgante$antonio fernandes/id=lnot96-8-per4
+101:             atr$alcunha/o certo
+102:             atr$residencia/cova de lobo
+103: 
+104:          outorgante$pascoal francisco/id=lnot96-8-per5
+105:             atr$residencia/cova de lobo
+106: 
+107:          outorgante$francisca antonia/id=lnot96-8-per6
+108:             atr$ec/viuva
+109:             atr$residencia/cova de lobo
+110: 
+111:          outorgante$maria francisca/id=lnot96-8-per7
+112:             atr$residencia/cova de lobo
+113: 
+114:          outorgante$jose de freitas/id=lnot96-8-per8
+115:             atr$residencia/cova de lobo
+116: 
+117:          outorgante$antonio mateus/id=lnot96-8-per9
+118:             atr$residencia/era de calva
+119: 
+120:          outorgante$joao henriques/id=lnot96-8-per10
+121:             atr$residencia/era de calva
+122: 
+123:          outorgante$joao peres/id=lnot96-8-per11
+124:             atr$residencia/era de calva
+125: 
+126:          outorgante$joao fernandes/id=lnot96-8-per12
+127:             atr$residencia/val de neira
+128: 
+129:          outorgante$manuel simoes/id=lnot96-8-per13
+130:             atr$residencia/val de neira
+131: 
+132:          outorgante$martinho simoes/id=lnot96-8-per14
+133:             atr$residencia/porto da pedra
+134: 
+135:          procurador$luis goncalves de carvalho/id=lnot96-8-per15
+136:             atr$residencia/era de calva
+137: 
+138:          procurador$antonio mateus/id=lnot96-8-per16
+139:             atr$residencia/era de calva
+140: 
+141:          procurador$simao ferreira/id=lnot96-8-per17
+142:             atr$residencia/val de neira
+143: 
+144:          procurador$manuel vaz cortes/id=lnot96-8-per18
+145:             atr$residencia/val de neira
+146:             atr$titulo/licenciado
+147: 
+148:       escritura$lnot96-9/4/6/1731/procuracao/loc=?
+149: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-9
+150:          outorgante$manuel rodrigues/id=lnot96-9-per1
+151:             atr$residencia/fiscal
+152: 
+153:          outorgante$antonia martins/id=lnot96-9-per2
+154:             atr$residencia/fiscal
+155:             rel$parentesco/mulher/manuel rodrigues/lnot96-9-per1
+156: 
+157:          procurador$antonio carvalho/id=lnot96-9-per3
+158:             atr$residencia/coimbra
+159:             atr$profissao/boticario
+160: 
+161:          procurador$antonio amado/id=lnot96-9-per4
+162:             atr$residencia/coimbra
+163:             rel$parentesco/cunhado/antonio carvalho/lnot96-9-per3
+164: 
+165:       escritura$lnot96-10/4/6/1731/doacao/loc=?
+166: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-10
+167:          doador$tome das neves/id=lnot96-10-per1
+168:             atr$residencia/serpins
+169: 
+170:          doadora$nome desconhecido/id=lnot96-10-per2
+171:             atr$residencia/serpins
+172:             rel$parentesco/mulher/tome das neves/lnot96-10-per1
+173: 
+174:          dotado$manuel simoes barreto/id=lnot96-10-per3
+175:             rel$parentesco/genro/tomes das neves/lnot96-10-per1
+176:             atr$residencia/coentral pequeno
+177: 
+178:          dotada$maria das neves/id=lnot96-10-per4
+179:             rel$parentesco/mulher/manuel simoes barreto/lnot96-10-per3
+180:             atr$residencia/coentral pequeno
+181: 
+182:          bem$um chao/obs=chamam salgueiral/local=limite do lugar das matas
+183: 
+bem-lnot96-10-obj1- ** was stored with function in ACT verify act
+184:          bem$olival/desc=com suas terras/obs=chamam portinho/local=limite da valada
+185: 
+bem-lnot96-10-obj2- ** was stored with function in ACT verify act
+186:          bem$25000 reis
+187: 
+bem-lnot96-10-obj3- ** was stored with function in ACT verify act
+188:       escritura$lnot96-11/26/6/1731/codicilo/loc=?/obs=segundo codicilo
+189: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-11
+190:          testador$joao fernandes/id=lnot96-11-per1
+191:             atr$titulo/licenciado
+192:             atr$profissao/frei
+193:             atr$residencia/reguengo
+194: 
+195:       escritura$lnot96-12/5/7/1731/compra/loc=?
+196: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-12
+197:          comprador$manuel francisco/id=lnot96-12-per1
+198:             atr$residencia/pegos
+199: 
+200:          vendedor$manuel de almeida/id=lnot96-12-per2
+201:             atr$residencia/val de neira
+202: 
+203:          bem$pedaco de terra/desc=leva de semeadura um quarta de pao/local=pegos
+204: 
+bem-lnot96-12-obj1- ** was stored with function in ACT verify act
+205:       escritura$lnot96-13/7/8/1731/fianca/loc=?/obs=para a renda das jugadas da lousa pertencente a casa de aveiro
+206: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-13
+207:          fiador$bernardo de magalhaes/id=lnot96-13-per1
+208:             atr$residencia/coimbra/obs=de momento na lousa
+209: 
+210:       escritura$lnot96-14/7/8/1731/contrato de sociedade e parceria/loc=?
+211: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-14
+212:          contraente$bernardo de magalhaes/id=lnot96-14-per1
+213:             atr$residencia/coimbra
+214:             atr$funcao/rendeiro na lousa
+215: 
+216:          contraente$jose saraiva de vasconcelos/id=lnot96-14-per2
+217:             atr$residencia/almalagues termo de coimbra
+218: 
+219:       escritura$lnot96-15/9/8/1731/procuracao/loc=?
+220: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-15
+221:          outorgante$antonio luis/id=lnot96-15-per1
+222:             atr$residencia/reguengo
+223: 
+224:          outorgante$nome desconhecido/id=lnot96-15-per2
+225:             rel$parentesco/mulher/antonio luis/lnot96-15-per1
+226:             atr$residencia/reguengo
+227: 
+228:          procurador$alexandre frazao/id=lnot96-15-per3
+229:             atr$residencia/rua de sao joao coimbra
+230:             atr$titulo/licenciado
+231: 
+232:       escritura$lnot96-16/16/8/1731/codicilo/loc=?/obs=quarto codicilo
+233: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-16
+234:          testador$joao fernandes/id=lnot96-16-per1
+235:             atr$residencia/cova do reguengo
+236:             atr$titulo/licenciado
+237:             atr$profissao/frei
+238: 
+239:       escritura$lnot96-17/21/8/1731/compra/loc=?
+240: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-17
+241:          comprador$bernardo pessoa de andrade/id=lnot96-17-per1
+242:             atr$titulo/doutor
+243: 
+244:          vendedora$maria mateus/id=lnot96-17-per2
+245:             atr$residencia/cova de lobo
+246: 
+247:          vendedora$francisca rodrigues/id=lnot96-17-per3
+248:             atr$residencia/cova do lobo
+249: 
+250:          vendedor$jose antonio/id=lnot96-17-per4
+251:             atr$residencia/cova do lobo
+252: 
+253:          bem$terra/desc=com suas arvores de fruto
+254: 
+bem-lnot96-17-obj1- ** was stored with function in ACT verify act
+255:       escritura$lnot96-18/21/8/1731/compra/loc=?
+256: 
+**** auto rels 2 STARTED.
+** Processing act escritura$lnot96-18
+257:          comprador$teodosio carrasco/id=lnot96-18-per1
+258:             atr$residencia/alfafar
+259: 
+260:          vendedora$maria mateus/id=lnot96-18-per2
+261:             atr$residencia/cova do lobo
+262: 
+263:          vendedora$francisca rodrigues/id=lnot96-18-per3
+264:             atr$residencia/cova do lobo
+265: 
+266:          bem$casa com chao/desc=com arvores de fruto e sem fruto
+267: 
+bem-lnot96-18-obj1- ** was stored with function in ACT verify act
+268:       escritura$lnot96-19/25/8/1731/procuracao/loc

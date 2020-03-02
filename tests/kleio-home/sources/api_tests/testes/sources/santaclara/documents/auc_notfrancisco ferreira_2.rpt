@@ -1,0 +1,150 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 4-33
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfrancisco ferreira_2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1668-1669/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-2-97, notario francisco ferreira, maio a abril
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1668-1669
+4:       escritura$not1668-e1/24/5/1668/procuracao/fol=10-11/loc=casa do parlatorio/sumario=joana de andrade, criada de dona maria de mendonca, porteira do mosteiro de santa clara da cidade de coimbra, constitui procurador francisco da costa
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1668-e1
+6:          constituintef$joana de andrade/id=not1668-e1-per1
+7:             ls$profissao/criada
+8:             ls$idade/25 anos
+9:             rel$profissional/criada/maria de mendonca/not1668-e1-per3
+10: 
+11:             referida$maria de mendonca/id=not1668-e1-per3
+12:                ls$cargo/porteira/obs=mosteiro de santa clara de coimbra
+13: 
+14:          procurador$francisco costa/id=not1668-e1-per4
+15:             rel$sociabilidade/procurador/joana de andrade/not1668-e1-per1
+16:             ls$residencia/podentes%vila de podentes
+17: 
+18:          procurador$joao ?/obs=duvida no segundo nome/id=not1668-e1-per5
+19:             rel$sociabilidade/procurador/joana de andrade/not1668-e1-per1
+20:             rel$sociabilidade/rendeiro/mosteiro de santa clara/not1668-e1-per6
+21: 
+22:             referido$mosteiro de santa clara/id=not1668-e1-per6
+23: 
+24:             referido$belchior fernandes/id=not1668-e1-per7
+25:                rel$parentesco/pai/joana de andrade/not1668-e1-per1
+26: 
+27:             referida$macia dias/obs=duvida no primeiro nome/id=not1668-e1-per8
+28:                rel$parentesco/mae/joana de andrade/not1668-e1-per1
+29: 
+30:       escritura$not1668-e2/10/10/1668/dote de ingresso/fol=28v-31/loc=casa do parlatorio/sumario=contrato de dote de ingresso no mosteiro de santa clara da cidade de coimbra de maria baptista
+31: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1668-e2
+32:          dotante$antonio baptista pereira/id=not1668-e2-per1
+33:             ls$titulo/licenciado
+34: 
+35:             referida$maria antunes/id=not1668-e2-per2
+36:                rel$parentesco/mulher/antonio baptista pereira/not1668-e2-per1
+37: 
+38:          dotada$maria baptista/id=not1668-e2-per3
+39: 
+40:          bem$mil cruzados
+41: 
+bem-not1668-e2-obj1- ** was stored with function in ACT verify act
+42:          test$isabel de velhasques/f/id=not1668-e2-per4
+43:             ls$cargo/escriva
+44:             ls$assina/sim
+45: 
+46:          test$jacinta de tavora/f/id=not1668-e2-per5
+47:             ls$cargo/abadessa
+48:             ls$assina/sim
+49: 
+50:          test$joana turriana/f/id=1668-e2-per6
+51:             ls$cargo/vigaria
+52:             ls$assina/sim
+53: 
+54:          test$jose da graca/m/id=not1668-e2-per7
+55:             ls$profissao/padre
+56:             ls$titulo/frei
+57:             rel$sociabilidade/confessor/jacinta de tavora/not1668-e2-per5
+58: 
+59:          test$baltasar dias/m/id=not1668-e2-per8
+60:             ls$profissao/serrador
+61: 
+62:          test$antonio reis/m/id=not1668-e2-per9
+63:             ls$ec/solteiro
+64:             ls$residencia/rua de sao cristovao/obs=cidade de coimbra
+65: 
+66:          test$filipa de santo antonio/f/id=not1668-e2-per10
+67:             ls$condicao/freira professa
+68:             ls$assina/sim
+69: 
+70:          test$mariana de sao bento/f/id=not1668-e2-per11
+71:             ls$condicao/freira professa
+72:             ls$assina/sim
+73: 
+74:          test$mariana de melo/f/id=not1668-e2-per12
+75:             ls$condicao/freira professa
+76:             ls$assina/sim
+77: 
+78:          test$margarida henriques/f/id=not1668-e2-per13
+79:             ls$condicao/freira professa
+80:             ls$assina/sim
+81: 
+82:       escritura$not1669-e3/5/4/1669/arrendamento/fol=120v-122/loc=grade do locutorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara da cidade de coimbra e francisco fernandes, de uma propriedade de vinha sita acima da calcada de vale do inferno, a qual chamam cabeca gorda
+83: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1669-e3
+84:          senhoria$jacinta de tavora/id=not1669-e3-per1
+85:             ls$cargo/abadessa
+86:             ls$assina/sim
+87: 
+88:          arrendatario$francisco fernandes/id=not1669-e3-per2
+89:             ls$alcunha/o branco
+90: 
+91:          arrendamento$uma propriedade de vinha
+arrendamento-not1669-e3-obj1- ** was stored with function in ACT verify act
+92:             atr$localizacao/acima da calcada de vale do inferno a que chamam cabeca gorda
+93:             atr$renda/oitocentos reis
+94:             atr$renda/um oitavo/obs=por dia de s. miguel de setembro
+95: 
+96:          test$joana turriana/f/id=not1669-e3-per3
+97:             ls$cargo/vigaria
+98:             ls$assina/sim
+99: 
+100:          test$isabel de velhasques/f/id=not1669-e3-per4
+101:             ls$cargo/escriva
+102:             ls$assina/sim
+103: 
+104:          test$manuel pinho/m/id=not1669-e3-per5
+105:             rel$profissional/solicitador/jacinta de tavora/not1669-e3-per1
+106: 
+107:          test$manuel da silva/m/id=not1669-e3-per6
+108:             rel$profissional/executor/jacinta de tavora/not1669-e3-per1
+109:             ls$residencia/rua da sofia coimbra
+110: 
+111:          test$domingos ribeiro/m/id=not1669-e3-per7
+112:             ls$residencia/coimbra
+113: 
+114:          test$antonio joao/m/id=not1669-e3-per8
+115:             ls$residencia/termo de coimbra
+116: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfrancisco ferreira_2.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfrancisco ferreira_2.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfrancisco ferreira_2.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfrancisco ferreira_2.ids

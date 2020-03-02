@@ -1,0 +1,1891 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/system/conf/kleio/stru/gacto2.str" SOURCE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.cli" TRANSLATOR="gactoxml2.str" WHEN="2019-7-2 22:0:43" OBS="" SPACE="lousa">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="lousa-baptismos1714-c" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-baptismos1714-c</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[localizacao-a.u.c.]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[freguesia de sao silvestre da lousalousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/paroquiais/baptismos/bap-com-celebrantes.cli]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="bap">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="lousa-b1714-1" NAME="bap" CLASS="act" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>bap</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-baptismos1714-c</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[6]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1714]]></core>   </ELEMENT>
+   <ELEMENT NAME="fol" CLASS="ref">
+         <core><![CDATA[fl.117v.]]></core>   </ELEMENT>
+   <ELEMENT NAME="local" CLASS="loc">
+         <core><![CDATA[igreja de sao silvestre]]></core>   </ELEMENT>
+   <ELEMENT NAME="celebrante" CLASS="undef">
+         <core><![CDATA[joao lopes serra(padre)]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[com licenca do padre manuel lopes serraassina joao lopes serra]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[bap]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="celebrante">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="lousa-b1714-1-per1" NAME="celebrante" CLASS="person" ORDER="3" LEVEL="3" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>celebrante</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao lopes serra]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="origin" COLUMN="origin" CLASS="origin" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="lousa-b1714-1-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrante</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="lousa-b1714-1-per1-att1-16" NAME="ls" CLASS="attribute" ORDER="5" LEVEL="4" LINE="9">
+    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1-att1-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[padre]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per1-att1-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per1b" NAME="n" CLASS="person" ORDER="6" LEVEL="3" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[filipa]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-rela2" NAME="relation"  ORDER="7" LEVEL="4" CLASS="relation" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-per1b-att2-16" NAME="ls" CLASS="attribute" ORDER="8" LEVEL="4" LINE="12">
+    <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b-att2-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[nome]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[constanca]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[segundo um assento na margem do baptismo: "a mae da baptizada mudou no santo crisma o nome de Filipa em Constancia e que justifocou ante o vigario gheral desta vila por cujo despacho fiz esta declaraÂÂo. assina: Padre Tavares"]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per1b-att2-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per1b]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per2" NAME="pn" CLASS="person" ORDER="9" LEVEL="4" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao de almeida]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per1b-rela3" NAME="relation"  ORDER="10" LEVEL="5" CLASS="relation" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-per2-att3-16" NAME="ls" CLASS="attribute" ORDER="11" LEVEL="5" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per2-att3-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vila da lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per2-att3-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per2-att4-16" NAME="ls" CLASS="attribute" ORDER="12" LEVEL="5" LINE="16">
+    <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per2-att4-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per2-att4-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per3" NAME="mn" CLASS="person" ORDER="13" LEVEL="4" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria antonia]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per1b-rela4" NAME="relation"  ORDER="14" LEVEL="5" CLASS="relation" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-per4" NAME="pad" CLASS="person" ORDER="15" LEVEL="4" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao de arruda? frazao]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per1b-rela5" NAME="relation"  ORDER="16" LEVEL="5" CLASS="relation" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-per4-att5-16" NAME="ls" CLASS="attribute" ORDER="17" LEVEL="5" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per4-att5-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vila da lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per4-att5-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per4-att6-16" NAME="ls" CLASS="attribute" ORDER="18" LEVEL="5" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per4-att6-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per4-att6-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per5" NAME="mad" CLASS="person" ORDER="19" LEVEL="4" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[escolastica monteira]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per1b-rela6" NAME="relation"  ORDER="20" LEVEL="5" CLASS="relation" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per1b-rela6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-per5-att7-16" NAME="ls" CLASS="attribute" ORDER="21" LEVEL="5" LINE="24">
+    <ELEMENT NAME="line" CLASS="line"><core>24</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per5-att7-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[licenciado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per5-att7-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per5-att8-16" NAME="ls" CLASS="attribute" ORDER="22" LEVEL="5" LINE="25">
+    <ELEMENT NAME="line" CLASS="line"><core>25</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per5-att8-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vila da lousa]]></core>         <original><![CDATA[lousa vila]]></original>
+   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per5-att8-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-per5-att9-16" NAME="ls" CLASS="attribute" ORDER="23" LEVEL="5" LINE="27">
+    <ELEMENT NAME="line" CLASS="line"><core>27</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-per5-att9-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-1-per5-att9-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140106]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-1-rela7" NAME="relation"  ORDER="24" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela8" NAME="relation"  ORDER="25" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>25</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela9" NAME="relation"  ORDER="26" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>26</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela10" NAME="relation"  ORDER="27" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>27</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela11" NAME="relation"  ORDER="28" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>28</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela12" NAME="relation"  ORDER="29" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>29</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela13" NAME="relation"  ORDER="30" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>30</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela13</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela14" NAME="relation"  ORDER="31" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>31</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela14</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela15" NAME="relation"  ORDER="32" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>32</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela15</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela16" NAME="relation"  ORDER="33" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>33</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela16</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela17" NAME="relation"  ORDER="34" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>34</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela17</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela18" NAME="relation"  ORDER="35" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>35</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela18</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela19" NAME="relation"  ORDER="36" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>36</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela19</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-1-rela20" NAME="relation"  ORDER="37" LEVEL="3" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>37</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-1-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-1-rela20</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2" NAME="bap" CLASS="act" ORDER="38" LEVEL="2" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>bap</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-baptismos1714-c</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>38</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[12]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[11714]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[fl.117v.]]></core>   </ELEMENT>
+   <ELEMENT NAME="fol" CLASS="ref">
+         <core><![CDATA[igreja de sao silvestre]]></core>   </ELEMENT>
+   <ELEMENT NAME="local" CLASS="loc">
+         <core><![CDATA[manuel lopes serra (padre)]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[bap]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1" NAME="celebrante" CLASS="person" ORDER="39" LEVEL="3" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>celebrante</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>39</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel lopes serra]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-rela21" NAME="relation"  ORDER="40" LEVEL="4" CLASS="relation" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>40</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrante</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela21</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per1-att1-16" NAME="ls" CLASS="attribute" ORDER="41" LEVEL="4" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1-att1-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>41</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[padre]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per1-att1-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1b" NAME="n" CLASS="person" ORDER="42" LEVEL="3" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>42</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-rela22" NAME="relation"  ORDER="43" LEVEL="4" CLASS="relation" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>43</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela22</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per2" NAME="pn" CLASS="person" ORDER="44" LEVEL="4" LINE="35">
+    <ELEMENT NAME="line" CLASS="line"><core>35</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>44</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio ferreira]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1b-rela23" NAME="relation"  ORDER="45" LEVEL="5" CLASS="relation" LINE="35">
+    <ELEMENT NAME="line" CLASS="line"><core>35</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>45</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1b-rela23</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per2-att2-16" NAME="ls" CLASS="attribute" ORDER="46" LEVEL="5" LINE="36">
+    <ELEMENT NAME="line" CLASS="line"><core>36</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per2-att2-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>46</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[espinheiro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per2-att2-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per2-att3-16" NAME="ls" CLASS="attribute" ORDER="47" LEVEL="5" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per2-att3-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>47</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per2-att3-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per3" NAME="mn" CLASS="person" ORDER="48" LEVEL="4" LINE="40">
+    <ELEMENT NAME="line" CLASS="line"><core>40</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>48</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[leonarda francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1b-rela24" NAME="relation"  ORDER="49" LEVEL="5" CLASS="relation" LINE="40">
+    <ELEMENT NAME="line" CLASS="line"><core>40</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>49</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1b-rela24</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per4" NAME="pad" CLASS="person" ORDER="50" LEVEL="4" LINE="41">
+    <ELEMENT NAME="line" CLASS="line"><core>41</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>50</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[ joao fernandes ramalheiro]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1b-rela25" NAME="relation"  ORDER="51" LEVEL="5" CLASS="relation" LINE="41">
+    <ELEMENT NAME="line" CLASS="line"><core>41</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>51</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1b-rela25</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per4-att4-16" NAME="ls" CLASS="attribute" ORDER="52" LEVEL="5" LINE="42">
+    <ELEMENT NAME="line" CLASS="line"><core>42</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per4-att4-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>52</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[moita]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per4-att4-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per4-att5-16" NAME="ls" CLASS="attribute" ORDER="53" LEVEL="5" LINE="44">
+    <ELEMENT NAME="line" CLASS="line"><core>44</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per4-att5-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>53</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per4-att5-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per5" NAME="mad" CLASS="person" ORDER="54" LEVEL="4" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>54</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[francisa]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per1b-rela26" NAME="relation"  ORDER="55" LEVEL="5" CLASS="relation" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>55</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per1b-rela26</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per5-att6-16" NAME="ls" CLASS="attribute" ORDER="56" LEVEL="5" LINE="47">
+    <ELEMENT NAME="line" CLASS="line"><core>47</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per5-att6-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>56</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[ec]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[solteira]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per5-att6-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per6" NAME="pmad" CLASS="person" ORDER="57" LEVEL="5" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pmad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>57</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao goncalves]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per5-rela27" NAME="relation"  ORDER="58" LEVEL="6" CLASS="relation" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per6</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>58</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pmad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per6</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per5-rela27</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-per6-att7-16" NAME="ls" CLASS="attribute" ORDER="59" LEVEL="6" LINE="49">
+    <ELEMENT NAME="line" CLASS="line"><core>49</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per6-att7-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>59</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[espinheiro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per6-att7-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-per6-att8-16" NAME="ls" CLASS="attribute" ORDER="60" LEVEL="6" LINE="51">
+    <ELEMENT NAME="line" CLASS="line"><core>51</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-per6-att8-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>60</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-2-per6-att8-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-2-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-2-rela28" NAME="relation"  ORDER="61" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>61</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela28</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela29" NAME="relation"  ORDER="62" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>62</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per6</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela29</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela30" NAME="relation"  ORDER="63" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>63</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela30</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela31" NAME="relation"  ORDER="64" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>64</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela31</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela32" NAME="relation"  ORDER="65" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>65</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela32</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela33" NAME="relation"  ORDER="66" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>66</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela33</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela34" NAME="relation"  ORDER="67" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>67</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela34</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela35" NAME="relation"  ORDER="68" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>68</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela35</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela36" NAME="relation"  ORDER="69" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>69</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela36</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela37" NAME="relation"  ORDER="70" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>70</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela37</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela38" NAME="relation"  ORDER="71" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>71</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela38</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela39" NAME="relation"  ORDER="72" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>72</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela39</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela40" NAME="relation"  ORDER="73" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>73</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela40</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela41" NAME="relation"  ORDER="74" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>74</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela41</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-2-rela42" NAME="relation"  ORDER="75" LEVEL="3" CLASS="relation" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>75</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-2-per5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-2-rela42</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3" NAME="bap" CLASS="act" ORDER="76" LEVEL="2" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>bap</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-baptismos1714-c</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>76</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[17]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1714]]></core>   </ELEMENT>
+   <ELEMENT NAME="fol" CLASS="ref">
+         <core><![CDATA[fl.118]]></core>   </ELEMENT>
+   <ELEMENT NAME="local" CLASS="loc">
+         <core><![CDATA[igreja de sao silvestre]]></core>   </ELEMENT>
+   <ELEMENT NAME="celebrante" CLASS="undef">
+         <core><![CDATA[manuel manuel da fonseca(padre)]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[o padre e morador na vila da lousaassina o termo o padre manuel llopes serra]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[bap]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per1" NAME="celebrante" CLASS="person" ORDER="77" LEVEL="3" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>celebrante</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>77</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel manuel da fonseca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-rela43" NAME="relation"  ORDER="78" LEVEL="4" CLASS="relation" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>78</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrante</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela43</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per1-att1-16" NAME="ls" CLASS="attribute" ORDER="79" LEVEL="4" LINE="55">
+    <ELEMENT NAME="line" CLASS="line"><core>55</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1-att1-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>79</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per1-att1-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per1-att2-16" NAME="ls" CLASS="attribute" ORDER="80" LEVEL="4" LINE="57">
+    <ELEMENT NAME="line" CLASS="line"><core>57</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1-att2-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>80</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[padre]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per1-att2-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-n" NAME="n" CLASS="person" ORDER="81" LEVEL="3" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>81</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-rela44" NAME="relation"  ORDER="82" LEVEL="4" CLASS="relation" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>82</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela44</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per1b" NAME="pn" CLASS="person" ORDER="83" LEVEL="4" LINE="60">
+    <ELEMENT NAME="line" CLASS="line"><core>60</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-n</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>83</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[luis fernandes]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-n-rela45" NAME="relation"  ORDER="84" LEVEL="5" CLASS="relation" LINE="60">
+    <ELEMENT NAME="line" CLASS="line"><core>60</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>84</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-n-rela45</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per1b-att3-16" NAME="ls" CLASS="attribute" ORDER="85" LEVEL="5" LINE="61">
+    <ELEMENT NAME="line" CLASS="line"><core>61</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1b-att3-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>85</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[cova de lobo]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per1b-att3-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per1b]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per1b-att4-16" NAME="ls" CLASS="attribute" ORDER="86" LEVEL="5" LINE="63">
+    <ELEMENT NAME="line" CLASS="line"><core>63</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per1b-att4-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per1b</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>86</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per1b-att4-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per1b]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per2" NAME="mn" CLASS="person" ORDER="87" LEVEL="4" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mn</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-n</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>87</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[fernanda neta]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-n-rela46" NAME="relation"  ORDER="88" LEVEL="5" CLASS="relation" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>88</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mn</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-n-rela46</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per3" NAME="pad" CLASS="person" ORDER="89" LEVEL="4" LINE="66">
+    <ELEMENT NAME="line" CLASS="line"><core>66</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-n</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>89</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel rodrigues]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-n-rela47" NAME="relation"  ORDER="90" LEVEL="5" CLASS="relation" LINE="66">
+    <ELEMENT NAME="line" CLASS="line"><core>66</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>90</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-n-rela47</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per3-att5-16" NAME="ls" CLASS="attribute" ORDER="91" LEVEL="5" LINE="67">
+    <ELEMENT NAME="line" CLASS="line"><core>67</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per3-att5-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>91</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[espinheiro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per3-att5-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per3-att6-16" NAME="ls" CLASS="attribute" ORDER="92" LEVEL="5" LINE="69">
+    <ELEMENT NAME="line" CLASS="line"><core>69</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per3-att6-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>92</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per3-att6-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-mad" NAME="mad" CLASS="person" ORDER="93" LEVEL="4" LINE="71">
+    <ELEMENT NAME="line" CLASS="line"><core>71</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-mad</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-n</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>93</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-n-rela48" NAME="relation"  ORDER="94" LEVEL="5" CLASS="relation" LINE="71">
+    <ELEMENT NAME="line" CLASS="line"><core>71</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-mad</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>94</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-mad</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-n-rela48</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per4" NAME="mrmad" CLASS="person" ORDER="95" LEVEL="5" LINE="72">
+    <ELEMENT NAME="line" CLASS="line"><core>72</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mrmad</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-mad</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>95</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio fernandes]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-mad-rela49" NAME="relation"  ORDER="96" LEVEL="6" CLASS="relation" LINE="72">
+    <ELEMENT NAME="line" CLASS="line"><core>72</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>96</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mrmad</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-mad-rela49</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-per4-att7-16" NAME="ls" CLASS="attribute" ORDER="97" LEVEL="6" LINE="73">
+    <ELEMENT NAME="line" CLASS="line"><core>73</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per4-att7-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>97</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morada]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[cova de lobo]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per4-att7-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-per4-att8-16" NAME="ls" CLASS="attribute" ORDER="98" LEVEL="6" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-per4-att8-16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>98</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[lousa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[lousa-b1714-3-per4-att8-16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[lousa-b1714-3-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[17140117]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="lousa-b1714-3-rela50" NAME="relation"  ORDER="99" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>99</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela50</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela51" NAME="relation"  ORDER="100" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>100</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-mad</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela51</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela52" NAME="relation"  ORDER="101" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>101</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela52</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela53" NAME="relation"  ORDER="102" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>102</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela53</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela54" NAME="relation"  ORDER="103" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>103</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>co-parent</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela54</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela55" NAME="relation"  ORDER="104" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>104</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela55</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela56" NAME="relation"  ORDER="105" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>105</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>*family</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>couple</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela56</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela57" NAME="relation"  ORDER="106" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>106</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela57</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela58" NAME="relation"  ORDER="107" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>107</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela58</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela59" NAME="relation"  ORDER="108" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>108</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela59</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela60" NAME="relation"  ORDER="109" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>109</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-n</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela60</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela61" NAME="relation"  ORDER="110" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>110</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per1b</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela61</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela62" NAME="relation"  ORDER="111" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>111</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela62</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela63" NAME="relation"  ORDER="112" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>112</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-per3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela63</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP>
+<GROUP ID="lousa-b1714-3-rela64" NAME="relation"  ORDER="113" LEVEL="7" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1714-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>113</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>sociabilidade</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>celebrou ato</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1714-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1714-3-mad</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1714-3-rela64</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>17140117</core></ELEMENT>
+</GROUP></KLEIO>

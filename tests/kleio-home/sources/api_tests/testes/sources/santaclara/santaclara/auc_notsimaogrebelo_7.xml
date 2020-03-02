@@ -1,0 +1,1756 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/system/conf/kleio/stru/gacto2.str" SOURCE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notsimaogrebelo_7.cli" TRANSLATOR="gactoxml2.str" WHEN="2019-7-3 8:9:44" OBS="" SPACE="">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1649-1650" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-1650</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[escrituras notariais]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[auc, notarial cota v i-es-9-3-109, notarios simao gomes rebelo e joao antunes da fonseca, agosto a abril]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notsimaogrebelo_7.cli]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="historical-act">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+<CLASS NAME="escritura" SUPER="act" TABLE="escrituras" GROUP="escritura">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="fol" COLUMN="fol" CLASS="fol" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="sumario" COLUMN="summary" CLASS="summary" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1649-e1" NAME="escritura" CLASS="escritura" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>escritura</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-1650</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[31]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[8]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1649]]></core>   </ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[procuracao]]></core>   </ELEMENT>
+   <ELEMENT NAME="fol" CLASS="fol">
+         <core><![CDATA[11v-12v]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[pousadas do tabeliao]]></core>   </ELEMENT>
+   <ELEMENT NAME="sumario" CLASS="summary">
+         <core><![CDATA[domingos de freitas, mestre de obras do novo mosteiro de santa clara da cidade de coimbra, constitui procuradores, pedro de freitas, pedro farncisco, diogo do vale, agostinho de faria, pedro machado e ant.nio de castro, para que em seu nome resolvam quest.es relacionadas com devedores e contendores do seu constituinte, como, p.e., causa que corre vai para tr.s anos com clerigos da irmandade de s. pedro de vila real, sobre a obra da igreja]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[escritura]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="referido">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1649-e1-per1" NAME="referido" CLASS="person" ORDER="3" LEVEL="3" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>referido</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[mosteiro de santa clara de coimbra]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="origin" COLUMN="origin" CLASS="origin" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1649-e1-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>referido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per2" NAME="constituinte" CLASS="person" ORDER="5" LEVEL="3" LINE="9">
+    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>constituinte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela2" NAME="relation"  ORDER="6" LEVEL="4" CLASS="relation" LINE="9">
+    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>constituinte</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1649-e1-per2-att1" NAME="ls" CLASS="attribute" ORDER="7" LEVEL="4" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per2-att1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mestre de obras]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per2-att1]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per2-rel1" NAME="rel" CLASS="relation" ORDER="8" LEVEL="4" LINE="11">
+    <ELEMENT NAME="line" CLASS="line"><core>11</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per2-rel1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissional]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mestre de obras]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[mosteiro de santa clara de coimbra]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per2-rel1]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per2-att2" NAME="ls" CLASS="attribute" ORDER="9" LEVEL="4" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per2-att2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[naturalidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[guimaraes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per2-att2]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per3" NAME="procurador" CLASS="person" ORDER="10" LEVEL="3" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[pedro de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela3" NAME="relation"  ORDER="11" LEVEL="4" CLASS="relation" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per3-rel2" NAME="rel" CLASS="relation" ORDER="12" LEVEL="4" LINE="15">
+    <ELEMENT NAME="line" CLASS="line"><core>15</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per3-rel2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per3-rel2]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per3-rel3" NAME="rel" CLASS="relation" ORDER="13" LEVEL="4" LINE="17">
+    <ELEMENT NAME="line" CLASS="line"><core>17</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per3-rel3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[parentesco]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[irmao]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per3-rel3]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per4" NAME="procurador" CLASS="person" ORDER="14" LEVEL="3" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[pedro francisco]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela4" NAME="relation"  ORDER="15" LEVEL="4" CLASS="relation" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per4-rel4" NAME="rel" CLASS="relation" ORDER="16" LEVEL="4" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per4-rel4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per4-rel4]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per4-att3" NAME="ls" CLASS="attribute" ORDER="17" LEVEL="4" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per4-att3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[oficial da cantaria]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per4-att3]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per4-rel5" NAME="rel" CLASS="relation" ORDER="18" LEVEL="4" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per4-rel5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissional]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[aparelhador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per4-rel5]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per5" NAME="procurador" CLASS="person" ORDER="19" LEVEL="3" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[diogo do vale]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela5" NAME="relation"  ORDER="20" LEVEL="4" CLASS="relation" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per5-att4" NAME="ls" CLASS="attribute" ORDER="21" LEVEL="4" LINE="24">
+    <ELEMENT NAME="line" CLASS="line"><core>24</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per5-att4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[licenciado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per5-att4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per5-rel6" NAME="rel" CLASS="relation" ORDER="22" LEVEL="4" LINE="25">
+    <ELEMENT NAME="line" CLASS="line"><core>25</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per5-rel6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per5-rel6]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per5-att5" NAME="ls" CLASS="attribute" ORDER="23" LEVEL="4" LINE="27">
+    <ELEMENT NAME="line" CLASS="line"><core>27</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per5-att5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[naturalidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vila real]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per5-att5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per6" NAME="procurador" CLASS="person" ORDER="24" LEVEL="3" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[agostinho de faria]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela6" NAME="relation"  ORDER="25" LEVEL="4" CLASS="relation" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per6</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>25</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per6</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per6-rel7" NAME="rel" CLASS="relation" ORDER="26" LEVEL="4" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per6-rel7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>26</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per6-rel7]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per6-att6" NAME="ls" CLASS="attribute" ORDER="27" LEVEL="4" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per6-att6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>27</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[braga]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per6-att6]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per6-att7" NAME="ls" CLASS="attribute" ORDER="28" LEVEL="4" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per6-att7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>28</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[licenciado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per6-att7]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per7" NAME="procurador" CLASS="person" ORDER="29" LEVEL="3" LINE="33">
+    <ELEMENT NAME="line" CLASS="line"><core>33</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>29</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[pedro machado]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela7" NAME="relation"  ORDER="30" LEVEL="4" CLASS="relation" LINE="33">
+    <ELEMENT NAME="line" CLASS="line"><core>33</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per7</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>30</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per7</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per7-rel8" NAME="rel" CLASS="relation" ORDER="31" LEVEL="4" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per7-rel8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>31</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per7-rel8]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per7-att8" NAME="ls" CLASS="attribute" ORDER="32" LEVEL="4" LINE="35">
+    <ELEMENT NAME="line" CLASS="line"><core>35</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per7-att8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>32</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[braga]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per7-att8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per7-att9" NAME="ls" CLASS="attribute" ORDER="33" LEVEL="4" LINE="37">
+    <ELEMENT NAME="line" CLASS="line"><core>37</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per7-att9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>33</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[licenciado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per7-att9]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per8" NAME="procurador" CLASS="person" ORDER="34" LEVEL="3" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>procurador</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>34</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio de castro]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela8" NAME="relation"  ORDER="35" LEVEL="4" CLASS="relation" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per8</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>35</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>procurador</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per8</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per8-rel9" NAME="rel" CLASS="relation" ORDER="36" LEVEL="4" LINE="39">
+    <ELEMENT NAME="line" CLASS="line"><core>39</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per8-rel9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>36</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[sociabilidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[procurador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[domingos de freitas]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1649-e1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per8-rel9]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1649-e1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per8-att10" NAME="ls" CLASS="attribute" ORDER="37" LEVEL="4" LINE="40">
+    <ELEMENT NAME="line" CLASS="line"><core>40</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per8-att10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>37</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sao martinho de sande, termo da vila de guimaraes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per8-att10]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per8-att11" NAME="ls" CLASS="attribute" ORDER="38" LEVEL="4" LINE="41">
+    <ELEMENT NAME="line" CLASS="line"><core>41</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per8-att11</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>38</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[titulo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[licenciado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per8-att11]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per8-att12" NAME="ls" CLASS="attribute" ORDER="39" LEVEL="4" LINE="43">
+    <ELEMENT NAME="line" CLASS="line"><core>43</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per8-att12</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>39</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[aparelhador de obras]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1649-e1-per8-att12]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1649-e1-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16490831]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-per9" NAME="test" CLASS="person" ORDER="40" LEVEL="3" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>40</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel gomes]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela9" NAME="relation"  ORDER="41" LEVEL="4" CLASS="relation" LINE="45">
+    <ELEMENT NAME="line" CLASS="line"><core>45</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per9</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>41</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per9</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1649-e1-per10" NAME="test" CLASS="person" ORDER="42" LEVEL="3" LINE="47">
+    <ELEMENT NAME="line" CLASS="line"><core>47</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-per10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>42</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[gaspar dos reis]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1649-e1-rela10" NAME="relation"  ORDER="43" LEVEL="4" CLASS="relation" LINE="47">
+    <ELEMENT NAME="line" CLASS="line"><core>47</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1649-e1-per10</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>43</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1649-e1-per10</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1649-e1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1649-e1-rela10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16490831</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2" NAME="escritura" CLASS="escritura" ORDER="44" LEVEL="2" LINE="49">
+    <ELEMENT NAME="line" CLASS="line"><core>49</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>escritura</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1649-1650</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>44</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[8]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[3]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1650]]></core>   </ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[arrendamento de rendas]]></core>   </ELEMENT>
+   <ELEMENT NAME="fol" CLASS="fol">
+         <core><![CDATA[110v-113v]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[grade do parlatorio]]></core>   </ELEMENT>
+   <ELEMENT NAME="sumario" CLASS="summary">
+         <core><![CDATA[contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara da cidade de coimbra e manuel goncalves cardoso, das rendas, ra..es e dizimas da igreja de sao martinho, sita em montemor-o-velho]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[escritura]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per1" NAME="senhoria" CLASS="person" ORDER="45" LEVEL="3" LINE="50">
+    <ELEMENT NAME="line" CLASS="line"><core>50</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>senhoria</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>45</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[helena da silva]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela11" NAME="relation"  ORDER="46" LEVEL="4" CLASS="relation" LINE="50">
+    <ELEMENT NAME="line" CLASS="line"><core>50</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>46</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>senhoria</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per1-att1" NAME="ls" CLASS="attribute" ORDER="47" LEVEL="4" LINE="51">
+    <ELEMENT NAME="line" CLASS="line"><core>51</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per1-att1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>47</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[abadessa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per1-att1]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per1-att2" NAME="ls" CLASS="attribute" ORDER="48" LEVEL="4" LINE="53">
+    <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per1-att2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>48</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per1-att2]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per2" NAME="rendeiro" CLASS="person" ORDER="49" LEVEL="3" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rendeiro</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>49</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel goncalves cardoso]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela12" NAME="relation"  ORDER="50" LEVEL="4" CLASS="relation" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>50</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>rendeiro</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per2-att3" NAME="ls" CLASS="attribute" ORDER="51" LEVEL="4" LINE="56">
+    <ELEMENT NAME="line" CLASS="line"><core>56</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per2-att3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>51</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[gatoes, termo de montemor o velho]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per2-att3]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="object" SUPER="entity" TABLE="objects" GROUP="object">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+<CLASS NAME="good" SUPER="object" TABLE="goods" GROUP="bem">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="description" COLUMN="description" CLASS="description" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="not1650-e2-obj1" NAME="bem" CLASS="good" ORDER="52" LEVEL="3" LINE="57">
+    <ELEMENT NAME="line" CLASS="line"><core>57</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>bem</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>good</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>52</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[rendas racoes e dizimas da igreja de sao martinho]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[bem]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela13" NAME="relation"  ORDER="53" LEVEL="4" CLASS="relation" LINE="57">
+    <ELEMENT NAME="line" CLASS="line"><core>57</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>53</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>bem</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-obj1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela13</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-obj1-att4" NAME="atr" CLASS="attribute" ORDER="54" LEVEL="4" LINE="58">
+    <ELEMENT NAME="line" CLASS="line"><core>58</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>54</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[localizacao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sao martinho, montemor o velho]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att5" NAME="atr" CLASS="attribute" ORDER="55" LEVEL="4" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>55</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[setecentos mil reis em dinheiro de contado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att5]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att6" NAME="atr" CLASS="attribute" ORDER="56" LEVEL="4" LINE="60">
+    <ELEMENT NAME="line" CLASS="line"><core>60</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>56</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[noventa pedras de linho]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att6]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att7" NAME="atr" CLASS="attribute" ORDER="57" LEVEL="4" LINE="61">
+    <ELEMENT NAME="line" CLASS="line"><core>61</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>57</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[quarenta alquieres de legumes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att7]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att8" NAME="atr" CLASS="attribute" ORDER="58" LEVEL="4" LINE="62">
+    <ELEMENT NAME="line" CLASS="line"><core>62</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>58</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vinte e cinco alqueires de feijao]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att9" NAME="atr" CLASS="attribute" ORDER="59" LEVEL="4" LINE="63">
+    <ELEMENT NAME="line" CLASS="line"><core>63</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>59</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vinte e cinco alqueires de graos]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att9]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att10" NAME="atr" CLASS="attribute" ORDER="60" LEVEL="4" LINE="64">
+    <ELEMENT NAME="line" CLASS="line"><core>64</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>60</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[dois moios e meio de cevada]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att10]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att11" NAME="atr" CLASS="attribute" ORDER="61" LEVEL="4" LINE="65">
+    <ELEMENT NAME="line" CLASS="line"><core>65</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att11</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>61</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[seis redes de palha]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att11]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att12" NAME="atr" CLASS="attribute" ORDER="62" LEVEL="4" LINE="66">
+    <ELEMENT NAME="line" CLASS="line"><core>66</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att12</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>62</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[galinhas]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att12]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att13" NAME="atr" CLASS="attribute" ORDER="63" LEVEL="4" LINE="67">
+    <ELEMENT NAME="line" CLASS="line"><core>67</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>63</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mil reis]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[para fabrica da igreja de sao martinho]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att13]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-obj1-att14" NAME="atr" CLASS="attribute" ORDER="64" LEVEL="4" LINE="69">
+    <ELEMENT NAME="line" CLASS="line"><core>69</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-obj1-att14</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>64</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[duracao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[dois anos]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-obj1-att14]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per3" NAME="test" CLASS="person" ORDER="65" LEVEL="3" LINE="70">
+    <ELEMENT NAME="line" CLASS="line"><core>70</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>65</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[serafina de vilhena]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela14" NAME="relation"  ORDER="66" LEVEL="4" CLASS="relation" LINE="70">
+    <ELEMENT NAME="line" CLASS="line"><core>70</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>66</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela14</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per3-att15" NAME="ls" CLASS="attribute" ORDER="67" LEVEL="4" LINE="71">
+    <ELEMENT NAME="line" CLASS="line"><core>71</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per3-att15</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>67</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vigaria]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per3-att15]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per3-att16" NAME="ls" CLASS="attribute" ORDER="68" LEVEL="4" LINE="73">
+    <ELEMENT NAME="line" CLASS="line"><core>73</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per3-att16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>68</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per3-att16]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per4" NAME="test" CLASS="person" ORDER="69" LEVEL="3" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>69</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[juliana de gusmao]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela15" NAME="relation"  ORDER="70" LEVEL="4" CLASS="relation" LINE="74">
+    <ELEMENT NAME="line" CLASS="line"><core>74</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>70</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela15</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per4-att17" NAME="ls" CLASS="attribute" ORDER="71" LEVEL="4" LINE="75">
+    <ELEMENT NAME="line" CLASS="line"><core>75</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per4-att17</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>71</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[escriva]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per4-att17]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per4-att18" NAME="ls" CLASS="attribute" ORDER="72" LEVEL="4" LINE="77">
+    <ELEMENT NAME="line" CLASS="line"><core>77</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per4-att18</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>72</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per4-att18]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per5" NAME="test" CLASS="person" ORDER="73" LEVEL="3" LINE="78">
+    <ELEMENT NAME="line" CLASS="line"><core>78</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>73</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio fernandes]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela16" NAME="relation"  ORDER="74" LEVEL="4" CLASS="relation" LINE="78">
+    <ELEMENT NAME="line" CLASS="line"><core>78</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>74</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela16</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per5-rel1" NAME="rel" CLASS="relation" ORDER="75" LEVEL="4" LINE="80">
+    <ELEMENT NAME="line" CLASS="line"><core>80</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per5-rel1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per5</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>75</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissional]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[solicitador]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[helena da silva]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1650-e2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per5-rel1]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1650-e2-per5]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per6" NAME="test" CLASS="person" ORDER="76" LEVEL="3" LINE="81">
+    <ELEMENT NAME="line" CLASS="line"><core>81</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per6</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>76</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[lazaro cruz]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela17" NAME="relation"  ORDER="77" LEVEL="4" CLASS="relation" LINE="81">
+    <ELEMENT NAME="line" CLASS="line"><core>81</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per6</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>77</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per6</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela17</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per6-rel2" NAME="rel" CLASS="relation" ORDER="78" LEVEL="4" LINE="83">
+    <ELEMENT NAME="line" CLASS="line"><core>83</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per6-rel2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per6</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>78</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[profissional]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[criado]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[helena da silva]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[not1650-e2-per1]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per6-rel2]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[not1650-e2-per6]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per7" NAME="test" CLASS="person" ORDER="79" LEVEL="3" LINE="84">
+    <ELEMENT NAME="line" CLASS="line"><core>84</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>79</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria das chagas]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela18" NAME="relation"  ORDER="80" LEVEL="4" CLASS="relation" LINE="84">
+    <ELEMENT NAME="line" CLASS="line"><core>84</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per7</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>80</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per7</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela18</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per7-att19" NAME="ls" CLASS="attribute" ORDER="81" LEVEL="4" LINE="85">
+    <ELEMENT NAME="line" CLASS="line"><core>85</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per7-att19</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>81</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[condicao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[freira professa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per7-att19]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per7-att20" NAME="ls" CLASS="attribute" ORDER="82" LEVEL="4" LINE="87">
+    <ELEMENT NAME="line" CLASS="line"><core>87</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per7-att20</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per7</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>82</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per7-att20]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per7]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per8" NAME="test" CLASS="person" ORDER="83" LEVEL="3" LINE="88">
+    <ELEMENT NAME="line" CLASS="line"><core>88</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>83</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[lourenca da silva]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela19" NAME="relation"  ORDER="84" LEVEL="4" CLASS="relation" LINE="88">
+    <ELEMENT NAME="line" CLASS="line"><core>88</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per8</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>84</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per8</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela19</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per8-att21" NAME="ls" CLASS="attribute" ORDER="85" LEVEL="4" LINE="89">
+    <ELEMENT NAME="line" CLASS="line"><core>89</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per8-att21</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>85</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[condicao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[freira professa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per8-att21]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per8-att22" NAME="ls" CLASS="attribute" ORDER="86" LEVEL="4" LINE="91">
+    <ELEMENT NAME="line" CLASS="line"><core>91</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per8-att22</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per8</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>86</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per8-att22]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per8]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per9" NAME="test" CLASS="person" ORDER="87" LEVEL="3" LINE="92">
+    <ELEMENT NAME="line" CLASS="line"><core>92</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per9</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>87</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[paula de vilhena]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela20" NAME="relation"  ORDER="88" LEVEL="4" CLASS="relation" LINE="92">
+    <ELEMENT NAME="line" CLASS="line"><core>92</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per9</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>88</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per9</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela20</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP>
+<GROUP ID="not1650-e2-per9-att23" NAME="ls" CLASS="attribute" ORDER="89" LEVEL="4" LINE="93">
+    <ELEMENT NAME="line" CLASS="line"><core>93</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per9-att23</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per9</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>89</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[condicao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[freira professa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per9-att23]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per9]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per9-att24" NAME="ls" CLASS="attribute" ORDER="90" LEVEL="4" LINE="95">
+    <ELEMENT NAME="line" CLASS="line"><core>95</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per9-att24</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per9</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>90</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[assina]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[not1650-e2-per9-att24]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[not1650-e2-per9]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16500308]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-per10" NAME="test" CLASS="person" ORDER="91" LEVEL="3" LINE="96">
+    <ELEMENT NAME="line" CLASS="line"><core>96</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-per10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>test</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>91</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[manuel lobo de azambaia]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="not1650-e2-rela21" NAME="relation"  ORDER="92" LEVEL="4" CLASS="relation" LINE="96">
+    <ELEMENT NAME="line" CLASS="line"><core>96</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>not1650-e2-per10</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>92</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>test</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>escritura</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>not1650-e2-per10</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>not1650-e2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>not1650-e2-rela21</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16500308</core></ELEMENT>
+</GROUP></KLEIO>

@@ -1,0 +1,70 @@
+kleio$gacto2.str/translations=1
+   fonte$not1614tb-1615/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-72, notario tome borges
+
+      escritura$not1614tb-e1/6/12/1614/procuracao/fol=16-17v/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procurador, simiao monteiro osorio, para que em seu nome arrecade e defenda todos os seus direitos e justicas
+
+         constituintef$margarida de castro/id=not1614tb-e1-per1
+            ls$cargo/abadessa de santa clara
+            ls$assina/sim
+            ls$nomeprof/margarida evangelista/obs=nome de profissao
+
+         procurador$simiao monteiro osorio/id=not1614tb-e1-per2
+            rel$sociabilidade/procurador/margarida de castro/not1614tb-e1-per1
+
+         test$francisco gomes/m/id=not1614tb-e1-per3
+            ls$titulo/cidadao
+            ls$residencia/coimbra
+            rel$profissional/feitor/margarida de castro/not1614tb-e1-per1
+
+         test$miguel fernandes/m/id=not1614tb-e1-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1614-e1-tbo
+
+         referido$tome borges/id=1614-e1-tbo
+            ls$profissao/tabeliao
+
+         test$joana silveira/f/id=not1614tb-e1-per5
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$maria da silva/f/id=not1614tb-e1-per6
+            ls$cargo/escriva
+            ls$nomeprof/maria de santo antonio/obs=nome de profissao
+            ls$assina/sim
+
+         test$eufrasia de belem/f/id=not1614tb-e1-per7
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$catarina do cenaculo/f/id=not1614tb-e1-per8
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$joana do paraiso/f/id=not1614tb-e1-per9
+            ls$condicao/freira professa
+
+         test$maria dos anjos/f/id=not1614tb-e1-per10
+            ls$condicao/freira professa
+
+         test$ilaria baptista/id=not1614tb-e1-per11
+            ls$condicao/freira professa
+
+      escritura$not1615-e2/5/3/1615/procurador/fol=168-168v/loc=grade do parlatorio/sumario=mosteiro de santa clara nomeia procurador, jeronimo lopes, para que arrecade junto do executor do almoxarifado de tomar, trinta mil reais de tenca de sua majestade
+
+         constituintef$isabel de noronha/id=not1615-e2-per1
+            ls$condicao/freira professa
+
+         procurador$jeronimo lopes/id=not1615-e2-per2
+            rel$sociabilidade/procurador/isabel de noronha/not1615-e2-per1
+            ls$residencia/olaias, termo da vila de tomar
+
+         test$diogo da silva/m/id=not1615-e2-per3
+            ls$profissao/estudante/obs=na universidade de coimbra
+            ls$naturalidade/lisboa
+
+         test$miguel francisco/m/id=not1615-e2-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1614-e2-tb
+
+         referido$tome borges/id=1614-e2-tb
+            ls$profissao/tabeliao

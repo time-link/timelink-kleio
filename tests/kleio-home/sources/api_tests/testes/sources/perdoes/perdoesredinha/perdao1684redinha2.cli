@@ -1,0 +1,49 @@
+kleio$gacto2.str
+fonte$cartasperdoestestes3
+
+cartaperdao$0000/03/13/1684/cota=0000/local=casa do tabaliao/tabeliao=gabriel de figueiredo/tipo=partes
+
+perdoante$antonio rodrigues/m/id=perd1
+	ls$residencia/vendas novas%termo da redinha
+	ls$profissao/ferreiro
+	ls$assina/bem
+	ls$idade_aprox/maior
+
+
+vitima$antonio rodrigues/m/id=perd1
+	ls$idade_aprox/maior
+	ls$residencia/vendas novas%termo da redinha
+	
+
+perdoado$antonio da silva/m/id=perd2
+	ls$residencia/vendas novas%termo da redinha
+	ls$idade_aprox/maior
+	ls$ec/casado
+	ls$assina/cruz
+	rel$parentesco/genro/joao de moraes/perd1
+
+perdoado$joao da silva/m/id=perd3
+	ls$residencia/vendas novas%termo da redinha
+	ls$idade_aprox/maior
+	ls$ec/casado
+	ls$assina/cruz
+	rel$parentesco/genro/joao de moraes/perd1
+
+
+
+crime$data=16840000/forma=devassa/tipo=violencia/sub-tipo=ferimentos/objecto=pessoa/local da ocorrencia=vendas novas/descricao=que elle se havia queixado as justisas de sua magestade que deos guarde de antonio da silva  e joao da silva moradores nas vendas novas termo da villa de soure de ho ferirem e maltratarem em hua bulha que ahi ouvera nas mesmas vendas novas termo da villa da redinha de que resultou o tirarse devasa he os sobreditos nella ficaram obrigados a prizam e livramento/pronuncia=livre/situacao=presos
+
+perdao$data=16841303/tipo=livremente/descricao= elle por este publiquo estromento de perdam ho da aos ditos joao da silva e antonio da silva e de lhes nao quer agora nem em tempo alguo cousa alguma tocante hao dito crime he de toda ha emmenda e satisfacam que lhe podia resultar na sentensa sendo nos ditos autos parte he de tudo desiste pera que a justisa os sentensie como lhe parecer per quanto dellessair sua parte delles nao queria causa e lhe da de tudo perdam livre e sem que pera o fazer fose obrigado nem constrangido antes de sua propria e livre vontade he que se obrigava ha nem aguora nem tempo algum hir contra elle. 
+
+
+test$antonio rodrigues manso/m
+	ls$residencia/vendas novas
+	ls$idade_aprox/maior
+	ls$assina/bem
+
+test$joao gonsalves/m
+	ls$residencia/redinha
+	ls$idade_aprox/maior
+	ls$assina/cruz
+
+

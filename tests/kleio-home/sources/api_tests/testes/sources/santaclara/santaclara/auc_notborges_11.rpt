@@ -1,0 +1,43 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+3-7-2019 8-8
+
+Processing data file auc_notborges_11.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$not1610tb-1611
+
+WARNING: auc_notborges_11.cli line 3 Element value exceeds database field length: loc=auc, notarial cota v i-es-9-3-66, notario tome borges, novembro e marco. Size:71 limit: 64
+Near lines: 3 
+Near line: 4       escritura$not1610tb-e1/15/11/1610/aforamento/fol=30-33v/loc=grade do parlatorio/sumario=contrato de renovacao de aforamento de um prazo celebrado entre mosteiro de santa clara de coimbra e maria da nobrega
+
+6: escritura$not1610tb-e1
+56: escritura$not1610tb-e2
+91: escritura$not1610tb-e3
+144: escritura$not1610tb-e4
+
+WARNING: auc_notborges_11.cli line 143 Element value exceeds database field length: loc=na quinta do pombal, junto a cidade de coimbra e que pertence a nicolau pinheiro de lacerda, fidalgo da casa de sua majestade. Size:125 limit: 64
+Near lines: 143 
+Near line: 144          devedor$mosteiro de santa clara/id=not1610tb-e4-per1
+
+163: escritura$not1611-e5
+209: escritura$not1611-e6
+236: escritura$not1611-e7
+*** End of File
+** Processed file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_11.cli
+** Original file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_11.org
+** Previous version- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_11.old
+** Temp file with ids- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_11.ids
+0  errors. 
+2  warnings.
+Translation finished.

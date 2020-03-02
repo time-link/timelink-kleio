@@ -1,0 +1,91 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 4-36
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfranciscogpinheiro_1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1678/tipo=escrituras notariais/loc=auc, notarial, cota v i-es 9-3-119, notario francisco gomes pinheiro, janeiro a agosto
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1678
+4:       escritura$not1678-e1/15/3/1678/aforamento/fol=54v-56/loc=grade do locutorio/sumario=contrato de aforamento em fatiosim celebrado entre mosteiro de santa clara da cidade de coimbra e antonio rodrigues, do patio do convento velho, no qual nao podera tirar nenhuma pedraria ou material, salvo alguma parede ou alicerce submersos
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1678-e1
+6:          senhoria$ana maria da silveira/id=not1678-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          foreiro$antonio rodrigues/id=not1678-e1-per2
+11:             ls$profissao/tabeliao
+12:             ls$residencia/rua nova das freiras
+13:             rel$profissional/escrivao das execucoes/ana maria da silveira/not1678-e1-per1
+14: 
+15:          foreira$margarida da silva/id=not1678-e1-per3
+16:             rel$parentesco/mulher/antonio rodrigues/not1678-e1-per2
+17:             ls$residencia/rua nova das freiras
+18: 
+19:          aforamento$patio do convento velho
+aforamento-not1678-e1-obj1- ** was stored with function in ACT verify act
+20:             atr$foro/dois mil reis
+21:             atr$localizacao/convento velho de santa clara de coimbra
+22: 
+23:          test$filipa da silva/f/id=not1678-e1-per4
+24:             ls$cargo/vigaria
+25:             ls$assina/sim
+26: 
+27:          test$ana de abreu/f/id=not1678-e1-per5
+28:             ls$cargo/escriva
+29:             ls$assina/sim
+30: 
+31:          test$manuel de portugal/m/id=not1678-e1-per6
+32:             ls$profissao/alfaiate
+33:             ls$residencia/burgo de snata clara
+34: 
+35:          test$bento lopes/m/id=not1678-e1-per7
+36:             ls$profissao/ferrador
+37:             ls$residencia/burgo de santa clara
+38: 
+39:          test$joana de mendonca/f/id=1678-e1-per8
+40:             ls$condicao/freira professa
+41:             ls$assina/sim
+42: 
+43:          test$mariana de sao bento/f/id=not1678-e1-per9
+44:             ls$condicao/freira professa
+45:             ls$assina/sim
+46: 
+47:          test$maria de sousa/f/id=not1678-e1-per10
+48:             ls$condicao/freira professa
+49:             ls$assina/sim
+50: 
+51:          test$ana de abreu/f/id=not1678-e1-per11
+52:             ls$cargo/escriva
+53:             ls$assina/sim
+54: 
+55:          test$margarida da silva/f/id=not1678-e1-per12
+56:             ls$condicao/freira professa
+57:             ls$assina/sim
+58: 
+59:          test$maria de mendonca e meneses/f/id=not1678-e1-per13
+60:             ls$condicao/freira professa
+61:             ls$assina/sim
+62: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfranciscogpinheiro_1.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfranciscogpinheiro_1.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfranciscogpinheiro_1.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notfranciscogpinheiro_1.ids

@@ -1,0 +1,39 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+3-7-2019 8-6
+
+Processing data file auc_notborges_18.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$not1622
+
+WARNING: auc_notborges_18.cli line 3 Element value exceeds database field length: loc=auc, notarial cota v i-es-9-3-80, notario tome borges, fevereiro a maio. Size:71 limit: 64
+Near lines: 3 
+Near line: 4       escritura$not1622-e1/12/3/1622/arrendamento de rendas/fol=70-75/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara de coimbra, manuel rebelo e ant�nio de seixas, das rendas da igreja de sao martinho de montemor-o-velho
+
+6: escritura$not1622-e1
+78: escritura$not1622-e2
+149: escritura$not1622-e3
+
+WARNING: auc_notborges_18.cli line 148 Element value exceeds database field length: loc=na cidade de coimbra no burgo do mosteiro de santa clara nas casas de morada de manuel joao trombeteiro. Size:103 limit: 64
+Near lines: 148 
+Near line: 149          senhorio$mosteiro de santa clara de coimbra/id=not1622-e3-per1
+
+*** End of File
+** Processed file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/svn/santaclara/AUC/auc_notborges_18.cli
+** Original file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/svn/santaclara/AUC/auc_notborges_18.org
+** Previous version- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/svn/santaclara/AUC/auc_notborges_18.old
+** Temp file with ids- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/svn/santaclara/AUC/auc_notborges_18.ids
+0  errors. 
+2  warnings.
+Translation finished.

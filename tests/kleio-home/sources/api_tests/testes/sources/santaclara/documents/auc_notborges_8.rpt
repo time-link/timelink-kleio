@@ -1,0 +1,406 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 1-39
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_8.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1612tb/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-67, notario tome borges, fevereiro a maio
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1612tb
+4:       escritura$not1612tb-e1/14/2/1612/arrendamento/fol=9v-13/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e manuel fragoso, de uns casais sitos no campo, termo de coimbra
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e1
+6:          senhoria$catarina de noronha/id=not1612tb-e1-per1
+7:             ls$cargo/abadessa
+8: 
+9:          arrendatario$manuel fragoso/id=not1612tb-e1-per2
+10:             ls$profissao/merceeiro
+11:             ls$residencia/coimbra
+12: 
+13:          arrendamento$casais
+arrendamento-not1612tb-e1-obj1- ** was stored with function in ACT verify act
+14:             atr$localizacao/campo termo cidade de coimbra
+15:             atr$renda/cinquenta mil reais em dinheiro de contado
+16:             atr$renda/cinco moios de milho
+17:             atr$renda/um moio de trigo
+18:             atr$renda/seis carradas de palha de trigo
+19:             atr$renda/seis carradas de palha de milho
+20:             atr$renda/trinta galinhas
+21:             atr$renda/cinquenta alqueires de milho
+22: 
+23:          test$inocencia de sa/f/id=not1612tb-e1-per3
+24:             ls$cargo/vigaria
+25:             ls$assina/sim
+26: 
+27:          test$maria de meneses/f/id=not1612tb-e1-per4
+28:             ls$cargo/escriva
+29:             ls$assina/sim
+30: 
+31:          test$inacio de belem/m/id=not1612tb-e1-per5
+32:             ls$titulo/frei
+33: 
+34:       escritura$not1612tb-e2/14/2/1612/procuracao/fol=15-16v/loc=grade do parlatorio/sumario=jenebra dos anjos, freira do mosteiro de santa clara de coimbra, nomeia procurador, joao moniz da silva, para que possa receber e arrecadar do executor do almoxarifado de aveiro quarenta mil reais de merce deixada ao convento pela senhora dona maria de meneses, moradora na cidade de lisboa e mais dez cruzados anuais para a constituinte
+35: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e2
+36:          constituintef$jenebra dos anjos/id=not1612tb-e2-per1
+37:             ls$condicao/freira professa
+38:             ls$assina/nao/obs=por ser carecida de vista
+39:             rel$sociabilidade/herdeira/maria de meneses/not1612tb-e2-per3
+40: 
+41:          procurador$moniz da silva/id=not1612tb-e2-per2
+42:             rel$sociabilidade/procurador/jenebra dos anjos/not1612tb-e2-per1
+43: 
+44:             referida$maria de meneses/id=not1612tb-e2-per3/obs=deixa merce de quarenta mil reais ao mosteiro e dez cruzados a dona jenebra dos anjos
+45:                ls$titulo/dona
+46:                ls$residencia/lisboa
+47: 
+48:          test$jorge fernandes/m/id=not1612tb-e2-per3a
+49:             rel$profissional/solicitador/jenebra dos anjos/not1612tb-e2-per1
+50: 
+51:          test$francisco ribeiro/m/id=not1612tb-e2-per4
+52:             ls$profissao/criado/obs=do tabeliao
+53:             rel$profissional/criado/tome borges/1612-e2-tab
+54: 
+55:          referido$tome borges/id=1612-e2-tab
+56:             ls$profissao/tabeliao
+57: 
+58:       escritura$not1612tb-e3/17/2/1612/arrendamento de rendas/fol=17v-21/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e manuel fernandes, da renda de vila nova da barca
+59: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e3
+60:          senhoria$catarina de noronha/id=not1612tb-e3-per1
+61:             ls$cargo/abadessa
+62:             ls$assina/sim
+63: 
+64:          rendeiro$manuel fernandes/id=not1612tb-e3-per2
+65:             ls$residencia/cardosas termo da vila de montemor o velho
+66: 
+67:          bem$renda da vila nova da barca
+bem-not1612tb-e3-obj1- ** was stored with function in ACT verify act
+68:             atr$localizacao/vila nova da barca
+69:             atr$renda/cento e ointenta e cinco mil reais em dinheiro de contado
+70:             atr$renda/trinta alqueires de legumes
+71:             atr$renda/dez alqueires de grao de bico
+72:             atr$renda/dez alqueires de favas
+73:             atr$renda/dez alqueires de feijoes
+74:             atr$renda/dez pedras de linho galego
+75:             atr$renda/um moios de trigo
+76:             atr$renda/uma pipa de vinho mole a bica do lagar
+77:             atr$renda/tres mil reais em dinheiro para o mordomo
+78:             atr$renda/um porco de quetro arrobas sem focinho ou dez cruzados por ele
+79: 
+80:          test$francisco ribeiro/m/id=not1612tb-e3-per3
+81:             ls$profissao/criado/obs=do tabeliao
+82: 
+83:          test$jeronima de sousa/f/id=not1612tb-e3-per4
+84:             ls$condicao/freira professa
+85:             ls$assina/sim
+86: 
+87:          test$leonor de milao/f/id=not1612tb-e3-per5
+88:             ls$condicao/freira professa
+89: 
+90:          test$mateus anriques/m/id=not1612tb-e3-per6
+91: 
+92:          test$afonso rodrigues/m/id=not1612tb-e3-per7
+93: 
+94:       escritura$not1612tb-e4/19/2/1612/transaccao e deistencia/fol=21v-24/loc=grade do parlatorio/sumario=contrato de transaccao, desistencia e amigavel composicao no qual ana lopes, sobrinha de manuel rodrigues, ja falecido e de quem recebeu umas casas sitas na freguesia de sao pedro, na rua das parreiras, coimbra, desiste dos ditos bens em nome de outro sobrinho do falecido, desta feita manuel rebelo, com a condi�ao de este lhe pagar anualmente o valor de
+95: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e4
+96:          doadora$ana lopes/id=not1612tb-e4-per1
+97:             ls$condicao/recolhida/obs=no mosteiro de santa clara de coimbra
+98: 
+99:          donatario$manuel rebelo/id=not1612tb-e4-per2
+100:             ls$residencia/coimbra
+101:             rel$parentesco/primo/ana lopes/not1612tb-e4-per1
+102: 
+103:             referido$manuel rodrigues/id=not1612tb-e4-per3/obs=antigo proprietario dos bens, os quais havia doado a sua sobrinha ana lopes
+104:                ls$cargo/prior/obs=da igreja de penacova
+105:                ls$morto/antes
+106:                rel$parentesco/tio/ana lopes/not1612tb-e4-per1
+107:                rel$parentesco/tio/manuel rebelo/not1612tb-e4-per2
+108: 
+109:          bem$casas
+bem-not1612tb-e4-obj1- ** was stored with function in ACT verify act
+110:             atr$localizacao/coimbra freguesia de sao pedro rua das parreiras
+111: 
+112:          referido$mosteiro de santa clara/id=not1612tb-e4-per4
+113: 
+114:          test$jorge fernandes/m/id=not1612tb-e4-per5/obs=assinou por ana lopes por esta estar mal disposta e fraca e nao poder assinar, ainda que saiba faze-lo
+115:             rel$profissional/solicitador/mosteiro de santa clara/not1612tb-e4-per4
+116: 
+117:          test$pedro andre/m/id=not1612tb-e4-per6
+118:             rel$profissional/criado/mosteiro de santa clara/not1612tb-e4-per4
+119: 
+120:          test$manuel fernandes/m/id=not1612tb-e4-per7
+121:             rel$profissional/criado/mosteiro de santa clara/not1612tb-e4-per4
+122: 
+123:       escritura$not1612tb-e5/7/3/1612/procuracao/fol=57-59/loc=grade do parlatorio/sumario=andreza joao, filha de diogo fernandes e de sua mulher maria joao, nomeia os seguintes procuradores: mateus fernandes; margarida fernandes; ant�nio rodrigues e joao rodrigues; pedro rodrigues e tome francisco; francisco lopes; domingos fernandes; fernao rodrigues de carvalhais, para que todos em seu nome possam requerer ao provedor da comarca ou juiz dos orfaos de cuja jurisdi�ao e o lugar de avelas de cima que a emancipem por ela passar dos vinte e cinco anos e assim requeiram quaisquer direitos e partilhas a que tenha direito
+124: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e5
+125:          constituintef$andreza joao/id=not1612tb-e5-per1
+126:             ls$condicao/recolhida/obs=no mosteiro de santa clara de coimbra
+127: 
+128:             referido$diogo fernandes/id=not1612tb-e5-per2
+129:                rel$parentesco/pai/andreza joao/not1612tb-e5-per1
+130:                ls$residencia/povoa de pereiro, concelho de avelas de cima
+131: 
+132:             referida$maria joao/id=not1612tb-e5-per3
+133:                ls$morta/antes
+134:                rel$parentesco/mae/andreza joao/not1612tb-e5-per1
+135: 
+136:          procurador$mateus fernandes/id=not1612tb-e5-per4
+137:             ls$titulo/sacerdote de missa
+138:             ls$cargo/capelao/obs=da se de coimbra
+139:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+140: 
+141:          procuradora$margarida fernandes/id=not1612tb-e5-per5
+142:             rel$parentesco/irma/andreza joao/not1612tb-e5-per1
+143:             rel$sociabilidade/procuradora/andreza joao/not1612tb-e5-per1
+144:             ls$residencia/coimbra
+145: 
+146:          procurador$antonio rodrigues/id=not1612tb-e5-per6
+147:             ls$residencia/povoa de pereiro
+148:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+149: 
+150:          procurador$joao rodrigues/id=not1612tb-e5-per7
+151:             ls$residencia/povoa de pereiro
+152:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+153: 
+154:          procurador$pedro rodrigues/id=not1612tb-e5-per8
+155:             ls$residencia/aguim
+156:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+157: 
+158:          procurador$tome francisco/id=not1612tb-e5-per9
+159:             ls$residencia/aguim
+160:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+161: 
+162:          procurador$francisco lopes/id=not1612tb-e5-per10
+163:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+164: 
+165:          procurador$domingos fernandes/id=not1612tb-e5-per11
+166:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+167: 
+168:          procurador$fernao rodrigues de carvalhais/id=not1612tb-e5-per12
+169:             rel$sociabilidade/procurador/andreza joao/not1612tb-e5-per1
+170: 
+171:             referido$mosteiro de santa clara de coimbra/id=not1612tb-e5-per13
+172: 
+173:          test$jorge fernandes/m/id=not1612tb-e5-per14
+174:             rel$profissional/solicitador/mosteiro de santa clara de coimbra/not1612tb-e5-per13/obs=assinou pela constituinte por ser mulher e nao saber assinar
+175: 
+176:          test$goncalo alvares/m/id=not1612tb-e5-per15
+177:             rel$profissional/comprador/mosteiro de santa clara de coimbra/not1612tb-e5-per13
+178: 
+179:          test$francisco ribeiro/m/id=not1612tb-e5-per16
+180:             ls$profissao/criado/obs=do tabeliao
+181:             rel$profissional/criado/tome borges/1612-e5-bo
+182: 
+183:          referido$tome borges/id=1612-e5-bo
+184:             ls$profissao/tabeliao
+185: 
+186:       escritura$not1612tb-e6/6/4/1612/doacao/fol=113-114/loc=grade do parlatorio/sumario=francisca de gois, recolhida no mosteiro de santa clara da cidade de coimbra, por ter muitas obrigacoes para com francisco simoes e sua mulher catarina de gois, por muitas e boas obras que deles tem recebido, faz doacao a filha de ambos, maria, de todos os seus bens moveis e de raiz e actuais rendimentos deles herdados de seus pais
+187: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e6
+188:          doadora$francisca de gois/id=not1612tb-e6-per1/obs=maior de trinta anos
+189:             ls$condicao/recolhida/obs=no mosteiro de santa clara de coimbra
+190: 
+191:             referido$gaspar de gois/id=not1612tb-e6-per2
+192:                ls$residencia/termo da vila de pombeiro
+193:                rel$parentesco/pai/francisca de gois/not1612tb-e6-per1
+194:                ls$morto/antes
+195: 
+196:             referida$violante cristovao/id=not1612tb-e6-per3
+197:                ls$residencia/termo da vila de pombeiro
+198:                rel$parentesco/mae/francisca de gois/not1612tb-e6-per1
+199:                ls$morta/antes
+200: 
+201:          donataria$maria/id=not1612tb-e6-per4
+202: 
+203:             referido$francisco simoes/id=not1612tb-e6-per5
+204:                ls$residencia/povoa de sao martinho, termo da vila de pombeiro
+205:                rel$parentesco/pai/maria/not1612tb-e6-per4
+206: 
+207:             referida$catarina de gois/id=not1612tb-e6-per6
+208:                ls$residencia/povoa de sao martinho, termo da vila de pombeiro
+209:                rel$parentesco/mae/maria/not1612tb-e6-per4
+210: 
+211:             referido$mosteiro de santa clara de coimbra/id=not1612tb-e6-per7
+212: 
+213:          test$jorge fernandes/m/id=not1612tb-e6-per8/obs=assinou por francisca gois
+214:             rel$profissional/solicitador/mosteiro de santa clara de coimbra/not1612tb-e6-per7
+215: 
+216:          test$manuel jorge/m/id=not1612tb-e6-per9
+217:             ls$profissao/carpinteiro
+218:             ls$residencia/burgo do mosteiro de santa clara de coimbra
+219: 
+220:          test$francisco ribeiro/m/id=not1612tb-e6-per10
+221:             ls$profissao/criado/obs=do tabeliao
+222:             rel$profissional/criado/tome borges/1612-e6-tabb
+223: 
+224:          referido$tome borges/id=1612-e6-tabb
+225: 
+226:       escritura$not1612tb-e7/5/5/1612/emprazamento/fol=172v-176v/loc=grade do parlatorio/sumario=contrato de emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra e maria antunes, de umas casas
+227: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e7
+228:          senhoria$catarina de noronha/id=not1612tb-e7-per1
+229:             ls$cargo/abadessa
+230:             ls$assina/sim
+231:             ls$titulo/dona
+232: 
+233:          foreira$maria antunes/id=not1612tb-e7-per2
+234:             ls$residencia/viseu
+235: 
+236:             referido$inacio de belem/id=not1612tb-e7-per3
+237:                ls$titulo/frei
+238:                ls$ordem/sao francisco
+239:                rel$sociabilidade/confessor/catarina de noronha/not1612tb-e7-per1
+240: 
+241:          procurador$domingos joao/id=not1612tb-e7-per3a
+242:             ls$profissao/alfaiate
+243:             ls$residencia/viseu
+244:             rel$sociabilidade/procurador/maria antunes/not1612tb-e7-per2
+245: 
+246:             referido$miguel antunes/id=not1612tb-e7-per4/obs=renuncia ao emprazamento
+247:                rel$parentesco/pai/maria antunes/not1612tb-e7-per2
+248:                ls$titulo/clerigo de missa
+249:                ls$residencia/cidade de viseu
+250: 
+251:          prazo$umas casas
+prazo-not1612tb-e7-obj1- ** was stored with function in ACT verify act
+252:             atr$foro/cento e trinta reais em dinheiro de contado/obs=por s. joao baptista
+253: 
+254:          test$inocencia de sa/f/id=not1612tb-e7-per5
+255:             ls$titulo/dona
+256:             ls$cargo/vigaria
+257:             ls$assina/sim
+258: 
+259:          test$maria de meneses/f/id=no1612-e7-per6
+260:             ls$titulo/dona
+261:             ls$cargo/escriva
+262:             ls$assina/sim
+263: 
+264:          test$jorge fernandes/m/id=not1612tb-e7-per7
+265:             rel$profissional/solicitador/catarina de noronha/not1612tb-e7-per1
+266:             ls$residencia/termo de coimbra
+267: 
+268:          test$francisco ribeiro/m/id=not1612tb-e7-per8
+269:             ls$profissao/criado/obs=do tabeliao
+270:             rel$profissional/criado/tome borges/1612-e7-tabbo
+271: 
+272:          referido$tome borges/id=1612-e7-tabbo
+273:             ls$profissao/tabeliao
+274: 
+275:          test$antonia pereira/f/id=not1612tb-e7-per9/obs=sobre esta senhora, que aparece amiude, nao sao revelados titulo, condicao ou cargo
+276:             ls$assina/sim
+277: 
+278:          test$jorge luis/m/id=not1612tb-e7-per10
+279:             ls$residencia/termo de coimbra
+280: 
+281:          test$leonor de milao/f/id=not1612tb-e7-per11
+282:             ls$titulo/dona
+283:             ls$condicao/freira professa
+284:             ls$assina/sim
+285: 
+286:          test$jeronima de sousa/f/id=not1612tb-e7-per12
+287:             ls$titulo/dona
+288:             ls$condicao/freira professa
+289:             ls$assina/sim
+290: 
+291:          test$inocencia de sa/f/id=not1612tb-e8-per13
+292:             ls$titulo/dona
+293:             ls$cargo/vigaria
+294:             ls$assina/sim
+295: 
+296:          test$maria de meneses/f/id=not1612tb-e8-per14
+297:             ls$titulo/dona
+298:             ls$assina/sim
+299:             ls$cargo/escriva
+300: 
+301:       escritura$not1612tb-e8/7/5/1612/arrendamento de rendas/fol=178v-183/loc=grade do parlatorio/sumario=contrato de emprazamento por tempo de quatro anos celebrado entre o mosteiro de santa clara da cidade de coimbra e dinis fernandes, da renda que o mosteiro tem em urzelhe e seu limite
+302: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1612tb-e8
+303:          senhoria$catarina de noronha/id=not1612tb-e8-per1
+304:             ls$titulo/dona
+305:             ls$cargo/abadessa
+306:             ls$assina/sim
+307: 
+308:          rendeiro$dinis fernandes/id=not1612tb-e8-per2
+309:             ls$profissao/sapateiro
+310:             ls$residencia/almalagues
+311: 
+312:             referido$inacio de belem/id=not1612tb-e8-per3
+313:                ls$titulo/frei
+314:                ls$ordem/sao francisco
+315:                rel$sociabilidade/confessor/catarina de noronha/not1612tb-e8-per1
+316: 
+317:          bem$$renda de urzelhe e seu limite
+bem-not1612tb-e8-obj1- ** was stored with function in ACT verify act
+318:             atr$localizacao/urzelhe e seu limite
+319:             atr$renda/cem mil reais em dinheiro de contado/obs=em tres pagas iguais, por natal, s. joao baptista e pascoa
+320:             atr$renda/uma carrega de cerejas/obs=por dia de santa isabel
+321:             atr$renda/duas carregas de fruta/obs=ate dia de todos-os-santos
+322:             atr$renda/vinte e cinco alqueires de azeite ou cinquenta a safra/obs=por dia de entrudo
+323:             atr$renda/dez moios de trigo
+324:             atr$renda/cinco moios de centeio
+325:             atr$renda/quatro moios de milho
+326: 
+327:          test$sebastiao do quintal/m/id=not1612tb-e8-per4
+328:             ls$titulo/licenciado
+329:             ls$residencia/coimbra
+330: 
+331:          test$francisco de campos/m/id=not1612tb-e8-per5
+332:             ls$profissao/barbeiro
+333:             ls$residencia/termo de coimbra
+334: 
+335:          test$francisco ribeiro/m/id=not1612tb-e8-per6
+336:             ls$profissao/criado/obs=do tabeliao
+337:             rel$profissional/criado/tome borges/not1612-e8-tbg
+338: 
+339:          referido$tome borges/id=not1612-e8-tbg
+340:             ls$profissao/tabeliao
+341: 
+342:          test$leonor de milao/f/id=not1612tb-e8-per7
+343:             ls$titulo/dona
+344:             ls$assina/sim
+345:             ls$condicao/freira professa
+346: 
+347:          test$inocencia de sa/f/id=not1612tb-e8-per8
+348:             ls$cargo/vigaria
+349:             ls$assina/sim
+350:             ls$titulo/dona
+351: 
+352:          test$maria de meneses/f/id=not1612tb-e8-per9
+353:             ls$cargo/escriva
+354:             ls$assina/sim
+355:             ls$titulo/dona
+356: 
+357:          test$antonia pereira/f/id=not1612tb-e8-per10/obs=sobre esta senhora, que aparece amiude, nao sao revelados titulo, condicao ou cargo
+358:             ls$assina/sim
+359: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_8.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_8.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_8.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_8.ids

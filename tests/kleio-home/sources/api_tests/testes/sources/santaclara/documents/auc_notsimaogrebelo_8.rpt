@@ -1,0 +1,90 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-24
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_8.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1672-1673/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-112, notario simao gomes rebelo, setembro a maio
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1672-1673
+4:       escritura$not1673-e1/3/4/1673/arrendamento de rendas/fol=100v-102/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara da cidade de coimbra e manuel rodrigues, da renda dos carvalhais
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1673-e1
+6:          senhoria$isabel velhasques/id=not1673-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          rendeiro$manuel rodrigues/id=not1673-e1-per2
+11:             ls$profissao/cerieiro
+12:             ls$residencia/curvieira
+13: 
+14:          bem$renda dos carvalhais
+bem-not1673-e1-obj1- ** was stored with function in ACT verify act
+15:             atr$localizacao/carvalhais
+16:             atr$renda/novidades/obs=anualmente, no celeiro do mosteiro, em tres pagas iguais: dia de natal, pascoa e s. miguel de setembro
+17:             atr$renda/quarenta e cinco mil reis em dinheiro de contado em moedas de prata correntes
+18:             atr$renda/seis pedras de linho
+19:             atr$renda/quatro moios de milho
+20:             atr$renda/um moio de trigo
+21:             atr$renda/oito alqueires de feijoes
+22:             atr$renda/trinta galinhas
+23:             atr$renda/doze carradas de palha
+24:             atr$durcao/dois anos
+25: 
+26:          fiador$manuel fernandes/id=bot1673-e1-per3/obs=bens que estao estimados em setenta mil reis: vinte aguilhadas de terra
+27:             ls$residencia/ribeira de frades
+28:             rel$sociabilidade/fiador/manuel rodrigues/not1673-e1-per2
+29: 
+30:          test$briolanja de aragao/f/id=not1673-e1-per4
+31:             ls$cargo/escriva
+32:             ls$assina/sim
+33: 
+34:          test$joana de jesus/f/id=not1673-e1-per5
+35:             ls$cargo/vigaria
+36:             ls$assina/sim
+37: 
+38:          garantia$20 aguilhadas de terra/obs=os quais bens estao estimados em cerca de 70 mil reis
+39: 
+garantia-not1673-e1-obj2- ** was stored with function in ACT verify act
+40:          test$antonio fernandes/id=not1673-e1-per3
+41:             rel$profissional/solicitador/isabel velhasques/not1673-e1-per1
+42: 
+43:          test$antonio rodrigues/id=not1673-e1-per6
+44:             ls$cargo/escrivao das execucoes do mosteiro
+45: 
+46:          test$francisco gomes pinheiro/id=not1673-e1-per7
+47:             ls$profissao/tabeliao
+48: 
+49:          test$isabel perestrela/f/id=not1673-e1-per8
+50:             ls$titulo/dona
+51: 
+52:          test$jacinta de tavora/f/id=not1673-e1-per9
+53:             ls$titulo/dona
+54: 
+55:          test$luisa de meneses e silva/f/id=not1673-e1-per10
+56:             ls$titulo/dona
+57: 
+58:          test$isabel de vasconcelos/f/id=not1673-e1-per11
+59:             ls$titulo/dona
+60: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_8.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_8.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_8.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_8.ids

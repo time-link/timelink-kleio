@@ -1,0 +1,78 @@
+kleio$gacto2.str/translations=1
+   fonte$not1674-1677/tipo=escrituras notariais/loc=auc, notarial, cota v i-es 9-3-116, notario simao gomes rebelo, agosto a marco
+
+      escritura$not1675-e1/3/2/1675/emprazamento/fol=83v-87/loc=grade do parlatorio/sumario=contrato de emprazamento em tres vidas celebrado entre mosteiro de santa clara da cidade de coimbra e maria antonia e sebastiao antonio%maria antonia, mulher solteira de idade de 60 anos, moradora no lugar da corticada (freguesia de salvador de castelhoes, do concelho de besteiros, comarca de viseu), tia de maria da costa, filha de baltasar antonio e tia do dito manuel bernardes, fizera uma peticao ao mosteiro que diz que o seu pai fez dote, uma metade a 2 filhos (baltasar antonio e maria antonia que casou com antonio bernardes) e a outra metade para outros 2 que ficaram solteiros, a saber: sebastiao antonio e e ela suplicante maria antonia. entre os bens havia um casal que e pertenca do real mosteiro de sta. clara. sebastiao antonio (irmao da suplicante) vem ao mosteiro pedir novo emprazamento da metade do dito casal - ao qual, na verdade apenas lhe pertencia um quarto de casal) e a suplicante outra metade, mais um quarto que havia sido emprazado a seu irmao sem conhecimento desta. vem a suplicante, atraves de peticao, pedir novo titulo de toda a parte que lhe pertence do casal.
+
+         senhoria$isabel de velhasques/id=1675.e1-abss
+            ls$cargo/abadessa de santa clara
+
+            referido$mosteiro de santa clara de coimbra/id=1675.e1-most
+
+         foreira$maria antonia/id=1675-e1-ma
+            ls$ec/solteira
+            ls$idade/60 anos
+            ls$residencia/corticada, freguesia de castelhoes/obs=concelho de besteiros, comarca de viseu
+
+            referida$maria da costa/id=1675-e1-mc
+               rel$parentesco/sobrinha/maria antonia/1675-e1-ma
+
+            referido$baltazar antonio/id=1675-e1-ma-per1
+               rel$parentesco/pai/maria da costa/1675-e1-mc
+               rel$parentesco/irmao/maria antonia/1675-e1-ma
+
+            referido$manuel bernardes/id=1675-e1-mb
+               rel$parentesco/sobrinho/maria antonia/1675-e1-ma
+
+         foreiro$sebastiao antonio/id=not1675-e1-per2
+            rel$parentesco/irmao/maria antonia/1675-e1-ma
+            ls$ec/solteiro
+
+            referido$nome desconhecido/id=not1675-e1-per2-per3
+               rel$parentesco/pai/maria antonia/1675-e1-ma
+               rel$economica/foreiro/mosteiro de santa clara de coimbra/1675.e1-most
+
+            referida$maria antonia/id=not1675-e1-per2-per4
+               rel$parentesco/irma/maria antonia/1675-e1-ma
+               rel$parentesco/mulher/antonio bernardes/1675-e1-ab
+
+            referido$antonio bernardes/id=1675-e1-ab
+
+         procurador$gaspar lopes/id=not1675-e1-per5
+            ls$residencia/termo do concelho de besteiros/obs=comarca de viseu
+            rel$sociabilidade/procurador/manuel bernardes/1675-e1-mb
+            ls$assina/sim
+
+         procurador$sebastiao goncalves/id=not1675-e1-per6
+            ls$residencia/corticada
+            rel$sociabilidade/procurador/manuel bernardes/1675-e1-mb
+            ls$assina/sim
+
+         prazo$metade de uns casais/id=not1675-e1-obj1
+            atr$duracao/3 vidas
+
+         test$? fernandes/id=not1675-e1-per7
+            ls$cargo/solicitador do mosteiro
+            rel$profissional/solicitador/isabel de velhasques/1675.e1-abss
+
+         test$manuel da silva/id=not1675-e1-per8
+            ls$cargo/executor do mosteiro
+            rel$profissional/executor/isabel de velhasques/1675.e1-abss
+
+         test$francisco gomes pinheiro/id=not1675-e1-per9
+            ls$profissao/tabeliao
+
+         test$isabel perestrela/f/id=not1675-e1-per10
+            ls$titulo/dona
+
+         test$luisa de meneses e silva/f/id=not1675-e1-per11
+            ls$titulo/dona
+
+         test$isabel de vasconcelos/f/id=not1675-e1-per12
+            ls$titulo/dona
+
+         test$joana de jesus/f/id=not1675-e1-per13
+            ls$cargo/vigaria
+            ls$titulo/dona
+
+         test$briolancia de aragao/f/id=not1675-e1-per14
+            ls$cargo/escriva

@@ -1,0 +1,180 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 1-6
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_5.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1607tb-1607/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-61, notario tome borges, novembro de 1606 a marco de 1607
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1607tb-1607
+4:       escritura$not1607tb-e1/20/11/1606/procuracao/fol=16-17/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procuradores para defesa dos seus direitos
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607tb-e1
+6:          constituintef$maria de vasconcelos/id=not1607tb-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          procurador$antonio dias da costa/id=not1607tb-e1-per2
+11:             rel$sociabilidade/procurador/maria de vasconcelos/not1607tb-e1-per1
+12: 
+13:          procurador$jeronimo ?/obs=duvida folio rasgado no segundo nome/id=not1607tb-e1-per3a
+14:             rel$sociabilidade/procurador/maria de vasconcelos/not1607tb-e1-per1
+15: 
+16:          procurador$jorge fernandes/id=not1607tb-e1-per3
+17:             rel$sociabilidade/procurador/maria de vasconcelos/not1607tb-e1-per1
+18:             rel$profissional/solicitador/maria de vasconcelos/not1607tb-e1-per1
+19: 
+20:          procurador$francisco anriques/id=not1607tb-e1-per4
+21:             rel$sociabilidade/procurador/maria de vasconcelos/not1607tb-e1-per1
+22: 
+23:          test$francisco alvares/m/id=not1607tb-e1-per6
+24:             ls$profissao/mercador
+25:             ls$residencia/covilha%vila da covilha
+26: 
+27:          test$joao francisco/m/id=not1607tb-e1-per7
+28:             ls$profissao/criado/obs=do tabeliao
+29:             rel$profissional/criado/tome borges/1607-e1-tab
+30: 
+31:          referido$tome borges/id=1607-e1-tab
+32:             ls$profissao/tabeliao
+33: 
+34:       escritura$not1607tb-e2/29/12/1606/arrendamento/fol=?/loc=grade do parlatorio/sumario=contrato de arrendamento de uns terradegos celebrado entre mosteiro de santa clara de coimbra e afonso pires/obs=duvida folio fragmentado
+35: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607tb-e2
+36:          senhoria$maria de vasconcelos/id=not1607tb-e2-per1
+37:             ls$cargo/abadessa
+38:             ls$assina/sim
+39:             ls$titulo/dona
+40: 
+41:          rendeiro$afonso pires/id=not1607tb-e2-per2
+42:             ls$alcunha/o calado
+43:             ls$profissao/lavrador
+44:             ls$residencia/lugar da vieira
+45: 
+46:          bem$terradegos
+bem-not1607tb-e2-obj1- ** was stored with function in ACT verify act
+47:             atr$renda/trinta mil reais em dinheiro de contado, em moedas de prata
+48: 
+49:          test$jorge fernandes/m/id=not1607tb-e2-per3
+50:             rel$profissional/solicitador/maria de vasconcelos/not1607tb-e2-per1
+51: 
+52:          test$antonio fernandes/m/id=not1607tb-e2-per4
+53:             ls$profissao/lavrador
+54:             ls$residencia/lugar da ribeira
+55: 
+56:       escritura$not1607-e3/10/2/1607/procuracao/fol=?/loc=portaria da cerca/sumario=dona isabel de noronha, freira do mosteiro de santa clara de coimbra, nomeia procurador, manuel dias, para que arrecade no almoxarifado de tomar trinta mil reais de tenca regia devida ao mosteiro/obs=duvida folio fragmentado
+57: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607-e3
+58:          constituintef$isabel de noronha/id=not1607-e3-per1
+59:             ls$titulo/freira
+60:             ls$assina/sim
+61: 
+62:          procurador$manuel dias/id=not1607-e3-per2
+63:             rel$sociabilidade/procurador/isabel de noronha/not1607-e3-per1
+64: 
+65:          test$jorge fernandes/m/id=not1607-e3-per3
+66:             rel$profissional/solicitador/isabel de noronha/not1607-e3-per1
+67: 
+68:          test$joao francisco/m/id=not1607-e3-per4
+69:             ls$profissao/criado/obs=criado do tabeliao
+70:             rel$profissional/criado/tome borges/1607-e3-tome
+71: 
+72:          referido$tome borges/id=1607-e3-tome
+73: 
+74:       escritura$not1607-e4/14/2/1607/procuracao/fol=?/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procurador, gaspar anriques, para que defenda os seus direitos e arrecade a heran�a do pai de madalena cruz, servidora do mosteiro/obs=duvida folio fragmentado
+75: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607-e4
+76:          constituintef$maria de vasconcelos/id=not1607-e4-per1
+77:             ls$cargo/abadessa
+78:             ls$assina/sim
+79: 
+80:          constituintef$madalena da cruz/id=not1607-e4-per2
+81:             ls$cargo/servidora do mosteiro
+82: 
+83:          procurador$gaspar anriques/id=not1607-e4-per3
+84:             rel$sociabilidade/procurador/maria de vasconcelos/not1607-e4-per1
+85: 
+86:          test$maria da cunha/f/id=not1607-e4-per4
+87:             ls$cargo/vigaria
+88:             ls$assina/sim
+89:             ls$titulo/dona
+90: 
+91:          test$margarida de castro/f/id=not1607-e4-per5
+92:             ls$cargo/escriva
+93:             ls$assina/sim
+94:             ls$titulo/dona
+95: 
+96:          test$joana da silva/f/id=not1607-e4-per6
+97:             ls$assina/sim
+98:             ls$titulo/dona
+99:             ls$titulo/freira
+100: 
+101:          test$maria de meneses/f/id=not1607-e4-per7
+102:             ls$assina/sim
+103:             ls$titulo/dona
+104:             ls$titulo/freira
+105: 
+106:          test$francisco anriques/m/id=not1607-e4-per8
+107:             ls$cargo/escrivao do eclesiastico no bispado de coimbra/obs=assinou a pedido de madalena cruz
+108: 
+109:          test$inacio pires de aguiar/m/id=not1607-e4-per9
+110:             ls$residencia/coimbra
+111:             ls$profissao/padre
+112: 
+113:          test$belchior fernandes/m/id=not1607-e4-per10
+114:             rel$profissional/criado/maria de vasconcelos/not1607-e4-per1
+115: 
+116:          test$catarina de noronha/f/id=not1607-e4-per11
+117:             ls$assina/sim
+118:             ls$titulo/dona
+119:             ls$titulo/freira
+120: 
+121:          test$ilaria da silva/f/id=not1607-e4-per12
+122:             ls$assina/sim
+123:             ls$titulo/dona
+124:             ls$titulo/freira
+125: 
+126:          test$maria de meneses/f/id=not1607-e4-per13
+127:             ls$assina/sim
+128:             ls$titulo/dona
+129:             ls$titulo/freira
+130: 
+131:          test$leonor anriques/f/id=not1607-e4-per14
+132:             ls$assina/sim
+133:             ls$titulo/dona
+134:             ls$titulo/freira
+135: 
+136:          test$helena de melo/f/id=not1607-e4-per15
+137:             ls$assina/sim
+138:             ls$titulo/dona
+139:             ls$titulo/freira
+140: 
+141:          test$ilaria da silveira/f/id=1607-e4-per16
+142:             ls$assina/sim
+143:             ls$titulo/dona
+144:             ls$titulo/freira
+145: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_5.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_5.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_5.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_5.ids

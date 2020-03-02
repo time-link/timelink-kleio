@@ -1,0 +1,193 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 0-16
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_24.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1625/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-87, notario tome borges, maio a outubro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1625
+4:       escritura$not1625-e1/14/6/1625/procuracao/fol=32-33v/loc=grade do parlatorio/sumario=o mosteiro de santa clara de coimbra nomeia procuradores, afonso furtado de mendonca, antonio da silva de saldanha, frei feliciano coelho, francisco de lemos, inacio cunha, andre de burgos, leonardo de abreu, pedro andre, manuel pais, francisco ferreira, para que todos defendam e arrecadem todos os direitos do mosteiro
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1625-e1
+6:          constituintef$maria da cunha/id=not1625-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          procurador$afonso furtado de mendonca/id=not1625-e1-per2
+11:             rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+12:             ls$cargo/deao/obs=da se catedral de lisboa
+13:             ls$residencia/lisboa
+14: 
+15:             referido$antonio da silva de saldanha/id=not1625-e1-per3
+16:                ls$titulo/dom
+17:                ls$residencia/lisboa
+18:                rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+19: 
+20:             referido$feliciano coelho/id=not1625-e1-per4
+21:                ls$titulo/frei
+22:                ls$profissao/padre
+23:                ls$titulo/reverendo
+24:                ls$cargo/abade/obs=do mosteiro de nossa senhora do desterro de lisboa
+25:                ls$residencia/lisboa
+26:                rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+27: 
+28:             referido$francisco de lemos/id=not1625-e1-per5
+29:                ls$residencia/lisboa
+30:                rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+31: 
+32:             referido$inacio da cunha/id=not1625-e1-per6
+33:                ls$titulo/licenciado
+34:                ls$titulo/cidadao
+35:                ls$naturalidade/coimbra
+36:                ls$profissao/advogado
+37:                ls$residencia/lisboa
+38:                rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+39: 
+40:             referido$andre de burgos/id=not1625-e1-per7
+41:                ls$profissao/advogado
+42:                ls$residencia/coimbra
+43:                ls$titulo/cidadao
+44:                rel$sociabilidade/procurador/maria da cunha/not1625-e1-per1
+45: 
+46:             referido$leonardo de abreu/id=not1625-e1-per8
+47:                rel$profissional/olicitador/maria da cunha/not1625-e1-per1
+48: 
+49:             referido$pedro andre/id=not1625-e1-per9
+50:                rel$profissional/criado/maria da cunha/not1625-e1-per1
+51: 
+52:             referido$manuel pais/id=not1625-e1-per10
+53:                ls$cargo/executor do cabido da se de coimbra
+54: 
+55:             referido$francisco ferreira/id=not1625-e1-per11
+56:                rel$profissional/escrivao das execucoes/maria da cunha/not1625-e1-per1
+57: 
+58:          test$antonio dias/m/id=not1625-e1-per12
+59:             ls$profissao/porteiro eclesiastico
+60:             ls$residencia/coimbra
+61: 
+62:          test$manuel dias/m/id=not1625-e1-per13
+63:             ls$profissao/criado/obs= do tabeliao
+64:             rel$profissional/criado/tome borges/1625-e1-bt
+65: 
+66:          referido$tome borges/id=1625-e1-bt
+67: 
+68:          test$leonor de milao/f/id=not1625-e1-per14
+69:             ls$cargo/vigaria
+70:             ls$assina/sim
+71: 
+72:          test$francisca de meneses/f/id=not1625-e1-per15
+73:             ls$cargo/escriva
+74:             ls$assina/sim
+75: 
+76:          test$ines do deserto/f/id=not1625-e1-per16
+77:             ls$assina/sim
+78:             ls$condicao/freira professa
+79: 
+80:          test$ilaria da silva/f/id=not1625-e1-per17
+81:             ls$assina/sim
+82:             ls$condicao/freira professa
+83: 
+84:          test$maria de vasconcelos/f/id=not1625-e1-per18
+85:             ls$assina/sim
+86:             ls$condicao/freira professa
+87: 
+88:          test$isabel de noronha/f/id=not1625-e1-per19
+89:             ls$assina/sim
+90:             ls$condicao/freira professa
+91: 
+92:       escritura$not1625-e2/1/7/1625/procuracao/fol=58-58v/loc=grade do parlatorio/sumario=dona maria da corte real e dona arcangela da silva, freiras professas do mosteiro de santa de santa clara de coimbra, nomeiam procuradores, ant�nio fernandes e leonardo de abreu, para que arrecadem em seu nome do executor do almoxarifado de coimbra a quantia de vinte mil reais, dez mil de cada uma
+93: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1625-e2
+94:          constituintef$maria corte real/id=not1625-e2-per1
+95:             ls$condicao/freira professa
+96:             ls$assina/sim
+97: 
+98:          constituinte$arcangela da silva/id=not1625-e2-per2
+99:             ls$condicao/freira professa
+100:             ls$assina/sim
+101: 
+102:          procurador$antonio fernandes/id=not1625-e2-per3
+103:             ls$cargo/recebedor das sisas na cidade de coimbra
+104:             ls$residencia/coimbra
+105:             rel$sociabilidade/procurador/maria corte real/not1625-e2-per1
+106:             rel$sociabilidade/procurador/arcangela da silva/not1625-e2-per1
+107: 
+108:          procurador$leonardo de abreu/id=not1625-e2-per4
+109:             rel$profissional/solicitador/maria da cunha/not1625-e2-per1
+110:             rel$sociabilidade/procurador/maria corte real/not1625-e2-per1
+111:             rel$sociabilidade/procurador/arcangela da silva/not1625-e2-per1
+112: 
+113:             referido$manuel do souto cirveira/obs=duvida no terceiro nome/id=not1625-e2-per5
+114:                ls$cargo/executor do almoxarifado de coimbra
+115: 
+116:       escritura$not1625-e3/6/7/1625/procuracao/fol=65v-66v/loc=grade do parlatorio/sumario=o mosteiro de santa clara da cidade de coimbra nomeia procurador, d.francisco de castelo branco, para em sua representacao requerer toda a justi�a e direito em um processo movido pelo inquisidor geral contra o convento
+117: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1625-e3
+118:          constituintef$maria da cunha/id=not1625-e3-per1
+119:             ls$cargo/abadessa
+120:             ls$assina/sim
+121: 
+122:          procurador$francisco de castelo branco/id=not1625-e3-per2
+123:             ls$residencia/lisboa
+124:             ls$titulo/conde
+125:             ls$profissao/meirinho
+126:             rel$sociabilidade/procurador/maria da cunha/not1625-e3-per1
+127: 
+128:          test$leonor de milao/f/id=not1625-e3-per3
+129:             ls$cargo/vigaria
+130:             ls$assina/sim
+131: 
+132:          test$frsncisca de meneses/f/id=not1626-e3-per4
+133:             ls$cargo/escriva
+134:             ls$assina/sim
+135: 
+136:          test$maria de vasconcelos/f/id=not1625-e3-per5
+137:             ls$condicao/freira professa
+138:             ls$assina/sim
+139: 
+140:          test$jeronima de sousa/f/id=not1625-e3-per6
+141:             ls$condicao/freira professa
+142:             ls$assina/sim
+143: 
+144:          test$maria de meneses/f/id=not1625-e3-per7
+145:             ls$condicao/freira professa
+146:             ls$assina/sim
+147: 
+148:          test$ilaria da silva/f/id=not1625-e3-per8
+149:             ls$condicao/freira professa
+150:             ls$assina/sim
+151: 
+152:          test$isabel de nogueira/f/id=not1625-e3-per9
+153:             ls$condicao/freira professa
+154:             ls$assina/sim
+155: 
+156:          test$manuel ferreira/m/id=not1625-e3-per10
+157:             ls$residencia/sernache dos alhos
+158: 
+159:          test$pedro andre/m/id=not1625-e3-per11
+160:             rel$profissional/criado/maria da cunha/not1625-e3-per1
+161: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_24.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_24.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_24.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_24.ids

@@ -1,0 +1,322 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-31
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/bapSB-1646-1679.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$baptismos1646-1679/tipo=registos paroquiais/loc=auc b2/obs=paroquia de s. bartolomeu de coimbra
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$baptismos1646-1679
+4:       bap$b1646-1/0/8/1646/fl. 3v./paroquia s. bartolomeu
+5: 
+**** auto rels 2 STARTED.
+** Processing act bap$b1646-1
+6:          n$clara/f/id=b1646-1-per1
+7: 
+8:          pn$antonio rodrigues/id=b1646-1-per2
+9:             ls$residencia/santa clara
+10: 
+11:          mn$clara rodrigues/id=b1646-1-per3
+12:             ls$residencia/santa clara
+13: 
+14:       bap$b1646-2/17/9/1646/fl. 5/paroquia s.bartolomeu
+15: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1646-1-per2 to b1646-1-per1 parentesco/pai
+   ** auto rel: from b1646-1-per3 to b1646-1-per1 parentesco/mae
+   ** auto rel: from b1646-1-per2 to b1646-1-per3 parentesco/marido
+** Processing act bap$b1646-2
+16:          n$isabel/f/id=b1646-2-per1
+17: 
+18:          pn$manuel alvares/id=b1646-2-per2
+19:             ls$residencia/santa clara
+20: 
+21:          mn$maria golcalves/id=b1646-2-per3
+22:             ls$residencia/santa clara
+23: 
+24:       bap$b1646-3/23/10/1646/fl. 5/paroquia s.bartolomeu
+25: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1646-2-per2 to b1646-2-per1 parentesco/pai
+   ** auto rel: from b1646-2-per3 to b1646-2-per1 parentesco/mae
+   ** auto rel: from b1646-2-per2 to b1646-2-per3 parentesco/marido
+** Processing act bap$b1646-3
+26:          n$teresa#o tabeliao escreve teresia ou feresia/f/id=b1646-3-per1/obs=duvida
+27: 
+28:          pn$? de morais da serra/id=b1646-3-per2
+29: 
+30:          mn$leonor de sousa/f/id=b1646-3-per3
+31:             ls$titulo/dona
+32: 
+33:          mad$juliana/f/id=b1646-3-per4
+34:             ls$titulo/dona
+35:             ls$titulo/monja de santa clara
+36: 
+37:       bap$b1646-4/10/0/1646/fl. 5/paroquia s.bartolomeu
+38: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1646-3-per2 to b1646-3-per1 parentesco/pai
+   ** auto rel: from b1646-3-per3 to b1646-3-per1 parentesco/mae
+   ** auto rel: from b1646-3-per2 to b1646-3-per3 parentesco/marido
+** Processing act bap$b1646-4
+39:          n$manuel/m/id=b1646-4-per1
+40: 
+41:          pn$francisco cabral/id=b1646-4-per2
+42:             ls$residencia/santa clara
+43: 
+44:          mn$domingas francisca/id=b1646-4-per3
+45:             ls$residencia/santa clara
+46: 
+47:       bap$b1646-5/27/12/1646/fl. 7/paroquia s.bartolomeu
+48: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1646-4-per2 to b1646-4-per1 parentesco/pai
+   ** auto rel: from b1646-4-per3 to b1646-4-per1 parentesco/mae
+   ** auto rel: from b1646-4-per2 to b1646-4-per3 parentesco/marido
+** Processing act bap$b1646-5
+49:          n$tome/m/id=b1646-5-per1
+50: 
+51:          pn$miguel correia/id=b1646-5-per2
+52:             ls$residencia/santa clara
+53: 
+54:          mn$guiomar luis/id=b1646-5-per3
+55:             ls$residencia/santa clara
+56: 
+57:          pad$luis alvares/m/id=b1646-5-per4
+58:             ls$profissao/pintor
+59:             ls$residencia/santa clara
+60: 
+61:       bap$b1647-6/1/9/1647/fl. 13v/paroquia s.bartolomeu
+62: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1646-5-per2 to b1646-5-per1 parentesco/pai
+   ** auto rel: from b1646-5-per3 to b1646-5-per1 parentesco/mae
+   ** auto rel: from b1646-5-per2 to b1646-5-per3 parentesco/marido
+** Processing act bap$b1647-6
+63:          n$marta/f/id=b1647-6-per1
+64: 
+65:          pn$bartolomeu luis/id=b1647-6-per2
+66:             ls$residencia/santa clara
+67: 
+68:          mn$catarina duarte/id=b1647-6-per3
+69:             ls$residencia/santa clara
+70: 
+71:       bap$b1648-7/7/1/1648/fl. 15v/paroquia s.bartolomeu
+72: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1647-6-per2 to b1647-6-per1 parentesco/pai
+   ** auto rel: from b1647-6-per3 to b1647-6-per1 parentesco/mae
+   ** auto rel: from b1647-6-per2 to b1647-6-per3 parentesco/marido
+** Processing act bap$b1648-7
+73:          n$clara/f/id=b1648-7-per1
+74: 
+75:          pn$matias de ?/id=b1648-7-per2
+76:             ls$residencia/santa clara
+77: 
+78:          mn$catarina francisca/id=b1647-7-per3
+79:             ls$residencia/santa clara
+80: 
+81:       bap$b1648-8/12/1/1648/fl. 15v/paroquia s.bartolomeu
+82: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1648-7-per2 to b1648-7-per1 parentesco/pai
+   ** auto rel: from b1647-7-per3 to b1648-7-per1 parentesco/mae
+   ** auto rel: from b1648-7-per2 to b1647-7-per3 parentesco/marido
+** Processing act bap$b1648-8
+83:          n$antonia/f/id=b1648-8.per1
+84: 
+85:          pn$manuel francisco/id=b1648-8-per2
+86:             ls$residencia/santa clara
+87: 
+88:          mn$maria joao/id=b1648-8-per3
+89:             ls$residencia/santa clara
+90: 
+91:          pad$manuel simoes/id=b1648-8-per4
+92:             ls$residencia/santa clara
+93: 
+94:       bap$b1648-9/12/3/1648/fl. 16v/paroquia s.bartolomeu
+95: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1648-8-per2 to b1648-8.per1 parentesco/pai
+   ** auto rel: from b1648-8-per3 to b1648-8.per1 parentesco/mae
+   ** auto rel: from b1648-8-per2 to b1648-8-per3 parentesco/marido
+** Processing act bap$b1648-9
+96:          n$ana maria/f/id=b1648-9-per1
+97: 
+98:          pn$simao de morais/id=b1648-9-per2
+99: 
+100:          mn$leonor de sousa/id=b1648-9-per3
+101: 
+102:          pad$pedro de magalhaes/id=b1648-9-per4
+103:             ls$cargo/deao/obs=da cidade de coimbra
+104: 
+105:          mad$juliana de meneses/id=b1648-9-per5
+106:             ls$titulo/dona
+107:             ls$titulo/monja de santa clara
+108: 
+109:       bap$b1648-10/8/3/1648/fl. 16v/paroquia s.bartolomeu
+110: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1648-9-per2 to b1648-9-per1 parentesco/pai
+   ** auto rel: from b1648-9-per3 to b1648-9-per1 parentesco/mae
+   ** auto rel: from b1648-9-per2 to b1648-9-per3 parentesco/marido
+** Processing act bap$b1648-10
+111:          n$maria/f/id=b1648-10-per1
+112: 
+113:          pn$antonio francisco/id=b1648-10-per2
+114: 
+115:          mn$maria francisca/id=b1648-10-per3
+116: 
+117:       bap$b1648-11/25/9/1648/fl. 20v/paroquia s.bartolomeu
+118: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1648-10-per2 to b1648-10-per1 parentesco/pai
+   ** auto rel: from b1648-10-per3 to b1648-10-per1 parentesco/mae
+   ** auto rel: from b1648-10-per2 to b1648-10-per3 parentesco/marido
+** Processing act bap$b1648-11
+119:          n$joao/m/id=b1648-11-per1
+120: 
+121:          pn$manuel rodrigues/id=b1648-11-per2
+122:             ls$residencia/santa clara
+123: 
+124:          mn$domingas joao/id=b1648-11-per3
+125:             ls$residencia/santa clara
+126: 
+127:       bap$b1649-12/4/10/1649/fl. 22v/paroquia s.bartolomeu
+128: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1648-11-per2 to b1648-11-per1 parentesco/pai
+   ** auto rel: from b1648-11-per3 to b1648-11-per1 parentesco/mae
+   ** auto rel: from b1648-11-per2 to b1648-11-per3 parentesco/marido
+** Processing act bap$b1649-12
+129:          n$manuel/m/id=b1649-12-per1
+130: 
+131:          pn$domingos fernandes/id=b1649-12-per2
+132:             ls$residencia/santa clara
+133: 
+134:          mn$vicencia ribeira/id=b1649-12-per3
+135:             ls$residencia/santa clara
+136: 
+137:       bap$b1649-13/0/3/1649/fl. 23/paroquia s.bartolomeu
+138: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1649-12-per2 to b1649-12-per1 parentesco/pai
+   ** auto rel: from b1649-12-per3 to b1649-12-per1 parentesco/mae
+   ** auto rel: from b1649-12-per2 to b1649-12-per3 parentesco/marido
+** Processing act bap$b1649-13
+139:          n$gabriel/m/id=b1649-13-per1
+140: 
+141:          pn$andre fernandes/id=b1649-13-per2
+142:             ls$residencia/santa clara
+143: 
+144:          mn$maria fernandes/id=b1649-13-per3
+145:             ls$residencia/santa clara/obs=ciganos moradores em santa clara
+146: 
+147:       bap$b1641-14/12/3/1641/fl. 33/paroquia s.bartolomeu
+148: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1649-13-per2 to b1649-13-per1 parentesco/pai
+   ** auto rel: from b1649-13-per3 to b1649-13-per1 parentesco/mae
+   ** auto rel: from b1649-13-per2 to b1649-13-per3 parentesco/marido
+** Processing act bap$b1641-14
+149:          n$nicolau/m/id=b1641-14-per1
+150: 
+151:          pn$domingos vaz/id=b1641-14-per2
+152:             ls$residencia/santa clara
+153: 
+154:          mn$leonor mendes/id=b1641-14-per3
+155:             ls$residencia/santa clara
+156: 
+157:       bap$b1652-14/21/7/1652/fl. 39v/paroquia s.bartolomeu
+158: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1641-14-per2 to b1641-14-per1 parentesco/pai
+   ** auto rel: from b1641-14-per3 to b1641-14-per1 parentesco/mae
+   ** auto rel: from b1641-14-per2 to b1641-14-per3 parentesco/marido
+** Processing act bap$b1652-14
+159:          n$maria/f/id=b1652-14-per1
+160: 
+161:          pn$domingos vaz/id=b1652-14-per2
+162:             ls$residencia/santa clara
+163: 
+164:          mn$leonor mendes/id=b1652-14-per3
+165:             ls$residencia/santa clara
+166: 
+167:       bap$b1652-15/1/9/1652/fl. 40/paroquia s.bartolomeu
+168: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1652-14-per2 to b1652-14-per1 parentesco/pai
+   ** auto rel: from b1652-14-per3 to b1652-14-per1 parentesco/mae
+   ** auto rel: from b1652-14-per2 to b1652-14-per3 parentesco/marido
+** Processing act bap$b1652-15
+169:          n$bartolomeu/m/id=b1652-15-per1
+170: 
+171:          pn$domingos ?/id=b1652-15-per2
+172:             ls$residencia/santa clara
+173: 
+174:       bap$b1652-16/0/0/0/fl. 40/paroquia s.bartolomeu
+175: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1652-15-per2 to b1652-15-per1 parentesco/pai
+** Processing act bap$b1652-16
+176:          n$manuel/m/id=b1652-16-per1
+177: 
+178:          pn$antonio martins/id=b1652-16-per2
+179:             ls$residencia/santa clara
+180: 
+181:          mn$maria simoes/id=b1652-16-per3
+182:             ls$residencia/santa clara
+183: 
+184:       bap$b1653-17/28/1/1653/fl. 43/paroquia s.bartolomeu
+185: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1652-16-per2 to b1652-16-per1 parentesco/pai
+   ** auto rel: from b1652-16-per3 to b1652-16-per1 parentesco/mae
+   ** auto rel: from b1652-16-per2 to b1652-16-per3 parentesco/marido
+** Processing act bap$b1653-17
+186:          n$antonio/m/id=b1653-17-per1
+187: 
+188:          pn$antonio simoes/id=b1653-17-per2
+189:             ls$residencia/santa clara
+190: 
+191:          mn$joana simoes/id=b1653-17-per3
+192:             ls$residencia/santa clara
+193: 
+194:       bap$b1653-18/13/4/1653/fl. 44v/paroquia s.bartolomeu
+195: 
+**** auto rels 2 STARTED.
+   ** auto rel: from b1653-17-per2 to b1653-17-per1 parentesco/pai
+   ** auto rel: from b1653-17-per3 to b1653-17-per1 parentesco/mae
+   ** auto rel: from b1653-17-per2 to b1653-17-per3 parentesco/marido
+** Processing act bap$b1653-18
+196:          n$mariana/f/id=b1653-18-per1
+197: 
+198:          pn$andre joao/id=b1653-18-per2
+199:             ls$residencia/santa clara
+200: 
+201:          mn$maria francisca/id=b1653-18-per3
+202:             ls$residencia/santa clara
+203: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+   ** auto rel: from b1653-18-per2 to b1653-18-per1 parentesco/pai
+   ** auto rel: from b1653-18-per3 to b1653-18-per1 parentesco/mae
+   ** auto rel: from b1653-18-per2 to b1653-18-per3 parentesco/marido
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/bapSB-1646-1679.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/bapSB-1646-1679.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/bapSB-1646-1679.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/bapSB-1646-1679.ids

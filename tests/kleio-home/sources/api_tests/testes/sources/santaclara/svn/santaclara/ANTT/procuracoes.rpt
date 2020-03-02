@@ -1,0 +1,124 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+2-7-2019 21-54
+
+Processing data file procuracoes.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$p.pt-tt-cscc-17-part
+6: escritura$p1370.1.m7-02a
+22: escritura$p1370.2.m7-07a
+31: escritura$p1372.1.m7-08a
+69: escritura$p1370.3.m7-10a
+93: escritura$p1378.1.m7-27a
+117: escritura$p1379.1.m7-30a
+136: escritura$p1383.1.m7-39a
+164: escritura$p1350.1.m8-04a
+186: escritura$p1425.1.m8-25a
+
+WARNING: procuracoes.cli line 185 Element value exceeds database field length: loc=a porta da grade de ferro de dentro do dito mosteiro que chamam de parlatorio. Size:77 limit: 64
+Near lines: 185 
+Near line: 186          constituinte$mosteiro de santa clara/id=1425.p1.msc
+
+208: escritura$p1396.1.m8-33
+243: escritura$p1395.1.m8-39a
+265: escritura$p1405.1.m9-17a
+285: escritura$p1339.1.m9-32b
+336: escritura$p1411.1.m9-34a
+
+WARNING: procuracoes.cli line 335 Element value exceeds database field length: loc=pacos de el rei que sao no castelo em leiria, onde pousava o dito goncalo lourenco. Size:82 limit: 64
+Near lines: 335 
+Near line: 336          constituinte$goncalo lourenco/mesmo_que=1411.d1.goncalo/id=p1411.1.m9-34a-per1
+
+368: escritura$p1411.2.m9-35a
+
+WARNING: procuracoes.cli line 367 Element value exceeds database field length: loc=pacos de el rei que sao no castelo em leiria, onde pousava o dito goncalo lourenco. Size:82 limit: 64
+Near lines: 367 
+Near line: 368          constituinte$goncalo lourenco/mesmo_que=1411.d1.goncalo/id=p1411.2.m9-35a-per1
+
+400: escritura$p0000.1.m9-38a
+418: escritura$p1418.1.m10-09a
+440: escritura$p1425.2.m10-18a
+
+WARNING: procuracoes.cli line 439 Element value exceeds database field length: loc=a porta da grade de ferro que se chama do palratorio dentro da igreja do mosteiro de santa clara. Size:96 limit: 64
+Near lines: 439 
+Near line: 440          constituinte$mosteiro de santa clara/id=1425.p2.msc
+
+465: escritura$p1425.3.m10-19a
+
+WARNING: procuracoes.cli line 464 Element value exceeds database field length: loc=a porta da grade de ferro dentro da igreja do mosteiro de santa clara. Size:69 limit: 64
+Near lines: 464 
+Near line: 465          constituinte$mosteiro de santa clara/id=1425.p3.msc
+
+490: escritura$p1428.2.m10-21a
+518: escritura$p1428.2.m10-22a
+
+WARNING: procuracoes.cli line 517 Element value exceeds database field length: loc=as gradizelas de ferro dentro da igreja do mosteiro de santa clara. Size:66 limit: 64
+Near lines: 517 
+Near line: 518          constituinte$mosteiro de santa clara/id=1428.p2.msc
+
+543: escritura$p1430.1.m10-26b
+558: escritura$p1432.1.m10-29a
+583: escritura$p1430.2.m10-32a
+609: escritura$p1437.1.m10-35a
+625: escritura$p1436.1.m10-38a
+648: escritura$p1436.2.m11-02a
+671: escritura$p1436.2.m11-04b
+
+ERROR: procuracoes.cli line 672 ** ID already used in this file: 1436.p2.msc
+Near lines: 672 
+Near line: 673             referida$catarina ferreira/id=1436.p2.msc-per1
+
+
+ERROR: procuracoes.cli line 680 ** ID already used in this file: 1436.p2.martim
+Near lines: 680          test$martim afonso/id=1436.p2.martim
+Near line: 681             ls$cargo/prior/obs=da igreja de santiago de coimbra
+
+696: escritura$p1436.3.m11-07a
+721: escritura$p1447.1.m11-13a
+739: escritura$p1436.4.m11-24a
+
+WARNING: procuracoes.cli line 738 Element value exceeds database field length: loc=as verdizelas de ferro que estao dentro no coro dentro da igreja do mosteiro de santa clara, coimbra. Size:100 limit: 64
+Near lines: 738 
+Near line: 739          constituinte$mosteiro de santa clara/id=1436.p4.msc
+
+764: escritura$p1436.5.m11-26a
+
+WARNING: procuracoes.cli line 763 Element value exceeds database field length: loc=as gradizelas de ferro que estao ante o coro dentro do mosteiro de santa clara, coimbra. Size:87 limit: 64
+Near lines: 763 
+Near line: 764          constituinte$mosteiro de santa clara/id=1436.p5.msc
+
+789: escritura$p0000.1.m11-27a
+
+WARNING: procuracoes.cli line 788 Element value exceeds database field length: loc=as gradizelas de ferro que estao ante o coro dentro do mosteiro de santa clara, coimbra. Size:87 limit: 64
+Near lines: 788 
+Near line: 789          constituinte$mosteiro de santa clara/id=0000.p1.msc
+
+814: escritura$p1436.6.m11-31a
+839: escritura$p1436.7.m11-32a
+864: escritura$p1452.1.m11-33a
+
+ERROR: procuracoes.cli line 870 ** Error: missing element(s) in rel(rel-86) must have: iddest
+Near lines: 870 
+Near line: 871          test$joao soeiro/id=p1452.1.m11-33a-per2
+
+891: escritura$p1454.1.m12-02
+
+WARNING: procuracoes.cli line 890 Element value exceeds database field length: loc=em cima no balcao as gradizelas de ferro, no mosteiro de santa clara de coimbra. Size:79 limit: 64
+Near lines: 890 	
+Near line: 891 	   constituinte$mosteiro de santa clara/id=1454.p1.msc
+
+*** End of File
+3  errors. 
+10  warnings.
+Translation finished.

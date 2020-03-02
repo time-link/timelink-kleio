@@ -1,0 +1,509 @@
+kleio$gacto2.str/translations=1
+   fonte$not1612tbo/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-68, notario tome borges, maio a agosto
+
+      escritura$not1612tbo-e1/12/5/1612/procuracao/fol=4v-5v/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procurador, gaspar anriques, para que em seu nome venda umas casas sitas no castelo de lisboa que estao em nome de dona margarida da silva, monja professa do mosteiro
+
+         constituintef$catarina de noronha/id=not1612tbo-e1-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         procurador$gaspar anriques/id=not1612tbo-e1-per2/obs=nomeado para vender umas casas sitas em lisboa
+            rel$sociabilidade/procurador/catarina de noronha/not1612tbo-e1-per1
+
+            referida$maria baptista/id=not1612tbo-e1-per3/obs=proprietaria das casas
+               ls$nomeprof/margarida da silva/obs=nome de profissao
+               ls$condicao/freira professa
+
+            referida$leonor da silva/id=not1612tbo-e1-per4/obs=antiga proprietaria das casas
+               ls$titulo/dona
+               ls$morta/antes
+
+            referido$joao de melo da silva/id=not1612tbo-e1-per5/obs=herdeiro de dona leonor da silva; por falecimento, as casas ficam em nome de dona margarida da silva
+               rel$parentesco/filho/leonor da silva/not1612tbo-e1-per4
+               ls$morto/antes
+
+         test$jorge fernandes/m/id=not1612tbo-e1-per6
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e1-per1
+
+         test$francisco ribeiro/m/id=not1612tbo-e1-per7
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1612.e1-tbs
+
+         referido$tome borges/id=1612.e1-tbs
+            ls$profissao/tabeliao
+
+         test$inocencia de sa/f/id=not1612tbo-e1-per8
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$maria de meneses/f/id=not1612tbo-e1-per9
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1612tbo-e1-per10
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$jeronima de sao paulo/f/id=not1612tbo-e1-per11
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$antonia pereira/f/id=not1612tbo-e1-per12
+
+      escritura$not1612tbo-e2/26/5/1612/fol=34-35/loc=grade do parlatorio/sumario=contrato de quitacao celebrado entre mosteiro de santa clara de coimbra e joao nunes, do arrendamento da terca da igreja de sao pedro de gouveia, do qual faz ultimo pagamento de mil duzentos e cinquenta reais, dos quais outrossim para as custas de deslocac�es do executor do mosteiro
+
+         quitantef$catarina de noronha/id=not1612tbo-e2-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         quitado$joao nunes/id=not1612tbo-e2-per2
+            ls$residencia/gouveia
+
+            referido$joao rodrigues/id=not1612tbo-e2-per3
+               ls$cargo/conego/obs=prebendado na se de coimbra
+
+         bem$terca da igreja de sao pedro/id=not1612tbo-e2-obj1
+            atr$localizacao/sao pedro de gouveia
+            atr$valor/mil duzentos e cinquenta reais
+
+         test$jorge fernandes/m/id=not1612tbo-e2-per4
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e2-per1
+
+         test$inacio de belem/m/id=not1612tbo-e2-per5
+            ls$titulo/frei
+            rel$sociabilidade/confessor/catarina de noronha/not1612tbo-e2-per1
+
+         test$francisca de noronha/f/id=not1612tbo-e2-per6
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$francisco ribeiro/m/id=not1612tbo-e2-per7
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1612-e2-tobs
+
+         referido$tome borges/id=1612-e2-tobs
+            ls$profissao/tabeliao
+
+         test$arcangela das chagas/f/id=not1612tbo-e2-per8
+            ls$condicao/freira professa
+            ls$assina/sim
+            ls$titulo/dona
+
+         test$leonor de milao/f/id=not1612tbo-e2-per9
+            ls$condicao/freira professa
+            ls$titulo/dona
+
+         test$inocencia de sa/f/id=not1612tbo-e2-per10
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$antonia pereira/f/id=not1612tbo-e2-per11
+            ls$condicao/freira professa/obs=duvida quanto a condicao desta senhora, uma vez que, ao contrario das outras, sobre esta nao se refere nem cargo, nem condicao, nem titulo
+
+      escritura$not1612tbo-e3/14/6/1612/arrendamento de renda/fol=54-57v/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entreb mosteiro de santa clara e nuno velho, da renda da igreja de sao martinho de montemor-o-velho
+
+         senhoria$catarina de noronha/id=not1612tbo-e3-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         rendeiro$nuno velho pimentel/id=not1612tbo-e3-per2
+            ls$residencia/vila de pereira
+
+            referido$inacio de belem/id=not1612tbo-e3-per3
+               ls$titulo/frei
+               rel$sociabilidade/confessor/catarina de noronha/not1612tbo-e3-per1
+
+         bem$renda da igreja de sao martinho por dois anos/id=not1612tbo-e3-obj1
+            atr$localizacao/montemor o velho
+            atr$renda/quinhentos e cinquenta mil reais/obs=em cada ano repartidos do seguinte modo: primeiro pagamento, quarenta e oito mil reais no primeiro dia de julho e restantes de quarenta e seis mil reais ate concluir a totalidade do pagamento.
+            atr$renda/noventa pedras de linho galego
+            atr$renda/trinta alqueires de legumes
+            atr$renda/dez alqueires degrao de bico de cantanhede
+            atr$renda/dez alqueires de feijoes
+            atr$renda/dez alqueires de favas
+            atr$renda/doze redes de palha de trigo
+            atr$renda/pagara o que se costuma pagar ao vigario e cura de liceia/obs=todas as ordinarias pagas por dia de sao miguel de setembro
+            atr$renda/um cruzado para o executor
+            atr$renda/treze mil reais por dia para o escrivao
+            atr$renda/duzentos mil reais para a pessoa que andar na arrecadacao dos pagamentos
+
+         test$jorge fernandes/m/id=not1612tbo-e3-per4
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e3-per1
+
+         test$francisco ribeiro/m/id=not1612tbo-e3-per5
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1612-e3-tombr
+
+         referido$tome borges/id=1612-e3-tombr
+
+         test$arcangela das chagas/f/id=not1612tbo-e3-per6
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1612tbo-e3-per7
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1612tbo-e3-per8
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$inocencia de sa/id=not1612tbo-e3-per9
+            ls$cargo/vigaria
+            ls$assina/sim
+
+      escritura$not1612tbo-e4/16/6/1612/renuncia/fol=65-66/loc=grade do parlatorio/sumario=contrato de renuncia celebrado entre mosteiro de santa clara de coimbra e dom luis de meneses, filho de dom diogo de meneses, de parte dos servicos que o dito dom diogo de meneses fez a coroa do reino os quais servicos o convento, a morte de dona leonor de meneses, irma de dom diogo de meneses, renuncia em dom luis de meneses
+
+         referida$leonor de meneses/id=not1612tbo-e4-per1
+            ls$condicao/freira professa
+            ls$titulo/dona
+            ls$morta/antes
+
+         referido$joao de meneses/id=not1612tbo-e4-per2
+            rel$parentesco/pai/leonor de meneses/not1612tbo-e4-per1
+            ls$titulo/dom
+            ls$titulo/senhor de cantanhede
+
+         referida$margarida da silva/id=not1612tbo-e4-per3
+            ls$titulo/dona
+            rel$parentesco/mae/leonor de meneses/not1612tbo-e4-per1
+
+         renunciante$catarina de noronha/id=not1612tbo-e4-per4
+            ls$cargo/abadessa
+            ls$assina/sim
+
+            referido$diogo de meneses/id=not1612tbo-e4-per5/obs=prestador de servicos a coroa do reino
+               rel$parentesco/irmao/leonor de meneses/not1612tbo-e4-per1
+               ls$titulo/dom
+               ls$morto/antes
+
+         senhorio$luis de meneses/id=not1612tbo-e4-per6
+            rel$parentesco/filho/diogo de meneses/not1612tbo-e4-per5
+
+         test$pedro barbosa/m/id=not1612tbo-e4-per7
+            ls$profissao/criado
+            rel$profissional/criado/pedro de meneses/not1612tbo-e4-per9
+
+         test$antonio de azevedo/m/id=not1612tbo-e4-per8
+            ls$profissao/criado
+            rel$profissional/criado/pedro de meneses/not1612tbo-e4-per9
+
+         referido$pedro de meneses/id=not1612tbo-e4-per9
+            ls$titulo/dom
+            ls$titulo/senhor de cantanhede
+
+         test$francisco ribeiro/m/id=not1612tbo-e4-per10
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1612-e4-tbog
+
+         referido$tome borges/id=1612-e4-tbog
+
+         test$inacio de belem/m/id=not1612tbo-e4-per11
+            ls$titulo/frei
+            ls$profissao/padre
+
+         test$inocencia de sa/f/id=not1612tbo-e4-per12
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1612tbo-e4-per13
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$jeronima de sousa/f/id=not1612tbo-e4-per14
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$arcangela/f/id=not1612tbo-e4-per15
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$antonia pereira/f/id=not1612tbo-e4-per16
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1612tbo-e4-per17
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1612tbo-e5/20/6/1612/arrendamento de rendas/fol=82v-85v/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e andre dias e antonio duarte, da renda de sangalhos por tempo de dois anos
+
+         senhoria$catarina de noronha/id=not1612tbo-e5-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         rendeiro$andre dias/id=not1612tbo-e5-per2
+
+         rendeiro$antonio duarte/id=not1612tbo-e5-per3
+
+         bem$renda de sangalhos/id=not1612tbo-e5-obj1
+            atr$localizacao/sangalhos
+            atr$renda/trezentos e trinta mil reais por ano
+            atr$renda/cinquenta arrobas de bacalhau
+            atr$renda/quarenta alqueires de mel
+            atr$renda/quarenta alqueires de feijao
+            atr$renda/um barril de linguados fritos de cento e cinco/obs=em cada ano na quinta feira de endoencas
+            atr$renda/cinquenta almudes de vinho cozido
+            atr$renda/trinta alqueires de milho
+            atr$renda/dez alqueires de cevada
+
+         test$jorge fernandes/m/id=not1612tbo-e5-per4
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e5-per1
+
+         test$amaro joao/m/id=not1612tbo-e5-per5
+            rel$profissional/carneireiro/catarina de noronha/not1612tbo-e5-per1
+
+         test$francisco ribeiro/m/id=not1612tbo-e5-per6
+            ls$profissao/criado/obs=do tabeliao
+
+         test$inocencia de sa/f/id=not1612tbo-e5-per7
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1612tbo-e5-per8
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$inacio de belem/m/id=not1612tbo-e5-per9
+            ls$titulo/frei
+            rel$sociabilidade/confessor/catarina de noronha/not1612tbo-e5-per1
+
+         test$jeronima de sousa/f/id=not1612tbo-e5-per10
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$antonia pereira/f/id=not1612tbo-e5-per11
+
+         test$arcangela da silva/f/id=not1612tbo-e5-per12
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1612tbo-e6/16/7/1612/arrendamento de rendas/fol=135v-138v/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e manuel de campos, da terca da igreja de ?, termo da vila de penacova
+
+         senhoria$catarina de noronha/id=not1612tbo-e6-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         rendeiro$manuel de campos/id=not1612tbo-e6-per2
+            ls$profissao/alfaiate
+            ls$residencia/coimbra
+
+         bem$$renda da terca da igreja de ?/obs=duvida/id=not1612tbo-e6-obj1
+            atr$renda/quarenta e seis mil reais em dinheiro de contado
+            atr$localizacao/vila de penacova
+
+         test$manuel fernandes/m/id=not1612tbo-e6-per3
+            rel$profissional/servidor/catarina de noronha/not1612tbo-e6-per1
+
+         test$francisco ribeiro/m/id=not1612tbo-e6-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1612-e6-tomeb
+
+         referido$tome borges/id=1612-e6-tomeb
+
+      escritura$not1612tbo-e7/17/7/1612/arrendamento/fol=138v-140/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra, ant�nio negrao e domingos joao, de moinhos e azenhas sitos na ribeira de casconha
+
+         senhoria$catarina de noronha/id=not1612tbo-e7-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         arrendatario$antonio negrao/id=not1612tbo-e7-per2
+            ls$profissao/moleiro
+            ls$residencia/casal de sao lourenco
+
+         arrendatario$domingos joao/id=not1612tbo-e7-per3
+            ls$profissao/moleiro
+            ls$residencia/vila de sarnache
+
+         arrendamento$moinhos e azenhas/id=not1612tbo-e7-obj1
+            atr$localizacao/ribeira de casconha
+            atr$renda/cento e quinze alqueires de trigo/obs=metade em dia de natal e outra metade em dia de pascoa
+
+         test$jorge fernandes/m/id=not1612tbo-e7-per4
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e7-per1
+
+         test$sebastiao simoes/m/id=not1612tbo-e7-per5
+            ls$residencia/sao miguel de poiares
+
+         test$anrique afonso/m/id=not1612tbo-e7-per6
+            ls$residencia/sao miguel de poiares
+
+         test$francisca de noronha/f/id=not1612tbo-e7-per7
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$inocencia de sa/f/id=not161-e7-per8
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$inacio de belem/m/id=not1612tbo-e7-per9
+            ls$titulo/frei
+            rel$sociabilidade/confessor/catarina de noronha/not1612tbo-e7-per1
+
+         test$jeronima de sousa/f/id=not1612tbo-e7-per10
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$antonia pereira/f/id=not1612tbo-e7-per11
+            ls$assina/sim
+
+         test$arcangela/f/id=not1612tbo-e7-per12
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1612tbo-e7-per13
+            ls$assina/sim
+            ls$condicao/freira professa
+
+      escritura$not1612tbo-e8/17/7/1612/arrendamento de rendas/fol=141-143/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra, sebastiao simoes, anrique afonso, bastiao simoes e miguel simoes, das tercas da igreja de penacova por tempo de dois anos
+
+         senhoria$catarina de noronha/id=not1612tbo-e8-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         rendeiro$sebastiao simoes/id=not1612tbo-e8-per2
+            ls$residencia/sao miguel de poiares
+
+         rendeiro$anrique afonso/id=not1612tbo-e8-per3
+            ls$residencia/sao miguel de poiares
+
+         rendeiro$bastiao simoes/id=not1612tbo-e8-per4
+            ls$residencia/ribeira de cima, termo da vila de penacova
+
+         rendeiro$miguel simoes/id=not1612tbo-e8-per5
+            ls$residencia/ribeira de cima, termo da vila de penacova
+
+         bem$tercas da igreja de penacova por tempo de dois anos/id=not1612tbo-e8-obj1
+            atr$localizacao/penacova
+            atr$renda/cento e setenta e sete mil reais/obs=primeiro ano
+            atr$renda/cento e noventa e dois mil reais/obs=segundo ano
+
+         test$jorge fernandes/m/id=not1612tbo-e8-per6
+            rel$profissional/solicitador/catarina de noronha/not1612tbo-e8-per1
+
+         test$manuel fernandes/m/id=not1612tbo-e8-per7
+            rel$profissional/criado/jorge fernandes/not1612tbo-e8-per6
+
+      escritura$not1612tbo-e9/23/7/1612/aforamento/fol=170-174v/loc=grade do parlatorio/sumario=contrato de aforamento celebrado entre mosteiro de santa clara de coimbra e afonso pires, de uma vinha e um pedaco de olival
+
+         senhoria$catarina de noronha/id=not1612tbo-e9-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         foreiro$afonso pires/id=not1612tbo-e9-per2
+            ls$cargo/meirinho da universidade/obs=dos coutos da universidade de coimbra
+
+         aforamento$uma vinha e pedaco de olival/id=not1612tbo-e9-obj1
+            atr$foro/um tostao e uma galinha
+
+         test$francisca de noronha/f/id=not1612tbo-e9-per3
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$inocencia de sa/f/id=not1612tbo-e9-per4
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$joao de sampaio/m/id=not1612tbo-e9-per5
+            ls$titulo/licenciado
+            ls$cargo/prior/obs=da igreja de santiago
+
+         test$belchior carvalho/m/id=not1612tbo-e9-per6
+            ls$cargo/beneficiado/obs=da igreja de santiago
+
+      escritura$not1612tbo-e10/23/5/1612/procurador/fol=22v-24/loc=grade do parlatorio/sumario=o mosteiro de santa clara da cidade de coimbra nomeia procurador e solicitador para, em seu nome, requerer, alegar e defender todos os seus direitos e justicas
+
+         constituintef$catarina de noronha/id=not1612tbo-e10-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         procurador$sebastiao do quintal/id=not1612tbo-e10-per2
+            rel$sociabilidade/procurador/catarina de noronha/not1612tbo-e10-per1
+            ls$profissao/advogado
+            ls$residencia/coimbra
+
+            referido$jorge fernandes/id=not1612tbo-e10-per3
+               rel$profissional/solicitador/catarina de noronha/not1612tbo-e10-per1
+
+         test$inocencia de sa/f/id=not1612tbo-e10-per4
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1612tbo-e10-per5
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$afonso vaz/m/id=not1612tbo-e10-per6
+            ls$profissao/lavrador
+            ls$residencia/lugar de couchel, termo da vila de penacova
+
+         referido$afonso mexia/id=not1612tbo-e10-per7
+            ls$cargo/bispo/obs=de leiria
+
+         test$francisco rodrigues/m/id=not1612tbo-e10-per8
+            rel$profissional/criado/afonso mexia/not1612tbo-e10-per7
+
+         test$antonia pereira/f/id=not1612tbo-e10-per9
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1612tbo-e10-per10
+            ls$titulo/dona
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$jeronima de sousa/f/id=not1612tbo-e10-per11
+            ls$titulo/dona
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1612tbo-e11/23/7/1612/renuncia/fol=158v-161v/loc=grade do parlatorio/sumario=contrato de renuncia, que nao teve efeito, celebrado entre jeronima de sousa, freira professa do mosteiro de santa clara da cidade de coimbra, e lourenco de melo, fidalgo da casa do rei, de pagamento de um morgado pertencente a jer�nima de sousa no valor de quarenta mil reais
+
+         senhoria$jeronima de sousa/id=not1612tbo-e11-per1
+            ls$condicao/freira professa
+            ls$titulo/dona
+
+         renunciante$lourenco de melo/id=not1612tbo-e11-per2
+            ls$residencia/vila de torres novas
+            ls$titulo/fidalgo/obs=da casa do rei
+            ls$titulo/cavaleiro da ordem de cristo
+
+            referida$ana/id=not1612tbo-e11-per3
+               ls$residencia/vila de torres novas
+               ls$titulo/dona
+               rel$parentesco/mulher/lourenco de melo/not1612tbo-e11-per2
+
+         procurador$simao de sousa/id=not1612tbo-e11-per4
+            ls$titulo/religioso
+            ls$residencia/vila de torres novas
+            ls$ordem/companhia de jesus
+            rel$sociabilidade/procurador/lourenco de melo/not1612tbo-e11-per2
+            rel$sociabilidade/procurador/ana/not1612tbo-e11-per3
+
+            referida$joana de sousa/id=not1612tbo-e11-per5
+               ls$condicao/freira professa
+
+            referida$ana de sousa/id=not1612tbo-e11-per6
+               ls$condicao/freira professa
+               ls$ordem/sao bernardo/obs=de arouca
+
+            referido$ambrosio de jose/id=not1612tbo-e11-per7/obs=da patente
+               ls$cargo/ministro provincial
+               ls$ordem/regular observancia de sao francisco
+
+         test$joao de sao boaventura/m/id=not1612tbo-e11-per8
+            ls$profissao/padre
+            ls$titulo/frei
+
+         test$catarina de noronha/f/id=no1612-e11-per9
+            ls$cargo/abadessa
+            ls$assina/sim
+            ls$titulo/dona
+
+         test$inocencia de sa/f/id=not1612tbo-e11-per10
+            ls$cargo/vigaria
+            ls$assina/sim
+            ls$titulo/dona
+
+         test$francisca de noronha/f/id=not1612tbo-e11-per11
+            ls$cargo/escriva
+            ls$assina/sim
+            ls$titulo/dona

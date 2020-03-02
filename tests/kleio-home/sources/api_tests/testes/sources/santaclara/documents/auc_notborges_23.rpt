@@ -1,0 +1,168 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 19-58
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_23.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1625/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-86, notario tome borges, janeiro a maio
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1625
+4:       escritura$not1625-e1/7/2/1625/dote de ingresso/fol=41v-44v/loc=grade do parlatorio/sumario=contrato de dote de entrada no mosteiro de santa clara de coimbra de tres filhas de jeronimo fragoso de albuquerque e dona maria da silva, dona bastiana de meneses, dona joana de meneses e dona maria da silva
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1625-e1
+6:          dotante$jeronimo fragoso de albuquerque/id=not1625-e1-per1
+7:             ls$residencia/lisboa
+8: 
+9:             referida$ines de meneses/id=not1625-e1-per2
+10:                rel$parentesco/mulher/jeronimo fragoso de albuquerque/not1625-e1-per1
+11:                ls$titulo/dona
+12: 
+13:             referido$antonio pereira/id=not1625-e1-per3
+14:                ls$titulo/dom
+15:                ls$cargo/conselheiro de estado na corte de madrid
+16: 
+17:          procurador$sebastiao sezar/id=not1625-e1-per4/obs=
+18:             ls$titulo/colegial no colegio de sao paulo da universidade de coimbra
+19:             rel$sociabilidade/procurador/antonio pereira/not1625-e1-per3
+20: 
+21:          dotada$bastiana de meneses/id=not1625-e1-per5
+22:             rel$parentesco/filha/jeronimo fragoso de albuquerque/not1625-e1-per1
+23:             ls$titulo/dona
+24: 
+25:          dotada$joana de meneses/id=no1625-e1-per6
+26:             rel$parentesco/filha/jeronimo fragoso de albuquerque/not1625-e1-per1
+27:             ls$titulo/dona
+28: 
+29:          dotada$maria da silva/id=not1625-e1-per7
+30:             rel$parentesco/filha/jeronimo fragoso de albuquerque/not1625-e1-per1
+31:             ls$titulo/dona
+32: 
+33:          bem$trezentos mil reais por cada uma
+34: 
+bem-not1625-e1-obj1- ** was stored with function in ACT verify act
+35:          bem$propinas
+36: 
+bem-not1625-e1-obj2- ** was stored with function in ACT verify act
+37:          bem$despesas para igreja camas da enfermaria
+38: 
+bem-not1625-e1-obj3- ** was stored with function in ACT verify act
+39:          bem$alimentos ate dia de profissao
+40: 
+bem-not1625-e1-obj4- ** was stored with function in ACT verify act
+41:          test$maria da cunha/f/id=not1625-e1-per8
+42:             ls$cargo/abadessa
+43:             ls$assina/sim
+44: 
+45:          test$leonor de milao/f/id=not1625-e1-per9
+46:             ls$cargo/vigaria
+47:             ls$assina/sim
+48: 
+49:          test$francisca de meneses/f/id=not1625-e1-per10
+50:             ls$cargo/escriva
+51:             ls$assina/sim
+52: 
+53:          test$andre de burgos/m/id=not1625-e1-per11
+54:             ls$titulo/licenciado
+55:             ls$profissao/advogado
+56:             ls$residencia/coimbra
+57: 
+58:          tabeliao$tome borges/id=not1625-e1-per12
+59:             ls$profissao/tabeliao
+60: 
+61:          test$manuel dias/m/id=not1625-e1-per13
+62:             rel$profissional/criado/tome borges/not1625-e1-per12
+63: 
+64:       escritura$not1625-e2/5/5/1625/dote de ingresso/fol=174-176/loc=grade do parlatorio/sumario=contrato de dote de entrada no mosteiro de santa clara de coimbra de uma filha do senhor luis freire de sousa, dona ines de castro. tendo os votos da comunidade e doze anos de idade, podera receber e lancar o habito de novica
+65: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1625-e2
+66:          dotante$luis freire de sousa/id=not1625-e2-per1
+67:             ls$residencia/quinta da atalaia, perto da vila de alenquer
+68:             ls$titulo/fidalgo
+69: 
+70:             referida$maria aia/obs=duvida no segundo nome/id=not1625-e2-per2
+71:                rel$parentesco/mulher/luis freire de sousa/not1625-e2-per1
+72: 
+73:             referido$antonio de sao luis/id=not1625-e2-per3/obs=da patente com licenca
+74:                ls$titulo/frei
+75:                ls$cargo/ministro provincial/obs=da provincia de portugal
+76:                ls$cargo/comissario apostolico
+77:                ls$ordem/frades menores regular observancia sao francisco
+78: 
+79:          dotada$ines de castro/id=not1625-e2-per4
+80:             rel$parentesco/filha/luis freire de sousa/not1625-e2-per1
+81:             ls$titulo/dona
+82: 
+83:          bem$trezentos mil reais em dinheiro de contado e antes da profissao
+84: 
+bem-not1625-e2-obj1- ** was stored with function in ACT verify act
+85:          bem$propinas costumadas para as religiosas
+86: 
+bem-not1625-e2-obj2- ** was stored with function in ACT verify act
+87:          bem$despesas para camas da enfermaria e sacristia
+88: 
+bem-not1625-e2-obj3- ** was stored with function in ACT verify act
+89:          bem$quinze mil reais para alimentos ate a profissao
+90: 
+bem-not1625-e2-obj4- ** was stored with function in ACT verify act
+91:          test$maria da cunha/f/id=not1625-e2-per5
+92:             ls$cargo/abadessa
+93:             ls$assina/sim
+94: 
+95:          test$leonor de milao/f/id=not1625-e2-per6
+96:             ls$cargo/vigaria
+97:             ls$assina/sim
+98: 
+99:          test$francisca de meneses/f/id=not1625-e2-per7
+100:             ls$cargo/escriva
+101:             ls$assina/sim
+102: 
+103:          test$antonio cardeiro/m/id=not1625-e2-per8
+104:             ls$residencia/burgo do mosteiro de santa clara de coimbra
+105: 
+106:          test$pedro andre/m/id=not1625-e2-per9
+107:             rel$profissional/criado/maria da cunha/not1625-e2-per5
+108: 
+109:          test$manuel dias/m/id=not1625-e2-per10
+110:             ls$profissao/criado/obs=do tabeliao
+111:             rel$profissional/criado/tome borges/1625.e2.tome
+112: 
+113:          referido$tome borges/id=1625.e2.tome
+114: 
+115:          test$maria de vasconcelos/f/id=not1625-e2-per11
+116:             ls$condicao/freira professa
+117:             ls$assina/sim
+118: 
+119:          test$maria de meneses/f/id=not1625-e2-per12
+120:             ls$condicao/freira professa
+121:             ls$assina/sim
+122: 
+123:          test$ilaria da silva/f/id=not1625-e2-per13
+124:             ls$condicao/freira professa
+125:             ls$assina/sim
+126: 
+127:          test$isabel de noronha/f/id=not1625-e2-per14
+128:             ls$condicao/freira professa
+129:             ls$assina/sim
+130: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_23.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_23.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_23.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_23.ids

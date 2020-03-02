@@ -1,0 +1,52 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 19-27
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_16.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1615-1616/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-75, notario tome borges, dezembro a marco
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1615-1616
+4:       escritura$not1615-e1/17/3/1616/procuracao/fol=2v-3/loc=grade do parlatorio/sumario=dona isabel de noronha, freira professa do mosteiro de santa clara de coimbra, nomeia seu procurador jeronimo lopes, para que em seu nome arrecade no almoxarifado de tomar os trinta mil reais de ten�a regia
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1615-e1
+6:          constituintef$isabel de noronha/id=not1615-e1-per1
+7:             ls$condicao/freira professa
+8:             ls$assina/sim
+9:             ls$titulo/dona
+10: 
+11:          procurador$jeronimo lopes/id=not1615-e1-per2
+12:             rel$sociabilidade/procurador/isabel de noronha/not1615-e1-per1
+13: 
+14:          test$miguel francisco/m/id=not1615-e1-per3
+15:             ls$profissao/criado/obs=do tabeliao
+16:             rel$profissional/criado/tome borges/1615-tab
+17: 
+18:          referido$tome borges/id=1615-tab
+19:             ls$profissao/tabeliao
+20: 
+21:          test$manuel do couto da anunciacao/m/id=not1615-e1-per4
+22:             ls$profissao/estudante/obs=da universidade de coimbra
+23:             ls$naturalidade/lourical
+24: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_16.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_16.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_16.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_16.ids

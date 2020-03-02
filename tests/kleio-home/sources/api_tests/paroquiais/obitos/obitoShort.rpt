@@ -1,0 +1,46 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+27-6-2019 8-46
+
+Processing data file obitoShort.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str/prefix=soure/translations=24
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: soure
+Autorel: soure
+Translation count: 24
+Obs: 
+2:    fonte$obitos 1688-short/tipo=reg paroquiais/localizacao=nao se le/data=1688/obs=este serve para testar o uso do prefixo com relaÂÂes (segundo Âbito).
+3: 
+** Processing source fonte$soure-obitos 1688-short
+4:       obito$o1740.12/7/10/1740/fl.150/vigario fabiao soares paredes
+5: 
+6: obito$soure-o1740.12
+6:          n$luisa gomes/f/id=1740-o12-luisa
+7: 
+8:             referido$antonio da cunha roxo%rocho#lÂ-se mal/obs=teve filhos com luisa gomes/id=1740-o12-luisa-per1
+9:                ls$naturalidade/lorvao
+10:                ls$morto/antes
+11:                rel$parentesco/marido1/luisa gomes/1740-o12-luisa
+12: 
+13:             marido$manuel gomes da costa/obs=teve filhos com luisa gomes/id=1740-o12-luisa-per2
+14:                ls$naturalidade/eiras
+15: 
+16:          locs$igreja matriz de s. martinho da torre
+17: 
+18:          sacr$sim
+19: 
+20:          locf$torre de vilela;e mais nao disse;e al nao disse;%bilela;
+21: *** End of File
+** Processed file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/paroquiais/obitos/obitoShort.cli
+** Original file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/paroquiais/obitos/obitoShort.org
+** Previous version- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/paroquiais/obitos/obitoShort.old
+** Temp file with ids- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/paroquiais/obitos/obitoShort.ids
+0  errors. 
+0  warnings.
+Translation finished.

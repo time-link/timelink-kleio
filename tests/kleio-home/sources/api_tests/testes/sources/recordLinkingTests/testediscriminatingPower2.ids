@@ -1,0 +1,36 @@
+kleio$/prefix=reclinktst/translations=1
+   fonte$rlt01
+
+      lista$listnd/4/12/2006/obs=cria um atributo com 3 valores
+
+         n$pessoa 1/m/id=listNdescrim-per1
+            ls$atributo1/valor 1
+
+         n$pessoa 1/m/id=listNdescrim-per2
+            ls$atributo1/valor 1
+
+         n$pessoa 1/m/id=listNdescrim-per3
+            ls$atributo1/valor 2
+
+         n$pessoa 1/m/id=listNdescrim-per4
+            ls$atributo1/valor 3
+
+         n$pessoa/id=p1/obs=quatro ocorrencias da mesma pessoa com a mesma residencia
+            ls$xresidencia/valor 1
+            ls$xcargo/valor 1
+
+         n$pessoa/id=p2/mesmo_que=recordlinkingtests-p1
+            ls$xresidencia/valor 1
+            ls$xcargo/valor 2
+
+         n$pessoa/id=p3/mesmo_que=recordlinkingtests-p1
+            ls$xresidencia/valor 1
+            ls$xcargo/valor 5
+
+         n$pessoa/id=p4/mesmo_que=recordlinkingtests-p1
+            ls$xresidencia/valor 1
+            ls$xcargo/valor 3
+
+         n$pessoa/id=p5/mesmo_que=recordlinkingtests-p1
+            ls$xresidencia/valor 1
+            ls$xcargo/valor 4

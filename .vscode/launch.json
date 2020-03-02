@@ -1,0 +1,44 @@
+{ // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Debug Prolog Files",
+            "type": "prolog",
+            "request": "launch",
+            "runtimeExecutable": "/Applications/SWI-Prolog.app/Contents/MacOS/swipl",
+            "runtimeArgs": [],
+            "env": {
+                "kleio_stru_dir":"/Users/jrc/develop/mhk-git/clio/src",
+                "kleio_data_dir":"/Users/jrc/develop/mhk-git/clio/tests/test_translations",
+                "prolog_server":"4000",
+                "rest_server":"8088",
+                "workers":"5"
+            },
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "startupQuery": "start",
+            "stopOnEntry": true,
+            "traceCmds": {
+                "continue": [
+                    "leap",
+                    "l"
+                ],
+                "stepover": [
+                    "skip",
+                    "s"
+                ],
+                "stepinto": [
+                    "creep",
+                    "c"
+                ],
+                "stepout": [
+                    "up",
+                    "u"
+                ]
+            }
+        }
+    ]
+}

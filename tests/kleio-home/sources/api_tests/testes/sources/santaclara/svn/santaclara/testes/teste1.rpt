@@ -1,0 +1,75 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+3-7-2019 8-8
+
+Processing data file teste1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$af.pt-tt-cscc-17-part
+6: escritura$af1379.1.m7-28
+
+ERROR: teste1.cli line 5 *** Current group contrato cannot be linked with previous group escritura(af1379.1.m7-28)
+Near lines: 5 
+Near line: 6                	contrato$aforamento
+
+
+ERROR: teste1.cli line 5 ***contrato group not stored.
+Near lines: 5 
+Near line: 6                	contrato$aforamento
+
+
+ERROR: teste1.cli line 5 ** Failure. Could not process group contrato
+Near lines: 5 
+Near line: 6                	contrato$aforamento
+
+
+ERROR: teste1.cli line 6 ** Failure: undefined element. aforamento
+
+Near lines: 6                	contrato$aforamento
+Near line: 7           	     senhorio$mosteiro de santa clara/id=1379.af1.msc
+
+
+ERROR: teste1.cli line 6 ** ID already used in this file: af1379.1.m7-28
+Near lines: 6                	contrato$aforamento
+Near line: 7           	     senhorio$mosteiro de santa clara/id=1379.af1.msc
+
+7: escritura$af1379.1.m7-28
+
+ERROR: teste1.cli line 8 *** Current group abadessa cannot be linked with previous group atr(att-1)
+Near lines: 8           	            atr$localizacao/coimbra/obs=da par da cidade de coimbra
+Near line: 9           	            abadessa$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+
+
+ERROR: teste1.cli line 8 ***abadessa group not stored.
+Near lines: 8           	            atr$localizacao/coimbra/obs=da par da cidade de coimbra
+Near line: 9           	            abadessa$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+
+
+ERROR: teste1.cli line 8 ** Failure. Could not process group abadessa
+Near lines: 8           	            atr$localizacao/coimbra/obs=da par da cidade de coimbra
+Near line: 9           	            abadessa$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+
+
+ERROR: teste1.cli line 8 ** atr unknown element: id.
+Near lines: 8           	            atr$localizacao/coimbra/obs=da par da cidade de coimbra
+Near line: 9           	            abadessa$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+
+
+WARNING: teste1.cli line 9 Element value exceeds database field length: data=ines rodrigues de vasconcelos. Size:29 limit: 24
+Near lines: 9           	            abadessa$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+Near line: 10           	     foreiro$goncalo lourenco/id=1379.af1.goncalo
+
+*** End of File
+9  errors. 
+1  warnings.
+Translation finished.

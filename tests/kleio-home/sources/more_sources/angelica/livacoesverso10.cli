@@ -1,0 +1,61 @@
+kleio$gacto2.str
+   fonte$livacoes10/livro de registro das acoes/data=1763/loc=antt 446/obs=livros de acoes da cgpp; anotacoes do verso de apolices selecionadas
+
+      movacao$lacao10-1/16/12/1789/obs=ato que se reporta a uma movimentacao de acoes: cessecao, venda, payback; fl.258v
+
+         acionista$joao de oliveira gouvim maciel/id=lacao10-per4
+            rel$sociabilidade/herdou acao/bras ferreira maciel/lacao10-per5
+
+         acionista$bras ferreira maciel/id=lacao10-per5
+            rel$parentesco/pai/joao de oliveira gouvim maciel/lacao10-per4
+
+            referida$caterina bernarda de oliveira gouvim/id=lacao10-per6
+               ls$titulo/dona
+               rel$parentesco/mae/joao de oliveira gouvim maciel/lacao10-per4
+               rel$parentesco/mulher/bras ferreira maciel/lacao10-per5
+
+         acao$m_acao2893/id=lacao10-1-obj1
+            atr$data_mov/17891216
+            rel$posse/pertenceu/bras ferreira maciel/lacao10-per5
+            rel$posse/pertence/joao de oliveira gouvim maciel/lacao10-per4
+            atr$tipo_mov/heranca
+
+      movacao$lacao10-2/16/12/1789/obs=ato que se reporta a uma movimentacao de acoes: cessecao, venda, payback; fl.258v
+
+         acionista$joao de oliveira gouvim maciel/id=lacao10-per7
+
+         acao$m_acao2893/id=lacao10-2-obj1
+            atr$data_mov/17891216
+            rel$posse/pertence/joao de oliveira gouvim maciel/lacao10-per7
+            atr$tipo_mov/payback_1/obs=primeira reparticao. por conta do capital 80.0 reis.
+            atr$local_pagamento/direcao de pernambuco
+
+      movacao$lacao10-3/7/11/1792/obs=ato que se reporta a uma movimentacao de acoes: cessecao, venda, payback; fl.258v
+
+         acionista$joao de oliveira gouvim maciel/id=lacao10-per9
+
+         acao$m_acao2893/id=lacao10-3-obj1
+            atr$data_mov/17891216
+            rel$posse/pertence/joao de oliveira gouvim maciel/lacao10-per9
+            atr$tipo_mov/payback_2/obs=segunda reparticao. por conta do capital 40.0 reis.
+            atr$local_pagamento/direcao de pernambuco
+
+      movacao$lacao10-4/11/7/1810/obs=ato que se reporta a uma movimentacao de acoes: cessecao, venda, payback; fl.258v
+
+         acionista$joao de oliveira gouvim maciel/id=lacao10-per8
+
+         acao$m_acao2893/id=lacao10-4-obj1
+            atr$data_mov/18100711
+            rel$posse/pertence/joao de oliveira gouvim maciel/lacao10-per8
+            atr$tipo_mov/payback_3/obs=terceira reparticao. por conta do capital 80.0 reis.
+            atr$local_pagamento/direcao de pernambuco
+
+      lb$liv446-1/0/0/1763/obs=fechou em 1763
+
+         n$bras ferreira maciel/id=lacao10-per1/obs=no verso da acao2893/data=17800415
+            rel$sociabilidade/herdou acao/joao de oliveira gouvim/lacao10-per2
+
+            referido$joao de oliveira gouvim/id=lacao10-per2
+
+            referido$jacinto ferreira maciel/id=lacao10-per3
+               rel$parentesco/filho/bras ferreira maciel/lacao10-per1

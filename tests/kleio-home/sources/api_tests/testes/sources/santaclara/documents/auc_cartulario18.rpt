@@ -1,0 +1,2491 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 17-43
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario18.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$escrituras1517-1549/tipo=escrituras/loc=auc/obs=livro encadernado de notas n�18, santa clara de coimbra, cota:iii-1.d-16-3-19, tabeliao gregorio lourenco
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$escrituras1517-1549
+4:       escritura$esc1517-e1/9/6/1517/aforamento em fatiosim/fol=3v-6/loc=grades/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e joao esteves, de um assento de casas, moinho e levadas, acude e oito currais, sitos em portunhos, lugar da crota
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1517-e1
+6:          senhoria$margarida de meneses/id=esc1517-e1-per1
+7:             ls$cargo/abadessa
+8: 
+9:          foreiro$joao esteves/id=esc1517-e1-per2
+10:             ls$profissao/moleiro
+11:             ls$residencia/crota junto de portunhos, termo da vila de anca
+12: 
+13:          foreira$maria lopes/id=esc1517-e1-per3
+14:             rel$parentesco/mulher/joao esteves/esc1517-e1-per2
+15: 
+16:          aforamento$um assento de casas
+17: 
+aforamento-esc1517-e1-obj1- ** was stored with function in ACT verify act
+18:          aforamento$moinho e levadas
+19: 
+aforamento-esc1517-e1-obj2- ** was stored with function in ACT verify act
+20:          aforamento$acude
+21: 
+aforamento-esc1517-e1-obj3- ** was stored with function in ACT verify act
+22:          aforamento$currais
+aforamento-esc1517-e1-obj4- ** was stored with function in ACT verify act
+23:             atr$localizacao/lugar da crota portunhos
+24:             atr$racao/um oitavo/obs=pao debulhado e limpo na eira, linho curtido e enxuto e o vinho a bica do lagar
+25:             atr$foro/vinte alqueires de trigo/obs=limpo
+26:             atr$foro/um capao
+27:             atr$multa/vinte mil reais de pena por incumprimento
+28: 
+29:          test$pedro goncalves/m/id=esc1527-e1-per4/obs=assinou por maria lopes
+30:             ls$cargo/escudeiro do mosteiro
+31:             rel$profissional/vedor/margarida de meneses/esc1517-e1-per1
+32:             ls$cargo/vedor do mosteiro
+33: 
+34:          test$antao gil/m/id=esc1527-e1-per5
+35:             rel$profissional/carniceiro/margarida de meneses/esc1517-e1-per1
+36: 
+37:       escritura$esc1518-e2/2/11/1518/aforamento em fatiosim para sempre/fol=6-8v/loc=grades/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e joao jorge, de um meio casal sito no sebal grande
+38: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1518-e2
+39:          senhoria$margarida de meneses/id=esc1518-e2-per1
+40:             ls$cargo/abadessa
+41: 
+42:          foreiro$joao jorge/id=esc1518-e2-per2
+43:             ls$residencia/sebal grande
+44:             ls$profissao/lavrador
+45: 
+46:             referido$jorge pires/id=esc1518-e2-per3
+47:                rel$parentesco/pai/joao jorge/esc1518-e2-per2
+48:                ls$morto/antes
+49: 
+50:             referida$catarina martins/id=esc1518-e2-per4
+51:                rel$parentesco/mae/joao jorge/esc1518-e2-per2
+52: 
+53:          aforamento$meio casal
+aforamento-esc1518-e2-obj1- ** was stored with function in ACT verify act
+54:             atr$localizacao/sebal grande
+55:             atr$racao/um sexto de trigo
+56:             atr$racao/um sexto de cevada
+57:             atr$racao/um sexto de centeio
+58:             atr$racao/um sexto de milho
+59:             atr$racao/um sexto de legumes
+60:             atr$foro/tres alqueires e meio de farinha/obs=peneirada na peneira de seda
+61:             atr$foro/linguica de porco
+62:             atr$foro/meia calaca de toucinho
+63:             atr$foro/um capao bom/obs=pagar no mosteiro por dia de natal
+64:             atr$foro/um alqueire de trigo
+65:             atr$foro/um alqueire de cevada/obs=o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar e outras novidades no tempo do recolher; primeira paga no ano seguinte
+66: 
+67:          test$pedro goncalves/m/id=esc1518-e2-per5
+68:             rel$profissional/escudeiro/margarida de meneses/esc1518-e2-per1
+69:             rel$profissional/vedor/margarida de meneses/esc1518-e2-per1
+70:             ls$cargo/vedor do mosteiro
+71:             ls$cargo/escudeiro do mosteiro
+72: 
+73:          test$pedro anes/m/id=esc1518-e2-per6
+74:             rel$profissional/mordomo/margarida de meneses/esc1518-e2-per1/obs=em urzelhe
+75: 
+76:          test$pedro anes/m/id=esc1518-e2-per7
+77:             rel$parentesco/filho/pedro anes/esc1518-e2-per6
+78: 
+79:       escritura$esc1519-e3/4/1/1519/aforamento em fatiosim para sempre/fol=9-11v/loc=no curral, nas pousadas de pedro goncalves, escudeiro e vedor do mosteiro/sumario=aforamento em fatiosim ara sempre celebrado entre mosteiro de santa clara e pedro anes de urzelhe, de uma vinha e um pomar de arvores sitas no lugar de urzelhe, termo de miranda
+80: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1519-e3
+81:          senhoria$margarida de meneses/id=esc1519-e3-per1
+82:             ls$cargo/abadessa
+83: 
+84:          foreiro$pedro anes/id=esc1519-e3-per2
+85:             ls$profissao/lavrador
+86:             ls$residencia/urzelhe
+87:             rel$profissional/mordomo/margarida de meneses/esc1519-e3-per1
+88: 
+89:          foreira$beatriz alvares/id=esc1519-e3-per3
+90:             rel$parentesco/mulher/pedro anes/esc1519-e3-per2
+91: 
+92:          aforamento$uma vinha
+93: 
+aforamento-esc1519-e3-obj1- ** was stored with function in ACT verify act
+94:          aforamento$um pomar de arvores
+aforamento-esc1519-e3-obj2- ** was stored with function in ACT verify act
+95:             atr$localizacao/urzelhe termo da vila de miranda
+96:             atr$foro/uma galinha/obs=pela vinha
+97:             atr$foro/um frango/obs=do pomar; pago dentro do mosteiro com pena de dez mil reais por incumprimento; vinho a bica do lagar e fruta ao pe da arvore
+98: 
+99:          test$joao anes/m/id=esc1519-e3-per4
+100:             ls$profissao/lavrador
+101:             rel$profissional/mordomo/margarida de meneses/esc1519-e3-per1
+102: 
+103:          test$pedro anes/m/id=esc1519-e3-per5
+104: 
+105:          test$lourenco pires/m/id=esc1519-e3-per6
+106:             ls$profissao/sapateiro
+107: 
+108:          referido$diogo lopes/id=esc1519-e3-per7
+109:             ls$cargo/capelao/obs=da senhora condessa de penela a velha
+110: 
+111:          test$pedro vaz/m/id=esc1519-e3-per8
+112:             ls$ec/solteiro
+113:             rel$profissional/criado/diogo lopes/esc1519-e3-per7
+114: 
+115:          test$joao rodrigues/m/id=esc1519-e3-per9
+116:             ls$profissao/carpinteiro
+117:             ls$residencia/pacos do mosteiro
+118: 
+119:       escritura$esc1519-e4/21/10/1519/renuncia e aforamento em fatiosim para sempre/fol=12-15/loc=grades/sumario=renuncia e novo aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e francisco anes
+120: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1519-e4
+121:          senhoria$margarida de meneses/id=esc1519-e4-per1
+122:             ls$cargo/abadessa
+123: 
+124:          foreiro$francisco anes/id=esc1519-e4-per2
+125: 
+126:          foreira$cezilia martins/id=esc1519-e4-per3
+127:             rel$parentesco/mulher/francisco anes/esc1519-e4-per2
+128: 
+129:             referido$joao martins/id=esc1519-e4-per4/obs=renunciante do meio casal
+130:                ls$profissao/lavrador
+131:                ls$residencia/penela
+132:                rel$sociabilidade/procurador/catarina anes/esc1519-e4-per5
+133: 
+134:             referida$catarina anes/id=esc1519-e4-per5
+135:                rel$parentesco/mulher/joao martins/esc1519-e4-per4
+136: 
+137:          aforamento$um meio casal
+aforamento-esc1519-e4-obj1- ** was stored with function in ACT verify act
+138:             atr$localizacao/povoa, termo da vila de penela
+139:             atr$foro/onze alqueires de trigo
+140:             atr$foro/um cabrito
+141:             atr$foro/um capao/obs=o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar; primeira paga no ano seguinte;
+142:             atr$multa/dez mil reais por incumprimento
+143: 
+144:          test$diogo de figueiredo/m/id=esc1519-e4-per6
+145:             ls$cargo/escudeiro
+146:             ls$titulo/cidadao
+147:             ls$residencia/coimbra
+148:             rel$profissional/vedor/margarida de meneses/esc1519-e4-per1
+149: 
+150:       escritura$esc1520-e5/13/4/1520/emprazamento/fol=15-17/loc=grades/sumario=emprazamento em duas vidas celebrado entre mosteiro de santa clara e duarte de mendonca, de um quinhao de carreiro? sito em penacova
+151: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1520-e5
+152:          senhoria$margarida de meneses/id=esc1520-e5-per1
+153:             ls$cargo/abadessa
+154: 
+155:          foreiro$duarte de mendonca/id=esc1520-e5-per2
+156:             ls$residencia/penacova
+157:             ls$titulo/cavaleiro
+158: 
+159:          prazo$um quinhao de carreiro/obs=duvida
+prazo-esc1520-e5-obj1- ** was stored with function in ACT verify act
+160:             atr$localizacao/penacova
+161:             atr$renda foro e pensao/quatorze lampreias/obs=boas e frescas a entregar dentro do mosteiro
+162:             atr$multa/dez mil reais por incumprimento/obs=pena de dez mil reais por incumprimento
+163: 
+164:          test$diogo de figueiredo/m/id=esc1520-e5-per3
+165:             ls$cargo/escudeiro
+166:             ls$titulo/cidadao
+167:             ls$residencia/coimbra
+168:             rel$profissional/vedor/margarida de meneses/esc1520-e5-per1
+169: 
+170:          test$fernao anes/m/id=esc1520-e5-per4
+171:             rel$profissional/escudeiro/francisco de faria/esc1520-e5-per5
+172: 
+173:          referido$francisco de faria/id=esc1520-e5-per5
+174:             ls$titulo/fidalgo
+175:             ls$residencia/vila de penacova
+176: 
+177:       escritura$esc1521-e6/11/9/1521/emprazamento em tres vidas/fol=17-22/loc=grades/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e micia vaz, de um casal, uma jeira e meia de terra, quatro aguilhadas de terra, nove aguilhadas de terra, um olival, uma vinha, sitos em montemor-o-velho
+178: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1521-e6
+179:          senhoria$margarida de meneses/id=esc1521-e6-per1
+180:             ls$cargo/abadessa
+181: 
+182:          foreira$micia vaz/id=esc1521-e6-per2
+183:             rel$parentesco/mulher/diogo de figueiredo/esc1520-e5-per3
+184: 
+185:          prazo$um casal
+186: 
+prazo-esc1521-e6-obj1- ** was stored with function in ACT verify act
+187:          prazo$uma jeira e meia de terra
+188: 
+prazo-esc1521-e6-obj2- ** was stored with function in ACT verify act
+189:          prazo$quatro aguilhadas de terra
+prazo-esc1521-e6-obj3- ** was stored with function in ACT verify act
+190:             atr$localizacao/santa maria de campos
+191: 
+192:          prazo$nove aguilhadas de terra
+prazo-esc1521-e6-obj4- ** was stored with function in ACT verify act
+193:             atr$localizacao/barca
+194: 
+195:          prazo$um olival
+196: 
+prazo-esc1521-e6-obj5- ** was stored with function in ACT verify act
+197:          prazo$uma vinha
+prazo-esc1521-e6-obj6- ** was stored with function in ACT verify act
+198:             atr$localizacao/ermida de sao domingos
+199:             atr$localizacao/montemor o velho
+200:             atr$foro/dois mil e quatrocentos reais/obs=em dinheiro da moeda corrente
+201:             atr$racao/um capao/obs=pago dentro do mosteiro em dia de entrudo
+202:             atr$foro/cem reais
+203:             atr$racao/um capao/obs=primeira paga no ano seguinte
+204:             atr$multa/sessenta mil reais por incumprimento
+205: 
+206:          test$joao goncalves/m/id=esc1521-e6-per3
+207:             ls$profissao/luveiro
+208:             ls$residencia/curral dos pacos do mosteiro
+209: 
+210:          test$joao fernandes/m/id=esc1521-e6-per4
+211:             ls$profissao/almocreve
+212:             ls$alcunha/o sanfalho
+213: 
+214:          test$goncalo pires/m/id=esc1521-e6-per5
+215:             ls$profissao/trabalhador
+216: 
+217:       escritura$esc1523-e7/8/5/1523/aforamento/fol=22-24/loc=grades/sumario=aforamento em fatiosim por via de renuncia, de um moinho sito abaixo de casconha, cernache
+218: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1523-e7
+219:          senhoria$maria de meneses/id=esc1523-e7-per1
+220:             ls$cargo/abadessa
+221: 
+222:          foreiro$afonso dias/id=esc1523-e7-per2
+223:             ls$alcunha/o bicho
+224: 
+225:          foreira$margarida martins/id=esc1523-e7-per3
+226:             rel$parentesco/mulher/afonso dias/esc1520-e7-per2
+227: 
+228:             referido$afonso dias/id=esc1523-e7-per4
+229:                ls$profissao/lavrador
+230:                ls$residencia/vila nova de cernache
+231: 
+232:             referida$ana afonso/id=esc1523-e7-per5
+233:                rel$parentesco/mulher/afonso dias/esc1523-e7-per4
+234: 
+235:          aforamento$um moinho
+aforamento-esc1523-e7-obj1- ** was stored with function in ACT verify act
+236:             atr$localizacao/feiteira
+237:             atr$racao/um capao
+238:             atr$racao/uma galinha
+239:             atr$foro/um quarto de trigo moido
+240:             atr$foro/quatro alqueires de segunda/obs=medida nova; pago no moinho por dia de s. miguel de setembro;
+241:             atr$multa/trinta mil reais por incumprimento
+242: 
+243:          test$francisco perestrelo/m/id=esc1523-e7-per6/obs=assinou por ana afonso, marido e filho
+244:             ls$titulo/cidadao
+245:             ls$residencia/coimbra
+246: 
+247:          test$simao lopes/m/id=esc1523-e7-per7
+248:             ls$profissao/criado
+249: 
+250:          test$antao gil/m/id=esc1523-e7-per8
+251:             rel$profissional/carniceiro/maria de meneses/esc1523-e7-per1
+252: 
+253:       escritura$esc1524-e8/5/3/1524/aforamento/fol=24-26v/loc=grades/sumario=aforamento em fatiosim celebrado entre mosteiro de santa clara e simao goncalves, de um mato bravio e maninho, sito no lugar de casais, da freguesia do lugar de vila nova da barca, termo da vila montemor-o-velho
+254: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1524-e8
+255:          senhoria$maria de meneses/id=esc1524-e8-per1
+256:             ls$cargo/abadessa
+257: 
+258:          foreiro$simao goncalves/id=esc1524-e8-per2
+259:             ls$profissao/lavrador
+260: 
+261:          foreira$filipa pires/id=esc1524-e8-per3
+262:             rel$parentesco/mulher/simao goncalves/esc1524-e8-per2
+263: 
+264:          aforamento$um mato bravio e maninho
+aforamento-esc1524-e8-obj1- ** was stored with function in ACT verify act
+265:             atr$localizacao/lugar de casais da freguesia de vila nova da barca montemor o velho
+266:             atr$racao/um setimo do pao
+267:             atr$racao/um setimo do linho/obs=curtido e enxuto
+268:             atr$racao/um setimo dos legumes
+269:             atr$racao/um oitavo do vinho/obs=a bica do lagar
+270:             atr$foro/um alqueire e meio de trigo
+271:             atr$foro/um alqueire de meio de segunda
+272:             atr$fogaca/tres quartos de trigo/obs=do pao proprio do lavrador; foro e racao pagos na eira; primeira paga por s. miguel de setembro no ano presente, nos lugares respectivos e ao mordomo do mosteiro
+273:             atr$multa/dez mil reais por incumprimento/obs=pena de dez mil reais por incumprimento
+274: 
+275:          test$diogo de figueiredo/m/id=esc1524-e8-per4
+276:             rel$profissional/vedor/maria de meneses/esc1524-e8-per1
+277: 
+278:          test$simao lopes/m/id=esc1524-e8-per5
+279:             rel$profissional/criado/maria de meneses/esc1524-e8-per1
+280: 
+281:          test$lopo fernandes/m/id=esc1524-e8-per6
+282:             rel$profissional/mordomo/maria de meneses/esc1524-e8-per1/obs=em vila nova da barca
+283: 
+284:       escritura$esc1529-e9/23/2/1529/emprazamento/fol=26v-27/loc=grades/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e joao goncalves de castelo branco, de uma vinha, sita nas vinhas da rebela e que partem das vinhas do mosteiro de santa cruz
+285: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1529-e9
+286:          senhoria$maria de meneses/id=esc1529-e9-per1
+287:             ls$cargo/abadessa
+288: 
+289:          foreiro$joao goncalves/id=esc1529-e9-per2
+290:             ls$titulo/fidalgo/obs=da casa do rei
+291: 
+292:          prazo$uma vinha
+prazo-esc1529-e9-obj1- ** was stored with function in ACT verify act
+293:             atr$localizacao/nas vinhas da ribela que partem com vinhas do mosteiro de santa cruz
+294:             atr$foro/cento e vinte mil reais/obs=por s. miguel de setembro; primeira paga no ano seguinte
+295:             atr$multa/vinte mil reais por incumprimento/obs=pena de dez mil reais por incumprimento
+296: 
+297:          test$joao lopes/m/id=esc1529-e9-per3
+298:             ls$residencia/rua da calcada
+299:             ls$profissao/lavrador
+300: 
+301:          test$joao alvares/m/id=esc1529-e9-per4
+302: 
+303:          test$francisco/m/id=esc1529-e9-per5
+304:             ls$ec/solteiro
+305:             rel$profissional/criado/joao goncalves/esc1529-e9-per2
+306:             ls$profissao/criado
+307: 
+308:       escritura$esc1530-e10/12/4/1530/emprazamento/fol=28-29v/loc=grades/sumario=renuncia e emprazamento em tres vidas celebrado entre mosteiro de santa clara e jorge seco, do olival de nossa senhora da esperanca, mais dois olivais
+309: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1530-e10
+310:          senhoria$margarida de castro/id=esc1530-e10-per1
+311:             ls$cargo/abadessa
+312: 
+313:          foreiro$jorge seco/id=esc1530-e10-per2
+314:             ls$cargo/conego/obs=da se catedral
+315: 
+316:             referido$francisco vaz/id=esc1530-e10-per3/obs=antigo foreiro, renunciante
+317:                ls$profissao/pedreiro
+318: 
+319:             referida$maria pais/id=esc1530-e10-per4
+320:                rel$parentesco/mulher/francisco vaz/esc1530-e10-per3
+321: 
+322:          prazo$olival de nossa senhora da esperanca
+323: 
+prazo-esc1530-e10-obj1- ** was stored with function in ACT verify act
+324:          prazo$dois olivais
+prazo-esc1530-e10-obj2- ** was stored with function in ACT verify act
+325:             atr$localizacao/coimbra
+326:             atr$racao/nove alqueires de azeite/obs=a safra de dois em dois a
+327:             atr$multa/trinta mil reais por incumprimento
+328: 
+329:          test$alvaro/m/id=esc1530-e10-per5
+330:             rel$parentesco/filho/gregorio lourenco/1530-e10-glou
+331: 
+332:          referido$gregorio lourenco/id=1530-e10-glou
+333:             ls$profissao/tabeliao
+334: 
+335:          test$pedro dias/m/id=esc1530-e10-per6
+336:             ls$profissao/sapateiro
+337:             ls$residencia/coimbra
+338: 
+339:          test$joao afonso/id=esc1530-e10-per7
+340:             ls$residencia/pacos
+341: 
+342:          test$simao lopes/id=esc1530-e10-per8
+343: 
+344:       escritura$esc1531-e11/28/3/1531/aforamento/fol=30-31v/loc=grades/sumario=aforamento para sempre a varias pessoas
+345: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1531-e11
+346:          senhoria$margarida de castro/id=esc1531-e11-per1
+347:             ls$cargo/abadessa
+348: 
+349:          foreiro$pedro anes/id=esc1531-e11-per2
+350:             ls$residencia/eira pedrinha
+351: 
+352:          foreira$leonor afonso/id=esc1531-e11-per3
+353:             rel$parentesco/mulher/pedro anes/esc1531-e11-per2
+354: 
+355:          foreiro$diogo afonso/id=esc1531-e11-per4
+356: 
+357:          foreiro$andre afonso/id=esc1531-e11-per5
+358: 
+359:          foreiro$joao pires/id=esc1531-e11-per6
+360: 
+361:          foreiro$joao alvares/id=esc1531-e11-per7
+362: 
+363:          foreira$margarida pires/id=esc1531-e11-per8
+364:             rel$parentesco/mulher/joao alvares/esc1531-e11-per7
+365: 
+366:          aforamento$duas meias leiras de vinha
+aforamento-esc1531-e11-obj1- ** was stored with function in ACT verify act
+367:             atr$localizacao/orelhudo
+368: 
+369:          aforamento$meio casal/obs=a joao alvares e sua mulher
+aforamento-esc1531-e11-obj2- ** was stored with function in ACT verify act
+370:             atr$localizacao/no limite de orelhudo
+371:             atr$foro/um cantaro de vinho/obs=a bica de nove meias
+372:             atr$racao/um oitavo/obs=no lagar de orelhudo
+373:             atr$multa/dez mil reais por incumprimento
+374:             atr$racao/um capao/obs=do meio casal
+375:             atr$foro/quatro fogacas/obs=do meio casal
+376:             atr$foro/um alqueire de trigo/obs=do meio casal
+377:             atr$foro/um alqueire de cevada/obs=do meio casal
+378:             atr$racao/um quinto de azeite/obs=do meio casal
+379:             atr$racao/um quinto de legumes/obs=do meio casal
+380: 
+381:          test$diogo de figueiredo/m/id=esc1531-e11-per9/obs=assinou pelos foreiros
+382:             ls$titulo/cavaleiro
+383:             rel$profissional/vedor/margarida de castro/esc1531-e11-per1
+384: 
+385:          test$pedro anes/m/id=esc1531-e11-per10
+386:             rel$profissional/mordomo/margarida de castro/esc1531-e11-per1
+387: 
+388:          test$joao gil/id=esc1531-e11-per11
+389:             rel$profissional/servidor/margarida de castro/esc1531-e11-per1
+390: 
+391:       escritura$esc1533-e12/11/9/1533/aforamento/fol=32-33v/loc=grades/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e rodrigo anes, do casal dos vieiros, bouca, termo da vila de penela
+392: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1533-e12
+393:          senhoria$margarida de castro/id=esc1533-e12-per1
+394:             ls$cargo/abadessa
+395: 
+396:          foreiro$rodrigo anes/id=esc1533-e12-per2
+397:             ls$profissao/lavrador
+398:             ls$residencia/bouca, termo de penela
+399: 
+400:          foreira$ines pires/id=esc1533-e12-per3/obs=nao presente
+401: 
+402:          aforamento$um casal
+aforamento-esc1533-e12-obj1- ** was stored with function in ACT verify act
+403:             atr$localizacao/vieiros
+404:             atr$racao/um quinto do pao
+405:             atr$racao/um quinto dos legumes
+406:             atr$racao/um quinto do linho/obs=curtido e enxuto
+407:             atr$racao/um quinto do azeite
+408:             atr$racao/castanhas
+409:             atr$foro/seis alqueires de trigo
+410:             atr$foro/dois capoes
+411:             atr$foro/um carneiro/obs=pago na pascoa
+412:             atr$foro/um cabrito
+413:             atr$foro/vinte ovos/obs=carneiro, cabrito e ovos pagos no mosteiro; primeira paga pela pascoa do ano seguinte
+414: 
+415:          test$antonio mascarenhas/m/id=esc1533-e12-per4
+416:             ls$residencia/penela
+417: 
+418:          test$antonio fernandes/m/id=esc1533-e12-per5
+419:             ls$profissao/alfaiate
+420:             ls$residencia/penela
+421: 
+422:          test$domingos/m/id=esc1533-e12-per6
+423:             ls$profissao/criado/obs=foi criado de fernao da ponte, falecido
+424: 
+425:          test$diogo de figueiredo/m/id=esc1533-e12-per7/obs=assinou pelo inquilino
+426:             ls$titulo/cavaleiro
+427:             ls$titulo/fidalgo
+428:             rel$profissional/vedor/margarida de castro/esc1533-e12-per1
+429: 
+430:       escritura$esc1534-e13/1/6/1534/aforamento/fol=33v-35v/loc=grades/sumario=aforamento celebrado entre mosteiro de santa clara e anrique mendes, de uma vala e um lameiro, sitos em vila nova da barca, montemor-o-velho
+431: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1534-e13
+432:          senhoria$margarida de castro/id=esc1534-e13-per1
+433:             ls$cargo/abadessa
+434: 
+435:          foreiro$anrique mendes/id=esc1534-e13-per2
+436: 
+437:          foreiro$simao rodrigues/id=esc15-e13-per3
+438:             ls$profissao/mercador
+439: 
+440:          aforamento$uma vala
+441: 
+aforamento-esc1534-e13-obj1- ** was stored with function in ACT verify act
+442:          aforamento$um lameiro
+aforamento-esc1534-e13-obj2- ** was stored with function in ACT verify act
+443:             atr$localizacao/vila nova da barca/obs=montemor o velho
+444:             atr$foro/dez alqueires de pao meado de trigo e milho
+445: 
+446:          test$fernao da serra/m/id=esc1534-e13-per4
+447:             ls$profissao/latoeiro
+448: 
+449:          test$joao alvares/m/id=esc1534-e13-per5
+450:             rel$profissional/oficial/margarida de castro/esc1534-e13-per1
+451:             ls$residencia/curral do mosteiro
+452: 
+453:          test$gaspar fernandes/m/id=esc1534-e13-per6
+454:             ls$profissao/trabalhador
+455:             ls$residencia/curral do mosteiro
+456: 
+457:       escritura$esc1534-e14/8/10/1534/aforamento/fol=36-37v/loc=grades/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e alvaro pires, de um mato bravio, sito em amoreira, sangalhos
+458: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1534-e14
+459:          senhoria$margarida de castro/id=esc1534-e14-per1
+460:             ls$cargo/abadessa
+461: 
+462:          foreiro$alvaro pires/id=esc1534-e14-per2
+463:             ls$profissao/lavrador
+464: 
+465:          foreira$catarina afonso/id=esc1534-e14-per3
+466:             rel$parentesco/mulher/alvaro pires/esc1534-e14-per2
+467: 
+468:          aforamento$um mato bravio
+aforamento-esc1534-e14-obj1- ** was stored with function in ACT verify act
+469:             atr$localizacao/amoreira sangalhos
+470:             atr$racao/pao/obs=debulhado e limpo na eira
+471:             atr$racao/linho/obs=curtido e enxuto no tendal
+472:             atr$racao/vinho/obs=a bica do lagar
+473:             atr$racao/legumes/obs=na eira e ao tempo do seu recolher; pago pelo natal
+474:             atr$foro/uma galinha/obs=boa e paga no mosteiro
+475: 
+476:          test$diogo de figueiredo/m/id=esc1534-e14-per4
+477:             ls$titulo/cavaleiro
+478:             ls$titulo/fidalgo
+479:             ls$titulo/cidadao
+480:             rel$profissional/vedor/margarida de castro/esc1534-e14-per1
+481: 
+482:          test$simao pires/m/id=esc1534-e14-per5
+483:             ls$residencia/sangalhos
+484:             rel$profissional/mordomo/margarida de castro/esc1534-e14-per1
+485: 
+486:          test$antonio fernandes/m/id=esc1534-e14-per6
+487:             ls$profissao/alfaiate
+488:             ls$residencia/curral do mosteiro
+489: 
+490:       escritura$esc1534-e15/12/12/1534/aforamento/fol=37v-39v/loc=grades/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e simao afonso, de um dos tres pedacos de mato com uma casa queja tem feita sita no mato de vale de nacagoa
+491: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1534-e15
+492:          senhoria$margarida de castro/id=esc1534-e15-per1
+493:             ls$cargo/abadessa
+494: 
+495:          foreiro$simao afonso/id=esc1534-e15-per2
+496:             ls$profissao/lavrador
+497:             ls$residencia/lugar da amoreira/obs=limite de sangalhos
+498: 
+499:          foreira$catarina pires/id=esc1534-e15-per3
+500:             rel$parentesco/mulher/simao afonso/esc1534-e15-per2
+501: 
+502:          aforamento$um de tres pedacos de mato com uma casa
+aforamento-esc1534-e15-obj1- ** was stored with function in ACT verify act
+503:             atr$localizacao/lugar da amoreira de cima sangalhos
+504:             atr$racao/um nono
+505:             atr$racao/um capao/obs=bom
+506:             atr$foro/cinco reais em dinheiro
+507:             atr$foro/um alqueire de trigo/obs=do pao do lavrador; pao limpo e debulhado na eira; o vinho a bica do lagar; o linho curtido e enxuto; legumes ao tempo do recolher
+508:             atr$multa/dez mil reais por incumprimento
+509: 
+510:          test$simao pires/m/id=esc1534-e15-per4
+511:             rel$profissional/mordomo/margarida de castro/esc1534-e15-per1
+512:             ls$residencia/sangalhos
+513: 
+514:          test$diogo de figueiredo/m/id=esc1534-e15-per5
+515:             ls$titulo/cavaleiro
+516:             ls$titulo/fidalgo
+517:             ls$titulo/cidadao
+518:             rel$profissional/vedor/margarida de castro/esc1534-e15-per1
+519: 
+520:          test$antonio rodrigues/m/id=esc1534-e15-per6
+521:             ls$profissao/alfaiate
+522: 
+523:          test$serafim teixeira/m/id=esc1534-e15-per7
+524:             ls$profissao/alfaiate
+525:             ls$residencia/cerco do mosteiro
+526: 
+527:          test$antonio fernandes/m/id=esc1534-e15-per8/obs=assinou por si e pelo foreiro
+528: 
+529:       escritura$esc1535-e16/29/4/1535/emprazamento/fol=39v-41v/loc=grades/sumario=emprazamento em tres pessoas celebrado entre mosteiro de santa clara e francisco anes, de umas casas sitas em santarem
+530: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1535-e16
+531:          senhoria$margarida de castro/id=esc1535-e16-per1
+532:             ls$cargo/abadessa
+533: 
+534:          foreiro$francisco anes/id=esc1535-e16-per2
+535:             ls$profissao/torneiro
+536:             ls$residencia/santarem
+537: 
+538:          foreira$catarina goncalves/id=esc1535-e16-per3
+539:             rel$parentesco/mulher/francisco anes/esc1535-e16-per2
+540: 
+541:          prazo$casas
+prazo-esc1535-e16-obj1- ** was stored with function in ACT verify act
+542:             atr$localizacao/santarem
+543:             atr$foro/seiscentos reais/obs=primeira vida
+544:             atr$foro/oitocentos reais/obs=segunda e terceira vidas; por s. miguel de setembro e com abatimento de pensao por benfeitorias as casas e mosteiro
+545:             atr$multa/quarenta mil reis por imcumprimento
+546: 
+547:          test$joao alvares/m/id=esc1535-e16-per4
+548:             rel$profissional/oficial/margarida de castro/esc1535-e16-per1
+549: 
+550:          test$simao lopes/m/id=esc1535-e16-per5
+551: 
+552:          test$adao luis/m/id=esc1535-e16-per6
+553:             ls$titulo/clerigo
+554:             ls$cargo/cura/obs=da casa do dito mosteiro; assinou pelo foreiro
+555: 
+556:       escritura$esc1535-e17/26/6/1535/emprazamento/fol=42-44/loc=grades/sumario=emprazamento em tres vidas de quatro pessoas celebrado entre mosteiro de santa clara e francisco afonso, de umas moendas de pao (engenho de moer o pao e azeite) e umas casas nas quais os inquilinos vivem
+557: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1535-e17
+558:          senhoria$margarida de castro/id=esc1535-e17-per1
+559:             ls$cargo/abadessa
+560: 
+561:          foreiro$francisco afonso/id=esc1535-e17-per2
+562:             ls$profissao/moleiro
+563:             ls$residencia/pacos do mosteiro
+564: 
+565:          prazo$moendas de pao/obs=engenho de moer pao e azeite
+566: 
+prazo-esc1535-e17-obj1- ** was stored with function in ACT verify act
+567:          prazo$umas casas/obs=onde habita o foreiro
+prazo-esc1535-e17-obj2- ** was stored with function in ACT verify act
+568:             atr$foro/trinta alqueires de trigo/obs=pago por s. joao baptista
+569:             atr$foro/cento e dez reais/obs=por s. joao baptista;
+570:             atr$multa/pena de trinta mil reais por incumprimento
+571: 
+572:          test$diogo de figueiredo/m/id=esc1535-e17-per3
+573:             ls$titulo/cavaleiro
+574:             ls$titulo/fidalgo
+575:             ls$titulo/cidadao
+576:             rel$profissional/vedor/margarida de castro/esc1535-e17-per1
+577: 
+578:          test$antonio fernandes/m/id=esc1535-e17-per4
+579:             ls$profissao/alfaiate
+580:             ls$residencia/cerco do mosteiro de santa clara
+581: 
+582:          test$joao alvares/m/id=esc1535-e17-per5
+583:             rel$profissional/porteiro/margarida de castro/esc1535-e17-per1
+584: 
+585:       escritura$esc1535-e18/4/8/1535/emprazamento/fol=44-45v/loc=grades/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e diogo de figueiredo, de um olival sito em vale do rosal, urzelhe, e umas casas sitas nos circuitos dos pacos, uma vinha, um pomar e um pequeno chao
+586: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1535-e18
+587:          senhoria$margarida de castro/id=esc1535-e18-per1
+588:             ls$cargo/abadessa
+589: 
+590:          foreiro$diogo de figueiredo/id=esc1535-e18-per2
+591: 
+592:          foreira$micia vaz/id=esc1535-e18-per3
+593:             rel$parentesco/mulher/diogo de figueiredo/esc1535-e18-per2
+594: 
+595:          prazo$um olival
+prazo-esc1535-e18-obj1- ** was stored with function in ACT verify act
+596:             atr$localizacao/vale do rosal urzelhe
+597: 
+598:          aforamento$umas casas
+aforamento-esc1535-e18-obj2- ** was stored with function in ACT verify act
+599:             atr$localizacao/circuitos dos pacos
+600: 
+601:          aforamento$uma vinha
+602: 
+aforamento-esc1535-e18-obj3- ** was stored with function in ACT verify act
+603:          aforamento$um pomar
+aforamento-esc1535-e18-obj4- ** was stored with function in ACT verify act
+604:             atr$localizacao/urzelhe
+605: 
+606:          aforamento$um pequeno chao
+aforamento-esc1535-e18-obj5- ** was stored with function in ACT verify act
+607:             atr$foro/oito alqueires de azeite/obs=safra de dois em dois anos
+608:             atr$foro e pensao/duzentos reais brancos/obs=da moeda corrente de seis ceitis; por s. miguel de setembro e no mosteiro
+609:             atr$multa/trinta mil reais por incumprimento
+610: 
+611:          test$adao luis/m/id=esc1535-e18-per4
+612:             ls$cargo/capelao/obs=da igreja da barra
+613: 
+614:          test$joao alvares/m/id=esc1535-e18-per5
+615:             rel$profissional/servidor/margarida de castro/esc1535-e18-per1
+616:             ls$residencia/cerco do mosteiro
+617: 
+618:       escritura$esc1535-e19/27/10/1535/novo emprazamento/fol=46-49v/loc=grades/sumario=novo emprazamento em tres pessoas celebrado entre mosteiro de santa clara e fernao de lima, de uma quinta na freguesia e limite de sao joao da talha, azoia, junto a sacavem
+619: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1535-e19
+620:          senhoria$margarida de castro/id=esc1535-e19-per1
+621:             ls$cargo/abadessa
+622: 
+623:          foreiro$fernao de lima/id=esc1535-e19-per2
+624: 
+625:             referido$francisco lopes/id=esc1535-e19-per3
+626:                rel$parentesco/pai/fernao de lima/esc1535-e19-per2
+627: 
+628:          prazo$uma quinta
+prazo-esc1535-e19-obj1- ** was stored with function in ACT verify act
+629:             atr$localizacao/limite de sao joao da talha, azoia
+630: 
+631:       escritura$esc1536-e20/1/2/1536/emprazamento/fol=49v-51v/loc=grades/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e maria joao, de umas casas em que vive, sitas nos pacos do mosteiro
+632: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e20
+633:          senhoria$margarida de castro/id=esc1536-e20-per1
+634:             ls$cargo/abadessa
+635: 
+636:          foreira$maria joao/id=esc1536-e20-per2
+637:             ls$residencia/pacos do mosteiro
+638: 
+639:          foreiro$aleixo morim/id=esc1536-e20-per3
+640:             rel$parentesco/marido/maria joao/esc1536-e20-per2
+641: 
+642:          prazo$umas casas
+prazo-esc1536-e20-obj1- ** was stored with function in ACT verify act
+643:             atr$localizacao/pacos do mosteiro
+644:             atr$foro/duzentos reais/obs=da moeda corrente de seis ceitis ao real; por s.miguel de setembro
+645:             atr$multa/quatro mil reais por incumprimento
+646: 
+647:          test$diogo de figueiredo/m/id=esc1536-e20-per4
+648:             ls$titulo/cavaleiro
+649:             ls$titulo/fidalgo
+650:             ls$residencia/curral do mosteiro
+651:             rel$profissional/vedor/margarida de castro/esc1536-e20-per1
+652: 
+653:          test$antonio fernandes/m/id=esc1536-e20-per5
+654:             rel$profissional/alfaiate/margarida de castro/esc1536-e20-per1
+655:             ls$residencia/curral do mosteiro
+656: 
+657:          test$joao baixo/m/id=esc1536-e20-per6
+658:             rel$profissional/moleiro/margarida de castro/esc1536-e20-per1
+659:             ls$residencia/casconha
+660:             ls$profissao/moleiro
+661: 
+662:       escritura$esc1536-e21/6/3/1536/emprazamento/fol=51v-54/loc=grades/sumario=emprazamento e aprovacao celebrado entre mosteiro de santa clara e belchior de macedo, de um prazo de uns passais da igreja de s. pedro de gouveia, sito em gouveia
+663: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e21
+664:          senhoria$margarida de castro/id=esc1536-e21-per1
+665:             ls$cargo/abadessa
+666: 
+667:          foreiro$belchior de macedo/id=esc1536-e21-per2
+668:             ls$titulo/cavaleiro/obs=da casa do rei
+669: 
+670:          prazo$um prazo de uns passais/obs=da igreja de s. pedro de gouveia
+prazo-esc1536-e21-obj1- ** was stored with function in ACT verify act
+671:             atr$localizacao/gouveia
+672:             atr$foro/quatro mil reais da moeda corrente/obs=por s. joao baptista
+673: 
+674:          test$pedro lopes/m/id=esc1536-e21-per3
+675:             ls$profissao/tosador
+676: 
+677:          test$afonso goncalves/m/id=esc1536-e21-per4
+678:             ls$profissao/tosador
+679: 
+680:          test$antonio fernandes/m/id=esc1536-e21-per5
+681:             rel$profissional/alfaiate/margarida de castro/esc1536-e21-per1
+682: 
+683:       escritura$esc1536-e22/10/3/1536/renuncia emprazamento/fol=54v-56v/loc=grades/sumario=renuncia e emprazamento celebrado entre mosteiro de santa clara e goncalo luis, de um olival sito em penela
+684: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e22
+685:          senhoria$margarida de castro/id=esc1536-e22-per1
+686:             ls$cargo/abadessa
+687: 
+688:          foreiro$goncalo luis/id=esc1536-e22-per2
+689:             ls$profissao/lavrador
+690: 
+691:             referido$pedro anes/id=esc1536-e22-per3/obs=renunciante
+692: 
+693:          prazo$um olival
+prazo-esc1536-e22-obj1- ** was stored with function in ACT verify act
+694:             atr$localizacao/lugar do beco penela
+695:             atr$foro/quatro alqueires de azeite/obs=safra de dois em dois anos, feito no pote; pelo entrudo
+696:             atr$multa/seis mil reais por incumprimento
+697: 
+698:          test$pedro lopes/m/id=esc1536-e22-per4
+699:             ls$profissao/tosador
+700: 
+701:          test$afonso goncalves/m/id=esc1536-e22-per5
+702:             ls$profissao/tosador
+703: 
+704:          test$simao pires/m/id=esc1536-e22-per6
+705:             ls$profissao/moleiro
+706: 
+707:          test$cristovao gil/m/id=esc1536-e22-per7
+708:             ls$profissao/almocreve
+709:             ls$residencia/pacos do mosteiro
+710: 
+711:          test$francisco/m/id=esc1536-e22-per8
+712:             ls$profissao/criado
+713:             rel$profissional/criado/gregorio lourenco/1536-e22-grelou
+714: 
+715:          referido$gregorio lourenco/id=1536-e22-grelou
+716:             ls$profissao/tabeliao
+717: 
+718:          test$gravite ribeiro/m/id=esc1536-e22-per9
+719:             ls$profissao/alfaiate
+720:             ls$profissao/mercador
+721: 
+722:       escritura$esc1536-e23/24/4/1536/aforamento/fol=57v-60/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e martim goncalves, de um meio casal de herdade, sito no rabacal, aldeia da serra de jeanes
+723: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e23
+724:          senhoria$margarida de castro/id=esc1536-e23-per1
+725:             ls$cargo/abadessa
+726: 
+727:          foreiro$martim goncalves/id=esc1536-e23-per2
+728: 
+729:          foreira$catarina rodrigues/id=esc1536-e23-per3
+730:             rel$parentesco/mulher/martim goncalves/esc1536-e23-per2
+731: 
+732:          aforamento$um meio casal de herdade
+aforamento-esc1536-e23-obj1- ** was stored with function in ACT verify act
+733:             atr$localizacao/rabacal aldeia da serra de jeanes
+734:             atr$racao/os direitos devidos as terras de reguengo
+735:             atr$racao/pao/obs=debulhado e limpo na eira
+736:             atr$racao/linho/obs=curtido e enxuto
+737:             atr$racao/vinho/obs=a bica do lagar
+738:             atr$foro/um alqueire de trigo
+739:             atr$foro/um alqueire raso de cevada
+740:             atr$foro/um capao bom
+741:             atr$foro/dez ovos
+742:             atr$foro/dez paes cozidos bons/obs=pagos dentro do mosteiro por s. miguel de setembro
+743:             atr$multa/pena de dez mil reais por incumprimento
+744: 
+745:          test$diogo de figueiredo/m/id=esc1536-e23-per4
+746:             ls$titulo/cavaleiro
+747:             ls$titulo/fidalgo
+748:             rel$profissional/vedor/margarida de castro/esc1536-e23-per1
+749: 
+750:          test$afonso anes/m/id=esc1536-e23-per5
+751:             ls$profissao/lavrador
+752:             ls$residencia/lousa
+753:             rel$profissional/caseiro/margarida de castro/esc1536-e23-per1
+754: 
+755:          test$francisco/m/id=esc1536-e23-per6
+756:             ls$profissao/criado
+757:             rel$profissional/criado/gregorio lourenco/1536-e23-gl
+758: 
+759:          referido$gregorio lourenco/id=1536-e23-gl
+760:             ls$profissao/tabeliao
+761: 
+762:          test$jorge seco/m/id=esc1536-e23-per7
+763:             ls$cargo/conego/obs=da se catedral de coimbra
+764: 
+765:       escritura$esc1536-e24/2/11/1536/aforamento/fol=60v-62/loc=porta da cerca/sumario=aforamento em fatiosim celebrado entre mosteiro de santa clara e joao eanes, de uma terra sita no lugar chamado vale de guargufe, em portunhos
+766: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e24
+767:          senhoria$margarida de castro/id=esc1536-e24-per1
+768:             ls$cargo/abadessa
+769: 
+770:          foreiro$joao eanes/id=esc1536-e24-per2
+771:             ls$residencia/aldeia de portunhos
+772: 
+773:          foreira$beatriz eanes/id=esc1536-e24-per3
+774:             rel$parentesco/mulher/joao eanes/esc1536-e24-per2
+775: 
+776:             referido$joao fernandes/id=esc1536-e24-per4/obs=antigo foreiro
+777: 
+778:             referida$margarida pires/id=esc1536-e24-per5
+779:                rel$parentesco/mulher/joao fernandes/esc1536-e24-per4
+780: 
+781:          aforamento$uma terra de um casal
+aforamento-esc1536-e24-obj1- ** was stored with function in ACT verify act
+782:             atr$localizacao/vale de gargufe aldeia de portunhos
+783:             atr$racao/um oitavo do pao/obs=debulhado e limpo na eira
+784:             atr$racao/um oitavo das novidades
+785:             atr$racao/um oitavo do linho/obs=curtido e enxuto
+786:             atr$racao/um oitavo do vinho/obs=a bica do lagar; primeira paga no ano seguinte
+787:             atr$multa/dez mil reais por incumprimento
+788: 
+789:          test$diogo de figueiredo/m/id=esc1536-e24-per6
+790:             ls$titulo/cavaleiro
+791:             ls$titulo/fidalgo
+792:             rel$profissional/vedor/margarida de castro/esc1536-e24-per1
+793: 
+794:          test$rui lopes/m/id=esc1536-e24-per7
+795:             ls$profissao/escrivao
+796: 
+797:       escritura$esc1536-e25/10/11/1536/emprazamento/fol=62v-65v/loc=porta da cerca/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e pedro afonso, de umas casas sitas no curral do mosteiro
+798: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e25
+799:          senhoria$margarida de castro/id=esc1536-e25-per1
+800:             ls$cargo/abadessa
+801: 
+802:          foreiro$pedro afonso/id=esc1536-e25-per2
+803:             rel$profissional/azemel/margarida de castro/esc1536-e25-per1
+804: 
+805:          foreira$margarida afonso/id=esc1536-e25-per3
+806:             rel$parentesco/mulher/pedro afonso/esc1536-e25-per2
+807: 
+808:          prazo$umas casas
+prazo-esc1536-e25-obj1- ** was stored with function in ACT verify act
+809:             atr$localizacao/curral dos pacos do mosteiro
+810:             atr$foro/cento e cinquenta reais brancos/obs=da moeda corrente de seis ceitis; por s. miguel de setembro
+811:             atr$multa/dez mil reais por incumprimento
+812: 
+813:          test$diogo de figueiredo/id=esc1536-e25-per4/obs=assinou por margarida afonso
+814:             ls$titulo/cavaleiro
+815:             ls$titulo/fidalgo
+816:             rel$profissional/vedor/margarida de castro/esc1536-e25-per1
+817: 
+818:          test$joao alvares/m/id=esc1536-e25-per5
+819:             rel$profissional/servidor/margarida de castro/esc1536-e25-per1
+820: 
+821:          test$gaspar fernandes/m/id=esc1536-e25-per6
+822:             ls$profissao/trabalhador
+823:             ls$residencia/cerco do mosteiro
+824: 
+825:       escritura$esc1536-e26/10/11/1536/emprazamento/fol=66-68/loc=porta da cerca/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e joana goncalves, de umas casas sobradadas nas quais vive com seu marido
+826: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1536-e26
+827:          senhoria$margarida de castro/id=esc1536-e26-per1
+828:             ls$cargo/abadessa
+829: 
+830:          foreiro$joana goncalves/id=esc1536-e26-per2
+831:             ls$residencia/curral dos pacos do mosteiro
+832: 
+833:          foreiro$afonso martins/id=esc1536-e26-per3
+834:             ls$residencia/curral dos pacos do mosteiro
+835:             rel$parentesco/marido/joana goncalves/esc1536-e26-per2
+836: 
+837:          prazo$casas sobradadas
+prazo-esc1536-e26-obj1- ** was stored with function in ACT verify act
+838:             atr$localizacao/partem com terreiro dos pacos, caminho e alpendre da ermida de santa isabel
+839:             atr$foro/duzentos reais brancos/obs=da moeda corrente de seis ceitis; por s. miguel de setembro; primeira paga no ano seguinte
+840:             atr$multa/dez mil reais por incumprimento
+841: 
+842:          test$diogo de figueiredo/m/id=esc1536-e26-per4/obs=assinou por joana goncalves
+843:             ls$titulo/cavaleiro
+844:             ls$titulo/fidalgo
+845:             rel$profissional/vedor/margarida de castro/esc1536-e26-per1
+846: 
+847:          test$joao alvares/m/id=esc1536-e26-per5
+848:             rel$profissional/servidor/margarida de castro/esc1536-e26-per1
+849: 
+850:          test$gaspar fernandes/m/id=esc1536-e26-per6
+851:             ls$residencia/terreiro do mosteiro
+852:             rel$profissional/servidor/margarida de castro/esc1536-e26-per1
+853: 
+854:       escritura$esc1537-e27/11/6/1537/novo emprazamento/fol=68v-71/loc=grades/sumario=novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e gomes, solteiro, do olival do mouro, que parte da estrada que vai da cidade de coimbra para sao miguel de pastores
+855: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1537-e27
+856:          senhoria$margarida de castro/id=esc1537-e27-per1
+857:             ls$cargo/abadessa
+858: 
+859:          foreiro$gomes/id=esc1537-e27-per2
+860:             ls$ec/solteiro
+861:             ls$residencia/coimbra
+862: 
+863:             referido$pedro de figueiredo/id=esc1537-e27-per3
+864:                rel$parentesco/pai/gomes/esc1537-e27-per2
+865:                ls$titulo/cidadao
+866:                ls$residencia/coimbra
+867: 
+868:          prazo$olival do mouro
+prazo-esc1537-e27-obj1- ** was stored with function in ACT verify act
+869:             atr$localizacao/parte da estrada que vai da cidade para sao miguel de pastores
+870:             atr$racao/treze alqueires de azeite/obs=safra de dois em dois anos; primeira paga no ano seguinte
+871:             atr$multa/trinta mil reais por incumprimento
+872: 
+873:          test$antonio pires/m/id=esc1537-e27-per4
+874:             ls$profissao/pedreiro
+875:             ls$residencia/pacos do mosteiro
+876: 
+877:          test$joao alvares/m/id=es1537-e27-per5
+878:             rel$profissional/solicitador/margarida de castro/esc1537-e27-per1
+879:             ls$residencia/pacos do mosteiro
+880:             ls$cargo/solicitador do mosteiro
+881: 
+882:          test$luis anes/m/id=esc1537-e27-per6
+883:             ls$profissao/trabalhador
+884:             ls$residencia/pacos do mosteiro
+885: 
+886:       escritura$esc1537-e28/7/11/1537/renuncia e novo aforamento/fol=71-74/loc=grades/sumario=renuncia e novo aforamento celebrado entre mosteiro de santa clara e francisco vaz, de uma vinha e oliveira, sitas em montemor-o-velho
+887: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1537-e28
+888:          senhoria$margarida de castro/id=esc1537-e28-per1
+889:             ls$cargo/abadessa
+890: 
+891:          foreiro$francisco vaz/id=esc1537-e28-per2
+892:             ls$titulo/clerigo de missa
+893:             ls$cargo/beneficiado/obs=na igreja de santa maria de alcacova de montemor o velho
+894: 
+895:             referido$lucas goncalves/id=esc1537-e28-per3/obs=renunciante
+896:                ls$profissao/carpinteiro
+897:                ls$residencia/pedreira
+898: 
+899:             referida$isabel fernandes/id=esc1537-e28-per4
+900:                rel$parentesco/mulher/lucas goncalves/esc1537-e28-per3
+901: 
+902:          aforamento$vinha e oliveira
+aforamento-esc1537-e28-obj1- ** was stored with function in ACT verify act
+903:             atr$localizacao/montemor o velho
+904:             atr$racao/um oitavo das novidades
+905:             atr$foro/uma galinha
+906:             atr$foro/dez ovos/obs=pela pascoa
+907:             atr$racao/pao/obs=debulhado e limpo na eira
+908:             atr$racao/legumes
+909:             atr$racao/linho/obs=enxuto e curtido no tendal
+910:             atr$racao/vinho/obs=a bica do lagar
+911:             atr$racao/azeitona/obs=apanhada ao pe da oliveira
+912: 
+913:          test$diogo de figueredo/m/id=esc1537-e28-per5
+914:             rel$profissional/vedor/margarida de castro/esc1537-e28-per1
+915:             ls$titulo/cavaleiro
+916:             ls$titulo/fidalgo
+917:             ls$cargo/vedor do mosteiro
+918: 
+919:          test$jeronimo/m/id=esc1537-e28-per6
+920:             ls$titulo/frei
+921:             ls$profissao/padre
+922:             ls$ordem/sao jeronimo/obs=mosteiro de s. marcos
+923: 
+924:          test$baltasar fernandes/m/id=esc1537-e28-per7
+925:             ls$profissao/ataqueiro
+926:             ls$residencia/coimbra
+927: 
+928:       escritura$esc1538-e29/2/3/1538/novo aforamento em fatiosim/fol=74-76v/loc=porta da cerca/sumario=novo aforamento em fatiosim celebrado entre mosteiro de santa clara e fernao rodrigues, de uma leira de vinha com seu mato (por arrotear), sita no lugar de orelhudo
+929: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1538-e29
+930:          senhoria$margarida de castro/id=esc1538-e29-per1
+931:             ls$cargo/abadessa
+932: 
+933:          foreiro$fernao rodrigues/id=esc1538-e29-per2
+934:             ls$profissao/moleiro
+935:             ls$residencia/ribeira de casconha
+936: 
+937:          foreira$isabel pires/id=esc1538-e29-per3
+938:             rel$parentesco/mulher/fernao rodrigues/esc1538-e29-per2
+939: 
+940:             referido$domingos pires/id=esc1538-e29-per4
+941:                ls$residencia/orelhudo
+942: 
+943:          aforamento$uma leira de vinha com seu mato/obs=se nao for plantado, devera ser devolvido ao mosteiro
+aforamento-esc1538-e29-obj1- ** was stored with function in ACT verify act
+944:             atr$localizacao/orelhudo
+945:             atr$foro/um almude de vinho/obs=do seu proprio a bica do lagar
+946:             atr$racao/um oitavo do vinho/obs=feito no lagar do mosteiro em orelhudo
+947: 
+948:          test$joao alvares/m/id=esc1538-e29-per5
+949:             ls$residencia/casconha
+950: 
+951:          test$joao alvares/m/id=esc1538-e29-per6
+952:             rel$profissional/criado/margarida de castro/esc1538-e29-per1
+953:             ls$profissao/criado
+954: 
+955:          test$jorge seco/m/id=esc1538-e29-per7
+956:             ls$cargo/conego/obs=na se da cidade de coimbra
+957: 
+958:       escritura$esc1538-e30/8/5/1538/novo aforamento em fatiosim/fol=77v-81/loc=grades/sumario=renuncia e novo aforamento em fatiosim de tres quintos de um casal celebrado entre mosteiro de santa clara, alvaro afonso, simao afonso e pedro afonso
+959: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1538-e30
+960:          senhoria$margarida de castro/id=esc1538-e30-per1
+961:             ls$cargo/abadessa
+962: 
+963:          foreiro$alvaro afonso/id=esc1538-e30-per2
+964: 
+965:          foreiro$simao afonso/id=esc1538-e30-per3
+966: 
+967:          foreiro$pedro afonso/id=esc1538-e30-per4
+968: 
+969:          renunciante$joao afonso/id=esc1538-e30-per5
+970:             ls$profissao/lavrador
+971:             ls$residencia/casais da cruz
+972:             rel$parentesco/irmao/alvaro afonso/esc1538-e30-per2
+973:             rel$parentesco/irmao/simao afonso/esc1538-e30-per3
+974:             rel$parentesco/irmao/pedro afonso/esc1538-e30-per4
+975: 
+976:             referida$isabel dias/id=esc1538-e30-per6
+977:                ls$profissao/lavradora
+978:                ls$residencia/casais da cruz
+979:                rel$parentesco/mulher/joao afonso/esc1538-e30-per5
+980: 
+981:          renunciante$pedro dias/id=esc1538-e30-per7
+982:             ls$profissao/lavrador
+983:             ls$residencia/casais da cruz
+984: 
+985:             referida$margarida afonso/id=esc1538-e30-per8
+986:                ls$profissao/lavradora
+987:                ls$residencia/casais da cruz
+988:                rel$parentesco/mulher/pedro dias/esc1538-e30-per7
+989:                rel$parentesco/irma/alvaro afonso/esc1538-e30-per2
+990:                rel$parentesco/irma/simao afonso/esc1538-e30-per3
+991:                rel$parentesco/irma/pedro afonso/esc1538-e30-per4
+992: 
+993:             referido$afonso anes/obs=antigo foreiro/id=esc1538-e30-per7-per1
+994:                rel$parentesco/pai/margarida afonso/esc1538-e30-per8
+995:                rel$parentesco/pai/joao afonso/esc1538-e30-per5
+996: 
+997:             referida$maria anes/id=esc1538-e30-per10/obs=antiga foreira
+998:                rel$parentesco/mae/margarida afonso/esc1538-e30-per8
+999:                rel$parentesco/mae/joao afonso/esc1538-e30-per5
+1000: 
+1001:          aforamento$tres quintos de um casal
+aforamento-esc1538-e30-obj1- ** was stored with function in ACT verify act
+1002:             atr$localizacao/lugar da cruz termo de coimbra
+1003:             atr$foro/dois alqueires de trigo/obs=paga pedrpo afonso
+1004:             atr$foro/quinze paes de calo cozidos/obs=paga pedro afonso
+1005:             atr$foro/duas galinhas/obs=paga pedro afonso
+1006:             atr$foro/onze ovos/obs=paga pedro afonso
+1007:             atr$foro/vinte paes/obs=paga simao afonso
+1008:             atr$foro/dois alqueires de trigo/obs=paga simao afonso
+1009:             atr$foro/duas galinhas/obs=paga simao afonso
+1010:             atr$foro/doze ovos/obs=paga simao afonso
+1011:             atr$foro/um alqueire de trigo/obs=paga alvaro afonso
+1012:             atr$foro/dez paes/obs=paga alvaro afonso
+1013:             atr$foro/uma galinha/obs=paga alvaro afonso
+1014:             atr$foro/seis ovos/obs=paga alvaro afonso
+1015:             atr$multa/dez mil reais
+1016: 
+1017:          test$diogo de figueiredo/m/id=esc1538-e30-per11
+1018:             rel$profissional/vedor/margarida de castro/esc1538-e30-per1
+1019:             ls$titulo/cavaleiro fidalgo
+1020:             ls$residencia/curral do mosteiro
+1021:             ls$cargo/vedor do mosteiro
+1022: 
+1023:          test$joao raposo/m/id=esc1538-e30-per12
+1024:             ls$profissao/alfaiate
+1025:             ls$residencia/curral do mosteiro
+1026: 
+1027:       escritura$esc1538-e31/25/5/1538/aforamento em fatiosim/fol=81v-85/loc=grades/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e lopo eanes de um casal e meio, este dota a sua filha e genro tres quartos deste casal e meio
+1028: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1538-e31
+1029:          senhoria$margarida de castro/id=esc1538-e31-per1
+1030:             ls$cargo/abadessa
+1031: 
+1032:          foreiro$lopo anes/id=esc1538-e31-per2/obs=do casal e meio dota tres quartos deste casal a seu genro e filha
+1033:             ls$profissao/lavrador
+1034:             ls$residencia/aldeia de ventosa
+1035: 
+1036:          foreira$branca anes/id=esc1538-e31-per3
+1037:             rel$parentesco/mulher/lopo eanes/sc1538-e31-per2
+1038: 
+1039:          foreiro$francisco anes/id=esc1538-e31-per4
+1040:             rel$parentesco/genro/lopo anes/esc1538-e31-per2
+1041: 
+1042:          foreira$catarina lopes/id=esc1538-e31-per5
+1043:             rel$parentesco/filha/francisco anes/esc1538-e31-per4
+1044: 
+1045:          aforamento$um quinto de casal/obs=para lopo anes e sua mulher branca anes
+aforamento-esc1538-e31-obj1- ** was stored with function in ACT verify act
+1046:             atr$localizacao/aldeia de ventosa junto ao casal comba
+1047: 
+1048:          aforamento$tres quartos de casal/obs=do casal e meio de lopo anes e sua mulher branca anes
+aforamento-esc1538-e31-obj2- ** was stored with function in ACT verify act
+1049:             atr$localizacao/aldeia de ventosa junto ao casal comba
+1050:             atr$racao/um quinto/obs=pagam lopo anes e sua mulher branca anes
+1051:             atr$fogaca/quatro alqueires de trigo/obs=pagam lopo anes e sua mulher branca anes
+1052:             atr$foro/seis alqueires de trigo de todo o monte/obs=pagam lopo anes e sua mulher branca anes
+1053:             atr$foro/dois alqueires de cevada/obs=pagam lopo anes e sua mulher branca anes
+1054:             atr$foro/um alqueire de todo o monte da semente/obs=pelo aluguer do carreto por cada quarteirao da racao; pagam lopo anes e sua mulher branca anes
+1055:             atr$foro/dois patos/obs=pagam lopo anes e sua mulher branca anes
+1056:             atr$foro/uma galinha/obs=pagam lopo anes e sua mulher branca anes
+1057:             atr$foro/dois capoes/obs=pagam lopo anes e sua mulher branca anes
+1058:             atr$foro/um frangao/obs=pagam lopo anes e sua mulher branca anes
+1059:             atr$foro/trinta e cinco ovos/obs=pagam lopo anes e sua mulher branca anes
+1060:             atr$foro/um alqueire de vinho cozido/obs=pagam lopo anes e sua mulher branca anes
+1061:             atr$fogaca/tres alqueires de trigo/obs=pagam francisco anes e sua filha catarina lopes
+1062:             atr$foro/quatro alqueires e meio de trigo de todo o monte/obs=pagam francisco anes e sua filha catarina lopes
+1063:             atr$fogaca/um alqueire de meio de cevada/obs=pagam francisco anes e sua filha catarina lopes
+1064:             atr$foro/seis alqueires de cevada de todo o monte/obs=pagam francisco anes e sua filha catarina lopes
+1065:             atr$foro/um alqueire de qualquer semente/obs=por cada quarteiro de racao de carreto; pagam francisco anes e sua filha catarina lopes
+1066:             atr$foro/dois patos/obs=pagam francisco anes e sua filha catarina lopes
+1067:             atr$foro/tres capoes/obs=pagam francisco anes e sua filha catarina lopes
+1068:             atr$foro/vinte e seis ovos/obs=pagam francisco anes e sua filha catarina lopes; pao debulhado, limpo e pago na eira; aves e ovos pagos no mosteiro por s. miguel de setembro; o vinho a bica do lagar; o linho curido e enxuto
+1069:             atr$multa/vinte mil reais por incumprimento
+1070: 
+1071:          test$diogo de figueiredo/m/id=esc1538-e31-per6
+1072:             ls$titulo/cavaleiro
+1073:             ls$titulo/fidalgo
+1074:             rel$profissional/vedor/margarida de castro/esc1538-e31-per1
+1075:             ls$cargo/vedor do mosteiro
+1076: 
+1077:          test$jorge seco/m/id=esc1538-e31-per7
+1078:             ls$cargo/conego/obs=na se da cidade de coimbra
+1079: 
+1080:          test$antonio fernandes/m/id=esc1538-e31-per8
+1081:             ls$profissao/alfaiate
+1082: 
+1083:       escritura$esc1538-e32/20/11/1538/emprazamento/fol=85v-88v/loc=grades/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e cristovao moreno, de uma casa terrea de estrebaria, sita em viseu, na travessa que vai para a se
+1084: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1538-e32
+1085:          senhoria$margarida de castro/id=esc1538-e32-per1
+1086:             ls$cargo/abadessa
+1087: 
+1088:          foreiro$cristovao moreno/id=esc1538-e32-per2
+1089:             ls$cargo/escudeiro
+1090:             ls$profissao/tabeliao
+1091:             ls$residencia/viseu
+1092: 
+1093:             referida$isabel nunes/id=esc1538-e32-per3/obs=pede para emprazarem a casa a cristovao moreno
+1094:                ls$ec/viuva
+1095: 
+1096:             referido$diogo de tourais/id=esc1538-e32-per4
+1097:                ls$morto/antes
+1098:                rel$parentesco/marido/isabel nunes/esc1538-e32-per3
+1099: 
+1100:          prazo$casa terrea de estrebaria
+prazo-esc1538-e32-obj1- ** was stored with function in ACT verify act
+1101:             atr$localizacao/viseu, na travessa que vai para a se
+1102:             atr$foro/trinta reais brancos de moeda corrente de seis ceitis ao real/obs=pagos ao feitor do mosteiro, no dia de pascoa
+1103:             atr$multa/dez mil reais por incumprimento
+1104: 
+1105:          test$rodrigo anes/m/id=esc1538-e32-per5
+1106:             ls$profissao/mercador
+1107:             ls$cargo/escrivao das sisas dos vinhos
+1108: 
+1109:          test$afonso goncalves/m/id=esc1538-e32-per6
+1110:             ls$profissao/carpinteiro
+1111: 
+1112:          test$diogo de figueiredo/m/id=esc1538-e32-per7
+1113:             ls$titulo/cavaleiro fidalgo
+1114:             rel$profissional/vedor/margarida de castro/esc1538-e32-per1
+1115:             ls$cargo/vedor do mosteiro
+1116: 
+1117:       escritura$esc1539-e33/30/1/1539/novo aforamento/fol=89-91v/loc=porta da cerca/sumario=novo aforamento para sempre celebrado entre mosteiro de santa clara, manuel fernandes e catarina fernandes, de um casal (casal da cha) sito em bruscos
+1118: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1539-e33
+1119:          senhoria$margarida de castro/id=esc1539-e33-per1
+1120:             ls$cargo/abadessa
+1121: 
+1122:          foreiro$manuel fernandes/id=esc1539-e33-per2/obs=e-lhe aforado um quarto de casal
+1123: 
+1124:             referido$fernao fernandes/id=esc1539-e33-per3
+1125:                ls$morto/antes
+1126:                rel$parentesco/avo/manuel fernandes/esc1539-e33-per2
+1127: 
+1128:          foreira$catarina fernandes/id=esc1539-e33-per4
+1129:             rel$parentesco/filha/fernao fernandes/esc1539-e33-per3
+1130: 
+1131:          foreiro$miguel alvares/id=esc1539-e33-per5
+1132:             ls$residencia/bruscos
+1133:             rel$parentesco/marido/catarina fernandes/esc1539-e33-per4
+1134: 
+1135:          foreiro$joao luis/id=esc1539-e33-per6/obs=satisfeito em dinheiro por catarina fernandes e miguel alvares
+1136:             ls$residencia/meas, termo de miranda do corvo
+1137: 
+1138:          foreiro$vasco martins/id=esc1539-e33-per7/obs=satisfeito em dinheiro por catarina fernandes e miguel alvares
+1139:             ls$residencia/cernache
+1140: 
+1141:          foreiro$joao dos santos/id=esc1539-e33-per8/obs=satisfeito em dinheiro por catarina fernandes e miguel alvares
+1142:             ls$residencia/rabacal
+1143: 
+1144:          aforamento$um casal chamado o casal da cha
+aforamento-esc1539-e33-obj1- ** was stored with function in ACT verify act
+1145:             atr$localizacao/bruscos
+1146:             atr$racao/o sexto do pao/obs=limpo e debulhado na eira
+1147:             atr$racao/o sexto do linho/obs=curtido e enxuto no tendal
+1148:             atr$racao/o sexto do vinho/obs=a boca do lagar
+1149:             atr$racao/legumes/obs=limpos na eira
+1150:             atr$foro/sete alqueires de pao meado metade trigo metade cevada
+1151:             atr$fogaca/seis paes alvos e bons
+1152:             atr$fogaca/um capao
+1153:             atr$fogaca/dez ovos/obs=pago por s. miguel de setembro
+1154: 
+1155:          test$jorge seco/m/id=esc1539-e33-per9
+1156:             ls$cargo/conego/obs=na se da cidade de coimbra
+1157: 
+1158:          test$diogo pires/m/id=esc1539-e33-per10
+1159:             rel$profissional/mordomo/margarida de castro/esc1539-e33-per1/obs=em urzelhe
+1160: 
+1161:          test$simao pires/m/id=esc1539-e33-per11
+1162:             rel$profissional/mordomo/margarida de castro/esc1539-e33-per1/obs=em sangalhos
+1163: 
+1164:       escritura$esc1539-e34/13/2/1539/emprazamento/fol=91v-94v/loc=porta da cerca outorgado a porta da varanda e grade/sumario=emprazamento para sempre por via de venda e renuncia celebrado entre mosteiro de santa clara e diogo afonso, de dois quartos de casal e uma leira de vinha, sitos na aldeia da cruz
+1165: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1539-e34
+1166:          senhoria$margarida de castro/id=esc1539-e34-per1
+1167:             ls$cargo/abadessa
+1168: 
+1169:          foreiro$diogo afonso/id=esc1539-e34-per2
+1170:             ls$profissao/ferrador
+1171: 
+1172:             referido$simao afonso/id=esc1539-e34-per3/obs=antigo foreiro
+1173:                ls$profissao/lavrador
+1174:                ls$residencia/aldeia da cruz, termo de coimbra
+1175: 
+1176:             referida$maria pires/id=esc1539-e34-per4
+1177:                rel$parentesco/mulher/simao afonso/esc1539-e34-per3
+1178: 
+1179:          prazo$dois quartos de casal
+prazo-esc1539-e34-obj1- ** was stored with function in ACT verify act
+1180:             atr$localizacao/aldeia da cruz
+1181: 
+1182:          prazo$uma leira de vinha
+prazo-esc1539-e34-obj2- ** was stored with function in ACT verify act
+1183:             atr$localizacao/aldeia da cruz
+1184:             atr$racao/um oitavo do vinho/obs=a bica do lagar
+1185:             atr$racao/um oitavo do azeite
+1186:             atr$racao/um oitavo das novidades
+1187:             atr$racao/um quinto do trigo
+1188:             atr$foro/um capao bom/obs=capao dentro do mosteiro e por s. miguel de setembro
+1189:             atr$multa/dez mil reais por incumprimento
+1190: 
+1191:          test$diogo de figueiredo/m/id=esc1539-e34-per5
+1192:             rel$profissional/vedor/margarida de castro/esc1539-e34-per1
+1193:             ls$titulo/cavaleiro
+1194:             ls$titulo/fidalgo
+1195:             ls$cargo/vedor do mosteiro
+1196: 
+1197:          test$diogo martins/m/id=esc1539-e34-per6
+1198:             ls$residencia/pacos do mosteiro
+1199:             rel$profissional/servidor/margarida de castro/esc1539-e34-per1
+1200: 
+1201:          test$nuno fernandes/m/id=esc1534-e34-per7
+1202:             rel$profissional/servidor/margarida de castro/esc1539-e34-per1
+1203:             ls$residencia/pacos do mosteiro
+1204: 
+1205:       escritura$esc1539-e35/9/7/1539/aforamento/fol=94v-96v/loc=porta da cerca/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e andre afonso, de um talho de vinha sito em casconha, limite de orelhudo
+1206: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1539-e35
+1207:          senhoria$margarida de castro/id=esc1539-e35-per1
+1208:             ls$cargo/abadessa
+1209: 
+1210:          foreiro$andre afonso/id=esc1539-e35-per2
+1211:             ls$profissao/lavrador
+1212: 
+1213:          foreira$catarina alvares/id=esc1539-e35-per3
+1214:             rel$parentesco/mulher/andre afonso/esc1539-e35-per2
+1215: 
+1216:             referido$simao pires/id=esc1539-e35-per4/obs=antigo foreiro
+1217:                ls$residencia/cernache%sarnache
+1218: 
+1219:          aforamento$talho de vinha
+aforamento-esc1539-e35-obj1- ** was stored with function in ACT verify act
+1220:             atr$localizacao/casconha
+1221:             atr$foro/um almude de vinho/obs=a bica do lagar
+1222:             atr$foro/racao/um oitavo do vinho
+1223:             atr$racao/um oitavo do azeite
+1224:             atr$foro/uma galinha
+1225:             atr$foro/cinco ovos/obs=por s. miguel de setembro; seis mil reais por incumprimento
+1226: 
+1227:          test$joao alvares/m/id=esc1539-e35-per5
+1228:             ls$residencia/curral do mosteiro
+1229:             rel$profissional/servidor/margarida de castro/esc1539-e35-per1
+1230: 
+1231:          test$antonio fernandes/m/id=esc1539-e35-per6
+1232:             rel$profissional/alfaiate/margarida de castro/esc1539-e35-per1
+1233:             ls$residencia/curral do mosteiro
+1234:             ls$profissao/alfaiate/obs=alfaiate do mosteiro
+1235: 
+1236:          test$joao escudeiro/m/id=esc1539-e35-per7
+1237:             ls$titulo/cidadao
+1238:             ls$residencia/coimbra
+1239: 
+1240:       escritura$esc1539-e36/26/7/1539/emprazamento/fol=97-101v/loc=porta da cerca/sumario=novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e juliao calumela, de uns moinhos para moer pao, um lagar de azeite, um pomar e dois engenhos, sitos no termo da vila de leiria, junto a ponte das cortes
+1241: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1539-e36
+1242:          senhoria$margarida de castro/id=esc1539-e36-per1
+1243:             ls$cargo/abadessa
+1244: 
+1245:          foreiro$juliao calumela/id=esc1539-e36-per2
+1246:             ls$cargo/chantre/obs=do senhor nuncio
+1247: 
+1248:             referido$jorge seco/id=esc1539-e36-per3
+1249:                rel$sociabilidade/procurador/juliao calumela/esc1539-e36-per2
+1250: 
+1251:             referido$joao lopes tojo/id=esc1539-e36-per4/obs=antigo foreiro que perdera as propriedades por ser um falsario das letras apostolicas e por essa razao fora condenado ao degredo para sempre
+1252:                ls$titulo/frei
+1253: 
+1254:          prazo$moinhos para moer pao
+1255: 
+prazo-esc1539-e36-obj1- ** was stored with function in ACT verify act
+1256:          prazo$um lagar de azeite
+1257: 
+prazo-esc1539-e36-obj2- ** was stored with function in ACT verify act
+1258:          prazo$um pomar
+1259: 
+prazo-esc1539-e36-obj3- ** was stored with function in ACT verify act
+1260:          prazo$dois engenhos
+prazo-esc1539-e36-obj4- ** was stored with function in ACT verify act
+1261:             atr$localizacao/aldeia e termo da vila de leiria junto da ponte das cortes
+1262:             atr$/foro/mil e quinhentos reais da moeda corrente de seis ceitis ao real/obs=por s.miguel de setembro
+1263:             atr$multa/trinta mil reais
+1264: 
+1265:          test$antonio fernandes/m/id=esc1539-e36-per5
+1266:             ls$profissao/alfaiate
+1267:             ls$residencia/coimbra
+1268: 
+1269:          test$pedro afonso/m/id=esc1539-e36-per6
+1270:             ls$profissao/almocreve
+1271:             ls$residencia/pacos do mosteiro
+1272: 
+1273:          test$joao alvares/m/id=esc1539-e36-per7
+1274:             rel$profissional/servidor/margarida de castro/esc1539-e36-per1
+1275: 
+1276:       escritura$esc1539-e37/10/12/1539/emprazamento/fol=102-104v/loc=porta da cerca/sumario=emprazamento em tres vidas por via de renuncia celebrado entre mosteiro de santa clara e joao de boim, de duas courelas em alvisquer, santarem
+1277: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1539-e37
+1278:          senhoria$margarida de castro/id=esc1539-e37-per1
+1279:             ls$cargo/abadessa
+1280: 
+1281:          foreiro$joao de boim/id=esc1539-e37-per2
+1282:             ls$titulo/cavaleiro fidalgo
+1283: 
+1284:          foreira$luisa de boim/id=esc1539-e37-per3
+1285:             rel$parentesco/mulher/joao de boim/esc1539-e37-per2
+1286: 
+1287:             referido$antonio de escovedo/id=esc1539-e37-per4
+1288:                ls$titulo/clerigo de missa
+1289:                rel$sociabilidade/procurador/joao de boim/esc1539-e37-per2
+1290: 
+1291:          prazo$duas courelas
+prazo-esc1539-e37-obj1- ** was stored with function in ACT verify act
+1292:             atr$localizacao/alvisquer santarem
+1293:             atr$foro/quatrocentos e vinte reais brancos da moeda corrente de seis ceitis ao real/obs=pagos no mosteiro ate ao dia de s. miguel de setembro
+1294:             atr$multa/trinta mil reais
+1295: 
+1296:          test$gaspar mendes/m/id=esc1539-e37-per5
+1297:             ls$profissao/ourives
+1298: 
+1299:          test$anrique dias/m/id=esc1539-e37-per6
+1300:             ls$profissao/pintor
+1301: 
+1302:          test$martim alvares/m/id=esc1539-e37-per7
+1303:             ls$profissao/tabeliao
+1304: 
+1305:          test$antonio fernandes/m/id=esc1539-e37-per8
+1306:             ls$profissao/alfaiate
+1307: 
+1308:       escritura$esc1541-e38/31/1/1541/novo aforamento em fatiosim/fol=104v-106/loc=grades/sumario=novo aforamento em fatiosim celebrado entre mosteiro de santa clara e manuel jorge, de um casal e meio, sito em feteira, coimbra
+1309: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e38
+1310:          senhoria$margarida de castro/id=esc1541-e38-per1
+1311:             ls$cargo/abadessa
+1312: 
+1313:          foreiro$manuel jorge/id=esc1541-e38-per2
+1314:             ls$profissao/lavrador
+1315:             ls$residencia/feteira
+1316: 
+1317:          foreira$brites pires/id=esc1541-e38-per3
+1318:             rel$parentesco/mulher/manuel jorge/esc1541-e38-per2
+1319: 
+1320:          aforamento$um casal e meio
+aforamento-esc1541-e38-obj1- ** was stored with function in ACT verify act
+1321:             atr$localizacao/feteira coimbra
+1322:             atr$racao/um oitavo do linho vinho azeite e legumes
+1323:             atr$foro/dois alqueires de pao meado metade de trigo e metade de cevada
+1324:             atr$fogaca/meio alqueire de trigo
+1325:             atr$fogaca/uma galinha/obs=por s. miguel de setembro
+1326:             atr$multa/trinta mil reais
+1327: 
+1328:          test$diogo de figueiredo/m/id=esc1541-e38-per4
+1329:             rel$profissional/vedor/margarida de castro/esc1541-e38-per1
+1330:             ls$titulo/cavaleiro fidalgo
+1331:             ls$cargo/vedor do mosteiro
+1332: 
+1333:          test$bastiao lopes/m/id=esc1541-e38-per5
+1334:             ls$profissao/lavrador
+1335:             ls$residencia/cruz
+1336: 
+1337:          test$pedro anes/m/id=esc1541-338-per6
+1338:             ls$profissao/lavrador
+1339:             ls$residencia/cernache
+1340: 
+1341:       escritura$esc1541-e39/3/2/1541/novo aforamento em fatiosim/fol=106-107v/loc=grades/sumario=novo aforamento em fatiosim celebrado entre mosteiro de santa clara e jorge martins, de um casal de herdade, suas casas, terras, currais, pomares, matos e demais pertencas do casal, sitos e, seira
+1342: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e39
+1343:          senhoria$margarida de castro/id=esc1541-e39-per1
+1344:             ls$cargo/abadessa
+1345: 
+1346:          foreiro$jorge martins/id=esc1541-e39-per2
+1347:             ls$residencia/no casal em seira
+1348: 
+1349:          foreira$lucrecia pires/id=esc1541-e39-per3
+1350:             rel$parentesco/mulher/jorge martins/esc1541-e39-per2
+1351: 
+1352:          aforamento$casal de herdade com casas terras currais pomares matos e demais pertencas
+aforamento-esc1541-e39-obj1- ** was stored with function in ACT verify act
+1353:             atr$localizacao/ceira%seira
+1354:             atr$racao/o sexto
+1355:             atr$foro/um capao
+1356:             atr$foro/duas galinhas/obs=dentro do mosteiro por s. miguel de setembro
+1357:             atr$foro/seis alqueires de pao meado metade trigo e metade centeio
+1358:             atr$fogaca/dois alqueires de trigo do pao do lavrador/obs=tudo pago na eira
+1359:             atr$multa/vinte mil reais
+1360: 
+1361:          test$diogo de figueiredo/m/id=esc1541-e39-per4
+1362:             rel$profissional/vedor/margarida de castro/esc1541-e39-per1
+1363:             ls$titulo/cavaleiro fidalgo
+1364:             ls$cargo/vedor do mosteiro
+1365: 
+1366:          test$pedro goncalves/m/id=esc1541-e39-per5
+1367:             ls$residencia/circuito do mosteiro
+1368: 
+1369:          test$fernao gil/m/id=esc1541-e39-per6
+1370:             ls$profissao/lavrador
+1371: 
+1372:          test$joao alvares/m/id=esc1541-e39-per7
+1373:             rel$profissional/servidor/margarida de castro/esc1541-e39-per1
+1374: 
+1375:       escritura$esc1541-e40/4/2/1541/novo emprazamento/fol=107v-113/loc=grades/sumario=novo emprazamento em tres pessoas celebrado entre mosteiro de santa clara e diogo alvares, de um casal com casas, terras, currais, matos e demais pertencas do casal, sitos em torres novas
+1376: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e40
+1377:          senhoria$margarida de castro/id=esc1541-e40-per1
+1378:             ls$cargo/abadessa
+1379: 
+1380:          foreiro$diogo alvares/id=esc1541-e40-per2
+1381:             ls$profissao/lavrador
+1382:             ls$residencia/termo de torres novas
+1383: 
+1384:          foreira$ines dias/id=esc1541-e40-per3
+1385:             rel$parentesco/mulher/diogo alvares/esc1541-e40-per2
+1386: 
+1387:          prazo$casal com casas currais terras matos e demais pertencas
+prazo-esc1541-e40-obj1- ** was stored with function in ACT verify act
+1388:             atr$localizacao/torres novas
+1389:             atr$foro/duas galinhas
+1390:             atr$foro/doze ovos bons/obs=pelo natal
+1391:             atr$foro/dois alqueires de trigo/do proprio pao do lavrador
+1392:             atr$racao/azeite do quarto
+1393:             atr$racao/vinho do terco/obs=a bica do lagar
+1394:             atr$racao/legumes e segundas limpos e debulhados na eira
+1395:             atr$racao/linho/obs=curtido e enxuto no tendal
+1396:             atr$multa/trinta mil reais
+1397: 
+1398:          test$diogo de figueiredo/m/id=esc1541-e40-per4
+1399:             ls$titulo/cavaleiro fidalgo
+1400:             rel$profissional/vedor/margarida de castro/esc1541-e40-per1
+1401:             ls$cargo/vedor do mosteiro
+1402: 
+1403:          test$pedro goncalves/m/id=esc1541-e40-per5
+1404:             ls$profissao/boieiro/obs=no curral do mosteiro
+1405: 
+1406:          test$diogo fernandes/m/id=esc1541-e40-per6
+1407:             ls$profissao/carpinteiro
+1408: 
+1409:       escritura$esc1541-e41/9/5/1541/aforamento/fol=113v-115/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e francisco pires, de uma casa terreira e um mato com vinha para arrotear, sitos em vila nova da barca, montemor-o-velho
+1410: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e41
+1411:          senhoria$margarida de castro/id=esc1541-e41-per1
+1412:             ls$cargo/abadessa
+1413: 
+1414:          foreiro$francisco pires/id=esc1541-e41-per2
+1415:             ls$profissao/tecelao
+1416:             ls$residencia/vila nova da barca, termo de montemor o velho
+1417: 
+1418:          foreira$benedita lopes/id=esc1541-e41-per3
+1419:             rel$parentesco/mulher/francisco pires/esc1541-e41-per2
+1420: 
+1421:          aforamento$casa terreira
+1422: 
+aforamento-esc1541-e41-obj1- ** was stored with function in ACT verify act
+1423:          aforamento$mato com vinha
+1424: 
+aforamento-esc1541-e41-obj2- ** was stored with function in ACT verify act
+1425:          aforamento$um terco de casal
+aforamento-esc1541-e41-obj3- ** was stored with function in ACT verify act
+1426:             atr$localizacao/vila nova da barca
+1427:             atr$racao/um oitavo do vinho/obs=a bica do lagar
+1428:             atr$racao/um oitavo de azeite/obs=apanhado ao pe da oliveira
+1429:             atr$foro/dois alqueires de pao
+1430:             atr$foro/um alqueire de trigo
+1431:             atr$foro/um alqueire de segunda
+1432:             atr$foro/uma galinha/obs=novidades por s. miguel de setembro
+1433:             atr$multa/dez mil reais
+1434: 
+1435:          test$diogo de figueiredo/m/id=esc1541-e41-per4
+1436:             ls$titulo/cavaleiro fidalgo
+1437:             rel$profissional/vedor/margarida de castro/esc1541-e41-per1
+1438:             ls$cargo/vedor do mosteiro
+1439: 
+1440:          test$joao alvares/m/id=esc1541-e41-per5
+1441:             ls$profissao/mordomo
+1442:             ls$residencia/pacos do mosteiro
+1443: 
+1444:          test$diogo fernandes/m/id=esc1541-e41-per6
+1445:             ls$profissao/trabalhador
+1446:             rel$profissional/criado/diogo de figueiredo/esc1541-e41-per4
+1447: 
+1448:          test$antonio anes/m/id=esc1541-e41-per7
+1449:             ls$profissao/alfaiate/obs=no curral do mosteiro
+1450: 
+1451:       escritura$esc1541-e42/17/5/1541/aforamento/fol=115v-118v/loc=grades/sumario=aforamento por via de renuncia celebrado entre mosteiro de santa clara e afonso salgado, de umas vinhas e mato sitos em sangalhos. tem treslado de alvara do bispo de coimbra e conde de arganil, dom jorge de almeida
+1452: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e42
+1453:          senhoria$margarida de castro/id=esc1541-e42-per1
+1454:             ls$cargo/abadessa
+1455: 
+1456:          foreiro$afonso salgado/id=esc1541-e42-per2
+1457: 
+1458:          aforamento$vinhas e matos
+aforamento-esc1541-e42-obj1- ** was stored with function in ACT verify act
+1459:             atr$localizacao/sangalhos
+1460: 
+1461:          referido$jorge de almeida/id=esc1541-e42-per3
+1462:             ls$titulo/dom
+1463:             ls$cargo/bispo/obs=de coimbra
+1464:             ls$titulo/conde de arganil
+1465: 
+1466:       escritura$esc1541-e43/4/11/1541/emprazamento/fol=119-121/loc=grades/sumario=emprazamento em tres vidas de quatro pessoa celebrado entre mosteiro de santa clara e jorge bras, de um talho de terra e um olival, sitos em leiria
+1467: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e43
+1468:          senhoria$margarida de castro/id=esc1541-e43-per1
+1469:             ls$cargo/abadessa
+1470: 
+1471:          foreiro$jorge bras/id=esc1541-e43-per2
+1472: 
+1473:          foreira$maria pires/id=es1541-e43-per3
+1474:             rel$parentesco/mulher/jorge bras/esc1541-e43-per2
+1475: 
+1476:             referido$simao luis/id=esc1541-e43-per4/obs=antigo foreiro
+1477: 
+1478:          prazo$um prazo de terra ao porto que chamam santa clara
+1479: 
+prazo-esc1541-e43-obj1- ** was stored with function in ACT verify act
+1480:          prazo$um olival
+prazo-esc1541-e43-obj2- ** was stored with function in ACT verify act
+1481:             atr$localizacao/leiria
+1482:             atr$foro/quatrocentos e sessenta reais em dinheiro de contado da moeda corrente
+1483:             atr$foro/quinhentos reais nas derradeiras duas vidas
+1484:             atr$foro/duas galinhas
+1485:             atr$foro/um frango/obs=por s. miguel de setembro
+1486:             atr$multa/trinta mil reais
+1487: 
+1488:          test$diogo de figueiredo/m/id=esc1541-e43-per5
+1489:             ls$titulo/cavaleiro fidalgo
+1490:             rel$profissional/vedor/margarida de castro/esc1541-e43-per1
+1491:             ls$cargo/vedor do mosteiro
+1492: 
+1493:          test$francisco afonso/m/id=esc1541-e43-per6
+1494:             rel$profissional/moleiro/margarida de castro/esc1541-e43-per1
+1495: 
+1496:          test$antonio fernandes/m/id=esc5141-e43-per7
+1497:             ls$profissao/sapateiro
+1498:             ls$residencia/pacos de santa clara
+1499: 
+1500:       escritura$esc1541-e44/18/11/1541/aforamento/fol=121v-123/loc=porta da cerca/sumario=aforamento para sempre celerado entre mosteiro de santa clara e andre afonso, de meio casal no qual mora; um quarto de casal; um oitavo de casal; dois pedacos de mato, sitos em orelhudo
+1501: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e44
+1502:          senhoria$margarida de castro/id=esc1541-e44-per1
+1503:             ls$cargo/abadessa
+1504: 
+1505:          foreiro$andre afonso/id=esc1541-e44-per2
+1506:             ls$profissao/lavrador
+1507:             ls$residencia/orelhudo
+1508: 
+1509:          foreira$catarina alvares/id=esc1541-e44-per3
+1510:             rel$parentesco/mulher/andre afonso/esc1541-e44-per2
+1511: 
+1512:          aforamento$meio casal
+aforamento-esc1541-e44-obj1- ** was stored with function in ACT verify act
+1513:             atr$localizacao/orelhudo
+1514: 
+1515:          aforamento$um quarto de casal/obs=que herdou do casal que foi do bicho e do qual foi foreiro pedro anes
+1516: 
+aforamento-esc1541-e44-obj2- ** was stored with function in ACT verify act
+1517:          aforamento$um pedaco de mato
+aforamento-esc1541-e44-obj3- ** was stored with function in ACT verify act
+1518:             atr$localizacao/serra de sao domingos
+1519: 
+1520:          aforamento$um pedaco de mato/obs=que pertence ao quarto de casal que foi do bicho velho
+aforamento-esc1541-e44-obj4- ** was stored with function in ACT verify act
+1521:             atr$racao/um quinto de pao e novidades
+1522:             atr$foro/quatro alqueires e meio de trigo/obs=metade do proprio pao do lavrador e outra metade de todo o monte
+1523:             atr$fogaca/oito fogacas de pao de trigo cozido
+1524:             atr$fogaca/um capao/obs=por sao miguel de setembro
+1525:             atr$multa/dez mil reais por incumprimento
+1526: 
+1527:          test$diogo de figueiredo/m/id=esc1541-e44-per4
+1528:             ls$titulo/cavaleiro fidalgo
+1529:             rel$profissional/vedor/margarida de castro/esc1541-e44-per1
+1530:             ls$residencia/cerco do mosteiro
+1531:             ls$cargo/vedor do mosteiro
+1532: 
+1533:          test$joao alvares/m/id=esc1541-e44-per5
+1534:             rel$profissional/oficial/margarida de castro/esc1541-e44-per1
+1535:             ls$residencia/cerco do mosteiro
+1536: 
+1537:          test$pedro goncalves/m/id=esc1541-e44-per6
+1538:             ls$profissao/boeiro
+1539:             ls$residencia/cerco do mosteiro
+1540: 
+1541:       escritura$esc1541-e45/29/11/1541/aforamento/fol=123-125/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e manuel afonso, de dois moinhos, uma casa de moer pao e dois engenhos de moer pao, sitos na quinta da amoreira, sangalhos
+1542: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1541-e45
+1543:          senhoria$margarida de castro/id=esc1541-e45-per1
+1544:             ls$cargo/abadessa
+1545: 
+1546:          foreiro$manuel afonso/id=esc1541-e45-per2
+1547: 
+1548:          foreira$leonor ribeira/id=esc1541-e45-per3
+1549:             rel$parentesco/mulher/manuel afonso/esc1541-e45-per2
+1550: 
+1551:             referido$afonso vicente/id=esc1541-e45-per4/obs=antigo foreiro
+1552:                rel$parentesco/filho/manuel afonso/esc1541-e45-per2
+1553: 
+1554:          aforamento$dois moinhos
+1555: 
+aforamento-esc1541-e45-obj1- ** was stored with function in ACT verify act
+1556:          aforamento$uma casa de moer pao
+1557: 
+aforamento-esc1541-e45-obj2- ** was stored with function in ACT verify act
+1558:          aforamento$dois engenhos de moer pao
+aforamento-esc1541-e45-obj3- ** was stored with function in ACT verify act
+1559:             atr$localizacao/quinta da amoreira sangalhos
+1560:             atr$foro/quatro arrateis de cera
+1561:             atr$foro/um alqueire de trigo
+1562:             atr$foro/dois capoes
+1563:             atr$multa/vinte mil reais por incumprimento
+1564: 
+1565:          test$diogo de figueiredo/m/id=esc1541-e45-per5
+1566:             ls$titulo/cavaleiro fidalgo
+1567:             rel$profissional/vedor/margarida de castro/esc1541-e45-per1
+1568:             ls$residencia/cerco do mosteiro
+1569:             ls$cargo/vedor do mosteiro
+1570: 
+1571:          test$antonio fernandes/m/id=esc1541-e45-per6
+1572:             rel$profissional/alfaiate/margarida de castro/esc1541-e45-per1
+1573:             ls$residencia/curral do mosteiro
+1574: 
+1575:       escritura$esc1542-e46/29/12/1542/aforamento/fol=125-127/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e domingos pires, de meio casal e oitavo de casal
+1576: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e46
+1577:          senhoria$margarida de castro/id=esc1542-e46-per1
+1578:             ls$cargo/abadessa
+1579: 
+1580:          foreiro$domingos pires/id=esc1542-e46-per2
+1581:             ls$profissao/lavrador e moleiro
+1582:             ls$residencia/orelhudo
+1583: 
+1584:          foreira$brites eanes/id=esc1542-e46-per3
+1585:             rel$parentesco/mulher/domingos pires/esc1542-e46-per2
+1586: 
+1587:          aforamento$meio casal
+1588: 
+aforamento-esc1542-e46-obj1- ** was stored with function in ACT verify act
+1589:          aforamento$um oitavo de casal
+aforamento-esc1542-e46-obj2- ** was stored with function in ACT verify act
+1590:             atr$localizacao/orelhudo
+1591:             atr$racao/um quinto das novidades
+1592:             atr$racao/um quinto de trigo e cevada de segunda
+1593:             atr$racao/um quinto de azeite/obs=apanhado ao pe da oliveira
+1594:             atr$racao/um quinto do vinho/obs=a bica do lagar
+1595:             atr$racao/um quinto dos legumes/obs=debulhados e limpos na eira
+1596:             atr$racao/um quinto do linho/obs=enxuto e curtido no tendal
+1597:             atr$foro/dois alqueires e meio de trigo/obs=por sao miguel de setembro
+1598:             atr$multa/dez mil reais por incumprimento
+1599: 
+1600:          test$jorge seco/m/id=esc1542-e46-per4
+1601:             ls$cargo/conego/obs=da se
+1602: 
+1603:          test$antonio fernandes/m/id=esc1542-e46-per5
+1604:             rel$profissional/alfaiate/margarida de castro/esc1542-e46-per1
+1605:             ls$residencia/cerca do mosteiro
+1606:             ls$profissao/alfaiate
+1607: 
+1608:       escritura$esc1542-e47/16/1/1542/aforamento/fol=127-129/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e pedro dias, de um mato maninho sito onde chamam as casarias, em sangalhos
+1609: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e47
+1610:          senhoria$margarida de castro/id=esc1542-e47-per1
+1611:             ls$cargo/abadessa
+1612: 
+1613:          foreiro$pedro dias/id=esc1542-e47-per2
+1614:             ls$profissao/lavrador
+1615:             ls$residencia/fogueira, termo de sangalhos
+1616: 
+1617:          foreira$catarina fernandes/id=esc1542-e47-per3
+1618:             rel$parentesco/mulher/pedro dias/esc1542-e47-per2
+1619: 
+1620:          aforamento$um mato maninho
+aforamento-esc1542-e47-obj1- ** was stored with function in ACT verify act
+1621:             atr$localizacao/casarias, sangalhos
+1622:             atr$foro/um capao
+1623:             atr$foro/cinco reais/obs=pelo natal
+1624:             atr$racao/um oitavo das novidades/obs=pao limpo na eira; legumes; vinho a bica do lagar; linho curtido e enxuto no tendal
+1625:             atr$racao/um alqueire de trigo
+1626:             atr$multa/dez mil reais por incumprimento
+1627: 
+1628:          test$simao pires/m/id=esc1542-e47-per4
+1629:             rel$profissional/mordomo/margarida de castro/esc1542-e47-per1/obs=em sangalhos
+1630: 
+1631:          test$joao alvares/m/id=esc1542-e47-per5
+1632:             rel$profissional/porteiro/margarida de castro/esc1542-e47-per1
+1633:             ls$residencia/pacos do mosteiro
+1634: 
+1635:          test$luis pires/m/id=esc1542-e47-per6
+1636:             ls$profissao/barqueiro
+1637: 
+1638:       escritura$esc1542-e48/21/1/1542/emprazamento/fol=129-132/loc=porta da cerca e outorgou-se nas grades da varanda/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e alvaro botelho caldeira, de uns moinhos de moer pao; um engenho que foi lagar de fazer azeite; um pomar e umas casas com seu lagar para fazer vinho; um pedaco de lameira
+1639: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e48
+1640:          senhoria$margarida de castro/id=esc1542-e48-per1
+1641:             ls$cargo/abadessa
+1642: 
+1643:          foreiro$alvaro botelho caldeira/id=esc1542-e48-per2/obs=por boa obra que fez ao mosteiro
+1644:             ls$titulo/cavaleiro fidalgo
+1645:             ls$titulo/cavaleiro da ordem de cristo/obs=duvida
+1646:             ls$residencia/leiria
+1647: 
+1648:             referido$joao lopes/id=esc1542-e48-per3/obs=antigo foreiro
+1649:                ls$titulo/clerigo
+1650: 
+1651:          prazo$uns moinhos de moer pao
+1652: 
+prazo-esc1542-e48-obj1- ** was stored with function in ACT verify act
+1653:          prazo$um engenho que foi lagar de fazer azeite
+1654: 
+prazo-esc1542-e48-obj2- ** was stored with function in ACT verify act
+1655:          prazo$um pomar
+1656: 
+prazo-esc1542-e48-obj3- ** was stored with function in ACT verify act
+1657:          prazo$umas casas com lagar de fazer vinho
+1658: 
+prazo-esc1542-e48-obj4- ** was stored with function in ACT verify act
+1659:          prazo$um pedaco de lameira
+prazo-esc1542-e48-obj5- ** was stored with function in ACT verify act
+1660:             atr$localizacao/leiria, aldeia das cortes
+1661:             atr$pensao/mil e trezentos reais/obs=primeira vida
+1662:             atr$pensao/mil e quatrocentos reais/obs=segunda vida
+1663:             atr$pensao/mil e oitocentos reais/obs=terceira vida
+1664:             atr$multa/cem cruzados de ouro por incumprimento
+1665: 
+1666:          test$diogo de figueiredo/m/id=esc1542-e48-per4
+1667:             ls$titulo/cavaleiro fidalgo
+1668:             rel$profissional/vedor/margarida de castro/esc1542-e48-per1
+1669:             ls$residencia/cerco do mosteiro
+1670:             ls$cargo/vedor do mosteiro
+1671: 
+1672:          test$goncalo vaz/m/id=esc1542-e48-per5
+1673:             rel$profissional/criado/alvaro botelho caldeira/esc1542-e48-per2
+1674: 
+1675:          test$joao alvares/m/id=esc1542-e48-per6
+1676:             rel$profissional/porteiro/margarida de castro/esc1542-e48-per1
+1677:             ls$residencia/pacos do mosteiro
+1678: 
+1679:       escritura$esc1542-e49/12/5/1542/emprazamento/fol=132-136/loc=varanda/sumario=emprazamento em tres pessoas celebrado entre mosteiro de santa clara e jorge fernandes; antonio rodrigues; manuel fernandes; simao rodrigues; bras pires, de umas casas sitas no burgo do mosteiro de santa clara
+1680: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e49
+1681:          senhoria$margarida de castro/id=esc1542-e49-per1
+1682:             ls$cargo/abadessa
+1683: 
+1684:          foreiro$jorge fernandes/id=esc1542-e49-per2
+1685:             ls$profissao/solicitador
+1686:             ls$residencia/pacos do mosteiro
+1687: 
+1688:          foreira$catarina afonso/id=esc1542-e49-per3
+1689:             rel$parentesco/mulher/jorge fernandes/esc1542-e49-per2
+1690: 
+1691:          foreiro$antonio rodrigues/id=esc1542-e49-per4
+1692:             ls$residencia/pacos do mosteiro
+1693: 
+1694:          foreira$catarina dias/id=esc1542-e49-per5
+1695:             rel$parentesco/mulher/antonio rodrigues/esc1542-e49-per4
+1696: 
+1697:          foreiro$manuel fernandes/id=esc1542-e49-per6
+1698:             ls$profissao/carpinteiro
+1699: 
+1700:          foreira$isabel martins/id=esc1542-e49-per7
+1701:             rel$parentesco/mulher/manuel fernandes/esc1542-e49-per6
+1702: 
+1703:          foreiro$simao rodrigues/id=esc1542-e49-per8
+1704:             ls$profissao/barqueiro
+1705: 
+1706:          foreira$branca rodrigues/id=esc1542-e49-per9
+1707:             rel$parentesco/mulher/simao rodrigues/esc1542-e49-per8
+1708: 
+1709:          foreiro$bras pires/id=esc1542-e49-per10
+1710:             ls$profissao/trabalhador
+1711:             ls$residencia/pacos do mosteiro
+1712: 
+1713:          foreira$catarina pires/id=esc1542-e49-per11
+1714:             rel$parentesco/mulher/bras pires/esc1542-e49-per10
+1715: 
+1716:          prazo$casas
+prazo-esc1542-e49-obj1- ** was stored with function in ACT verify act
+1717:             atr$localizacao/burgo do mosteiro
+1718:             atr$foro/duzentos reais/obs=por s. miguel de setembro; os tres primeiros inquilinos
+1719:             atr$foro/cem reais/obs= por s. miguel de setembro; os dois ultimos inquilinos
+1720: 
+1721:          test$diogo de figueiredo/m/id=esc1542-e49-per12
+1722:             ls$titulo/cavaleiro fidalgo
+1723:             rel$profissional/vedor/margarida de castro/esc1542-e49-per1
+1724:             ls$residencia/cerco do mosteiro
+1725:             ls$cargo/vedor do mosteiro
+1726: 
+1727:          test$antonio fernandes/m/id=esc1542-e49-per13
+1728:             rel$profissional/alfaiate/margarida de castro/esc1542-e49-per1
+1729:             ls$residencia/cerco do mosteiro
+1730:             ls$profissao/alfaiate
+1731: 
+1732:          test$francisco do abelar/m/id=esc1542-e49-per14
+1733:             ls$titulo/cavaleiro
+1734:             ls$residencia/vila de alenquer
+1735: 
+1736:       escritura$esc1542-e50/5/6/1542/aforamento/fol=136v-138v/loc=varanda/sumario=novo aforamento em fatiosim celebrado entre mosteiro de santa clara e joao dias e seu irmao diogo fernandes, de meio casal para cada um sitos na povoa de s. joao, em sangalhos
+1737: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e50
+1738:          senhoria$margarida de castro/id=esc1542-e50-per1
+1739:             ls$cargo/abadessa
+1740: 
+1741:          foreiro$joao dias/id=esc1542-e50-per2
+1742: 
+1743:          foreiro$diogo fernandes/id=esc1542-e50-per3
+1744: 
+1745:          aforamento$meio casal
+1746: 
+aforamento-esc1542-e50-obj1- ** was stored with function in ACT verify act
+1747:          aforamento$meio casal
+aforamento-esc1542-e50-obj2- ** was stored with function in ACT verify act
+1748:             atr$localizacao/povoa de sao joao/obs=sangalhos
+1749:             atr$racao/um oitavo de todas as novidades/obs=pao, legumes, vinho, linho
+1750:             atr$foro/um alqueire de trigo pela medida nova
+1751:             atr$foro/um capao
+1752:             atr$foro/cinco reais
+1753:             atr$foro/tres alqueires de pao pela medida velha/obs=a igreja do mosteiro
+1754:             atr$multa/vinte mil reais por incumprimento
+1755: 
+1756:          test$simao pires/m/id=esc1542-e50-per4
+1757:             rel$profissional/mordomo/margarida de castro/esc1542-e50-per1
+1758: 
+1759:          test$domingos fernandes/m/id=esc1542-e50-per5
+1760:             ls$profissao/lavrador
+1761:             ls$residencia/vidoeiro limite de sangalhos
+1762: 
+1763:          test$antonio fernandes/m/id=esc1542-e50-per6
+1764:             rel$profissional/alfaiate/margarida de castro/esc1542-e50-per1
+1765:             ls$residencia/cerco do mosteiro
+1766:             ls$profissao/alfaiate
+1767: 
+1768:       escritura$esc1542-e51/20/6/1542/emprazamento/fol=138v-141v/loc=grades/sumario=novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e filipa leite, de umas casas, casais e outras propriedades sitas na freguesia de sta. maria do sobrado; em riba douro; na freguesia de sampaio, termo da vila de guimaraes; na freguesia de s. martinho de butarim e dos pi�e; na freguesia de santa maria de quintas, no termo de barcelos
+1769: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e51
+1770:          senhoria$margarida de castro/id=esc1542-e51-per1
+1771:             ls$cargo/abadessa
+1772: 
+1773:          foreira$filipe leite/id=esc1542-e51-per2
+1774:             ls$residencia/porto
+1775: 
+1776:             referido$bartolomeu da fonseca/id=esc1542-e51-per3
+1777:                rel$parentesco/marido/filipe leite/esc1542-e51-per2
+1778:                ls$morto/antes
+1779: 
+1780:          prazo$casas casais e propriedades
+prazo-esc1542-e51-obj1- ** was stored with function in ACT verify act
+1781:             atr$localizacao/comarca de entre douro e minho e cidade do porto
+1782:             atr$foro/mil e seiscentos reais/obs=primeira vida
+1783:             atr$foro/dois mil reais/obs=segunda vida
+1784:             atr$foro/dois mil e quatrocentos reais/obs=terceira vida
+1785:             atr$multa/duzentos cruzados em outro por incumprimento
+1786: 
+1787:          test$? fernandes/m/obs=duvida primeiro nome/id=esc1542-e51-per4
+1788:             ls$titulo/bacharel
+1789:             ls$profissao/cirurgiao
+1790: 
+1791:          test$antonio fernandes/m/id=esc1542-e51-per5
+1792:             rel$profissional/alfaiate/margarida de castro/esc1542-e51-per1
+1793:             ls$residencia/coimbra
+1794:             ls$profissao/alfaiate
+1795: 
+1796:          test$vasco leite/m/id=esc1542-e51-per6
+1797:             ls$titulo/cidadao
+1798:             ls$residencia/porto
+1799: 
+1800:          test$manuel goncalves/m/id=esc1542-e51-per7
+1801:             rel$profissional/criado/vasco leite/esc1542-e51-per6
+1802:             ls$profissao/criado
+1803: 
+1804:       escritura$esc1542-e52/25/8/1542/aforamento/fol=142-144/loc=porta da cerca/sumario=novo aforamento em fatiosim celebrado entre mosteiro de santa clara e andre fernandes; andre bras e simao pires, de uns matos com agua para moendas
+1805: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1542-e52
+1806:          senhoria$margarida de castro/id=esc1542-e52-per1
+1807:             ls$cargo/abadessa
+1808: 
+1809:          foreiro$andre fernandes/id=esc1542-e52-per2
+1810:             ls$profissao/lavrador
+1811:             ls$residencia/monte longo
+1812: 
+1813:          foreira$catarina fernandes/id=esc1542-e52-per3
+1814:             rel$parentesco/mulher/andre fernandes/esc1542-e52-per2
+1815: 
+1816:          foreiro$andre bras/id=esc1542-e52-per4
+1817:             ls$profissao/sapateiro
+1818:             ls$residencia/avelas de caminho
+1819: 
+1820:          foreira$leonor pires/id=esc1542-e52-per5
+1821:             rel$parentesco/mulher/andre bras/esc1542-e52-per4
+1822: 
+1823:          foreiro$simao pires/id=esc1542-e52-per6
+1824:             rel$profissional/mordomo/margarida de castro/esc1542-e52-per1
+1825:             ls$residencia/sangalhos
+1826: 
+1827:          foreira$maria rodrigues/id=esc1542-e52-per7
+1828:             rel$parentesco/mulher/simao pires/esc1542-e52-per6
+1829: 
+1830:          aforamento$matos com agua para moendas
+aforamento-esc1542-e52-obj1- ** was stored with function in ACT verify act
+1831:             atr$localizacao/sangalhos
+1832:             atr$foro/dois arrateis de cera/obs=pelo natal
+1833:             atr$foro/dois alqueires de trigo do novo
+1834:             atr$foro/um capao/obs=pelo natal
+1835:             atr$racao/um nono das novidades
+1836:             atr$racao/uma galinha/obs=pelo natal
+1837:             atr$multa/vinte mil reais por incumprimento
+1838: 
+1839:          test$diogo de figueiredo/m/id=esc1542-e52-per8
+1840:             ls$titulo/cavaleiro fidalgo
+1841:             rel$profissional/vedor/margarida de castro/esc1542-e52-per1
+1842:             ls$residencia/cerco do mosteiro
+1843:             ls$cargo/vedor do mosteiro
+1844: 
+1845:          test$antonio fernandes/m/id=esc1542-e52-per9
+1846:             rel$profissional/alfaiate/margarida de castro/esc1542-e52-per1
+1847:             ls$residencia/pacos do mosteiro
+1848:             ls$profissao/alfaiate
+1849: 
+1850:          test$bras eanes/m/id=esc1542-e52-per10
+1851:             ls$residencia/pacos do mosteiro
+1852: 
+1853:          test$simao martins/m/id=esc1542-e52-per11
+1854:             ls$residencia/penela
+1855: 
+1856:       escritura$esc1543-e53/8/8/1543/emprazamento/fol=144v-147v/loc=grades/sumario=novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e o reverendo doutor francisco de moncao, de lotes de terra sitos no limite do lugar de gat�es, em montemor-o-velho
+1857: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1543-e53
+1858:          senhoria$margarida de castro/id=esc1543-e53-per1
+1859:             ls$cargo/abadessa
+1860: 
+1861:          foreiro$francisco de moncao/id=esc1543-e53-per2
+1862:             ls$cargo/reverendo
+1863:             ls$titulo/doutor catedratico/obs=da universidade
+1864: 
+1865:             referido$francisco pinheiro/id=esc1543-e53-per3/obs=antigo foreiro
+1866: 
+1867:             referido$joao rodrigues/id=esc1543-e53-per4/obs=antigo foreiro
+1868: 
+1869:          prazo$quatro lotes de terra
+prazo-esc1543-e53-obj1- ** was stored with function in ACT verify act
+1870:             atr$localizacao/gatoes, montemor o velho
+1871:             atr$foro/por cada lote uma galinha/obs=por s. miguel de setembro
+1872:             atr$racao/um quarto das novidades/obs=pao, trigo e segundas; linho e legumes
+1873:             atr$multa/duzentos cruzados em ouro por cada lote
+1874: 
+1875:          test$antonio fernandes/m/id=esc1543-e53-per5
+1876:             ls$profissao/alfaiate
+1877:             ls$residencia/curral do mosteiro
+1878: 
+1879:          test$bastiao martins/m/id=esc1543-e53-per6
+1880:             ls$profissao/criado
+1881: 
+1882:          referido$martim afonso/id=esc1543-e53-per7
+1883:             rel$profissional/patrao/bastiao martins/esc1543-e53-per6
+1884: 
+1885:          test$joao alvares/m/id=esc1543-e53-per8
+1886:             ls$profissao/trabalhador
+1887:             ls$residencia/coimbra
+1888: 
+1889:       escritura$esc1543-e54/20/8/1543/emprazamento/fol=147v-149v/loc=porta da cerca/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e aleixo amorim, de um olival sito em montemor-o-velho
+1890: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1543-e54
+1891:          senhoria$margarida de castro/id=esc1543-e54-per1
+1892:             ls$cargo/abadessa
+1893: 
+1894:          foreiro$aleixo amorim/id=esc1543-e54-per2
+1895:             ls$profissao/pedreiro
+1896:             ls$residencia/pacos do mosteiro
+1897: 
+1898:          prazo$um olival/obs=pertenca da igreja do mosteiro de santa clara de s. martinho de montemor-o-velho
+prazo-esc1543-e54-obj1- ** was stored with function in ACT verify act
+1899:             atr$localizacao/montemor o velho
+1900:             atr$foro/um capao/obs=por s. miguel de setembro
+1901:             atr$racao/um terco das novidades
+1902:             atr$multa/dez mil reais por incumprimento
+1903: 
+1904:          test$luis eanes/m/id=esc1543-e54-per3
+1905:             ls$profissao/trabalhador
+1906: 
+1907:          test$jorge andre/m/id=esc1543-e54-per4
+1908:             ls$residencia/pacos do mosteiro
+1909: 
+1910:          test$afonso pires/m/id=esc1543-e54-per5
+1911:             ls$profissao/sapateiro
+1912:             ls$residencia/coimbra
+1913: 
+1914:       escritura$esc1544-e55/26/5/1544/emprazamento/fol=149v-151/loc=grades e outorgado a porta da cerca/sumario=emprazamento em tres vidas celebrado entre mosteiro de santa clara e pero anes e antonio pires, de umas casas no burgo de santa clara, sitas ao terreiro dos pacos e com alpendre de santa isabel
+1915: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1544-e55
+1916:          senhoria$margarida de castro/id=esc1544-e55-per1
+1917:             ls$cargo/abadessa
+1918: 
+1919:          foreiro$pedro anes/id=esc1544-e55-per2
+1920:             ls$profissao/cavouqueiro
+1921:             ls$residencia/pacos do mosteiro
+1922: 
+1923:          foreira$margarida fernandes/id=esc1544-e55-per3
+1924:             rel$parentesco/mulher/pedro anes/esc1544-e55-per2
+1925: 
+1926:          foreiro$antonio pires/id=esc1544-e55-per4
+1927:             ls$profissao/boeiro
+1928: 
+1929:          foreira$catarina goncalves/id=esc1544-e55-per5
+1930:             rel$parentesco/mulher/antonio pires/esc1544-e55-per4
+1931: 
+1932:          prazo$casas
+prazo-esc1544-e55-obj1- ** was stored with function in ACT verify act
+1933:             atr$localizacao/burgo de santa clara
+1934:             atr$foro/duzentos e quarenta reais/obs=cento e vinte reais em cada ano, por s. miguel de setembro
+1935:             atr$multa/dez mil reais por incumprimento
+1936: 
+1937:          test$joao alvares/m/id=esc1544-e55-per6
+1938:             rel$profissional/mordomo/margarida de castro/esc1544-e55-per1
+1939: 
+1940:          test$antonio anes/m/id=esc1544-e55-per7
+1941:             ls$profissao/alfaiate
+1942:             ls$residencia/pacos do mosteiro
+1943: 
+1944:          test$anrique mendes/m/id=esc1544-e55-per8
+1945:             rel$profissional/solicitador/margarida de castro/esc1544-e55-per1
+1946:             ls$cargo/solicitador do mosteiro
+1947: 
+1948:       escritura$esc1544-e56/27/5/1544/aforamento/fol=151-153v/loc=porta da cerca/sumario=renuncia e aforamento celebrados entre mosteiro de santa clara e francisco de moncao, representado por seu procurador o doutor de santa cruz, de quatro lotes de terras, mais moinhos, sitos nas proximidades de santa maria da serra
+1949: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1544-e56
+1950:          senhoria$margarida de castro/id=esc1544-e56-per1
+1951:             ls$cargo/abadessa
+1952: 
+1953:          foreiro$francisco de moncao/id=esc1544-e56-per2
+1954:             ls$cargo/abade/obs=de sao joao da pesqueira
+1955:             ls$titulo/doutor
+1956: 
+1957:             referido$santa cruz/id=esc1544-e56-per3
+1958:                rel$sociabilidade/procurador/francisco de moncao/esc1544-e56-per2
+1959:                ls$titulo/doutor catedratico
+1960:                ls$profissao/lente de vespera de leis na universidade
+1961: 
+1962:          aforamento$quatro lotes de terra
+1963: 
+aforamento-esc1544-e56-obj1- ** was stored with function in ACT verify act
+1964:          aforamento$moinhos
+aforamento-esc1544-e56-obj2- ** was stored with function in ACT verify act
+1965:             atr$localizacao/montemor o velho
+1966:             atr$foro/quarenta reais em dinheiro
+1967:             atr$racao/um terco das novidades
+1968:             atr$multa/quinhentos cruzados em ouro por incumprimento
+1969: 
+1970:          test$mateus fernandes/m/id=esc1544-e56-per4
+1971: 
+1972:          test$belchior goncalves/m/id=esc1544-e56-per5
+1973: 
+1974:          test$diogo goncalves/m/id=esc1544-e56-per6
+1975:             rel$profissional/criado/santa cruz/esc1544-e56-per3
+1976: 
+1977:       escritura$esc1547-e57/1/3/1547/aforamento/fol=155v-157v/loc=porta da cerca/sumario=aforamento em fatiosim celebrado entre mosteiro de santa clara e maria afonso, de uns pardieiros que, em outros tempos , ja foram casas, sitos na cidade de leiria
+1978: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e57
+1979:          senhoria$margarida de castro/id=esc1547-e57-per1
+1980:             ls$cargo/abadessa
+1981: 
+1982:          foreiro$maria afonso/id=esc1547-e57-per2
+1983:             ls$ec/viuva
+1984: 
+1985:             referido$joao dias/id=esc1547-e57-per3
+1986:                ls$profissao/lavrador
+1987:                ls$residencia/aldeia de barbaes, termo da vila de miranda
+1988:                rel$parentesco/marido/maria afonso/esc1547-e57-per2
+1989:                ls$morto/antes
+1990: 
+1991:             referido$diogo afonso/id=esc1547-e57-per4
+1992:                rel$parentesco/sogro/maria afonso/esc1547-e57-per2
+1993: 
+1994:             referida$marquesa fernandes/id=esc1547-e57-per5
+1995:                rel$parentesco/sogra/maria afonso/esc1547-e57-per2
+1996: 
+1997:          aforamento$um terco de casal
+aforamento-esc1547-e57-obj1- ** was stored with function in ACT verify act
+1998:             atr$localizacao/aldeia de barbaes, termo da vila de miranda
+1999:             atr$foro/um alqueire de trigo
+2000:             atr$foro/meio alqueire de segunda
+2001:             atr$foro/uma galinha/obs=por pascoa
+2002:             atr$foro/uma canastra rasada
+2003:             atr$multa/dez mil reais por incumprimento
+2004: 
+2005:          test$diogo pires/m/id=esc1547-e57-per6
+2006:             ls$residencia/termo de miranda
+2007: 
+2008:          test$diogo pires/m/id=esc1547-e57-per7
+2009:             ls$residencia/urzelhe
+2010: 
+2011:          test$manuel homem/m/id=esc1547-e57-per8
+2012:             ls$ec/solteiro
+2013:             ls$profissao/criado
+2014: 
+2015:          referido$marcal macedo/id=esc1547-e57-per9
+2016:             ls$titulo/cidadao
+2017:             rel$profissional/patrao/manuel homem/esc1547-e57-per8
+2018: 
+2019:       escritura$esc1547-e58/21/8/1547/aforamento/fol=157v-159v/loc=porta da cerca/sumario=aforamento em fatiosim celebrado entre mosteiro de santa clara e lourenco mendes de abreu, de uns pardieiros, sitos na cidade de leiria
+2020: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1547-e58
+2021:          senhoria$margarida de castro/id=esc1547-e58-per1
+2022:             ls$cargo/abadessa
+2023: 
+2024:          foreiro$lourenco mendes de abreu/id=esc1547-e58-per2
+2025: 
+2026:          foreira$antonia gomes/id=esc1547-e58-per3
+2027:             rel$parentesco/mulher/margarida de castro/esc1547-e58-per1
+2028: 
+2029:          aforamento$uns pardieiros
+aforamento-esc1547-e58-obj1- ** was stored with function in ACT verify act
+2030:             atr$localizacao/cidade de leiria
+2031:             atr$foro/duzentos e trinta reais/obs=por s. miguel de setembro
+2032:             atr$multa/sessenta mil reais por incumprimento
+2033: 
+2034:          test$anrique mendes/m/id=esc1547-e58-per4
+2035:             rel$profissional/feitor/margarida de castro/esc1547-e58-per1
+2036:             ls$residencia/cerco do mosteiro
+2037: 
+2038:          test$joao da fonseca/m/id=esc1547-e58-per5
+2039:             ls$residencia/coimbra
+2040: 
+2041:          test$bras eanes/m/id=esc547-e58-per6
+2042:             rel$profissional/mordomo/margarida de castro/esc1547-e58-per1
+2043:             ls$residencia/pacos do mosteiro
+2044: 
+2045:       escritura$esc1548-e59/23/10/1548/aforamento/fol=160-163/loc=porta da cerca/sumario=aforamento para sempre celebrado entre mosteiro de santa clara e rodrigo afonso, de um quarto de casal, terras, casas e currais no lugar de gat�es, montemor-o-velho
+2046: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1548-e59
+2047:          senhoria$margarida de castro/id=esc1548-e59-per1
+2048:             ls$cargo/abadessa
+2049: 
+2050:          foreiro$rodrigo afonso/id=esc1548-e59-per2
+2051:             ls$alcunha/escudeiro
+2052:             ls$residencia/gatoes, montemor o velho
+2053: 
+2054:          foreira$brites pires/id=esc1548-e59-per3
+2055:             rel$parentesco/mulher/rodrigo afonso/esc1548-e59-per2
+2056: 
+2057:             referido$vicente anes/id=esc1548-e59-per4
+2058:                rel$parentesco/pai/brites pires/esc1548-e59-per3
+2059: 
+2060:             referido$pedro anes/id=esc1548-e59-per5
+2061:                rel$parentesco/irmao/brites pires/esc1548-e59-per3
+2062: 
+2063:          aforamento$um quarto de casal com terras casas currais
+aforamento-esc1548-e59-obj1- ** was stored with function in ACT verify act
+2064:             atr$localizacao/gatoes, montemor o velho
+2065:             atr$racao/um oitavo das novidades
+2066:             atr$foro/seis alqueires de trigo ou milho
+2067:             atr$foro/quatro alqueires de pao meado
+2068:             atr$foro/dois frangos
+2069:             atr$multa/quarenta mil reais
+2070: 
+2071:          test$anrique mendes/m/id=esc1548-e59-per6
+2072:             rel$profissional/feitor/margarida de castro/esc1548-e59-per1
+2073: 
+2074:          test$manuel jorge/m/id=esc1548-e59-per7
+2075: 
+2076:          referido$jorge anes/id=esc1548-e59-per8
+2077:             ls$residencia/pacos de santa clara
+2078:             rel$parentesco/pai/manuel jorge/esc1548-e59-per7
+2079: 
+2080:          test$francisco afonso/m/id=esc1548-e59-per9
+2081:             ls$residencia/pacos do mosteiro
+2082: 
+2083:          test$joao afonso/m/id=esc1548-e59-per10
+2084:             ls$profissao/lavrador
+2085:             ls$residencia/gatoes, montemor o velho
+2086: 
+2087:          test$fernao gomes/m/id=esc1548-e59-per11
+2088:             ls$profissao/lavrador
+2089:             ls$residencia/gatoes, montemor o velho
+2090: 
+2091:       escritura$esc1548-e60/23/10/1548/aforamento/fol=163v-169/loc=porta da cerca/sumario=aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e goncalo afonso; luis afonso; joao afonso; domingos afonso; rodrigo alvares; simao rodrigues; fernao gomes; simao vaz; joao afonso; domingos vaz; francisco pires; francisco fernandes; catarina vaz; joao rodrigues, de umas terras, vinhas, currais, herancas e matos, sitos em gatoes, montemor-o-velho
+2092: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1548-e60
+2093:          senhoria$margarida de castro/id=esc1548-e60-per1
+2094:             ls$cargo/abadessa
+2095: 
+2096:          foreiro$goncalo afonso/id=esc1548-e60-per2
+2097:             ls$profissao/lavrador
+2098:             ls$residencia/gatoes, montemor o velho
+2099: 
+2100:          foreira$brites afonso/id=esc1548-e60-per3
+2101:             rel$parentesco/mulher/goncalo afonso/esc1548-e60-per2
+2102: 
+2103:          foreiro$luis afonso/id=esc1548-e60-per4
+2104:             ls$profissao/lavrador
+2105:             ls$residencia/gatoes, montemor o velho
+2106: 
+2107:          foreira$isabel anes/id=esc1548-e60-per5
+2108:             rel$parentesco/mulher/luis afonso/esc1548-e60-per4
+2109: 
+2110:          foreiro$joao afonso/id=esc1548-e60-per6
+2111:             ls$profissao/lavrador
+2112:             ls$residencia/gatoes, montemor o velho
+2113: 
+2114:          foreira$ines afonso/id=esc1548-e60-per7
+2115:             rel$parentesco/mulher/joao afonso/esc1548-e60-per6
+2116: 
+2117:          foreiro$domingos afonso/id=esc1548-e60-per8
+2118:             ls$profissao/lavrador
+2119:             ls$residencia/gatoes, montemor o velho
+2120: 
+2121:          foreira$catarina goncalves/id=esc1548-e60-per9
+2122:             rel$parentesco/mulher/domingos afonso/esc1548-e60-per8
+2123: 
+2124:          foreiro$rodrigo alvares/id=esc1548-e60-per10
+2125:             ls$profissao/lavrador
+2126:             ls$residencia/gatoes, montemor o velho
+2127: 
+2128:          foreira$ines pires/id=esc1548-e60-per11
+2129:             rel$parentesco/mulher/rodrigo alvares/esc1548-e60-per10
+2130: 
+2131:          foreiro$simao rodrigues/id=esc1548-e60-per12
+2132:             ls$profissao/lavrador
+2133:             ls$residencia/gatoes, montemor o velho
+2134: 
+2135:          foreira$filipa fernandes/id=esc1548-e60-per13
+2136:             rel$parentesco/mulher/simao rodrigues/esc1548-e60-per12
+2137: 
+2138:          foreiro$fernao gomes/id=esc1548-e60-per14
+2139:             ls$profissao/lavrador
+2140:             ls$residencia/gatoes, montemor o velho
+2141: 
+2142:          foreira$ines rodrigues/id=esc1548-e60-per15
+2143:             rel$parentesco/mulher/fernao gomes/esc1548-e60-per14
+2144: 
+2145:          foreiro$simao vaz/id=esc1548-e60-per16
+2146:             ls$profissao/lavrador
+2147:             ls$residencia/gatoes, montemor o velho
+2148: 
+2149:          foreira$catarina fernandes/id=esc1548-e60-per17
+2150:             rel$parentesco/mulher/simao vaz/esc1548-e60-per16
+2151: 
+2152:          foreiro$joao afonso/id=esc1548-e60-per18
+2153:             ls$profissao/lavrador
+2154:             ls$residencia/gatoes, montemor o velho
+2155: 
+2156:             referido$frade do seixo/id=esc1548-e60-per19
+2157:                rel$parentesco/pai/joao afonso/esc1548-e60-per18
+2158: 
+2159:          foreira$brites vaz/id=esc1548-e60-per20
+2160:             rel$parentesco/mulher/joao afonso/esc1548-e60-per18
+2161: 
+2162:          foreiro$domingos vaz/id=esc1548-e60-per21
+2163:             ls$profissao/lavrador
+2164:             ls$residencia/gatoes, montemor o velho
+2165: 
+2166:          foreira$isabel anes/id=esc1548-e60-per22
+2167:             rel$parentesco/mulher/domingos vaz/esc1548-e60-per21
+2168: 
+2169:          foreiro$francisco pires/id=esc1548-e60-per23
+2170:             ls$profissao/lavrador
+2171:             ls$residencia/gatoes, montemor o velho
+2172: 
+2173:          foreira$catarina goncalves/id=esc1548-e60-per24
+2174:             rel$parentesco/mulher/francisco pires/esc1548-e60-per23
+2175: 
+2176:          foreiro$francisco fernandes/id=esc1548-e60-per25
+2177:             ls$profissao/lavrador
+2178:             ls$residencia/gatoes, montemor o velho
+2179: 
+2180:          foreira$domingas rodrigues/id=esc1548-e60-per26
+2181:             rel$parentesco/mulher/francisco fernandes/esc1548-e60-per25
+2182: 
+2183:          foreira$catarina vaz/id=esc1548-e60-per27
+2184:             ls$ec/viuva
+2185: 
+2186:             referido$vasco pires/id=esc1548-e60-per28
+2187:                rel$parentesco/marido/catarina vaz/esc1548-e60-per27
+2188:                ls$morto/antes
+2189: 
+2190:          foreiro$joao rodrigues/id=esc1548-e60-per29
+2191:             ls$residencia/maiorca
+2192: 
+2193:          foreira$ana fernandes/id=esc1548-e60-per30
+2194:             rel$parentesco/mulher/joao rodrigues/esc1548-e60-per29
+2195: 
+2196:          aforamento$terras casas vinhas currais herancas e matos
+aforamento-esc1548-e60-obj1- ** was stored with function in ACT verify act
+2197:             atr$localizacao/gatoes, montemor o velho
+2198: 
+2199:          aforamento$quatro jeiras de terra
+aforamento-esc1548-e60-obj2- ** was stored with function in ACT verify act
+2200:             atr$foro/tres alqueires de pao meado de trigo e segunda
+2201:             atr$foro/dois frangos
+2202:             atr$foro/meia de nata/obs=no mes de maio, dia da trindade
+2203:             atr$foro/dois alqueires de qualquer novidade/obs=pelas jeiras do paul
+2204:             atr$multa/quarenta mil reais por incumprimento
+2205: 
+2206:          test$anrique mendes/m/id=esc1548-e60-per31
+2207:             rel$profissional/feitor/margarida de castro/esc1548-e60-per1
+2208:             ls$residencia/pacos e cerco do mosteiro
+2209: 
+2210:          test$jorge anes/m/id=esc1548-e60-per32
+2211:             ls$profissao/carpinteiro
+2212:             ls$residencia/pacos e cerco do mosteiro
+2213: 
+2214:          test$andre jorge/m/id=esc1548-e60-per33
+2215: 
+2216:          test$manuel jorge/m/id=esc1548-e60-per34
+2217: 
+2218:       escritura$esc1549-e61/22/3/1549/emprazamento/fol=169-170v/loc=grades/sumario=emprazamento em quatro vidas celebrado entre mosteiro de santa clara e o conego na se catedral de coimbra, luis pires camelo, de um olival sito junto ao mosteiro de celas
+2219: 
+**** auto rels 2 STARTED.
+** Processing act escritura$esc1549-e61
+2220:          senhoria$margarida de castro/id=esc1549-e61-per1
+2221:             ls$cargo/abadessa
+2222: 
+2223:          foreiro$luis pires/id=esc1549-e61-per2
+2224:             ls$cargo/conego/obs=da se de coimbra
+2225: 
+2226:             referido$gil fernandes/id=esc1549-e61-per3/obs=antigo foreiro
+2227: 
+2228:             referida$catarina morais/id=esc1549-e61-per4
+2229:                rel$parentesco/mulher/gil fernandes/esc1549-e61-per3
+2230: 
+2231:          prazo$um olival
+prazo-esc1549-e61-obj1- ** was stored with function in ACT verify act
+2232:             atr$localizacao/junto ao mosteiro de celas
+2233:             atr$foro/onze alqueires de azeite
+2234:             atr$multa/quarenta mil reis
+2235: 
+2236:          test$joao alvares/m/id=esc1549-e61-per5
+2237:             ls$residencia/pacos do mosteiro
+2238: 
+2239:          test$antonio ?/m/id=esc1549-e61-per6/obs=duvida nao se le o segundo nome
+2240:             ls$residencia/pacos do mosteiro
+2241: 
+2242:          test$gaspar fernandes/m/id=esc1549-e61-per7
+2243:             ls$residencia/pacos do mosteiro
+2244: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario18.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario18.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario18.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_cartulario18.ids

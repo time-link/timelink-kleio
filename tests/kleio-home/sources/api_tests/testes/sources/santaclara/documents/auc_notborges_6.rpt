@@ -1,0 +1,215 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 1-16
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_6.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1607tb/tipo=escrituras/loc=auc, notarial cota v i-es-9-3-62, notario tome borges
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1607tb
+4:       escritura$not1607tb-e1/5/5/1607/obrigacao e quitacao/fol=95v-98/loc=grade do parlatorio/sumario=contrato de obrigacao e quitacao celebrado entre mosteiro de santa clara (quitante) e dona beatriz do rio (quitada), viuva de dom jorge de meneses e moradora na cidade de lisboa
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607tb-e1
+6:          quitantef$maria de vasconcelos/id=not1607tb-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9:             ls$titulo/dona
+10: 
+11:          quitada$beatriz do rio/id=not1607tb-e1-per2/obs=antes de ser cumprido o ultimo pagamento, d. jorge de meneses, marido da quitada, faleceu, e por ter ficado com muitas dividas a sua mulher dava ao convento pecas de muita importancia; por ele d. jorge ter irmas e parentes que no mesmo convento foram preladas; por ela viuva ter ficado com muitas dividas; por suas filhas serem muito habilidosas e proveitosas ao convento; por todas as religiosas serem suas amigas e amigas das filhas; por estas razoes e pelos beneficios de ainda dar com o que pode (faz muitas amizades ao convento todas as vezes que a requerem e sem na requererem), se consertam da seguinte forma: das legitimas deste dia para sempre paga-lhes dona beatriz, pela mao de seu procurador, o senhor luis lemos da costa, duzentos mil reais, assim se livrando da totalidade da divida, bem como do pagamento de alimentos
+12:             ls$titulo/dona
+13:             ls$ec/viuva
+14: 
+15:             referido$antonio cardoso/id=not1607tb-e1-per3
+16:                ls$titulo/frei
+17:                ls$ordem/sao francisco
+18:                rel$profissional/assistente assuntos do mosteiro/maria de vasconcelos/not1607tb-e1-per1
+19: 
+20:             referido$luis lemos da costa/id=not1607tb-e1-per4
+21:                rel$sociabilidade/procurador/beatriz do rio/not1607tb-e1-per2
+22: 
+23:             referido$jorge de meneses/id=not1607tb-e1-per5
+24:                rel$parentesco/marido/beatriz do rio/not1607tb-e1-per2
+25:                ls$morto/antes
+26: 
+27:             referida$francisca de meneses/id=not1607tb-e1-per6
+28:                ls$titulo/freira
+29:                ls$titulo/dona
+30:                rel$parentesco/filha/jorge de meneses/not1607tb-e1-per5
+31: 
+32:             referida$lourenca de meneses/id=not1607tb-e1-per7
+33:                ls$titulo/freira
+34:                ls$titulo/dona
+35:                rel$parentesco/filha/jorge de meneses/not1607tb-e1-per5
+36: 
+37:             referida$maria ana de meneses/id=not1607tb-e1-per8
+38:                ls$titulo/freira
+39:                ls$titulo/dona
+40:                rel$parentesco/filha/jorge de meneses/not1607tb-e1-per5
+41: 
+42:          test$jorge fernandes/m/id=not1607tb-e1-per9
+43:             rel$profissional/solicitador/maria de vasconcelos/not1607tb-e1-per1
+44: 
+45:          test$antonio alvares/m/id=not1607tb-e1-per10
+46:             rel$profissional/criado/maria de vasconcelos/not1607tb-e1-per1
+47: 
+48:          test$joao francisco/m/id=not1607tb-e1-per11
+49:             ls$profissao/criado/obs=do tabeliao
+50:             rel$profissional/criado/tome borges/1607.e1-tomb
+51: 
+52:          referido$tome borges/id=1607.e1-tomb
+53:             ls$profissao/tabeliao
+54: 
+55:          test$maria da cunha/f/id=not1607tb-e1-per12
+56:             ls$cargo/vigaria
+57:             ls$titulo/dona
+58:             ls$assina/sim
+59: 
+60:          test$margarida de castro/f/id=not1607tb-e1-per13
+61:             ls$cargo/escriva
+62:             ls$titulo/dona
+63:             ls$assina/sim
+64: 
+65:          test$ilaria da silveira/f/id=not1607tb-e1-per14
+66:             ls$titulo/dona
+67:             ls$assina/sim
+68:             ls$titulo/freira
+69: 
+70:          test$leonor anriques/f/id=not1607tb-e1-per15
+71:             ls$titulo/dona
+72:             ls$assina/sim
+73:             ls$titulo/freira
+74: 
+75:          test$madalena anriques/f/id=not1607tb-e1-per16
+76:             ls$titulo/dona
+77:             ls$assina/sim
+78:             ls$titulo/freira
+79: 
+80:       escritura$not1607tb-e2/7/6/1607/aforamento/fol=135v-139/loc=grade do parlatorio/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara de coimbra e manuel fernandes, de uma vinha sita no lugar de vale de mouro
+81: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607tb-e2
+82:          senhoria$maria da vasconcelos/id=not1607tb-e2-per1
+83:             ls$cargo/abadessa
+84:             ls$assina/sim
+85: 
+86:          foreiro$manuel fernandes/id=not1607tb-e2-per2
+87:             rel$profissional/criado/afonso castelo branco/not1607tb-e2-per3
+88:             ls$residencia/junto igreja de sao bartolomeu
+89: 
+90:          foreira$francisca rodrigues/id=not1607tb-e2-per4a
+91:             rel$parentesco/mulher/manuel fernandes/not1607tb-e2-per2
+92: 
+93:             referido$afonso castelo branco/id=not1607tb-e2-per3
+94:                ls$cargo/bispo/obs=diocese coimbra
+95: 
+96:          aforamento$uma vinha
+aforamento-not1607tb-e2-obj1- ** was stored with function in ACT verify act
+97:             atr$localizacao/limite cidade de coimbra no lugar de vale de mouro
+98:             atr$novidade/um oitavo de uma parte e um quinto da outra
+99:             atr$foro/uma galinha
+100:             atr$foro/setecentos reais em dinheiro
+101: 
+102:          test$jorge fernandes/m/id=not1607tb-e2-per4
+103:             rel$profissional/solicitador/maria da vasconcelos/not1607tb-e2-per1
+104: 
+105:          test$belchior alvares/m/id=not1607tb-e2-per5
+106:             ls$profissao/estudante/obs=universidade
+107: 
+108:          test$joao francisco/m/id=not1607tb-e2-per6
+109:             ls$profissao/criado/obs=do tabeliao
+110: 
+111:          test$maria da cunha/f/id=not1607tb-e2-per7
+112:             ls$cargo/vigaria
+113:             ls$assina/sim
+114: 
+115:          test$margarida de castro/f/id=not1607tb-e2-per8
+116:             ls$cargo/escriva
+117:             ls$assina/sim
+118: 
+119:          test$helena de melo/f/id=not1607tb-e2-per9
+120:             ls$titulo/freira
+121:             ls$assina/sim
+122:             ls$titulo/dona
+123: 
+124:          test$catarina de noronha/f/id=not1607tb-e2-per10
+125:             ls$titulo/freira
+126:             ls$assina/sim
+127:             ls$titulo/dona
+128: 
+129:          test$leonor anriques/f/id=not1607tb-e2-per11
+130:             ls$titulo/freira
+131:             ls$assina/sim
+132:             ls$titulo/dona
+133: 
+134:          test$ilaria da silveira/f/id=not1607tb-e2-per12
+135:             ls$titulo/freira
+136:             ls$assina/sim
+137:             ls$titulo/dona
+138: 
+139:       escritura$not1607tb-e3/21/6/1607/procuracao/fol=153v-154v/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procurador, baltasar fernandes, para que requeira e defenda todos os direitos das freiras
+140: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1607tb-e3
+141:          constituintef$maria de vasconcelos/id=not1607tb-e3-per1
+142:             ls$cargo/abadessa
+143:             ls$assina/sim
+144: 
+145:          procurador$baltasar fernandes/id=not1607tb-e3-per2
+146:             rel$sociabilidade/procurador/maria de vasconcelos/not1607tb-e3-per1
+147:             rel$profissional/mordomo/maria de vasconcelos/not1607tb-e3-per1
+148: 
+149:          test$pedro andre/m/id=not1607tb-e3-per3
+150:             rel$profissional/criado/maria de vasconcelos/not1607tb-e3-per1
+151: 
+152:          test$joao francisco/m/id=not1607tb-e3-per4
+153:             ls$profissao/criado/obs=tabeliao
+154: 
+155:          test$maria da cunha/f/id=not1607tb-e3-per5
+156:             ls$cargo/vigaria
+157:             ls$assina/sim
+158: 
+159:          test$margarida de castro/f/id=not1607tb-e3-per6
+160:             ls$cargo/escriva
+161:             ls$assina/sim
+162: 
+163:          test$helena de melo/f/id=not1607tb-e3-per7
+164:             ls$titulo/freira
+165:             ls$assina/sim
+166:             ls$titulo/dona
+167: 
+168:          test$catarina de noronha/f/id=not1607tb-e3-per8
+169:             ls$titulo/freira
+170:             ls$assina/sim
+171:             ls$titulo/dona
+172: 
+173:          test$leonor anriques/f/id=not1607tb-e3-per9
+174:             ls$titulo/freira
+175:             ls$assina/sim
+176:             ls$titulo/dona
+177: 
+178:          test$ilaria da silveira/f/id=not1607tb-e3-per10
+179:             ls$titulo/freira
+180:             ls$assina/sim
+181:             ls$titulo/dona
+182: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_6.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_6.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_6.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_6.ids

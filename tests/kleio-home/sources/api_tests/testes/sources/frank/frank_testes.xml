@@ -1,0 +1,1769 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/apache-tomcat-7.0.67/webapps/mhk/WEB-INF/clio/src/gacto2.str" SOURCE="/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli" TRANSLATOR="gactoxml2.str" WHEN="2017-5-23 23:1:19" OBS="" SPACE="">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="2" LEVEL="1" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="3" LEVEL="1" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="4" LEVEL="1" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="5" LEVEL="1" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="6" LEVEL="1" LINE="11">
+    <ELEMENT NAME="line" CLASS="line"><core>11</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="7" LEVEL="1" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="8" LEVEL="1" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="9" LEVEL="1" LINE="16">
+    <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="10" LEVEL="1" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="11" LEVEL="1" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="12" LEVEL="1" LINE="21">
+    <ELEMENT NAME="line" CLASS="line"><core>21</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="13" LEVEL="1" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="14" LEVEL="1" LINE="25">
+    <ELEMENT NAME="line" CLASS="line"><core>25</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="15" LEVEL="1" LINE="27">
+    <ELEMENT NAME="line" CLASS="line"><core>27</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="16" LEVEL="1" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="17" LEVEL="1" LINE="31">
+    <ELEMENT NAME="line" CLASS="line"><core>31</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="18" LEVEL="1" LINE="33">
+    <ELEMENT NAME="line" CLASS="line"><core>33</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="19" LEVEL="1" LINE="35">
+    <ELEMENT NAME="line" CLASS="line"><core>35</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="20" LEVEL="1" LINE="37">
+    <ELEMENT NAME="line" CLASS="line"><core>37</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="21" LEVEL="1" LINE="39">
+    <ELEMENT NAME="line" CLASS="line"><core>39</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="22" LEVEL="1" LINE="41">
+    <ELEMENT NAME="line" CLASS="line"><core>41</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="23" LEVEL="1" LINE="43">
+    <ELEMENT NAME="line" CLASS="line"><core>43</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="aom6530" NAME="fonte" CLASS="source" ORDER="24" LEVEL="1" LINE="44">
+    <ELEMENT NAME="line" CLASS="line"><core>44</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>aom6530</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[1770]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[Quarentine Register]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[Aom 6530]]></core>   </ELEMENT>
+   <ELEMENT NAME="loc" CLASS="loc">
+         <core><![CDATA[Bibliotheca Valletta]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[name of volume is Registro degli arrivi di Bastimenti in Quarantena qentry$15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="UNDEFINED" CLASS="undef">
+         <core><![CDATA[15]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/frank/frank_testes.cli]]></core>   </ELEMENT>
+</GROUP>
+</KLEIO>

@@ -1,0 +1,173 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 0-17
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_25.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1627/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-89, notarios tome borges e andre carvalho, maio a dezembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1627
+4:       escritura$not1627-e1/2/6/1627/arrendamento de rendas/fol=4v-6/loc=grade do parlatorio/sumario=contrato de arrendamento e obrigacao celebrado entre antonio coelho, bartolomeu de oliveira e d. lopo da cunha, no qual os primeiros dois se comprometem a entregar o pagamento da renda as monjas do mosteiro de santa clara da cidade de coimbra, por ser dinheiro correspondente a divida no valor de 200000 reais de d. lopo da cunha para com sua tia, dona maria da cunha, freira no referido mosteiro
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1627-e1
+6:          senhorio$lopo da cunha/id=not1627-e1-per1
+7:             ls$titulo/dom
+8:             ls$residencia/santarem/obs=duvida
+9: 
+10:          rendeiro$antonio coelho/id=not1627-e1-per2
+11:             ls$residencia/vila de ovoa
+12: 
+13:          rendeiro$bartolomeu de oliveira/id=not1627-e1-per3
+14:             ls$residencia/lugar do souto, termo da vila de ovoa
+15: 
+16:          bem$renda e fazenda
+bem-not1627-e1-obj1- ** was stored with function in ACT verify act
+17:             atr$localizacao/vila nova
+18:             atr$foro/cem mil reais por cada um em cada ano/obs=pagos em duas pagas iguais, s. joao e s. bartolomeu
+19: 
+20:          referida$maria da cunha/id=not1627-e1-per4/obs=d. lopo, seu sobrinho, deve-lhe 200000 reais
+21:             ls$condicao/freira professa
+22:             rel$parentesco/tia/lopo da cunha/not1627-e1-per1
+23:             rel$economica/credora/lopo da cunha/not1627-e1-per1
+24: 
+25:          test$maria da cunha/f/id=not1627-e1-per6
+26:             ls$cargo/abadessa
+27:             ls$assina/sim
+28: 
+29:          test$belchior fernandes/m/id=not1627-e1-per7
+30:             rel$profissional/criado/maria da cunha/not1627-e1-per6
+31: 
+32:          test$domingos pires/m/id=not1627-e1-per8
+33:             ls$profissao/sapateiro
+34:             ls$residencia/coimbra
+35: 
+36:       escritura$not1627-e2/1/7/1627/dotacao/fol=26-27v/loc=grade do parlatorio/sumario=dom pedro da cunha e dom lopo da cunha filho contratam para sempre com o mosteiro de santa clara da cidade de coimbra a compra de vinte mil reais de juro para a sua irma e tia, dona maria de tavora, freira no mosteiro, na condicao de, apos a morte da religiosa, ficarem livres do pagamento de legitimas%contrataram com o senhor dom pedro da cunha que comprando ele em cada ano 20 mil reais de juropara sempre para a senhora dona maria de tavora, sua irma que presente estava, e por sua morte ficarem os 20 mil reais de juro ao mosteiro e o dariam ao dito pedro da cunha por livre e quite das legitimas a que era obrigado por dona maria de tavora ser nele religiosa e entao o senhor dom lopo da cunha, filho de pedro da cunha, prosseguiria tambem com o mesmo pagamento e posterior, a sua morte, quitacao do mesmo. pagamento pago no almoxarifado de coimbra. e mais foi dito pela abadessa e religiosas que elas ordenavam por seu bastante procurador ao dito senhor dom lopo da cunha para que ele em seu nome delas constituintes possa comprar e fazer o padrao dos ditos 20 mil reais de juro pagos no almoxarifado de coimbra em cada ano para sempre.
+37: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1627-e2
+38:          dotante$pedro da cunha/id=not1627-e2-per1
+39:             ls$titulo/dom
+40:             rel$parentesco/pai/lopo da cunha/1627-lopopai
+41:             rel$parentesco/pai/maria de tavora/1627-mtavora
+42: 
+43:          dotante$lopo da cunha/id=1627-lopofilho
+44:             ls$titulo/dom
+45:             rel$parentesco/filho/lopo da cunha/1627-lopopai
+46: 
+47:          bem$20000 reais de juro/obs=com a condi��o de depos da morte da religiosa, ficarem livres do pagamento de legitimas
+48: 
+bem-not1627-e2-obj1- ** was stored with function in ACT verify act
+49:          dotada$maria de tavora/id=1627-mtavora
+50:             ls$titulo/dona
+51:             ls$titulo/freira/obs=do mosteiro de santa clara
+52:             rel$parentesco/irma/lopo da cunha/1627-lopopai
+53:             rel$parentesco/tia/lopo da cunha/1627-lopofilho
+54: 
+55:          test$inocencia de sa/f/id=not1627-e2-per2
+56:             ls$titulo/dona
+57:             ls$cargo/abadessa
+58:             ls$nomeprof/inocencia de jesus
+59:             ls$assina/sim
+60: 
+61:          test$isabel de castro/f/id=not1627-e2-per3
+62:             ls$titulo/dona
+63:             ls$cargo/vigaria
+64:             ls$nomeprof/isabel da rainha santa
+65:             ls$assina/sim
+66: 
+67:          test$francisca de meneses/f/id=not1627-e2-per4
+68:             ls$titulo/dona
+69:             ls$cargo/escriva
+70:             ls$nomeprof/francisca evangelista
+71:             ls$assina/sim
+72: 
+73:          test$andre de burgos/id=1627-e2-burgos
+74:             ls$profissao/advogado/obs=em coimbra
+75:             ls$residencia/coimbra
+76:             ls$titulo/licenciado
+77: 
+78:          test$tome lobo/id=not1627-e2-per5
+79:             ls$cargo/solicitador do mosteiro
+80: 
+81:          test$nome desconhecido/id=not1627-e2-per6
+82:             rel$profissional/criado/andre de burgos/1627-e2-burgos
+83: 
+84:          test$andre carvalho/id=not1627-e2-per7
+85:             ls$profissao/tabeliao
+86: 
+87:          test$maria do calvario/f/id=not1627-e2-per8
+88:             ls$titulo/dona
+89: 
+90:          test$maria do presepio/f/id=not1627-e2-per9
+91:             ls$titulo/dona
+92: 
+93:          test$jeronima de s. paulo/f/id=not1627-e2-per10
+94:             ls$titulo/dona
+95: 
+96:          test$francisca das chagas/f/id=not1627-e2-per11
+97:             ls$titulo/dona
+98: 
+99:          test$eugenia dos reis/f/id=not1627-e2-per12
+100:             ls$titulo/dona
+101: 
+102:       escritura$not1627-e3/9/7/1627/arrendamento de rendas/fol=37v-40/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e jorge antunes, de todas as coisas que vicente leitao, vigario da igreja de sangalhos, legou ao mosteiro
+103: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1627-e3
+104:          senhoria$inocencia de jesus/id=not1627-e3-per1
+105:             ls$cargo/abadessa
+106:             ls$titulo/dona
+107:             ls$assina/sim
+108: 
+109:          rendeiro$jorge antunes/id=not1627-e3-per2
+110:             ls$profissao/mercador
+111:             ls$residencia/sangalhos da igreja
+112: 
+113:             referido$vicente leitao/id=not1627-e3-per3/obs=antigo rendeiro
+114:                ls$cargo/vigario/obs=da igreja de sangalhos
+115: 
+116:          bem$$setenta almudes de vinho/obs=tal como se costuma pagar ao vigario, escolhido pelo mes de marco, do melhor que houver na adega do rendeiro da renda do mosteiro em sangalhos
+117: 
+bem-not1627-e3-obj1- ** was stored with function in ACT verify act
+118:          bem$todos os foros racoes e dizimos do pao e do vinho de sangalhos
+119: 
+bem-not1627-e3-obj2- ** was stored with function in ACT verify act
+120:          bem$dizimos das terras que se pagam a igreja de sangalhos
+121: 
+bem-not1627-e3-obj3- ** was stored with function in ACT verify act
+122:          bem$os corazis que se costumam pagar
+123: 
+bem-not1627-e3-obj4- ** was stored with function in ACT verify act
+124:          bem$mais corazis que se costumam pagar; mais gado bezerros, cordeiros, cabritos, mulas, poldros, leitoes, frangoes, patos, graos, alhos, cebolas, cabacas, ervilhas, favas, e todos os demais legumes e frutas, las de gado e tremocos
+125: 
+bem-not1627-e3-obj5- ** was stored with function in ACT verify act
+126:          test$inocencia de jesus/f/id=not1627-e3-per4
+127:             ls$cargo/abadessa
+128: 
+129:          test$isabel de castro/f/id=not1627-e3-per5
+130:             ls$cargo/vigaria
+131: 
+132:          test$francisca de noronha/f/id=not1627-e3-per6
+133:             ls$cargo/escriva
+134: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_25.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_25.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_25.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_25.ids

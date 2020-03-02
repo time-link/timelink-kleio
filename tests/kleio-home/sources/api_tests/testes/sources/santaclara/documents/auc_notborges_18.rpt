@@ -1,0 +1,216 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 19-44
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_18.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1622/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-80, notario tome borges, fevereiro a maio
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1622
+4:       escritura$not1622-e1/12/3/1622/arrendamento de rendas/fol=70-75/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara de coimbra, manuel rebelo e ant�nio de seixas, das rendas da igreja de sao martinho de montemor-o-velho
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1622-e1
+6:          senhoria$ines de noronha/id=not1622-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$nomeprof/ines do deserto/obs=nome de profissao
+9:             ls$titulo/dona
+10: 
+11:             referido$gaspar de santo andre/id=not1622-e1-per2
+12:                ls$titulo/frei
+13:                rel$sociabilidade/confessor/ines de noronha/not1622-e1-per1
+14: 
+15:          arrendatario$manuel rebelo/id=not1622-e1-per3/obs=rendeiro das saboarias do almoxarifado da cidade de coimbra
+16:             ls$residencia/coimbra
+17: 
+18:          arrendatario$antonio seixas/id=not1622-e1-per4
+19:             ls$profissao/ourives de ouro
+20:             ls$residencia/coimbra
+21: 
+22:          arrendamento$rendas da igreja de sao martinho
+arrendamento-not1622-e1-obj1- ** was stored with function in ACT verify act
+23:             atr$localizacao/montemor o velho
+24:             atr$foro/seiscentos mil reais em dinheiro de contado
+25:             atr$foro/noventa pedras de linho galego
+26:             atr$foro/trinta alqueires de legumes
+27:             atr$foro/dez alqueires de grao de bico do de cantanhede
+28:             atr$foro/dez alqueires de feijoes
+29:             atr$foro/dez alqueires de favas
+30:             atr$foro/doze redes de palha de trigo/obs=tudo pago em dia de sao miguel de setembro
+31: 
+32:          test$maria de vasconcelos/f/id=not1622-e1-per5
+33:             ls$cargo/vigaria
+34:             ls$assina/sim
+35: 
+36:          test$leonor de milao/f/id=not1622-e1-per6
+37:             ls$cargo/escriva
+38:             ls$assina/sim
+39: 
+40:          test$francisco de paiva/m/id=not1622-e1-per7
+41:             rel$profissional/solicitador/ines de noronha/not1622-e1-per1
+42: 
+43:          test$luis fernandes/m/id=not1622-e1-per8
+44:             ls$ec/solteiro
+45: 
+46:          referido$manuel fernandes/id=not1622-e1-per9
+47:             rel$parentesco/pai/luis fernandes/not1622-e1-per8
+48:             rel$profissional/carreiro/ines de noronha/not1622-e1-per1
+49: 
+50:          test$pedro alvares/m/id=not1622-e1-per10
+51:             ls$profissao/criado/obs=do tabeliao
+52:             rel$profissional/criado/tome borges/1622-e1-tmo
+53: 
+54:          referido$tome borges/id=1622-e1-tmo
+55: 
+56:          test$maria do presepio/f/id=not1622-e1-per11
+57:             ls$condicao/freira professa
+58:             ls$assina/sim
+59: 
+60:          test$francisca evangelista/f/id=not1622-e1-per12
+61:             ls$condicao/freira professa
+62:             ls$assina/sim
+63: 
+64:          test$cezilia da conceicao/f/id=not1622-e1-per13
+65:             ls$condicao/freira professa
+66:             ls$assina/sim
+67: 
+68:          test$maria do espirito santo/f/id=not1622-e1-per14
+69:             ls$condicao/freira professa
+70:             ls$assina/sim
+71: 
+72:          test$antonia da paixao/f/id=not1622-e1-per15
+73:             ls$condicao/freira professa
+74:             ls$assina/sim
+75: 
+76:       escritura$not1622-e2/5/4/1622/arrendamento de rendas/fol=108v-112v/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara de coimbra e manuel fragoso, de uns casais sitos no termo de coimbra
+77: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1622-e2
+78:          senhoria$ines de noronha/id=not1622-e2-per1
+79:             ls$cargo/abadessa
+80:             ls$assina/sim
+81:             ls$nomeprof/ines do deserto/obs=nome de profissao
+82: 
+83:          rendeiro$manuel fragoso/id=not1622-e2-per2
+84:             ls$profissao/merceeiro
+85: 
+86:          bem$uns casais
+bem-not1622-e2-obj1- ** was stored with function in ACT verify act
+87:             atr$localizacao/termo de coimbra
+88:             atr$foro/setenta mil reais em dinheiro de contado
+89:             atr$foro/quatro moios de milho miudo
+90:             atr$foro/um moios de trigo
+91:             atr$foro/quarenta e quatro pedras de linho galego
+92:             atr$foro/trinta galinhas
+93:             atr$foro/doze carradas de palha de milho boa e seca
+94: 
+95:          test$maria de vasconcelos/f/id=not1622-e2-per3
+96:             ls$cargo/vigaria
+97:             ls$assina/sim
+98: 
+99:          test$leonor de milao/f/id=not1622-e2-per4
+100:             ls$cargo/escriva
+101:             ls$nomeprof/leonor dos anjos/obs=nome de profissao
+102:             ls$assina/sim
+103: 
+104:          test$gaspar de santo andre/m/id=not1622-e2-per5
+105:             ls$titulo/frei
+106:             rel$sociabilidade/confessor/ines de noronha/not1622-e2-per1
+107: 
+108:          test$francisco de paiva/m/id=not1622-e2-per6
+109:             rel$profissional/solicitador/ines de noronha/not1622-e2-per1
+110: 
+111:          test$pedro andre/m/id=not1622-e2-per7
+112:             rel$profissional/criado/ines de noronha/not1622-e2-per1
+113: 
+114:          test$pedro alvares/m/id=not1622-e2-per8
+115:             ls$profissao/criado/obs=do tabeliao
+116:             rel$profissional/criado/tome borges/1622-e2-tome
+117: 
+118:          referido$tome borges/id=1622-e2-tome
+119: 
+120:          test$inocencia de jesus/f/id=not1622-e2-per9
+121:             ls$condicao/freira professa
+122:             ls$assina/sim
+123: 
+124:          test$cezilia da conceicao/f/id=not1622-e2-per10
+125:             ls$condicao/freira professa
+126:             ls$assina/sim
+127: 
+128:          test$mariana do espirito santo/f/id=not1622-e2-per11
+129:             ls$condicao/freira professa
+130:             ls$assina/sim
+131: 
+132:          test$antonia da paixao/f/id=not1622-e2-per12
+133:             ls$condicao/freira professa
+134:             ls$assina/sim
+135:             ls$titulo/soror
+136: 
+137:          test$francisca evangelista/f/id=not1622-e2-per13
+138:             ls$condicao/freira professa
+139:             ls$assina/sim
+140:             ls$titulo/soror
+141: 
+142:          test$maria do presepio/f/id=not1622-e2-per14
+143:             ls$condicao/freira professa
+144:             ls$assina/sim
+145:             ls$titulo/soror
+146: 
+147:       escritura$not1622-e3/5/4/1622/venda/fol=179v-181/loc=na cidade de coimbra no burgo do mosteiro de santa clara nas casas de morada de manuel joao trombeteiro/sumario=contrato de venda de uma morada de casas sita no burgo do mosteiro de santa clara de coimbra, pertencentes ao mesmo mosteiro, celebrado entre manuel joao e belchior fernandes
+148: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1622-e3
+149:          senhorio$mosteiro de santa clara de coimbra/id=not1622-e3-per1
+150: 
+151:          vendedor$belchior fernandes/id=not1622-e3-per2
+152:             rel$profissional/azemel/mosteiro de santa clara de coimbra/not1622-e3-per1
+153:             ls$residencia/patio do mosteiro de santa clara de coimbra
+154:             rel$economica/foreiro/mosteiro de santa clara de coimbra/not1622-e3-per1
+155: 
+156:          comprador$manuel joao/id=not1622-e3-per3
+157:             ls$profissao/trombeteiro
+158: 
+159:             referida$maria marques/id=not1622-e3-per4
+160:                rel$parentesco/mulher/manuel joao/not1622-e3-per3
+161: 
+162:          bem$uma morada de casas
+bem-not1622-e3-obj1- ** was stored with function in ACT verify act
+163:             atr$localizacao/burgo do mosteiro de santa clara de coimbra
+164:             atr$valor/dez mil reais
+165: 
+166:          test$pedro alvares/m/id=not1622-e3-per5
+167:             ls$profissao/criado/obs=do tabeliao
+168:             rel$profissional/criado/tome borges/1622-e3-borges
+169: 
+170:          referido$tome borges/id=1622-e3-borges
+171: 
+172:          test$antonio pereira/m/id=not1622-e3-per6
+173:             rel$profissional/criado/martim goncalves/not1622-e3-per7
+174: 
+175:          referido$martim goncalves/id=not1622-e3-per7
+176:             ls$titulo/doutor
+177:             ls$profissao/medico
+178: 
+179:          test$joao marques/m/id=not1622-e3-per8
+180:             ls$profissao/carpinteiro
+181: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_18.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_18.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_18.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_18.ids

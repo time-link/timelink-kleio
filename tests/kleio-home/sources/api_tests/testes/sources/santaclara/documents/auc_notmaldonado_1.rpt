@@ -1,0 +1,96 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 4-39
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmaldonado_1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1600/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-5-65, notario agostinho maldonado
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1600
+4:       escritura$not1600-e1/26/4/1600/aforamento/fol=55-57v/loc=grade do locutorio/sumario=contrato de aforamento para sempre de um moinho, celebrado entre mosteiro de santa clara e joao pires
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1600-e1
+6:          senhoria$catarina de albuquerque/id=not1600-e1-per1
+7:             ls$cargo/abadessa mosteiro de santa clara
+8: 
+9:          foreiro$joao pires/id=not1600-e1-per2
+10:             ls$profissao/lavrador
+11:             ls$residencia/povoa das borras termo da vila de sangalhos
+12: 
+13:          aforamento$um moinho
+aforamento-not1600-e1-obj1- ** was stored with function in ACT verify act
+14:             atr$foro/dois alqueires de trigo por sao miguel de setembro
+15: 
+16:          test$catarina de sena/f/id=not1600-e1-per3/obs=nome de profissao
+17:             ls$cargo/abadessa
+18:             ls$assina/sim
+19:             ls$titulo/dona
+20: 
+21:          test$maria de vasconcelos/f/id=not1600-e1-per4
+22:             ls$nomeprof/maria do presepio/obs=nome de profissao
+23:             ls$assina/sim
+24:             ls$titulo/dona
+25:             ls$cargo/vigaria
+26: 
+27:          test$ines de noronha/f/id=not1600-e1-per5
+28:             ls$nomeprof/ines do deserto/obs=nome de profissao
+29:             ls$assina/sim
+30:             ls$titulo/dona
+31: 
+32:          test$arcangela/f/id=not1600-e1-per6
+33:             ls$nomeprof/arcangela das chagas/obs=nome de profissao
+34:             ls$assina/sim
+35:             ls$titulo/dona
+36: 
+37:          test$helena d melo/f/id=not1600-e1-per7
+38:             ls$assina/sim
+39:             ls$titulo/dona
+40: 
+41:          test$jeronima de sousa/f/id=not1600-e1-per8
+42:             ls$nomeprof/jeronima de sao paulo/obs=nome de profissao
+43:             ls$assina/sim
+44:             ls$titulo/dona
+45: 
+46:          test$madalena anriques/f/id=not1600-e1-per9
+47:             ls$assina/sim
+48:             ls$titulo/dona
+49: 
+50:          test$maria da cunha/f/id=not1600-e1-per10
+51:             ls$nomeprof/maria do calvario/obs=nome de profissao
+52:             ls$assina/sim
+53:             ls$titulo/dona
+54:             ls$cargo/escriva
+55: 
+56:          test$joana evangelista/f/id=not1600-e1-per11
+57: 
+58:          test$joana ?/f/id=not1600-e1-per12/obs=duvida segundo nome
+59: 
+60:          test$antonio duarte/m/id=not1600-e1-per13
+61:             ls$profissao/pedreiro
+62:             ls$residencia/pacos de santa clara
+63: 
+64:          test$jorge goncalves/m/id=not1600-e1-per14
+65:             ls$profissao/criado
+66:             rel$profissional/criado/catarina de albuquerque/not1600-e1-per1
+67: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmaldonado_1.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmaldonado_1.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmaldonado_1.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notmaldonado_1.ids

@@ -1,0 +1,3179 @@
+kleio$gacto2-str
+   fonte$ofm,provincia de portugal,santa clara de coimbra, mc.7 -doc.part./1370-1383/tipo=escritura/loc=dgarq-ofm.csccparticulares-maco07.
+
+      escritura$1370.e1.m7-01/5/1/1370/emprazamento/fol=mc.7 n.01/loc=a grade do mosteiro de santa clara de coimbra/sumario=aldora de sousa e mosteiro de santa clara emprazam umas casas sobradadas na rua da ponte em coimbra a lourenco martins e domingas domingues, para fazerem uma estalagem, com a condicao de acolherem vincente domingues, antigo enfiteuta/obs=perg., got.cursivo, sinal notarial
+            atr$contrato tipo/emprazamento
+            atr$renda principal tipo/fixa em dinheiro/obs=renda e pensao
+            atr$renda principal valor/10 libras/obs=de dinheiro portugues
+            atr$pagamento renda principal/dia de sao joao batista
+            atr$renda acessoria tipo/fixa em generos
+            atr$renda acessoria valor/2 capoes
+            atr$pagamento renda acessoria/dia de sao joao batista
+            atr$condicoes/manter um lugar para vicente domingues nas casas emprazadas
+            atr$pena/25 libras/obs=de dinheiro portugues
+            
+         bem$casas sobradadas - rua da ponte
+            atr$localizacao/rua da ponte
+            atr$termoc/coimbra
+            atr$confrontacoes/partem de uma parte com casas de afonso domingues sapateiro
+            atr$confrontacoes/e da outra parte com casa de santa ana
+            atr$confrontacoes/e da outra com azinhaga e com casa que foi de vicente anes colhar
+            atr$confrontacoes/e da outra com rua publica
+            rel$posse/pertenceu/vicente domingues/1370.e1.vicente
+            rel$posse/pertence/mosteiro de santa clara/1370.e1.msc
+            rel$posse/por emprazamento/lourenco martins/1370.e1.lourenco
+            rel$posse/por emprazamento/domingas domingues/1370.e1.domingas
+            
+         senhorio$mosteiro de santa clara/id=1370.e1.msc
+
+            referida$aldora sousa/id=1370.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$lourenco martins/id=1370.e1.lourenco
+            ls$profissao/estalajadeiro
+            ls$residencia/coimbra
+
+         enfiteutaf$domingas domingues/id=1370.e1.domingas
+            rel$parentesco/mulher/lourenco martins/1370.e1.lourenco
+
+            referido$vicente domingues/id=1370.e1.vicente/obs=novo contrato realizado desde que vicente domingues tenha um lugar nas casas emprazadas
+               ls$profissao/sapateiro
+
+         test$afonso martins/id=1370.e1.msc.m7-01-per1
+            ls$cargo/capelao
+            rel$profissional/capelao/mosteiro de santa clara/1370.e1.msc
+
+         test$vasco anes/id=1370.e1.msc.m7-01-per2
+            ls$cargo/capelao
+            rel$profissional/capelao/mosteiro de santa clara/1370.e1.msc
+            
+         tabeliao$joao afonso/obs=8 soldos pelo registo
+             ls$intitulacao/publico tabeliao de el rei em coimbra
+             
+                      
+      
+      escritura$1370.es1.m7-02/25/9/1370/escambo/fol=mc.7 n.02/loc=a grade do mosteiro de santa clara de coimbra/sumario=a abadessa de santa clara e mosteiro de santa clara escambam com maria anes, curadora dos filhos menores, dois meios casais no termo de penela, o mosteiro fica com a metade do casal de martim moucho, maria anes e filhos ficam com a metade do casal de joao esteves de monte de aves e mais vinte libras/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/escambo
+		 atr$preco/20 libras/obs=alem da entrega do meio casal foram entregues a maria anes 20 libras de dinheiro portugues
+		 atr$pena/500 libras/obs=de dinheiro portugues 
+      
+         bem$casal - povoa das taliscas
+            atr$descricao/metade de um casal de martim mocho, que recebe o mosteiro
+            atr$localizacao/povoa das taliscas
+            atr$termoc/penela
+            rel$posse/pertence/maria anes/1370.es1.maria
+            rel$posse/por escambo/mosteiro de santa clara/1370.es1.msc
+           
+         bem$casal - povoa das taliscas
+            atr$descricao/metade de um casal de joao esteves de monte d'aves, que recebe maria anes e seus filhos
+            atr$localizacao/povoa das taliscas
+            atr$termoc/penela
+            rel$posse/pertence/mosteiro de santa clara/1370.es1.msc
+            rel$posse/por escambo/maria anes/1370.es1.maria
+                  
+         escambador$mosteiro de santa clara/id=1370.es1.msc
+
+            referida$aldora sousa/id=1370.es1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         escambadora$maria anes/id=1370.es1.maria
+            ls$residencia/alenquer
+            ls$cargo/curadora/obs=de filhos menores
+
+         procurador$lourenco esteves/id=1370.es1.lourenco1
+            ls$profissao/escolar
+            rel$sociabilidade/procurador/maria anes/1370.es1.maria/obs=com poder para escambar bens no termo de penela
+            rel$parentesco/filho/maria anes/1370.es1.maria
+            rel$parentesco/filho/lourenco esteves/1370.es1.lourenco2
+
+            referido$lourenco esteves/id=1370.es1.lourenco2
+               ls$residencia/penela
+               ls$titulo/vassalo do rei
+               rel$parentesco/pai/lourenco esteves/1370.es1.lourenco1b
+               rel$parentesco/marido/maria anes/1370.es1.maria
+               ls$morto/antes/sim
+
+            referido$martim mocho/id=es1370.1.m7-02-per8-per9
+               ls$residencia/povoa das taliscas
+
+            referido$joao esteves/id=es1370.1.m7-02-per8-per10
+               ls$residencia/monte de aves/obs=toponimo associado ao patronimico
+               
+         test$frei vasco/id=es1370.1.m7-02-per1
+            ls$residencia/miranda
+
+         test$vasco martins/id=es1370.1.m7-02-per2
+            ls$cargo/marceiro
+            rel$profissional/marceiro/mosteiro de santa clara/1370.es1.msc
+            rel$sociabilidade/procurador/mosteiro de santa clara/1370.es1.msc
+
+         test$goncalo lourenco/id=es1370.1.m7-02-per3
+            rel$sociabilidade/homem/aldora sousa/1370.es1.msc.aba
+
+         test$vicente anes/id=es1370.1.m7-02-per4
+
+         test$vasco goncalves/id=es1370.1.m7-02-per5
+            rel$sociabilidade/homem/lourenco esteves/1370.es1.lourenco1
+
+         test$joao peres/id=es1370.1.m7-02-per6
+            ls$residencia/orelhudo
+
+         test$vasco peres/id=es1370.1.m7-02-per7
+            ls$residencia/sabacheira
+
+         tabeliao$joao afonso/obs=30 soldos pelo registo/id=es1370.1.m7-02-per8
+            ls$intitulacao/publico tabeliao de el rei na cidade de coimbra
+            
+
+            
+      escritura$1370.p1.m7-02a/17/9/1370/procuracao/fol=mc.7 n.02/loc=igreja de santa maria de triana de alenquer/sumario=procuracao trasladada num documento de escambo na qual maria anes estabelece como procurador dos seus bens e de seus filhos lourenco esteves seu filho, com o poder de escambar todos os bens que tem no termo de penela/obs=perg., got.cursivo, trasladada no documento es1370.1.m7-02.25.9.1370
+
+         constituinte$maria anes/mesmo_que=1370.es1.maria/id=p1370.1.m7-02a-per1
+
+         procurador$lourenco esteves/mesmo_que=1370.es1.lourenco1/id=p1370.1.m7-02a-per2
+            rel$sociabilidade/procurador/maria anes/1370.es1.maria
+            rel$parentesco/filho/maria anes/1370.es1.maria
+
+         test$joao de sintra/id=p1370.1.m7-02a-per3
+
+         test$joao lourenco/id=p1370.1.m7-02a-per4
+
+         test$nuno vasques/id=p1370.1.m7-02a-per5
+            ls$titulo/clerigo
+
+         tabeliao$guilherme anes/id=p1370.1.m7-02a-per6
+            ls$intitulacao/tabeliao em alenquer
+
+         
+       
+       escritura$1370.af1.m7-03/27/10/1370/aforamento/fol=mc.7 n.3/loc=a gradizela de ferro do mosteiro de santa clara/sumario=aldora de sousa faz aforamento do quinhao de um pisao e suas herdades em albarrol a estaco domingues e margarida lourenco, pisao que traziam estevao cassado, constanca esteves e gil cassado/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/aforamento
+		 atr$renda principal tipo/parciaria
+		 atr$renda principal valor/1 sexto da producao/obs=de todos os frutos e prois
+		 atr$pagamento renda principal/dia de todos os santos/obs=dia d'omnia sanctora
+		 atr$renda acessoria tipo/fixa em dinheiro
+		 atr$renda acessoria valor/20 soldos/obs=dos portugueses, por oferta de dois aniversarios que a dita ordem ha de dizer
+		 atr$pena/25 libras/obs=das portuguesas
+		 atr$duracao/perpetuo e hereditario
+         
+         bem$pisao - albarrol
+            atr$descricao/o quinhao e direito que o dito mosteiro havia no pisao de fundo que e em albarrol termo da dita vila de penela com as suas herdades
+            atr$localizacao/albarrol
+            atr$termoc/penela/obs=actualmente concelho de miranda do corvo
+            rel$posse/pertenceu/estevao cassado/1370.af1.estevao
+            rel$posse/pertenceu/constanca esteves/1370.af1.constanca
+            rel$posse/pertenceu/gil cassado/1370.af1.gil
+            rel$posse/pertence/mosteiro de santa clara/1370.af1.msc
+            rel$posse/por aforamento/estaco domingues/1370.af1.estaco
+            rel$posse/por aforamento/margarida lourenco/1370.af1.margarida
+            
+         senhorio$mosteiro de santa clara/id=1370.af1.msc
+
+            referida$aldora sousa/id=1370.af1.msc.aba.
+               ls$cargo/abadessa de santa clara
+
+         foreiro$estaco domingues/id=1370.af1.estaco
+            ls$residencia/porto dos judeus/obs=termo de penela
+
+         foreira$margarida lourenco/id=1370.af1.margarida
+            ls$residencia/porto dos judeus/obs=termo de penela
+            rel$parentesco/mulher/estaco domingues/1370.af1.estaco
+
+            referido$estevao cassado/id=1370.af1.estevao
+
+            referido$gil cassado/id=1370.af1.gil
+               rel$parentesco/filho/estevao cassado/1370.af1.estevao
+               rel$parentesco/filho/constanca estevao/1370.af1.constanca
+
+            referida$constanca esteves/id=1370.af1.constanca
+               rel$parentesco/mulher/estevao cassado/1370.af1.estevao
+
+         test$vasco martins/id=af1370.1.m7-03-per1
+            rel$sociabilidade/procurador/mosteiro de santa clara/1370.af1.msc
+
+         test$afonso anes/id=af1370.1.m7-03-per2
+
+         test$afonso anes/id=af1370.1.m7-03-per3
+            ls$residencia/carvalhais
+
+         test$afonso esteves/id=af1370.1.m7-03-per4
+            ls$residencia/lamas
+
+         tabeliao$diogo lourenco/obs=6 soldos pelo registo/id=af1370.1.m7-03-per5
+            ls$intitulacao/tabeliao publico de nosso senhor el rei na dita cidade de coimbra
+
+                                 
+
+      escritura$1370.af2.m7-04/27/10/1370/aforamento/fol=mc.7 n.4/loc=a gradizela de ferro do mosteiro de santa clara/sumario=aldora de sousa faz aforamento do quinhao de um pisao e suas herdades em albarrol a estaco domingues e margarida lourenco, pisao que traziam estevao cassado, constanca esteves e gil cassado/obs=copia do documento af1370.1.m7-04.27.10.1370/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/aforamento
+		 atr$renda principal tipo/parciaria
+		 atr$renda principal valor/1 sexto da producao/obs=de todos os frutos e prois
+		 atr$pagamento renda principal/dia de todos os santos/obs=dia d'omnia sanctora
+		 atr$renda acessoria tipo/fixa em dinheiro
+		 atr$renda acessoria valor/20 soldos/obs=dos portugueses, por oferta de dois aniversarios que a dita ordem ha de dizer
+		 atr$pena/25 libras/obs=das portuguesas
+		 atr$duracao/perpetuo e hereditario
+		 
+         bem$pisao - albarrol
+            atr$descricao/o quinhao e direito que o dito mosteiro havia no pisao de fundo que e em albarrol termo da dita vila de penela com as suas herdades
+            atr$localizacao/albarrol
+            atr$termoc/penela/obs=actualmente concelho de miranda do corvo
+            rel$posse/pertenceu/estevao cassado/1370.af2.estevao
+            rel$posse/pertenceu/constanca esteves/1370.af2.constanca
+            rel$posse/pertenceu/gil cassado/1370.af2.gil
+            rel$posse/pertence/mosteiro de santa clara/1370.af2.msc
+            rel$posse/por aforamento/estaco domingues/1370.af2.estaco
+            rel$posse/por aforamento/margarida lourenco/1370.af2.margarida
+		 
+         senhorio$mosteiro de santa clara/id=1370.af2.msc
+
+            referida$aldora sousa/id=1370.af2.msc.aba.
+               ls$cargo/abadessa de santa clara
+
+         foreiro$estaco domingues/id=1370.af2.estaco
+            ls$residencia/porto dos judeus/obs=termo de penela
+
+         foreira$margarida lourenco/id=1370.af2.margarida
+            ls$residencia/porto dos judeus/obs=termo de penela
+            rel$parentesco/mulher/estaco domingues/1370.af2.estaco
+
+            referido$estevao cassado/id=1370.af2.estevao
+
+            referido$gil cassado/id=1370.af2.gil
+               rel$parentesco/filho/estevao cassado/1370.af2.estevao
+               rel$parentesco/filho/constanca estevao/1370.af2.constanca
+
+            referida$constanca esteves/id=1370.af2.constanca
+               rel$parentesco/mulher/estevao cassado/1370.af2.estevao
+
+         test$vasco martins/id=af1370.2.m7-04-per1
+            rel$sociabilidade/procurador/mosteiro de santa clara/1370.af2.msc
+
+         test$afonso anes/id=af1370.2.m7-04-per2
+
+         test$afonso anes/id=af1370.2.m7-04-per3
+            ls$residencia/carvalhais
+
+         test$afonso esteves/id=af1370.2.m7-04-per4
+            ls$residencia/lamas
+
+         tabeliao$diogo lourenco/obs=6 soldos pelo registo/id=af1370.2.m7-04-per5
+            ls$intitulacao/tabeliao publico de nosso senhor el rei na dita cidade de coimbra
+
+                     
+            
+      escritura$1371.e1.m7-05/16/1/1371/emprazamento/fol=mc.7 n.05/loc=a grade do mosteiro de santa clara/sumario=aldora de sousa faz emprazamento por 3 vidas a vicente anes, mulher e filha de umas casas e herdade em leiria/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+                 atr$duracao/3 vidas
+		 atr$renda/0/obs=ilegivel
+		 atr$pena/25 libras/obs=de dinheiro portugues
+		 
+	 bem$casas - leiria
+            atr$descricao/em que ora vicente anes mora com uma ...que ai esta de dentro
+            atr$localizacao/leiria
+            atr$confrontacoes/que parte de uma parte com estalagem
+            atr$confrontacoes/e da outra com casas de lourenco anes da azoia
+            atr$confrontacoes/e da outra parte com casas de el rei
+            rel$posse/pertence/mosteiro de santa clara/1371.e1.msc
+            rel$posse/por emprazamento/vicente anes/1371.e1.vicente
+            rel$posse/por emprazamento/alva? esteves/1371.e1.alva
+            rel$posse/por emprazamento/catarina/1371.e1.catarina
+            
+         bem$casa - leiria
+            atr$descricao/casa pequena de sobrado dianteiro que sai a rua
+            atr$localizacao/leiria
+            atr$confrontacoes/a qual parte com rua publica e com adega do dito mosteiro segundo as que ele ora mora ...
+            atr$confrontacoes/da adega e estalagem sobreditas com rua e herdades
+            atr$confrontacoes/com casas e herdades do mosteiro de alcobaca e de arouca
+            rel$posse/pertence/mosteiro de santa clara/1371.e1.msc
+            rel$posse/por emprazamento/vicente anes/1371.e1.vicente
+            rel$posse/por emprazamento/alva? esteves/1371.e1.alva
+            rel$posse/por emprazamento/catarina/1371.e1.catarina
+           
+         bem$herdade - leiria
+            atr$localizacao/leiria
+            atr$confrontacoes/...parte com o rio e com herdades do mosteiro de alcobaca e de arouca
+            rel$posse/pertence/mosteiro de santa clara/1371.e1.msc
+            rel$posse/por emprazamento/vicente anes/1371.e1.vicente
+            rel$posse/por emprazamento/alva? esteves/1371.e1.alva
+            rel$posse/por emprazamento/catarina/1371.e1.catarina	 
+         
+         senhorio$mosteiro de santa clara/id=1371.e1.msc
+
+            referida$aldora sousa/id=1371.e1.msc.aba
+               ls$cargo/abadessa
+
+         enfiteuta$vicente anes/id=1371.e1.vicente
+            ls$residencia/leiria
+
+         enfiteutaf$alva? esteves/obs=duvidas no primeiro nome/id=1371.e1.alva
+            ls$residencia/leiria
+            rel$parentesco/mulher/vicente anes/1371.e1.vicente
+
+         enfiteutaf$catarina/id=1371.e1.catarina
+            rel$parentesco/filha/vicente anes/1371.e1.vicente
+            rel$parentesco/filha/alva? esteves/1371.e1.alva
+
+            referido$lourenco anes/id=1371.e1.catarina-per1
+               ls$residencia/azoia/obs=termo de leiria
+
+         test$alvaro domingues/id=e1371.1.m7-05-per2
+            ls$profissao/escolar
+
+         test$filipe d'andreste?/obs=duvida no segundo nome/id=e1371.1.m7-05-per3
+            ls$profissao/escolar
+
+         test$joao martins?/obs=duvida no segundo nome/id=e1371.1.m7-05-per4
+            ls$profissao/escolar
+
+         test$afonso vaz/id=e1371.1.m7-05-per5
+
+         tabeliao$joao afonso/id=e1371.1.m7-05-per6
+            ls$intitulacao/publico tabeliao de el rei em coimbra
+
+                     
+      
+      escritura$1371.s1.m7-06/25/11/1371/tipo=sentenca/fol=mc.7 n.06/loc=montemor o velho/sumario=joao anes pede ao tabeliao um instrumento publico em que relata a situacao de aproveitamento indevido pelas justicas de montemor do trigo do mosteiro de santa clara de coimbra, guardado no celeiro da igreja de sao martinho em montemor, mostrando uma carta regia que previne esse aproveitamento indevido, ao que o almotace responde que tem usado do cereal da terca do bispo e nao do das freiras de santa clara/obs=perg., got.cursivo, sinal notarial
+
+         autor$mosteiro de santa clara/id=1371.s1.msc
+	 
+	 procurador$joao anes
+	    ls$profissao/criado
+	    rel$profissional/criado do mosteiro/mosteiro de santa clara/1371.s1.msc
+	    rel$sociabilidade/procurador/mosteiro de santa clara/1371.s1.msc
+	    
+	 reu$alvaro goncalves
+	    ls$cargo/almotace/obs=de montemor
+	    	    
+                  referido$fernando/id=1371.s1.fernando.rei
+	            ls$titulo/dom
+	            ls$titulo/rei
+	            ls$intitulacao/rei de portugal e do algarve
+	 
+	          referido$nome desconhecido/obs=tem trigo para tercar no celeiro da igreja de sao martinho em montemor
+                    ls$cargo/bispo de coimbra
+	 	    
+         test$domingos anes
+	    ls$profissao/algoz
+	    rel$profissional/algoz do rei/fernando/1371.s1.fernando.rei
+	    
+         test$afonso domingues
+	    ls$profissao/algoz
+            rel$profissional/algoz do rei/fernando/1371.s1.fernando.rei
+	    
+	 test$afonso anes/id=1371.s1.afonso
+	    ls$residencia/montemor o velho
+	    rel$parentesco/filho/joao simao/1371.s1.joao
+	 
+	 referido$joao simao/id=1371.s1.joao
+	    rel$parentesco/pai/afonso anes/1371.s1.afonso
+	 
+	 test$mateus domingues
+	    ls$residencia/montemor o velho
+	    ls$titulo/clerigo
+	    
+	 tabeliao$afonso esteves/obs=24 soldos pela lavra do documento
+	    ls$intitulacao/publico tabeliao de nosso senhor el rei a sua vila de miranda e seus termos
+	   
+	 demanda$utilizacao indevida de bens do mosteiro de santa clara/obs=o dito almotace disse a joao anes que era nas casas da dita igreja para requerer e haver de ver os bens da dita igreja por a abadessa e convento do dito mosteiro que presente estava que abrisse o celeiro da dita igreja ca o queria ver para dar do dito trigo dele as padeiras para darem pao a el rei e aos da sua merce
+	 
+	 defesa$demonstracao de utilizacao indevida por carta regia/obs=a qual carta assim mostrada e lida por mim sobredito tabeliao o dito joao anes disse ao dito almotace que o trigo e pao que no celeiro estava que a dita abadessae convento o tinham ai para seu mantimento e que porem nao havia que lho tomar
+	 
+	 sentenca$utilizacao de bens do bispo e nao do mosteiro de santa clara/obs=e o dito almotace disse e deu em resposta que nao queria ora tomar do trigo da dita abadessa e convento mas que mandava que tomassem do trigo que no dito celeiro estava do bispo que era para tercar ca o dito bispo nao era na terra e porem o nao havia ora mester para seu mantimento e logo o dito almotace entrou no dito celeiro e do trigo que ai estava mandou dele dar a algumas padeiras por os dinheiros para darem dele o pao a el rei e aos da sua merce dizendo que o tomava por da terca do bispo
+	 
+	 bem$igreja de sao martinho
+	    atr$descricao/cereal do trigo do celeiro da igreja de sao martinho
+	    atr$localizacao/montemor
+	    rel$posse/pertence ao mosteiro/mosteiro de santa clara/1371.s1.msc
+	 
+      
+            
+      escritura$1372.e1.m7-07/1/5/1372/emprazamento/fol= mc.7 n.07/loc=a porta da ermida de sao lourenco de coimbra/sumario= o mosteiro empraza uma casa no outeiro, termo de montemor o velho, a alvaro martins e mulher pelo prazo de 3 vidas/obs=perg., got.cursivo, sinal notarial
+                 atr$contrato tipo/emprazamento
+		 atr$duracao/3 vidas/obs=casal mais uma pessoa a nomear
+		 atr$renda principal tipo/fixa em dinheiro/obs=renda e pensao
+		 atr$renda principal valor/40 soldos/obs=de moeda usual corrente ao tempo da paga em portugal 
+		 atr$pagamento renda principal/dia de sao joao/obs=em cada um ano, no mosteiro ou em montemor
+		 atr$renda acessoria tipo/fixa em generos
+		 atr$renda acessoria valor/ 1 capao/obs=ou em vez do capao mais 5 soldos
+		 atr$pagamento renda acessoria/dia de sao joao/obs=em cada um ano, no mosteiro ou em montemor
+		 atr$pena/25 libras/obs=de moeda corrente 
+         
+	 bem$casa - outeiro
+            atr$localizacao/outeiro
+            atr$termoc/montemor o velho
+            atr$confrontacoes/parte com uma casa de joao simao
+            atr$confrontacoes/e da outra com casa de rasaleiro e requeixo permeios
+            atr$confrontacoes/e da outra parte via publica e a dita casa em meio destes termos
+            rel$posse/pertence/mosteiro de santa clara/1372.e1.msc
+            rel$posse/por emprazamento/alvaro martins/1372.e1.alvaro
+            rel$posse/por emprazamento/domingas esteves/1372.e1.domingas
+            
+         senhorio$mosteiro de santa clara/id=1372.e1.msc
+
+            referida$aldora sousa/id=1372.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         procurador$vasco martins/id=1372.e1.vasco
+            rel$sociabilidade/procurador/mosteiro de santa clara/1372.e1.msc
+
+         enfiteuta$alvaro martins/id=1372.e1.alvaro
+            ls$residencia/freguesia de sao martinho/obs=em montemor o velho
+
+         enfiteutaf$domingas esteves/id=1372.e1.domingas
+            ls$residencia/freguesia de sao martinho/obs=em montemor o velho
+            rel$parentesco/mulher/alvaro martins/1372.e1.alvaro
+
+         test$joao anes/id=e1372.1.m7-07-per1
+            rel$sociabilidade/homem/mosteiro de santa clara/1372.e1.msc/obs=homem do convento
+
+         test$joao vicente/id=e1372.1.m7-07-per2
+            ls$profissao/ferreiro
+
+         test$antonio bartolomeu/id=e1372.1.m7-07-per3
+
+         tabeliao$goncalo martins/obs=16 reais pelo registo/id=e1372.1.m7-07-per4
+            ls$residencia/coimbra
+          
+
+      
+      escritura$1370.p2.m7-07a/25/9/1370/procuracao/fol=mc.7 n.7/loc=a grade do mosteiro/sumario=procuracao trasladada num documento de emprazamento na qual aldora de sousa e convento do mosteiro de santa clara estabelecem como procurador dos seus bens vasco martins/obs=perg., got.cursivo, trasladada no documento e1372.1.m7-07.1.5.1372
+
+         constituinte$mosteiro de santa clara/mesmo_que=1372.e1.msc/id=p1370.2.m7-07a-per1
+
+            referida$aldora de sousa/mesmo_que=1372.e1.msc.aba/id=p1370.2.m7-07a-per1-per2
+
+         procurador$vasco martins/mesmo_que=1372.e1.vasco/id=p1370.2.m7-07a-per3
+            rel$sociabilidade/procurador/mosteiro de santa clara/1372.e1.msc
+            
+                  
+            
+      escritura$1372.es1.m7-08/25/5/1372/escambo/fol=mc.7 n.08/loc=bras, termo de dornas/sumario= maria anes, escamba a sua herdade em vale de ferreiro por uma herdade em alvaiazere que pertence a maria gesteira, com joao couce, testamenteiro da dita maria gesteira/obs=perg., got.cursivo, sinal notarial
+         	atr$contrato tipo/escambo
+                atr$pena/200 libras/obs=de dinheiro portugues
+         	
+         bem$herdade - coimbra
+            atr$descricao/herdade de maria anes e fernao vasques que recebe joao couce
+            atr$localizacao/vale de ferreiro/obs=junto a casas novas
+            atr$termoc/coimbra
+            rel$posse/pertence/maria anes/1372.p1.maria1
+            rel$posse/por escambo/joao couce/1372.p1.joao1
+             
+         bem$herdade - alvaiazere
+            atr$descricao/herdade de maria gesteira que recebe maria anes
+            atr$localizacao/alvaiazere
+            rel$posse/pertence/joao couce/1372.p1.joao1
+            rel$posse/por escambo/maria anes/1372.p1.maria1
+         	
+         escambador$maria anes/mesmo_que=1372.p1.maria1/id=es1372.1.m7-08-per1
+
+         escambador$joao couce/mesmo_que=1372.p1.joao1/id=es1372.1.m7-08-per2
+
+            referida$maria gesteira/mesmo_que=1372.p1.maria2/id=es1372.1.m7-08-per2-per3
+
+         test$afonso anes/id=es1372.1.m7-08-per4
+            ls$residencia/dornas
+
+         test$afonso peres/id=es1372.1.m7-08-per5
+            ls$residencia/na de joao afonso/obs=termo de dornas
+
+         test$domingos vicente pricalea/id=es1372.1.m7-08-per6
+            ls$residencia/alvaiazere
+
+         test$goncalo vasques/id=es1372.1.m7-08-per7
+            ls$profissao/tosador
+
+         tabeliao$gil vicente/id=es1372.1.m7-08-per8
+            ls$intitulacao/publico tabeliao de nosso senhor el rei em dornas e em vila de rei
+
+               
+            
+        escritura$1372.p1.m7-08a/18/5/1372/procuracao/fol=mc.7 n.8/loc=casas de morada de fernao vasques, na rua de coruche em coimbra/sumario= procuracao trasladada num documento de escambo na qual aldora de sousa e convento do mosteiro de santa clara estabelecem como procurador dos seus bens, vasco martins/obs=perg., got.cursivo, trasladada no documento es1372.1.m7-08.25.5.1372
+
+         constituinte$maria anes/id=1372.p1.maria1
+
+         procurador$fernao vasques/id=1372.p1.fernao/obs=com poder para escambar propriedades com o testamenteiro de maria gesteira
+            ls$profissao/tabeliao/obs=em coimbra
+            ls$residencia/rua de coruche/obs=coimbra
+            rel$parentesco/marido/maria anes/1372.p1.maria1
+            rel$sociabilidade/procurador/maria anes/1372.p1.maria1
+
+            referido$joao couce/id=1372.p1.joao1
+               ls$residencia/alvaiazere
+               rel$sociabilidade/testamenteiro/maria gesteira/1372.p1.maria2
+
+            referida$maria gesteira/id=1372.p1.maria2
+               ls$residencia/alvaiazere
+               ls$morta/antes/sim
+               rel$parentesco/mulher/joao da prol/1372.p1.joao2
+
+            referido$joao da prol/id=1372.p1.joao2
+               ls$residencia/alvaiazere
+               ls$morto/antes/sim
+
+         test$pedro lourenco/id=p1372.1.m7-08a-per1
+            rel$sociabilidade/homem/vasco peres/1372.p1.vasco
+            ls$residencia/vila flor/obs=vila frol
+
+         referido$vasco peres/id=1372.p1.vasco
+
+         test$afonso martins/id=p1372.1.m7-08a-per2
+            rel$sociabilidade/mancebo de soldada/fernao vasques/1372.p1.fernao
+
+         test$pedro afonso/id=p1372.1.m7-08a-per3
+            rel$sociabilidade/mancebo de soldada/fernao vasques/1372.p1.fernao
+
+         tabeliao$afonso domingues/id=p1372.1.m7-08a-per4
+            ls$residencia/coimbra
+
+            
+      escritura$1371.t1.m7-08b/3/2/1371/instrumento de testamento/loc=alcacova do rei em coimbra/sumario=traslado de parte do testamento de maria gesteira, relativa a propriedades que deixa ao marido, e apos a morte deste deverao ser doadas por sua alma/obs=perg., bom, got.cursivo, trasladado no documento es1372.1.m7-08.25.5.1372
+
+         testadora$maria gesteira/mesmo_que=1372.p1.maria2/obs=tambem maria de geesteira/id=t1371.1.m7-08b-per1
+            ls$motivacoes/obrigacao pela alma de outrem/obs=da parte dos seus bens para rogarem pela alma de joao de prol
+
+            referido$joao de prol/mesmo_que=1372.p1.joao2/id=t1371.1.m7-08b-per1-per2
+
+            referido$goncalo abril/id=t1371.1.m7-08b-per1-per3
+               ls$cargo/alvazil geral/obs=de coimbra
+
+         testamenteiro$joao de couce/mesmo_que=1372.p1.joao1/id=t1371.1.m7-08b-per4
+
+         test$esteves anes/id=t1371.1.m7-08b-per5
+            ls$profissao/tabeliao
+
+         test$joao martins/id=t1371.1.m7-08b-per6
+            ls$profissao/tabeliao
+
+         test$alvaro martins/id=t1371.1.m7-08b-per7
+            ls$profissao/tabeliao
+
+         test$afonso colaco/id=t1371.1.m7-08b-per8
+            ls$profissao/tabeliao
+
+         test$goncalo martins/id=t1371.1.m7-08b-per9
+            ls$profissao/tabeliao
+
+         test$lourenco goncalves/id=t1371.1.m7-08b-per10
+            ls$profissao/tabeliao
+
+         test$martim afonso/id=t1371.1.m7-08b-per11
+            ls$profissao/tabeliao
+
+         test$martim goncalves/id=t1371.1.m7-08b-per12
+            ls$profissao/tabeliao
+
+         test$estevao peres/id=t1371.1.m7-08b-per13
+            ls$profissao/tabeliao
+
+         test$gomes lourenco/id=t1371.1.m7-08b-per14
+            ls$profissao/tabeliao
+
+         test$joao porcalho/id=t1371.1.m7-08b-per15
+            ls$cargo/procurador
+
+         test$joao anes/id=t1371.1.m7-08b-per16
+            ls$cargo/procurador
+
+         test$joao afonso/id=t1371.1.m7-08b-per17
+            ls$cargo/procurador
+
+         test$vasco lourenco/id=t1371.1.m7-08b-per18
+            ls$profissao/inquiridor
+
+         tabeliao$nuno fernandes/id=t1371.1.m7-08b-per19
+            ls$intitulacao/tabeliao da dita cidade de coimbra
+            
+            
+            
+      escritura$1362.e1.m7-09/26/6/1362/emprazamento/fol= mc.7 n.09/loc=a grade do mosteiro de santa clara/sumario=o mosteiro de santa clara empraza a domingos aparicio e domingas martins um moinho, por duas vidas/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+		 atr$renda principal tipo/fixa em dinheiro
+		 atr$renda principal valor/50 libras/obs=de dinheiro portugues
+		 atr$pagamento renda principal/dia de sao miguel de setembro/obs=a comecar a pagar no proximo ano
+		 atr$duracao/2 vidas
+		 atr$pena/25 libras/obs=de dinheiro portugues
+		 atr$condicoes/manter propriedade/obs=salvo de aguas bravas e de fogo irado e de mos? e de canteiros das quais quatro coisas em que devemos de a manter a nossa custa  
+		 
+	 bem$moinho do cubo
+            atr$localizacao/orelhudo
+            atr$termoc/coimbra
+            rel$posse/pertence/mosteiro de santa clara/1372.e1.msc
+            rel$posse/por emprazamento/domingos aparicio/1362.e1.domingos
+            rel$posse/por emprazamento/domingas martins/1362.e1.domingas
+            
+         senhorio$mosteiro de santa clara/id=1362.e1.msc
+
+            referida$isabel de cardona/id=1362.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$domingos aparicio/id=1362.e1.domingos
+            ls$residencia/orelhudo/obs=termo de coimbra
+
+         enfiteutaf$domingas martins/id=1362.e1.domingas
+            ls$residencia/orelhudo/obs=termo de coimbra
+            rel$parentesco/mulher/domingos aparicio/1362.e1.domingos
+
+         test$gil martins/id=e1362.1.m7-09-per1
+            ls$cargo/abade/obs=sao juliao de serafao
+
+         test$esteves migueis/id=e1362.1.m7-09-per2
+            ls$residencia/palheira
+
+         test$afonso martins/id=e1362.1.m7-09-per3
+            ls$residencia/arco
+
+         test$joao martins/id=e1362.1.m7-09-per4
+            ls$residencia/orelhudo
+
+         tabeliao$joao afonso/obs=6 soldos pelo registo/id=e1362.1.m7-09-per5
+            ls$intitulacao/tabeliao de el rei na dita cidade e bispado de coimbra
+
+                     
+            
+       escritura$1372.af1.m7-10/17/7/1372/aforamento/fol=mc.7 n.10/loc=adro do mosteiro de santa cruz de coimbra/sumario=o mosteiro de santa clara afora uma herdade em abiul a martim gil e leonor esteves, que deverá ficar na sua posse depois da morte dos actuais emprazadores domingos peres e maria rodrigues/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/aforamento
+		 atr$duracao/perpetuo e hereditario
+		 atr$renda principal tipo/parciaria/obs=foro
+		 atr$renda principal valor/1 quinto da producao/obs=do vinho, tinta, azeite, frutos que produzirem
+		 atr$condicoes/obrigacao de pagamento ao mosteiro no caso de venda/obs=em caso de venda, estao obrigados a pagar 1 quinto do valor da venda ao mosteiro e os novos proprietarios devem pagar a mesma renda que eles pagam
+		 atr$condicoes/manter a propriedade/obs=romper, lavrar e chantrar a vinha da herdade
+         
+         bem$herdade - abiul
+            atr$descricao/uma herdade
+            atr$localizacao/abiul
+            atr$confrontacoes/parte com os herdeiros de dom afonso de aragao
+            atr$confrontacoes/com vinha do mosteiro de santa ana
+            atr$confrontacoes/com via publica em cima que vai para vila flor e perante caminho que vai em fundo por entre as vinhas
+            rel$posse/por emprazamento/domingos peres/1372.af1.domingos
+            rel$posse/por emprazamento/maria domingues/1372.af1.maria
+            rel$posse/pertenceu/por emprazamento/1372.af1.martim/obs=propriedade que martim gil trazia emprazada de domingos peres e maria domingues, os quais tinham a propriedade emprazada por 3 vidas
+            rel$posse/pertence/mosteiro de santa clara/dgarq-m1-39
+            rel$posse/por aforamento/martim gil/1372.af1.martim
+            rel$posse/por aforamento/leonor esteves/1372.af1.leonor		 
+		 
+         senhorio$mosteiro de santa clara/id=1372.af1.msc
+
+            referida$aldora de sousa/id=1372.af1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         procurador$vasco martins/id=1372.af1.vasco
+            rel$sociabilidade/procurador/mosteiro de santa clara/1372.af1.msc
+
+         foreiro$martim gil/id=1372.af1.martim
+            ls$residencia/abiul
+
+         foreira$leonor esteves/id=1372.af1.leonor
+            ls$residencia/abiul
+            rel$parentesco/mulher/martim gil/1372.af1.martim
+
+            referido$domingos peres/id=1372.af1.domingos
+               ls$alcunha/cogombreiro
+               ls$residencia/vale do milho
+              
+            referida$maria domingues/id=1372.af1.maria
+               ls$residencia/vale do milho
+               rel$parentesco/mulher/domingo peres/1372.af1.domingos
+              
+         test$vicente esteves/id=1372.af1.vicente/obs=duvidas na caracterizacao
+
+         test$afonso anes/id=af1372.1.m7-10-per1
+            rel$parentesco/sobrinho/vicente esteves/1372.af1.vicente
+
+         test$joao afonso/id=af1372.1.m7-10-per2
+            ls$profissao/corrector/obs=duvida na profissao
+
+         test$martim anes/id=af1372.1.m7-10-per3
+            ls$profissao/merceeiro
+
+         test$afonso peres/id=af1372.1.m7-10-per4
+            ls$residencia/aveiro
+
+         tabeliao$goncalo martins/obs=40 soldos pelo registo/id=af1372.1.m7-10-per5
+            ls$intitulacao/tabeliao publico de nosso senhor el rei na dita cidade de coimbra
+
+                     
+           
+      escritura$1370.p3.m7-10a/25/9/1370/procuracao/fol=mc.7 n.10/loc=a grade do mosteiro de santa clara em coimbra/sumario= procuracao trasladada num documento de aforamento na qual a abadessa de santa clara aldora de sousa e o convento do mosteiro de santa clara estabelecem como seu procurador vasco martins, com o poder de administrar os seus bens no reino de portugal/obs=perg., got.cursivo, trasladada no documento af1372.1.m7-10.17.7.1372
+
+         constituinte$mosteiro de santa clara/mesmo_que=1372.af1.msc/id=p1370.3.m7-10a-per1
+
+            referida$aldora de sousa/mesmo_que=1372.af1.msc.aba/id=p1370.3.m7-10a-per1-per2
+
+         procurador$vasco martins/mesmo_que=1372.af1.vasco/id=p1370.3.m7-10a-per3
+            rel$sociabilidade/procurador/mosteiro de santa clara/1372.af1.msc
+
+         test$joao peres/id=p1370.3.m7-10a-per4
+            ls$residencia/orelhudo
+
+         test$estevao amenpha?/obs=duvidas no segundo nome/id=p1370.3.m7-10a-per5
+            ls$naturalidade/condeixa
+
+         test$martim peres/id=p1370.3.m7-10a-per6
+            ls$residencia/ribeiro/obs=freguesia de santa maria de sardoura
+
+         test$antoninho peres/id=p1370.3.m7-10a-per7
+            ls$residencia/sabariz/obs=freguesia de sao pedro do paraiso
+
+         tabeliao$goncalo martins/id=p1370.3.m7-10a-per8
+            ls$residencia/coimbra
+      
+            
+            
+      escritura$1372.af2.m7-11/27/10/1372/aforamento/fol= mc.7 n.11/loc=a grade do mosteiro de santa clara/sumario=o mosteiro afora a rodrigo anes e iria vicente todas as vinhas que tem em fungalvaz/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/aforamento
+		 atr$duracao/perpetuo e hereditario
+		 atr$renda principal tipo/parciaria/racao
+		 atr$renda principal valor/1 terco do vinho e tinta/obs=pagos no lagar a bica
+		 atr$pena/100 libras
+		 atr$condicoes/quitacao de divida dos foreiros/obs=liberta foreiros do pagamento de 10 libras, 1 cesteiro de trigo e 4 capoes que deviam ao mosteiro
+	
+         bem$vinhas - fungalvaz
+            atr$descricao/todas as vinhas em o lugar de fungalvaz as que andam fora dos casais
+            atr$localizacao/fungalvaz
+            atr$termoc/torres novas
+            rel$posse/pertence/mosteiro de santa clara/1372.af2.msc/obs=liberta foreiros do pagamento de dez libras, um cesteiro de trigo e quatro capoes que deviam ao mosteiro
+            rel$posse/por aforamento/rodrigo anes/1372.af2.rodrigo
+            rel$posse/por aforamento/iria vicente/1372.af2.iria		 
+		 
+         senhorio$mosteiro de santa clara/id=1372.af2.msc
+
+            referida$aldora de sousa/id=1372.af2.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         foreiro$rodrigo anes/id=1372.af2.rodrigo
+            ls$residencia/fungalvaz/obs=a par do paco, termo de torres novas
+
+         foreira$iria vicente/id=1372.af2.iria
+            ls$residencia/fungalvaz/obs=a par do paco, termo de torres novas
+            rel$parentesco/mulher/rodrigo anes/1372.af2.rodrigo
+
+         test$domingos alvo/id=af1372.2.m7-11-per1
+            ls$cargo/almoxarife/obs=antiga profissao
+
+         test$afonso fernandes/id=af1372.2.m7-11-per2
+            rel$sociabilidade/procurador/mosteiro de santa clara/1372.af2.msc
+
+         test$lourenco anes/id=af1372.2.m7-11-per3
+            ls$cargo/escrivao da portagem
+
+         test$goncalo lourenco/id=af1372.2.m7-11-per4
+
+         test$vicente migueis/id=af1372.2.m7-11-per5
+
+         tabeliao$goncalo martins/obs=8 soldos pelo registo/id=af1372.2.m7-11-per6
+            ls$intitulacao/tabeliao publico de nosso senhor el rei na dita cidade de coimbra e seus termos
+               
+            
+            
+      escritura$1372.s1.m7-12/10/11/1372/tipo=sentenca/fol=mc.7 n.12/loc=igreja de sao joao de santa cruz de coimbra/sumario=sentenca relativa a um enfiteuta que nao paga o foro ao mosteiro e que nao trata a vinha que trazia emprazada, sendo o enfiteuta obrigado a pagar a divida e a tratar a propriedade/obs=perg., got.cursivo, sinal notarial
+      
+         demandador$mosteiro de santa clara/id=1372.s1.msc
+	 
+         procurador$goncalo lourenco
+	    rel$sociabilidade/procurador/mosteiro de santa clara/1372.s1.msc
+	    
+	 reu$abril esteves/id=1372.s1.abril
+	    ls$residencia/leiria
+	    ls$titulo/titulo/frade/obs=de santa cita
+	 
+         autoridade$lourenco anes
+	    ls$cargo/escrivao da portagem/obs=em coimbra
+	    ls$cargo/juiz do mosteiro /obs=por carta de graca de el rei
+	    rel$sociabilidade/juiz/mosteiro de santa clara/1372.s1.msc
+	 
+	 test$joao esteves 
+	    ls$alcunha/gago
+	    ls$residencia/coimbra
+	   
+	 test$afonso martins
+	    ls$titulo/clerigo
+	 
+	 test$pedro peres?/obs=duvida no nome
+	 
+	 test$lourenco anes
+	   ls$residencia/leiria
+	   
+	 tabeliao$alvaro martins/obs=6 soldos pelo registo
+	   ls$intitulacao/tabeliao de el rei na dita cidade de coimbra
+	   
+	 demanda$nao pagamento da renda/obs=o procurador do mosteiro de santa clara acusa abril esteves de nao pagar a renda de uma vinha que nao tem tratada em leiria, tendo ja em atraso 23 libras
+	 
+	 defesa$consentimento na acusacao
+	 
+	 sentenca$a favor do mosteiro de santa clara/obs=pagamento das 23 libras em atraso e tratamento da vinha
+	    atr$duracao/pagamento das 23 libras nos quinze dias seguintes
+	    atr$duracao/tratamento da vinha nos 3 anos seguintes
+	    
+	  bem$vinha - canoeira
+	    atr$localizacao/canoeira
+	    atr$termoc/leiria
+	    rel$posse/pertence/mosteiro de santa clara/1372.s1.msc
+	    rel$posse/por aforamento/abril esteves/1372.s1.abril 
+	    
+	
+	    
+       escritura$1373.cv1.m7-13/25/5/1373/compraevenda/fol=mc.7 n.13/loc=rua nova em coimbra/sumario=vasco anes e maria geraldes vendem todos os bens de raiz que tem em cabeca de ferreiro e vale de ferreiro a afonso vasques e maria anes/obs=perg., got.cursivo, sinal notarial
+         	atr$contrato tipo/compra e venda
+       		atr$preco/40 soldos/obs=de dinheiro portugues
+         
+         bem$bens de raiz
+            atr$descricao/todos os bens de raiz na cabeca de freire e vale do ferreiro que eram a par das casas novas
+            atr$localizacao/cabeca do freire 
+            atr$localizacao/vale do ferreiro
+            rel$posse/pertenceu/maria andreus?/1373.cv1.maria2
+            rel$posse/pertence/vasco anes/1373.cv1.vasco
+            rel$posse/pertence/maria geraldes/1373.cv1.maria1
+            rel$posse/por compra/afonso vasques/1373.cv1.afonso
+            rel$posse/por compra/maria anes/1373.cv1.maria3
+            
+         vendedor$vasco anes/id=1373.cv1.vasco
+            ls$residencia/coimbra
+
+         vendedora$maria geraldes/id=1373.cv1.maria1
+            ls$residencia/coimbra
+            rel$parentesco/mulher/vasco anes/1373.cv1.vasco
+            rel$sociabilidade/herdeira/maria andreis?/1373.cv1.maria2
+
+            referida$maria andreis?/obs=duvida no segundo nome/id=1373.cv1.maria2
+               rel$parentesco/mae/maria geraldes/1373.cv1.maria1
+
+         comprador$afonso vasques/id=1373.cv1.afonso
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1373.cv1.maria3
+            ls$residencia/coimbra
+            rel$parentesco/mulher/afonso vasques/1373.cv1.afonso
+
+         test$gil vasques/id=cv1373.1.m7-13-per1
+            ls$profissao/carpinteiro
+
+         test$domingos bartolomeu/id=cv1373.1.m7-13-per2
+            ls$profissao/carpinteiro
+
+         test$goncalo/id=cv1373.1.m7-13-per3
+            ls$titulo/frei
+            ls$ordem/terceira ordem de sao francisco
+
+         tabeliao$estevao peres/obs=4 soldos pelo registo/id=cv1373.1.m7-13-per4
+            ls$intitulacao/tabeliao de el rei em coimbra
+
+                     
+  
+      	escritura$1384.inq1.m7-14a/18/08/1384/tipo=inquiricao/fol=mc.7 n.14/loc=casa da morada de gil domingues, condeixa a nova/sumario=goncalo lourenco faz inquiricao sobre moinho de condeixa a nova a gil domingues que indica santa clara e a gafaria como senhores do moinho que ele traz e de que paga renda cujo valor se recusa a revelar/obs=perg., got.cursivo, sinal notarial
+	
+	   inquiridor$goncalo lourenco/id=1384.inq1.goncalo
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1384.inq1.msc
+	       
+	   referido$mosteiro de santa clara/id=1384.inq1.msc
+	       
+	   inquirido$gil domingues/id=1384.inq1.gil
+	       ls$residencia/condeixa a nova/obs=termo da cidade de coimbra
+	   
+	   referido$pedro peres/id=1384.inq1.pedro
+	       ls$profissao/sapateiro
+	       
+	   referida$gafaria/id=1384.inq1.gaf
+	
+	   test$afonso fernandes
+	       ls$residencia/condeixa a nova
+	
+	   test$vasco lourenco
+	       ls$residencia/condeixa a nova
+	
+	   test$lourenco andreis
+	       ls$residencia/condeixa a nova
+	
+	   tabeliao$afonso rodrigues/obs=6 reais pelo registo com caminho
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra e seus termos
+	       
+	   demanda$inquiridor pergunta quem estava em posse da propriedade/obs=goncalo lourenco fez pergunta quem trazia um  moinho que era na dita aldeia
+	
+	   defesa$inquirido assume a posse da propriedade/obs=e o dito gil domingues disse que a trazia ele dito gil domingues
+	
+	   demanda$inquiridor pergunta quem e proprietario/obs=item lhe fez pergunta de cuja mao trazia o dito moinho
+	   
+	   defesa$inquirido indica quem e proprietario/obs=ele disse que o trazia da gafaria que era senhoria e que havia santa clara a metade do dito moinho
+	   
+	   demanda$inquiridor pergunta quanto rendia a propriedade/obs=item lhe foi feita pergunta quanto rendia o dito meio do dito moinho a dita gafaria
+	   
+	   defesa$inquirido recusa indicar o valor da renda/obs=ele disse que o nao queria dizer mas quando lhe demandasse o meioral da dita gafaria ... que lhe pagaria 
+	   
+	   bem$moinho
+	       atr$descricao/a cerca das casas de pedro peres sapateiro
+	       atr$localizacao/condeixa a nova
+	       atr$termoc/coimbra 
+	   
+	       
+	       
+	escritura$1384.inq2.m7-14b/18/08/1384/tipo=inquiricao/fol=mc.7 n.14/loc=casas de vasco lourenco, aldeia de condeixa a nova/sumario=goncalo lourenco faz inquiricao sobre moinho de condeixa a nova a maria nogueira em casas de vasco lourenco, que lhe indica que e ela e seu marido vsco martins que trazem o moinho da mao de dona margarida de briteiros a quem paga trinta libras, sendo metade do moinho do msoteiro de santa clara/obs=perg., got.cursivo, sinal notarial
+	
+	   inquiridor$goncalo lourenco/mesmo_que=1384.inq1.goncalo
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1384.inq2.msc
+	       
+	   referido$mosteiro de santa clara/id=1384.inq2.msc
+	       
+	   inquirida$maria nogueira/id=1384.inq2.maria/obs=trazem o moinho
+	       rel$parentesco/mulher/vasco martins/1384.inq2.vasco
+	   
+	   referido$vasco martins/id=1384.inq2.vasco/obs=trazem o moinho
+		      
+	   referida$margarida/obs=senhorio da dona margarida
+	       ls$titulo/dona
+	       
+	   referido$fernao rodrigues de soure
+	       
+	   test$vasco lourenco
+	       ls$residencia/condeixa a nova
+	
+	   test$lourenco andreis
+	       ls$residencia/condeixa a nova
+	       
+	   test$afonso fernandes
+	       ls$residencia/condeixa a nova
+	
+	   tabeliao$afonso rodrigues/obs=6 reais pelo registo com caminho
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra e seus termos   
+	       
+	   demanda$inquiridor pergunta quem estava em posse da propriedade/obs=goncalo lourenco fez pergunta a dita maria nogueira quem trazia o dito moinho
+	
+	   defesa$inquirida assume a posse da propriedade/obs=e ela disse que o trazia ela e seu marido
+	
+	   demanda$inquiridor pergunta quem e proprietario/obs=item lhe fez pergunta de que mao trazia o dito moinho
+	   
+	   defesa$inquirida indica quem e proprietario/obs=ela disse que trazia da mao da dona margarida de breteiros e que havia metade da maquia santa clara  
+	   
+	   demanda$inquiridor pergunta quanto rendia a propriedade/obs=item lhe fez pergunta quanto dava de renda do dito moinho a dita dona margarida
+	   
+	   defesa$inquirida indica o valor da renda/obs=disse que lhe dava cada um ano a ela e aos herdeiros de fernao rodrigues de soure trinta libras da sua metade  
+	   
+	   bem$moinho
+	       atr$localizacao/condeixa a nova
+	       atr$termoc/coimbra
+	       
+	       
+	   
+	escritura$1384.inq3.m7-14c/18/08/1384/tipo=inquiricao/fol=mc.7 n.14/loc=casa que foram de pedro peres dito longo, condeixa a nova/sumario=goncalo lourenco faz inquiricao sobre moinho de condeixa a nova a rodrigo fernandes, que indica que a traz calebras? da mao de aguas santas? e que dava por ele 40 libras havendo o mosteiro de santa clara metade da maquia/obs=perg., got.cursivo, sinal notarial
+	
+	   inquiridor$goncalo lourenco/mesmo_que=1384.inq1.goncalo
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1384.inq3.msc
+	       
+	   referido$mosteiro de santa clara/id=1384.inq3.msc
+	       
+	   inquirido$rodrigo fernandes/id=1384.inq3.rodrigo
+	       ls$residencia/condeixa a nova/obs=termo da cidade de coimbra
+	       rel$parentesco/genro/pedro peres/1384.inq1.pedro
+	   
+	   referido$pedro peres/mesmo_que=1384.inq1.pedro
+		      
+	   test$afonso fernandes
+	       ls$residencia/condeixa a nova
+	
+	   test$vasco lourenco
+	       ls$residencia/condeixa a nova
+	
+	   test$lourenco andreis
+	       ls$residencia/condeixa a nova
+	
+	   tabeliao$afonso rodrigues/obs=6 reais pelo registo com caminho
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra e seus termos   
+	       
+	   demanda$inquiridor pergunta quem estava em posse da propriedade/obs=goncalo lourenco fez pergunta quem trazia o moinho da cerca da dita aldeia que chamam do eicerel?
+	   
+	   defesa$inquirido indica quem possuia a propriedade/obs=ele disse que o trazia calebras?
+	
+	   demanda$inquiridor pergunta quem e proprietario/obs=perguntado de que cuja mao o trazia 
+	   
+	   defesa$inquirido indica quem e proprietario/obs=disse que o trazia a aguas santas?
+	   
+	   demanda$inquiridor pergunta quanto rendia a propriedade/obs=perguntado quando dava por ele de renda a aguas santas?
+	   
+	   defesa$inquirido indica o valor da renda/obs=disse que ele sabia lhes dava por ele 40 libras e que no dito moinho havia santa clara a metade da maquia
+	   
+	   bem$moinho
+	       atr$descricao/a cerca da dita aldeia que chamam eicerel
+	       atr$localizacao/condeixa a nova
+	       atr$termoc/coimbra
+	   
+	       
+	       
+	escritura$1384.inq4.m7-14d/18/08/1384/tipo=inquiricao/fol=mc.7 n.14/loc=aldeia de condeixa a nova/sumario=goncalo lourenco faz inquiricao sobre moinho de condeixa a nova a vasco lourenco e afonso fernandes que responderam ser constanca esteves mulher de pedro peres que trazia o moinho da mao de santa cruz, pagando de renda 50 libras/obs=perg., got.cursivo, sinal notarial
+	
+	   inquiridor$goncalo lourenco/mesmo_que=1384.inq1.goncalo
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1384.inq4.msc
+	       
+	   referido$mosteiro de santa clara/id=1384.inq4.msc
+	       
+	   inquirido$vasco lourenco
+	   
+	   inquirido$afonso fernandes
+	       
+	   referida$constanca esteves
+	      rel$parentesco/viuva/pedro peres/1384.inq1.pedro
+	      
+	   referido$pedro peres/mesmo_que=1384.inq1.pedro
+	
+	   test$afonso fernandes
+	       ls$residencia/condeixa a nova
+	
+	   test$vasco lourenco
+	       ls$residencia/condeixa a nova
+	
+	   test$lourenco andreis
+	       ls$residencia/condeixa a nova
+	       
+	   test$joao peres
+	       ls$residencia/orelhudo
+	
+	   tabeliao$afonso rodrigues/obs=4 reais pelo registo com caminho
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra e seus termos    
+	       
+	   demanda$inquiridor pergunta quem estava em posse da propriedade/obs=goncalo lourenco fez pergunta quem trazia um moinho que era acerca aldeia de condeixa em o caminho d'alcabedeque
+	
+	   defesa$inquiridos indicam quem possuia a propriedade/obs=e eles disseram que o trazia constanca esteves mulher que fora de pedro peres
+	
+	   demanda$inquiridor pergunta quem e proprietario/obs=perguntados de cuja mao trazia o dito moinho 
+	   
+	   defesa$inquiridos indicam quem e proprietario/obs=disseram que o trazia da mao de santa cruz e que lha havia santa clara a metade das maquias 
+	   
+	   demanda$inquiridor pergunta quanto rendia a propriedade/obs=e ora se lhes fez pergunta quanto dava a dita constanca esteves de renda do dito moinho a santa cruz 
+	   
+	   defesa$inquiridos indicam o valor da renda/obs=e disseram que dava dele 50 libras 
+   
+           bem$moinho
+               atr$descricao/a cerca aldeia de condeixa em o caminho d' alcabedeque
+	       atr$localizacao/condeixa a nova
+	       atr$termoc/coimbra
+	       
+	       
+      
+      escritura$1374.cv1.m7-15/28/9/1374/compraevenda/fol=mc.7 n.15/loc=ega/sumario=pedro afonso e domingas afonso vendem a joao vicente e sua mulher propriedades na serra de joao anes e raba rabos que haviam recebido por morte de beicuda da serra/obs=perg., got.cursivo, sinal notarial
+         	atr$contrato tipo/compra e venda
+                atr$preco/30 libras
+                
+         bem$herdades - serra de joao anes e rabarrabos
+            atr$localizacao/serra de joao anes
+            atr$localizacao/rabarrabos
+            atr$termoc/penela
+            rel$posse/pertenceu/beicuda da serra/1374.cv1.beicuda
+            rel$posse/pertence/pedro afonso/1374.cv1.pedro
+            rel$posse/pertence/domingas afonso/1374.cv1.domingas
+            rel$posse/por compra/joao vicente/1374.cv1.joao
+            rel$posse/por compra/nome desconhecido/1374.cv1.nd
+         
+         vendedor$pedro afonso/id=1374.cv1.pedro
+            ls$residencia/ega
+
+         vendedora$domingas afonso/id=1374.cv1.domingas
+            ls$residencia/ega
+            rel$parentesco/mulher/pedro afonso/1374.cv1.pedro
+
+         comprador$joao vicente/id=1374.cv1.joao
+            ls$residencia/serra de joao anes/obs=termo de coimbra
+
+         compradora$nome desconhecido/id=1374.cv1.nd
+            ls$residencia/serra de joao anes/obs=termo de coimbra
+            rel$parentesco/mulher/joao vicente/1374.cv1.joao
+
+            referida$beicuda da serra/id=1374.cv1.beicuda
+               ls$morta/antes/sim
+
+         test$afonso de gra/id=cv1374.1.m7-15-per1
+            ls$residencia/soure
+
+         test$goncalo? martins/obs=duvida no primeiro nome/id=cv1374.1.m7-15-per2
+            ls$cargo/frade
+
+         test$afonso minusso?/obs=duvida no segundo nome/id=cv1374.1.m7-15-per3
+
+         tabeliao$joao martins/obs=3 soldos pelo registo/id=cv1374.1.m7-15-per4
+            ls$intitulacao/tabeliao de el rei em soure
+         
+
+            
+      escritura$1374.e1.m7-16/2/10/1374/emprazamento/fol=mc.7 n.16/loc=a grade do mosteiro de santa clara/sumario=o mosteiro de santa clara empraza por duas vidas umas casas em condeixa a nova a estevao domigues balon e clara martins/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+                 atr$duracao/2 vidas
+		 atr$renda principal tipo/fixa em dinheiro/obs=renda e pensao
+		 atr$renda principal valor/6 libras/obs=de dinheiro portugues
+		 atr$pagamento renda principal/dia de natal/obs=a pagar nos primeiros sete anos em dia de natal, e depois no dia de sao miguel de setembro
+		 atr$pena/25 libras
+		 atr$condicoes/manter as propriedades
+ 
+	 bem$casas - condeixa a nova
+            atr$localizacao/condeixa a nova
+            rel$posse/pertence/mosteiro de santa clara/1372.e1.msc
+            rel$posse/por emprazamento/estevao domingues/1374.e1.estevao
+            rel$posse/por emprazamento/clara martins/1374.e1.clara	
+            
+         senhorio$mosteiro de santa clara/id=1374.e1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1374.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$estevao domingues/id=1374.e1.estevao
+            ls$alcunha/balon/obs=duvida na alcunha
+            ls$residencia/condeixa a nova
+
+         enfiteutaf$clara martins/id=1374.e1.clara
+            ls$residencia/condeixa a nova
+            rel$parentesco/mulher/estevao domingues/1374.e1.estevao
+
+         test$vicente niseus?/obs=duvida no segundo nome/id=e1374.1.m7-16-per1
+            ls$residencia/coimbra
+
+         test$joao domingos/id=e1374.1.m7-16-per2
+            ls$profissao/tecelao
+            ls$residencia/coimbra
+
+         tabeliao$martim gil/obs=4 soldos pelo registo/id=e1374.1.m7-16-per3
+            ls$intitulacao/tabeliao de el rei na cidade de coimbra
+            
+            
+            
+      escritura$1375.e1.m7-17/22/2/1375/emprazamento/fol= mc.7 n.17/loc=a grade do mosteiro de santa cara/sumario=o mosteiro empraza ao frade vicente anes e sua mulher isabel vicente uma vinha com suas oliveiras e pertencas, situadas na copeira, termo de coimbra/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+                 atr$duracao/3 vidas/obs=casal mais uma pessoa a nomear
+		 atr$renda principal tipo/fixa em dinheiro/obs=renda e pensao
+		 atr$renda principal valor/4 libras/obs=de dinheiro portugues
+		 atr$renda principal valor/6 libras/obs=mulher e terceira pessoa devem pagar no mesmo dia 6 libras
+		 atr$pagamento renda principal/dia de sao miguel de setembro
+		 atr$pena/25 libras
+		 atr$condicoes/manter as propriedades/obs=podar, mergulhar, cercar, cavar e arrendar as moitas
+          
+	 bem$vinha - copeira
+            atr$descricao/1 vinha com suas oliveiras e pertencas
+            atr$localizacao/copeira
+            atr$termoc/coimbra
+            rel$posse/pertenceu/joao martins/1375.e1.joao
+            rel$posse/pertence/mosteiro de santa clara/1375.e1.msc
+            rel$posse/por emprazamento/vicente anes/1375.e1.vicente
+            rel$posse/por emprazamento/isabel vicente/1375.e1.isabel	 
+		 
+         senhorio$mosteiro de santa clara/id=1375.e1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1375.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$vicente anes/id=1375.e1.vicente
+            ls$alcunha/farto e quente
+            ls$cargo/frade
+            ls$ordem/terceira ordem de sao francisco
+            ls$residencia/coimbra/obs=pacos do mosteiro de santa clara
+
+         enfiteutaf$isabel vicente/id=1375.e1.isabel
+            ls$residencia/coimbra/obs=pacos do mosteiro de santa clara
+            rel$parentesco/mulher/vicente anes/1375.e1.vicente
+
+            referido$joao martins/id=1375.e1.joao
+               ls$alcunha/galinheiro
+               ls$residencia/venda de alcouce
+
+         test$estevao anes/id=e1375.1.m7-17-per1
+            ls$profissao/bacharel em decretais
+
+         test$goncalo lourenco/id=e1375.1.m7-17-per2
+            rel$sociabilidade/homem/mosteiro de santa clara/1375.e1.msc/obs=homem da abadessa e convento
+
+         test$vicente migueis/id=e1375.1.m7-17-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1375.e1.msc/obs=homem da abadessa e convento
+
+         tabeliao$goncalo martins/obs=4 soldos pelo registo/id=e1375.1.m7-17-per4
+            ls$intitulacao/tabeliao de el rei na dita cidade de coimbra
+            
+            
+              
+	escritura$1375.ci1.m7-18.0/20/03/1375/tipo=citacao/fol=mc.07 n.18/loc=coimbra, na porta de almedina?/sumario=joao martins faz peticao para vasco martins porteiro da cidade de coimbra citar as abadessa e donas de santa clara a proposito de uma partilha de bens de maria anes e gil fernandes pais de maria gil que é freira professa no dito mosteiro/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1375.s1.joao
+			  
+	   referido$vasco martins
+	       ls$cargo/porteiro/obs=do concelho de coimbra
+	
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc    
+	       
+	   procurador$goncalo lourenco
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	       
+	   referida$maria anes/mesmo_que=1375.s1.maria1
+			
+	   referida$maria gil/mesmo_que=1375.s1.maria2
+		   
+	   referido$gil fernandes/mesmo_que=1375.s1.gil
+	   
+	   referido$mosteiro de santa cruz/id=1375.c1.mscc
+		
+	   test$joao fernandes
+	       ls$profissao/criado
+	       rel$profissional/criado/mosteiro de santa cruz/1375.c1.mscc
+	       ls$residencia/coimbra
+	
+	   test$isidro anes
+	       ls$residencia/coimbra
+	       
+	   test$clemente anes
+	       ls$profissao/alfaiate
+	       ls$residencia/coimbra
+	
+	   tabeliao$martim gil/obs=4 reais pelo registo
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra
+	
+	
+	      
+	escritura$1375.s1.m7-18.1a/27-29/03/1375/tipo=sentenca/fol=mc.7 n.18/loc=paco do concelho da cidade de coimbra/sumario=joao martins apresenta se nos pacos do concelho com um documento de citacao que mostra a fernao vasques ouvidor dos factos no lugar de afonso martins, pedindo-lhe que o dito juiz mandasse apregoar as abadessa e convento do mosteiro de santa clara por causa de uma questao de partilhas, ao que o procurador do mosteiro joao anes responde dizendo que podia representar as abadessa e convento.joao anes nao concorda e pede veredicto ao juiz, que passados dois dias de audiencia decide que joao anes pode ser procurador de santa clara neste feito/obs=perg., got.cursivo, sinal notarial
+	
+	   autoridade$fernao vasques/id=1375.s1.fernao
+	      ls$titulo/escudeiro/obs=em audiencia ouvindo os factos em lugar de afonso martins
+	      ls$cargo/ouvidor
+	      
+	      referido$afonso martins/id=1375.s1.afonso
+		ls$profissao/juiz/obs=por el rei na cidade de coimbra
+		
+	      demandador$joao martins/id=1375.s1.joao
+		ls$profissao/tabeliao/obs=tabeliao que foi
+		ls$residencia/coimbra
+		
+	      reu$mosteiro de santa clara/id=1375.s1.msc
+	      
+	      referida$ines rodrigues de vasconcelos
+		ls$titulo/dona
+		ls$cargo/abadessa de santa clara
+		
+	      referida$maria anes/id=1375.s1.maria1
+		rel$parentesco/mulher/gil fernandes/1375.s1.gil
+		rel$parentesco/mae/maria gil/1375.s1.maria2
+		ls$morta/antes/sim
+		
+	      referida$maria gil/id=1375.s1.maria2
+		ls$titulo/dona/obs=do mosteiro de santa clara
+		
+	      referido$gil fernandes/id=1375.s1.gil
+		ls$profissao/advogado
+		ls$morto/antes/sim
+				  
+	   procurador$joao anes/id=1375.s1.joao2
+	       ls$profissao/tabeliao/obs=que foi tabeliao
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	
+	   test$fernao vasques
+	       ls$profissao/tabeliao
+	       
+	   test$garcia martins
+	       ls$profissao/tabeliao
+	    
+	   test$angelo peres
+	       ls$profissao/tabeliao
+	       
+	   test$vasco lourenco
+	       ls$profissao/tabeliao
+	
+	   tabeliao$gomes lourenco/obs=10 reais pelo registo
+	       ls$intitulacao/obs=tabeliao publico do senhor rei em coimbra
+	       
+	   demanda$citacao para partilha de bens/obs=joao martins apresenta a fernao vasques um documento que comprova a citacao que fez ao mosteiro de santa clara para comparecerem a partilha de bens herdaddos por maria gil, dona do mosteiro, filha de gil fernandes e maria anes, pelo que pede que o ouvidor mande apregoar as abadessa e convento do dito mosteiro 
+	      
+	   defesa$apresentacao de procuracao/obs=joao anes apresenta se como procurador do mosteiro de santa clara, com autoridade para tratar da questao das partilhas
+	   
+	   sentenca$a favor do mosteiro de santa clara/obs=fernao vasques decide que a procuracao de joao anes e suficiente para tratar da contenda entre o mosteiro e joao martins, que protesta das custas
+	
+	   
+	   
+	escritura$1375.ci2.m07-18.1b/23/03/1375/tipo=citacao/fol=mc.7 n.18/loc=a porta de almedina, em coimbra/sumario=joao martins faz citar as abadessa e convento do mosteiro de santa clara por vasco martins porteiro da cidade de coimbra, a porta da cadeia do mosteiro, perante goncalo lourenco procurador do mosteiro, por causa de uma questao de partilha de bens herdados por morte de maria anes/obs=perg., got.cursivo, trasladado no doc. s1375.1.m07-18.1a.27.29.03.1375 
+	
+	   referido$vasco martins
+	      ls$cargo/porteiro/obs=da cidade de coimbra
+	      
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+			  
+	   procurador$goncalo lourenco
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	       
+	   autor$joao martins/mesmo_que=1375.s1.joao
+	
+	   referido$mosteiro de santa cruz/id=1375.ci2.mscc
+	   
+	   test$joao fernandes
+	       ls$profissao/criado
+	       rel$profissional/criado/mosteiro de santa cruz/1375.ci2.mscc
+	       ls$residencia/coimbra
+	
+	   test$isidro anes
+	       ls$residencia/coimbra			
+	
+	   test$clemente anes
+	       ls$profissao/alfaiate
+	       ls$residencia/coimbra
+	
+	   tabeliao$martim gil
+	       ls$intitulacao/obs=tabeliao de el rei na dita cidade de coimbra
+	
+		
+	
+	escritura$1374.p1.m07-18.1c/05/04/1374/tipo=procuracao/fol=mc.07 n.18/loc=mosteiro de santa clara de coimbra/sumario=o mosteiro de santa clara constitui seu procurador joao anes para administrar os bens moveis e de raiz do mosteiro e todos os demais assuntos em nome do dito mosteiro/obs=perg., got.cursivo, trasladado no doc. s1375.1.m07-18.1a.27.29.03.1375
+	
+	   constituinte$mosteiro de santa clara/mesmo_que=1375.s1.msc
+			  
+	   procurador$joao anes/mesmo_que=1375.s1.joao2
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	       
+	   test$vasco martins
+	       ls$cargo/racoeiro/obs=igreja de santa justa
+	       
+	   test$sancho goncalves
+	       ls$cargo/conego/obs=do mosteiro de santa justa
+	       
+	   test$goncalo lourenco
+	
+	   tabeliao$goncalo martins
+	       ls$intitulacao/tabeliao da dita cidade de coimbra
+	       
+	       
+	
+	escritura$1375.p1.m7-18.2a/03/09/1375/tipo=procuracao/fol=mc.07 n.18/loc=pousadas de morada de joao martins, em coimbra/sumario=margarida gil, filha de maria anes e gil fernandes, constitui seu procurador joao martins seu marido, com poder para tratar e administrar todos os seus bens, especialmente na questao de uma partilha de bens com o mosteiro de santa clara/obs=perg., got.cursivo, trasladado no doc. c1375.1.m7-18.2b.03.09.1375 
+	
+	   constituinte$margarida gil/id=1375.p1.margarida
+	       rel$parentesco/filha/gil fernandes/1375.s1.gil
+	       rel$parentesco/filha/maria anes/1375.s1.maria1
+	       rel$parentesco/irma/maria gil/1375.s1.maria2
+			  
+	   procurador$joao martins/id=1375.p1.joao
+	       rel$sociabilidade/procurador/margarida gil/1375.p1.margarida
+	       rel$parentesco/marido/margarida gil/1375.p1.margarida
+	       
+	       referido$gil fernandes/mesmo_que=1375.s1.gil
+	       
+	       referida$maria anes/mesmo_que=1375.s1.maria1
+	       
+	       referida$maria gil/mesmo_que=1375.s1.maria2
+	       
+	   test$martim peres
+	       ls$cargo/padre
+	       rel$sociabilidade/padre/joao martins/1375.p1.joao
+	       
+	   test$goncalo
+	       ls$profissao/criado
+	       rel$profissional/criado/joao martins/1375.p1.joao
+	
+	   tabeliao$goncalo lourenco
+	       ls$intitulacao/tabeliao publico de nosso senhor el rei em essa mesma cidade de coimbra
+	       
+	
+	
+	escritura$1375.c1.m7-18.2b/03/09/1375/tipo=compromisso/fol=mc.7 n.18/loc=ante a grade do mosteiro de santa clara/sumario=depois de apresentar uma procuracao que lhe da poderes para o efeito, joao martins da a ler ao mosteiro de santa clara uma cedula de compromisso em que ele e sua mulher margarida gil e o mosteiro de santa clara acordam a nao contestacao na resolucao da partilha de bens de maria anes sob multa de 1000 libras, com antoninho fernandes como fiador, cedula que todos juram respeitar/obs=perg., got.cursivo, sinal notarial
+	
+	   outorgante$joao martins/mesmo_que=1375.p1.joao
+	   
+	   outorgantef$margarida gil/mesmo_que=1375.p1.margarida
+			  
+	   outorgantef$maria gil/mesmo_que=1375.s1.maria2
+	   
+	   outorgante$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	       
+	       referido$afonso domingues d'aveiro/obs=toponimo associado ao patronimico/id=1375.c1.afonso2
+		 ls$titulo/homem bom
+		 ls$cargo/juiz alvidro
+		 rel$profissional/juiz alvidro/mosteiro de santa clara/1375.s1.msc
+		 ls$residencia/coimbra
+		 
+	       referido$lourenco anes da portagem/obs=toponimo associado ao patronimico
+		 ls$titulo/homem bom
+		 ls$cargo/juiz alvidro
+		 rel$profissional/juiz alvidro/mosteiro de santa clara/1375.s1.msc
+		 ls$residencia/coimbra
+		 
+	       referido$fernao vasques
+		 ls$titulo/homem bom
+		 ls$cargo/juiz alvidro
+		 rel$profissional/juiz alvidro/margarida gil/1375.p1.margarida
+		 rel$profissional/juiz alvidro/joao martins/1375.p1.joao
+		 ls$residencia/coimbra
+		 ls$titulo/escudeiro
+		 
+	       referido$diogo alvares
+		 ls$titulo/homem bom
+		 ls$cargo/juiz alvidro
+		 rel$profissional/juiz alvidro/margarida gil/1375.p1.margarida
+		 rel$profissional/juiz alvidro/joao martins/1375.p1.joao
+		 ls$residencia/coimbra
+		 ls$titulo/escudeiro
+		 
+	       referido$afonso martins/id=1375.c1.afonso1
+		 ls$titulo/homem bom
+		 ls$cargo/juiz alvidro
+		 rel$profissional/juiz alvidro/margarida gil/1375.p1.margarida
+		 rel$profissional/juiz alvidro/joao martins/1375.p1.joao
+		 ls$residencia/coimbra
+		 ls$cargo/alvazil/obs=alvacir
+	
+	   fiador$antoninho fernandes/id=1375.c1.antoninho
+	       ls$profissao/barqueiro
+	       ls$residencia/coimbra
+	       rel$sociabilidade/fiador/mosteiro de santa clara/1375.s1.msc
+	       rel$sociabilidade/fiador/maria gil/1375.s1.maria2
+	       rel$sociabilidade/fiador/margarida gil/1375.p1.margarida
+	       rel$sociabilidade/fiador/joao martins/1375.p1.joao
+	      
+	   test$domingos antoninho
+	       ls$cargo/siseiro/obs=que foi sisseiro
+	       
+	   test$joao anes
+	       ls$profissao/tabeliao/obs=que foi tabeliao
+	       
+	   test$joao lourenco
+	       ls$alcunha/euforiado
+	       ls$cargo/fanilheiro/obs=do mosteiro
+	       rel$profissional/fanilheiro/mosteiro de santa clara/1375.s1.msc
+	
+	   tabeliao$gomes lourenco/obs=24 reais com caminho pelo registo
+	       ls$intitulacao/tabeliao publico de nosso senhor el rei em essa mesma cidade de lisboa
+	       
+	   demanda$compromisso de acordo sobre resolucao de partilha de bens/obs=que a dita avenca e sentenca e determinacao que pelos sobreditos ante as ditas partes for dada sera firme e estavel para sempre renunciando e revogando expressamente e geralmente a todos os direitos e leis e ordenacoes e alegacoes e constituicoes regra assim canonicos como civis e do alvidro de bom varao que por si cada uma das partes agora ha e ao deante pode haver ao dito compromisso e sentenca e livramentos pelos sobreditos dada 
+	   
+	   demanda$pagamento de pena de incumprimento a fiador/obs=e para outrossim se isto ter e guardar a elas ditas partes nao puderem ir contra isso e para outrossim pagar a dita pena quaisquer delas partes que contra elas for dessem fiador antoninho fernandes obrigando se a dita abadessa e convento e outrossim o dito joao martins por si e pela dita sua mulher todos seus bens assim moveis como raizes a pagar a dita pena indo ou tentando de ir contra o que suso dito e pela guisa que suso dito e conteudo e
+	      atr$pena/1000 libras/obs=de dinheiro portugues
+	    
+	
+	 
+	escritura$1376.ci1.m7-18.verso1/04/06/1376/tipo=citacao/fol=mc.07 n.18/loc=ante as pousadas de afonso domingues d'aveiro, na rua de coruche em coimbra/sumario=joao martins apresenta se a afonso domingues com o pedido para mandar lourenco fernandes, porteiro da cidade, citar a abadessa e convento do mosteiro de santa clara para resolverem a questao da partilha de bens herdados por morte de maria anes/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1375.p1.joao
+	      ls$cargo/procurador do juizo/obs=da cidade de coimbra
+			  
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	       
+	   autoridade$afonso domingues d'aveiro/obs=toponimo associado ao patronimico/mesmo_que=1375.c1.afonso2
+	      ls$residencia/rua de coruche/obs=coimbra
+	      
+	   autoridade$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   referido$lourenco fernandes
+	      ls$cargo/porteiro/obs=do concelho da cidade de coimbra
+	
+	   test$afonso anes
+	       ls$profissao/tabeliao
+	       
+	   test$afonso peres
+	       rel$parentesco/parente/afonso domingues d'aveiro/1375.c1.afonso2
+	
+	   test$afonso lourenco
+	       ls$cargo/provedor/obs=da gafaria de coimbra
+	
+	   tabeliao$joao esteves/obs=joao martins que presente estava mostrou e apresentou perante afonso domingues este instrumento desta outra parte escrito 
+	       ls$intitulacao/tabeliao de el rei em essa mesma cidade
+	       
+	
+	       
+	escritura$1376.ci2.m7-18.verso2/09/06/1376/tipo=citacao/fol=mc.07 n.18/loc=ante as pousadas em que pousava afonso martins em coimbra/sumario=lourenco fernandes vem confirmar junto de afonso martins e joao martins que citara as abadessa e convento do mosteiro de santa clara para efectuarem a partilha de bens em causa, conforme havia sido instruido por afonso domingues a pedido de joao martins/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1375.p1.joao
+	      ls$cargo/procurador do juizo/obs=da cidade de coimbra
+			  
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	       
+	   autoridade$afonso domingues d'aveiro/obs=toponimo associado ao patronimico/mesmo_que=1375.c1.afonso2
+	      ls$residencia/rua de coruche/obs=coimbra
+	      
+	   autoridade$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   referido$lourenco fernandes
+	      ls$cargo/porteiro/obs=do concelho da cidade de coimbra
+	
+	   test$martim andreis
+	       ls$profissao/acougueiro/obs=de sao pedro de coimbra
+	       
+	   test$diogo afonso
+	       rel$parentesco/sobrinho/afonso martins/1375.c1.afonso1
+	       ls$profissao/escolar
+	
+	   tabeliao$joao esteves
+	       ls$intitulacao/tabeliao de el rei em essa mesma cidade
+	
+	       
+	       
+	escritura$1376.pf1.m7-18.2verso3/06/06/1376/tipo=publica forma/fol=mc.07 n.18/loc=na calcada que esta a par da porta de almedina, em coimbra/sumario=joao anes, procurador do mosteiro de santa clara recusa realizar as partilhas com joao martins e com o seu juiz alvidro afonso martins, sem a presenca do juiz alvidro do dito mosteiro/obs=perg., got.cursivo, trasladado no doc. cit1376.2.m7-18.verso2.09.06.1376  
+	   
+	   referido$joao martins/mesmo_que=1375.p1.joao
+	      ls$cargo/procurador do juizo/obs=da cidade de coimbra
+		
+	   procurador$joao anes/mesmo_que=1375.s1.joao2   
+	      
+	   referido$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	       
+	   referido$afonso domingues/mesmo_que=1375.c1.afonso2
+	      
+	   referido$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   test$rodrigo martins
+	       ls$residencia/buarcos
+	
+	   test$goncalo mateus
+	       ls$residencia/buarcos
+	
+	   tabeliao$joao esteves
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra
+	
+		
+	escritura$1379.s1.m7-18.3/03/06/1379/tipo=sentenca/fol=mc.07 n.18/loc=dentro das pousadas de morada de afonso domingues/sumario=depois de elencados os bens a partir pelos mosteiro de santa clara e joao martins e sua mulher margarida gil, os juizes definem as condicoes de reparticao dos bens a herdar de maria anes/obs=perg., got.cursivo, sinal notarial
+	
+	   demandador$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	   
+	   referida$ines rodrigues de vasconcelos
+	       ls$cargo/abadessa de santa clara
+	       ls$titulo/dona
+	
+	   procurador$goncalo martins
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	       ls$profissao/escolar
+	    
+	   procurador$joao anes/mesmo_que=1375.s1.joao2
+	   
+	   procurador$vasco martins/id=1379.s1.vasco
+	       rel$sociabilidade/procurador/mosteiro de santa clara/1375.s1.msc
+	       ls$cargo/racoeiro/obs=da igreja de santa justa
+	
+	   reu$joao martins/mesmo_que=1375.p1.joao
+	       rel$sociabilidade/testamenteiro/maria anes/1375.s1.maria1/obs=e que a dita maria anes se finara depois e que os ditos joao martins e margarida gil sua mulher ficaram regedores e administradores de todos os ditos bens 
+		  
+	   reuf$margarida gil/mesmo_que=1375.p1.margarida
+	       rel$sociabilidade/testamenteira/maria anes/1375.s1.maria1/obs=e que a dita maria anes se finara depois e que os ditos joao martins e margarida gil sua mulher ficaram regedores e administradores de todos os ditos bens
+	     
+	   referido$gil fernandes/mesmo_que=1375.s1.gil
+	      ls$morto/antes/sim 
+	      
+	   referida$maria anes/mesmo_que=1375.s1.maria1/obs=ao tempo da morte de gil fernandes a dita maria anes ficou possuidor de todos os ditos bens e regedor e administrador deles
+	      ls$morta/antes/sim
+		     
+	   referida$maria gil/mesmo_que=1375.s1.maria2
+	      ls$condicao/freira professa
+	   
+	   referido$antoninho fernandes
+	      rel$parentesco/irmao/gil fernandes/1375.s1.gil
+	   
+	   referido$joao gil/id=1379.s1.joao3/obs=e que o dito joao gil desfaleceu primeiramente e que sua madre ficara herdeira na sua direita parte que a ele acontecia por morte do dito seu padre
+	     rel$parentesco/filho/gil fernandes/1375.s1.gil
+	     rel$parentesco/filho/maria anes/1375.s1.maria1
+	     rel$parentesco/irmao/maria gil/1375.s1.maria2
+	     rel$parentesco/irmao/margarida gil/1375.p1.margarida
+	     rel$parentesco/irmao/constanca gil/1379.s1.constanca
+	     ls$morto/antes/sim
+	     
+	   referida$constanca gil/id=1379.s1.constanca
+	     rel$parentesco/filho/gil fernandes/1375.s1.gil
+	     rel$parentesco/filho/maria anes/1375.s1.maria1
+	     rel$parentesco/irma/maria gil/1375.s1.maria2
+	     rel$parentesco/irma/margarida gil/1375.p1.margarida
+	     rel$parentesco/irma/joao gil/1379.s1.joao3
+	     ls$morta/antes/sim
+	   
+	   referido$afonso domingues/mesmo_que=1375.c1.afonso2
+	      
+	   referido$afonso martins/mesmo_que=1375.c1.afonso1  
+	     
+	   test$goncalo esteves 
+	       ls$cargo/conego/obs=da se de coimbra
+	       ls$residencia/coimbra
+	
+	   test$pedro afonso
+	       ls$cargo/conego/obs=da se de coimbra
+	       ls$residencia/coimbra
+	
+	   test$alvaro gil
+	       ls$profissao/mercador
+	       ls$residencia/coimbra
+	
+	   test$diogo alvares
+	       ls$titulo/escudeiro
+	       ls$residencia/coimbra
+	       
+	   tabeliao$joao esteves
+	       ls$intitulacao/tabeliao de el rei em essa mesma cidade de coimbra
+	
+	   demanda$bens que o mosteiro quer incluir na partilha/obs=e pediam contra eles que para isto fossem constrangidos que lhe dessem a partilha do dito pomar e das rendas dele que estimavam as ditas quinhentas libras e outrossim duzentas libras em que estimaria a sua parte de todos os sobreditos bens segundo tudo isto mais compridamente era e e conteudo
+	
+	   defesa$reus consentem na demanda com condicao/obs=joao martins e sua mulher lhes prazia de tirarem e embargarem e porem em posse a dita maria gil e o dito mosteiro em nome dela de toda a sua direita parte do dito cidral e dos renovos que fosse achado que eles houveram e receberam do dito cidral depois da morte da dita maria anes com tanto que as ditas abadessa e convento e a dita dona maria dessem a particao aquilo que achado fosse que a dita dona e ao dito mosteiro com ela fora dado quando a puseram e meteram na dita ordem, e a partilha devia ir tambem o que se gastou com o enterro de joao gil e com o pagamento de dividas de gil fernandes
+	   
+	   sentenca$partilha de bens/obs=visto afonso martins alvacil e afonso domingues d'aveiro este feito e a prova dele em que se prova que a morte de gil fernandes ficaram ai 4 filhos e filhas as quais herdaram a metade do cidral e a madre outra metade da qual metade do cidral e bens ficava a dona herdeira na quarta parte e a dita margarida gil na outra quarta parte e porque se prova que o dito joao gil e constanca gil morreram depois do padre e ficou a madre herdeira nos seus dois quinhoes e ora ela e morta e ficaram estas duas filhas maria gil e margarida gil herdeiras em todos os bens tirada a terca da passada que e o terco dos 6 quinhoes para que ficam as 4 a estas duas filhas e visto como o dito joao martins acusou a morte do dito joao gil e o fizesse sepultar e lhe deu suas missas aos 8 dias e mes julgamos que o dito mosteiro haja no dito cidral da metade o quarto que e a oitava parte e o dito joao martins a outra oitava metade e dos 6 quinhoes que ficaram a madre com os dois filhos haja a passada para a sua terca e que se deem por sua alma, e da parte dos quatro que facam que haja a dita abadessa os dois e joao martins os dois com entendimento que se a abadessa quiser levar o quinhao da oitava parte de todo o cidral que era de joao gil que a madre herdou que pague as depesas que joa martins jurar e sua mulher que despenderam na sepultura dos ditos oito dias e mes do dito joao gil e nao querendo pagar que fique ao dito joao martins e assim se parte esta heranca entre elas demais irmas e que outrossim o joao martins por seu juramento de conta do que lhe ficou em salvo tiradas as despesas do que houve de renda no cidral e que partia o que ficarcomo heranca esse joao martins fazer certo que pagou dividas por maria anes e por gil fernandes que pague a abadessa segundo levar da heranca, e outrossim a dita abadessa se quiser levar isto que traga as 100 libras que se prova que valia a roupa que foi dada a dona e as 25 libras de pitancas e uma arroba de cera ou 14 libras por ela, e mandamos que se faca a dita conta entre as ditas partes ate dia de sao joao batista 
+		       
+	   bem$cidral - fonte da rainha
+	       atr$localizacao/coimbra
+	       atr$descricao/um pomar
+	       atr$confrontacoes/a par da fonte da rainha
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       rel$posse/pertenceu por heranca/joao gil/1379.s1.joao3
+	       rel$posse/pertenceu por heranca/constanca gil/1379.s1.constanca
+	       rel$posse/pertence por heranca/joao martins/1375.p1.joao
+	       rel$posse/pertence por heranca/margarida gil/1375.p1.margarida
+	       rel$posse/pertence por heranca/maria gil/1375.s1.maria2
+	       rel$posse/pertence por heranca/mosteiro de santa clara/1375.s1.msc
+	       
+	    bem$ouro
+	       atr$descricao/ouro, prata, roupas de cama e de vestir e alfaias e outras coisas que bem valiam 500 libras
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       
+	    bem$prata
+	       atr$descricao/ouro, prata, roupas de cama e de vestir e alfaias e outras coisas que bem valiam 500 libras
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       
+	    bem$roupa de camas
+	       atr$descricao/ouro, prata, roupas de cama e de vestir e alfaias e outras coisas que bem valiam 500 libras
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       
+	    bem$roupas de vestir
+	       atr$descricao/ouro, prata, roupas de cama e de vestir e alfaias e outras coisas que bem valiam 500 libras
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       
+	    bem$alfaias
+	       atr$descricao/ouro, prata, roupas de cama e de vestir e alfaias e outras coisas que bem valiam 500 libras
+	       rel$posse/pertenceu/gil fernandes/1375.s1.gil
+	       rel$posse/pertenceu por heranca/maria anes/1375.s1.maria1
+	       
+	    bem$300 libras
+	       atr$descricao/recebera 300 libras de um legado que deixara antoninho fernandes aos ditos seus filhos e do dito gil fernandes 
+	       rel$posse/pertenceu/maria anes/1375.s1.maria1
+	       
+	    bem$700 libras
+	       atr$descricao/recebera do prior e convento do mosteiro de santa cruz 700 libras de custas de um feito que com eles havia por razao do dito pomar
+	       rel$posse/pertenceu/maria anes/1375.s1.maria1
+	       
+	    bem$300 libras
+	       atr$descricao/300 libras de loureiros que talhara do dito cidral
+	       rel$posse/pertenceu/joao martins/1375.p1.joao
+	       
+	    bem$500 libras
+	       atr$descricao/500 libras que dizia que o dito pomar poderia render na sua direita parte ao mosteiro
+	       rel$posse/pertence/joao martins/1375.p1.joao
+	       rel$posse/pertence/margarida gil/1375.p1.margarida
+	       
+	    bem$200 libras
+	       atr$descricao/que o dito joao gil fora morto na dita cidade e que eles ditos joao martins e a mulher em acusar a sua morte e em seu enterramento e honras do dia do seu passamento e dos oito dias e mes e ano despenderam e gastaram de seus bens 200 libras
+	       rel$posse/pertence/joao martins/1375.p1.joao
+	       rel$posse/pertence/margarida gil/1375.p1.margarida
+	       
+	    bem$pagamento de dividas
+	       atr$descricao/maria anes e o dito joao martins depois da morte de maria anes pagaram grande parte de custas que ficaram e se havia de pagar a morte do dito gil fernandes
+	       
+	    bem$20 libras
+	       atr$descricao/a morte da dita maria anes ai nao ficaram nem haviam bens porque a dita maria anes era tao pobre que nao havia de seu que valesse 20 libras 
+	       
+	   	
+	
+	escritura$1379.ci1.m7-18.3verso/14/06/1379/tipo=citacao/fol=mc.07 n.18/loc=no adro da se de coimbra/sumario=joao martins requer ao procurador do mosteiro de santa clara que se faca a conta e arrecadacao dos bens da forma como ficou sentenciado, ao que o procurador responde que nao pode por se sentir adoentado/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1375.p1.joao
+		
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	   
+	   procurador$vasco martins/mesmo_que=1379.s1.vasco
+	       ls$titulo/clerigo
+	
+	   test$afonso lourenco
+	       ls$cargo/vigario/obs=da acofragem?
+	       ls$residencia/coimbra
+	
+	   test$pedro esteves
+	       ls$profissao/advogado/obs=da audiencia de clerigos e outros de leis
+	       ls$residencia/coimbra
+	
+	   tabeliao$joao esteves/obs=pelo registo
+	       ls$intitulacao/tabeliao de el rei em esta mesma cidade de coimbra
+	       
+	   demanda$efectuar a arrecadacao de bens conforme a partilha sentenciada/obs=joao martins disse que para se mostrar que mingua nao era em ele para estar a conta e arracadacao com abadessa e convento do mosteiro de santa clara, requeria que em nome das abadessas e convento com seu procurador se viessem com ele a dita conta e arrecadacao segundo era julgado e mandado pelos juizes alvidros e outrossim conteudo em sua sentenca escrita em este sobredito instrumento escrito desta outra parte
+	    
+	   defesa$incapacidade fisica do procurador do mosteiro para realizar a partilha/obs=pelo dito vasco martins foi dito que ele o nao podia fazer porque se sentia agravado de dor de uma trama que trazia    
+	
+	   
+	   
+	escritura$1379.c1.m7-18.4a/03/06/1379/tipo=compromisso/fol=mc.07 n.18/loc=ao parlatorio da gradizela do mosteiro de santa clara de coimbra/sumario=joao martins requer que a abadessa e convento do mosteiro de santa clara por um seu procurador tomem contas das partilhas sentenciadas pelos juizes alvidros do feito entre as duas partes/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/id=1379.c1.joao
+	      ls$cargo/procurador do juizo/obs=no concelho de coimbra
+		
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	   
+	   referida$ines de vasconcelos
+	      ls$cargo/abadessa de santa clara
+	      ls$titulo/dona
+	   
+	   referido$afonso domingues/mesmo_que=1375.c1.afonso2
+	      
+	   referido$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   referida$margarida gil/mesmo_que=1375.p1.margarida
+	       
+	   referido$gil fernandes/mesmo_que=1375.s1.gil
+	      
+	   referida$maria anes/mesmo_que=1375.s1.maria1
+	   
+	   referida$maria gil/mesmo_que=1375.s1.maria2
+	      
+	   test$salvador anes
+	       ls$residencia/coimbra
+	
+	   test$vasco domingues
+	       ls$cargo/almoxarife/obs=de coimbra
+	       ls$residencia/coimbra
+	
+	   test$martinho
+	       rel$sociabilidade/homem/afonso martins/1375.c1.afonso1
+	
+	   tabeliao$joao domingues/obs=6 reais pelo registo com caminho
+	       ls$intitulacao/publico tabeliao de nosso senhor el rei na dita cidade de coimbra e seus termos
+	       
+	   demanda$efectuar a arrecadacao de bens conforme a partilha sentenciada/obs=joao martins disse contra a abadessa e donas que outrossim ai presentes estavam que no tal feito entre eles dizia que fora dada sentenca por os ditos juizes alvidros em a qual dizia que era conteudo entre as outras coisas que os ditos juizes mandaram que se viessem a conta ate o dia de sao joao que entao era seguido, e porem dizia afrontava e requeria a dita dona abadessa que mandassem seu procurador suficiente para tomar o dito conto e o receber que ele dito joao martins presente era e lhe aprazia de o logo dar e mostrar tudo aquilo em que o dito mosteiro era tido e nao o querendo fazer nem receber o dito conto que protestava contra ela e contra o dito seu mosteiro pelas penas conteudas no instrumento de compromisso feito entre eles por a dita razao e por todo o seu direito
+	   
+	   defesa$e logo pela dita dona abadessa foi dito que ela presente era e lhe prazia de mandar ser o dito conto e o mandar tomar logo dizendo que mandaria logo seu procurador a igreja de santiago da dita cidade como foi acordado por as sobreditas partes que se tomasse o dito conto 
+	       
+	
+	   
+	escritura$1379.pf1.m7-18.4b/24/06/1379/tipo=publica forma/fol=mc.07 n.18/loc=na calcada da par de santiago, a hora de vespera/sumario=joao martins apresenta se a par de santiago em coimbra no dia de sao joao para efectuar a partilha com o mosteiro, e perante a ausencia de um procurador das abadessa e donas de santa clara protesta da pena acordada na cedula de compromisso estabelecida entre ambas as partes/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1379.c1.joao
+		
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	   
+	   referido$afonso domingues/mesmo_que=1375.c1.afonso2
+	      
+	   referido$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   test$antoninho martins
+	       ls$cargo/sacador/obs=de el rei
+	       ls$residencia/coimbra
+	
+	   test$domingos afonso
+	       ls$cargo/prior/obs=que foi de figueiredo
+	       ls$residencia/coimbra
+	
+	   test$gil lourenco
+	       ls$profissao/oleiro
+	
+	   tabeliao$gomes anes/obs=pelo metade? registo
+	       ls$intitulacao/tabeliao de el rei na dita cidade de coimbra
+	
+	
+	escritura$1380.req1.m7-18.5/04/01/1380/tipo=requerimento/fol=mc.07 n.18/loc=calcada nova na cidade de coimbra/sumario=joao martins apresenta a alvaro gil procurador do mosteiro de santa clara um requerimento para que cumpram a sentenca relativa a partilha de bens de gil fernandes e maria anes, por nao o poder apresentar no mosteiro as abadessa e donas do convento/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/mesmo_que=1379.c1.joao
+		
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	   
+	   procurador$alvaro gil
+	      ls$profissao/mercador
+	      rel$sociabilidade/procurador geral/mosteiro de santa clara/1375.s1.msc
+	   
+	   referido$afonso domingues/mesmo_que=1375.c1.afonso2
+	      
+	   referido$afonso martins/mesmo_que=1375.c1.afonso1
+	   
+	   referida$margarida gil/mesmo_que=1375.p1.margarida
+	       
+	   referido$gil fernandes/mesmo_que=1375.s1.gil
+	      
+	   referida$maria anes/mesmo_que=1375.s1.maria1
+	   
+	   referida$maria gil/mesmo_que=1375.s1.maria2
+	   
+	   test$afonso domingues d'aveiro/mesmo_que=1375.c1.afonso2
+	       
+	   test$alvaro martins
+	       ls$profissao/tabeliao/obs=de coimbra
+	       
+	   test$alvaro afonso
+	       ls$cargo/racoeiro/obs=de sao cristovao
+	       ls$titulo/clerigo
+	
+	   tabeliao$afonso martins
+	       ls$intitulacao/publico tabeliao por nosso senhor el rei na dita cidade de coimbra
+	       
+	   demanda$requerimento para cumprimento de sentenca/obs=e porque as ditas abadessa e convento nao cumpriram nem querem cumprir a dita sentenca ao termo que deviam e segundo lhes mandado foi e como quem que para isso fossem requeridas por mim foram por maior avendamento e por meu direito por mais esforcado outra vez como de fronto e requiro das ditas abadessa e convento em pessoa do dito seu procurador que cumpram a dita sentenca e facam a dita particao e paguem aquilo que achado foi que devem pagar segundo na dita sentenca faz mencao e e conteudo e nao o querendo logo assim fazer e cumprir tudo segundo lhe era mandado, eu por mim e em nome da dita minha mulher e nossos sucessores protestamos por o dito mosteiro do que em diante nao sermos tidos nem obrigados de nenhumas rendas e frutos que ao dito mosteiro de direito forem ou sejam devidas do cidral da fonte da rainha de que havia de fazer a dita particao segundo na dita sentenca e conteudo e por todo o dito nosso direito  
+	
+	   defesa$intencao de cumrpimento de sentenca/obs=pelo dito alvaro gil foi dito que ele em nome do dito mosteiro e abadessa e convento ai presente estava como seu procurador para ir partir o dito cidral pela guisa que na sentenca que sobre a dita razao era dada e que lhe pertencia de tomarem logo dois homens bons um pela sua parte e outro pela parte do dito joao martins e sua mulher que partissem e demarcassem o dito cidral pela guisa que a sentenca que a sobredita razao era conteudo
+	
+	   
+	   
+	escritura$1393.ci1.m7-18.6/22/06/1393/tipo=citacao/fol=mc.07 n.18/loc=no paco do concelho da cidade de coimbra/sumario=publica forma que assenta a citacao feita por joao afonso a pedido de joao martins ao mosteiro de santa clara por causa da partilha do cidral da fonte da rainha/obs=perg., got.cursivo, sinal notarial
+	
+	   autor$joao martins/id=1379.c1.joao
+		
+	   reu$mosteiro de santa clara/mesmo_que=1375.s1.msc
+	      
+	   referido$vasco martins ?/obs=duvida no terceiro nome
+		ls$cargo/alvazil geral/obs=de coimbra
+		
+	   referido$joao afonso
+		ls$cargo/porteiro/obs=do concelho de coimbra
+		
+	   referido$goncalo esteves de aveiro/obs=toponimo associado ao patronimico
+		
+	   referido$joao fernandes 
+		ls$profissao/criado
+		rel$profissional/criado/mosteiro de santa cruz/1393.pf1.mscc
+		
+	   referido$mosteiro de santa cruz/id=1393.pf1.mscc
+	   
+	   test$garcia martins
+	       ls$profissao/tabeliao
+	
+	   test$afonso anes
+	       ls$profissao/tabeliao
+	       
+	   test$diogo lourenco
+	       ls$profissao/tabeliao
+	       
+	   test$afonso do vale?/obs=toponimo associado ao patronimico
+	   
+	   tabeliao$afonso martins
+	       ls$intitulacao/publico tabeliao de nosso senhor el rei na dita cidade de coimbra
+	       
+	   demanda$citacao para realizar partilha do cidral da fonte da rainha/obs=joao afonso disse e deu fe que ele em peticao de joao martins procurador do juizo na dita cidade citara e apregoara abadessa e convento do mosteiro de santa clara de apres da cidade por razao da particao da terca parte do cidral da fonte da rainha que a dita abadessa e convento ha de haver parte irem partir e depois? nao achara nem outros por eles, e o dito alvazil vista a fe do dito porteiro julgou por revel e por sua revelia mandou que se partisse o dito cidral deste domingo que vem a oito dias que para ate 5 de julho, e mandou que o fosse partir goncalo esteves de aveiro e joao fernandes criado de santa cruz  
+	   
+
+         
+      escritura$1375.t1.m7-19/4/9/1375/testamento/fol=mc.7 n.19/loc=casas de morada de beatriz duraes em cernache/sumario=testamento de beatriz duraes/obs=perg., got.cursivo, sinal notarial
+
+         testadora$beatriz duraes/id=1375.t1.beatriz
+            ls$residencia/cernache
+            ls$motivacoes/salvacao da alma e remissao dos pecados/obs=temendo deus em o dia da justica a que ei dar conta e recado a nosso senhor jesus cristo das obras que em este mundo fiz, dou a alma de mim a deus que a fez e peco-lhe por a sua misericordia que me queira perdoar os muitos pecados e maldades que em este mundo fiz contra a sua vontade e rogo a virgem gloriosa santa maria com todas as virgens e com todos os santos da gloria do paraiso que lhe roguem por mim
+            rel$parentesco/mae/maria anes/1375.t1.maria4
+            rel$parentesco/tia/gil/1375.t1.gil
+            ls$sepultura/cemiterio de santa maria de cernache/obs=testadora manda o seu corpo ser sepultado no cemiterio da igreja de santa maria de cernache
+
+         testamentaria$igreja de santa maria de cernache/id=1375.t1.ismc/obs= que busquem os mais clerigos que poderem haver que me digam 30 missas por minha alma e daqueles a quem eu sou teuda e se entao tantos clerigos nao poderem haver digam as missas que ficarem por dizer em outro dia ou o mais cedo que se poder fazer e digam este clerigos por minha alma vesperas e matinas com as ditas missas e paguem-nos aguisadamente
+
+         testamentario$nome desconhecido/id=1375.t1.nd2
+            rel$sociabilidade/abade/beatriz duraes/1375.t1.beatriz
+
+         testamentario$gil/id=1375.t1.gil
+            rel$parentesco/sobrinho/beatriz duraes/1375.t1.beatriz
+
+         testamentaria$ines/id=1375.t1.ines
+            rel$parentesco/filha/basto/1375.t1.basto
+
+            referido$basto/id=1375.t1.basto
+               rel$parentesco/pai/ines/1375.t1.ines
+
+         testamentario$domingos lourenco/id=1375.t1.domingos
+
+         testamentaria$maria do campo/id=1375.t1.maria1
+
+         testamentaria$maria martins/id=1375.t1.maria2
+
+         testamentaria$maria domingues/id=1375.t1.maria3
+            ls$residencia/vila sota?/obs=duvida no nome
+
+         testamentaria$marinha/id=1375.t1.marinha/obs=viveu com beatriz duraes
+            ls$titulo/dona
+
+         testamenteira$maria anes/id=1375.t1.maria4/obs=que receba a terca de todos os seus bens, e caso nao os possa receber que os de para a sua alma
+            rel$parentesco/filha/beatriz duraes/1375.t1.beatriz
+
+         testamentario$nome desconhecido/id=1375.t1.nd3/obs=parentes e parentas, tios e tias
+            rel$parentesco/parentes, parentas, tios, tias/beatriz duraes/1375.t1.beatriz
+
+         test$joao domingues/id=t1375.1.m7-19-per1
+            ls$residencia/cernache
+
+         test$joao estevao/id=t1375.1.m7-19-per2
+            ls$titulo/clerigo
+            ls$cargo/capelao/obs=da couca
+
+         test$vasco domingues/id=t1375.1.m7-19-per3
+            rel$sociabilidade/homem/nome desconhecido/1375.t1.nd1/obs=homem do prior de cernache
+
+         referido$nome desconhecido/id=1375.t1.nd1
+            ls$cargo/prior/obs=de cernache
+
+         test$afonso peres/id=t1375.1.m7-19-per4
+            ls$titulo/mancebo de fernao vasques
+            rel$sociabilidade/mancebo/fernao vasques/1375.t1.fernao
+
+         referido$fernao vasques/id=1375.t1.fernao
+            ls$profissao/tabeliao
+
+         tabeliao$goncalo martins/obs=vinte soldos pelo registo/id=t1375.1.m7-19-per5
+            ls$intitulacao/tabeliao de nosso senhor el rei na dita cidade de coimbra
+
+         bem$40 soldos/obs=manda ir com seu corpo
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/igreja de santa maria de cernache/1375.t1.ismc
+
+         bem$5 libras e 1 sesteiro de pao meado/obs=por suas falhas
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/igreja de santa maria de cernache/1375.t1.ismc
+
+         bem$10 soldos e 1 teiga de pao meado/obs=a lampada e candeia de santa maria da dita igreja de cernache
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/igreja de santa maria de cernache/1375.t1.ismc
+
+         bem$20 soldos/obs=deixa ao seu abade
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/nome desconhecido/1375.t1.nd2
+
+         bem$10 soldos/obs=para um salterio por que leia
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/gil/1375.t1.gil
+
+         bem$5 libras, 1 almocela, 1 chumaco e uns mantos
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/ines/1375.t1.ines
+
+         bem$10 soldos/obs=pelo salterio que entregou? a gil, sobrinho de beatriz duraes
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/domingos lourenco/1375.t1.domingos
+
+         bem$1 saia clara
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/maria de campo/1375.t1.maria1
+
+         bem$4 libras
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/maria martins/1375.t1.maria2
+
+         bem$1 guarda vento e 1 saia
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/maria domingues/1375.t1.maria3
+
+         bem$soldadas em divida/obs=deve ser paga a dona marinha a quantia de soldada que esta jurar pelos evangelhos que beatriz duraes lhe dever por sua morte
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/marinha/1375.t1.marinha
+
+         bem$quantia para pagamento de dividas/obs=se alguem vier e for de boa fama e disser que lhes deve alguma coisa por juramento dos evangelhos ate quantia de vinte soldos paguem
+
+         bem$200 libras/obs=terca dos bens de beatriz duraes, mais cincoenta libras que se nao forem herdados por maria anes por algum motivo deverao reverter para a alma de beatriz duraes
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/maria anes/1375.t1.maria4
+
+         bem$5 soldos/obs=arredados da heranca com cinco soldos
+            rel$posse/pertence/beatriz duraes/1375.t1.beatriz
+            rel$posse/por testamento/nome desconhecido/1375.t1.nd3
+
+            
+       
+      escritura$1376.tp1.m7-20/22/1/1376/tipo=tomada de posse/fol=mc.7 n.20/loc=casal do mosteiro de santa clara em vinha no termo de miranda/sumario=os procuradores do mosteiro de santa clara tomam posse do casal de uma vinha em miranda, que havia sido tomado pelos frades do mosteiro de sao domingos/obs=perg., got.cursivo, sinal notarial
+      
+         bem$vinha - miranda
+	    atr$descricao/casal de uma vinha
+	    atr$localizacao/miranda
+	    atr$termoc/miranda
+	    atr$confrontacoes/parte com uma quinta do mosteiro de santa clara
+	    rel$posse/pertence/mosteiro de santa clara/1376.tp1.msc
+	    rel$posse/pertenceu por aforamento/vicente peres/1376.tp1.vicente     
+      
+         senhorio$mosteiro de santa clara/id=1376.tp1.msc
+      
+                  referido$mosteiro de sao domingos/id=1376.tp1.msd/obs=os frades do mosteiro tolheram para si o casal de uma vinha de miranda
+	    	 
+	          referido$vicente peres/id=1376.tp1.vicente/obs=antigo foreiro da propriedade
+	            ls$profissao/monteiro
+	            
+	          referido$afonso mateus
+	            ls$residencia/casal de uma vinha/obs=termo de miranda
+	    
+	          referido$joao anes
+	            rel$sociabilidade/procurador/obs=do mosteiro/1376.tp1.msc
+	    
+	          referido$domingos anes
+	            rel$sociabilidade/procurador/obs=do mosteiro/1376.tp1.msc
+	    
+	          referido$vicente migueis
+	            rel$sociabilidade/procurador/obs=do mosteiro/1376.tp1.msc
+	 
+	 test$martim domingues
+	    ls$residencia/urzelhe/obs=aldeia, no documento escrito orzelhi
+	    
+	 test$martim gomes
+	    ls$residencia/urzelhe/obs=aldeia, no documento escrito orzelhi
+	    
+	 test$andre peres
+	    ls$residencia/quinta de santa clara
+	 
+	 test$martim fraco
+	    ls$residencia/monforte/obs=termo da cidade de coimbra
+	    
+	 tabeliao$luis martins/15 soldos pelo registo
+	    ls$intitulacao/tabeliao por el rei nosso senhor na vila de miranda
+	    
+	 	    
+	    
+      escritura$1376.tp2.m7-21/3/4/1376/tipo=tomada de posse/fol=mc.7 n.21/loc=almalagues, ante a casa de morada de vicente monteiro/sumario=documento de posse em que sao descritos diante do meirinho do rei e do seu ouvidor bens e confrontacoes do mosteiro de santa clara, para mostrar ao procurador do mosteiro de sao domingos que o prior e convento dominicanos se haviam apropriado indevidamente de propriedades e foros do mosteiro de santa clara/obs=perg., got.cursivo, sinal notarial
+      
+         senhorio$mosteiro de santa clara/id=1376.tp2.mcs
+      
+                   referido$mosteiro de sao domingos/id=1376.tp2.msd/obs=os frades do mosteiro 
+	 
+	           referido$joao anes/id=1376.tp2.joao
+	             ls$residencia/coimbra/obs=mosteiro de santa clara
+	             rel$sociabilidade/homem/mosteiro de santa clara/1376.tp2.mcs/obs=homem do mosteiro
+	    
+	           referido$goncalo garcia/id=1376.tp2.goncalo
+	             ls$profissao/meirinho de el rei na comarca da estremadura
+	    
+	           referido$lourenco afonso
+	             ls$profissao/ouvidor
+	             rel$profissional/ouvidor/goncalo garcia/1376.tp2.goncalo
+	    
+			   referido$gil 
+			     ls$titulo/frei
+			     rel$sociabilidade/procurador/mosteiro de sao domingos/1376.tp2.msd	    	 
+		 
+		 test$andre peres
+		    ls$residencia/coimbra/obs=quinta de santa clara
+		    
+		 test$joao domingues
+		    ls$residencia/ribeira/obs=termo de coimbra
+		    
+		 test$vasco esteves
+		    ls$residencia/ribeira/obs=termo de coimbra
+	
+		 test$joao rico
+		    ls$residencia/quinta/obs=que foi de alvaro peres, termo de miranda
+		 
+			  referido$alvaro peres
+			
+		 tabeliao$goncalo martins
+		    ls$residencia/coimbra
+		    
+		 bem$casa e adega - almalagues
+		    atr$descricao/onde mora vicente monteiro
+		 
+		 bem$casa e seu lagar - almalagues
+		    atr$descricao/lagar que esta a par da casa
+		    atr$confrontacoes/parte com a rua publica de uma parte
+		    atr$confrontacoes/e da outra parte com casas de pero juliaes e rua perante ambas
+		    atr$confrontacoes/e da outra parte com pardieiros de joao moleiro e de seus herdeiros
+		    atr$confrontacoes/e da outra parte com casas de aparicio goncalves e rua perante ambas
+		    
+			  referido$pedro antoninho
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+			 
+			  referido$tome martins
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+		 
+			  referido$pedro juliaes/obs=proprietario de casas de confrontacoes
+			  
+			  referido$joao moleiro/obs=proprietario de casas de confrontacoes
+			  
+			  referido$aparicio goncalves/obs=proprietario de casas de confrontacoes		    
+			    
+		 bem$terra - courelas
+		    atr$descricao/courela de terra
+		    atr$localizacao/courelas/obs=a so as casas de almalagues
+		    atr$confrontacoes/que parte da uma parte com terras de joao moleiro 
+		    atr$confrontacoes/e da outra parte com terra de lourenco da serra 
+		    atr$confrontacoes/e que entesta com terra de joao manso
+		 
+			  referido$joao moleiro
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+		 
+			  referido$joao galego
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+		 
+			  referido$tome martins
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+			    
+			  referido$joao moleiro/obs=proprietario de casas de confrontacoes
+			  
+			  referido$lourenco da serra/obs=proprietario de casas de confrontacoes
+			  
+			  referido$joao manso/obs=proprietario de casas de confrontacoes
+		 
+		 bem$vinha - eira da lapa
+		   atr$descricao/courela de vinha na eira da lapa nas milharicas
+		   atr$localizacao/eira da lapa/obs=milharicas
+		   atr$termoc/em almalagues
+		   atr$confrontacoes/parte de uma parte com caminho publico 
+		   atr$confrontacoes/e de outra parte com vinha de joao solhaes
+		   atr$confrontacoes/e da outra parte com vinha de vasco domingues
+		   atr$confrontacoes/e em cima com parte no mato
+		 
+			  referido$joao moleiro
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+			     
+			  referido$joao galego
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+		 
+			  referido$tome martins
+			    rel$sociabilidade/testemunha/joao anes/1376.tp2.joao
+		 
+			  referido$joao solhaes/obs=proprietario de casas de confrontacoes
+			  
+			  referido$vasco domingues/obs=proprietario de casas de confrontacoes
+			    
+		 bem$vinha - cama vedra
+		     atr$descricao/duas vinhas, o bem e declarado em cama vedra
+		     atr$localizacao/cama vedra
+		     atr$confrontacoes/a par da mata do mosteiro em coimbra
+		 
+		 bem$herdade - miranda
+		     atr$descricao/uma herdade de pao centeio e tremocos com seus montes, alem da agua
+		     atr$localizacao/miranda
+		 
+		 bem$terra - ameixoeiras
+		     atr$descricao/outra terra do mosteiro, acerca da mata a agua das ameixoeiras
+		     atr$localizacao/ameixoeiras
+		     atr$termoc/coimbra
+		     atr$confrontacoes/partem com as herdades dos filhos do vaqueirinho do carapinhal 
+		     atr$confrontacoes/e da outra parte com herdades dos filhos do abade que esta em termo de coimbra e o rabeiro permeios
+		     atr$confrontacoes/e da outra parte com herdade de pero peres e de seus filhos 
+		     atr$confrontacoes/e da outra com herdade de mor vasques monja do mosteiro das celas de guimaraes  
+				    
+			  referida$mor vasques
+			    ls$titulo/monja/obs=do mosteiro de celas de guimaraes
+		    
+			  referido$vaqueirinho do carapinhal/obs=pai de proprietarios de confrontacoes
+			    
+			  referido$pedro peres/obs=proprietario de herdade de confrontacoes
+			  
+			  referido$abade/obs=pai de proprietarios de confrontacoes
+			  
+			   
+		             
+      escritura$1376.e1.m7-22/8/6/1376/emprazamento/fol= mc.7 n.22/loc=a grade da igreja do mosteiro de santa clara/sumario=o mosteiro de santa clara empraza os direitos sobre a igreja de sao pedro de gouveia e propriedades a fernao gil, vigario da mesma, pelo periodo em que este for o vigario/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+                 atr$duracao/vigararia de fernao gil
+		 atr$renda principal tipo/fixa em dinheiro
+		 atr$renda principal valor/40 libras/obs=de dinheiro portugues
+		 atr$pagamento renda principal/dia de sao joao batista/obs=no mosteiro de santa clara, todos os anos a partir do proximo
+		 atr$pena/200 libras
+         
+         bem$direitos da igreja de sao pedro - gouveia
+            atr$descricao/direitos das obradas e festas e de todas outras coisas do entramento da dita igreja de seus casais e suas herdades
+            atr$localizacao/gouveia
+            rel$posse/pertence/mosteiro de santa clara/1376.e1.msc
+            rel$posse/por emprazamento/fernao gil/1376.e1.fernao		 
+		 
+         senhorio$mosteiro de santa clara/id=1376.e1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1376.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$fernao gil/id=1376.e1.fernao
+            ls$cargo/vigario/obs=da igreja de sao pedro de gouveia
+            ls$residencia/gouveia
+
+         test$vasco martins/id=e1376.1.m7-22-per1
+            ls$profissao/racoeiro/obs=da igreja de santa justa
+
+         test$joao anes/id=e1376.1.m7-22-per2
+            rel$sociabilidade/homem/mosteiro de santa clara/1376.e1.msc
+
+         test$domingos anes/id=e1376.1.m7-22-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1376.e1.msc/obs=homem da abadessa e convento
+
+         test$goncalo peres/id=e1376.1.m7-22-per4
+            rel$sociabilidade/homem/fernao gil/1376.e1.fernao
+
+         tabeliao$goncalo martins/obs=seis soldos pelo registo/id=e1376.1.m7-22-per5
+            ls$intitulacao/tabeliao de nosso senhor el rei na cidade de coimbra
+
+                     
+     	      
+       escritura$1376.inq4.m7-24/3/9/1376/tipo=inquiricao/fol=mc.7 n.24/loc=a porta da casa de morada de joao afonso, rua da moeda em coimbra/sumario=documento lavrado para comprovar a ausencia de joao afonso no decorrer de um inquerito sobre um feito entre o mosteiro de santa clara e o mosteiro de sao domingos/obs=perg., got.cursivo, sinal notarial
+		 
+		 referido$joao afonso/id=1376.inq4.joao
+		    ls$naturalidade/montemor 
+		    ls$profissao/escolar
+		    ls$residencia/rua da moeda/obs=em coimbra
+		    ls$profissao/juiz alvidro
+		    
+		    referido$joao escudeiro
+		      ls$profissao/juiz alvidro
+		 
+		    referido$mosteiro de santa clara/id=1376.inq4.msc
+		 
+		    referido$mosteiro de sao domingos/id=1376.inq4.msd
+		 
+		 inquiridor$vasco martins
+		    ls$profissao/racoeiro/obs=da igreja de santa justa
+		    rel$sociabilidade/procurador do mosteiro de santa clara/1376.inq4.msc
+		    
+		  inquirida$nome desconhecido
+		        rel$sociabilidade/manceba de joao afonso/joao afonso/1376.inq4.joao
+	      
+		 test$domingos peres do caneiro
+		 
+		 test$frei domingos arunca?/obs=de santa margarida
+		     ls$titulo/frei
+		     ls$ordem/santa margarida
+		    		     
+		 tabeliao$alvaro martins/obs=6 reais pelo registo
+		    ls$intitulacao/tabeliao de el rei em coimbra 
+		    
+		 demanda$inquiridor pergunta por juiz alvidro/obs=vasco martins fez pergunta se era o dito joao afonso na dita cidade por que ele em nome do mosteiro de santa clara como seu procurador vinha requerer o dito joao afonso como juiz que era alvidros ele e joao escudeiro de um feito que o dito mosteiro de santa clara e o mosteiro de sao domingos aviam per alvidrar e livrar e desembargar ante do tempo que lhes era contado pelas ditas res  
+	    
+		 defesa$inquirida da conta da ausencia do juiz alvidro/obs=e logo por uma manceba do dito joao afonso foi dito que o dito joao afonso era fora da dita cidade  
+		  
+		 
+		 
+      escritura$1378.e1.m7-25/4/1/1378/emprazamento/fol=mc.7 n.25/loc=a grade, dentro da igreja do mosteiro de santa clara de coimbra/sumario=o mosteiro de santa clara empraza por 3 vidas a bartolomeu domingues e constanca anes uma vinha e seu olival que a sua igreja de sao martinho ha em montemor/obs=perg., got.cursivo, sinal notarial
+		 atr$contrato tipo/emprazamento
+                 atr$duracao/3 vidas/obs=casal e mais uma
+		 atr$renda principal tipo/parciaria
+		 atr$renda principal valor/1 terca parte do vinho e azeite e todos os outros frutos/obs= as azeitonas a entregar ao pe da oliveira e o vinho ao lagar a bica
+		 atr$renda acessoria valor/dizimo da dita igreja
+		 atr$renda acessoria tipo/dizimo
+		 atr$pena/50 libras/obs=de dinheiro portugues
+		 
+         bem$vinha e olival - montemor o velho
+            atr$descricao/uma vinha com seu olival alem de santo andre, da igreja de sao martinho
+            atr$localizacao/montemor o velho
+            atr$termoc/montemor o velho
+            atr$confrontacoes/parte de uma parte com olival da dita igreja
+            atr$confrontacoes/da outra parte com carreira publica, com hortas de domingos rico
+            atr$confrontacoes/e da outra parte com vinha e olival de joao martins tamasinho
+            atr$confrontacoes/e entesta na carreira publica
+            rel$posse/pertence/mosteiro de santa clara/1378.e1.msc
+            rel$posse/por emprazamento/bartolomeu domingues/1378.e1.bartolomeu
+            rel$posse/por emprazamento/constanca anes/1378.e1.constanca
+            rel$posse/por emprazamento/canhestro/1378.e1.canhestro
+         
+         senhorio$mosteiro de santa clara/id=1378.e1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1378.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$bartolomeu domingues/id=1378.e1.bartolomeu
+            rel$parentesco/filho/canhestro/1378.e1.canhestro
+            ls$residencia/montemor o velho
+
+         enfiteutaf$constanca anes/id=1378.e1.constanca
+            rel$parentesco/mulher/bartolomeu domingues/1378.e1.bartolomeu
+            ls$residencia/montemor o velho
+
+            referido$canhestro/id=1378.e1.canhestro
+             
+            referido$domingos rico/obs=proprietario de confrontacoes/id=e1378.1.m7-25-per5-per6
+
+            referido$joao martins tamasinho/obs=proprietario de confrontacoes/id=e1378.1.m7-25-per5-per7
+
+         test$goncalo lourenco/id=e1378.1.m7-25-per1
+            rel$sociabilidade/homem/mosteiro de santa clara/1378.e1.msc/obs=homem da abadessa e convento
+
+         test$joao anes/id=e1378.1.m7-25-per2
+            rel$sociabilidade/homem/mosteiro de santa clara/1378.e1.msc/obs=homem da abadessa e convento
+
+         test$domingos anes/id=e1378.1.m7-25-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1378.e1.msc/obs=homem da abadessa e convento
+
+         test$joao peres/id=e1378.1.m7-25-per4
+            ls$residencia/montemor
+
+         tabeliao$goncalo martins/id=e1378.1.m7-25-per5
+            ls$intitulacao/tabeliao de nosso senhor el rei na cidade de coimbra
+
+                        
+            
+       escritura$1378.q1.m7-26/0/5/1378/quitacao/fol=mc.7 n.26/loc=dentro da morada do tabeliao em miranda/sumario=luis domingues paga a vasco dos santos vinte libras da colheita en nome da abadessa de santa clara e do convento de santa clara da colheita que devia ao concelho de miranda/obs=perg., got.cursivo, sinal notarial
+         divida$divida/sem indicacao de juro/obs=de colheita que o mosteiro de santa clara devia ao concelho de miranda/id=q1378.1.m7-26-obj1
+
+         quitante$vasco dos santos/id=1378.q1.vasco
+            ls$profissao/colheiceiro/obs=do concelho de miranda
+            ls$residencia/miranda
+
+         quitado$mosteiro de santa clara/id=1378.p1.msc
+
+            referido$luis domingues/obs=em nome da abadessa de santa clara e do convento/id=1378.p1.msc-per1
+               ls$residencia/urzelhe/obs=aldeia de orizelhi
+               ls$profissao/caseiro do mosteiro
+               rel$profissional/caseiro/mosteiro de santa clara/1378.p1.msc
+
+         test$domingos fremosso/id=q1378.1.m7-26-per2
+
+         test$martim sousa/id=q1378.1.m7-26-per3
+            ls$residencia/pousa foles
+
+         test$vasco dos santos/mesmo_que=1378.q1.vasco/id=q1378.1.m7-26-per4
+
+         tabeliao$luis martins/obs=treze soldos pelo registo/id=q1378.1.m7-26-per5
+            ls$intitulacao/tabeliao de nosso senhor el rei em miranda
+
+                  
+         
+      escritura$cv1378.1.m7-27/12/10/1378/compraevenda/fol=mc.7 n.27/loc=casas de morada do tabeliao fernao vasques em coimbra/sumario=aparicio martins e maria vasques vendem a fernao vasques e maria anes um olival na pegueira, termo de coimbra/obs=perg., got.cursivo, sinal notarial
+         	atr$contrato tipo/compra e venda
+      		atr$preco/45 libras/obs=de dinheiro portugues  
+      		
+         bem$olival - pegueira
+            atr$descricao/1 olival
+            atr$localizacao/pegueira
+            atr$termoc/coimbra
+            atr$confrontacoes/parte com um olival de el rei que traz lourenco esteves almocreve
+            atr$confrontacoes/e da outra parte com olival da igreja de sao pedro
+            atr$confrontacoes/e da outra parte com olival que traz vasco domingues homem de el rei
+            rel$posse/pertence/aparicio martins/1378.cv1.aparicio
+            rel$posse/pertence/maria vasques/1378.cv1.maria1
+            rel$posse/por compra/fernao vasques/1378.cv1.fernao
+            rel$posse/por compra/maria anes/1378.cv1.maria2
+      
+         vendedor$aparicio martins/id=1378.cv1.aparicio
+            ls$residencia/coimbra
+
+         vendedora$maria vasques/id=1378.cv1.maria1
+            rel$parentesco/mulher/aparicio martins/1378.cv1.aparicio/obs=tambem referida como companheira de aparicio martins
+            rel$sociabilidade/procuradora/aparicio martins/1378.cv1.aparicio
+
+         comprador$fernao vasques/id=1378.cv1.fernao
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1378.cv1.maria2
+            rel$parentesco/mulher/fernao vasques/1378.cv1.fernao
+
+            referido$lourenco esteves/obs=traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per1
+               ls$profissao/almocreve
+
+            referido$vasco domingues/obs=homem de el rei, traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per2
+
+         test$joao martins/id=cv1378.1.m7-27-per3
+            ls$profissao/corrector
+
+         test$martim vasques/id=cv1378.1.m7-27-per4
+            ls$profissao/acagador
+
+         test$afonso do ronco/id=cv1378.1.m7-27-per5
+            ls$profissao/porteiro
+
+         tabeliao$goncalo martins/obs=10 soldos pelo registo/id=cv1378.1.m7-27-per6
+            ls$intitulacao/tabeliao de el rei na cidade de coimbra
+          
+        
+            
+      escritura$1378.p1.m7-27a/2/9/1378/procuracao/fol=mc.7 n.27/loc=arco, termo de avelas de cima/sumario=procuracao trasladada num documento de compra e venda em que aparicio martins da poder a sua mulher maria vasques para esta vender um olival que tem na pegueira e um olival com sua vinha em termo de coimbra, desde que seja lavrado documento por tabeliao/obs=perg., got.cursivo, trasladada no documento cv1378.1.m7-27.12.10.1378
+
+         constituinte$aparicio martins/mesmo_que=1378.cv1.aparicio/id=p1378.1.m7-27a-per1
+
+         procurador$maria vasques/mesmo_que=1378.cv1.maria1/id=p1378.1.m7-27a-per2
+            rel$sociabilidade/procurador/aparicio martins/1378.cv1.aparicio
+
+            referido$joao domingues/id=1378.p1.joao/obs=ao qual pertenciam as propriedades referidas na procuracao
+               ls$alcunha/o que foi mouro
+
+         test$martim de canaveses/id=p1378.1.m7-27a-per3
+            ls$cargo/prior/obs=de avelas de cima
+            ls$residencia/avelas de cima
+
+         test$domingos abril/id=p1378.1.m7-27a-per4
+            ls$residencia/quintela
+
+         tabeliao$joao da costa/id=p1378.1.m7-27a-per5
+            ls$intitulacao/tabeliao da infanta dona beatriz em suas terras
+            rel$profissional/tabeliao/beatriz/1378.p1.beatriz
+
+            referida$beatriz/id=1378.p1.beatriz
+               ls$titulo/dona
+               ls$titulo/infanta
+
+               
+               
+      escritura$1379.af1.m7-28/13/3/1379/aforamento/fol= mc.7 n.28/loc=a grade do mosteiro de santa clara/sumario=a abadessa e o convento de santa clara fazem aforamento perpetuo de uma vinha em urzelhe a goncalo lourenco e catarina esteves/obs=perg., bom, got.cursivo, sinal notarial
+		 atr$contrato tipo/aforamento
+                 atr$duracao/perpetuo e hereditario
+		 atr$renda principal tipo/parciaria
+		 atr$renda principal valor/1 oitava parte do vinho e de todos os outros frutos/obs=a entregar no lagar a bica
+		 atr$renda acessoria tipo/fixa em generos/obs=eiradega
+		 atr$renda acessoria valor/2 almudes de vinho
+		 atr$renda acessoria tipo/outros foros/obs=iguais aos que que se pagam nas outras vinhas que o mosteiro tem nesse lugar
+
+         aforamento$vinha - marmeleira
+            atr$descricao/1 vinha em urzelhe, termo de miranda, a que chamam a marmeleira 
+            atr$localizacao/marmeleira/obs=urzelhe
+            atr$termoc/miranda
+            atr$confrontacoes/parte de uma parte com o rio publico
+            atr$confrontacoes/da outra parte com um ribeiro que vai perante a dita vinha e outra vinha do dito mosteiro e vai encostar aos freixoeiros
+            atr$confrontacoes/e da outra parte com vinha de martim gomes
+            rel$posse/pertence/mosteiro de santa clara/1379.af1.msc
+            rel$posse/por aforamento/goncalo lourenco/1379.af1.goncalo
+            rel$posse/por aforamento/catarina esteves/1379.af1.catarina
+            
+         senhorio$mosteiro de santa clara/id=1379.af1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1379.af1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         foreiro$goncalo lourenco/id=1379.af1.goncalo
+            rel$sociabilidade/homem/mosteiro de santa clara/1379.af1.msc/obs=homem da abadessa e do convento
+
+         foreira$catarina esteves/id=1379.af1.catarina
+            rel$parentesco/mulher/goncalo lourenco/1379.af1.goncalo
+
+         test$afonso domingues/id=af1379.1.m7-28-per1
+            ls$cargo/corregedor
+            ls$residencia/castanheira
+
+         test$domingos anes/id=af1379.1.m7-28-per2
+            rel$sociabilidade/homem/mosteiro de santa clara/1379.af1.msc/obs=homem da abadessa e do convento
+
+         test$andre domingues/id=af1379.1.m7-28-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1379.af1.msc/obs=homem da abadessa e do convento
+
+         tabeliao$goncalo martins/id=af1379.1.m7-28-per4
+            ls$intitulacao/tabeliao de nosso senhor el rei na dita cidade de coimbra e em seu termo
+          
+            
+            
+      docepiscopal$csd1379.1.m7-29/22/3/1379/tipo=apelacao/fol=mc7. n.29/loc=audiencia da igreja de braga/sumario=o mosteiro de sao domingos apela para a igreja de braga por causa de decisoes tomadas no bispado de coimbra em relacao a posse de propriedades que ambos mosteiro de santa clara e mosteiro de sao domingos reclamavam, tendo o arcediago de braga decidido entregar a posse das herdades ao mosteiro de sao domingos dado que havia sido vitima de uma ma decisao dos oficiais do bispado de coimbra que nao respeitou o privilegio e foro proprio dados pelo papa aos dominicanos/obs=perg., got.cursivo, sinal notarial
+		
+		   apelante$mosteiro de sao domingos/id=1379.csd1.msd
+			
+		   procurador$joao lourenco
+		      rel$sociabilidade/procurador/mosteiro de sao domingos/1379.csd1.msd
+		      
+		   reu$mosteiro de santa clara/id=1379.csd1.msc
+		       
+		   procurador$joao de burgos
+		       rel$sociabilidade/procurador/mosteiro de santa clara/1379.csd1.msc
+		
+		   apelado$nicolau martins/obs=por suspensao feita a dom lourenco arcebispo desta mesma por autoridade da igreja de roma
+		       ls$cargo/arcediago/obs=de vermui
+		       ls$cargo/administrador do espiritual e do temporal/obs=da igreja e arcediago de braga
+		       ls$assina/sim/obs=nicolau archidiaconus
+		       					  
+		   test$giraldo esteves
+		       ls$cargo/procurador
+		
+		   test$pedro martins
+		       ls$profissao/escrivao
+		
+		   test$vasco peres
+		       ls$profissao/escrivao
+		   
+		   test$vasco esteves
+		       ls$profissao/escrivao
+		   
+		   test$vasco martins
+		       ls$profissao/escrivao
+		   
+		   test$diego goncalves
+		       ls$profissao/escrivao	   
+		
+		   tabeliao$fernao geraldes
+		       ls$intitulacao/escrivao jurado na dita audiencia da igreja de braga
+	   
+		       referido$joao serrano
+		         ls$cargo/arcediago/obs=do vouga
+		       
+		       referido$pedro tenorio/obs=no documento pero tenouro
+		       	 ls$titulo/dom
+			 ls$cargo/bispo de coimbra/obs=tresladado a igreja de toledo
+		       
+		       referido$geraldes peres/obs=seguiram a dita apelacao giral perez vigario geral na dita igreja de coimbra a se vagante seu quase por trasladacao do dito bispo como dito e porque ai nao havia outro vigario nem juiz que conhecesse do negocio da dita apelacao   
+		         ls$cargo/vigario geral/obs=de coimbra
+	  
+		       referido$gomes anes/obs=apresentado por joao de burgos um instrumento em pergaminho escrito por gomes anes com indicacoes de defesa e provas da abadessa e convento 
+			 ls$profissao/tabeliao/obs=de coimbra
+	   	 
+			referido$lourenco
+			  ls$cargo/arcebispo de braga
+			  
+			referido$vicente monteiro/id=csd1379.1.vicente
+			  ls$titulo/frade
+			  ls$ordem/sao domingos
+			  ls$residencia/almalagues
+				   
+	   demanda$revogacao de sentenca/obs=dom pedro tenorio bispo que foi de coimbra e joao serrano juiz comissario que foi em este feito ao pedir requerimento das ditas abadessa e convento de santa clara mandaram tirar e por seu mandado foram tiradas esses prior e convento do dito casal vinhas e herdades de que assim estava em posse e metidas em posse delas as ditas abadessa e convento, item entende a provar que pos esta razao houveram as ditas abadessa e convento a posse dos ditos casal e herdades e as trazen e possuem e hao os frutos delas delo dito tempo a ca, item que as ditas cousas e vaz e fama ao provo dos quaes antigos recebi os ditos prior e e convento e foi lhes dado por mim certo termo assinado a fazer sua prova   
+		
+	   sentenca$revogacao da sentenca e compensacao de prejuizos/obs=non admitendo articulos nunc oblatus ex parte dictarum nominarum et quia suficientur probatur dictos priorem et conventum predicatorum colimbriensium fuisse in possessionem et post suas apellationes per quandam portarium dicti episcopi dictas possessionibus fuisse expulsi revocando et anulando quid quid post dictas apelationes fuit atentatum pronuncio dictos priorem et conventum fore restituendos et ipsos en quatrom de jure possum restituo in eo statu quo ante dictum expulsionem constat excicisse et mando dictis abatisse et conventum in persona johanis de burgo sui procuratoris quantium ditas possessiones dictis priori et conventum dimicanto in trinta dies a tempore huius sentencia absque alia perturbacione sub pena excomunione restitutione fructum a tenmpore abjectio sunt ipsas dominas in expensis legitimas condennando taxacione muchy reservator
+		      
+		      
+	escritura$csd1379.1.m7-29a/00/00/0000/tipo=apelacao/fol=mc7. n.29/loc=desconhecido/sumario=citacao feita pelo mosteiro de santa clara contra o mosteiro de sao domingos relativa a apropriacao indevida de propriedades que o mosteiro de santa clara havia nos termos de miranda e almalagues e que o mosteiro de sao domingos tinha por suas por doacao de vicente monteiro, inserido em apelacao do mosteiro de sao domingos para o arcebispado de braga/obs=perg.,bom, got.cursivo, inserido no documento csd1379.1.m7-29.22.3.1379
+			
+	   demandador$mosteiro de santa clara/mesmo_que=1379.csd1.msc
+	   
+	   reu$mosteiro de sao domingos/mesmo_que=1379.csd1.msd
+	      
+	          referido$vicente monteiro/mesmo_que=csd1379.1.vicente
+			  ls$titulo/frade
+			  ls$ordem/sao domingos
+			  ls$residencia/almalagues
+			  
+	          referido$pedro tenorio/obs=no documento pero tenouro
+		       	 ls$titulo/dom
+			 ls$cargo/bispo de coimbra/obs=tresladado a igreja de toledo
+				
+	   bem$quinta de labazes - chao de bostrom
+	              atr$descricao/casal vinha e herdades que jaziam no logo de chao de bostrom que pertencia e era da sua quinta de labazes que sao em termo de almalagues
+		      atr$localizacao/chao de bostrom
+		      atr$termoc/almalagues
+		      rel$posse/pertenceu/vicente monteiro/csd1379.1.vicente
+		      rel$posse/por doacao/mosteiro de sao domingos/1379.csd1.msd
+		      rel$posse/por sentenca de coimbra/mosteiro de santa clara/1379.csd1.msc
+		      
+	   bem$casal - busteirom
+	              atr$descricao/1 casal que chamam de busteirom e de 2 vinhas que chamam flor de rosa que jazem junto do dito casal e doutras herdades que vicente monteiro seu frade trazia e possuia por suas e como suas no termo de miranda e almalagues
+		      atr$localizacao/miranda e almalagues
+		      rel$posse/pertenceu/vicente monteiro/csd1379.1.vicente
+		      rel$posse/por doacao/mosteiro de sao domingos/1379.csd1.msd
+		      rel$posse/por sentenca de coimbra/mosteiro de santa clara/1379.csd1.msc
+	       
+           bem$vinhas - flor de rosa
+                      atr$descricao/1 casal que chamam de busteirom e de 2 vinhas que chamam flor de rosa que jazem junto do dito casal e doutras herdades que vicente monteiro seu frade tragia e possuia per suas e como suas no termo de miranda e almalagues
+		      atr$localizacao/miranda e almalagues
+		      rel$posse/pertenceu/vicente monteiro/csd1379.1.vicente
+		      rel$posse/por doacao/mosteiro de sao domingos/1379.csd1.msd
+		      rel$posse/por sentenca de coimbra/mosteiro de santa clara/1379.csd1.msc		      
+		      
+	   demanda$utilizacao indevida de propriedade/obs=a dita abadessa e convento fizeram citar o dito prior e convento de sao domingos perante dom pedro bispo que foi de coimbra queixando se deles dizendo que os ditos prior e convento lhes tomaram e traziam contra as vontades delas um casal e vinhas e outras herdades que jaziam no logo que chamam chao de bostron que pertencia e era da sua quinta de labazes que sao em termo de miranda e que lhas nao queriam deixar nem desembargar
+		
+	   defesa$contenda por bens herdados do mosteiro de sao domingos/obs=e o dito senhor bispo ao pedir e requerendo delas mandou ai fazer inquiricao para sua informacao a qual foi filhada e outrossim foi tomada inquiricao da parte dos ditos prior e convento de sao domingos por como vicente monteiro morador que foi em almalagues deixara todos ao dito mosteiro como seu frade o qual vicente monteiro trazia e possuia o dito casal vinhas e herdades por suas e como suas  
+		   
+	   sentenca$razao para apresentar libelo/obs=as quais inquiricao e informacoes vistas por o dito bispo mandou que a dita abadessa e convento de santa clara dessem libelo em escrito contra os ditos prior e convento  
+		
+
+	escritura$csd1379.1.m7-29b/00/00/0000/tipo=apelacao/fol=mc7. n.29/loc=desconhecido/sumario=o mosteiro de sao domingos reclama da sentenca das autoridades eclesiasticas de coimbra e reclama os seus privilegios papais, ao que o arcediago do vouga indicado pelo bispo dom pedro para julgar o caso sentenciou que haveria caso para apresentarem libelo, inserido em apelacao do mosteiro de sao domingos para o arcebispado de braga/obs=perg.,bom, got.cursivo, inserido no documento csd1379.1.m7-29.22.3.1379
+			
+	   demandador$mosteiro de sao domingos/mesmo_que=1379.csd1.msd
+	   
+	   reu$mosteiro de santa clara/mesmo_que=1379.csd1.msc
+	   			  
+	          referido$joao serrano
+		         ls$cargo/arcediago/obs=do vouga
+		       
+		  referido$pedro tenorio/obs=no documento pero tenouro
+		       	 ls$titulo/dom
+			 ls$cargo/bispo de coimbra/obs=tresladado a igreja de toledo
+		       
+           demanda$recurso da sentenca/obs=e da parte dos ditos prior e convento declinando o seu foro e privilegio e liberdade que havia da igreja de roma disseram que o dito bispo nem seus vigarios nem seus juizes oficiais nao haviam sobre eles poderio nem jurisdicao porque eram isentos da jurisdicao do dito bispo e seus vigarios por privilegio da igreja de roma assim do delito como de todas as outras coisas quaisquer que fossem
+	
+	   sentenca$embargo de privilegios/obs=e o dito senhor bispo disse que lhes fizessem certo ao dito privilegio o qual apresentaram perante ele e estando o dito senhor bispo para o ver e dar em ele livramento cometeu o dito feito a joao serrano arcediago do vouga que o livrassem como achasse que era direito    
+	   
+	   sentenca$razao para contestar libelo/obs=o qual joao serrano visto o dito privilegio agravando do feito e contra direito item ditos prior e convento julgou se por juiz do dito feito no embargamento do dito privilegio e mandou aos ditos prior e convento contestar o dito libelo da qual sentenca assim como devem uma e minha os ditos prior e convento 
+	
+
+	escritura$csd1379.1.m7-29c/00/00/0000/tipo=apelacao/fol=mc7. n.29/loc=desconhecido/sumario=o mosteiro de sao domingos recorre da sentenca e o vigario joao serrano recusa se a rever o caso sendo favoravel as abadessa e freiras do mosteiro de santa clara, inserido em apelacao do mosteiro de sao domingos para o arcebispado de braga/obs=perg.,bom, got.cursivo, inserido no documento csd1379.1.m7-29.22.3.1379
+				
+		   demandador$mosteiro de santa clara/mesmo_que=1379.csd1.msc
+		   
+		   reu$mosteiro de sao domingos/mesmo_que=1379.csd1.msd
+		   
+			   referido$geraldes peres/obs=seguiram a dita apelacao giral perez vigario geral na dita igreja de coimbra a se vagante seu quase por trasladacao do dito bispo como dito e porque ai nao havia outro vigario nem juiz que conhecesse do negocio da dita apelacao   
+				 ls$cargo/vigario geral/obs=de coimbra
+		  
+		   demanda$recurso da sentenca/obs=os ditos prior e convento apelaram em escritos para o senhor bispo porque nao poderem haver a sua presenca
+		
+		   sentenca$recusa da apelacao/obs=o dito vigario sendo favoravel as ditas abadessa e convento maliciosamente devogando justica e direito dos ditos prior e convento disse e pronunciou por sua sentenca que nao queria ouvir nem livrar nem conhecer ao dito feito e o remetia a igreja de braga da qual denegacao de direito e justica que o dito giral perez nao fez nem quis fazer aos ditos prior e convento
+		
+		   
+	   
+	escritura$csd1379.1.m7-29d/00/00/0000/tipo=apelacao/fol=mc7. n.29/loc=desconhecido/sumario=o mosteiro de sao domingos apela para braga metropololitana da igreja de coimbra que nao quis reconhecer os privilegios dominicanos e decidiu em favor de santa clara sem razao sendo por isso o mosteiro de santa clara condenado na paga das custas do processo, inserido em apelacao do mosteiro de sao domingos para o arcebispado de braga/obs=perg.,bom, got.cursivo, inserido no documento csd1379.1.m7-29.22.3.1379
+			
+	   demandador$mosteiro de sao domingos/mesmo_que=1379.csd1.msd
+	   
+	   reu$mosteiro de santa clara/mesmo_que=1379.csd1.msc
+       
+           demanda$apelacao/obs=eles prior e convento de sao domingos apelaram em escritos antes dos dez dias para a igreja de braga metropolitana da igreja de coimbra e pediram os apostolos e foram lhes dados e recebida a dita apelacao segundo tudo isto parece e pode parecer que o processo do dito feito seguiram e seguem sua apelacao na igreja de braga e fizeram todos os autos que os apelantes em tal caso podem e devem fazer porem pede o dito procurador em nome dos ditos prior e convento ante o dito administrador que pronunciedes primeiramente que o feito da dita apelacao e negocio principal dela que por apelacao devoluto na igreja de braga e que ai se deve tratar e finir e que o dito vigario mal julgou em devogar direito e justica aos ditos prior e convento em lhes nao querer conhecer do artigo da dita apelacao
+	   
+	   defesa$desconhecimento do caso/obs=foi razoado da parte das ditas abadessa e convento dizendo que o dito administrador nao era juiz deste negocio nem podia conhecer dele por a dita apelacao mais a corte de roma por razao que dizia que deste facto e auto e remissao que os ditos prior e convento de sao domingos diziam em sua peticao que fizeram o dito giral perez vigario de coimbra e de que diziam que dele apelaram para a igreja de braga que desse mesmo auto e denegacao que lhes nao fazia de ter remissao e sentenca que o dito vigario sobre ele fizera apelacao as ditas abadessa e convento em escritos antes dos dez dias para a corte de roma e pediram os apostolos como o direito manda e que o dito vigario lhas dera com apostolos reverenciais e lhes recebera a dita apelacao 
+	   
+	   sentenca$devogacao de sentencas e libelos anteriores/obs=e per nossa sentenca definitiva cassedes arre todos a dita sua sentenca e a sua mingua e negligencia conhecidos da apelacao que os ditos prior e convento apelaram da ma sentenca que o dito joao serrano contra eles deu e querrecedes e anuledes e hajades por nenhuma e declaredes e pronuciacades per sentenca definitiva que por o dito prior e convento e privilegio alegado a dita dona abadessa e convento de santa clara nas custas
+	   sentenca$termo em latim/obs=ut ex actis aparet causa devoluta est ad eclesiam bracarensem cum ex legitima causa fuit apellatum et ibi finiri debet sed quod alegante ex parte abatisse quod ante fuit sempre eadem causa et articulo ad apostolica sedem apelatum hoc doceant, interposita ex parte dictarum dominarum non impedit processum fieri eclesia bracarensi cum non fuit presentia legitime item per usque nunc allegata non probatur excepcio reorum quare mando quod allegatur de jure dictorum reorum ad secundam audientiam , satis probatur exemptio fratrum predicatorum per privilegia in judicio exhibita et sit judex a quo non bene processit non cognoscendo de huis modi causa nec johanis serrano judex supra delegatos bene judicavuit compellendo ipsos coramse litigare contra tenorem suorum privilegiorum et idea ni hoc eios sentenciam corrigo
+	         
+            
+      escritura$e1379.1.m7-30/5/9/1379/emprazamento/fol=mc.7 n.30/loc=leiria/sumario=o mosteiro empraza a joao peres e maria anes uma vinha e uma gerdade em setas, no termo de leiria/obs=perg., got.cursivo, sinal notarial
+         atr$duracao/3 vidas/obs=casal mais uma pessoa a nomear casal
+         atr$renda principal tipo/fixa em dinheiro
+         atr$renda principal valor/4 libras
+         atr$pagamento renda principal/dia de pascoa/obs=a pagar ao mosteiro ou ao seu procurador
+         atr$pena/100 libras/obs=mais 5 soldos por cada dia de pena
+            
+         senhorio$mosteiro de santa clara/id=1379.e1.msc
+
+            referida$ines rodrigues de vasconcelos/id=1379.e1.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         procurador$goncalo lourenco/id=1379.e1.goncalo
+            rel$sociabilidade/procurador/mosteiro de santa clara/1379.e1.msc
+
+         enfiteuta$joao peres/id=1379.e1.joao1
+            rel$parentesco/filho/pereiro/1379.e1.pereiro
+            ls$residencia/leiria
+
+         enfiteutaf$maria anes/id=1379.e1.maria
+            rel$parentesco/mulher/joao peres/1379.e1.joao1
+            ls$residencia/leiria
+
+         test$goncalo vincente/id=e1379.1.m7-30-per1
+            ls$profissao/carpinteiro
+
+         test$joao anes/id=e1379.1.m7-30-per2
+            ls$profissao/cabreiro
+
+         test$martim esteves lardosco?/obs=duvida no terceiro nome/id=e1379.1.m7-30-per3
+
+         test$joao martins/id=e1379.1.m7-30-per4
+            ls$profissao/forneiro
+
+         test$joao afonso/id=e1379.1.m7-30-per5
+            ls$profissao/porteiro/obs=da vila de leiria
+
+         test$estevao anes/id=e1379.1.m7-30-per6
+            rel$parentesco/filho/joao anes bogulho/1379.e1.joao2
+
+         referido$joao anes bogulho/id=1379.e1.joao2
+
+         test$vasco martins/id=e1379.1.m7-30-per7
+            ls$profissao/clerigo/obs=clerigo maior em a dita vila de leiria
+
+         tabeliao$rodrigo anes/obs=20 soldos pelo registo/id=e1379.1.m7-30-per8
+            ls$intitulacao/publico tabeliao de el rei na vila de leiria
+
+            referido$pereiro/id=1379.e1.pereiro
+               rel$parentesco/pai/joao peres/1379.e1.joao1
+
+            referido$beserro ferreiro/id=1379.e1.beserro/obs=traz propriedades de confrontacoes
+
+            referido$joao anes/obs=traz propriedades de confrontacoes/id=e1379.1.m7-30-per8-per9
+               rel$parentesco/filho/joao beserro/1379.e1.joao3
+
+            referido$joao beserro/id=1379.e1.joao3
+
+         prazo$vinha e herdade - setas
+            atr$descricao/1 vinha e herdade no lugar das setas a par do lugar de dona sancha que traz o beserro ferreiro
+            atr$localizacao/setas
+            atr$termoc/leiria
+            atr$confrontacoes/parte com congosta da ordem
+            atr$confrontacoes/e como entesta com a herdade do dito mosteiro de santa clara que traz o dito beserro ferreiro
+            atr$confrontacoes/e com joao anes filho de joao beserro
+            atr$confrontacoes/e com caminho publico que vai para o dito lugar das setas
+            rel$posse/pertenceu/beserro ferreiro/1379.e1.beserro
+            rel$posse/pertence/mosteiro de santa clara/1379.e1.msc
+            rel$posse/por emprazamento/joao peres/1379.e1.joao1
+            rel$posse/por emprazamento/maria anes/1379.e1.maria
+            
+            
+       
+    escritura$p1379.1.m7-30a/4/5/1379/procuracao/fol=mc.7 n.30/loc=igreja do mosteiro de santa clara em coimbra/sumario= procuracao trasladada num documento de emprazamento em que a abadessa de santa clara e o convento de santa clara dao poderes a goncalo lourenco para ele administrar as suas propriedades na correicao da estremadura/obs=perg., got.cursivo, trasladada no documento e1379.1.m7-30.5.9.1379
+
+         constituinte$mosteiro de santa clara/mesmo_que=1379.e1.msc/id=p1379.1.m7-30a-per1
+
+            referida$ines rodrigues de vasconcelos/mesmo_que=1379.e1.msc.aba/id=p1379.1.m7-30a-per1-per2
+
+         procurador$goncalo lourenco/mesmo_que=1379.e1.goncalo/obs=recebe poderes para administrar propriedades do mosteiro na correicao da estremadura/id=p1379.1.m7-30a-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1379.e1.msc/obs=homem da abadessa e convento
+            rel$sociabilidade/procurador/mosteiro de santa clara/1379.e1.msc
+
+         test$rui lourenco/id=p1379.1.m7-30a-per4
+            ls$cargo/racoeiro/obs=da igreja de santa justa
+
+         test$goncalo afonso/id=p1379.1.m7-30a-per5
+            rel$sociabilidade/homem/mosteiro de santa clara/1379.e1.msc/obs=da abadessa de santa clara e do convento
+
+         tabeliao$vasco martins/id=p1379.1.m7-30a-per6
+            ls$intitulacao/publico tabeliao por el rei na dita cidade de coimbra
+     
+            
+            
+       escritura$od.1378.1.m7-32/1/1/1380/obrigacao de divida/fol=mc.7 n.32/loc=casas de morada de gil domingues em sandomil/sumario=o tabeliao goncalo peres compromete-se a pagar a abadessa de santa clara e convento de santa clara 25 libras por umas herdades em sandomil, sazes, loriga, travancinha, dando como fiador mateus domingues/obs=perg., got.cursivo, sinal notarial
+
+         senhorio$mosteiro de santa clara/id=1380.od1.msc
+
+         devedor$goncalo peres/id=1380.od1.goncalo
+            ls$residencia/sandomil
+            ls$profissao/tabeliao
+
+         fiador$mateus domingues/id=1380.od1.mateus
+            ls$residencia/sandomil
+            rel$sociabilidade/fiador/goncalo peres/1380.od1.goncalo
+
+         test$gil peres/id=od.1378.1.m7-32-per1
+            ls$residencia/sandomil
+
+         test$gil domingues/id=od.1378.1.m7-32-per2
+            ls$residencia/sandomil
+
+         test$joao vicente/id=od.1378.1.m7-32-per3
+            ls$residencia/sandomil
+
+         tabeliao$goncalo peres/mesmo_que=1380.od1.goncalo/id=od.1378.1.m7-32-per4
+            ls$intitulacao/tabeliao do infante dom joao
+
+         divida$25 libras/juro 5 soldos ao dia/moeda=dinheiro portugues/prazo=dia de sao joao de 1380/obs=por causa de direitos e pertencas que o mosteiro tem nos lugares de sandomil, sazes, louriga, travancinha e seus termos que goncalo peres trazia arrendados por 4 anos/id=q.1378.1.m7-32-obj1
+
+         bem$direitos e pertencas - seia
+            atr$localizacao/sandomil, sazes, louriga, travancinha e seus termos
+            atr$termoc/seia
+            atr$duracao/4 anos
+            rel$posse/pertence/mosteiro de santa clara/1380.od1.msc
+            rel$posse/por arrendamento/goncalo peres/1380.od1.goncalo
+       
+            
+      escritura$e1380.1.m7-33/4/10/1380/emprazamento/fol=mc.7 n.33/loc=a pia de batismo dentro da se de coimbra/sumario=o tesoureiro e cabido da se de coimbra emprazam a domingos peres e a sua mulher domingas esteves um cortinhla na freguesia de sao pedro, em coimbra/obs=perg., got.cursivo, sinal notarial
+         atr$condicoes/manter as propriedades
+         atr$duracao/2 vidas/obs=casal
+         atr$renda principal tipo/fixa em dinheiro
+         atr$renda principal valor/30 soldos/obs=moeda corrente ou da que el rei mandar fazer
+         atr$pagamento renda principal/dia de sao miguel de setembro/obs=em cada ano
+         atr$pena/25 libras
+            
+         senhorio$se de coimbra/id=1380.e1.sc
+
+            referida$joao alegre/id=1380.e1.joao
+               ls$cargo/tesoureiro/obs=da se de coimbra
+
+         enfiteuta$domingos peres/id=1380.e1.domingos
+            ls$profissao/forneiro
+            ls$residencia/coimbra
+
+         enfiteutaf$domingas esteves/id=1380e1.domingas
+            ls$residencia/coimbra
+            rel$parentesco/mulher/domingos peres/1380.e1.domingos
+
+         test$lourenco vicente/id=e1380.1.m7-33-per1
+            ls$residencia/taveiro/obs=termo de coimbra
+
+         test$vasco bartolomeu/id=e1380.1.m7-33-per2
+            ls$residencia/cruz/obs=termo de coimbra
+
+         tabeliao$lourenco goncalves/obs=6? soldos pelo registo/id=e1380.1.m7-33-per3
+            ls$intitulacao/publico tabeliao de nosso senhor el rei na dita cidade de coimbra
+
+         prazo$cortinhal - almedina
+            atr$descricao/1 cortinhal
+            atr$localizacao/almedina
+            atr$freguesia/sao pedro
+            atr$termoc/coimbra
+            atr$confrontacoes/parte da uma parte com chao
+            atr$confrontacoes/e da outra parte com cortinhal de sao pedro
+            atr$confrontacoes/e das outras partes com caminhos publicos
+            rel$posse/pertence/se de coimbra/1380.e1.sc
+            rel$posse/por emprazamento/domingos peres/1380.e1.domingos
+            rel$posse/por emprazamento/domingas esteves/1380e1.domingas
+            
+            
+            
+      escritura$d1380.1.m7-34/1/12/1380/doacao/fol=mc.7 n.34/loc=mosteiro de santa clara/sumario=domingo peres e vicenta bartolomeu doam parte de um casal que tem em penela ao mosteiro de santa clara de coimbra/obs=perg., got.cursivo, sinal notarial
+
+         doador$domingos peres/id=1380.d1.domingos
+            ls$residencia/casal que foi de paceiro/obs=termo de penela
+
+         doadora$vicenta bartolomeu/id=1380.d1.vicenta
+            rel$parentesco/mulher/domingos peres/1380.d1.domingos
+
+         beneficiario$mosteiro de santa clara/id=1380.d1.msc
+
+         test$goncalo lourenco/id=d1380.1.m7-34-per1
+            rel$sociabilidade/homem/mosteiro de santa clara/1380.d1.msc
+
+         test$domingos anes/id=d1380.1.m7-34-per2
+            rel$sociabilidade/homem/mosteiro de santa clara/1380.d1.msc
+
+         test$andre domingues/id=d1380.1.m7-34-per3
+            rel$sociabilidade/homem/mosteiro de santa clara/1380.d1.msc
+
+         test$joao andre/id=d1380.1.m7-34-per4
+            ls$residencia/coimbra/obs=mosteiro de santa clara
+
+         tabeliao$goncalo martins/id=d1380.1.m7-34-per5
+            ls$intitulacao/tabeliao de nosso senhor el rei na dita cidade de coimbra
+
+            referido$pateiro/id=1380.d1.pateiro
+
+            referido$estevao martins/id=d1380.1.m7-34-per5-per6
+
+            referido$martim rodrigues/id=d1380.1.m7-34-per5-per7
+
+            referido$joao afonso/id=d1380.1.m7-34-per5-per8
+               ls$profissao/ferreiro
+
+         bem$casal - penela
+            atr$descricao/parte de 1 casal que jaz a par de santo estevao
+            atr$localizacao/penela
+            atr$confrontacoes/parte da uma parte contra avrego com herdades de estevao martins e de martim rodrigues
+            atr$confrontacoes/e de aguiao com herdades dos sobreditos
+            atr$confrontacoes/e de contra soao parte com a serra do concelho
+            atr$confrontacoes/e da contra travessia parte com vinha de joao afonso ferreiro de miranda
+            rel$posse/pertenceu/pateiro/1380.d1.pateiro
+            rel$posse/pertence/domingos peres/1380.d1.domingos
+            rel$posse/pertence/vicenta bartolomeu/1380.d1.vicenta
+            rel$posse/por doacao/mosteiro de santa clara/1380.d1.msc
+      
+        
+   escritura$r1383.1.m7-35/13/1/1383/renuncia/fol=mc.7 n.35/loc=ante a porta da grade do mosteiro de santa clara/sumario=rodrigo anes renuncia a uma vinha que trazia aforada do mosteiro de santa clara de coimbra por nao ter condicoes de a adubar/obs=perg., got.cursivo, sinal notarial
+
+         senhorio$mosteiro de santa clara/id=1383.r1.msc
+
+            referida$ines de vasconcelos/id=1383.r1.msc.aba
+               ls$titulo/dona
+               ls$cargo/abadessa de santa clara
+
+         renunciante$rodrigo anes/id=1383.r1.rodrigo/obs=morador que foi em coimbra
+            ls$profissao/alfaiate
+
+         test$vasco de pereira/id=1383.r1.vasco1
+            ls$titulo/frei
+            ls$ordem/sao francisco/obs=frade de sao francisco
+
+         test$vasco anes/id=1383.r1.vasco2
+            ls$cargo/prior/obs=de sameice
+
+         test$joao anes/id=1383.r1.joao
+            rel$parentesco/irmao/vasco anes/1383.r1.vasco2
+
+         tabeliao$gomes anes/id=1383.r1.gomes/obs=4? soldos pelo registo
+            ls$intitulacao/tabeliao de el rei na cidade de coimbra
+
+            referido$joao alvo/id=1383.r1.gomes-per1
+
+         bem$vinha - urzelhe
+            atr$descricao/uma vinha em ribeira, urzelhe termo de coimbra
+            atr$localizacao/ribeira em urzelhe
+            atr$termoc/coimbra
+            atr$confrontacoes/parte da uma parte com caminho publico que vai para miranda
+            atr$confrontacoes/e da outra com o ribeiro
+            atr$confrontacoes/e a outra com as vinhas dos filhos que foram de joao alvo
+            rel$posse/pertence/mosteiro de santa clara/1383.r1.msc
+            rel$posse/pertenceu/rodrigo anes/1383.r1.rodrigo/obs=renuncia a vinha por nao ter condicoes de a adubar/obs=pertenceu por aforamento
+      
+            
+      escritura$e1383.1.m7-36/13/1/1383/emprazamento/fol=mc.7 n.36/loc=ante a porta da grade dentro do mosteiro de santa clara/sumario=o mosteiro de santa clara empraza a goncalo lourenco e sua mulher uma casa em urzelhe a qual havia renunciado rodrigo anes/obs=perg., bom, got.cursivo, sinal notarial
+         atr$condicoes/manter as propriedades
+         atr$duracao/perpetuo e hereditario
+         atr$renda principal valor/0/obs=tal e tanto foro e ao qual tempo que as outras casas do dito logo de urzelhe que sao cabaneiros pagam e fazerem e fazer devem ao dito mosteiro
+         atr$pena/25 libras/obs=dinheiro portugues
+         
+         senhorio$mosteiro de santa clara/id=1383.e1.msc
+
+            referida$ines de vasconcelos/id=1383.e1.msc.aba
+               ls$titulo/dona
+               ls$cargo/abadessa de santa clara
+
+         enfiteuta$goncalo lourenco/id=1383.e1.goncalo/obs=considerando o muito servico que goncalo lourenco homem e familiar do dito mosteiro lhe fizera e fazia em cada um dia em lhes tratar e procurar seus feitos e negocios como em reparar e aproveitar os bens e herdades do dito mosteiro grandes tempos e anos havia
+            rel$sociabilidade/homem/mosteiro de santa clara/1383.e1.msc
+            rel$sociabilidade/familiar/mosteiro de santa clara/1383.e1.msc
+            ls$residencia/coimbra/obs=mosteiro de santa clara
+
+         enfiteutaf$catarina esteves/id=1383.e1.catarina
+            ls$residencia/coimbra/obs=mosteiro de santa clara
+            rel$parentesco/mulher/goncalo lourenco/1383.e1.goncalo
+
+         test$vasco de pereira/mesmo_que=1383.r1.vasco1/id=e1383.1.m7-36-per1
+
+         test$vasco anes/mesmo_que=1383.r1.vasco2/id=e1383.1.m7-36-per2
+
+         test$joao anes/mesmo_que=1383.r1.joao/id=e1383.1.m7-36-per3
+
+         tabeliao$gomes anes/mesmo_que=1383.r1.gomes/id=e1383.1.m7-36-per4
+
+            referido$rodrigo anes/mesmo_que=1383.r1.rodrigo/id=e1383.1.m7-36-per4-per5
+
+            referido$afonso peres de grada?/obs=duvida no terceiro nome, foi proprietario de pardieiro de confrontacao/id=e1383.1.m7-36-per4-per6
+
+         prazo$casa - urzelhe
+            atr$localizacao/urzelhe
+            atr$termoc/coimbra
+            atr$confrontacoes/parte de uma parte com o pardieiro que foi de afonso peres de grada
+            atr$confrontacoes/e das outras partes todas com ruas publicas
+            rel$posse/pertenceu/rodrigo anes/1383.r1.rodrigo/obs=pertenceu por aforamento
+            rel$posse/pertence/mosteiro de santa clara/1383.e1.msc
+            rel$posse/por emprazamento/goncalo lourenco/1383.e1.goncalo
+            rel$posse/por emprazamento/catarina esteves/1383.e1.catarina
+            
+            
+
+      escritura$e1383.2.m7-37/2/2/1383/emprazamento/fol=mc.7 n.37/loc=ante as portas da grade no dito mosteiro/sumario=o mosteiro de santa clara empraza a pedro lourenco e constanca esteves um quinhao de todos os bens que tem em penacova, que recebeu apos morte de maria peres por heranca de alva vasques/obs=perg., got.cursivo, sinal notarial
+         atr$condicoes/manter as propriedades
+         atr$duracao/3 vidas/obs=casal mais uma pessoa a nomear
+         atr$renda principal tipo/fixa em dinheiro
+         atr$renda principal valor/15 soldos
+         atr$renda acessoria tipo/fixa em generos
+         atr$renda acessoria valor/1 lampreia
+         atr$pagamento renda principal/dia de pascoa/obs=segundo costume de penacova
+         atr$pagamento renda acessoria/dia 8 de fevereiro
+         atr$pena/25 libras/obs=dinheiro portugues
+         
+         senhorio$mosteiro de santa clara/id=1383.e2.msc
+
+            referida$ines de vasconcelos/id=1382.e2.msc.aba
+               ls$cargo/abadessa de santa clara
+               ls$titulo/dona
+
+         enfiteuta$pedro lourenco/id=1383.e2.pedro
+            ls$profissao/almocreve
+            ls$residencia/penacova
+
+         enfiteutaf$constanca esteves/id=1383.e2.constanca
+            ls$residencia/penacova
+            rel$parentesco/mulher/pedro lourenco/1383.e2.pedro
+
+         test$goncalo lourenco/id=e1383.2.m7-37-per1
+            ls$profissao/criado
+            rel$profissional/criado/mosteiro de santa clara/1383.e2.msc
+            ls$residencia/coimbra
+
+         test$domingos anes/id=e1383.2.m7-37-per2
+            ls$profissao/criado
+            rel$profissional/criado/mosteiro de santa clara/1383.e2.msc
+            ls$residencia/coimbra
+
+         test$domingos de lourosa/id=e1383.2.m7-37-per3
+            ls$profissao/sapateiro
+            ls$residencia/coimbra
+
+         test$gil anes/id=e1383.2.m7-37-per4
+            ls$profissao/cesteiro
+            ls$residencia/coimbra
+
+         tabeliao$gomes anes/mesmo_que=1383.r1.gomes/id=e1383.2.m7-37-per5
+            ls$intitulacao/tabeliao publico
+
+            referida$maria peres/id=1383.e2.maria
+               rel$sociabilidade/herdeira/alva vasques/1383.e2.alva
+               ls$morta/antes/sim
+
+            referida$alva vasques/id=1383.e2.alva
+               ls$titulo/freira/obs=do dito mosteiro de santa clara
+               ls$morta/antes/sim
+
+         prazo$casa - penacova
+            atr$descricao/1 quinhao de uma casa em penacova
+            atr$localizacao/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence por heranca/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+
+         prazo$vinha - penacova
+            atr$descricao/1 quinhao de uma vinha/obs=sem indicacao do nome do lugar onde esta a dita vinha
+            atr$localizacao/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+         prazo$bacelo - cheira
+            atr$descricao/1 quinhao de um bacelo com seu olival
+            atr$localizacao/cheira
+            atr$termoc/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+         prazo$oliveira - penacova
+            atr$descricao/1 oliveira do olival da confraria
+            atr$localizacao/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+         prazo$oliveira - penacova
+            atr$descricao/1 oliveira no arresaio
+            atr$localizacao/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+         prazo$oliveiras - cheira
+            atr$descricao/2 oliveiras no cortinhal
+            atr$localizacao/cheira
+            atr$termoc/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+         prazo$bens - penacova
+            atr$descricao/1 quinhao de todos os bens que o mosteiro tem em penacova e seus termos, que recebeu por morte de maria peres por heranca de alva vasques
+            atr$localizacao/cheira
+            atr$termoc/penacova
+            rel$posse/pertenceu/alva vasques/1383.e2.alva
+            rel$posse/pertence/mosteiro de santa clara/1383.e2.msc/obs=bens ficam no mosteiro depois da morte de maria peres por heranca de alva vasques
+            rel$posse/por emprazamento/pedro lourenco/1383.e2.pedro
+            rel$posse/por emprazamento/constanca esteves/1383.e2.constanca
+            
+            
+
+      escritura$e1383.3.m7-38/28/3/1383/emprazamento/fol=mc.7 n.38/loc=ante as portas da grade do mosteiro de santa clara/sumario=o mosteiro empraza a pedro colaco e maria sanches uma casa e uma alminha que pertencem a sua igreja de sao martinho de montemor o velho, que antes trazia andre peres/obs=perg., got.cursivo, sinal notarial
+         atr$condicoes/manter as propriedades
+         atr$duracao/2 vidas
+         atr$renda principal tipo/fixa em dinheiro
+         atr$renda principal valor/5 libras/obs=de dinheiro portugues
+         atr$renda acessoria tipo/fixa em generos
+         atr$renda acessoria valor/2 capoes/obs= a pagar pela enfiteuta maria sanches
+         atr$pagamento renda principal/dia de sao joao batista
+         atr$pena/25 libras/obs=dinheiro portugues
+            
+         senhorio$mosteiro de santa clara/id=1383.e3.msc
+
+            referida$ines de vasconcelos/id=1383.e3.msc.aba
+               ls$cargo/abadessa de santa clara
+               ls$titulo/dona
+
+         enfiteuta$pedro colaco/id=1383.e3.pedro
+            ls$residencia/montemor o velho
+
+         enfiteutaf$maria sanches/id=1383.e3.maria
+            ls$residencia/montemor o velho
+            rel$parentesco/mulher/pedro colaco/1383.e3.pedro
+
+         test$domingo anes/id=e1383.e3.m7-38-per1
+            rel$sociabilidade/procurador/mosteiro de santa clara/1383.e3.msc
+
+         test$goncalo lourenco/id=e1383.e3.m7-38-per2
+            rel$sociabilidade/procurador/mosteiro de santa clara/1383.e3.msc
+
+         test$vasco anes/mesmo_que=1383.r1.vasco2/id=e1383.e3.m7-38-per3
+
+         test$joao anes/mesmo_que=1383.r1.joao/id=e1383.e3.m7-38-per4
+
+         tabeliao$gomes anes/id=1383.e3.gomes
+            ls$intitulacao/tabeliao de coimbra
+
+            referido$andre peres/id=1383.e3.andre
+
+         prazo$casa - montemor o velho
+            atr$descricao/1 casa anexa a igreja de sao martinho nessa freguesia de montemor 
+            atr$localizacao/freguesia de sao martinho/obs=montemor o velho
+            atr$confrontacoes/parte da uma parte com casa da dita igreja
+            atr$confrontacoes/e da outra com casa de vasco ermiges?
+            atr$confrontacoes/e das outras com ruas publicas
+            rel$posse/pertenceu/andre peres/1383.e3.andre
+            rel$posse/pertence/mosteiro de santa clara/1383.e3.msc/obs=uma casa que a nossa igreja de sao martinho do dito logo ha na sua freguesia
+            rel$posse/por emprazamento/pedro colaco/1383.e3.pedro
+            
+         prazo$alminha - rego de bilotes
+            atr$descricao/1 alminha
+            atr$localizacao/rego de bilotes
+            atr$confrontacoes/parte com o esteiro do dito rego
+            atr$confrontacoes/e das outras partes entestam em la? alminhas da dita igreja
+            rel$posse/pertenceu/andre peres/1383.e3.andre
+            rel$posse/pertence/mosteiro de santa clara/1383.e3.msc/obs=uma casa que a nossa igreja de sao martinho do dito logo ha na sua freguesia
+            rel$posse/por emprazamento/pedro colaco/1383.e3.pedro
+            
+            
+
+      escritura$e1383.4.m7-39/16/6/1383/emprazamento/fol=mc.7 n.39/loc=coro da igreja de sao cristovao em coimbra/sumario=a se de coimbra empraza a teresa garcia, atraves do seu procurador, uma casa e curral em coimbra/obs=perg., got.cursivo, sinal notarial
+         atr$condicoes/melhorar as propriedades/obs=que faca do pardieiro uma casa sobradada de pedra e cal e a de feita e acabada de todo em um ano e que faca o dito curral em casas e que a mantenha
+         atr$duracao/3 vidas
+         atr$renda principal tipo/fixa em dinheiro
+         atr$renda principal valor/3 libras/obs=de dinheiro portugues, a primeira pessoa deve dar 4 libras e segunda pessoa 5 libras
+         atr$pagamento renda principal/dia de sao miguel de setembro/obs=na cidade
+         atr$pena/100 libras
+            
+         senhorio$se de coimbra/mesmo_que=1383.p1.sc/obs=se e conegos da se de coimbra/id=e1383.4.m7-39-per1
+
+            referido$joao alegre/id=1383.p1.joao
+               ls$cargo/tesoureiro/obs=da se de coimbra
+               ls$cargo/chantre/obs=da se de coimbra
+
+         enfiteuta$teresa garcia/mesmo_que=1383.p1.teresa/id=e1383.4.m7-39-per2
+
+         procurador$afonso martins/mesmo_que=1383.p1.afonso/id=e1383.4.m7-39-per3
+
+         test$domingos martins/id=e1383.4.m7-39-per4
+            ls$cargo/conego menor/obs=da dita se
+
+         test$joao afonso/id=e1383.4.m7-39-per5
+            ls$cargo/prior/obs=de eiras
+            ls$cargo/capelao/obs=dessa mesma se
+
+         test$joao rodrigues/id=e1383.4.m7-39-per6
+            ls$cargo/capelao/obs=dessa mesma se
+
+         test$goncalo abril/id=e1383.4.m7-39-per7
+            ls$residencia/coimbra
+
+         tabeliao$gomes anes/id=e1383.4.m7-39-per8
+            ls$intitulacao/tabeliao de el rei na dita cidade e termos de coimbra
+
+            referido$domingo peres/obs=traz uma casa que confronta com os bens emprazados/id=e1383.4.m7-39-per8-per9
+               ls$profissao/forneiro
+
+         prazo$casa e curral - coimbra
+            atr$descricao/um pardieiro com seu curral na freguesia de sao pedro em coimbra
+            atr$freguesia/sao pedro
+            atr$termoc/coimbra
+            atr$confrontacoes/parte de uma parte com casas do dito cabido que dele traz domingo peres forneiro
+            atr$confrontacoes/e das outras partes com carreiras publicas
+            rel$posse/pertence/se de coimbra/1383.p1.sc
+            rel$posse/por emprazamento/teresa garcia/1383.p1.teresa
+                        
+            
+            
+    escritura$p1383.1.m7-39a/14/6/1383/procuracao/fol=mc.7 n.39/loc=dentro dos pacos da ordem na redinha, pombal/sumario=procuracao trasladada num contrato de emprazamento em que teresa garcia da poderes a afonso martins para celebrar perante o tabeliao da se de coimbra o emprazamanento de algumas propriedades da dita se/obs=perg., got.cursivo, trasladada no documento e1383.4.m7-39.16.6.1383
+
+         constituinte$teresa garcia/id=1383.p1.teresa
+            rel$parentesco/filha/garcia martins de faria/1383.p1.garcia
+
+            referida$garcia martins de faria?/id=1383.p1.garcia/obs=duvida no nome
+
+         procurador$afonso martins/id=1383.p1.afonso/obs=poderes para celebrar emprazamentos perante o tabeliao da se de coimbra de propriedades que a se tem em coimbra
+            ls$residencia/pombal
+            rel$sociabilidade/procurador/teresa garcia/1383.p1.teresa
+
+         test$rui dias/id=1383.p1.rui
+            ls$titulo/frei
+            ls$titulo/comendador/obs=da redinha
+
+         test$garcia monteiro/id=p1383.1.m7-39a-per1
+            ls$cargo/escudeiro
+            rel$profissional/escudeiro/rui dias/1383.p1.rui
+
+         test$vicente anes/id=p1383.1.m7-39a-per2
+            ls$cargo/escudeiro
+            rel$profissional/escudeiro/rui dias/1383.p1.rui
+
+         tabeliao$goncalo d'amarante/id=p1383.1.m7-39a-per3
+            ls$intitulacao/tabeliao de nosso senhor el rei em soure
+
+            referido$se de coimbra/id=1383.p1.sc
+            
+            
+            
+       escritura$tp1383.1.m7-40/7/6/1383/tomada de posse/fol=mc.7 n.40/loc=ante as casas da estalagem em leiria/sumario=tomada de posse de duas casas do mosteiro de santa clara em leiria, pelo procurador do mosteiro/obs=perg., got.cursivo, sinal notarial
+      
+         senhorio$mosteiro de santa clara/id=1383.tp1.msc
+
+         procurador$domingos anes/id=1383.tp1.domingos
+            rel$sociabilidade/procurador/mosteiro de santa clara/1383.tp1.msc
+
+            referida$nome desconhecido/id=1383.tp.msc.aba
+               ls$cargo/abadessa de santa clara
+
+         test$goncalo lourenco/id=tp1383.1.m7-40-per1
+            rel$sociabilidade/criado/abadessa de santa clara/1383.tp.msc.aba
+
+         test$pedro anes/id=tp1383.1.m7-40-per2
+            ls$cargo/alcaide menor/obs=de leiria
+
+         test$joao alho/id=tp1383.1.m7-40-per3
+            ls$residencia/leiria
+
+         test$lourenco moleiro/id=tp1383.1.m7-40-per4
+            ls$residencia/leiria
+
+         tabeliao$rodrigo anes/obs=6 soldos pelo registo/id=tp1383.1.m7-40-per5
+            ls$intitulacao/tabeliao de nossa senhora infanta dona beatriz em a dita vila de leiria
+            rel$profissional/tabeliao/beatriz/1383.tp1.beatriz
+
+            referida$beatriz/id=1383.tp1.beatriz
+               ls$titulo/dona
+               ls$titulo/infanta
+
+            referido$pedro esteves/id=1383.tp1.pedro
+               ls$residencia/leiria/obs=morador na casa da estalagem que o mosteiro esta a tomar
+               ls$alcunha/bom corpo
+               ls$morto/antes/sim
+
+         bem$casa de estalagem - leiria
+            atr$localizacao/praca de sao martinho
+            atr$termoc/leiria
+            rel$posse/pertenceu/pedro esteves/1383.tp1.pedro
+            rel$posse/pertence/mosteiro de santa clara/1383.tp1.msc
+
+         bem$casa - leiria
+            atr$descricao/1 casa junto a estalagem
+            atr$localizacao/leiria
+            atr$confrontacoes/parte com casa que foi de afonso domingues banduro
+            atr$confrontacoes/e com alvaro vasques de sa
+            atr$confrontacoes/e com constanca peres pereira
+            atr$confrontacoes/e com rua publica
+            rel$posse/pertence/mosteiro de santa clara/1383.tp1.msc
+

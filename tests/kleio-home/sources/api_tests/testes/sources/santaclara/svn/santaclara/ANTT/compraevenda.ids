@@ -1,0 +1,817 @@
+kleio$gacto2-str/translations=1
+   fonte$cv.pt-tt-cscc-17-part/1370-1450/tipo=escritura/loc=dgarq-csccparticulares-maco07.8.9.10
+
+      escritura$cv1373.1.m7-13/25/5/1373/compraevenda/fol=mc.7 n.13/loc=rua nova em coimbra/sumario=vasco anes e maria geraldes vendem todos os bens de raiz que tem em cabeca de ferreiro e vale de ferreiro a afonso vasques e maria anes/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$vasco anes/id=1373.cv1.vasco
+            ls$residencia/coimbra
+
+         vendedora$maria geraldes/id=1373.cv1.maria1
+            ls$residencia/coimbra
+            rel$parentesco/mulher/vasco anes/1373.cv1.vasco
+            rel$sociabilidade/herdeira/maria andreus?/1373.cv1.maria2
+
+            referida$maria andreus?/obs=duvida no segundo nome/id=1373.cv1.maria2
+               rel$parentesco/mae/maria geraldes/1373.cv1.maria1
+
+         comprador$afonso vasques/id=1373.cv1.afonso
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1373.cv1.maria3
+            ls$residencia/coimbra
+            rel$parentesco/mulher/afonso vasques/1373.cv1.afonso
+
+         test$gil vasques/id=cv1373.1.m7-13-per1
+            ls$profissao/carpinteiro
+
+         test$domingos bartolomeu/id=cv1373.1.m7-13-per2
+            ls$profissao/carpinteiro
+
+         test$goncalo/id=cv1373.1.m7-13-per3
+            ls$titulo/frei
+            ls$ordem/terceira ordem de sao francisco
+
+         tabeliao$estevao peres/id=cv1373.1.m7-13-per4
+            ls$intitulacao/tabeliao de el rei em coimbra
+
+         bem$todos os bens de raiz/id=cv1373.1.m7-13-obj1
+            atr$localizacao/cabeca do freire e vale do ferreiro/obs=junto a casas novas
+            rel$posse/pertenceu/maria andreus?/1373.cv1.maria2
+            rel$posse/pertence/vasco anes/1373.cv1.vasco
+            rel$posse/pertence/maria geraldes/1373.cv1.maria1
+            rel$posse/por compra/afonso vasques/1373.cv1.afonso
+            rel$posse/por compra/maria anes/1373.cv1.maria3
+            atr$preco/40 soldos/obs=de dinheiro portugues
+
+      escritura$cv1374.1.m7-15/28/9/1374/compraevenda/fol=mc.7 n.15/loc=ega/sumario=pedro afonso e domingas afonso vendem a joao vicente e sua mulher propriedades na serra de joao anes e raba rabos/obs=perg., razoavel, got.cursivo, sinal notarial
+
+         vendedor$pedro afonso/id=1374.cv1.pedro
+            ls$residencia/ega
+
+         vendedora$domingas afonso/id=1374.cv1.domingas
+            ls$residencia/ega
+            rel$parentesco/mulher/pedro afonso/1374.cv1.pedro
+
+         comprador$joao vicente/id=1374.cv1.joao
+            ls$residencia/serra de joao anes/obs=termo de coimbra
+
+         compradora$nome desconhecido/id=1374.cv1.nd
+            ls$residencia/serra de joao anes
+            rel$parentesco/mulher/joao vicente/1374.cv1.joao
+
+            referida$beicuda da serra/id=1374.cv1.beicuda
+               ls$morta/antes/sim
+
+         test$afonso de gra/id=cv1374.1.m7-15-per1
+            ls$residencia/soure
+
+         test$goncalo? martins/obs=duvida no primeiro nome/id=cv1374.1.m7-15-per2
+            ls$cargo/frade
+
+         test$afonso minusso?/obs=duvida no segundo nome/id=cv1374.1.m7-15-per3
+
+         tabeliao$joao martins/obs=tres soldos pelo registo/id=cv1374.1.m7-15-per4
+            ls$intitulacao/tabeliao de el rei em soure
+
+         bem$propriedades/id=cv1374.1.m7-15-obj1
+            atr$localizacao/serra de joao anes e rabarrabos
+            atr$termoc/penela
+            rel$posse/pertenceu/beicuda da serra/1374.cv1.beicuda
+            rel$posse/pertence/pedro afonso/1374.cv1.pedro
+            rel$posse/pertence/domingas afonso/1374.cv1.domingas
+            rel$posse/por compra/joao vicente/1374.cv1.joao
+            rel$posse/por compra/nome desconhecido/1374.cv1.nd
+            atr$preco/30 libras
+
+      escritura$cv1378.1.m7-27/12/10/1378/compraevenda/fol=mc.7 n.27/loc=casas de morada do tabeliao fernao vasques em coimbra/sumario=aparicio martins e maria vasques vendem a fernao vasques e maria anes um olival na pegueira, termo de coimbra/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$aparicio martins/id=1378.cv1.aparicio
+            ls$residencia/coimbra
+
+         vendedora$maria vasques/id=1378.cv1.maria1
+            rel$parentesco/mulher/aparicio martins/1378.cv1.aparicio/obs=tambem referida como companheira de aparicio martins
+            rel$sociabilidade/procuradora/aparicio martins/1378.cv1.aparicio
+
+         comprador$fernao vasques/id=1378.cv1.fernao
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1378.cv1.maria2
+            rel$parentesco/mulher/fernao vasques/1378.cv1.fernao
+
+            referido$lourenco esteves/obs=traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per1
+               ls$profissao/almocreve
+
+            referido$vasco domingues/obs=homem de el rei, traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per2
+
+         test$joao martins/id=cv1378.1.m7-27-per3
+            ls$profissao/corrector
+
+         test$martim vasques/id=cv1378.1.m7-27-per4
+            ls$profissao/acagador
+
+         test$afonso do ronco/id=cv1378.1.m7-27-per5
+            ls$profissao/porteiro
+
+         tabeliao$goncalo martins/obs=10 soldos pelo registo/id=cv1378.1.m7-27-per6
+            ls$intitulacao/tabeliao de el rei na cidade de coimbra
+
+         bem$1 olival/id=cv1378.1.m7-27-obj1
+            atr$localizacao/pegueira
+            atr$termoc/coimbra
+            atr$confrontacoes/parte com um olival de el rei que traz lourenco esteves almocreve
+            atr$confrontacoes/e da outra parte com olival da igreja de sao pedro
+            atr$confrontacoes/e da outra parte com olival que traz vasco domingues homem de el rei
+            rel$posse/pertence/aparicio martins/1378.cv1.aparicio
+            rel$posse/pertence/maria vasques/1378.cv1.maria1
+            rel$posse/por compra/fernao vasques/1378.cv1.fernao
+            rel$posse/por compra/maria anes/1378.cv1.maria2
+            atr$preco/45 libras/obs=de dinheiro portugues
+
+      escritura$cv1386.1.m8-08/24/4/1386/compraevenda/fol=mc.8 n.08/loc=dentro nas casas de estevao afonso em coimbra/sumario=vicente peres venda a estevao afonso e sua mulher um olival que recebe na compra da terca dos bens deixados por clara anes sua mulher/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$vicente peres/id=1386.cv1.vicente
+            ls$profissao/pedreiro
+            rel$parentesco/viuvo/clara anes/1386.cv1.clara
+
+            referida$clara anes/id=1386.cv1.clara
+               ls$morta/antes/sim
+
+            referido$pedro/mesmo_que=1386.t1.pedro/obs=vende a terca deixada por clara anes por cem libras ao viuvo vicente peres/id=1386.cv1.vicente-per1
+
+         comprador$estevao afonso/id=1386.cv1.estevao
+            ls$profissao/sapateiro
+            ls$residencia/coimbra
+
+         compradora$margarida ascenco/id=1386.cv1.margarida
+            ls$residencia/coimbra
+            rel$parentesco/mulher/estevao afonso/1386.cv1.estevao
+
+         test$joao peres/id=cv1386.1.m8-08-per2
+            ls$residencia/coimbra
+            ls$cargo/anadel dos besteiros
+
+         test$afonso anes/id=cv1386.1.m8-08-per4
+            ls$residencia/coimbra
+
+         tabeliao$afonso domingues/obs=4 soldos pelo registo/id=cv1386.1.m8-08-per5
+            ls$intitulacao/publico tabeliao de el rei na dita cidade de coimbra
+
+         bem$1 olival/obs=caso o valor do olival exceda o valor da compra, a diferenca deve ser restituida ao mosteiro/id=cv1386.1.m8-08-obj1
+            atr$localizacao/rego do bonfim/obs=a cerca de coselhas
+            atr$confrontacoes/partia de uma parte com joao lourenco cabrita racoeiro de santa justa
+            atr$confrontacoes/e da outra com vubal domingues pedreiro
+            atr$confrontacoes/e da outra com vasco domingues homem de el rei e com caminho publico
+            rel$posse/pertenceu/clara anes/1386.cv1.clara
+            rel$posse/pertence/vicente peres/1386.cv1.vicente
+            rel$posse/por compra/estevao afonso/1386.cv1.estevao
+            rel$posse/por compra/margarida ascenco/1386.cv1.margarida
+            atr$preco/140 libras/obs=da moeda que ora corre
+
+      escritura$cv1399.1.m8-40/18/11/1399/compraevenda/fol=mc.8 n.40/loc=casas de morada de martim domingues na freguesia de santa justa em coimbra/sumario=martim domingues e maria gomes vendem a fernao vasques e maria anes uma vinha com suas oliveiras/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$martim domingues/id=1399.cv1.martim
+            ls$alcunha/belleagua
+            ls$residencia/freguesia de santa justa/obs=coimbra
+
+         vendedora$maria gomes/id=1399.cv1.maria1
+            ls$residencia/freguesia de santa justa/obs=coimbra
+            rel$parentesco/mulher/martim domingues/1399.cv1.martim
+
+         comprador$fernao vasques/id=1399.cv1.fernao
+            ls$profissao/tabeliao/obs=que foi tabeliao
+            ls$residencia/coimbra
+
+         compradora$maria anes/id=1399.cv1.maria2
+            ls$residencia/coimbra
+            rel$parentesco/mulher/fernao vasques/1399.cv1.fernao
+
+         test$diogo esteves/id=cv1399.1.m8-40-per1
+            ls$profissao/ferreiro
+            ls$residencia/coimbra
+
+         test$goncalo vasques/id=cv1399.1.m8-40-per2
+            ls$profissao/tosador
+            ls$residencia/coimbra
+
+         tabeliao$joao esteves/id=cv1399.1.m8-40-per3/obs=pagou nichil pelo registo
+            ls$intitulacao/tabeliao de nosso senhor el rei na cidade de coimbra
+
+            referido$joana peres/mesmo_que=1399.t1.joana/id=cv1399.1.m8-40-per3-per4
+
+            referido$martim domingues/mesmo_que=1399.t1.martim/id=cv1399.1.m8-40-per3-per5
+
+            referido$joao lourenco cabrita/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per6
+               ls$cargo/racoeiro/obs=igreja de santa justa
+               ls$residencia/coimbra
+
+            referido$nome desconhecido/id=cv1399.1.m8-40-per3-per7
+               ls$cargo/vigario/obs=de cantanhede
+               ls$residencia/coimbra
+
+            referido$domingos vidal/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per8
+               ls$profissao/pedreiro
+               ls$residencia/coimbra
+
+            referido$estevao afonso/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per9
+               ls$profissao/sapateiro
+               ls$residencia/coimbra
+
+         bem$1 vinha/obs=com suas oliveiras/id=cv1399.1.m8-40-obj1
+            atr$localizacao/coimbra
+            atr$confrontacoes/parte com vinha de joao lourenco cabrita racoeiro da dita igreja de santa justa
+            atr$confrontacoes/e da outra parte com vinha e olival do vigario de cantanhede
+            atr$confrontacoes/e da outra com olival de domingos vidal pedreiro
+            atr$confrontacoes/e da outra com olival de estevao afonso sapateiro moradores na dita cidade
+            rel$posse/pertenceu/martim domingues/1399.t1.martim
+            rel$posse/pertenceu/joana peres/1399.t1.joana
+            rel$posse/por compra/fernao vasques/1399.cv1.fernao
+            rel$posse/por compra/maria anes/1399.cv1.maria2
+            atr$preco/500 libras/obs=dessa moeda que ora corre
+
+      escritura$cv1401.1.m9-06/6/6/1401/compraevenda/fol=mc.9 n.06/loc=calcada de coimbra/sumario=joao vasques vende a lourenco anes todos os bens da terca de joao peres da covilha por 20000 libras/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao vasques/id=1401.cv1.joao1
+            ls$cargo/escudeiro
+            rel$sociabilidade/vassalo/joao/1401.cv1.joao2
+            ls$residencia/coimbra
+
+         vendedora$catarina peres/id=cv1401.1.m9-06-per1
+            ls$residencia/coimbra
+            rel$parentesco/mulher/joao vasques/1401.cv1.joao1
+
+         comprador$lourenco anes/id=1401.cv1.lourenco
+            ls$profissao/criado
+            rel$profissional/criado/joao das regras/1401.cv1.joao3
+
+         test$joao anes/id=cv1401.1.m9-06-per2
+            ls$profissao/carpinteiro
+            ls$residencia/coimbra
+
+         test$lourenco vicente/id=cv1401.1.m9-06-per3
+            ls$profissao/carpinteiro
+            ls$residencia/coimbra
+
+         test$aparicio goncalves/id=cv1401.1.m9-06-per4
+            ls$residencia/sortelha
+
+         tabeliao$joao anes/id=cv1401.1.m9-06-per5
+            ls$intitulacao/tabeliao do dito senhor rei na dita cidade de coimbra
+
+            referido$joao/id=1401.cv1.joao2/obs=o documento nao refere o nome do rei, contudo em 1401 o rei de portugal e d.joao primeiro, pelo que se infere o nome de joao
+               ls$titulo/rei
+
+            referido$joao das regras/id=1401.cv1.joao3
+               ls$titulo/doutor
+
+            referido$joao perez/id=1401.cv1.joao4
+               ls$morto/antes/sim
+               ls$residencia/covilha
+
+            referido$nome desconhecido/obs=trazia os bens por dez ou onze meses e renuncia a sua posse/id=cv1401.1.m9-06-per5-per6
+               ls$cargo/pregoeiro
+
+         bem$todos os bens de raiz/obs=todos os bens de raiz que como sucessao a joao perez de coimbra ja finado em sua terca na dita cidade e seu termo/id=cv1401.1.m9-06-obj1
+            atr$localizacao/coimbra/obs=em coimbra e seu termo
+            atr$termoc/coimbra
+            rel$posse/pertenceu/joao perez/1401.cv1.joao4
+            rel$posse/por compra/lourenco anes/1401.cv1.lourenco
+            atr$preco/20000 libras/obs=desta moeda de 3 libras paga a real das quais 20 mil libras nos somos em trages e pagados
+
+      escritura$cv1452.1.m11-33/21/5/1452/compraevenda/fol=mc.11 n.33/loc=dentro nas casas de morada de fernao goncalves, na rua da calcada em coimbra/sumario=joao soeiro o velho e sua mulher maria formosa vendem por 1600 reais brancos nove aguilhadas de terra em campos de montemor a fernao goncalves e sua mulher maria anes/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao soeiro/id=1452.cv1.joao
+            ls$alcunha/o velho
+            ls$residencia/montemor o velho
+
+         vendedora$maria formosa/id=1452.cv1.maria1
+            ls$residencia/montemor o velho
+            rel$parentesco/mulher/joao soeiro/1452.cv1.joao
+
+         comprador$fernao goncalves/id=1452.cv1.fernao
+            ls$profissao/mercador
+            ls$residencia/rua da calcada/obs=coimbra
+
+         compradora$maria anes/id=1452.cv1.maria2
+            ls$residencia/rua da calcada/obs=coimbra
+            rel$parentesco/mulher/fernao goncalves/1452.cv1.fernao
+
+         test$joao vasques/id=cv1452.1.m11-33-per1
+            ls$profissao/alfaiate
+            ls$residencia/coimbra
+
+         test$goncalo martins/id=cv1452.1.m11-33-per2
+            ls$profissao/ferador?
+            ls$residencia/coimbra
+
+         test$joao goncalves/id=cv1452.1.m11-33-per3
+            ls$profissao/taxador?
+            ls$residencia/montemor o velho
+
+         tabeliao$goncalo vasques/obs=35 reais pelo registo/id=cv1452.1.m11-33-per4
+            ls$intitulacao/tabeliao publico por nosso senhor el rei em a dita cidade de coimbra e seus termos
+
+            referido$joao goncalves isidro/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per5
+
+            referido$pedro bras/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per6
+
+            referido$confraria da madanela/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per7
+
+            referido$alvaro peres da regueira/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per8
+
+         bem$9 aguilhadas de terra/id=cv1452.1.m11-33-obj1
+            atr$localizacao/campo de montemor
+            atr$confrontacoes/6 aguilhadas onde chamam a silveira que partiam de uma parte com terra de joao goncalves isidro e da outra parte com terra da capela de pedro bras e que corriam como suas vizinhas
+            atr$confrontacoes/e que as outras 3 aguilhadas que jaziam onde chamam bodelo e que partia de uma parte com terra da confraria da madanela e da outra parte com terra de alvaro peres da regueira e que corria como suas vizinhas
+            rel$posse/pertence/joao soeiro/1452.cv1.joao
+            rel$posse/pertence/maria formosa/1452.cv1.maria1
+            rel$posse/por compra/fernao goncalves/1452.cv1.fernao
+            rel$posse/por compra/maria anes/1452.cv1.maria2
+            atr$preco/1600 reais brancos/obs=destes de dez partes o real ora correntes
+            atr$pena/dobro do preco de venda/obs=de pena por incumprimento
+
+      escritura$cv1453.1.m11-36/12/8/1453/compraevenda/fol=mc.11 n.36/loc=dentro nas casas de morada de rodrigo afonso na vila de cernache, terra e jurisdicao da senhora condessa dona guiomar de castro/sumario=o mosteiro de santa clara pelo seu procurador afonso pereira compra os bens de estevao martins da feiteira aos seus herdeiros por 2500 reais brancos/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao anes/id=1453.cv1.joao
+            ls$residencia/abrunheira
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$aldonca fernandes/id=1453.cv1.aldonca
+            ls$residencia/abrunheira
+            rel$parentesco/mulher/joao anes/1453.cv1.joao
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedor$lopo anes/id=1453.cv1.lopo
+            ls$residencia/cernache
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$isabel esteves/id=1453.cv1.isabel
+            ls$residencia/cernache
+            rel$parentesco/mulher/lopo anes/1453.cv1.lopo
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedor$estevao martins/id=1453.cv1.estevao
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$maria lourenco/id=1453.cv1.maria
+            rel$parentesco/mulher/estevao martins/1453.cv1.estevao
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         procurador$joao afonso/id=cv1453.1.m11-36-per1
+            rel$sociabilidade/procurador/estevao martins/1453.cv1.estevao
+            rel$parentesco/genro/estevao martins/1453.cv1.estevao
+
+         vendedor$alvaro/id=1453.cv1.alvaro
+            ls$titulo/frei
+            rel$parentesco/filho/estevao martins/1453.cv1.estevao
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+            referido$afonso vicente da feiteira/id=1453.cv1.afonso
+
+            referido$afonso vasques/obs=foi dito que ele trouvera em pregao todos os bens que foram de afonso vicente da feiteira que ele havia na dita aldeia da feiteira 3 meses e que nao achava mais por eles de 2500 reais brancos/id=1453.cv1.alvaro-per2
+               ls$cargo/porteiro
+               ls$ausente/sim
+
+         comprador$mosteiro de santa clara/id=1453.cv1.msc
+
+         procurador$afonso pereira/id=cv1453.1.m11-36-per3
+            rel$sociabilidade/procurador/mosteiro de santa clara/1453.cv1.msc
+
+            referida$catarina/id=cv1453.1.m11-36-per3-per4
+               ls$titulo/dona
+               ls$cargo/abadessa de santa clara
+
+         test$estevao domingues/id=cv1453.1.m11-36-per5
+            ls$residencia/feiteira
+
+         test$joao esteves/id=cv1453.1.m11-36-per6
+            ls$residencia/feiteira
+
+         test$afonso esteves/id=cv1453.1.m11-36-per7
+            ls$residencia/feiteira
+
+         test$joao afonso/id=cv1453.1.m11-36-per8
+            ls$alcunha/capado
+            ls$residencia/cernache
+
+         tabeliao$joao goncalves/obs=20 reais pelo registo/id=cv1453.1.m11-36-per9
+            ls$intitulacao/tabeliao em a dita vila de cernache e seus termos
+
+            referido$rodrigo afonso/id=cv1453.1.m11-36-per9-per10
+               ls$residencia/cernache
+
+         bem$bens/id=cv1453.1.m11-36-obj1
+            atr$localizacao/feiteira
+            rel$posse/pertenceu/afonso vicente da feiteira/1453.cv1.afonso
+            rel$posse/por heranca/joao anes/1453.cv1.joao
+            rel$posse/por heranca/aldonca fernandes/1453.cv1.aldonca
+            rel$posse/por heranca/lopo anes/1453.cv1.lopo
+            rel$posse/por heranca/isabel esteves/1453.cv1.isabel
+            rel$posse/por heranca/estevao martins/1453.cv1.estevao
+            rel$posse/por heranca/maria lourenco/1453.cv1.maria
+            rel$posse/por heranca/alvaro/1453.cv1.alvaro
+            rel$posse/por compra/mosteiro de santa clara/1453.cv1.msc
+            atr$preco/2500 reais brancos=======
+kleio$gacto2-str/translations=1
+   fonte$cv.pt-tt-cscc-17-part/1370-1450/tipo=escritura/loc=dgarq-csccparticulares-maco07.8.9.10
+
+      escritura$cv1373.1.m7-13/25/5/1373/compraevenda/fol=dgarq.ofm.scc.mc.7 n.13/loc=rua nova em coimbra/sumario=vasco anes e maria geraldes vendem todos os bens de raiz que tem em cabeca de ferreiro e vale de ferreiro a afonso vasques e maria anes/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$vasco anes/id=1373.cv1.vasco
+            ls$residencia/coimbra
+
+         vendedora$maria geraldes/id=1373.cv1.maria1
+            ls$residencia/coimbra
+            rel$parentesco/mulher/vasco anes/1373.cv1.vasco
+            rel$sociabilidade/herdeira/maria andreus?/1373.cv1.maria2
+
+            referida$maria andreus?/obs=duvida no segundo nome/id=1373.cv1.maria2
+               rel$parentesco/mae/maria geraldes/1373.cv1.maria1
+
+         comprador$afonso vasques/id=1373.cv1.afonso
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1373.cv1.maria3
+            ls$residencia/coimbra
+            rel$parentesco/mulher/afonso vasques/1373.cv1.afonso
+
+         test$gil vasques/id=cv1373.1.m7-13-per1
+            ls$profissao/carpinteiro
+
+         test$domingos bartolomeu/id=cv1373.1.m7-13-per2
+            ls$profissao/carpinteiro
+
+         test$goncalo/id=cv1373.1.m7-13-per3
+            ls$titulo/frei
+            ls$ordem/terceira ordem de sao francisco
+
+         tabeliao$estevao peres/id=cv1373.1.m7-13-per4
+            ls$intitulacao/tabeliao de el rei em coimbra
+
+         bem$todos os bens de raiz/id=cv1373.1.m7-13-obj2
+            atr$localizacao/cabeca do freire e vale do ferreiro/obs=junto a casas novas
+            rel$posse/pertenceu/maria andreus?/1373.cv1.maria2
+            rel$posse/pertence/vasco anes/1373.cv1.vasco
+            rel$posse/pertence/maria geraldes/1373.cv1.maria1
+            rel$posse/por compra/afonso vasques/1373.cv1.afonso
+            rel$posse/por compra/maria anes/1373.cv1.maria3
+            atr$preco/40 soldos/obs=de dinheiro portugues
+
+      escritura$cv1374.1.m7-15/28/9/1374/compraevenda/fol=dgarq.ofm.scc.mc.7 n.15/loc=ega/sumario=pedro afonso e domingas afonso vendem a joao vicente e sua mulher propriedades na serra de joao anes e raba rabos/obs=perg., razoavel, got.cursivo, sinal notarial
+
+         vendedor$pedro afonso/id=1374.cv1.pedro
+            ls$residencia/ega
+
+         vendedora$domingas afonso/id=1374.cv1.domingas
+            ls$residencia/ega
+            rel$parentesco/mulher/pedro afonso/1374.cv1.pedro
+
+         comprador$joao vicente/id=1374.cv1.joao
+            ls$residencia/serra de joao anes/obs=termo de coimbra
+
+         compradora$nome desconhecido/id=1374.cv1.nd
+            ls$residencia/serra de joao anes
+            rel$parentesco/mulher/joao vicente/1374.cv1.joao
+
+            referida$beicuda da serra/id=1374.cv1.beicuda
+               ls$morta/antes/sim
+
+         test$afonso de gra/id=cv1374.1.m7-15-per1
+            ls$residencia/soure
+
+         test$goncalo? martins/obs=duvida no primeiro nome/id=cv1374.1.m7-15-per2
+            ls$cargo/frade
+
+         test$afonso minusso?/obs=duvida no segundo nome/id=cv1374.1.m7-15-per3
+
+         tabeliao$joao martins/obs=tres soldos pelo registo/id=cv1374.1.m7-15-per4
+            ls$intitulacao/tabeliao de el rei em soure
+
+         bem$propriedades/id=cv1374.1.m7-15-obj2
+            atr$localizacao/serra de joao anes e rabarrabos
+            atr$termoc/penela
+            rel$posse/pertenceu/beicuda da serra/1374.cv1.beicuda
+            rel$posse/pertence/pedro afonso/1374.cv1.pedro
+            rel$posse/pertence/domingas afonso/1374.cv1.domingas
+            rel$posse/por compra/joao vicente/1374.cv1.joao
+            rel$posse/por compra/nome desconhecido/1374.cv1.nd
+            atr$preco/30 libras
+
+      escritura$cv1378.1.m7-27/12/10/1378/compraevenda/fol=dgarq.ofm.scc.mc.7 n.27/loc=casas de morada do tabeliao fernao vasques em coimbra/sumario=aparicio martins e maria vasques vendem a fernao vasques e maria anes um olival na pegueira, termo de coimbra/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$aparicio martins/id=1378.cv1.aparicio
+            ls$residencia/coimbra
+
+         vendedora$maria vasques/id=1378.cv1.maria1
+            rel$parentesco/mulher/aparicio martins/1378.cv1.aparicio/obs=tambem referida como companheira de aparicio martins
+            rel$sociabilidade/procuradora/aparicio martins/1378.cv1.aparicio
+
+         comprador$fernao vasques/id=1378.cv1.fernao
+            ls$residencia/coimbra
+            ls$profissao/tabeliao
+
+         compradora$maria anes/id=1378.cv1.maria2
+            rel$parentesco/mulher/fernao vasques/1378.cv1.fernao
+
+            referido$lourenco esteves/obs=traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per1
+               ls$profissao/almocreve
+
+            referido$vasco domingues/obs=homem de el rei, traz um olival que confronta com olival que se vende/id=1378.cv1.maria2-per2
+
+         test$joao martins/id=cv1378.1.m7-27-per3
+            ls$profissao/corrector
+
+         test$martim vasques/id=cv1378.1.m7-27-per4
+            ls$profissao/acagador
+
+         test$afonso do ronco/id=cv1378.1.m7-27-per5
+            ls$profissao/porteiro
+
+         tabeliao$goncalo martins/obs=10 soldos pelo registo/id=cv1378.1.m7-27-per6
+            ls$intitulacao/tabeliao de el rei na cidade de coimbra
+
+         bem$1 olival/id=cv1378.1.m7-27-obj2
+            atr$localizacao/pegueira
+            atr$termoc/coimbra
+            atr$confrontacoes/parte com um olival de el rei que traz lourenco esteves almocreve
+            atr$confrontacoes/e da outra parte com olival da igreja de sao pedro
+            atr$confrontacoes/e da outra parte com olival que traz vasco domingues homem de el rei
+            rel$posse/pertence/aparicio martins/1378.cv1.aparicio
+            rel$posse/pertence/maria vasques/1378.cv1.maria1
+            rel$posse/por compra/fernao vasques/1378.cv1.fernao
+            rel$posse/por compra/maria anes/1378.cv1.maria2
+            atr$preco/45 libras/obs=de dinheiro portugues
+
+      escritura$cv1386.1.m8-08/24/4/1386/compraevenda/fol=dgarq.ofm.scc.mc.8 n.08/loc=dentro nas casas de estevao afonso em coimbra/sumario=vicente peres venda a estevao afonso e sua mulher um olival que recebe na compra da terca dos bens deixados por clara anes sua mulher/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$vicente peres/id=1386.cv1.vicente
+            ls$profissao/pedreiro
+            rel$parentesco/viuvo/clara anes/1386.cv1.clara
+
+            referida$clara anes/id=1386.cv1.clara
+               ls$morta/antes/sim
+
+            referido$pedro/mesmo_que=1386.t1.pedro/obs=vende a terca deixada por clara anes por cem libras ao viuvo vicente peres/id=1386.cv1.vicente-per1
+
+         comprador$estevao afonso/id=1386.cv1.estevao
+            ls$profissao/sapateiro
+            ls$residencia/coimbra
+
+         compradora$margarida ascenco/id=1386.cv1.margarida
+            ls$residencia/coimbra
+            rel$parentesco/mulher/estevao afonso/1386.cv1.estevao
+
+         test$joao peres/id=cv1386.1.m8-08-per2
+            ls$residencia/coimbra
+            ls$cargo/anadel dos besteiros
+
+         test$afonso anes/id=cv1386.1.m8-08-per4
+            ls$residencia/coimbra
+
+         tabeliao$afonso domingues/obs=4 soldos pelo registo/id=cv1386.1.m8-08-per5
+            ls$intitulacao/publico tabeliao de el rei na dita cidade de coimbra
+
+         bem$1 olival/obs=caso o valor do olival exceda o valor da compra, a diferenca deve ser restituida ao mosteiro/id=cv1386.1.m8-08-obj2
+            atr$localizacao/rego do bonfim/obs=a cerca de coselhas
+            atr$confrontacoes/partia de uma parte com joao lourenco cabrita racoeiro de santa justa
+            atr$confrontacoes/e da outra com vubal domingues pedreiro
+            atr$confrontacoes/e da outra com vasco domingues homem de el rei e com caminho publico
+            rel$posse/pertenceu/clara anes/1386.cv1.clara
+            rel$posse/pertence/vicente peres/1386.cv1.vicente
+            rel$posse/por compra/estevao afonso/1386.cv1.estevao
+            rel$posse/por compra/margarida ascenco/1386.cv1.margarida
+            atr$preco/140 libras/obs=da moeda que ora corre
+
+      escritura$cv1399.1.m8-40/18/11/1399/compraevenda/fol=dgarq.ofm.scc.mc.8 n.40/loc=casas de morada de martim domingues na freguesia de santa justa em coimbra/sumario=martim domingues e maria gomes vendem a fernao vasques e maria anes uma vinha com suas oliveiras/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$martim domingues/id=1399.cv1.martim
+            ls$alcunha/belleagua
+            ls$residencia/freguesia de santa justa/obs=coimbra
+
+         vendedora$maria gomes/id=1399.cv1.maria1
+            ls$residencia/freguesia de santa justa/obs=coimbra
+            rel$parentesco/mulher/martim domingues/1399.cv1.martim
+
+         comprador$fernao vasques/id=1399.cv1.fernao
+            ls$profissao/tabeliao/obs=que foi tabeliao
+            ls$residencia/coimbra
+
+         compradora$maria anes/id=1399.cv1.maria2
+            ls$residencia/coimbra
+            rel$parentesco/mulher/fernao vasques/1399.cv1.fernao
+
+         test$diogo esteves/id=cv1399.1.m8-40-per1
+            ls$profissao/ferreiro
+            ls$residencia/coimbra
+
+         test$goncalo vasques/id=cv1399.1.m8-40-per2
+            ls$profissao/tosador
+            ls$residencia/coimbra
+
+         tabeliao$joao esteves/id=cv1399.1.m8-40-per3/obs=pagou nichil pelo registo
+            ls$intitulacao/tabeliao de nosso senhor el rei na cidade de coimbra
+
+            referido$joana peres/mesmo_que=1399.t1.joana/id=cv1399.1.m8-40-per3-per4
+
+            referido$martim domingues/mesmo_que=1399.t1.martim/id=cv1399.1.m8-40-per3-per5
+
+            referido$joao lourenco cabrita/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per6
+               ls$cargo/racoeiro/obs=igreja de santa justa
+               ls$residencia/coimbra
+
+            referido$nome desconhecido/id=cv1399.1.m8-40-per3-per7
+               ls$cargo/vigario/obs=de cantanhede
+               ls$residencia/coimbra
+
+            referido$domingos vidal/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per8
+               ls$profissao/pedreiro
+               ls$residencia/coimbra
+
+            referido$estevao afonso/obs=tem vinha de confrontacao/id=cv1399.1.m8-40-per3-per9
+               ls$profissao/sapateiro
+               ls$residencia/coimbra
+
+         bem$1 vinha/obs=com suas oliveiras/id=cv1399.1.m8-40-obj2
+            atr$localizacao/coimbra
+            atr$confrontacoes/parte com vinha de joao lourenco cabrita racoeiro da dita igreja de santa justa
+            atr$confrontacoes/e da outra parte com vinha e olival do vigario de cantanhede
+            atr$confrontacoes/e da outra com olival de domingos vidal pedreiro
+            atr$confrontacoes/e da outra com olival de estevao afonso sapateiro moradores na dita cidade
+            rel$posse/pertenceu/martim domingues/1399.t1.martim
+            rel$posse/pertenceu/joana peres/1399.t1.joana
+            rel$posse/por compra/fernao vasques/1399.cv1.fernao
+            rel$posse/por compra/maria anes/1399.cv1.maria2
+            atr$preco/500 libras/obs=dessa moeda que ora corre
+
+      escritura$cv1401.1.m9-06/6/6/1401/compraevenda/fol=dgarq.ofm.scc.mc.9 n.06/loc=calcada de coimbra/sumario=joao vasques vende a lourenco anes todos os bens da terca de joao peres da covilha por 20000 libras/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao vasques/id=1401.cv1.joao1
+            ls$cargo/escudeiro
+            rel$sociabilidade/vassalo/joao/1401.cv1.joao2
+            ls$residencia/coimbra
+
+         vendedora$catarina peres/id=cv1401.1.m9-06-per1
+            ls$residencia/coimbra
+            rel$parentesco/mulher/joao vasques/1401.cv1.joao1
+
+         comprador$lourenco anes/id=1401.cv1.lourenco
+            ls$profissao/criado
+            rel$profissional/criado/joao das regras/1401.cv1.joao3
+
+         test$joao anes/id=cv1401.1.m9-06-per2
+            ls$profissao/carpinteiro
+            ls$residencia/coimbra
+
+         test$lourenco vicente/id=cv1401.1.m9-06-per3
+            ls$profissao/carpinteiro
+            ls$residencia/coimbra
+
+         test$aparicio goncalves/id=cv1401.1.m9-06-per4
+            ls$residencia/sortelha
+
+         tabeliao$joao anes/id=cv1401.1.m9-06-per5
+            ls$intitulacao/tabeliao do dito senhor rei na dita cidade de coimbra
+
+            referido$joao/id=1401.cv1.joao2/obs=o documento nao refere o nome do rei, contudo em 1401 o rei de portugal e d.joao primeiro, pelo que se infere o nome de joao
+               ls$titulo/rei
+
+            referido$joao das regras/id=1401.cv1.joao3
+               ls$titulo/doutor
+
+            referido$joao perez/id=1401.cv1.joao4
+               ls$morto/antes/sim
+               ls$residencia/covilha
+
+            referido$nome desconhecido/obs=trazia os bens por dez ou onze meses e renuncia a sua posse/id=cv1401.1.m9-06-per5-per6
+               ls$cargo/pregoeiro
+
+         bem$todos os bens de raiz/obs=todos os bens de raiz que como sucessao a joao perez de coimbra ja finado em sua terca na dita cidade e seu termo/id=cv1401.1.m9-06-obj2
+            atr$localizacao/coimbra/obs=em coimbra e seu termo
+            atr$termoc/coimbra
+            rel$posse/pertenceu/joao perez/1401.cv1.joao4
+            rel$posse/por compra/lourenco anes/1401.cv1.lourenco
+            atr$preco/20000 libras/obs=desta moeda de 3 libras paga a real das quais 20 mil libras nos somos em trages e pagados
+
+      escritura$cv1452.1.m11-33/21/5/1452/compraevenda/fol=dgarq.ofm.scc.mc.11 n.33/loc=dentro nas casas de morada de fernao goncalves, na rua da calcada em coimbra/sumario=joao soeiro o velho e sua mulher maria formosa vendem por 1600 reais brancos nove aguilhadas de terra em campos de montemor a fernao goncalves e sua mulher maria anes/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao soeiro/id=1452.cv1.joao
+            ls$alcunha/o velho
+            ls$residencia/montemor o velho
+
+         vendedora$maria formosa/id=1452.cv1.maria1
+            ls$residencia/montemor o velho
+            rel$parentesco/mulher/joao soeiro/1452.cv1.joao
+
+         comprador$fernao goncalves/id=1452.cv1.fernao
+            ls$profissao/mercador
+            ls$residencia/rua da calcada/obs=coimbra
+
+         compradora$maria anes/id=1452.cv1.maria2
+            ls$residencia/rua da calcada/obs=coimbra
+            rel$parentesco/mulher/fernao goncalves/1452.cv1.fernao
+
+         test$joao vasques/id=cv1452.1.m11-33-per1
+            ls$profissao/alfaiate
+            ls$residencia/coimbra
+
+         test$goncalo martins/id=cv1452.1.m11-33-per2
+            ls$profissao/ferador?
+            ls$residencia/coimbra
+
+         test$joao goncalves/id=cv1452.1.m11-33-per3
+            ls$profissao/taxador?
+            ls$residencia/montemor o velho
+
+         tabeliao$goncalo vasques/obs=35 reais pelo registo/id=cv1452.1.m11-33-per4
+            ls$intitulacao/tabeliao publico por nosso senhor el rei em a dita cidade de coimbra e seus termos
+
+            referido$joao goncalves isidro/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per5
+
+            referido$pedro bras/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per6
+
+            referido$confraria da madanela/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per7
+
+            referido$alvaro peres da regueira/obs=tem propriedade de confrontacao/id=cv1452.1.m11-33-per4-per8
+
+         bem$9 aguilhadas de terra/id=cv1452.1.m11-33-obj2
+            atr$localizacao/campo de montemor
+            atr$confrontacoes/6 aguilhadas onde chamam a silveira que partiam de uma parte com terra de joao goncalves isidro e da outra parte com terra da capela de pedro bras e que corriam como suas vizinhas
+            atr$confrontacoes/e que as outras 3 aguilhadas que jaziam onde chamam bodelo e que partia de uma parte com terra da confraria da madanela e da outra parte com terra de alvaro peres da regueira e que corria como suas vizinhas
+            rel$posse/pertence/joao soeiro/1452.cv1.joao
+            rel$posse/pertence/maria formosa/1452.cv1.maria1
+            rel$posse/por compra/fernao goncalves/1452.cv1.fernao
+            rel$posse/por compra/maria anes/1452.cv1.maria2
+            atr$preco/1600 reais brancos/obs=destes de dez partes o real ora correntes
+            atr$pena/dobro do preco de venda/obs=de pena por incumprimento
+
+      escritura$cv1453.1.m11-36/12/8/1453/compraevenda/fol=dgarq.ofm.scc.mc.11 n.36/loc=dentro nas casas de morada de rodrigo afonso na vila de cernache, terra e jurisdicao da senhora condessa dona guiomar de castro/sumario=o mosteiro de santa clara pelo seu procurador afonso pereira compra os bens de estevao martins da feiteira aos seus herdeiros por 2500 reais brancos/obs=perg., bom, got.cursivo, sinal notarial
+
+         vendedor$joao anes/id=1453.cv1.joao
+            ls$residencia/abrunheira
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$aldonca fernandes/id=1453.cv1.aldonca
+            ls$residencia/abrunheira
+            rel$parentesco/mulher/joao anes/1453.cv1.joao
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedor$lopo anes/id=1453.cv1.lopo
+            ls$residencia/cernache
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$isabel esteves/id=1453.cv1.isabel
+            ls$residencia/cernache
+            rel$parentesco/mulher/lopo anes/1453.cv1.lopo
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedor$estevao martins/id=1453.cv1.estevao
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+         vendedora$maria lourenco/id=1453.cv1.maria
+            rel$parentesco/mulher/estevao martins/1453.cv1.estevao
+            rel$sociabilidade/herdeira/afonso vicente da feiteira/1453.cv1.afonso
+
+         procurador$joao afonso/id=cv1453.1.m11-36-per1
+            rel$sociabilidade/procurador/estevao martins/1453.cv1.estevao
+            rel$parentesco/genro/estevao martins/1453.cv1.estevao
+
+         vendedor$alvaro/id=1453.cv1.alvaro
+            ls$titulo/frei
+            rel$parentesco/filho/estevao martins/1453.cv1.estevao
+            rel$sociabilidade/herdeiro/afonso vicente da feiteira/1453.cv1.afonso
+
+            referido$afonso vicente da feiteira/id=1453.cv1.afonso
+
+            referido$afonso vasques/obs=foi dito que ele trouvera em pregao todos os bens que foram de afonso vicente da feiteira que ele havia na dita aldeia da feiteira 3 meses e que nao achava mais por eles de 2500 reais brancos/id=1453.cv1.alvaro-per2
+               ls$cargo/porteiro
+               ls$ausente/sim
+
+         comprador$mosteiro de santa clara/id=1453.cv1.msc
+
+         procurador$afonso pereira/id=cv1453.1.m11-36-per3
+            rel$sociabilidade/procurador/mosteiro de santa clara/1453.cv1.msc
+
+            referida$catarina/id=cv1453.1.m11-36-per3-per4
+               ls$titulo/dona
+               ls$cargo/abadessa de santa clara
+
+         test$estevao domingues/id=cv1453.1.m11-36-per5
+            ls$residencia/feiteira
+
+         test$joao esteves/id=cv1453.1.m11-36-per6
+            ls$residencia/feiteira
+
+         test$afonso esteves/id=cv1453.1.m11-36-per7
+            ls$residencia/feiteira
+
+         test$joao afonso/id=cv1453.1.m11-36-per8
+            ls$alcunha/capado
+            ls$residencia/cernache
+
+         tabeliao$joao goncalves/obs=20 reais pelo registo/id=cv1453.1.m11-36-per9
+            ls$intitulacao/tabeliao em a dita vila de cernache e seus termos
+
+            referido$rodrigo afonso/id=cv1453.1.m11-36-per9-per10
+               ls$residencia/cernache

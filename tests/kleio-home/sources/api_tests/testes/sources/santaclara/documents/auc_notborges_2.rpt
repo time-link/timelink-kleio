@@ -1,0 +1,53 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 19-54
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1603tbotbo/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-58, notario tome borges, agosto a dezembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1603tbotbo
+4:       escritura$not1603tbotbo-e1/17/9/1603/procuracao/fol=48-49/loc=porta do coro do mosteiro/sumario=dona isabel de noronha, freira professa do mosteiro de santa clara de coimbra, nomeia procuradores para que tratem da tenca, assente no almoxarifado de tomar, que esta deixa a sua irma gracia de noronha e seu marido manuel dias
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1603tbotbo-e1
+6:          constituintef$isabel de noronha/id=not1603tbo-e1-per1
+7:             ls$titulo/dona
+8:             ls$condicao/freira professa
+9:             ls$assina/sim
+10: 
+11:             referida$gracia de noronha/id=not1603tbo-e1-per2
+12:                rel$parentesco/irma/isabel de noronha/not1603tbo-e1-per1
+13:                rel$sociabilidade/herdeira/isabel de noronha/not1603tbo-e1-per1
+14: 
+15:             referido$manuel dias/id=not1603tbo-e1-per3
+16:                rel$parentesco/marido/gracia de noronha/not1603tbo-e1-per2
+17:                ls$cargo/recebedor na freguesia de olhadas/obs=comarca da vila de tomar
+18:                rel$sociabilidade/herdeiro/isabel de noronha/not1603tbo-e1-per1
+19: 
+20:          procurador$nome desconhecido/id=not1603tbo-e1-per4
+21:             rel$sociabilidade/procurador/isabel de noronha/not1603tbo-e1-per1
+22: 
+23:          test$pedro andre/m/id=not1603tbo-e1-per5
+24:             ls$profissao/criado/obs=do mosteiro de santa clara de coimbra
+25: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_2.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_2.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_2.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_2.ids

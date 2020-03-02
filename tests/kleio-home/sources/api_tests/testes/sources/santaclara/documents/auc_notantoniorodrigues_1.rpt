@@ -1,0 +1,52 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 17-56
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniorodrigues_1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1684fgs/tipo=escrituras notariais/loc=auc/obs=notarial, cota v i-es 8-4-152/obs=notario francisco gomes da silva, fevereiro a julho
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1684fgs
+4:       escritura$not1684fgs-e1/6/5/1684/procuracao/loc=grade do parlatorio/sumario=ana dos santos, recolhida no mosteiro de santa clara da cidade de coimbra, nomeia procurador, rodrigo de macedo e sa, para que em seu nome requeira todos os seus direitos e justi�as que sobre ela se moverem em tribunal
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1684fgs-e1
+6:          constituintef$ana dos santos/id=not1684fgs-e1-per1
+7:             ls$condicao/recolhida
+8:             ls$assina/sim
+9: 
+10:          procurador$rodrigo de macedo e sa/id=not1684fgs-e1-per2
+11:             rel$sociabilidade/procurador/ana dos santos/not1684fgs-e1-per1
+12: 
+13:          test$manuel ribeiro/m/id=not1684fgs-e1-per3
+14:             ls$profissao/estudante/obs=na universidade de coimbra
+15:             ls$residencia/coimbra
+16: 
+17:          test$jose da rocha/m/id=not1684fgs-e1-per4
+18:             ls$profissao/marchante dos carneiros/obs=em coimbra
+19:             ls$residencia/coimbra
+20: 
+21:          test$joao ribeiro da costa/m/id=not1684fgs-e1-per5
+22:             ls$profissao/barbeiro
+23:             ls$residencia/coimbra
+24: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniorodrigues_1.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniorodrigues_1.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniorodrigues_1.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notantoniorodrigues_1.ids

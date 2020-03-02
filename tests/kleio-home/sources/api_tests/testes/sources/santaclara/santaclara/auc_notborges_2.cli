@@ -1,0 +1,24 @@
+kleio$gacto2.str/translations=1
+   fonte$not1603tbotbo/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-58, notario tome borges, agosto a dezembro
+
+      escritura$not1603tbotbo-e1/17/9/1603/procuracao/fol=48-49/loc=porta do coro do mosteiro/sumario=dona isabel de noronha, freira professa do mosteiro de santa clara de coimbra, nomeia procuradores para que tratem da tenca, assente no almoxarifado de tomar, que esta deixa a sua irma gracia de noronha e seu marido manuel dias
+
+         constituintef$isabel de noronha/id=not1603tbo-e1-per1
+            ls$titulo/dona
+            ls$condicao/freira professa
+            ls$assina/sim
+
+            referida$gracia de noronha/id=not1603tbo-e1-per2
+               rel$parentesco/irma/isabel de noronha/not1603tbo-e1-per1
+               rel$sociabilidade/herdeira/isabel de noronha/not1603tbo-e1-per1
+
+            referido$manuel dias/id=not1603tbo-e1-per3
+               rel$parentesco/marido/gracia de noronha/not1603tbo-e1-per2
+               ls$cargo/recebedor na freguesia de olhadas/obs=comarca da vila de tomar
+               rel$sociabilidade/herdeiro/isabel de noronha/not1603tbo-e1-per1
+
+         procurador$nome desconhecido/id=not1603tbo-e1-per4
+            rel$sociabilidade/procurador/isabel de noronha/not1603tbo-e1-per1
+
+         test$pedro andre/m/id=not1603tbo-e1-per5
+            ls$profissao/criado/obs=do mosteiro de santa clara de coimbra

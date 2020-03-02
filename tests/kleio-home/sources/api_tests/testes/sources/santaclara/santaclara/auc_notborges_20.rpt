@@ -1,0 +1,53 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+3-7-2019 8-8
+
+Processing data file auc_notborges_20.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$not1623
+
+WARNING: auc_notborges_20.cli line 3 Element value exceeds database field length: loc=auc, notarial cota v i-es-9-3-82, notario tome borges, junho a novembro. Size:71 limit: 64
+Near lines: 3 
+Near line: 4       escritura$not1623-e1/13/10/1623/dote de ingresso/fol=142-143v/loc=grade do parlatorio/sumario=contrato de dote para entrada no mosteiro de santa clara de coimbra de dona isabel de beja perestrela, filha de diogo de marmeleiro de noronha
+
+6: escritura$not1623-e1
+
+WARNING: auc_notborges_20.cli line 17 Element value exceeds database field length: name=cento e cinquenta mil reais para gastos do habito e de propinas seiscentos reais a cada uma das freiras que eram na totalidade oitenta e uma mas ficaram setenta e oito por terem morrido as restantes para cada uma um cruzado e uma vela de meio arratel de cera. Size:258 limit: 64
+Near lines: 17 
+Near line: 18          bem$o dobro da propina ao confessor uma vela de meio arratel de cera e um jantar da oferta da igreja
+
+
+WARNING: auc_notborges_20.cli line 19 Element value exceeds database field length: name=o dobro da propina ao confessor uma vela de meio arratel de cera e um jantar da oferta da igreja. Size:96 limit: 64
+Near lines: 19 
+Near line: 20          bem$dobro de propina para a abadessa
+
+
+WARNING: auc_notborges_20.cli line 25 Element value exceeds database field length: name=soma total sao seiscentos e sete mil e duzentos reais de propinas. Size:65 limit: 64
+Near lines: 25 
+Near line: 26          test$ines de noronha/f/id=not1623-e1-per3
+
+62: escritura$not1623-e2
+
+WARNING: auc_notborges_20.cli line 86 Element value exceeds database field length: name=alimentos em cada ano quinze mil reais por cada uma ate a profissao. Size:67 limit: 64
+Near lines: 86 
+Near line: 87          test$ines de noronha/f/id=not1623-e2-per6
+
+*** End of File
+** Processed file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_20.cli
+** Original file- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_20.org
+** Previous version- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_20.old
+** Temp file with ids- /Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/api_tests/testes/sources/santaclara/santaclara/auc_notborges_20.ids
+0  errors. 
+5  warnings.
+Translation finished.

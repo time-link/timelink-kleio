@@ -1,0 +1,34 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+3-7-2019 8-8
+
+Processing data file teste_manual1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto2-str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$ofm,provincia de portugal,santa clara de coimbra, regios
+
+ERROR: teste_manual1.cli line 3 ** Failure: undefined element. carta regia
+
+Near lines: 3 
+Near line: 4       docregio$docreg1370.1/6/11/1370/carta regia/fol=mc.7/loc=tentugal/sumario=dom fernando impede os juizes de montemor de venderem o trigo do mosteiro de santa clara, que esta guardado no celeiro da igreja de sao martinho de montemor para seu mantimento, e que elas pediram para nao ser vendido nem usado/obs=perg., got.cursivo
+
+
+ERROR: teste_manual1.cli line 5 ** Error: missing element(s) in docregio(docreg1370.1) must have: tipo
+Near lines: 5 
+Near line: 6          autor$d.fernando/id=1370reg.fernando/obs=proibe os juizes de venderem o trigo do mosteiro de santa clara
+
+6: docregio$docreg1370.1
+*** End of File
+2  errors. 
+0  warnings.
+Translation finished.

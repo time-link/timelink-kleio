@@ -1,0 +1,807 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/mhk-git/clio/src/gacto2.str" SOURCE="/Users/jrc/develop/mhk_users/testes/sources/paroquiais/obitos/testeParentescos.cli" TRANSLATOR="gactoxml2.str" WHEN="2018-6-30 8:24:12" OBS="" SPACE="">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="obitos 1688-testes" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>obitos 1688-testes</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[reg paroquiais]]></core>   </ELEMENT>
+   <ELEMENT NAME="localizacao" CLASS="loc">
+         <core><![CDATA[nao se le]]></core>   </ELEMENT>
+   <ELEMENT NAME="data" CLASS="date">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[feito para testar os parentescos quando estao separados de n e tb a geracao de um ls para a causa de morte]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/paroquiais/obitos/testeParentescos.cli]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="obito">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ox-1" NAME="obito" CLASS="act" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>obito</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>obitos 1688-testes</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[obito]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="n">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ox-1-per1" NAME="n" CLASS="person" ORDER="3" LEVEL="3" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonia francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="origin" COLUMN="origin" CLASS="origin" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ox-1-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-1-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-1-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP><CLASS NAME="group_element" SUPER="entity" TABLE="gelement" GROUP="causa">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ox-1-gro1-8" NAME="causa" CLASS="group_element" ORDER="5" LEVEL="3" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-gro1-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>causa</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[sida]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-gro2-8" NAME="locf" CLASS="group_element" ORDER="6" LEVEL="3" LINE="12">
+    <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-gro2-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locf</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[rua]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-per2" NAME="pai" CLASS="person" ORDER="7" LEVEL="3" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>pai</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao rodrigues]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-rela2" NAME="relation"  ORDER="8" LEVEL="4" CLASS="relation" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-1-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ox-1-per2-att1-8" NAME="ls" CLASS="attribute" ORDER="9" LEVEL="4" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-per2-att1-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mogadouro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-1-per2-att1-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-per2-att2-8" NAME="ls" CLASS="attribute" ORDER="10" LEVEL="4" LINE="16">
+    <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-per2-att2-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morto]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[antes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-1-per2-att2-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-1-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-gro3-8" NAME="locs" CLASS="group_element" ORDER="11" LEVEL="3" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-gro3-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locs</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[igreja de s.tiago]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-1-rela3" NAME="relation"  ORDER="12" LEVEL="3" CLASS="relation" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pai</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-1-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-1-atra1" NAME="ls"  ORDER="13" LEVEL="3" CLASS="attribute" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>morto</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>agora</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>ox-1-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-1-atra1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-2" NAME="obito" CLASS="act" ORDER="14" LEVEL="2" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>obito</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>obitos 1688-testes</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[obito]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-per1" NAME="n" CLASS="person" ORDER="15" LEVEL="3" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonia francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-rela4" NAME="relation"  ORDER="16" LEVEL="4" CLASS="relation" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-2-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-2-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-2-gro4-8" NAME="causa" CLASS="group_element" ORDER="17" LEVEL="3" LINE="24">
+    <ELEMENT NAME="line" CLASS="line"><core>24</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-gro4-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>causa</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[sida]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-gro5-8" NAME="locs" CLASS="group_element" ORDER="18" LEVEL="3" LINE="26">
+    <ELEMENT NAME="line" CLASS="line"><core>26</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-gro5-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locs</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[igreja de s.tiago]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-gro6-8" NAME="locf" CLASS="group_element" ORDER="19" LEVEL="3" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-gro6-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locf</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[rua]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-per2" NAME="mae" CLASS="person" ORDER="20" LEVEL="3" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mae</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[maria rodrigues]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-rela5" NAME="relation"  ORDER="21" LEVEL="4" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-2-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-2-per2-att1-8" NAME="ls" CLASS="attribute" ORDER="22" LEVEL="4" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-per2-att1-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mogadouro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-2-per2-att1-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-per2-att2-8" NAME="ls" CLASS="attribute" ORDER="23" LEVEL="4" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-per2-att2-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-2-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morto]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[antes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-2-per2-att2-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-2-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-2-rela6" NAME="relation"  ORDER="24" LEVEL="3" CLASS="relation" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mae</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-2-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-2-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-rela6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-2-atra2" NAME="ls"  ORDER="25" LEVEL="3" CLASS="attribute" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>25</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>morto</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>agora</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>ox-2-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-2-atra2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-3" NAME="obito" CLASS="act" ORDER="26" LEVEL="2" LINE="34">
+    <ELEMENT NAME="line" CLASS="line"><core>34</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>obito</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>obitos 1688-testes</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>26</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[obito]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-per1" NAME="n" CLASS="person" ORDER="27" LEVEL="3" LINE="36">
+    <ELEMENT NAME="line" CLASS="line"><core>36</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>27</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonia francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-rela7" NAME="relation"  ORDER="28" LEVEL="4" CLASS="relation" LINE="36">
+    <ELEMENT NAME="line" CLASS="line"><core>36</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-3-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>28</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-3-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-rela7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-3-gro7-8" NAME="causa" CLASS="group_element" ORDER="29" LEVEL="3" LINE="38">
+    <ELEMENT NAME="line" CLASS="line"><core>38</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-gro7-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>causa</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>29</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[sida]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-gro8-8" NAME="locs" CLASS="group_element" ORDER="30" LEVEL="3" LINE="40">
+    <ELEMENT NAME="line" CLASS="line"><core>40</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-gro8-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locs</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>30</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[igreja de s.tiago]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-gro9-8" NAME="locf" CLASS="group_element" ORDER="31" LEVEL="3" LINE="42">
+    <ELEMENT NAME="line" CLASS="line"><core>42</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-gro9-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locf</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>31</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[rua]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-per2" NAME="marido" CLASS="person" ORDER="32" LEVEL="3" LINE="43">
+    <ELEMENT NAME="line" CLASS="line"><core>43</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>marido</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>32</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joao rodrigues]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-rela8" NAME="relation"  ORDER="33" LEVEL="4" CLASS="relation" LINE="43">
+    <ELEMENT NAME="line" CLASS="line"><core>43</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-3-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>33</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-rela8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-3-per2-att1-8" NAME="ls" CLASS="attribute" ORDER="34" LEVEL="4" LINE="44">
+    <ELEMENT NAME="line" CLASS="line"><core>44</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-per2-att1-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>34</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mogadouro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-3-per2-att1-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-3-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-per2-att2-8" NAME="ls" CLASS="attribute" ORDER="35" LEVEL="4" LINE="46">
+    <ELEMENT NAME="line" CLASS="line"><core>46</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-per2-att2-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-3-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>35</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morto]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[antes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-3-per2-att2-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-3-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-3-rela9" NAME="relation"  ORDER="36" LEVEL="3" CLASS="relation" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>36</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-3-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-3-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-rela9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-3-atra3" NAME="ls"  ORDER="37" LEVEL="3" CLASS="attribute" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>37</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>morto</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>agora</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>ox-3-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-3-atra3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-4" NAME="obito" CLASS="act" ORDER="38" LEVEL="2" LINE="48">
+    <ELEMENT NAME="line" CLASS="line"><core>48</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>obito</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>obitos 1688-testes</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>38</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[1]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[1688]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[obito]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-per1" NAME="n" CLASS="person" ORDER="39" LEVEL="3" LINE="50">
+    <ELEMENT NAME="line" CLASS="line"><core>50</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-per1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>39</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[antonio francisca]]></core>   </ELEMENT>
+   <ELEMENT NAME="sexo" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[m]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-rela10" NAME="relation"  ORDER="40" LEVEL="4" CLASS="relation" LINE="50">
+    <ELEMENT NAME="line" CLASS="line"><core>50</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-4-per1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>40</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-4-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-rela10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-4-gro10-8" NAME="causa" CLASS="group_element" ORDER="41" LEVEL="3" LINE="52">
+    <ELEMENT NAME="line" CLASS="line"><core>52</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-gro10-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>causa</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>41</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[sida]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-gro11-8" NAME="locf" CLASS="group_element" ORDER="42" LEVEL="3" LINE="54">
+    <ELEMENT NAME="line" CLASS="line"><core>54</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-gro11-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locf</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>42</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[rua]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-per2" NAME="mulher" CLASS="person" ORDER="43" LEVEL="3" LINE="55">
+    <ELEMENT NAME="line" CLASS="line"><core>55</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-per2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>mulher</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>43</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="nome" CLASS="name">
+         <core><![CDATA[joana rodrigues]]></core>   </ELEMENT>
+   <ELEMENT NAME="sex" CLASS="sex">
+         <core><![CDATA[f]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-rela11" NAME="relation"  ORDER="44" LEVEL="4" CLASS="relation" LINE="55">
+    <ELEMENT NAME="line" CLASS="line"><core>55</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-4-per2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>44</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>mulher</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>obito</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-4-per2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-rela11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-4-per2-att1-8" NAME="ls" CLASS="attribute" ORDER="45" LEVEL="4" LINE="56">
+    <ELEMENT NAME="line" CLASS="line"><core>56</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-per2-att1-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>45</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[residencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mogadouro]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-4-per2-att1-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-4-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-per2-att2-8" NAME="ls" CLASS="attribute" ORDER="46" LEVEL="4" LINE="58">
+    <ELEMENT NAME="line" CLASS="line"><core>58</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-per2-att2-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4-per2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>46</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[morto]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[antes]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[ox-4-per2-att2-8]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[ox-4-per2]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[16880101]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-gro12-8" NAME="locs" CLASS="group_element" ORDER="47" LEVEL="3" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-gro12-8</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>locs</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>group_element</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>47</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="value" CLASS="value">
+         <core><![CDATA[igreja de s.tiago]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="ox-4-rela12" NAME="relation"  ORDER="48" LEVEL="4" CLASS="relation" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>48</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>ox-4-per1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>ox-4-per2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-rela12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP>
+<GROUP ID="ox-4-atra4" NAME="ls"  ORDER="49" LEVEL="4" CLASS="attribute" LINE="59">
+    <ELEMENT NAME="line" CLASS="line"><core>59</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>ox-4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>49</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>morto</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>agora</core></ELEMENT>
+    <ELEMENT NAME="entity" CLASS="entity"><core>ox-4-per1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ox-4-atra4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>16880101</core></ELEMENT>
+</GROUP></KLEIO>

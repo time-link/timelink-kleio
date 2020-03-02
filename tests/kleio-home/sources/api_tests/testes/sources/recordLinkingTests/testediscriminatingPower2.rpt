@@ -1,0 +1,87 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+26-6-2019 11-17
+
+Processing data file testediscriminatingPower2.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$/prefix=reclinktst
+=========================
+kleio translation started
+=========================
+Structure: 
+Prefix: reclinktst
+Autorel: reclinktst
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$rlt01
+3: 
+** Processing source fonte$reclinktst-rlt01
+4:       lista$listnd/4/12/2006/obs=cria um atributo com 3 valores
+5: 
+6: lista$reclinktst-listnd
+6:          n$pessoa 1/m/id=listNdescrim-per1
+7:             ls$atributo1/valor 1
+8: 
+9:          n$pessoa 1/m/id=listNdescrim-per2
+10:             ls$atributo1/valor 1
+11: 
+12:          n$pessoa 1/m/id=listNdescrim-per3
+13:             ls$atributo1/valor 2
+14: 
+15:          n$pessoa 1/m/id=listNdescrim-per4
+16:             ls$atributo1/valor 3
+17: 
+18:          n$pessoa/id=p1/obs=quatro ocorrencias da mesma pessoa com a mesma residencia
+19:             ls$xresidencia/valor 1
+20:             ls$xcargo/valor 1
+21: 
+22:          n$pessoa/id=p2/mesmo_que=recordlinkingtests-p1
+
+WARNING: testediscriminatingPower2.cli line 22 destination id of "same as" not found. Will check again at the end of file.
+Near line: 22          n$pessoa/id=p2/mesmo_que=recordlinkingtests-p1
+Near line: 23             ls$xresidencia/valor 1
+
+23:             ls$xresidencia/valor 1
+24:             ls$xcargo/valor 2
+25: 
+26:          n$pessoa/id=p3/mesmo_que=recordlinkingtests-p1
+
+WARNING: testediscriminatingPower2.cli line 26 destination id of "same as" not found. Will check again at the end of file.
+Near line: 26          n$pessoa/id=p3/mesmo_que=recordlinkingtests-p1
+Near line: 27             ls$xresidencia/valor 1
+
+27:             ls$xresidencia/valor 1
+28:             ls$xcargo/valor 5
+29: 
+30:          n$pessoa/id=p4/mesmo_que=recordlinkingtests-p1
+
+WARNING: testediscriminatingPower2.cli line 30 destination id of "same as" not found. Will check again at the end of file.
+Near line: 30          n$pessoa/id=p4/mesmo_que=recordlinkingtests-p1
+Near line: 31             ls$xresidencia/valor 1
+
+31:             ls$xresidencia/valor 1
+32:             ls$xcargo/valor 3
+33: 
+34:          n$pessoa/id=p5/mesmo_que=recordlinkingtests-p1
+
+WARNING: testediscriminatingPower2.cli line 34 destination id of "same as" not found. Will check again at the end of file.
+Near line: 34          n$pessoa/id=p5/mesmo_que=recordlinkingtests-p1
+Near line: 35             ls$xresidencia/valor 1
+
+35:             ls$xresidencia/valor 1
+36:             ls$xcargo/valor 4
+37: *** End of File
+ERROR:  Could not find same_as id reclinktst-recordlinkingtests-p1 referred in line 23. If  original reference is on another file use xsame_as
+
+ERROR:  Could not find same_as id reclinktst-recordlinkingtests-p1 referred in line 27. If  original reference is on another file use xsame_as
+
+ERROR:  Could not find same_as id reclinktst-recordlinkingtests-p1 referred in line 31. If  original reference is on another file use xsame_as
+
+ERROR:  Could not find same_as id reclinktst-recordlinkingtests-p1 referred in line 35. If  original reference is on another file use xsame_as
+
+4  errors. 
+0  warnings.
+Translation finished.

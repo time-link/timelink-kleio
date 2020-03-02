@@ -1,0 +1,191 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-22
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_6.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1648-1649/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-106, notario simao gomes rebelo, junho a julho
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1648-1649
+4:       escritura$not1648-e1/29/10/1648/arrendamento de rendas/fol=39-41v/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara de coimbra e manuel pires, da renda de urzelhe
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1648-e1
+6:          senhoria$leonor de milao/id=not1648-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          rendeiro$manuel pires/id=not1648-e1-per2
+11:             ls$residencia/urzelhe
+12: 
+13:          bem$renda de urzelhe
+bem-not1648-e1-obj1- ** was stored with function in ACT verify act
+14:             atr$localizacao/urzelhe
+15:             atr$renda/cento e vinte e dois mil reis em dinheiro de contado em boas moedas de prata correntes/obs=pagos em tres pagas iguais natal, pascoa e s. joao baptista
+16:             atr$renda/dez moios de trigo
+17:             atr$renda/cinco moios de centeio
+18:             atr$renda/quatro moios e meio de milho
+19:             atr$renda/cinquenta alqueires de azeite
+20:             atr$renda/uma carga de cerejas
+21:             atr$duracao/dois anos
+22: 
+23:          test$helena da silva/f/id=not1648-e1-per3
+24:             ls$cargo/vigaria
+25:             ls$assina/sim
+26: 
+27:          test$catarina de sousa/f/id=not1648-e1-per4
+28:             ls$cargo/escriva
+29:             ls$assina/sim
+30: 
+31:          test$antonio fernandes/m/id=not1648-e1-per5
+32:             rel$profissional/solicitador/leonor de milao/not1648-e1-per1
+33: 
+34:          test$joao de azevedo/m/id=not1648-e1-per6
+35:             ls$residencia/burgo de santa clara
+36: 
+37:          test$maria de sao rafael/f/id=not1648-e1-per7
+38:             ls$condicao/freira professa
+39:             ls$assina/sim
+40: 
+41:          test$maria da costa/f/id=not1648-e1-per8
+42:             ls$condicao/freira professa
+43:             ls$assina/sim
+44: 
+45:          test$juliana de gusmao/f/id=not1648-e1-per9
+46:             ls$condicao/freira professa
+47:             ls$assina/sim
+48: 
+49:       escritura$not1649-e2/10/6/1649/dote de profissao/fol=130v-132/loc=grade do parlatorio/sumario=contrato de dote de profissao celebrado entre mosteiro de santa clara de coimbra e fernandes de almada, para ser freira de coro e veu preto sua filha, joana de almada, com o dote de trezentos mil reis em dinheiro de contado, mais propinas e alimentos costumados
+50: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1649-e2
+51:          dotante$? fernandes de almada/obs=duvida no primeiro nome/id=not1649-e2-per1
+52: 
+53:          dotada$joana de almada/id=not1649-e2-per2
+54:             rel$parentesco/filha/? fernandes de almada/not1649-e2-per1
+55: 
+56:             referido$luis de almada/id=not1649-e2-per3
+57:                rel$sociabilidade/procurador/? fernandes de almada/not1649-e2-per1
+58:                ls$residencia/condeixa a nova
+59: 
+60:             referido$martinho do rosario/id=not1649-e2-per4/obs=da a patente que licencia o dote
+61:                ls$titulo/frei
+62:                ls$cargo/comissario geral
+63:                ls$ordem/sao francisco
+64: 
+65:          bem$trezentos mil reis
+66: 
+bem-not1649-e2-obj1- ** was stored with function in ACT verify act
+67:          bem$alimentos
+68: 
+bem-not1649-e2-obj2- ** was stored with function in ACT verify act
+69:          bem$propinas
+70: 
+bem-not1649-e2-obj3- ** was stored with function in ACT verify act
+71:          test$helena da silva/f/id=not1649-e2-per5
+72:             ls$cargo/abadessa
+73:             ls$assina/sim
+74: 
+75:          test$serafina de vilhena/f/id=not1649-e2-per6
+76:             ls$cargo/vigaria
+77:             ls$assina/sim
+78: 
+79:          test$juliana de gusmao/f/id=not1649-e2-per7
+80:             ls$cargo/escriva
+81:             ls$assina/sim
+82: 
+83:          test$antonio fernandes/m/id=not1649-e2-per8
+84:             rel$profissional/solicitador/helena da silva/not1649-e2-per5
+85:             rel$profissional/criado/helena da silva/not1649-e2-per5
+86: 
+87:          test$pedro andre/m/id=not1649-e2-per9
+88:             rel$profissional/criado/helena da silva/not1649-e2-per5
+89: 
+90:          test$paula de vilhena/f/id=not1649-e2-per10
+91:             ls$titulo/discreta
+92:             ls$assina/sim
+93: 
+94:          test$maria das chagas/f/id=not1649-e2-per11
+95:             ls$titulo/discreta
+96:             ls$assina/sim
+97: 
+98:          test$brites da cunha/f/id=not1649-e2-per12
+99:             ls$condicao/freira professa
+100:             ls$assina/sim
+101: 
+102:          test$lourenca da silva/f/id=not1649-e2-per13
+103:             ls$condicao/freira professa
+104:             ls$assina/sim
+105: 
+106:       escritura$not1649-e3/28/10/1649/arrendamanro de rendas/fol=134v-137/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de dois anos celebrado entre mosteiro de santa clara de coimbra, simao joao e manuel rodrigues, da renda de sangalhos
+107: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1649-e3
+108:          senhoria$helena da silva/id=not1649-e3-per1
+109:             ls$cargo/abadessa
+110:             ls$assina/sim
+111: 
+112:          rendeiro$simao joao/id=not1649-e3-per2
+113:             ls$residencia/avelas de caminho
+114: 
+115:          rendeiro$manuel rodrigues/id=no1649-e3-per3
+116: 
+117:          bem$$renda de sangalhos
+bem-not1649-e3-obj1- ** was stored with function in ACT verify act
+118:             atr$localizacao/sangalhos
+119:             atr$renda/novidades
+120:             atr$renda/vinte moios de trigo
+121:             atr$renda/seis alqueires de trigo
+122:             atr$duracao/dois anos
+123: 
+124:          test$serafina de vilhena/f/id=not1649-e3-per4
+125:             ls$cargo/vigaria
+126:             ls$assina/sim
+127: 
+128:          test$juliana de gusmao/f/id=not1649-e3-per6
+129:             ls$cargo/escriva
+130:             ls$assina/sim
+131: 
+132:          test$antonio fernandes/m/id=1649-e3-per7
+133:             rel$profissional/solicitador/helena da silva/not1649-e3-per1
+134: 
+135:          test$manuel gomes/m/id=not1649-e3-per8/obs=filho do tabeliao
+136: 
+137:          referido$simao gomes rebelo/id=1649.e3-rebelo
+138: 
+139:          test$lourenca da silva/f/id=1649-e3-per9
+140:             ls$condicao/freira professa
+141:             ls$assina/sim
+142: 
+143:          test$paula de vilhena/f/id=not1649-e3-per10
+144:             ls$titulo/discreta
+145:             ls$assina/sim
+146: 
+147:          test$maria das chagas/f/id=not1649-e3-per11
+148:             ls$condicao/freira professa
+149:             ls$assina/sim
+150: 
+151:          test$brites de cunha/f/id=not1649-e3-per12
+152:             ls$condicao/freira professa
+153:             ls$assina/sim
+154: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_6.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_6.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_6.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_6.ids

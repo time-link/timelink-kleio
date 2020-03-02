@@ -1,0 +1,48 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-15
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_3.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1669-1670/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-5-114, notario simao luis de oliveira, agosto a marco
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1669-1670
+4:       escritura$not1669-e1/31/8/1669/procuracao/fol=1v-2/loc=casa do parlatorio/sumario=arcangela da silva, freira professa no mosteiro de santa clara da cidade de coimbra, nomeia procurador luis (?) para que em seu nome arrecade uma tenca assente no almoxarifado de tomar
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1669-e1
+6:          constituintef$arcangela da silva/id=not1669-e1-per1
+7:             ls$condicao/freira professa
+8:             ls$assina/sim
+9: 
+10:          procurador$luis ?/obs=duvida no segundo nome/id=not1669-e1-per2
+11:             rel$sociabilidade/procurador/arcangela da silva/not1669-e1-per1
+12: 
+13:          test$antonio simoes/m/id=not1669-e1-per3
+14:             ls$profissao/armador
+15:             ls$residencia/burgo de santa clara
+16: 
+17:          test$jacinta de tavora/f/id=not1669-e1-per4
+18:             ls$cargo/abadessa
+19:             ls$assina/sim
+20: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_3.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_3.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_3.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_3.ids

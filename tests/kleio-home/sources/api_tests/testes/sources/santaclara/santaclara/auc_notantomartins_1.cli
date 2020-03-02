@@ -1,0 +1,79 @@
+kleio$gacto2.str/translations=1
+   fonte$not1575-1576am/tipo=escrituras notariais/loc=auc, notarial cota: vi-es-9-5-50/obs=notario antonio martins
+
+      escritura$not1575am-e1/16/7/1575/quitacao de divida/fol=9v-10v/loc=locutorio/sumario=o mosteiro quita dona luisa de melo da quantia de trinta mil reais que esta devia ao mosteiro por nele ser freira sua irma, dona helena de melo, pois que esta os pagou
+
+         quitantef$jenebra furtada/id=not1575am-e1-per1
+            ls$cargo/abadessa
+
+         quitada$luisa de melo/id=not1575am-e1-per2/obs=devera pagar trinta mil reais
+            ls$ec/viuva
+            rel$economica/devedora/jenebra furtada/not1575am-e1-per1
+
+            referido$simao de miranda anriques/id=not1575am-e1-per3
+               rel$parentesco/marido/luisa de melo/not1575am-e1-per2
+
+            referida$helena de melo/id=not1575am-e1-per2-per1
+               ls$titulo/dona
+               ls$titulo/freira
+               rel$parentesco/irma/luisa de melo/not1575am-e1-per2
+
+         test$ana da assuncao/f/id=not1575am-e1-per4a
+            ls$cargo/vigaria
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$genebra de santo antonio/f/id=not1575am-e1-per5a/obs=nome de profissao
+            ls$cargo/abadessa
+            ls$nomeprof/jenebra de santo antonio
+            ls$assina/sim
+
+         test$beatriz do monte calvario/f/id=not1575am-e1-per6a
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$margarida da conceicao/f/id=not1575am-e1-per7a
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$helena do presepio/f/id=not1575am-e1-per8a
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$filipa da nazare/f/id=not1575am-e1-per9a
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$helena da cruz/f/id=not1575am-e1-per10a
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$marta da conceicao/f/id=not1575am-e1-per11a
+            ls$titulo/soror
+            ls$assina/sima
+
+         test$ambrosia dos reis/f/id=not1575am-e1-per12a
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$helena de melo/f/id=not1575am-e1-per13a
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$diogo marmeleiro/m/id=not1575am-e1-per14a
+            rel$profissional/vedor/jenebra de santo antonio/not1575am-e15-per5
+            ls$assina/sim
+
+      escritura$not1575am-e2/6/8/1575/procuracao/fol=36-37v/loc=locutorio/sumario=o mosteiro de santa clara de coimbra nomeia procurador para em seu nome requerer todos os seus direitos
+
+         constituintef$jenebra furtada/id=not1575am-e2-per1
+            ls$cargo/abadessa
+            ls$titulo/dona
+
+         procurador$pedro alvares/id=not1575am-e2-per2
+            rel$sociabilidade/procurador/jenebra furtada/not1575am-e2-per1
+
+         test$rodrigo joao/id=not1575am-e2-per3
+            ls$profissao/alfaiate
+            ls$residencia/burgo do mosteiro de santa clara
+            ls$assina/sim

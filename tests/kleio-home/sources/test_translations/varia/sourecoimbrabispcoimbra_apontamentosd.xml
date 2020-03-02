@@ -1,0 +1,644 @@
+<?xml version='1.0'?>
+<KLEIO STRUCTURE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/system/conf/kleio/stru/gacto2.str" SOURCE="/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.cli" TRANSLATOR="gactoxml2.str" WHEN="2019-5-19 9:49:0" OBS="" SPACE="">
+<CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="ap-soure-coimbra-bispcoimbra" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+    <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>ap-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+   <ELEMENT NAME="year" CLASS="undef">
+         <core><![CDATA[sd]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[apontamentos sem data]]></core>   </ELEMENT>
+   <ELEMENT NAME="ref" CLASS="ref">
+         <core><![CDATA[antt]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+         <core><![CDATA[/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.cli]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="apontamentosd">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra" NAME="apontamentosd" CLASS="act" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>apontamentosd</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>ap-soure-coimbra-bispcoimbra</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+   <ELEMENT NAME="dia" CLASS="undef">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="mes" CLASS="undef">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="ano" CLASS="undef">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[Fonte: ANTT, MemoriasParoquiais, Vol42, N424, P271aP272: apontamentos paroquias entre 1722 e 1732]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[apontamentosd]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="geoentity" SUPER="entity" TABLE="geoentities" GROUP="freguesia">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1" NAME="freguesia" CLASS="geoentity" ORDER="3" LEVEL="3" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>freguesia</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[soure]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+</GROUP>
+<CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="origin" COLUMN="origin" CLASS="origin" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="7">
+    <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>freguesia</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="atr">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-att1-4" NAME="atr" CLASS="attribute" ORDER="5" LEVEL="4" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-att1-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[tipo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vila]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[titulo de um condado]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-att1-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-att2-4" NAME="atr" CLASS="attribute" ORDER="6" LEVEL="4" LINE="9">
+    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-att2-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[misericordia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-att2-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-att3-4" NAME="atr" CLASS="attribute" ORDER="7" LEVEL="4" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-att3-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-att3-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-att4-4" NAME="atr" CLASS="attribute" ORDER="8" LEVEL="4" LINE="11">
+    <ELEMENT NAME="line" CLASS="line"><core>11</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-att4-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[fogos]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[1125]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-att4-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-att5-4" NAME="atr" CLASS="attribute" ORDER="9" LEVEL="4" LINE="12">
+    <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-att5-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[almas]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[3650]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-att5-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rel1-4" NAME="rel" CLASS="relation" ORDER="10" LEVEL="4" LINE="14">
+    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rel1-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>rel</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[distancia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[30 leguas]]></core>   </ELEMENT>
+   <ELEMENT NAME="nomedest" CLASS="undef">
+         <core><![CDATA[lisboa]]></core>   </ELEMENT>
+   <ELEMENT NAME="iddest" CLASS="destination">
+         <core><![CDATA[apsd-soure-lisboa]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-rel1-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="origin" CLASS="origin">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-lisboa" NAME="gref" CLASS="geoentity" ORDER="11" LEVEL="4" LINE="16">
+    <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-lisboa</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>gref</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[lisboa]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[gref]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela2" NAME="relation"  ORDER="12" LEVEL="5" CLASS="relation" LINE="16">
+    <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-lisboa</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>gref</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-lisboa</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo2" NAME="bispado" CLASS="geoentity" ORDER="13" LEVEL="4" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>bispado</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>13</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[coimbra]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[a fonte nao refere informacao mas confirmamos atraves de cartografia validada]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[bispado]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela3" NAME="relation"  ORDER="14" LEVEL="5" CLASS="relation" LINE="18">
+    <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>14</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>bispado</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo3" NAME="termoc" CLASS="geoentity" ORDER="15" LEVEL="4" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>termoc</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>15</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[soure]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[informacao inferida atraves da fonte por indicacao de camara]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[termoc]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela4" NAME="relation"  ORDER="16" LEVEL="5" CLASS="relation" LINE="19">
+    <ELEMENT NAME="line" CLASS="line"><core>19</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>16</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>termoc</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo3-att6-4" NAME="atr" CLASS="attribute" ORDER="17" LEVEL="5" LINE="20">
+    <ELEMENT NAME="line" CLASS="line"><core>20</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3-att6-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>17</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[cargo]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[juiz de fora]]></core>   </ELEMENT>
+   <ELEMENT NAME="obs" CLASS="obs">
+         <core><![CDATA[presidencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo3-att6-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo3-att7-4" NAME="atr" CLASS="attribute" ORDER="18" LEVEL="5" LINE="22">
+    <ELEMENT NAME="line" CLASS="line"><core>22</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3-att7-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>18</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[mestres]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[mestres de ler e latim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo3-att7-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo3]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo4" NAME="lugar" CLASS="geoentity" ORDER="19" LEVEL="4" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>lugar</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>19</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[almagreira]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[lugar]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela5" NAME="relation"  ORDER="20" LEVEL="5" CLASS="relation" LINE="23">
+    <ELEMENT NAME="line" CLASS="line"><core>23</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>20</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>lugar</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo4-att8-4" NAME="atr" CLASS="attribute" ORDER="21" LEVEL="5" LINE="24">
+    <ELEMENT NAME="line" CLASS="line"><core>24</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4-att8-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>21</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[orago]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[n. sra. da graca]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo4-att8-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo4-att9-4" NAME="atr" CLASS="attribute" ORDER="22" LEVEL="5" LINE="26">
+    <ELEMENT NAME="line" CLASS="line"><core>26</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4-att9-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>22</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[freguesia]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[sim]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo4-att9-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-geo4]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-geo5" NAME="comarca" CLASS="geoentity" ORDER="23" LEVEL="4" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo5</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>comarca</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>23</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[leiria]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[comarca]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela6" NAME="relation"  ORDER="24" LEVEL="5" CLASS="relation" LINE="28">
+    <ELEMENT NAME="line" CLASS="line"><core>28</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo5</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>24</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>comarca</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo5</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela6</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP><CLASS NAME="object" SUPER="entity" TABLE="objects" GROUP="igreja">
+     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-obj1" NAME="igreja" CLASS="object" ORDER="25" LEVEL="4" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>igreja</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>object</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>25</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[s.tiago]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[paroquial]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[igreja]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-rela7" NAME="relation"  ORDER="26" LEVEL="5" CLASS="relation" LINE="29">
+    <ELEMENT NAME="line" CLASS="line"><core>29</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>26</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>igreja</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>apontamentosd</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-rela7</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-obj1-att10-4" NAME="atr" CLASS="attribute" ORDER="27" LEVEL="5" LINE="30">
+    <ELEMENT NAME="line" CLASS="line"><core>30</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1-att10-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>27</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[tituloparoco]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[vigario]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1-att10-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-obj1-att11-4" NAME="atr" CLASS="attribute" ORDER="28" LEVEL="5" LINE="31">
+    <ELEMENT NAME="line" CLASS="line"><core>31</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1-att11-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>28</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[apresentacao]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[rei, mesa da consciencia]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1-att11-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-geo1-obj1-att12-4" NAME="atr" CLASS="attribute" ORDER="29" LEVEL="5" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1-att12-4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>29</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="tipo" CLASS="type">
+         <core><![CDATA[renda]]></core>   </ELEMENT>
+   <ELEMENT NAME="valor" CLASS="value">
+         <core><![CDATA[120 mil reis]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1-att12-4]]></core>   </ELEMENT>
+   <ELEMENT NAME="entity" CLASS="entity">
+         <core><![CDATA[apsd-soure-coimbra-bispcoimbra-geo1-obj1]]></core>   </ELEMENT>
+   <ELEMENT NAME="date" CLASS="date">
+         <core><![CDATA[0]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela8" NAME="relation"  ORDER="30" LEVEL="6" CLASS="relation" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>30</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>geografica</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pertence-civil</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo5</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela8</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela9" NAME="relation"  ORDER="31" LEVEL="6" CLASS="relation" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>31</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>geografica</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pertence-civil</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo3</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela9</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela10" NAME="relation"  ORDER="32" LEVEL="6" CLASS="relation" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>32</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>geografica</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>pertence-eccle</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela10</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela11" NAME="relation"  ORDER="33" LEVEL="6" CLASS="relation" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>33</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>geografica</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>contem</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra-geo1-geo4</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela11</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="apsd-soure-coimbra-bispcoimbra-rela12" NAME="relation"  ORDER="34" LEVEL="6" CLASS="relation" LINE="32">
+    <ELEMENT NAME="line" CLASS="line"><core>32</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>apsd-soure-coimbra-bispcoimbra</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>34</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>geografica</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>contem</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>apsd-soure-coimbra-bispcoimbra-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>apsd-soure-coimbra-bispcoimbra-geo1-obj1</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>apsd-soure-coimbra-bispcoimbra-rela12</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP></KLEIO>

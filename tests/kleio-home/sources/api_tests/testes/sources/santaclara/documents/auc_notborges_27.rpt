@@ -1,0 +1,151 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 0-33
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_27.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1632-1634/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-95, notario tome borges, novembro a marco
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1632-1634
+4:       escritura$not1632-e1/15/12/1632/emprazamento/fol=6-8v/loc=grade do locutorio/sumario=contrato de emprazamento em fatiosim celebrado entre mosteiro de santa clara da cidade de coimbra e andre de carvalho, de uma mato maninho sito no lugar chamado cabeca gorda
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1632-e1
+6:          senhoria$leonor de milao/id=not1632-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          foreiro$andre de carvalho/id=not1632-e1-per2
+11:             ls$profissao/notario apostolico do bispado de coimbra
+12:             ls$residencia/coimbra
+13: 
+14:          foreira$maria de matos/id=not132-e1-per3
+15:             rel$parentesco/mulher/andre de carvalho/not1632-e1-per2
+16: 
+17:             referido$francisco dos martires/id=not1632-e1-per4/obs=licencia o emprazamento
+18:                ls$titulo/frei
+19:                ls$cargo/ministro provincial
+20:                ls$ordem/sao francisco
+21:                ls$cargo/lente jubilado
+22: 
+23:          prazo$um mato maninho
+prazo-not1632-e1-obj1- ** was stored with function in ACT verify act
+24:             atr$localizacao/lugar de cabeca gorda na direccao da cruz
+25:             atr$foro/quatro galinhas/obs=sao miguel de setembro
+26:             atr$racao/um oitavo da novidade do vinho
+27: 
+28:          test$pedro simoes/m/id=not1632-e1-per5
+29:             ls$profissao/lavrador
+30:             ls$residencia/lugar da cruz
+31: 
+32:          test$tome lopes/m/id=not1632-e1-per6
+33:             ls$profissao/lavrador
+34:             ls$residencia/lugar da cruz
+35: 
+36:          test$antonio lopes/m/id=not1632-e1-per7
+37:             ls$profissao/lavrador
+38:             ls$residencia/lugar da cruz
+39: 
+40:          test$antonia de meneses/f/id=not1632-e1-per8
+41:             ls$cargo/vigaria
+42:             ls$assina/sim
+43: 
+44:       escritura$not1632-e2/23/12/1632/emprazamento/fol=11v-13v/loc=grade do locutorio/sumario=contrato de emprazamento celebrado entre mosteiro de santa clara da cidade de coimbra e antonio lopes, de uma parte do mato maninho sito no lugar de cabeca gorda
+45: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1632-e2
+46:          senhoria$leonor de milao/id=not1632-e2-per1
+47:             ls$cargo/abadessa
+48:             ls$assina/sim
+49: 
+50:          foreiro$antonio lopes/id=not1632-e2-per2
+51:             ls$profissao/lavrador
+52:             ls$residencia/lugar da cruz
+53: 
+54:          prazo$parte de um mato maninho
+prazo-not1632-e2-obj1- ** was stored with function in ACT verify act
+55:             atr$localizacao/lugar de cabeca gorda
+56:             atr$foro/quatro galinhas
+57:             atr$racao/um oitavo
+58: 
+59:          test$andre carvalho/m/id=not1632-e2-per3
+60:             ls$cargo/notario apostolico/obs=no bispado de coimbra
+61:             ls$residencia/coimbra
+62: 
+63:          test$tome lopes/m/id=not1632-e2-per4
+64:             ls$profissao/lavrador
+65:             ls$residencia/lugar da cruz
+66: 
+67:          test$pedro simoes/m/id=not1632-e2-per5
+68:             ls$profissao/lavrador
+69:             ls$residencia/lugar da cruz
+70: 
+71:       escritura$not1632-e3/23/12/1632/aforamento/fol=14-16/loc=grade do locutorio/sumario=contrato de aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara da cidade de coimbra, tome lopes e pedro sim�es, de uma parte de um mato maninho sito no lugar de cabeca gorda. documento incompleto
+72: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1632-e3
+73:          senhoria$leonor de milao/id=not1632-e3-per1
+74:             ls$cargo/abadessa
+75:             ls$assina/sim
+76: 
+77:          foreiro$tome lopes/id=not1632-e3-per2
+78:             ls$profissao/lavrador
+79:             ls$residencia/lugar da cruz
+80: 
+81:          foreiro$pedro simoes/id=not1632-e3-per3
+82:             rel$parentesco/genro/tome lopes/not1632-e3-per2
+83:             ls$profissao/lavrador
+84:             ls$residencia/lugar da cruz
+85: 
+86:          aforamento$parte de um mato maninho
+aforamento-not1632-e3-obj1- ** was stored with function in ACT verify act
+87:             atr$localizacao/lugar de cabeca gorda
+88:             atr$foro/seis galinhas/obs=em sao miguel de setembro
+89: 
+90:          test$antonia de meneses/f/id=not1632-e3-per4
+91:             ls$cargo/vigaria
+92:             ls$assina/sim
+93: 
+94:       escritura$not1633-e4/6/7/1633/arrendamento de rendas/fol=85-86v/loc=grade do locutorio/sumario=contrato de arrendamento por tempo de tres anos celebrado entre mosteiro de santa clara da cidade de coimbra e domingos fernandes, de uns terradegos da renda da vila de sangalhos
+95: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1633-e4
+96:          senhoria$antonia de meneses/id=not1633-e4-per1
+97:             ls$cargo/abadessa
+98:             ls$assina/sim
+99: 
+100:          rendeiro$domingos fernandes/id=not1633-e4-per2
+101: 
+102:          bem$terradegos da renda da vila de sangalhos
+bem-not1633-e4-obj1- ** was stored with function in ACT verify act
+103:             atr$localizacao/sangalhos
+104:             atr$renda/setenta mil reais
+105: 
+106:          test$maria de meneses/f/id=not1633-e4-per3
+107:             ls$cargo/vigaria
+108:             ls$assina/sim
+109: 
+110:          test$francisca de noronha/f/id=not1633-e4-per4
+111:             ls$cargo/escriva
+112:             ls$assina/sim
+113: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_27.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_27.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_27.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_27.ids

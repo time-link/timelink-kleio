@@ -1,0 +1,101 @@
+ClioInput - version $Revision$ SWI $Date$
+25-5-2017 17-57
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_10.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1614tb-1615/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-72, notario tome borges
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1614tb-1615
+4:       escritura$not1614tb-e1/6/12/1614/procuracao/fol=16-17v/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procurador, simiao monteiro osorio, para que em seu nome arrecade e defenda todos os seus direitos e justicas
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1614tb-e1
+6:          constituintef$margarida de castro/id=not1614tb-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9:             ls$nomeprof/margarida evangelista/obs=nome de profissao
+10: 
+11:          procurador$simiao monteiro osorio/id=not1614tb-e1-per2
+12:             rel$sociabilidade/procurador/margarida de castro/not1614tb-e1-per1
+13: 
+14:          test$francisco gomes/m/id=not1614tb-e1-per3
+15:             ls$titulo/cidadao
+16:             ls$residencia/coimbra
+17:             rel$profissional/feitor/margarida de castro/not1614tb-e1-per1
+18: 
+19:          test$miguel fernandes/m/id=not1614tb-e1-per4
+20:             ls$profissao/criado/obs=do tabeliao
+21:             rel$profissional/criado/tome borges/1614-e1-tbo
+22: 
+23:          referido$tome borges/id=1614-e1-tbo
+24:             ls$profissao/tabeliao
+25: 
+26:          test$joana silveira/f/id=not1614tb-e1-per5
+27:             ls$cargo/vigaria
+28:             ls$assina/sim
+29: 
+30:          test$maria da silva/f/id=not1614tb-e1-per6
+31:             ls$cargo/escriva
+32:             ls$nomeprof/maria de santo antonio/obs=nome de profissao
+33:             ls$assina/sim
+34: 
+35:          test$eufrasia de belem/f/id=not1614tb-e1-per7
+36:             ls$titulo/soror
+37:             ls$assina/sim
+38: 
+39:          test$catarina do cenaculo/f/id=not1614tb-e1-per8
+40:             ls$assina/sim
+41:             ls$condicao/freira professa
+42: 
+43:          test$joana do paraiso/f/id=not1614tb-e1-per9
+44:             ls$condicao/freira professa
+45: 
+46:          test$maria dos anjos/f/id=not1614tb-e1-per10
+47:             ls$condicao/freira professa
+48: 
+49:          test$ilaria baptista/id=not1614tb-e1-per11
+50:             ls$condicao/freira professa
+51: 
+52:       escritura$not1615-e2/5/3/1615/procurador/fol=168-168v/loc=grade do parlatorio/sumario=mosteiro de santa clara nomeia procurador, jeronimo lopes, para que arrecade junto do executor do almoxarifado de tomar, trinta mil reais de tenca de sua majestade
+53: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1615-e2
+54:          constituintef$isabel de noronha/id=not1615-e2-per1
+55:             ls$condicao/freira professa
+56: 
+57:          procurador$jeronimo lopes/id=not1615-e2-per2
+58:             rel$sociabilidade/procurador/isabel de noronha/not1615-e2-per1
+59:             ls$residencia/olaias, termo da vila de tomar
+60: 
+61:          test$diogo da silva/m/id=not1615-e2-per3
+62:             ls$profissao/estudante/obs=na universidade de coimbra
+63:             ls$naturalidade/lisboa
+64: 
+65:          test$miguel francisco/m/id=not1615-e2-per4
+66:             ls$profissao/criado/obs=do tabeliao
+67:             rel$profissional/criado/tome borges/1614-e2-tb
+68: 
+69:          referido$tome borges/id=1614-e2-tb
+70:             ls$profissao/tabeliao
+71: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_10.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_10.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_10.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_10.ids

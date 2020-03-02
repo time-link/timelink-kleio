@@ -1,0 +1,156 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-17
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_1.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1638/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-97, notario simao gomes rebelo, janeiro a novembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1638
+4:       escritura$not1638-e1/16/7/1638/arrendamento/fol=138v-185/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de um ano celebrado entre mosteiro de santa clara da cidade de coimbra e manuel simoes, de um moinho de azenhas sito em casconha
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1638-e1
+6:          senhoria$eugenia de noronha/id=not1638-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$assina/sim
+9: 
+10:          arrendatario$manuel simoes/id=not1638-e1-per2
+11:             ls$residencia/vila de cernache
+12: 
+13:          arrendamento$um moinho de azenhas
+arrendamento-not1638-e1-obj1- ** was stored with function in ACT verify act
+14:             atr$localizacao/casconha
+15:             atr$renda/dez alqueires de trigo
+16:             atr$renda/dez alqueires de farinha
+17:             atr$renda/duzentos reais por dia para a pessoa que andar a fazer a arrecadacao
+18:             atr$renda/duas galinhas
+19: 
+20:          test$lourenca da silva/f/id=not1638-e1-per3
+21:             ls$cargo/vigaria
+22:             ls$assina/sim
+23: 
+24:          test$jeronima do presepio/f/id=not1638-e1-per4
+25:             ls$cargo/escriva
+26:             ls$assina/sim
+27: 
+28:          test$ilaria furtada/f/id=not1638-e1-per5
+29:             ls$titulo/freira professa
+30:             ls$assina/sim
+31: 
+32:          test$ana de tavora/f/id=not1638-e1-per6
+33:             ls$titulo/freira professa
+34:             ls$assina/sim
+35: 
+36:          test$tome lobo/m/id=not1638-e1-per7
+37:             rel$profissional/criado/eugenia de noronha/not1638-e1-per1
+38: 
+39:          test$mateus cordeiro/m/id=not1638-e1-per8
+40:             rel$profissional/criado/eugenia de noronha/not1638-e1-per1
+41: 
+42:       escritura$not1638-e2/20/7/1638/procuracao/fol=185-188/loc=grade do locutorio/sumario=dona branca berredo nomeia procuradores, francisco de miranda de castelo branco, fernando pereira e antonio de oliveira, para que, em seu nome, tratem do dote de profissao de suas netas, dona luisa e dona isabel, para serem freiras de veu preto e de coro no mosteiro de santa clara da cidade de coimbra
+43: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1638-e2
+44:          constituintef$branca de berredo/id=not1638-e2-per1
+45:             ls$titulo/dona
+46:             ls$residencia/coimbra
+47: 
+48:          procurador$francisco de miranda de castelo branco/id=not1638-e2-per2
+49:             rel$sociabilidade/procurador/branca de berredo/not1638-e2-per1
+50:             rel$parentesco/neto/branca de berredo/not1638-e2-per1
+51:             ls$residencia/coimbra
+52: 
+53:          procurador$fernando pereira/id=not1638-e2-per3
+54:             ls$profissao/padre
+55:             ls$titulo/frei
+56:             ls$ordem/sao francisco
+57:             rel$sociabilidade/procurador/branca de berredo/not1638-e2-per1
+58:             rel$parentesco/sobrinho/branca de berredo/not1638-e2-per1
+59:             ls$residencia/mosteiro de sao francisco
+60: 
+61:          procurador$antonio de oliveira/id=not1638-e2-per4
+62:             ls$residencia/coimbra
+63:             rel$sociabilidade/procurador/branca de berredo/not1638-e2-per1
+64: 
+65:             referida$luisa/id=not1638-e2-per5
+66:                rel$parentesco/neta/branca de berredo/not1638-e2-per1
+67: 
+68:          dotante$branca de berredo/id=not1638-e2-per6
+69:             ls$titulo/dona
+70:             ls$residencia/coimbra
+71: 
+72:          dotada$luisa/id=not1638-e2-per7
+73:             rel$parentesco/neta/branca de berredo/not1638-e2-per6
+74:             ls$titulo/dona
+75: 
+76:          dotada$isabel/id=not1638-e2-per8
+77:             rel$parentesco/neta/branca de berredo/not1638-e2-per6
+78:             ls$titulo/dona
+79: 
+80:          bem$trezentos mil reais ate dia de profissao
+81: 
+bem-not1638-e2-obj1- ** was stored with function in ACT verify act
+82:          bem$propinas do ano de noviciado para dona isabel
+83: 
+bem-not1638-e2-obj2- ** was stored with function in ACT verify act
+84:          test$eugenia de noronha/f/id=not1638-e2-per9
+85:             ls$cargo/abadessa
+86:             ls$assina/sim
+87: 
+88:          test$manuel jorge/m/id=not1638-e2-per10
+89:             ls$profissao/almocreve/obs=em urzelhe
+90:             ls$residencia/urzelhe
+91: 
+92:          test$bastiao fernandes/m/id=not1638-e2-per11
+93:             rel$profissional/carreiro/eugenia de noronha/not1638-e2-per9
+94: 
+95:          test$domingos de azevedo/m/id=not1638-e2-per12
+96: 
+97:          test$lourenca da silva/f/id=not1638-e2-per13
+98:             ls$cargo/vigaria
+99:             ls$assina/sim
+100: 
+101:          test$jeronima do presepio/f/id=not1638-e2-per14
+102:             ls$cargo/escriva
+103:             ls$assina/sim
+104: 
+105:          test$ana de tavora/f/id=not1638-e2-per15
+106:             ls$condicao/freira professa
+107:             ls$assina/sim
+108: 
+109:          test$helena da silva/f/id=not1638-e2-per16
+110:             ls$condicao/freira professa
+111:             ls$assina/sim
+112: 
+113:          test$francisca de meneses/f/id=not1638-e2-per17
+114:             ls$condicao/freira professa
+115:             ls$assina/sim
+116: 
+117:          test$joana furtada/f/id=not1638-e2-per18
+118:             ls$condicao/freira professa
+119:             ls$assina/sim
+120: 
+121:          test$damiao da cruz/m/id=not1638-e2-per19
+122:             ls$titulo/frei
+123: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_1.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_1.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_1.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_1.ids

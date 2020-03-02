@@ -1,0 +1,82 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-20
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_4.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1647-1648/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-105, notario simao gomes rebelo, abril a setembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1647-1648
+4:       escritura$not1648-e1/20/6/1648/dote de profissao/fol=113v-115/loc=casa do parlatorio/sumario=contrato de dote para profissao de catarina borges no mosteiro de santa clara da cidade de coimbra
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1648-e1
+6:          dotante$joao borges/id=not1648-e1-per1
+7:             ls$profissao/padre
+8:             ls$residencia/viseu
+9:             rel$parentesco/irmao/catarina borges/not1648-e1-per2
+10: 
+11:          dotada$catarina borges/id=not1648-e1-per2/obs=para freira de veu preto e de coro; fara noviciado aos doze anos; havendo sido examinada por mestres, catarina borges e tangedora de orgao e baixao, pelo que nao sera pago dote de profissao na condicao de ensinar as outras monjas a tocar os respectivos instrumentos musicais, contudo, as legitimas de seus pais ficam para o mosteiro
+12:             ls$nomeprof/catarina da visitacao/obs=nome de profissao
+13: 
+14:             referido$antonio borges/id=not1648-e1-per3
+15:                rel$parentesco/pai/catarina borges/not1648-e1-per2
+16:                ls$residencia/viseu
+17: 
+18:             referida$ana nunes/id=not1648-e1-per4
+19:                rel$parentesco/mae/catarina borges/not1648-e1-per2
+20:                ls$residencia/viseu
+21: 
+22:          test$leonor de milao/f/id=not1648-e1-per5
+23:             ls$cargo/abadessa
+24:             ls$assina/sim
+25: 
+26:          test$helena da silva/f/id=not1648-e1-per6
+27:             ls$cargo/vigaria
+28:             ls$assina/sim
+29: 
+30:          test$catarina de sousa/f/id=not1648-e1-per7
+31:             ls$cargo/escriva
+32:             ls$assina/sim
+33: 
+34:          test$joao antunes da fonseca/m/id=not1648-e1-per8
+35: 
+36:          test$antonio fernandes/m/id=not1648-e1-per9
+37:             rel$profissional/solicitador/leonor de milao/not1648-e1-per5
+38: 
+39:          test$maria de sao rafael/f/id=not1648-e1-per10
+40:             ls$condicao/freira professa
+41:             ls$assina/sim
+42: 
+43:          test$isabel perestrela/f/id=not1648-e1-per11
+44:             ls$condicao/freira professa
+45:             ls$assina/sim
+46: 
+47:          test$maria da costa/f/id=not1648-e1-per12
+48:             ls$condicao/freira professa
+49:             ls$assina/sim
+50: 
+51:          test$juliana de gusmao/f/id=not1648-e1-per13
+52:             ls$condicao/freira professa
+53:             ls$assina/sim
+54: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_4.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_4.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_4.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimaogrebelo_4.ids

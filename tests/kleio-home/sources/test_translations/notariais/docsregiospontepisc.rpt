@@ -1,0 +1,59 @@
+ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+15-5-2019 22-39
+
+Processing data file docsregiospontepisc.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+=========================
+kleio translation started
+=========================
+Structure: gacto.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+** Processing source fonte$docsrpe
+
+ERROR: docsregiospontepisc.cli line 5 ** Error: missing element(s) in docregio(docreg-1) must have: fol loc sumario tipo
+Near line: 5 
+Near line: 6          item$carta de merce sobre a jugada do vale da belavista/resumo=o rei concede as monjas de santa clara isencao de jugada nas terras do vale da belavista/id=docreg-1-obj1
+
+6: docregio$docreg-1
+
+ERROR: docsregiospontepisc.cli line 15 *** Current group docponteficio cannot be linked with previous group bem(obj-1)
+Near line: 15 
+Near line: 16       docponteficio$docpapal-1/1/1/1340/obs=privilegio de terem um boeiro em permanencia no mosteiro
+
+
+ERROR: docsregiospontepisc.cli line 15 ***docponteficio group not stored.
+Near line: 15 
+Near line: 16       docponteficio$docpapal-1/1/1/1340/obs=privilegio de terem um boeiro em permanencia no mosteiro
+
+
+ERROR: docsregiospontepisc.cli line 15 ** Failure. Could not process group -docponteficio
+Near line: 15 
+Near line: 16       docponteficio$docpapal-1/1/1/1340/obs=privilegio de terem um boeiro em permanencia no mosteiro
+
+
+ERROR: docsregiospontepisc.cli line 15 ** Failure: undefined element. 
+Near line: 15 
+Near line: 16       docponteficio$docpapal-1/1/1/1340/obs=privilegio de terem um boeiro em permanencia no mosteiro
+
+
+ERROR: docsregiospontepisc.cli line 15 ** Failure: undefined element. 
+Near line: 15 
+Near line: 16       docponteficio$docpapal-1/1/1/1340/obs=privilegio de terem um boeiro em permanencia no mosteiro
+
+
+ERROR: docsregiospontepisc.cli line 31 ** Error: missing element(s) in docepiscopal(docepis-1) must have: fol loc sumario tipo
+Near line: 31 
+Near line: 32          item$carta de d.miguel da anunciacao/resumo=bispo nomeia novo confessor para o mosteiro/id=docepis-1-obj1
+
+32: docepiscopal$docepis-1
+*** End of File
+7  errors. 
+0  warnings.
+Translation finished.

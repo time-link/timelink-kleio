@@ -1,0 +1,33 @@
+ClioInput - version $Revision$ SWI $Date$
+23-5-2017 15-31
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/visitaspastorais/promotor.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2: fonte$cadpro-1/1631/tipo=caderno do promotor da inquisicao/loc=ANTT blah blah
+**** auto rels 2 STARTED.
+** Processing source fonte$cadpro-1
+3: denuncia$
+/Users/jrc/develop/mhk_users/testes/sources/visitaspastorais/promotor.cli:3:** Error: missing element(s) in denuncia() must have: anodiafolmes
+
+
+ERROR: promotor.cli line 2 ** Error: missing element(s) in denuncia() must have: anodiafolmes
+Near line: 2 denuncia$Near line: 3 denuncia$
+**** auto rels 2 STARTED.
+** Processing act denuncia$cadpro-1-his1
+*** End of File
+1  errors.
+**** auto rels 2 STARTED.
+** Translation finished.

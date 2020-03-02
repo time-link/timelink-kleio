@@ -1,0 +1,172 @@
+kleio$gacto2.str/translations=1
+   fonte$not1628/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-90, notario tome borges, abril a agosto
+
+      escritura$not1628-e1/27/4/1628/procuracao/fol=29-30/loc=grade do parlatorio/sumario=maria de meneses, freira professa do mosteiro de santa clara da cidade de coimbra, nomeia procurador, roque pereira cabral, para em seu nome receber e arrecadar de gaspar anriques vinte mil reais a ela devidos
+
+         constituintef$maria de meneses/id=not1628-e1-per1
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         procurador$roque pereira cabral/id=not1628-e1-per2
+            rel$sociabilidade/procurador/maria de meneses/not1628-e1-per1
+            ls$residencia/lisboa
+
+            referido$gaspar anriques/id=not1628-e1-per3
+               ls$residencia/lisboa
+
+         test$inocencia de sa/f/id=not1628-e1-per4
+            ls$cargo/abadessa
+            ls$nomeprof/inocencia de jesus/obs=nome de profissao
+            ls$assina/sim
+
+         test$francisca evangelista/f/id=not1628-e1-per5
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$tome lobo/m/id=not1628-e1-per6
+            rel$profissional/solicitador/inocencia de sa/not1628-e1-per4
+
+         test$pedro andre/m/id=not1628-e1-per7
+            rel$profissional/criado/inocencia de sa/not1628-e1-per4
+
+      escritura$not1628-e2/21/7/1628/procuracao/fol=157v-158v/loc=grade do parlatorio/sumario=dona joana da fonseca, recolhida no mosteiro de santa clara da cidade de coimbra nomeia procuradores, luis ribeiro, manuel correia e joao freitas, para em seu nome arrecadarem do licenciado diogo rebelo, setenta e quatro alqueires de pao meado, metade de trigo e outra metade de milho, e dois mil reais em dinheiro que a constituinte arrecadou de fernao luis de almeida
+
+         referido$mosteiro de santa clara de coimbra/id=not1628-e2-per1
+
+         constituintef$joana da fonseca/id=not1628-e2-per2a
+            ls$condicao/recolhida
+            ls$titulo/dona
+
+         procurador$luis ribeiro/id=not1628-e2-per3b
+            ls$residencia/leiria
+            rel$sociabilidade/procurador/joana da fonseca/not1628-e2-per2a
+
+         procurador$manuel correia/id=not1628-e2-per3
+            ls$residencia/leiria
+            rel$sociabilidade/procurador/joana da fonseca/not1628-e2-per2a
+
+         procurador$joao freitas/id=not1628-e2-per4
+            ls$residencia/leiria
+            rel$sociabilidade/procurador/joana da fonseca/not1628-e2-per2a
+
+            referido$diogo rebelo/id=not1628-e2-per5
+               ls$titulo/licenciado
+               ls$residencia/soure%vila de soure
+               ls$profissao/medico
+               rel$parentesco/tio/joana da fonseca/not1628-e2-per2a
+
+            referido$fernao luis de almeida/id=not1628-e2-per6
+               ls$residencia/buarcos%vila de buarcos
+
+         test$belchior fernandes/m/id=not1628-e2-per7
+            rel$profissional/criado/mosteiro de santa clara de coimbra/not1628-e2-per1
+
+         test$manuel soares/m/id=not1628-e2-per7a
+            rel$profissional/criado/mosteiro de santa clara de coimbra/not1628-e2-per1
+
+      escritura$not1628-e3/7/8/1628/arrendamento/fol=175-176v/loc=grade do parlatorio/sumario=contrato de arrendamento por tempo de um ano celebrado entre francisca de meneses, freira professa do mosteiro de santa clara da cidade de coimbra e procuradora de seu irmao, d. antonio da silva de saldanha, e manuel falcao, de uns lugares pertencentes a d. antonio da silva de saldanha
+
+         senhorio$antonio da silva de saldanha/id=not1628-e3-per1
+            ls$titulo/dom
+            rel$parentesco/irmao/francisca de meneses/not1628-e3-per2
+
+         procuradora$francisca de meneses/id=not1628-e3-per2
+            rel$sociabilidade/procuradora/antonio da silva de saldanha/not1628-e3-per1
+            rel$parentesco/irma/antonio da silva de saldanha/not1628-e3-per1
+            ls$condicao/freira professa
+            ls$assina/sim
+            ls$titulo/dona
+
+         arrendatario$manuel falcao/id=not1628-e3-per3
+            ls$residencia/oliveira do bairro&%vila de oliveira do bairro
+
+            referido$fernao/id=not1628-e3-per4
+               ls$residencia/rede de mourisca/obs=antigo arrendatario
+
+            referido$domingues do beco/id=not1628-e3-per5
+               ls$profissao/escrivao/obs=antigo arrendatario
+
+         arrendamento$rendas de uns lugares/id=not1628-e3-obj1
+            atr$localizacao/serem prestimo e macinhata
+            atr$renda/noventa e cinco mil reais em dinheiro
+
+         test$antonio simoes/m/id=not1628-e3-per6
+            ls$profissao/mestre de meninos/obs=mestre de ensinar meninos
+            ls$residencia/coimbra, junto ao mosteiro de santa clara
+
+         test$joao fernandes/m/id=not1628-e3-per7
+            rel$profissional/criado/manuel falcao/not1628-e3-per3
+
+      escritura$not1628-e4/13/8/1628/procuracao/fol=177-178v/loc=grade do parlatorio/sumario=o mosteiro de santa clara da cidade de coimbra nomeia procuradores, manuel jorge de avelar e andre de burgos, para, em seu nome, defenderem todos os seus direitos e justicas
+
+         constituintef$inocencia de jesus/id=not1628-e4-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         procurador$manuel jorge de avelar/id=not1628-e4-per2
+            ls$titulo/licenciado
+            rel$sociabilidade/procurador/inocencia de jesus/not1628-e4-per1
+            ls$profissao/advogado
+            ls$residencia/coimbra
+
+         procurador$andre de burgos/id=not1628-e4-per3
+            ls$titulo/licenciado
+            rel$sociabilidade/procurador/inocencia de jesus/not1628-e4-per1
+            ls$residencia/lisboa
+
+         test$francisca evangelista/f/id=not1628-e4-per4
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$agostinho pinto/m/id=not1628-e4-per5
+            rel$profissional/executor/inocencia de jesus/not1628-e4-per1
+
+         test$tome lobo/m/id=not1628-e4-per6
+            rel$profissional/solicitador/inocencia de jesus/not1628-e4-per1
+
+         test$eugenia dos reis/f/id=not1628-e4-per7
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$ana do deserto/f/id=not1628-e4-per8
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1628-e5/25/8/1628/arrendamento de rendas/fol=181v-184/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre o mosteiro de santa clara da cidade de coimbra e amador goncalves, do que pertence ao mosteiro na vila de sangalhos e avelas de caminho e que se costuma pagar ao vigario do mosteiro na igreja de sangalhos e avelas de caminho e que sao sessenta almudes de vinho bom, escolhido na adega, todos os foros, dizimas e racoes de pao, mais oa pagamentos de gado
+
+         senhoria$inocencia de jesus/id=not1628-e5-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         rendeiro$amador goncalves/id=not1628-e5-per2
+            ls$profissao/lavrador
+            ls$residencia/vila de avelas de caminho
+
+         bem$o que pertence ao mosteiro da vila de sangalhos e avelas de caminho sessenta almudes de vinho bom foros dizimos racoes de pao e gado/id=not1628-e5-obj1
+            atr$localizacao/sangalhos
+            atr$renda/cinquenta mil reais em dinheiro de contado em moedas de prata correntes/obs=pagos por natal, pascoa, sao joao baptista
+
+         test$isabel de castro/f/id=not1628-e5-per3
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1628-e5-per4
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$manuel fernandes/m/id=not1628-e5-per5
+            rel$profissional/criado/inocencia de jesus/not1628-e5-per1
+
+         test$pedro andre/m/id=not1628-e5-per6
+            rel$profissional/criado/inocencia de jesus/not1628-e5-per1
+
+         test$olimpia dos anjos/f/id=not1628-e5-per7
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$eugenia dos reis/m/id=not1628-e5-per8
+            ls$assina/sim
+
+         test$ana do deserto/f/id=ot1628-e5-per9
+            ls$condicao/freira professa
+            ls$assina/sim

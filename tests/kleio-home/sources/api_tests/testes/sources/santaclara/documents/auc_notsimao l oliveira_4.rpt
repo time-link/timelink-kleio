@@ -1,0 +1,69 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 5-16
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_4.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1670-1671/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-5-113, notario simao luis de oliveira, janeiro a fevereiro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1670-1671
+4:       escritura$not1670-e1/1/4/1670/dinheiro a juro/fol=22-23/loc=grade do locutorio/sumario=a santa casa da misericordia da cidade de coimbra empresta ao mosteiro de santa clara da cidade de coimbra a quantia de dois mil e quinhentos cruzados em moedas de ouro e prata a razao de juro de cinco por cento
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1670-e1
+6:          credor$santa casa da misericordia de coimbra/id=not1670-e1-per1
+7: 
+8:          devedor$mosteiro de santa clara de coimbra/id=not1670-e1-per2
+9: 
+10:          divida$dois mil e quinhentos cruzados/juro cinco por cento/obs=cruzados moeda de ouro e prata/id=not1670-e1-obj1
+11: 
+divida-not1670-e1-obj1- ** was stored with function in ACT verify act
+12:          referida$luisa de meneses/id=not1670-e1-per3
+13:             ls$cargo/abadessa
+14:             ls$assina/sim
+15: 
+16:          procurador$antonio fernandes/id=not1670-e1-per4
+17:             rel$profissional/solicitador/luisa de meneses/not1670-e1-per3
+18:             rel$sociabilidade/procurador/luisa de meneses/not1670-e1-per3
+19: 
+20:             referido$manuel carvalho/id=not1670-e1-per5
+21:                rel$profissional/solicitador/santa casa da misericordia da cidade de coimbra/not1670-e1-per1
+22: 
+23:          test$antonio rodrigues/m/id=not1670-e1-per6
+24:             rel$profissional/escrivao/luisa de meneses/not1670-e1-per3
+25: 
+26:          test$ana maria da silveira/f/id=not1670-e1-per7
+27:             ls$cargo/vigaria
+28:             ls$assina/sim
+29: 
+30:          test$maria de ? e meneses/f/obs=duvida nao se le o segundo nome/id=not1670-e1-per8
+31:             ls$assina/sim
+32: 
+33:          test$joana de jesus/f/id=not1670-e1-per9
+34:             ls$condicao/freira professa
+35:             ls$assina/sim
+36: 
+37:          test$ana de abreu/f/id=not1670-e1-per10
+38:             ls$condicao/freira professa
+39:             ls$assina/sim
+40: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_4.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_4.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_4.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notsimao l oliveira_4.ids

@@ -1,0 +1,360 @@
+kleio$gacto2.str/translations=1
+   fonte$not1614tb/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-71, notario tome borges, julho a novembro
+
+      escritura$not1614tb-e1/18/7/1614/arrendamento de rendas/fol=1-4/loc=grade do parlatorio/sumario=contrato de arrendamento celebrado entre mosteiro de santa clara de coimbra e anrique vaz, dos casais chamados casais do monte, sitos nos lugares da cruz, orelhudo, sebal, portunhos e ventosa
+
+         senhoria$catarina de noronha/id=not1614tb-e1-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         arrendatario$anrique vaz/id=not1614tb-e1-per2
+            ls$profissao/almocreve
+            ls$residencia/condeixa a nova
+
+         arrendamento$casais/obs=chamados casais do monte/id=not1614tb-e1-obj1
+            atr$localizacao/lugares da cruz feiteira orelhudo sebal portunhos e ventosa
+            atr$renda/dez moios e quarenta alqueires de trigo
+            atr$renda/seis moios de milho
+            atr$renda/uma pipa de vinho
+            atr$renda/cinquenta restias de alhos
+            atr$renda/cinquenta restias de cebolas
+            atr$renda/dez alqueires de azeite
+            atr$renda/um porco de tres arrobas ou dez cruzados por ele/obs=tudo pago ate dia de todos-os-santos; o porco por dia de santo andre; o azeite por dia de entrudo
+
+         test$nomes desconhecidos/obs=letra sumida/id=not1614tb-e1-per3
+
+      escritura$not1614tb-e2/2/8/1614/procuracao/fol=30-31v/loc=grade do parlatorio/sumario=mosteiro de santa clara de coimbra nomeia procuradores, inacio lopes e pero francisco, para que, em seu nome, arrecade, defenda e requeira todos os seus direitos
+
+         constituintef$catarina de noronha/id=not1614tb-e2-per1
+            ls$cargo/abadessa
+            ls$nomeprof/catarina do crucifixo/obs=nome de profissao
+            ls$assina/sim
+
+         procurador$inacio lopes/id=not1614tb-e2-per2
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e2-per1
+
+         procurador$pedro francisco/id=not1614tb-e2-per3
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e2-per1
+
+         test$inocencia de sa/f/id=not1614tb-e2-per4
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1614tb-e2-per5
+            ls$nomeprof/francisca evangelista/obs=nome de profissao
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$francisco gomes/m/id=not1614tb-e2-per6
+            ls$titulo/cidadao
+            ls$residencia/coimbra
+            rel$profissional/feitor/catarina de noronha/not1614tb-e2-per1
+
+         test$jorge fernandes/m/id=not1614tb-e2-per7
+            rel$profissional/solicitador/catarina de noronha/not1614tb-e2-per1
+
+         test$antonia das chagas/f/id=not1614tb-e2-per8
+
+      escritura$not1614tb-e3/31/8/1614/procuracao/fol=72v-73v/loc=grade do parlatorio/sumario=dona arcangela da silva e dona maria de castro corte real, irmas e freiras do mosteiro de santa clara de coimbra, nomeiam procurador, antonio vaz de macedo, para que em seu nome possa receber e arrecadar do tesoureiro ou almoxarife da alfandega de lisboa os dez mil reais de tenca que cada uma delas recebe de sua majestade, assentes na folha da alfandega
+
+         constituintef$arcangela da silva/id=not1614tb-e3-per1
+            ls$titulo/dona
+            ls$condicao/freira professa
+            rel$parentesco/irma/maria de castro corte real/not1614tb-e3-per2
+
+         constituinte$maria de castro corte real/id=not1614tb-e3-per2
+            ls$titulo/dona
+            ls$condicao/freira professa
+            rel$parentesco/irma/arcangela da silva/not1614tb-e3-per1
+
+         procurador$antonio vaz de macedo/id=not1614tb-e3-per3
+            rel$sociabilidade/procurador/arcangela da silva/not1614tb-e3-per1
+            rel$sociabilidade/procurador/maria de castro corte real/not1614tb-e3-per2
+            ls$residencia/lisboa
+
+         test$jorge fernandes/m/id=not1614tb-e3-per4
+            rel$profissional/solicitador/catarina de noronha/not1614tb-e2-per1
+
+         test$antonio da serra/m/id=not1614tb-e3-per5
+            ls$profissao/criado
+            rel$profissional/criado/tome borges/1614-e3-tb
+
+         referido$tome borges/id=1614-e3-tb
+
+      escritura$not1614tb-e4/1/9/1614/procurador/fol=73v-75/loc=grade do parlatorio/sumario=o mosteiro de santa clara de coimbra nomeia procurador, andre vaz cabaco, para que ele e seus subestabelecidos defendam os seus direitos
+
+         constituintef$catarina de noronha/id=not1614tb-e4-per1
+            ls$cargo/abadessa
+            ls$nomeprof/catarina do crucifixo/obs=nome de profissao
+            ls$assina/sim
+
+         procurador$andre vaz cabaco/id=not1614tb-e4-per2
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e4-per1
+            ls$profissao/advogado
+            ls$residencia/coimbra
+
+         test$inocencia de sa/f/id=not1614tb-e4-per3
+            ls$cargo/vigaria
+            ls$nomeprof/inocencia de jesus/obs=nome de profissao
+            ls$assina/sim
+
+         test$francisca de noronha/f/id=not1614tb-e4-per4
+            ls$cargo/escriva
+            ls$nomeprof/francisca evangelista/obs=nome de profissao
+            ls$titulo/soror
+            ls$assina/sim
+
+         test$francisco gomes/m/id=not1614tb-e4-per5
+            ls$titulo/cidadao
+            ls$residencia/coimbra
+            rel$profissional/feitor/catarina de noronha/not1614tb-e4-per1
+
+         test$manuel joao/m/id=not1614tb-e4-per6
+            ls$alcunha/o moco
+            ls$cargo/recoveiro da universidade de coimbra
+            ls$profissao/recoveiro
+
+         test$antonia das chagas/f/id=not1614tb-e4-per7
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$jeronima de sao paulo/f/id=not1614tb-e4-per8
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1614tb-e5/5/9/1614/procuracao/fol=81-82/loc=grade do parlatorio/sumario=dona maria de castro corte real, freira professa do mosteiro de santa clara de coimbra, nomeia procurador, antonio vaz de macedo, para que em seu nome arrecade e receba no almoxarifado de lisboa dez mil reais de ten�a regia assentes no mesmo almoxarifado
+
+         constituintef$maria de castro corte real/id=not1614tb-e5-per1
+            ls$condicao/freira professa
+            ls$assina/sim%maria de corte real i castro
+
+         procurador$antonio vaz de macedo/id=not1614tb-e5-per2
+            rel$sociabilidade/procurador/maria de castro corte real/not1614tb-e5-per1
+            ls$residencia/lisboa
+
+         test$jorge fernandes/m/id=not1614tb-e5-per3
+            rel$profissional/solicitador/catarina de noronha/not1614tb-e4-per1
+
+         test$antonio da serra/m/id=not1614tb-e5-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1614-e5-tobo
+
+         referido$tome borges/id=1614-e5-tobo
+
+      escritura$not1614tb-e6/5/9/1614/procuracao/fol=82-82v/loc=grade do parlatorio/sumario=dona arcangela da silva, freira professa do mosteiro de santa clara de coimbra, nomeia procurador, ant�nio vaz de macedo, para que em seu nome arrecade e receba no almoxarifado de lisboa dez mil reais de ten�a regia assentes no mesmo almoxarifado
+
+         constituintef$arcangela da silva/id=not1614tb-e6-per1
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         procurador$antonio vaz de macedo/id=not1614tb-e6-per2
+            rel$sociabilidade/procurador/arcangela da silva/not1614tb-e6-per1
+            ls$residencia/lisboa
+
+         test$jorge fernandes/m/id=not1614tb-e6-per3
+            rel$profissional/solicitador/catarina de noronha/not1614tb-e4-per1
+
+         test$antonio da serra/m/id=not1614tb-e6-per4
+            ls$profissao/criado/obs=do tabeliao
+            rel$profissional/criado/tome borges/1614-e6-tbb
+
+         referido$tome borges/id=1614-e6-tbb
+            ls$profissao/tabeliao
+
+      escritura$not1614tb-e7/22/9/1614/aforamento/fol=114-117v/loc=grade do parlatorio/sumario=contrato de aforamento celebrado entre mosteiro de santa clara de coimbra e manuel joao, de uma vinha
+
+         senhoria$catarina de noronha/id=not1614tb-e7-per1
+            ls$cargo/abadessa
+            ls$assina/sim
+
+         foreiro$manuel joao/id=not1614tb-e7-per2
+            ls$profissao/recoveiro/obs=da universidade de coimbra
+            ls$residencia/coimbra
+
+            referida$francisca dias/id=not1614tb-e7-per3
+               rel$parentesco/mulher/manuel joao/not1614tb-e7-per2
+
+         aforamento$uma vinha/id=not1614tb-e7-obj1
+            atr$foro/seiscentos reais em dinheiro
+            atr$foro/duas galinhas/obs=por sao miguel de setembro
+
+         test$jorge fernandes/m/id=not1614tb-e7-per4
+            rel$profissional/solicitador/catarina de noronha/not1614tb-e7-per1
+
+         test$belchior fernandes/m/id=not1614tb-e7-per5
+            rel$profissional/azemel/catarina de noronha/not1614tb-e7-per1
+
+         test$antonio da serra/m/id=not1614tb-e7-per6
+            ls$profissao/criado
+            rel$profissional/criado/tome borges/1614-e6-tbb
+
+         test$francisca de noronha/f/id=not1614tb-e7-per7
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$inocencia de sa/f/id=not1614tb-e7-per8
+            ls$nomeprof/inocencia de jesus/obs=nome de profissao
+            ls$cargo/vigaria
+            ls$assina/sim
+
+         test$arcangela da silva/f/id=not1617-e7-per9
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$leonor de milao/f/id=not1614tb-e7-per10
+            ls$condicao/freira professa
+            ls$assina/sim
+            ls$titulo/dona
+
+         test$jeronima de sao paulo/f/id=not1614tb-e7-per11
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$antonia das chagas/f/id=not1614tb-e7-per12
+
+      escritura$not1614tb-e8/11/10/1614/procuracao/fol=144-145v/loc=grade do parlatorio/sumario=o mosteiro de santa clara de coimbra nomeia seus procuradores, ant�nio correia cardoso, bernardo cardoso de lacerda e silvestre mourao coutinho, para que em seu nome recebam e arrecadem setenta mil reais que cristovao da costa freire tem em seu poder, entregues por dona joana de castro, freira no mosteiro de santa clara da guarda, ao mesmo cristovao da costa freire para que este entregasse setenta mil reais a dona maria de castro, freira professa do mosteiro de santa clara de coimbra
+
+         constituinte$catarina de noronha/id=not1614tb-e8-per1
+            ls$cargo/abadessa
+            ls$nomeprof/catarina do crucifixo/obs=nome de profissao
+            ls$assina/sim
+
+         procurador$antonio correia cardoso/id=not1614tb-e8-per2
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e8-per1
+            ls$residencia/lamego%cidade de lamego
+
+         procurador$bernardo cardoso de lacerda/id=not1614tb-e8-per3
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e8-per1
+            ls$residencia/lamego
+
+         procurador$silvestre mourao coutinho/id=not1614tb-e8-per4
+            rel$sociabilidade/procurador/catarina de noronha/not1614tb-e8-per1
+            ls$residencia/lamego
+
+            referido$cristovao da costa freire/id=not1614tb-e8-per5
+               ls$residencia/alpedrinha
+
+         doadora$joana de castro/id=not1614tb-e8-per6
+            ls$condicao/freira professa/obs=no mosteiro de santa clara da guarda
+            ls$residencia/guarda
+
+         donataria$maria de castro/id=not1614tb-e8-per7
+            ls$condicao/freira professa
+
+            referida$angela de noronha/id=not1614tb-e8-per8
+               ls$condicao/freira professa/obs=o mosteiro de santa clara da guarda
+               ls$residencia/guarda
+
+         test$francisco gomes/m/id=not1614tb-e8-per9
+            ls$titulo/cidadao
+            ls$residencia/coimbra
+            rel$profissional/feitor/catarina de noronha/not1614tb-e8-per1
+
+         referido$francisco da silva/id=not1614tb-e8-per10
+            ls$residencia/coimbra
+
+         test$mateus ribeiro/m/id=not1614tb-e8-per11
+            rel$profissional/criado/francisco da silva/not1614tb-e8-per10
+
+         test$antonio da serra/m/id=not1614tb-e8-per12
+            ls$profissao/criado
+            rel$profissional/criado/tome borges/1614-e6-tbb
+
+         test$inocencia de sa/f/id=not1614tb-e8-per13
+            ls$cargo/vigaria
+            ls$assina/sim
+            ls$nomeprof/inocencia de jesus/obs=nome de profissao
+
+         test$francisca de noronha/f/id=not1614tb-e8-per14
+            ls$cargo/escriva
+            ls$assina/sim
+            ls$nomeprof/francisca evangelista/obs=nome de profissao
+
+         test$antonia das chagas/f/id=not1614tb-e8-per15
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$arcangela das chagas/f/id=not1614tb-e8-per16
+            ls$condicao/freira professa
+            ls$assina/sim
+
+         test$jeronima de sao paulo/f/id=not1614tb-e8-per17
+            ls$condicao/freira professa
+            ls$assina/sim
+
+      escritura$not1614tb-e9/11/10/1614/dote de ingresso/fol=146-147v/loc=grade do parlatorio/sumario=contrato de dote de entrada no mosteiro de santa clara de coimbra da filha do senhor francisco da silva e de dona catarina, dona guiomar da silva
+
+         dotante$francisco da silva/id=not1614tb-e9-per1
+            ls$residencia/coimbra
+
+            referida$catarina/id=not1614tb-e9-per2
+               rel$parentesco/mulher/francisco da silva/not1614tb-e9-per1
+
+         dotada$guiomar da silva/id=not1614tb-e9-per3
+            rel$parentesco/filha/francisco da silva/not1614tb-e9-per1
+
+            referido$antonio de sousa/id=not1614tb-e9-per4
+               ls$titulo/frei/obs=concede a patente a tres de novembro de mil seiscentos e sete
+               ls$ordem/sao francisco
+               ls$cargo/ministro provincial/obs=do reino de portugal da regular observancia dos frades menores
+
+            referido$cristovao de sa/id=not1614tb-e9-per5
+               rel$parentesco/avo/guiomar da silva/not1614tb-e9-per3
+
+            referida$inocencia de sa/id=not1614tb-e9-per6
+               ls$cargo/madre vigaria
+               rel$parentesco/tia/guiomar da silva/not1614tb-e9-per3
+
+         bem$mil cruzados mais as propinas costumadas/id=not1614tb-e9-obj1
+
+         bem$pecas de enfermaria e sacristia/id=not1614tb-e9-obj2
+
+         bem$alimentos ou quinze mil reais para eles/obs=antes de professar/id=not1614tb-e9-obj3
+
+         test$francisca de noronha/f/id=not1614tb-e9-per7
+            ls$cargo/escriva
+            ls$assina/sim
+
+         test$francisco gomes/m/id=not1614tb-e9-per8
+            ls$titulo/cidadao
+            ls$residencia/coimbra
+            rel$profissional/feitor/catarina de noronha/not1614tb-e8-per1
+
+         test$mateus ribeiro/m/id=not1614tb-e9-per9
+            rel$profissional/criado/francisco da silva/not1614tb-e9-per1
+
+         test$antonio da serra/m/id=not1614tb-e9-per10
+            ls$profissao/criado
+            rel$profissional/criado/tome borges/1614-e6-tbb
+
+         test$catarina de noronha/f/id=not1614tb-e9-per11
+            ls$cargo/abadessa
+            ls$assina/sim
+            ls$nomeprof/catarina do crucifixo/obs=nome de profissao
+
+         test$inocencia de sa/f/id=not1614tb-e9-per12
+            ls$cargo/vigaria
+            ls$assina/sim
+            ls$nomeprof/inocencia de jesus/obs=nome de profissao
+
+         test$francisca de noronha/f/id=not1614tb-e9-per13
+            ls$cargo/escriva
+            ls$nomeprof/francisca evangelista/obs=nome de profissao
+            ls$assina/sim
+
+         test$antonia das chagas/f/id=not1614tb-e9-per14
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$jeronima de sao paulo/f/id=not1614tb-e9-per15
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$arcangela das chagas/f/id=not1614tb-e9-per16
+            ls$assina/sim
+            ls$condicao/freira professa
+
+         test$leonor dos anjos/f/id=not1614tb-e9-per17
+            ls$assina/sim
+            ls$condicao/freira professa
+            ls$titulo/soror

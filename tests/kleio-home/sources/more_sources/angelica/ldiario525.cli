@@ -1,0 +1,43 @@
+kleio$gacto2.str
+   fonte$ldiarioa/tipo=livro diario/loc=antt 525/data=17600512-17631230/obs=livro diario a escriturado na direcao de pernambuco da cgpp
+
+      lb$liv525-1/12/5/1760/obs=fechou em 17631230
+
+         n$francisco da silva florentino/obs=f.14/id=liv525-1-per1
+            ls$residencia/ao pe da ponte/17600606
+            ls$produto_comprado/comestiveis
+            ls$local_registro/direcao de pernambuco da cgpp
+
+         n$antonio rodrigues viana/obs=f.14/id=liv525-arv
+            ls$local_registro/direcao de pernambuco da cgpp
+
+            referido$antonio pinheiro salgado/id=liv525-arv-per2
+               rel$sociabilidade/procurador/antonio rodrigues viana/liv525-arv
+
+         n$joao manoel de abreu/id=liv525-1-per3
+            ls$produto_comprado/alcatrao
+            ls$local_registro/direcao de pernambuco da cgpp
+            rel$sociabilidade/procurador/luis pereira viana/liv525-lpv
+
+            referido$luis pereira viana/id=liv525-lpv
+
+         n$francisco de melo/id=liv525-fm/obs=f.16
+            ls$produto_comprado/comestiveis
+            ls$local_registro/direcao de pernambuco da cgpp
+
+            referido$jose de sa rosa/id=liv525-fm-per4
+               rel$contabil/devedor solidario/francisco de melo/liv525-fm
+
+         n$jose pedro dos reis/obs=f.21/id=liv525-1-per5
+            ls$titulo/senhor de engenho
+            ls$patrimonio/engenho do brum
+            ls$local_registro/direcao de pernambuco da cgpp
+
+         n$francisco de paiva monteiro/obs=f.23/id=liv525-1-per6
+            ls$produto_comprado/oleo
+            ls$local_registro/direcao de pernambuco da cgpp
+
+         n$domingos bezerra cavalcante/id=liv525-1-per7
+            ls$titulo/senhor de engenho
+            ls$patrimonio/engenho do morenos
+            ls$local_registro/direcao de pernambuco da cgpp

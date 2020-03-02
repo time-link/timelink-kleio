@@ -1,0 +1,25 @@
+{
+    "prolog.executablePath": "/Applications/SWI-Prolog.app/Contents/MacOS/swipl",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "tests/dev/**":true,
+        "tests/stable/**":true
+    },
+    "todohighlight.isEnable": true,
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss",
+        "**/*.pl"
+    ],
+
+}

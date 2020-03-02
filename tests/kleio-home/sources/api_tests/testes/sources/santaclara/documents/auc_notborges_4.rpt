@@ -1,0 +1,242 @@
+ClioInput - version $Revision$ SWI $Date$
+26-5-2017 0-59
+
+Processing data file:/Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_4.cli
+-------------------------------------------
+Generic Act translation module with geoentities (XML).
+     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
+** New document: kleio
+1: kleio$gacto2.str
+=========================
+kleio translation started
+=========================
+Structure: gacto2.str
+Prefix: 
+Autorel: 
+Translation count: 
+Obs: 
+Translation count not set or invalid, counting as zero: 
+2:    fonte$not1605tb/tipo=escrituras notariais/loc=auc, notarial cota v i-es-9-3-60, notario tome borges, maio a novembro
+3: 
+**** auto rels 2 STARTED.
+** Processing source fonte$not1605tb
+4:       escritura$not1605tb-e1/2/6/1605/aforamento/fol=3v-7/loc=grade do parlatorio/sumario=contrato de aforamento em fatiosim para sempre e obrigacao de varias propriedades celebrado entre mosteiro de santa clara de coimbra e os seguintes foreiros: francisco joao e sua mulher domingas sim�es; simao denis e sua mulher ana clemente; antonio lopes e sua mulher pelonia fernandes; denis fernandes e sua mulher maria joao
+5: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1605tb-e1
+6:          senhoria$catarina de albuquerque/id=not1605tb-e1-per1
+7:             ls$cargo/abadessa
+8:             ls$nomeprof/catarina de sena/obs=nome de profissao
+9:             ls$assina/sim
+10: 
+11:          foreiro$francisco joao/id=not1605tb-e1-per2
+12:             ls$residencia/fervencas, termo da vila de miranda do corvo
+13:             ls$profissao/lavrador
+14: 
+15:          foreira$domingas simoes/id=not1605tb-e1-per3
+16:             rel$parentesco/mulher/francisco joao/not1605tb-e1-per2
+17: 
+18:          aforamento$quatro talhos de vinha
+19: 
+aforamento-not1605tb-e1-obj1- ** was stored with function in ACT verify act
+20:          aforamento$onze pedacos de terra
+aforamento-not1605tb-e1-obj2- ** was stored with function in ACT verify act
+21:             atr$localizacao/dispersos por diversos lugares
+22:             atr$foro/tres quartos de trigo
+23:             atr$foro/tres quartos de segunda
+24: 
+25:          foreiro$simao denis/id=not1605tb-e1-per4
+26:             ls$residencia/moinhos, termo da vila de miranda do corvo
+27:             ls$profissao/lavrador
+28: 
+29:          foreira$ana clemente/id=not1605tb-e1-per5
+30:             rel$parentesco/mulher/simao denis/not1605tb-e1-per4
+31: 
+32:          aforamento$uma terra
+aforamento-not1605tb-e1-obj3- ** was stored with function in ACT verify act
+33:             atr$localizacao/miranda
+34: 
+35:          aforamento$sete pedacos de outras terras
+36: 
+aforamento-not1605tb-e1-obj4- ** was stored with function in ACT verify act
+37:          aforamento$uma vinha
+38: 
+aforamento-not1605tb-e1-obj5- ** was stored with function in ACT verify act
+39:          aforamento$dois pedacos de outras vinhas
+aforamento-not1605tb-e1-obj6- ** was stored with function in ACT verify act
+40:             atr$foro/tres quartos de trigo
+41:             atr$foro/um quarto de centeio
+42:             atr$foro/meia galinha
+43:             atr$foro/cinco reais em dinheiro
+44:             atr$racao/um sexto das terras de baixo
+45:             atr$racao/um oitavo das terras galegas
+46: 
+47:          foreiro$antonio lopes/id=not1605tb-e1-per6
+48:             ls$profissao/lavrador
+49:             ls$residencia/termo da vila de miranda do corvo
+50: 
+51:          foreira$pelonia fernandes/id=not1605tb-e1-per7
+52:             rel$parentesco/mulher/antonio lopes/not1605tb-e1-per6
+53: 
+54:          aforamento$uma vinha
+55: 
+aforamento-not1605tb-e1-obj7- ** was stored with function in ACT verify act
+56:          aforamento$dois outros talhos de vinhas
+57: 
+aforamento-not1605tb-e1-obj8- ** was stored with function in ACT verify act
+58:          aforamento$dois pedacos de terra
+aforamento-not1605tb-e1-obj9- ** was stored with function in ACT verify act
+59:             atr$foro/meio alqueire de trigo
+60:             atr$foro/um quarto de centeio
+61:             atr$foro/uma galinha
+62:             atr$racao/um oitavo
+63: 
+64:          foreiro$denis fernandes/id=not1605tb-e1-per8
+65:             ls$profissao/lavrador
+66:             ls$residencia/termo da vila de miranda do corvo
+67: 
+68:          foreira$maria joao/id=not1605tb-e1-per9
+69:             rel$parentesco/mulher/denis fernandes/not1605tb-e1-per8
+70: 
+71:          aforamento$uma terra
+72: 
+aforamento-not1605tb-e1-obj10- ** was stored with function in ACT verify act
+73:          aforamento$uma vinha
+aforamento-not1605tb-e1-obj11- ** was stored with function in ACT verify act
+74:             atr$foro/uma galinha
+75:             atr$foro/meio alqueire de trigo
+76:             atr$racao/um sexto das terras de baixo
+77:             atr$racao/um oitavo das terras galegas/obs=tudo pago por s. miguel de setembro
+78: 
+79:          test$francisco boralho/m/id=not1605tb-e1-per10
+80:             ls$titulo/frei
+81:             ls$profissao/padre
+82:             rel$sociabilidade/confessor/catarina de albuquerque/not1605tb-e1-per1
+83: 
+84:          test$jorge fernandes/m/id=not1605tb-e1-per11
+85:             rel$profissional/solicitador/catarina de albuquerque/not1605tb-e1-per1
+86: 
+87:          test$pedro andre/m/id=not1605tb-e1-per12
+88:             rel$profissional/criado/catarina de albuquerque/not1605tb-e1-per1
+89: 
+90:          test$joao francisco/m/id=not1605tb-e1-per13
+91:             ls$profissao/criado/obs=do tabeliao
+92:             rel$profissional/criado/tome borges/1605tb.e1-tb
+93: 
+94:          referido$tome borges/id=1605tb.e1-tb
+95:             ls$profissao/tabeliao
+96: 
+97:          test$jeronima de sousa/f/id=not1605tb-e1-per14
+98:             ls$cargo/vigaria
+99:             ls$nomeprof/jeronima de sao paulo/obs=nome de profissao
+100:             ls$assina/sim
+101: 
+102:          test$francisca de mendonca/f/id=not1605tb-e1-per15
+103:             ls$cargo/escriva
+104:             ls$nomeprof/francisca da madre de deus/obs=nome de profissao
+105:             ls$assina/sim
+106: 
+107:          test$hilaria baptista/f/id=not1605tb-e1-per16
+108:             ls$titulo/dona
+109:             ls$assina/sim
+110: 
+111:          test$maria das chagas/id=not1605tb-e1-per17
+112:             ls$titulo/dona
+113:             ls$assina/sim
+114: 
+115:          test$arcangela das chagas/f/id=not1605tb-e1-per18
+116:             ls$titulo/dona
+117:             ls$assina/sim
+118: 
+119:       escritura$not1605tb-e2/30/6/1605/arrendamento de renda/fol=33-34/loc=casa de morada do tabeliao/sumario=contrato de arrendamento, fianca, outorga e obrigacao da renda de urzelhe, celebrado entre mosteiro de santa clara de coimbra, agostinho domingues e sua mulher, maria jorge
+120: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1605tb-e2
+121:          senhoria$nome desconhecido/id=not1605tb-e2-per1
+122:             ls$cargo/abadessa
+123: 
+124:          rendeiro$agostinho domingues/id=not1605tb-e2-per2
+125:             ls$morto/antes
+126:             ls$residencia/rio de galinhas
+127: 
+128:             referida$maria jorge/id=not1605tb-e2-per3
+129:                rel$parentesco/mulher/agostinho domingues/not1605tb-e2-per2
+130: 
+131:             referido$denis fernandes/id=not1605tb-e2-per4
+132:                rel$sociabilidade/fiador/maria jorge/not1605tb-e2-per3
+133: 
+134:          bem$renda de urzelhe
+bem-not1605tb-e2-obj1- ** was stored with function in ACT verify act
+135:             atr$foro/cento e quatorze mil reais em dinheiro de contado
+136:             atr$foro/dez moios de trigo
+137:             atr$foro/cinco moios de centeio
+138:             atr$foro/quatro moios de milho
+139:             atr$foro/vinte e cinco alqueires de azeite ou cinquenta a safra
+140:             atr$foro/duas carregas de fruta
+141:             atr$foro/uma carrega de cerejas de saco
+142:             atr$foro/um porco cevado de tres arrobas
+143: 
+144:          test$joao viegas/m/id=not1605tb-e2-per5
+145:             ls$residencia/ceira
+146: 
+147:          test$diogo da costa/m/id=not1605tb-e2-per6
+148:             ls$profissao/carpinteiro de marcenaria
+149: 
+150:          test$mateus correia/m/id=not1605tb-e2-per7
+151:             ls$profissao/vendeiro
+152: 
+153:       escritura$not1605tb-e3/10/7/1605/procuracao/fol=41v-42/loc=grade do parlatorio/sumario=o mosteiro de santa clara nomeia procurador para que, em seu nome, arrecade juros e tencas devidos as religiosas
+154: 
+**** auto rels 2 STARTED.
+** Processing act escritura$not1605tb-e3
+155:          constituintef$catarina de albuquerque/id=not1605tb-e3-per1
+156:             ls$cargo/abadessa
+157:             ls$nomeprof/catarina de sena/obs=nome de profissao
+158:             ls$assina/sim
+159: 
+160:             referido$jorge fernandes/id=not1605tb-e3-per2
+161:                rel$sociabilidade/procurador/catarina de albuquerque/not1605tb-e3-per1
+162:                rel$profissional/solicitador/catarina de albuquerque/not1605tb-e3-per1
+163: 
+164:          test$pedro rodrigues/m/id=not1605tb-e3-per3
+165:             ls$profissao/ferrador
+166:             ls$residencia/coimbra
+167: 
+168:          test$belchior fernandes/m/id=not1605tb-e3-per4
+169:             rel$profissional/criado/catarina de albuquerque/not1605tb-e3-per1
+170: 
+171:          test$joao francisco/m/id=not1605tb-e3-per5
+172:             ls$profissao/criado/obs=do tabeliao
+173:             rel$profissional/criado/tome borges/1695tb.e3-tbo
+174: 
+175:          referido$tome borges/id=1695tb.e3-tbo
+176:             ls$profissao/tabeliao
+177: 
+178:          test$jeronima de sousa/f/id=not1605tb-e3-per6
+179:             ls$nomeprof/jeronima de sao paulo/obs=nome de profissao
+180:             ls$cargo/vigaria
+181:             ls$assina/sim
+182: 
+183:          test$francisca de mendonca/f/id=not1605tb-e3-per7
+184:             ls$cargo/escriva
+185:             ls$assina/sim
+186: 
+187:          test$arcangela das chagas/f/id=not1605tb-e3-per8
+188:             ls$assina/sim
+189:             ls$titulo/dona
+190: 
+191:          test$joana evangelista/f/id=not1605tb-e3-per9
+192:             ls$assina/sim
+193:             ls$titulo/dona
+194: 
+195:          test$maria das chagas/f/id=not1605tb-e3-per10
+196:             ls$titulo/dona
+197:             ls$assina/sim
+198: *** End of File
+0  errors.
+**** auto rels 2 STARTED.
+** Translation finished.
+** data file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_4.cli
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_4.org
+** old file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_4.old
+** original file- /Users/jrc/develop/mhk_users/testes/sources/santaclara/documents/auc_notborges_4.ids
