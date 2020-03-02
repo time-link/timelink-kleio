@@ -1,0 +1,3630 @@
+{
+	"info": {
+		"_postman_id": "79cce7c0-baf2-4525-859e-598371d53590",
+		"name": "Kleio testing",
+		"description": "Sequence of requests to test the Kleio translator API.\n\nIt requires the klei server user token  to have access to a sources directory with a `reference_sources`sub dir.\n\nThe sequence will then create a new test directory `api_tests` (erasing it before if it exists) and will copy the sources from the `reference_sources` to it. Tests will be made in the api_tests directory. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "setup",
+					"item": [
+						{
+							"name": "create tokens",
+							"item": [
+								{
+									"name": "Invalidate limited user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "28b147bd-a8f8-43d2-8c25-53702cf23d51",
+												"exec": [
+													"pm.test(\"User does not exist or user invalidated\", function () {",
+													"    pm.response.to.be.success;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"jsonrpc\": \"2.0\", \t\"method\": \"users_invalidate\", \n\t\"params\": {\n\t\t\"user\":\"limited_user\",\n\t\t\"token\":\"{{testadmintoken}}\"\n\t},\n\t\"id\": {{request_id}}\n}"
+										},
+										"url": {
+											"raw": "http://localhost:8088/json/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8088",
+											"path": [
+												"json",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Generate limited token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Store limited token\", function () {",
+													"    let jsonData = pm.response.json();",
+													"    let r = jsonData.result;",
+													"    pm.environment.set(\"limited_token\", r);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"limited_user\",\n        \"info\": {\n        \t\"comment\": \"An user that has no privilegis, used to test authorization errors\",\n            \"api\": [\n                \"nothing\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/json/",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"json",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Invalidate normal user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "28b147bd-a8f8-43d2-8c25-53702cf23d51",
+												"exec": [
+													"pm.test(\"User does not exist or user invalidated\", function () {",
+													"    pm.response.to.be.success;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"jsonrpc\": \"2.0\", \t\"method\": \"users_invalidate\", \n\t\"params\": {\n\t\t\"user\":\"tester\",\n\t\t\"token\":\"{{testadmintoken}}\"\n\t},\n\t\"id\": {{request_id}}}\n"
+										},
+										"url": {
+											"raw": "http://localhost:8088/json/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8088",
+											"path": [
+												"json",
+												""
+											]
+										},
+										"description": "Invalidate the normal user."
+									},
+									"response": []
+								},
+								{
+									"name": "Generate normal token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Store tester token\", function () {",
+													"    let jsonData = pm.response.json();",
+													"    let r = jsonData.result;",
+													"    pm.environment.set(\"tester_token\", r);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories, in specific sub-directoris in kleio-home\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/api_tests\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/json/",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"json",
+												""
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Generate Token (normal user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"normal_user\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, but not create or remove dirs\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 16:46:02 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"9318ed2b0d2fcb88c15124deb7c8a3bfa27b9a29\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (power user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"power_user\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:17:42 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"8312070ca229c81feaeb29a973f5132d795a0db4\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (limited user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"limited_user4\",\n        \"info\": {\n        \t\"comment\": \"An user with limited access, cannot translate, upload, remove or create directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:21:41 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"42fdd2c909058aba84ba0278d813b9ad683a6d28\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (admin_user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"admin_user\",\n        \"info\": {\n        \t\"comment\": \"An admin user with permissions to generate and revoke tokens\",\n            \"api\": [\n                \"generate_token\",\"invalidate_token\",\"invalidate_user\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:09:07 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"3ce33bc763478fe5e0fb410106da891185e0d2f4\",\n    \"id\": 1\n}"
+										}
+									]
+								},
+								{
+									"name": "Invalidate coordinator",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "28b147bd-a8f8-43d2-8c25-53702cf23d51",
+												"exec": [
+													"pm.test(\"User does not exist or user invalidated\", function () {",
+													"    pm.response.to.be.success;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"jsonrpc\": \"2.0\", \t\"method\": \"users_invalidate\", \n\t\"params\": {\n\t\t\"user\":\"coordinator\",\n\t\t\"token\":\"{{testadmintoken}}\"\n\t},\n\t\"id\": {{request_id}}}\n"
+										},
+										"url": {
+											"raw": "http://localhost:8088/json/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8088",
+											"path": [
+												"json",
+												""
+											]
+										},
+										"description": "Invalidate the coordinator user. The coordinator has access to the root of the kleio-home directory."
+									},
+									"response": []
+								},
+								{
+									"name": "Generate coordinator token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Store tester token\", function () {",
+													"    let jsonData = pm.response.json();",
+													"    let r = jsonData.result;",
+													"    pm.environment.set(\"coordinator_token\", r);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{testadmintoken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"coordinator\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"\",\n            \"sources\": \"\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/json/",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"json",
+												""
+											]
+										},
+										"description": "The coordinator has access to the root of the kleio-home directory."
+									},
+									"response": [
+										{
+											"name": "Generate Token (normal user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"normal_user\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, but not create or remove dirs\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 16:46:02 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"9318ed2b0d2fcb88c15124deb7c8a3bfa27b9a29\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (limited user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"limited_user4\",\n        \"info\": {\n        \t\"comment\": \"An user with limited access, cannot translate, upload, remove or create directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:21:41 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"42fdd2c909058aba84ba0278d813b9ad683a6d28\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (power user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"power_user\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:17:42 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"8312070ca229c81feaeb29a973f5132d795a0db4\",\n    \"id\": 1\n}"
+										},
+										{
+											"name": "Generate Token (admin_user)",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"generate_token\",\n    \"params\": {\n        \"user\": \"admin_user\",\n        \"info\": {\n        \t\"comment\": \"An admin user with permissions to generate and revoke tokens\",\n            \"api\": [\n                \"generate_token\",\"invalidate_token\",\"invalidate_user\"\n            ],\n            \"structures\": \"users/limited_user/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 1\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 05 Apr 2019 17:09:07 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "86"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"result\": \"3ce33bc763478fe5e0fb410106da891185e0d2f4\",\n    \"id\": 1\n}"
+										}
+									]
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "create test sources",
+							"item": [
+								{
+									"name": "Erase test directory",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "529ebddb-326e-4db6-a741-76f66d96ee24",
+												"exec": [
+													"pm.environment.set(\"test_sources\", \"api_tests\");"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{coordinator_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Prefer json output",
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/rest/directories/sources/{{test_sources}}?id={{request_id}}&force=yes",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"rest",
+												"directories",
+												"sources",
+												"{{test_sources}}"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "{{request_id}}"
+												},
+												{
+													"key": "force",
+													"value": "yes",
+													"description": "If yes removes directory even if not empty"
+												}
+											]
+										},
+										"description": "Removes the directory under the requested path.\nIf directory not empty requires force=yes"
+									},
+									"response": []
+								},
+								{
+									"name": "Copy reference sources",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "10a3af72-0f4c-485e-90a8-48a487f4d50b",
+												"exec": [
+													"pm.environment.set(\"reference_sources\", \"reference_sources\");"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{coordinator_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"description": "Prefer json output",
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/rest/directories/sources/{{test_sources}}?id={{request_id}}&origin=sources/{{reference_sources}}",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"rest",
+												"directories",
+												"sources",
+												"{{test_sources}}"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "{{request_id}}"
+												},
+												{
+													"key": "origin",
+													"value": "sources/{{reference_sources}}",
+													"description": "path to directory to copy"
+												}
+											]
+										},
+										"description": "Creates the directory in path. Intermediate directories are created as needed."
+									},
+									"response": []
+								},
+								{
+									"name": "aux_examine_sources",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+												"exec": [
+													"// stores a few variables with random files",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"if (responseCode.code === 200) {",
+													"    var sources = pm.response.json().result;",
+													"    var nfiles = sources.length;",
+													"    console.log(\"Number of sources files in test dir: \"+nfiles);",
+													"    pm.environment.set(\"source_1\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"source_2\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"source_3\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"source_4\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tester_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/rest/sources?id={{request_id}}&recurse=yes&tstatus=T",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"rest",
+												"sources"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "{{request_id}}"
+												},
+												{
+													"key": "recurse",
+													"value": "yes"
+												},
+												{
+													"key": "tstatus",
+													"value": "T"
+												}
+											]
+										},
+										"description": "Fetches list of all sources and randomly choose 4 and stores in environment variables."
+									},
+									"response": []
+								},
+								{
+									"name": "aux_examine_dirs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+												"exec": [
+													"// stores a few variables with random directories. ",
+													"// Note that we filter by tstatus to get only directories.",
+													"//",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"if (responseCode.code === 200) {",
+													"    var sources = pm.response.json().result;",
+													"    var nfiles = sources.length;",
+													"    console.log(\"Number of sources files in test dir: \"+nfiles);",
+													"    pm.environment.set(\"dir_1\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"dir_2\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"dir_3\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"    pm.environment.set(\"dir_4\", sources[Math.floor(Math.random()*nfiles)].file);",
+													"}"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{tester_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/rest/sources?id={{request_id}}&recurse=yes&tstatus=D",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"rest",
+												"sources"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "{{request_id}}"
+												},
+												{
+													"key": "recurse",
+													"value": "yes"
+												},
+												{
+													"key": "tstatus",
+													"value": "D"
+												}
+											]
+										},
+										"description": "Fetches list of all source direcotries and randomly choose 4 and stores in environment variables."
+									},
+									"response": []
+								}
+							],
+							"description": "Copies directory of reference sources to test directory.",
+							"_postman_isSubFolder": true
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{testadmintoken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1ba56a8e-d76d-4156-80f8-a9b4c16f94a4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "03eabc12-d0ef-4118-9937-6dc374e39e40",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "sources",
+					"item": [
+						{
+							"name": "rest",
+							"item": [
+								{
+									"name": "get",
+									"item": [
+										{
+											"name": "rest_sources_get_file",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "9b344e0d-c4d6-4c00-8493-c4c5f9b33586",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Body matches string\", function () {",
+															"    pm.expect(pm.response.text()).to.include(\"kleio\\$\");",
+															"});",
+															"pm.test(\"Request-id is present\", function () {",
+															"    pm.response.to.have.header(\"Request-id\");",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    pm.response.to.have.header(\"Request-id\",rid)",
+															"});",
+															"pm.test(\"Content-Type is present\", function () {",
+															"    pm.response.to.have.header(\"Content-Type\");",
+															"});",
+															"",
+															"pm.test(\"Location Header contains path\", function () {",
+															"    var loc = pm.environment.get(\"source_1\"); ",
+															"    pm.response.to.have.header('Location', loc)",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json",
+														"disabled": true
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{source_1}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{source_1}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_file_json",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "9b344e0d-c4d6-4c00-8493-c4c5f9b33586",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Json result includes url\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var loc = pm.environment.get(\"source_1\"); ",
+															"    pm.expect(jsonData.result.url).to.include(loc);",
+															"});",
+															"pm.test(\"Content-Type is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.result.mime_type).to.include(\"text/cli\");",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});",
+															"",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{source_1}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{source_1}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_file_not_allowed",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "c7f460d5-05c1-48a6-a458-fb58d5113338",
+														"exec": [
+															"pm.test(\"Status code is 403\", function () {",
+															"    pm.response.to.have.status(403);",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    pm.response.to.have.header(\"Request-id\",rid)",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{limited_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{source_2}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{source_2}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Uses token with limited privilieges"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_file_not_allowed",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f4b43f0e-e4e3-4f3a-a4ce-702d760455cb",
+														"exec": [
+															"pm.test(\"Status code is not found\", function () {",
+															"    pm.response.to.be.notFound;",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\"+''); ",
+															"    pm.response.to.have.header(\"Request-id\",rid+'')",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/xxxx{{source_4}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"xxxx{{source_4}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_files_recurse",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"// with recurse = yes",
+															"var files = pm.response.json().result;",
+															"var count = 0;",
+															"pm.test(\"Response includes nested directories\", function () {",
+															"    for( var n in files) {",
+															"        var c = (files[n].file.match(/\\//g) || []).length;",
+															"        console.log(files[n].file+' levels: '+c);",
+															"        if (c > count) count=c;",
+															"    }",
+															"    pm.expect(count).to.be.above(1);",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources?id={{request_id}}&recurse=yes",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "recurse",
+															"value": "yes"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_files_json",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"// with recurse = yes",
+															"pm.test(\"Response includes requested directory\", function () {",
+															"    pm.expect(pm.response.text()).to.include(\"paroquiais/crisma/crisma1753.cli\");",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/paroquiais?id={{request_id}}&recurse=yes",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"paroquiais"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "recurse",
+															"value": "yes"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_files_filter",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+														"exec": [
+															"var should = require('chai').should();",
+															"var files = pm.response.json().result;",
+															"var filter = pm.environment.get(\"tstatus_filter\");",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"// with recurse = yes",
+															"",
+															"pm.test(\"Only filtered status\", function () {",
+															"    var r = '';",
+															"    var s = '';",
+															"    // all the tcode should be equal to the filter",
+															"    for( var n in files) {",
+															"        r = r+files[n].tcode;",
+															"        s = s+filter;",
+															"    }",
+															"    r.should.equal(s);",
+															"});",
+															"",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.id).to.eql(rid+'');",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "a4a5ea93-ab11-431a-9da0-9e364ecbae2a",
+														"exec": [
+															"pm.environment.set(\"tstatus_filter\", \"E\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/paroquiais?id={{request_id}}&recurse=yes&tstatus={{tstatus_filter}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"paroquiais"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "recurse",
+															"value": "yes"
+														},
+														{
+															"key": "tstatus",
+															"value": "{{tstatus_filter}}",
+															"description": "Filter by TStatus"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_get_files_not_found",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "db959be9-4ed0-470b-974a-e487a27b2d72",
+														"exec": [
+															"pm.test(\"Status code is not found\", function () {",
+															"    pm.response.to.be.notFound;",
+															"});",
+															"pm.test(\"Request-id is same as request\", function () {",
+															"    var rid = pm.environment.get(\"request_id\")+''; ",
+															"    pm.response.to.have.header(\"Request-id\",rid)",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/paroquiais/casamentosx?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"paroquiais",
+														"casamentosx"
+													],
+													"query": [
+														{
+															"key": "token   ",
+															"value": "45t245g3i9 ,mwqervoooooo",
+															"description": "normal token",
+															"disabled": true
+														},
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										}
+									],
+									"_postman_isSubFolder": true
+								},
+								{
+									"name": "delete",
+									"item": [
+										{
+											"name": "rest_sources_delete_file_not_found",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "eb1055a8-58bb-4bc7-bf53-3f952c1f7087",
+														"exec": [
+															"",
+															"var df=pm.environment.get(\"source_1\");",
+															"pm.environment.set(\"deleted_file\", df);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json",
+														"disabled": true
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/paroquiais/casamentos/bap-com-celebrantes.cli?id=1234",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"paroquiais",
+														"casamentos",
+														"bap-com-celebrantes.cli"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "1234"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_delete_file_not_allowed",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 403\", function () {",
+															"    pm.response.to.have.status(403);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{no_priv_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json",
+														"disabled": true
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/paroquiais/casamentos/bap-com-celebrantes.cli?id=1234",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"paroquiais",
+														"casamentos",
+														"bap-com-celebrantes.cli"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "1234"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_delete_file",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "eb1055a8-58bb-4bc7-bf53-3f952c1f7087",
+														"exec": [
+															"// store the file to be deleted to recorver later",
+															"var df=pm.environment.get(\"source_1\");",
+															"pm.environment.set(\"deleted_file\", df);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{deleted_file}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{deleted_file}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "aux_recover_sources_deleted_file",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "10a3af72-0f4c-485e-90a8-48a487f4d50b",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{coordinator_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"description": "Prefer json output",
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/sources/{{test_sources}}/{{deleted_file}}?id={{request_id}}&origin=sources/{{reference_sources}}/{{deleted_file}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"sources",
+														"{{test_sources}}",
+														"{{deleted_file}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "origin",
+															"value": "sources/{{reference_sources}}/{{deleted_file}}",
+															"description": "path to directory to copy"
+														}
+													]
+												},
+												"description": "Copies a file from the reference_sources to the test_sources. Requires coordinator_token to have access to the root of the files."
+											},
+											"response": []
+										},
+										{
+											"name": "aux_count_files_dir_1",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"// we store the number of files to check later",
+															"var files = pm.response.json().result;",
+															"var nfiles = files.length;",
+															"console.log(nfiles);",
+															"pm.environment.set(\"nfiles\", nfiles+'');"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1fc06d1f-8bb3-4fab-ab2d-b581a90545a0",
+														"exec": [
+															"// store the directory to be deleted to recorver later",
+															"var df=pm.environment.get(\"dir_1\");",
+															"pm.environment.set(\"selected_dir\", df);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{dir_1}}?id={{request_id}}&recurse=yes&tstatus=T",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{dir_1}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "recurse",
+															"value": "yes"
+														},
+														{
+															"key": "tstatus",
+															"value": "T"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "rest_sources_delete_files_dir_1",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Correct number of files deleted\", function () {",
+															"    var files = pm.response.json().result;",
+															"    console.log('ficheiros em {{dir_1}}:'+files)",
+															"    var deleted_files = files.length+'';",
+															"    console.log(\"deleted n:\"+deleted_files);",
+															"    var df = pm.environment.get(\"nfiles\"); ",
+															"    pm.expect(deleted_files).to.equal(df);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "eb1055a8-58bb-4bc7-bf53-3f952c1f7087",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{selected_dir}}?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{selected_dir}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "aux_recover_dir_1 delete dir",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "eb1055a8-58bb-4bc7-bf53-3f952c1f7087",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json",
+														"disabled": true
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/directories/{{selected_dir}}?id={{request_id}}&force=yes",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"directories",
+														"{{selected_dir}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "force",
+															"value": "yes"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "aux_recover_dir_1 copy dir",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "10a3af72-0f4c-485e-90a8-48a487f4d50b",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{coordinator_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"description": "Prefer json output",
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/directories/sources/{{test_sources}}/{{selected_dir}}?id={{request_id}}&origin=sources/{{reference_sources}}/{{selected_dir}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"directories",
+														"sources",
+														"{{test_sources}}",
+														"{{selected_dir}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "origin",
+															"value": "sources/{{reference_sources}}/{{selected_dir}}",
+															"description": "path to directory to copy"
+														}
+													]
+												},
+												"description": "Copies a file from the reference_sources to the test_sources. Requires coordinator_token to have access to the root of the files."
+											},
+											"response": []
+										}
+									],
+									"_postman_isSubFolder": true
+								},
+								{
+									"name": "post",
+									"item": [
+										{
+											"name": "aux_create_uploads_directory",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"description": "Prefer json output",
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/directories/uploads?id={{request_id}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"directories",
+														"uploads"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														}
+													]
+												},
+												"description": "Creates the directory in path. Intermediate directories are created as needed."
+											},
+											"response": []
+										},
+										{
+											"name": "sources_upload_new_file",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "64b1b385-81bf-4fb7-863f-ecab5db670e9",
+														"exec": [
+															"pm.test(\"Status code is 2XX\", function () {",
+															"    pm.response.to.be.success;",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "77ef7e8a-a28f-437c-bb26-8869a3270db1",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/x-www-form-urlencoded",
+														"type": "text"
+													},
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"type": "file",
+															"src": ""
+														},
+														{
+															"key": "id",
+															"value": "{{request_id}}",
+															"description": "Id of the request",
+															"type": "text"
+														},
+														{
+															"key": "force",
+															"value": "yes",
+															"description": "If \"yes\" overwrite existing file.",
+															"type": "text",
+															"disabled": true
+														}
+													]
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/uploads",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"uploads"
+													]
+												},
+												"description": "Uploads files.\n\nAccepts a post request with application/x-www-form-urlencoded. Parameters:\n\n* file: the file to be uploaded.\n* id: optional, id of the request.\n\nPath after sources indicats the directory where the file is to be uploaded. The directory must exist.\nIf a file with the same name exists the request will throw and exception."
+											},
+											"response": [
+												{
+													"name": "Source Upload (new)",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"name": "Content-Type",
+																"type": "text",
+																"value": "application/x-www-form-urlencoded"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json",
+																"type": "text"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "file",
+																	"description": "File to be uploaded",
+																	"type": "file"
+																},
+																{
+																	"key": "id",
+																	"value": "21",
+																	"description": "Id of the request",
+																	"type": "text"
+																},
+																{
+																	"key": "force",
+																	"value": "yes",
+																	"description": "If \"yes\" overwrite existing file.",
+																	"type": "text",
+																	"disabled": true
+																}
+															]
+														},
+														"url": {
+															"raw": "http://{{endpoint}}/rest/sources/paroquiais/baptismos",
+															"protocol": "http",
+															"host": [
+																"{{endpoint}}"
+															],
+															"path": [
+																"rest",
+																"sources",
+																"paroquiais",
+																"baptismos"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Date",
+															"value": "Thu, 09 May 2019 10:43:49 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "Content-Length",
+															"value": "85"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"id\": \"21\",\n    \"jsonrpc\": \"2.0\",\n    \"result\": [\n        \"paroquiais/baptismos/bap1720.cli\"\n    ]\n}"
+												}
+											]
+										}
+									],
+									"_postman_isSubFolder": true
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "json",
+							"item": [
+								{
+									"name": "get",
+									"item": [
+										{
+											"name": "json_sources_get_file",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = _.parseInt(pm.environment.get(\"request_id\")); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_get\",\n    \"params\": {\n        \"path\": \"{{source_4}}\",\n        \"token\": \"{{tester_token}}\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Get a file. Obtains a link to download a file specified in the Path parameter"
+											},
+											"response": [
+												{
+													"name": "Sources Get File",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"name": "Content-Type",
+																"type": "text",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_get\",\n    \"params\": {\n        \"path\": \"paroquiais/casamentos/cas1714-1722.cli\",\n        \"token\": \"{{remotetoken}}\"\n    },\n    \"id\": 1\n}"
+														},
+														"url": {
+															"raw": "http://{{endpoint}}/json/",
+															"protocol": "http",
+															"host": [
+																"{{endpoint}}"
+															],
+															"path": [
+																"json",
+																""
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Date",
+															"value": "Thu, 25 Apr 2019 12:30:05 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														},
+														{
+															"key": "Content-Length",
+															"value": "175"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"id\": 1,\n    \"jsonrpc\": \"2.0\",\n    \"result\": {\n        \"mime_type\": \"text/cli\",\n        \"url\": \"/rest/sources/paroquiais/casamentos/cas1714-1722.cli\"\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "json_sources_get_file_not_allowed",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Return -32006\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.error.code).to.eql(-32006);",
+															"    ",
+															"});",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = pm.environment.get(\"request_id\"); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_get\",\n    \"params\": {\n        \"path\": \"paroquiais/casamentos/cas1714-1722.cli\",\n        \"token\": \"{{no_priv_token}}\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Get a file. Obtains a link to download a file specified in the Path parameter"
+											},
+											"response": []
+										},
+										{
+											"name": "json_sources_get_files",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = pm.environment.get(\"request_id\"); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_get\",\n    \"params\": {\n        \"path\": \"{{dir_2}}\",\n        \"token\": \"{{tester_token}}\",\n        \"recurse\":\"yes\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Get the list of the sub directories and source files in a Directory. File names are preceeded by a three character status info.\n\nTranslation Status\n\n* 'T' - needs to be translated (either no rpt file or existing rpt older than kleio file)\n* 'E' - was last translated with errors\n* 'W' - was last translated with warnings\n* 'V' - file translated successfully \n* 'D' - path refers to a directory\n\nQueued status\n\n* 'Q' file is currently queued for translation, otherwise blank\n\nProcessing status\n\n* 'P' file is currently being translated, otherwise blank.\n\nNote that a file can be both queued and being translated, if a request for translation were was by the server while still translating a previous request."
+											},
+											"response": []
+										}
+									],
+									"_postman_isSubFolder": true
+								},
+								{
+									"name": "delete",
+									"item": [
+										{
+											"name": "json_sources_delete_file",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Return includes deleted file\", function () {",
+															"    var return_value = pm.response.json().result;",
+															"    var file_name = return_value[0];",
+															"    console.log(file_name)",
+															"    var df = pm.environment.get(\"deleted_file\"); ",
+															"    pm.expect(file_name).to.eql(df);",
+															"    ",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = _.parseInt(pm.environment.get(\"request_id\")); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0f1b3125-3aa8-464d-82b6-cceb9a549236",
+														"exec": [
+															"// store the file to be deleted to recorver later",
+															"var df=pm.environment.get(\"source_2\");",
+															"pm.environment.set(\"deleted_file\", df);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_delete\",\n    \"params\": {\n        \"path\": \"{{source_2}}\",\n        \"token\": \"{{tester_token}}\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Get a file. Obtains a link to download a file specified in the Path parameter"
+											},
+											"response": []
+										},
+										{
+											"name": "aux recover deleted file",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "10a3af72-0f4c-485e-90a8-48a487f4d50b",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{coordinator_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"description": "Prefer json output",
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/sources/{{test_sources}}/{{deleted_file}}?id={{request_id}}&origin=sources/{{reference_sources}}/{{deleted_file}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"sources",
+														"{{test_sources}}",
+														"{{deleted_file}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "origin",
+															"value": "sources/{{reference_sources}}/{{deleted_file}}",
+															"description": "path to directory to copy"
+														}
+													]
+												},
+												"description": "Copies a file from the reference_sources to the test_sources. Requires coordinator_token to have access to the root of the files."
+											},
+											"response": []
+										},
+										{
+											"name": "json_sources_delete_file_not_found",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Return -32008\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    pm.expect(jsonData.error.code).to.eql(-32008);",
+															"    ",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = pm.environment.get(\"request_id\"); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_delete\",\n    \"params\": {\n        \"path\": \"wrong/{{source_1}}\",\n        \"token\": \"{{tester_token}}\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Delete a file. Should return error if not found."
+											},
+											"response": []
+										},
+										{
+											"name": "aux_count_files",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "427c5b43-2c32-46a5-b0f6-1fda6301bb12",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"// we store the number of files to check later",
+															"var files = pm.response.json().result;",
+															"var nfiles = files.length;",
+															"console.log(nfiles);",
+															"pm.environment.set(\"nfiles\", nfiles+'');"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/sources/{{dir_2}}?id={{request_id}}&recurse=yes&tstatus=T",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"sources",
+														"{{dir_2}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "recurse",
+															"value": "yes"
+														},
+														{
+															"key": "tstatus",
+															"value": "T"
+														}
+													]
+												},
+												"description": "Get a File"
+											},
+											"response": []
+										},
+										{
+											"name": "json_sources_delete_files",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "199cee8c-dded-4a38-8adf-df01b1aaffcb",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"",
+															"pm.test(\"Correct number of files deleted\", function () {",
+															"    var files = pm.response.json().result;",
+															"    console.log('ficheiros em {{dir_2}}:'+files)",
+															"    var deleted_files = files.length+'';",
+															"    console.log(\"deleted n:\"+deleted_files);",
+															"    var df = pm.environment.get(\"nfiles\"); ",
+															"    pm.expect(deleted_files).to.equal(df);",
+															"});",
+															"",
+															"pm.test(\"Request-id is present\", function () {",
+															"    var jsonData = pm.response.json();",
+															"    var rid = pm.environment.get(\"request_id\"); ",
+															"    pm.expect(jsonData.id).to.eql(rid);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sources_delete\",\n    \"params\": {\n        \"path\": \"{{dir_2}}\",\n        \"recurse\":\"yes\",\n        \"token\": \"{{tester_token}}\"\n    },\n    \"id\": {{request_id}}\n}"
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/json/",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"json",
+														""
+													]
+												},
+												"description": "Get a file. Obtains a link to download a file specified in the Path parameter"
+											},
+											"response": []
+										},
+										{
+											"name": "aux_recover_dir_2_delete",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "068a3f90-f662-4df9-8e05-76d2a378bd78",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "eb1055a8-58bb-4bc7-bf53-3f952c1f7087",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{tester_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json",
+														"disabled": true
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/directories/{{dir_2}}?id={{request_id}}&force=yes",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"directories",
+														"{{dir_2}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "force",
+															"value": "yes"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "aux_recover_dir_2_copy",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "10a3af72-0f4c-485e-90a8-48a487f4d50b",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{coordinator_token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"description": "Prefer json output",
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://{{endpoint}}/rest/directories/sources/{{test_sources}}/{{dir_2}}?id={{request_id}}&origin=sources/{{reference_sources}}/{{dir_2}}",
+													"protocol": "http",
+													"host": [
+														"{{endpoint}}"
+													],
+													"path": [
+														"rest",
+														"directories",
+														"sources",
+														"{{test_sources}}",
+														"{{dir_2}}"
+													],
+													"query": [
+														{
+															"key": "id",
+															"value": "{{request_id}}"
+														},
+														{
+															"key": "origin",
+															"value": "sources/{{reference_sources}}/{{dir_2}}",
+															"description": "path to directory to copy"
+														}
+													]
+												},
+												"description": "Copies a file from the reference_sources to the test_sources. Requires coordinator_token to have access to the root of the files."
+											},
+											"response": []
+										}
+									],
+									"_postman_isSubFolder": true
+								}
+							],
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "tokens",
+					"item": [
+						{
+							"name": "json_users_invalidate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a5be6f1b-33b8-4643-a3c7-f47ae4bbddeb",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"User token removed or invalid\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    if (jsonData.error) {",
+											"         pm.expect(pm.response.json().error.code).equal(-32602);",
+											"    } else {",
+											"        pm.expect(jsonData.result).to.eql(\"tester\");",
+											"    }",
+											"    });",
+											"    ",
+											"pm.test(\"Request-id is present\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var rid = pm.environment.get(\"request_id\"); ",
+											"    pm.expect(jsonData.id).equal(rid);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"jsonrpc\": \"2.0\", \t\"method\": \"users_invalidate\", \n\t\"params\": {\n\t\t\"user\":\"tester\",\n\t\t\"token\":\"{{testadmintoken}}\"\n\t},\n\t\"id\": {{request_id}}\n\t\n}\n"
+								},
+								"url": {
+									"raw": "http://localhost:8088/json/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Invalidates a user previously associated with a token"
+							},
+							"response": []
+						},
+						{
+							"name": "json_tokens_generate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Store tester token\", function () {",
+											"    let jsonData = pm.response.json();",
+											"    let r = jsonData.result;",
+											"    pm.environment.set(\"tester_token\", r);",
+											"});",
+											"pm.test(\"Request-id is present\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var rid = pm.environment.get(\"request_id\"); ",
+											"    pm.expect(jsonData.id).to.eql(rid);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Generates a token for a user with associated info, including base directories and permissions.\n\nParams:\n\n* user: (required) user name\n* info: information associated to the user. A structure containing:\n\t* comment: (opcional) a string with a comment about the user.\n\t* api: (required). List of allowed actions:\n\t\t* files (download files, only get method allowed)\n\t\t* structures (download files, only get method allowed)\n\t\t* translations (translate files)\n\t\t* upload (upload files, also allows methods post and put on files)\n\t\t* sources (search for source files)\n\t\t* kleioset (get information on translation of a kleio file)\n\t\t* generate_token (generate token for new users)\n\t\t* invalidate_token (revokes token)\n\t\t* invalidate_user (revoke user - alternative to invalidate_token, when token is forgotten)\n\t\t* token_info (return information associated with a token - not yet implemented)\n\t\t* delete (delete a file, also method delete on files)\n\t\t* mkdir (create a directory)\n\t\t* rmdir (remove)\n\t* structures: (optional) base directory for user provided str files.\n\t* sources: (optional, required for user that do translations)\n* token: (required) a token associated to generate_token permission.\n\nId: according to JSON-RPC specs this Id will be returned in the response or error result."
+							},
+							"response": []
+						},
+						{
+							"name": "json_tokens_generate_duplicate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Return -32600\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error.code).to.eql(-32600);",
+											"    ",
+											"});",
+											"pm.test(\"Request-id is present\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var rid = pm.environment.get(\"request_id\"); ",
+											"    pm.expect(jsonData.id).to.eql(rid);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Generates a token for a user with associated info, including base directories and permissions.\n\nParams:\n\n* user: (required) user name\n* info: information associated to the user. A structure containing:\n\t* comment: (opcional) a string with a comment about the user.\n\t* api: (required). List of allowed actions:\n\t\t* files (download files, only get method allowed)\n\t\t* structures (download files, only get method allowed)\n\t\t* translations (translate files)\n\t\t* upload (upload files, also allows methods post and put on files)\n\t\t* sources (search for source files)\n\t\t* kleioset (get information on translation of a kleio file)\n\t\t* generate_token (generate token for new users)\n\t\t* invalidate_token (revokes token)\n\t\t* invalidate_user (revoke user - alternative to invalidate_token, when token is forgotten)\n\t\t* token_info (return information associated with a token - not yet implemented)\n\t\t* delete (delete a file, also method delete on files)\n\t\t* mkdir (create a directory)\n\t\t* rmdir (remove)\n\t* structures: (optional) base directory for user provided str files.\n\t* sources: (optional, required for user that do translations)\n* token: (required) a token associated to generate_token permission.\n\nId: according to JSON-RPC specs this Id will be returned in the response or error result."
+							},
+							"response": []
+						},
+						{
+							"name": "json_tokens_invalidate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0fee1139-d34c-45eb-acea-5b228d2f85d7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Invalidate token\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.result).to.eql(pm.environment.get(\"tester_token\"));",
+											"});",
+											"pm.test(\"Request-id is present\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    var rid = pm.environment.get(\"request_id\"); ",
+											"    pm.expect(jsonData.id).to.eql(rid);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"jsonrpc\": \"2.0\", \t\"method\": \"tokens_invalidate\", \n\t\"params\": {\n\t\t\"user_token\":\"{{tester_token}}\",\n\t\t\"token\":\"{{testadmintoken}}\"\n\t},\n\t\"id\": {{request_id}}}\n"
+								},
+								"url": {
+									"raw": "http://localhost:8088/json/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Invalidates a previous issued token"
+							},
+							"response": []
+						},
+						{
+							"name": "aux_recover_json_tokens_invalidate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "db8f2854-4c88-4101-8dd7-dbb92ca48d27",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Store tester token\", function () {",
+											"    let jsonData = pm.response.json();",
+											"    let r = jsonData.result;",
+											"    pm.environment.set(\"tester_token\", r);",
+											"});",
+											"pm.test(\"Request-ID returned with the response\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.id).to.eql(987);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 0987\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Generates a token for a user with associated info, including base directories and permissions.\n\nParams:\n\n* user: (required) user name\n* info: information associated to the user. A structure containing:\n\t* comment: (opcional) a string with a comment about the user.\n\t* api: (required). List of allowed actions:\n\t\t* files (download files, only get method allowed)\n\t\t* structures (download files, only get method allowed)\n\t\t* translations (translate files)\n\t\t* upload (upload files, also allows methods post and put on files)\n\t\t* sources (search for source files)\n\t\t* kleioset (get information on translation of a kleio file)\n\t\t* generate_token (generate token for new users)\n\t\t* invalidate_token (revokes token)\n\t\t* invalidate_user (revoke user - alternative to invalidate_token, when token is forgotten)\n\t\t* token_info (return information associated with a token - not yet implemented)\n\t\t* delete (delete a file, also method delete on files)\n\t\t* mkdir (create a directory)\n\t\t* rmdir (remove)\n\t* structures: (optional) base directory for user provided str files.\n\t* sources: (optional, required for user that do translations)\n* token: (required) a token associated to generate_token permission.\n\nId: according to JSON-RPC specs this Id will be returned in the response or error result."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Tests for the version 2 API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1fff9a18-062f-4120-b0dd-c061dabda9b6",
+						"type": "text/javascript",
+						"exec": [
+							"var request_id = _.parseInt(environment.request_id);",
+							"// console.log(\"current request-id: \"+request_id);",
+							"pm.environment.set(\"request_id\",request_id+1);",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d72a7df4-ce15-4414-a75d-893dadd4d781",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{tokenremote}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ea40667d-1c74-4d10-b19a-524965d02e7f",
+				"type": "text/javascript",
+				"exec": [
+					"var rid = pm.environment.get(\"request_id\");",
+					"if (typeof rid == 'undefined') pm.environment.set(\"request_id\",0);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5aa85412-e247-48b6-95dd-f526fde33814",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

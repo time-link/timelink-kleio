@@ -1,0 +1,24 @@
+-att[0-9]*-
+^[0-9]*c[0-9]*
+^[0-9]*,[0-9]*c[0-9]*,[0-9]*
+---
+ClioInput\s-\sversion
+<KLEIO STRUCTURE="
+CLASS="relation"
+-rel[0-9]*-
+translations=[0-9]*
+Processing data file
+Translation count:
+Processed file-
+Original file-
+Previous version-
+Temp file with ids-
+[0-9]*-[0-9]*-[0-9]*\s[0-9]*-[0-9]*
+<core><!\[CDATA\[[A-Za-z0-9\/\._\-]*reference_translations/
+<core><!\[CDATA\[[A-Za-z0-9\/\._\-]*test_translations/
+^(?!diff)\s[A-Za-z0-9/\._\-]*reference_translations/
+^(?!diff)\s[A-Za-z0-9/\._\-]*test_translations/
+^(?!Only)\sreference_translations
+^(?!Only)\stest_translations
+ID="[A-Za-z0-9\.\-]*-[a-z0-9]*"
+<ELEMENT NAME="id"\ CLASS="id"><core>[A-Za-z0-9\ \.\-]*-[a-z0-9]*<\/core><\/ELEMENT>

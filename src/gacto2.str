@@ -257,7 +257,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas
+	  pas,integr,movacao
 
 
 
@@ -321,6 +321,43 @@ part name=item; source=object;
     guaranteed=titulo;
     position=titulo;
     also=resumo,id,obs
+
+note *************************************************************************************************++++
+note livros de registo de acoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
+note ****************************************************************************************************
+
+part name=integr; 
+     source=pt-acto;
+     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=obs, data
+     
+part name=acao; source=object
+          arbitrary=referido,referida, atr, rel;
+          guaranteed=name;
+          also=id, obs, data, mesmo_que
+          
+          
+          
+note *************************************************************************************************++++
+note livros de registo de accoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
+note ****************************************************************************************************
+
+part name=movacao; 
+     source=pt-acto;
+     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=obs, data
+     
+     
+part name=acao; 
+     source=object;
+          arbitrary=referido,referida, atr, rel;
+          guaranteed=name;
+          also=id, obs, data, mesmo_que
+
 
 note ****************************************************************
 note  doc group devassa Devassas temporais nas visitas pastorais
@@ -456,7 +493,7 @@ note doc group chanc  Chancelarias
 note *****************************************************************
 part 	name=chanc;
  source=pt-acto;
- repeat=n,referido,referida;
+ repeat=n,referido,referida,item;
  guaranteed=id,dia,mes,ano,loc;
  position=id,dia,mes,ano,loc;
  also=resumo,obs
@@ -1736,6 +1773,14 @@ part	name=rp; source=actorm;
 part 	name=arrem; source=n;
       also=id,mesmo_que, xmesmo_que,obs,cota
 
+note actores especificos do livro de registos de accoes
+
+part name=acionista; 
+     source=actorm
+     guaranteed=nome;
+     also=obs,mesmo_que,id;
+     repeat=ls,atr,rel
+
 
 note notariais
 part name=devedor;source=actorm;
@@ -2264,6 +2309,13 @@ part name=testa; source=actorf;
 	guaranteed=nome;
 	part=acus,caso
 
+note actores femininos presentes nos livros de registos das companhia monopolistas
+part name=acionistaf; 
+     source=actorf;
+     guaranteed=nome;
+     also=obs,mesmo_que,id;
+     repeat=ls,atr,rel
+
 note notariais
 part name=devedora;source=actorf;
 part name=credora;source=actorf;
@@ -2308,8 +2360,8 @@ part name=perdoante; source= person;
      position=nome,sexo;
      also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
-part name=perdoantem; source= actorm; position=nome
-part name=perdoantef; source= actorf; position=nome
+part name=perdoante-m; source= actorm; position=nome
+part name=perdoante-f; source= actorf; position=nome
 part name=perdoado; source=actorm; position=nome
 part name=perdoada; source=actorf; position=nome
 part name=vitima; source=person;
@@ -2362,13 +2414,13 @@ note Parentes classificados por genero
 note *****************************************************************
 note TODO falta verificar se todos os part est?o bem feitos
 
-part name= pai;  source=kin-father;pars=ppai, mpai
-part    name= ppai;  source=kin-father;pars=pppai, mppai
-part        name= pppai;  source=kin-father;pars=ppppai, mpppai
-part        name= mppai;  source=kin-mother;pars=pmppai, mmppai
-part    name= mpai;  source=kin-mother;pars=pmpai, mmpai
-part        name= pmpai;  source=kin-father;pars=ppmpai, mpmpai
-part        name= mmpai;  source=kin-mother;pars=pmmpai, mmmpai
+part name=pai;  source=kin-father;pars=ppai, mpai
+part    name=ppai;  source=kin-father;pars=pppai, mppai
+part        name=pppai;  source=kin-father;pars=ppppai, mpppai
+part        name=mppai;  source=kin-mother;pars=pmppai, mmppai
+part    name=mpai;  source=kin-mother;pars=pmpai, mmpai
+part        name=pmpai;  source=kin-father;pars=ppmpai, mpmpai
+part        name=mmpai;  source=kin-mother;pars=pmmpai, mmmpai
 
 
 part name=mae;     			source=kin-mother; part=pmae,mmae

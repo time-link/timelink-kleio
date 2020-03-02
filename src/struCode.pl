@@ -1,70 +1,61 @@
-% vim: filetype=prolog ts=3
-% $Date$ 
-% $Author$
-% $Id$
-% $Log: struCode.pl,v $
-% Revision 1.2  2006/05/16 10:52:50  Joaquim
-% update dos ficheiros prolog
-%
-% Revision 1.2  2005/03/10 14:42:27  joaquim
-% snapshot commit for purpose of moving the cvs directory.
-%
-% Revision 1.1  2004/04/08 14:45:24  ltiago
-% Source code has passed from Joaquim to Tiago.
-% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
-% File build.xml, web.xml and velocity.properties were changed
-%
-% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
-% New Repository.
-%
-% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
-% CVS repository moved from llinux to MacOSX.
-%
-% Revision 1.3  2001/01/15 18:24:13  jrc
-% Correct the behavious of the source/fons parameter in
-% element/terminus commands, to make it consistent
-% with the behaviour in groups. Now elements keep
-% the source/fons parameter are therefore can be used
-% in specialization hierarchies like groups.
-%
-%******************************************************
-%  This file contains code called by the DCG grammar that
-%    analyses strucutre definitions in the stru syntax window
-%    
-%    The processing of commands stores temporary information
-%    about commands and also creates an internal representation
-%    of the structure. This temporary information is stored
-%    as properties associated with the command name. Each
-%    processed command takes the property status which is
-%    set to ok ot notOk by check_complete. The values of the
-%    parameters of the nomino command are stored as properties
-%    associated to the 'nomino' atom.
-% 
-%  Predicates:
-%  initStru: initialization predicate for structures
-%  closeStru: 'clean-up' predicate for structures.
-%    
-%  init_comand(C) initializes the processing of command C
-%    
-%  close_command(C,S): ends processing of command and 
-%    returns status S, makes completeness checks.
-%    
-%  set_defaults(Command) sets the default values
-%        for parameters of the command and deletes
-%       previous values.
-%    
-%  execParam(C,P,V) takes appropriate action for each param-value pair
-%    
-%  check_complete(CMD,Result) -- checks if CMD has all the 
-%      params it must have it returns OK in result
-%       
-%    History
-%      stable OCT 90.
-%      exitus command added 14 November 1990
-%      fons parameter stored in group information AUG 97
-%      ported to swi prolog 23:38 08-11-1999
-%******************************************************
-%  %
+
+:-module(struCode,[
+    
+    initStru/1,
+    closeStru/1,
+    init_command/1,
+    close_command/2,
+    clean_commands/0,
+    execParam/3,
+    cache_command/1,
+    fetch_command/1,
+    clean_cached_command/0
+    ]).
+
+/** <module> Code for processing Kleio structure files (schema).
+
+  This file contains code called by the DCG grammar that
+    analyses strucutre definitions in the stru syntax window
+    
+    The processing of commands stores temporary information
+    about commands and also creates an internal representation
+    of the structure. This temporary information is stored
+    as properties associated with the command name. Each
+    processed command takes the property status which is
+    set to ok ot notOk by check_complete. The values of the
+    parameters of the nomino command are stored as properties
+    associated to the 'nomino' atom.
+ 
+  Predicates:
+
+  * initStru(_): initialization predicate for structures
+  * closeStru(_): 'clean-up' predicate for structures.
+  * init_comand(C) initializes the processing of command C
+  * close_command(C,S): ends processing of command and 
+    returns status S, makes completeness checks.
+    
+  * set_defaults(Command) sets the default values
+        for parameters of the command and deletes
+       previous values.
+    
+  * execParam(C,P,V) takes appropriate action for each param-value pair
+    
+  * check_complete(CMD,Result) -- checks if CMD has all the 
+      params it must have it returns OK in result
+       
+
+*/
+
+:-use_module(dataDictionary).
+:-use_module(persistence).
+:-use_module(utilities).
+:-use_module(reports).
+:-use_module(struSyntax).
+:-use_module(basicio).
+:-use_module(errors).
+
+% same as dynamic but thread safe.
+?-thread_local(cmd/2).
 %*************************************************************
 % 
 % initStru: initializes the processing of strucutre def
@@ -75,6 +66,13 @@ initStru(_):-
     %put_value(max_errors,12),
    clean_commands,   % clean previous cmds %
    !.
+
+  %%  clean_commands is det.
+  %  erases any temporary command information 
+  %
+  clean_commands:-
+    retractall(cmd(_,_)).
+
 %*************************************************************
 % closeStru: finalizes structure analysis.
 %*************************************************************
@@ -127,7 +125,7 @@ close_command(exitus,ok):-!.
 %******************************************************
 %  %
 set_defaults(CMD):-
-   \+ on(CMD,[nomino,pars,terminus,exitus]),
+   \+ member(CMD,[nomino,pars,terminus,exitus]),
    report([write('** Set defaults not implemented for: '),
            write(CMD),nl]),!.
 
@@ -273,7 +271,7 @@ execParam(terminus,P,V):-
 % execParam exitus nomen parameter
 %%
 execParam(exitus,nomen,N):-
-    clause(clioStru(M),true),
+    clioStru(M),
     (M = N -> true; error_out('bad nomen parameter of the exitus command'-N)),!.
 %*************************************************************
 % 
@@ -315,3 +313,59 @@ requiredParams(nomino,[nomen,primum]).
 requiredParams(pars,[nomen]).
 requiredParams(terminus,[nomen]).
 requiredParams(exitus,[nomen]).
+
+
+%% cache_command(+CmdInfo) is det.
+% Stores information about multi line commands during parsing
+%       The command tokens are stored in a cmd(C,T) clause where
+%       C is the command name and T the list of tokens.
+cache_command(cmd(Cmd,Tokens)):-
+    assert(cmd(Cmd,Tokens)).
+
+%% fetch_command(?CmdInfo) is nondet,
+% retrieves cached information on multi line command.
+%
+fetch_command(cmd(Cmd,Tokens)):-
+    retract(cmd(Cmd,Tokens)).
+
+%% clean_cached_command is det
+% cleans cached multi-line command.
+clean_cached_command:-
+    retract(cmd(_,_)).
+
+% vim: filetype=prolog ts=3
+% $Date$ 
+% $Author$
+% $Id$
+% $Log: struCode.pl,v $
+% Revision 1.2  2006/05/16 10:52:50  Joaquim
+% update dos ficheiros prolog
+%
+% Revision 1.2  2005/03/10 14:42:27  joaquim
+% snapshot commit for purpose of moving the cvs directory.
+%
+% Revision 1.1  2004/04/08 14:45:24  ltiago
+% Source code has passed from Joaquim to Tiago.
+% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
+% File build.xml, web.xml and velocity.properties were changed
+%
+% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
+% New Repository.
+%
+% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
+% CVS repository moved from llinux to MacOSX.
+%
+% Revision 1.3  2001/01/15 18:24:13  jrc
+% Correct the behavious of the source/fons parameter in
+% element/terminus commands, to make it consistent
+% with the behaviour in groups. Now elements keep
+% the source/fons parameter are therefore can be used
+% in specialization hierarchies like groups.
+%
+/*
+   History
+      stable OCT 90.
+      exitus command added 14 November 1990
+      fons parameter stored in group information AUG 97
+      ported to swi prolog 23:38 08-11-1999
+******************************************************/

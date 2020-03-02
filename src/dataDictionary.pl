@@ -1,101 +1,94 @@
-% vim: filetype=prolog ts=3
-% $Date$ 
-% $Author$
-% $Id$
-% $Log: dataDictionary.pl,v $
-% Revision 1.2  2006/05/16 10:52:43  Joaquim
-% update dos ficheiros prolog
-%
-% Revision 1.5  2006/03/27 20:52:18  jrc
-% New token for documentation of groups.
-%
-% Revision 1.4  2006/01/07 19:38:25  jrc
-% Fized a few quirks with the generation html docs.
-%
-% Revision 1.3  2004/07/14 04:04:59  joaquim
-% Auto makes doc for kleio formats when loading the translator
-%
-% Revision 1.2  2004/06/18 07:58:57  joaquim
-% HTML documentation (show_groups_html). Fixes regarding dynamic predicates
-%
-% Revision 1.1  2004/04/08 14:45:24  ltiago
-% Source code has passed from Joaquim to Tiago.
-% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
-% File build.xml, web.xml and velocity.properties were changed
-%
-% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
-% New Repository.
-%
-% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
-% CVS repository moved from llinux to MacOSX.
-%
-% Revision 1.7  2001/01/15 18:25:57  jrc
-% CVS headers, line end cleaning and minor changes
-%
-% text of window:  data dictionary %
-%*************************************************************
-% This window contains code for dealing with the data diccionary.
-%    The data dictionnary stores the information contained in
-%    the kleio structure file
-%    FALTA AQUI A EXPLICACAO DAS ESTRUTURAS EXTERNAS
-%
-%  create_stru(S) S= status of nomino command
-%    creates a predicate clioStru(F) where F is the nomen
-%    parameter of the nomino command and copies the
-%    other parameters of nomino as properties of F
-%    
-%  clean_stru(F):- cleans any existing structure definition
-%      for file F
-%    
-%  isDoc(N) tests if N is a document
-%    
-%  anc_of(G,A) returns in A the ancestor of G
-%    
-%  subgroups(G,S) S is the list of subgroups of G
-%    
-%  element_of(E,G):- checks to which group belongs
-%    element G.
-%    
-%  create_groups(NameList)
-%     creates, if not yet created, clauses for the groups
-%     in NameList
-%  create_elements(NameList)
-%     creates, if not yet created, clauses for the elements
-%      in NameList
-%  set_group_prop(Group,Property,Value)
-%      stores the property and value in the group
-%  set_groups_prop(List,Prop,Value)
-%      same as above but sets the property for a list of groups
-%  set_element_prop(Element,Property,Value)
-%      stores the property and value in the element
-%  set_elements_prop(List,Prop,Value)
-%      same as above but sets the property for a list of elements
-%  set_group_defaults(Group) sets default values
-%  set_element_defaults(Element) sets default values
-%    
-%  all_groups(List) - list of all the currently defined groups
-%  all_elements(List) - list of all the currently defined elements
-%
-%  show_stru:- show current structure definition
-%  show_groups:- show the properties of all groups
-%  show_elements:- show the properties of all elements
-%    
-%  clean_groups. deletes previous group definitions
-%  clean_elements. deletes previous element definitions
-%
-%  History
-%    Stable and commented Oct 90.
-%    get_group_prop added Aug 97
-%    get_element_prop added Nov 2000.
-%
-%    changed behaviour of fons/source so that original fons/source
-%    parameter is preserved across fons/source copying - this is
-%    necessary for preserving nested fons/source hierarchies.Sept 2000
-%    get_group_prop was made bactrakable. Sept 2000
-%*************************************************************
-?-dynamic(clioStru/1).
-?-dynamic(clioGroup/2).
-?-dynamic(clioElement/2).
+:-module(dataDictionary,[
+        create_stru/1,
+        clean_stru/1,
+        clioStru/1,
+        clioGroup/2,
+        clioElement/2,
+        isDoc/1,
+        anc_of/2,
+        subgroups/2,
+        element_of/2,
+        create_groups/1,
+        create_elements/1,
+        copy_fons_e/2,
+        copy_fons_g/2,
+        get_group_prop/3,
+        set_group_prop/3,
+        set_groups_prop/3,
+        set_element_prop/3,
+        get_element_prop/3,
+        set_elements_prop/3,
+        set_group_defaults/1,
+        set_element_defaults/1,
+        all_groups/1,
+        all_elements/1,
+        show_stru/0,
+        show_groups/0,
+        show_elements/0,
+        clean_groups/1,
+        clean_elements/1,
+        make_html_doc/1
+    ]).
+/** <module> Code for dealing with the data dictionary.
+
+    The data dictionnary stores the information contained in
+    the kleio structure file
+    FALTA AQUI A EXPLICACAO DAS ESTRUTURAS EXTERNAS
+    TODO: Para ter processamento com multiplos schemas (strus) podia-se usar 
+    convenções semelhantes às que do mysql: use_stru(S) daqui em diante os comandos dizem respeito a S
+    Isso talvez envolvesse apenas make_group e make_element e clioGroup e clioElement, mas tem de ser analisado com cuidado.
+
+* create_stru(S) S= status of nomino command
+    creates a predicate clioStru(F) where F is the nomen
+    parameter of the nomino command and copies the
+    other parameters of nomino as properties of F    
+*  clean_stru(F):- cleans any existing structure definition
+     for file F
+*  isDoc(N) tests if N is a document
+*  anc_of(G,A) returns in A the ancestor of G    
+*  subgroups(G,S) S is the list of subgroups of G    
+*  element_of(E,G):- checks to which group belongs
+    element G.    
+*  create_groups(NameList)
+     creates, if not yet created, clauses for the groups
+     in NameList
+*  create_elements(NameList)
+     creates, if not yet created, clauses for the elements
+      in NameList
+*  set_group_prop(Group,Property,Value)
+      stores the property and value in the group
+*  set_groups_prop(List,Prop,Value)
+     same as above but sets the property for a list of groups
+*  set_element_prop(Element,Property,Value)
+      stores the property and value in the element
+*  set_elements_prop(List,Prop,Value)
+     same as above but sets the property for a list of elements
+*  set_group_defaults(Group) sets default values
+*  set_element_defaults(Element) sets default values
+    
+*  all_groups(List) - list of all the currently defined groups
+*  all_elements(List) - list of all the currently defined elements
+*  show_stru:- show current structure definition
+*  show_groups:- show the properties of all groups
+*  show_elements:- show the properties of all elements
+    
+*  clean_groups. deletes previous group definitions
+*  clean_elements. deletes previous element definitions
+
+*/
+:-use_module(utilities).
+:-use_module(errors).
+:-use_module(reports).
+:-use_module(persistence).
+:-use_module(dataCDS).
+:-use_module(apiTranslations).
+
+% dynamic thread local
+?-thread_local(clioStru_/1).
+?-thread_local(clioGroup_/2).
+?-thread_local(clioElement_/2).
+
+
 %******************************************************
 %  create_stru(S) S= status of nomino command
 %    creates a predicate clioStru(F) where F is the nomen
@@ -109,9 +102,16 @@ create_stru(ok):-
     get_prop(nomino,nomen,File),    % get strucuture name %
     report([writelistln(['Creating new structure definition for:',File])]),
     clean_stru(File),               % delete previous definition if any %
-    assert(clioStru(File)),         % store a structure predicate %
+    assert(clioStru_(File)),         % store a structure predicate %
     get_props(nomino,List),
     forall(member(P,List),(get_prop(nomino,P,V),set_prop(File,P,V))),!.
+
+%% clioStru(?FileName) is nondet.
+%
+% FileName is a Kleio structure file stored.
+%
+clioStru(FileName):-clause(clioStru_(FileName),true).
+
 
 %*************************************************************
 %    clean_stru(F):- cleans any existing structure definition
@@ -119,7 +119,7 @@ create_stru(ok):-
 %******************************************************
 %  %
 clean_stru(F):-
-   retractall(clioStru(F)),% clean previous structure %
+   retractall(clioStru_(F)),% clean previous structure %
    del_props(F),       % delete previous properties %
    clean_groups(F),       % clean groups definition %
    clean_elements(F),!.      % clean elements definition %
@@ -130,7 +130,7 @@ clean_stru(F):-
 %******************************************************
 %  %
 isDoc(N):-
-    clause(clioStru(S),true),         % check if this is a new doc %
+    clioStru(S),         % check if this is a new doc %
     get_prop(S,primum,N).
 %******************************************************
 %  anc_of(G,A) returns in A the ancestor of G
@@ -150,7 +150,7 @@ anc_of(G,A):-
     get_prop(ID,semper,L),
     member(G,L).
 anc_of(G,A):-
-    clioGroup(A,_ID),
+    clioGroup(A,__ID),
     get_prop(G,solum,L),
     member(A,L).
 anc_of(G,A):-
@@ -162,7 +162,7 @@ anc_of(G,A):-
 %******************************************************
 %  %
 subgroups(G,S):-
-    findall(D,(clioGroup(D,_),anc_of(D,G)),S),!.
+    findall(D,(anc_of(D,G),clioGroup(D,_)),S),!.
 %******************************************************
 %  element_of(E,G):- checks to which group belongs
 %    element G.
@@ -192,17 +192,29 @@ create_groups([Group|OtherGroups]):-
 create_group(Group):-
    make_group(Group),
    set_group_defaults(Group),!.
-%*************************************************************
-% make_group(Group)  creates a group definition.
-%      does nothing if there is already a group definition
+
+%% make_group(+Group) is det. 
+%
+% Creates a group definition.
+%      Does nothing if there is already a group definition
 %      for Group
-%*************************************************************
-% %
+%
 make_group(Group):-
-   clause(clioGroup(Group,_),true),!.
+   clioGroup(Group,_),!.
+
 make_group(Group):-
    gensym(cgroup,Id),   % generate an Id %
-   assert(clioGroup(Group,Id)),!.
+   assert(clioGroup_(Group,Id)),!. % TODO: make multi schema aware
+
+%% clioGroup(?GroupName,?GroupId) is nondet.
+%
+% GroupName is a Group defined in the current Scheme and GroupId
+% is the internal id of the Group.
+%
+% @see make_group/1
+%
+clioGroup(GroupName,GroupId):-
+    clause(clioGroup_(GroupName,GroupId),true).
 
 %*************************************************************
 % create_elements(NameList)
@@ -224,17 +236,26 @@ create_element(Element):-
 %*************************************************************
 % %
 make_element(Element):-
-   clause(clioElement(Element,_),true),!.
+   clioElement(Element,_),!.
 make_element(Element):-
    gensym(cel,Id),   % generate an Id %
-   assert(clioElement(Element,Id)),!.
-%*************************************************************
-% set_group_prop(Group,Property,Value)
+   assert(clioElement_(Element,Id)),!.
+
+%%  clioElement(?ElementName,?ElementId) is nondet.
+%
+% ElementName exists in the current schema with internal identifier 
+% ElementId
+%
+clioElement(ElementName,ElementId):-
+    clause(clioElement_(ElementName,ElementId),true).
+
+
+%% set_group_prop(+Group,+Property,+Value) is det.
+%
 %      stores the property and value in the group
-%*************************************************************
-% %
+%
 set_group_prop(G,P,V):-
-   clause(clioGroup(G,I),true),
+   clioGroup(G,I),
    set_prop(I,P,V),!.
 %*************************************************************
 % get_group_prop(Group,Property,Value)
@@ -244,7 +265,7 @@ set_group_prop(G,P,V):-
 %*************************************************************
 % %
 get_group_prop(G,P,V):-
-   clause(clioGroup(G,I),true),
+   clioGroup(G,I),
    get_prop(I,P,V).
 %*************************************************************
 % set_groups_prop(List,Prop,Value)
@@ -260,7 +281,7 @@ set_groups_prop(L,P,V):-
 %*************************************************************
 % %
 set_element_prop(E,P,V):-
-   clause(clioElement(E,I),true),
+   clioElement(E,I),
    set_prop(I,P,V),!.
 
 %*************************************************************
@@ -270,7 +291,7 @@ set_element_prop(E,P,V):-
 %*************************************************************
 % %
 get_element_prop(E,P,V):-
-   clause(clioElement(E,I),true),
+   clioElement(E,I),
    get_prop(I,P,V).
 %
 %*************************************************************
@@ -340,12 +361,12 @@ set_terminus_defaults(Element):-
 set_generic_g(Group):-
    generic_groups(Group,List), % belongs to generic group?%
    copy_groups(Group,List),!.  % if so copy properties %
-set_generic_g(_Group):-!.
+set_generic_g(__Group):-!.
 
 set_generic_e(E):-
    generic_elements(E,List), % belongs to generic element?%
    copy_elements(E,List),!.  % if so copy properties %
-set_generic_e(_E):-!.
+set_generic_e(__E):-!.
 
 %*************************************************************
 % generic_groups(Group,List) 
@@ -399,7 +420,7 @@ get_name(element,N,I):-
 %          group Group
 %*************************************************************
 % %
-copy_groups(_G,[]):-!.
+copy_groups(__G,[]):-!.
 copy_groups(G,[A|B]):-
    copy_group(G,A),
    copy_groups(G,B),!.
@@ -415,7 +436,7 @@ copy_group(G,H):- %copies properties in H to G %
 %          group Element
 %*************************************************************
 % %
-copy_elements(_E,[]):-!.
+copy_elements(__E,[]):-!.
 copy_elements(E,[A|B]):-
    copy_element(E,A),
    copy_elements(E,B),!.
@@ -432,10 +453,10 @@ copy_element(E,H):- %copies properties in H to E %
 %*************************************************************
 % %
 copy_fons_g(Group,Groups):-
-   clioGroup(Group,_ID),
+   clioGroup(Group,__ID),
    forall(member(G,Groups),copy_group(G,Group)),!.
-copy_fons_g(Group,_Groups):-
-   \+ clioGroup(Group,_ID),
+copy_fons_g(Group,__Groups):-
+   \+ clioGroup(Group,__ID),
    warning_out(['copy_fons - undefined fons group',Group]),!.
 
 %*************************************************************
@@ -445,30 +466,32 @@ copy_fons_g(Group,_Groups):-
 %*************************************************************
 % %
 copy_fons_e(Element,Elements):-
-   clioElement(Element,_ID),
+   clioElement(Element,__ID),
    forall(member(E,Elements),copy_element(E,Element)),!.
-copy_fons_e(Element,_Elements):-
-   \+ clioElement(Element,_ID),
+copy_fons_e(Element,__Elements):-
+   \+ clioElement(Element,__ID),
    warning_out('copy_fons - undefined fons element'),!.
 
 %*************************************************************
 % all_groups(List) - list of all the currently defined groups
 %*************************************************************
 % %
-all_groups(List):-findall(G,clause(clioGroup(G,_),true),List),!.
+all_groups(List):-findall(G,clioGroup(G,_),List),!.
+
 %*************************************************************
 % all_elements(List) - list of all the currently defined elements
 %*************************************************************
 % %
-all_elements(List):-findall(E,clause(clioElement(E,_),true),List),!.
+all_elements(List):-findall(E,clioElement(E,_),List),!.
+
 %******************************************************
 %  show_stru:- show current structure definition
 %******************************************************
 %  %
 show_stru:-
-    clause(clioStru(S),true),
+    clioStru(S),
     show_structure(S).
-show_stru:- \+ clause(clioStru(_S),true),
+show_stru:- \+ clioStru(__S),
           error_out('**No structure definition.'),!.
 
 show_structure(S):-
@@ -492,7 +515,7 @@ shgroups([G|R],N):-
 
 show_els(G,N):-
     element_of(E,G),
-    clause(clioElement(E,ID),true),
+    clioElement(E,ID),
     tab(N),write(' Terminus for: '),
     write(E),
     N1 is N+5,show_props(ID,N1),
@@ -515,14 +538,43 @@ listClioGroups:-clioGroup(G,_),
                 write(G),tab(1),fail.
 listClioGroups:-nl,!.
 
+%% make_html_doc(+Path) is det.
+%  Write to Path html documentation of current processed kleio structure (schema).
+%
+%
 make_html_doc(DocPath):-
              (exists_directory(DocPath) ;  make_directory(DocPath)),
              working_directory(CD,DocPath),
              show_groups_html,
              working_directory(_,CD),!.
+
+%! make_json_doc(+ClioFile,+Path,-JsonStru) is det.
+%  Generate a JSON representation of a kleio stru file (Schema)
+%
+% Format of the json file
+% {
+%  { "path": "PATH TO ThE STRUCTURE FILE USED"
+% { "groups": [
+% 	"GroupName1":{
+% 	 "minimal": "String",
+% 	 "typical": "String",
+% 	 "complete": "String",
+% 	"occurs":[ "group1","group2"],
+% 	"includes:["group2","group3"]
+% 	},
+% 	"GroupName2":
+% 		{	}
+%     ]
+%}
+make_json_doc(ClioFile,DocPath,JSON_STRU):-
+   (exists_directory(DocPath) ;  make_directory(DocPath)),
+   working_directory(CD,DocPath),
+   collect_groups_json(GroupsInfo),
+   JSON_STRU={path:ClioFile,groups:GroupsInfo},
+   working_directory(_,CD),!.
              
 show_groups_html:-
-              clause(clioGroup(G,_),true),
+              clioGroup(G,_),
               %cd(doc),
               concat(G,'.html',GFILE),
               writeln(writing-GFILE),
@@ -533,10 +585,31 @@ show_groups_html:-
               fail.
 show_groups_html:-!.
 
+collect_groups_json(GroupsInfo):-
+   setof(G,I^clioGroup(G,I),ListOfGroups),
+   collect_groups_json(ListOfGroups,GroupsInfo).
+
+collect_groups_json([G|MoreGroups],[GInfo|MoreGInfo]):-
+   collect_group_json(G,GInfo),
+   collect_groups_json(MoreGroups,MoreGInfo).
+
+collect_group_json(G,I):-
+    clioGroup(G,ID),
+        get_props(ID,P),
+    (get_prop(ID,certe,C); C=[]),
+    (get_prop(ID,locus,L); L=[]),
+    (get_prop(ID,ceteri,X); X=[]),
+    (get_prop(ID,pars,Pars); Pars=[]),
+    (get_prop(ID,repetitio,Repetitio); Repetitio=[]),
+    I = {G:{}}.
+
+
+collect_group_json(_,_):-!.
+
 group_to_html(File,G):-
     telling(O),
     tell(File),
-    clause(clioGroup(G,ID),true),
+    clioGroup(G,ID),
     writeln('<html>'),
     writeln('<head>'),
     writelist(['<title>',G,'</title>']),
@@ -594,7 +667,7 @@ show_positional(Certe,[L|Locus],WriteSlash,Ws3):-!,
     (member(L,Certe) -> (write(L),Ws2=yes);true),
     (Ws2=WriteSlash -> true;true), % this unifies Ws2 with WriteSlash if unbound
     show_positional(Certe,Locus,Ws2,Ws3).
-show_positional(_Certe,[],Ws,Ws):-!.
+show_positional(__Certe,[],Ws,Ws):-!.
 
 show_nonpositional(Certe,Locus,yes):-
     member(C,Certe),
@@ -607,7 +680,7 @@ show_nonpositional(Certe,Locus,no):-
     \+ member(C,Locus),
     write(C),write('='),write('...'),    
     fail.    
-show_nonpositional(_Certe,_Locus,_):-write('<br>'),!.
+show_nonpositional(__Certe,__Locus,_):-write('<br>'),!.
 
 
 show_locus(Certe,Locus):-
@@ -642,25 +715,25 @@ show_ancestors(_):-writeln('<br>'),!.
 %*************************************************************
 % %
 show_elements:-nl,write('Elements (clioElement): '),listClioElements,
-              forall(clause(clioElement(E,ID),true),
+              forall(clioElement(E,ID),
               (writeln('-------------'),
                write(E),tab(2),show_props(ID))).
 
-listClioElements:-clause(clioElement(E,_),true),
+listClioElements:-clioElement(E,_),
                 write(E),tab(1),fail.
 listClioElements:-nl,!.
 %*************************************************************
 % clean_groups. deletes previous group definitions
 %*************************************************************
 % %
-clean_groups(_F):-
+clean_groups(__F):-
    all_groups(List),      
    remove_groups(List),
    init_gensym(cgroup),!.
 
 
 remove_groups([G|Other]):-
-   forall(retract(clioGroup(G,ID)),del_props(ID)),
+   forall(retract(clioGroup_(G,ID)),del_props(ID)),
    %report([write('** Previous definition of group '),write(G),
    %        write(' deleted.'),nl]),
    remove_groups(Other),!.
@@ -669,16 +742,61 @@ remove_groups([]):-!.
 % clean_elements. deletes previous element definitions
 %*************************************************************
 % %
-clean_elements(_F):-
+clean_elements(__F):-
    all_elements(List),      
    remove_elements(List),
    init_gensym(cel),!.
 
 
 remove_elements([E|Other]):-
-   forall(retract(clioElement(E,ID)),del_props(ID)),
+   forall(retract(clioElement_(E,ID)),del_props(ID)),
    %report([write('** Previous definition of element '),write(E),
    %        write(' deleted.'),nl]),
    remove_elements(Other),!.
 remove_elements([]):-!.
 
+
+% vim: filetype=prolog ts=3
+% $Date$ 
+% $Author$
+% $Id$
+% $Log: dataDictionary.pl,v $
+% Revision 1.2  2006/05/16 10:52:43  Joaquim
+% update dos ficheiros prolog
+%
+% Revision 1.5  2006/03/27 20:52:18  jrc
+% New token for documentation of groups.
+%
+% Revision 1.4  2006/01/07 19:38:25  jrc
+% Fized a few quirks with the generation html docs.
+%
+% Revision 1.3  2004/07/14 04:04:59  joaquim
+% Auto makes doc for kleio formats when loading the translator
+%
+% Revision 1.2  2004/06/18 07:58:57  joaquim
+% HTML documentation (show_groups_html). Fixes regarding dynamic predicates
+%
+% Revision 1.1  2004/04/08 14:45:24  ltiago
+% Source code has passed from Joaquim to Tiago.
+% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
+% File build.xml, web.xml and velocity.properties were changed
+%
+% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
+% New Repository.
+%
+% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
+% CVS repository moved from llinux to MacOSX.
+%
+% Revision 1.7  2001/01/15 18:25:57  jrc
+% CVS headers, line end cleaning and minor changes
+%
+% ####  History
+%    Stable and commented Oct 90.
+%    get_group_prop added Aug 97
+%    get_element_prop added Nov 2000.
+%
+%    changed behaviour of fons/source so that original fons/source
+%    parameter is preserved across fons/source copying - this is
+%    necessary for preserving nested fons/source hierarchies.Sept 2000
+%    get_group_prop was made bactrakable. Sept 2000
+%*************************************************************

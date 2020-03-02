@@ -1,33 +1,44 @@
-% text of window:  Stru Syntax %
-%*************************************************************
-% compile_command(Cmd,Tokens)
-%    Takes a token list and analyses the syntactic structure
-%    Execution of the command takes place as the command is
-%    analysed, with initialization and finalization code
-%    being called here. Execution of the command, the acutal
-%    processing of the strucutre definition is triggered by
-%    the syntactic rules as they decode the token list.
-%    
-%    The grammar is mostly data driven: we don't expand
-%    each command variant. The grammar reflects
-%    the general form of a command and relies on data predicates
-%    to check for different command variants.
-%    
-%    compile_command is called by processLine and calls predicates
-%    in stru code and data diccionary.
-%
-%    $Author$
-%    $Date$
-%    $Id$
-%    
-%    History
-%       stable OCT 90.
-%       exitus command set to "ok" in 14-NOV-1990
-%       signum added to the keywords in 14-Nov-1990
-%       English keywords treatment added in 9-Sept-2000
-%
-%*************************************************************
-%%
+
+:-module(struSyntax,[
+    
+    compile_command/2
+    
+    ]).
+
+/**<module> Syntax of Kleio stucture files
+
+
+  compile_command(Cmd,Tokens)
+    Takes a token list and analyses the syntactic structure
+    Execution of the command takes place as the command is
+    analysed, with initialization and finalization code
+    being called here. Execution of the command, the acutal
+    processing of the strucutre definition is triggered by
+    the syntactic rules as they decode the token list.
+    
+    The grammar is mostly data driven: we don't expand
+    each command variant. The grammar reflects
+    the general form of a command and relies on data predicates
+    to check for different command variants.
+    
+    compile_command/1 is called by processLine/2 in topLevel.pl and calls predicates
+    in struCode.pl and dataDictionnary.pl .
+    
+    History
+
+    *   stable OCT 90.
+    *   exitus command set to "ok" in 14-NOV-1990
+    *   signum added to the keywords in 14-Nov-1990
+    *   English keywords treatment added in 9-Sept-2000
+
+*************************************************************
+*/
+:-use_module(lexical).
+:-use_module(dataSyntax). 
+:-use_module(struCode).
+:-use_module(errors).
+:-use_module(persistence).
+:-use_module(utilities).
 
 compile_command(CMD,Tokens):- 
     stripSpaces(Tokens,CleanToks),
@@ -215,10 +226,10 @@ list2([First|Rest])-->nameSlash(First),[(comma,_)],list(Rest).
 list2([Name])-->nameSlash(Name).
 
 nameSlash(Name)-->[(_,Name)].
-nameSlash(Name/N)-->[(_,Name)],dataflag2,a_number(N).
+nameSlash(Name/N)-->[(_,Name)],a_slash,a_number(N).
 
 
-% dataflag2-->[(dataflag,2)].
+a_slash -->[(dataflag,2)].
 a_number(N)-->[(number,N)].
 
 clioType( lingua  )--> [(_,V)],{is_kw(V, lingua)}.

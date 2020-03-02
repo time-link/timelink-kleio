@@ -4,15 +4,20 @@
 % Joaquim Carvalho Lousa Novembro de 99
 %
 %
-:-op(211,xfy,estrutura).
-:-op(230,fx,traduzir).
 %
 % trailing "/" or "\" on dir names please.
 %
+:-use_module('swiCompatibility').
+:-use_module('utilities').
+:-use_module('topLevel').
+:-use_module(persistence).
+:-use_module(reports).
+:-use_module(dataDictionary). % needed to make_html_doc
+
 default_value(stru_dir,SD):- getenv(kleio_stru_dir,SD),!.
 default_value(stru_dir,'~/clio/src/'):-!.
 default_value(data_dir,SD):- getenv(kleio_data_dir,SD),!.
-default_value(data_dir,'~/mhk_users/'):-!.
+default_value(data_dir,'~/mhk-home/sources/'):-!.
 
 
 set_defaults :-
@@ -25,7 +30,8 @@ check_command_line :-
 	check_arg(strufile,SF),
 	check_arg(datafile,DF),
 	check_arg(echo,Echo),
-	put_value(echo,Echo),
+    put_value(echo,Echo),
+    format('Kleio commando line paramenters, stru ~w, file ~w, echo ~w~n~n',[SF,DF,Echo]),
 	pwd,
 	trad1(DF,SF),
 	halt.
@@ -50,26 +56,27 @@ check_arg(echo,E) :-
 
 check_arg(echo,yes).
 
-traduzir D :-
-     trad(D,'gacto2.str').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEBUGGER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+startXX:-
+    writeln("Starting debugger..."),  
+    put_value(echo,yes),
+    trad1('../tests/test_translations/teste.cli','../tests/dev/gacto2.str').
 
 
-traduzir D estrutura E :-
-	trad(D,E).
-
-traduzir D estrutura S :-
-	writeln('Translating '-D-' with '-S-'failed.').
-
+%! trad1(+DatFile,+StruFile) is det.
+%  translates DatFile using strucutre StuFile
+%
 trad1(DatFile,StruFile):-
     writeln(structure-StruFile),
     break_fname(StruFile,P,_File,Base,_),
     put_value(stru_dir,P),
 	% chdir(P),
-    list_to_a0([Base,'.','rpt'],Report),
+    list_to_a0([Base,'.','srpt'],Report),
     prepare_report(Report),
     stru(StruFile),
     close_report_file,
-    writeln(data-DatFile),
     put_value(data_file,DatFile),
     break_fname(DatFile,PD,_FileD,BaseD,_),
 	 put_value(data_dir,PD),
@@ -84,19 +91,16 @@ trad1(DatFile,StruFile):-
     close_report_file,!.
 
 trad_stru_only(StruFile):-
-    writeln(structure-StruFile),
     break_fname(StruFile,P,_File,Base,_),
-    writeln((StruFile,P,_File,Base,_)),
     put_value(stru_dir,P),
 	% chdir(P),
 	path_sep(Sep),
-    list_to_a0([P,Sep,Base,'.','rpt'],Report),
+    list_to_a0([P,Sep,Base,'.','srpt'],Report),
     prepare_report(Report),
     stru(StruFile),
     close_report_file,!.
 
 trad_dat_only(DatFile):-
-    writeln(data-DatFile),
     put_value(data_file,DatFile),
     break_fname(DatFile,PD,_FileD,BaseD,_),
 	 put_value(data_dir,PD),
@@ -114,27 +118,21 @@ trad_dat_only(DatFile):-
 trad(D,E):-
     get_value(stru_dir,Sdir),
     concat(Sdir,E,StruFile),
-    writeln(structure-StruFile),
-    break_fname(StruFile,P,File,Base,_),writeln('changing dir to '-P),
-    chdir(P),writeln('Dir changed.'),
-    list_to_a0([Base,'.','rpt'],Report),
-    writeln('Preparing to report to file '-Report),
+    break_fname(StruFile,P,__File,Base,_),
+    chdir(P),
+    list_to_a0([Base,'.','srpt'],Report),% TODO: file_name_extension(Base,'srpt',Report).
     prepare_report(Report),
-    writeln('structure file is '-File),
-    writelist(['Processing structure file',File]),
     stru(StruFile),
     close_report_file,
     get_value(data_dir,Ddir),
     concat(Ddir,D,DatFile),
-    writeln(data-DatFile),
     put_value(data_file,DatFile),
-    break_fname(DatFile,PD,FileD,BaseD,_),
+    break_fname(DatFile,PD,__FileD,BaseD,_),
     chdir(PD),
-    list_to_a0([BaseD,'.','rpt'],ReportD),
+    list_to_a0([BaseD,'.','rpt'],ReportD),% TODO: file_name_extension(BaseD,'rpt',ReportD).
     prepare_report(ReportD),
-    writelist(['Processing data file',FileD]),
     dat(DatFile),
-     path_sep(Sep),
+    path_sep(Sep),
     list_to_a0([PD,Sep,BaseD,'.','err'],ReportErrors),
     prepare_report(ReportErrors),
     report([perror_count]),   close_report_file,!.
@@ -147,64 +145,13 @@ do_stru(E) :-
     writeln(structure-StruFile),
     break_fname(StruFile,P,File,Base,_),writeln('changing dir to '-P),
     chdir(P),writeln('Dir changed.'),
-    list_to_a0([Base,'.','rpt'],Report),
+    list_to_a0([Base,'.','srpt'],Report),
     writeln('Preparing to report to file '-Report),
     prepare_report(Report),
     writeln('structure file is '-File),
     writelist(['Processing structure file',File]),
     stru(StruFile),
     close_report_file.
-
-
-prepare_report(R):-
-   set_report_file(R),
-   set_report(on),
-   report([pclio_version]),!.
-
-%%  dict_of_files(-D) is det.
-%   List files recursively under the working directory, and
-%   unify D with the result in the form of the dict with
-%        <subdirectory name> - <sub list> for subdirectories.
-%
-% ?- dict_of_files(D).
-% by Kuniaki Mukai
-
-ignore_special_dots((.)).
-ignore_special_dots((..)).
-
-%
-dict_of_files(X):- directory_files((.), Files),
-                directory_files(Files, X, []).
-%
-directory_files([], X, X).
-directory_files([F|R], X, Y):- ignore_special_dots(F), !,
-           directory_files(R, X, Y).
-directory_files([D|R], [D-Z|X], Y):- exists_directory(D), !,
-                directory_files(D, Files),
-                working_directory(_, D),
-                directory_files(Files, Z, []),
-                working_directory(_, (..)),
-                directory_files(R, X, Y).
-directory_files([F|R], [F|X], Y):- directory_files(R, X, Y).
-
-
-
-
-
-%******************************************************
-%  pclio_version prints version,
-%    compiler version, date and time
-%******************************************************
-%  %
-pclio_version:-
-		  clio_version(P),writeln(P),
-		  get_time(T),
-		  convert_time(T,Year,Month,Day,Hour,Min,_,_), D = Day-Month-Year,
-		  write(D),
-		  Time = Hour-Min,
-		  tab(1),write(Time),
-		  nl,
-		  !.
 
 layout(voyager):-
 		put_value(data_dir,'C:\\WINDOWS\\Profiles\\joaquim\\My Documents\\develop\\mhk.users\\'),
@@ -226,12 +173,7 @@ cddev:-
     get_value(stru_dir,S),
     cd(S),pwd.
 
-
-
-
-
 %:-pclio_version.
 
-:- set_defaults.
 :-check_command_line.
 

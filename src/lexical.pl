@@ -1,65 +1,44 @@
-% vim: filetype=prolog
-% $Id$
-% $Date$
-% $Author$
-% $Log: lexical.pl,v $
-% Revision 1.2  2006/05/16 10:52:50  Joaquim
-% update dos ficheiros prolog
-%
-% Revision 1.1  2004/04/08 14:45:24  ltiago
-% Source code has passed from Joaquim to Tiago.
-% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
-% File build.xml, web.xml and velocity.properties were changed
-%
-% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
-% New Repository.
-%
-% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
-% CVS repository moved from llinux to MacOSX.
-%
-% Revision 1.3  2001/01/11 13:18:35  jrc
-% Removed a bug introduced in a previous patch where <CR> (ascii 13)
-% were removed from the input stream, making Mac originated files
-% unusable. The file basicio.pl was also involved in this bug.
-%
-% Now both CR and NL have "return" chartype. basicio.pl handles
-% the CR+NL sequence as a single end of line.
-%
-%******************************************************
-%  Lexical rules
-%  =============
-%    This file contains the code for the tokenization of input
-%    both for kleio commands (e.g. structure definitions)
-%     and for kleio source data files.
-%    It contains a  predicate 'get_tokens'/3 which is called
-%    by readlines/1 in the 'clio input top level' file, together with
-%    a grammar for tokenisation of input.
-% 
-%  get_tokens(F,Chars,Tokens) transforms a list of characteres into
-%      a list of tokens. Tokenisation varies according to F which can be
-%      either 'dat' if chars correspond to Kleio source data or 'cmd' if
-%      they correspond to a command.
-%    The 'Chars' List and 'F' are bound on call.
-%    The 'Chars' list is build from the an input file by 'readlines2'
-%    Each element in 'Chars' is represented by a structure (Char, Type),
-%    where 'Char' is the Ascii code for the character and 
-%    'Type' is a constant that gives the type of the char,
-%    (digit, letter, eof, etc...). 
-%    Char types are defined by 'chartype' predicates. 
-%    
-%    History
-%     Dataflags added 27 AUG 90
-%     Keyword detection in command files was 'moved up' to
-%       stru syntax. 21 SEPT 90
-%     string to number conversion added to num(V) in  2 OCT 90 
-%     cuts, added in several rules to improve efficiency 14 OCT 90.
-%     order of chartype predicates changed to speed resolution FEB 91
-%     chartype(10,return) added FEB 91 for compatibility with BIMprolog on UNIX
-%******************************************************
-%%
+:-module(lexical,[
+    get_tokens/3,
+    names/3,
+    chartype/2,
+    data_flag/2,
+    data_flag_char/2,
+    createchartype/1,
+    showDataFlags/0
+    ]).
 
+/**  <module> Lexical rules
+
+     This file contains the code for the tokenization of input
+     both for kleio commands (e.g. structure definitions)
+      and for kleio source data files.
+
+     It contains a  predicate 'get_tokens'/3 which is called
+     by readlines/1 in the 'clio input top level' file, together with
+     a grammar for tokenisation of input.
+     
+*/
+:-use_module(utilities).
+:-use_module(errors).
+
+%% get_tokens(+F,+Chars,?Tokens) is det.
+%
+% Transforms a list of characteres into
+% a list of tokens. Tokenisation varies according to F which can be
+% either _dat_ if chars correspond to Kleio source data or _cmd_ if
+% they correspond to a command.
+%
+% The 'Chars' List and 'F' are bound on call.
+% The 'Chars' list is build from the input file by 'readlines2'
+% Each element in 'Chars' is represented by a structure (Char, Type),
+% where 'Char' is the Ascii code for the character and 
+% 'Type' is a constant that gives the type of the char,
+% (digit, letter, eof, etc...). 
+% Char types are defined by 'chartype' predicates. 
+%
 get_tokens(F,Chars,Tokens):-
-   phrase(toks(F,Tokens),Chars),!. % call the grammar %
+   phrase(toks(F,Tokens),Chars),!.  % call the grammar
 
 %******************************************************
 %  Grammar for the tokenisation of kleio files 
@@ -69,7 +48,7 @@ get_tokens(F,Chars,Tokens):-
 %    it is defined simply as a list of 'tok'
 %******************************************************
 %  %
-toks(_F,[])-->[].
+toks(__F,[])-->[].
 toks(F,[T|R])-->tok(F,T),toks(F,R).
 toks(F,[TOK])-->tok(F,TOK).
 
@@ -79,7 +58,7 @@ toks(F,[TOK])-->tok(F,TOK).
 %  %
 tok(dat,(names,V))-->names(V),!.
 tok(dat,(fill,V))-->fillsp(V),!.
-tok(dat,(dataflag,N))-->[(_C,T)],{data_flag(N,T),!}.
+tok(dat,(dataflag,N))-->[(__C,T)],{data_flag(N,T),!}.
 tok(dat,(number,N))-->num(N),!.
 tok(dat,(T,C))-->other((T,C),[upper,lower,digit,space,tab]),
              {\+ data_flag(_,T),!}.
@@ -91,14 +70,14 @@ tok(cmd,(fill,V))   -->fillsp(V).
 tok(cmd,(name,V))   -->names(V).
 tok(cmd,(number,V)) -->num(V).
 tok(cmd,(string,V)) -->qstring(V).
-tok(cmd,(dataflag,2))-->[(_C,T)],{data_flag(2,T)}.
+tok(cmd,(dataflag,2))-->[(__C,T)],{data_flag(2,T)}.
 tok(cmd,(T)) -->other(T,[upper,lower,digit,space,tab]),
                        {\+ data_flag(2,T)}.
 
 %******************************************************
 %   alpha numeric strings (letters or digits). 
 %******************************************************
-% CURRENTLY NOT USED COMMENTED OUT
+% 
 alpha(V)	           -->alphaList(L),{!,name(V,L)}.
 
 alphaList([C|R])    -->alphaChar(C),alphaList(R).
@@ -131,8 +110,7 @@ other((T,C),O)-->[(C,T)],{\+ member_check(T,O)}.
 %   keywords: we take any non ambiguous abreviation %
 %******************************************************
 % CURRENTLY NOT USED COMMENTED OUT
-
-kw(V)-->letters(L),{!,fkw(L,V)}.
+%kw(V)-->letters(L),{!,fkw(L,V)}.
 
 letters(V)-->letterList(L),{!, upper_to_lower(L,V)}.
  %
@@ -191,20 +169,17 @@ qstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
              {!,name(V,L)}.
 
 qstr(Q,[])   -->[(_,Q)],!.
-qstr(_Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
+qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
 qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
 
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
 
 
-%******************************************************
+%% chartype(?Code,?Type) is det.
+%
 %  Types of characters
-% Only standard ASCII is recognized %
-% always succeds. If char is unknown 'unkown' is returned
-%   as the type %
-%******************************************************
-%  %
+%  
 chartype(32,space):-!.
 chartype(9,tab):-!.
 chartype(X,lower):- X > 96,X<123,!.   % lower case letters %
@@ -241,11 +216,42 @@ chartype(94,circunflex):-!.
 chartype(95,underscore):-!.
 chartype(_,unknown):-!.
 
+%% createchartype(+Charlist) is det.
+%
+%  Outputs a list of chartype/2 to current output
+%
+% Usage: chartype(`!@#$%^&`). 
+%
+% ==
+%?- lexical:createchartype(`!"#$%&7()`).
+% chartype(33,'!'):-!.
+% chartype(34,'"'):-!.
+% chartype(35,'#'):-!.
+% chartype(36,'$'):-!.
+% chartype(37,'%'):-!.
+% chartype(38,'&'):-!.
+% chartype(55,'7'):-!.
+% chartype(40,'('):-!.
+% chartype(41,')'):-!.
+% ==
 
-%******************************************************
-%  current Dataflags 
-%******************************************************
-%  %
+createchartype([A|B]):-
+  cct(A),
+  createchartype(B).
+createchartype([]):-!.
+cct(X):-
+   write('chartype('),
+   write(X),
+   write(','),
+   put(39),put(X),put(39),
+   write('):-!.'),nl.
+
+
+
+%% data_flag(N,Name) is det.
+% 
+% Defines data fags: special characters used in kleio data files
+%
 data_flag(1,dollar).
 data_flag(2,slash).
 data_flag(3,equal).
@@ -261,3 +267,56 @@ data_flag_char(N,C):-data_flag(N,T),
                      chartype(C,T).
 
 data_flag_list(L):-setof((N,X),(data_flag_char(N,X)),L).
+
+%% showDataFlags is det.
+%  Show current values for dataflags
+%
+showDataFlags:-data_flag(N,F),chartype(C,F),
+               name(S,[C]),
+               write('dataflag '),
+               write(N),tab(1),
+               write(S),write(' ('),write(F),writeln(')'),
+               fail,!.
+showDataFlags.
+
+
+
+% Pre-git history
+% $Id$
+% $Date$
+% $Author$
+% $Log: lexical.pl,v $
+% Revision 1.2  2006/05/16 10:52:50  Joaquim
+% update dos ficheiros prolog
+%
+% Revision 1.1  2004/04/08 14:45:24  ltiago
+% Source code has passed from Joaquim to Tiago.
+% Since that, source was recofigured to work on a windows platform under Apache Tomcat 5.0.18
+% File build.xml, web.xml and velocity.properties were changed
+%
+% Revision 1.1.1.1  2001/04/19 23:25:43  jrc
+% New Repository.
+%
+% Revision 1.1.1.1  2001/04/18 23:34:39  jrc
+% CVS repository moved from llinux to MacOSX.
+%
+% Revision 1.3  2001/01/11 13:18:35  jrc
+% Removed a bug introduced in a previous patch where <CR> (ascii 13)
+% were removed from the input stream, making Mac originated files
+% unusable. The file basicio.pl was also involved in this bug.
+%
+% Now both CR and NL have "return" chartype. basicio.pl handles
+% the CR+NL sequence as a single end of line.
+%
+/*
+
+(Even older) History
+Dataflags added 27 AUG 90
+Keyword detection in command files was 'moved up' to
+  stru syntax. 21 SEPT 90
+string to number conversion added to num(V) in  2 OCT 90 
+cuts, added in several rules to improve efficiency 14 OCT 90.
+order of chartype predicates changed to speed resolution FEB 91
+chartype(10,return) added FEB 91 for compatibility with BIMprolog on UNIX
+
+*/

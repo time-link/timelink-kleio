@@ -1,19 +1,25 @@
-:-op(230,fx,mapping).
-:-op(220,xfx,to).
-:-op(210,fx,class).
-:-op(209,xfy,super).
-:-op(208,xfy,table).
-:-op(207,xfy,with).
-:-op(206,fx,attributes).
-:-op(204,xfy,and).
-:-op(203,xfy,column).
-:-op(203,xfy,baseclass).
-:-op(203,xfy,coltype).
-:-op(203,xfy,colsize).
-:-op(203,xfy,colprecision).
-:-op(203,xfy,pkey).
+:-module(mappings,[
+    mapping/1,
+    class/1,
+    op(230,fx,mapping),
+    op(220,xfx,to),
+    op(210,fx,class),
+    op(209,xfy,super),
+    op(208,xfy,table),
+    op(207,xfy,with),
+    op(206,fx,attributes),
+    op(204,xfy,and),
+    op(203,xfy,column),
+    op(203,xfy,baseclass),
+    op(203,xfy,coltype),
+    op(203,xfy,colsize),
+    op(203,xfy,colprecision),
+    op(203,xfy,pkey)
+]).
+
 :-discontiguous(mapping/1).
 :-discontiguous(class/1).
+
 
 mapping geoentity to class geoentity.
 class geoentity super entity table geoentities

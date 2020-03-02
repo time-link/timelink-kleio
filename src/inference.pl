@@ -1,11 +1,15 @@
-:-op(230,fx,if).
-:-op(220,xfy,then).
-:-op(210,xfy,and).
-:-op(210,xfy,or).
-/*
-    This file contains the inference rules for automatic relations and attributes.
+:-module(inference,[
+    if/1,
+    op(230,fx,if),
+    op(220,xfy,then),
+    op(210,xfy,and),
+    op(210,xfy,or)
+]).
+
+/** <module>This file contains the inference rules for automatic relations and attributes.
 
     an inference rule:
+==
      if PATH then ACTION
      or
      if PATH and PATH or PATH then ACTION and ACTION
@@ -26,125 +30,165 @@
         relation(type,value,idorigin,iddestinhation) -- generate a relation
         attribute(id,type,value). -- generate an attribute
         newscope.  -- clean current scope (forgets previous actor and objects).
+==
    */
 
-   % relations for family processing
-      if [sequence(_),extends(person,N),extends('kin-father',P)]
-      then
-           relation('*family','parent',P,N).
+%    % relations for family processing
+%    % n$
+%    %   pai$
+%    %   mae$
+%    % TODO BUG Isto gera toneladas de relações erradas quando os actos são "rasos"
+%    %  ou seja tem todos os parentes ao mesmo nível:
+%       %   n$
+%       %     pai$
+%       %     mae$
+%       %     ppai$
+%       %     mpai$
+%       %     pmae$
+%       %     mmae$
+%       if [sequence(_),extends(person,N),extends('kin-father',P)]
+%       then
+%            relation('*family','parent',P,N).
 
-      if [sequence(_),extends(person,N),extends('kin-mother',M)]
-      then
-           relation('*family','parent',M,N).
-
-
-       %direct parents as a couple for family processing
-       if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
-       then
-            relation('*family','co-parent',P,M) and
-            relation('*family','co-parent',M,P).
-
-
-        % sons and daughters for family processing
-        if [sequence(_Path),extends(person,N),extends('kin-son',F)]
-        then
-            relation('*family','parent',N,F).
-
-        if [sequence(_Path),extends(person,N),extends('kin-daughter',F)]
-        then
-            relation('*family','parent',N,F).
-
-
-         % co-parents from son-parent relations
-         if [sequence(Path),extends(person,P),extends('kin-son',F)] and
-            [sequence(Path),extends(person,M),extends('kin-son',F)] and
-             clause(P\=M)
-         then
-             relation('*family','co-parent',P,M) and
-             relation('*family', 'co-parent',P,M).
-
-         if [sequence(Path),extends(person,P),extends('kin-daughter',F)] and
-            [sequence(Path),extends(person,M),extends('kin-daughter',F)] and
-             clause(P\=M)
-         then
-             relation('*family','co-parent',P,M) and
-             relation('*family', 'co-parent',P,M).
-
-        % nested groups like son/daugther inside wife inside actor
-        % r1
-        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-son',F)]
-              then
-                   relation('*family','co-parent',P,M) and
-                   relation('*family','co-parent',M,P).
-        if [sequence(Path),extends('male',P),extends('kin-wife',M),extends('kin-daugther',F)]
-              then
-                   relation('*family','co-parent',P,M) and
-                   relation('*family','co-parent',M,P).
-        % r2
-       if [sequence(Path),extends('female',P),extends('kin-husband',M),extends('kin-daughter',F)]
-             then
-                  relation('*family','co-parent',P,M) and
-                  relation('*family','co-parent',M,P).
-       if [sequence(Path),extends('female',P),extends('kin-husband',M),extends('kin-son',F)]
-             then
-                  relation('*family','co-parent',P,M) and
-                  relation('*family','co-parent',M,P).
-
-      % parent-child from nested groups like son/daugther inside wife inside actor
-      % r1
-      if [sequence(Path),extends('person',P),extends('kin-wife',_),extends('kin-son',F)]
-            then
-                 relation('*family','parent',P,F).
-      if [sequence(Path),extends('person',P),extends('kin-wife',_),extends('kin-daughter',F)]
-            then
-                 relation('*family','parent',P,F).
-
-      % r2
-     if [sequence(Path),extends('person',P),extends('kin-husband',_),extends('kin-daughter',F)]
-           then
-                relation('*family','parent',P,F).
-     if [sequence(Path),extends('person',P),extends('kin-husband',_),extends('kin-son',F)]
-           then
-                relation('*family','parent',P,F).
+%       % isto está broken em casos em todos aparecem debaixo de n em ordem genealogica
+%       % que é o que acontece nos batismos de ilhavo:
+%       %   n$
+%       %     pai$
+%       %     mae$
+%       %     ppai$
+%       %     mpai$
+%       %     pmae$
+%       %     mmae$
+%       %
+%       if [sequence(_),extends(person,N),extends('kin-mother',M)]
+%       then
+%            relation('*family','parent',M,N).
 
 
-        % co-parents from nested groups like son/daugther inside husband inside actor
-        % r3
-        if [sequence(Path),extends('person',P),extends('kin-wife',M),extends('kin-son',_)]
-              then
-                   relation('*family','co-parent',P,M) and
-                   relation('*family','co-parent',M,P).
-       % r4
-       if [sequence(Path),extends('person',M),extends('kin-husband',P),extends('kin-daughter',_)]
-             then
-                  relation('*family','co-parent',P,M) and
-                  relation('*family','co-parent',M,P).
-       if [sequence(Path),extends('person',M),extends('kin-husband',P),extends('kin-son',_)]
-             then
-                  relation('*family','co-parent',P,M) and
-                  relation('*family','co-parent',M,P).
+%     %direct parents as a couple for family processing
+%     % n$
+%     %   pai$
+%     %   mae$
+%     % TODO: esta tb está mal, porque permite que ppai e mmae gerem uma relação quando estao diretamente
+%     % debaixo do mesmo ato 
+%       %   n$
+%       %     pai$
+%       %     mae$
+%       %     ppai$
+%       %     mpai$
+%       %     pmae$
+%       %     mmae$
+%     % 
+%        if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
+%        then
+%             relation('*family','co-parent',P,M) and
+%             relation('*family','co-parent',M,P).
 
-  % signaling of husband wife couples. Overlaps with co-parent but includes also husband-wife occurrences without children
-        %direct parents as a couple for family processing
-        if [sequence(Path),extends('kin-husband',P)] and [sequence(Path),extends('kin-wife',M)]
-            then
-                 relation('*family','couple',P,M) and
-                 relation('*family','couple',M,P).
 
-        if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
-            then
-                 relation('*family','couple',P,M) and
-                 relation('*family','couple',M,P).
+%     % sons and daughters for family processing
+%     % n$
+%     %   filho$
+%     %   filha$
+%     %
+%         if [sequence(__Path),extends(person,N),extends('kin-son',F)]
+%         then
+%             relation('*family','parent',N,F).
 
-         if [sequence(Path),extends('person',P),extends('kin-wife',M)]
-            then
-                 relation('*family','couple',P,M) and
-                 relation('*family','couple',M,P).
+%         if [sequence(__Path),extends(person,N),extends('kin-daughter',F)]
+%         then
+%             relation('*family','parent',N,F).
 
-       if [sequence(Path),extends('person',P),extends('kin-husband',M)]
-             then
-                  relation('*family','couple',P,M) and
-                  relation('*family','couple',M,P).
+
+%          % co-parents from son-parent relations
+%          if [sequence(Path),extends(person,P),extends('kin-son',F)] and
+%             [sequence(Path),extends(person,M),extends('kin-son',F)] and
+%              clause(P\=M)
+%          then
+%              relation('*family','co-parent',P,M) and
+%              relation('*family', 'co-parent',P,M).
+
+%          if [sequence(Path),extends(person,P),extends('kin-daughter',F)] and
+%             [sequence(Path),extends(person,M),extends('kin-daughter',F)] and
+%              clause(P\=M)
+%          then
+%              relation('*family','co-parent',P,M) and
+%              relation('*family', 'co-parent',P,M).
+
+%         % nested groups like son/daugther inside wife inside actor
+%         % r1
+%         if [sequence(_Path),extends('male',P),extends('kin-wife',M),extends('kin-son',_F)]
+%               then
+%                    relation('*family','co-parent',P,M) and
+%                    relation('*family','co-parent',M,P).
+%         if [sequence(_Path),extends('male',P),extends('kin-wife',M),extends('kin-daugther',_F)]
+%               then
+%                    relation('*family','co-parent',P,M) and
+%                    relation('*family','co-parent',M,P).
+%         % r2
+%        if [sequence(_Path),extends('female',P),extends('kin-husband',M),extends('kin-daughter',_F)]
+%              then
+%                   relation('*family','co-parent',P,M) and
+%                   relation('*family','co-parent',M,P).
+%        if [sequence(_),extends('female',P),extends('kin-husband',M),extends('kin-son',_)]
+%              then
+%                   relation('*family','co-parent',P,M) and
+%                   relation('*family','co-parent',M,P).
+
+%       % parent-child from nested groups like son/daugther inside wife inside actor
+%       % r1
+%       if [sequence(_),extends('person',P),extends('kin-wife',_),extends('kin-son',F)]
+%             then
+%                  relation('*family','parent',P,F).
+%       if [sequence(_),extends('person',P),extends('kin-wife',_),extends('kin-daughter',F)]
+%             then
+%                  relation('*family','parent',P,F).
+
+%       % r2
+%      if [sequence(_),extends('person',P),extends('kin-husband',_),extends('kin-daughter',F)]
+%            then
+%                 relation('*family','parent',P,F).
+%      if [sequence(_),extends('person',P),extends('kin-husband',_),extends('kin-son',F)]
+%            then
+%                 relation('*family','parent',P,F).
+
+
+%         % co-parents from nested groups like son/daugther inside husband inside actor
+%         % r3
+%         if [sequence(_),extends('person',P),extends('kin-wife',M),extends('kin-son',_)]
+%               then
+%                    relation('*family','co-parent',P,M) and
+%                    relation('*family','co-parent',M,P).
+%        % r4
+%        if [sequence(_),extends('person',M),extends('kin-husband',P),extends('kin-daughter',_)]
+%              then
+%                   relation('*family','co-parent',P,M) and
+%                   relation('*family','co-parent',M,P).
+%        if [sequence(_),extends('person',M),extends('kin-husband',P),extends('kin-son',_)]
+%              then
+%                   relation('*family','co-parent',P,M) and
+%                   relation('*family','co-parent',M,P).
+
+%   % signaling of husband wife couples. Overlaps with co-parent but includes also husband-wife occurrences without children
+%         %direct parents as a couple for family processing
+%         if [sequence(Path),extends('kin-husband',P)] and [sequence(Path),extends('kin-wife',M)]
+%             then
+%                  relation('*family','couple',P,M) and
+%                  relation('*family','couple',M,P).
+
+%         if [sequence(Path),extends('kin-father',P)] and [sequence(Path),extends('kin-mother',M)]
+%             then
+%                  relation('*family','couple',P,M) and
+%                  relation('*family','couple',M,P).
+
+%          if [sequence(_),extends('person',P),extends('kin-wife',M)]
+%             then
+%                  relation('*family','couple',P,M) and
+%                  relation('*family','couple',M,P).
+
+%        if [sequence(_),extends('person',P),extends('kin-husband',M)]
+%              then
+%                   relation('*family','couple',P,M) and
+%                   relation('*family','couple',M,P).
 
    % male actor and direct parents
    if [sequence(_),extends(actorm,N),pai(P)]
@@ -174,20 +218,20 @@
         attribute(M,ec,c).
 
     % sons and daughters
-    if [sequence(_Path),extends(person,N),filho(F)]
+    if [sequence(__Path),extends(person,N),filho(F)]
     then
         relation(parentesco,filho,F,N).
         
-    if [sequence(_Path),extends(person,N),filha(F)]
+    if [sequence(__Path),extends(person,N),filha(F)]
     then
         relation(parentesco,filha,F,N).
 
    % brothers and sisters
-       if [sequence(_Path),extends(person,N),irmao(F)]
+       if [sequence(__Path),extends(person,N),irmao(F)]
        then
            relation(parentesco,irmao,F,N).
 
-       if [sequence(_Path),extends(person,N),irma(F)]
+       if [sequence(__Path),extends(person,N),irma(F)]
        then
            relation(parentesco,irma,F,N).
 
@@ -222,7 +266,7 @@
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
 
-    if [sequence(Path),cas(C),noivo(N),mulher1(M)]
+    if [sequence(_),cas(_),noivo(N),mulher1(M)]
         then
             relation(parentesco,foi-marido,N,M) and
             attribute(M,morta,antes).
@@ -232,7 +276,7 @@
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
 
-    if [sequence(Path),cas(C),noivo(N),mulher2(M)]
+    if [sequence(_),cas(_),noivo(N),mulher2(M)]
         then
             relation(parentesco,foi-marido,N,M) and
             attribute(M,morta,antes).
@@ -241,7 +285,7 @@
     then
         relation(parentesco,foi-marido,N,M) and
         attribute(M,morta,antes).
-    if [sequence(Path),cas(C),noivo(N),mulher3(M)]
+    if [sequence(_),cas(_),noivo(N),mulher3(M)]
       then
           relation(parentesco,foi-marido,N,M) and
           attribute(M,morta,antes).
@@ -305,7 +349,7 @@
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
-     if [sequence(Path),cas(C),noiva(N),marido1(M)]
+     if [sequence(_),cas(_),noiva(N),marido1(M)]
       then
           relation(parentesco,foi-mulher,N,M) and
           attribute(M,morto,antes).
@@ -315,7 +359,7 @@
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
 
-    if [sequence(Path),cas(C),noiva(N),marido2(M)]
+    if [sequence(_),cas(_),noiva(N),marido2(M)]
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
@@ -324,7 +368,7 @@
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
-     if [sequence(Path),cas(C),noiva(N),marido3(M)]
+     if [sequence(_),cas(_),noiva(N),marido3(M)]
      then
          relation(parentesco,foi-mulher,N,M) and
          attribute(M,morto,antes).
@@ -333,7 +377,7 @@
     then
         relation(parentesco,foi-mulher,N,M) and
         attribute(M,morto,antes).
-    if [sequence(Path),cas(C),noiva(N),marido4(M)]
+    if [sequence(_),cas(_),noiva(N),marido4(M)]
         then
             relation(parentesco,foi-mulher,N,M) and
             attribute(M,morto,antes).
@@ -359,12 +403,17 @@
 
  if [sequence(_),pai(Son),ppai(Parent)]
  then relation(parentesco,pai,Parent,Son).
+
+% these are the ones that allow "flat" acts
  if [sequence(Path),pai(Son)] and [sequence(Path),ppai(Parent)]
  then relation(parentesco,pai,Parent,Son).
  if [sequence(_),pai(Son),mpai(Parent)]
  then relation(parentesco,mae,Parent,Son).
+
+% these are the ones that allow "flat" acts
  if [sequence(Path),pai(Son)] and [sequence(Path),mpai(Parent)]
  then relation(parentesco,mae,Parent,Son).
+
  if [sequence(Path),ppai(Husband)] and [sequence(Path),mpai(Wife)]
  then relation(parentesco,marido,Husband,Wife).
 
@@ -2312,6 +2361,21 @@ then relation(parentesco,marido,Husband,Wife).
     special cases
     
     godfathers and godmothers in baptisms
+
+    TODO This SHOULD account for flat structures
+
+    pad$joaquim
+    mad$margarida
+    ppad$armenio
+    pmad$antonio
+
+    and for nested structures? it is missing... and every case is nested because nexted has priority
+    pad$joaquim
+        ppad$armenio
+    mad$margarida
+        pmad$antonio
+
+
     */
 if [sequence(Path),mad(Mad)]   and [sequence(Path),pmad(PMad)]   then relation(parentesco,pai,PMad,Mad).
 if [sequence(Path),mad(Mad)]   and [sequence(Path),mmad(MMad)]   then relation(parentesco,mae,MMad,Mad).
@@ -2342,7 +2406,7 @@ if [sequence(Path),mad4(Mad)] and [sequence(Path),mrmad4(MrMad)] then relation(p
 if [sequence(Path),pad4(Pad)] and [sequence(Path),ppad4(PPad)] then relation(parentesco,pai,PPad,Pad).
 
 /*    rois (household lists) */
-if [kleio(_K),fonte(_F),rol(_R),fogo(FG),n(N)] then
+if [kleio(__K),fonte(__F),rol(__R),fogo(FG),n(N)] then
   relation(function,'has-head-of-household',FG,N).
 
 if [kleio(K),fonte(F),rol(R),fogo(FG),n(N)] and
@@ -2443,11 +2507,11 @@ if [kleio(K),fonte(F),rol(R),fogo(FG),n(N)] and
  /*
   vereacoes
  */
-if [sequence(_Path),acto(_P),presente(M)]
+if [sequence(__Path),acto(__P),presente(M)]
    then
 
         attribute(M,assina,sim).
-if [sequence(_Path),acto(_P),'presente-f'(M)]
+if [sequence(__Path),acto(__P),'presente-f'(M)]
    then
 
         attribute(M,assina,sim).
@@ -2481,28 +2545,28 @@ if [sequence(_Path),acto(_P),'presente-f'(M)]
 
 */
 % memorias paroquiais de 1758
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),provincia(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),provincia(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),comarca(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),comarca(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),termoc(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),termoc(P)]
 then
     relation(geografica,'pertence-civil',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),bispado(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),bispado(P)]
 then
     relation(geografica,'pertence-eccle',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),lugar(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),lugar(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),igreja(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),igreja(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),irmandade(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),irmandade(P)]
 then
     relation(geografica,'contem',F,P).
-if [sequence(_Path),extends(memoria58,_Mid),freguesia(F),confraria(P)]
+if [sequence(__Path),extends(memoria58,__Mid),freguesia(F),confraria(P)]
 then
     relation(geografica,'contem',F,P).
 /*
@@ -2989,11 +3053,11 @@ then
 
     scope rules
 ***************************************************************/
-if [sequence(_Path),extends('historical-act',_Act)]
+if [sequence(__Path),extends('historical-act',__Act)]
 then newscope.
 
-if [kleio(_K),fonte(_F),rol(_R),fogo(_FG)]
+if [kleio(__K),fonte(__F),rol(__R),fogo(__FG)]
 then newscope.
 
-if [kleio(_K),fonte(_F),crisma(_R),n(_N)]
+if [kleio(__K),fonte(__F),crisma(__R),n(__N)]
 then newscope.
