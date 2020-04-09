@@ -317,10 +317,10 @@ part name=acto;
   repeat=presente,presente-f,referido,referida,item,ls,atr,rel
 
 part name=item; source=object;
-    repeat=presente,presente-f,referido,referida;
+    repeat=presente,presente-f,referido,referida,ls,rel;
     guaranteed=titulo;
     position=titulo;
-    also=resumo,id,obs
+    also=resumo,id,tipo,obs
 
 note *************************************************************************************************++++
 note livros de registo de acoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
@@ -494,9 +494,9 @@ note *****************************************************************
 part 	name=chanc;
  source=pt-acto;
  repeat=n,referido,referida,item;
- guaranteed=id,dia,mes,ano,loc;
+ guaranteed=id,dia,mes,ano;
  position=id,dia,mes,ano,loc;
- also=resumo,obs
+ also=also,resumo,obs
 
 note *****************************************************************
 note doc group encarte Encartes
@@ -532,7 +532,7 @@ part  name=cas,termo;
    source=pt-acto;
    guaranteed=id,dia,mes,ano,fol;
    position=id,dia,mes,ano,fol,loc,celebrante;
-   also=celebrante,obs;
+   also=fol,loc,celebrante,obs;
    repeat=celebrante,test,referida,referido,
                   noivo,
                      pnoivo,
@@ -662,6 +662,7 @@ note doc group bap Baptismos (variante usada nos registos da Lousa
 note *****************************************************************
 part name=bap; source=pt-acto;
   position=id,dia,mes,ano,fol,local,celebrante;
+    also=fol,local,celebrante,obs;
   guaranteed=id,dia,mes,ano;
   repeat=celebrante,n,
           test,referido,referida
@@ -669,6 +670,7 @@ part name=bap; source=pt-acto;
 nota doc group b Baptimos, versao original usada em Soure.
 part name=b; source=pt-acto;
   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
+  also=celebrante,obs;
   guaranteed=id,dia,mes,ano;
   repeat=celebrante,n,
       referido,referida,test
@@ -679,6 +681,7 @@ note
 note *****************************************************************
 part name=obito; source=pt-acto;
   position=id,dia,mes,ano,fol,celebrante;
+  also=fol,celebrante,obs;
   guaranteed=id,mes,ano;
   also=obs;
   repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
