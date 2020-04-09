@@ -195,6 +195,15 @@ is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all al
     get_token_options(Token,P),
     option(api(CALLS),P),
     utilities:member_check(APICall, CALLS).
+
+%% list_tokens is det.
+% List defined tokens
+list_tokens:-
+    get_user(T,U),
+    get_token_options(T,O),
+    writeln(U-O-T),
+    fail.
+list_tokens.
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TESTS 

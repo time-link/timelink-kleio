@@ -5,6 +5,8 @@
         get_file_attribute/3,
         find_files_with_extension/3,
         find_files_with_extension/4,
+        find_files_by_pattern/3,
+        find_files_by_pattern/4,
         find_directories/3,
         find_directories/2,
         path_type/2,
@@ -218,6 +220,30 @@ find_files_with_extension(BaseDir,Ext,Code,Files):-
 %
 find_files_with_extension(BaseDir,Ext,Files):-
     find_files_with_extension(BaseDir,Ext,0,Files).
+
+%% find_files_by_pattern(+BaseDir,+Pattern,-Code, -Files) is det.
+%  Return list of Files that match pattern in BaseDir and its subdirectories
+%
+%  Uses shell command "find Basedir -type -f -name Pattern".
+%
+%  Code is the shell code return and is equal to zero if command succeeded.
+%
+find_files_by_pattern(BaseDir,Pattern,Code,Files):-
+    %CMD = ['find -f', BaseDir, '  \\( -type f -name ',Pattern,' -or -type d \\)',' -and -not -path \'*/\\.*\' ' ], % this also gets the dirs
+    CMD = ['find ', BaseDir, ' -type f -name ',Pattern ], %this only gets the files.
+    atomic_list_concat(CMD,'',S), 
+    %writeln(shell:S),
+    shell_to_list(S,Code,Files).
+
+%% find_files_by_pattern(+BaseDir,+Pattern,-Files) is det.
+% same as find_files_by_pattern but only succeeds if return code for shell search is 0
+%
+find_files_by_pattern(BaseDir,Pattern,Files):-
+    find_files_by_pattern(BaseDir,Pattern,0,Files).
+
+
+
+
 
 %% find_directories(+BaseDir,-Code, -Dirs) is det.
 %  Return list of sub directories of BaseDir
@@ -545,6 +571,10 @@ kleio_stru_dir('.').
 % Returns the path to the default stru for translations, 
 % normally KLEIO_STRU_DIR/gacto2.str but can be overriden by environment 
 % variable KLEIO_DEFAULT_STRU.
+% TODO We could have a kleio_stru_for_file(+KleioFile,-KleioStru,+Options)
+%   This would search for a stru directory in the same directory of the kleio file and then
+%   search up the directory hierarchy if not found, and finally use the kleio_stru_dir
+%   Options coould specificy stru name, or other future qualifications.
 %
 kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
 kleio_default_stru(D):-

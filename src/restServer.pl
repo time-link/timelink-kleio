@@ -218,8 +218,8 @@ print_server_config:-
 % :- http_handler(root('rest/files/'),handle_files_request,[prefix,methods([get,put,post,delete])]). %workaround could not make it work as normal rest
 % :- http_handler(root('rest/structures/'),serve_structure_file,[prefix,method(get)]). % same workaround
 % :- http_handler(root('rest/upload'),upload,[id(upload),prefix,method(post)]).
-:- http_handler(root('rest/'), process_rest, [id(rest),prefix,methods([get,delete,put,post])]).
-:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(1800),method(post)]). % time limit 30m.
+:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post])]).
+:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),method(post)]). % time limit in seconds
 :- http_handler(root(.), home_page, []).
 :- http_handler(root('forms/upload/'),upload_form,[]). % generate a form for uploading files
 :- http_handler(root(echo), echo_request, [prefix]).
@@ -385,7 +385,7 @@ mime:mime_extension(Ext,Mime):-
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
 %   
-%   The request can contain aditional parameters enconded in the http standard ways.
+%   The request can contain aditional parameters enconded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
 %
@@ -401,7 +401,7 @@ process_rest(RestRequest):-
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
-    log_debug(' rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('~n~nREQUEST rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -409,7 +409,7 @@ process_rest(RestRequest):-
 
 process_rest_request(Request):-
     rest_decode_command(Request,Id,method(Entity,Method,Object),Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
+    log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
 
@@ -417,7 +417,7 @@ process_rest_request(Request):-
 % TODO: Deprecated, remove when not needed.   
 process_rest_request(Request):-
     rest_decode_command(Request,Id,Method,Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
+    log_debug('~nProcessing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
     rest_exec(Method,Id,Params,Results),
     (select(token_info(_),Params,P);P=Params), % we remove the token info introduced by json_decode_command
     (select((token=_),P,P2);P2=P),% and also the original token in the request
@@ -598,6 +598,7 @@ process_json_rpc_(Request):-
     catch(http_read_json(Request, JSONPayload),ParseError,
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
+    log_debug('JSONPayload: ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)
@@ -644,6 +645,8 @@ process_json_request(JSONRequest):-
 %
 process_json_request_(JSONRequest):-
     json_decode_command(JSONRequest,Id,Method,Params),
+    option(path(Path),Params,nopath),
+    log_debug('~nREQUEST_DECODED_JSON_RPC ID: ~w Method: ~w Path:~w~nParams:~w~n',[Id,Method,Path,Params]),
     catch(json_exec(Method, Id, Params),
         error(Term,Code,Message),
         process_json_rpc_error(invalid_request(Id,error(Term,Code,Message)))).

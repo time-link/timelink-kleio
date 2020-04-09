@@ -95,10 +95,13 @@ translations(get,Path,Mode,Id,Params):-
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
  
     % get status from cache if many files and young cache
-    CacheAgeLimit=15, % seconds
-    MaxFiles=100, % more than this number of files it goes into cache
+    % this is fragile, because it depends on store_status_cache to reproduce the handling of
+    % parameters in Params  by sources_in_dir and get_translation_status.
+    % but any caching needs to be tied to the params of the call that can determine the files retrieved and
+    % and the absolute to relative path mapping,
+    CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
     (   %If cached return from cache
-        get_status_from_cache(AbsPath,RSets,[seconds(CacheAgeLimit)])
+        get_status_from_cache(AbsPath,Params,RSets,CacheOptions)
     ; % Else compute status
         (
             (exists_file(AbsPath) -> 
@@ -107,7 +110,7 @@ translations(get,Path,Mode,Id,Params):-
             apiSources:sources_in_dir(Path,Params,Files)
         ),
         get_translation_status(Files,RSets,TokenInfo),
-        store_status_cache(AbsPath,Files,RSets,[files(MaxFiles)])
+        store_status_cache(AbsPath,Params,Files,RSets,CacheOptions)
     )
     ),    
     %% store in cache store_cache(AbsPath,Files,Filtered)
@@ -158,45 +161,71 @@ translations_delete(json,Id,Params):-
 % Predicates assisting in transaltion
 
 
-%% get_status_from_cache(+AbsPath,-RSets,+Options) is det.
+%% get_status_from_cache(+AbsPath,+Params,-RSets,+Options) is det.
 % 
-% returns kleio sets for AbsPath from cache if available according to Options
-% Options:
-%   seconds(S) return only if cache younger than S seconds
+% returns kleio sets for AbsPath from cache if cache age is less than stored MaxAge property
 %   
-%
 % Fails if there is no previously store cache on if conditions are not met.
 %
 % This prevents overburdening the server with consecutive calls to translations_get, with can be expensive.
 % 
-get_status_from_cache(AbsPath,RSets,Options):-
+get_status_from_cache(AbsPath,Params,RSets,_):-
+    log_debug('KleioSET cache CHECKING token ~w path: ~w ~n',[Params,AbsPath]),
     get_time(Now),
-    option(seconds(S),Options,20),
-    get_shared_prop(AbsPath,status_cache_time,T0),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
     Age is Now-T0,
-    Age < S,
-    get_shared_prop(AbsPath,status_cache_rsets,RSets),!.
-get_status_from_cache(AbsPath,_,_,_):- % cache invalid, erase
-    del_shared_prop(AbsPath,status_cache_time),
-    del_shared_prop(AbsPath,status_cache_rsets),
+    Age < MaxAge,
+    get_shared_prop(Key,status_cache_rsets,RSets),
+    log_debug('KleioSET cache FETCHING ~w for ~w age: ~w ~n',[Key,AbsPath,Age]),!.
+get_status_from_cache(AbsPath,Params,_,_):- % cache invalid, erase
+    get_time(Now),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
+    Age is Now-T0,
+    log_debug('KleioSET cache INVALIDATING ~w for ~w Age: ~w max:~w~n',[Key,AbsPath,Age,MaxAge]),
+    del_shared_prop(Key,status_cache_time),
+    del_shared_prop(Key,status_cache_rsets),
+    del_shared_prop(Key,max_cache_age),
+    fail.
+get_status_from_cache(AbsPath,Params,_,_):- 
+    log_debug('KleioSET cache NO_RECORD for ~w params: ~w ~n',[AbsPath,Params]),
     fail.
 
-
-%% store_status_cache(+AbsPath,+RSets,+Options) is det.
+%% store_status_cache(+AbsPath,+Params,+RSets,+Options) is det.
 %
 %  Stores RSets in cache associated with AbsPath.
 %
 %  Options
-%   files(N) - only store idf number of files is > N
+% CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
+%   min_set(N) - only store if number of files is > N
+%   max_age(A) - store cache for maximum of A seconds
+%   max_age_large_set(O) - store cache for maximum of O seconds if set is large
+%   large_set(L) - consider large set if number of files > L
+%
 
-store_status_cache(AbsPath,Files,RSets,Options):-
-    get_time(Now),
-    option(files(N),Options,100),
+store_status_cache(AbsPath,Params,Files,RSets,Options):-
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    option(min_set(N),Options,100),
+    option(large_set(L),Options,1000),
+    option(max_age(A),Options,30),
+    option(max_age_large_set(O),Options,180),
     length(Files,FN),
-    FN > N,
-    set_shared_prop(AbsPath,status_cache_time,Now),
-    set_shared_prop(AbsPath,status_cache_rsets,RSets).   
-store_status_cache(_,_,_):-!.
+    FN > N, % if small set of files ingore
+    (FN > L -> MaxAge=O;MaxAge=A), % set age acording to size
+    get_time(Now),
+    set_shared_prop(Key,status_cache_time,Now),
+    set_shared_prop(Key,max_cache_age,MaxAge),
+    set_shared_prop(Key,status_cache_rsets,RSets).   
+store_status_cache(_,_,_,_,_):-!.
 
 
 get_translation_status(Files,RSets,TokenInfo):-
