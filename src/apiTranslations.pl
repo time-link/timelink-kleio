@@ -11,7 +11,7 @@
     file_processing/3,
     files_processing/2,
     kleio_processing_status/3,
-    get_stru/3 %get_stru(+Params,+Id,-StruFile) is det.
+    get_stru/3                  %get_stru(+Params,+Id,-StruFile) is det.
         ]).
 /** <module> Api operations dealing with translation
       
@@ -93,15 +93,24 @@ translations(get,Path,Mode,Id,Params):-
     ),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
-    (exists_file(AbsPath) -> 
-        Files = [Path]
+ 
+    % get status from cache if many files and young cache
+    CacheAgeLimit=15, % seconds
+    MaxFiles=100, % more than this number of files it goes into cache
+    (   %If cached return from cache
+        get_status_from_cache(AbsPath,RSets,[seconds(CacheAgeLimit)])
+    ; % Else compute status
+        (
+            (exists_file(AbsPath) -> 
+                Files = [Path]
         ;
-        apiSources:sources_in_dir(Path,Params,Files)
-    ),
-    get_absolute_paths(Files,AbsFiles,TokenInfo),
-    (setof(Result,AbsFile^(member(AbsFile,AbsFiles),kleio_translation_status(AbsFile,Result,TokenInfo)),RSets)
-    ;
-    RSets=[]),
+            apiSources:sources_in_dir(Path,Params,Files)
+        ),
+        get_translation_status(Files,RSets,TokenInfo),
+        store_status_cache(AbsPath,Files,RSets,[files(MaxFiles)])
+    )
+    ),    
+    %% store in cache store_cache(AbsPath,Files,Filtered)
     filter_translations_by_status(Params,RSets,Filtered),
     translations_get_results(Mode,Id,Params,Filtered).
 
@@ -146,8 +155,49 @@ translations_delete(json,Id,Params):-
     option(path(Path),Params,''),
     translations(delete,Path,json,Id,Params).
 
-
 % Predicates assisting in transaltion
+
+
+%% get_status_from_cache(+AbsPath,-RSets,+Options) is det.
+% 
+% returns kleio sets for AbsPath from cache if available according to Options
+% Options:
+%   seconds(S) return only if cache younger than S seconds
+%   
+%
+% Fails if there is no previously store cache on if conditions are not met.
+%
+% This prevents overburdening the server with consecutive calls to translations_get, with can be expensive.
+% 
+get_status_from_cache(AbsPath,RSets,Options):-
+    get_time(Now),
+    option(seconds(S),Options,20),
+    get_shared_prop(AbsPath,status_cache_time,T0),
+    Age is Now-T0,
+    Age < S,
+    get_shared_prop(AbsPath,status_cache_rsets,RSets),!.
+get_status_from_cache(AbsPath,_,_,_):- % cache invalid, erase
+    del_shared_prop(AbsPath,status_cache_time),
+    del_shared_prop(AbsPath,status_cache_rsets),
+    fail.
+
+
+%% store_status_cache(+AbsPath,+RSets,+Options) is det.
+%
+%  Stores RSets in cache associated with AbsPath.
+%
+%  Options
+%   files(N) - only store idf number of files is > N
+
+store_status_cache(AbsPath,Files,RSets,Options):-
+    get_time(Now),
+    option(files(N),Options,100),
+    length(Files,FN),
+    FN > N,
+    set_shared_prop(AbsPath,status_cache_time,Now),
+    set_shared_prop(AbsPath,status_cache_rsets,RSets).   
+store_status_cache(_,_,_):-!.
+
 
 get_translation_status(Files,RSets,TokenInfo):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
