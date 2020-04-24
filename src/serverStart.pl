@@ -14,7 +14,7 @@ run_debug_server:-
     
     print_server_config,
     set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host'sIP)
-    restServer:start_debug_server,
+    %%restServer:start_debug_server, never really used it.
     restServer:start_rest_server,!.
 
 %% run_server is det.
