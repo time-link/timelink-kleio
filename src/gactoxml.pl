@@ -146,22 +146,49 @@ db_close:-
   */
  change_to_ids:-
   get_value(data_file,D),
-    report([writeln('** Processed file'-D)]),
+  report([writeln('** Processed file'-D)]),
   get_value(source_file,SOURCE),
   concat(SOURCE,'.org',Original),
-    report([writeln('** Original file'-Original)]),
+  report([writeln('** Original file'-Original)]),
   concat(SOURCE,'.old',Last),
-   report([writeln('** Previous version'-Last)]),
-
+  report([writeln('** Previous version'-Last)]),
   concat(SOURCE,'.ids',Ids),
-            report([writeln('** Temp file with ids'-Ids)]),
-
-  (exists_file(Last) ->delete_file(Last);true),
-  (exists_file(Original)->rename_file(D,Last);rename_file(D,Original)),
-  rename_file(Ids,D),!.
+  report([writeln('** Temp file with ids'-Ids)]),
+  /*
+  (exists_file(Last) ->
+    ((delete_file(Last),report([writeln('** Deleted previous version'-Last)]))
+    ;
+    (true,report([writeln('** No previous version'-Last)])))),
+  (exists_file(Original)->
+    (rename_file(D,Last),report([writeln('** '-D-'renamed to'-Last)]))
+    ;
+    (rename_file(D,Original),report([writeln('** '-D-'renamed to'-Original)])) ),
+  rename_file(Ids,D),
+  */
+  /*
+  Trying to replace the code above with direct shell calls because of a 
+  bug that occurs when kleio-server runs in a virtual box environment on windows
+  See  https://bugzilla.gnome.org/show_bug.cgi?id=656225
+  */
+  (exists_file(Last) -> delete_file(Last); true),
+  (exists_file(Original)->
+    (rename_with_shell(D,Last),report([writeln('** '-D-'renamed to'-Last)]))
+    ;
+    (rename_with_shell(D,Original),report([writeln('** '-D-'renamed to'-Original)])) ),
+    rename_with_shell(Ids,D),
+    report([writeln('** '-Ids-'renamed to'-D)]),
+    report([writeln('** Translation files closed.')]),
+    !.
 change_to_ids:-
+   error_out('** Problem renaming files.'),
    report([writeln('** Problem renaming files.')]) .
 
+rename_with_shell(Name1,Name2):-
+  Command = ['rm -f ',Name2,'; cp -f',Name1,' ',Name2],
+  atomic_list_concat(Command,'',S),
+  shellUtil:shell_to_list(S,0,_),!.
+rename_with_shell(Name1,Name2):-
+  report([writeln('Could not rename'-Name1-' to '-Name2)]),!.
 
 /*
 ================================================================================
@@ -284,13 +311,33 @@ group_export(kleio,_) :- !,
     xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
     xml_nl.
 
+/*
+Groups related to authority registers
+*/
+group_export(Register,ID):-
+    group_derived(Register,'authority-register'),
+    authority_register_export(Register,ID),!.
+group_export(REntity,ID):-
+   group_derived(REntity,'rentity'),
+   rentity_export(REntity,ID),!.  
+group_export(RPerson,ID):-
+    group_derived(RPerson,'rperson'),
+    rperson_export(RPerson,ID),!.  
+group_export(ROject,ID):-
+      group_derived(ROject,'robject'),
+      robject_export(ROject,ID),!.  
+group_export(Occ,ID):-
+        group_derived(Occ,'occ'),
+        rentity_occ_export(Occ,ID),!. 
+
+
 group_export(Source,ID):-
-group_derived(Source,'historical-source'),
-historical_source_export(Source,ID),!.
+    group_derived(Source,'historical-source'),
+    historical_source_export(Source,ID),!.
 
 group_export(Act,ID) :-
-group_derived(Act,'historical-act'),
-historical_act_export(Act,ID),!.
+  group_derived(Act,'historical-act'),
+  historical_act_export(Act,ID),!.
 
 group_export(Person,ID) :-
 group_derived(Person,person),
@@ -339,6 +386,90 @@ group_derived(G,S) :- clio_extends(G,S).
 
 */
 
+/*
+
+Handling of authority registers
+*/
+
+authority_register_export(Register,Id):-
+    report([writelist0ln(['** Processing authority register ',Register,'$',Id])]),
+    (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
+    (get_y_m_d(Date2) -> Date=Date2; Date=0)),
+    set_prop(act,date,Date), % this is for attributes and relations in rentities
+    set_prop(aregistry,date,Date),
+    set_prop(aregistry,id,Id),
+    %
+    belement_aspect(core,user,User),
+    set_prop(aregistry,user,User),
+    %
+    belement_aspect(core,dbase,DBase),
+    set_prop(aregistry,dbase,DBase),
+    %
+    belement_aspect(core,replace_mode,ReplaceMode),
+    set_prop(aregistry,replace_mode,ReplaceMode),
+    %
+    belement_aspect(core,ignore_date,IgnoreDate),
+    set_prop(aregistry,ignore_date,IgnoreDate),
+    %
+    group_to_xml(Register,Id,[
+
+    ]),
+    !.
+rentity_export(Rentity,Id):-
+    set_prop(rentity,id,Id),
+    get_prop(aregistry,user,User),
+    group_to_xml(Rentity,Id,[
+       user([User],[],[]),
+      the_class([rentity],[],[])
+    ]),
+    report([writelist0ln(['** Processing rentity record ',Rentity,'$',Id])]),
+    !.
+rperson_export(RPerson,Id):-
+  set_prop(rentity,id,Id),
+    belement_aspect(core,sname,Description),
+    get_prop(aregistry,user,User),
+    group_to_xml(RPerson,Id,[
+      description([Description],[],[]),
+      user([User],[],[]),
+      the_class([rperson],[],[])
+      
+      ]),
+    report([writelist0ln(['** Processing rperson record ',RPerson,'$',Id])]),
+    !.
+robject_export(RObject,Id):-
+  set_prop(rentity,id,Id),
+  belement_aspect(core,sname,Description),
+  get_prop(aregistry,user,User),
+  group_to_xml(RObject,Id,[
+      description([Description],[],[]),
+      user([User],[],[]),
+      the_class([robject],[],[])
+    ]),
+    report([writelist0ln(['** Processing robject record ',RObject,'$',Id])]),
+    !.
+  rentity_occ_export(_,Id):-
+    get_prop(rentity,id,REId),
+    get_prop(aregistry,user,User),
+    get_prop(aregistry,id,ARId),
+    belement_aspect(core,occurrence,Occurrence),
+    export_attach_occ(xml,Id,ARId,User, REId,Occurrence),
+    report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
+    !.
+
+export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
+  xml_nl,
+  xml_write(['<RELATION ID="',OccID,'" REGISTER="',ARId,'" USER="',User,'" ORG="',Occurrence,'" DEST="',REId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
+  xml_nl,!.
+
+
+
+/*
+
+
+Hangling of historical sources
+
+
+*/
 historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),

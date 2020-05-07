@@ -37,7 +37,7 @@ check_command_line :-
 	halt.
 
 check_command_line:-!.
-%	writeln('usage: swipl -f clioStart.pl -- [-sf StruFile] -df DataFile [-echo (yes|no)]').
+%	writeln('usage: swipl -f swiShell.pl -- [-sf StruFile] -df DataFile [-echo (yes|no)]').
 
 
 check_arg(strufile,SF) :-
@@ -100,6 +100,16 @@ trad_stru_only(StruFile):-
     stru(StruFile),
     close_report_file,!.
 
+make_kleio_doc(StruFile,DestDir):-
+    break_fname(StruFile,P,_File,Base,_),
+    put_value(stru_dir,P),
+	% chdir(P),
+	path_sep(Sep),
+    list_to_a0([P,Sep,Base,'.','srpt'],Report),
+    prepare_report(Report),
+    topLevel:doc(StruFile,DestDir),
+    close_report_file,!.
+
 trad_dat_only(DatFile):-
     put_value(data_file,DatFile),
     break_fname(DatFile,PD,_FileD,BaseD,_),
@@ -152,6 +162,7 @@ do_stru(E) :-
     writelist(['Processing structure file',File]),
     stru(StruFile),
     close_report_file.
+
 
 layout(voyager):-
 		put_value(data_dir,'C:\\WINDOWS\\Profiles\\joaquim\\My Documents\\develop\\mhk.users\\'),

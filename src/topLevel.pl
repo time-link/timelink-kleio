@@ -34,6 +34,7 @@ syntactic analysers.
 :-module(topLevel,[clio_version/1,pclio_version/0,clio_init/0,stru/1,dat/1]).
 :-use_module(dataCode).
 :-use_module(dataSyntax).
+:-use_module(dataDictionary).
 :-use_module(struSyntax).
 :-use_module(struCode). 
 :-use_module(lexical). 
@@ -122,7 +123,10 @@ dat(F):-
       closeData(Filename),
       close(Filename). % SWI generates an error when closing after a seen
 
-
+doc(StruFile,DestDir):-
+    stru(StruFile),
+    make_html_doc(DestDir).
+    
 %% processLine(+FileType,+Tokens) is det.
 %
 %  Process line doing syntactic analysis 

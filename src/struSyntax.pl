@@ -45,7 +45,12 @@ compile_command(CMD,Tokens):-
    % writeln(CleanToks),
     phrase(cliocmd,[CMD|CleanToks]),!.
 compile_command(CMD,_):-
-    error_out(['*** Unable to compile ',CMD,' command.!']).
+  get_value(stru_file,S),
+  get_prop(line,number,L),
+  get_prop(line,text,Line),
+  get_prop(line,last,Last),
+  error_out(['*** Unable to compile ',CMD,' command.!'],
+    [file(S),line_number(L),line_text(Line),last_line_text(Last)]).
 
 %***********************************************
 % stripSpaces(Tokens,CleanToks)

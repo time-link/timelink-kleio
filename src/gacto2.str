@@ -54,7 +54,7 @@ note
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
  position=structure,translator,obs;
- part=historical-source,fonte
+ part=historical-source,fonte,authority-register, identifications
 
 note ============================================================
 note Basic historical source group
@@ -78,6 +78,79 @@ part name=geoentity;
   position=name;
    also=type,id,obs;
   part=ls,atr,rel
+
+note ===========================================================
+note authority-register: a collection of authority records on
+note   on people, object, with references to occurences in the sources
+note doc group authority-register a register of authority-records
+note    authority records are used to identify people, objects
+note    and to normalize vocabularies and other authority information.
+note    authority-registers must have an unique id, but a given community
+note    can have as many authority-registers as needed
+note
+
+part name=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase;
+    also=date,user,dbase;
+    part=authority-record
+
+note ===========================================================
+note identifications: a authority-register for identifications
+note doc group identifications are authority-registers for record linking.
+note     They contain real-entity records (people or objects) that aggregate
+note     occurrences in the source pertaining to the same person or entity.
+note     To keep imported records separate from local ones use a different user.
+part name=identifications;
+    source=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase;
+    also=date,user,dbase,replace_mode,ignore_date,obs;
+    part=rentity,rperson,robject
+
+note ===========================================================
+note rentity: a authority-record for a real entity
+note doc group rentity contains information about a real entity.
+note     Defines the standart name for the entity and what are the occurences
+part name=rentity;
+     position=id,description,type;
+     guaranteed=id,description,type;
+     also=status,user,obs;
+     part=occ
+note ===========================================================
+note rperson: a authority-record for a real person
+note doc group rperson contains information about a real person.
+note     Defines the standart name for the person, the sex, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=rperson;
+     position=id,sname,sex;
+     guaranteed=id,sname,sex;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+
+note ===========================================================
+note robject: a authority-record for a real object
+note doc group robject contains information about a real object.
+note     Defines the standart name for the object, the type, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=robject;
+     position=id,sname,type;
+     guaranteed=id,sname,type;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+note ===========================================================
+note occ: an occurence of a real entity
+note doc group occ contains the ids of the occurrences of a real entity
+note     Defines the id of the occ and optionally the name of the occurence
+note     the id_act of the act where it occurs, the type of act and the fucntion
+note     note that these optional information are just for documentation because they
+note    derive automatically from the occurrence id.
+part name=occ;
+     position=occurrence,atype,func,date,name;
+     guaranteed=occurrence;
+     also=name,atype,func,date,id
+
+
 
 
 
@@ -333,7 +406,7 @@ part name=integr;
      guaranteed=id,dia,mes,ano;
      also=obs, data
      
-part name=acao; source=object
+part name=acao; source=object;
           arbitrary=referido,referida, atr, rel;
           guaranteed=name;
           also=id, obs, data, mesmo_que
@@ -374,7 +447,13 @@ part name=devassa;
 part name=acus; source=object;
   guaranteed=idcaso;
   position=idcaso, obs;
-  also=literal,origem,obs,id
+  also=literal,origem,obs,id;
+  part=caso
+
+
+part name=acusa; source=acus;
+  also=literal,origem,obs,id;
+  part=caso
 
 part name=caso; source=object;
    position=id,tipo;
@@ -661,8 +740,8 @@ note doc group bap Baptismos (variante usada nos registos da Lousa
       por Rosario Campos e em ?bidos)
 note *****************************************************************
 part name=bap; source=pt-acto;
-  position=id,dia,mes,ano,fol,local,celebrante;
-    also=fol,local,celebrante,obs;
+  position=id,dia,mes,ano,fol,loc,celebrante;
+    also=fol,loc,celebrante,obs;
   guaranteed=id,dia,mes,ano;
   repeat=celebrante,n,
           test,referido,referida
@@ -1779,7 +1858,7 @@ part 	name=arrem; source=n;
 note actores especificos do livro de registos de accoes
 
 part name=acionista; 
-     source=actorm
+     source=actorm;
      guaranteed=nome;
      also=obs,mesmo_que,id;
      repeat=ls,atr,rel
@@ -2028,7 +2107,7 @@ part name=testo; source=actorm;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
-	part=acus,caso
+	part=acus,acusa
 part name=denunciante; source=actorm;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
@@ -2310,7 +2389,7 @@ part name=testa; source=actorf;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
-	part=acus,caso
+	part=acus,acusa
 
 note actores femininos presentes nos livros de registos das companhia monopolistas
 part name=acionistaf; 

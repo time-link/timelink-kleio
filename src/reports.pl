@@ -129,5 +129,5 @@ close_report_file:-
 %
 rep_call(M:P):-
     %log_debug('Report meta call. Module: ~w, Predicate: ~w',[M,P]),
-    catch(M:P,Error,(write('** ERROR IN REPORT ARGUMENT'-Error))).
+    catch(M:P,Error,(write('** ERROR IN REPORT ARGUMENT'-M-P-Error))).
 

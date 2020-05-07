@@ -31,7 +31,74 @@ class geoentity super entity table geoentities
         name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
      and
         obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
-			  
+
+mapping 'authority-register' to class aregister.
+class aregister super entity table aregisters
+      with attributes
+           id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+        and
+           date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
+        and
+           user column user baseclass user coltype varchar colsize 32 colprecision 0 pkey 0 
+        and
+           name column name baseclass name coltype varchar colsize 254 colprecision 0 pkey 0 
+        and
+           dbase column dbase baseclass dbase coltype varchar colsize 32 colprecision 0 pkey 0 
+      and
+         replace_mode column replace_mode baseclass replace_mode coltype varchar colsize 64 colprecision 0 pkey 0 
+       and
+         ignore_date column ignore_date baseclass ignore_date coltype varchar colsize 64 colprecision 0 pkey 0 
+        and
+           obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+mapping rentity to class rentity.
+class rentity super entity table rentities
+     with attributes
+           id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+      and  
+         the_class column the_class baseclass the_class coltype varchar colsize 32 colprecision 0 pkey 0
+        and
+           description column description baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+        and
+           user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+        and
+           status column status baseclass status coltype varchar colsize 64 colprecision 0 pkey 0 
+        and
+           obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+
+mapping rperson to class rperson.
+      class rperson super rentity table rpersons
+        with attributes
+              id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+           and
+              seq column seq baseclass seq coltype int colsize 10 colprecision 0 pkey 0
+           and
+              sname column sname baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+           and
+              user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+           and
+              status column status baseclass status coltype varchar colsize 1 colprecision 0 pkey 0 
+            and
+              sex column sex baseclass sex coltype varchar colsize 1 colprecision 0 pkey 0 
+           and
+              obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+
+mapping robject to class robject.
+   class robject super rentity table robjects
+           with attributes
+                 id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+              and
+                 seq column seq baseclass seq coltype int colsize 10 colprecision 0 pkey 0
+              and
+                 sname column sname baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+              and
+                 user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+              and
+                 status column status baseclass status coltype varchar colsize 1 colprecision 0 pkey 0 
+               and
+                 type column the_type baseclass the_type coltype varchar colsize 32 colprecision 0 pkey 0 
+              and
+                 obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+
 mapping 'historical-source' to class source.
 class source super entity table sources
    with attributes

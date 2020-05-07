@@ -323,7 +323,7 @@ files_attributes(FileList,Files):-
 %       * warnings(W) number of warnings in translation.
 %       * version(V) ClioInput version string
 %       * translated(T) the time of the last translation as a float
-%       * translated_string(S) S is the time of last translation in format "day-month-year hour-minutes"
+%       * translated_string(S) S is the time of last translation in format iSO8601
 %
 file_attributes(F,[name(N),
                     % absolute(A),
@@ -347,7 +347,7 @@ file_attributes(F,[name(N),
     time_file(F,T),
     format_time(string(FT),'%Y-%m-%d %H:%M:%S',T), 
     format_time(string(RFC),'%a, %d %b %Y %T GMT',T), 
-    format_time(string(ISO), '%FT%T%z',T),
+    format_time(string(ISO), '%FT%T%:z',T),
     size_file(F,S),
     more_attributes(F,T,E,More),!. % get more attributes specific of the file type TODO: pass file time (T) to allow caching
 
@@ -363,7 +363,7 @@ more_attributes(F,T,err,MoreAttr):-
     shell_to_list(Cmd,0,XerrInfo),
     (XerrInfo = [Version,DateS,Err,Warn]; (XerrInfo=[Version,DateS,Err],Warn="-1 warnings")),
     extract_date(DateS,Date),
-    format_time(string(DateFormated),'%Y-%m-%d %H:%M:%S',Date),
+    format_time(string(DateFormated),'%FT%T%:z',Date),
     split_string(Err," "," ",[ErrN|_]),
     number_string(E,ErrN),
     split_string(Warn," "," ",[WarnN|_]),
