@@ -184,10 +184,11 @@ change_to_ids:-
    report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
-  Command = ['rm -f ',Name2,'; cp -f',Name1,' ',Name2],
+  Command = ['rm -f ',Name2,'; cp -f ',Name1,' ',Name2],
   atomic_list_concat(Command,'',S),
   shellUtil:shell_to_list(S,0,_),!.
 rename_with_shell(Name1,Name2):-
+  error_out('** Problem renaming files.'),
   report([writeln('Could not rename'-Name1-' to '-Name2)]),!.
 
 /*
@@ -673,11 +674,14 @@ p_cached_same:-
 
       % and now the external references
 p_cached_same:-
+  report([nl]),
     clause(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
     p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
-   warning_out([' "SAME AS" TO EXTERNAL REFERENCE EXPORTED (',SID,') CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.'],[line_number(N)]),
+    format(string(S),'Line ~w "SAME AS" TO EXTERNAL REFERENCE EXPORTED (~w) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.',[N,SID]),
+   report([writeln(S)]),
       fail.
   p_cached_same:-
+    report([nl]),
     retractall(same_as_cached(_,_,_,_,_,_,_,_)),
     retractall(xsame_as_cached(_,_,_,_,_,_,_,_)),
     retractall(same_as_cached_id(_)).
