@@ -50,7 +50,7 @@ syntactic analysers.
 %  Returns the version of the translator.
 %  Version is set at build time by replacing tokens in the code.
 %
-clio_version('ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@').
+clio_version('KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@').
 
 %%  pclio_version is det.
 % prints version, compiler version, date and time
