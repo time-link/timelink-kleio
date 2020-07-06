@@ -80,8 +80,6 @@ part name=geoentity;
   part=ls,atr,rel
 
 note ===========================================================
-note authority-register: a collection of authority records on
-note   on people, object, with references to occurences in the sources
 note doc group authority-register a register of authority-records
 note    authority records are used to identify people, objects
 note    and to normalize vocabularies and other authority information.
@@ -104,7 +102,7 @@ note     To keep imported records separate from local ones use a different user.
 part name=identifications;
     source=authority-register;
     position=id,name;
-    guaranteed=id,name,date,user,dbase;
+    guaranteed=id,name,date,user,dbase,mode;
     also=date,user,dbase,replace_mode,ignore_date,obs;
     part=rentity,rperson,robject
 
@@ -808,7 +806,7 @@ note *****************************************************************
 part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
-     arbitrary=n,referido,referida,celebrante;
+     arbitrary=n,referido,referida,celebrante,evento,colega;
      also=obs,loc
 
 note *****************************************************************
@@ -1068,7 +1066,8 @@ part name=evento; source=pt-acto;
 	position=description,dia,mes,ano;
 	guaranteed=description;
 	also=obs,id;
-	part=informador,defector,representante,referido,
+	part=n, referido,referida,
+        informador,defector,representante,
 		intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
 		beneficiario,beneficiario-representante,beneficiario-procurador,
 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
@@ -1113,7 +1112,26 @@ part name=evento; source=pt-acto;
 		tomador5,tomador5-representante,
 		vendedor,comprador,transportador,
 		emissor,emissor-representante
+note =====================================================================
+note Special prosopographical groups
+note =====================================================================
 
+note doc group bio Biographical description (from biographical dictionnaries,etc)
+part name=bio; source=lista;
+
+note doc group pevent Personal event, used inside people groups to register a personal event
+note     Diferent from event/evento which are top level groups inside lists or sources
+part name=pevent; source=evento;
+	position=description,dia,mes,ano;
+	guaranteed=description;
+	also=obs,id;
+	part=referido,referida,person;
+
+note A certain number of sinonyms for clarity of transcription
+
+part name=viagem; source=pevent;
+
+part name=estadia; source=pevent;
 
 part name=topico; source=abstraction;
 	position=subject,description;
@@ -1601,7 +1619,7 @@ part	 name=n;
          position=nome,sexo;
       also=sexo,id,mesmo_que,xmesmo_que,obs;
          guaranteed=nome;
-           repeat=atr,ls,rel,referido,referida,
+         arbitrary=pevent,viagem,estadia,atr,ls,rel,referido,referida,
                    pai,
                        ppai,
                            pppai,
