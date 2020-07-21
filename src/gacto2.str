@@ -103,7 +103,7 @@ part name=identifications;
     source=authority-register;
     position=id,name;
     guaranteed=id,name,date,user,dbase,mode;
-    also=date,user,dbase,replace_mode,ignore_date,obs;
+    also=obs;
     part=rentity,rperson,robject
 
 note ===========================================================
@@ -761,7 +761,7 @@ part name=obito; source=pt-acto;
   also=fol,celebrante,obs;
   guaranteed=id,mes,ano;
   also=obs;
-  repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
+  repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,testamenteiro,locs,locf,causa,oficios
 
 note doc group o Estilo usado em Soure, sem o id do obito, mas aceita o id opcionalmente.
 part name=o; source=obito;
