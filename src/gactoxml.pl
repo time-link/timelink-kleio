@@ -184,7 +184,7 @@ change_to_ids:-
    report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
-  Command = ['rm -f ',Name2,'; cp -f ',Name1,' ',Name2],
+  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2],
   atomic_list_concat(Command,'',S),
   shellUtil:shell_to_list(S,0,_),!.
 rename_with_shell(Name1,Name2):-
