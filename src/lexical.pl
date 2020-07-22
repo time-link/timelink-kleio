@@ -160,11 +160,9 @@ numberChar(C) --> [(C,digit)]
                 | [(C,point)].
 
 %******************************************************
-%  quoted strings either with single quotes or double quotes
+%  quoted strings with double quotes
 %******************************************************
 %  %
-qstring(V)-->[(_,singlequote)],!,qstr(singlequote,L),
-             {!,name(V,L)}.
 qstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
              {!,name(V,L)}.
 
