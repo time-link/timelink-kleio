@@ -15,6 +15,7 @@
 :-use_module(topLevel). 
 :-use_module(errors).
 :-use_module(logging).
+:-use_module(library(filesex)).
 
 /** <module> Reports
  
@@ -59,7 +60,7 @@ report_header(_):-
     report([pclio_version]),!.
 
 set_report_file(FILENAME):-
-    open_file_write(FILENAME),
+    open_file_write(FILENAME), chmod(FILENAME,+gw),
     put_value(report,FILENAME),
     set_report(off),!.
 

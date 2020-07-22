@@ -55,6 +55,7 @@
 :-use_module(persistence).
 :-use_module(reports).
 :-use_module(utilities).
+:-use_module(library(filesex)).
 
 ?-thread_local(group_path/1).
 ?-thread_local(carel/4).
@@ -90,13 +91,13 @@ db_init:-
     put_value(source_file,SOURCE),
     concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
     log_debug('translate: xmlfile --> ~w~n',[XMLFILE]),
-    open_file_write(XMLFILE),
+    open_file_write(XMLFILE),chmod(XMLFILE,+gw),
     % prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
     (concat(__X,'_ids',Base)
          -> put_value(clioPP,false) % this is a ids file, no PP necessary
          ; (
        concat(SOURCE,'.ids',PPFILE),
-       open_file_write(PPFILE),
+       open_file_write(PPFILE),chmod(PPFILE,+gw),
        put_value(clioppfile,PPFILE),
        put_value(clioPP,true)
          )
@@ -172,10 +173,10 @@ db_close:-
   */
   (exists_file(Last) -> delete_file(Last); true),
   (exists_file(Original)->
-    (rename_with_shell(D,Last),report([writeln('** '-D-'renamed to'-Last)]))
+    (rename_with_shell(D,Last),chmod(Last,+gw),report([writeln('** '-D-'renamed to'-Last)]))
     ;
-    (rename_with_shell(D,Original),report([writeln('** '-D-'renamed to'-Original)])) ),
-    rename_with_shell(Ids,D),
+    (rename_with_shell(D,Original),chmod(Original,+gw),report([writeln('** '-D-'renamed to'-Original)])) ),
+    rename_with_shell(Ids,D),chmod(D,+gw),
     report([writeln('** '-Ids-'renamed to'-D)]),
     report([writeln('** Translation files closed.')]),
     !.
