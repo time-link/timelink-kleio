@@ -91,13 +91,15 @@ db_init:-
     put_value(source_file,SOURCE),
     concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
     log_debug('translate: xmlfile --> ~w~n',[XMLFILE]),
-    open_file_write(XMLFILE),chmod(XMLFILE,+gw),
+    open_file_write(XMLFILE),
+    catch(chmod(XMLFILE,+gw),E,log_error('Could not change permissions of ~w : ~w ',[XMLFILE,E])),
     % prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
     (concat(__X,'_ids',Base)
          -> put_value(clioPP,false) % this is a ids file, no PP necessary
          ; (
        concat(SOURCE,'.ids',PPFILE),
-       open_file_write(PPFILE),chmod(PPFILE,+gw),
+       open_file_write(PPFILE),
+       catch(chmod(PPFILE,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[PPFILE,E2])),
        put_value(clioppfile,PPFILE),
        put_value(clioPP,true)
          )
@@ -173,10 +175,16 @@ db_close:-
   */
   (exists_file(Last) -> delete_file(Last); true),
   (exists_file(Original)->
-    (rename_with_shell(D,Last),chmod(Last,+gw),report([writeln('** '-D-'renamed to'-Last)]))
+    (rename_with_shell(D,Last),
+    catch(chmod(D,+gw),E,log_error('Could not change permissions of ~w : ~w ',[D,E])),
+     report([writeln('** '-D-'renamed to'-Last)])
+    )
     ;
-    (rename_with_shell(D,Original),chmod(Original,+gw),report([writeln('** '-D-'renamed to'-Original)])) ),
-    rename_with_shell(Ids,D),chmod(D,+gw),
+    (rename_with_shell(D,Original),
+    catch(chmod(Original,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[Original,E2])),
+    report([writeln('** '-D-'renamed to'-Original)])) ),
+    rename_with_shell(Ids,D),
+    catch(chmod(D,+gw),E3,log_error('Could not change permissions of ~w : ~w ',[D,E3])),
     report([writeln('** '-Ids-'renamed to'-D)]),
     report([writeln('** Translation files closed.')]),
     !.

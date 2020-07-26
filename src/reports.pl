@@ -60,7 +60,8 @@ report_header(_):-
     report([pclio_version]),!.
 
 set_report_file(FILENAME):-
-    open_file_write(FILENAME), chmod(FILENAME,+gw),
+    open_file_write(FILENAME), 
+    catch(chmod(FILENAME,+gw),E,log_error('Could not change permissions of ~w : ~w ',[FILENAME,E])),
     put_value(report,FILENAME),
     set_report(off),!.
 
