@@ -45,9 +45,7 @@ class aregister super entity table aregisters
         and
            dbase column dbase baseclass dbase coltype varchar colsize 32 colprecision 0 pkey 0 
       and
-         replace_mode column replace_mode baseclass replace_mode coltype varchar colsize 64 colprecision 0 pkey 0 
-       and
-         ignore_date column ignore_date baseclass ignore_date coltype varchar colsize 64 colprecision 0 pkey 0 
+         mode column mode baseclass mode coltype varchar colsize 64 colprecision 0 pkey 0 
         and
            obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
 mapping rentity to class rentity.
