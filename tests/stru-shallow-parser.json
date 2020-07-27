@@ -1,0 +1,34 @@
+[
+    {
+        "command": "note",
+        "args": "A person"
+    },
+    {
+        "command": "part",
+        "args": {
+            "name": [
+                "person"
+            ],
+            "guaranteed": [
+                "name",
+                "sex"
+            ],
+            "also": [
+                "id",
+                "obs",
+                "same_as"
+            ],
+            "position": [
+                "name",
+                "sex",
+                "id",
+                "same_as"
+            ],
+            "arbitrary": [
+                "atr",
+                "rel",
+                "ls"
+            ]
+        }
+    }
+]

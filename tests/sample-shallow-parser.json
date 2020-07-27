@@ -1,0 +1,85 @@
+[
+    {
+        "group": "kleio",
+        "text": "gacto2.str/translations=2",
+        "elements": [
+            {
+                "element": "#1",
+                "core": "gacto2.str"
+            },
+            {
+                "name": "translations",
+                "core": 2
+            }
+        ],
+        "contains": [
+            {
+                "group": "fonte",
+                "text": "b1720/1720/batismos/auc",
+                "elements": [
+                    {
+                        "element": "#1",
+                        "core": "1720"
+                    },
+                    {
+                        "element": "#2",
+                        "core": 1720
+                    },
+                    {
+                        "element": "#3",
+                        "core": "batismos"
+                    },
+                    {
+                        "element": "#4",
+                        "core": "auc"
+                    }
+                ],
+                "contains":[
+                    {
+                        "group":"bap",
+                        "text":"b1720.1/1/1/1720/fl.21;fl.21v/Igreja matriz/paroco manuel rodrigues#o reverendo pároco%o rvº pachº",
+                        "elements":[
+                            {
+                                "element": "#1",
+                                "core": "b1720.1"
+                            },   
+                            {
+                                "element": "#2",
+                                "core": 1
+                            },   
+                            {
+                                "element": "#3",
+                                "core": 1
+                            } ,   
+                            {
+                                "element": "#4",
+                                "core": 1720
+                            } ,   
+                            {
+                                "element": "#5",
+                                "core": "fl.21"
+                            },   
+                            {
+                                "element": "#5",
+                                "core": "fl.21v"
+                            }     ,   
+                            {
+                                "element": "#6",
+                                "core": "Igreja matriz"
+                            },   
+                            {
+                                "element": "#7",
+                                "core": "paroco manuel rodrigues",
+                                "comment":"o reverendo pároco",
+                                "original":"rvº pachº"
+                            }
+                        ],
+                        "contains":
+                        ["COMPLETAR"]
+                    }
+
+                ]
+            }
+        ]
+    }
+]
