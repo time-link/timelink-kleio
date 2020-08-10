@@ -40,7 +40,7 @@
 % 
 % Parameters:
 % $ structure: structure file to be used in the translation
-% $ echo     : if yes the "rpt" file with include the source lines
+% $ echo     : if yes the "rpt" file will include the source lines
 % $ recurse  : descend into tsub directories (default no)
 % $ status: filter files by translation status.
 % $ spawn     : if yes the files are distributed to diferent workes and translated in parallell.
