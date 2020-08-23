@@ -428,43 +428,46 @@ authority_register_export(Register,Id):-
 rentity_export(Rentity,Id):-
     set_prop(rentity,id,Id),
     get_prop(aregistry,user,User),
+    setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
     group_to_xml(Rentity,Id,[
-       user([User],[],[]),
-      the_class([rentity],[],[])
-    ]),
+        user([User],[],[]),
+        the_class([rentity],[],[])
+        ]),
     report([writelist0ln(['** Processing rentity record ',Rentity,'$',Id])]),
     !.
 rperson_export(RPerson,Id):-
   set_prop(rentity,id,Id),
-    belement_aspect(core,sname,Description),
-    get_prop(aregistry,user,User),
-    group_to_xml(RPerson,Id,[
+  belement_aspect(core,sname,Description),
+  get_prop(aregistry,user,User),
+  setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
+  group_to_xml(RPerson,Id,[
       description([Description],[],[]),
       user([User],[],[]),
       the_class([rperson],[],[])
       
       ]),
-    report([writelist0ln(['** Processing rperson record ',RPerson,'$',Id])]),
-    !.
+  report([writelist0ln(['** Processing rperson record ',RPerson,'$',Id])]),
+  !.
 robject_export(RObject,Id):-
   set_prop(rentity,id,Id),
   belement_aspect(core,sname,Description),
   get_prop(aregistry,user,User),
+  setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
   group_to_xml(RObject,Id,[
       description([Description],[],[]),
       user([User],[],[]),
       the_class([robject],[],[])
     ]),
-    report([writelist0ln(['** Processing robject record ',RObject,'$',Id])]),
-    !.
-  rentity_occ_export(_,Id):-
-    get_prop(rentity,id,REId),
-    get_prop(aregistry,user,User),
-    get_prop(aregistry,id,ARId),
-    belement_aspect(core,occurrence,Occurrence),
-    export_attach_occ(xml,Id,ARId,User, REId,Occurrence),
-    report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
-    !.
+  report([writelist0ln(['** Processing robject record ',RObject,'$',Id])]),
+  !.
+rentity_occ_export(_,Id):-
+  get_prop(rentity,id,REId),
+  get_prop(aregistry,user,User),
+  get_prop(aregistry,id,ARId),
+  belement_aspect(core,occurrence,Occurrence),
+  export_attach_occ(xml,Id,ARId,User, REId,Occurrence),
+  report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
+  !.
 
 export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
   xml_nl,
@@ -545,17 +548,17 @@ person_export(G,ID):-
   set_prop(person,id,ID),
   infer_sex(G,S),
   belement_aspect(core,name,Name),
-    set_prop(person,name,Name),
-    set_prop(person,sex,S),
-    set_prop(person,group,G),
-    clio_elements(Els),
-    (member(sex,Els) -> SexElement = []; SexElement=[sex([S],[],[])]),
+  set_prop(person,name,Name),
+  set_prop(person,sex,S),
+  set_prop(person,group,G),
+  clio_elements(Els),
+  (member(sex,Els) -> SexElement = []; SexElement=[sex([S],[],[])]),
   (belement_aspect(core,id,[]) -> IdElement=[id([ID],[],[])];IdElement = [] ),
   append(SexElement,IdElement, ExtraElements ),
   assertz(same_as_cached_id(ID)),
   group_to_xml(G,ID,ExtraElements),
   process_function_in_act(G,ID),
-    !.
+  !.
 
 object_export(G,ID) :-
   (belement_aspect(core,id,[]) ->  IdElement=[id([ID],[],[]),type([G],[],[]) ]; IdElement=[type([G],[],[])]),
@@ -838,7 +841,7 @@ get_group_id(Group,__BuiltinID,Id):- % if the element id exists, take it as the 
 
 get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancestor and concatenate
     get_ancestor(__Anc,Aid),!,
-    clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters
+    clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters[??]
     sub_atom(Class,0,3,_,Seed),
       repeat,
     gensymbol_local(Seed,Gid),

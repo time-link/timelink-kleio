@@ -4,7 +4,9 @@
     find_git_directory/3,
     print_git_global_status/1,
     git_remotes_branches_info/3,
-    git_fetch/2
+    git_fetch/2,
+    git_pull/2,
+    git_push/2
     ]).
 /** <module> Utilities dealing with GIT repositiories
  * 
@@ -23,7 +25,7 @@
 %
 % Options:
 %
-% $ compare_to(Branch): compare with origin/Branch instead of origin/CURRENTBRANCH
+% $ compare_to_branch(Branch): compare with Branch instead of origin/CURRENTBRANCH. Branch can be a git reference like "upstream/master"
 %
 git_global_status(CurrentDir,GlobalStatus,Options):-
     (find_git_directory(CurrentDir,Dir,Options)->true;throw(error(not_inside_git_repository))),
@@ -106,7 +108,7 @@ print_files_in_commit(Directory,Commit,Options):-
 %   git rev-lis6t --left-right --count CURRENT_BRANCH...COMPARE_TO_BRANCH
 % 
 % Options:
-% $ compare_to(Branch): compare with Branch instead of origin/CURRENTBRANCH
+% $ compare_to_branch(Branch): compare with Branch instead of origin/CURRENTBRANCH
 %
 git_ahead_behind(CurrentDir,Ahead,Behind,OtherBranch,Options):-
     (find_git_directory(CurrentDir,Directory,Options)->true;throw(error(not_inside_git_repository))),
@@ -122,20 +124,97 @@ git_ahead_behind(CurrentDir,Ahead,Behind,OtherBranch,Options):-
 
 %% git_fetch(+Directory,+Options) is det.
 %
-% Fetchs state from origin
+% Fetch state from origin
 %
 % Corresponds to the command:
 %
-%    git fetch
+%    git fetch [OPTIONS]
 %
-% Options: no options currently defined
-% TODO: devia devolver o current time
+% Options: git_params(MoreParams) MoreParams will be added to the git fetch command
 %
 git_fetch(Directory,Options):-
     option(git_params(MoreParams),Options,[]),
-    git(['fetch'|MoreParams],[directory(Directory),output(Output)]),
+    (is_list(MoreParams) ->
+         MP2=MoreParams
+        ;
+         atomic_list_concat(MP2,' ', MoreParams)
+    ),
+    git(['fetch'|MP2],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    (option(error(ErrorLines),Options)->
+    (string_codes(Error, ErrorCodes),
+    split_string(Error,"\n","\n",ErrorLines)
+    ;
+    true)),
+    (option(error(ErrorLines),Options)->
+        (string_codes(Error, ErrorCodes),
+        split_string(Error,"\n","\n",ErrorLines)
+        ;
+        true)),
+    (option(status(Status),Options)->exit(Status)=S;true),
     (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
-    
+
+
+%% git_pull(+Directory,+Options) is det.
+%
+% Pull from origin (or other remotes)
+%
+% Corresponds to the command:
+%
+%     git pull [OPTIONS]
+%
+% Options: 
+%  $ git_params(MoreParams) MoreParams will be added to the git pull command
+%  $ stash_before(yes) Current changes if any will be push with git stash push 
+%  $ lines(L) unify Lines with output of command
+%  $ error(E) unify E with stderr from command
+%
+git_pull(Directory,Options):-
+    option(git_params(GitParams),Options,[]),
+    (GitParams='' -> MoreParams=[]; MoreParams=GitParams),
+    option(stash_before(Stash),Options,no),
+    ( Stash = yes ->
+        git(['stash', 'push'],[directory(Directory),output(_)])
+      ;
+        true
+    ),
+    (is_list(MoreParams) ->
+        MP2=MoreParams
+        ;
+        atomic_list_concat(MP2,' ', MoreParams)
+    ),
+    git(['pull' | MP2],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    (option(error(ErrorLines),Options)->
+        (string_codes(Error, ErrorCodes),
+        split_string(Error,"\n","\n",ErrorLines)
+        ;
+        true)),
+    (option(status(Status),Options)->exit(Status)=S;true),
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
+
+%% git_push(+Directory,+Options) is det.
+%
+% push from origin
+%
+% Corresponds to the command:
+%
+%     git push [OPTIONS]
+%
+% Options: git_params(MoreParams) MoreParams will be added to the git push command
+%
+git_push(Directory,Options):-
+    option(git_params(MoreParams),Options,[]),
+    option(error(Errors),Options,[]),
+    (is_list(MoreParams) ->
+    MP2=MoreParams
+    ;
+    atomic_list_concat(MP2,' ', MoreParams)
+),
+    git(['push' | MP2],[directory(Directory),output(Output),error(Errors)]),
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
+
+
+
+
 %% git_origin_new_log(+Directory,-ResultLogs,+Options) is det.
 %
 % Fetch the logs of commits in a remote that are not in the current local branch
@@ -240,7 +319,12 @@ git_diff_local_to_origin(Directory,Changes,Options):-
 
 git_status(Directory,Results,Options):-
     option(git_params(P),Options,[]),
-    git([status,'--porcelain',Directory|P],[directory(Directory),output(O)]),
+    (is_list(P) ->
+         MP2=P
+         ;
+         atomic_list_concat(MP2,' ', P)
+    ),
+    git([status,'--porcelain',Directory|MP2],[directory(Directory),output(O)]),
     split_string(O,"\n","\n",Lines),
     (bagof(file{index:I,working:W,name:F},L^(member(L,Lines),split_status(L,I,W,F)),Changes);Changes=[]),
     find_first_line_only_changes(Directory,Files,Options),

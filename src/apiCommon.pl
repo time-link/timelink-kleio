@@ -70,7 +70,7 @@ The _function_ is the predicate that implements the request and also the method 
    /processes/path     GET lista de ficheiros em tradução
    /queued/path        GET lista de ficheiros em fila de espera para serem traduzidos.
    /versions           GET status do repositório
- ==
+ == 
   
 **/ 
 :-reexport('apiSources').
