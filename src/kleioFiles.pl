@@ -380,7 +380,7 @@ extract_date(String,Date):-
     split_string(String," ", " ", [DateS,TimeS]),
     split_string(DateS,"-","-",[DayS,MonthS,YearS]),
     number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
-    split_string(TimeS,"-","-",[HourS,MinuteS]),
+    split_string(TimeS,"-","-\r",[HourS,MinuteS]),
     number_string(Hour,HourS),number_string(Minute,MinuteS),
     date_time_stamp(date(Year,Month,Day,Hour,Minute,0,_,_,_), Date),!.
     
