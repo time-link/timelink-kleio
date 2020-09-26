@@ -130,16 +130,29 @@ check_openlog:-
 check_openlog:-open_log(_).
 
 open_log(Destination):-
-    (var(Destination) -> 
-        (kleio_log_dir(L),
-        make_directory_path(L),
-        atom_concat(L,'/kleio_service.log',Destination))),
+    var(Destination),
+    kleio_log_dir(L),
+    make_directory_path(L),
+    atom_concat(L,'/kleio_service.log',Destination),
     Alias = logfile,
     open(Destination,append,_AStream,[alias(Alias)]),
     set_shared_prop(log,open,yes),
     set_shared_prop(log,alias,Alias),
     set_shared_prop(log,file,Destination),!.
 
+open_log(current_output):-
+    !,
+    current_output(Alias),
+    set_shared_prop(log,open,yes),
+    set_shared_prop(log,alias,Alias),
+    set_shared_prop(log,file,stdout),!.
+
+open_log(Destination):-
+    Alias = logfile,
+    open(Destination,append,_AStream,[alias(Alias)]),
+    set_shared_prop(log,open,yes),
+    set_shared_prop(log,alias,Alias),
+    set_shared_prop(log,file,Destination),!.    
 close_log:-
     get_shared_prop(log,open,yes),
     get_shared_prop(log,file,File),
