@@ -1,9 +1,9 @@
 FROM swipl
 LABEL MAINTAINER="Joaquim Carvalho joaquim@uc.pt"
-LABEL pt.uc.joaquimrcarvalho.kleio.server.version=2019.A1
+LABEL pt.uc.joaquimrcarvalho.kleio.server.version=2019.A1g
 
 # We need git for the repository handling api using 
-# Following based on https://github.com/SamuelDebruyn/docker-debian-git/blob/master/Dockerfile
+# Following based on https://github.com/SamuelDebruyn/docker-debian-qgit/blob/master/Dockerfile
 # with note from https://serverfault.com/questions/618994/when-building-from-dockerfile-debian-ubuntu-package-install-debconf-noninteract
 
 # setup workdir
