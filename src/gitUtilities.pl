@@ -6,7 +6,12 @@
     git_remotes_branches_info/3,
     git_fetch/2,
     git_pull/2,
-    git_push/2
+    git_push/2,
+    git_commit/5,
+    git_status/3,
+    git_user_info/4,
+    git_set_user_info/4,
+    git_reset/4
     ]).
 /** <module> Utilities dealing with GIT repositiories
  * 
@@ -15,7 +20,7 @@
 * 
 */      
 
-
+:-use_module(logging).
 %% git_global_status(+Dir,-GlobalStatus,+Options) is det.
 %
 % Gets an overview of the global status of the local branch, including 
@@ -27,18 +32,48 @@
 %
 % $ compare_to_branch(Branch): compare with Branch instead of origin/CURRENTBRANCH. Branch can be a git reference like "upstream/master"
 %
+% TODO fix several problems
+%  - it fetches the remotes but then ignores them when computing the ahead and behind ,just doing BRANCH..ORIGIN/BRANCH or compare_to
+%  - the log is not local to the current directory
 git_global_status(CurrentDir,GlobalStatus,Options):-
     (find_git_directory(CurrentDir,Dir,Options)->true;throw(error(not_inside_git_repository))),
+    relative_file_name(CurrentDir, Dir, RelPath),
+    (RelPath=''->GitPath='.';GitPath=RelPath),
     git_default_branch(CurrentBranch,[directory(Dir)]),
-    git_remotes(Dir,Remotes,Options),
-    git_ahead_behind(Dir,Ahead,Behind,AheadBehindOf,Options),
-    git_origin_new_log(Dir,OrgLog,Options),
-    git_local_new_log(Dir,LocLog,Options),
-    git_diff_origin_to_local(Dir,OrgDiff,Options),
-    git_diff_local_to_origin(Dir,LocDiff,Options),
+    git_remote_branch(Dir,Remote,RBranch),
+    atomic_list_concat([Remote,'/',RBranch], RemoteBranch),
+    
+    (Remote \= none -> 
+        (
+            git_fetch(Dir,[git_params(Remote),error(FetchError),status(FetchStatus),lines(FetchLines)]),
+            git_ahead_behind(Dir,Ahead,Behind,AheadBehindOf,[compare_to_branch(RemoteBranch)|Options]),
+            git_origin_new_log(Dir,OrgLog,[git_path(GitPath),compare_to_branch(RemoteBranch)|Options]),
+            git_local_new_log(Dir,LocLog,[git_path(GitPath),compare_to_branch(RemoteBranch)|Options]),
+            git_diff_origin_to_local(Dir,OrgDiff,[compare_to_branch(RemoteBranch)|Options]),
+            git_diff_local_to_origin(Dir,LocDiff,[compare_to_branch(RemoteBranch)|Options])
+        )
+        ;
+        (Ahead=0,Behind=0,AheadBehindOf=none,OrgLog=[],LocLog=[],OrgDiff=[],LocDiff=[],FetchError='No remote branch',FetchStatus=128,FetchLines='')
+    ),
+    (FetchStatus=0->
+        (get_time(T),
+        format_time(string(FetchMessage),'Fetched %Y-%m-%d %H:%M:%S',T))
+        ;
+        FetchMessage=FetchError),
     git_status(CurrentDir,DirStatus,Options),
-    GlobalStatus = gs{directory:CurrentDir,git_root:Dir,branch:CurrentBranch,remotes:Remotes,ahead:Ahead,behind:Behind,comparing_to:AheadBehindOf,origin_new_logs:OrgLog,local_new_logs:LocLog,
-    origin_changes:OrgDiff, local_changes:LocDiff, work_dir_status:DirStatus},
+    git_user_info(CurrentDir,UserName,UserEmail,Options),
+    git_shortlog(Dir,SL,[git_path(GitPath)|Options]),
+    (bagof(git_log{hash:Hash,author:User,author_date:When,commit:User2,commit_date:When2,what:What,comment:Comment,head:SomeList,files:[]},
+            L^(member(L,SL), L = git_log(Hash,User,When,User2,When2,What,Comment,SomeList)),
+            Logs)
+    ;
+    Logs=[]),
+        GlobalStatus = gs{directory:CurrentDir,git_root:Dir,user_name:UserName,user_email:UserEmail,
+                    branch:CurrentBranch,remote:Remote,rbranch:RBranch,
+                    ahead:Ahead,behind:Behind,comparing_to:AheadBehindOf,
+                    logs:Logs,origin_new_logs:OrgLog,local_new_logs:LocLog,
+                    origin_changes:OrgDiff, local_changes:LocDiff, work_dir_status:DirStatus,
+                    fetch_status:FetchStatus,fetch_message:FetchMessage,fetch_lines:FetchLines},
     !.
 
 %% print_git_global_status(+GobalStatus) is det.
@@ -48,10 +83,19 @@ git_global_status(CurrentDir,GlobalStatus,Options):-
 print_git_global_status(GS):-
     get_time(Now),
     format_time(string(NowString),'%Y-%m-%d %H:%M:%S',Now),
+    
+    format('User: ~s  ~s~n',[GS.user_name,GS.user_email]),
     format('Repository status: comparing "~w" with "~w" local time: ~w~nCurrent dir: ~w. Git root: ~w ~n',[GS.branch,GS.comparing_to,NowString,GS.directory,GS.git_root]),
     format('Current branch "~w" is ~w behind and ~w ahead of "~w"~n~n',[GS.branch,GS.behind,GS.ahead,GS.comparing_to]),
-    format('Remotes:\n'),
-    forall(member(Remote,GS.remotes),format('  ~w ~w ~w~n',[Remote.name,Remote.url,Remote.direction])),
+    (GS.logs \= [] ->
+        (   format('~n Logs:~n~n'),
+            forall(member(Log0,GS.logs),format('    ~w (~w)~n    ~w~n~n~@~n',[Log0.comment,Log0.author,Log0.author_date,print_files_in_commit(GS.directory,Log0.hash,[])]))
+        )
+        ;
+        true),
+    format('Remote:~w/~w\n',[GS.remote,GS.rbranch]),
+    format('Last fetch status: ~w ~w :~n~w',[GS.fetch_status,GS.fetch_message,GS.fetch_lines]),
+    
     (GS.behind > 0 -> format('~nNEXT PULL~n');format('~nNOTHING TO PULL~n')),
     (GS.origin_new_logs \= [] ->
         (   format('~n Changes in "~w" not in "~w" (need pull):~n~n',[GS.comparing_to,GS.branch]),
@@ -96,6 +140,19 @@ print_files_in_commit(Directory,Commit,Options):-
     git_list_commit_files(Directory,Commit,Files,Options),
     forall(member(F,Files),format('       ~w ~w~n',[F.status,F.name])).
 
+
+%% git_remote_branch(+Directory,?Remote,?Branch) is det.
+%
+% True if Remote/Branch is the remote branch that the default local branch is tracking. 
+% If the local branch is not tracking any remote then remote  and branch are set to 'none'.
+% 
+git_remote_branch(Directory,Remote,Branch):-
+    git(['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}'],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    (S \= exit(0) -> 
+        (log_debug('Remote branch detection failed ~s~n',[ErrorCodes]),Remote=none,Branch=none)
+        ;   
+        split_string(Output,"/","/\n",[Remote,Branch])
+    ).
 %% git_ahead_behind(+Directory,-Ahead,-Behind,-Comparing_to,+Options) is det.
 %
 % Compares current branch to another branch and gives commits ahead and behind.
@@ -131,6 +188,11 @@ git_ahead_behind(CurrentDir,Ahead,Behind,OtherBranch,Options):-
 %    git fetch [OPTIONS]
 %
 % Options: git_params(MoreParams) MoreParams will be added to the git fetch command
+%          error(ErrorMessage)    Will unify ErroMessage with any error message
+%          status(Status)         Will unify Status with the return code of the git command
+%                                 with -128 for when the prolog command threw an error
+%          lines(Lines)           Output from the fetch command.
+%                                 
 %
 git_fetch(Directory,Options):-
     option(git_params(MoreParams),Options,[]),
@@ -139,19 +201,22 @@ git_fetch(Directory,Options):-
         ;
          atomic_list_concat(MP2,' ', MoreParams)
     ),
-    git(['fetch'|MP2],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    % Connection problems seems to thwrow and error, and not a git error as other commands, we must trap it
+    catch(git(['fetch'|MP2],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+        ErrorTerm,
+        (  
+            term_string(ErrorTerm,ErrorString),
+            string_codes(ErrorString,ErrorCodes),
+            log_error('Problems with git fetch in ~w: ~w~n',[Directory,ErrorTerm]),
+            S=exit(-128),
+            Output=[]
+        )),
     (option(error(ErrorLines),Options)->
-    (string_codes(Error, ErrorCodes),
-    split_string(Error,"\n","\n",ErrorLines)
-    ;
-    true)),
-    (option(error(ErrorLines),Options)->
-        (string_codes(Error, ErrorCodes),
-        split_string(Error,"\n","\n",ErrorLines)
+        string_codes(ErrorLines,ErrorCodes)
         ;
-        true)),
+        true),
     (option(status(Status),Options)->exit(Status)=S;true),
-    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
+    (option(lines(Lines),Options)->string_codes(Lines,Output);true),!.
 
 
 %% git_pull(+Directory,+Options) is det.
@@ -173,7 +238,9 @@ git_pull(Directory,Options):-
     (GitParams='' -> MoreParams=[]; MoreParams=GitParams),
     option(stash_before(Stash),Options,no),
     ( Stash = yes ->
-        git(['stash', 'push'],[directory(Directory),output(_)])
+        (git(['stash', 'push'],[directory(Directory),output(StashOutput),error(StashErrorCodes),status(StashS)]),
+        log_info('Git stash ~w~nOut: ~s~nError:~s~nStatus:~w~n',[Directory,StashOutput,StashErrorCodes,StashS])
+    )
       ;
         true
     ),
@@ -189,7 +256,33 @@ git_pull(Directory,Options):-
         ;
         true)),
     (option(status(Status),Options)->exit(Status)=S;true),
-    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),
+    log_info('Git pull ~w Options:~w~nOut: ~s~nError:~s~nStatus:~w~n',[Directory,MoreParams,Output,ErrorCodes,S]),!.
+
+%% git_reset(+Directory,+Mode,+Commit,+Options) is det.
+%
+% reset local rep to a given commit
+%
+% Corresponds to the command:
+%
+%     git reset <mode> <Commit>
+%
+% Options: git_params(MoreParams) MoreParams will be added to the git reset command
+%
+git_reset(Directory,Mode,CommitRef,Options):-
+    option(git_params(MoreParams),Options,[]),
+    (is_list(MoreParams) ->
+         MP2=MoreParams
+         ;
+         (MoreParams=''->MP2=[];atomic_list_concat(MP2,' ', MoreParams))
+    ),
+    append([reset|MP2],[Mode,CommitRef],ResetCommand),
+    git(ResetCommand,[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    (option(status(Status),Options)->exit(Status)=S;true),
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),
+    string_codes(Error, ErrorCodes),
+    split_string(Error,"\n","\n",ErrorLines),
+    option(error(ErrorLines),Options,ErrorLines).
 
 %% git_push(+Directory,+Options) is det.
 %
@@ -203,17 +296,128 @@ git_pull(Directory,Options):-
 %
 git_push(Directory,Options):-
     option(git_params(MoreParams),Options,[]),
-    option(error(Errors),Options,[]),
     (is_list(MoreParams) ->
-    MP2=MoreParams
-    ;
-    atomic_list_concat(MP2,' ', MoreParams)
-),
-    git(['push' | MP2],[directory(Directory),output(Output),error(Errors)]),
+         MP2=MoreParams
+         ;
+         (MoreParams=''->MP2=[];atomic_list_concat(MP2,' ', MoreParams))
+    ),
+    git(['push' | MP2],[directory(Directory),output(Output),error(ErrorCodes),status(S)]),
+    (option(status(Status),Options)->exit(Status)=S;true),
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),
+    string_codes(Error, ErrorCodes),
+    split_string(Error,"\n","\n",ErrorLines),
+    option(error(ErrorLines),Options,ErrorLines).
+
+% git_user_name(+Directory,?UserName,+Options) is det.
+%
+% User name is the name of the associated with the repository in Directory
+%  as returned by git config --get user.name 
+%
+% If no user name was configured UserName is set to 'none'
+%
+% Options: none defined at present
+%
+git_user_name(Directory,UserName,Options):-
+    git([config, '--get','user.name'],[directory(Directory),output(O),status(S)|Options]),
+    S=exit(0),
+    split_string(O,"\n","\n",[UserName]),!.
+git_user_name(_,none,_).
+
+% git_user_email(+Directory,?UserEmail,+Options) is det.
+%
+% User email is the email of the associated with the repository in Directory
+%  as returned by git config --get user.email 
+%
+% If no user email was configured UnserEmail is set to 'none'
+%
+% Options: none defined at present
+%
+git_user_email(Directory,UserEmail,Options):-
+    git([config, '--get','user.email'],[directory(Directory),output(O),status(S)|Options]),
+    S=exit(0),
+    split_string(O,"\n","\n",[UserEmail]),!.
+git_user_email(_,none,_).
+
+% git_user_info(+Directory,?UserName,?UserEmail,+Options) is det.
+%
+% Gets the user name and email from git config or 'none' when not set
+%
+%
+% Options: none defined at present
+%
+git_user_info(Directory,UserName,UserEmail,Options):-
+    git_user_name(Directory,UserName,Options),
+    git_user_email(Directory,UserEmail,Options),!.
+
+% git_set_user_info(+Directory,+UserName,+UserEmail,+Options) is det.
+%
+% Sets the user name and email for git config 
+%
+% Options: none defined at present
+%
+git_set_user_info(Directory,UserName,UserEmail,Options):-
+    git([config, 'user.name',UserName],[directory(Directory),output(_),error(_),status(exit(0))|Options]),
+    git([config, 'user.email',UserEmail],[directory(Directory),output(Output),error(ErrorCodes),status(exit(S))]),
+    option(status(S),Options,S),
+    (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),
+    string_codes(Error, ErrorCodes),
+    split_string(Error,"\n","\n",ErrorLines),
+    option(error(ErrorLines),Options,ErrorLines).
+
+%% git_commit(+Directory, +AddFiles,+CommitFiles,+CommitMessage,Options) is det.
+%
+% Commits files in Directory with CommitMessage. Adds AddFiles to the index before commit.
+%
+% Options:
+%  git_params(+GP)  : extra parameters for the commit command.
+git_commit(Directory,AddFiles,CommitFiles, CommitMessage, Options):-
+    option(git_params(MoreParams),Options,[]),
+    (is_list(MoreParams) ->
+         MP2=MoreParams
+         ;
+         (MoreParams=''->MP2=[];atomic_list_concat(MP2,' ', MoreParams))
+    ),
+    (atom(AddFiles) % check if anything to add
+        -> atom_length(AddFiles,AddL)
+        ;
+        string_length(AddFiles,AddL)
+        ),
+    (atom(CommitFiles) % check if anything to commit
+        -> (atom_length(CommitFiles,CommitL))
+        ;
+        (string_length(CommitFiles,CommitL))
+    ),
+    (AddL>0  
+        -> (
+            split_string(AddFiles," "," ",AFs),
+            git([add| AFs],[directory(Directory),output(OutputAdd),error(ErrorsAdd),status(AddStatus)])
+        )
+        ;
+        (OutputAdd=[],ErrorsAdd=[],AFs=[])
+    ), 
+    (CommitL>0  
+        -> (
+            Commit1 = ['commit' | MP2],
+            split_string(CommitFiles," "," ",CFs),
+            append(CFs,AFs,Files),
+            append(Commit1, ['-m',CommitMessage| Files], CommitCommand),
+            git(CommitCommand,[directory(Directory),output(OutputCommit),error(ErrorsCommit),status(CommitStatus)])
+        )
+        ;
+        (OutputCommit="Nothing to commit",ErrorsCommit=[])
+    ),   
+    append(OutputAdd,OutputCommit,Output),
+    append(ErrorsAdd,ErrorsCommit,ErrorCodes),
+    string_codes(Error, ErrorCodes),
+    split_string(Error,"\n","\n",ErrorLines),
+    option(error(ErrorLines),Options,ErrorLines), 
+    (var(AddStatus)->AddStatus=999;true),
+    (var(CommitStatus)->CommitStatus=AddStatus;true),
+    exit(Status)=CommitStatus, %we return the commit status or if addStatus
+    option(status_add(AddStatus),Options,AddStatus),
+    option(status_commit(CommitStatus),Options,CommitStatus),
+    option(status(Status),Options,CommitStatus),
     (option(lines(Lines),Options)->split_string(Output,"\n","\n",Lines);true),!.
-
-
-
 
 %% git_origin_new_log(+Directory,-ResultLogs,+Options) is det.
 %
@@ -230,7 +434,7 @@ git_origin_new_log(Directory,ResultLogs,Options):-
     atomic_list_concat(['origin/',CurrentBranch], OriginBranch),
     option(compare_to_branch(OtherBranch),Options,OriginBranch),
     atomic_list_concat([CurrentBranch,'..',OtherBranch],Revs),
-    git_shortlog(Directory,SL,[revisions(Revs)]),
+    git_shortlog(Directory,SL,[revisions(Revs)|Options]),
     (bagof(git_log{hash:Hash,author:User,author_date:When,commit:User2,commit_date:When2,what:What,comment:Comment,head:SomeList,files:[]},
             L^(member(L,SL), L = git_log(Hash,User,When,User2,When2,What,Comment,SomeList)),
             Logs)
@@ -256,7 +460,7 @@ git_local_new_log(Directory,ResultLogs,Options):-
     atomic_list_concat(['origin/',CurrentBranch], OriginBranch),
     option(compare_to_branch(OtherBranch),Options,OriginBranch),
     atomic_list_concat([OtherBranch,'..',CurrentBranch],Revs),
-    git_shortlog(Directory,SL,[revisions(Revs)]),
+    git_shortlog(Directory,SL,[revisions(Revs)|Options]),
     (bagof(git_log{hash:Hash,author:User,author_date:When,commit:User2,commit_date:When2,what:What,comment:Comment,head:SomeList,files:[]},
             L^(member(L,SL), L = git_log(Hash,User,When,User2,When2,What,Comment,SomeList)),
             Logs)
@@ -450,6 +654,7 @@ find_git_directory(StartDir,GitRoot,Options):-
 %                },...]
 %
 % Options: currently none:
+% TODO this throws and error if there is no internet
 %
 git_remotes_branches_info(D,Branches,Options):-
     find_git_directory(D,GitRoot,Options),

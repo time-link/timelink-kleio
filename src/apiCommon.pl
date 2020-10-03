@@ -43,7 +43,7 @@ The _function_ is the predicate that implements the request and also the method 
 |               | DELETE            | translations_delete |clear the translation result (derived files)
 |
  Map the combination of HTTPMethod and Entity into a specific operation
-
+ 
  == 
    /sources/path       GET (json:sources_get) if Path is a file returns the file (json:NOT IMPLEMENTED) if it is a directory returns list of sources
    /sources/path       POST,PUT (json:NOT_IMPLEMENTED) upload a file
@@ -69,9 +69,9 @@ The _function_ is the predicate that implements the request and also the method 
    /status/path        GEt the status of file(s) at path status can be VTEW and aditionally PQ (currently sources)
    /processes/path     GET lista de ficheiros em tradução
    /queued/path        GET lista de ficheiros em fila de espera para serem traduzidos.
-   /versions           GET status do repositório
+   /versions           GET Information from repository (uses pseudo paths to specify)
  == 
-  
+     
 **/ 
 :-reexport('apiSources').
 :-reexport('apiTokens').
@@ -81,4 +81,5 @@ The _function_ is the predicate that implements the request and also the method 
 :-reexport('apiReports').
 :-reexport('apiGit').
 :-reexport('apiIdentifications').
+ 
  
