@@ -631,6 +631,7 @@ group_to_html(File,G):-
          ;
          true
          ),
+         % doc generation is not working
     (clause(gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'),show_edocs(G));true),
     writeln('<blockquote>'),
     writelist0(['Minimal:<b>  ',G,'$']),show_positional(C,L),write('</b>'),

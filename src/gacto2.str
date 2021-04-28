@@ -136,8 +136,9 @@ part name=robject;
      guaranteed=id,sname,type;
      also=status,user,obs;
      part=occ,ls,atr,rel
+
 note ===========================================================
-note occ: an occurence of a real entity
+note occ: an occurrence of a real entity
 note doc group occ contains the ids of the occurrences of a real entity
 note     Defines the id of the occ and optionally the name of the occurence
 note     the id_act of the act where it occurs, the type of act and the fucntion
@@ -2805,30 +2806,3 @@ part name=rel; source=relation;
         guaranteed=tipo,valor,nomedest,iddest;
         also=data,obs;
         identification=yes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
