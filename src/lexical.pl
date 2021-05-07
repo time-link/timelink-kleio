@@ -5,7 +5,8 @@
     data_flag/2,
     data_flag_char/2,
     createchartype/1,
-    showDataFlags/0
+    showDataFlags/0,
+    test_lexical/2
     ]).
 
 /**  <module> Lexical rules
@@ -56,6 +57,7 @@ toks(F,[TOK])-->tok(F,TOK).
 % tokens in data files 
 %******************************************************
 %  %
+tok(dat,(dqstring,V)) -->dqstring(V).
 tok(dat,(names,V))-->names(V),!.
 tok(dat,(fill,V))-->fillsp(V),!.
 tok(dat,(dataflag,N))-->[(__C,T)],{data_flag(N,T),!}.
@@ -69,7 +71,7 @@ tok(dat,(T,C))-->other((T,C),[upper,lower,digit,space,tab]),
 tok(cmd,(fill,V))   -->fillsp(V).
 tok(cmd,(name,V))   -->names(V).
 tok(cmd,(number,V)) -->num(V).
-tok(cmd,(string,V)) -->qstring(V).
+tok(cmd,(string,V)) -->dqstring(V).
 tok(cmd,(dataflag,2))-->[(__C,T)],{data_flag(2,T)}.
 tok(cmd,(T)) -->other(T,[upper,lower,digit,space,tab]),
                        {\+ data_flag(2,T)}.
@@ -163,15 +165,19 @@ numberChar(C) --> [(C,digit)]
 %  quoted strings with double quotes
 %******************************************************
 %  %
-qstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
-             {!,name(V,L)}.
+dqstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
+             {!,qname(L,V)}.
+qname(Chars,Quoted) :- name(S,Chars),
+              re_replace("\""/g,"\\\"",S,T),
+              atomic_list_concat(["\"",T,"\""],Quoted),!.
 
 qstr(Q,[])   -->[(_,Q)],!.
+qstr(Q,[C|R])  -->[(_,backslash),(C,_)],qstr(Q,R),!.
 qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
 qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
-
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
+
 
 
 %% chartype(?Code,?Type) is det.
@@ -276,6 +282,61 @@ showDataFlags:-data_flag(N,F),chartype(C,F),
                write(S),write(' ('),write(F),writeln(')'),
                fail,!.
 showDataFlags.
+
+%% test_lexical(+Chars,-Types) is det.
+% Classify the chars from back quoted string or codes list.
+% 
+% To debug the full list of result do
+%   set_prolog_flag(answer_write_options,[max_depth(0)]). 
+% 
+test_lexical(Chars,Types):-
+  bagof((C,T),(member(C,Chars),chartype(C,T)),Types).
+
+
+%% test_get_tokens(+Type,+Chars,-Tokens) is det.
+% Tokening the chars from back quoted string.
+% 
+% To debug the full list of result do
+%   set_prolog_flag(answer_write_options,[max_depth(0)]). 
+%
+test_get_tokens(Type,Chars,Tokens):-
+  test_lexical(Chars,TypedChars),
+  get_tokens(Type,TypedChars,Tokens).
+
+
+:-begin_tests(lexical).
+
+test(get_tokens_dat_quotes):-
+    Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs=url\r`,
+    writeln(Chars),
+    test_lexical(Chars,TypedChars),
+    writeln(TypedChars),
+    get_tokens(dat,TypedChars,Tokens),
+    writeln(Tokens).
+
+test(get_tokens_dat_quotes_with_quotes):-
+    Chars = `acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
+    writeln(Chars),
+    test_lexical(Chars,TypedChars),
+    writeln(TypedChars),
+    get_tokens(dat,TypedChars,Tokens),
+    writeln(Tokens).
+
+test(get_tokens_dat_quotes_dangling):-
+    Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs="url\r`,
+    writeln(Chars),
+    test_lexical(Chars,TypedChars),
+    writeln(TypedChars),
+    get_tokens(dat,TypedChars,Tokens),
+    writeln(Tokens).
+
+:- end_tests(lexical).
+
+
+    
+
+
+
 
 
 

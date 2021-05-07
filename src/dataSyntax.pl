@@ -73,6 +73,7 @@ element(storeCore(S))  -->[(dataflag,10)],[(dataflag,N)],
 		               {data_flag_char(N,C),name(S,[C]),!}.
 element(storeCore(S))  -->[(dataflag,10)],[(__T,V)],{name(S,[V]),!}.
 element(storeCore(N))  -->[(number,N)],{!}.
+element(storeCore(QS)) -->[(dqstring,QS)],{!}. 
 element(storeCore(S)) -->[(dataflag,F)],
                         {!,data_flag_char(F,C),name(S,[C])}. % we must take dataflags not used up to here literally
 element(storeCore(S))  -->[(__T,V)],{name(S,[V]),!}.
@@ -80,6 +81,7 @@ element(storeCore(S))  -->[(__T,V)],{name(S,[V]),!}.
 fillSpace(S)-->[(fill,S)],{!}.
 
 edef(E)-->names(E),dataflag3,{!}.
+
 
 
 dataflag1-->[(dataflag,1)],{!}.
@@ -103,11 +105,19 @@ reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
                data_flag_char(8,DF8),!.
 
 
+:-begin_tests(dataSyntax).
 
-
-
-
-
+test(compile_data_with_quotes):-
+    Chars = `acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
+    string_codes(String,Chars),
+    format('Line  ~w~n:',[String]),
+    lexical:test_lexical(Chars,TypedChars),
+    format('Types ~w~n:',[TypedChars]),
+    get_tokens(dat,TypedChars,Tokens),
+    format('Tokens~w~n:',[Tokens]),
+    writeln(Tokens),
+    compile_data(Tokens).
+:- end_tests(dataSyntax).
 
 
 

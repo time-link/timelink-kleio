@@ -5,6 +5,7 @@
     show_server_activity/0,
     server_idle/1,
     show_processing_status/0,
+    process_rest/1,
     ps/0,
     ssa/0,
     print_server_config/0,
