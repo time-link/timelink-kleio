@@ -382,11 +382,11 @@ class acusacoes super object table acusacoes
     and
         idcaso column idcaso baseclass idcaso coltype varchar colsize 64 colprecision 0 pkey 0
     and
-        literal column literal baseclass literal coltype varchar colsize 1024 colprecision 0 pkey 0
+        literal column literal baseclass literal coltype varchar colsize 16000 colprecision 0 pkey 0
     and
-        origem column origem baseclass origem coltype varchar colsize 1024 colprecision 0 pkey 0
+        origem column origem baseclass origem coltype varchar colsize 16000 colprecision 0 pkey 0
     and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16000 colprecision 0 pkey 0 .
 mapping cartaperdao to class cartaperdao.
 class cartaperdao super act table perdoes
   with attributes

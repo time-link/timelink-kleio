@@ -14,7 +14,7 @@ run_debug_server:-
     
     print_server_config,
     set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host'sIP)
-    restServer:start_debug_server, 
+    %restServer:start_debug_server, 
     restServer:start_rest_server,!.
 
 %% run_server is det.
@@ -36,6 +36,7 @@ run_server_forever:-
     ).
 
 sleep_forever:-repeat, sleep(300),fail.
+
 
 %% debug_server_until_idle is det.
 %
@@ -144,3 +145,10 @@ do_setup(dstru(V)):-setenv('KLEIO_DEFAULT_STRU',V),!.
 do_setup(dport(V)):-setenv('KLEIO_DEBUGGER_PORT',V),!.
 do_setup(port(V)):-setenv('KLEIO_SERVER_PORT',V),!.
 do_setup(workers(V)):-setenv('KLEIO_WORKERS',V),!.
+
+%% stop_server is det.
+%
+% Stops currently running server.
+stop_server:-
+    restServer:default_value(rest_port,Port),
+    thread_httpd:http_stop_server(Port,[]),!.

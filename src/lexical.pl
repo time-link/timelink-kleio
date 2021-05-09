@@ -57,6 +57,7 @@ toks(F,[TOK])-->tok(F,TOK).
 % tokens in data files 
 %******************************************************
 %  %
+tok(dat,(tquote,V)) -->tquote(V),{!}.
 tok(dat,(dqstring,V)) -->dqstring(V).
 tok(dat,(names,V))-->names(V),!.
 tok(dat,(fill,V))-->fillsp(V),!.
@@ -178,7 +179,11 @@ qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
 
-
+%******************************************************
+%  tripe double quotes For multiline information
+%******************************************************
+%  %
+tquote(V) --> [(Q,doblequote),(Q,doblequote),(Q,doblequote)],{name(V,[Q,Q,Q]),!}.
 
 %% chartype(?Code,?Type) is det.
 %
@@ -186,11 +191,10 @@ qstrChar(Q,C)-->[(C,T)],{T \= Q}.
 %  
 chartype(32,space):-!.
 chartype(9,tab):-!.
-chartype(X,lower):- X > 96,X<123,!.   % lower case letters %
-chartype(X,upper):- X > 64, X < 91,!. % upper case letters %
-chartype(X,digit):- X > 47, X < 58, !. % digits %
-chartype(13,return):-!. 
-chartype(10,return):-!.
+chartype(X,lower):- char_type(X,lower),!.   % lower case letters %
+chartype(X,upper):- char_type(X,upper),!. % upper case letters %
+chartype(X,digit):- char_type(X,digit), !. % digits %
+chartype(X,return):-char_type(X,end_of_line),!. 
 chartype(33,exclamation):-!.
 chartype(34,doblequote):-!.
 chartype(35,cardinal):-!.
@@ -308,7 +312,8 @@ test_get_tokens(Type,Chars,Tokens):-
 
 test(get_tokens_dat_quotes):-
     Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs=url\r`,
-    writeln(Chars),
+    string_codes(String,Chars),
+    format('Line  ~w~n:',[String]),
     test_lexical(Chars,TypedChars),
     writeln(TypedChars),
     get_tokens(dat,TypedChars,Tokens),
@@ -316,20 +321,32 @@ test(get_tokens_dat_quotes):-
 
 test(get_tokens_dat_quotes_with_quotes):-
     Chars = `acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
-    writeln(Chars),
+    string_codes(String,Chars),
+    format('Line  ~w~n:',[String]),
     test_lexical(Chars,TypedChars),
     writeln(TypedChars),
     get_tokens(dat,TypedChars,Tokens),
     writeln(Tokens).
 
-test(get_tokens_dat_quotes_dangling):-
+test(get_tokens_dat_quotes_dangling,[fail]):-
     Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs="url\r`,
-    writeln(Chars),
+    string_codes(String,Chars),
+    format('Line  ~w~n:',[String]),
     test_lexical(Chars,TypedChars),
     writeln(TypedChars),
     get_tokens(dat,TypedChars,Tokens),
     writeln(Tokens).
 
+  test(triple_quote):-
+    Chars = `""" \r one line \rtwo lines\r\r"""`,
+    string_codes(String,Chars),
+    format('Line  ~w~n:',[String]),
+    test_lexical(Chars,TypedChars),
+    writeln(TypedChars),
+    get_tokens(dat,TypedChars,Tokens),
+    writeln(Tokens),
+    member_check((tquote,_),Tokens).
+  
 :- end_tests(lexical).
 
 

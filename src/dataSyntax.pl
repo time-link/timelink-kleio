@@ -24,6 +24,7 @@
 :-use_module(errors).
 :-use_module(lexical).
 :-use_module(reports).
+:-use_module(persistence).
 
 %% compile_data(+Tokens) is det.
 %
@@ -59,6 +60,16 @@ group-->fillSpace(__S),[(names,N)],dataflag1,{newGroup(N),!}.
 elements([E|R])-->element(E),elements(R).
 elements([])   -->[].
 
+% triple quote handling 
+% Everything inside """ ..... ... """ is stored as is
+element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOff,tquoteEnter,!}.
+element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOn,tquoteExit,!}.
+element(storeCore(D)) --> [(dataflag,N)],{tquoteOn,data_flag_char(N,C),name(D,[C]),!}.
+element(storeCore(D)) --> [(return,R)],{tquoteOn,name(D,[R]),!}.
+element(storeCore(R)) --> [(L,R)], { tquoteOn,memberchk(L,[fill,names,number,dqstring]),!}.
+element(storeCore(D)) --> [(__C,R)],{tquoteOn,%format('Got Unknown code: ~w:~w~n',[C,R]),
+                                    name(D,[R]),!}.
+
 % every fill squence is stored as a single space
 %    and returns are skipped %
 element(storeCore(' '))-->fillSpace(__S),{!}. % mudar aqui o tratamento do espaco %
@@ -93,6 +104,12 @@ dataflag8-->[(dataflag,8)],{!}.
 dataflag9-->[(dataflag,9)],{!}.
 dataflag10-->[(dataflag,10)],{!}.
 
+tquoteOn :- get_value(tquote,true).
+tquoteOff :- get_value(tquote,F), !,F=false.
+tquoteOff :-!.
+tquoteEnter :- put_value(tquote,true).
+tquoteExit :- put_value(tquote,false).
+
 % reserved chars in core information %
 reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
                data_flag_char(1,DF1),
@@ -108,15 +125,25 @@ reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
 :-begin_tests(dataSyntax).
 
 test(compile_data_with_quotes):-
-    Chars = `acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
+    Chars = ` b$a,c    acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
     string_codes(String,Chars),
-    format('Line  ~w~n:',[String]),
+    format('~nLine:  ~w~n',[String]),
     lexical:test_lexical(Chars,TypedChars),
-    format('Types ~w~n:',[TypedChars]),
+    % format('Types ~w~n:',[TypedChars]),
     get_tokens(dat,TypedChars,Tokens),
-    format('Tokens~w~n:',[Tokens]),
-    writeln(Tokens),
+    format('~nTokens~w~n:',[Tokens]),
     compile_data(Tokens).
+
+test(compile_data_with_tquotes):-
+    Chars = `""" a,b \r\r\r$/# 1\r 2\r 3\r """\r`,
+    string_codes(String,Chars),
+    format('Line:  ~w~n',[String]),
+    lexical:test_lexical(Chars,TypedChars),
+    format('Types:  ~w~n',[TypedChars]),
+    get_tokens(dat,TypedChars,Tokens),
+    format('Tokens: ~w~n',[Tokens]),
+    compile_data(Tokens).
+
 :- end_tests(dataSyntax).
 
 
