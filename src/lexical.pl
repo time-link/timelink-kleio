@@ -174,7 +174,7 @@ qname(Chars,Quoted) :- name(S,Chars),
 
 qstr(Q,[])   -->[(_,Q)],!.
 qstr(Q,[C|R])  -->[(_,backslash),(C,_)],qstr(Q,R),!.
-qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
+%qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
 qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
