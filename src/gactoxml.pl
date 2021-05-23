@@ -84,11 +84,12 @@ db_init:-
         writeln('     Joaquim Ramos de Carvalho (joaquim@uc.pt) ')
         ] ),
     get_value(data_file,D),
-    break_fname(D,Path,__File,Base,__Ext),
+    break_fname(D,Path,File,Base,__Ext),
     path_sep(Sep),
     list_to_a0([Path,Sep,Base],SOURCE),
     log_debug('translate: path: ~w sep:~w base:~w~n',[Path,Sep,Base]),
     put_value(source_file,SOURCE),
+    put_value(source_file_name,File),
     concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
     log_debug('translate: xmlfile --> ~w~n',[XMLFILE]),
     open_file_write(XMLFILE),
@@ -486,6 +487,9 @@ Hangling of historical sources
 historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),
+  get_value(source_file_name,Name),
+  report([writelist0ln(['** Base name of file ',Name])]),
+(Name \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Name,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
     (get_y_m_d(Date2) -> Date=Date2; Date=0)),
   set_prop(source,date,Date),
