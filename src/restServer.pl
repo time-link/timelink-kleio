@@ -255,7 +255,7 @@ start_rest_server:-
 
 server(Port) :-
         http_server(http_dispatch,
-                    [ port(Port)
+                    [ port(Port),timeout(900) % 15 minutes timeout on requests
                     ]).
 
 %% server_idle(+Seconds) is det.
