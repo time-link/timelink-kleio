@@ -242,7 +242,7 @@ git_pull(Directory,Options):-
     (GitParams='' -> MoreParams=[]; MoreParams=GitParams),
     option(stash_before(Stash),Options,no),
     ( Stash = yes ->
-        (git(['stash', 'push'],[directory(Directory),output(StashOutput),error(StashErrorCodes),status(StashS)]),
+        (git(['stash'],[directory(Directory),output(StashOutput),error(StashErrorCodes),status(StashS)]),
         log_info('Git stash ~w~nOut: ~s~nError:~s~nStatus:~w~n',[Directory,StashOutput,StashErrorCodes,StashS])
     )
       ;
