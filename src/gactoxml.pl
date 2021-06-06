@@ -488,8 +488,10 @@ historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),
   get_value(source_file_name,Name),
-  report([writelist0ln(['** Base name of file ',Name])]),
-(Name \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Name,' Id: ',Id,'.']);true),
+  get_value(data_file,D),
+  break_fname(D,_,_,Base,__Ext),
+  report([writelist0ln(['** Base name of file ',Base])]),
+(Base \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
     (get_y_m_d(Date2) -> Date=Date2; Date=0)),
   set_prop(source,date,Date),
