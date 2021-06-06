@@ -62,13 +62,13 @@ note ============================================================
 
 part name=historical-source;
   guaranteed=id;
-  also=type,date,year,loc,ref,obs;
+  also=type,date,year,loc,ref,obs,replace;
   position=id,year,type,ref;
   part=historical-act
 
 note ============================================================
 note GeoEntity: a spatial entity
-note doc group an entity that repreent a spatial entity in the sense of
+note doc group an entity that represents a spatial entity in the sense of
 note    a conceptual representation of space. A geo-entity is not an object
 note     that has a particular position in place. it is rather something like
 note      the parish of X, the place Y, the region W.
@@ -297,6 +297,7 @@ element name=destname
 element name=destination
 element name=summary;
 element name=description;
+element name=replace;
 
 note ================================================
 note ======= END OF SYSTEM DEFINITIONS ==============
@@ -324,13 +325,14 @@ note doc element ref cota ou outra referencia de localizacao da fonte
 part	 name=fonte;
       source=historical-source;
       guaranteed=id;
-      also=tipo,loc,localizacao,ref,data,ano,obs;
+      also=tipo,loc,localizacao,ref,data,ano,obs,substitui;
       arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
 	  pas,integr,movacao
 
+element name=substitui; source=replace
 
 
 
