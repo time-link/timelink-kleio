@@ -114,7 +114,9 @@ class source super entity table sources
      and
         kleiofile column kleiofile baseclass kleiofile coltype varchar colsize 512 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0
+     and
+        replace column replaces baseclass replace coltype varchar colsize 254 colprecision 0 pkey 0.
 
 mapping 'historical-act' to class act.
 class act super entity table acts
