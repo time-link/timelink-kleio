@@ -64,7 +64,7 @@ git_global_status(CurrentDir,GlobalStatus,Options):-
     git_user_info(CurrentDir,UserName,UserEmail,Options),
     % NOTE git_shortlog will not show the merge commits. This is the standard git behaviour when 
     % a directory with is specified (git_path)
-    % see http://imac-jrc.local:8080/mhk/servlet/do?dbname=china_prosop&action=show_sources&status=yes
+    % see https://stackoverflow.com/questions/50719083/git-log-for-a-directory-including-merges
     git_shortlog(Dir,SL,[git_path(GitPath)|Options]),
     % git_shortlog(Dir,SL,[]), this is the alternative. In git we can specifiy --full-history but not here
     (bagof(git_log{hash:Hash,author:User,author_date:When,commit:User2,commit_date:When2,what:What,comment:Comment,head:SomeList,files:[]},
@@ -683,4 +683,3 @@ git_set_remote_url(D,Name,URL,OS,ES):-
     string_codes(ES,E).
 
 git_test_remote(__D,__Name):-!.
-    
