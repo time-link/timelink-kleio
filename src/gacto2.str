@@ -1395,12 +1395,40 @@ part name=matricula; source=pt-acto;
  also=obs;
  part=enfermo,enferma,referido,referida
 
+note ******************* Generic geographical hierarchies *******************
+note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
+note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
+note 
+part name=geo1; source=geoentity;
+    part=atr,rel,geo2
+
+part name=geo2; source=geoentity;
+    part=atr,rel,geo3
+
+part name=geo3; source=geoentity;
+    part=atr,rel,geo4
+
+part name=geo4; source=geoentity;
+    part=atr,rel
+
+note Dehergne List Maps of "Chretientes" p. 353-
+part name=province; source=geo1;
+    part=atr,rel,fou
+part name=fou; source=geo2;
+    part=atr,rel,tcheou, hien,loc
+part name=tcheou; source=geo3;
+    part=atr,rel,loc
+part name=hien; source=geo3;
+    part=atr,rel,loc
+part name=loc; source=geo4;
+    part=atr,rel
+
 
 
 note ******************** SISTER             *************************
 note *****************************************************************
 note memorias paroquiais de 1758
-note doc group Formato para registo das memorias paroquiais de 1758
+note doc group memoria58 Formato para registo das memorias paroquiais de 1758
 part name=memoria58;source=pt-acto;
 	position=id,dia,mes,ano;
 	guaranteed=id;
