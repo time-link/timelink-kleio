@@ -157,6 +157,9 @@ anc_of(G,A):-
     clioGroup(A,ID),
     get_prop(ID,pars,L),
     member(G,L).
+anc_of(G,A):- % check inheritance
+   get_prop(G,fons,F),
+   anc_of(F,A).
 %******************************************************
 %  subgroups(G,S) S is the list of subgroups of G
 %******************************************************
