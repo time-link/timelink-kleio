@@ -98,11 +98,11 @@ test(clioGroup_create_groups,[true]):-
 %tests of restServer
 % run_tests(rest).
 :-begin_tests(rest).
-%tpath(Path,Action,Options,Object) :-
-%        restServer:tokenize_path(Path,L),
-%        phrase(restServer:rest_path(Action,Options,Object),L),
-%        format('~nPath: ~w ~nAction: ~w~nOptions:~w~nObject:~w~n',
-%                [Path,Action,Options,Object]).
+tpath(Path,Action,Options,Object) :-
+        restServer:tokenize_path(Path,L),
+        phrase(restServer:rest_path(Action,Options,Object),L),
+        format('~nPath: ~w ~nAction: ~w~nOptions:~w~nObject:~w~n',
+                [Path,Action,Options,Object]).
 
 test(rest) :-
         tpath('translations/soure/b1685.cli',
@@ -183,13 +183,13 @@ start :-!.
 
 test_escritura:-
         set_log_level(debug),
-        restServer:translations(
+        restServer:translate(
                 './tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli',
                 './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
                 yes).
 
 test_teste:-
-        restServer:translations(
+        restServer:translate(
                 './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
                 './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
                 yes).
