@@ -157,9 +157,17 @@ anc_of(G,A):-
     clioGroup(A,ID),
     get_prop(ID,pars,L),
     member(G,L).
-anc_of(G,A):- % check inheritance
-   get_prop(G,fons,F),
-   anc_of(F,A).
+%anc_of(G,A):- % check inheritance
+%   anc_of_i(G,A).
+
+anc_of_i(G,A):-
+   writeln('DEBUG-finding by inheritance ascestor of'-G),
+   clioGroup(G,GID),
+   get_prop(GID,fons,FG),
+   clioGroup(A,AID),
+   get_prop(AID,fons,FA),
+   anc_of(FG,FA),
+   writeln('DEBUG-FOUND '-FA-' through '-FG).
 %******************************************************
 %  subgroups(G,S) S is the list of subgroups of G
 %******************************************************
@@ -598,7 +606,7 @@ collect_groups_json([G|MoreGroups],[GInfo|MoreGInfo]):-
 
 collect_group_json(G,I):-
     clioGroup(G,ID),
-        get_props(ID,P),
+    get_props(ID,P),
     (get_prop(ID,certe,C); C=[]),
     (get_prop(ID,locus,L); L=[]),
     (get_prop(ID,ceteri,X); X=[]),
