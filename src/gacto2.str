@@ -162,7 +162,7 @@ part 	name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
      also=loc,ref,obs,day,month,year;
-     arbitrary=person,object,abstraction,ls,atr,rel
+     arbitrary=person,object,geoentity,abstraction,ls,atr,rel
 
 note ============================================================
 note A person
@@ -330,7 +330,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas,integr,movacao
+	  pas,integr,movacao,geodesc
 
 element name=substitui; source=replace
 
@@ -1396,19 +1396,30 @@ part name=matricula; source=pt-acto;
  part=enfermo,enferma,referido,referida
 
 note ******************* Generic geographical hierarchies *******************
+note doc group geodesc A description of geographic entities
+part name=geodesc; source=pt-acto;
+    position=id,dia,mes,ano,fol;
+    guaranteed=id;
+    also=obs;
+    part=geo1,geo2,geo3,geo4
+
 note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
 note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
 note 
 part name=geo1; source=geoentity;
+    position=name,type,id;
     part=atr,rel,geo2
 
 part name=geo2; source=geoentity;
+    position=name,type,id;
     part=atr,rel,geo3
 
 part name=geo3; source=geoentity;
+    position=name,type,id;
     part=atr,rel,geo4
 
 part name=geo4; source=geoentity;
+    position=name,type,id;
     part=atr,rel
 
 note Dehergne List Maps of "Chretientes" p. 353-
