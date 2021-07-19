@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<KLEIO STRUCTURE="gacto2.str" SOURCE="/Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.cli" TRANSLATOR="gactoxml2.str" WHEN="2018-6-18 16:29:34" OBS="" SPACE="lousa">
+<KLEIO STRUCTURE="./tests/kleio-home/system/conf/kleio/stru/gacto2.str" SOURCE="./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli" TRANSLATOR="gactoxml2.str" WHEN="2021-6-25 18:43:9" OBS="" SPACE="">
 <CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="fonte">
      <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
      <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
@@ -8,91 +8,64 @@
      <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="kleiofile" COLUMN="kleiofile" CLASS="kleiofile" TYPE="varchar" SIZE="512" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="16654" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="replace" COLUMN="replaces" CLASS="replace" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
 </CLASS>
 
-<GROUP ID="lousa-baptismos-1650-1652" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
+<GROUP ID="teste" NAME="fonte" CLASS="source" ORDER="1" LEVEL="1" LINE="4">
     <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
-    <ELEMENT NAME="id" CLASS="id"><core>lousa-baptismos-1650-1652</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>teste</core></ELEMENT>
     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
     <ELEMENT NAME="order" CLASS="order"><core>1</core></ELEMENT>
     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
-   <ELEMENT NAME="year" CLASS="undef">
-         <core><![CDATA[cota?]]></core>   </ELEMENT>
-   <ELEMENT NAME="tipo" CLASS="type">
-         <core><![CDATA[baptismos]]></core>   </ELEMENT>
-   <ELEMENT NAME="loc" CLASS="loc">
-         <core><![CDATA[auc]]></core>   </ELEMENT>
-   <ELEMENT NAME="data" CLASS="date">
-         <core><![CDATA[16500000]]></core>   </ELEMENT>
-   <ELEMENT NAME="obs" CLASS="obs">
-         <core><![CDATA[OBS1]]></core>      <core><![CDATA[OBS2a]]></core>      <core><![CDATA[OBS2b]]></core>   </ELEMENT>
    <ELEMENT NAME="date" CLASS="date">
-         <core><![CDATA[16500000]]></core>   </ELEMENT>
+         <core><![CDATA[0]]></core>   </ELEMENT>
    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
-         <core><![CDATA[/Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.cli]]></core>   </ELEMENT>
+         <core><![CDATA[./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli]]></core>   </ELEMENT>
 </GROUP>
-<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="bap">
+<CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="geodesc">
      <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
      <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="loc" COLUMN="loc" CLASS="loc" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="ref" COLUMN="ref" CLASS="ref" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="16654" PRECISION="0" PKEY="0" ></ATTRIBUTE>
 </CLASS>
 
-<GROUP ID="lousa-b1650-1x" NAME="bap" CLASS="act" ORDER="2" LEVEL="2" LINE="8">
-    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
-    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1650-1x</core></ELEMENT>
-    <ELEMENT NAME="groupname" CLASS="groupname"><core>bap</core></ELEMENT>
-   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-baptismos-1650-1652</core></ELEMENT>
+<GROUP ID="geodesc" NAME="geodesc" CLASS="act" ORDER="2" LEVEL="2" LINE="6">
+    <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geodesc</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>teste</core></ELEMENT>
    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
     <ELEMENT NAME="order" CLASS="order"><core>2</core></ELEMENT>
     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
-   <ELEMENT NAME="dia" CLASS="undef">
-         <core><![CDATA[6]]></core>   </ELEMENT>
-   <ELEMENT NAME="mes" CLASS="undef">
-         <core><![CDATA[1]]></core>   </ELEMENT>
-   <ELEMENT NAME="ano" CLASS="undef">
-         <core><![CDATA[1714]]></core>   </ELEMENT>
-   <ELEMENT NAME="fol" CLASS="ref">
-         <core><![CDATA[fl.117v.]]></core>   </ELEMENT>
-   <ELEMENT NAME="local" CLASS="loc">
-         <core><![CDATA[igreja de sao silvestre]]></core>   </ELEMENT>
-   <ELEMENT NAME="celebrante" CLASS="undef">
-         <core><![CDATA[joao lopes serra(padre)]]></core>   </ELEMENT>
-   <ELEMENT NAME="obs" CLASS="obs">
-         <core><![CDATA[com licenca do padre manuel lopes serraassina joao lopes serra]]></core>   </ELEMENT>
    <ELEMENT NAME="date" CLASS="date">
-         <core><![CDATA[17140106]]></core>   </ELEMENT>
+         <core><![CDATA[0]]></core>   </ELEMENT>
    <ELEMENT NAME="type" CLASS="type">
-         <core><![CDATA[bap]]></core>   </ELEMENT>
+         <core><![CDATA[geodesc]]></core>   </ELEMENT>
 </GROUP>
-<CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="n">
+<CLASS NAME="geoentity" SUPER="entity" TABLE="geoentities" GROUP="geo1">
      <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="name" COLUMN="name" CLASS="name" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="16654" PRECISION="0" PKEY="0" ></ATTRIBUTE>
 </CLASS>
 
-<GROUP ID="lousa-b1650-1x-per1" NAME="n" CLASS="person" ORDER="3" LEVEL="3" LINE="9">
-    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
-    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1650-1x-per1</core></ELEMENT>
-    <ELEMENT NAME="groupname" CLASS="groupname"><core>n</core></ELEMENT>
-   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1650-1x</core></ELEMENT>
-   <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+<GROUP ID="geodesc-geo1" NAME="geo1" CLASS="geoentity" ORDER="3" LEVEL="3" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geo1</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>geodesc</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
     <ELEMENT NAME="order" CLASS="order"><core>3</core></ELEMENT>
     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
-   <ELEMENT NAME="nome" CLASS="name">
-         <core><![CDATA[filipa]]></core>         <original><![CDATA[felipa]]></original>
-         <comment><![CDATA[grafia antiga]]></comment>
-   </ELEMENT>
-   <ELEMENT NAME="sexo" CLASS="sex">
-         <core><![CDATA[f]]></core>   </ELEMENT>
-   <ELEMENT NAME="sex" CLASS="sex">
-         <core><![CDATA[f]]></core>   </ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[provincia]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[geo1]]></core>   </ELEMENT>
 </GROUP>
 <CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
      <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
@@ -101,52 +74,139 @@
      <ATTRIBUTE NAME="destination" COLUMN="destination" CLASS="destination" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
      <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="16654" PRECISION="0" PKEY="0" ></ATTRIBUTE>
 </CLASS>
 
-<GROUP ID="lousa-b1650-1x-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="9">
-    <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+<GROUP ID="geodesc-rela1" NAME="relation"  ORDER="4" LEVEL="4" CLASS="relation" LINE="8">
+    <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
-    <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1650-1x-per1</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1</core></ELEMENT>
     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
     <ELEMENT NAME="order" CLASS="order"><core>4</core></ELEMENT>
     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
-    <ELEMENT NAME="value" CLASS="value"><core>n</core></ELEMENT>
-    <ELEMENT NAME="destname" CLASS="destname"><core>bap</core></ELEMENT>
-    <ELEMENT NAME="origin" CLASS="origin"><core>lousa-b1650-1x-per1</core></ELEMENT>
-    <ELEMENT NAME="destination" CLASS="destination"><core>lousa-b1650-1x</core></ELEMENT>
-    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1650-1x-rela1</core></ELEMENT>
-    <ELEMENT NAME="date" CLASS="date"><core>17140106</core></ELEMENT>
-</GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
-     <ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="entity" COLUMN="entity" CLASS="entity" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="date" COLUMN="the_date" CLASS="date" TYPE="varchar" SIZE="24" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="type" COLUMN="the_type" CLASS="type" TYPE="varchar" SIZE="32" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="value" COLUMN="the_value" CLASS="value" TYPE="varchar" SIZE="254" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-     <ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
-</CLASS>
-
-<GROUP ID="lousa-b1650-1x-per1-att1-8" NAME="ls" CLASS="attribute" ORDER="5" LEVEL="4" LINE="14">
-    <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
-    <ELEMENT NAME="id" CLASS="id"><core>lousa-b1650-1x-per1-att1-8</core></ELEMENT>
-    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
-   <ELEMENT NAME="inside" CLASS="inside"><core>lousa-b1650-1x-per1</core></ELEMENT>
-   <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>geo1</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>geodesc-geo1</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-rela1</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="geodesc-geo1-geo2" NAME="geo2" CLASS="geoentity" ORDER="5" LEVEL="4" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geo2</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
     <ELEMENT NAME="order" CLASS="order"><core>5</core></ELEMENT>
     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
-   <ELEMENT NAME="tipo" CLASS="type">
-         <core><![CDATA[nome]]></core>   </ELEMENT>
-   <ELEMENT NAME="valor" CLASS="value">
-         <core><![CDATA[constanca]]></core>         <original><![CDATA[constanssa]]></original>
-   </ELEMENT>
-   <ELEMENT NAME="obs" CLASS="obs">
-         <core><![CDATA[segundo um assento na margem do baptismo: "a mae da baptizada mudou no  santo crisma o nome de Filipa em Constancia]]></core>      <core><![CDATA[  e que justificou ante o vigario gheral desta vila por cujo despacho  fiz esta declaracao]]></core>      <core><![CDATA[ assina: Padre Tavares"]]></core>   </ELEMENT>
-   <ELEMENT NAME="id" CLASS="id">
-         <core><![CDATA[lousa-b1650-1x-per1-att1-8]]></core>   </ELEMENT>
-   <ELEMENT NAME="entity" CLASS="entity">
-         <core><![CDATA[lousa-b1650-1x-per1]]></core>   </ELEMENT>
-   <ELEMENT NAME="date" CLASS="date">
-         <core><![CDATA[17140106]]></core>   </ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[cidade]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[geo2]]></core>   </ELEMENT>
 </GROUP>
-</KLEIO>
+
+<GROUP ID="geodesc-geo1-rela2" NAME="relation"  ORDER="6" LEVEL="5" CLASS="relation" LINE="10">
+    <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>6</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>geo2</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>geodesc-geo1-geo2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-rela2</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="geodesc-geo1-geo2-geo3" NAME="geo3" CLASS="geoentity" ORDER="7" LEVEL="5" LINE="12">
+    <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-geo2-geo3</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geo3</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1-geo2</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>7</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[bairro]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[geo3]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="geodesc-geo1-geo2-rela3" NAME="relation"  ORDER="8" LEVEL="6" CLASS="relation" LINE="12">
+    <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1-geo2-geo3</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>8</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>geo3</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>geodesc-geo1-geo2-geo3</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-geo2-rela3</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="geodesc-geo1-geo2-geo3-geo4" NAME="geo4" CLASS="geoentity" ORDER="9" LEVEL="6" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-geo2-geo3-geo4</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geo4</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1-geo2-geo3</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>9</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>6</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[local]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[geo4]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="geodesc-geo1-geo2-geo3-rela4" NAME="relation"  ORDER="10" LEVEL="7" CLASS="relation" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo1-geo2-geo3-geo4</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>10</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>7</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>geo4</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>geodesc-geo1-geo2-geo3-geo4</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo1-geo2-geo3-rela4</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP>
+<GROUP ID="geodesc-geo5-2" NAME="geo1" CLASS="geoentity" ORDER="11" LEVEL="3" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-geo5-2</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>geo1</core></ELEMENT>
+   <ELEMENT NAME="inside" CLASS="inside"><core>geodesc</core></ELEMENT>
+   <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>11</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+   <ELEMENT NAME="name" CLASS="name">
+         <core><![CDATA[provincia2]]></core>   </ELEMENT>
+   <ELEMENT NAME="id" CLASS="id">
+         <core><![CDATA[geodesc-geo5-2]]></core>   </ELEMENT>
+   <ELEMENT NAME="type" CLASS="type">
+         <core><![CDATA[geo1]]></core>   </ELEMENT>
+</GROUP>
+
+<GROUP ID="geodesc-rela5" NAME="relation"  ORDER="12" LEVEL="4" CLASS="relation" LINE="13">
+    <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+    <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="inside" CLASS="inside"><core>geodesc-geo5-2</core></ELEMENT>
+    <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+    <ELEMENT NAME="order" CLASS="order"><core>12</core></ELEMENT>
+    <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+    <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+    <ELEMENT NAME="value" CLASS="value"><core>geo1</core></ELEMENT>
+    <ELEMENT NAME="destname" CLASS="destname"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="origin" CLASS="origin"><core>geodesc-geo5-2</core></ELEMENT>
+    <ELEMENT NAME="destination" CLASS="destination"><core>geodesc</core></ELEMENT>
+    <ELEMENT NAME="id" CLASS="id"><core>geodesc-rela5</core></ELEMENT>
+    <ELEMENT NAME="date" CLASS="date"><core>0</core></ELEMENT>
+</GROUP></KLEIO>

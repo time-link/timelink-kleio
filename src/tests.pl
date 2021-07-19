@@ -187,7 +187,7 @@ test_escritura:-
                 './tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli',
                 './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
                 yes).
-
+ 
 test_teste:-
         restServer:translate(
                 './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
