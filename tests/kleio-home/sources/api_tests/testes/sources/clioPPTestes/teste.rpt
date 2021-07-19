@@ -1,26 +1,44 @@
-ClioInput - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
-18-6-2018 16-29
+KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+25-6-2021 18-43
 
-Processing data file:/Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.cli
+Processing data file teste.cli
 -------------------------------------------
 Generic Act translation module with geoentities (XML).
      Joaquim Ramos de Carvalho (joaquim@uc.pt) 
 ** New document: kleio
+1: kleio$gacto2.str/translations=1
 =========================
 kleio translation started
 =========================
 Structure: gacto2.str
-Prefix: lousa
-Autorel: lousa
-Translation count: 7
+Prefix: 
+Autorel: 
+Translation count: 1
 Obs: 
-** Processing source fonte$lousa-baptismos-1650-1652
-8: bap$lousa-b1650-1x
-*** End of File
-** Processed file- /Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.cli
-** Original file- /Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.org
-** Previous version- /Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.old
-** Temp file with ids- /Users/jrc/develop/mhk_users/testes/sources/clioPPTestes/teste.ids
+2:    fonte$teste
+3: 
+** Processing source fonte$teste
+** Base name of file teste in teste.cli
+4:       geodesc$geodesc
+5: 
+6: geodesc$geodesc
+6:          geo1$provincia/id=geodesc-geo1
+7: 
+8:             geo2$cidade/id=geodesc-geo1-geo2
+9: 
+10:                geo3$bairro/id=geodesc-geo1-geo2-geo3
+11: 
+12:                   geo4$local/id=geodesc-geo1-geo2-geo3-geo4
+13: geo1$provincia2*** End of File
+
+
+** Processed file- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli
+** Original file- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.org
+** Previous version- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.old
+** Temp file with ids- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.ids
+** - ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli-renamed to- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.old
+** - ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.ids-renamed to- ./tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli
+** Translation files closed.
 0  errors. 
 0  warnings.
 Translation finished.
