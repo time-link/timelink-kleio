@@ -1401,22 +1401,22 @@ part name=geodesc; source=pt-acto;
     position=id,dia,mes,ano,fol;
     guaranteed=id;
     also=obs;
-    part=geo1,geo2,geo3,geo4
+    part=geo1,geo2,geo3,geo4,atr,rel
 
 note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
 note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
 note 
 part name=geo1; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo2
+    part=geo2,atr,rel
 
 part name=geo2; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo3
+    part=geo3,atr,rel
 
 part name=geo3; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo4
+    part=geo4,atr,rel
 
 part name=geo4; source=geoentity;
     position=name,type,id;

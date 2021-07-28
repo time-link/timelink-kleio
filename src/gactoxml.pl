@@ -803,6 +803,56 @@ get_sex(female,f):-!.
 
     get_date: get the date if it was entered as the element "date"
     ========
+    TODO: implemente issue 128 https://github.com/joaquimrcarvalho/mhk/issues/128
+
+    Another alternative for the notation
+- "<date"before date 
++ ">date" after date
+Date:  period starting in date
+:Date  period ending in date
+:date: date is part of period with start and end unknown 
+Dates can be expressed as
+- yyyymmdd
+- yyyy-mm-dd 
+- yyyymm or yyyymm00 date with day unknown
+- yyyy or yyyy0000 date with month and day unknown
+
+So
+- 1580:1640 
+- 1580:1640-01-01
+- >1580:-1641
+- 1580: from 1580 onwards
+- :>1580 ending after 1580
+
+This would generate extra infered elements and kick in when date is not a number
+date formats above would be processed to produce a yyyymmdd date a
+get_date(DATE,EXTRA) where EXTRA would be a list with can contain one or several of 
+  date1(D,[],[]) - first date of a period
+  date2(D,[],[]) - second date of a period
+  before_date1(true,[],[]) - when date1 was prefixed with "<"
+  before_date2(true,[],[]) - when date2 was prefixed with "<" 
+  after_date1(true,[],[]) - when date1 was prefixed with ">"
+  after_date2(true,[],[]) - when date2 was prefixed with ">"
+
+  This can be done with a grammar
+
+    dateExpression(D) -> singleDate(D)
+    dateExpression(period(D1,D2)) -> singleDate(D1),':',sngleDate(D2)
+    dateExpression(period(uknown,D2)) -> ':',singleDate(D2)
+    dateExpression(period(D1,unknown)) -> singleDate(D1),':'
+
+    singleDate([date(D)]) -> dateExpression(D).
+    singleDate([date(D),relative(R)]) -> relative(R),dateExpression(D).
+
+    dateExpression(D) -> isNumber(N), padto8(N,D).
+    dateExperssion(D) -> is_dd_mm_yyyy(D).
+    dateExperssion(D) -> is_yyyy_mm_dd(D).  
+    dateExperssion(D) -> is_yyyy_mm(D).  
+    dateExperssion(D) -> is_mm_yyyy(D).
+
+    relative(C) --> [C], {member(C,['>','<'])}.
+
+
 */
 get_date(DATE):-
       belement_aspect(core,date,[A_DATE]),
