@@ -183,9 +183,9 @@ class attribute super entity table attributes
      and
         date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
      and
-        type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0 
+        type column the_type baseclass type coltype varchar colsize 512 colprecision 0 pkey 0
      and
-        value column the_value baseclass value coltype varchar colsize 254 colprecision 0 pkey 0 
+        value column the_value baseclass value coltype varchar colsize 1024 colprecision 0 pkey 0
      and
         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
