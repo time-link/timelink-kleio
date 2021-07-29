@@ -138,7 +138,7 @@ class person super entity table persons
    with attributes
         id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
      and
-        name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
+        name column name baseclass name coltype varchar colsize 128 colprecision 0 pkey 0
      and
         sex column sex baseclass sex coltype char colsize 1 colprecision 0 pkey 0 
      and
