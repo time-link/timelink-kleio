@@ -34,7 +34,7 @@
 %
 % TODO fix several problems
 %  - it fetches the remotes but then ignores them when computing the ahead and behind ,just doing BRANCH..ORIGIN/BRANCH or compare_to
-%  - the log is not local to the current directory
+%  - the log is not local to the current directory (this is problem with the git primitives, lots of threads in SO)
 git_global_status(CurrentDir,GlobalStatus,Options):-
     (find_git_directory(CurrentDir,Dir,Options)->true;throw(error(not_inside_git_repository))),
     relative_file_name(CurrentDir, Dir, RelPath),
