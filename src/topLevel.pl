@@ -118,6 +118,9 @@ dat(F):-
       writeln('-------------------------------------------')]),
       initData(Filename),
       debug(kleio(dat),'dat: initData done',[]),
+      % TODO PROFILING should go here
+      # profile(readlines(dat))
+      # or time(readlines(dat))
       readlines(dat),
 	  % report([perror_count]), % must be called after final checks in gactoxml.pl
       closeData(Filename),
