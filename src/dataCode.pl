@@ -88,13 +88,13 @@ storeEls(_).
 %  %
 
 newGroup(N):-
-    isDoc(N), % if it is a doc jump%
-    newDoc(N),!.
+    isDoc(N),!, % if it is a doc jump%
+    newDoc(N).
 newGroup(N):-
-    \+ isDoc(N),    % if it is not %
+    \+ isDoc(N), !,   % if it is not %
     flushGroup,        % flush last group %
-    initNewGroup(N),% initialize a new one %
-    !.
+    initNewGroup(N).% initialize a new one %
+    
 newGroup(N):-
     error_out(['** Failure. Could not process group ',N]),!.
 
@@ -113,12 +113,12 @@ newDoc(N):-
 flushGroup:-
     getCDField(cgroup,[]),!. % no current group %
 flushGroup:-
-    getCDField(cgroup,G),
+    getCDField(cgroup,G),!,
     G \= [],
     endElement,
     makeID(ID),   % construct an ID for this group %
     check_elements(G,ID), % checks certe elements, etc.%
-    db_store,!.   % here the user defined database storage is called %
+    db_store.   % here the user defined database storage is called %
 flushGroup:-
     error_out(['** Failure. Could not process ',flushGroup]),!.
 
