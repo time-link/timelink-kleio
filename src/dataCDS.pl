@@ -79,6 +79,22 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
 :-use_module(errors).
 :-use_module(persistence).
 :-use_module(utilities).
+:-use_module(library(record)).
+
+% testing and alternative storage for speed
+:-record cdsr(cpath: list,
+                cgroup:list,
+                cgroupID: list,
+                locusCount: nonneg=0,
+                elementList: list,
+                celement: list,
+                entryList: list,
+                caspect: atom=core,
+                ccore:list,
+                coriginal:list,
+                ccomment:list).
+
+
 
 %******************************************************
 %  %
@@ -89,6 +105,36 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
 cdsFields([cpath, cgroup,cgroupID,locusCount,elementList,celement,entryList,caspect,
 ccore, coriginal, ccomment]).
 
+
+% The following predicates are helpers to print in the console the names
+% of usefull preditates, to be copied to the source code.
+print_cdsr_gets:-
+    cdsFields(Fields),
+    member(Field,Fields),
+    string_upper(Field,UField),
+    format('cdsr_~w(CDSR,~w)~n',[Field,UField]),
+    fail.
+
+print_cdsr_gets:-!.
+
+print_cdsr_getCDRFields:-
+    cdsFields(Fields),
+    member(Field,Fields),
+    string_upper(Field,UField),
+    format('getCDRField(~w,~w,CDSR):-cdsr_~w(CDSR,~w).~n',[Field,UField,Field,UField]),
+    fail.
+
+print_cdsr_getCDRFields:-!.
+
+
+
+print_cdsr_setCDRField:-
+    cdsFields(Fields),
+    member(Field,Fields),
+    format('setCDRField(~w,VALUE,OLD_CDSR,NEW_CDSR):-set_~w_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).~n',[Field,Field]),
+    fail.
+
+print_cdsr_setCDRField:-!.
 
 %*****************************************************
 %  getCDS(C)
@@ -102,11 +148,29 @@ getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
     get_prop(cds,locusCount,LOCUSCOUNT),
     get_prop(cds,elementList,ELEMENTLIST),
     get_prop(cds,celement,CELEMENT),
-    get_prop(cds,entrylist,ENTRYLIST),
+    get_prop(cds,entryList,ENTRYLIST),
     get_prop(cds,caspect,CASPECT),
     get_prop(cds,ccore,CCORE),
     get_prop(cds,coriginal,CORIGINAL),
     get_prop(cds,ccomment,CCOMMENT),!.
+
+% Record variant
+getCDSR(CDSR):-
+    getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
+                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)),
+    make_cdsr([
+        cpath(CPATH),
+        cgroup(CGROUP),
+        cgroupID(CGROUPID),
+        locusCount(LOCUSCOUNT),
+        elementList(ELEMENTLIST),
+        celement(CELEMENT),
+        entryList(ENTRYLIST),
+        caspect(CASPECT),
+        ccore(CCORE),
+        coriginal(CORIGINAL),
+        ccomment(CCOMMENT)
+        ],CDSR).
 
 
 %*****************************************************
@@ -126,6 +190,22 @@ setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
     set_prop(cds,ccore,CCORE),
     set_prop(cds,coriginal,CORIGINAL),
     set_prop(cds,ccomment,CCOMMENT),!.
+
+% Record variant
+setCDSR(CDSR):-
+    cdsr_cpath(CDSR,CPATH),
+    cdsr_cgroup(CDSR,CGROUP),
+    cdsr_cgroupID(CDSR,CGROUPID),
+    cdsr_locusCount(CDSR,LOCUSCOUNT),
+    cdsr_elementList(CDSR,ELEMENTLIST),
+    cdsr_celement(CDSR,CELEMENT),
+    cdsr_entryList(CDSR,ENTRYLIST),
+    cdsr_caspect(CDSR,CASPECT),
+    cdsr_ccore(CDSR,CCORE),
+    cdsr_coriginal(CDSR,CORIGINAL),
+    cdsr_ccomment(CDSR,CCOMMENT),
+    setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
+                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)).
 
 %******************************************************
 %  createCD - creates an empty data storage structure
@@ -161,6 +241,19 @@ setCDField(Field,Value):-
 setCDField(Field,__Value):-
     error_out(['** SetCDField: ilegal field:',Field, '(internal error)']),!.
 
+% record variant
+setCDRField(cpath,VALUE,OLD_CDSR,NEW_CDSR):-set_cpath_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(cgroup,VALUE,OLD_CDSR,NEW_CDSR):-set_cgroup_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(cgroupID,VALUE,OLD_CDSR,NEW_CDSR):-set_cgroupID_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(locusCount,VALUE,OLD_CDSR,NEW_CDSR):-set_locusCount_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(elementList,VALUE,OLD_CDSR,NEW_CDSR):-set_elementList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(celement,VALUE,OLD_CDSR,NEW_CDSR):-set_celement_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(entryList,VALUE,OLD_CDSR,NEW_CDSR):-set_entryList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(caspect,VALUE,OLD_CDSR,NEW_CDSR):-set_caspect_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(ccore,VALUE,OLD_CDSR,NEW_CDSR):-set_ccore_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(coriginal,VALUE,OLD_CDSR,NEW_CDSR):-set_coriginal_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(ccomment,VALUE,OLD_CDSR,NEW_CDSR):-set_ccomment_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+
 %******************************************************
 %  getCDField(Field,Value) returns value for Field in CDS
 %******************************************************
@@ -171,6 +264,20 @@ getCDField(Field,Value):-
 
 getCDField(Field,__Value):-
     error_out(['** getCDField: ilegal field:',Field, '(internal error)']),!.
+
+% record variant
+getCDRField(cpath,CPATH,CDSR):-cdsr_cpath(CDSR,CPATH).
+getCDRField(cgroup,CGROUP,CDSR):-cdsr_cgroup(CDSR,CGROUP).
+getCDRField(cgroupID,CGROUPID,CDSR):-cdsr_cgroupID(CDSR,CGROUPID).
+getCDRField(locusCount,LOCUSCOUNT,CDSR):-cdsr_locusCount(CDSR,LOCUSCOUNT).
+getCDRField(elementList,ELEMENTLIST,CDSR):-cdsr_elementList(CDSR,ELEMENTLIST).
+getCDRField(celement,CELEMENT,CDSR):-cdsr_celement(CDSR,CELEMENT).
+getCDRField(entryList,ENTRYLIST,CDSR):-cdsr_entryList(CDSR,ENTRYLIST).
+getCDRField(caspect,CASPECT,CDSR):-cdsr_caspect(CDSR,CASPECT).
+getCDRField(ccore,CCORE,CDSR):-cdsr_ccore(CDSR,CCORE).
+getCDRField(coriginal,CORIGINAL,CDSR):-cdsr_coriginal(CDSR,CORIGINAL).
+getCDRField(ccomment,CCOMMENT,CDSR):-cdsr_ccomment(CDSR,CCOMMENT).
+
 %******************************************************
 %  getCDElement_list(List) list of elements of current group
 %******************************************************
@@ -399,6 +506,8 @@ printAsp(__N,com,V):-
     /* tab(N),  write(T),write(': '),*/
     write('#'),writelist0(V),
     !.    
+
+
 
 % vim/prolog
 % text of window:  data code cds %
