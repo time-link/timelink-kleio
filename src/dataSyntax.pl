@@ -144,6 +144,16 @@ test(compile_data_with_tquotes):-
     format('Tokens: ~w~n',[Tokens]),
     compile_data(Tokens).
 
+test(compile_data_with_pseudo_numbers):-
+    Chars = `date$string=5.10.1765`,
+    string_codes(String,Chars),
+    format('Line:  ~w~n',[String]),
+    lexical:test_lexical(Chars,TypedChars),
+    format('Types:  ~w~n',[TypedChars]),
+    get_tokens(dat,TypedChars,Tokens),
+    format('Tokens: ~w~n',[Tokens]),
+    compile_data(Tokens).
+
 :- end_tests(dataSyntax).
 
 

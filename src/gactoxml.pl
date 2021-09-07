@@ -1905,9 +1905,9 @@ xcleanwrite([A|B]):-!,
    xcleanwrite(A),xcleanwrite(B).
 xcleanwrite(Atomic):-
    atom(Atomic),!,
-   name(Atomic,Chars),
+   atom_codes(Atomic,Chars),
    xclean_chars(Chars,CChars),
-   name(CAtomic,CChars),
+   atom_codes(CAtomic,CChars),
    write_term(CAtomic,[quoted(false)]).
 xcleanwrite(Functor):-!,write_term(Functor,[quoted(false)]).
 
