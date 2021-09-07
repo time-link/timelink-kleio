@@ -307,8 +307,11 @@ test_get_tokens(Type,Chars,Tokens):-
   test_lexical(Chars,TypedChars),
   get_tokens(Type,TypedChars,Tokens).
 
+breakpoint:- true. %place holder for break points
 
 :-begin_tests(lexical).
+
+
 
 test(get_tokens_dat_quotes):-
     Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs=url\r`,
@@ -328,8 +331,8 @@ test(get_tokens_dat_quotes_with_quotes):-
     get_tokens(dat,TypedChars,Tokens),
     writeln(Tokens).
 
-test(get_tokens_dat_quotes_dangling,[fail]):-
-    Chars = `acto$asf.4#"htpp://timelink.uc.pt?"/24/5/1958/obs="url\r`,
+test(get_tokens_dat_quotes_dangling):-
+    Chars = `acto$asf.4/obs="url\r`,
     string_codes(String,Chars),
     format('Line  ~w~n:',[String]),
     test_lexical(Chars,TypedChars),
