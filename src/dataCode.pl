@@ -76,6 +76,30 @@ storeEls(E):-
     call(P),
     fail.
 storeEls(_).
+
+%******************************************************
+%    storeElsR takes a list of calls of the above predicates
+%      and executes them in order. Recursive version 
+%      with record based CDS Storage
+%******************************************************
+% %
+storeElsR([]):- !.
+storeElsR([A|B]):-
+    dataCDS:getCDSR(CDSR),
+    storeElsR(CDSR,[A|B],CDSR_Final),
+    dataCDS:setCDSR(CDSR_Final),!.
+
+storeElsR(CDSR,[],CDSR):-!.
+storeElsR(CDSR,[A|B],CDSR_Final):-
+    storeElsR_A(CDSR,A,CDSR_A),
+    storeElsR(CDSR_A,B,CDSR_Final).
+
+storeElsR_A(CDSR,storeCore(C),CDSR_A):-
+    storeCoreR(C,CDSR,CDSR_A),!.
+
+storeElsR_A(CDSR,newElement(C),CDSR_A):-
+    newElementR(C,CDSR,CDSR_A),!.
+
 %******************************************************
 %  newGroup(G) called when a new group is encountered
 %    tests if the new group is a doc if true calls newDoc
@@ -238,6 +262,15 @@ velement(E,G):-
     error_out(['** ',G,' unknown element: ',E,'.']),
     !.
 
+newElementR(E,CDSR,CDSRA):-
+    verify_elementR(E,CDSR),
+    dataCDS:setCDRField(celement,E,CDSR,CDSRA),
+    !.
+
+verify_elementR(E,CDSR):-
+    dataCDS:getCDRField(cgroup,G,CDSR),
+    velement(E,G),!.
+
 %******************************************************
 %  endElement. adds current element to the current
 %    group element list. If no current element name is 
@@ -362,6 +395,31 @@ stCore(comment,I):-
     setCDField(ccomment,[I|C]),!.
 
 %******************************************************
+%  storeCoreR(I) - add I to core information of current el. 
+%    stores I according to CDS field caspect
+%    Record version
+%******************************************************
+%  %
+storeCoreR(CDSR,I,CDSR_Next):-
+    dataCDS:getCDRField(CDSR,caspect,A),
+    stCoreR(CDSR,A,I,CDSR_Next),!.
+
+storeCoreR(_,I,_):-
+    error_out(['** Failure: ',storeCore(I)]),!.
+
+stCoreR(CDSR,core,I,CDSR_Next):-
+    dataCDS:getCDRField(ccore,C,CDSR),!,
+    dataCDS:setCDRField(ccore,[I|C],CDSR,CDSR_Next),!.
+stCoreR(CDSR,original,I,CDSR_Next):-
+    dataCDS:getCDRField(coriginal,C,CDSR),!,
+    dataCDS:setCDRField(coriginal,[I|C],CDSR,CDSR_Next),!.
+stCoreR(CDSR,comment,I,CDSR_Next):-
+    dataCDS:getCDRField(ccore,C,CDSR),!,
+    dataCDS:setCDRField(ccore,[I|C],CDSR,CDSR_Next),!.
+
+
+
+%******************************************************
 %  initGroupCounters
 %******************************************************
 %  %
@@ -396,6 +454,26 @@ inc_group_count(__G,ID,N):-
     get_prop(ID,counter,N1),
     N is N1+1,
     set_prop(ID,counter,N),!.
+
+
+
+:- begin_tests(dataCDS).
+
+test(setCDRField):-
+    mytest(setCDRField),!.
+
+mytest(setCDRField):-
+    dataCDS:createCD,
+    dataCDS:getCDSR(CDSR),
+    dataCDS:setCDRField(caspect,ccore,CDSR,CDSR_new),
+    dataCDS:getCDRField(caspect,ccore,CDSR_new),
+    dataCDS:setCDSR(CDSR_new),
+    check_for_persistence(caspect,ccore).
+
+% this test if changes to CDSR persist.
+check_for_persistence(Field,Value):-
+    dataCDS:getCDSR(CDSR),
+    dataCDS:getCDRField(Field,Value,CDSR),!.
 
     
 % vim: filetype=prolog ts=3
