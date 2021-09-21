@@ -1,0 +1,10 @@
+BUILD_NUMBER_FILE=build.number.kleio
+export BUILD_NUMBER_FILE
+if ! test -f ${BUILD_NUMBER_FILE}; then echo "0" > ${BUILD_NUMBER_FILE};  fi
+build=$(cat $BUILD_NUMBER_FILE)
+if [ "$1" = "inc" ]; then
+    let build++
+    echo $build > ${BUILD_NUMBER_FILE}
+fi
+export build
+echo $build
