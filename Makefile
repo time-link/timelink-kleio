@@ -17,9 +17,9 @@ all:
 
 clean:
 	rm -rf .build
-	mkdir -p .build
 
 prepare: clean
+	mkdir -p .build
 	cp -r ./src .build
 	cp Dockerfile .build/
 	mv .build/src/gacto2.str .build/src/gacto2.str.bak
@@ -35,7 +35,7 @@ prepare: clean
 		.build/src/topLevel.pl.bak\
 		> .build/src/topLevel.pl
 	rm .build/src/*.bak
-	@ echo "Prepared for build ${vn} build ${bn} ${cdate}"
+	@ echo "Prepared for build ${bn} version ${vn}, ${cdate}"
 
 
 inc: .PHONY
