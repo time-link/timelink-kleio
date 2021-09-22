@@ -431,6 +431,7 @@ get_file_attribute(File,Attribute,Value):-
 %      *  /mhk-home (normally mapped in a container)
 %      *  . (current dir if ./system, ./sources, ./users exist)
 %      *  ./kleio-home
+%      *  ./tests/kleio-home
 %      *  ./timelink-home
 %      *  ./mhk-home
 %      *  ~/kleio-home 
@@ -479,6 +480,12 @@ kleio_home_dir(D):-
     !.
 kleio_home_dir(D):-
     working_directory(Home,Home),
+    atom_concat(Home,'/tests/kleio-home',D1),
+    absolute_file_name(D1,D),
+    exists_directory(D),
+    !.
+kleio_home_dir(D):-
+    working_directory(Home,Home),
     atom_concat(Home,'/timelink-home',D1),
     absolute_file_name(D1,D),
     exists_directory(D),
@@ -489,6 +496,7 @@ kleio_home_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D),
     !.
+
 kleio_home_dir(D):-
     getenv('HOME',Home),
     atom_concat(Home,'/kleio-home',D1),
