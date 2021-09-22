@@ -19,7 +19,7 @@
  
 ## User Management with tokens.
 
-To access the api incoming resquests must provide a API Token.
+To access the api incoming requests must provide an API Token.
 
 The token is used as a key to the username, and a list of user information which include:
 
@@ -40,7 +40,7 @@ The file for the database can be set with attach_token_db/1 and inspected with t
 
 If no file is defined for token persistence then default_token_db/1 is used to get a default DB.
 
-
+An initial token is taken from env variable KLEIO_SERVER_ADMIN_TOKEN with permissions to issue and revoke tokens
 
 See: http://www.swi-prolog.org/pldoc/doc/_SWI_/library/persistency.pl
 */
@@ -81,12 +81,12 @@ token_db_attached(F):-db_attached(F).
 %
 % Ensures that a token database is attached. If none currently attached, attaches the default one.
 ensure_db:-
-    token_db_attached(_),!.
+    token_db_attached(_),
+    !.
 ensure_db:-
     kleiofiles:kleio_token_db(D),
     attach_token_db(D),
     !.
-
 
 %% generate_token(+UserName,+Options,?AccessToken) is det.
 % Generates an access token associating UserName with Options.
@@ -104,7 +104,7 @@ generate_token(UserName,Options,AccessToken):-
     ensure_db,
     sha_hash(UserName,H,[]),
     hash_atom(H,AccessToken),
-    ( % check if token database was initialized, if not use default localtion
+    ( % check if token database was initialized, if not use default location
         token_db_attached(_F) ;
         (
             default_token_db(DF),
@@ -125,7 +125,22 @@ generate_token(UserName,Options,AccessToken):-
 decode_token(Token,UserName,Options):-
     ensure_db,
     (atom_concat('Bearer ',Token2,Token)->true;Token2=Token),
-    user_token(Token2,UserName,Options).
+    user_token(Token2,UserName,Options),!.
+
+decode_token(Token,UserName,Options):-
+    get_kleio_admin(Token,UserName,Options).
+
+%% get_kleio_admin(+TOKEN,-UserName,-Options) is det.
+% returns TOKEN for KLEIO_ADMIN if set in env variable
+get_kleio_admin(Token,User,Options):-
+    getenv('KLEIO_ADMIN_TOKEN', Token),
+    User = 'KLEIO_ADMIN',
+    Options = [
+        comment('KLEIO_ADMIN can translate, upload and delete files, and also create and remove directories'),
+        api([sources,kleioset,files,structures,translations,upload,delete,mkdir,rmdir,generate_token,invalidate_token,invalidate_user]),
+        structures(''),
+        sources('')],
+    !.
 
 %% invalidate_token(+Token) is det.
 % Removes a token.
@@ -167,9 +182,11 @@ get_user(Token,User):-
     
 %% get_token_options(+Token,?Options) is det.
 % Get the options associated with a Token.
+% Checks the KLEIO_ADMIN_TOKEN env variable for admin 
 get_token_options(Token,Options):-      % +Token,?Permissions.
     ensure_db,
-    user_token(Token,_,Options),!.
+    decode_token(Token,_,Options),!.
+
 
 %% get_stru_dir(+Token,-SD) is det.
 % Return the stru_dir associated with Token, or '.' if none associated.
