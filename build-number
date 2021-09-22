@@ -1,7 +1,6 @@
 #!/bin/bash
 # set -x
-NUMBER_FILE="build.number.kleio"
-n=$(cat $NUMBER_FILE)
+NUMBER_FILE=".build.number"
 
 script_args=()
 while [ $OPTIND -le "$#" ]
@@ -12,8 +11,6 @@ do
         in
         f) 
             NUMBER_FILE=${OPTARG}
-            if ! test -f ${NUMBER_FILE}; then echo "0" > ${NUMBER_FILE};  fi
-            n=$(cat $NUMBER_FILE)
             ;;
         esac
     else
@@ -21,7 +18,8 @@ do
         ((OPTIND++))
     fi
 done
-
+if ! test -f ${NUMBER_FILE}; then echo "0" > ${NUMBER_FILE};  fi
+n=$(cat $NUMBER_FILE)
 if [ "${script_args[0]}" = "inc" ]; then
     let n++
     echo $n > ${NUMBER_FILE}
