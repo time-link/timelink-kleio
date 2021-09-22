@@ -8,9 +8,9 @@ all:
 	@echo "usage:"
 	@echo "  make image                build docker image and tag with new build number"
 	@echo "  make latest               tag last image as 'latest"
-	@echo "  make unique               tag last image as 'unique"
-	@echo "  make stable               tag last image as 'stable"
-	@echo "  make push tag=TAG         push image with tqag=latest | unique | stable
+	@echo "  make unique               tag last image as 'unique'"
+	@echo "  make stable               tag last image as 'stable'"
+	@echo "  make push tag=TAG         push image with tqag=latest | unique | stable"
 	@echo "  make number               return the current build number"
 	@echo "  make version              return the current version string"
 	@echo "  make inc                  increment build number"
