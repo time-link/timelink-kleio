@@ -173,11 +173,11 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 default_value(server_port,SP):-getenv('KLEIO_DEBUGGER_PORT',SSP), atom_number(SSP,SP),!.
 default_value(server_port,4000):-!.
 default_value(rest_port,RP):-getenv('KLEIO_SERVER_PORT',SRP), atom_number(SRP,RP),!.
-default_value(rest_port,8088):-!.
+default_value(rest_port,8089):-!.
 default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_number(Atom,Workers),!.
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
-default_value(timeout,60):-!.
+default_value(timeout,900):-!.
 
 %! print_server_config is det.
 %
@@ -254,8 +254,9 @@ start_rest_server:-
     log_debug('REST JSON server listening on port ~w with ~w workers~n',[Port,Number]).
 
 server(Port) :-
+        default_value(timeout,Number),
         http_server(http_dispatch,
-                    [ port(Port),timeout(900) % 15 minutes timeout on requests
+                    [ port(Port),timeout(Number) % 15 minutes timeout on requests
                     ]).
 
 %% server_idle(+Seconds) is det.
