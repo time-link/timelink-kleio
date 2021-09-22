@@ -1,5 +1,7 @@
-bn=$$(./build-number)
-vn=$$(cat version.number.kleio)
+bn="k$$(./build-number)"
+major="$$(./build-number -f version.number.kleio)"
+minor="$$(./build-number -f patch.number.kleio)"
+vn="$(major).$(minor)"
 cdate=$$(date "+%Y-%m-%d %H:%M:%S" )
 
 .PHONY:
@@ -10,10 +12,12 @@ all:
 	@echo "  make latest               tag last image as 'latest"
 	@echo "  make unique               tag last image as 'unique'"
 	@echo "  make stable               tag last image as 'stable'"
-	@echo "  make push tag=TAG         push image with tqag=latest | unique | stable"
-	@echo "  make number               return the current build number"
-	@echo "  make version              return the current version string"
-	@echo "  make inc                  increment build number"
+	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
+	@echo "  make build                return the current build number"
+	@echo "  make version              return the current version string (version.patch)"
+	@echo "  make current              return the current version, build number"
+	@echo "  make last                 return the last image build date, version, build number"
+	@echo "  make inc-NUMBER           increment number with NUMBER in build | major | minor"
 
 clean:
 	rm -rf .build
@@ -37,24 +41,34 @@ prepare: clean
 	rm .build/src/*.bak
 	@ echo "Prepared for build ${bn} version ${vn}, ${cdate}"
 
-
-inc: .PHONY
-	@./build-number inc
-
-number: .PHONY
+build: .PHONY
 	@echo ${bn}
+
+inc-build: .PHONY
+	@./build-number inc -f build.number.kleio
+inc-major: .PHONY
+	@./build-number inc -f version.number.kleio
+inc-minor: .PHONY
+	@./build-number inc -f patch.number.kleio
 
 version: .PHONY
 	@echo ${vn}
 
-image: inc
+current: .PHONY
+	@echo ${vn}.${bn}
+
+last: .PHONY
+	@if ! test -f "build.date.kleio"; then echo "No previous image build"; else echo "$$(cat build.date.kleio) version ${vn} build ${bn}";  fi
+
+image: prepare inc-build
 	@docker build \
 	 	-t "kleio-server:${bn}" \
 		-t "joaquimrcarvalho/kleio-server:${bn}" \
 		-t kleio-server \
 		-t joaquimrcarvalho/kleio-server\
 		.build
-	@echo "docker new kleio-server image build ${bn}""
+	@echo "$(cdate)" > "build.date.kleio"
+	@echo "docker new kleio-server image build ${bn}"
 
 latest:
 	@docker tag kleio-server joaquimrcarvalho/kleio-server:latest
