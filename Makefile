@@ -24,6 +24,8 @@ all:
 	@echo "  make token                generate token for KLEIO_ADMIN_TOKEN"
 	@echo "  make start                start Kleio server on docker (requires image)"
 	@echo "  make stop                 stop Kleio server"
+	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
+
 
 clean:
 	rm -rf .build
@@ -110,12 +112,13 @@ kleio-run:
 	if [ -e "$$HOME/mhk-home" ]; then KHOME="$$HOME/mhk-home" ;  fi;\
 	if [ -z "$$KHOME" ]; then KHOME="$$PWD"; fi;\
 	if [ -z "$$KLEIO_HOME" ]; then KLEIO_HOME="$$KHOME"; fi;\
-	echo "starting kleio-server on port 8089";\
-	docker run -e KLEIO_ADMIN_TOKEN -e KLEIO_DEBUG -v $$KLEIO_HOME:/kleio-home:cached -p "8089:8088" --rm --name kleio -d kleio-server ;\
-	echo;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then KLEIO_SERVER_PORT="8089"; fi;\
+	echo "starting kleio-server on port $$KLEIO_SERVER_PORT";\
+	docker run -e KLEIO_ADMIN_TOKEN -e KLEIO_DEBUG -e KLEIO_SERVER_PORT -v $$KLEIO_HOME:/kleio-home:cached -p "$$KLEIO_SERVER_PORT:$$KLEIO_SERVER_PORT" --rm --name kleio -d kleio-server ;\
+	echo " ";\
 	echo "KLEIO_HOME=$$KLEIO_HOME";\
 	echo "KLEIO_ADMIN_TOKEN=$$KLEIO_ADMIN_TOKEN";\
-	echo
+	echo " "
 
 kleio-start: kleio-run
 
@@ -125,3 +128,10 @@ kleio-stop:
 start: kleio-run
 
 stop: kleio-stop
+
+docs: .PHONY
+	@echo "Requires postman_doc_gen https://github.com/karthiks3000/postman-doc-gen"
+	@echo "Requires Postman API export at ./api/api.json"
+	@echo "Requires Postman environment export at ./api/environment.json"
+	@echo "Generating doc..."
+	@postman_doc_gen api/postman/api.json -o docs/api -e api/postman/environment.json
