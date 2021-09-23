@@ -106,13 +106,11 @@ token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
 kleio-run:
-	@KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20);\
+	@export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20);\
 	echo;\
-	if [ -e "$$HOME/kleio-home" ]; then KHOME="$$HOME/kleio-home" ;  fi;\
-	if [ -e "$$HOME/mhk-home" ]; then KHOME="$$HOME/mhk-home" ;  fi;\
-	if [ -z "$$KHOME" ]; then KHOME="$$PWD"; fi;\
-	if [ -z "$$KLEIO_HOME" ]; then KLEIO_HOME="$$KHOME"; fi;\
-	if [ -z "$$KLEIO_SERVER_PORT" ]; then KLEIO_SERVER_PORT="8089"; fi;\
+	if [ -e "$$PWD/tests/kleio-home" ]; then KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8089"; fi;\
 	echo "starting kleio-server on port $$KLEIO_SERVER_PORT";\
 	docker run -e KLEIO_ADMIN_TOKEN -e KLEIO_DEBUG -e KLEIO_SERVER_PORT -v $$KLEIO_HOME:/kleio-home:cached -p "$$KLEIO_SERVER_PORT:$$KLEIO_SERVER_PORT" --rm --name kleio -d kleio-server ;\
 	echo " ";\
