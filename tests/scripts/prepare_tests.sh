@@ -17,16 +17,18 @@ export KLEIO_DEBUGGER_PORT=4000
 export KLEIO_SERVER_PORT=8088
 export KLEIO_WORKERS=5
 export KLEIO_IDLE_TIMEOUT=360
+export KLEIO_ADMIN_TOKEN=admintoken
 export REFERENCE_SOURCES=${KLEIO_HOME}/sources/reference_sources
 export REFERENCE_TRANSLATIONS=${KLEIO_HOME}/sources/reference_translations
 export TEST_TRANSLATIONS=${KLEIO_HOME}/sources/test_translations
+export TEST_TRANSLATIONS_REMOTE=sources/test_translations
 export STABLE_CODE_DIR=stable
 export DEV_CODE_DIR=dev
 export TRANSLATOR_SOURCE=../src/
 # 1. clean contents of test directories
-rm -r $REFERENCE_TRANSLATIONS/*
-rm -r $TEST_TRANSLATIONS/*
-rm $DEV_CODE_DIR/*
+rm -rf $REFERENCE_TRANSLATIONS/*
+rm -rf $TEST_TRANSLATIONS/*
+rm -rf $DEV_CODE_DIR/*
 # 2. copy current src and reference sources 
 cp ${TRANSLATOR_SOURCE}/*.pl $DEV_CODE_DIR/
 cp ${TRANSLATOR_SOURCE}/*.str $KLEIO_STRU_DIR/
@@ -36,4 +38,10 @@ cp -R $REFERENCE_SOURCES/ $TEST_TRANSLATIONS
 echo
 echo Translators tests setup with following reference sources
 ls -lR $REFERENCE_SOURCES
+# 4. create dir for reports
+mkdir -p reports
+
+echo ref sources: $REFERENCE_SOURCES
+echo test transl: $TEST_TRANSLATIONS
+echo sources dir: $TRANSLATOR_SOURCE  
 

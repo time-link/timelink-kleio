@@ -1,6 +1,6 @@
 # kleio_start_server.sh PROLOG_FILE [START_GOAL]
 # This script launches de server using PROLOG_FILE on port 8088 of localhost
-# example: ./aux/kleio_start_server.sh dev/serverStart.pl run_server
+# example: ./scripts/kleio_start_server.sh dev/serverStart.pl run_server
 # If START_GOAL is missing it defaults to "debug_server_until_idle" which lunches a server
 # that quits after idle for 60 secs
 # See serverStart.pl for examples of server lauching goals.
