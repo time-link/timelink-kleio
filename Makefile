@@ -1,3 +1,4 @@
+DOCKER_REPOSITORY=timelinkserver
 KLEIO_VERSION_NUMBER_FILE="kleio.version.number"
 KLEIO_PATCH_NUMBER_FILE="kleio.patch.number"
 KLEIO_BUILD_NUMBER_FILE="kleio.build.number"
@@ -11,11 +12,11 @@ cdate=$$(date "+%Y-%m-%d %H:%M:%S" )
 
 .PHONY:
 
-all:
+all: help
+
+help: .PHONY
 	@echo "usage:"
 	@echo "  make image                build docker image and tag with new build number"
-	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
-	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
 	@echo "  make build                return the current build number"
 	@echo "  make version              return the current version string (major.minor)"
 	@echo "  make current              return the current version, build number"
@@ -25,6 +26,8 @@ all:
 	@echo "  make start                start Kleio server on docker (requires image)"
 	@echo "  make stop                 stop Kleio server"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
+	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
+	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
 
 
 clean:
@@ -68,39 +71,66 @@ current: .PHONY
 last: .PHONY
 	@if ! test -f ${KLEIO_BUILD_DATE_FILE}; then echo "No previous image build"; else echo "$$(cat ${KLEIO_BUILD_DATE_FILE}) version ${vn} build ${bn}";  fi
 
-image: prepare inc-build
+image: inc-build prepare
 	@docker build \
-	 	-t "kleio-server:${bn}" \
-		-t "joaquimrcarvalho/kleio-server:${bn}" \
-		-t kleio-server \
-		-t joaquimrcarvalho/kleio-server\
+	 	-t "kleio-server" \
 		.build
 	@echo "$(cdate)" > "${KLEIO_BUILD_DATE_FILE}"
 	@echo "docker new kleio-server image build ${bn}"
 
+tag-jrc-latest:
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:latest
+	@docker tag kleio-server kleio-server:latest
+	@echo "'latest' tag added to kleio-server  latest"
+
+tag-jrc-unique:
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${bn}
+	@docker tag kleio-server kleio-server:${bn}
+	@echo "${bn} tag added to kleio-server latest"
+
+tag-jrc-stable:
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${vn}
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:stable
+	@docker tag kleio-server kleio-server:${vn}
+	@docker tag kleio-server kleio-server:stable
+	@echo "'stable' and '${vn}' tags added to kleio-server latest image"
+
+push-latest-jrc:
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:latest
+
+push-unique-jrc:
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:${bn}
+
+push-stable-jrc:
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:${vn}
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:stable
+
 tag-latest:
-	@docker tag kleio-server joaquimrcarvalho/kleio-server:latest
-	@echo "'latest' tag added to kleio-server  image build ${bn}"
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:latest
+	@docker tag kleio-server kleio-server:latest
+	@echo "'latest' tag added to kleio-server latest image"
 
 tag-unique:
-	@docker tag kleio-server joaquimrcarvalho/kleio-server:${bn}
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${bn}
 	@docker tag kleio-server kleio-server:${bn}
-	@echo "'unique' tag added to kleio-server image build ${bn}"
+	@echo "${bn} tag added to kleio-server latest image"
 
 tag-stable:
-	@docker tag kleio-server joaquimrcarvalho/kleio-server:${vn}
 	@docker tag kleio-server kleio-server:${vn}
-	@echo "'stable' and '${vn}' tags added to kleio-server image build ${bn}"
+	@docker tag kleio-server kleio-server:stable
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${vn}
+	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:stable
+	@echo "'stable' and '${vn}' tags added to kleio-server latest image "
 
 push-latest:
-	@docker push joaquimrcarvalho/kleio-server:latest
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:latest
 
 push-unique:
-	@docker push joaquimrcarvalho/kleio-server:${bn}
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:${bn}
 
 push-stable:
-	@docker push joaquimrcarvalho/kleio-server:${vn}
-	@docker push joaquimrcarvalho/kleio-server:stable
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:${vn}
+	@docker push ${DOCKER_REPOSITORY}/kleio-server:stable
 
 token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
