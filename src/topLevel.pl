@@ -96,7 +96,11 @@ stru(F):-
       readlines(cmd),
 	  report([perror_count]),
       closeStru(Filename),
-      close(Filename).
+      close(Filename),
+      directory_file_path(Directory, _, Filename),
+      concat(Basename,'.json',JsonFile),
+      directory_file_path(Directory,JsonFile,JPath),
+      make_json_doc(Filename,JPath).
 
 %******************************************************
 %  dat:  starts the processing of kleio data file

@@ -173,7 +173,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 default_value(server_port,SP):-getenv('KLEIO_DEBUGGER_PORT',SSP), atom_number(SSP,SP),!.
 default_value(server_port,4000):-!.
 default_value(rest_port,RP):-getenv('KLEIO_SERVER_PORT',SRP), atom_number(SRP,RP),!.
-default_value(rest_port,8089):-!.
+default_value(rest_port,8088):-!.
 default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_number(Atom,Workers),!.
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
@@ -196,7 +196,9 @@ print_server_config:-
     (tokens:token_db_attached(TokensCurrent);TokensCurrent=none),
     kleiofiles:kleio_source_dir(Sources),
     (getenv('KLEIO_DEBUG',DEBUG);DEBUG=false),
-    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN) -> sub_atom(ATOKEN,0,5,_,AT5); ATOKEN='No token in environment'),
+    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN) -> sub_atom(ATOKEN,0,5,_,AT5);AT5='No token in environment'),
+    clio_version(V),
+    format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
     format('REST port: ~t~w~n',[RP]),

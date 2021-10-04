@@ -260,7 +260,7 @@ get_stru(Params,Id,StruFile):-
             (
                 exists_file(StruFile) -> true
                 ; 
-                throw(error(Id,-32602,'Structure file does not exist'-SFile))
+                throw(error(Id,-32602,'Structure file does not exist'-StruFile))
             )
         )
         ;

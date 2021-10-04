@@ -61,7 +61,7 @@ Download, upload, fetch and list source files.
 % relative the user sources directory, and all files produced by the translation of this file. 
 % 
 % If Path is a directory deletes all the files in the directory. 
-% If parameter result=yes recurse in subdirectories
+% If parameter recurse=yes recurse in subdirectories
 % 
 % If a file is being processed or is queued for processing then it is not deleted.
 % Returns list of files deleted.

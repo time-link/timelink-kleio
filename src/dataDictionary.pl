@@ -27,7 +27,8 @@
         show_elements/0,
         clean_groups/1,
         clean_elements/1,
-        make_html_doc/1
+        make_html_doc/1,
+        make_json_doc/2
     ]).
 /** <module> Code for dealing with the data dictionary.
 
@@ -76,17 +77,20 @@
 *  clean_elements. deletes previous element definitions
 
 */
+
 :-use_module(utilities).
 :-use_module(errors).
 :-use_module(reports).
 :-use_module(persistence).
 :-use_module(dataCDS).
 :-use_module(apiTranslations).
+:- use_module(library(http/json)).
 
 % dynamic thread local
 ?-thread_local(clioStru_/1).
 ?-thread_local(clioGroup_/2).
 ?-thread_local(clioElement_/2).
+
 
 
 %******************************************************
@@ -559,7 +563,7 @@ make_html_doc(DocPath):-
              show_groups_html,
              working_directory(_,CD),!.
 
-%! make_json_doc(+ClioFile,+Path,-JsonStru) is det.
+%! make_json_doc(+ClioFile,-JsonStru) is det.
 %  Generate a JSON representation of a kleio stru file (Schema)
 %
 % Format of the json file
@@ -570,19 +574,18 @@ make_html_doc(DocPath):-
 % 	 "minimal": "String",
 % 	 "typical": "String",
 % 	 "complete": "String",
-% 	"occurs":[ "group1","group2"],
 % 	"includes:["group2","group3"]
 % 	},
 % 	"GroupName2":
 % 		{	}
 %     ]
 %}
-make_json_doc(ClioFile,DocPath,JSON_STRU):-
-   (exists_directory(DocPath) ;  make_directory(DocPath)),
-   working_directory(CD,DocPath),
+make_json_doc(ClioFile,JsonFile):-
    collect_groups_json(GroupsInfo),
-   JSON_STRU={path:ClioFile,groups:GroupsInfo},
-   working_directory(_,CD),!.
+   JSON_STRU=json{path:ClioFile,groups:GroupsInfo}, 
+   open_file_write(JsonFile),
+   json_write_dict(JsonFile,JSON_STRU,[]),
+   close_file(JsonFile),!.
              
 show_groups_html:-
               clioGroup(G,_),
@@ -598,11 +601,16 @@ show_groups_html:-!.
 
 collect_groups_json(GroupsInfo):-
    setof(G,I^clioGroup(G,I),ListOfGroups),
-   collect_groups_json(ListOfGroups,GroupsInfo).
+   collect_groups_json(ListOfGroups,_{},GroupsInfo).
 
-collect_groups_json([G|MoreGroups],[GInfo|MoreGInfo]):-
+collect_groups_json([],Groups,Groups).
+collect_groups_json([G|MoreGroups],Groups,FinalGroups):-
+   writeln(G),
    collect_group_json(G,GInfo),
-   collect_groups_json(MoreGroups,MoreGInfo).
+   UpdatedGroups=Groups.put([G=GInfo]),
+   collect_groups_json(MoreGroups,UpdatedGroups,FinalGroups).
+
+
 
 collect_group_json(G,I):-
     clioGroup(G,ID),
@@ -612,7 +620,9 @@ collect_group_json(G,I):-
     (get_prop(ID,ceteri,X); X=[]),
     (get_prop(ID,pars,Pars); Pars=[]),
     (get_prop(ID,repetitio,Repetitio); Repetitio=[]),
-    I = {G:{}}.
+    append(Pars,Repetitio, Includes),
+
+    I = G{'name':G,properties:P,minimal:C,typical:L,complete:X,includes:Includes}.
 
 
 collect_group_json(_,_):-!.
