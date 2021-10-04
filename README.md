@@ -1,8 +1,6 @@
 # Kleio translation services for Timelink.
 
-This API provides access to translation services of _Kleio_ files. 
-
-See the API documentation at [docs/api](docs/api/index.html)
+`kleio-server` provides access to translation services of _Kleio_ files. 
 
 ## About `Kleio` files
 
@@ -46,12 +44,12 @@ Translation is _intelligent_ in the sense that it operates a _normalization_ of 
 
 Timelink database-services then implement a set of functions that allow the identification of people, reconstruction of biographies, inference of personal networks, and other funcionalities.
 
-For more information on Timelink see: [XXXXXX]
+For more information on Timelink Kleio Server see: https://github.com/time-link/timelink-kleio
 
 
 ## Services provided by this API
 
-The API is designed to decouple Kleio source handling from other software components. It provides funcionality to translate source files, inspect results of translation for errors or warning, obtain the generated data in XML format. It also allows basic file management (upload, download, delete, directory management, moving files and directories).
+The API is designed to decouple Kleio source handling from other software components. It provides funcionality to translate source files, inspect results of translation for errors or warnings, obtain the generated data in XML format. It also allows basic file management (upload, download, delete, directory management, moving files and directories).
 
 Main services are:
 
@@ -60,4 +58,41 @@ Main services are:
 * file management services: including downloading, uploading and deleting files (sources and structures), creating,copying, moving and deleting directories.
 * permission managment using tokens: generate_token, invalidate_token,invalidate_use: magament of 'authorization' with token.
 
-See the API documentation at [docs/api](docs/api/index.html)
+## Api documentation
+
+API documentation is available at docs/api/index.html
+## Development
+
+### Requirements
+
+Kleio server is written in `SWI-Prolog` https://www.swi-prolog.org
+
+* `VSCode` with `VSC-Prolog` extension https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog
+* `Postman` https://www.postman.com
+  * Directory api/postman contains exported postman collections and environments. 
+* `Postman-doc-gen`: generates static documentation from Postman collections https://github.com/karthiks3000/postman-doc-gen
+
+### Running the server locally
+
+Easiest way: 
++ open serverStart.pl on VSCode
++ Load the file with Option+X+L
++ in the Prolog terminal that appears do 
+
+   ```run_debug_server.```
+
++ set spy point with tspy(_predicate_) 
+  
+### Preparing images
+ 
+ * ```make image```: create a new image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
+  
+The following tags are used:
+* _unique_ - current build number as Knnn. Note that the tag unique is not used as such, it is interpreted as the last build number.
+* latest - latest useful build. Used to keep updated with latest release.
+* stable - stable build for a specific version. 
+* _version_ - version number as MM.mm goes together with stable to provide clients with stable images for specific version.
+
+To help manage the tags the following targets exist
+
+* ```make tag-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
