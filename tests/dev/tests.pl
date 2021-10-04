@@ -18,6 +18,7 @@ To generate tests from this file do run_tests,
 :- use_module(threadSupport).
 :- use_module(dataDictionary).
 :- use_module(tokens).
+:- use_module(restServer).
 %
 % support for auto generation of tests
 % to generate clean qrecord.queries and do 
@@ -136,11 +137,11 @@ start:-
         set_log_level(info),
         working_directory(DD,DD),
         log_debug('Current dir ~w run this from the clio directory !!!!!!!!~n~n',[DD]),            
-        kleiofiles:find_files_with_extension('tests/test_translations',cli,_,Files),
+        kleiofiles:find_files_with_extension('tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/',cli,_,Files),
         member(File,Files),
         concat('/translations/echo=yes/structure=tests/dev/gacto2.str/path=', File, PathInfo),
         Request = [path_info(PathInfo)],
-        process_rest(Request),
+        rest:process_rest(Request),
         %show_processing_status,
         %sleep(1),
         fail.
@@ -150,48 +151,47 @@ start :-!.
         sleep(5),
         log_debug('Run this from the clio directory !!!!!!!!~n~n',[]),
         Request = [path_info('/translations/echo=yes/structure=tests/dev/gacto2.str/path=tests/reference_sources/soure/documents/Chancelarias/J5.cli')],
-        process_rest(Request),
+        rest:process_rest(Request),
         get_queued(Q),get_processing(P),log_debug('QUEUED ~w ~nPROCESSING ~w~n',[Q,P]).
     start3:-
         sleep(5),
         log_debug('Run this from the clio directory !!!!!!!!~n~n',[]),
         Request = [path_info('/translations/echo=no/structure=tests/dev/gacto2.str/path=tests/reference_sources/soure/documents/Chancelarias/xpto_comuns_soure.cli')],
-        process_rest(Request),
+        rest:process_rest(Request),
         show_processing_status.
         
     start4:-
         sleep(5),
         log_debug('Run this from the clio directory !!!!!!!!~n~n',[]),
         Request = [path_info('/translations/echo=no/structure=tests/dev/gacto2.str/path=tests/test_translations/coja-rol-1841.cli')],
-        process_rest(Request),
         show_processing_status.
     start5:-
         sleep(5),
         log_debug('Run this from the clio directory !!!!!!!!~n~n',[]),
         Request = [path_info('/translations/echo=no/structure=tests/dev/gacto2.str/path=tests/test_translations/bapt1714.cli')],
-        process_rest(Request),
+        rest:process_rest(Request),
         show_processing_status.
 
     start6:-
         sleep(5),
         log_debug('Run this from the clio directory !!!!!!!!~n~n',[]),
         Request = [path_info('/translations/echo=no/structure=tests/dev/gacto2.str/path=tests/test_translations/cas1714-1722-com-celebrante.cli')],
-        process_rest(Request),
+        rest:process_rest(Request),
         show_processing_status.
 
 % testing processing of "escritura" which is taking a very long time.
 
 test_escritura:-
         set_log_level(debug),
-        restServer:translations(
-                './tests/test_translations/auc_cartulario18.cli',
-                './tests/dev/gacto2.str',
+        restServer:translate(
+                './tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli',
+                './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
                 yes).
-
+ 
 test_teste:-
-        restServer:translations(
-                './tests/test_translations/teste.cli',
-                './tests/dev/gacto2.str',
+        restServer:translate(
+                './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
+                './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
                 yes).
 
 
@@ -204,6 +204,8 @@ show_prolog_stack:-
         format('Stack ~12w ~22t min_free: ~w low: ~w factor: ~w spare: ~w~n',[StackType, MF,Low,Factor,Spare]),
         fail.
 show_prolog_stack:-!.
+
+
 
         
         

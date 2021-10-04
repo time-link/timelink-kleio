@@ -5,6 +5,8 @@
         get_file_attribute/3,
         find_files_with_extension/3,
         find_files_with_extension/4,
+        find_files_by_pattern/3,
+        find_files_by_pattern/4,
         find_directories/3,
         find_directories/2,
         path_type/2,
@@ -31,6 +33,7 @@
 :-use_module(shellUtil).
 :-use_module(persistence).
 :-use_module(utilities).
+:-use_module(logging).
 /** <module> Utilities for Kleio files
  
 ## Kleio Files 
@@ -218,6 +221,30 @@ find_files_with_extension(BaseDir,Ext,Code,Files):-
 find_files_with_extension(BaseDir,Ext,Files):-
     find_files_with_extension(BaseDir,Ext,0,Files).
 
+%% find_files_by_pattern(+BaseDir,+Pattern,-Code, -Files) is det.
+%  Return list of Files that match pattern in BaseDir and its subdirectories
+%
+%  Uses shell command "find Basedir -type -f -name Pattern".
+%
+%  Code is the shell code return and is equal to zero if command succeeded.
+%
+find_files_by_pattern(BaseDir,Pattern,Code,Files):-
+    %CMD = ['find -f', BaseDir, '  \\( -type f -name ',Pattern,' -or -type d \\)',' -and -not -path \'*/\\.*\' ' ], % this also gets the dirs
+    CMD = ['find ', BaseDir, ' -type f -name ',Pattern ], %this only gets the files.
+    atomic_list_concat(CMD,'',S), 
+    %writeln(shell:S),
+    shell_to_list(S,Code,Files).
+
+%% find_files_by_pattern(+BaseDir,+Pattern,-Files) is det.
+% same as find_files_by_pattern but only succeeds if return code for shell search is 0
+%
+find_files_by_pattern(BaseDir,Pattern,Files):-
+    find_files_by_pattern(BaseDir,Pattern,0,Files).
+
+
+
+
+
 %% find_directories(+BaseDir,-Code, -Dirs) is det.
 %  Return list of sub directories of BaseDir
 %
@@ -296,7 +323,7 @@ files_attributes(FileList,Files):-
 %       * warnings(W) number of warnings in translation.
 %       * version(V) ClioInput version string
 %       * translated(T) the time of the last translation as a float
-%       * translated_string(S) S is the time of last translation in format "day-month-year hour-minutes"
+%       * translated_string(S) S is the time of last translation in format iSO8601
 %
 file_attributes(F,[name(N),
                     % absolute(A),
@@ -320,7 +347,7 @@ file_attributes(F,[name(N),
     time_file(F,T),
     format_time(string(FT),'%Y-%m-%d %H:%M:%S',T), 
     format_time(string(RFC),'%a, %d %b %Y %T GMT',T), 
-    format_time(string(ISO), '%FT%T%z',T),
+    format_time(string(ISO), '%FT%T%:z',T),
     size_file(F,S),
     more_attributes(F,T,E,More),!. % get more attributes specific of the file type TODO: pass file time (T) to allow caching
 
@@ -336,7 +363,7 @@ more_attributes(F,T,err,MoreAttr):-
     shell_to_list(Cmd,0,XerrInfo),
     (XerrInfo = [Version,DateS,Err,Warn]; (XerrInfo=[Version,DateS,Err],Warn="-1 warnings")),
     extract_date(DateS,Date),
-    format_time(string(DateFormated),'%Y-%m-%d %H:%M:%S',Date),
+    format_time(string(DateFormated),'%FT%T%:z',Date),
     split_string(Err," "," ",[ErrN|_]),
     number_string(E,ErrN),
     split_string(Warn," "," ",[WarnN|_]),
@@ -353,7 +380,7 @@ extract_date(String,Date):-
     split_string(String," ", " ", [DateS,TimeS]),
     split_string(DateS,"-","-",[DayS,MonthS,YearS]),
     number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
-    split_string(TimeS,"-","-",[HourS,MinuteS]),
+    split_string(TimeS,"-","-\r",[HourS,MinuteS]),
     number_string(Hour,HourS),number_string(Minute,MinuteS),
     date_time_stamp(date(Year,Month,Day,Hour,Minute,0,_,_,_), Date),!.
     
@@ -404,6 +431,7 @@ get_file_attribute(File,Attribute,Value):-
 %      *  /mhk-home (normally mapped in a container)
 %      *  . (current dir if ./system, ./sources, ./users exist)
 %      *  ./kleio-home
+%      *  ./tests/kleio-home
 %      *  ./timelink-home
 %      *  ./mhk-home
 %      *  ~/kleio-home 
@@ -452,6 +480,12 @@ kleio_home_dir(D):-
     !.
 kleio_home_dir(D):-
     working_directory(Home,Home),
+    atom_concat(Home,'/tests/kleio-home',D1),
+    absolute_file_name(D1,D),
+    exists_directory(D),
+    !.
+kleio_home_dir(D):-
+    working_directory(Home,Home),
     atom_concat(Home,'/timelink-home',D1),
     absolute_file_name(D1,D),
     exists_directory(D),
@@ -462,6 +496,7 @@ kleio_home_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D),
     !.
+
 kleio_home_dir(D):-
     getenv('HOME',Home),
     atom_concat(Home,'/kleio-home',D1),
@@ -544,6 +579,10 @@ kleio_stru_dir('.').
 % Returns the path to the default stru for translations, 
 % normally KLEIO_STRU_DIR/gacto2.str but can be overriden by environment 
 % variable KLEIO_DEFAULT_STRU.
+% TODO We could have a kleio_stru_for_file(+KleioFile,-KleioStru,+Options)
+%   This would search for a stru directory in the same directory of the kleio file and then
+%   search up the directory hierarchy if not found, and finally use the kleio_stru_dir
+%   Options coould specificy stru name, or other future qualifications.
 %
 kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
 kleio_default_stru(D):-
@@ -665,13 +704,13 @@ kleio_resolve_structure_file(RelativePath,AbsolutePath,Options):-
 %
 kleio_mime_type(FileName,MimeType):-
     file_name_extension(_,Ext,FileName),
-    member_check(Ext,[cli,org,old,rpt,err,xml,xerr,xrpt,str,srpt]),
+    member_check(Ext,[cli,org,old,rpt,err,xml,xerr,xrpt,str,json,ids,srpt]),
     (Ext = 'xml' -> MimeType=text/xml
         ;
     MimeType=text/Ext),!.
 kleio_mime_type(FileName,text/cli):-
     file_name_extension(_,kleio,FileName),!.
-kleio_mime_type(FileName,MimeType):- % TODO: why? theese are files with no ext
+kleio_mime_type(FileName,MimeType):- % TODO: why? these are files with no ext
     file_name_extension(Ext,'',FileName),
     member_check(Ext,[cli,org,old,rpt,err,xml,xerr,xrpt,str]),
     (Ext = 'xml' -> MimeType=text/xml

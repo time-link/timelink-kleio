@@ -30,8 +30,73 @@ class geoentity super entity table geoentities
 	  and
         name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
-			  
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+
+mapping 'authority-register' to class aregister.
+class aregister super entity table aregisters
+      with attributes
+           id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+        and
+           date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
+        and
+           user column user baseclass user coltype varchar colsize 32 colprecision 0 pkey 0 
+        and
+           name column name baseclass name coltype varchar colsize 254 colprecision 0 pkey 0 
+        and
+           dbase column dbase baseclass dbase coltype varchar colsize 32 colprecision 0 pkey 0 
+      and
+         mode column replace_mode baseclass mode coltype varchar colsize 64 colprecision 0 pkey 0
+        and
+           obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+mapping rentity to class rentity.
+class rentity super entity table rentities
+     with attributes
+           id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+      and  
+         the_class column the_class baseclass the_class coltype varchar colsize 32 colprecision 0 pkey 0
+        and
+           description column description baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+        and
+           user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+        and
+           status column status baseclass status coltype varchar colsize 64 colprecision 0 pkey 0 
+        and
+           obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+
+mapping rperson to class rperson.
+      class rperson super rentity table rpersons
+        with attributes
+              id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+           and
+              seq column seq baseclass seq coltype int colsize 10 colprecision 0 pkey 0
+           and
+              sname column sname baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+           and
+              user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+           and
+              status column status baseclass status coltype varchar colsize 1 colprecision 0 pkey 0 
+            and
+              sex column sex baseclass sex coltype varchar colsize 1 colprecision 0 pkey 0 
+           and
+              obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+
+mapping robject to class robject.
+   class robject super rentity table robjects
+           with attributes
+                 id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+              and
+                 seq column seq baseclass seq coltype int colsize 10 colprecision 0 pkey 0
+              and
+                 sname column sname baseclass name coltype varchar colsize 128 colprecision 0 pkey 0 
+              and
+                 user column user baseclass user coltype varchar colsize 64 colprecision 0 pkey 0 
+              and
+                 status column status baseclass status coltype varchar colsize 1 colprecision 0 pkey 0 
+               and
+                 type column the_type baseclass the_type coltype varchar colsize 32 colprecision 0 pkey 0 
+              and
+                 obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+
 mapping 'historical-source' to class source.
 class source super entity table sources
    with attributes
@@ -49,7 +114,9 @@ class source super entity table sources
      and
         kleiofile column kleiofile baseclass kleiofile coltype varchar colsize 512 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0
+     and
+        replace column replaces baseclass replace coltype varchar colsize 254 colprecision 0 pkey 0.
 
 mapping 'historical-act' to class act.
 class act super entity table acts
@@ -64,18 +131,18 @@ class act super entity table acts
      and
         ref column ref baseclass ref coltype varchar colsize 64 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping person to class person.
 class person super entity table persons
    with attributes
         id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
      and
-        name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
+        name column name baseclass name coltype varchar colsize 128 colprecision 0 pkey 0
      and
         sex column sex baseclass sex coltype char colsize 1 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping object to class object.
 class object super entity table objects
@@ -86,7 +153,7 @@ class object super entity table objects
      and
         type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping abstraction to class object.
 
@@ -105,7 +172,7 @@ class relation super entity table relations
      and
         value column the_value baseclass value coltype varchar colsize 254 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping attribute to class attribute.
 class attribute super entity table attributes
@@ -116,11 +183,11 @@ class attribute super entity table attributes
      and
         date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
      and
-        type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0 
+        type column the_type baseclass type coltype varchar colsize 512 colprecision 0 pkey 0
      and
-        value column the_value baseclass value coltype varchar colsize 254 colprecision 0 pkey 0 
+        value column the_value baseclass value coltype varchar colsize 1024 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
  mapping 'group-element' to class group_element.
  class group_element super entity table gelement
@@ -129,7 +196,7 @@ class attribute super entity table attributes
      and
         value column the_value baseclass value coltype varchar colsize 254 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
       
 mapping item to class item.
 class item super object table items
@@ -151,7 +218,7 @@ class proparr super object table prop_arrem
      and
         condicao column condicao baseclass condicao coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping rmerce to class 'registo-merces'.
 class 'registo-merces' super act table rmerces
@@ -168,7 +235,7 @@ class 'registo-merces' super act table rmerces
      and
         merce column merce baseclass merce coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
  mapping acta to class acta.
  mapping amz to class acta.
@@ -186,7 +253,7 @@ class 'registo-merces' super act table rmerces
      and
         resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 
 mapping fogo to class household.
@@ -202,7 +269,7 @@ class household super object table households
      and
         loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping escritura to class escritura.
 class escritura super act table escrituras
@@ -219,7 +286,7 @@ class escritura super act table escrituras
      and
         sumario column summary baseclass summary coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping bem to class good.
 class good super object table goods
@@ -234,7 +301,7 @@ class good super object table goods
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping divida to class divida.
 class divida super object table dividas
@@ -251,7 +318,7 @@ class divida super object table dividas
      and
         juro column juro baseclass juro coltype varchar colsize 32 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping siza to class siza.
 class siza super object table sizas
@@ -268,7 +335,7 @@ class siza super object table sizas
      and
         data column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping aforamento to class aforamento.
 class aforamento super good table aforamentos
@@ -283,7 +350,7 @@ class aforamento super good table aforamentos
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping escambo to class escambo.
 class escambo super good table escambos
@@ -298,7 +365,7 @@ class escambo super good table escambos
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 		  
 mapping caso to class caso.
@@ -308,7 +375,7 @@ class caso super object table casos
      and
         type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping acus to class acusacoes.
 class acusacoes super object table acusacoes
@@ -317,11 +384,11 @@ class acusacoes super object table acusacoes
     and
         idcaso column idcaso baseclass idcaso coltype varchar colsize 64 colprecision 0 pkey 0
     and
-        literal column literal baseclass literal coltype varchar colsize 1024 colprecision 0 pkey 0
+        literal column literal baseclass literal coltype varchar colsize 16000 colprecision 0 pkey 0
     and
-        origem column origem baseclass origem coltype varchar colsize 1024 colprecision 0 pkey 0
+        origem column origem baseclass origem coltype varchar colsize 16000 colprecision 0 pkey 0
     and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16000 colprecision 0 pkey 0 .
 mapping cartaperdao to class cartaperdao.
 class cartaperdao super act table perdoes
   with attributes
@@ -341,7 +408,7 @@ class cartaperdao super act table perdoes
      and
         tabeliao column tabeliao baseclass tabeliao coltype varchar colsize 64 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping crime to class crime.
 class crime super object table cartas_de_perdao
@@ -376,7 +443,7 @@ class crime super object table cartas_de_perdao
      and
         situacao column situacao baseclass situacao coltype varchar colsize 128 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 
 mapping perdao to class perdao.
@@ -394,7 +461,7 @@ class perdao super abstraction table perdoes
      and
         descricao column descricao baseclass descricao coltype varchar colsize 1024 colprecision 0 pkey 0
       and
-         obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 
 mapping carta to class carta.
@@ -410,7 +477,7 @@ class carta super act table cartas
      and
         refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
         
 mapping evento to class evento.
 class evento super act table eventos
@@ -421,7 +488,7 @@ class evento super act table eventos
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
         
 mapping adenda to class adenda.
 class adenda super act table adendas
@@ -436,7 +503,7 @@ class adenda super act table adendas
      and
         refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
         
 mapping topico to class topico.
 class topico super object table topicos
@@ -447,4 +514,4 @@ class topico super object table topicos
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0
      and
-        obs column obs baseclass obs coltype varchar colsize 1024 colprecision 0 pkey 0 .
+        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .

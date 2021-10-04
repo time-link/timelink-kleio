@@ -5,6 +5,7 @@
     show_server_activity/0,
     server_idle/1,
     show_processing_status/0,
+    process_rest/1,
     ps/0,
     ssa/0,
     print_server_config/0,
@@ -176,7 +177,7 @@ default_value(rest_port,8088):-!.
 default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_number(Atom,Workers),!.
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
-default_value(timeout,60):-!.
+default_value(timeout,900):-!.
 
 %! print_server_config is det.
 %
@@ -195,6 +196,9 @@ print_server_config:-
     (tokens:token_db_attached(TokensCurrent);TokensCurrent=none),
     kleiofiles:kleio_source_dir(Sources),
     (getenv('KLEIO_DEBUG',DEBUG);DEBUG=false),
+    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN) -> sub_atom(ATOKEN,0,5,_,AT5);AT5='No token in environment'),
+    clio_version(V),
+    format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
     format('REST port: ~t~w~n',[RP]),
@@ -204,6 +208,7 @@ print_server_config:-
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
     format('kleio_default_stru: ~t~w~n',[Stru]),
+    format('Kleio_admin_token: ~t~w~n',[AT5]),
     format('kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
     (get_shared_value(bootstrap_token,BT)->format('Bootstrap token: ~w~n',[BT]);true),
     format('kleio_source_dir: ~t~w~n',[Sources]),
@@ -218,8 +223,8 @@ print_server_config:-
 % :- http_handler(root('rest/files/'),handle_files_request,[prefix,methods([get,put,post,delete])]). %workaround could not make it work as normal rest
 % :- http_handler(root('rest/structures/'),serve_structure_file,[prefix,method(get)]). % same workaround
 % :- http_handler(root('rest/upload'),upload,[id(upload),prefix,method(post)]).
-:- http_handler(root('rest/'), process_rest, [id(rest),prefix,methods([get,delete,put,post])]).
-:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(1800),method(post)]). % time limit 30m.
+:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post])]).
+:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),method(post)]). % time limit in seconds
 :- http_handler(root(.), home_page, []).
 :- http_handler(root('forms/upload/'),upload_form,[]). % generate a form for uploading files
 :- http_handler(root(echo), echo_request, [prefix]).
@@ -253,8 +258,9 @@ start_rest_server:-
     log_debug('REST JSON server listening on port ~w with ~w workers~n',[Port,Number]).
 
 server(Port) :-
+        default_value(timeout,Number),
         http_server(http_dispatch,
-                    [ port(Port)
+                    [ port(Port),timeout(Number) % 15 minutes timeout on requests
                     ]).
 
 %% server_idle(+Seconds) is det.
@@ -336,7 +342,8 @@ home_page(_):-
         format('<head><meta http-equiv="refresh" content="60" ><link rel="icon" href="data:;base64,="></head>~n', []),
         format('<body>~n', []),
         format('<h3>Kleio JSON-RPC server ready.~n</h3>~n'),
-        format('<h4>Version 2019.A1 Build 170 05/11/2019 12:29 </h4>~n'),
+        clio_version(V),
+        format('<h4>~w</h4>~n',[V]),
         get_time(T),
         format_time(atom(Time),'%Y-%m-%d %H:%M:%S',T),
         get_shared_count(rest_request_count,RC),
@@ -385,7 +392,7 @@ mime:mime_extension(Ext,Mime):-
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
 %   
-%   The request can contain aditional parameters enconded in the http standard ways.
+%   The request can contain aditional parameters enconded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
 %
@@ -401,7 +408,7 @@ process_rest(RestRequest):-
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
-    log_debug(' rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('~n~nREQUEST rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -409,7 +416,7 @@ process_rest(RestRequest):-
 
 process_rest_request(Request):-
     rest_decode_command(Request,Id,method(Entity,Method,Object),Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
+    log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
 
@@ -417,7 +424,7 @@ process_rest_request(Request):-
 % TODO: Deprecated, remove when not needed.   
 process_rest_request(Request):-
     rest_decode_command(Request,Id,Method,Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
+    log_debug('~nProcessing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
     rest_exec(Method,Id,Params,Results),
     (select(token_info(_),Params,P);P=Params), % we remove the token info introduced by json_decode_command
     (select((token=_),P,P2);P2=P),% and also the original token in the request
@@ -598,6 +605,7 @@ process_json_rpc_(Request):-
     catch(http_read_json(Request, JSONPayload),ParseError,
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
+    log_debug('JSONPayload: ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)
@@ -644,6 +652,8 @@ process_json_request(JSONRequest):-
 %
 process_json_request_(JSONRequest):-
     json_decode_command(JSONRequest,Id,Method,Params),
+    option(path(Path),Params,nopath),
+    log_debug('~nREQUEST_DECODED_JSON_RPC ID: ~w Method: ~w Path:~w~nParams:~w~n',[Id,Method,Path,Params]),
     catch(json_exec(Method, Id, Params),
         error(Term,Code,Message),
         process_json_rpc_error(invalid_request(Id,error(Term,Code,Message)))).

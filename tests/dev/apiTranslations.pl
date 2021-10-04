@@ -10,7 +10,8 @@
     file_processing/2,
     file_processing/3,
     files_processing/2,
-    kleio_processing_status/3
+    kleio_processing_status/3,
+    get_stru/3                  %get_stru(+Params,+Id,-StruFile) is det.
         ]).
 /** <module> Api operations dealing with translation
       
@@ -39,7 +40,7 @@
 % 
 % Parameters:
 % $ structure: structure file to be used in the translation
-% $ echo     : if yes the "rpt" file with include the source lines
+% $ echo     : if yes the "rpt" file will include the source lines
 % $ recurse  : descend into tsub directories (default no)
 % $ status: filter files by translation status.
 % $ spawn     : if yes the files are distributed to diferent workes and translated in parallell.
@@ -92,15 +93,27 @@ translations(get,Path,Mode,Id,Params):-
     ),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
-    (exists_file(AbsPath) -> 
-        Files = [Path]
+ 
+    % get status from cache if many files and young cache
+    % this is fragile, because it depends on store_status_cache to reproduce the handling of
+    % parameters in Params  by sources_in_dir and get_translation_status.
+    % but any caching needs to be tied to the params of the call that can determine the files retrieved and
+    % and the absolute to relative path mapping,
+    CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
+    (   %If cached return from cache
+        get_status_from_cache(AbsPath,Params,RSets,CacheOptions)
+    ; % Else compute status
+        (
+            (exists_file(AbsPath) -> 
+                Files = [Path]
         ;
-        apiSources:sources_in_dir(Path,Params,Files)
-    ),
-    get_absolute_paths(Files,AbsFiles,TokenInfo),
-    (setof(Result,AbsFile^(member(AbsFile,AbsFiles),kleio_translation_status(AbsFile,Result,TokenInfo)),RSets)
-    ;
-    RSets=[]),
+            apiSources:sources_in_dir(Path,Params,Files)
+        ),
+        get_translation_status(Files,RSets,TokenInfo),
+        store_status_cache(AbsPath,Params,Files,RSets,CacheOptions)
+    )
+    ),    
+    %% store in cache store_cache(AbsPath,Files,Filtered)
     filter_translations_by_status(Params,RSets,Filtered),
     translations_get_results(Mode,Id,Params,Filtered).
 
@@ -145,8 +158,75 @@ translations_delete(json,Id,Params):-
     option(path(Path),Params,''),
     translations(delete,Path,json,Id,Params).
 
-
 % Predicates assisting in transaltion
+
+
+%% get_status_from_cache(+AbsPath,+Params,-RSets,+Options) is det.
+% 
+% returns kleio sets for AbsPath from cache if cache age is less than stored MaxAge property
+%   
+% Fails if there is no previously store cache on if conditions are not met.
+%
+% This prevents overburdening the server with consecutive calls to translations_get, with can be expensive.
+% 
+get_status_from_cache(AbsPath,Params,RSets,_):-
+    log_debug('KleioSET cache CHECKING token ~w path: ~w ~n',[Params,AbsPath]),
+    get_time(Now),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
+    Age is Now-T0,
+    Age < MaxAge,
+    get_shared_prop(Key,status_cache_rsets,RSets),
+    log_debug('KleioSET cache FETCHING ~w for ~w age: ~w ~n',[Key,AbsPath,Age]),!.
+get_status_from_cache(AbsPath,Params,_,_):- % cache invalid, erase
+    get_time(Now),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
+    Age is Now-T0,
+    log_debug('KleioSET cache INVALIDATING ~w for ~w Age: ~w max:~w~n',[Key,AbsPath,Age,MaxAge]),
+    del_shared_prop(Key,status_cache_time),
+    del_shared_prop(Key,status_cache_rsets),
+    del_shared_prop(Key,max_cache_age),
+    fail.
+get_status_from_cache(AbsPath,Params,_,_):- 
+    log_debug('KleioSET cache NO_RECORD for ~w params: ~w ~n',[AbsPath,Params]),
+    fail.
+
+%% store_status_cache(+AbsPath,+Params,+RSets,+Options) is det.
+%
+%  Stores RSets in cache associated with AbsPath.
+%
+%  Options
+% CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
+%   min_set(N) - only store if number of files is > N
+%   max_age(A) - store cache for maximum of A seconds
+%   max_age_large_set(O) - store cache for maximum of O seconds if set is large
+%   large_set(L) - consider large set if number of files > L
+%
+
+store_status_cache(AbsPath,Params,Files,RSets,Options):-
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    option(min_set(N),Options,100),
+    option(large_set(L),Options,1000),
+    option(max_age(A),Options,30),
+    option(max_age_large_set(O),Options,180),
+    length(Files,FN),
+    FN > N, % if small set of files ingore
+    (FN > L -> MaxAge=O;MaxAge=A), % set age acording to size
+    get_time(Now),
+    set_shared_prop(Key,status_cache_time,Now),
+    set_shared_prop(Key,max_cache_age,MaxAge),
+    set_shared_prop(Key,status_cache_rsets,RSets).   
+store_status_cache(_,_,_,_,_):-!.
+
 
 get_translation_status(Files,RSets,TokenInfo):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
@@ -166,6 +246,11 @@ spawn_work(yes,_,_,_,Jobs):-
 spawn_work(no,AbsFiles,StruFile,Echo,[job(JobId,AbsFiles)]):-
     post_job(translate(AbsFiles,StruFile,Echo),JobId).
 
+%! get_stru(+Params,+Id,-StruFile) is det.
+% Get then path to the structure file associated with a translation request
+% Parameters:
+%  structure: structure file to be used in the translation
+%
 get_stru(Params,Id,StruFile):-
     option(token_info(TokenInfo),Params),
     kleiofiles:kleio_default_stru(DefaultStru),
@@ -175,7 +260,7 @@ get_stru(Params,Id,StruFile):-
             (
                 exists_file(StruFile) -> true
                 ; 
-                throw(error(Id,-32602,'Structure file does not exist'-SFile))
+                throw(error(Id,-32602,'Structure file does not exist'-StruFile))
             )
         )
         ;

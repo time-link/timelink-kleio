@@ -61,7 +61,7 @@ Download, upload, fetch and list source files.
 % relative the user sources directory, and all files produced by the translation of this file. 
 % 
 % If Path is a directory deletes all the files in the directory. 
-% If parameter result=yes recurse in subdirectories
+% If parameter recurse=yes recurse in subdirectories
 % 
 % If a file is being processed or is queued for processing then it is not deleted.
 % Returns list of files deleted.
@@ -295,9 +295,8 @@ delete_source(Path,directory,_Mode,_Id,Params,_Results):-
     sources_in_dir(Path,Params,Result),
     set_prop(kleio,delete,[]),
     option(token_info(TokenInfo),Params),
-    member((File,TCode,PCode, QCode),Result),
+    member(File,Result),
     log_debug('delete file candidate:~w~n',[File]),
-    TCode \= 'D', PCode \='P', QCode \='Q',
     log_debug('calling ~w~n',[kleio_file_delete(File)]),
     kleio_resolve_source_file(File,AbsFile,TokenInfo),
     kleio_file_delete(AbsFile),
@@ -413,7 +412,7 @@ source_move(Origin,Destination, Params, DestFile):-
     %% get_destination_path(+Origin,+Destination,?Path) is det.
     %
     %  If Destination has an extension, it must denote a file path, so Path=Destination
-    %  If Destination does not have an extension then it must a directory and Path=Destination +
+    %  If Destination does not have an extension then it must be a directory and Path=Destination +
     %   filename of Origin.
     %
     get_destination_path(Origin,Destination,Path):-

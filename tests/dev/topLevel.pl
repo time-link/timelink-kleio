@@ -34,6 +34,7 @@ syntactic analysers.
 :-module(topLevel,[clio_version/1,pclio_version/0,clio_init/0,stru/1,dat/1]).
 :-use_module(dataCode).
 :-use_module(dataSyntax).
+:-use_module(dataDictionary).
 :-use_module(struSyntax).
 :-use_module(struCode). 
 :-use_module(lexical). 
@@ -49,7 +50,7 @@ syntactic analysers.
 %  Returns the version of the translator.
 %  Version is set at build time by replacing tokens in the code.
 %
-clio_version('ClioInput - version 2019.A1 - build 170 05/11/2019 12:29 ').
+clio_version('KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@').
 
 %%  pclio_version is det.
 % prints version, compiler version, date and time
@@ -95,7 +96,11 @@ stru(F):-
       readlines(cmd),
 	  report([perror_count]),
       closeStru(Filename),
-      close(Filename).
+      close(Filename),
+      directory_file_path(Directory, _, Filename),
+      concat(Basename,'.json',JsonFile),
+      directory_file_path(Directory,JsonFile,JPath),
+      make_json_doc(Filename,JPath).
 
 %******************************************************
 %  dat:  starts the processing of kleio data file
@@ -117,12 +122,18 @@ dat(F):-
       writeln('-------------------------------------------')]),
       initData(Filename),
       debug(kleio(dat),'dat: initData done',[]),
+      % TODO PROFILING should go here
+      % profile(readlines(dat))
+      % or time(readlines(dat))
       readlines(dat),
 	  % report([perror_count]), % must be called after final checks in gactoxml.pl
       closeData(Filename),
       close(Filename). % SWI generates an error when closing after a seen
 
-
+doc(StruFile,DestDir):-
+    stru(StruFile),
+    make_html_doc(DestDir).
+    
 %% processLine(+FileType,+Tokens) is det.
 %
 %  Process line doing syntactic analysis 

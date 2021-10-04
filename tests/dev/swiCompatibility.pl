@@ -8,6 +8,7 @@
             ptime/1,
             now/6,
             break_fname/5,
+            break_fname2/5,
             open_file_read/1,
             open_file_write/1,
             close_file/1,
@@ -109,8 +110,11 @@ on(M,L):-member(M,L).
 %
 
 writelist0(L):-
-    flatten(L,FL),
-    atomic_list_concat(FL,A),write(A).
+    flatten(L,FL),findall(T,(member(M,FL),make_textual(M,T)),FL2),
+    atomic_list_concat(FL2,A),write(A).
+
+make_textual(A,A):-error:text(A),!.
+make_textual(A,T):-format(string(T),"~p",[A]).
 
 %% writelist0ln(+L) is det.
 % writes the elements of a list with new line at the end.
@@ -166,7 +170,7 @@ now(Year,Month,Day,Hour,Minute,Second):-
 %       E = "cli".
 %
 % @tbd  TODO: reimplement using the native filename predicates of SWI.
-break_fname(FullName,Path,FileName,Base,Extension):-
+break_fname2(FullName,Path,FileName,Base,Extension):-
     path_sep(Sep),
     stringof(Chars_Full_Name,FullName),reverse(Chars_Full_Name,RCFN),
     (append(RFileName,[Sep|RPATH],RCFN)->true;(RFileName=RCFN,RPATH=['.'])),
@@ -178,7 +182,7 @@ break_fname(FullName,Path,FileName,Base,Extension):-
     stringof(Cext,Extension),!.
 
 
-break_fname2(FullName,Path,FileName,Base,Extension):-
+break_fname(FullName,Path,FileName,Base,Extension):-
     file_directory_name(FullName, Path),
     file_base_name(FullName,FileName),
     file_name_extension(Base,Extension,FileName),

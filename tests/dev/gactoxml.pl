@@ -55,6 +55,7 @@
 :-use_module(persistence).
 :-use_module(reports).
 :-use_module(utilities).
+:-use_module(library(filesex)).
 
 ?-thread_local(group_path/1).
 ?-thread_local(carel/4).
@@ -83,20 +84,23 @@ db_init:-
         writeln('     Joaquim Ramos de Carvalho (joaquim@uc.pt) ')
         ] ),
     get_value(data_file,D),
-    break_fname(D,Path,__File,Base,__Ext),
+    break_fname(D,Path,File,Base,__Ext),
     path_sep(Sep),
     list_to_a0([Path,Sep,Base],SOURCE),
     log_debug('translate: path: ~w sep:~w base:~w~n',[Path,Sep,Base]),
     put_value(source_file,SOURCE),
+    put_value(source_file_name,File),
     concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
     log_debug('translate: xmlfile --> ~w~n',[XMLFILE]),
     open_file_write(XMLFILE),
+    catch(chmod(XMLFILE,+gw),E,log_error('Could not change permissions of ~w : ~w ',[XMLFILE,E])),
     % prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
     (concat(__X,'_ids',Base)
          -> put_value(clioPP,false) % this is a ids file, no PP necessary
          ; (
        concat(SOURCE,'.ids',PPFILE),
        open_file_write(PPFILE),
+       catch(chmod(PPFILE,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[PPFILE,E2])),
        put_value(clioppfile,PPFILE),
        put_value(clioPP,true)
          )
@@ -146,22 +150,56 @@ db_close:-
   */
  change_to_ids:-
   get_value(data_file,D),
-    report([writeln('** Processed file'-D)]),
+  report([writeln('** Processed file'-D)]),
   get_value(source_file,SOURCE),
   concat(SOURCE,'.org',Original),
-    report([writeln('** Original file'-Original)]),
+  report([writeln('** Original file'-Original)]),
   concat(SOURCE,'.old',Last),
-   report([writeln('** Previous version'-Last)]),
-
+  report([writeln('** Previous version'-Last)]),
   concat(SOURCE,'.ids',Ids),
-            report([writeln('** Temp file with ids'-Ids)]),
-
-  (exists_file(Last) ->delete_file(Last);true),
-  (exists_file(Original)->rename_file(D,Last);rename_file(D,Original)),
-  rename_file(Ids,D),!.
+  report([writeln('** Temp file with ids'-Ids)]),
+  /*
+  (exists_file(Last) ->
+    ((delete_file(Last),report([writeln('** Deleted previous version'-Last)]))
+    ;
+    (true,report([writeln('** No previous version'-Last)])))),
+  (exists_file(Original)->
+    (rename_file(D,Last),report([writeln('** '-D-'renamed to'-Last)]))
+    ;
+    (rename_file(D,Original),report([writeln('** '-D-'renamed to'-Original)])) ),
+  rename_file(Ids,D),
+  */
+  /*
+  Trying to replace the code above with direct shell calls because of a 
+  bug that occurs when kleio-server runs in a virtual box environment on windows
+  See  https://bugzilla.gnome.org/show_bug.cgi?id=656225
+  */
+  (exists_file(Last) -> delete_file(Last); true),
+  (exists_file(Original)->
+    (rename_with_shell(D,Last),
+    catch(chmod(D,+gw),E,log_error('Could not change permissions of ~w : ~w ',[D,E])),
+     report([writeln('** '-D-'renamed to'-Last)])
+    )
+    ;
+    (rename_with_shell(D,Original),
+    catch(chmod(Original,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[Original,E2])),
+    report([writeln('** '-D-'renamed to'-Original)])) ),
+    rename_with_shell(Ids,D),
+    catch(chmod(D,+gw),E3,log_error('Could not change permissions of ~w : ~w ',[D,E3])),
+    report([writeln('** '-Ids-'renamed to'-D)]),
+    report([writeln('** Translation files closed.')]),
+    !.
 change_to_ids:-
+   error_out('** Problem renaming files.'),
    report([writeln('** Problem renaming files.')]) .
 
+rename_with_shell(Name1,Name2):-
+  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2],
+  atomic_list_concat(Command,'',S),
+  shellUtil:shell_to_list(S,0,_),!.
+rename_with_shell(Name1,Name2):-
+  error_out('** Problem renaming files.'),
+  report([writeln('Could not rename'-Name1-' to '-Name2)]),!.
 
 /*
 ================================================================================
@@ -284,13 +322,33 @@ group_export(kleio,_) :- !,
     xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
     xml_nl.
 
+/*
+Groups related to authority registers
+*/
+group_export(Register,ID):-
+    group_derived(Register,'authority-register'),
+    authority_register_export(Register,ID),!.
+group_export(REntity,ID):-
+   group_derived(REntity,'rentity'),
+   rentity_export(REntity,ID),!.  
+group_export(RPerson,ID):-
+    group_derived(RPerson,'rperson'),
+    rperson_export(RPerson,ID),!.  
+group_export(ROject,ID):-
+      group_derived(ROject,'robject'),
+      robject_export(ROject,ID),!.  
+group_export(Occ,ID):-
+        group_derived(Occ,'occ'),
+        rentity_occ_export(Occ,ID),!. 
+
+
 group_export(Source,ID):-
-group_derived(Source,'historical-source'),
-historical_source_export(Source,ID),!.
+    group_derived(Source,'historical-source'),
+    historical_source_export(Source,ID),!.
 
 group_export(Act,ID) :-
-group_derived(Act,'historical-act'),
-historical_act_export(Act,ID),!.
+  group_derived(Act,'historical-act'),
+  historical_act_export(Act,ID),!.
 
 group_export(Person,ID) :-
 group_derived(Person,person),
@@ -339,9 +397,101 @@ group_derived(G,S) :- clio_extends(G,S).
 
 */
 
+/*
+
+Handling of authority registers
+*/
+
+authority_register_export(Register,Id):-
+    report([writelist0ln(['** Processing authority register ',Register,'$',Id])]),
+    (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
+    (get_y_m_d(Date2) -> Date=Date2; Date=0)),
+    set_prop(act,date,Date), % this is for attributes and relations in rentities
+    set_prop(aregistry,date,Date),
+    set_prop(aregistry,id,Id),
+    %
+    belement_aspect(core,user,User),
+    set_prop(aregistry,user,User),
+    %
+    belement_aspect(core,dbase,DBase),
+    set_prop(aregistry,dbase,DBase),
+    %
+    belement_aspect(core,replace_mode,ReplaceMode),
+    set_prop(aregistry,replace_mode,ReplaceMode),
+    %
+    belement_aspect(core,ignore_date,IgnoreDate),
+    set_prop(aregistry,ignore_date,IgnoreDate),
+    %
+    group_to_xml(Register,Id,[
+
+    ]),
+    !.
+rentity_export(Rentity,Id):-
+    set_prop(rentity,id,Id),
+    get_prop(aregistry,user,User),
+    setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
+    group_to_xml(Rentity,Id,[
+        user([User],[],[]),
+        the_class([rentity],[],[])
+        ]),
+    report([writelist0ln(['** Processing rentity record ',Rentity,'$',Id])]),
+    !.
+rperson_export(RPerson,Id):-
+  set_prop(rentity,id,Id),
+  belement_aspect(core,sname,Description),
+  get_prop(aregistry,user,User),
+  setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
+  group_to_xml(RPerson,Id,[
+      description([Description],[],[]),
+      user([User],[],[]),
+      the_class([rperson],[],[])
+      
+      ]),
+  report([writelist0ln(['** Processing rperson record ',RPerson,'$',Id])]),
+  !.
+robject_export(RObject,Id):-
+  set_prop(rentity,id,Id),
+  belement_aspect(core,sname,Description),
+  get_prop(aregistry,user,User),
+  setgensymbol_local(occ,0), % we reset the occurrences counters so that it restarts from 1 at each rentity
+  group_to_xml(RObject,Id,[
+      description([Description],[],[]),
+      user([User],[],[]),
+      the_class([robject],[],[])
+    ]),
+  report([writelist0ln(['** Processing robject record ',RObject,'$',Id])]),
+  !.
+rentity_occ_export(_,Id):-
+  get_prop(rentity,id,REId),
+  get_prop(aregistry,user,User),
+  get_prop(aregistry,id,ARId),
+  belement_aspect(core,occurrence,Occurrence),
+  export_attach_occ(xml,Id,ARId,User, REId,Occurrence),
+  report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
+  !.
+
+export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
+  xml_nl,
+  xml_write(['<RELATION ID="',OccID,'" REGISTER="',ARId,'" USER="',User,'" ORG="',Occurrence,'" DEST="',REId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
+  xml_nl,!.
+
+
+
+/*
+
+
+Hangling of historical sources
+
+
+*/
 historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),
+  get_value(source_file_name,Name),
+  get_value(data_file,D),
+  break_fname(D,_,_,Base,__Ext),
+  report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
+(Base \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
     (get_y_m_d(Date2) -> Date=Date2; Date=0)),
   set_prop(source,date,Date),
@@ -404,17 +554,17 @@ person_export(G,ID):-
   set_prop(person,id,ID),
   infer_sex(G,S),
   belement_aspect(core,name,Name),
-    set_prop(person,name,Name),
-    set_prop(person,sex,S),
-    set_prop(person,group,G),
-    clio_elements(Els),
-    (member(sex,Els) -> SexElement = []; SexElement=[sex([S],[],[])]),
+  set_prop(person,name,Name),
+  set_prop(person,sex,S),
+  set_prop(person,group,G),
+  clio_elements(Els),
+  (member(sex,Els) -> SexElement = []; SexElement=[sex([S],[],[])]),
   (belement_aspect(core,id,[]) -> IdElement=[id([ID],[],[])];IdElement = [] ),
   append(SexElement,IdElement, ExtraElements ),
   assertz(same_as_cached_id(ID)),
   group_to_xml(G,ID,ExtraElements),
   process_function_in_act(G,ID),
-    !.
+  !.
 
 object_export(G,ID) :-
   (belement_aspect(core,id,[]) ->  IdElement=[id([ID],[],[]),type([G],[],[]) ]; IdElement=[type([G],[],[])]),
@@ -542,11 +692,14 @@ p_cached_same:-
 
       % and now the external references
 p_cached_same:-
+  report([nl]),
     clause(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
     p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
-   warning_out([' "SAME AS" TO EXTERNAL REFERENCE EXPORTED (',SID,') CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.'],[line_number(N)]),
+    format(string(S),'Line ~w "SAME AS" TO EXTERNAL REFERENCE EXPORTED (~w) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.',[N,SID]),
+   report([writeln(S)]),
       fail.
   p_cached_same:-
+    report([nl]),
     retractall(same_as_cached(_,_,_,_,_,_,_,_)),
     retractall(xsame_as_cached(_,_,_,_,_,_,_,_)),
     retractall(same_as_cached_id(_)).
@@ -650,6 +803,56 @@ get_sex(female,f):-!.
 
     get_date: get the date if it was entered as the element "date"
     ========
+    TODO: implemente issue 128 https://github.com/joaquimrcarvalho/mhk/issues/128
+
+    Another alternative for the notation
+- "<date"before date 
++ ">date" after date
+Date:  period starting in date
+:Date  period ending in date
+:date: date is part of period with start and end unknown 
+Dates can be expressed as
+- yyyymmdd
+- yyyy-mm-dd 
+- yyyymm or yyyymm00 date with day unknown
+- yyyy or yyyy0000 date with month and day unknown
+
+So
+- 1580:1640 
+- 1580:1640-01-01
+- >1580:-1641
+- 1580: from 1580 onwards
+- :>1580 ending after 1580
+
+This would generate extra infered elements and kick in when date is not a number
+date formats above would be processed to produce a yyyymmdd date a
+get_date(DATE,EXTRA) where EXTRA would be a list with can contain one or several of 
+  date1(D,[],[]) - first date of a period
+  date2(D,[],[]) - second date of a period
+  before_date1(true,[],[]) - when date1 was prefixed with "<"
+  before_date2(true,[],[]) - when date2 was prefixed with "<" 
+  after_date1(true,[],[]) - when date1 was prefixed with ">"
+  after_date2(true,[],[]) - when date2 was prefixed with ">"
+
+  This can be done with a grammar
+
+    dateExpression(D) -> singleDate(D)
+    dateExpression(period(D1,D2)) -> singleDate(D1),':',sngleDate(D2)
+    dateExpression(period(uknown,D2)) -> ':',singleDate(D2)
+    dateExpression(period(D1,unknown)) -> singleDate(D1),':'
+
+    singleDate([date(D)]) -> dateExpression(D).
+    singleDate([date(D),relative(R)]) -> relative(R),dateExpression(D).
+
+    dateExpression(D) -> isNumber(N), padto8(N,D).
+    dateExperssion(D) -> is_dd_mm_yyyy(D).
+    dateExperssion(D) -> is_yyyy_mm_dd(D).  
+    dateExperssion(D) -> is_yyyy_mm(D).  
+    dateExperssion(D) -> is_mm_yyyy(D).
+
+    relative(C) --> [C], {member(C,['>','<'])}.
+
+
 */
 get_date(DATE):-
       belement_aspect(core,date,[A_DATE]),
@@ -694,7 +897,7 @@ get_group_id(Group,__BuiltinID,Id):- % if the element id exists, take it as the 
 
 get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancestor and concatenate
     get_ancestor(__Anc,Aid),!,
-    clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters
+    clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters[??]
     sub_atom(Class,0,3,_,Seed),
       repeat,
     gensymbol_local(Seed,Gid),
@@ -1702,16 +1905,16 @@ xcleanwrite([A|B]):-!,
    xcleanwrite(A),xcleanwrite(B).
 xcleanwrite(Atomic):-
    atom(Atomic),!,
-   name(Atomic,Chars),
+   atom_codes(Atomic,Chars),
    xclean_chars(Chars,CChars),
-   name(CAtomic,CChars),
+   atom_codes(CAtomic,CChars),
    write_term(CAtomic,[quoted(false)]).
 xcleanwrite(Functor):-!,write_term(Functor,[quoted(false)]).
 
 
 xclean_chars([],[]):-!.
   xclean_chars([47|More],[47|CMore]):-!, xclean_chars(More,CMore). % escape the slash
-xclean_chars([C|More],[C|CMore]):-C > 19, C < 256, !, xclean_chars(More,CMore).
+xclean_chars([C|More],[C|CMore]):-C > 19, !, xclean_chars(More,CMore).
 xclean_chars([10|More],[10|CMore]):-!, xclean_chars(More,CMore).
 xclean_chars([13|More],[13|CMore]):-!, xclean_chars(More,CMore).
 xclean_chars([_|More],[46|CMore]):-!, xclean_chars(More,CMore).
