@@ -28,6 +28,7 @@ help: .PHONY
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
 	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
 	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
+	@echo "  make kleio-run            start server with .env config"
 
 
 clean:
@@ -136,7 +137,8 @@ token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
 kleio-run:
-	@export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20);\
+	@source .env;\ 
+	@if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
 	echo;\
 	if [ -e "$$PWD/tests/kleio-home" ]; then KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
@@ -156,6 +158,9 @@ kleio-stop:
 start: kleio-run
 
 stop: kleio-stop
+
+compose-up:
+    
 
 docs: .PHONY
 	@echo "Requires postman_doc_gen https://github.com/karthiks3000/postman-doc-gen"

@@ -11,7 +11,7 @@ Although Thaller's Kleio database system is no longer publically available, the 
 The _Timelink-Kleio translator_ implements a subset of the Kleio notation designed for the Timelink database system. _Timelink_ provides a set of data models designed for handling person-oriented information collected in historical documents.
 
 
-This is how a baptism looks like in _Timelink_ keio notation:
+This is how a (portuguese) baptism looks like in _Timelink_ Kleio notation:
 
       bap$b1714-2/12/11714/fl.117v./igreja de sao silvestre/manuel lopes serra (padre)
 
@@ -26,7 +26,7 @@ This is how a baptism looks like in _Timelink_ keio notation:
 
             mn$leonarda francisca
 
-            pad$ joao fernandes ramalheiro
+            pad$joao fernandes ramalheiro
                ls$morada/moita
                ls$freguesia/lousa
 
@@ -67,23 +67,42 @@ API documentation is available at docs/api/index.html
 
 Kleio server is written in `SWI-Prolog` https://www.swi-prolog.org
 
+Recommended tools:
+
 * `VSCode` with `VSC-Prolog` extension https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog
 * `Postman` https://www.postman.com
   * Directory api/postman contains exported postman collections and environments. 
 * `Postman-doc-gen`: generates static documentation from Postman collections https://github.com/karthiks3000/postman-doc-gen
+* `newman`: the command line tool for running Postman generated test suites https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
+  
 
 ### Running the server locally
 
 Easiest way: 
-+ open serverStart.pl on VSCode
++ open serverStart.pl on `VSCode` with `VSC-Prolog`
 + Load the file with Option+X+L
 + in the Prolog terminal that appears do 
+  
 
-   ```run_debug_server.```
+      setenv('KLEIO_ADMIN_TOKEN','your-token-anything-with-more-than-5-chars-will-work').
+      
+      run_debug_server.
 
 + set spy point with tspy(_predicate_) 
-  
-### Preparing images
++ Clients can access the kleio-server using the token set above.
+
+### Tests
+
+There two type of tests:
+
+* _semantic_ tests compare the result of a new translation to a reference translation.
+* _api_ tests check if the exposed API works as expected.
+
+See `README.md` in directory tests for details. The tests directory also contain
+reference files and reference translator necessary to run both semantic and api tests.
+
+### Updating 
+## Preparing images
  
  * ```make image```: create a new image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
   
@@ -96,3 +115,27 @@ The following tags are used:
 To help manage the tags the following targets exist
 
 * ```make tag-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
+* ```make inc_NUMBER``` increment version with NUMBER in major | minor
+* ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
+docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
+
+## Make targets
+
+Type ```make``` to see more targets that help in development.
+
+
+      % make
+      usage:
+      make image                build docker image and tag with new build number
+      make build                return the current build number
+      make version              return the current version string (major.minor)
+      make current              return the current version, build number
+      make last                 return the last image build date, version, build number
+      make inc-NUMBER           increment version with NUMBER in major | minor
+      make token                generate token for KLEIO_ADMIN_TOKEN
+      make start                start Kleio server on docker (requires image)
+      make stop                 stop Kleio server
+      make docs                 generate api docs (requires postman_doc_gen and api files)
+      make tag-TAG              tag last image with TAG in latest | unique | stable
+      make push-TAG             push image with TAG in latest | unique | stable
+      make kleio-run            start server with .env config

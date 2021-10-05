@@ -5,8 +5,8 @@ services:
     image: timelinkserver/kleio-server:stable
     # Run under current user otherwise in linux systems sources files and translations are owned by root
     # requires # store current user and group
-    #       export CURRENT_UID=$(id -u):$(id -g)
-    user: ${CURRENT_UID}
+    #       export KLEIO_USER=$(id -u):$(id -g)
+    user: ${KLEIO_USER}
 
     volumes:
       - ${KLEIO_HOME}:/kleio-home:cached

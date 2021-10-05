@@ -1,7 +1,10 @@
 
-## Tests for kleio
+# Tests for kleio
 
+## Semantic tests
 This directory contains semantic testing support for the Kleio translator. 
+
+Semantic tests check if the result of a new translation differs from a previous reference translation.
 
 It allows new versions of the translator and/or the gacto2.str scheme file to be tested in what regards the generated output.
 
@@ -59,7 +62,7 @@ The test root directory has the following layout:
       * compares the result of reference and test translations by making a diff on `reference_translations` and `test_translations`, excluding non relevant differences with the patterns in `exclude_while_comparing.grep`.
 
 
-## Running testes
+## Running semantic tests
 
 From the `clio/tests` directory do
 
@@ -67,8 +70,12 @@ From the `clio/tests` directory do
 
 To rerun the translations with the development version and re-compare with the stable version (requires that `run_tests.sh` was previously run)
 
-    .scripts/rerun_tests.sh (not implemented)
+    .scripts/run_remote_translations.sh
 
-To view the result of tests check the contents of the file `reports/run_tests_report.diff`
+To view the result of tests check the contents of the file `reports/test_report_YYYY-MM-DD_HH:MM:SS.diff`
 
-    open run_tests_report.diff
+## Api and server tests
+
+Other than semantic tests there is also a test suite of API calls in REST and JSON-RPC format.
+
+This test suite is generated with postman.
