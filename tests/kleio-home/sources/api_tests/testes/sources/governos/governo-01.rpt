@@ -1,661 +1,0 @@
-ClioInput - version $Revision$ SWI $Date$
-24-5-2017 9-32
-
-Processing data file:/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli
--------------------------------------------
-Generic Act translation module with geoentities (XML).
-     Joaquim Ramos de Carvalho (joaquim@uc.pt) 
-** New document: kleio
-1: kleio$gacto.str=========================
-kleio translation started
-=========================
-Structure: gacto.str
-Prefix: 
-Autorel: 
-Translation count: 
-Obs: 
-Translation count not set or invalid, counting as zero: 
-2: fonte$fonte-gp-I3:         /tipo=composicao de governo4:         /localizacao=CD25A B.1.1.2.5:         /obs=original da presidencia do conselho de ministros. Governo exonerado pelo decreto n� 330/74 de 11/7/19746: **** auto rels 2 STARTED.
-** Processing source fonte$fonte-gp-I
-7: gov$gp-I/15/5/1974/17/7/19748:       /obs=I Governo Provisorio9: **** auto rels 2 STARTED.
-** Processing act gov$gp-I
-10: pm$adelino da palma carlos11:      ls$titulo/prof. doutor
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:12:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 11 ** Failure: undefined element. 
-Near line: 11      ls$titulo/prof. doutorNear line: 12 minAdj$francisco manuel lumbrales sa carneiro/id=sacarneiro
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:12:** minAdj unknown element: id.
-
-
-ERROR: governo-01.cli line 11 ** minAdj unknown element: id.
-Near line: 11      ls$titulo/prof. doutorNear line: 12 minAdj$francisco manuel lumbrales sa carneiro/id=sacarneiro
-12: minAdj$francisco manuel lumbrales sa carneiro/id=sacarneiro
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:13:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 12 ** Failure. Could not process -flushGroup
-Near line: 12 minAdj$francisco manuel lumbrales sa carneiro/id=sacarneiroNear line: 13      ls$titulo/dr.
-13:      ls$titulo/dr.14:      ls$nomeado/agora/data=19740524
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:15:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 14 ** Failure: undefined element. 
-Near line: 14      ls$nomeado/agora/data=19740524Near line: 15 minSemPasta$francisco manuel lumbrales sa carneiro/mesmo_que=sacarneiro
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:15:** minSemPasta unknown element: mesmo_que.
-
-
-ERROR: governo-01.cli line 14 ** minSemPasta unknown element: mesmo_que.
-Near line: 14      ls$nomeado/agora/data=19740524Near line: 15 minSemPasta$francisco manuel lumbrales sa carneiro/mesmo_que=sacarneiro
-15: minSemPasta$francisco manuel lumbrales sa carneiro/mesmo_que=sacarneiro
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:16:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 15 ** Failure. Could not process -flushGroup
-Near line: 15 minSemPasta$francisco manuel lumbrales sa carneiro/mesmo_que=sacarneiroNear line: 16      ls$titulo/dr.
-16:      ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:17:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 16 ** Failure: undefined element. 
-Near line: 16      ls$titulo/dr.Near line: 17 minSemPasta$alvaro barreirinhas cunhal/id=alvarocunhal
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:17:** minSemPasta unknown element: id.
-
-
-ERROR: governo-01.cli line 16 ** minSemPasta unknown element: id.
-Near line: 16      ls$titulo/dr.Near line: 17 minSemPasta$alvaro barreirinhas cunhal/id=alvarocunhal
-17: minSemPasta$alvaro barreirinhas cunhal/id=alvarocunhal
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:18:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 17 ** Failure. Could not process -flushGroup
-Near line: 17 minSemPasta$alvaro barreirinhas cunhal/id=alvarocunhalNear line: 18      ls$titulo/dr.
-18:      ls$titulo/dr.19:      ls$nota/coadjuvador do ministerio do trabalho/data=19740524
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:20:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 19 ** Failure: undefined element. 
-Near line: 19      ls$nota/coadjuvador do ministerio do trabalho/data=19740524Near line: 20 minSemPasta$francisco jose cruz pereira de moura/id=pereirademoura
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:20:** minSemPasta unknown element: id.
-
-
-ERROR: governo-01.cli line 19 ** minSemPasta unknown element: id.
-Near line: 19      ls$nota/coadjuvador do ministerio do trabalho/data=19740524Near line: 20 minSemPasta$francisco jose cruz pereira de moura/id=pereirademoura
-20: minSemPasta$francisco jose cruz pereira de moura/id=pereirademoura
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:21:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 20 ** Failure. Could not process -flushGroup
-Near line: 20 minSemPasta$francisco jose cruz pereira de moura/id=pereirademouraNear line: 21      ls$titulo/dr.
-21:      ls$titulo/dr.22:      ls$nota/coadjuvador do ministerio do trabalho e da administracao interna/data=19740524 23:          ls$nomeado/agora/data=19740524
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:24:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 23 ** Failure: undefined element. 
-Near line: 23          ls$nomeado/agora/data=19740524Near line: 24 minDefNac$mario firmino miguel/id=mariomiguel
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:24:** minDefNac unknown element: id.
-
-
-ERROR: governo-01.cli line 23 ** minDefNac unknown element: id.
-Near line: 23          ls$nomeado/agora/data=19740524Near line: 24 minDefNac$mario firmino miguel/id=mariomiguel
-24: minDefNac$mario firmino miguel/id=mariomiguel
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:25:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 24 ** Failure. Could not process -flushGroup
-Near line: 24 minDefNac$mario firmino miguel/id=mariomiguelNear line: 25      ls$titulo/tenente coronel 
-25:      ls$titulo/tenente coronel 26:      ls$cargo/chefe de estado maior
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:27:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 26 ** Failure: undefined element. 
-Near line: 26      ls$cargo/chefe de estado maiorNear line: 27 minCoordInterter$antonio de almeida santos/id=almeidasantos
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:27:** minCoordInterter unknown element: id.
-
-
-ERROR: governo-01.cli line 26 ** minCoordInterter unknown element: id.
-Near line: 26      ls$cargo/chefe de estado maiorNear line: 27 minCoordInterter$antonio de almeida santos/id=almeidasantos
-27: minCoordInterter$antonio de almeida santos/id=almeidasantos
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:28:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 27 ** Failure. Could not process -flushGroup
-Near line: 27 minCoordInterter$antonio de almeida santos/id=almeidasantosNear line: 28      ls$titulo/doutor
-28:      ls$titulo/doutor
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:29:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 28 ** Failure: undefined element. 
-Near line: 28      ls$titulo/doutorNear line: 29 secEstAdm$deodato nuno de azevedo coutinho/id=azevedocoutinho
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:29:** secEstAdm unknown element: id.
-
-
-ERROR: governo-01.cli line 28 ** secEstAdm unknown element: id.
-Near line: 28      ls$titulo/doutorNear line: 29 secEstAdm$deodato nuno de azevedo coutinho/id=azevedocoutinho
-29: secEstAdm$deodato nuno de azevedo coutinho/id=azevedocoutinho
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:30:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 29 ** Failure. Could not process -flushGroup
-Near line: 29 secEstAdm$deodato nuno de azevedo coutinho/id=azevedocoutinhoNear line: 30      ls$titulo/doutor
-30:      ls$titulo/doutor
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:31:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 30 ** Failure: undefined element. 
-Near line: 30      ls$titulo/doutorNear line: 31 secEstAssEcon$fernando de castro fontes/id=fernandofontes
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:31:** secEstAssEcon unknown element: id.
-
-
-ERROR: governo-01.cli line 30 ** secEstAssEcon unknown element: id.
-Near line: 30      ls$titulo/doutorNear line: 31 secEstAssEcon$fernando de castro fontes/id=fernandofontes
-31: secEstAssEcon$fernando de castro fontes/id=fernandofontes
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:32:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 31 ** Failure. Could not process -flushGroup
-Near line: 31 secEstAssEcon$fernando de castro fontes/id=fernandofontesNear line: 32       ls$titulo/engenheiro
-32:       ls$titulo/engenheiro33:           ls$nomeado/agora/data=19740530
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:34:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 33 ** Failure: undefined element. 
-Near line: 33           ls$nomeado/agora/data=19740530Near line: 34 minAdmInt$joaquim jorge magalhaes mota/id=magalhaesmota
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:34:** minAdmInt unknown element: id.
-
-
-ERROR: governo-01.cli line 33 ** minAdmInt unknown element: id.
-Near line: 33           ls$nomeado/agora/data=19740530Near line: 34 minAdmInt$joaquim jorge magalhaes mota/id=magalhaesmota
-34: minAdmInt$joaquim jorge magalhaes mota/id=magalhaesmota
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:35:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 34 ** Failure. Could not process -flushGroup
-Near line: 34 minAdmInt$joaquim jorge magalhaes mota/id=magalhaesmotaNear line: 35       ls$titulo/doutor 
-35:       ls$titulo/doutor 
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:36:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 35 ** Failure: undefined element. 
-Near line: 35       ls$titulo/doutor Near line: 36 minJust$francisco salgado zenha/id=salgadozenha
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:36:** minJust unknown element: id.
-
-
-ERROR: governo-01.cli line 35 ** minJust unknown element: id.
-Near line: 35       ls$titulo/doutor Near line: 36 minJust$francisco salgado zenha/id=salgadozenha
-36: minJust$francisco salgado zenha/id=salgadozenha
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:37:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 36 ** Failure. Could not process -flushGroup
-Near line: 36 minJust$francisco salgado zenha/id=salgadozenhaNear line: 37       ls$titulo/doutor
-37:       ls$titulo/doutor
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:38:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 37 ** Failure: undefined element. 
-Near line: 37       ls$titulo/doutorNear line: 38 subsecEstAdmJudic$armando bacelar/id=armandobacelar
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:38:** subsecEstAdmJudic unknown element: id.
-
-
-ERROR: governo-01.cli line 37 ** subsecEstAdmJudic unknown element: id.
-Near line: 37       ls$titulo/doutorNear line: 38 subsecEstAdmJudic$armando bacelar/id=armandobacelar
-38: subsecEstAdmJudic$armando bacelar/id=armandobacelar
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:39:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 38 ** Failure. Could not process -flushGroup
-Near line: 38 subsecEstAdmJudic$armando bacelar/id=armandobacelarNear line: 39       ls$titulo/doutor
-39:       ls$titulo/doutor40:       ls$nomeado/agora/data=1974053041: minCoordEcon$vasco vieira de almeida
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:42:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 41 ** Failure: undefined element. 
-Near line: 41 minCoordEcon$vasco vieira de almeidaNear line: 42       ls$titulo/dr.
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:42:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 41 ** Failure. Could not process -flushGroup
-Near line: 41 minCoordEcon$vasco vieira de almeidaNear line: 42       ls$titulo/dr.
-42:       ls$titulo/dr.43:        ls$nota/agora/data=19740528/44:        ls$cargo/superintende na comissao interministerial de cooperacao economica externa45:        ls$cargo/superintende no secretariado tecnico da presidencia do conselho46:        ls$cargo/superintende o centro de estudos de planeamento47:        ls$cargo/superintende no conselho nacional de produtividade48:        ls$cargo/inspeccao de gestao das participacoes do estado
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:49:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 48 ** Failure: undefined element. 
-Near line: 48        ls$cargo/inspeccao de gestao das participacoes do estadoNear line: 49 secEstFin$jose da silva lopes/id=silvalopes
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:49:** secEstFin unknown element: id.
-
-
-ERROR: governo-01.cli line 48 ** secEstFin unknown element: id.
-Near line: 48        ls$cargo/inspeccao de gestao das participacoes do estadoNear line: 49 secEstFin$jose da silva lopes/id=silvalopes
-49: secEstFin$jose da silva lopes/id=silvalopes
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:50:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 49 ** Failure. Could not process -flushGroup
-Near line: 49 secEstFin$jose da silva lopes/id=silvalopesNear line: 50       ls$titulo/dr.
-50:       ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:51:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 50 ** Failure: undefined element. 
-Near line: 50       ls$titulo/dr.Near line: 51 subsecEstOrc$antonio de seixas costa leal/id=costaleal
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:51:** subsecEstOrc unknown element: id.
-
-
-ERROR: governo-01.cli line 50 ** subsecEstOrc unknown element: id.
-Near line: 50       ls$titulo/dr.Near line: 51 subsecEstOrc$antonio de seixas costa leal/id=costaleal
-51: subsecEstOrc$antonio de seixas costa leal/id=costaleal
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:52:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 51 ** Failure. Could not process -flushGroup
-Near line: 51 subsecEstOrc$antonio de seixas costa leal/id=costalealNear line: 52       ls$titulo/dr.
-52:       ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:53:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 52 ** Failure: undefined element. 
-Near line: 52       ls$titulo/dr.Near line: 53 subsecEstTes$artur luis alves conde/id=alvesconde
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:53:** subsecEstTes unknown element: id.
-
-
-ERROR: governo-01.cli line 52 ** subsecEstTes unknown element: id.
-Near line: 52       ls$titulo/dr.Near line: 53 subsecEstTes$artur luis alves conde/id=alvesconde
-53: subsecEstTes$artur luis alves conde/id=alvesconde
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:54:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 53 ** Failure. Could not process -flushGroup
-Near line: 53 subsecEstTes$artur luis alves conde/id=alvescondeNear line: 54       ls$titulo/dr.
-54:       ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:55:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 54 ** Failure: undefined element. 
-Near line: 54       ls$titulo/dr.Near line: 55 secEstPlanEcon$vitor manuel ribeiro constancio/id=vitorconstancio
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:55:** secEstPlanEcon unknown element: id.
-
-
-ERROR: governo-01.cli line 54 ** secEstPlanEcon unknown element: id.
-Near line: 54       ls$titulo/dr.Near line: 55 secEstPlanEcon$vitor manuel ribeiro constancio/id=vitorconstancio
-55: secEstPlanEcon$vitor manuel ribeiro constancio/id=vitorconstancio
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:56:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 55 ** Failure. Could not process -flushGroup
-Near line: 55 secEstPlanEcon$vitor manuel ribeiro constancio/id=vitorconstancioNear line: 56       ls$titulo/dr. 
-56:       ls$titulo/dr. 57:           ls$nomeado/agora/data=19740527
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:58:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 57 ** Failure: undefined element. 
-Near line: 57           ls$nomeado/agora/data=19740527Near line: 58 secEstIndEEner$jose de melo torres campos/id=torrescampos
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:58:** secEstIndEEner unknown element: id.
-
-
-ERROR: governo-01.cli line 57 ** secEstIndEEner unknown element: id.
-Near line: 57           ls$nomeado/agora/data=19740527Near line: 58 secEstIndEEner$jose de melo torres campos/id=torrescampos
-58: secEstIndEEner$jose de melo torres campos/id=torrescampos
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:59:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 58 ** Failure. Could not process -flushGroup
-Near line: 58 secEstIndEEner$jose de melo torres campos/id=torrescamposNear line: 59       ls$titulo/engenheiro
-59:       ls$titulo/engenheiro
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:60:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 59 ** Failure: undefined element. 
-Near line: 59       ls$titulo/engenheiroNear line: 60 secEstAgri$alfredo gonzalez esteves belo/id=estevesbelo
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:60:** secEstAgri unknown element: id.
-
-
-ERROR: governo-01.cli line 59 ** secEstAgri unknown element: id.
-Near line: 59       ls$titulo/engenheiroNear line: 60 secEstAgri$alfredo gonzalez esteves belo/id=estevesbelo
-60: secEstAgri$alfredo gonzalez esteves belo/id=estevesbelo
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:61:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 60 ** Failure. Could not process -flushGroup
-Near line: 60 secEstAgri$alfredo gonzalez esteves belo/id=estevesbeloNear line: 61       ls$titulo/dr.
-61:       ls$titulo/dr.62:           ls$nomeado/agora/data=19740527
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:63:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 62 ** Failure: undefined element. 
-Near line: 62           ls$nomeado/agora/data=19740527Near line: 63 secEstComExtETur$nelson sergio melo da rocha trigo/id=rochatrigo
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:63:** secEstComExtETur unknown element: id.
-
-
-ERROR: governo-01.cli line 62 ** secEstComExtETur unknown element: id.
-Near line: 62           ls$nomeado/agora/data=19740527Near line: 63 secEstComExtETur$nelson sergio melo da rocha trigo/id=rochatrigo
-63: secEstComExtETur$nelson sergio melo da rocha trigo/id=rochatrigo
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:64:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 63 ** Failure. Could not process -flushGroup
-Near line: 63 secEstComExtETur$nelson sergio melo da rocha trigo/id=rochatrigoNear line: 64       ls$titulo/dr.
-64:       ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:65:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 64 ** Failure: undefined element. 
-Near line: 64       ls$titulo/dr.Near line: 65 minNegEstr$mario alberto  nobre lopes soares/id=mariosoares
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:65:** minNegEstr unknown element: id.
-
-
-ERROR: governo-01.cli line 64 ** minNegEstr unknown element: id.
-Near line: 64       ls$titulo/dr.Near line: 65 minNegEstr$mario alberto  nobre lopes soares/id=mariosoares
-65: minNegEstr$mario alberto  nobre lopes soares/id=mariosoares
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:66:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 65 ** Failure. Could not process -flushGroup
-Near line: 65 minNegEstr$mario alberto  nobre lopes soares/id=mariosoaresNear line: 66       ls$titulo/dr.
-66:       ls$titulo/dr.67: minEquiSocEAmb$manuel rocha
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:68:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 67 ** Failure: undefined element. 
-Near line: 67 minEquiSocEAmb$manuel rochaNear line: 68       ls$titulo/engenheiro
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:68:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 67 ** Failure. Could not process -flushGroup
-Near line: 67 minEquiSocEAmb$manuel rochaNear line: 68       ls$titulo/engenheiro
-68:       ls$titulo/engenheiro69:           ls$cargo/ministerio superintende na comissao portuguesa para o decenio hidrologico internacional70: secEstObPub$pedro nunes
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:71:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 70 ** Failure: undefined element. 
-Near line: 70 secEstObPub$pedro nunesNear line: 71       ls$titulo/engenheiro
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:71:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 70 ** Failure. Could not process -flushGroup
-Near line: 70 secEstObPub$pedro nunesNear line: 71       ls$titulo/engenheiro
-71:       ls$titulo/engenheiro
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:72:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 71 ** Failure: undefined element. 
-Near line: 71       ls$titulo/engenheiroNear line: 72 secEstTranECom$manuel branco ferreira lima/id=ferreiralima 
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:72:** secEstTranECom unknown element: id.
-
-
-ERROR: governo-01.cli line 71 ** secEstTranECom unknown element: id.
-Near line: 71       ls$titulo/engenheiroNear line: 72 secEstTranECom$manuel branco ferreira lima/id=ferreiralima 
-72: secEstTranECom$manuel branco ferreira lima/id=ferreiralima 
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:73:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 72 ** Failure. Could not process -flushGroup
-Near line: 72 secEstTranECom$manuel branco ferreira lima/id=ferreiralima Near line: 73       ls$titulo/engenheiro
-73:       ls$titulo/engenheiro
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:74:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 73 ** Failure: undefined element. 
-Near line: 73       ls$titulo/engenheiroNear line: 74 secEstHabEUrb$nuno portas/id=nunoportas
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:74:** secEstHabEUrb unknown element: id.
-
-
-ERROR: governo-01.cli line 73 ** secEstHabEUrb unknown element: id.
-Near line: 73       ls$titulo/engenheiroNear line: 74 secEstHabEUrb$nuno portas/id=nunoportas
-74: secEstHabEUrb$nuno portas/id=nunoportas
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:75:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 74 ** Failure. Could not process -flushGroup
-Near line: 74 secEstHabEUrb$nuno portas/id=nunoportasNear line: 75       ls$titulo/arquitecto
-75:       ls$titulo/arquitecto76: secEstMarMer$antonio tierno bagulho
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:77:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 76 ** Failure: undefined element. 
-Near line: 76 secEstMarMer$antonio tierno bagulhoNear line: 77       ls$titulo/vice-almirante
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:77:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 76 ** Failure. Could not process -flushGroup
-Near line: 76 secEstMarMer$antonio tierno bagulhoNear line: 77       ls$titulo/vice-almirante
-77:       ls$titulo/vice-almirante78:           ls$nomeado/agora/data=19740524/obs=promovido ao actual posto por despacho da junta de salvacao nacional
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:79:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 78 ** Failure: undefined element. 
-Near line: 78           ls$nomeado/agora/data=19740524/obs=promovido ao actual posto por despacho da junta de salvacao nacionalNear line: 79 secEstAmb$goncalo ribeiro telles/id=ribeirotelles
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:79:** secEstAmb unknown element: id.
-
-
-ERROR: governo-01.cli line 78 ** secEstAmb unknown element: id.
-Near line: 78           ls$nomeado/agora/data=19740524/obs=promovido ao actual posto por despacho da junta de salvacao nacionalNear line: 79 secEstAmb$goncalo ribeiro telles/id=ribeirotelles
-79: secEstAmb$goncalo ribeiro telles/id=ribeirotelles
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:80:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 79 ** Failure. Could not process -flushGroup
-Near line: 79 secEstAmb$goncalo ribeiro telles/id=ribeirotellesNear line: 80       ls$titulo/arquitecto
-80:       ls$titulo/arquitecto81: minEduECult$eduardo correia
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:82:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 81 ** Failure: undefined element. 
-Near line: 81 minEduECult$eduardo correiaNear line: 82       ls$titulo/doutor
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:82:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 81 ** Failure. Could not process -flushGroup
-Near line: 81 minEduECult$eduardo correiaNear line: 82       ls$titulo/doutor
-82:       ls$titulo/doutor
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:83:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 82 ** Failure: undefined element. 
-Near line: 82       ls$titulo/doutorNear line: 83 secEstAdmEsc$jose manuel prostes da fonseca/id=prostesdafonseca
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:83:** secEstAdmEsc unknown element: id.
-
-
-ERROR: governo-01.cli line 82 ** secEstAdmEsc unknown element: id.
-Near line: 82       ls$titulo/doutorNear line: 83 secEstAdmEsc$jose manuel prostes da fonseca/id=prostesdafonseca
-83: secEstAdmEsc$jose manuel prostes da fonseca/id=prostesdafonseca
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:84:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 83 ** Failure. Could not process -flushGroup
-Near line: 83 secEstAdmEsc$jose manuel prostes da fonseca/id=prostesdafonsecaNear line: 84       ls$titulo/ engenheiro
-84:       ls$titulo/ engenheiro85:           ls$nomeado/agora/data=19740527
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:86:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 85 ** Failure: undefined element. 
-Near line: 85           ls$nomeado/agora/data=19740527Near line: 86 secEstAssCultEInvCient$maria de lurdes belchior/id=mariadelurdesbelchior/sexo=f
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:86:** secEstAssCultEInvCient unknown element: id.
-
-
-ERROR: governo-01.cli line 85 ** secEstAssCultEInvCient unknown element: id.
-Near line: 85           ls$nomeado/agora/data=19740527Near line: 86 secEstAssCultEInvCient$maria de lurdes belchior/id=mariadelurdesbelchior/sexo=f
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:86:** secEstAssCultEInvCient unknown element: sexo.
-
-
-ERROR: governo-01.cli line 85 ** secEstAssCultEInvCient unknown element: sexo.
-Near line: 85           ls$nomeado/agora/data=19740527Near line: 86 secEstAssCultEInvCient$maria de lurdes belchior/id=mariadelurdesbelchior/sexo=f
-86: secEstAssCultEInvCient$maria de lurdes belchior/id=mariadelurdesbelchior/sexo=f
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:87:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 86 ** Failure. Could not process -flushGroup
-Near line: 86 secEstAssCultEInvCient$maria de lurdes belchior/id=mariadelurdesbelchior/sexo=fNear line: 87       ls$titulo/doutora
-87:       ls$titulo/doutora88:            ls$nomeado/agora/data=19740527
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:89:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 88 ** Failure: undefined element. 
-Near line: 88            ls$nomeado/agora/data=19740527Near line: 89 secEstDespEAccSocEsc$antonio jose avelas nunes/id=avelasnunes
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:89:** secEstDespEAccSocEsc unknown element: id.
-
-
-ERROR: governo-01.cli line 88 ** secEstDespEAccSocEsc unknown element: id.
-Near line: 88            ls$nomeado/agora/data=19740527Near line: 89 secEstDespEAccSocEsc$antonio jose avelas nunes/id=avelasnunes
-89: secEstDespEAccSocEsc$antonio jose avelas nunes/id=avelasnunes
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:90:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 89 ** Failure. Could not process -flushGroup
-Near line: 89 secEstDespEAccSocEsc$antonio jose avelas nunes/id=avelasnunesNear line: 90       ls$titulo/dr.
-90:       ls$titulo/dr.91:           ls$nomeado/agora/data=1974052792: secEstRefEdu$orlando pereira de carvalho
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:93:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 92 ** Failure: undefined element. 
-Near line: 92 secEstRefEdu$orlando pereira de carvalhoNear line: 93       ls$titulo/dr.
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:93:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 92 ** Failure. Could not process -flushGroup
-Near line: 92 secEstRefEdu$orlando pereira de carvalhoNear line: 93       ls$titulo/dr.
-93:       ls$titulo/dr.94:           ls$nomeado/agora/data=1974052795: minTrab$avelino antonio pacheco goncalves
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:96:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 95 ** Failure: undefined element. 
-Near line: 95 minTrab$avelino antonio pacheco goncalvesNear line: 96 secEstEmig$antonio macedo varela
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:96:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 95 ** Failure. Could not process -flushGroup
-Near line: 95 minTrab$avelino antonio pacheco goncalvesNear line: 96 secEstEmig$antonio macedo varela
-96: secEstEmig$antonio macedo varela
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:97:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 96 ** Failure: undefined element. 
-Near line: 96 secEstEmig$antonio macedo varelaNear line: 97       ls$titulo/dr.
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:97:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 96 ** Failure. Could not process -flushGroup
-Near line: 96 secEstEmig$antonio macedo varelaNear line: 97       ls$titulo/dr.
-97:       ls$titulo/dr.98:           ls$nomeado/agora/data=19740607/obs=ministerio criado 19740603
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:99:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 98 ** Failure: undefined element. 
-Near line: 98           ls$nomeado/agora/data=19740607/obs=ministerio criado 19740603Near line: 99 secEstTrab$carlos alberto do vale gomes carvalhas/id=carloscarvalhas
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:99:** secEstTrab unknown element: id.
-
-
-ERROR: governo-01.cli line 98 ** secEstTrab unknown element: id.
-Near line: 98           ls$nomeado/agora/data=19740607/obs=ministerio criado 19740603Near line: 99 secEstTrab$carlos alberto do vale gomes carvalhas/id=carloscarvalhas
-99: secEstTrab$carlos alberto do vale gomes carvalhas/id=carloscarvalhas
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:100:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 99 ** Failure. Could not process -flushGroup
-Near line: 99 secEstTrab$carlos alberto do vale gomes carvalhas/id=carloscarvalhasNear line: 100       ls$titulo/dr.
-100:       ls$titulo/dr.101:           ls$nomeado/agora/data=19740607/obs=ministerio criado em  19740603
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:102:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 101 ** Failure: undefined element. 
-Near line: 101           ls$nomeado/agora/data=19740607/obs=ministerio criado em  19740603Near line: 102 minAssSoc$mario luis da silva murteira/id=silvamurteira
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:102:** minAssSoc unknown element: id.
-
-
-ERROR: governo-01.cli line 101 ** minAssSoc unknown element: id.
-Near line: 101           ls$nomeado/agora/data=19740607/obs=ministerio criado em  19740603Near line: 102 minAssSoc$mario luis da silva murteira/id=silvamurteira
-102: minAssSoc$mario luis da silva murteira/id=silvamurteira
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:103:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 102 ** Failure. Could not process -flushGroup
-Near line: 102 minAssSoc$mario luis da silva murteira/id=silvamurteiraNear line: 103        ls$titulo/dr.
-103:        ls$titulo/dr.104: secEstSau$antonio calhordas
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:105:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 104 ** Failure: undefined element. 
-Near line: 104 secEstSau$antonio calhordasNear line: 105       ls$titulo/dr.
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:105:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 104 ** Failure. Could not process -flushGroup
-Near line: 104 secEstSau$antonio calhordasNear line: 105       ls$titulo/dr.
-105:       ls$titulo/dr.
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:106:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 105 ** Failure: undefined element. 
-Near line: 105       ls$titulo/dr.Near line: 106 secEstSegSoc$maria de lurdes ruivo da silva matos pintassilgo/sexo=f
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:106:** secEstSegSoc unknown element: sexo.
-
-
-ERROR: governo-01.cli line 105 ** secEstSegSoc unknown element: sexo.
-Near line: 105       ls$titulo/dr.Near line: 106 secEstSegSoc$maria de lurdes ruivo da silva matos pintassilgo/sexo=f
-106: secEstSegSoc$maria de lurdes ruivo da silva matos pintassilgo/sexo=f
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:107:** secEstSegSoc unknown element: id.
-
-
-ERROR: governo-01.cli line 106 ** secEstSegSoc unknown element: id.
-Near line: 106 secEstSegSoc$maria de lurdes ruivo da silva matos pintassilgo/sexo=fNear line: 107 /id=mariadelurdespintassilgo
-107: /id=mariadelurdespintassilgo
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:108:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 107 ** Failure. Could not process -flushGroup
-Near line: 107 /id=mariadelurdespintassilgoNear line: 108       ls$titulo/ engenheiro
-108:       ls$titulo/ engenheiro109: minComSoc$raul rego
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:110:** Failure: undefined element. 
-
-
-ERROR: governo-01.cli line 109 ** Failure: undefined element. 
-Near line: 109 minComSoc$raul regoNear line: 110       ls$titulo/dr. 
-
-/Users/jrc/develop/mhk_users/testes/sources/governos/governo-01.cli:110:** Failure. Could not process -flushGroup
-
-
-ERROR: governo-01.cli line 109 ** Failure. Could not process -flushGroup
-Near line: 109 minComSoc$raul regoNear line: 110       ls$titulo/dr. 
-110:       ls$titulo/dr. 111: 112: *** End of File
-106  errors.
-**** auto rels 2 STARTED.
-** Translation finished.
