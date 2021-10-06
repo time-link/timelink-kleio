@@ -142,7 +142,7 @@ p_error_warn_context(TYPE,Mess,Context):-
    %report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
   report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), 
            write('Near lines: '),write(N2),tab(1),write(Last),
-           write('Near line: '),write(N) ,tab(1),write(Line),
+           write('Near lines: '),write(N) ,tab(1),write(Line),
            nl,
        true]),!.
 
