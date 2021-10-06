@@ -2,6 +2,13 @@
 :-use_module(utilities).
 :-use_module(persistence).
 :-use_module(logging).
+% for tests
+:-use_module(library(http/http_client)).
+:-use_module(library(http/http_open)).
+:-use_module(library(http/json)).
+:-use_module(library(http/json_convert)).
+% to run tests do run_tests(server).
+:- set_test_options([run(manual)]).
 
 %% run_debug_server is det.
 %
@@ -152,3 +159,122 @@ do_setup(workers(V)):-setenv('KLEIO_WORKERS',V),!.
 stop_server:-
     restServer:default_value(rest_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
+
+%% stop_debug_server is det.
+%
+% Stops currently running debug server on port 4000.
+stop_debug_server:-
+    restServer:default_value(server_port,Port),
+    thread_httpd:http_stop_server(Port,[]),!.
+
+% Test zone
+
+% testing processing of "escritura" which is taking a very long time.
+
+test_escritura:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+
+test_teste:-
+    restServer:translate(
+            './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+
+
+show_prolog_stack:-
+    member(StackType,[local,global,trail]),
+    prolog_stack_property(StackType,min_free(MF)),
+    prolog_stack_property(StackType,low(Low)),
+    prolog_stack_property(StackType,factor(Factor)),
+    prolog_stack_property(StackType,spare(Spare)),
+    format('Stack ~12w ~22t min_free: ~w low: ~w factor: ~w spare: ~w~n',[StackType, MF,Low,Factor,Spare]),
+    fail.
+show_prolog_stack:-!.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  tests of restServer
+%%%%%%%%%%%%%%%%%%%%%%%
+% To run tests do:
+%    run_tests(server).
+%
+test_setup(EndPoint,Token):-
+    working_directory(CD,CD),
+    put_value(dir_before_tests,CD),
+    source_file(run_test_server,ThisFile),
+    file_directory_name(ThisFile,SourceDir),
+    file_directory_name(SourceDir,ClioDir),
+    concat(ClioDir,'/tests/',TestPath),
+    format('Test dir: ~w~n',[TestPath]),
+    working_directory(_,TestPath),
+    PORT=8989,
+    Token = 'anythingwilldo',
+    setenv('KLEIO_SERVER_PORT', PORT),
+    setenv('KLEIO_ADMIN_TOKEN',Token),
+    setenv('KLEIO_DEBUGGER_PORT',0),
+    catch(run_debug_server,E,writeln(E)),
+    concat('http://localhost:',PORT,EndPoint).
+
+test_cleanup:-
+    get_value(dir_before_tests,CD),
+    catch(stop_server,_,true),
+    working_directory(_,CD).
+
+rest_call(Protocol,Host,Method, Function,Path, Params,Token, Accept,Response):-
+    make_uri(Protocol,Host,Function,Path,Params,Uri),
+    http_get(Uri, Response, 
+        [   method(Method),
+            authorization(bearer(Token)),
+            request_header(accept=Accept)]).
+
+%
+make_uri(S,H,F,P,Par,Uri):-
+    params_to_query(Par,Qs),
+    atomic_list_concat(['/rest/',F,'/',P],Path),
+    uri_components(Uri,uri_components(S,H,Path,Qs,_)).
+params_to_query(ParamList,QueryString):-
+    uri_query_components(QueryString, ParamList).
+
+server_response(json([id=Id,jsonrpc=Version,result=Results]),Id,Version,Result):-
+    server_results(Results,Result),!.
+server_response(Response,id,version,Response).
+
+server_results([R|Rs],[D|Ds]):-
+    R=json(Data),
+    dict_create(D,result,Data),
+    server_results(Rs,Ds).
+server_results([],[]).
+
+test_case(translations,File,Stru):- 
+    Stru = 'system/conf/kleio/stru/gacto2.str',
+    translate_file(File,true).
+
+translate_file('sources/test_translations/varia/auc_cartulario18.cli',false).
+translate_file('sources/test_translations/varia',false).
+translate_file('sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli',true).
+translate_file('sources/reference_sources/paroquiais/baptismos/bapteirasproblem1.cli',true).
+translate_file('sources/reference_sources/paroquiais/baptismos/bapt1714.cli',true).
+
+:-begin_tests(server).
+
+test(translations,[setup(test_setup(EndPoint,Token)),forall(test_case(translations,File,Stru)),cleanup(test_cleanup)]):- 
+    uri_components(EndPoint,UComponents),
+    writeln(UComponents),
+    uri_data(scheme,UComponents,Scheme),
+    writeln(Scheme),
+    uri_data(authority,UComponents,Host),
+    writeln(Host),
+    rest_call(Scheme,Host,'POST',translations,File,[id=1212,str=Stru],Token,'application/json',Response),
+    server_response(Response,Id,Version,Results),
+    writeln('OK got answer'-Id-Version),
+    print_term(Results,[]),!.
+    %dict_create(Dict,response,Data),
+    %format('~n~nid:~w~n,~k',[Dict.id,Dict]).
+    
+
+
+:- end_tests(server).
