@@ -231,15 +231,19 @@ print_server_config:-
 
 %! start_debug_server is det.
 %
-% Starts a debugging server in port 4000.
+% Starts a debugging server in port default_value(server_port,Port).
+% if Port = 0 server not created
 % Usefull to test and debug when no console available.
 start_debug_server:-
      default_value(server_port,Port),
+     Port \= 0,
     % options are set in serverStart.pl file
      (get_prop(prolog_server,options,Options);Options=[allow(ip(_,_,_,_))]),
      log_debug('Starting DEBUG server on port ~w with ~w options. ~n',[Port,Options]),
      prolog_server(Port,Options),
      log_debug('Debug server started in port ~w~n',[Port]).
+start_debug_server:-
+    log_debug('Debug server NOT started (port=0)~n',[]).
 
 %% start_rest_server is det.
 %
@@ -392,7 +396,7 @@ mime:mime_extension(Ext,Mime):-
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
 %   
-%   The request can contain aditional parameters enconded in the http standard way.
+%   The request can contain aditional parameters encoded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
 %
