@@ -1,6 +1,6 @@
 Note =================================================
 Note Generic structure for the Source-Act-Person model
-Note   Now with geoentities a authority-registers
+Note   Now with geoentities and authority-registers
 Note ================================================
 Note
 Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
@@ -560,7 +560,7 @@ part 	name=chanc;
  repeat=n,referido,referida,item;
  guaranteed=id,dia,mes,ano;
  position=id,dia,mes,ano,loc;
- also=also,resumo,obs
+ also=loc,resumo,obs
 
 note *****************************************************************
 note doc group encarte Encartes
