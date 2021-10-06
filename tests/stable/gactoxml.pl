@@ -896,7 +896,11 @@ p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
         \+ used_id(Id),
         assert(used_id(Id)),!.
 
-   get_group_id(Group,Id,Id0) :- check_id_prefix(Id0,Id),put_value(Group,Id),\+ used_id(Id),assert(used_id(Id)),!. % If everything fails accept the kleio auto id
+   get_group_id(Group,Id,Id0) :- 
+      check_id_prefix(Id0,Id),
+      put_value(Group,Id),
+      \+ used_id(Id),
+      assert(used_id(Id)),!. % If everything fails accept the kleio auto id
 
    /*
       Check if there is a name space prefix to ad to the id.
@@ -1397,7 +1401,7 @@ p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
    */
 
    rch_class(Group,Class,Super,Table,na):-
-      isNewMappingMode,
+      isNewMappingMode,!,
       %writeln('** using new style mapping'),
       groupToClass(Group,Class,Super,Table).
 
@@ -1829,16 +1833,16 @@ p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
        xcleanwrite(A),xcleanwrite(B).
    xcleanwrite(Atomic):-
        atom(Atomic),!,
-       name(Atomic,Chars),
+       atom_codes(Atomic,Chars),
        xclean_chars(Chars,CChars),
-       name(CAtomic,CChars),
+       atom_codes(CAtomic,CChars),
        write_term(CAtomic,[quoted(false)]).
    xcleanwrite(Functor):-!,write_term(Functor,[quoted(false)]).
 
 
    xclean_chars([],[]):-!.
       xclean_chars([47|More],[47|CMore]):-!, xclean_chars(More,CMore). % escape the slash
-   xclean_chars([C|More],[C|CMore]):-C > 19, C < 256, !, xclean_chars(More,CMore).
+   xclean_chars([C|More],[C|CMore]):-C > 19, !, xclean_chars(More,CMore).
    xclean_chars([10|More],[10|CMore]):-!, xclean_chars(More,CMore).
    xclean_chars([13|More],[13|CMore]):-!, xclean_chars(More,CMore).
    xclean_chars([_|More],[46|CMore]):-!, xclean_chars(More,CMore).
