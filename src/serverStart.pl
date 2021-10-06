@@ -202,6 +202,9 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
+% assumes test sources in test_sources
+% to setup in the terminal do tests/scripts/prepare_tests.sh
+%
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
     put_value(dir_before_tests,CD),
