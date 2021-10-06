@@ -1,27 +1,11 @@
 Note =================================================
 Note Generic structure for the Source-Act-Person model
-Note   Now with geoentities
+Note   Now with geoentities and authority-registers
 Note ================================================
 Note
-Note $Revision$ $Date$ $Author$
+Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
 Note =================================================================================================
-Note History
-NOTE -------
-Note Revision 1.2  2006/05/16 10:52:44  Joaquim
-Note update dos ficheiros prolog
-Note
-Note TODO
-note		reorganize so that in the portuguese section
-note		the base classes for actors and parents go
-note		first and groups and actors related to the same source
-note		come together after.
 note
-note For kleio compatibility
-note     - anchor all groups in a parent group all the way up to the root
-note     - portuguese groups should always repeat element names in portuguese
-note       from the groups they extend.
-note     - No blank lines inside parameter lists
-note     - Source/fons does not work as expected.
 note
 note  The name parameter in the database command designates
 note  the target source file.
@@ -54,7 +38,7 @@ note
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
  position=structure,translator,obs;
- part=historical-source,fonte
+ part=historical-source,fonte,authority-register, identifications
 
 note ============================================================
 note Basic historical source group
@@ -62,13 +46,13 @@ note ============================================================
 
 part name=historical-source;
   guaranteed=id;
-  also=type,date,year,loc,ref,obs;
+  also=type,date,year,loc,ref,obs,replace;
   position=id,year,type,ref;
   part=historical-act
 
 note ============================================================
 note GeoEntity: a spatial entity
-note doc group an entity that repreent a spatial entity in the sense of
+note doc group an entity that represents a spatial entity in the sense of
 note    a conceptual representation of space. A geo-entity is not an object
 note     that has a particular position in place. it is rather something like
 note      the parish of X, the place Y, the region W.
@@ -78,6 +62,78 @@ part name=geoentity;
   position=name;
    also=type,id,obs;
   part=ls,atr,rel
+
+note ===========================================================
+note doc group authority-register a register of authority-records
+note    authority records are used to identify people, objects
+note    and to normalize vocabularies and other authority information.
+note    authority-registers must have an unique id, but a given community
+note    can have as many authority-registers as needed
+note
+
+part name=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase;
+    also=date,user,dbase;
+    part=authority-record
+
+note ===========================================================
+note identifications: a authority-register for identifications
+note doc group identifications are authority-registers for record linking.
+note     They contain real-entity records (people or objects) that aggregate
+note     occurrences in the source pertaining to the same person or entity.
+note     To keep imported records separate from local ones use a different user.
+part name=identifications;
+    source=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase,mode;
+    also=obs;
+    part=rentity,rperson,robject
+
+note ===========================================================
+note rentity: a authority-record for a real entity
+note doc group rentity contains information about a real entity.
+note     Defines the standart name for the entity and what are the occurences
+part name=rentity;
+     position=id,description,type;
+     guaranteed=id,description,type;
+     also=status,user,obs;
+     part=occ
+note ===========================================================
+note rperson: a authority-record for a real person
+note doc group rperson contains information about a real person.
+note     Defines the standart name for the person, the sex, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=rperson;
+     position=id,sname,sex;
+     guaranteed=id,sname,sex;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+
+note ===========================================================
+note robject: a authority-record for a real object
+note doc group robject contains information about a real object.
+note     Defines the standart name for the object, the type, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=robject;
+     position=id,sname,type;
+     guaranteed=id,sname,type;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+
+note ===========================================================
+note occ: an occurrence of a real entity
+note doc group occ contains the ids of the occurrences of a real entity
+note     Defines the id of the occ and optionally the name of the occurence
+note     the id_act of the act where it occurs, the type of act and the fucntion
+note     note that these optional information are just for documentation because they
+note    derive automatically from the occurrence id.
+part name=occ;
+     position=occurrence,atype,func,date,name;
+     guaranteed=occurrence;
+     also=name,atype,func,date,id,obs
+
+
 
 
 
@@ -90,7 +146,7 @@ part 	name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
      also=loc,ref,obs,day,month,year;
-     arbitrary=person,object,abstraction,ls,atr,rel
+     arbitrary=person,object,geoentity,abstraction,ls,atr,rel
 
 note ============================================================
 note A person
@@ -225,6 +281,7 @@ element name=destname
 element name=destination
 element name=summary;
 element name=description;
+element name=replace;
 
 note ================================================
 note ======= END OF SYSTEM DEFINITIONS ==============
@@ -252,13 +309,14 @@ note doc element ref cota ou outra referencia de localizacao da fonte
 part	 name=fonte;
       source=historical-source;
       guaranteed=id;
-      also=tipo,loc,localizacao,ref,data,ano,obs;
+      also=tipo,loc,localizacao,ref,data,ano,obs,substitui;
       arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas
+	  pas,integr,movacao,geodesc
 
+element name=substitui; source=replace
 
 
 
@@ -317,10 +375,47 @@ part name=acto;
   repeat=presente,presente-f,referido,referida,item,ls,atr,rel
 
 part name=item; source=object;
-    repeat=presente,presente-f,referido,referida;
+    repeat=presente,presente-f,referido,referida,ls,rel;
     guaranteed=titulo;
     position=titulo;
-    also=resumo,id,obs
+    also=resumo,id,tipo,obs
+
+note *************************************************************************************************++++
+note livros de registo de acoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
+note ****************************************************************************************************
+
+part name=integr; 
+     source=pt-acto;
+     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=obs, data
+     
+part name=acao; source=object;
+          arbitrary=referido,referida, atr, rel;
+          guaranteed=name;
+          also=id, obs, data, mesmo_que
+          
+          
+          
+note *************************************************************************************************++++
+note livros de registo de accoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
+note ****************************************************************************************************
+
+part name=movacao; 
+     source=pt-acto;
+     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=obs, data
+     
+     
+part name=acao; 
+     source=object;
+          arbitrary=referido,referida, atr, rel;
+          guaranteed=name;
+          also=id, obs, data, mesmo_que
+
 
 note ****************************************************************
 note  doc group devassa Devassas temporais nas visitas pastorais
@@ -337,7 +432,13 @@ part name=devassa;
 part name=acus; source=object;
   guaranteed=idcaso;
   position=idcaso, obs;
-  also=literal,origem,obs,id
+  also=literal,origem,obs,id;
+  part=caso
+
+
+part name=acusa; source=acus;
+  also=literal,origem,obs,id;
+  part=caso
 
 part name=caso; source=object;
    position=id,tipo;
@@ -457,9 +558,9 @@ note *****************************************************************
 part 	name=chanc;
  source=pt-acto;
  repeat=n,referido,referida,item;
- guaranteed=id,dia,mes,ano,loc;
+ guaranteed=id,dia,mes,ano;
  position=id,dia,mes,ano,loc;
- also=resumo,obs
+ also=loc,resumo,obs
 
 note *****************************************************************
 note doc group encarte Encartes
@@ -495,7 +596,7 @@ part  name=cas,termo;
    source=pt-acto;
    guaranteed=id,dia,mes,ano,fol;
    position=id,dia,mes,ano,fol,loc,celebrante;
-   also=celebrante,obs;
+   also=fol,loc,celebrante,obs;
    repeat=celebrante,test,referida,referido,
                   noivo,
                      pnoivo,
@@ -624,7 +725,8 @@ note doc group bap Baptismos (variante usada nos registos da Lousa
       por Rosario Campos e em ?bidos)
 note *****************************************************************
 part name=bap; source=pt-acto;
-  position=id,dia,mes,ano,fol,local,celebrante;
+  position=id,dia,mes,ano,fol,loc,celebrante;
+    also=fol,loc,celebrante,obs;
   guaranteed=id,dia,mes,ano;
   repeat=celebrante,n,
           test,referido,referida
@@ -632,6 +734,7 @@ part name=bap; source=pt-acto;
 nota doc group b Baptimos, versao original usada em Soure.
 part name=b; source=pt-acto;
   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
+  also=celebrante,obs;
   guaranteed=id,dia,mes,ano;
   repeat=celebrante,n,
       referido,referida,test
@@ -642,9 +745,10 @@ note
 note *****************************************************************
 part name=obito; source=pt-acto;
   position=id,dia,mes,ano,fol,celebrante;
+  also=fol,celebrante,obs;
   guaranteed=id,mes,ano;
   also=obs;
-  repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,locs,locf,causa,oficios
+  repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,testamenteiro,locs,locf,causa,oficios
 
 note doc group o Estilo usado em Soure, sem o id do obito, mas aceita o id opcionalmente.
 part name=o; source=obito;
@@ -689,7 +793,7 @@ note *****************************************************************
 part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
-     arbitrary=n,referido,referida,celebrante;
+     arbitrary=n,referido,referida,celebrante,evento,colega;
      also=obs,loc
 
 note *****************************************************************
@@ -949,7 +1053,8 @@ part name=evento; source=pt-acto;
 	position=description,dia,mes,ano;
 	guaranteed=description;
 	also=obs,id;
-	part=informador,defector,representante,referido,
+	part=n, referido,referida,
+        informador,defector,representante,
 		intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
 		beneficiario,beneficiario-representante,beneficiario-procurador,
 		beneficiario1,beneficiario1-representante,beneficiario1-procurador,
@@ -994,7 +1099,26 @@ part name=evento; source=pt-acto;
 		tomador5,tomador5-representante,
 		vendedor,comprador,transportador,
 		emissor,emissor-representante
+note =====================================================================
+note Special prosopographical groups
+note =====================================================================
 
+note doc group bio Biographical description (from biographical dictionnaries,etc)
+part name=bio; source=lista;
+
+note doc group pevent Personal event, used inside people groups to register a personal event
+note     Diferent from event/evento which are top level groups inside lists or sources
+part name=pevent; source=evento;
+	position=description,dia,mes,ano;
+	guaranteed=description;
+	also=obs,id;
+	part=referido,referida,person;
+
+note A certain number of sinonyms for clarity of transcription
+
+part name=viagem; source=pevent;
+
+part name=estadia; source=pevent;
 
 part name=topico; source=abstraction;
 	position=subject,description;
@@ -1255,12 +1379,51 @@ part name=matricula; source=pt-acto;
  also=obs;
  part=enfermo,enferma,referido,referida
 
+note ******************* Generic geographical hierarchies *******************
+note doc group geodesc A description of geographic entities
+part name=geodesc; source=pt-acto;
+    position=id,dia,mes,ano,fol;
+    guaranteed=id;
+    also=obs;
+    part=geo1,geo2,geo3,geo4,atr,rel
+
+note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
+note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
+note 
+part name=geo1; source=geoentity;
+    position=name,type,id;
+    part=geo2,atr,rel
+
+part name=geo2; source=geoentity;
+    position=name,type,id;
+    part=geo3,atr,rel
+
+part name=geo3; source=geoentity;
+    position=name,type,id;
+    part=geo4,atr,rel
+
+part name=geo4; source=geoentity;
+    position=name,type,id;
+    part=atr,rel
+
+note Dehergne List Maps of "Chretientes" p. 353-
+part name=province; source=geo1;
+    part=atr,rel,fou
+part name=fou; source=geo2;
+    part=atr,rel,tcheou, hien,loc
+part name=tcheou; source=geo3;
+    part=atr,rel,loc
+part name=hien; source=geo3;
+    part=atr,rel,loc
+part name=loc; source=geo4;
+    part=atr,rel
+
 
 
 note ******************** SISTER             *************************
 note *****************************************************************
 note memorias paroquiais de 1758
-note doc group Formato para registo das memorias paroquiais de 1758
+note doc group memoria58 Formato para registo das memorias paroquiais de 1758
 part name=memoria58;source=pt-acto;
 	position=id,dia,mes,ano;
 	guaranteed=id;
@@ -1482,7 +1645,7 @@ part	 name=n;
          position=nome,sexo;
       also=sexo,id,mesmo_que,xmesmo_que,obs;
          guaranteed=nome;
-           repeat=atr,ls,rel,referido,referida,
+         arbitrary=pevent,viagem,estadia,atr,ls,rel,referido,referida,
                    pai,
                        ppai,
                            pppai,
@@ -1736,6 +1899,14 @@ part	name=rp; source=actorm;
 part 	name=arrem; source=n;
       also=id,mesmo_que, xmesmo_que,obs,cota
 
+note actores especificos do livro de registos de accoes
+
+part name=acionista; 
+     source=actorm;
+     guaranteed=nome;
+     also=obs,mesmo_que,id;
+     repeat=ls,atr,rel
+
 
 note notariais
 part name=devedor;source=actorm;
@@ -1980,7 +2151,7 @@ part name=testo; source=actorm;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
-	part=acus,caso
+	part=acus,acusa
 part name=denunciante; source=actorm;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
@@ -2262,7 +2433,14 @@ part name=testa; source=actorf;
 	position=nome,sexo;
 	also=id,mesmo_que,xmesmo_que,obs,sexo;
 	guaranteed=nome;
-	part=acus,caso
+	part=acus,acusa
+
+note actores femininos presentes nos livros de registos das companhia monopolistas
+part name=acionistaf; 
+     source=actorf;
+     guaranteed=nome;
+     also=obs,mesmo_que,id;
+     repeat=ls,atr,rel
 
 note notariais
 part name=devedora;source=actorf;
@@ -2308,8 +2486,8 @@ part name=perdoante; source= person;
      position=nome,sexo;
      also=obs,mesmo_que,xmesmo_que,id;
      repeat=ls,atr,rel
-part name=perdoantem; source= actorm; position=nome
-part name=perdoantef; source= actorf; position=nome
+part name=perdoante-m; source= actorm; position=nome
+part name=perdoante-f; source= actorf; position=nome
 part name=perdoado; source=actorm; position=nome
 part name=perdoada; source=actorf; position=nome
 part name=vitima; source=person;
@@ -2362,13 +2540,13 @@ note Parentes classificados por genero
 note *****************************************************************
 note TODO falta verificar se todos os part est?o bem feitos
 
-part name= pai;  source=kin-father;pars=ppai, mpai
-part    name= ppai;  source=kin-father;pars=pppai, mppai
-part        name= pppai;  source=kin-father;pars=ppppai, mpppai
-part        name= mppai;  source=kin-mother;pars=pmppai, mmppai
-part    name= mpai;  source=kin-mother;pars=pmpai, mmpai
-part        name= pmpai;  source=kin-father;pars=ppmpai, mpmpai
-part        name= mmpai;  source=kin-mother;pars=pmmpai, mmmpai
+part name=pai;  source=kin-father;pars=ppai, mpai
+part    name=ppai;  source=kin-father;pars=pppai, mppai
+part        name=pppai;  source=kin-father;pars=ppppai, mpppai
+part        name=mppai;  source=kin-mother;pars=pmppai, mmppai
+part    name=mpai;  source=kin-mother;pars=pmpai, mmpai
+part        name=pmpai;  source=kin-father;pars=ppmpai, mpmpai
+part        name=mmpai;  source=kin-mother;pars=pmmpai, mmmpai
 
 
 part name=mae;     			source=kin-mother; part=pmae,mmae
@@ -2653,30 +2831,3 @@ part name=rel; source=relation;
         guaranteed=tipo,valor,nomedest,iddest;
         also=data,obs;
         identification=yes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
