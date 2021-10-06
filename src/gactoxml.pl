@@ -38,7 +38,10 @@
  group called husband may follow and generate the appropriate
  kin relatioship.
  
- @tbd TODO: The XML related stuff should be isolated from data model stuff. If code has to be repeated in a future gactojson.pl then it should not be here. 
+ @tbd TODO: The XML related stuff should be isolated from data model stuff. 
+ Better to end each export predicate with the creation of dictionnary with the
+ Data structure of the specific group and then pass it on to specific format exporters
+ So this file would be kept, renamed, and new simpler group_to_xml.pl and group_to_json.pl created.
  
  @author Joaqum Carvalho
  @license MIT
@@ -319,6 +322,7 @@ group_export(kleio,_) :- !,
     now(Year,Month,Day,Hour,Minute,Seconds),
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
+    % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
     xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
     xml_nl.
 
@@ -422,6 +426,8 @@ authority_register_export(Register,Id):-
     belement_aspect(core,ignore_date,IgnoreDate),
     set_prop(aregistry,ignore_date,IgnoreDate),
     %
+    % REFACTOR
+    %
     group_to_xml(Register,Id,[
 
     ]),
@@ -491,7 +497,8 @@ historical_source_export(Source,Id):-
   get_value(data_file,D),
   break_fname(D,_,_,Base,__Ext),
   report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
-(Base \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
+  check_id_prefix(Base,BaseAsId),
+  (BaseAsId \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
     (get_y_m_d(Date2) -> Date=Date2; Date=0)),
   set_prop(source,date,Date),
