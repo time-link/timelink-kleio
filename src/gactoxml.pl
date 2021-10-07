@@ -810,7 +810,7 @@ get_sex(female,f):-!.
 
     get_date: get the date if it was entered as the element "date"
     ========
-    TODO: implemente issue 128 https://github.com/joaquimrcarvalho/mhk/issues/128
+    TODO: implement https://github.com/time-link/timelink-kleio/issues/1
 
     Another alternative for the notation
 - "<date"before date 
@@ -821,7 +821,8 @@ Date:  period starting in date
 Dates can be expressed as
 - yyyymmdd
 - yyyy-mm-dd 
-- yyyymm or yyyymm00 date with day unknown
+- yyyy or yyyy0000 for date with month and day unknown
+- yyyymm, yyyy-mm or yyyymm00 date with day unknown
 - yyyy or yyyy0000 date with month and day unknown
 
 So
