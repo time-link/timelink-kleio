@@ -177,21 +177,41 @@ db_close:-
   bug that occurs when kleio-server runs in a virtual box environment on windows
   See  https://bugzilla.gnome.org/show_bug.cgi?id=656225
   */
-  (exists_file(Last) -> delete_file(Last); true),
-  (exists_file(Original)->
-    (rename_with_shell(D,Last),
-    catch(chmod(D,+gw),E,log_error('Could not change permissions of ~w : ~w ',[D,E])),
-     report([writeln('** '-D-'renamed to'-Last)])
+  (exists_file(Last) -> 
+    delete_file(Last) % delete last translated ".old"
+    ; 
+    true
+  ),
+  (exists_file(Original)-> % rename original ".cli" to ".old"
+    (
+      rename_with_shell(D,Last),
+      catch(
+        chmod(D,+gw),
+        E,
+        log_error('Could not change permissions of ~w : ~w ',[D,E])
+        ),
+      report([writeln('** '-D-'renamed to'-Last)])
     )
-    ;
-    (rename_with_shell(D,Original),
-    catch(chmod(Original,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[Original,E2])),
-    report([writeln('** '-D-'renamed to'-Original)])) ),
-    rename_with_shell(Ids,D),
-    catch(chmod(D,+gw),E3,log_error('Could not change permissions of ~w : ~w ',[D,E3])),
-    report([writeln('** '-Ids-'renamed to'-D)]),
-    report([writeln('** Translation files closed.')]),
-    !.
+    ;  % no ".org" file. Rename ".cli" to ".org"
+      ( 
+          rename_with_shell(D,Original), 
+          catch(
+              chmod(Original,+gw),
+              E2,
+              log_error('Could not change permissions of ~w : ~w ',[Original,E2])
+              )
+          % , report([writeln('** '-D-'renamed to'-Original)])
+      )
+  ),
+  rename_with_shell(Ids,D), % rename ".ids" to ".cli"
+  catch(
+      chmod(D,+gw),
+      E3,
+      log_error('Could not change permissions of ~w : ~w ',[D,E3])
+      ),
+  %report([writeln('** '-Ids-'renamed to'-D)]),
+  report([writeln('** Translation files closed.')]),
+  !.
 change_to_ids:-
    error_out('** Problem renaming files.'),
    report([writeln('** Problem renaming files.')]) .
@@ -201,7 +221,7 @@ rename_with_shell(Name1,Name2):-
   atomic_list_concat(Command,'',S),
   shellUtil:shell_to_list(S,0,_),!.
 rename_with_shell(Name1,Name2):-
-  error_out('** Problem renaming files.'),
+  error_out('** Problem renaming files '-Name1-' to '-Name2),
   report([writeln('Could not rename'-Name1-' to '-Name2)]),!.
 
 /*
@@ -493,10 +513,10 @@ Hangling of historical sources
 historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),
-  get_value(source_file_name,Name),
   get_value(data_file,D),
   break_fname(D,_,_,Base,__Ext),
-  report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
+  % get_value(source_file_name,Name),
+  %report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
   check_id_prefix(Base,BaseAsId),
   (BaseAsId \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
@@ -552,6 +572,7 @@ historical_act_export(Group,Id):-
   setgensymbol_local(good,0),
   setgensymbol_local(rel,0),
   setgensymbol_local(att,0),
+  setgensymbol_local(gro,0),
   %log_debug('historical_source_export calling group_to_xml',[]),
   group_to_xml(Group,Id,[date([Date],[],[]),type([Group],[],[])]),
   %log_debug('historical_source_export ~w$~w DONE',[Group,Id]),
