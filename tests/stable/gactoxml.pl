@@ -587,6 +587,7 @@ The structure of person related data like attributes and relations with other
       set_prop(act,date,Date),
       setgensymbol(per,0), % we reset the counter so that auto ids are local to the act
       setgensymbol(obj,0),
+      setgensymbol_local(good,0),
       setgensymbol(rel,0),
       setgensymbol(att,0),
       group_to_xml(Group,Id,[date([Date],[],[]),type([Group],[],[])]),
@@ -713,30 +714,32 @@ The structure of person related data like attributes and relations with other
     p_cached_same.
 
 
-    p_cached_same:-
-        clause(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
-        p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
-        %report([write('  ** Testing'-Id-same_as-SID)]),
-        (clause(same_as_cached_id(Id),true)->
-            true
-            %report([write(' Origin OK')])
-            ;
-            error_out([' Could not find same_as id ',Id,' referred in line ',N,'. If  original reference is on another file use xsame_as'])),
-         (clause(same_as_cached_id(SID),true)->
-             true %report([write(' Destination OK')])
-             ;
-             error_out([' Could not find same_as id ',SID,' referred in line ',N,'. If  original reference is on another file use xsame_as'],noline)),
-
-          % report([nl]),
-          fail.
+   p_cached_same:-
+      clause(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
+      p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
+      %report([write('  ** Testing'-Id-same_as-SID)]),
+      (clause(same_as_cached_id(Id),true)->
+          true
+          %report([write(' Origin OK')])
+          ;
+          error_out([' Could not find same_as id ',Id,'. If  original reference is on another file use xsame_as'],[line_number(N)])),
+       (clause(same_as_cached_id(SID),true)->
+           true %report([write(' Destination OK')])
+           ;
+           error_out([' Could not find same_as id ',SID,'. If  original reference is on another file use xsame_as'],[line_number(N)])),
+        % report([nl]),
+        fail.
 
           % and now the external references
-    p_cached_same:-
-        clause(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
-        p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
-        warning_out([' "SAME AS" TO EXTERNAL REFERENCE EXPORTED (',SID,' AT LINE ',N,') CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.']),
-          fail.
-      p_cached_same:-
+   p_cached_same:-
+      report([nl]),
+      clause(xsame_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date),true),
+      p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date) ,
+      format(string(S),'Line ~w "SAME AS" TO EXTERNAL REFERENCE EXPORTED (~w) CHECK IF IT EXISTS BEFORE IMPORTING THIS FILE.',[N,SID]),
+      report([writeln(S)]),
+      fail.
+   p_cached_same:-
+      report([nl]),
         retractall(same_as_cached(_,_,_,_,_,_,_,_)),
         retractall(xsame_as_cached(_,_,_,_,_,_,_,_)),
         retractall(same_as_cached_id(_)).
