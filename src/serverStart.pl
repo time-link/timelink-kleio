@@ -258,9 +258,10 @@ test_case(translations,File,Stru):-
 
 translate_file('sources/test_translations/varia/auc_cartulario18.cli',false).
 translate_file('sources/test_translations/varia',false).
-translate_file('sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli',true).
-translate_file('sources/reference_sources/paroquiais/baptismos/bapteirasproblem1.cli',true).
-translate_file('sources/reference_sources/paroquiais/baptismos/bapt1714.cli',true).
+translate_file('sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('sources/reference_sources/paroquiais/baptismos/bapteirasproblem1.cli',false).
+translate_file('sources/reference_sources/paroquiais/baptismos/bapt1714.cli',false).
+translate_file('sources/test_translations/notariais/docsregiospontepisc.cli',true).
 
 :-begin_tests(server).
 
