@@ -210,14 +210,14 @@ db_close:-
       log_error('Could not change permissions of ~w : ~w ',[D,E3])
       ),
   %report([writeln('** '-Ids-'renamed to'-D)]),
-  report([writeln('** Translation files closed.')]),
+  %report([writeln('** Translation files closed.')]),
   !.
 change_to_ids:-
    error_out('** Problem renaming files.'),
    report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
-  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2],
+  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2,'; rm -f ',Name1],
   atomic_list_concat(Command,'',S),
   shellUtil:shell_to_list(S,0,_),!.
 rename_with_shell(Name1,Name2):-
