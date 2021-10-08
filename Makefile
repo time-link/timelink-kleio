@@ -29,6 +29,8 @@ help: .PHONY
 	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
 	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
 	@echo "  make kleio-run            start server with .env config"
+	@echo "  make test-semantics       run semantic tests"
+
 
 
 clean:
@@ -137,18 +139,18 @@ token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
 kleio-run:
-	@source .env;\ 
-	@if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
-	echo;\
-	if [ -e "$$PWD/tests/kleio-home" ]; then KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	@set -x; source .env;\
+	if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8089"; fi;\
 	echo "starting kleio-server on port $$KLEIO_SERVER_PORT";\
-	docker run -e KLEIO_ADMIN_TOKEN -e KLEIO_DEBUG -e KLEIO_SERVER_PORT -v $$KLEIO_HOME:/kleio-home:cached -p "$$KLEIO_SERVER_PORT:$$KLEIO_SERVER_PORT" --rm --name kleio -d kleio-server ;\
 	echo " ";\
 	echo "KLEIO_HOME=$$KLEIO_HOME";\
 	echo "KLEIO_ADMIN_TOKEN=$$KLEIO_ADMIN_TOKEN";\
-	echo " "
+	echo  "./$$KLEIO_HOME:/kleio-home:cached";\
+	docker run -e KLEIO_ADMIN_TOKEN -e KLEIO_DEBUG -e KLEIO_SERVER_PORT -v "$$KHOME:/kleio-home:cached" -p "$$KLEIO_SERVER_PORT:$$KLEIO_SERVER_PORT" --rm --name kleio -d kleio-server
+
 
 kleio-start: kleio-run
 
@@ -161,6 +163,8 @@ stop: kleio-stop
 
 compose-up:
     
+test-semantics: .PHONY
+	@cd tests; ./scripts/run_tests.sh
 
 docs: .PHONY
 	@echo "Requires postman_doc_gen https://github.com/karthiks3000/postman-doc-gen"
