@@ -261,7 +261,8 @@ translate_file('sources/test_translations/varia',false).
 translate_file('sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/reference_sources/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/reference_sources/paroquiais/baptismos/bapt1714.cli',false).
-translate_file('sources/test_translations/notariais/docsregiospontepisc.cli',true).
+translate_file('sources/test_translations/notariais/docsregiospontepisc.cli',false).
+translate_file('sources/test_translations/varia/angelica/',true).
 
 :-begin_tests(server).
 
