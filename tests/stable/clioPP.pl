@@ -38,7 +38,7 @@ clioPP2(G,ID):-
 		;
 		( 
 			(get_value(idout,false) ->  % if the id was not output so far, output it now.
-				(remove_id_prefix(ID,NID), writelist0(['/id=',NID]))
+				writelist0(['/id=',ID])
 			;
 				true
 			) % id was previously output

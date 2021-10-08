@@ -314,7 +314,7 @@ The structure of person related data like attributes and relations with other
       del_props(act),    % erase any act context that may have survived last translation
       del_props(person),
       del_props(autorels), %erase context for auto relation generation
-   	setgensymbol(lsa,0),setgensymbol(rela,0),setcount(group,1),
+   	setgensymbol(lsa,0),setgensymbol(atra,0),setgensymbol(rela,0),setcount(group,1),
       set_autorel_mode(2), % default auto rels mode
       retractall(group_path(_)),   % group_path is the basis for new scheme for generating relations
       retractall(used_id(_)),
@@ -587,9 +587,10 @@ The structure of person related data like attributes and relations with other
       set_prop(act,date,Date),
       setgensymbol(per,0), % we reset the counter so that auto ids are local to the act
       setgensymbol(obj,0),
-      setgensymbol_local(good,0),
+      setgensymbol(good,0),
       setgensymbol(rel,0),
       setgensymbol(att,0),
+      setgensymbol(gro,0),
       group_to_xml(Group,Id,[date([Date],[],[]),type([Group],[],[])]),
       !.
 

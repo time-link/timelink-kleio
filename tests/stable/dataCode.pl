@@ -306,8 +306,8 @@ check_ename:-
     !.
 check_ename:-
     getCDField(entryList,Entries),   %get current entries %
-    error_out(['** Failure: undefined element. ']),
-    printEntries(1,Entries),
+    with_output_to(string(S),printEntries(1,Entries)),
+    error_out(['** Failure: undefined element. ',S]),
     setCDField(celement,'UNDEFINED'),
     !.
 

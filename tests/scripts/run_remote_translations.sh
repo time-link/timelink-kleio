@@ -19,7 +19,7 @@ export TEST_TRANSLATIONS_REMOTE=sources/test_translations
 export STABLE_CODE_DIR=stable
 export DEV_CODE_DIR=dev
 export TRANSLATOR_SOURCE=../src/
-export REPORT_FILE=./reports/"test_report_`date +%Y-%m-%d`.diff"
+export REPORT_FILE=./reports/"test_report_`date \"+%Y-%m-%d_%H:%M:%S\"`.diff"
 export KLEIO_ADMIN_TOKEN='1232412341234'
 echo ref sources: $REFERENCE_SOURCES
 echo test transl: $TEST_TRANSLATIONS

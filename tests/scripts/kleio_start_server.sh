@@ -17,5 +17,6 @@ echo "================================================"
 echo Lauching kleio translator server from $PWD
 echo translator: $1 goal $START_GOAL
 # Start server and halt when idle.
+export KLEIO_DEBUG=true
 swipl -f $1 -g $START_GOAL -t halt >> kleio_start_server.log
 echo Kleio server running $2 in port $rest_port 
