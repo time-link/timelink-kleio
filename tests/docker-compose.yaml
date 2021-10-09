@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 services:
   kleio:
     # includes git
@@ -11,7 +11,7 @@ services:
     volumes:
       - ${KLEIO_HOME}:/kleio-home:cached
     ports:
-      - "8089:8888"
+      - "${KLEIO_EXTERNAL_PORT:-8088}:${KLEIO_SERVER_PORT-8088}"
     environment:
       - KLEIO_DEBUG
       - KLEIO_SERVER_WORKERS
