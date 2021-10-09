@@ -102,7 +102,9 @@ generate_token(UserName,_,AccessToken):-
 
 generate_token(UserName,Options,AccessToken):-
     ensure_db,
-    sha_hash(UserName,H,[]),
+    get_time(T),format_time(atom(S),'%s',T),
+    atomic_list_concat([UserName,S],C),
+    sha_hash(C,H,[]),
     hash_atom(H,AccessToken),
     ( % check if token database was initialized, if not use default location
         token_db_attached(_F) ;
@@ -235,6 +237,7 @@ setup_tests:- % we create a token
         data_dir('sources/testes/'),
         stru_dir('system/conf/kleio/stru')
         ],   
+    (invalidate_user('username');true), % invalidate just in case
     catch(generate_token('username',Options, Token),_Catcher,true),
     get_user(Token,username),
     persistence:put_value(token,Token).
