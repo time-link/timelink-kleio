@@ -28,7 +28,8 @@ help: .PHONY
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
 	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
 	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
-	@echo "  make kleio-run            start server with .env config"
+	@echo "  make kleio-run            start server with .env config and tests/docker_compose.yaml"
+	@echo "  make kleio-stop           stop running server"
 	@echo "  make test-semantics       run semantic tests"
 
 

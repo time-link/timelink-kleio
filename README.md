@@ -126,16 +126,29 @@ Type ```make``` to see more targets that help in development.
 
       % make
       usage:
-      make image                build docker image and tag with new build number
-      make build                return the current build number
-      make version              return the current version string (major.minor)
-      make current              return the current version, build number
-      make last                 return the last image build date, version, build number
-      make inc-NUMBER           increment version with NUMBER in major | minor
-      make token                generate token for KLEIO_ADMIN_TOKEN
-      make start                start Kleio server on docker (requires image)
-      make stop                 stop Kleio server
-      make docs                 generate api docs (requires postman_doc_gen and api files)
-      make tag-TAG              tag last image with TAG in latest | unique | stable
-      make push-TAG             push image with TAG in latest | unique | stable
-      make kleio-run            start server with .env config
+         make image                build docker image and tag with new build number
+         make build                return the current build number
+         make version              return the current version string (major.minor)
+         make current              return the current version, build number
+         make last                 return the last image build date, version, build number
+         make inc-NUMBER           increment version with NUMBER in major | minor
+         make token                generate token for KLEIO_ADMIN_TOKEN
+         make start                start Kleio server on docker (requires image)
+         make stop                 stop Kleio server
+         make docs                 generate api docs (requires postman_doc_gen and api files)
+         make tag-TAG              tag last image with TAG in latest | unique | stable
+         make push-TAG             push image with TAG in latest | unique | stable
+         make kleio-run            start server with .env config and tests/docker_compose.yaml
+         make kleio-stop           stop running server
+         make test-semantics       run semantic tests
+
+## History
+
+* 10.14  2021-10-09
+  * Better token generation, more secure
+  * Add json representation of structure, STRU.json
+  * Add env variable for admin token
+  * Improved tests, new make target
+  * Fix old bug that kept ids files after translation
+  * Improve definition of bem, so that id at end, and field sizes increased
+  * Fix problem with warning on file name and id prefixes
