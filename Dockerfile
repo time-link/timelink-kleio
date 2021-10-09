@@ -1,6 +1,5 @@
 FROM swipl
 LABEL MAINTAINER="Joaquim Carvalho joaquim@uc.pt"
-LABEL pt.uc.joaquim.kleio.server.version=2019.A1g
 
 # We need git for the repository handling api using 
 # Following based on https://github.com/SamuelDebruyn/docker-debian-qgit/blob/master/Dockerfile
