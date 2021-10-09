@@ -12,6 +12,7 @@ export KLEIO_DEBUGGER_PORT=4000
 export KLEIO_SERVER_PORT=8088
 export KLEIO_WORKERS=5
 export KLEIO_IDLE_TIMEOUT=360
+export KLEIO_DEBUG=true
 export REFERENCE_SOURCES=${KLEIO_HOME}/sources/reference_sources
 export REFERENCE_TRANSLATIONS=${KLEIO_HOME}/sources/reference_translations
 export TEST_TRANSLATIONS=${KLEIO_HOME}/sources/test_translations

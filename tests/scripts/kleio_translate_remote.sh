@@ -8,5 +8,6 @@
 echo
 echo "================================================"
 echo "Remote translating from kleio source dir " ${1}  
-curl --location --request POST "http://localhost:8088/rest/translations/${1}?token=${KLEIO_ADMIN_TOKEN}&id=1234&echo=no&recurse=yes" --data ""
+echo curl --location --request POST "http://localhost:8088/rest/translations/${1}?&token=${KLEIO_ADMIN_TOKEN}&id=1234&echo=no&recurse=yes" --data ""
+curl --location --request POST "http://localhost:8088/rest/translations/${1}?&token=${KLEIO_ADMIN_TOKEN}&id=1234&echo=no&recurse=yes" --data ""
 echo "Remote translation scheduled."
