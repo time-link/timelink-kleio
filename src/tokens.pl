@@ -12,7 +12,8 @@
     get_data_dir/2,             % +Token,?DataDir
     is_api_allowed/2,          % +Token,?API_EndPoint, backtracks on all allowed API calls for this token
     token_db_attached/1,        % ?File currently attached database, fails if none
-    user_has_token/2                % ?User, ?Token - backtracks on all the users defined
+    user_has_token/2,                % ?User, ?Token - backtracks on all the users defined
+    expired_token/1               % taken outlived life span or non existant
     ]).
 
 /** <module> user_tokens with API Tokens
@@ -219,6 +220,14 @@ is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all al
     utilities:member(APICall, CALLS),
     check_age(P).
 
+%% expired_token(+Token) is nondet.
+% True if Token exists and has exceed its life_span.
+%
+expired_token(Token):-
+    user_token(Token,_,O),
+    \+ check_age(O).
+
+
 check_age(Options):-
     option(created(When),Options,0),
     When == 0.
@@ -233,10 +242,6 @@ check_age(Options):-
     get_time(T1),
     Age is T1 - T0,
     Age < S.
-
-check_age(Options):-
-    format('Token too old ~w~n',[Options]),
-    fail.
 
 
 %% list_tokens is det.
