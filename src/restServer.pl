@@ -331,7 +331,7 @@ check_token_database(has_tokens):-
         (% no tokens defined. We will generate a randon token with generate_token priviliges)
         random(1,32767,R),
         atom_number(A,R),
-        tokens:generate_token(A,[api([generate_token])],Token),
+        tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
         put_shared_value(bootstrap_token,token(Token))
         )
     ).

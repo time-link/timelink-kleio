@@ -12,7 +12,8 @@
     get_data_dir/2,             % +Token,?DataDir
     is_api_allowed/2,          % +Token,?API_EndPoint, backtracks on all allowed API calls for this token
     token_db_attached/1,        % ?File currently attached database, fails if none
-    token_user/2                % ?User, ?Token - backtracks on all the users defined
+    user_has_token/2,                % ?User, ?Token - backtracks on all the users defined
+    expired_token/1               % taken outlived life span or non existant
     ]).
 
 /** <module> user_tokens with API Tokens
@@ -52,6 +53,8 @@ See: http://www.swi-prolog.org/pldoc/doc/_SWI_/library/persistency.pl
 
 :-persistent
         user_token(token:atom,name:atom,options:list).
+
+:- set_test_options([run(manual)]).
 
 default_token_db(D):-
     kleiofiles:kleio_conf_dir(CD),
@@ -97,13 +100,14 @@ ensure_db:-
 % 
 generate_token(UserName,_,AccessToken):-
     ensure_db,
-    token_user(UserName,AccessToken),
+    user_has_token(UserName,AccessToken),
     throw(error(UserName,-32600,'User already associated with token, invalidate user first.')).
 
 generate_token(UserName,Options,AccessToken):-
     ensure_db,
     get_time(T),format_time(atom(S),'%s',T),
-    atomic_list_concat([UserName,S],C),
+    random(1,32767,R),
+    atomic_list_concat([UserName,S,R],C),
     sha_hash(C,H,[]),
     hash_atom(H,AccessToken),
     ( % check if token database was initialized, if not use default location
@@ -116,7 +120,7 @@ generate_token(UserName,Options,AccessToken):-
     with_mutex(user_token,
         (
             retractall_user_token(_,UserName,_),
-            assert_user_token(AccessToken,UserName,Options)
+            assert_user_token(AccessToken,UserName,[created(T)|Options])
             )
         ),
     db_sync(_W),
@@ -157,9 +161,9 @@ invalidate_user(User):-
     user_token(_Token,User,_),
     with_mutex(user_token,retractall_user_token(_,User,_)).
 
-%% token_user(?User,?Token) is nondet.
+%% user_has_token(?User,?Token) is nondet.
 % True if Token is associated with User. If both unbound backtracks on all the users.
-token_user(User,Token):-
+user_has_token(User,Token):-
     ensure_db,
     user_token(Token,User,_).
 
@@ -180,7 +184,7 @@ update_token_options(Token,Options):-
 % Token is associated with user. On backtracking gives all user-token pairs.
 get_user(Token,User):-
     ensure_db,
-    token_user(User,Token).             % +Token,?User
+    user_has_token(User,Token).             % +Token,?User
     
 %% get_token_options(+Token,?Options) is det.
 % Get the options associated with a Token.
@@ -213,7 +217,32 @@ is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all al
     ensure_db,
     get_token_options(Token,P),
     option(api(CALLS),P),
-    utilities:member_check(APICall, CALLS).
+    utilities:member(APICall, CALLS),
+    check_age(P).
+
+%% expired_token(+Token) is nondet.
+% True if Token exists and has exceed its life_span.
+%
+expired_token(Token):-
+    user_token(Token,_,O),
+    \+ check_age(O).
+
+
+check_age(Options):-
+    option(created(When),Options,0),
+    When == 0.
+
+check_age(Options):-
+    option(life_span(S),Options,eternal),
+    S == eternal.
+
+check_age(Options):-
+    option(created(T0),Options),
+    option(life_span(S),Options),
+    get_time(T1),
+    Age is T1 - T0,
+    Age < S.
+
 
 %% list_tokens is det.
 % List defined tokens
@@ -238,17 +267,20 @@ setup_tests:- % we create a token
         stru_dir('system/conf/kleio/stru')
         ],   
     (invalidate_user('username');true), % invalidate just in case
+    !,
     catch(generate_token('username',Options, Token),_Catcher,true),
     get_user(Token,username),
     persistence:put_value(token,Token).
 
 test(generate_token,[true]):-
         (invalidate_user('username');true), % invalidate just in case
+        !,
         generate_token('username',[
                 api([translations,sources,files]),
                 data_dir('sources/testes/'),
                 stru_dir('system/conf/kleio/stru')
         ], Token),
+        persistence:put_value(token,Token),
         token_db_attached(F),
         decode_token(Token,'username',Options),
         format('~nToken database at ~w~nToken:~w~nOptions: ~w~n',[F,Token,Options]),!.
@@ -272,6 +304,7 @@ test(decode_token):-
     decode_token(T,UserName,Options),
     UserName = username,
     Options = [
+        created(_),
         api([translations,sources,files]),
         data_dir('sources/testes/'),
         stru_dir('system/conf/kleio/stru')
@@ -289,9 +322,9 @@ test(invalidate_user,[fail]):-
     invalidate_user(invalid_user),
     decode_token(Token,_,_).
 
-test(token_user):-
+test(user_has_token):-
     persistence:get_value(token,T),
-    token_user(username,T).
+    user_has_token(username,T).
 
 test(update_token_options):-
     persistence:get_value(token,T),
@@ -313,6 +346,29 @@ test(get_data_dir):-
 
 test(is_api_call):-
     persistence:get_value(token,T),
-    is_api_allowed(T,translations).
+    is_api_allowed(T,translations),!.
+
+test(short_lived_but_young,[true]):-
+    (invalidate_user('young_enough');true), % invalidate just in case
+    generate_token('young_enough',[
+            life_span(3),
+            api([translations,sources,files]),
+            data_dir('sources/testes/'),
+            stru_dir('system/conf/kleio/stru')
+    ], Token),!,
+    is_api_allowed(Token,translations),!.
+
+test(too_old,[fail]):-
+    (invalidate_user('too_old');true), % invalidate just in case
+    generate_token('too_old',[
+            life_span(3),
+            api([translations,sources,files]),
+            data_dir('sources/testes/'),
+            stru_dir('system/conf/kleio/stru')
+    ], Token),
+    writeln('Waiting for the token to expire'),
+    sleep(5),!,
+    is_api_allowed(Token,translations),!.
+
 
 :-end_tests(tokens).

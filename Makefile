@@ -140,14 +140,14 @@ token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
 kleio-run:
-	@source .env;\
+	@source tests/.env;\
 	if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	if [ ! -f "$$KLEIO_HOME/.mhk" ]; then echo "mhk.kleio.service.token.admin=$$KLEIO_ADMIN_TOKEN" >"$$KLEIO_HOME/.mhk" ; fi;\
-	export KLEIO_USER=$(id -u):$(id -g);\
+	export KLEIO_USER=$$(id -u):$$(id -g);\
 	echo "starting kleio-server on port $$KLEIO_SERVER_PORT";\
 	echo " ";\
 	echo "KLEIO_HOME=$$KLEIO_HOME";\
