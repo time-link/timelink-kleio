@@ -1,9 +1,13 @@
 # Run tests by translating all the cli files in tests and comparing the output with reference
 # run this from the clio/tests directory ./scripts/run_tests.sh
+# requires swipl in the PATH download from https://www.swi-prolog.org
+#
 # WARNING: this only works if script run from "tests" directory.
+
 echo "================================================================" 
 echo "===                  KLEIO TRANSLATOR TESTS                  ===" 
 echo "================================================================" 
+mkdir -p ./reports/
 export REPORT_FILE=./reports/"test_report_`date \"+%Y-%m-%d_%H:%M:%S\"`.diff"
 source scripts/prepare_tests.sh >> $REPORT_FILE # this sets up the environment variables.
 echo "Reference sources: $REFERENCE_SOURCES"
