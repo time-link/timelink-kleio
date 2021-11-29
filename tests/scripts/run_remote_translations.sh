@@ -40,7 +40,7 @@ ls -lR $REFERENCE_SOURCES/
 echo "================================================================" 
 echo Translation of reference sources with dev version server mode
 source ./scripts/kleio_start_server.sh $DEV_CODE_DIR/serverStart.pl  &
-sleep 5
+sleep 5git push
 time source ./scripts/kleio_translate_remote.sh $TEST_TRANSLATIONS_REMOTE
 sleep 5
 time source ./scripts/kleio_stop_server.sh 
