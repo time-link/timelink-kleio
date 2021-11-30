@@ -314,7 +314,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas,integr,movacao,geodesc
+	  pas,lcc,integr,movacao,geodesc
 
 element name=substitui; source=replace
 
@@ -397,18 +397,10 @@ part name=acao; source=object;
           also=id, obs, data, mesmo_que
           
           
-          
-note *************************************************************************************************++++
-note livros de registo de accoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
-note ****************************************************************************************************
+part name=lcc; 
+    source=pt-acto;
+    arbitrary=n
 
-part name=movacao; 
-     source=pt-acto;
-     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
-     position=id,dia,mes,ano;
-     guaranteed=id,dia,mes,ano;
-     also=obs, data
-     
      
 part name=acao; 
      source=object;

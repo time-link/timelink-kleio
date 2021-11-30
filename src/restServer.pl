@@ -425,25 +425,6 @@ process_rest_request(Request):-
     !.
 
 
-% TODO: Deprecated, remove when not needed.   
-process_rest_request(Request):-
-    rest_decode_command(Request,Id,Method,Params),
-    log_debug('~nProcessing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
-    rest_exec(Method,Id,Params,Results),
-    (select(token_info(_),Params,P);P=Params), % we remove the token info introduced by json_decode_command
-    (select((token=_),P,P2);P2=P),% and also the original token in the request
-    (select(request(_),P2,ParamsClean);ParamsClean=P2),
-    (json_out(Params) ->
-        (print_content_type(json),
-         return_sucess(json,Method,Id,ParamsClean,Results))
-    ;
-        (return_sucess(rest,Method,Id,ParamsClean,Results)
-        ;
-        return_sucess(rest,default,Id,ParamsClean,Results))
-    ). % if no specific return predicate use the default
-
-
-
 %% json_out(Params) is det.
 %
 % True if the request required json output. There are several ways to request json output:
