@@ -140,7 +140,7 @@ token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
 kleio-run:
-	@source tests/.env;\
+	@source .env;\
 	if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
@@ -156,10 +156,10 @@ kleio-run:
 	echo "KLEIO_EXTERNAL_PORT=$$KLEIO_EXTERNAL_PORT";\
 	echo "KLEIO_USER=$$KLEIO_USER";\
 	echo  "./$$KLEIO_HOME:/kleio-home:cached";\
-	cd tests; docker compose up -d
+	docker compose up -d
 
 kleio-stop:
-	@cd tests; docker compose stop
+	@export KLEIO_USER=$$(id -u):$$(id -g); docker compose stop
 
 kleio-start: kleio-run
 
