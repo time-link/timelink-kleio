@@ -272,13 +272,12 @@ element name=ref
 element name=value
 element name=origin
 element name=destination
+element name=destname
 element name=entity
 element name=same_as
 element name=xsame_as
 element name=name
 element name=sex
-element name=destname
-element name=destination
 element name=summary;
 element name=description;
 element name=replace;
@@ -314,7 +313,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas,integr,movacao,geodesc
+	  pas,integr,lcc, movacao,geodesc
 
 element name=substitui; source=replace
 
@@ -390,18 +389,16 @@ part name=integr;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
      also=obs, data
+
+part name=lcc;
+    source=pt-acto;
+    arbitrary=n
      
 part name=acao; source=object;
           arbitrary=referido,referida, atr, rel;
           guaranteed=name;
           also=id, obs, data, mesmo_que
           
-          
-          
-note *************************************************************************************************++++
-note livros de registo de accoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
-note ****************************************************************************************************
-
 part name=movacao; 
      source=pt-acto;
      arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
@@ -409,12 +406,6 @@ part name=movacao;
      guaranteed=id,dia,mes,ano;
      also=obs, data
      
-     
-part name=acao; 
-     source=object;
-          arbitrary=referido,referida, atr, rel;
-          guaranteed=name;
-          also=id, obs, data, mesmo_que
 
 
 note ****************************************************************
