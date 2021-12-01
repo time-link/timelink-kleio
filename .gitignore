@@ -16,6 +16,14 @@ tests/stable/gacto2.rpt
 qrecord.queries
 .env
 tests/.env
+tests/**/*.xml
+tests/**/*.ids
+tests/**/*.rpt
+tests/**/*.err
+tests/**/*.org
+tests/**/*.old
+tests/dev
+tests/httpd.log
 
 
 .devcontainer/devcontainer.json
