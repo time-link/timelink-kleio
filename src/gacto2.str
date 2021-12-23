@@ -208,7 +208,7 @@ note ============================================================
 
 part	name=attribute ;
  guaranteed=type,value ;
- also=obs,date ;
+ also=obs,date,id ;
  position=type,value,date
 
 note ============================================================
@@ -217,7 +217,7 @@ note ============================================================
 
 part 	name=relation ;
  guaranteed=type,value,destname,destination ;
- also=obs,date
+ also=obs,date,id
 
 note
 note =============================================================
@@ -786,7 +786,7 @@ part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
      arbitrary=n,referido,referida,celebrante,evento,colega;
-     also=obs,loc
+     also=obs,loc,tipo,data
 
 note *****************************************************************
 note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
@@ -2811,7 +2811,7 @@ note *****************************************************************
 part name=ls; source=attribute;
         position=tipo,valor,data;
         guaranteed=tipo,valor;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes
 part name=atr; source=ls
 
@@ -2821,5 +2821,5 @@ note *****************************************************************
 part name=rel; source=relation;
         position=tipo,valor,nomedest,iddest;
         guaranteed=tipo,valor,nomedest,iddest;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes
