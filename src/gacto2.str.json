@@ -4013,7 +4013,7 @@
       "typical": ["id", "ano", "mes", "dia" ]
     },
     "atr": {
-      "complete": ["data", "obs" ],
+      "complete": ["data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor" ],
       "name":"atr",
@@ -4032,7 +4032,7 @@
       "typical": ["tipo", "valor", "data" ]
     },
     "attribute": {
-      "complete": ["obs", "date" ],
+      "complete": ["obs", "date", "id" ],
       "includes": [],
       "minimal": ["type", "value" ],
       "name":"attribute",
@@ -9444,7 +9444,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "bio": {
-      "complete": ["obs", "loc" ],
+      "complete": ["obs", "loc", "tipo", "data" ],
       "includes": ["n", "referido", "referida", "celebrante", "evento", "colega" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"bio",
@@ -24820,6 +24820,7 @@
 	"docepiscopal",
 	"automed",
 	"pas",
+	"lcc",
 	"integr",
 	"movacao",
 	"geodesc"
@@ -28059,6 +28060,26 @@
       ],
       "typical": ["id", "dia", "mes", "ano", "local" ]
     },
+    "lcc": {
+      "complete": ["ref", "loc", "obs" ],
+      "includes": ["n" ],
+      "minimal": ["id", "dia", "mes", "ano" ],
+      "name":"lcc",
+      "properties": [
+	"certe",
+	"ceteri",
+	"fons",
+	"identificatio",
+	"locus",
+	"ordo",
+	"post",
+	"prae",
+	"repetitio",
+	"sequentia",
+	"signum"
+      ],
+      "typical": ["id", "dia", "mes", "ano" ]
+    },
     "let": {
       "complete": ["obs" ],
       "includes": ["n", "ts" ],
@@ -28101,7 +28122,7 @@
       "typical": ["numero" ]
     },
     "lista": {
-      "complete": ["obs", "loc" ],
+      "complete": ["obs", "loc", "tipo", "data" ],
       "includes": ["n", "referido", "referida", "celebrante", "evento", "colega" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"lista",
@@ -28407,7 +28428,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ls": {
-      "complete": ["data", "obs" ],
+      "complete": ["data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor" ],
       "name":"ls",
@@ -30004,34 +30025,6 @@
 	"signum"
       ],
       "typical": ["name", "type" ]
-    },
-    "movacao": {
-      "complete": ["obs", "data" ],
-      "includes": [
-	"referido",
-	"referida",
-	"acionista",
-	"acionistaf",
-	"ls",
-	"rel",
-	"acao"
-      ],
-      "minimal": ["id", "dia", "mes", "ano" ],
-      "name":"movacao",
-      "properties": [
-	"certe",
-	"ceteri",
-	"fons",
-	"identificatio",
-	"locus",
-	"ordo",
-	"post",
-	"prae",
-	"repetitio",
-	"sequentia",
-	"signum"
-      ],
-      "typical": ["id", "dia", "mes", "ano" ]
     },
     "mpad": {
       "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
@@ -43085,7 +43078,7 @@
       "typical": ["nome", "sexo" ]
     },
     "rel": {
-      "complete": ["data", "obs" ],
+      "complete": ["data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor", "nomedest", "iddest" ],
       "name":"rel",
@@ -43104,7 +43097,7 @@
       "typical": ["tipo", "valor", "nomedest", "iddest" ]
     },
     "relation": {
-      "complete": ["obs", "date" ],
+      "complete": ["obs", "date", "id" ],
       "includes": [],
       "minimal": ["type", "value", "destname", "destination" ],
       "name":"relation",
