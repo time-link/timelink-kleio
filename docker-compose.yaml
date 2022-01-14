@@ -2,14 +2,15 @@ version: "3.8"
 services:
   kleio:
     # includes git
-    image: timelinkserver/kleio-server:stable
+    image: ${KLEIO_SERVER_IMAGE:-kleio-server:latest}
+
     # Run under current user otherwise in linux systems sources files and translations are owned by root
-    # requires # store current user and group
+    # requires export of current user and group
     #       export KLEIO_USER=$(id -u):$(id -g)
     user: ${KLEIO_USER}
 
     volumes:
-      - ${KLEIO_HOME}:/kleio-home:cached
+      - ${KLEIO_HOME_DIR}:/kleio-home:cached
     ports:
       - "${KLEIO_EXTERNAL_PORT:-8088}:${KLEIO_SERVER_PORT-8088}"
     environment:
