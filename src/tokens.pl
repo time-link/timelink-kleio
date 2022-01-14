@@ -211,8 +211,8 @@ get_data_dir(Token,DD):-
     option(data_dir(DD),P,'.').
 
 %% is_api_allowed(+Token,?APICall) is det.
-% True if APICall is allowed by the options associated with Token. On backtracking gives on APICalls allowed for this token.
-%
+% True if APICall is allowed by the options associated with Token. 
+% On backtracking gives all APICalls allowed for this token.
 is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all allowed API calls for this token
     ensure_db,
     get_token_options(Token,P),
@@ -370,5 +370,17 @@ test(too_old,[fail]):-
     sleep(5),!,
     is_api_allowed(Token,translations),!.
 
+test(bootstrap,[true]):-
+    (invalidate_user(bootstrap);true),!,
+    generate_token(bootstrap,[life_span(300),api([generate_token])],Token),
+    put_shared_value(bootstrap_token,token(Token)),
+    is_api_allowed(bootstrap,generate_token),!.
+
+test(bootstrap_fail,[fail]):-
+    (invalidate_user(bootstrap);true),!,
+    generate_token(bootstrap,[life_span(5),api([generate_token])],Token),
+    put_shared_value(bootstrap_token,token(Token)),
+    sleep(6),
+    is_api_allowed(bootstrap,generate_token),!.
 
 :-end_tests(tokens).
