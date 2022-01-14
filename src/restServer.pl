@@ -112,7 +112,7 @@ $ KLEIO_CONF_DIR        : For configuration information KLEIO_HOME/system/conf/k
 $ KLEIO_STRU_DIR        : Defaults KLEIO_HOME/system/conf/kleio/stru/
 $ KLEIO_TOKEN_DB        : Defaults KLEIO_CONF_DIR/token_db -- maintains the token database.
 $ KLEIO_DEFAULT_STRU    : Default KLEIO_HOME/system/conf/kleio/stru/gacto2.str structure used by default
-$ KLEIO_DEBUGGER_PORT   : Port for the debug server (default 4000).
+$ KLEIO_DEBUGGER_PORT   : Port for the debug server (default 4000) DEPRECATED.
 $ KLEIO_SERVER_PORT     : Port for the REST server (default 8088).
 $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 
@@ -193,10 +193,12 @@ print_server_config:-
     kleiofiles:kleio_stru_dir(StruDir),
     kleiofiles:kleio_default_stru(Stru),
     kleiofiles:kleio_token_db(Tokens),
+    tokens:ensure_db,
     (tokens:token_db_attached(TokensCurrent);TokensCurrent=none),
     kleiofiles:kleio_source_dir(Sources),
     (getenv('KLEIO_DEBUG',DEBUG);DEBUG=false),
-    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN) -> sub_atom(ATOKEN,0,5,_,AT5);AT5='No token in environment'),
+    ((getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,AT5))
+        -> true ;AT5='No token in environment'),
     clio_version(V),
     format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
@@ -207,14 +209,42 @@ print_server_config:-
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
-    format('kleio_default_stru: ~t~w~n',[Stru]),
+    format('Kleio_default_stru: ~t~w~n',[Stru]),
     format('Kleio_admin_token: ~t~w~n',[AT5]),
-    format('kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
-    (get_shared_value(bootstrap_token,BT)->format('Bootstrap token: ~w~n',[BT]);true),
+    format('Kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
+    get_token_db_status(TDBS),
+    format('Token db status: ~t~w~n',[TDBS]),
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
     !.
+
+admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
+admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
+bootstrap_token_exists:- tokens:user_token(_,bootstrap,_).
+bootstrap_token_ok :- tokens:user_token(T,bootstrap,_), is_api_allowed(T,generate_token).
+tokens_exist :- tokens:ensure_db, tokens:user_token(_,U,_), U \= bootstrap,!.
+
+get_token_db_status('Tokens exist') :- tokens_exist.
+get_token_db_status('No tokens defined but KLEIO_ADMIN_TOKEN env has valid value') :- 
+    \+ tokens_exist,
+    admin_token_ok,!.
+get_token_db_status('No tokens defined and bad KLEIO_ADMIN_TOKEN') :- 
+    \+ tokens_exist,
+    admin_token_exists,
+    \+ admin_token_ok,!.
+get_token_db_status('Waiting to generate first token') :- bootstrap_token_ok,!.
+get_token_db_status('No tokens, bootstrap token expired. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    bootstrap_token_exists,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Token generation blocked. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    \+ tokens_exist,
+    \+ admin_token_ok,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Could not determine token status').
+
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dispatcher zone
@@ -234,6 +264,7 @@ print_server_config:-
 % Starts a debugging server in port default_value(server_port,Port).
 % if Port = 0 server not created
 % Usefull to test and debug when no console available.
+% DEPRECATED We do not use this for debugging anymore
 start_debug_server:-
      default_value(server_port,Port),
      Port \= 0,
@@ -328,11 +359,15 @@ check_token_database(has_tokens):-
     (tokens:user_token(_,_,_) -> 
         true
     ;
-        (% no tokens defined. We will generate a randon token with generate_token priviliges)
-        random(1,32767,R),
-        atom_number(A,R),
+        (% no tokens defined. We will generate a 'bootstrap' token with generate_token privilegies, and 5m life
+        A = bootstrap,
         tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
-        put_shared_value(bootstrap_token,token(Token))
+        put_shared_value(bootstrap_token,token(Token)),
+        kleiofiles:kleio_conf_dir(KConf),
+        atom_concat(KConf,'/.bootstrap_token',BTokenFile),
+        open(BTokenFile,write,F,[]),
+        write(F,Token),
+        close(F)
         )
     ).
 
