@@ -61,6 +61,16 @@ Main services are:
 ## Api documentation
 
 API documentation is available at docs/api/index.html
+
+## Running the server with docker
+
+* Copy or rename  `.env-sample`  to `.env`.
+* Change variables according to your setup. 
+   * `KLEIO_HOME` should be set to a directory where kleio files reside.
+   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `kleio-server:latest` is used. 
+   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. This token can be used to generate through an api call an initial admin token. 
+* run with `make start` 
+
 ## Development
 
 ### Requirements
@@ -76,7 +86,7 @@ Recommended tools:
 * `newman`: the command line tool for running Postman generated test suites https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
   
 
-### Running the server locally
+### Running the server locally for debugging
 
 Easiest way: 
 + open serverStart.pl on `VSCode` with `VSC-Prolog`
@@ -88,8 +98,23 @@ Easiest way:
       
       run_debug_server.
 
-+ set spy point with tspy(_predicate_) 
-+ Clients can access the kleio-server using the token set above.
++ set spy points with tspy(_predicate_) 
++ Clients can access the kleio-server using the token set above. 
+
+### Debugging inside the docker container
+
+After building the image with `make image` run a shell in the kleio-server container
+
+
+      docker compose run kleio sh
+
+At the prompt start swi Prolog and change to the kleio-home directory
+
+      # swipl -f serverStart.pl
+
+      ....
+
+      ?- working_directory(_,'/kleio-home').
 
 ### Tests
 
