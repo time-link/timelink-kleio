@@ -164,9 +164,17 @@ stop_server:-
 %% stop_debug_server is det.
 %
 % Stops currently running debug server on port 4000.
+% deprecated
 stop_debug_server:-
     restServer:default_value(server_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
+
+mhk_home:-
+    getenv('HOME',H),
+    atom_concat(H,'/mhk-home',MH),
+    working_directory(_,MH),
+    ls.
+
 
 % Test zone
 

@@ -295,7 +295,7 @@ start_rest_server:-
 server(Port) :-
         default_value(timeout,Number),
         http_server(http_dispatch,
-                    [ port(Port),timeout(Number) % 15 minutes timeout on requests
+                    [ port(Port),timeout(Number) % 15 secs timeout on requests
                     ]).
 
 %% server_idle(+Seconds) is det.
