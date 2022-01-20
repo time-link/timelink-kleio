@@ -69,6 +69,8 @@ API documentation is available at docs/api/index.html
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
    * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `kleio-server:latest` is used. 
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. This token can be used to generate through an api call an initial admin token. 
+   * `KLEIO_DEBUG`if "true" will produce debug information in the log.
+   * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
 * run with `make start` 
 
 ## Development
