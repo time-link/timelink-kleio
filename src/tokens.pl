@@ -26,8 +26,8 @@ The token is used as a key to the username, and a list of user information which
 
 * the path to the data dir, which can be absolute or relative to the server data dir.
 * the path to the structure dir, which can be absolute or relative to the server structure dir.
-* permissions of the user, to be implemented but would be a list of API calls allowed for this user and constrains 
-like expiry date, or source IP.
+* permissions of the user, a list of API calls allowed for this user and constrains 
+like expiry date, or source IP (IP source not yet implemented).
 
 To obtain a token the predicate generate_token/3 is used. It will persist the user information using swipl `persistency` API.
 
@@ -41,7 +41,7 @@ The file for the database can be set with attach_token_db/1 and inspected with t
 
 If no file is defined for token persistence then default_token_db/1 is used to get a default DB.
 
-An initial token is taken from env variable KLEIO_SERVER_ADMIN_TOKEN with permissions to issue and revoke tokens
+An initial token is taken from env variable KLEIO_ADMIN_TOKEN with permissions to issue and revoke tokens
 
 See: http://www.swi-prolog.org/pldoc/doc/_SWI_/library/persistency.pl
 */
