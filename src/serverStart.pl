@@ -18,10 +18,11 @@
 % 
 run_debug_server:-
     set_log_level(debug),
-    
+    log_debug("starting server with log level debug.",[]),
     print_server_config,
+    log_debug("server config printed",[]),
     set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host'sIP)
-    restServer:start_debug_server, 
+    % restServer:start_debug_server, % we currently do not use this, because there is no way to stop it programmatically
     restServer:start_rest_server,!.
 
 %% run_server is det.
@@ -81,7 +82,7 @@ wait_for_idle(Secs) :- log_info('Rest Server idle for ~w seconds',[Secs]).
 % $ KLEIO_CONF_DIR        : conf/kleio
 % $ KLEIO_STRU_DIR        : conf/kleio/stru/
 % $ KLEIO_TOKEN_DB        : conf/kleio/token_db 
-% $ KLEIO_DEBUGGER_PORT   : 4000
+% $ KLEIO_DEBUGGER_PORT   : 4000 DEPRECATED
 % $ KLEIO_SERVER_PORT     : 8088
 % $ KLEIO_WORKERS         : 6
 % $ KLEIO_IDLE_TIMEOUT    : 60
@@ -100,7 +101,7 @@ run_test_server:-
     setenv_dir('KLEIO_STRU_DIR',WD,'kleio-home/system/conf/kleio/stru'),
     setenv_dir('KLEIO_TOKEN_DB',WD,'kleio-home/system/conf/kleio/token_db'),
     setenv_dir('KLEIO_DEFAULT_STRU',WD,'kleio-home/system/conf/kleio/stru/gacto2.str'),
-    setenv('KLEIO_DEBUGGER_PORT',4000),
+    % setenv('KLEIO_DEBUGGER_PORT',4000),
     setenv('KLEIO_SERVER_PORT', 8088),
     setenv('KLEIO_WORKERS',3),
     setenv('KLEIO_IDLE_TIMEOUT',360), 
@@ -149,7 +150,7 @@ do_setup(conf(V)):-setenv('KLEIO_CONF_DIR',V),!.
 do_setup(strus(V)):-setenv('KLEIO_STRU_DIR',V),!.
 do_setup(tokens(V)):-setenv('KLEIO_TOKEN_DB',V),!.
 do_setup(dstru(V)):-setenv('KLEIO_DEFAULT_STRU',V),!.
-do_setup(dport(V)):-setenv('KLEIO_DEBUGGER_PORT',V),!.
+% do_setup(dport(V)):-setenv('KLEIO_DEBUGGER_PORT',V),!.
 do_setup(port(V)):-setenv('KLEIO_SERVER_PORT',V),!.
 do_setup(workers(V)):-setenv('KLEIO_WORKERS',V),!.
 
@@ -163,9 +164,17 @@ stop_server:-
 %% stop_debug_server is det.
 %
 % Stops currently running debug server on port 4000.
+% deprecated
 stop_debug_server:-
     restServer:default_value(server_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
+
+mhk_home:-
+    getenv('HOME',H),
+    atom_concat(H,'/mhk-home',MH),
+    working_directory(_,MH),
+    ls.
+
 
 % Test zone
 

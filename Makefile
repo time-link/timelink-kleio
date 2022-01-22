@@ -22,7 +22,10 @@ help: .PHONY
 	@echo "  make current              return the current version, build number"
 	@echo "  make last                 return the last image build date, version, build number"
 	@echo "  make inc-NUMBER           increment version with NUMBER in major | minor"
-	@echo "  make token                generate token for KLEIO_ADMIN_TOKEN"
+	@echo "  make token                generate a string for KLEIO_ADMIN_TOKEN for .env file"
+	@echo "  make bootstrap-token      generate and register a token for 'admin' during bootstrap"
+	@echo "                                (only if no tokens exist and server running < 5 minutes)"
+	@echo "  make show-env             show KLEIO env variables currently defined"
 	@echo "  make start                start Kleio server on docker (requires image)"
 	@echo "  make stop                 stop Kleio server"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
@@ -139,24 +142,46 @@ push-stable:
 token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
-kleio-run:
-	@source .env;\
-	if [ -z "$$KLEIO_ADMIN_TOKEN" ]; then export KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20); fi;\
+kleio-run: 
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
+	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
-	if [ -z "$$KLEIO_HOME" ]; then export KLEIO_HOME="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
-	if [ ! -f "$$KLEIO_HOME/.mhk" ]; then echo "mhk.kleio.service.token.admin=$$KLEIO_ADMIN_TOKEN" >"$$KLEIO_HOME/.mhk" ; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
-	echo "starting kleio-server on port $$KLEIO_SERVER_PORT";\
-	echo " ";\
-	echo "KLEIO_HOME=$$KLEIO_HOME";\
-	echo "KLEIO_ADMIN_TOKEN=$$KLEIO_ADMIN_TOKEN";\
-	echo "KLEIO_SERVER_PORT=$$KLEIO_SERVER_PORT";\
-	echo "KLEIO_EXTERNAL_PORT=$$KLEIO_EXTERNAL_PORT";\
-	echo "KLEIO_USER=$$KLEIO_USER";\
-	echo  "./$$KLEIO_HOME:/kleio-home:cached";\
+	echo "Starting kleio-server";\
+	declare | grep "^KLEIO"; \
 	docker compose up -d
+
+show-env:
+	@source .env;\
+	declare | grep "^KLEIO"; 
+
+bootstrap-token:
+	@source .env; export BTOKEN=$$(cat "$$KLEIO_HOME_DIR/system/conf/kleio/.bootstrap_token");\
+	echo "bootstrap token: $$BTOKEN";\
+	curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"jsonrpc": "2.0","method": "users_invalidate","id":"make","params":{ "user": "admin","token":"'"$$BTOKEN"'"}}'\
+	   http://localhost:$$KLEIO_EXTERNAL_PORT/json/ ;\
+	 curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"jsonrpc": "2.0","method": "tokens_generate","id":"make",\
+	 "params":{ "user": "admin","info":{"api":[\
+		"sources",\
+		"files",\
+		"structures",\
+		"translations",\
+		"upload",\
+		"delete",\
+		"mkdir",\
+		"rmdir",\
+		"generate_token",\
+		"invalidate_token",\
+		"invalidate_user"\
+	 ],"life_span":300},"token":"'"$$BTOKEN"'"}}'\
+	   http://localhost:$$KLEIO_EXTERNAL_PORT/json/
 
 kleio-stop:
 	@export KLEIO_USER=$$(id -u):$$(id -g); docker compose stop
