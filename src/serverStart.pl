@@ -187,6 +187,26 @@ test_escritura:-
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
 
+test_ucalumni:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/varia/auc-alunos-264605-A-140337-140771.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+test_ivcc:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/varia/ivcc.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+
+test_quotes:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/varia/quotes.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+
 test_teste:-
     restServer:translate(
             './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
