@@ -1,5 +1,6 @@
 :-module(dataSyntax,[
-    compile_data/1
+    compile_data/1,
+    tquoteClear/0
     ]).
 
 /** <module> Syntax Analyzer for Kleio Data Files.
@@ -104,11 +105,13 @@ dataflag8-->[(dataflag,8)],{!}.
 dataflag9-->[(dataflag,9)],{!}.
 dataflag10-->[(dataflag,10)],{!}.
 
+% IMPORTANT ensure that tquoteClear is called at start of file processing.
 tquoteOn :- get_value(tquote,true).
 tquoteOff :- get_value(tquote,F), !,F=false.
 tquoteOff :-!.
 tquoteEnter :- put_value(tquote,true).
 tquoteExit :- put_value(tquote,false).
+tquoteClear :- put_value(tquote,false).
 
 % reserved chars in core information %
 reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
