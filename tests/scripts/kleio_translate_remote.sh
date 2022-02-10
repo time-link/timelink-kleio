@@ -1,8 +1,8 @@
 # request file translation to a remote kleio server 
 # usage: kleio_translate_remote  KLEIO_SOURCES_DIR
-#  example: ./scrips/kleio_translate_remote.sh paroquiais
+#  example: ./scripts/kleio_translate_remote.sh paroquiais
 # to translate every source file do:
-# example: ./script/kleio_translate_remote.sh /
+# example: ./scripts/kleio_translate_remote.sh /
 # a kleio server must be started before see kleio_start_server.sh
 # TODO: much simpler: use update method it will translate all files that need translating
 echo
