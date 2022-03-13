@@ -112,7 +112,7 @@ $ KLEIO_CONF_DIR        : For configuration information KLEIO_HOME/system/conf/k
 $ KLEIO_STRU_DIR        : Defaults KLEIO_HOME/system/conf/kleio/stru/
 $ KLEIO_TOKEN_DB        : Defaults KLEIO_CONF_DIR/token_db -- maintains the token database.
 $ KLEIO_DEFAULT_STRU    : Default KLEIO_HOME/system/conf/kleio/stru/gacto2.str structure used by default
-$ KLEIO_DEBUGGER_PORT   : Port for the debug server (default 4000) DEPRECATED.
+$ KLEIO_DEBUGGER_PORT   : Port for the debug server (default 4000).
 $ KLEIO_SERVER_PORT     : Port for the REST server (default 8088).
 $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 
@@ -264,7 +264,6 @@ get_token_db_status('Could not determine token status').
 % Starts a debugging server in port default_value(server_port,Port).
 % if Port = 0 server not created
 % Usefull to test and debug when no console available.
-% DEPRECATED We do not use this for debugging anymore
 start_debug_server:-
      default_value(server_port,Port),
      Port \= 0,
@@ -447,7 +446,8 @@ process_rest(RestRequest):-
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
-    log_debug('~n~nREQUEST rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('~n~nREQUEST-REST received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -625,7 +625,8 @@ process_json_rpc_(Request):-
     catch(http_read_json(Request, JSONPayload),ParseError,
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
-    log_debug('JSONPayload: ~w~n',[JSONPayload]),
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('JSON-RPC: ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)
@@ -697,7 +698,7 @@ json_decode_command(json(JSONRequest),Id,Method,[token_info(TokenParams)|Params]
     option(params(json(Params)),JSONRequest),
     (option(token(Token),Params) -> 
         true
-        ; 
+        ;  
         throw(invalid_params(Id,'Missing parameter: token'))
     ),
     (tokens:decode_token(Token,_,TokenParams)->true; throw(invalid_params(Id,'Bad token'))).
