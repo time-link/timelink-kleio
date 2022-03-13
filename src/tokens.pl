@@ -131,10 +131,12 @@ generate_token(UserName,Options,AccessToken):-
 decode_token(Token,UserName,Options):-
     ensure_db,
     (atom_concat('Bearer ',Token2,Token)->true;Token2=Token),
-    user_token(Token2,UserName,Options),!.
+    user_token(Token2,UserName,Options),
+    \+ expired_token(Token),!.
 
 decode_token(Token,UserName,Options):-
-    get_kleio_admin(Token,UserName,Options).
+    get_kleio_admin(Token,UserName,Options),
+    \+ expired_token(Token).
 
 %% get_kleio_admin(+TOKEN,-UserName,-Options) is det.
 % returns TOKEN for KLEIO_ADMIN if set in env variable
@@ -216,17 +218,18 @@ get_data_dir(Token,DD):-
 is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all allowed API calls for this token
     ensure_db,
     get_token_options(Token,P),
+    \+ expired_token(Token),
     option(api(CALLS),P),
-    utilities:member(APICall, CALLS),
-    check_age(P).
+    utilities:member(APICall, CALLS).
 
 %% expired_token(+Token) is nondet.
 % True if Token exists and has exceed its life_span.
-%
+% Removes token if expired.
+
 expired_token(Token):-
     user_token(Token,_,O),
-    \+ check_age(O).
-
+    \+ check_age(O),
+    invalidate_token(Token).
 
 check_age(Options):-
     option(created(When),Options,0),
@@ -256,6 +259,7 @@ list_tokens.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TESTS 
 % For docs see http://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/plunit.html%27)
+% run_tests(tokens).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :-begin_tests(tokens,[setup(setup_tests)]).
@@ -284,7 +288,7 @@ test(generate_token,[true]):-
         token_db_attached(F),
         decode_token(Token,'username',Options),
         format('~nToken database at ~w~nToken:~w~nOptions: ~w~n',[F,Token,Options]),!.
-
+ 
 test(generate_token_duplicate,[
     throws(error(username,-32600,'User already associated with token, invalidate user first.'))
     ]):-
@@ -368,13 +372,14 @@ test(too_old,[fail]):-
     ], Token),
     writeln('Waiting for the token to expire'),
     sleep(5),!,
-    is_api_allowed(Token,translations),!.
+    is_api_allowed(Token,translations),
+    !.
 
 test(bootstrap,[true]):-
     (invalidate_user(bootstrap);true),!,
     generate_token(bootstrap,[life_span(300),api([generate_token])],Token),
     put_shared_value(bootstrap_token,token(Token)),
-    is_api_allowed(bootstrap,generate_token),!.
+    is_api_allowed(Token,generate_token),!.
 
 test(bootstrap_fail,[fail]):-
     (invalidate_user(bootstrap);true),!,
