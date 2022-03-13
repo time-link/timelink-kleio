@@ -130,4 +130,52 @@ To run the test collection make sure you `newman` installed, and from the top le
      make kleio-run; \
      newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$KLEIO_ADMIN_TOKEN"
 
+You can also run Kleio Server inside VSCode and use swi-prolog debugging tools while running the api tests produced by `postman`.  
+
++ install `VSC-Prolog` extension in `VSCode`
++ open serverStart.pl on `VSCode` 
++ load the file with Option+X+L
++ in the Prolog terminal that appears do 
+
+
+      setenv('KLEIO_ADMIN_TOKEN','mytoken').
+      
+      run_debug_server.
+
++ From the terminal then do: 
+
+        export KLEIO_ADMIN_TOKEN=mytoken;\
+        newman run api/postman/tests.json \
+              -e api/postman/tests.postman_environment.json \
+              --env-var "testadmintoken=$KLEIO_ADMIN_TOKEN"
+
++ or
+
+      make tests-api
   
+See `postman` documentation about exporting api tests and environment information.
+
+Note that if you change the upload tests for different files than those in the released source you need to update the paths. See https://blog.postman.com/run-collections-with-file-uploads-using-newman/ . 
+ * Look for call named "sources_post_upload_new_file" and "sources_upload_new_version"
+ * Change `src` parameters:
+
+        "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "type": "file",
+                      "src": [""]
+                    },
+                    {
+                      "key": "id",
+                      "value": "{{request_id}}",
+                      "description": "Id of the request",
+                      "type": "text"
+                    },
+                    {
+                      "key": "file",
+                      "description": "If \"yes\" overwrite existing file.",
+                      "type": "file",
+                      "src": []
+                    }

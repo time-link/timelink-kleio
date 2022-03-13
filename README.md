@@ -49,7 +49,7 @@ For more information on Timelink Kleio Server see: https://github.com/time-link/
 
 ## Services provided by the `kleio-server` API
 
-The API is designed to decouple Kleio source handling from other software components. It provides funcionality to translate source files, inspect results of translation for errors or warnings, obtain the generated data in XML format. It also allows basic file management.
+The API is designed to decouple Kleio source handling from other software components. It provides funcionality to translate source files, inspect results of translation for errors or warnings, obtain the generated data in XML format. It also allows basic file management and basic git operations, so that it can be used to isolate other software components from directly handling file related operations.
 
 Main services privided by the API are:
 
@@ -68,8 +68,8 @@ API documentation is available at docs/api/index.html
 * Copy or rename  `.env-sample`  to `.env`.
 * Change variables according to your setup. 
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
-   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `kleio-server:latest` is used. 
-   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
+   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `joaquimrcarvalho/kleio-server:latest` is used. 
+   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
 * run with `make start` 
@@ -92,8 +92,9 @@ Recommended tools:
 ### Running the server locally for debugging
 
 Easiest way: 
-+ open serverStart.pl on `VSCode` with `VSC-Prolog`
-+ Load the file with Option+X+L
++ install `VSC-Prolog` extension in `VSCode`
++ open serverStart.pl on `VSCode` 
++ load the file with Option+X+L
 + in the Prolog terminal that appears do 
   
 
@@ -105,6 +106,7 @@ Easiest way:
 + set spy points with tspy(_predicate_) 
 + Clients can access the kleio-server using the token set above. 
 
+See the `README.md` file inside the `tests` directory for more information on testing.
 ### Debugging inside the docker container
 
 After building the image with `make image` run a shell in the kleio-server container
@@ -116,8 +118,7 @@ At the prompt start swi Prolog and change to the kleio-home directory
 
       # swipl -f serverStart.pl
 
-      ....
-
+      .run_debug_server
       ?- working_directory(_,'/kleio-home').
 
 ### Tests

@@ -141,7 +141,7 @@ kleio_file_delete(_):-!.
 %   'T' - needs to be translated (either no rpt file or existing rpt older than kleio file)
 %   'E' - was last translated with errors
 %   'W' - was last translated with warnings
-%   'V' - file has a valid trasnlation, can be imported.
+%   'V' - file has a valid translation, can be imported.
 % Note that status can overlap and this predicate will not backtrack, but give the most relevant
 % state T > E > W > V
 %

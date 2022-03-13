@@ -605,7 +605,7 @@ collect_groups_json(GroupsInfo):-
 
 collect_groups_json([],Groups,Groups).
 collect_groups_json([G|MoreGroups],Groups,FinalGroups):-
-   writeln(G),
+   %writeln(G),
    collect_group_json(G,GInfo),
    UpdatedGroups=Groups.put([G=GInfo]),
    collect_groups_json(MoreGroups,UpdatedGroups,FinalGroups).

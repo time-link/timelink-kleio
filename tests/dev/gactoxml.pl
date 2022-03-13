@@ -38,7 +38,10 @@
  group called husband may follow and generate the appropriate
  kin relatioship.
  
- @tbd TODO: The XML related stuff should be isolated from data model stuff. If code has to be repeated in a future gactojson.pl then it should not be here. 
+ @tbd TODO: The XML related stuff should be isolated from data model stuff. 
+ Better to end each export predicate with the creation of dictionnary with the
+ Data structure of the specific group and then pass it on to specific format exporters
+ So this file would be kept, renamed, and new simpler group_to_xml.pl and group_to_json.pl created.
  
  @author Joaqum Carvalho
  @license MIT
@@ -174,31 +177,51 @@ db_close:-
   bug that occurs when kleio-server runs in a virtual box environment on windows
   See  https://bugzilla.gnome.org/show_bug.cgi?id=656225
   */
-  (exists_file(Last) -> delete_file(Last); true),
-  (exists_file(Original)->
-    (rename_with_shell(D,Last),
-    catch(chmod(D,+gw),E,log_error('Could not change permissions of ~w : ~w ',[D,E])),
-     report([writeln('** '-D-'renamed to'-Last)])
+  (exists_file(Last) -> 
+    delete_file(Last) % delete last translated ".old"
+    ; 
+    true
+  ),
+  (exists_file(Original)-> % rename original ".cli" to ".old"
+    (
+      rename_with_shell(D,Last),
+      catch(
+        chmod(D,+gw),
+        E,
+        log_error('Could not change permissions of ~w : ~w ',[D,E])
+        ),
+      report([writeln('** '-D-'renamed to'-Last)])
     )
-    ;
-    (rename_with_shell(D,Original),
-    catch(chmod(Original,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[Original,E2])),
-    report([writeln('** '-D-'renamed to'-Original)])) ),
-    rename_with_shell(Ids,D),
-    catch(chmod(D,+gw),E3,log_error('Could not change permissions of ~w : ~w ',[D,E3])),
-    report([writeln('** '-Ids-'renamed to'-D)]),
-    report([writeln('** Translation files closed.')]),
-    !.
+    ;  % no ".org" file. Rename ".cli" to ".org"
+      ( 
+          rename_with_shell(D,Original), 
+          catch(
+              chmod(Original,+gw),
+              E2,
+              log_error('Could not change permissions of ~w : ~w ',[Original,E2])
+              )
+          % , report([writeln('** '-D-'renamed to'-Original)])
+      )
+  ),
+  rename_with_shell(Ids,D), % rename ".ids" to ".cli"
+  catch(
+      chmod(D,+gw),
+      E3,
+      log_error('Could not change permissions of ~w : ~w ',[D,E3])
+      ),
+  %report([writeln('** '-Ids-'renamed to'-D)]),
+  %report([writeln('** Translation files closed.')]),
+  !.
 change_to_ids:-
    error_out('** Problem renaming files.'),
    report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
-  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2],
+  Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2,'; rm -f ',Name1],
   atomic_list_concat(Command,'',S),
   shellUtil:shell_to_list(S,0,_),!.
 rename_with_shell(Name1,Name2):-
-  error_out('** Problem renaming files.'),
+  error_out('** Problem renaming files '-Name1-' to '-Name2),
   report([writeln('Could not rename'-Name1-' to '-Name2)]),!.
 
 /*
@@ -319,6 +342,7 @@ group_export(kleio,_) :- !,
     now(Year,Month,Day,Hour,Minute,Seconds),
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
+    % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
     xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
     xml_nl.
 
@@ -422,6 +446,8 @@ authority_register_export(Register,Id):-
     belement_aspect(core,ignore_date,IgnoreDate),
     set_prop(aregistry,ignore_date,IgnoreDate),
     %
+    % REFACTOR
+    %
     group_to_xml(Register,Id,[
 
     ]),
@@ -487,11 +513,12 @@ Hangling of historical sources
 historical_source_export(Source,Id):-
   do_auto_rels2,
   report([writelist0ln(['** Processing source ',Source,'$',Id])]),
-  get_value(source_file_name,Name),
   get_value(data_file,D),
   break_fname(D,_,_,Base,__Ext),
-  report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
-(Base \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
+  % get_value(source_file_name,Name),
+  %report([writelist0ln(['** Base name of file ',Base, ' in ',Name])]),
+  check_id_prefix(Base,BaseAsId),
+  (BaseAsId \= Id -> warning_out(['* Warning: Filename should match source Id to avoid errors. File: ',Base,' Id: ',Id,'.']);true),
   (get_date(Date1) -> Date=Date1 ;  % we handle long dates and day/month/year dates
     (get_y_m_d(Date2) -> Date=Date2; Date=0)),
   set_prop(source,date,Date),
@@ -545,6 +572,7 @@ historical_act_export(Group,Id):-
   setgensymbol_local(good,0),
   setgensymbol_local(rel,0),
   setgensymbol_local(att,0),
+  setgensymbol_local(gro,0),
   %log_debug('historical_source_export calling group_to_xml',[]),
   group_to_xml(Group,Id,[date([Date],[],[]),type([Group],[],[])]),
   %log_debug('historical_source_export ~w$~w DONE',[Group,Id]),
@@ -803,7 +831,7 @@ get_sex(female,f):-!.
 
     get_date: get the date if it was entered as the element "date"
     ========
-    TODO: implemente issue 128 https://github.com/joaquimrcarvalho/mhk/issues/128
+    TODO: implement https://github.com/time-link/timelink-kleio/issues/1
 
     Another alternative for the notation
 - "<date"before date 
@@ -814,7 +842,8 @@ Date:  period starting in date
 Dates can be expressed as
 - yyyymmdd
 - yyyy-mm-dd 
-- yyyymm or yyyymm00 date with day unknown
+- yyyy or yyyy0000 for date with month and day unknown
+- yyyymm, yyyy-mm or yyyymm00 date with day unknown
 - yyyy or yyyy0000 date with month and day unknown
 
 So

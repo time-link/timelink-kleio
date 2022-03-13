@@ -67,6 +67,7 @@ versions(get,PseudoPath,Mode,Id,Params):-
     % TODO: should make directory and git_root relative before returning results.
     versions_results(Mode,Id,GitStatus.put(report,StatusString)).
 
+% Wrong should be put
 versions(get,PseudoPath,Mode,Id,Params):-
     string_concat("pull",Path,PseudoPath),!,
     option(token_info(TokenInfo),Params),
@@ -168,6 +169,7 @@ versions_get_user_info(json,Id,Params):-
 versions_pull(json,Id,Params):-
     option(path(Path),Params,''),
     string_concat("pull/",Path,PseudoPath),
+    % wrong should be "put" bellow
     versions(get,PseudoPath,json,Id,Params).
 versions_push(json,Id,Params):-
     option(path(Path),Params,''),

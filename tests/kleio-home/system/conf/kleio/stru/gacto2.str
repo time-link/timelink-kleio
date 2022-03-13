@@ -1,27 +1,11 @@
 Note =================================================
 Note Generic structure for the Source-Act-Person model
-Note   Now with geoentities a authority-registers
+Note   Now with geoentities and authority-registers
 Note ================================================
 Note
 Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
 Note =================================================================================================
-Note History
-NOTE -------
-Note Revision 1.2  2006/05/16 10:52:44  Joaquim
-Note update dos ficheiros prolog
-Note
-Note TODO
-note		reorganize so that in the portuguese section
-note		the base classes for actors and parents go
-note		first and groups and actors related to the same source
-note		come together after.
 note
-note For kleio compatibility
-note     - anchor all groups in a parent group all the way up to the root
-note     - portuguese groups should always repeat element names in portuguese
-note       from the groups they extend.
-note     - No blank lines inside parameter lists
-note     - Source/fons does not work as expected.
 note
 note  The name parameter in the database command designates
 note  the target source file.
@@ -53,7 +37,7 @@ note
 
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
- position=structure,translator,obs;
+ position=structure,translator;
  part=historical-source,fonte,authority-register, identifications
 
 note ============================================================
@@ -207,7 +191,7 @@ note ===========================================================
 part name=object;
      guaranteed=name;
      position=name,type;
-     also=obs,id,same_as,xsame_as;
+     also=obs,id;
      arbitrary=atr,ls,rel
 
 note ============================================================
@@ -224,7 +208,7 @@ note ============================================================
 
 part	name=attribute ;
  guaranteed=type,value ;
- also=obs,date ;
+ also=obs,date,id ;
  position=type,value,date
 
 note ============================================================
@@ -232,9 +216,8 @@ note Relation
 note ============================================================
 
 part 	name=relation ;
- position=type,value,destname,destination;
  guaranteed=type,value,destname,destination ;
- also=obs,date
+ also=obs,date,id
 
 note
 note =============================================================
@@ -331,7 +314,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas,integr,movacao,geodesc
+	  pas,lcc,integr,movacao,geodesc
 
 element name=substitui; source=replace
 
@@ -414,18 +397,10 @@ part name=acao; source=object;
           also=id, obs, data, mesmo_que
           
           
-          
-note *************************************************************************************************++++
-note livros de registo de accoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
-note ****************************************************************************************************
+part name=lcc; 
+    source=pt-acto;
+    arbitrary=n
 
-part name=movacao; 
-     source=pt-acto;
-     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
-     position=id,dia,mes,ano;
-     guaranteed=id,dia,mes,ano;
-     also=obs, data
-     
      
 part name=acao; 
      source=object;
@@ -577,7 +552,7 @@ part 	name=chanc;
  repeat=n,referido,referida,item;
  guaranteed=id,dia,mes,ano;
  position=id,dia,mes,ano,loc;
- also=also,resumo,obs
+ also=loc,resumo,obs
 
 note *****************************************************************
 note doc group encarte Encartes
@@ -811,7 +786,7 @@ part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
      arbitrary=n,referido,referida,celebrante,evento,colega;
-     also=obs,loc
+     also=obs,loc,tipo,data
 
 note *****************************************************************
 note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
@@ -934,7 +909,7 @@ note Notariais - bens
 note *****************************************************************
 part name=bem; source=object;
      guaranteed=name;
-     position=name,tipo,id;
+     position=name,tipo;
      also=desc,tipo,id,obs,local;
      arbitrary=atr,rel,local
 
@@ -1402,22 +1377,22 @@ part name=geodesc; source=pt-acto;
     position=id,dia,mes,ano,fol;
     guaranteed=id;
     also=obs;
-    part=geo1,geo2,geo3,geo4
+    part=geo1,geo2,geo3,geo4,atr,rel
 
 note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
 note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
 note 
 part name=geo1; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo2
+    part=geo2,atr,rel
 
 part name=geo2; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo3
+    part=geo3,atr,rel
 
 part name=geo3; source=geoentity;
     position=name,type,id;
-    part=atr,rel,geo4
+    part=geo4,atr,rel
 
 part name=geo4; source=geoentity;
     position=name,type,id;
@@ -2836,7 +2811,7 @@ note *****************************************************************
 part name=ls; source=attribute;
         position=tipo,valor,data;
         guaranteed=tipo,valor;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes
 part name=atr; source=ls
 
@@ -2846,5 +2821,5 @@ note *****************************************************************
 part name=rel; source=relation;
         position=tipo,valor,nomedest,iddest;
         guaranteed=tipo,valor,nomedest,iddest;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes

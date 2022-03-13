@@ -77,6 +77,8 @@ toks(F,[TOK])-->tok(F,TOK).
 % tokens in data files 
 %******************************************************
 %  %
+tok(dat,(tquote,V)) -->tquote(V),{!}.
+tok(dat,(dquote,V)) -->dquote(V).
 tok(dat,(names,V))-->names(V),!.
 tok(dat,(fill,V))-->fillsp(V),!.
 tok(dat,(dataflag,N))-->[(_C,T)],{data_flag(N,T),!}.
@@ -90,7 +92,7 @@ tok(dat,(T,C))-->other((T,C),[upper,lower,digit,space,tab]),
 tok(cmd,(fill,V))   -->fillsp(V).
 tok(cmd,(name,V))   -->names(V).
 tok(cmd,(number,V)) -->num(V).
-tok(cmd,(string,V)) -->qstring(V).
+tok(cmd,(string,V)) -->dqstring(V).
 tok(cmd,(dataflag,2))-->[(_C,T)],{data_flag(2,T)}.
 tok(cmd,(T)) -->other(T,[upper,lower,digit,space,tab]),
                        {\+ data_flag(2,T)}.
@@ -185,18 +187,31 @@ numberChar(C) --> [(C,digit)]
 %  quoted strings either with single quotes or double quotes
 %******************************************************
 %  %
-qstring(V)-->[(_,singlequote)],!,qstr(singlequote,L),
-             {!,name(V,L)}.
-qstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
-             {!,name(V,L)}.
+% in data files we allow multiline quoted strings
+%  so we just make the quote a token and dataSyntax will hand the rest
+dquote(V) --> [(Q,doblequote)],{name(V,[Q]),!}.
+
+% in command files we process quotes within a line. And provide the quoted string as a token
+
+dqstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
+             {!,qname(L,V)}.
+qname(Chars,Quoted) :- name(S,Chars),
+              re_replace("\""/g,"\\\"",S,T),
+              atomic_list_concat(["\"",T,"\""],Quoted),!.
 
 qstr(Q,[])   -->[(_,Q)],!.
+qstr(Q,[C|R])  -->[(_,backslash),(C,_)],qstr(Q,R),!.
 qstr(_Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
 qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
 
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
 
+%******************************************************
+%  tripe double quotes For multiline information
+%******************************************************
+%  %
+tquote(V) --> [(Q,doblequote),(Q,doblequote),(Q,doblequote)],{name(V,[Q,Q,Q]),!}.
 
 %******************************************************
 %  Types of characters
@@ -207,11 +222,10 @@ qstrChar(Q,C)-->[(C,T)],{T \= Q}.
 %  %
 chartype(32,space):-!.
 chartype(9,tab):-!.
-chartype(X,lower):- X > 96,X<123,!.   % lower case letters %
-chartype(X,upper):- X > 64, X < 91,!. % upper case letters %
-chartype(X,digit):- X > 47, X < 58, !. % digits %
-chartype(13,return):-!. 
-chartype(10,return):-!.
+chartype(X,lower):- char_type(X,lower),!.   % lower case letters %
+chartype(X,upper):- char_type(X,upper),!. % upper case letters %
+chartype(X,digit):- char_type(X,digit), !. % digits %
+chartype(X,return):-char_type(X,end_of_line),!. 
 chartype(33,exclamation):-!.
 chartype(34,doblequote):-!.
 chartype(35,cardinal):-!.

@@ -155,6 +155,7 @@ dat(Filename):-
       report([nl,write('Processing data file:'),write(Filename),nl,
       writeln('-------------------------------------------')]),
       initData(Filename),
+      initCompiler,
       ptime(readlines(dat)),
 	  % report([perror_count]), % must be called after final checks in gactoxml.pl
       closeData(Filename),
