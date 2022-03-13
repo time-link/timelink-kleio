@@ -121,7 +121,7 @@ dat(F):-
       report([nl,write('Processing data file '),write(Basename),nl,
       writeln('-------------------------------------------')]),
       initData(Filename),
-      tquoteClear,
+      initCompiler,
       debug(kleio(dat),'dat: initData done',[]),
       % TODO PROFILING should go here
       % profile(readlines(dat))

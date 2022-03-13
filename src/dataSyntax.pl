@@ -1,6 +1,6 @@
 :-module(dataSyntax,[
     compile_data/1,
-    tquoteClear/0
+    initCompiler/0
     ]).
 
 /** <module> Syntax Analyzer for Kleio Data Files.
@@ -26,6 +26,14 @@
 :-use_module(lexical).
 :-use_module(reports).
 :-use_module(persistence).
+
+
+%% initCompiler is det.
+%
+% clears status of compiler. Must be called at start of new file
+%
+initCompiler:-
+    tquoteClear,dquoteClear,!.
 
 %% compile_data(+Tokens) is det.
 %
@@ -67,8 +75,18 @@ element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOff,tquoteEnter,!}.
 element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOn,tquoteExit,!}.
 element(storeCore(D)) --> [(dataflag,N)],{tquoteOn,data_flag_char(N,C),name(D,[C]),!}.
 element(storeCore(D)) --> [(return,R)],{tquoteOn,name(D,[R]),!}.
-element(storeCore(R)) --> [(L,R)], { tquoteOn,memberchk(L,[fill,names,number,dqstring]),!}.
+element(storeCore(R)) --> [(L,R)], { tquoteOn,memberchk(L,[fill,names,number,dquote]),!}.
 element(storeCore(D)) --> [(__C,R)],{tquoteOn,%format('Got Unknown code: ~w:~w~n',[C,R]),
+                                    name(D,[R]),!}.
+% double quote handling 
+% Everything inside " ... " is stored as is
+element(storeCore(DQ)) --> [(dquote,DQ)],{dquoteOff,dquoteEnter,!}.
+element(storeCore(DQ)) --> [(dquote,DQ)],{dquoteOn,dquoteExit,!}.
+element(storeCore(D)) --> [(dataflag,N)],{dquoteOn,data_flag_char(N,C),name(D,[C]),!}.
+element(true) --> [(return,_)],{dquoteOn,!}. % whithin double quotes we skip returns
+element(storeCore(' ')) --> [(fill,__)],{dquoteOn},!.
+element(storeCore(R)) --> [(L,R)], { dquoteOn,memberchk(L,[names,number]),!}.
+element(storeCore(D)) --> [(__C,R)],{dquoteOn,%format('Got Unknown code: ~w:~w~n',[C,R]),
                                     name(D,[R]),!}.
 
 % every fill squence is stored as a single space
@@ -94,8 +112,6 @@ fillSpace(S)-->[(fill,S)],{!}.
 
 edef(E)-->names(E),dataflag3,{!}.
 
-
-
 dataflag1-->[(dataflag,1)],{!}.
 dataflag2-->[(dataflag,2)],{!}.
 dataflag5-->[(dataflag,5)],{!}.
@@ -111,7 +127,15 @@ tquoteOff :- get_value(tquote,F), !,F=false.
 tquoteOff :-!.
 tquoteEnter :- put_value(tquote,true).
 tquoteExit :- put_value(tquote,false).
-tquoteClear :- put_value(tquote,false).
+tquoteClear :- put_value(tquote,false), dquoteClear.
+
+% IMPORTANT ensure that dquoteClear is called at start of file processing.
+dquoteOn :- get_value(dquote,true).
+dquoteOff :- get_value(dquote,F), !,F=false.
+dquoteOff :-!.
+dquoteEnter :- put_value(dquote,true).
+dquoteExit :- put_value(dquote,false).
+dquoteClear :- put_value(dquote,false).
 
 % reserved chars in core information %
 reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
@@ -127,6 +151,16 @@ reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
 
 :-begin_tests(dataSyntax).
 
+test(compile_data_with_tquotes):-
+    Chars = `""" " \r " """\r`,
+    string_codes(String,Chars),
+    format('Line:  ~w~n',[String]),
+    lexical:test_lexical(Chars,TypedChars),
+    format('Types:  ~w~n',[TypedChars]),
+    get_tokens(dat,TypedChars,Tokens),
+    format('Tokens: ~w~n',[Tokens]),
+    compile_data(Tokens).
+
 test(compile_data_with_quotes):-
     Chars = ` b$a,c    acto$asf.4#"htpp://timelink.uc.pt?\\\"xpto\\\""/24/5/1958/obs=url\r`,
     string_codes(String,Chars),
@@ -135,16 +169,6 @@ test(compile_data_with_quotes):-
     % format('Types ~w~n:',[TypedChars]),
     get_tokens(dat,TypedChars,Tokens),
     format('~nTokens~w~n:',[Tokens]),
-    compile_data(Tokens).
-
-test(compile_data_with_tquotes):-
-    Chars = `""" a,b \r\r\r$/# 1\r 2\r 3\r """\r`,
-    string_codes(String,Chars),
-    format('Line:  ~w~n',[String]),
-    lexical:test_lexical(Chars,TypedChars),
-    format('Types:  ~w~n',[TypedChars]),
-    get_tokens(dat,TypedChars,Tokens),
-    format('Tokens: ~w~n',[Tokens]),
     compile_data(Tokens).
 
 test(compile_data_with_pseudo_numbers):-
