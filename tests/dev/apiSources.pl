@@ -174,7 +174,7 @@ sources(put,DestPath,Mode,Id,Params):-
         
 sources(Method,_,_,Id,_):-
     (Method=put; Method=post),
-    throw(http_reply(bad_request(bad_file_upload),['Request-id'(Id)],[id(Id)])).
+    throw(http_reply(bad_request(bad_file_upload_no_file_in_request),['Request-id'(Id)],[id(Id)])).
 
 %% sources_get(+Mode,+Id,+Params) is det.
 %

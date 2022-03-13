@@ -26,6 +26,15 @@
 %    
 % %
 %    TESTAR O QUE ACONTECE QUANDO: dia=6<RET>mes=3 %
+
+%% initCompiler is det.
+%
+% clears status of compiler. Must be called at start of new file
+%
+initCompiler:-
+    tquoteClear,dquoteClear,!.
+
+%% compile_data(+Tokens) is det.
 compile_data(eof):-
     flushGroup,
     report([writeln('*** End of File')]),!.
@@ -44,6 +53,25 @@ group-->fillSpace(_S),[(names,N)],dataflag1,{newGroup(N),!}.
 elements([E|R])-->element(E),elements(R).
 elements([])   -->[].
 
+% triple quote handling 
+% Everything inside """ ..... ... """ is stored as is
+element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOff,tquoteEnter,!}.
+element(storeCore(TQ)) --> [(tquote,TQ)],{tquoteOn,tquoteExit,!}.
+element(storeCore(D)) --> [(dataflag,N)],{tquoteOn,data_flag_char(N,C),name(D,[C]),!}.
+element(storeCore(D)) --> [(return,R)],{tquoteOn,name(D,[R]),!}.
+element(storeCore(R)) --> [(L,R)], { tquoteOn,memberchk(L,[fill,names,number,dquote]),!}.
+element(storeCore(D)) --> [(__C,R)],{tquoteOn,%format('Got Unknown code: ~w:~w~n',[C,R]),
+                                    name(D,[R]),!}.
+% double quote handling 
+% Everything inside " ... " is stored as is
+element(storeCore(DQ)) --> [(dquote,DQ)],{dquoteOff,dquoteEnter,!}.
+element(storeCore(DQ)) --> [(dquote,DQ)],{dquoteOn,dquoteExit,!}.
+element(storeCore(D)) --> [(dataflag,N)],{dquoteOn,data_flag_char(N,C),name(D,[C]),!}.
+element(true) --> [(return,_)],{dquoteOn,!}. % whithin double quotes we skip returns
+element(storeCore(R)) --> [(L,R)], { dquoteOn,memberchk(L,[fill,names,number]),!}.
+element(storeCore(D)) --> [(__C,R)],{dquoteOn,%format('Got Unknown code: ~w:~w~n',[C,R]),
+                                    name(D,[R]),!}.
+
 % every fill squence is stored as a single space
 %    and returns are skipped %
 element(storeCore(' '))-->fillSpace(_S),{!}. % mudar aqui o tratamento do espaco %
@@ -58,6 +86,7 @@ element(storeCore(S))  -->[(dataflag,10)],[(dataflag,N)],
 		               {data_flag_char(N,C),name(S,[C]),!}.
 element(storeCore(S))  -->[(dataflag,10)],[(_T,V)],{name(S,[V]),!}.
 element(storeCore(N))  -->[(number,N)],{!}.
+element(storeCore(QS)) -->[(dqstring,QS)],{!}. 
 element(storeCore(S)) -->[(dataflag,F)],
                         {!,data_flag_char(F,C),name(S,[C])}. % we must take dataflags not used up to here literally
 element(storeCore(S))  -->[(_T,V)],{name(S,[V]),!}.
@@ -75,6 +104,21 @@ dataflag3-->[(dataflag,3)],{!}.
 dataflag8-->[(dataflag,8)],{!}.
 dataflag9-->[(dataflag,9)],{!}.
 dataflag10-->[(dataflag,10)],{!}.
+
+% IMPORTANT ensure that tquoteClear is called at start of file processing.
+tquoteOn :- get_value(tquote,true).
+tquoteOff :- get_value(tquote,F), !,F=false.
+tquoteOff :-!.
+tquoteEnter :- put_value(tquote,true).
+tquoteExit :- put_value(tquote,false).
+tquoteClear :- put_value(tquote,false).
+% IMPORTANT ensure that dquoteClear is called at start of file processing.
+dquoteOn :- get_value(dquote,true).
+dquoteOff :- get_value(dquote,F), !,F=false.
+dquoteOff :-!.
+dquoteEnter :- put_value(dquote,true).
+dquoteExit :- put_value(dquote,false).
+dquoteClear :- put_value(dquote,false).
 
 % reserved chars in core information %
 reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-

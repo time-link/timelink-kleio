@@ -59,11 +59,6 @@ check_arg(echo,yes).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEBUGGER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-startXX:-
-    writeln("Starting debugger..."),  
-    put_value(echo,yes),
-    trad1('../tests/test_translations/teste.cli','../tests/dev/gacto2.str').
-
 
 %! trad1(+DatFile,+StruFile) is det.
 %  translates DatFile using strucutre StuFile

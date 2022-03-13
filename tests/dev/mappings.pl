@@ -295,9 +295,9 @@ class good super object table goods
      and
         name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
      and
-        type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0 
+        type column the_type baseclass type coltype varchar colsize 128 colprecision 0 pkey 0 
      and
-        loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
+        loc column loc baseclass loc coltype varchar colsize 128 colprecision 0 pkey 0 
      and
         description column description baseclass description coltype varchar colsize 1024 colprecision 0 pkey 0 
      and
@@ -402,9 +402,9 @@ class cartaperdao super act table perdoes
      and
         cota column cota baseclass ref coltype varchar colsize 64 colprecision 0 pkey 0
      and
-        local column local baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0
+        local column local baseclass loc coltype varchar colsize 128 colprecision 0 pkey 0
      and
-        tipo column the_type baseclass type coltype varchar colsize 12 colprecision 0 pkey 0
+        tipo column the_type baseclass type coltype varchar colsize 128 colprecision 0 pkey 0
      and
         tabeliao column tabeliao baseclass tabeliao coltype varchar colsize 64 colprecision 0 pkey 0
      and

@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "79cce7c0-baf2-4525-859e-598371d53590",
-		"name": "timelink-kleio tests",
+		"name": "api-tests",
 		"description": "Sequence of requests to test the Kleio translator API.\n\nIt requires the klei server user token  to have access to a sources directory with a `reference_sources`sub dir.\n\nThe sequence will then create a new test directory `api_tests` (erasing it before if it exists) and will copy the sources from the `reference_sources` to it. Tests will be made in the api_tests directory. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -427,6 +427,53 @@
 											]
 										},
 										"description": "Removes the directory under the requested path.\nIf directory not empty requires force=yes"
+									},
+									"response": []
+								},
+								{
+									"name": "clean reference sources",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{coordinator_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{endpoint}}/rest/translations/{{reference_sources}}?d={{request_id}}&recurse=yes",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"rest",
+												"translations",
+												"{{reference_sources}}"
+											],
+											"query": [
+												{
+													"key": "d",
+													"value": "{{request_id}}"
+												},
+												{
+													"key": "recurse",
+													"value": "yes"
+												}
+											]
+										},
+										"description": "Clean the translation results in path.\n\nFiles that are queued or in processing are skipped.\n\nParameters:\n\n* path (in the url): path to the directory or file. If path is a directory all the translation results in the directory will be deleted.\n* recurse=yes|no, recurse into the subdirectories of path"
 									},
 									"response": []
 								},
@@ -1876,10 +1923,6 @@
 															"pm.test(\"Status code is 2XX\", function () {",
 															"    pm.response.to.be.success;",
 															"});",
-															"pm.test(\"Request-id is same as request\", function () {",
-															"    var rid = pm.environment.get(\"request_id\")+''; ",
-															"    pm.response.to.have.header(\"Request-id\",rid)",
-															"});",
 															""
 														],
 														"type": "text/javascript"
@@ -1926,7 +1969,7 @@
 														{
 															"key": "file",
 															"type": "file",
-															"src": []
+															"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 														},
 														{
 															"key": "id",
@@ -1938,7 +1981,8 @@
 															"key": "file",
 															"description": "If \"yes\" overwrite existing file.",
 															"type": "file",
-															"src": []
+															"src": [],
+															"disabled": true
 														}
 													]
 												},
@@ -1981,7 +2025,7 @@
 																	"key": "file",
 																	"description": "File to be uploaded",
 																	"type": "file",
-																	"src": []
+																	"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 																},
 																{
 																	"key": "id",
@@ -2388,7 +2432,7 @@
 													"listen": "test",
 													"script": {
 														"exec": [
-															"console.info(\"WARNING: Upload a file already existing in uploads directory\")",
+															"console.info(\"WARNING: Replacing a file in uploads directory (PUT)\")",
 															"pm.test(\"Status code is 2XX\", function () {",
 															"    pm.response.to.be.success;",
 															"});",
@@ -2437,7 +2481,7 @@
 													"formdata": [
 														{
 															"key": "file",
-															"description": "File to be uploaded MUST exist in destinhation for test to succeed",
+															"description": "File to be uploaded MUST exist in destinhation for test to succeed and file must be inside working directory (set in settings) otherwise it will not be included in the request.\n",
 															"type": "file",
 															"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 														},
@@ -2445,6 +2489,11 @@
 															"key": "id",
 															"value": "{{request_id}}",
 															"description": "Id of the request",
+															"type": "text"
+														},
+														{
+															"key": "xpto",
+															"value": "john smith",
 															"type": "text"
 														}
 													]
@@ -3680,7 +3729,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/api\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": {{request_id}}\n}"
 										},
 										"url": {
 											"raw": "http://{{endpoint}}/json/",
@@ -3819,11 +3868,7 @@
 													"    let r = jsonData.result;",
 													"    pm.environment.set(\"tester_token\", r);",
 													"});",
-													"pm.test(\"Request-id is present\", function () {",
-													"    var jsonData = pm.response.json();",
-													"    var rid = pm.environment.get(\"request_id\"); ",
-													"    pm.expect(jsonData.id).to.eql(rid);",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -3841,7 +3886,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/test_translations\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 0987\n}"
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"tokens_generate\",\n    \"params\": {\n        \"user\": \"tester\",\n        \"info\": {\n        \t\"comment\": \"An user able to translate, upload and delete files, and also create and remove directories\",\n            \"api\": [\n                \"sources\",\n                \"kleioset\",\n                \"files\",\n                \"structures\",\n                \"translations\",\n                \"upload\",\n                \"delete\",\n                \"mkdir\",\n                \"rmdir\"\n            ],\n            \"structures\": \"users/tester/stru\",\n            \"sources\": \"sources/api\"\n        },\n        \"token\": \"{{testadmintoken}}\"\n    },\n    \"id\": 987\n}"
 										},
 										"url": {
 											"raw": "http://{{endpoint}}/json/",
@@ -3886,15 +3931,15 @@
 															"var count = 0;",
 															"console.log(files);",
 															"pm.test(\"Response includes saved directories\", function () {",
-															"    console.log('Inside funciont');",
+															"    console.log('Inside funcion');",
 															"            console.log(files);",
 															"    var c = 0;",
 															"    // we should get the random directories saved in the setup",
 															"    for( var n in files) {",
-															"        if (files[n] == pm.environment.get(\"dir_1\")) c=c+1;",
-															"        if (files[n] == pm.environment.get(\"dir_2\")) c=c+1;",
-															"        if (files[n] == pm.environment.get(\"dir_3\")) c=c+1;",
-															"        if (files[n] == pm.environment.get(\"dir_4\")) c=c+1;",
+															"        if (pm.environment.get(\"dir_1\").startsWith(files[n])) c=c+1;",
+															"        if (pm.environment.get(\"dir_2\").startsWith(files[n])) c=c+1;",
+															"        if (pm.environment.get(\"dir_3\").startsWith(files[n])) c=c+1;",
+															"        if (pm.environment.get(\"dir_4\").startsWith(files[n])) c=c+1;",
 															"    }",
 															"    console.log('Matched dirs found: '+c);",
 															"    pm.expect(c).to.be.eql(4);",
@@ -4310,549 +4355,6 @@
 					}
 				}
 			]
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"46b56cd6-284d-4aee-8983-3121a3a90900\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"9f734648-e468-4853-ad32-be901d600a3e\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"0fe351d0-867b-4000-9629-83ce3b7fb04e\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"c895e8f3-ec43-443c-bcc1-cff2e17598e6\"}"
-				},
-				"url": {
-					"raw": "{{endpoint}}/json/",
-					"host": [
-						"{{endpoint}}"
-					],
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "201"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_translate\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"sources/ilhavo-editor\",\"spawn\":\"no\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"918abdae-051e-4d38-a980-ff4fb4b9caa4\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "201"
-					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_translate\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"sources/ilhavo-editor\",\"spawn\":\"no\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"df041657-f4bd-4e0c-a644-93eacdeb0684\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{endpoint}}/json/",
-					"host": [
-						"{{endpoint}}"
-					],
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "201"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_translate\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"sources/ilhavo-editor\",\"spawn\":\"no\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"68775b97-2754-4888-9d5c-8062646cfb29\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"579abe94-dd6b-41a8-aebb-5cce9ff0f606\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"7d4ae244-8ebb-4b08-9f35-c55995740265\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"c6b55052-d4d9-461f-862e-fb3748e55a5e\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_get\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"\",\"recurse\":\"yes\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"5925afa4-de50-4c26-bb89-e4cd1608bb9a\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "177"
-					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"method\": \"translations_get\",\n    \"jsonrpc\": \"2.0\",\n    \"params\": {\n        \"path\": \"\",\n        \"recurse\": \"yes\",\n        \"token\": \"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"\n    },\n    \"id\": \"aefe97a5-16dc-471b-962e-16e04980bbde\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{endpoint}}/json/",
-					"host": [
-						"{{endpoint}}"
-					],
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/json/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "connection",
-						"value": "close"
-					},
-					{
-						"key": "content-length",
-						"value": "213"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "host",
-						"value": "localhost:8088"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"method\":\"translations_translate\",\"jsonrpc\":\"2.0\",\"params\":{\"path\":\"sources/ilhavo-editor/b1900_1.cli\",\"spawn\":\"no\",\"token\":\"d34f954a0617c52dd53d2f7b9a76afa01d566c01\"},\"id\":\"bbe8a10f-b707-4bac-b107-2f02e93d2525\"}"
-				},
-				"url": {
-					"raw": "/json/",
-					"path": [
-						"json",
-						""
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"auth": {
