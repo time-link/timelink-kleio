@@ -349,9 +349,8 @@ file_attributes(F,[name(N),
     format_time(string(RFC),'%a, %d %b %Y %T GMT',T), 
     format_time(string(ISO), '%FT%T%:z',T),
     size_file(F,S),
-    more_attributes(F,T,E,More),!. % get more attributes specific of the file type TODO: pass file time (T) to allow caching
+    more_attributes(F,T,E,More),!. % get more attributes specific of the file type
 
-% TODO: add extra time parameter and cache results globally. set_shared_prop(F,more_attributes,cache(T,[errors(E),....]), and a first clause get_shared_prop... if Cached > T ...)
 more_attributes(F,T,err,MoreAttr):-
     get_shared_prop(F,more_attributes,cached(T1,MoreAttr)),
     format_time(string(TS),'%Y-%m-%d %H:%M:%S',T1), 
