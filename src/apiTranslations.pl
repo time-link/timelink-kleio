@@ -43,7 +43,7 @@
 % $ echo     : if yes the "rpt" file will include the source lines
 % $ recurse  : descend into tsub directories (default no)
 % $ status: filter files by translation status.
-% $ spawn     : if yes the files are distributed to diferent workes and translated in parallell.
+% $ spawn    : if yes the files are distributed to different workers and translated in parallell.
 %               if no (default) the files will be translated by a single worker, with the stru file being processed 
 %               only once, at the start of the translation. In multi-user environment spawn=no should be used, so that
 %               different users can accesss freee workers more easily.

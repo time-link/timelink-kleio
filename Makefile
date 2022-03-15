@@ -184,7 +184,15 @@ bootstrap-token:
 	   http://localhost:$$KLEIO_EXTERNAL_PORT/json/
 
 kleio-stop:
-	@export KLEIO_USER=$$(id -u):$$(id -g); docker compose stop
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
+	@source .env; \
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
+	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
+	export KLEIO_USER=$$(id -u):$$(id -g);\
+	docker compose stop
+	
 
 kleio-start: kleio-run
 
@@ -196,6 +204,14 @@ compose-up:
     
 test-semantics: .PHONY
 	@cd tests; ./scripts/run_tests.sh
+
+test-api: .PHONY
+	@export KLEIO_ADMIN_TOKEN=mytoken;\
+      newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"
+	@echo To run api tests install newman 
+	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
+	@echo Kleio server must be running. 
+	@echo See tests/README.md for tips
 
 docs: .PHONY
 	@echo "Requires postman_doc_gen https://github.com/karthiks3000/postman-doc-gen"

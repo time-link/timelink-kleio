@@ -22,7 +22,7 @@ run_debug_server:-
     print_server_config,
     log_debug("server config printed",[]),
     set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host'sIP)
-    restServer:start_debug_server, % we currently do not use this, because there is no way to stop it programmatically
+    restServer:start_debug_server, % we keep this for the semantic tests scripts until we find a better way
     restServer:start_rest_server,!.
 
 %% run_server is det.
@@ -82,7 +82,7 @@ wait_for_idle(Secs) :- log_info('Rest Server idle for ~w seconds',[Secs]).
 % $ KLEIO_CONF_DIR        : conf/kleio
 % $ KLEIO_STRU_DIR        : conf/kleio/stru/
 % $ KLEIO_TOKEN_DB        : conf/kleio/token_db 
-% $ KLEIO_DEBUGGER_PORT   : 4000 DEPRECATED
+% $ KLEIO_DEBUGGER_PORT   : 4000
 % $ KLEIO_SERVER_PORT     : 8088
 % $ KLEIO_WORKERS         : 6
 % $ KLEIO_IDLE_TIMEOUT    : 60
@@ -164,7 +164,6 @@ stop_server:-
 %% stop_debug_server is det.
 %
 % Stops currently running debug server on port 4000.
-% deprecated
 stop_debug_server:-
     restServer:default_value(server_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
@@ -183,15 +182,30 @@ mhk_home:-
 test_escritura:-
     set_log_level(debug),
     restServer:translate(
-            './tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli',
+            './tests/kleio-home/sources/api/varia/auc_cartulario18.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+% testing other tricky c
+test_ucalumni:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/varia/auc-alunos-264605-A-140337-140771.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
+test_ivcc:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/varia/ivcc.cli',
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
 
-test_teste:-
+test_quotes:-
+    set_log_level(debug),
     restServer:translate(
-            './tests/kleio-home/sources/api_tests/testes/sources/clioPPTestes/teste.cli',
+            './tests/kleio-home/sources/api/varia/quotes.cli',
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
+
 
 
 show_prolog_stack:-
@@ -224,24 +238,27 @@ test_setup(EndPoint,Token):-
     format('Test dir: ~w~n',[TestPath]),
     working_directory(_,TestPath),
     PORT=8989,
-    Token = 'anythingwilldo',
+    Token = 'mytoken',
     setenv('KLEIO_SERVER_PORT', PORT),
     setenv('KLEIO_ADMIN_TOKEN',Token),
     setenv('KLEIO_DEBUGGER_PORT',0),
     catch(run_debug_server,E,writeln(E)),
-    concat('http://localhost:',PORT,EndPoint).
+    concat('http://localhost:',PORT,EndPoint),
+    (delete_test_sources(EndPoint,Token);true),
+    (copy_test_sources(EndPoint,Token);true).
 
 test_cleanup:-
     get_value(dir_before_tests,CD),
     catch(stop_server,_,true),
     working_directory(_,CD).
 
-rest_call(Protocol,Host,Method, Function,Path, Params,Token, Accept,Response):-
+rest_call(Protocol,Host,Method, Function,Path, Params,Token, Accept,Response,Status):-
     make_uri(Protocol,Host,Function,Path,Params,Uri),
     http_get(Uri, Response, 
         [   method(Method),
             authorization(bearer(Token)),
-            request_header(accept=Accept)]).
+            request_header(accept=Accept),
+            status_code(Status)]).
 
 %
 make_uri(S,H,F,P,Par,Uri):-
@@ -263,28 +280,48 @@ server_results([],[]).
 
 test_case(translations,File,Stru):- 
     Stru = 'system/conf/kleio/stru/gacto2.str',
-    translate_file(File,true).
+    translate_file(File,Flag),
+    (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
-translate_file('sources/test_translations/varia/auc_cartulario18.cli',false).
-translate_file('sources/test_translations/varia',false).
-translate_file('sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/reference_sources/paroquiais/baptismos/bapteirasproblem1.cli',false).
-translate_file('sources/reference_sources/paroquiais/baptismos/bapt1714.cli',false).
-translate_file('sources/test_translations/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/reference_translations/varia/lrazao516pe.cli',true).
+translate_file('sources/api/varia/auc_cartulario18.cli',true).
+translate_file('sources/api/varia',true).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',true).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
+translate_file('sources/api/varia/lrazao516pe.cli',true).
 
+delete_test_sources(EndPoint,Token):-
+    uri_components(EndPoint,UComponents),
+    uri_data(scheme,UComponents,Scheme),
+    uri_data(authority,UComponents,Host),
+    rest_call(Scheme,Host,'DELETE',directories,'sources/api',[id=1212,force=yes],Token,'application/json',Response,Status),
+    server_response(Response,Id,Version,Results),
+    writeln('OK got answer'-Id-Version-Status),    
+    print_term(Results,[]),!.
+copy_test_sources(EndPoint,Token):-
+    uri_components(EndPoint,UComponents),
+    uri_data(scheme,UComponents,Scheme),
+    uri_data(authority,UComponents,Host),
+    rest_call(Scheme,Host,'POST',directories,'sources/api',[id=1212,origin='sources/reference_sources'],Token,'application/json',Response,Status),
+    server_response(Response,Id,Version,Results),
+    writeln('OK got answer'-Id-Version-Status),    
+    print_term(Results,[]),!.
 :-begin_tests(server).
 
-test(translations,[setup(test_setup(EndPoint,Token)),forall(test_case(translations,File,Stru)),cleanup(test_cleanup)]):- 
+test(translations,[
+            setup(test_setup(EndPoint,Token)),
+            forall(test_case(translations,File,Stru)),
+            cleanup(test_cleanup)]):- 
     uri_components(EndPoint,UComponents),
     writeln(UComponents),
     uri_data(scheme,UComponents,Scheme),
     writeln(Scheme),
     uri_data(authority,UComponents,Host),
     writeln(Host),
-    rest_call(Scheme,Host,'POST',translations,File,[id=1212,str=Stru],Token,'application/json',Response),
+    rest_call(Scheme,Host,'POST',translations,File,[id=1212,str=Stru],Token,'application/json',Response,Status),
     server_response(Response,Id,Version,Results),
-    writeln('OK got answer'-Id-Version),
+    writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.
     %dict_create(Dict,response,Data),
     %format('~n~nid:~w~n,~k',[Dict.id,Dict]).

@@ -193,10 +193,12 @@ print_server_config:-
     kleiofiles:kleio_stru_dir(StruDir),
     kleiofiles:kleio_default_stru(Stru),
     kleiofiles:kleio_token_db(Tokens),
+    tokens:ensure_db,
     (tokens:token_db_attached(TokensCurrent);TokensCurrent=none),
     kleiofiles:kleio_source_dir(Sources),
     (getenv('KLEIO_DEBUG',DEBUG);DEBUG=false),
-    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN) -> sub_atom(ATOKEN,0,5,_,AT5);AT5='No token in environment'),
+    ((getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,AT5))
+        -> true ;AT5='No token in environment'),
     clio_version(V),
     format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
@@ -207,14 +209,42 @@ print_server_config:-
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
-    format('kleio_default_stru: ~t~w~n',[Stru]),
+    format('Kleio_default_stru: ~t~w~n',[Stru]),
     format('Kleio_admin_token: ~t~w~n',[AT5]),
-    format('kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
-    (get_shared_value(bootstrap_token,BT)->format('Bootstrap token: ~w~n',[BT]);true),
+    format('Kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
+    get_token_db_status(TDBS),
+    format('Token db status: ~t~w~n',[TDBS]),
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
     !.
+
+admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
+admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
+bootstrap_token_exists:- tokens:user_token(_,bootstrap,_).
+bootstrap_token_ok :- tokens:user_token(T,bootstrap,_), is_api_allowed(T,generate_token).
+tokens_exist :- tokens:ensure_db, tokens:user_token(_,U,_), U \= bootstrap,!.
+
+get_token_db_status('Tokens exist') :- tokens_exist.
+get_token_db_status('No tokens defined but KLEIO_ADMIN_TOKEN env has valid value') :- 
+    \+ tokens_exist,
+    admin_token_ok,!.
+get_token_db_status('No tokens defined and bad KLEIO_ADMIN_TOKEN') :- 
+    \+ tokens_exist,
+    admin_token_exists,
+    \+ admin_token_ok,!.
+get_token_db_status('Waiting to generate first token') :- bootstrap_token_ok,!.
+get_token_db_status('No tokens, bootstrap token expired. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    bootstrap_token_exists,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Token generation blocked. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    \+ tokens_exist,
+    \+ admin_token_ok,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Could not determine token status').
+
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dispatcher zone
@@ -231,15 +261,19 @@ print_server_config:-
 
 %! start_debug_server is det.
 %
-% Starts a debugging server in port 4000.
+% Starts a debugging server in port default_value(server_port,Port).
+% if Port = 0 server not created
 % Usefull to test and debug when no console available.
 start_debug_server:-
      default_value(server_port,Port),
+     Port \= 0,
     % options are set in serverStart.pl file
      (get_prop(prolog_server,options,Options);Options=[allow(ip(_,_,_,_))]),
      log_debug('Starting DEBUG server on port ~w with ~w options. ~n',[Port,Options]),
      prolog_server(Port,Options),
      log_debug('Debug server started in port ~w~n',[Port]).
+start_debug_server:-
+    log_debug('Debug server NOT started (port=0)~n',[]).
 
 %% start_rest_server is det.
 %
@@ -260,7 +294,7 @@ start_rest_server:-
 server(Port) :-
         default_value(timeout,Number),
         http_server(http_dispatch,
-                    [ port(Port),timeout(Number) % 15 minutes timeout on requests
+                    [ port(Port),timeout(Number) % 15 secs timeout on requests
                     ]).
 
 %% server_idle(+Seconds) is det.
@@ -324,11 +358,15 @@ check_token_database(has_tokens):-
     (tokens:user_token(_,_,_) -> 
         true
     ;
-        (% no tokens defined. We will generate a randon token with generate_token priviliges)
-        random(1,32767,R),
-        atom_number(A,R),
-        tokens:generate_token(A,[api([generate_token])],Token),
-        put_shared_value(bootstrap_token,token(Token))
+        (% no tokens defined. We will generate a 'bootstrap' token with generate_token privilegies, and 5m life
+        A = bootstrap,
+        tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
+        put_shared_value(bootstrap_token,token(Token)),
+        kleiofiles:kleio_conf_dir(KConf),
+        atom_concat(KConf,'/.bootstrap_token',BTokenFile),
+        open(BTokenFile,write,F,[]),
+        write(F,Token),
+        close(F)
         )
     ).
 
@@ -392,7 +430,7 @@ mime:mime_extension(Ext,Mime):-
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
 %   
-%   The request can contain aditional parameters enconded in the http standard way.
+%   The request can contain aditional parameters encoded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
 %
@@ -408,7 +446,8 @@ process_rest(RestRequest):-
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
-    log_debug('~n~nREQUEST rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('~n~nREQUEST-REST received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -419,25 +458,6 @@ process_rest_request(Request):-
     log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
-
-
-% TODO: Deprecated, remove when not needed.   
-process_rest_request(Request):-
-    rest_decode_command(Request,Id,Method,Params),
-    log_debug('~nProcessing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
-    rest_exec(Method,Id,Params,Results),
-    (select(token_info(_),Params,P);P=Params), % we remove the token info introduced by json_decode_command
-    (select((token=_),P,P2);P2=P),% and also the original token in the request
-    (select(request(_),P2,ParamsClean);ParamsClean=P2),
-    (json_out(Params) ->
-        (print_content_type(json),
-         return_sucess(json,Method,Id,ParamsClean,Results))
-    ;
-        (return_sucess(rest,Method,Id,ParamsClean,Results)
-        ;
-        return_sucess(rest,default,Id,ParamsClean,Results))
-    ). % if no specific return predicate use the default
-
 
 
 %% json_out(Params) is det.
@@ -605,7 +625,8 @@ process_json_rpc_(Request):-
     catch(http_read_json(Request, JSONPayload),ParseError,
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
-    log_debug('JSONPayload: ~w~n',[JSONPayload]),
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('JSON-RPC: ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)

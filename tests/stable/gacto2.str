@@ -37,7 +37,7 @@ note
 
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
- position=structure,translator,obs;
+ position=structure,translator;
  part=historical-source,fonte,authority-register, identifications
 
 note ============================================================
@@ -208,7 +208,7 @@ note ============================================================
 
 part	name=attribute ;
  guaranteed=type,value ;
- also=obs,date ;
+ also=obs,date,id ;
  position=type,value,date
 
 note ============================================================
@@ -217,7 +217,7 @@ note ============================================================
 
 part 	name=relation ;
  guaranteed=type,value,destname,destination ;
- also=obs,date
+ also=obs,date,id
 
 note
 note =============================================================
@@ -272,12 +272,13 @@ element name=ref
 element name=value
 element name=origin
 element name=destination
-element name=destname
 element name=entity
 element name=same_as
 element name=xsame_as
 element name=name
 element name=sex
+element name=destname
+element name=destination
 element name=summary;
 element name=description;
 element name=replace;
@@ -313,7 +314,7 @@ part	 name=fonte;
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
 	  memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-	  pas,integr,lcc, movacao,geodesc
+	  pas,lcc,integr,movacao,geodesc
 
 element name=substitui; source=replace
 
@@ -389,23 +390,23 @@ part name=integr;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
      also=obs, data
-
-part name=lcc;
-    source=pt-acto;
-    arbitrary=n
      
 part name=acao; source=object;
           arbitrary=referido,referida, atr, rel;
           guaranteed=name;
           also=id, obs, data, mesmo_que
           
-part name=movacao; 
-     source=pt-acto;
-     arbitrary=referido, referida, acionista, acionistaf, ls, rel, acao;
-     position=id,dia,mes,ano;
-     guaranteed=id,dia,mes,ano;
-     also=obs, data
+          
+part name=lcc; 
+    source=pt-acto;
+    arbitrary=n
+
      
+part name=acao; 
+     source=object;
+          arbitrary=referido,referida, atr, rel;
+          guaranteed=name;
+          also=id, obs, data, mesmo_que
 
 
 note ****************************************************************
@@ -785,7 +786,7 @@ part name=lista; source=pt-acto;
      guaranteed=id,dia,mes,ano;
      position=id,dia,mes,ano;
      arbitrary=n,referido,referida,celebrante,evento,colega;
-     also=obs,loc
+     also=obs,loc,tipo,data
 
 note *****************************************************************
 note Lista de ordenancas (criada por Ana Isabel 16-10-2007)
@@ -2810,7 +2811,7 @@ note *****************************************************************
 part name=ls; source=attribute;
         position=tipo,valor,data;
         guaranteed=tipo,valor;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes
 part name=atr; source=ls
 
@@ -2820,5 +2821,5 @@ note *****************************************************************
 part name=rel; source=relation;
         position=tipo,valor,nomedest,iddest;
         guaranteed=tipo,valor,nomedest,iddest;
-        also=data,obs;
+        also=data,obs,id;
         identification=yes

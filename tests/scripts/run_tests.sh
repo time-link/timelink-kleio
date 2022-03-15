@@ -14,6 +14,7 @@ echo "Reference sources: $REFERENCE_SOURCES"
 echo "Test Translations: $TEST_TRANSLATIONS"
 echo "(Remote path)    : $TEST_TRANSLATIONS_REMOTE"
 echo "Translator source: $TRANSLATOR_SOURCE"
+echo "Stable translator: ${STABLE_CODE_DIR} "
 echo
 echo "Runing kleio translator tests. Run this command from clio/tests e.g. ./scripts/run_tests.sh"
 echo `date` `pwd` > $REPORT_FILE

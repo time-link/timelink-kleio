@@ -47,7 +47,10 @@ create_workers(N):-
         create_workers(Mode,N).
 
 create_workers(message,N):-
-        message_queue_create(_,[alias(jobs)]),
+        (message_queue_property(_,alias(jobs)) -> 
+            true
+          ;
+            message_queue_create(_,[alias(jobs)])),
         forall(between(1, N, _),
                thread_create(do_work, _, [])).
 

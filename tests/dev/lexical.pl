@@ -58,7 +58,7 @@ toks(F,[TOK])-->tok(F,TOK).
 %******************************************************
 %  %
 tok(dat,(tquote,V)) -->tquote(V),{!}.
-tok(dat,(dqstring,V)) -->dqstring(V).
+tok(dat,(dquote,V)) -->dquote(V).
 tok(dat,(names,V))-->names(V),!.
 tok(dat,(fill,V))-->fillsp(V),!.
 tok(dat,(dataflag,N))-->[(__C,T)],{data_flag(N,T),!}.
@@ -166,6 +166,12 @@ numberChar(C) --> [(C,digit)]
 %  quoted strings with double quotes
 %******************************************************
 %  %
+% in data files we allow multiline quoted strings
+%  so we just make the quote a token and dataSyntax will hand the rest
+dquote(V) --> [(Q,doblequote)],{name(V,[Q]),!}.
+
+% in command files we process quotes within a line. And provide the quoted string as a token
+
 dqstring(V)-->[(_,doblequote)],!,qstr(doblequote,L),
              {!,qname(L,V)}.
 qname(Chars,Quoted) :- name(S,Chars),
@@ -174,7 +180,7 @@ qname(Chars,Quoted) :- name(S,Chars),
 
 qstr(Q,[])   -->[(_,Q)],!.
 qstr(Q,[C|R])  -->[(_,backslash),(C,_)],qstr(Q,R),!.
-%qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
+qstr(__Q,[])   -->[(_,return)],{!,error_out(' Closing quote not found')}.
 qstr(Q,[C|R])-->qstrChar(Q,C),!,qstr(Q,R).
 qstr(Q,[C])  -->qstrChar(Q,C),!.
 qstrChar(Q,C)-->[(C,T)],{T \= Q}.
