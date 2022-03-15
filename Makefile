@@ -34,6 +34,7 @@ help: .PHONY
 	@echo "  make kleio-run            start server with .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-stop           stop running server"
 	@echo "  make test-semantics       run semantic tests"
+	@echo "  make test-api             run api tests"
 
 
 
