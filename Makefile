@@ -159,6 +159,23 @@ show-env:
 	@source .env;\
 	declare | grep "^KLEIO"; 
 
+kleio-stop:
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
+	@source .env; \
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
+	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
+	export KLEIO_USER=$$(id -u):$$(id -g);\
+	docker compose stop
+	
+
+kleio-start: kleio-run
+
+start: kleio-run
+
+stop: kleio-stop
+
 bootstrap-token:
 	@source .env; export BTOKEN=$$(cat "$$KLEIO_HOME_DIR/system/conf/kleio/.bootstrap_token");\
 	echo "bootstrap token: $$BTOKEN";\
@@ -184,31 +201,14 @@ bootstrap-token:
 	 ],"life_span":300},"token":"'"$$BTOKEN"'"}}'\
 	   http://localhost:$$KLEIO_EXTERNAL_PORT/json/
 
-kleio-stop:
-	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
-	@source .env; \
-	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
-	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
-	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
-	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
-	export KLEIO_USER=$$(id -u):$$(id -g);\
-	docker compose stop
-	
-
-kleio-start: kleio-run
-
-start: kleio-run
-
-stop: kleio-stop
-
 compose-up:
     
 test-semantics: .PHONY
 	@cd tests; ./scripts/run_tests.sh
 
-test-api: .PHONY
-	@export KLEIO_ADMIN_TOKEN=mytoken;\
-      newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"
+test-api: kleio-run
+	@source .env; \
+    newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"
 	@echo To run api tests install newman 
 	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
 	@echo Kleio server must be running. 
