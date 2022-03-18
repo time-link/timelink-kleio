@@ -1487,6 +1487,17 @@ part name=pas; source=pt-acto;
      
     
 note *****************************************************************
+note Wicki, Josef, e C. R Boxer. Liste der Jesuiten-Indienfahrer, 
+note        1541-1758. Münster: Aschendorffsche, 1967.
+note *****************************************************************
+part name=wviagem; source=pt-acto;
+     guaranteed=id,dia,mes,ano,barco;
+     position=id,dia,mes,ano,barco;
+     also=obs;
+     arbitrary=n,referido,referida;
+
+
+note *****************************************************************
 note Actores
 note    Os grupos seguintes definem o modo como os parentem se podem
 note    suceder aos actores dos actos.
