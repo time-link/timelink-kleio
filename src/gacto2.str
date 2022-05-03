@@ -46,7 +46,7 @@ note ============================================================
 
 part name=historical-source;
   guaranteed=id;
-  also=type,date,year,loc,ref,obs,replace;
+  also=type,date,year,loc,ref,obs,replace, kleiofile;
   position=id,year,type,ref;
   part=historical-act
 
@@ -279,9 +279,17 @@ element name=name
 element name=sex
 element name=destname
 element name=destination
-element name=summary;
-element name=description;
-element name=replace;
+element name=summary
+element name=description
+element name=replace
+element name=inside
+element name=class
+element name=level
+element name=line
+element name=groupname
+element name=replace
+element name=kleiofile
+
 
 note ================================================
 note ======= END OF SYSTEM DEFINITIONS ==============
