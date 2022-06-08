@@ -179,7 +179,7 @@ default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_numbe
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
 default_value(timeout,900):-!.
-default_value(cors,CorsList):- getenv('KLEIO_CORS_SITES',CorsList).
+default_value(cors,CorsList):- getenv('KLEIO_CORS_SITES',ListString),atomic_list_concat(CorsList, ',', ListString).
 default_value(cors,['*']) :- !.
 
 %! print_server_config is det.

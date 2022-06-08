@@ -99,7 +99,7 @@ Easiest way:
         
       setenv('KLEIO_ADMIN_TOKEN','mytoken').    
       setup_and_run_server(run_debug_server,[port(8089)]).
-      
+
 + note that the server started in this way does not read the content 
   of the .env file. 
 + set spy points with tspy(_predicate_) 
@@ -174,6 +174,10 @@ Type ```make``` to see more targets that help in development.
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
 
+### 2022-06-08 v10.17.456
+
+Adds cors capability. Set env KLEIO_CORS_SITES with 
+comma separeted list of allowed sites or "*" for all.
 
 ### 2022-03-17 v10.16.452
 
