@@ -96,11 +96,10 @@ Easiest way:
 + open serverStart.pl on `VSCode` 
 + load the file with Option+X+L
 + in the Prolog terminal that appears do 
-  
-
-      setenv('KLEIO_ADMIN_TOKEN','your-token-anything-with-more-than-5-chars-will-work').
+        
+      setenv('KLEIO_ADMIN_TOKEN','mytoken').    
+      setup_and_run_server(run_debug_server,[port(8089)]).
       
-      run_debug_server.
 + note that the server started in this way does not read the content 
   of the .env file. 
 + set spy points with tspy(_predicate_) 
