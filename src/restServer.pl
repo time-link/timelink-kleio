@@ -142,6 +142,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 :- use_module(library(http/json)).
 :- use_module(library(http/json_convert)).
 :- use_module(library(http/http_json)).
+:- use_module(library(http/http_cors)).
 :- use_module(library(debug)).
 :- use_module(library(pprint)).
 :- use_module(library(option)).
@@ -178,6 +179,8 @@ default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_numbe
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
 default_value(timeout,900):-!.
+default_value(cors,CorsList):- getenv('KLEIO_CORS_SITES',CorsList).
+default_value(cors,['*']) :- !.
 
 %! print_server_config is det.
 %
@@ -188,6 +191,7 @@ print_server_config:-
     restServer:default_value(rest_port,RP),
     restServer:default_value(workers,Workers),
     restServer:default_value(timeout,Timeout),
+    restServer:default_value(cors,Cors),
     kleiofiles:kleio_home_dir(Home),
     kleiofiles:kleio_conf_dir(Conf),
     kleiofiles:kleio_stru_dir(StruDir),
@@ -206,6 +210,7 @@ print_server_config:-
     format('REST port: ~t~w~n',[RP]),
     format('Workers: ~t~w~n',[Workers]),
     format('Timeout: ~t~w~n',[Timeout]),
+    format('Cors: ~t~w~n',[Cors]),
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
@@ -282,10 +287,12 @@ start_debug_server:-
 start_rest_server:-
     default_value(rest_port,Port),
     default_value(workers,Number),
+    default_value(cors,Cors),
     log_debug('Starting REST server on port ~w with ~w worker threads. ~n',[Port,Number]),
     put_shared_value(pool_mode,message),
     set_shared_count(rest_request_count,1),
     set_shared_count(jsonrpc_request_count,1),
+    http:set_setting(cors,Cors),
     create_workers(Number),
     check_token_database,
     server(Port),
@@ -456,6 +463,7 @@ process_rest(RestRequest):-
 process_rest_request(Request):-
     rest_decode_command(Request,Id,method(Entity,Method,Object),Params),
     log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
+    cors_enable,
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
 
@@ -606,6 +614,7 @@ rest_exec(Operation,Id,Param,Results):-
 process_json_rpc(Request):-
     %print_content_type(json),
     inc_shared_count(jsonrpc_request_count,_),
+    cors_enable,
     catch(process_json_rpc_(Request),
         Error,
         process_json_rpc_error(Error)

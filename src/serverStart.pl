@@ -237,7 +237,7 @@ test_setup(EndPoint,Token):-
     concat(ClioDir,'/tests/',TestPath),
     format('Test dir: ~w~n',[TestPath]),
     working_directory(_,TestPath),
-    PORT=8989,
+    PORT=8089,
     Token = 'mytoken',
     setenv('KLEIO_SERVER_PORT', PORT),
     setenv('KLEIO_ADMIN_TOKEN',Token),
