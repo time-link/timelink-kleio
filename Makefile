@@ -18,7 +18,7 @@ all: help
 help: .PHONY
 	@echo "usage:"
 	@echo "  make build-image          build docker image and tag with new build number"
-	@echo "  make show-patch           return the current build number"
+	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
 	@echo "  make show-current         return the current version, build number"
 	@echo "  make show-last            return the last image build date, version, build number"

@@ -61,14 +61,14 @@ Main services privided by the API are:
 
 ## Api documentation
 
-API documentation is available at docs/api/index.html
+API documentation is available at [docs/api/index.html](docs/api/index.html)
 
 ## Running the server with docker
 
 * Copy or rename  `.env-sample`  to `.env`.
 * Change variables according to your setup. 
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
-   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `joaquimrcarvalho/kleio-server:latest` is used. 
+   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used. 
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
@@ -116,9 +116,8 @@ After building the image with `make image` run a shell in the kleio-server conta
 At the prompt start swi Prolog and change to the kleio-home directory
 
       # swipl -f serverStart.pl
-
-      .run_debug_server
       ?- working_directory(_,'/kleio-home').
+      ?- run_debug_server.
 
 ### Tests
 
@@ -174,11 +173,14 @@ Type ```make``` to see more targets that help in development.
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
 
+### 2022-06-15 10.18.463
+
+Fixes CORS pre-flight requests.
+
 ### 2022-06-08 v10.17.456
 
 Adds cors capability. Set env KLEIO_CORS_SITES with 
 comma separeted list of allowed sites or "*" for all.
-
 ### 2022-03-17 v10.16.452
 
 * More consistent usage of semantic versioning.
@@ -189,7 +191,6 @@ e.g. "10", "10.16" and "10.16.452"
 
 * Added make targets for api-testing. Type "make help" for a list of targets
 * See `development` section bellow.
-
 
 ### 2022-01-20 v10.15 
   * generates a bootstrap token when run with no tokens defined. The bootstrap token expires after 5 minutes.
