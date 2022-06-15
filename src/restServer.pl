@@ -258,9 +258,9 @@ get_token_db_status('Could not determine token status').
 % :- http_handler(root('rest/files/'),handle_files_request,[prefix,methods([get,put,post,delete])]). %workaround could not make it work as normal rest
 % :- http_handler(root('rest/structures/'),serve_structure_file,[prefix,method(get)]). % same workaround
 % :- http_handler(root('rest/upload'),upload,[id(upload),prefix,method(post)]).
-:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post])]).
-:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),method(post)]). % time limit in seconds
-:- http_handler(root(.), home_page, []).
+:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post,options])]).
+:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),methods([post,options])]). % time limit in seconds
+:- http_handler(root(.), home_page, [methods([get,options])]).
 :- http_handler(root('forms/upload/'),upload_form,[]). % generate a form for uploading files
 :- http_handler(root(echo), echo_request, [prefix]).
 
@@ -377,10 +377,6 @@ check_token_database(has_tokens):-
         )
     ).
 
-%% home_page(Request) is det.
-%
-% Generate a home page for the server.
-%
 home_page(_):-
         format('Content-type: text/html~n~n', []),
         format('<html>~n', []),
@@ -448,7 +444,15 @@ mime:mime_extension(Ext,Mime):-
 %   are caught by the server top level code and trigger the output. This seems to be used in cases where
 %   SWI will take care of the whole output, like http_reply_file/3 and http_reply_from_files/3.
 %
+process_rest(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([get,post,delete,put])
+                ]),
+    format('~n'). 
+
 process_rest(RestRequest):-
+    cors_enable(RestRequest,[methods([get,post,delete,put])]),
     inc_shared_count(rest_request_count,_),
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
@@ -463,7 +467,6 @@ process_rest(RestRequest):-
 process_rest_request(Request):-
     rest_decode_command(Request,Id,method(Entity,Method,Object),Params),
     log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
-    cors_enable,
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
 
@@ -486,7 +489,7 @@ json_out(Params):-
     option(json(false),Params), 
     !,fail.
 json_out(_):-
-    httpd_wrapper:http_current_request(Request),
+        httpd_wrapper:http_current_request(Request),
     option(accept(List),Request),
     member(media(text/plain,_,_,_),List),!,fail.
 json_out(_):-
@@ -611,10 +614,16 @@ rest_exec(Operation,Id,Param,Results):-
 % Handles single requests and batch requests.
 % Decodes the request into JSONPayload and passes it to either process_json_batch/1 or process_json_request/1 .
 %
+process_json_rpc(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([post])
+                ]),
+    format('~n'). 
 process_json_rpc(Request):-
     %print_content_type(json),
+    cors_enable(Request,[methods([post])]),
     inc_shared_count(jsonrpc_request_count,_),
-    cors_enable,
     catch(process_json_rpc_(Request),
         Error,
         process_json_rpc_error(Error)
@@ -874,6 +883,12 @@ return_sucess(json,upload,Id,_,Results):-
 % From: http://www.swi-prolog.org/howto/http/FileUpload.html
 % Generates a form to allow uploading of a file to the rest server
 %
+upload_form(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
 upload_form(Request) :-
     get_authorization_token(Request,Token),
     atomic_list_concat(['/rest/sources/uploads?token=',Token],URL),
@@ -1706,8 +1721,15 @@ rest_test(Request):-
     format('</html>~n').
 
 echo_request(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
+
+echo_request(Request) :-
         format('Content-type: text/html~n~n', []),
-        format('<html>~n', []),
+        format('<html><body>Echoing request~n', []),
         format('<table border=1>~n'),
         print_request(Request),
         format('~n</table>~n'),
@@ -1716,7 +1738,7 @@ echo_request(Request) :-
         format('<table border=1>~n'),
         print_streams;
         format('~n</table>~n'),
-        format('</html>~n', []).
+        format('</body></html>~n', []).
 
 print_request([]).
 print_request([H|T]) :-

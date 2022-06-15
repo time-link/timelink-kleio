@@ -28,7 +28,6 @@ run_debug_server:-
 %% run_server is det.
 % Activate a rest server.
 run_server:-
-    set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host's IP)
     restServer:start_rest_server,
     print_server_config,!.
 
