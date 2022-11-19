@@ -1,6 +1,6 @@
 # Kleio translation services for Timelink.
 
-`kleio-server` provides access to translation services of _Kleio_ files. 
+`kleio-server` provides access to translation services for _Kleio_ files. 
 
 ## About `Kleio` files
 
@@ -61,14 +61,14 @@ Main services privided by the API are:
 
 ## Api documentation
 
-API documentation is available at docs/api/index.html
+API documentation is available at [docs/api/index.html](docs/api/index.html)
 
 ## Running the server with docker
 
 * Copy or rename  `.env-sample`  to `.env`.
 * Change variables according to your setup. 
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
-   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `joaquimrcarvalho/kleio-server:latest` is used. 
+   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used. 
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
@@ -96,11 +96,10 @@ Easiest way:
 + open serverStart.pl on `VSCode` 
 + load the file with Option+X+L
 + in the Prolog terminal that appears do 
-  
+        
+      setenv('KLEIO_ADMIN_TOKEN','mytoken').    
+      setup_and_run_server(run_debug_server,[port(8089)]).
 
-      setenv('KLEIO_ADMIN_TOKEN','your-token-anything-with-more-than-5-chars-will-work').
-      
-      run_debug_server.
 + note that the server started in this way does not read the content 
   of the .env file. 
 + set spy points with tspy(_predicate_) 
@@ -117,9 +116,8 @@ After building the image with `make image` run a shell in the kleio-server conta
 At the prompt start swi Prolog and change to the kleio-home directory
 
       # swipl -f serverStart.pl
-
-      .run_debug_server
       ?- working_directory(_,'/kleio-home').
+      ?- run_debug_server.
 
 ### Tests
 
@@ -156,32 +154,52 @@ Type ```make``` to see more targets that help in development.
 
       % make
       usage:
-         make image                build docker image and tag with new build number
-         make build                return the current build number
-         make version              return the current version string (major.minor)
-         make current              return the current version, build number
-         make last                 return the last image build date, version, build number
-         make inc-NUMBER           increment version with NUMBER in major | minor
-         make token                generate token for KLEIO_ADMIN_TOKEN
-         make start                start Kleio server on docker (requires image)
-         make stop                 stop Kleio server
-         make docs                 generate api docs (requires postman_doc_gen and api files)
-         make tag-TAG              tag last image with TAG in latest | unique | stable
-         make push-TAG             push image with TAG in latest | unique | stable
-         make kleio-run            start server with .env config and tests/docker_compose.yaml
-         make kleio-stop           stop running server
-         make test-semantics       run semantic tests
+      make build-image          build docker image and tag with new build number
+      make show-patch           return the current build number
+      make show-version         return the current version string (major.minor)
+      make show-current         return the current version, build number
+      make show-last            return the last image build date, version, build number
+      make show-env             show KLEIO env variables currently defined
+      make inc-NUMBER           increment version with NUMBER in major | minor
+      make token                generate a string for KLEIO_ADMIN_TOKEN for .env file
+      make bootstrap-token      generate and register a token for 'admin' during bootstrap
+                                    (only if no tokens exist and server running < 5 minutes)
+      make docs                 generate api docs (requires postman_doc_gen and api files)
+      make tag-TAG              tag last image with TAG in latest | unique | stable
+      make push-TAG             push image with TAG in latest | unique | stable
+      make kleio-run | start    start server with .env config and tests/docker_compose.yaml
+      make kleio-stop | stop    stop running server
+      make test-semantics       run semantic tests
+      make test-api             run api tests (requires newman (npm install newman))
+## Release notes
 
-## History
+### 2022-06-15 10.18.463
 
-* 10.15 2022-01-20
+Fixes CORS pre-flight requests.
+
+### 2022-06-08 v10.17.456
+
+Adds cors capability. Set env KLEIO_CORS_SITES with 
+comma separeted list of allowed sites or "*" for all.
+### 2022-03-17 v10.16.452
+
+* More consistent usage of semantic versioning.
+* Now stable images are tagged with major version number, minor version number and patch
+e.g. "10", "10.16" and "10.16.452"
+* Development versions are only tagged with full patch tag, e.g. "10.16.452"
+### 2022-03-17 v10.16 build k448
+
+* Added make targets for api-testing. Type "make help" for a list of targets
+* See `development` section bellow.
+
+### 2022-01-20 v10.15 
   * generates a bootstrap token when run with no tokens defined. The bootstrap token expires after 5 minutes.
 
-* 10.14  2021-10-09
+### 2021-10-09
   * Better token generation, more secure
   * Add json representation of structure, STRU.json
   * Add env variable for admin token
   * Improved tests, new make target
-  * Fix old bug that kept ids files after translation
-  * Improve definition of bem, so that id at end, and field sizes increased
-  * Fix problem with warning on file name and id prefixes
+  * Fixed old bug that kept ids files after translation
+  * Improve definition of "bem", so that id at end, and field sizes increased
+  * Fixed problem with warning on file name and id prefixes

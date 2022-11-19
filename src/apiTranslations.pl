@@ -247,7 +247,7 @@ spawn_work(no,AbsFiles,StruFile,Echo,[job(JobId,AbsFiles)]):-
     post_job(translate(AbsFiles,StruFile,Echo),JobId).
 
 %! get_stru(+Params,+Id,-StruFile) is det.
-% Get then path to the structure file associated with a translation request
+% Get the path to the structure file associated with a translation request
 % Parameters:
 %  structure: structure file to be used in the translation
 %

@@ -236,8 +236,8 @@ check_age(Options):-
     When == 0.
 
 check_age(Options):-
-    option(life_span(S),Options,eternal),
-    S == eternal.
+    option(life_span(S),Options,0),
+    S == 0.
 
 check_age(Options):-
     option(created(T0),Options),
