@@ -38,6 +38,9 @@ run_debug_server:-
 % mhk.kleio.service=http://localhost:8088
 % if mhk is running outside docker.
 
+run_from_mhk_home:-
+    run_from_mhk_home(_,_).
+
 run_from_mhk_home(MH,P):-
     mhk_home(MH),
     (var(P)->P=8088;true),
@@ -190,7 +193,7 @@ stop_debug_server:-
 %
 % Set or infer mhk-home path and 
 % change working directory to it.
-% if Path is not bound then it will
+% if Path is not und then it will
 % be bound 'mhk-home' dir user_home (getenv('HOME')) 
 % If bound change working dir to Path
 %
