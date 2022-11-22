@@ -364,7 +364,7 @@ check_token_database(exists):-
 check_token_database(bootstrap):-
     % Generate a 'bootstrap' token with generate_token privilegies, and 5m life
     A = bootstrap,
-    tokens:invalidate_user(A),
+    (tokens:invalidate_user(A);true),
     tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
     put_shared_value(bootstrap_token,token(Token)),
     kleiofiles:kleio_conf_dir(KConf),
