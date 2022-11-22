@@ -106,6 +106,7 @@ Easiest way:
 + Clients can access the kleio-server using the token set above. 
 
 See the `README.md` file inside the `tests` directory for more information on testing.
+
 ### Debugging inside the docker container
 
 After building the image with `make image` run a shell in the kleio-server container
@@ -118,6 +119,53 @@ At the prompt start swi Prolog and change to the kleio-home directory
       # swipl -f serverStart.pl
       ?- working_directory(_,'/kleio-home').
       ?- run_debug_server.
+
+### Debugging together with MHK
+
+Currently MHK debugging is done by starting
+the current build together with the other
+containers (mySQL/MariaDB, Caddy, Portainer and Kleio)
+through a Docker compose file and by attaching the Intellij 
+IDEA debugger to the running MHK app.
+
+The recomended way is to stop the kleio server that is
+started with MHK and start a locall server in VSCode as
+explained above, and associating it with the same
+mhk-home directory of the MHK beeing jointly tested, 
+as described bellow.
+
+In order for MHK to connect to the local running Kleio server the property `mhk.kleio.service`
+   should be set to  http://host.docker.internal:8088
+   in the file mhk-home/system/conf/mhk_system.properties
+
+This mean that the MHk instance running in Docker will try
+to connect to port 8088 in the local host. Values of
+http://127.0.0.1:8088 ot http://localhost:8088
+
+The sequence should be:
+1. Build new docker image of MHK
+2. Update local MHK install with 
+   local image: `mhk update --local` (make sure
+   mhk is updating from latest image wiht `mhk use-tag latest`)
+3. Start mhk with `mhk start`
+4. Stop the kleio server `mhk stop kleio`
+
+Steps 1-3 above are normally automatted inside Intellij
+IDEA with a Debug configuration.
+
+Start the Kleio server inside VSCode:
++ install `VSC-Prolog` extension in `VSCode`
++ open serverStart.pl on `VSCode` 
++ load the file with Option+X+L
++ in the Prolog terminal that appears do 
+  
+      run_from_mhk_home(H,P)
+
+This will start a kleio server from USER_HOME/mhk-home
+running in port 8088. If mhk-home used by MHK is at
+a different location pass the path in H. In a port
+other than 8088 is to be used pass it in P.
+
 
 ### Tests
 
