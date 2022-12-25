@@ -211,6 +211,9 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 * git tag with current version (`make show-current`)
 * Push to github with tags
 * Push to docker with `make push-TAG` with TAG in latest | unique | stable 
+  * __Note that the reference repository is `timelinkserver/kleio-server` login before with 
+   `docker login --username timelinkserver` or other 
+   authorized user.__
   
 
 ## Make targets
