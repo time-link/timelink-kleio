@@ -178,9 +178,9 @@ See `README.md` in the directory `tests` for details. The tests directory also c
 reference files and the reference translator necessary to run both semantic and api tests.
 
 ### Updating 
-## Preparing images
+#### Preparing images
  
- * ```make image```: create a new image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
+ * ```make build-image```: create a new image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
   
 The following tags are used:
 * _unique_ - current build number as Knnn. Note that the tag unique is not used as such, it is interpreted as the last build number.
@@ -194,6 +194,24 @@ To help manage the tags the following targets exist
 * ```make inc_NUMBER``` increment version with NUMBER in major | minor
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
+
+## Release sequence
+
+* Create docker image `make build-image`
+* Increment version
+  * if new minor version do `make inc-minor`
+  * if new major version do `make inc-major`
+* Check if version string ok with `make show-current` or
+   `make show-last`
+* Tag image with semantic versioning
+  * if new image is stable version do `make tag-stable`
+  * if new image to be latest do `make tag-latest` 
+* Update release notes
+* Commit code 
+* git tag with current version (`make show-current`)
+* Push to github with tags
+* Push to docker with `make push-TAG` with TAG in latest | unique | stable 
+  
 
 ## Make targets
 
@@ -220,7 +238,10 @@ Type ```make``` to see more targets that help in development.
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
+### 2022-12-25 10.19.464
 
+Fixes [issue 5](https://github.com/time-link/timelink-kleio/issues/5) generates bootstrap token at
+each startup.
 ### 2022-06-15 10.18.463
 
 Fixes CORS pre-flight requests.
