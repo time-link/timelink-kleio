@@ -17,7 +17,10 @@ all: help
 
 help: .PHONY
 	@echo "usage:"
-	@echo "  make build-image          build docker image and tag with new build number"
+	@echo "  make build-local          build a local docker image and tag with new build number"
+	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
+	@echo "  make build-multi          build and push a multi platform docker image and tag with new build number"
+	@echo "  make tag-multi-TAG        tag last multi platform image with TAG in latest | stable"
 	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
 	@echo "  make show-current         return the current version, build number"
@@ -28,9 +31,8 @@ help: .PHONY
 	@echo "  make bootstrap-token      generate and register a token for 'admin' during bootstrap"
 	@echo "                                (only if no tokens exist and server running < 5 minutes)"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
-	@echo "  make tag-TAG              tag last image with TAG in latest | unique | stable"
-	@echo "  make push-TAG             push image with TAG in latest | unique | stable"
-	@echo "  make kleio-run | start    start server with .env config and tests/docker_compose.yaml"
+
+	@echo "  make kleio-run | start    start server with latest multi platform image, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-stop | stop    stop running server"
 	@echo "  make test-semantics       run semantic tests"
 	@echo "  make test-api             run api tests (requires newman (npm install newman))"
@@ -78,7 +80,7 @@ show-current: .PHONY
 show-last: .PHONY
 	@if ! test -f ${KLEIO_BUILD_DATE_FILE}; then echo "No previous image build"; else echo "$$(cat ${KLEIO_BUILD_DATE_FILE}) version ${patch}";  fi
 
-build-image: inc-build prepare
+build-local: inc-build prepare
 	@docker build \
 	 	-t "kleio-server" \
 		-t "kleio-server:$(patch)" \
@@ -87,13 +89,41 @@ build-image: inc-build prepare
 	@echo "$(cdate)" > "${KLEIO_BUILD_DATE_FILE}"
 	@echo "docker new kleio-server image build ${patch}"
 
+# do multi architecture docker build, for arm64 and amd64
+# requires docker buildx
+# see https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
+build-multi: inc-build prepare
+	-@docker buildx rm multibuilder
+	@docker buildx create --platform linux/arm64,linux/amd64 \
+	    --name multibuilder \
+		--driver docker-container \
+		--use
+	@docker buildx build \
+		--platform linux/arm64,linux/amd64 \
+		--push \
+		-t "${DOCKER_REPOSITORY}/kleio-server:$(patch)" \
+		.build
+	@echo "$(cdate)" > "${KLEIO_BUILD_DATE_FILE}"
+	@echo "docker new kleio-server image build ${patch}"
 
-tag-latest:
+tag-multi-latest: .PHONY
+	docker buildx imagetools create timelinkserver/kleio-server:${patch} --tag timelinkserver/kleio-server:latest
+	@echo "timelinkserver/kleio-server:${patch} multi arch image tagged as latest"
+	
+tag-multi-stable: 
+	docker buildx imagetools create timelinkserver/kleio-server:${patch} \
+		--tag timelinkserver/kleio-server:${vn}
+	docker buildx imagetools create timelinkserver/kleio-server:${patch} \
+		--tag timelinkserver/kleio-server:${major}
+	@git tag ${patch}
+	@echo "timelinkserver/kleio-server:{patch} multi arch image tagged as stable for ${major}} and ${vn}"
+
+tag-local-latest:
 	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:latest
 	@docker tag kleio-server kleio-server:latest
 	@echo "'latest' tag added to kleio-server latest image"
 
-tag-stable:
+tag-local-stable:
 	@docker tag kleio-server kleio-server:${vn}
 	@docker tag kleio-server kleio-server:${major}
 	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${vn}
@@ -101,15 +131,6 @@ tag-stable:
 	@git tag ${patch}
 	@echo "${major} and '${vn}' tags added to kleio-server latest image "
 
-push-latest:
-	@docker push ${DOCKER_REPOSITORY}/kleio-server:latest
-
-push-unique:
-	@docker push ${DOCKER_REPOSITORY}/kleio-server:${patch}
-
-push-stable:
-	@docker push ${DOCKER_REPOSITORY}/kleio-server:${vn}
-	@docker push ${DOCKER_REPOSITORY}/kleio-server:${major}
 
 token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
@@ -124,6 +145,7 @@ kleio-run:
 	export KLEIO_USER=$$(id -u):$$(id -g);\
 	echo "Starting kleio-server";\
 	declare | grep "^KLEIO"; \
+	docker pull timelinkserver/kleio-server:latest;\
 	docker compose up -d
 
 show-env:
@@ -191,3 +213,8 @@ docs: .PHONY
 	@echo "Requires Postman environment export at ./api/environment.json"
 	@echo "Generating doc..."
 	@postman_doc_gen api/postman/api.json -o docs/api -e api/postman/environment.json
+
+test-vargs:
+	@echo $variable-args
+
+test-vargs-unique:

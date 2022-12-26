@@ -197,23 +197,17 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 
 ## Release sequence
 
-* Create docker image `make build-image`
-* Increment version
-  * if new minor version do `make inc-minor`
-  * if new major version do `make inc-major`
-* Check if version string ok with `make show-current` or
-   `make show-last`
-* Tag image with semantic versioning
-  * if new image is stable version do `make tag-stable`
-  * if new image to be latest do `make tag-latest` 
 * Update release notes
 * Commit code 
-* git tag with current version (`make show-current`)
-* Push to github with tags
-* Push to docker with `make push-TAG` with TAG in latest | unique | stable 
+* Create docker image `make build-multi` (also pushes to repository tag with current version)
   * __Note that the reference repository is `timelinkserver/kleio-server` login before with 
    `docker login --username timelinkserver` or other 
    authorized user.__
+* Check current version with `make show-current` or
+   `make show-last`
+* Tag image with semantic versioning
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number)
+  * if new image to be latest do `make tag-multi-latest` 
   
 
 ## Make targets
@@ -223,8 +217,11 @@ Type ```make``` to see more targets that help in development.
 
       % make
       usage:
-      make build-image          build docker image and tag with new build number
-      make show-patch           return the current build number
+      make build-local          build a local docker image and tag with new build number
+      make tag-local-TAG        tag last local image with TAG in latest | stable
+      make build-multi          build and push a multi platform docker image and tag with new build number
+      make tag-multi-TAG        tag last multi platform image with TAG in latest | stable
+      make show-build           return the current build number
       make show-version         return the current version string (major.minor)
       make show-current         return the current version, build number
       make show-last            return the last image build date, version, build number
@@ -234,13 +231,15 @@ Type ```make``` to see more targets that help in development.
       make bootstrap-token      generate and register a token for 'admin' during bootstrap
                                     (only if no tokens exist and server running < 5 minutes)
       make docs                 generate api docs (requires postman_doc_gen and api files)
-      make tag-TAG              tag last image with TAG in latest | unique | stable
-      make push-TAG             push image with TAG in latest | unique | stable
       make kleio-run | start    start server with .env config and tests/docker_compose.yaml
       make kleio-stop | stop    stop running server
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
+
+### 2022-12-26 13:32:53 version 10.19.482
+
+Adds multi-architecture docker builds.
 ### 2022-12-25 10.19.464
 
 Fixes [issue 5](https://github.com/time-link/timelink-kleio/issues/5) generates bootstrap token at

@@ -16,3 +16,9 @@ assert(user_token('31e128841f85acda98fa0476040d817f5dbcb005',bootstrap,[created(
 assert(user_token('7e61e3ea0303ae05e8a9055d16df820a6ac78233',limited_user,[created(1644349833.804632),comment('An user that has no privilegis, used to test authorization errors'),api([nothing]),structures('users/limited_user/stru'),sources('sources/test_translations')])).
 assert(user_token(b4ab9e144c8b947ab243765b72d9e5785baac9e0,coordinator,[created(1644349834.027248),comment('An user with access to the root of kleio-home, thus able to manage files for other users'),api([sources,kleioset,files,structures,translations,upload,delete,mkdir,rmdir]),structures(''),sources('')])).
 assert(user_token(c1eb941df561733ad85723edae2a0c8b180f550c,tester,[created(1644349836.289835),comment('An user able to translate, upload and delete files, and also create and remove directories'),api([sources,kleioset,files,structures,translations,upload,delete,mkdir,rmdir]),structures('users/tester/stru'),sources('sources/api')])).
+retractall(user_token(_,bootstrap,_),1).
+assert(user_token('8a27d77827cc17dcb14b33388bb18192621ef382',bootstrap,[created(1672032354.5166192),life_span(300),api([generate_token])])).
+retractall(user_token(_,bootstrap,_),1).
+assert(user_token('1f7785464372bd17857dda226b28cf8a8539677c',bootstrap,[created(1672032470.1412032),life_span(300),api([generate_token])])).
+retractall(user_token(_,bootstrap,_),1).
+assert(user_token(cb3b8a8cec902aea0869fe3af29a929d119f4f88,bootstrap,[created(1672032859.7061114),life_span(300),api([generate_token])])).

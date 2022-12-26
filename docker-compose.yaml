@@ -2,7 +2,7 @@ version: "3.8"
 services:
   kleio:
     # includes git
-    image: ${KLEIO_SERVER_IMAGE:-kleio-server:latest}
+    image: ${KLEIO_SERVER_IMAGE:-timelinkserver/kleio-server:latest}
 
     # Run under current user otherwise in linux systems sources files and translations are owned by root
     # requires export of current user and group
