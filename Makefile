@@ -19,7 +19,7 @@ help: .PHONY
 	@echo "usage:"
 	@echo "  make build-local          build a local docker image and tag with new build number"
 	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
-	@echo "  make build-multi          build and push a multi platform docker image and tag with new build number"
+	@echo "  make build-multi          build local mage and push multi platform docker imagea tagged with new build number"
 	@echo "  make tag-multi-TAG        tag last multi platform image with TAG in latest | stable"
 	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
@@ -27,12 +27,15 @@ help: .PHONY
 	@echo "  make show-last            return the last image build date, version, build number"
 	@echo "  make show-env             show KLEIO env variables currently defined"
 	@echo "  make inc-NUMBER           increment version with NUMBER in major | minor"
-	@echo "  make token                generate a string for KLEIO_ADMIN_TOKEN for .env file"
+	@echo "  make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file"
 	@echo "  make bootstrap-token      generate and register a token for 'admin' during bootstrap"
 	@echo "                                (only if no tokens exist and server running < 5 minutes)"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
+	@echo "  make pull-tag tag=x.y.z    pull image with tag x.y.z from docker hub"
 
-	@echo "  make kleio-run | start    start server with latest multi platform image, .env config and tests/docker_compose.yaml"
+	@echo "  make kleio-run-latest    start server with latest multi platform image, .env config and tests/docker_compose.yaml"
+	@echo "  make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml"
+	@echo "  make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-stop | stop    stop running server"
 	@echo "  make test-semantics       run semantic tests"
 	@echo "  make test-api             run api tests (requires newman (npm install newman))"
@@ -84,7 +87,7 @@ build-local: inc-build prepare
 	@docker build \
 	 	-t "kleio-server" \
 		-t "kleio-server:$(patch)" \
-		-t "${DOCKER_REPOSITORY}/kleio-server:$(patch)" \
+		-t "kleio-server:latest" \
 		.build
 	@echo "$(cdate)" > "${KLEIO_BUILD_DATE_FILE}"
 	@echo "docker new kleio-server image build ${patch}"
@@ -92,7 +95,7 @@ build-local: inc-build prepare
 # do multi architecture docker build, for arm64 and amd64
 # requires docker buildx
 # see https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
-build-multi: inc-build prepare
+build-multi: build-local
 	-@docker buildx rm multibuilder
 	@docker buildx create --platform linux/arm64,linux/amd64 \
 	    --name multibuilder \
@@ -119,23 +122,26 @@ tag-multi-stable:
 	@echo "timelinkserver/kleio-server:{patch} multi arch image tagged as stable for ${major}} and ${vn}"
 
 tag-local-latest:
-	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:latest
 	@docker tag kleio-server kleio-server:latest
 	@echo "'latest' tag added to kleio-server latest image"
 
 tag-local-stable:
 	@docker tag kleio-server kleio-server:${vn}
 	@docker tag kleio-server kleio-server:${major}
-	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${vn}
-	@docker tag kleio-server ${DOCKER_REPOSITORY}/kleio-server:${major}
-	@git tag ${patch}
 	@echo "${major} and '${vn}' tags added to kleio-server latest image "
 
 
-token:
+gen-token:
 	@echo "KLEIO_ADMIN_TOKEN=$$(openssl rand -hex 20)"
 
-kleio-run: 
+
+pull-tag:
+	if [ -z "${tag}" ] ; then echo "ERROR: no tag specified. Use 'make pull-tag tag=1.2.3'"; exit 1; fi
+	@docker pull ${DOCKER_REPOSITORY}/kleio-server:${tag}
+	@docker tag ${DOCKER_REPOSITORY}/kleio-server:${tag} kleio-server:${tag}
+	@echo "pulled latest image from ${DOCKER_REPOSITORY}/kleio-server:${tag}"
+
+kleio-run-latest:  
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
 	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
@@ -143,9 +149,36 @@ kleio-run:
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
-	echo "Starting kleio-server";\
+	echo "Starting kleio-server with timelinkserver/kleio-server:latest";\
 	declare | grep "^KLEIO"; \
 	docker pull timelinkserver/kleio-server:latest;\
+	docker compose up -d
+
+kleio-run-tag: kleio-stop
+	if [ -z "${tag}" ] ; then echo "ERROR: no tag specified. Use 'make run-tag tag=1.2.3'"; exit 1; fi
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
+	@source .env; \
+	export KLEIO_SERVER_IMAGE="kleio-server:${tag}"; \
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
+	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
+	export KLEIO_USER=$$(id -u):$$(id -g);\
+	declare | grep "^KLEIO"; \
+	echo "Starting kleio-server with kleio-server:${tag}";\
+	docker compose up -d
+
+kleio-run-current: kleio-stop
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
+	@source .env; \
+	export KLEIO_SERVER_IMAGE="kleio-server:${patch}"; \
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
+	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
+	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
+	export KLEIO_USER=$$(id -u):$$(id -g);\
+	declare | grep "^KLEIO"; \
+	echo "Starting kleio-server with kleio-server:${patch}";\
 	docker compose up -d
 
 show-env:
