@@ -72,7 +72,7 @@ API documentation is available at [docs/api/index.html](docs/api/index.html)
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
-* run with `make start` 
+* run with `make kleio-run-latest` 
 
 ## Development
 
@@ -92,6 +92,7 @@ Recommended tools:
 ### Running the server locally for debugging
 
 Easiest way: 
++ install swipl locally
 + install `VSC-Prolog` extension in `VSCode`
 + open serverStart.pl on `VSCode` 
 + load the file with Option+X+L
