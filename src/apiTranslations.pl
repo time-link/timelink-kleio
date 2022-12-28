@@ -61,7 +61,6 @@ translations(post,Path,Mode,Id,Params):-
         throw(http_reply(forbidden(Url),['Request-id'(Id)])) 
         ) 
     ),
-    get_stru(Params,Id,StruFile),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
     (exists_file(AbsPath) -> 
@@ -73,6 +72,8 @@ translations(post,Path,Mode,Id,Params):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
+    get_stru(Params,Id,StruFile),
+    % TBD replace with get_strus(AbsFiles,Params,Id,StruFiles) and pass to spawn_work
     spawn_work(Spawn,AbsFiles,StruFile,Echo,Jobs),
     convert_jobs_to_relative_paths(Jobs,RJobs,TokenInfo),
     translations_results(Mode,Id,Params,RJobs).
@@ -273,6 +274,28 @@ get_stru(Params,Id,StruFile):-
             )
         )
     ).
+
+%! get_strus(+Files,+Params,+Id,-StruFiles) is det.
+% Get the path to the structure file associated with a translation request
+% Parameters:
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  Id: request id
+%  StruFiles: structure files to be used in the translation
+%
+%  TBD - should be a list of structure files
+get_strus(Files,Params,Id,StruFiles):-
+    get_stru(Params,id,StruFile),
+    get_stru_for_files(Files,StruFile,StruFiles).
+
+get_stru_for_files([F|Fs],StruFile,[S|Ss]):-
+    get_stru_for_file(F,StruFile,S),
+    get_stru_for_files(Fs,StruFile,Ss).
+
+get_stru_for_files([],_,[]).
+
+% TBD - implement https://github.com/time-link/timelink-kleio/issues/7
+get_stru_for_file(File,StruFile,StruFile):-!.
 
 
 extract_file_names(FileStatus,Names):-

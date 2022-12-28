@@ -196,9 +196,9 @@ kleio-stop:
 	docker compose stop
 	
 
-kleio-start: kleio-run
+kleio-start: kleio-run-current
 
-start: kleio-run
+start: kleio-start
 
 stop: kleio-stop
 
@@ -232,7 +232,7 @@ compose-up:
 test-semantics: .PHONY
 	@cd tests; ./scripts/run_tests.sh
 
-test-api: kleio-run
+test-api: kleio-run-current
 	@echo To run api tests install newman 
 	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
 	@source .env; \
