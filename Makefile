@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 DOCKER_REPOSITORY=timelinkserver
 KLEIO_VERSION_NUMBER_FILE="kleio.version.number"
 KLEIO_PATCH_NUMBER_FILE="kleio.patch.number"
@@ -182,8 +183,7 @@ kleio-run-current: kleio-stop
 	docker compose up -d
 
 show-env:
-	@source .env;\
-	declare | grep "^KLEIO"; 
+	@source .env; declare | grep "^KLEIO"; 
 
 kleio-stop:
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
