@@ -30,7 +30,7 @@
         kleio_mime_type/2
     ]).
 
-:- use_module(library(filesex)).
+:-use_module(library(filesex)).
 :-use_module(shellUtil).
 :-use_module(persistence).
 :-use_module(utilities).

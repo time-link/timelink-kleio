@@ -285,17 +285,48 @@ get_stru(Params,Id,StruFile):-
 %
 %  TBD - should be a list of structure files
 get_strus(Files,Params,Id,StruFiles):-
-    get_stru(Params,id,StruFile),
-    get_stru_for_files(Files,StruFile,StruFiles).
+    get_stru(Params,Id,DefaultStruFile),
+    get_stru_for_files(Files,DefaultStruFile,StruFiles).
 
-get_stru_for_files([F|Fs],StruFile,[S|Ss]):-
-    get_stru_for_file(F,StruFile,S),
-    get_stru_for_files(Fs,StruFile,Ss).
+get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
+    get_stru_for_file(F,DefaultStruFile,S),
+    get_stru_for_files(Fs,DefaultStruFile,Ss).
 
 get_stru_for_files([],_,[]).
 
 % TBD - implement https://github.com/time-link/timelink-kleio/issues/7
-get_stru_for_file(File,StruFile,StruFile):-!.
+get_stru_for_file(File,__DefaultStruFile,StruFile):-
+    % get directories in path
+    prolog_to_os_filename(PrologFile, File),
+    file_directory_name(PrologFile,PrologPath),
+    % break path into directories
+    atomic_list_concat(Dirs,'/',PrologPath),
+    file_base_name(File,BaseName),
+    file_name_extension(BaseNameNoExt,_,BaseName),
+    match_stru_to_file(Dirs,BaseNameNoExt,StruFile),
+    !.
+get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
+
+% match cli file to stru with same name in structures directory
+match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
+    select('sources',Dirs,'structures',Dirs1),
+    atomic_list_concat(Dirs1,'/',Path),
+    atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
+    exists_file(StruFile),!.
+
+% match cli file with gacto2.str in structures directory depth first
+match_stru_to_file(Dirs,_,StruFile):-
+    select('sources',Dirs,'structures',StruPath),
+    % remove last element of Dirs1
+    reverse(StruPath,RStruPath),
+    append(_,RSubPath,RStruPath),
+    reverse(RSubPath,SubPath),
+    atomic_list_concat(SubPath,'/',Path),
+    (atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
+    ;
+    atomic_list_concat([Path,'/','sources.str'],'',StruFile)),
+    exists_file(StruFile),!.
+
 
 
 extract_file_names(FileStatus,Names):-
