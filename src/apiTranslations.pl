@@ -72,9 +72,10 @@ translations(post,Path,Mode,Id,Params):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
-    get_stru(Params,Id,StruFile),
-    % TBD replace with get_strus(AbsFiles,Params,Id,StruFiles) and pass to spawn_work
-    spawn_work(Spawn,AbsFiles,StruFile,Echo,Jobs),
+    % get_stru(Params,Id,StruFile),
+    % TBD replace with get_strus(Files,Params,Id,StruFiles) and pass to spawn_work
+    get_strus(AbsFiles,Params,Id,StruFiles),
+    spawn_work(Spawn,AbsFiles,StruFiles,Echo,Jobs),
     convert_jobs_to_relative_paths(Jobs,RJobs,TokenInfo),
     translations_results(Mode,Id,Params,RJobs).
 
@@ -235,17 +236,27 @@ get_translation_status(Files,RSets,TokenInfo):-
     ;
     RSets=[]),!.
 
-spawn_work(yes,AbsFiles,StruFile,Echo,_):-
+spawn_work(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]):-
     set_prop(translations,jobs,[]),
-    member(File,AbsFiles),
-    post_job(translate(File,StruFile,Echo),JobId),
-    add_to_prop(translations,jobs,job(JobId,[File])),
+    spawn_work2(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]),
     fail.
 spawn_work(yes,_,_,_,Jobs):-
     get_prop(translations,jobs,Jobs).
 
-spawn_work(no,AbsFiles,StruFile,Echo,[job(JobId,AbsFiles)]):-
-    post_job(translate(AbsFiles,StruFile,Echo),JobId).
+% no span processing only available for single stru set
+spawn_work(no,AbsFiles,[StruFile],Echo,[job(JobId,AbsFiles)]):-
+    post_job(translate(AbsFiles,StruFile,Echo),JobId),!.
+% if more than one stru file is given, use span processing
+spawn_work(no,AbsFiles,StruFiles,Echo,[job(JobId,AbsFiles)]):-
+    spawn_work(yes,AbsFiles,StruFiles,Echo,[job(JobId,AbsFiles)]).
+
+spawn_work2(yes,[File|AbsFiles],[StruFile|StruFiles],Echo,[JobId|Jobs]):-
+    post_job(translate(File,StruFile,Echo),JobId),
+    spawn_work2(yes,AbsFiles,StruFiles,Echo,Jobs),
+    add_to_prop(translations,jobs,job(JobId,[File])).
+spawn_work2(yes,[],[],_,[]):-!.
+
+
 
 %! get_stru(+Params,+Id,-StruFile) is det.
 % Get the path to the structure file associated with a translation request
@@ -314,6 +325,20 @@ match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
     atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
     exists_file(StruFile),!.
 
+% match cli file sources/.../dir/xpto.cli with structures/dir.str 
+match_stru_to_file(Dirs,_,StruFile):-
+    last(Dirs,LastDir), % get last directory 
+    select('sources',Dirs,'structures',StruPath),
+    reverse(StruPath,RStruPath),
+    % get path to structures directory depth first
+    append(_,[structures|PathToStructures],RStruPath),
+    reverse(PathToStructures,SubPath),
+    % add file with lastdir name and extension str
+    file_name_extension(LastDir,'str',DirStru),
+    append(SubPath,[structures,DirStru],Path),
+    atomic_list_concat(Path,'/',StruFile),
+    exists_file(StruFile),!.
+
 % match cli file with gacto2.str in structures directory depth first
 match_stru_to_file(Dirs,_,StruFile):-
     select('sources',Dirs,'structures',StruPath),
@@ -342,9 +367,9 @@ get_absolute_paths([F|Fs],[A|As],TokenInfo):-
     get_absolute_paths(Fs,As,TokenInfo).
 get_absolute_paths([],[],_):-!.
 
-%% translate(+KleioFiles,+StruFile,+Options) is det.
+%% translate(+KleioFiles,+StruFiles,+Options) is det.
 %
-% translates KleioFiles using the definitions on StruFile.
+% translates KleioFiles using the definitions on StruFiles.
 % * echo: if yes echoes in the "rpt" file the source lines
 % * 
 %
