@@ -162,12 +162,13 @@ flushGroup:-
 flushGroup:-
     error_out('** Failure. Could not process '-flushGroup),!.
 
-check_elements(G,GID):- % tests if certe elements where registered%
+    check_elements(G,GID):- % tests if certe elements where registered%
     clioGroup(G,ID),         % see if it has a locus list %
     get_prop(ID,certe,CerteList),
     getCDElement_list(Els),
     setof(X,(member(X,CerteList), \+ member(X,Els)),[A|B]),
-    error_out(['** Error: missing element(s) in ',G,'(',GID,') must have: ' | [A|B]]),!.
+    list_to_a([A|B],Missing),
+    error_out(['** Error: missing element(s) in ',G,'(',GID,') must have: ' | Missing]),!.
 check_elements(_,_):-!.
 
 

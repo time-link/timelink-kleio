@@ -124,10 +124,10 @@ The test suite is generated with postman. it can be run with  the `newman` tool:
 
 In the `api/postman` directory at the top level there is a collection special for testing purposes: `api/postman/tests.json`.
 
-To run the test collection make sure you `newman` installed, and from the top level directory do:
+To run the test collection make sure you `newman` installed, and a local docker image tagged  `kleio-server:latest` and from the top level directory do:
 
     export KLEIO_ADMIN_TOKEN=sometoken;\
-     make kleio-run; \
+     make kleio-run-current; \
      newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$KLEIO_ADMIN_TOKEN"
 
 You can also run Kleio Server inside VSCode and use swi-prolog debugging tools while running the api tests produced by `postman`.  
