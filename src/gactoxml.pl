@@ -166,6 +166,7 @@ db_close:-
   file_name_extension(BaseNameNoExt,'.str.json',JsonFile),
   atomic_list_concat([PrologPath,'/',JsonFile],JsonPath),
   report([format('Structure in JSON: ~w~n',[JsonPath])]),
+  % report on kleio source file
   get_value(data_file,D),
   report([format('~nKleio file: ~w~n',[D])]),
   get_value(source_file,SOURCE),
