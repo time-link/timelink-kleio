@@ -652,7 +652,8 @@ group_to_html(File,G):-
          ;
          true
          ),
-         % doc generation is not working
+         % doc generation is not working This is because gdoc clauses are being assert inside struSyntax module
+         % so they are not visible here. check storeGroupDoc and storeElementDoc in struSyntax they need refactoring
     (clause(gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'),show_edocs(G));true),
     writeln('<blockquote>'),
     writelist0(['Minimal:<b>  ',G,'$']),show_positional(C,L),write('</b>'),
