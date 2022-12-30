@@ -152,15 +152,31 @@ db_close:-
   .org is the original .cli that was first translated with success.
   */
  change_to_ids:-
+  get_value(stru_file,StruFile),
+  report([format('Structure file: ~w~n',[StruFile])]),
+  prolog_to_os_filename(PrologFile, StruFile),
+  file_directory_name(PrologFile,PrologPath),
+  file_base_name(StruFile,BaseName),
+  file_name_extension(BaseNameNoExt,_,BaseName),
+  % create srpt file name
+  file_name_extension(BaseNameNoExt,'.srpt',SrptFile),
+  atomic_list_concat([PrologPath,'/',SrptFile],SrptPath),
+  report([format('Structure processing report: ~w~n',[SrptPath])]),
+  % create json file name
+  file_name_extension(BaseNameNoExt,'.str.json',JsonFile),
+  atomic_list_concat([PrologPath,'/',JsonFile],JsonPath),
+  report([format('Structure in JSON: ~w~n',[JsonPath])]),
   get_value(data_file,D),
-  report([writeln('** Processed file'-D)]),
+  report([format('~nKleio file: ~w~n',[D])]),
   get_value(source_file,SOURCE),
   concat(SOURCE,'.org',Original),
-  report([writeln('** Original file'-Original)]),
+  report([format('Original file: ~w~n',[Original])]),
   concat(SOURCE,'.old',Last),
-  report([writeln('** Previous version'-Last)]),
+  report([format('Previous version: ~w~n',[Last])]),
   concat(SOURCE,'.ids',Ids),
-  report([writeln('** Temp file with ids'-Ids)]),
+  report([format('Temp file with ids: ~w~n',[Ids])]),
+
+
   /*
   (exists_file(Last) ->
     ((delete_file(Last),report([writeln('** Deleted previous version'-Last)]))
