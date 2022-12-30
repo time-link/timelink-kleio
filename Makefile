@@ -236,7 +236,9 @@ test-api: kleio-run-current
 	@echo To run api tests install newman 
 	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
 	@source .env; \
-    newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN" || true
+	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
+    newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"  --env-var "KLEIO_HOME_DIR=$$KLEIO_HOME_DIR" || true
 	@echo 
 	@echo See tests/README.md for tips on testing
 
