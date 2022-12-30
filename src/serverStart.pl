@@ -317,14 +317,14 @@ test_case(translations,File,Stru):-
     translate_file(File,Flag),
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
-translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/api/varia',false).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
-translate_file('sources/api/paroquiais/baptismos/',false).
+translate_file('sources/api/varia/auc_cartulario18.cli',true).
+translate_file('sources/api/varia',true).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',true).
+translate_file('sources/api/paroquiais/baptismos/',true).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',true).
-translate_file('sources/api/varia/lrazao516pe.cli',false).
+translate_file('sources/api/varia/lrazao516pe.cli',true).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
