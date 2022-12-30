@@ -259,8 +259,8 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in test_sources
-% to setup in the terminal do tests/scripts/prepare_tests.sh
+% assumes test sources in tests/kleio-home/test_sources
+% to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
@@ -317,13 +317,13 @@ test_case(translations,File,Stru):-
     translate_file(File,Flag),
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
-translate_file('sources/api/varia/auc_cartulario18.cli',true).
-translate_file('sources/api/varia',true).
+translate_file('sources/api/varia/auc_cartulario18.cli',false).
+translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',true).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/varia/lrazao516pe.cli',true).
+translate_file('sources/api/varia/lrazao516pe.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
