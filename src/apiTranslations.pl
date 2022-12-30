@@ -247,8 +247,8 @@ spawn_work(yes,_,_,_,Jobs):-
 spawn_work(no,AbsFiles,[StruFile],Echo,[job(JobId,AbsFiles)]):-
     post_job(translate(AbsFiles,StruFile,Echo),JobId),!.
 % if more than one stru file is given, use span processing
-spawn_work(no,AbsFiles,StruFiles,Echo,[job(JobId,AbsFiles)]):-
-    spawn_work(yes,AbsFiles,StruFiles,Echo,[job(JobId,AbsFiles)]).
+spawn_work(no,AbsFiles,StruFiles,Echo,Jobs):-
+    spawn_work(yes,AbsFiles,StruFiles,Echo,Jobs).
 
 spawn_work2(yes,[File|AbsFiles],[StruFile|StruFiles],Echo,[JobId|Jobs]):-
     post_job(translate(File,StruFile,Echo),JobId),
