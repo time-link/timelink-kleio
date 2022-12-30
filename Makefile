@@ -238,7 +238,7 @@ test-api: kleio-run-current
 	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
-    newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"  --env-var "KLEIO_HOME_DIR=$$KLEIO_HOME_DIR" || true
+    newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"  --env-var "KLEIO_HOME_DIR=$$KLEIO_HOME_DIR" -n 10 || true
 	@echo 
 	@echo See tests/README.md for tips on testing
 
