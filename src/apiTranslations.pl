@@ -312,6 +312,7 @@ get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
 get_stru_for_files([],_,[]).
 
 % TBD - implement https://github.com/time-link/timelink-kleio/issues/7
+
 get_stru_for_file(File,__DefaultStruFile,StruFile):-
     % get directories in path
     prolog_to_os_filename(PrologFile, File),
@@ -324,6 +325,8 @@ get_stru_for_file(File,__DefaultStruFile,StruFile):-
     !.
 get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
 
+% TODO use structure declaration in kleio file header
+% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
 % match cli file to stru with same name in structures directory
 match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
     select('sources',Dirs,'structures',Dirs1),
