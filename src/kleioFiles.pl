@@ -612,7 +612,7 @@ kleio_log_dir(_):-
 
 %% kleio_stru_dir(?Dir) is det.
 % Returns the structures base dir, normally KLEIO_HOME/system/conf/kleio/stru 
-% or KLEIO_HOME/kleio/conf/stru/
+% or KLEIO_HOME/kleio/conf/stru/ or the directory with this file
 % but can be overriden by environment 
 % variable KLEIO_STRU_DIR.
 kleio_stru_dir(D):-getenv('KLEIO_STRU_DIR', D),!.
@@ -620,12 +620,11 @@ kleio_stru_dir(D):-
     kleio_conf_dir(H),
     atom_concat(H, '/stru', D1),
     absolute_file_name(D1,D),
-    exists_directory(D),!.
+    exists_directory(D).
 kleio_stru_dir(D):-
-    kleio_conf_dir(H),
-    atom_concat(H, '/stru', D1),
-    absolute_file_name(D1,D),
-    make_directory_path(D),!.
+    source_file(kleioFiles:_,FilePath),!, % get the Prolog source origin
+    % get the directory from FilePath
+    file_directory_name(FilePath,D).
 
 %% kleio_default_stru(?Path) is det.
 % Returns the path to the default stru for translations, 
@@ -635,19 +634,13 @@ kleio_stru_dir(D):-
 %   This would search for a stru directory in the same directory of the kleio file and then
 %   search up the directory hierarchy if not found, and finally use the kleio_stru_dir
 %   Options coould specificy stru name, or other future qualifications.
-%
+%   
 kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
 kleio_default_stru(D):-
     kleio_stru_dir(H),
     atom_concat(H, '/gacto2.str', D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
-
-kleio_default_stru('src/gacto2.str'):-
-    exists_file('src/gacto2.str'),!.
-
-kleio_default_stru('/usr/local/timelink/clio/src/gacto2.str'):-
-    exists_file('/usr/local/timelink/clio/src/gacto2.str'),!.
 
 %% kleio_user_source_dir(?Dir,+Options) is det.
 %
