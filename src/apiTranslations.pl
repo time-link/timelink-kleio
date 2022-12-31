@@ -260,9 +260,14 @@ spawn_work2(yes,[],[],_,[]):-!.
 
 %! get_stru(+Params,+Id,-StruFile) is det.
 % Get the path to the structure file associated with a translation request
+% if it is defined in the request parameters, if not return the default structure
+% 
 % Parameters:
-%  structure: structure file to be used in the translation
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  StruFile: structure file to be used in the translation
 %
+% TODO refactor to only check the paramenters rename to get_stru_param
 get_stru(Params,Id,StruFile):-
     option(token_info(TokenInfo),Params),
     kleiofiles:kleio_default_stru(DefaultStru),
@@ -294,9 +299,10 @@ get_stru(Params,Id,StruFile):-
 %  Id: request id
 %  StruFiles: structure files to be used in the translation
 %
-%  TBD - should be a list of structure files
+%  TODO this is wrong, a structure defined in a request should always have precedence
+%  So the priority is: str file in the request, str file from "structures", default str file.
 get_strus(Files,Params,Id,StruFiles):-
-    get_stru(Params,Id,DefaultStruFile),
+    get_stru(Params,Id,DefaultStruFile), % TODO get_stru_param ; kleio_default_stru
     get_stru_for_files(Files,DefaultStruFile,StruFiles).
 
 get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
@@ -339,7 +345,7 @@ match_stru_to_file(Dirs,_,StruFile):-
     atomic_list_concat(Path,'/',StruFile),
     exists_file(StruFile),!.
 
-% match cli file with gacto2.str in structures directory depth first
+% match cli file with gacto2.str or sources.str in structures directory depth first
 match_stru_to_file(Dirs,_,StruFile):-
     select('sources',Dirs,'structures',StruPath),
     % remove last element of Dirs1
