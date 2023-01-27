@@ -219,6 +219,7 @@ Type ```make``` to see more targets that help in development.
       make build-local          build a local docker image and tag with new build number
       make tag-local-TAG        tag last local image with TAG in latest | stable
       make build-multi          build local mage and push multi platform docker imagea tagged with new build number
+                                (requires login in dokerhub with 'docker login' )
       make tag-multi-TAG        tag last multi platform image with TAG in latest | stable
       make show-build           return the current build number
       make show-version         return the current version string (major.minor)

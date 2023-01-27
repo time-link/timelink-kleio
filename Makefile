@@ -21,6 +21,7 @@ help: .PHONY
 	@echo "  make build-local          build a local docker image and tag with new build number"
 	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
 	@echo "  make build-multi          build local mage and push multi platform docker imagea tagged with new build number"
+	@echo "                            (requires a previous `docker login`)"
 	@echo "  make tag-multi-TAG        tag last multi platform image with TAG in latest | stable"
 	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
