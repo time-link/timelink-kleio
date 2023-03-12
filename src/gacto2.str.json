@@ -26255,7 +26255,16 @@
       "typical": ["id", "type", "date" ]
     },
     "historical-source": {
-      "complete": ["type", "date", "year", "loc", "ref", "obs", "replace" ],
+      "complete": [
+	"type",
+	"date",
+	"year",
+	"loc",
+	"ref",
+	"obs",
+	"replace",
+	"kleiofile"
+      ],
       "includes": ["historical-act" ],
       "minimal": ["id" ],
       "name":"historical-source",
@@ -27923,7 +27932,7 @@
 	"sequentia",
 	"signum"
       ],
-      "typical": ["structure", "translator", "obs" ]
+      "typical": ["structure", "translator" ]
     },
     "lbach": {
       "complete": ["obs" ],
@@ -53020,7 +53029,27 @@
 	"signum"
       ],
       "typical": ["nome" ]
+    },
+    "wviagem": {
+      "complete": ["obs" ],
+      "includes": ["n", "referido", "referida" ],
+      "minimal": ["id", "dia", "mes", "ano", "barco" ],
+      "name":"wviagem",
+      "properties": [
+	"certe",
+	"ceteri",
+	"fons",
+	"identificatio",
+	"locus",
+	"ordo",
+	"post",
+	"prae",
+	"repetitio",
+	"sequentia",
+	"signum"
+      ],
+      "typical": ["id", "dia", "mes", "ano", "barco" ]
     }
   },
-  "path":"/Users/jrc/develop/mhk-git/clio/src/gacto2.str"
+  "path":"/Users/jrc/develop/mhk/clio/src/gacto2.str"
 }
