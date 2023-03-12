@@ -21,6 +21,7 @@ help: .PHONY
 	@echo "  make build-local          build a local docker image and tag with new build number"
 	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
 	@echo "  make build-multi          build local mage and push multi platform docker imagea tagged with new build number"
+	@echo "                            (requires a previous `docker login`)"
 	@echo "  make tag-multi-TAG        tag last multi platform image with TAG in latest | stable"
 	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
@@ -84,6 +85,12 @@ show-current: .PHONY
 show-last: .PHONY
 	@if ! test -f ${KLEIO_BUILD_DATE_FILE}; then echo "No previous image build"; else echo "$$(cat ${KLEIO_BUILD_DATE_FILE}) version ${patch}";  fi
 
+check-env:
+	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; \
+	exit 1; else exit 0; fi
+	
+	
+
 build-local: inc-build prepare
 	@docker build \
 	 	-t "kleio-server" \
@@ -142,7 +149,7 @@ pull-tag:
 	@docker tag ${DOCKER_REPOSITORY}/kleio-server:${tag} kleio-server:${tag}
 	@echo "pulled latest image from ${DOCKER_REPOSITORY}/kleio-server:${tag}"
 
-kleio-run-latest:  
+kleio-run-latest:  check-env
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
 	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
@@ -155,7 +162,7 @@ kleio-run-latest:
 	docker pull timelinkserver/kleio-server:latest;\
 	docker compose up -d
 
-kleio-run-tag: kleio-stop
+kleio-run-tag: check-env kleio-stop
 	if [ -z "${tag}" ] ; then echo "ERROR: no tag specified. Use 'make run-tag tag=1.2.3'"; exit 1; fi
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
 	@source .env; \
@@ -179,7 +186,7 @@ kleio-run-current: kleio-stop
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
 	declare | grep "^KLEIO"; \
-	echo "Starting kleio-server with kleio-server:${patch}";\
+	echo "Starting kleio-server with kleio-server:${patch} in dir $${KLEIO_HOME_DIR}";\
 	docker compose up -d
 
 show-env:
@@ -188,11 +195,15 @@ show-env:
 kleio-stop:
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
 	@source .env; \
+	echo "KLEIO_HOME_DIR=$$KLEIO_HOME_DIR";\
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
+	echo "KHOME=$$KHOME";\
 	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
+	echo "Stopping server at dir ${KLEIO_HOME_DIR}	";\
+	docker compose config;\
 	docker compose stop
 	
 
