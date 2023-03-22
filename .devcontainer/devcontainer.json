@@ -31,10 +31,10 @@
 				"ms-vscode-remote.vscode-remote-extensionpack"
 			]
 		}
-	}
+	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "docker --version",
+	"postCreateCommand": "source .devcontainer/.install.sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
