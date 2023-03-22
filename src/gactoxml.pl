@@ -21,7 +21,7 @@
  The structure of person related data like attributes and relations with other
  persons is  defined. A basic structure for acts is also provided.
  
- The schema file *gactow.str* includes some "abstract" groups for persons. There
+ The schema file *gacto2.str* includes some "abstract" groups for persons. There
  are two of these abstract groups called male and female.
  
  When a stru file is created for a particular source document
@@ -47,6 +47,7 @@
  @license MIT
 */
 
+:-use_module(library('sgml')).
 
 :-use_module(clioPP).
 :-use_module(counters).
@@ -360,7 +361,15 @@ group_export(kleio,_) :- !,
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
     % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
-    xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
+    xml_quote_attribute(Stru, QStru,utf8),
+    xml_quote_attribute(Data, QData,utf8),
+    %xml_quote_attribute(Date, QDate,utf8),
+    QDate = Date,
+    %xml_quote_attribute(Time, QTime,utf8),
+    QTime = Time,
+    xml_quote_attribute(OS, QOS,utf8),
+    xml_quote_attribute(Space, QSpace,utf8),
+    xml_write(['<KLEIO STRUCTURE="',QStru,'" SOURCE="',QData,'" TRANSLATOR="gactoxml2.str" WHEN="',QDate,' ',QTime,'" OBS="',QOS,'" SPACE="',QSpace,'">']),
     xml_nl.
 
 /*
@@ -515,7 +524,12 @@ rentity_occ_export(_,Id):-
 
 export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
   xml_nl,
-  xml_write(['<RELATION ID="',OccID,'" REGISTER="',ARId,'" USER="',User,'" ORG="',Occurrence,'" DEST="',REId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
+  xml_quote_attribute(OccID,POccID,utf8),
+  xml_quote_attribute(ARId,PARId,utf8),
+  xml_quote_attribute(User,PUser,utf8),
+  xml_quote_attribute(Occurrence,POccurrence,utf8),
+  xml_quote_attribute(REId,PREId,utf8),
+  xml_write(['<RELATION ID="',POccID,'" REGISTER="',PARId,'" USER="',PUser,'" ORG="',POccurrence,'" DEST="',PREId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
   xml_nl,!.
 
 
