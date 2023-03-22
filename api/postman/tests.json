@@ -1969,7 +1969,7 @@
 														{
 															"key": "file",
 															"type": "file",
-															"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
+															"src": "{{KLEIO_HOME_DIR}}/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 														},
 														{
 															"key": "id",
@@ -2025,7 +2025,7 @@
 																	"key": "file",
 																	"description": "File to be uploaded",
 																	"type": "file",
-																	"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
+																	"src": "{{KLEIO_HOME_DIR}}/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 																},
 																{
 																	"key": "id",
@@ -2483,7 +2483,7 @@
 															"key": "file",
 															"description": "File to be uploaded MUST exist in destinhation for test to succeed and file must be inside working directory (set in settings) otherwise it will not be included in the request.\n",
 															"type": "file",
-															"src": "/Users/jrc/develop/mhk-git/clio/tests/kleio-home/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
+															"src": "{{KLEIO_HOME_DIR}}/sources/reference_sources/paroquiais/baptismos/bap-com-celebrantes.cli"
 														},
 														{
 															"key": "id",

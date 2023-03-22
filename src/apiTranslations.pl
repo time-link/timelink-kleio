@@ -61,7 +61,6 @@ translations(post,Path,Mode,Id,Params):-
         throw(http_reply(forbidden(Url),['Request-id'(Id)])) 
         ) 
     ),
-    get_stru(Params,Id,StruFile),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
     (exists_file(AbsPath) -> 
@@ -73,7 +72,10 @@ translations(post,Path,Mode,Id,Params):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
-    spawn_work(Spawn,AbsFiles,StruFile,Echo,Jobs),
+    % get_stru(Params,Id,StruFile),
+    % TBD replace with get_strus(Files,Params,Id,StruFiles) and pass to spawn_work
+    get_strus(AbsFiles,Params,Id,StruFiles),
+    spawn_work(Spawn,AbsFiles,StruFiles,Echo,Jobs),
     convert_jobs_to_relative_paths(Jobs,RJobs,TokenInfo),
     translations_results(Mode,Id,Params,RJobs).
 
@@ -234,23 +236,38 @@ get_translation_status(Files,RSets,TokenInfo):-
     ;
     RSets=[]),!.
 
-spawn_work(yes,AbsFiles,StruFile,Echo,_):-
+spawn_work(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]):-
     set_prop(translations,jobs,[]),
-    member(File,AbsFiles),
-    post_job(translate(File,StruFile,Echo),JobId),
-    add_to_prop(translations,jobs,job(JobId,[File])),
+    spawn_work2(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]),
     fail.
 spawn_work(yes,_,_,_,Jobs):-
     get_prop(translations,jobs,Jobs).
 
-spawn_work(no,AbsFiles,StruFile,Echo,[job(JobId,AbsFiles)]):-
-    post_job(translate(AbsFiles,StruFile,Echo),JobId).
+% no span processing only available for single stru set
+spawn_work(no,AbsFiles,[StruFile],Echo,[job(JobId,AbsFiles)]):-
+    post_job(translate(AbsFiles,StruFile,Echo),JobId),!.
+% if more than one stru file is given, use span processing
+spawn_work(no,AbsFiles,StruFiles,Echo,Jobs):-
+    spawn_work(yes,AbsFiles,StruFiles,Echo,Jobs).
+
+spawn_work2(yes,[File|AbsFiles],[StruFile|StruFiles],Echo,[JobId|Jobs]):-
+    post_job(translate(File,StruFile,Echo),JobId),
+    spawn_work2(yes,AbsFiles,StruFiles,Echo,Jobs),
+    add_to_prop(translations,jobs,job(JobId,[File])).
+spawn_work2(yes,[],[],_,[]):-!.
+
+
 
 %! get_stru(+Params,+Id,-StruFile) is det.
 % Get the path to the structure file associated with a translation request
+% if it is defined in the request parameters, if not return the default structure
+% 
 % Parameters:
-%  structure: structure file to be used in the translation
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  StruFile: structure file to be used in the translation
 %
+% TODO refactor to only check the paramenters rename to get_stru_param
 get_stru(Params,Id,StruFile):-
     option(token_info(TokenInfo),Params),
     kleiofiles:kleio_default_stru(DefaultStru),
@@ -274,6 +291,77 @@ get_stru(Params,Id,StruFile):-
         )
     ).
 
+%! get_strus(+Files,+Params,+Id,-StruFiles) is det.
+% Get the path to the structure file associated with a translation request
+% Parameters:
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  Id: request id
+%  StruFiles: structure files to be used in the translation
+%
+%  TODO this is wrong, a structure defined in a request should always have precedence
+%  So the priority is: str file in the request, str file from "structures", default str file.
+get_strus(Files,Params,Id,StruFiles):-
+    get_stru(Params,Id,DefaultStruFile), % TODO get_stru_param ; kleio_default_stru
+    get_stru_for_files(Files,DefaultStruFile,StruFiles).
+
+get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
+    get_stru_for_file(F,DefaultStruFile,S),
+    get_stru_for_files(Fs,DefaultStruFile,Ss).
+
+get_stru_for_files([],_,[]).
+
+% TBD - implement https://github.com/time-link/timelink-kleio/issues/7
+
+get_stru_for_file(File,__DefaultStruFile,StruFile):-
+    % get directories in path
+    prolog_to_os_filename(PrologFile, File),
+    file_directory_name(PrologFile,PrologPath),
+    % break path into directories
+    atomic_list_concat(Dirs,'/',PrologPath),
+    file_base_name(File,BaseName),
+    file_name_extension(BaseNameNoExt,_,BaseName),
+    match_stru_to_file(Dirs,BaseNameNoExt,StruFile),
+    !.
+get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
+
+% TODO use structure declaration in kleio file header
+% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
+% match cli file to stru with same name in structures directory
+match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
+    select('sources',Dirs,'structures',Dirs1),
+    atomic_list_concat(Dirs1,'/',Path),
+    atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
+    exists_file(StruFile),!.
+
+% match cli file sources/.../dir/xpto.cli with structures/dir.str 
+match_stru_to_file(Dirs,_,StruFile):-
+    last(Dirs,LastDir), % get last directory 
+    select('sources',Dirs,'structures',StruPath),
+    reverse(StruPath,RStruPath),
+    % get path to structures directory depth first
+    append(_,[structures|PathToStructures],RStruPath),
+    reverse(PathToStructures,SubPath),
+    % add file with lastdir name and extension str
+    file_name_extension(LastDir,'str',DirStru),
+    append(SubPath,[structures,DirStru],Path),
+    atomic_list_concat(Path,'/',StruFile),
+    exists_file(StruFile),!.
+
+% match cli file with gacto2.str or sources.str in structures directory depth first
+match_stru_to_file(Dirs,_,StruFile):-
+    select('sources',Dirs,'structures',StruPath),
+    % remove last element of Dirs1
+    reverse(StruPath,RStruPath),
+    append(_,RSubPath,RStruPath),
+    reverse(RSubPath,SubPath),
+    atomic_list_concat(SubPath,'/',Path),
+    (atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
+    ;
+    atomic_list_concat([Path,'/','sources.str'],'',StruFile)),
+    exists_file(StruFile),!.
+
+
 
 extract_file_names(FileStatus,Names):-
     bagof(N,F^N^(member(F,FileStatus),extract_file_name(F,N)),Names),!.
@@ -288,9 +376,9 @@ get_absolute_paths([F|Fs],[A|As],TokenInfo):-
     get_absolute_paths(Fs,As,TokenInfo).
 get_absolute_paths([],[],_):-!.
 
-%% translate(+KleioFiles,+StruFile,+Options) is det.
+%% translate(+KleioFiles,+StruFiles,+Options) is det.
 %
-% translates KleioFiles using the definitions on StruFile.
+% translates KleioFiles using the definitions on StruFiles.
 % * echo: if yes echoes in the "rpt" file the source lines
 % * 
 %

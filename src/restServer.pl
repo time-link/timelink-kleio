@@ -349,7 +349,7 @@ show_server_activity:-
 % 
 check_token_database:- 
     check_token_database(exists),
-    check_token_database(has_tokens),!.
+    check_token_database(bootstrap),!.
 
 check_token_database(exists):-
     tokens:token_db_attached(TokensCurrent),
@@ -361,21 +361,18 @@ check_token_database(exists):-
     tokens:attach_token_db(DB),!.
 
 
-check_token_database(has_tokens):-
-    (tokens:user_token(_,_,_) -> 
-        true
-    ;
-        (% no tokens defined. We will generate a 'bootstrap' token with generate_token privilegies, and 5m life
-        A = bootstrap,
-        tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
-        put_shared_value(bootstrap_token,token(Token)),
-        kleiofiles:kleio_conf_dir(KConf),
-        atom_concat(KConf,'/.bootstrap_token',BTokenFile),
-        open(BTokenFile,write,F,[]),
-        write(F,Token),
-        close(F)
-        )
-    ).
+check_token_database(bootstrap):-
+    % Generate a 'bootstrap' token with generate_token privilegies, and 5m life
+    A = bootstrap,
+    (tokens:invalidate_user(A);true),
+    tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
+    put_shared_value(bootstrap_token,token(Token)),
+    kleiofiles:kleio_conf_dir(KConf),
+    atom_concat(KConf,'/.bootstrap_token',BTokenFile),
+    open(BTokenFile,write,F,[]),
+    write(F,Token),
+    close(F).
+
 
 home_page(_):-
         format('Content-type: text/html~n~n', []),

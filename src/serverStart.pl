@@ -25,6 +25,28 @@ run_debug_server:-
     restServer:start_debug_server, % we keep this for the semantic tests scripts until we find a better way
     restServer:start_rest_server,!.
 
+%% run_from_mhk_home(?MHK_HOME, ?PORT) is det.
+%
+% runs a server in a given MHK_HOME and PORT
+% This is best way to set up a server for testing with
+% with mhk sever running in paralel and sharing a mhk-home
+% if MHK_HOME is unbound it defaults to $HOME/mhk-home
+% if PORT is unbound it defaults to 8088
+% if mhk-home/system/conf/mhk_system_properties set
+% mhk.kleio.service=http://host.docker.internal:8088
+% if in docker or
+% mhk.kleio.service=http://localhost:8088
+% if mhk is running outside docker.
+
+run_from_mhk_home:-
+    run_from_mhk_home(_,_).
+
+run_from_mhk_home(MH,P):-
+    mhk_home(MH),
+    (var(P)->P=8088;true),
+    writeln('Starting server in '-MH-P),
+    run_server.
+
 %% run_server is det.
 % Activate a rest server.
 run_server:-
@@ -167,9 +189,22 @@ stop_debug_server:-
     restServer:default_value(server_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
 
-mhk_home:-
+%% mhk_home(?Path) is det.
+%
+% Set or infer mhk-home path and 
+% change working directory to it.
+% if Path is not und then it will
+% be bound 'mhk-home' dir user_home (getenv('HOME')) 
+% If bound change working dir to Path
+%
+mhk_home(MH):-
+    var(MH),
     getenv('HOME',H),
     atom_concat(H,'/mhk-home',MH),
+    working_directory(_,MH),
+    ls.
+mhk_home(MH):-
+    \+ var(MH),
     working_directory(_,MH),
     ls.
 
@@ -224,8 +259,8 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in test_sources
-% to setup in the terminal do tests/scripts/prepare_tests.sh
+% assumes test sources in tests/kleio-home/test_sources
+% to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
@@ -282,14 +317,15 @@ test_case(translations,File,Stru):-
     translate_file(File,Flag),
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
-translate_file('sources/api/varia/auc_cartulario18.cli',true).
-translate_file('sources/api/varia',true).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
-translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',true).
+translate_file('sources/api/varia/auc_cartulario18.cli',false).
+translate_file('sources/api/varia',false).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
+translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/varia/lrazao516pe.cli',true).
-
+translate_file('sources/api/varia/lrazao516pe.cli',false).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',true).
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
     uri_data(scheme,UComponents,Scheme),

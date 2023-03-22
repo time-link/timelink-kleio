@@ -72,7 +72,7 @@ API documentation is available at [docs/api/index.html](docs/api/index.html)
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
-* run with `make start` 
+* run with `make kleio-run-latest` 
 
 ## Development
 
@@ -92,6 +92,7 @@ Recommended tools:
 ### Running the server locally for debugging
 
 Easiest way: 
++ install swipl locally
 + install `VSC-Prolog` extension in `VSCode`
 + open serverStart.pl on `VSCode` 
 + load the file with Option+X+L
@@ -106,9 +107,10 @@ Easiest way:
 + Clients can access the kleio-server using the token set above. 
 
 See the `README.md` file inside the `tests` directory for more information on testing.
+
 ### Debugging inside the docker container
 
-After building the image with `make image` run a shell in the kleio-server container
+After building the image with `make build-local` run a shell in the kleio-server container
 
 
       docker compose run kleio sh
@@ -118,6 +120,53 @@ At the prompt start swi Prolog and change to the kleio-home directory
       # swipl -f serverStart.pl
       ?- working_directory(_,'/kleio-home').
       ?- run_debug_server.
+
+### Debugging together with MHK
+
+Currently MHK debugging is done by starting
+the current build together with the other
+containers (mySQL/MariaDB, Caddy, Portainer and Kleio)
+through a Docker compose file and by attaching the Intellij 
+IDEA debugger to the running MHK app.
+
+The recomended way is to stop the kleio server that is
+started with MHK and start a local server in VSCode as
+explained above, and associating it with the same
+mhk-home directory of the MHK beeing jointly tested, 
+as described bellow.
+
+In order for MHK to connect to the local running Kleio server the property `mhk.kleio.service`
+   should be set to  http://host.docker.internal:8088
+   in the file mhk-home/system/conf/mhk_system.properties
+
+This means that the MHK instance running in Docker will try
+to connect to port 8088 in the local host. Values of
+http://127.0.0.1:8088 ot http://localhost:8088
+
+The sequence should be:
+1. Build new docker image of MHK
+2. Update local MHK install with 
+   local image: `mhk update --local` (make sure
+   mhk is updating from latest image wiht `mhk use-tag latest`)
+3. Start mhk with `mhk start`
+4. Stop the kleio server `mhk stop kleio`
+
+Steps 1-3 above are normally automated inside Intellij
+IDEA with a Debug configuration.
+
+Start the Kleio server inside VSCode:
++ install `VSC-Prolog` extension in `VSCode`
++ open serverStart.pl on `VSCode` 
++ load the file with Option+X+L
++ in the Prolog terminal that appears do 
+  
+      run_from_mhk_home(H,P)
+
+This will start a kleio server from USER_HOME/mhk-home
+running in port 8088. If mhk-home used by MHK is at
+a different location pass the path in H. In a port
+other than 8088 is to be used pass it in P.
+
 
 ### Tests
 
@@ -130,9 +179,9 @@ See `README.md` in the directory `tests` for details. The tests directory also c
 reference files and the reference translator necessary to run both semantic and api tests.
 
 ### Updating 
-## Preparing images
+#### Preparing images
  
- * ```make image```: create a new image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
+ * ```make build-local```: create a new local image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
   
 The following tags are used:
 * _unique_ - current build number as Knnn. Note that the tag unique is not used as such, it is interpreted as the last build number.
@@ -147,32 +196,60 @@ To help manage the tags the following targets exist
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 
+## Release sequence
+
+* Create docker image `make build-multi` (also pushes to repository tag with current version)
+  * __Note that the reference repository is `timelinkserver/kleio-server` login before with 
+   `docker login --username timelinkserver` or other 
+   authorized user.__
+* Test
+* Update release notes
+* Commit code 
+* Check current version with `make show-current` or
+   `make show-last`
+* Tag image with semantic versioning
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number)
+  * if new image to be latest do `make tag-multi-latest` 
+  
+
 ## Make targets
 
 Type ```make``` to see more targets that help in development.
 
-
-      % make
-      usage:
-      make build-image          build docker image and tag with new build number
-      make show-patch           return the current build number
+      make build-local          build a local docker image and tag with new build number
+      make tag-local-TAG        tag last local image with TAG in latest | stable
+      make build-multi          build local mage and push multi platform docker imagea tagged with new build number
+                                (requires login in dokerhub with 'docker login' )
+      make tag-multi-TAG        tag last multi platform image with TAG in latest | stable
+      make show-build           return the current build number
       make show-version         return the current version string (major.minor)
       make show-current         return the current version, build number
       make show-last            return the last image build date, version, build number
       make show-env             show KLEIO env variables currently defined
       make inc-NUMBER           increment version with NUMBER in major | minor
-      make token                generate a string for KLEIO_ADMIN_TOKEN for .env file
+      make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file
       make bootstrap-token      generate and register a token for 'admin' during bootstrap
                                     (only if no tokens exist and server running < 5 minutes)
       make docs                 generate api docs (requires postman_doc_gen and api files)
-      make tag-TAG              tag last image with TAG in latest | unique | stable
-      make push-TAG             push image with TAG in latest | unique | stable
-      make kleio-run | start    start server with .env config and tests/docker_compose.yaml
+      make pull-tag tag=x.y.z   pull image with tag x.y.z from docker hub
+      make kleio-run-latest     start server with latest multi platform image, .env config and tests/docker_compose.yaml
+      make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml
+      make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml
       make kleio-stop | stop    stop running server
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
 
+### 2022-12-26 18:16:47 version 10.19.484
+
+Clean up targets for build and run
+### 2022-12-26 13:32:53 version 10.19.482
+
+Adds multi-architecture docker builds.
+### 2022-12-25 10.19.464
+
+Fixes [issue 5](https://github.com/time-link/timelink-kleio/issues/5) generates bootstrap token at
+each startup.
 ### 2022-06-15 10.18.463
 
 Fixes CORS pre-flight requests.
