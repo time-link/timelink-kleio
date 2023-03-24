@@ -171,6 +171,8 @@ element name=type
 element name=loc
 element name=obs
 element name=ref
+element name=page; source=ref
+element name=pages; source=ref
 element name=value
 element name=origin
 element name=destination
@@ -260,6 +262,13 @@ element name=xmesmo_que; source=xsame_as
 element name=sexo; source=sex
 element name=nomedest; source=destname
 element name=iddest; source=destination
+element name=sumario; source=summary
+element name=fol; source=ref;
+element name=fols; source=ref;
+element name=folio; source=ref;
+element name=folios; source=ref;
+
+
 
 
 
