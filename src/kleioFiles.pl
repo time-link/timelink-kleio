@@ -550,12 +550,12 @@ kleio_conf_dir(D):-
     exists_directory(D),!.
 kleio_conf_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/conf', D1),
+    atom_concat(H, '/.kleio/conf', D1),
     absolute_file_name(D1,D),
     exists_directory(D),!.
 kleio_conf_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/conf', D),
+    atom_concat(H, '/.kleio/conf', D),
     make_directory_path(D),!.
 
 kleio_conf_dir('.').
@@ -580,9 +580,10 @@ kleio_source_dir(D):-getenv('KLEIO_SOURCE_DIR', D),!.
 kleio_source_dir(D):-
     kleio_home_dir(H),
     atom_concat(H, '/sources', D1),
-    absolute_file_name(D1,D),!.
+    absolute_file_name(D1,D),
+    exists_directory(D),!.
 
-kleio_source_dir('.').
+kleio_source_dir(KSD):-kleio_home_dir(KSD).
 
 %% kleio_log_dir(?Dir) is det.
 % Returns the log base dir, normally KLEIO_HOME/system/logs/kleio/ or KLEIO_HOME/kleio/logs/ 
@@ -598,12 +599,12 @@ kleio_log_dir(D):-
     exists_directory(D),!.
 kleio_log_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/logs/', D1),
+    atom_concat(H, '/.kleio/logs/', D1),
     absolute_file_name(D1,D),
     exists_directory(D),!.
 kleio_log_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/logs/', D1),
+    atom_concat(H, '/.kleio/logs/', D1),
     absolute_file_name(D1,D),
     make_directory_path(D),!.
 
@@ -622,7 +623,7 @@ kleio_stru_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D).
 kleio_stru_dir(D):-
-    source_file(kleioFiles:_,FilePath),!, % get the Prolog source origin
+    source_file(FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
     file_directory_name(FilePath,D).
 
@@ -653,8 +654,8 @@ kleio_user_source_dir(Dir,Options):-
     kleio_home_dir(Kleio_home_dir),
     option(sources(UserSourceDir),Options),  
     atomic_list_concat([Kleio_home_dir,UserSourceDir],'/',D1),
-    absolute_file_name(D1,Dir),!.
-
+    absolute_file_name(D1,Dir),
+    exists_file(Dir),!.
 %% kleio_user_structure_dir(?Dir,+Options) is det.
 %
 % Gets the base dir for structures using token information
