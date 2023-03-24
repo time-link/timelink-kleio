@@ -185,7 +185,6 @@ default_value(cors,['*']) :- !.
 %! print_server_config is det.
 %
 % prints the configuration values of the server.
-%
 print_server_config:-
     restServer:default_value(server_port,SP),
     restServer:default_value(rest_port,RP),
@@ -207,10 +206,11 @@ print_server_config:-
     format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
-    format('REST port: ~t~w~n',[RP]),
+    format('REST port: ~t~w (check if mapped in docker)~n',[RP]),
     format('Workers: ~t~w~n',[Workers]),
     format('Timeout: ~t~w~n',[Timeout]),
     format('Cors: ~t~w~n',[Cors]),
+    format('/kleio_home dir on host: ~t~w~n',[Home]),
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
@@ -222,7 +222,28 @@ print_server_config:-
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
-    !.
+     !.
+
+save_kleio_config:-
+    (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
+    (getenv('KLEIO_ADMIN_TOKEN',ATOKEN)
+        -> true 
+        ;
+        ATOKEN='No token in environment'),
+    restServer:default_value(rest_port,RP),
+    kleiofiles:kleio_home_dir(Home),
+    % output config info
+    atom_concat('http://localhost:',RP,KURL),
+    KleioSetup = ksetup{kleio_home_dir:Home, 
+                        kleio_admin_token:ATOKEN,
+                        kleio_url:KURL,
+                        kleio_log:Log
+                        },
+    atom_concat(Home,'/.kleio_setup.json',KleioSetupFile), 
+    open(KleioSetupFile,write,KFI_Stream,[]),        
+    json_write_dict(KFI_Stream,KleioSetup),
+    close(KFI_Stream).
+
 
 admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
 admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
@@ -302,7 +323,8 @@ server(Port) :-
         default_value(timeout,Number),
         http_server(http_dispatch,
                     [ port(Port),timeout(Number) % 15 secs timeout on requests
-                    ]).
+                    ]),
+        save_kleio_config.
 
 %% server_idle(+Seconds) is det.
 %
