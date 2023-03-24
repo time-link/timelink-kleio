@@ -175,7 +175,7 @@ There two type of tests:
 * _semantic_ tests compare the result of a new translation to a reference translation.
 * _api_ tests check if the exposed API works as expected.
 
-See `README.md` in the directory `tests` for details. The tests directory also contains
+See `README-tests.md` in the directory `tests` for details. The tests directory also contains
 reference files and the reference translator necessary to run both semantic and api tests.
 
 ### Updating 
@@ -203,7 +203,7 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    `docker login --username timelinkserver` or other 
    authorized user.__
 * Test
-* Update release notes
+* Update release notes (bellow)
 * Commit code 
 * Check current version with `make show-current` or
    `make show-last`
@@ -239,6 +239,15 @@ Type ```make``` to see more targets that help in development.
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
+
+Do `make show-last` to have timestamp and version info
+
+### 2023-03-24 04:44:20 version 11.0.498
+
+Implements issue #7 allowing str files
+to be located close to the sources
+
+see [doc](docs/doc/stru_file_location.md)
 
 ### 2022-12-26 18:16:47 version 10.19.484
 
