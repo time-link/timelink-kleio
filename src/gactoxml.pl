@@ -228,6 +228,7 @@ db_close:-
       E3,
       log_error('Could not change permissions of ~w : ~w ',[D,E3])
       ),
+  persistence:get_value(report,ReportFile),
   %report([writeln('** '-Ids-'renamed to'-D)]),
   %report([writeln('** Translation files closed.')]),
   % Generate a JSON file with information on the related files
@@ -236,7 +237,8 @@ db_close:-
                    stru_json:JsonPath,
                    kleio_file:D,
                    kleio_original:Original,
-                   kleio_previous: Last},
+                   kleio_previous: Last,
+                   kleio_rpt: ReportFile},
   concat(SOURCE,'.files.json',KleioFilesInfo), 
   open(KleioFilesInfo,write,KFI_Stream,[]),        
   json_write_dict(KFI_Stream,FileDict),
