@@ -117,7 +117,7 @@ generate permission errors when accessed by the current user.
 To run the kleio server user the current user:
 
 ```console
-$ docker run -v $(PWD):/kleio-home -u $(id -u):$(id -g) -p 8088:8088 -d  kleio-server  
+docker run -v $PWD:/kleio-home -u $(id -u):$(id -g) -p 8088:8088 -d  kleio-server  
 ```
 
 ### More configuration options
