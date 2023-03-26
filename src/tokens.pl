@@ -140,15 +140,37 @@ decode_token(Token,UserName,Options):-
 
 %% get_kleio_admin(+TOKEN,-UserName,-Options) is det.
 % returns TOKEN for KLEIO_ADMIN if set in env variable
+% if not from KLEIO_CONF_DIR/.kleio_admin_token
 get_kleio_admin(Token,User,Options):-
     getenv('KLEIO_ADMIN_TOKEN', Token),
     User = 'KLEIO_ADMIN',
+    get_admin_options(Options),
+    !.
+get_kleio_admin(Token,User,Options):-
+    kleiofiles:kleio_admin_token_path(ATP),
+    read_token(ATP,Token),
+    User = 'KLEIO_ADMIN',
+    get_admin_options(Options),
+    !.
+
+% get_admin_options(?Options) is det.
+% returns Options for kleio admin
+get_admin_options(Options):-
     Options = [
         comment('KLEIO_ADMIN can translate, upload and delete files, and also create and remove directories'),
         api([sources,kleioset,files,structures,translations,upload,delete,mkdir,rmdir,generate_token,invalidate_token,invalidate_user]),
         structures(''),
         sources('')],
     !.
+
+%% read_token(+File,-Token) is det.
+% Reads a token from File.
+read_token(File,Token):-
+    exists_file(File),
+    open(File,read,Stream),
+    read_string(Stream,_,Token),
+    close(Stream).
+
 
 %% invalidate_token(+Token) is det.
 % Removes a token.
@@ -233,11 +255,11 @@ expired_token(Token):-
 
 check_age(Options):-
     option(created(When),Options,0),
-    When == 0.
+    When == 0,!.
 
 check_age(Options):-
     option(life_span(S),Options,0),
-    S == 0.
+    S == 0,!.
 
 check_age(Options):-
     option(created(T0),Options),
