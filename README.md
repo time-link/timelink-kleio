@@ -65,11 +65,75 @@ API documentation is available at [docs/api/index.html](docs/api/index.html)
 
 ## Running the server with docker
 
+### Run the latest version from docker hub
+
+```bash
+$ docker run -v $(PWD):/kleio-home -p 8088:8088 -d  timelink-server/kleio-server
+```
+
+### Build and run locally
+
+```bash
+make build-local
+
+$ docker run -v $(PWD):/kleio-home -p 8088:8088 -d  kleio-server  
+```
+
+### Change the external linking port
+
+To have the server listening on port 8089
+
+```console
+$ docker run -v $(PWD):/kleio-home -p 8088:8089 -d  kleio-server  
+```
+
+### Set an admin token
+
+```console
+$ docker run -v $(PWD):/kleio-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
+```
+
+If `KLEIO_ADMIN_TOKEN` is not set the server will generate
+a token with admin privileges which can be
+obtained in the .kleio.json
+file in the directory mapped to /kleio-home
+
+```console
+$docker run -v $(PWD):/kleio-home -p 8088:8088 -d  kleio-server  
+
+$cat $PWD/.kleio.json
+```
+
+The generated token is associated with user kleio_admin,
+and can be invalidated by a client after generating a
+new one.
+
+### Run under current user
+
+On linux system docker will run under the root user.
+This makes the server generate files that will
+generate permission errors when accessed by the current user.
+
+To run the kleio server user the current user:
+
+```console
+$ docker run -v $(PWD):/kleio-home -u $(id -u):$(id -g) -p 8088:8088 -d  kleio-server  
+```
+
+### More configuration options
+
+There are more environment variables that can be
+set to control the behaviour of `kleio-server`. 
+
+The easiest way to test in to use `docker compose`
+with the `docker-compose.yaml` in this directory
+and set the variables in a `.env` file:
+
 * Copy or rename  `.env-sample`  to `.env`.
 * Change variables according to your setup. 
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
    * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used. 
-   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token and `kleio-server` finds no previously defined tokens, then a token named `bootstrap` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
+   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token then a token named `bootstrap-admin` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
 * run with `make kleio-run-latest` 
