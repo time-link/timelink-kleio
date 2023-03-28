@@ -59,6 +59,8 @@ Main services privided by the API are:
 * permission management using tokens: generate_token, invalidate_token,invalidate_use: magament of 'authorization' with token.
 * basic git interaction: fetch, pull, commit, push.
 
+API documentation is available in [docs/api](docs/api/index.html)
+
 ## Api documentation
 
 API documentation is available at [docs/api/index.html](docs/api/index.html)
@@ -76,7 +78,7 @@ $ docker run -v $(PWD):/kleio-home -p 8088:8088 -d  timelink-server/kleio-server
 ```bash
 make build-local
 
-$ docker run -v $(PWD):/kleio-home -p 8088:8088 -d  kleio-server  
+$ docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server  
 ```
 
 ### Change the external linking port
@@ -99,7 +101,7 @@ obtained in the .kleio.json
 file in the directory mapped to /kleio-home
 
 ```console
-$docker run -v $(PWD):/kleio-home -p 8088:8088 -d  kleio-server  
+$docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server  
 
 $cat $PWD/.kleio.json
 ```
@@ -126,17 +128,21 @@ There are more environment variables that can be
 set to control the behaviour of `kleio-server`. 
 
 The easiest way to test in to use `docker compose`
-with the `docker-compose.yaml` in this directory
+with the `docker-compose.yaml`file in this directory
 and set the variables in a `.env` file:
 
 * Copy or rename  `.env-sample`  to `.env`.
 * Change variables according to your setup. 
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
    * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used. 
-   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If you do not set the env variable `KLEIO_ADMIN_TOKEN` token then a token named `bootstrap-admin` is created on server startup with permission `generate_token` and a life span of 5 minutes. The token is written to a file in `KLEIO_CONF_DIR`. This token can be used to generate through an api call an initial admin token. 
+   * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If the env variable `KLEIO_ADMIN_TOKEN` is unset
+    then a token named `kleio-admin` is created on server startup with full admin permissions.
+     The token is written to file `/.admin_token` in `KLEIO_CONF_DIR`. 
+     This token can be used to generate another token through an api
+      call and invalidate this one 
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
-* run with `make kleio-run-latest` 
+* run with `make kleio-run-latest` or `docker compose up`
 
 ## Development
 
@@ -248,7 +254,6 @@ reference files and the reference translator necessary to run both semantic and 
  * ```make build-local```: create a new local image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
   
 The following tags are used:
-* _unique_ - current build number as Knnn. Note that the tag unique is not used as such, it is interpreted as the last build number.
 * latest - latest useful build. Used to keep updated with latest release.
 * stable - stable build for a specific version. 
 * _version_ - version number as MM.mm goes together with stable to provide clients with stable images for specific version.
@@ -304,15 +309,19 @@ Type ```make``` to see more targets that help in development.
       make test-api             run api tests (requires newman (npm install newman))
 ## Release notes
 
-Do `make show-last` to have timestamp and version info
+( `make show-last` to have timestamp and version info)
 
-### 2023-03-24 04:44:20 version 11.0.498
+### 2023-03-28 14:49:22 version 11.1.534
 
-Implements issue #7 allowing str files
-to be located close to the sources
+* Implements issue #7 allowing str files
+  to be located close to the sources
 
-see [doc](docs/doc/stru_file_location.md)
+   * see [docs/doc/stru_file_location.md](docs/doc/stru_file_location.md)
 
+* At startup the server generates a `.kleio.json` file
+  with the running configuration, including an admin token.
+  
+* New doc about [client setup](docs/doc/client_setup.md)
 ### 2022-12-26 18:16:47 version 10.19.484
 
 Clean up targets for build and run
