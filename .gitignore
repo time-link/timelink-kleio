@@ -23,6 +23,7 @@ tests/**/*.rpt
 tests/**/*.err
 tests/**/*.org
 tests/**/*.old
+tests/**/*.json
 tests/dev
 tests/httpd.log
 .DS_Store
@@ -32,7 +33,14 @@ tests/kleio-home/system/conf/mhk_system.properties
 node_modules
 package-lock.json
 package.json
-tests/kleio-home/system/conf/kleio/token_db
+src/.tokens.pl.swo
+src/.tokens.pl.swp
+tests/kleio-home/sources/test_translations/.kleio/conf/.admin_token
+tests/kleio-home/sources/test_translations/.kleio/conf/.bootstrap_token
+tests/kleio-home/sources/test_translations/.kleio/conf/token_db
+tests/kleio-home/sources/test_translations/.kleio/logs/kleio_service.log
+tests/kleio-home/system/conf/kleio/.admin_token
 tests/kleio-home/system/conf/kleio/.bootstrap_token
-tests/kleio-home/system/conf/kleio/token_db
 tests/kleio-home/system/logs/kleio/kleio_service.log
+.kleio/conf/.admin_token
+.kleio/conf/token_db

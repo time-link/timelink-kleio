@@ -20,8 +20,8 @@ help: .PHONY
 	@echo "usage:"
 	@echo "  make build-local          build a local docker image and tag with new build number"
 	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
-	@echo "  make build-multi          build local mage and push multi platform docker imagea tagged with new build number"
-	@echo "                            (requires a previous `docker login`)"
+	@echo "  make build-multi          build local mage and push multi platform docker images tagged with new build number"
+	@echo "                              (requires a previous 'docker login')"
 	@echo "  make tag-multi-TAG        tag last multi platform image with TAG in latest | stable"
 	@echo "  make show-build           return the current build number"
 	@echo "  make show-version         return the current version string (major.minor)"
@@ -73,6 +73,7 @@ inc-build: .PHONY
 	@./build-number inc -f ${KLEIO_BUILD_NUMBER_FILE}
 inc-major: .PHONY
 	@./build-number inc -f ${KLEIO_VERSION_NUMBER_FILE}
+	@echo "0" > ${KLEIO_PATCH_NUMBER_FILE}
 inc-minor: .PHONY
 	@./build-number inc -f ${KLEIO_PATCH_NUMBER_FILE}
 

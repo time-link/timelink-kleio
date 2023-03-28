@@ -19,6 +19,7 @@
         kleio_source_dir/1,
         kleio_log_dir/1,
         kleio_token_db/1,
+        kleio_admin_token_path/1,
         kleio_default_stru/1,
         kleio_user_source_dir/2,
         kleio_user_structure_dir/2,
@@ -415,12 +416,18 @@ get_file_attribute(File,Attribute,Value):-
 %% kleio_home_dir(?D)is det.
 % Returns the kleio home dir. 
 %
+% The server tries to detect the "home directory" from which files will be served.
+% When running inside a container the home directory is normally mapped to /kleio-home
+% or /timelink-home or /mhk-home. If the home directory is not mapped, the server
 % The translator assumes a standard working directory HOME with the following structure:
 % * HOME/system/conf/kleio contains configuration information.
 % * HOME/system/conf/kleio/token_db is the token database.
 % * HOME/system/conf/kleio/stru/gacto2.str is the default structure file.
 % * HOME/sources or HOME/projects is the base directory for source files.
 % * HOME/users/ is the base directory for user related information (e.g. specific stru files).
+%
+% if such a structure is not found the Server will create a 
+%   directory .kleio in its current directory for conf and log files.
 % ----
 % The following environment variables can determine the location of main files and directories used by the system.
 %
@@ -447,7 +454,8 @@ get_file_attribute(File,Attribute,Value):-
 % variable KLEIO_HOME or  ~/kleio-home or ~/timelink-home or ~/mhk-home.
 kleio_home_dir(D):-
     getenv('KLEIO_HOME_DIR', D1),
-    absolute_file_name(D1,D).
+    absolute_file_name(D1,D),
+    exists_directory(D).
 
 kleio_home_dir(D):-
     member(D,['/kleio-home','/timelink-home','/mhk-home']),
@@ -550,12 +558,12 @@ kleio_conf_dir(D):-
     exists_directory(D),!.
 kleio_conf_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/conf', D1),
+    atom_concat(H, '/.kleio/conf', D1),
     absolute_file_name(D1,D),
     exists_directory(D),!.
 kleio_conf_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/conf', D),
+    atom_concat(H, '/.kleio/conf', D),
     make_directory_path(D),!.
 
 kleio_conf_dir('.').
@@ -572,6 +580,14 @@ kleio_token_db(D):-
 
 kleio_token_db('./token_db').
 
+%% kleio_admin_token_path(?Path) is det.
+% Returns the path to the admin token, normally KLEIO_CONF_DIR/.admin_token,
+%
+kleio_admin_token_path(D):-
+    kleio_conf_dir(C),
+    atom_concat(C, '/.admin_token', D1),
+    absolute_file_name(D1,D),!.
+
 %% kleio_source_dir(?Dir) is det.
 % Returns the sources base dir, normally KLEIO_HOME/sources but can be overriden by environment 
 % variable KLEIO_SOURCE_DIR.
@@ -580,30 +596,32 @@ kleio_source_dir(D):-getenv('KLEIO_SOURCE_DIR', D),!.
 kleio_source_dir(D):-
     kleio_home_dir(H),
     atom_concat(H, '/sources', D1),
-    absolute_file_name(D1,D),!.
+    absolute_file_name(D1,D),
+    exists_directory(D),!.
 
-kleio_source_dir('.').
+kleio_source_dir(KSD):-kleio_home_dir(KSD).
 
 %% kleio_log_dir(?Dir) is det.
-% Returns the log base dir, normally KLEIO_HOME/system/logs/kleio/ or KLEIO_HOME/kleio/logs/ 
-%   but can be overriden by environment 
-% if none exists then it is created as KLEIO_HOME/kleio/logs/
-% variable KLEIO_LOG_DIR.
+% Returns the log base dir, normally KLEIO_HOME/system/logs/kleio/ or KLEIO_HOME/.kleio/logs/ 
+%   but can be overriden by environment variable KLEIO_LOG_DIR.
+% if none exists then it is created as KLEIO_HOME/.kleio/logs/
 %
 kleio_log_dir(D):-getenv('KLEIO_LOG_DIR', D),!.
 kleio_log_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/system/logs/kleio', D1),
+    atom_concat(H, '/system/logs', D1),
+    absolute_file_name(D1,SL),
+    exists_directory(SL),
+    atom_concat(SL, '/kleio', D),
+    make_directory_path(D),!.
+kleio_log_dir(D):-
+    kleio_home_dir(H),
+    atom_concat(H, '/.kleio/logs/', D1),
     absolute_file_name(D1,D),
     exists_directory(D),!.
 kleio_log_dir(D):-
     kleio_home_dir(H),
-    atom_concat(H, '/kleio/logs/', D1),
-    absolute_file_name(D1,D),
-    exists_directory(D),!.
-kleio_log_dir(D):-
-    kleio_home_dir(H),
-    atom_concat(H, '/kleio/logs/', D1),
+    atom_concat(H, '/.kleio/logs/', D1),
     absolute_file_name(D1,D),
     make_directory_path(D),!.
 
@@ -622,7 +640,7 @@ kleio_stru_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D).
 kleio_stru_dir(D):-
-    source_file(kleioFiles:_,FilePath),!, % get the Prolog source origin
+    source_file(FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
     file_directory_name(FilePath,D).
 
@@ -653,8 +671,8 @@ kleio_user_source_dir(Dir,Options):-
     kleio_home_dir(Kleio_home_dir),
     option(sources(UserSourceDir),Options),  
     atomic_list_concat([Kleio_home_dir,UserSourceDir],'/',D1),
-    absolute_file_name(D1,Dir),!.
-
+    absolute_file_name(D1,Dir),
+    exists_file(Dir),!.
 %% kleio_user_structure_dir(?Dir,+Options) is det.
 %
 % Gets the base dir for structures using token information
