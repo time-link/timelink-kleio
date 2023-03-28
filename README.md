@@ -322,6 +322,8 @@ Type ```make``` to see more targets that help in development.
   with the running configuration, including an admin token.
   
 * New doc about [client setup](docs/doc/client_setup.md)
+
+* New translation result summary in json [translation results](docs/doc/translation_results.md)
 ### 2022-12-26 18:16:47 version 10.19.484
 
 Clean up targets for build and run
