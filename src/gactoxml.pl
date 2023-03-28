@@ -178,8 +178,6 @@ db_close:-
   report([format('Previous version: ~w~n',[Last])]),
   concat(SOURCE,'.ids',Ids),
   report([format('Temp file with ids: ~w~n',[Ids])]),
-
-
   /*
   (exists_file(Last) ->
     ((delete_file(Last),report([writeln('** Deleted previous version'-Last)]))
@@ -232,13 +230,17 @@ db_close:-
   %report([writeln('** '-Ids-'renamed to'-D)]),
   %report([writeln('** Translation files closed.')]),
   % Generate a JSON file with information on the related files
+  errors:error_count(ErrCount),
+  errors:warning_count(WarnCount),
   FileDict = files{stru:StruFile, 
                    stru_rpt:SrptPath,
                    stru_json:JsonPath,
                    kleio_file:D,
                    kleio_original:Original,
                    kleio_previous: Last,
-                   kleio_rpt: ReportFile},
+                   kleio_rpt: ReportFile,
+                   errors:ErrCount,
+                   warnings:WarnCount},
   concat(SOURCE,'.files.json',KleioFilesInfo), 
   open(KleioFilesInfo,write,KFI_Stream,[]),        
   json_write_dict(KFI_Stream,FileDict),

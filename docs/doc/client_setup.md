@@ -18,15 +18,17 @@ If the client is responsible for starting the kleio
 server then these informations should be readily available,
 for instance, if the client started the server with:
 
+( do `make build-local` to produce kleio-server image)
+
 ```console
-$ docker run -v /Users/timelink/mhk-home:/kleio-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
+docker run -v /Users/timelink/mhk-home:/kleio-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
 ```
 
 then `kleio_home` is /Users/timelink/mhk-home,
 `kleio_url` is http://localhost:8088 and
 `kleio_admin_token` is "myprivatetoken"
 
-The server will generate a file a the root
+The server will generate a file at the root
 of `kleio_home` named `.kleio.json` with 
 information of the run time environment including
 the information necessary for clients to connect:
@@ -48,16 +50,14 @@ the information necessary for clients to connect:
 }
 ```
 
-Note that the kleio server running in docker has no access to the path
-of the volume mapped to `/kleio-home` and so there is no value
-for `kleio_home_local` . 
+Note that the kleio server running in docker has no access to the path of the volume mapped to `/kleio-home` and so there is no value for `kleio_home_local` . 
 
 To make it easier for clients to discover the location of
 the `kleio_home` of a running server the server can be
 started setting the `kleio_home_local` variable:
 
 ```console
-$ docker run -v /Users/timelink/mhk-home:/kleio-home -e KLEIO_HOME_LOCAL=/Users/timelink/mhk-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
+docker run -v /Users/timelink/mhk-home:/kleio-home -e KLEIO_HOME_LOCAL=/Users/timelink/mhk-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
 ```
 
 The server copies the value to the `.kleio.json` file where clients can access it:
@@ -91,16 +91,19 @@ obtain the  `kleio-home`.
 ## Locating the source of kleio-home with docker tools.
 
 ```console
-$ # locate the container with volume /kleio-home
-$ cid=`docker ps --filter "volume=/kleio-home" --format "{{.ID}}"`
-$ echo $cid     
-
-b0d96acf09be
-
-$ # inspect the container for volumes and check the Source parameter
-
-$ docker inspect --format='{{json .Mounts}}' $cid 
+cid=`docker ps --filter "volume=/kleio-home" --format "{{.ID}}"`; \
+echo $cid     
 ```
+```
+b0d96acf09be
+```
+
+ Inspect the container for volumes and check the Source parameter
+
+```console
+docker inspect --format='{{json .Mounts}}' $cid 
+```
+
 ```json
 [{"Type":"bind","Source":"/Users/jrc/mhk-home","Destination":"/kleio-home","Mode":"","RW":true,"Propagation":"rprivate"}]
 ```
@@ -108,14 +111,17 @@ $ docker inspect --format='{{json .Mounts}}' $cid
 with `jq` installed, in a single line
 
 ```console
-$ cid=`docker ps --filter "volume=/kleio-home" --format "{{.ID}}"`; docker inspect --format="{{json .Mounts}}" $cid | jq ".[0].Source"
-
+cid=`docker ps --filter "volume=/kleio-home" --format "{{.ID}}"`; docker inspect --format="{{json .Mounts}}" $cid | jq ".[0].Source"
+```
+```
 "/Users/jrc/mhk-home"
 ```
 
 A JavaScript client can use the 
 the `dockerode` library to find
 the same information.
+
+Example (untested):
 
 ```JavaScript
 const Docker = require('dockerode');
@@ -146,8 +152,9 @@ location of `mhk-home` which is also
 `kleio-home`. 
 
 ```console
-$ cat ~/.mhk
-
+cat ~/.mhk
+```
+```
 HOST_MHK_USER_HOME="/Users/jrc"
 HOST_MHK_HOME="/Users/jrc/mhk-home"
 mhk_home_dir="/Users/jrc/mhk-home"
