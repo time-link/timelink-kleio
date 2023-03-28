@@ -14,7 +14,7 @@ transcription.
 The kleio translator autogenerates ids during the translation process. Translated documents
 are then imported to the database. 
 
-In order to allow chenges in the transacription after the data is imported in the databse it is
+In order to allow changes in the transacription after the data is imported in the databse it is
 necessary that the auto generated ids are the same for the same entities.
 
 This is done by generating a copy of the transcription with explicit ids. So that
@@ -97,7 +97,7 @@ clioPP2(G,ID):-
 	Ident is PI*3,
 	clio_group_param(G,locus,Locus),
 	clio_bclass(G,Class),
-	(member(Class,[attribute,relation,kleio,'historical-source']) -> 
+	(member(Class,[attribute,relation,kleio,'historical-source',end]) -> 
 		true
 		;  
 		nl
@@ -107,7 +107,7 @@ clioPP2(G,ID):-
 	clioPP_locus(0,Locus,N), % this can set idout to true
 	clioPP_elements(N,Locus), % this can set idout to true
 	 % check if we need to print the id, except for groups not relevant
-	(member(Class,[attribute,relation,'group-element',kleio]) ->
+	(member(Class,[attribute,relation,'group-element',kleio,end]) ->
 		true 
 		;
 		( 

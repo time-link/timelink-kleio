@@ -185,7 +185,6 @@ default_value(cors,['*']) :- !.
 %! print_server_config is det.
 %
 % prints the configuration values of the server.
-%
 print_server_config:-
     restServer:default_value(server_port,SP),
     restServer:default_value(rest_port,RP),
@@ -207,10 +206,11 @@ print_server_config:-
     format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
-    format('REST port: ~t~w~n',[RP]),
+    format('REST port: ~t~w (check if mapped in docker)~n',[RP]),
     format('Workers: ~t~w~n',[Workers]),
     format('Timeout: ~t~w~n',[Timeout]),
     format('Cors: ~t~w~n',[Cors]),
+    format('/kleio_home dir on host: ~t~w~n',[Home]),
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
@@ -222,7 +222,49 @@ print_server_config:-
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
-    !.
+     !.
+
+save_kleio_config:-
+    (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
+    (tokens:get_kleio_admin(ATOKEN,_,_)
+        -> true 
+        ;
+        ATOKEN=null), % null is JSON convention for null
+    (getenv('KLEIO_HOME_LOCAL',HomeLocal)
+        -> true 
+        ;
+        HomeLocal=null), % null is JSON convention for null
+    restServer:default_value(rest_port,RP),
+    clio_version_version(V),
+    clio_version_build(B),
+    clio_version_date(D),
+    kleiofiles:kleio_home_dir(Home),
+    kleiofiles:kleio_conf_dir(Conf),
+    kleiofiles:kleio_admin_token_path(AdminTokenPath),
+    get_token_db_status(TDBS),
+    % get todays date
+    get_time(T), 
+    format_time(string(NowDateTime),'%FT%T%z',T),
+    % output config info
+    atom_concat('http://localhost:',RP,KURL),
+    KleioSetup = ksetup{kleio_home_local:HomeLocal,
+                        kleio_home:Home, 
+                        kleio_admin_token:ATOKEN,
+                        kleio_url:KURL,
+                        kleio_log:Log,
+                        kleio_version:V,
+                        kleio_version_build:B,
+                        keio_version_date:D,
+                        kleio_conf_dir:Conf,
+                        kleio_token_db_status:TDBS,
+                        kleio_admin_token_path:AdminTokenPath,
+                        kleio_setup_date:NowDateTime
+                        },
+    atom_concat(Home,'/.kleio.json',KleioSetupFile), 
+    open(KleioSetupFile,write,KFI_Stream,[]),        
+    json_write_dict(KFI_Stream,KleioSetup),
+    close(KFI_Stream).
+
 
 admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
 admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
@@ -302,7 +344,8 @@ server(Port) :-
         default_value(timeout,Number),
         http_server(http_dispatch,
                     [ port(Port),timeout(Number) % 15 secs timeout on requests
-                    ]).
+                    ]),
+        save_kleio_config.
 
 %% server_idle(+Seconds) is det.
 %
@@ -360,16 +403,18 @@ check_token_database(exists):-
     (exists_file(DB)->true;log_info('Token db at ~w does not exist. Will create.',[DB])),
     tokens:attach_token_db(DB),!.
 
+check_token_database(bootstrap):-
+    getenv('KLEIO_ADMIN_TOKEN',_),!.
 
 check_token_database(bootstrap):-
-    % Generate a 'bootstrap' token with generate_token privilegies, and 5m life
-    A = bootstrap,
+    % Generate a 'bootstrap' token with admin privileges
+    A = kleio_admin,
     (tokens:invalidate_user(A);true),
-    tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
-    put_shared_value(bootstrap_token,token(Token)),
-    kleiofiles:kleio_conf_dir(KConf),
-    atom_concat(KConf,'/.bootstrap_token',BTokenFile),
-    open(BTokenFile,write,F,[]),
+    kleiofiles:kleio_admin_token_path(AdminTokenFile),
+    tokens:get_admin_options(Opts),
+    tokens:generate_token(A,Opts,Token),
+    put_shared_value(bootstrap_admin_token,token(Token)),
+    open(AdminTokenFile,write,F,[]),
     write(F,Token),
     close(F).
 

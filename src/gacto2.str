@@ -347,14 +347,14 @@ note funcao-em-acto   -- tipo de relacao entre actor e acto
 note ****************************************************************
 part 	name=funcao-em-acto; source=relation-type;
      repeat=actorm,actorf
-
+å©
 note ****************************************************************
 note doc group fim fim indica o fim de um acto
 note loc fim pt fim
 note loc fim en end
 note ****************************************************************
-part 	name=fim; source=end;
-     also=obs
+part 	name=fim; source=end; position=id
+     also=id,obs
 
 note ****************************************************************
 note Equivalencia entre o nome dos elementos em portugues e em ingles
