@@ -242,6 +242,9 @@ save_kleio_config:-
     kleiofiles:kleio_conf_dir(Conf),
     kleiofiles:kleio_admin_token_path(AdminTokenPath),
     get_token_db_status(TDBS),
+    % get todays date
+    get_time(T), 
+    format_time(string(NowDateTime),'%FT%T%z',T),
     % output config info
     atom_concat('http://localhost:',RP,KURL),
     KleioSetup = ksetup{kleio_home_local:HomeLocal,
@@ -250,11 +253,12 @@ save_kleio_config:-
                         kleio_url:KURL,
                         kleio_log:Log,
                         kleio_version:V,
-                        kleio_build:B,
-                        keio_date:D,
+                        kleio_version_build:B,
+                        keio_version_date:D,
                         kleio_conf_dir:Conf,
                         kleio_token_db_status:TDBS,
-                        kleio_admin_token_path:AdminTokenPath
+                        kleio_admin_token_path:AdminTokenPath,
+                        kleio_setup_date:NowDateTime
                         },
     atom_concat(Home,'/.kleio.json',KleioSetupFile), 
     open(KleioSetupFile,write,KFI_Stream,[]),        
@@ -404,7 +408,7 @@ check_token_database(bootstrap):-
 
 check_token_database(bootstrap):-
     % Generate a 'bootstrap' token with admin privileges
-    A = klei_admin,
+    A = kleio_admin,
     (tokens:invalidate_user(A);true),
     kleiofiles:kleio_admin_token_path(AdminTokenFile),
     tokens:get_admin_options(Opts),
