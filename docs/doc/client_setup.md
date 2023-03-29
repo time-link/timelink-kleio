@@ -49,8 +49,16 @@ the information necessary for clients to connect:
   "kleio_version_build":"528"
 }
 ```
-
-Note that the kleio server running in docker has no access to the path of the volume mapped to `/kleio-home` and so there is no value for `kleio_home_local` . 
+Notes:
+* `kleio_admin_token_path` is the path to a file containing
+   a token with administrative privileges. On startup if the
+   env variable `KLEIO_ADMIN_TOKEN` is not present the server
+   will try to fetch the token from this file. If the file
+   is absent and no token in environment then the server will
+   generate a new token and write to this path. If the server
+   is always started with env variable `KLEIO_ADMIN_TOKEN` set
+   that no file will be present at `kleio_admin_token_path`.
+* The kleio server running in docker has no access to the path of the volume mapped to `/kleio-home` and so there is no value for `kleio_home_local` . 
 
 To make it easier for clients to discover the location of
 the `kleio_home` of a running server the server can be
