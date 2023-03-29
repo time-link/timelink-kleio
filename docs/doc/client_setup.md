@@ -201,7 +201,7 @@ is set in the file
 in the property `mhk.kleio.service.token.admin`.
 
 If the property does not exist then during
-startup a new token is generated and appended
+`mhk` startup a new token is generated and appended
 to `mhk-home/system/conf/mhk_system.properties`.
 
 The `kleio-server` will be started with that
@@ -245,29 +245,34 @@ There are several scenarios depending
 on the workspace directory location relative
 to `mhk-home`.
 
-1. the workspace was opened at the 
+1. File `~/.mhk` exists and it contains the
+   a setting for `mhk_home_dir` __AND__ the
+   workspace directory is equal or a subdirectory
+   of `mhk_home_dir`. The get the `.kleio-json`
+   file from the directory in `mhk_home_dir`.
+2. the workspace was opened at the 
    `mhk-home` level.
    * The workspace 
    directory is the `kleio_home` and the `kleio_url` and `kleio_admin_token` can be
    obtained from `.kleio-json`.
-2. the workspace was opened in a directory that
+3. the workspace was opened in a directory that
   includes `mhk-home` as subdirectory. 
   This can be detected by searching for the
   file `.mhk-home` in the workspace and its
   subdirectories. 
      * If the file is found
-  then the directory of the file in `kleio-home`
+  then the directory of the file is `kleio-home`
   and `.kleio-json` provides url and token.
-3. the workspace is a subdirectory of a `mhk-home`
+1. the workspace is a subdirectory of a `mhk-home`
   directory (normally 
   `mhk-home/sources` or one of its 
   subdirectorties).
      * this is detected by searching for `.   
         mhk-home` file in the parents of
         the workspace directory.
-     * if found hen the directory of the file is
+     * if found then the directory of the file is
         `kleio-home` and `.kleio-json` provides url and token.
-4. none of the above: then the ony way is to
+1. none of the above: then the ony way is to
    inquire the docker information as explained
    above.
 
