@@ -1,3 +1,11 @@
+:- module(swishell,
+    [
+        trad_stru_only/1,
+        make_kleio_doc/2,
+        trad_dat_only/1,
+        trad/2
+
+    ]).
 % vim: filetype=prolog
 % ClioInput quick and dirty shell para o SWI prolog
 %
