@@ -311,7 +311,7 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
-### 2023-03-28 14:49:22 version 11.1.534
+### 2023-03-28 14:49:22 version 11.1.536
 
 * Implements issue #7 allowing str files
   to be located close to the sources
