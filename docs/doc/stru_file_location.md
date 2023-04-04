@@ -10,13 +10,13 @@ One of the current problems is that for every new source format the shared `gact
 
 By allowing the stru file to be stored close to the sources directory it is possible to have different `stru` in usage.
 
-### implementation
+### Implementation
 
-The standard source repository has a `sources` directory at the same level of a `structures` directory.
+The standard source repository has a `sources` directory at the same level of a `structures` directory. See https://github.com/joaquimrcarvalho/timelink-sources-template .
 
-So for a given source file to be translated with path `sources/SUBPATH/file.cli` the default stru would be, in order:
+For a given source file to be translated with path `sources/SUBPATH/FILENAME.cli` the default stru would be, in order:
 
-* `structures/SUBPATH/file.str`  
+* `structures/SUBPATH/FILENAME.str`  
 * `structures/SUBPATH2/gacto2.str`
  where `SUBPATH2` is a parent path of SUBPATH
 * `structures/DIRNAME.str`  where DIRNAME, is the name of a dir in SUBPATH
