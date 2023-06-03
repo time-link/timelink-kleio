@@ -1,0 +1,78 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="KLEIO">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element name="CLASS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ATTRIBUTE" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="NAME" use="optional"/>
+                      <xs:attribute type="xs:string" name="COLUMN" use="optional"/>
+                      <xs:attribute type="xs:string" name="CLASS" use="optional"/>
+                      <xs:attribute type="xs:string" name="TYPE" use="optional"/>
+                      <xs:attribute type="xs:short" name="SIZE" use="optional"/>
+                      <xs:attribute type="xs:byte" name="PRECISION" use="optional"/>
+                      <xs:attribute type="xs:byte" name="PKEY" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="NAME"/>
+            <xs:attribute type="xs:string" name="SUPER"/>
+            <xs:attribute type="xs:string" name="TABLE"/>
+            <xs:attribute type="xs:string" name="GROUP"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GROUP">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ELEMENT" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="core"/>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="NAME" use="optional"/>
+                  <xs:attribute type="xs:string" name="CLASS" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ATTRIBUTE" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="NAME" use="optional"/>
+                      <xs:attribute type="xs:string" name="COLUMN" use="optional"/>
+                      <xs:attribute type="xs:string" name="CLASS" use="optional"/>
+                      <xs:attribute type="xs:string" name="TYPE" use="optional"/>
+                      <xs:attribute type="xs:short" name="SIZE" use="optional"/>
+                      <xs:attribute type="xs:byte" name="PRECISION" use="optional"/>
+                      <xs:attribute type="xs:byte" name="PKEY" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="ID" use="optional"/>
+            <xs:attribute type="xs:string" name="NAME" use="optional"/>
+            <xs:attribute type="xs:string" name="CLASS" use="optional"/>
+            <xs:attribute type="xs:byte" name="ORDER" use="optional"/>
+            <xs:attribute type="xs:byte" name="LEVEL" use="optional"/>
+            <xs:attribute type="xs:byte" name="LINE" use="optional"/>
+            <xs:attribute type="xs:string" name="SUPER" use="optional"/>
+            <xs:attribute type="xs:string" name="TABLE" use="optional"/>
+            <xs:attribute type="xs:string" name="GROUP" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="STRUCTURE"/>
+      <xs:attribute type="xs:string" name="SOURCE"/>
+      <xs:attribute type="xs:string" name="TRANSLATOR"/>
+      <xs:attribute type="xs:string" name="WHEN"/>
+      <xs:attribute type="xs:string" name="OBS"/>
+      <xs:attribute type="xs:string" name="SPACE"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
