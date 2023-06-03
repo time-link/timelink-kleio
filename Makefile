@@ -158,7 +158,7 @@ kleio-run-latest:  check-env
 	if [ -z "$$KLEIO_SERVER_PORT" ]; then export KLEIO_SERVER_PORT="8088"; fi;\
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
-	echo "Starting kleio-server with timelinkserver/kleio-server:latest";\
+	echo "Starting kleio-server with timelinkserver/kleio-server:latest port $$KLEIO_EXTERNAL_PORT";\
 	declare | grep "^KLEIO"; \
 	docker pull timelinkserver/kleio-server:latest;\
 	docker compose up -d
@@ -187,7 +187,7 @@ kleio-run-current: kleio-stop
 	if [ -z "$$KLEIO_EXTERNAL_PORT" ]; then export KLEIO_EXTERNAL_PORT="8089"; fi;\
 	export KLEIO_USER=$$(id -u):$$(id -g);\
 	declare | grep "^KLEIO"; \
-	echo "Starting kleio-server with kleio-server:${patch} in dir $${KLEIO_HOME_DIR}";\
+	echo "Starting kleio-server with kleio-server:${patch} port $$KLEIO_EXTERNAL_PORT in dir $${KLEIO_HOME_DIR}";\
 	docker compose up -d
 
 show-env:
