@@ -3,7 +3,7 @@
         trad_stru_only/1,
         make_kleio_doc/2,
         trad_dat_only/1,
-        trad/2
+        trad/2,trad1/2
 
     ]).
 % vim: filetype=prolog

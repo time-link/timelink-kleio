@@ -969,7 +969,10 @@ get_group_id(Group,__BuiltinID,Id):- % if the element id exists, take it as the 
   clio_aspect(core,id,ID),ID \= [],!,
   list_to_a0(ID,Id0),
   check_id_prefix(Id0,Id),
-  (used_id(Id)->error_out(['** ID already used in this file: ',Id]);asserta(used_id(Id))),
+  get_prop(gline,number,L),
+  get_prop(gline,text,Line),
+  (used_id(Id)->error_out(['** ID already used in this file: ',Id],
+                          [line_number(L),line_text(Line)]);asserta(used_id(Id))),
   put_value(Group,Id),!.   % store the Id for latter reference
 
 get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancestor and concatenate
