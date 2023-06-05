@@ -311,6 +311,16 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2023-06-05 02:04:07 version 11.1.541
+
+* Improves line number reporting in error messages
+
+Internal:
+
+* Add XSD schema for Kleio export format
+* Improve make file (shows port when runing server)
+* Uses 8088 for api tests
+
 ### 2023-03-28 14:49:22 version 11.1.536
 
 * Implements issue #7 allowing str files
