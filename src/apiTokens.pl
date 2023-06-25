@@ -11,6 +11,7 @@
 
 Generate tokens, invalidade tokens and users.
 
+Set privileges associated with tokens.
 */
 
 %!tokens(+Method,+User,+ResultType,+Id,+Params) is det.
@@ -36,6 +37,9 @@ users(delete,Token,ResultType,Id,Params):-
 
 %!tokens_generate(+ResultType,+Id,+Params) is det.
 %
+%  Params:
+%       info(Info)
+%
 %  Generates a token for a user and associates it with info.
 %  The predicate is agnostic regarding the info, it simply stores it.
 %  The kleio translator uses the following structure.
@@ -57,7 +61,9 @@ users(delete,Token,ResultType,Id,Params):-
 % 		* mkdir (create a directory)
 % 		* rmdir (remove)
 % 	* structures: (optional) base directory for user provided str files.
-% 	* sources: (optional, required for user that do translations)
+%   * inferences: (optional) directory for aditional inference rules TODO:
+%   * mappings:   (optional) directory for aditional SOM-POM mappings. TODO:
+% 	* sources: (optional, required for user that do translations) 
 %
 tokens_generate(ResultType,Id,Params):-
     option(user(UserName),Params), % TODO: generate exception
@@ -79,7 +85,7 @@ tokens_generate(ResultType,Id,Params):-
 
 %!tokens_invalidate(+ResultType,+Id, +Params) is det.
 % 
-% Invalidates previously issued token
+% Invalidates previously issued token.
 %
 tokens_invalidate(ResultType,Id, Params):-
     option(token(Token),Params),

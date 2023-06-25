@@ -15,5 +15,5 @@ Open browser with `doc_browser.`
 
 :- doc_server(4040,[]). % Start PlDoc at port 4040
 :- portray_text(true).  % Enable portray of strings
-:- doc_browser.
+:- doc_browser; writeln('Not possible to launch browser in this environment. Try opening http://localhost:4040').
 

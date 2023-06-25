@@ -71,6 +71,8 @@
 ?-thread_local(xsame_as_cached/8).
 ?-thread_local(same_as_cached_id/1).
 
+% TODO: here we need to consult user mappings and inference rules
+
 /*
 ================================================================================
   db_init - initializes database
@@ -1269,6 +1271,7 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   rch_class(relation,Class,Super,Table,Mapping),
   ensure_class(relation,Class,Super,Table,Mapping),
   gensymbol_local(rela,Rid),
+  % TODO: AncID = OriginID
   get_prop(act,id,AncID),
   get_prop(act,date,Date),xml_nl,
   inccount(group,GroupNumber),
@@ -1309,10 +1312,11 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   !.
 
 export_auto_attribute(Entity,Type,Value) :- !,
-rch_class(ls,Class,Super,Table,Mapping),
-ensure_class(ls,Class,Super,Table,Mapping),
-gensymbol_local(atra,Rid),
-get_prop(act,id,AncID),
+  rch_class(ls,Class,Super,Table,Mapping),
+  ensure_class(ls,Class,Super,Table,Mapping),
+  gensymbol_local(atra,Rid),
+  % TODO: AncID = Entity
+  get_prop(act,id,AncID),
   get_prop(act,date,Date),xml_nl,
   inccount(group,GroupNumber),
   clio_path(P),
