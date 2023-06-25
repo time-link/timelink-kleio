@@ -29,10 +29,9 @@ note ================================================
 database name=kleio; first=kleio; identification=no
 
 note ===============================================
-note doc group Kleio group: this is the top level group of all
-note              'gacto' sources.
-note             Specific historical sources must be added
-note             to the part parameter of this group.
+note doc group kleio This is the top level group of Kleio files.
+     Specific historical sources must be added
+     to the part parameter of this group.
 note
 
 part 	name=kleio;
@@ -46,16 +45,21 @@ note ============================================================
 
 part name=historical-source;
   guaranteed=id;
-  also=type,date,year,loc,ref,obs,replace;
+  also=type,date,year,loc,ref,obs,replace, kleiofile;
   position=id,year,type,ref;
   part=historical-act
 
 note ============================================================
 note GeoEntity: a spatial entity
-note doc group an entity that represents a spatial entity in the sense of
-note    a conceptual representation of space. A geo-entity is not an object
-note     that has a particular position in place. it is rather something like
-note      the parish of X, the place Y, the region W.
+note doc group geoentity 
+
+     GeoEntity: a spatial entity.
+     An entity that represents a spatial entity 
+     in the sense of a conceptual representation of space. 
+     A geo-entity is not an object
+     that has a particular position in place. 
+     It is rather something like
+     the parish of X, the place Y, the region W.
 note ============================================================
 
 part name=geoentity;
@@ -79,10 +83,11 @@ part name=authority-register;
 
 note ===========================================================
 note identifications: a authority-register for identifications
-note doc group identifications are authority-registers for record linking.
-note     They contain real-entity records (people or objects) that aggregate
-note     occurrences in the source pertaining to the same person or entity.
-note     To keep imported records separate from local ones use a different user.
+note doc group identifications 
+     Identifications are authority-registers for record linking.
+     They contain real-entity records (people or objects) that aggregate
+     occurrences in the source pertaining to the same person or entity.
+     To keep imported records separate from local ones use a different user.
 part name=identifications;
     source=authority-register;
     position=id,name;
@@ -92,8 +97,10 @@ part name=identifications;
 
 note ===========================================================
 note rentity: a authority-record for a real entity
-note doc group rentity contains information about a real entity.
-note     Defines the standart name for the entity and what are the occurences
+note doc group rentity 
+        Rentity contains information about a real entity.
+        Defines the standart name for the entity and what are the occurences,
+        in `occ` subgroups.
 part name=rentity;
      position=id,description,type;
      guaranteed=id,description,type;
@@ -269,6 +276,9 @@ element name=type
 element name=loc
 element name=obs
 element name=ref
+element name=page
+note pages in the document
+element name=pages
 element name=value
 element name=origin
 element name=destination
@@ -279,9 +289,17 @@ element name=name
 element name=sex
 element name=destname
 element name=destination
-element name=summary;
-element name=description;
-element name=replace;
+element name=summary
+element name=description
+element name=replace
+element name=inside
+element name=class
+element name=level
+element name=line
+element name=groupname
+element name=replace
+element name=kleiofile
+
 
 note ================================================
 note ======= END OF SYSTEM DEFINITIONS ==============
@@ -336,14 +354,13 @@ note funcao-em-acto   -- tipo de relacao entre actor e acto
 note ****************************************************************
 part 	name=funcao-em-acto; source=relation-type;
      repeat=actorm,actorf
-
 note ****************************************************************
 note doc group fim fim indica o fim de um acto
 note loc fim pt fim
 note loc fim en end
 note ****************************************************************
-part 	name=fim; source=end;
-     also=obs
+part 	name=fim; source=end; position=id;
+     also=id,obs
 
 note ****************************************************************
 note Equivalencia entre o nome dos elementos em portugues e em ingles
@@ -362,12 +379,17 @@ element name=xmesmo_que; source=xsame_as
 element name=sexo; source=sex
 element name=nomedest; source=destname
 element name=iddest; source=destination
+element name=sumario; source=summary
+element name=fol; source=pages;
+element name=fols; source=pages;
+element name=folio; source=pages;
+element name=folios; source=pages;
 
 
 note ****************************************************************
 note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
 note loc acto pt acto
-note lc actor en act
+note loc actor en actor
 note ****************************************************************
 part name=acto;
   source=pt-acto;
@@ -714,7 +736,7 @@ part  name=cas,termo;
 
 note *****************************************************************
 note doc group bap Baptismos (variante usada nos registos da Lousa
-      por Rosario Campos e em ?bidos)
+      por Rosario Campos e em Óbidos)
 note *****************************************************************
 part name=bap; source=pt-acto;
   position=id,dia,mes,ano,fol,loc,celebrante;
@@ -742,7 +764,8 @@ part name=obito; source=pt-acto;
   also=obs;
   repeat=celebrante,n,marido,mulher,pai,mae,referido,referida,sacr,testamento,testamenteiro,locs,locf,causa,oficios
 
-note doc group o Estilo usado em Soure, sem o id do obito, mas aceita o id opcionalmente.
+note doc group o Óbitos. Estilo usado em Soure, sem o id do obito, 
+     mas aceita o id opcionalmente.
 part name=o; source=obito;
     position=dia,mes,ano;
     guaranteed=dia,mes,ano;
@@ -880,13 +903,17 @@ part name=escritura; source=pt-acto;
   arbitrary=atr,ls,devedor, devedora, credor, credora, fiador, fiadora, test,
              comprador,compradora,vendedor,vendedora, louvado,
              doador, doadora, donatario, donataria,dotante,dotantef,dotado, dotada,
-             senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,testamentario,testamentaria,testamenteiro,testamenteira,contraente,contraentef,renunciante,renunciantef,
+             senhorio, senhoria, rendeiro, rendeira,arrendatario,arrendataria,testador,testadora,
+             testamentario,testamentaria,testamenteiro,testamenteira,contraente,contraentef,
+             renunciante,renunciantef,
              procurador,procuradora,escrivao,arrematante,arrematantef,
-             foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,outorgante,outorgantef,referido,referida,
+             foreiro,foreira,enfiteuta,subenfiteuta,enfiteutaf,subenfiteutaf,constituinte,constituintef,
+             outorgante,outorgantef,referido,referida,
              divida,garantia,fianca,bem,doacao,arrendamento,aforamento,
 				 demanda,acusacao,destinatario,requerente,requerido,defesa,sentenca,escambo,
 				 siza,sisa,prazo,obra,escrivao,abonador,
-				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,demandado,escambador,escambadora,reu,reuf,
+				 abonadora,tabeliao,quitante,quitantef,quitado,quitada,demandador,demandadora,
+                 demandado,escambador,escambadora,reu,reuf,
 				 vedor,
 				 inquiricao,inquirido,inquirida,inquiridor,
 				 apelacao,apelado,apelante,apelantef, apresentado, padroeiro, confirmante,
@@ -980,7 +1007,7 @@ part name=obra; source=object;
 note *****************************************************************
 note DyncoopNet grupos associados ao projecto de base de dados de
 note letrad de cambio
-note doc group lc letra de cambio
+note doc group lc Letra de câmbio, usado no projecto DyncoopNet. 
 note *****************************************************************
 part name=local; source=geoentity; part=atr,rel
 
@@ -1098,8 +1125,9 @@ note =====================================================================
 note doc group bio Biographical description (from biographical dictionnaries,etc)
 part name=bio; source=lista;
 
-note doc group pevent Personal event, used inside people groups to register a personal event
-note     Diferent from event/evento which are top level groups inside lists or sources
+note doc group pevent Personal event, used inside people groups 
+     to register a personal event.
+     Diferent from event/evento which are top level groups inside lists or sources
 part name=pevent; source=evento;
 	position=description,dia,mes,ano;
 	guaranteed=description;
@@ -1335,7 +1363,7 @@ part name=perdao; source=abstraction;
   also=obs,id;
   
 note ****************************************************************
-note doc group docregio Documento regio
+note doc group docregio Documento régio.
 note loc docregio pt carta regia
 note loc docregio en royal chart
 note loc docregio fr charte royale
@@ -1352,7 +1380,7 @@ part name=docregio; source=pt-acto;
 
 
 note ****************************************************************
-note doc group docpontificio Documento Ponteficio
+note doc group docpontificio Documento Pontefício
 note loc docpontificio pt documento ponteficio
 note loc docpontificio en papal chart
 note loc docpontificio fr papal document
@@ -1364,6 +1392,7 @@ part name=docepiscopal; source=docregio
 note *****************************************************************
 note Matricula de doentes em Hospital
 note doc group matricula Matricula de doentes no Hospital das Caldas
+         da Rainha.
 note *****************************************************************
 part name=matricula; source=pt-acto;
  position=id,dia,mes,ano,fol;
@@ -1372,7 +1401,7 @@ part name=matricula; source=pt-acto;
  part=enfermo,enferma,referido,referida
 
 note ******************* Generic geographical hierarchies *******************
-note doc group geodesc A description of geographic entities
+note doc group geodesc A description of geographic entities.
 part name=geodesc; source=pt-acto;
     position=id,dia,mes,ano,fol;
     guaranteed=id;
@@ -1380,7 +1409,8 @@ part name=geodesc; source=pt-acto;
     part=geo1,geo2,geo3,geo4,atr,rel
 
 note Idea similar EU NUTS https://ec.europa.eu/eurostat/web/nuts/background 
-note doc group geo1 A geographical entity of level 1. Levels geo1-geo4 are defined
+note doc group geo1 A geographical entity of level 1. Levels geo1 to geo4 
+     are defined.
 note 
 part name=geo1; source=geoentity;
     position=name,type,id;
@@ -1415,14 +1445,15 @@ part name=loc; source=geo4;
 note ******************** SISTER             *************************
 note *****************************************************************
 note memorias paroquiais de 1758
-note doc group memoria58 Formato para registo das memorias paroquiais de 1758
+note doc group memoria58 Formato para registo das memórias paroquiais de 1758
 part name=memoria58;source=pt-acto;
 	position=id,dia,mes,ano;
 	guaranteed=id;
 	also=obs;
 	part=freguesia
 
-note doc group sinonimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes.
+note doc group apontamentosd Sinónimo de memoria58 para uso do Alexandre Pinto
+         em fontes semelhantes.
 part name=apontamentosd; source=memoria58
 	
 part name=freguesia; source=geoentity;
@@ -1450,7 +1481,9 @@ part name=pdonatario;source=person; part=referido,ls,atr,rel
 
 
 note *********************** TOMBOS *********************************
-note doc group automed Auto de medicao, corresponde a um acto ocorrido num dia determinado
+note doc group automed Auto de medição, corresponde a um acto  de 
+                medição de extremas de uma terra ocorrido 
+                num dia determinado. Usado para tombos.
 note doc element id elemento obrigatorio, identifica unicamente o auto de medicao
 note doc element loc local onde decorre o auto de medicao
 part name=automed;source=pt-acto;
@@ -1486,6 +1519,17 @@ part name=pas; source=pt-acto;
      arbitrary=mestre,n,referido,referida;
      
     
+note *****************************************************************
+note Wicki, Josef, e C. R Boxer. Liste der Jesuiten-Indienfahrer, 
+note        1541-1758. Münster: Aschendorffsche, 1967.
+note *****************************************************************
+part name=wviagem; source=pt-acto;
+     guaranteed=id,dia,mes,ano,barco;
+     position=id,dia,mes,ano,barco;
+     also=obs;
+     arbitrary=n,referido,referida;
+
+
 note *****************************************************************
 note Actores
 note    Os grupos seguintes definem o modo como os parentem se podem
