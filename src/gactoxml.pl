@@ -665,10 +665,15 @@ geoentity_export(G,ID) :-
 attribute_export(G,ID) :-
     get_ancestor(__Anc,AncId),
     (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
-    clio_aspect(core,tipo,T),
-    clio_aspect(core,valor,V),
+    clio_aspect(core,tipo,T),  % TODO: should it be type?
+    clio_aspect(core,valor,V), % TODO: should it be value?
     assert(attribute_cache(AncId,ID,T,V)),
     % report(writeln('** caching attribute info '-G-ID-T-V)),
+    % Processing of linked data must go here
+    % clio_aspect(comment,tipo, TC), 
+    % (contains_xlink(TC,XLT) -> generate_xlink(attr_to_prop,G,T,XLT); true),
+    % clio_aspect(comment,valor,VC),
+    % (contains_xlink(VC,XLV) -> generate_xlink(value_to_entity,G,T,XLV);true),
     group_to_xml(G,ID,[id([ID],[],[]),entity([AncId],[],[]),date([Date],[],[])]).
 
 
@@ -1785,11 +1790,11 @@ group_to_xml(GroupName,GroupId,InferedElements):-!,
   rch_class(GroupName,Class,Super,Table,Mapping),
   ensure_class(GroupName,Class,Super,Table,Mapping),
   get_ancestor(__Anc,AncestorID),
-    inccount(group,GroupNumber),
-    clio_path(P),
-    length(P,CurrentLevel),
-    get_prop(line,number,N),
-    xml_nl,
+  inccount(group,GroupNumber),
+  clio_path(P),
+  length(P,CurrentLevel),
+  get_prop(line,number,N),
+  xml_nl,
   xml_write(['<GROUP ID="',GroupId,'" NAME="',GroupName,'" CLASS="',Class,'" ORDER="',GroupNumber,'" LEVEL="',CurrentLevel,'" LINE="',N,'">']),
     xml_nl,
     xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
