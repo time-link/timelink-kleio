@@ -176,8 +176,8 @@ layout(linuxppc) :-
 		put_value(stru_dir,'/home/jrc/develop/mhk/trans/rch/clio/src/').
 
 layout(macosx) :-
-		put_value(data_dir,'/Users/jrc/develop/mhk_users/testes/sources/'),
-		put_value(stru_dir,'/Users/jrc/develop/mhk-git/clio/src/').
+		put_value(data_dir,'/Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/linked_data/'),
+		put_value(stru_dir,'/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/').
 layout(windows) :-
         		  put_value(data_dir,'../mhk_users/'),
         		  put_value(stru_dir,'../clio/src/').
