@@ -53,6 +53,7 @@ syntactic analysers.
 :-use_module(basicio).
 :-use_module(utilities).
 :-use_module(logging).
+:-use_module(linkedData).
 
 %%  clio_version(?V) is det.
 %  Returns the version of the translator.

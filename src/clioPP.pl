@@ -97,7 +97,7 @@ clioPP2(G,ID):-
 	Ident is PI*3,
 	clio_group_param(G,locus,Locus),
 	clio_bclass(G,Class),
-	(member(Class,[attribute,relation,kleio,'historical-source',end]) -> 
+	(member(Class,[attribute,relation,kleio,'historical-source',link,end]) -> 
 		true
 		;  
 		nl

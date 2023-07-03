@@ -170,6 +170,7 @@ do_setup(source(P)):-setenv('KLEIO_SOURCE_DIR',P),!.
 do_setup(conf(V)):-setenv('KLEIO_CONF_DIR',V),!.
 do_setup(strus(V)):-setenv('KLEIO_STRU_DIR',V),!.
 do_setup(tokens(V)):-setenv('KLEIO_TOKEN_DB',V),!.
+do_setup(kleio_admin_token(V)):-setenv('KLEIO_ADMIN_TOKEN',V),!.
 do_setup(dstru(V)):-setenv('KLEIO_DEFAULT_STRU',V),!.
 % do_setup(dport(V)):-setenv('KLEIO_DEBUGGER_PORT',V),!.
 do_setup(port(V)):-setenv('KLEIO_SERVER_PORT',V),!.
@@ -318,7 +319,7 @@ test_case(translations,File,Stru):-
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/test_translations/varia/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/dehergne-a.cli',true).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
