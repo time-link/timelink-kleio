@@ -31,7 +31,15 @@ syntactic analysers.
 
 
 */
-:-module(topLevel,[clio_version/1,pclio_version/0,clio_init/0,stru/1,dat/1]).
+:-module(topLevel,[
+                    clio_version/1,
+                    clio_version_version/1,
+                    clio_version_build/1,
+                    clio_version_date/1,
+                    pclio_version/0,
+                    clio_init/0,
+                    stru/1,
+                    dat/1]).
 :-use_module(dataCode).
 :-use_module(dataSyntax).
 :-use_module(dataDictionary).
@@ -45,12 +53,21 @@ syntactic analysers.
 :-use_module(basicio).
 :-use_module(utilities).
 :-use_module(logging).
+:-use_module(linkedData).
 
 %%  clio_version(?V) is det.
 %  Returns the version of the translator.
 %  Version is set at build time by replacing tokens in the code.
+% The tokens are replaced by the build script.
+% Use clio_version_version/1 to get the version number only.
+% Use clio_version_build/1 to get the build number only.
+% Use clio_version_date/1 to get the build date only.
 %
 clio_version('KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@').
+clio_version_version('@@VERSION@@').
+clio_version_build('@@BUILD@@').
+clio_version_date('@@DATE@@').
+
 
 %%  pclio_version is det.
 % prints version, compiler version, date and time
@@ -91,8 +108,8 @@ stru(F):-
       file_base_name(Filename,Basename),
       report([nl,write('Processing structure:'),write(Basename),nl]),
       initStru(Filename),
-      retractall(gDoc(_,_)),
-      retractall(eDoc(_,_,_)),
+      retractall(struSyntax:gdoc(_,_)),
+      retractall(struSyntax:edoc(_,_,_)),
       readlines(cmd),
 	  report([perror_count]),
       closeStru(Filename),

@@ -25,10 +25,31 @@ run_debug_server:-
     restServer:start_debug_server, % we keep this for the semantic tests scripts until we find a better way
     restServer:start_rest_server,!.
 
+%% run_from_mhk_home(?MHK_HOME, ?PORT) is det.
+%
+% runs a server in a given MHK_HOME and PORT
+% This is best way to set up a server for testing with
+% with mhk sever running in paralel and sharing a mhk-home
+% if MHK_HOME is unbound it defaults to $HOME/mhk-home
+% if PORT is unbound it defaults to 8088
+% if mhk-home/system/conf/mhk_system_properties set
+% mhk.kleio.service=http://host.docker.internal:8088
+% if in docker or
+% mhk.kleio.service=http://localhost:8088
+% if mhk is running outside docker.
+
+run_from_mhk_home:-
+    run_from_mhk_home(_,_).
+
+run_from_mhk_home(MH,P):-
+    mhk_home(MH),
+    (var(P)->P=8088;true),
+    writeln('Starting server in '-MH-P),
+    run_server.
+
 %% run_server is det.
 % Activate a rest server.
 run_server:-
-    set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host's IP)
     restServer:start_rest_server,
     print_server_config,!.
 
@@ -149,6 +170,7 @@ do_setup(source(P)):-setenv('KLEIO_SOURCE_DIR',P),!.
 do_setup(conf(V)):-setenv('KLEIO_CONF_DIR',V),!.
 do_setup(strus(V)):-setenv('KLEIO_STRU_DIR',V),!.
 do_setup(tokens(V)):-setenv('KLEIO_TOKEN_DB',V),!.
+do_setup(kleio_admin_token(V)):-setenv('KLEIO_ADMIN_TOKEN',V),!.
 do_setup(dstru(V)):-setenv('KLEIO_DEFAULT_STRU',V),!.
 % do_setup(dport(V)):-setenv('KLEIO_DEBUGGER_PORT',V),!.
 do_setup(port(V)):-setenv('KLEIO_SERVER_PORT',V),!.
@@ -168,9 +190,22 @@ stop_debug_server:-
     restServer:default_value(server_port,Port),
     thread_httpd:http_stop_server(Port,[]),!.
 
-mhk_home:-
+%% mhk_home(?Path) is det.
+%
+% Set or infer mhk-home path and 
+% change working directory to it.
+% if Path is not und then it will
+% be bound 'mhk-home' dir user_home (getenv('HOME')) 
+% If bound change working dir to Path
+%
+mhk_home(MH):-
+    var(MH),
     getenv('HOME',H),
     atom_concat(H,'/mhk-home',MH),
+    working_directory(_,MH),
+    ls.
+mhk_home(MH):-
+    \+ var(MH),
     working_directory(_,MH),
     ls.
 
@@ -225,8 +260,8 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in test_sources
-% to setup in the terminal do tests/scripts/prepare_tests.sh
+% assumes test sources in tests/kleio-home/test_sources
+% to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
@@ -237,7 +272,7 @@ test_setup(EndPoint,Token):-
     concat(ClioDir,'/tests/',TestPath),
     format('Test dir: ~w~n',[TestPath]),
     working_directory(_,TestPath),
-    PORT=8989,
+    PORT=8089,
     Token = 'mytoken',
     setenv('KLEIO_SERVER_PORT', PORT),
     setenv('KLEIO_ADMIN_TOKEN',Token),
@@ -283,13 +318,16 @@ test_case(translations,File,Stru):-
     translate_file(File,Flag),
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
-translate_file('sources/api/varia/auc_cartulario18.cli',true).
-translate_file('sources/api/varia',true).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
-translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',true).
+translate_file('sources/api/varia/auc_cartulario18.cli',false).
+translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/varia',false).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
+translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/varia/lrazao516pe.cli',true).
+translate_file('sources/api/varia/lrazao516pe.cli',false).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),

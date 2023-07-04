@@ -21,7 +21,7 @@
  The structure of person related data like attributes and relations with other
  persons is  defined. A basic structure for acts is also provided.
  
- The schema file *gactow.str* includes some "abstract" groups for persons. There
+ The schema file *gacto2.str* includes some "abstract" groups for persons. There
  are two of these abstract groups called male and female.
  
  When a stru file is created for a particular source document
@@ -47,6 +47,8 @@
  @license MIT
 */
 
+:-use_module(library('sgml')).
+:-use_module(library(http/json)).
 
 :-use_module(clioPP).
 :-use_module(counters).
@@ -58,6 +60,7 @@
 :-use_module(persistence).
 :-use_module(reports).
 :-use_module(utilities).
+:-use_module(linkedData).
 :-use_module(library(filesex)).
 
 ?-thread_local(group_path/1).
@@ -68,6 +71,8 @@
 ?-thread_local(same_as_cached/8).
 ?-thread_local(xsame_as_cached/8).
 ?-thread_local(same_as_cached_id/1).
+
+% TODO: here we need to consult user mappings and inference rules
 
 /*
 ================================================================================
@@ -152,15 +157,30 @@ db_close:-
   .org is the original .cli that was first translated with success.
   */
  change_to_ids:-
+  get_value(stru_file,StruFile),
+  report([format('Structure file: ~w~n',[StruFile])]),
+  prolog_to_os_filename(PrologFile, StruFile),
+  file_directory_name(PrologFile,PrologPath),
+  file_base_name(StruFile,BaseName),
+  file_name_extension(BaseNameNoExt,_,BaseName),
+  % create srpt file name
+  file_name_extension(BaseNameNoExt,'.srpt',SrptFile),
+  atomic_list_concat([PrologPath,'/',SrptFile],SrptPath),
+  report([format('Structure processing report: ~w~n',[SrptPath])]),
+  % create json file name
+  file_name_extension(BaseNameNoExt,'.str.json',JsonFile),
+  atomic_list_concat([PrologPath,'/',JsonFile],JsonPath),
+  report([format('Structure in JSON: ~w~n',[JsonPath])]),
+  % report on kleio source file
   get_value(data_file,D),
-  report([writeln('** Processed file'-D)]),
+  report([format('~nKleio file: ~w~n',[D])]),
   get_value(source_file,SOURCE),
   concat(SOURCE,'.org',Original),
-  report([writeln('** Original file'-Original)]),
+  report([format('Original file: ~w~n',[Original])]),
   concat(SOURCE,'.old',Last),
-  report([writeln('** Previous version'-Last)]),
+  report([format('Previous version: ~w~n',[Last])]),
   concat(SOURCE,'.ids',Ids),
-  report([writeln('** Temp file with ids'-Ids)]),
+  report([format('Temp file with ids: ~w~n',[Ids])]),
   /*
   (exists_file(Last) ->
     ((delete_file(Last),report([writeln('** Deleted previous version'-Last)]))
@@ -209,8 +229,26 @@ db_close:-
       E3,
       log_error('Could not change permissions of ~w : ~w ',[D,E3])
       ),
+  persistence:get_value(report,ReportFile),
   %report([writeln('** '-Ids-'renamed to'-D)]),
   %report([writeln('** Translation files closed.')]),
+  % Generate a JSON file with information on the related files
+  errors:error_count(ErrCount),
+  errors:warning_count(WarnCount),
+  FileDict = files{stru:StruFile, 
+                   stru_rpt:SrptPath,
+                   stru_json:JsonPath,
+                   kleio_file:D,
+                   kleio_original:Original,
+                   kleio_previous: Last,
+                   kleio_rpt: ReportFile,
+                   errors:ErrCount,
+                   warnings:WarnCount},
+  concat(SOURCE,'.files.json',KleioFilesInfo), 
+  open(KleioFilesInfo,write,KFI_Stream,[]),        
+  json_write_dict(KFI_Stream,FileDict),
+  close(KFI_Stream),
+  
   !.
 change_to_ids:-
    error_out('** Problem renaming files.'),
@@ -343,7 +381,15 @@ group_export(kleio,_) :- !,
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
     % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
-    xml_write(['<KLEIO STRUCTURE="',Stru,'" SOURCE="',Data,'" TRANSLATOR="gactoxml2.str" WHEN="',Date,' ',Time,'" OBS="',OS,'" SPACE="',Space,'">']),
+    xml_quote_attribute(Stru, QStru,utf8),
+    xml_quote_attribute(Data, QData,utf8),
+    %xml_quote_attribute(Date, QDate,utf8),
+    QDate = Date,
+    %xml_quote_attribute(Time, QTime,utf8),
+    QTime = Time,
+    xml_quote_attribute(OS, QOS,utf8),
+    xml_quote_attribute(Space, QSpace,utf8),
+    xml_write(['<KLEIO STRUCTURE="',QStru,'" SOURCE="',QData,'" TRANSLATOR="gactoxml2.str" WHEN="',QDate,' ',QTime,'" OBS="',QOS,'" SPACE="',QSpace,'">']),
     xml_nl.
 
 /*
@@ -365,6 +411,13 @@ group_export(Occ,ID):-
         group_derived(Occ,'occ'),
         rentity_occ_export(Occ,ID),!. 
 
+% Dealing with linked data
+group_export(Link,__ID):-
+  group_derived(Link,link),
+  clio_aspects(core,[shortname,urlpattern,obs],[ShortName,UrlPat,__obs]),
+  atomic_list_concat(ShortName,'',SN),
+  atomic_list_concat(UrlPat,'',UP),
+  store_xlink_pattern(SN,UP).
 
 group_export(Source,ID):-
     group_derived(Source,'historical-source'),
@@ -375,29 +428,29 @@ group_export(Act,ID) :-
   historical_act_export(Act,ID),!.
 
 group_export(Person,ID) :-
-group_derived(Person,person),
-person_export(Person,ID),!.
+  group_derived(Person,person),
+  person_export(Person,ID),!.
 
 group_export(Object,ID) :-
-group_derived(Object,object),
-object_export(Object,ID),!.
+  group_derived(Object,object),
+  object_export(Object,ID),!.
 
 group_export(Geoentity,ID) :-
-group_derived(Geoentity,geoentity),
-geoentity_export(Geoentity,ID),!.
+  group_derived(Geoentity,geoentity),
+  geoentity_export(Geoentity,ID),!.
 
 group_export(Attribute,ID) :-
-group_derived(Attribute,attribute),%writeln('attributed detected'),
-attribute_export(Attribute,ID),!.
+  group_derived(Attribute,attribute),%writeln('attributed detected'),
+  attribute_export(Attribute,ID),!.
 
 group_export(Relation,ID) :-
-group_derived(Relation,relation),
-relation_export(Relation,ID),!.
+  group_derived(Relation,relation),
+  relation_export(Relation,ID),!.
 
 group_export(End,ID) :-
-group_derived(End,end),
-  %report([writeln('**processing end group')]),
-process_end(End,ID),!.
+  group_derived(End,end),
+    %report([writeln('**processing end group')]),
+  process_end(End,ID),!.
 
 group_export(GE,ID) :-
   group_derived(GE,'group-element'),
@@ -498,7 +551,12 @@ rentity_occ_export(_,Id):-
 
 export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
   xml_nl,
-  xml_write(['<RELATION ID="',OccID,'" REGISTER="',ARId,'" USER="',User,'" ORG="',Occurrence,'" DEST="',REId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
+  xml_quote_attribute(OccID,POccID,utf8),
+  xml_quote_attribute(ARId,PARId,utf8),
+  xml_quote_attribute(User,PUser,utf8),
+  xml_quote_attribute(Occurrence,POccurrence,utf8),
+  xml_quote_attribute(REId,PREId,utf8),
+  xml_write(['<RELATION ID="',POccID,'" REGISTER="',PARId,'" USER="',PUser,'" ORG="',POccurrence,'" DEST="',PREId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
   xml_nl,!.
 
 
@@ -615,17 +673,36 @@ geoentity_export(G,ID) :-
 attribute_export(G,ID) :-
     get_ancestor(__Anc,AncId),
     (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
-    clio_aspect(core,tipo,T),
-    clio_aspect(core,valor,V),
+    clio_aspect(core,tipo,T),  % TODO: should it be type?
+    clio_aspect(core,valor,V), % TODO: should it be value?
     assert(attribute_cache(AncId,ID,T,V)),
     % report(writeln('** caching attribute info '-G-ID-T-V)),
+    % Processing of linked data must go here
+    clio_aspect(comment,tipo, TC), 
+    atomic_list_concat(TC, '',TypeComment ),
+    (detect_xlink(TypeComment,DataSource,Id) -> 
+        (
+          generate_xlink(TypeComment,Uri),
+          process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri)
+        )
+        ; 
+        true),
+    clio_aspect(comment,valor,VC),
+    atomic_list_concat(VC, '',ValueComment ),
+    (detect_xlink(ValueComment,DataSource2,Id2) -> 
+        (
+          generate_xlink(ValueComment,Uri2),
+          process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2)
+        )
+        ; 
+        true),
     group_to_xml(G,ID,[id([ID],[],[]),entity([AncId],[],[]),date([Date],[],[])]).
 
 
 relation_export(G,ID) :-
-get_ancestor(__Anc,AncId),
-(get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
-group_to_xml(G,ID,[id([ID],[],[]),origin([AncId],[],[]),date([Date],[],[])]).
+  get_ancestor(__Anc,AncId),
+  (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+  group_to_xml(G,ID,[id([ID],[],[]),origin([AncId],[],[]),date([Date],[],[])]).
 
 /* Ending an act */
 
@@ -675,14 +752,14 @@ process_same_as(__Group,Id):-
    destination id exists in this file. Also the destination id does not receive the prefix of the kleio file if any.
    */
 process_same_as(__Group,Id):-
-belement_aspect(core,xsame_as,[SameId]),
-log_debug('translate:    ** Processing EXTERNAL same_as for ~w~n',[Id]),
-(is_list(SameId) -> list_to_a0(SameId,SID); SID = SameId),
-gensymbol_local(rela,Rid),
-get_ancestor(___anc,AncID),
-get_prop(act,date,Date),
-rch_class(relation,Class,Super,Table,Mapping),
-ensure_class(relation,Class,Super,Table,Mapping),
+  belement_aspect(core,xsame_as,[SameId]),
+  log_debug('translate:    ** Processing EXTERNAL same_as for ~w~n',[Id]),
+  (is_list(SameId) -> list_to_a0(SameId,SID); SID = SameId),
+  gensymbol_local(rela,Rid),
+  get_ancestor(___anc,AncID),
+  get_prop(act,date,Date),
+  rch_class(relation,Class,Super,Table,Mapping),
+  ensure_class(relation,Class,Super,Table,Mapping),
   inccount(group,GroupNumber),
   clio_path(P),
   length(P,CurrentLevel),
@@ -698,8 +775,8 @@ process_same_as(_,_).
 /* Process the cached same as */
 
 process_cached_same_as:-
-%report([writeln('**** SAME AS checks STARTED...')]),
-p_cached_same.
+  %report([writeln('**** SAME AS checks STARTED...')]),
+  p_cached_same.
 
 
 p_cached_same:-
@@ -767,13 +844,13 @@ xml_nl,
   xml_write(['</GROUP>']),!.
 
 process_function_in_act(Group,Id):-
-gensymbol_local(rela,Rid),
-get_ancestor(___anc,AncID),
+  gensymbol_local(rela,Rid),
+  get_ancestor(___anc,AncID),
   get_prop(act,date,Date),
-get_prop(act,group,ActGroup),
-get_prop(act,id,ActId),
-rch_class(relation,Class,Super,Table,Mapping),
-ensure_class(relation,Class,Super,Table,Mapping),xml_nl,
+  get_prop(act,group,ActGroup),
+  get_prop(act,id,ActId),
+  rch_class(relation,Class,Super,Table,Mapping),
+  ensure_class(relation,Class,Super,Table,Mapping),xml_nl,
   inccount(group,GroupNumber),
   clio_path(P),
   length(P,CurrentLevel),
@@ -810,6 +887,94 @@ ensure_class(relation,Class,Super,Table,Mapping),xml_nl,
   xml_write(['</GROUP>']),
   !.
 process_function_in_act(_,_).
+
+% Process linked data see issue:#6 
+%1. entity to entity: an entity in a record is the same as another entity in another 
+%   dataset. In this case the comment should be attached to the id of the entity
+%
+%    kleio$
+%       link$wikidata/"https://www.wikidata.org/wiki/$1"
+%      ...
+%     n$Matteo Ricci/id=deh-matteo-ricci#@wikidata:Q233340
+%
+%```xml
+%<RELATION ID="deh-matteo-ricci-ld1" 
+%             ORG="deh-matteo-ricci" 
+%             DEST="https://www.wikidata.org/wiki/Q233340"
+%             TYPE="LINK" 
+%             VALUE="SAME_AS" />
+%```
+%
+%Internally a relation would be generated with type "link" and value "same as"
+%
+%      n$Matteo Ricci/id=deh-matteo-ricci#@wikidata: Q233340
+%         rel$link/same as/"https://www.wikidata.org/wiki/Q233340"
+%    
+%2. attribute value to entity: the value of an attribute in Timelink
+%   is linked to an entity in another dataset.
+%
+%        ls$estadia/Cantão#@wikidata:Q16572/15830800
+%            
+%
+%Would generate:
+%
+%```xml
+%<RELATION ID="deh-matteo-ricci-ld2"
+%        ORG="deh-matteo-ricci-attr1"
+%        DEST="http://www.wikidata.org/wiki/Q16572"
+%        TYPE="LINK"
+%        VALUE="VALUE_IS"
+%    />
+%```
+%
+%Internally one could generate an extra atribute with the link
+%
+%      ls$estadia/Cantão#@wikidata:Q16572/15830800
+%      ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
+%
+%3. Type of attribute or relation to external property: 
+%   the type of an attribute in Timelink corresponds to a property
+%  in an external data set.
+%
+%    ls$estadia#@wikidata:Property:P551/Cantão#@wikidata:Q16572/15830800
+%
+%
+%this could generate 
+%
+%```xml
+%<RELATION ID="deh-matteo-ricci-ld3"
+%        ORG="deh-matteo-ricci-attr1"
+%        DEST="http://www.wikidata.org/wiki/Property:P551"
+%        TYPE="LINK"
+%        VALUE="TYPE_IS"
+%    />
+%```
+%
+%    ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
+%    ls$wikidata.P551.linked.value/"http://www.wikidata.org/wiki/Q16572"/15521006
+%
+%In relations:
+%
+%    n$João III/id=rei-joao-iii
+%       rel$parentesco#@wikidata: P1038/irmao#@wikidata: P3373/Isabel de Portugal/isabel-de-portugal
+%
+
+process_xlink_attribute_type(Group,Id,Type, Value, (DatSource,XId),_TypeComment,Uri):-
+  % ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
+  atomic_list_concat(['@',DatSource,XId],'',LinkedAType),
+  export_auto_attribute(Id,Group, 'attribute', LinkedAType, Uri,'',Value,'',Type),!.
+
+process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
+  error_out([' Could not generate linked data URI from ',TypeComment,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
+
+process_xlink_attribute_value(Group,Id,Type, Value, (_DataSource,_XID), _ValueComment,Uri):-
+   % ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
+   (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
+   atomic_list_concat([TypeFlat,'@'],'',LinkedAType),
+   export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
+process_xlink_attribute_value(Group,Id,Text, _Value, (_DataSource,_XID),_ValueComment,_Uri):-
+  error_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
+
 /*
 infer_sex(Group,Sex)
   ====================
@@ -1180,7 +1345,7 @@ do_action(relation(Type,Value,Origin,Destination)):-
 
 
 do_action(attribute(ID,Type,Value)):-
-export_auto_attribute(ID,Type,Value),!.
+  export_auto_attribute(ID,Type,Value),!.
 
 do_action(newscope):-
   % report([writeln('***** auto rels 2 new scope')]),
@@ -1221,6 +1386,7 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   rch_class(relation,Class,Super,Table,Mapping),
   ensure_class(relation,Class,Super,Table,Mapping),
   gensymbol_local(rela,Rid),
+  % TODO: AncID = OriginID
   get_prop(act,id,AncID),
   get_prop(act,date,Date),xml_nl,
   inccount(group,GroupNumber),
@@ -1260,44 +1426,97 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   % report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,  ' to ',DestinationID])]),
   !.
 
-export_auto_attribute(Entity,Type,Value) :- !,
-rch_class(ls,Class,Super,Table,Mapping),
-ensure_class(ls,Class,Super,Table,Mapping),
-gensymbol_local(atra,Rid),
-get_prop(act,id,AncID),
-  get_prop(act,date,Date),xml_nl,
-  inccount(group,GroupNumber),
-  clio_path(P),
-  length(P,CurrentLevel),
-  ThisLevel is CurrentLevel+1,
-  get_prop(line,number,N),
-  xml_write(['<GROUP ID="',AncID-Rid,'" NAME="ls"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="inside" CLASS="inside"><core>',AncID,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="order" CLASS="order"><core>',GroupNumber,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="level" CLASS="level"><core>',ThisLevel,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="type" CLASS="type"><core>',Type,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="value" CLASS="value"><core>',Value,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="entity" CLASS="entity"><core>',Entity,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>',AncID-Rid,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
-  xml_nl,
-  xml_write(['</GROUP>']),
-  %report([writelist0ln(['   ** Automatic attribute: ',Entity,'/',Type,'/',Value])]),
-  !.
+export_auto_attribute(Entity,Type,Value) :- 
+  export_auto_attribute(Entity,
+                        'ls',
+                        'attribute',
+                        Type,
+                        '',
+                        '',
+                        Value,
+                        '',
+                        '').
+
+export_auto_attribute(Entity,
+                        GroupName,
+                        Class,
+                        Type,
+                        TypeComment,
+                        TypeOriginal,
+                        Value,
+                        ValueComment,
+                        ValueOriginal) :-
+        rch_class(ls,Class,Super,Table,Mapping),
+        ensure_class(ls,Class,Super,Table,Mapping),
+        AncId = Entity,
+        gensymbol_local(atra,Rid),
+        AId = AncId-Rid,
+        (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+        xml_nl,
+        inccount(group,GroupNumber),
+        clio_path(P),
+        length(P,CurrentLevel),
+        ThisLevel is CurrentLevel+1,
+        get_prop(line,number,N),
+        AttrGname = GroupName,
+        AClass = Class,
+        Inside = Entity,
+        % in the future use this dictionary to pass to different exporters
+        _AInfo = attr{gid:AId,
+                  name:AttrGname,
+                  order:GroupNumber,
+                  level:ThisLevel,
+                  class: AClass,
+                  line: N,
+                  inside: Inside,
+                  type: type{
+                          core:Type, 
+                          comment:TypeComment, 
+                          original:TypeOriginal
+                          },
+                  value: value{
+                    core:Type, 
+                    comment:ValueComment, 
+                    original:ValueOriginal
+                    }
+                  },
+        xml_write(['<GROUP ID="',AId,'" NAME="ls"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="groupname" CLASS="groupname"><core>',GroupName,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="inside" CLASS="inside"><core>',Inside,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="class" CLASS="class"><core>',AClass,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="order" CLASS="order"><core>',GroupNumber,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="level" CLASS="level"><core>',ThisLevel,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="type" CLASS="type">']),
+        aspect_to_xml(core,Type,XType),xml_write(XType),
+        aspect_to_xml(comment,TypeComment,XTypeComment), xml_write(XTypeComment),
+        aspect_to_xml(original,TypeOriginal,XTypeOriginal), xml_write(XTypeOriginal),
+        xml_write(['</ELEMENT>']),
+        
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="value" CLASS="value">']),
+        aspect_to_xml(core,Value,XValue), xml_write(XValue),
+        aspect_to_xml(comment,ValueComment,XValueComment), xml_write(XValueComment),
+        aspect_to_xml(original,ValueOriginal,XValueOriginal),xml_write(XValueOriginal),
+        xml_write(['</ELEMENT>']),
+
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="entity" CLASS="entity"><core>',Entity,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>',AId,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
+        xml_nl,
+        xml_write(['</GROUP>']),
+        %report([writelist0ln(['   ** Automatic attribute: ',Entity,'/',Type,'/',Value])]),
+        !.
 
 
 
@@ -1733,11 +1952,11 @@ group_to_xml(GroupName,GroupId,InferedElements):-!,
   rch_class(GroupName,Class,Super,Table,Mapping),
   ensure_class(GroupName,Class,Super,Table,Mapping),
   get_ancestor(__Anc,AncestorID),
-    inccount(group,GroupNumber),
-    clio_path(P),
-    length(P,CurrentLevel),
-    get_prop(line,number,N),
-    xml_nl,
+  inccount(group,GroupNumber),
+  clio_path(P),
+  length(P,CurrentLevel),
+  get_prop(line,number,N),
+  xml_nl,
   xml_write(['<GROUP ID="',GroupId,'" NAME="',GroupName,'" CLASS="',Class,'" ORDER="',GroupNumber,'" LEVEL="',CurrentLevel,'" LINE="',N,'">']),
     xml_nl,
     xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
@@ -1745,7 +1964,7 @@ group_to_xml(GroupName,GroupId,InferedElements):-!,
     xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>',GroupId,'</core></ELEMENT>']),
     xml_nl,
     xml_write(['    <ELEMENT NAME="groupname" CLASS="groupname"><core>',GroupName,'</core></ELEMENT>']),
-  xml_nl,
+    xml_nl,
     xml_write(['   <ELEMENT NAME="inside" CLASS="inside"><core>',AncestorID,'</core></ELEMENT>']),
     xml_nl,
     xml_write(['   <ELEMENT NAME="class" CLASS="class"><core>',Class,'</core></ELEMENT>']),

@@ -138,9 +138,9 @@ p_error_warn_context(TYPE,Mess,Context):-
    (option(line_text(Line),Context)->true;get_prop(line,text,Line)),
    (option(last_line_text(Last),Context)->true;get_prop(line,last,Last)),
    set_prop(line,previous,N), % we note the error line 
-   N2 is N-1, % we always get the errors one line too late
+   N2 is N-1, % we used to miss the line by one but now we we take the line number as good
    %report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
-  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), 
+  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N),tab(1),perr(Mess), 
            write('Near lines: '),write(N2),tab(1),write(Last),
            write('Near lines: '),write(N) ,tab(1),write(Line),
            nl,
