@@ -311,6 +311,38 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2023-07-04 03:34:18 version 12.0.539
+
+Adds linked data notation.
+
+1. Declare the external source, with an attribute of the kleio
+   document:
+      kleio$...
+         link$wikidata/"http://wikidata.org/wiki/$1"
+
+    The format of the link$ grupo is:
+        link$short-name/url-pattern
+
+    where short-name is a show name for an external sources
+    url-pattern should be a url containing a place
+    holder ($1) for a specific id of the data item to be linked
+
+2. Anotate element values with external ids
+
+    ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
+
+    The format of an external link annotation is:
+    
+        @short-name/id 
+
+On translation annotation such as 
+
+   ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
+
+will generate
+
+   ls$ jesuita-entrada@/https://www.wikidata.org/wiki/Q1171/15791200/obs=%Goa, Índia
+   
 ### 2023-03-28 14:49:22 version 11.1.536
 
 * Implements issue #7 allowing str files
