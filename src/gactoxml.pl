@@ -968,7 +968,7 @@ process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
   error_out([' Could not generate linked data URI from ',TypeComment,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
 
 process_xlink_attribute_value(Group,Id,Type, Value, (_DataSource,_XID), _ValueComment,Uri):-
-   % ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
+   % ls$estadia.@/"http://www.wikidata.org/wiki/Q16572"/15830800
    (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
    atomic_list_concat([TypeFlat,'@'],'',LinkedAType),
    export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
