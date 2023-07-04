@@ -220,6 +220,12 @@ test_escritura:-
             './tests/kleio-home/sources/api/varia/auc_cartulario18.cli',
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
+test_error_out:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/notariais/docsregiospontepisc.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
 % testing other tricky c
 test_ucalumni:-
     set_log_level(debug),
@@ -322,6 +328,7 @@ translate_file('sources/api/varia/auc_cartulario18.cli',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',true).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('tests/kleio-home/sources/api/notariais/docsregiospontepisc.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
