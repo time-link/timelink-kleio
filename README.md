@@ -311,7 +311,7 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
-### 2023-07-04 03:34:18 version 12.0.539
+### 2023-07-04 04:34:23 version 12.0.540
 
 Adds linked data notation.
 
