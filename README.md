@@ -321,11 +321,11 @@ Adds linked data notation.
       kleio$...
          link$wikidata/"http://wikidata.org/wiki/$1"
 
-    The format of the link$ grupo is:
+    The format of the link$ group is:
         link$short-name/url-pattern
 
-    where short-name is a show name for an external sources
-    url-pattern should be a url containing a place
+    where `short-name` is a short name for an external sources
+    `url-pattern` should be a url containing a place
     holder ($1) for a specific id of the data item to be linked
 
 2. Anotate element values with external ids
@@ -334,7 +334,7 @@ Adds linked data notation.
 
     The format of an external link annotation is:
     
-        @short-name/id 
+        @short-name:id 
 
 On translation annotation such as 
 
