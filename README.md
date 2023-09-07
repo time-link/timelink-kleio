@@ -311,6 +311,9 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2023-09-07 16:58:13 version 12.0.545
+
+Fixes bugs, first tests with timelink-py client.
 
 ### 2023-07-04 04:34:23 version 12.0.540
 

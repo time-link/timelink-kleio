@@ -648,17 +648,27 @@ kleio_stru_dir(D):-
 % Returns the path to the default stru for translations, 
 % normally KLEIO_STRU_DIR/gacto2.str but can be overriden by environment 
 % variable KLEIO_DEFAULT_STRU.
-% TODO We could have a kleio_stru_for_file(+KleioFile,-KleioStru,+Options)
-%   This would search for a stru directory in the same directory of the kleio file and then
-%   search up the directory hierarchy if not found, and finally use the kleio_stru_dir
-%   Options coould specificy stru name, or other future qualifications.
-%   
+% if none tries gacto2.str in the working dir
+
 kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
 kleio_default_stru(D):-
     kleio_stru_dir(H),
     atom_concat(H, '/gacto2.str', D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
+kleio_default_stru(D):-
+    working_directory(Home,Home),
+    atom_concat(Home, '/gacto2.str', D1),
+    absolute_file_name(D1,D),
+    exists_file(D),!.
+kleio_default_stru(D):-
+    working_directory(Home,Home),
+    atom_concat(Home, '/src/gacto2.str', D1),
+    absolute_file_name(D1,D),
+    exists_file(D),!.
+kleio_default_stru(_):-
+    logging:log_warning('No default structure file found',[]),
+    fail.
 
 %% kleio_user_source_dir(?Dir,+Options) is det.
 %

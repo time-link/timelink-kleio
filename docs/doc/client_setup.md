@@ -248,7 +248,7 @@ to `mhk-home`.
 1. File `~/.mhk` exists and it contains the
    a setting for `mhk_home_dir` __AND__ the
    workspace directory is equal or a subdirectory
-   of `mhk_home_dir`. The get the `.kleio-json`
+   of `mhk_home_dir`. Then get the `.kleio-json`
    file from the directory in `mhk_home_dir`.
 2. the workspace was opened at the 
    `mhk-home` level.

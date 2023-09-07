@@ -37,7 +37,8 @@ note
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
  position=structure,translator;
- part=historical-source,fonte,authority-register, identifications
+ part=historical-source,fonte,authority-register,
+      identifications, link
 
 note ============================================================
 note Basic historical source group
@@ -94,6 +95,13 @@ part name=identifications;
     guaranteed=id,name,date,user,dbase,mode;
     also=obs;
     part=rentity,rperson,robject
+
+note ===========================================================
+note doc group link
+note Declare a linked data target
+part name=link;
+    position=shortname,urlpattern;
+    also=id,obs
 
 note ===========================================================
 note rentity: a authority-record for a real entity
