@@ -65,7 +65,7 @@ provide further utilities related to management of kleio files in the file syste
 %   kleio(Attributes),rpt(Attributes),err(Attributes),xml(Attributes), org(Attributes).
 %   where Attributes are file attributes as produced by file_attributes/2
 %
-kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs)]):-
+kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)]):-
     file_attributes(KleioFile,KleioAttrs),
     (exists_directory(KleioFile) -> 
         (RptAttrs=[],ErrAttrs=[],XMLAttrs=[],OrgAttrs=[],OldAttrs=[],IdsAttrs=[],KStatus='D') % is a directory
@@ -78,13 +78,16 @@ kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err
     file_name_extension(BaseName,org,OrgFile),
     file_name_extension(BaseName,old,OldFile),
     file_name_extension(BaseName,ids,IdsFile),
+    file_name_extension(BaseName,'files.json',FilesJsonFile),
+    
     (exists_file(RptFile) -> file_attributes(RptFile,RptAttrs); RptAttrs=[]),
     (exists_file(ErrFile) -> file_attributes(ErrFile,ErrAttrs); ErrAttrs=[]),
     (exists_file(XMLFile) -> file_attributes(XMLFile,XMLAttrs); XMLAttrs=[]),
     (exists_file(OrgFile) -> file_attributes(OrgFile,OrgAttrs); OrgAttrs=[]),
     (exists_file(OldFile) -> file_attributes(OldFile,OldAttrs); OldAttrs=[]),
     (exists_file(IdsFile) -> file_attributes(IdsFile,IdsAttrs); IdsAttrs=[]),
-    kset_status([kleio(KleioAttrs),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs)],KStatus)
+    (exists_file(FilesJsonFile) -> file_attributes(FilesJsonFile,FilesJsonAttrs); FilesJsonAttrs=[]),
+    kset_status([kleio(KleioAttrs),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)],KStatus)
     )),!.
 
 %% kleio_file_set_relative(+KleioFile,-RelativeKleioFileSet,+TokenOptions) is det.
@@ -92,7 +95,7 @@ kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err
 % This is needed so that the API does not return absolute files names, posing a security risk.
 %
 kleio_file_set_relative(KleioFile,RelativeKleioFileSet, Options) :-
-    kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs)]),
+    kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)]),
     file_attributes_relative(KleioAttrs,RelKleioAttrs,Options),
     file_attributes_relative(RptAttrs,RelRptAttrs,Options),
     file_attributes_relative(ErrAttrs,RelErrAttrs,Options),
@@ -100,18 +103,19 @@ kleio_file_set_relative(KleioFile,RelativeKleioFileSet, Options) :-
     file_attributes_relative(OrgAttrs,RelOrgAttrs,Options),
     file_attributes_relative(OldAttrs,RelOldAttrs,Options),
     file_attributes_relative(IdsAttrs,RelIdsAttrs,Options),
-    RelativeKleioFileSet = [kleio([tstatus(KStatus)|RelKleioAttrs]),rpt(RelRptAttrs),err(RelErrAttrs),xml(RelXMLAttrs),org(RelOrgAttrs),old(RelOldAttrs),ids(RelIdsAttrs)],
+    file_attributes_relative(FilesJsonAttrs,RelFilesJsonAttrs,Options),
+    RelativeKleioFileSet = [kleio([tstatus(KStatus)|RelKleioAttrs]),rpt(RelRptAttrs),err(RelErrAttrs),xml(RelXMLAttrs),org(RelOrgAttrs),old(RelOldAttrs),ids(RelIdsAttrs),'files.json'(RelFilesJsonAttrs)],
     !.
 
 %! kleio_file_clean(+KleioFile) is det.
 %  
 % Cleans the translation results of a kleio source file. The translation results are the
-% files with extensions: err, rpt, xml and old. Note that files with extension "org" are
+% files with extensions: err, rpt, xml, ids (temp file), files.json and old. Note that files with extension "org" are
 % not the result of translation, they are in fact the original file before the first translation.
 %
 kleio_file_clean(File):-
     kleio_file_set(File,Set),
-    member(Type,[xml,err,rpt,ids]),
+    member(Type,[xml,err,rpt,ids,'files.json','old']),
     RelatedFile =..[Type,Attributes],
     option(RelatedFile,Set),
     option(path(P),Attributes),
@@ -121,15 +125,15 @@ kleio_file_clean(_):-!.
 
 %! kleio_file_delete(+KleioFile) is det.
 %  
-% Delete a kleio source file and all the translation results. The trabslation results are the
-% files with extensions: err, rpt, xml, org and old. 
+% Delete a kleio source file and all the translation results. The translation results are the
+% files with extensions: err, rpt, xml, org, ids, files.json and old. 
 %
 % To delete just the translation results see kleio_file_clean/1.
 %
 kleio_file_delete(File):-
     kleio_file_set(File,Set),
     delete_file(File),
-    member(Type,[xml,err,rpt,ids,org,old]),
+    member(Type,[xml,err,rpt,ids,org,old,'files.json']),
     RelatedFile =..[Type,Attributes],
     option(RelatedFile,Set),
     option(path(P),Attributes),
