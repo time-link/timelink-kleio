@@ -14,6 +14,7 @@ for file in $kleio_files; do
     then
         echo
         echo "Translating " `pwd` $file
+        echo swipl -f  $1 -- -sf $2 -df "$file" -echo no >/dev/null
         swipl -f  $1 -- -sf $2 -df "$file" -echo no >/dev/null
     else
         echo ${file} " NOT FOUND"
