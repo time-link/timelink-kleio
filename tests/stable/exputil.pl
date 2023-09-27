@@ -1,28 +1,37 @@
-%******************************************************
-% utility predicates for ln5 export */
-%    
-%******************************************************
-%  */
-%******************************************************
-% ln5_extra_info: gathers extra information not contained
-% in the core data of an element list. This includes comment
-% and original wording aspects, and elements not contained
-% in the list
-%******************************************************
-%  */
+:-module(exputil,[
+    join_mult/2
+]).
+
+/** <module> Utility predicates for data export 
+
+    This was used for exporting data in tabular form.
+    But could receive code for multi format export (xml,json)
+
+    ln5 (old tab separated files for import in relation databases) not used any more
+*/
+:-use_module(dataCDS).
+:-use_module(utilities).
+
+/******************************************************
+ ln5_extra_info: gathers extra information not contained
+ in the core data of an element list. This includes comment
+ and original wording aspects, and elements not contained
+ in the list
+******************************************************
+  */
 
 ln5_extra_info(Els,Extra):-
     rmore_aspects(Els,Xasp), % get other aspects */
-    getCDElement_list(AllEls),
+    clio_elements(AllEls),
     l_dif(AllEls,Els,MoreEls), % get extra elements */
     rmore_els(MoreEls,Xmore),
     append(Xasp,Xmore,Extra),!.
 
 rmore_aspects([],[]):-!.
 rmore_aspects([E|M],Xasp):-
-    get_aspect0(comment,E,C),
+    clio_aspect(comment,E,C),
     rcomm(E,C,Xcom),
-    get_aspect0(original,E,O),
+    clio_aspect(original,E,O),
     rorg(E,O,Xorg),
     append(Xcom,Xorg,X1),!,
     rmore_aspects(M,X2),
@@ -31,11 +40,11 @@ rmore_aspects([E|M],Xasp):-
 
 rmore_els([],[]):-!.
 rmore_els([E|M],Extra):-
-    get_aspect(core,E,CO),
+    clio_aspect(core,E,CO),
     rcore(E,CO,Xcore),
-    get_aspect(comment,E,C),
+    clio_aspect(comment,E,C),
     rcomm(E,C,Xcom),
-    get_aspect(original,E,O),
+    clio_aspect(original,E,O),
     rorg(E,O,Xorg),
     append(Xcore,Xcom,X0),
     append(X0,Xorg,X1),
@@ -55,23 +64,22 @@ rcomm(E,mult([A|B]),X):-
 rorg(_,[],[]):-!.
 rorg(_,mult([[],[]]),[]):-!.
 rorg(E,[A|B],X):-
-    append(['Express�o original do campo'-E,':' |[A|B]],['.'],X),!.
+    append(['Expressão original do campo'-E,':' |[A|B]],['.'],X),!.
 rorg(E,mult([A|B]),X):-
     join_mult([A|B],C),
-    append(['Express�es originais do campo'-E,':' |C],['.'],X),!.
+    append(['Expressões originais do campo'-E,':' |C],['.'],X),!.
 
 rcore(_,[],[]):-!.
 rcore(_,mult([[],[]]),[]):-!.
 rcore(E,[A|B],X):-
     append(['Campo adicional'-E,':' |[A|B]],['.'],X),!.
 rcore(E,mult([A|_]),X):-
-    append(['Campo adicional de v�rias entradas '-E,':' |A],['.'],X),!.
+    append(['Campo adicional de várias entradas '-E,':' |A],['.'],X),!.
 
 
 
 rexp(FILE,FIELDS):-
-    get_fname(FILE,F),
-    tell(F),rexpfields(FIELDS),tell(user),!.
+    tell(FILE),rexpfields(FIELDS),tell(user),!.
 
 rexpfields([]):-nl,!.
 rexpfields([A|B]):-
@@ -117,3 +125,18 @@ rexplink(mult([A|B])):-
     rexplink(mult(B)),!.
 rexplink(mult([])):-!.
 
+%% join_mult(+A,?B) is det.
+%    joins a list of lists into a single
+%    list separating the values of the original lists by semicolons.
+%    Usefull to transform multiple entries into single entries
+%
+% Example:
+% :- join_mult([[a, b, c], [d, e, f], [g, h, i]], C)
+%   C =  [a, b, c, ;, d, e, f, ;, g, h, i]
+%
+join_mult([A],A):-!.
+join_mult([],[]):-!.
+join_mult([A|B],J):-
+   join_mult(B,C),
+   append(A,[';' |C],J),!.
+    

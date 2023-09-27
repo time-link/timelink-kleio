@@ -1,4 +1,6 @@
 % text of window:  gacto.exp */
+% EXPIRED replaced by gactoxml
+%
 %******************************************************
 % gacto.pl Generic translator for Sources that follow
 %          the Source-Act-Person model.
@@ -12,6 +14,7 @@
 %   HISTORIA
 %     Criado em Agosto de 1997 para processar informacao generica
 %     estruturada em funcao da nova estrutura do LN5.
+%     Deprecated.
 %
 % REGISTOS FEITOS AUTOMATICAMENTE
 %  Para evitar o registo redundante e repetido de informacao que e' dedut'ivel dos assentos
@@ -99,7 +102,7 @@ db_init:-
     writeln('   Corresponde ao ficheiro estrutura: gactos.str'),
     writeln('     Coimbra, Agosto de 1997. Versao SWI Novembro de 99')]),
     get_value(data_file,D),
-    break_fname(D,Path,_File,Base,_Ext),
+    break_fname(D,Path,__File,Base,__Ext),
     list_to_a0([Path,'/',Base],SOURCE),
     put_value(source,SOURCE),
     put_value(afiles,[]), % lista dos ficheiros usados para os actos */
@@ -129,7 +132,7 @@ db_close:-
     get_value(fls,FLS),close_file(FLS),
     get_value(frel,FREL),close_file(FREL),
     get_value(afiles,AFS),
-    forall(member(_Acto-AFILE,AFS),close_file(AFILE)),!.
+    forall(member(__Acto-AFILE,AFS),close_file(AFILE)),!.
 
 
 get_fname(fontes,F):-get_value(ffonte,F),!.
@@ -171,7 +174,7 @@ db_store:-
 %******************************************************
 %  */
 
-ln5_export(fonte,_KEY):-
+ln5_export(fonte,__KEY):-
     export_defaults,
     verify_data,
     get_aspects(core,[id,tipo,ano,localizacao,cota,obs],
@@ -182,14 +185,14 @@ ln5_export(fonte,_KEY):-
     append(OBS,EXTRA,XOBS),
     rexp('fontes',[TIPO,ID,LOCALIZACAO,COTA,ANO,' ',XOBS]),
     !.
-ln5_export(fim,_KEY):-
+ln5_export(fim,__KEY):-
     export_defaults,
     verify_data,!.
 
 ver_sequencia(DATA):-
     get_value(data,D1),
     (D1 > DATA -> report([writeln('** AVISO: acto fora de ordem cronologica')]);true).
-ver_sequencia(_DATA):-
+ver_sequencia(__DATA):-
     !.
 
 ln5_export(atr,KEY):-ln5_export(ls,KEY),!.

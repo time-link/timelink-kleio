@@ -5,6 +5,7 @@
     show_server_activity/0,
     server_idle/1,
     show_processing_status/0,
+    process_rest/1,
     ps/0,
     ssa/0,
     print_server_config/0,
@@ -141,6 +142,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 :- use_module(library(http/json)).
 :- use_module(library(http/json_convert)).
 :- use_module(library(http/http_json)).
+:- use_module(library(http/http_cors)).
 :- use_module(library(debug)).
 :- use_module(library(pprint)).
 :- use_module(library(option)).
@@ -176,40 +178,120 @@ default_value(rest_port,8088):-!.
 default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_number(Atom,Workers),!.
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
-default_value(timeout,60):-!.
+default_value(timeout,900):-!.
+default_value(cors,CorsList):- getenv('KLEIO_CORS_SITES',ListString),atomic_list_concat(CorsList, ',', ListString).
+default_value(cors,['*']) :- !.
 
 %! print_server_config is det.
 %
 % prints the configuration values of the server.
-%
 print_server_config:-
     restServer:default_value(server_port,SP),
     restServer:default_value(rest_port,RP),
     restServer:default_value(workers,Workers),
     restServer:default_value(timeout,Timeout),
+    restServer:default_value(cors,Cors),
     kleiofiles:kleio_home_dir(Home),
     kleiofiles:kleio_conf_dir(Conf),
     kleiofiles:kleio_stru_dir(StruDir),
     kleiofiles:kleio_default_stru(Stru),
     kleiofiles:kleio_token_db(Tokens),
+    tokens:ensure_db,
     (tokens:token_db_attached(TokensCurrent);TokensCurrent=none),
     kleiofiles:kleio_source_dir(Sources),
     (getenv('KLEIO_DEBUG',DEBUG);DEBUG=false),
+    ((getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,AT5))
+        -> true ;AT5='No token in environment'),
+    clio_version(V),
+    format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
-    format('REST port: ~t~w~n',[RP]),
+    format('REST port: ~t~w (check if mapped in docker)~n',[RP]),
     format('Workers: ~t~w~n',[Workers]),
     format('Timeout: ~t~w~n',[Timeout]),
+    format('Cors: ~t~w~n',[Cors]),
+    format('/kleio_home dir on host: ~t~w~n',[Home]),
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
-    format('kleio_default_stru: ~t~w~n',[Stru]),
-    format('kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
-    (get_shared_value(bootstrap_token,BT)->format('Bootstrap token: ~w~n',[BT]);true),
+    format('Kleio_default_stru: ~t~w~n',[Stru]),
+    format('Kleio_admin_token: ~t~w~n',[AT5]),
+    format('Kleio_token_db: ~t~w~n       current: ~w~n',[Tokens,TokensCurrent]),
+    get_token_db_status(TDBS),
+    format('Token db status: ~t~w~n',[TDBS]),
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
-    !.
+     !.
+
+save_kleio_config:-
+    (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
+    (tokens:get_kleio_admin(ATOKEN,_,_)
+        -> true 
+        ;
+        ATOKEN=null), % null is JSON convention for null
+    (getenv('KLEIO_HOME_LOCAL',HomeLocal)
+        -> true 
+        ;
+        HomeLocal=null), % null is JSON convention for null
+    restServer:default_value(rest_port,RP),
+    clio_version_version(V),
+    clio_version_build(B),
+    clio_version_date(D),
+    kleiofiles:kleio_home_dir(Home),
+    kleiofiles:kleio_conf_dir(Conf),
+    kleiofiles:kleio_admin_token_path(AdminTokenPath),
+    get_token_db_status(TDBS),
+    % get todays date
+    get_time(T), 
+    format_time(string(NowDateTime),'%FT%T%z',T),
+    % output config info
+    atom_concat('http://localhost:',RP,KURL),
+    KleioSetup = ksetup{kleio_home_local:HomeLocal,
+                        kleio_home:Home, 
+                        kleio_admin_token:ATOKEN,
+                        kleio_url:KURL,
+                        kleio_log:Log,
+                        kleio_version:V,
+                        kleio_version_build:B,
+                        keio_version_date:D,
+                        kleio_conf_dir:Conf,
+                        kleio_token_db_status:TDBS,
+                        kleio_admin_token_path:AdminTokenPath,
+                        kleio_setup_date:NowDateTime
+                        },
+    atom_concat(Home,'/.kleio.json',KleioSetupFile), 
+    open(KleioSetupFile,write,KFI_Stream,[]),        
+    json_write_dict(KFI_Stream,KleioSetup),
+    close(KFI_Stream).
+
+
+admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
+admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
+bootstrap_token_exists:- tokens:user_token(_,bootstrap,_).
+bootstrap_token_ok :- tokens:user_token(T,bootstrap,_), is_api_allowed(T,generate_token).
+tokens_exist :- tokens:ensure_db, tokens:user_token(_,U,_), U \= bootstrap,!.
+
+get_token_db_status('Tokens exist') :- tokens_exist.
+get_token_db_status('No tokens defined but KLEIO_ADMIN_TOKEN env has valid value') :- 
+    \+ tokens_exist,
+    admin_token_ok,!.
+get_token_db_status('No tokens defined and bad KLEIO_ADMIN_TOKEN') :- 
+    \+ tokens_exist,
+    admin_token_exists,
+    \+ admin_token_ok,!.
+get_token_db_status('Waiting to generate first token') :- bootstrap_token_ok,!.
+get_token_db_status('No tokens, bootstrap token expired. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    bootstrap_token_exists,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Token generation blocked. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+    \+ tokens_exist,
+    \+ admin_token_ok,
+    \+ bootstrap_token_ok,!.
+get_token_db_status('Could not determine token status').
+
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dispatcher zone
@@ -218,23 +300,27 @@ print_server_config:-
 % :- http_handler(root('rest/files/'),handle_files_request,[prefix,methods([get,put,post,delete])]). %workaround could not make it work as normal rest
 % :- http_handler(root('rest/structures/'),serve_structure_file,[prefix,method(get)]). % same workaround
 % :- http_handler(root('rest/upload'),upload,[id(upload),prefix,method(post)]).
-:- http_handler(root('rest/'), process_rest, [id(rest),prefix,methods([get,delete,put,post])]).
-:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(1800),method(post)]). % time limit 30m.
-:- http_handler(root(.), home_page, []).
+:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post,options])]).
+:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),methods([post,options])]). % time limit in seconds
+:- http_handler(root(.), home_page, [methods([get,options])]).
 :- http_handler(root('forms/upload/'),upload_form,[]). % generate a form for uploading files
 :- http_handler(root(echo), echo_request, [prefix]).
 
 %! start_debug_server is det.
 %
-% Starts a debugging server in port 4000.
+% Starts a debugging server in port default_value(server_port,Port).
+% if Port = 0 server not created
 % Usefull to test and debug when no console available.
 start_debug_server:-
      default_value(server_port,Port),
+     Port \= 0,
     % options are set in serverStart.pl file
      (get_prop(prolog_server,options,Options);Options=[allow(ip(_,_,_,_))]),
      log_debug('Starting DEBUG server on port ~w with ~w options. ~n',[Port,Options]),
      prolog_server(Port,Options),
      log_debug('Debug server started in port ~w~n',[Port]).
+start_debug_server:-
+    log_debug('Debug server NOT started (port=0)~n',[]).
 
 %% start_rest_server is det.
 %
@@ -243,19 +329,23 @@ start_debug_server:-
 start_rest_server:-
     default_value(rest_port,Port),
     default_value(workers,Number),
+    default_value(cors,Cors),
     log_debug('Starting REST server on port ~w with ~w worker threads. ~n',[Port,Number]),
     put_shared_value(pool_mode,message),
     set_shared_count(rest_request_count,1),
     set_shared_count(jsonrpc_request_count,1),
+    http:set_setting(cors,Cors),
     create_workers(Number),
     check_token_database,
     server(Port),
     log_debug('REST JSON server listening on port ~w with ~w workers~n',[Port,Number]).
 
 server(Port) :-
+        default_value(timeout,Number),
         http_server(http_dispatch,
-                    [ port(Port)
-                    ]).
+                    [ port(Port),timeout(Number) % 15 secs timeout on requests
+                    ]),
+        save_kleio_config.
 
 %% server_idle(+Seconds) is det.
 %
@@ -302,7 +392,7 @@ show_server_activity:-
 % 
 check_token_database:- 
     check_token_database(exists),
-    check_token_database(has_tokens),!.
+    check_token_database(bootstrap),!.
 
 check_token_database(exists):-
     tokens:token_db_attached(TokensCurrent),
@@ -313,30 +403,30 @@ check_token_database(exists):-
     (exists_file(DB)->true;log_info('Token db at ~w does not exist. Will create.',[DB])),
     tokens:attach_token_db(DB),!.
 
+check_token_database(bootstrap):-
+    getenv('KLEIO_ADMIN_TOKEN',_),!.
 
-check_token_database(has_tokens):-
-    (tokens:user_token(_,_,_) -> 
-        true
-    ;
-        (% no tokens defined. We will generate a randon token with generate_token priviliges)
-        random(1,32767,R),
-        atom_number(A,R),
-        tokens:generate_token(A,[api([generate_token])],Token),
-        put_shared_value(bootstrap_token,token(Token))
-        )
-    ).
+check_token_database(bootstrap):-
+    % Generate a 'bootstrap' token with admin privileges
+    A = kleio_admin,
+    (tokens:invalidate_user(A);true),
+    kleiofiles:kleio_admin_token_path(AdminTokenFile),
+    tokens:get_admin_options(Opts),
+    tokens:generate_token(A,Opts,Token),
+    put_shared_value(bootstrap_admin_token,token(Token)),
+    open(AdminTokenFile,write,F,[]),
+    write(F,Token),
+    close(F).
 
-%% home_page(Request) is det.
-%
-% Generate a home page for the server.
-%
+
 home_page(_):-
         format('Content-type: text/html~n~n', []),
         format('<html>~n', []),
         format('<head><meta http-equiv="refresh" content="60" ><link rel="icon" href="data:;base64,="></head>~n', []),
         format('<body>~n', []),
         format('<h3>Kleio JSON-RPC server ready.~n</h3>~n'),
-        format('<h4>Version 2019.A1 Build 171 19/01/2020 18:30 </h4>~n'),
+        clio_version(V),
+        format('<h4>~w</h4>~n',[V]),
         get_time(T),
         format_time(atom(Time),'%Y-%m-%d %H:%M:%S',T),
         get_shared_count(rest_request_count,RC),
@@ -385,7 +475,7 @@ mime:mime_extension(Ext,Mime):-
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
 %   
-%   The request can contain aditional parameters enconded in the http standard ways.
+%   The request can contain aditional parameters encoded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
 %
@@ -396,12 +486,21 @@ mime:mime_extension(Ext,Mime):-
 %   are caught by the server top level code and trigger the output. This seems to be used in cases where
 %   SWI will take care of the whole output, like http_reply_file/3 and http_reply_from_files/3.
 %
+process_rest(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([get,post,delete,put])
+                ]),
+    format('~n'). 
+
 process_rest(RestRequest):-
+    cors_enable(RestRequest,[methods([get,post,delete,put])]),
     inc_shared_count(rest_request_count,_),
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
-    log_debug(' rest request received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('~n~nREQUEST-REST received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -409,28 +508,9 @@ process_rest(RestRequest):-
 
 process_rest_request(Request):-
     rest_decode_command(Request,Id,method(Entity,Method,Object),Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
+    log_debug('~n~nREQUEST_DECODED ID: ~w Entity:~w Method: ~w Object:~w~n',[Id,Entity,Method,Object]),
     rest_exec(method(Entity,Method,Object),Id,Params),
     !.
-
-
-% TODO: Deprecated, remove when not needed.   
-process_rest_request(Request):-
-    rest_decode_command(Request,Id,Method,Params),
-    %log_debug('Processing request:~n~@' ,[print_term(process_request(id=Id,method=Method,params=Params),[])]),
-    rest_exec(Method,Id,Params,Results),
-    (select(token_info(_),Params,P);P=Params), % we remove the token info introduced by json_decode_command
-    (select((token=_),P,P2);P2=P),% and also the original token in the request
-    (select(request(_),P2,ParamsClean);ParamsClean=P2),
-    (json_out(Params) ->
-        (print_content_type(json),
-         return_sucess(json,Method,Id,ParamsClean,Results))
-    ;
-        (return_sucess(rest,Method,Id,ParamsClean,Results)
-        ;
-        return_sucess(rest,default,Id,ParamsClean,Results))
-    ). % if no specific return predicate use the default
-
 
 
 %% json_out(Params) is det.
@@ -451,7 +531,7 @@ json_out(Params):-
     option(json(false),Params), 
     !,fail.
 json_out(_):-
-    httpd_wrapper:http_current_request(Request),
+        httpd_wrapper:http_current_request(Request),
     option(accept(List),Request),
     member(media(text/plain,_,_,_),List),!,fail.
 json_out(_):-
@@ -576,8 +656,15 @@ rest_exec(Operation,Id,Param,Results):-
 % Handles single requests and batch requests.
 % Decodes the request into JSONPayload and passes it to either process_json_batch/1 or process_json_request/1 .
 %
+process_json_rpc(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([post])
+                ]),
+    format('~n'). 
 process_json_rpc(Request):-
     %print_content_type(json),
+    cors_enable(Request,[methods([post])]),
     inc_shared_count(jsonrpc_request_count,_),
     catch(process_json_rpc_(Request),
         Error,
@@ -598,6 +685,8 @@ process_json_rpc_(Request):-
     catch(http_read_json(Request, JSONPayload),ParseError,
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
+    log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
+    log_debug('JSON-RPC: ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)
@@ -644,6 +733,8 @@ process_json_request(JSONRequest):-
 %
 process_json_request_(JSONRequest):-
     json_decode_command(JSONRequest,Id,Method,Params),
+    option(path(Path),Params,nopath),
+    log_debug('~nREQUEST_DECODED_JSON_RPC ID: ~w Method: ~w Path:~w~nParams:~w~n',[Id,Method,Path,Params]),
     catch(json_exec(Method, Id, Params),
         error(Term,Code,Message),
         process_json_rpc_error(invalid_request(Id,error(Term,Code,Message)))).
@@ -667,7 +758,7 @@ json_decode_command(json(JSONRequest),Id,Method,[token_info(TokenParams)|Params]
     option(params(json(Params)),JSONRequest),
     (option(token(Token),Params) -> 
         true
-        ; 
+        ;  
         throw(invalid_params(Id,'Missing parameter: token'))
     ),
     (tokens:decode_token(Token,_,TokenParams)->true; throw(invalid_params(Id,'Bad token'))).
@@ -834,6 +925,12 @@ return_sucess(json,upload,Id,_,Results):-
 % From: http://www.swi-prolog.org/howto/http/FileUpload.html
 % Generates a form to allow uploading of a file to the rest server
 %
+upload_form(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
 upload_form(Request) :-
     get_authorization_token(Request,Token),
     atomic_list_concat(['/rest/sources/uploads?token=',Token],URL),
@@ -1666,8 +1763,15 @@ rest_test(Request):-
     format('</html>~n').
 
 echo_request(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
+
+echo_request(Request) :-
         format('Content-type: text/html~n~n', []),
-        format('<html>~n', []),
+        format('<html><body>Echoing request~n', []),
         format('<table border=1>~n'),
         print_request(Request),
         format('~n</table>~n'),
@@ -1676,7 +1780,7 @@ echo_request(Request) :-
         format('<table border=1>~n'),
         print_streams;
         format('~n</table>~n'),
-        format('</html>~n', []).
+        format('</body></html>~n', []).
 
 print_request([]).
 print_request([H|T]) :-

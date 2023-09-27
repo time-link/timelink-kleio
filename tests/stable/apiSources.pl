@@ -61,7 +61,7 @@ Download, upload, fetch and list source files.
 % relative the user sources directory, and all files produced by the translation of this file. 
 % 
 % If Path is a directory deletes all the files in the directory. 
-% If parameter result=yes recurse in subdirectories
+% If parameter recurse=yes recurse in subdirectories
 % 
 % If a file is being processed or is queued for processing then it is not deleted.
 % Returns list of files deleted.
@@ -174,7 +174,7 @@ sources(put,DestPath,Mode,Id,Params):-
         
 sources(Method,_,_,Id,_):-
     (Method=put; Method=post),
-    throw(http_reply(bad_request(bad_file_upload),['Request-id'(Id)],[id(Id)])).
+    throw(http_reply(bad_request(bad_file_upload_no_file_in_request),['Request-id'(Id)],[id(Id)])).
 
 %% sources_get(+Mode,+Id,+Params) is det.
 %
@@ -295,9 +295,8 @@ delete_source(Path,directory,_Mode,_Id,Params,_Results):-
     sources_in_dir(Path,Params,Result),
     set_prop(kleio,delete,[]),
     option(token_info(TokenInfo),Params),
-    member((File,TCode,PCode, QCode),Result),
+    member(File,Result),
     log_debug('delete file candidate:~w~n',[File]),
-    TCode \= 'D', PCode \='P', QCode \='Q',
     log_debug('calling ~w~n',[kleio_file_delete(File)]),
     kleio_resolve_source_file(File,AbsFile,TokenInfo),
     kleio_file_delete(AbsFile),

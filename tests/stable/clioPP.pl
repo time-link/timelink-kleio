@@ -1,8 +1,75 @@
-/*
 
-clioPP.pl clio pretty print.
+:-module(clioPP,[clioPP/2,clioPP_close/0]).
+/** <module>  Kleio "pretty print".
 
-This predicate outputs the source file with the ids expanded in a sort of pretty print.
+This code outputs the source file with the ids expanded in a sort of pretty print.
+
+It is used by the export module gactoxml to produce a copy of the input file with explicit
+ids. This is important to allow safe reimport of kleio files after first import.
+
+In typical situations initital kleio transcriptions do not have explicit ids in common entities.
+like people and objects. Normally acts have an explicit id atributed by the person doing the
+transcription. 
+
+The kleio translator autogenerates ids during the translation process. Translated documents
+are then imported to the database. 
+
+In order to allow changes in the transacription after the data is imported in the databse it is
+necessary that the auto generated ids are the same for the same entities.
+
+This is done by generating a copy of the transcription with explicit ids. So that
+
+==
+kleio$gacto2.str/alterada no broser/translations=25
+   fonte$teste01/1700/miscelanea
+
+      bap$b1752-1/19/4/1752/?
+
+         n$rosa do espirito santo
+
+            pn$antonio goncalves roxo
+               atr$naturalidade/gatoes, nossa senhora das virtudes
+               atr$local de baptismo/gatoes, nossa senhora das virtudes
+               atr$local de casamento/gatoes, nossa senhora das virtudes
+
+            mn$maria jorge
+               atr$naturalidade/gatoes, nossa senhora das virtudes
+               atr$local de baptismo/gatoes, nossa senhora das virtudes
+			   atr$local de casamento/gatoes, nossa senhora das virtudes
+==
+
+becomes
+
+==
+kleio$gacto2.str/alterada no broser/translations=25
+   fonte$teste01/1700/miscelanea
+
+      bap$b1752-1/19/4/1752/?
+
+         n$rosa do espirito santo/id=b1752-1-per1
+
+            pn$antonio goncalves roxo/id=b1752-1-per1-per2
+               atr$naturalidade/gatoes, nossa senhora das virtudes
+               atr$local de baptismo/gatoes, nossa senhora das virtudes
+               atr$local de casamento/gatoes, nossa senhora das virtudes
+
+            mn$maria jorge/id=b1752-1-per1-per3
+               atr$naturalidade/gatoes, nossa senhora das virtudes
+               atr$local de baptismo/gatoes, nossa senhora das virtudes
+			   atr$local de casamento/gatoes, nossa senhora das virtudes
+			   
+==
+
+The predicate clioPP/2 outputs the current group making the ids explicit.
+
+It is used by the gactoxml.pl module to produce a copy of the translation with 
+ids. This copy goest to a file with "ids" extension. If the translation is sucessfull 
+(no errors) then the file being translated is renamed with extension "org" and the
+"ids" file is renamed with the extension "cli". 
+
+The first translation is kept with extension "org" for ever, just in case something
+is lost during the process of inserting the explicit ids. Further translations will
+keep the previous version with "old" extension.
 
 It does not handle multiple entries very well. For instance:
 If the original has this:
@@ -11,7 +78,14 @@ it outputs
    locf$torre de vilela; e mais nao disse; %bilela; e al nao disse; 
 
 */
+:-use_module(externals).
+:-use_module(persistence).
+:-use_module(utilities).
 
+%% clioPP(+G,+ID) is det.
+%
+% Pretty prints group G with id ID
+%
 clioPP(G,ID):-
 	get_value(clioppfile,CPP),
 	with_output_to(string(S),clioPP2(G,ID)),
@@ -23,17 +97,17 @@ clioPP2(G,ID):-
 	Ident is PI*3,
 	clio_group_param(G,locus,Locus),
 	clio_bclass(G,Class),
-	(member(Class,[attribute,relation,kleio,'historical-source']) -> 
+	(member(Class,[attribute,relation,kleio,'historical-source',link,end]) -> 
 		true
 		;  
 		nl
 	),
 	put_value(idout,false),  % used to check if the id of the group will be output
-	tab(Ident),writelist0([G,'$']),
+	tab(Ident),writelist0([G,'$']),% TODO: localization would happen here.
 	clioPP_locus(0,Locus,N), % this can set idout to true
 	clioPP_elements(N,Locus), % this can set idout to true
 	 % check if we need to print the id, except for groups not relevant
-	(member(Class,[attribute,relation,'group-element',kleio]) ->
+	(member(Class,[attribute,relation,'group-element',kleio,end]) ->
 		true 
 		;
 		( 
@@ -92,7 +166,7 @@ clioPP_elements(PreviousElements,Locus):-
 	\+ member(L,[translations|Locus]),%we don't show here the locus element nor the transcount pseudo element
 	clio_aspect(core,L,Core0),
 	(get_value(doslash,true)->write('/');true),
-	writelist0([L,'=']),
+	writelist0([L,'=']), % TODO: localization would happend here too.
 	aspect_to_PP(Core0,Core),
 	length(Core,NCore),
 	(NCore > 0 -> 
@@ -118,6 +192,11 @@ clioPP_check_id_element(L):-
 	clio_element_bclass(L,id),
 	put_value(idout,true),!.
 clioPP_check_id_element(_):-!.
+
+%% clioPP_close is det.
+%
+% close clio pretty print file.
+%
 clioPP_close:-
            !,
    	get_value(clioppfile,FILE),

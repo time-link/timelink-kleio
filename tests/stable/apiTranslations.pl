@@ -10,7 +10,8 @@
     file_processing/2,
     file_processing/3,
     files_processing/2,
-    kleio_processing_status/3
+    kleio_processing_status/3,
+    get_stru/3                  %get_stru(+Params,+Id,-StruFile) is det.
         ]).
 /** <module> Api operations dealing with translation
       
@@ -39,10 +40,10 @@
 % 
 % Parameters:
 % $ structure: structure file to be used in the translation
-% $ echo     : if yes the "rpt" file with include the source lines
+% $ echo     : if yes the "rpt" file will include the source lines
 % $ recurse  : descend into tsub directories (default no)
 % $ status: filter files by translation status.
-% $ spawn     : if yes the files are distributed to diferent workes and translated in parallell.
+% $ spawn    : if yes the files are distributed to different workers and translated in parallell.
 %               if no (default) the files will be translated by a single worker, with the stru file being processed 
 %               only once, at the start of the translation. In multi-user environment spawn=no should be used, so that
 %               different users can accesss freee workers more easily.
@@ -60,7 +61,6 @@ translations(post,Path,Mode,Id,Params):-
         throw(http_reply(forbidden(Url),['Request-id'(Id)])) 
         ) 
     ),
-    get_stru(Params,Id,StruFile),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
     (exists_file(AbsPath) -> 
@@ -68,11 +68,16 @@ translations(post,Path,Mode,Id,Params):-
         ;
         apiSources:sources_in_dir(Path,Params,Files)
     ),
-    % TODO: if there is status(S) a filter is necessary, must do kleio_translation_status and filter_translations
+    % TODO: if there is status(S) a filter is necessary, must do kleio_translation_status 
+    %       and filter_translations
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
-    spawn_work(Spawn,AbsFiles,StruFile,Echo,Jobs),
+    % get_stru(Params,Id,StruFile),
+    get_strus(AbsFiles,Params,Id,StruFiles),
+    % TODO: check_user_mappings(TokenInfo) % load user defined mappings if any
+    % TODO: check_user_irules(TokenInfo) % load usr defined inference rules if any
+    spawn_work(Spawn,AbsFiles,StruFiles,Echo,Jobs),
     convert_jobs_to_relative_paths(Jobs,RJobs,TokenInfo),
     translations_results(Mode,Id,Params,RJobs).
 
@@ -92,15 +97,27 @@ translations(get,Path,Mode,Id,Params):-
     ),
     kleio_resolve_source_file(Path,AbsPath,TokenInfo),
     logging:log_debug('API translations absolute: ~w',[AbsPath]),
-    (exists_file(AbsPath) -> 
-        Files = [Path]
+ 
+    % get status from cache if many files and young cache
+    % this is fragile, because it depends on store_status_cache to reproduce the handling of
+    % parameters in Params  by sources_in_dir and get_translation_status.
+    % but any caching needs to be tied to the params of the call that can determine the files retrieved and
+    % and the absolute to relative path mapping,
+    CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
+    (   %If cached return from cache
+        get_status_from_cache(AbsPath,Params,RSets,CacheOptions)
+    ; % Else compute status
+        (
+            (exists_file(AbsPath) -> 
+                Files = [Path]
         ;
-        apiSources:sources_in_dir(Path,Params,Files)
-    ),
-    get_absolute_paths(Files,AbsFiles,TokenInfo),
-    (setof(Result,AbsFile^(member(AbsFile,AbsFiles),kleio_translation_status(AbsFile,Result,TokenInfo)),RSets)
-    ;
-    RSets=[]),
+            apiSources:sources_in_dir(Path,Params,Files)
+        ),
+        get_translation_status(Files,RSets,TokenInfo),
+        store_status_cache(AbsPath,Params,Files,RSets,CacheOptions)
+    )
+    ),    
+    %% store in cache store_cache(AbsPath,Files,Filtered)
     filter_translations_by_status(Params,RSets,Filtered),
     translations_get_results(Mode,Id,Params,Filtered).
 
@@ -145,8 +162,75 @@ translations_delete(json,Id,Params):-
     option(path(Path),Params,''),
     translations(delete,Path,json,Id,Params).
 
-
 % Predicates assisting in transaltion
+
+
+%% get_status_from_cache(+AbsPath,+Params,-RSets,+Options) is det.
+% 
+% returns kleio sets for AbsPath from cache if cache age is less than stored MaxAge property
+%   
+% Fails if there is no previously store cache on if conditions are not met.
+%
+% This prevents overburdening the server with consecutive calls to translations_get, with can be expensive.
+% 
+get_status_from_cache(AbsPath,Params,RSets,_):-
+    log_debug('KleioSET cache CHECKING token ~w path: ~w ~n',[Params,AbsPath]),
+    get_time(Now),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
+    Age is Now-T0,
+    Age < MaxAge,
+    get_shared_prop(Key,status_cache_rsets,RSets),
+    log_debug('KleioSET cache FETCHING ~w for ~w age: ~w ~n',[Key,AbsPath,Age]),!.
+get_status_from_cache(AbsPath,Params,_,_):- % cache invalid, erase
+    get_time(Now),
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    get_shared_prop(Key,status_cache_time,T0),
+    get_shared_prop(Key,max_cache_age,MaxAge),
+    Age is Now-T0,
+    log_debug('KleioSET cache INVALIDATING ~w for ~w Age: ~w max:~w~n',[Key,AbsPath,Age,MaxAge]),
+    del_shared_prop(Key,status_cache_time),
+    del_shared_prop(Key,status_cache_rsets),
+    del_shared_prop(Key,max_cache_age),
+    fail.
+get_status_from_cache(AbsPath,Params,_,_):- 
+    log_debug('KleioSET cache NO_RECORD for ~w params: ~w ~n',[AbsPath,Params]),
+    fail.
+
+%% store_status_cache(+AbsPath,+Params,+RSets,+Options) is det.
+%
+%  Stores RSets in cache associated with AbsPath.
+%
+%  Options
+% CacheOptions=[max_age(30),max_age_large_set(180),large_set(1000),min_set(100)],
+%   min_set(N) - only store if number of files is > N
+%   max_age(A) - store cache for maximum of A seconds
+%   max_age_large_set(O) - store cache for maximum of O seconds if set is large
+%   large_set(L) - consider large set if number of files > L
+%
+
+store_status_cache(AbsPath,Params,Files,RSets,Options):-
+    option(recurse(Recurse),Params,no),
+    option(token(Token),Params,Token),
+    atomic_list_concat([AbsPath,Recurse,Token], '-',Key),
+    option(min_set(N),Options,100),
+    option(large_set(L),Options,1000),
+    option(max_age(A),Options,30),
+    option(max_age_large_set(O),Options,180),
+    length(Files,FN),
+    FN > N, % if small set of files ingore
+    (FN > L -> MaxAge=O;MaxAge=A), % set age acording to size
+    get_time(Now),
+    set_shared_prop(Key,status_cache_time,Now),
+    set_shared_prop(Key,max_cache_age,MaxAge),
+    set_shared_prop(Key,status_cache_rsets,RSets).   
+store_status_cache(_,_,_,_,_):-!.
+
 
 get_translation_status(Files,RSets,TokenInfo):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
@@ -154,18 +238,38 @@ get_translation_status(Files,RSets,TokenInfo):-
     ;
     RSets=[]),!.
 
-spawn_work(yes,AbsFiles,StruFile,Echo,_):-
+spawn_work(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]):-
     set_prop(translations,jobs,[]),
-    member(File,AbsFiles),
-    post_job(translate(File,StruFile,Echo),JobId),
-    add_to_prop(translations,jobs,job(JobId,[File])),
+    spawn_work2(yes,[File|AbsFiles],[Stru|StruFiles],Echo,[JobId|Jobs]),
     fail.
 spawn_work(yes,_,_,_,Jobs):-
     get_prop(translations,jobs,Jobs).
 
-spawn_work(no,AbsFiles,StruFile,Echo,[job(JobId,AbsFiles)]):-
-    post_job(translate(AbsFiles,StruFile,Echo),JobId).
+% no span processing only available for single stru set
+spawn_work(no,AbsFiles,[StruFile],Echo,[job(JobId,AbsFiles)]):-
+    post_job(translate(AbsFiles,StruFile,Echo),JobId),!.
+% if more than one stru file is given, use span processing
+spawn_work(no,AbsFiles,StruFiles,Echo,Jobs):-
+    spawn_work(yes,AbsFiles,StruFiles,Echo,Jobs).
 
+spawn_work2(yes,[File|AbsFiles],[StruFile|StruFiles],Echo,[JobId|Jobs]):-
+    post_job(translate(File,StruFile,Echo),JobId),
+    spawn_work2(yes,AbsFiles,StruFiles,Echo,Jobs),
+    add_to_prop(translations,jobs,job(JobId,[File])).
+spawn_work2(yes,[],[],_,[]):-!.
+
+
+
+%! get_stru(+Params,+Id,-StruFile) is det.
+% Get the path to the structure file associated with a translation request
+% if it is defined in the request parameters, if not return the default structure
+% 
+% Parameters:
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  StruFile: structure file to be used in the translation
+%
+% TODO refactor to only check the paramenters rename to get_stru_param
 get_stru(Params,Id,StruFile):-
     option(token_info(TokenInfo),Params),
     kleiofiles:kleio_default_stru(DefaultStru),
@@ -175,7 +279,7 @@ get_stru(Params,Id,StruFile):-
             (
                 exists_file(StruFile) -> true
                 ; 
-                throw(error(Id,-32602,'Structure file does not exist'-SFile))
+                throw(error(Id,-32602,'Structure file does not exist'-StruFile))
             )
         )
         ;
@@ -188,6 +292,77 @@ get_stru(Params,Id,StruFile):-
             )
         )
     ).
+
+%! get_strus(+Files,+Params,+Id,-StruFiles) is det.
+% Get the path to the structure file associated with a translation request
+% Parameters:
+%  Files: list of files to be translated
+%  Params: parameters of the request
+%  Id: request id
+%  StruFiles: structure files to be used in the translation
+%
+%  TODO this is wrong, a structure defined in a request should always have precedence
+%  So the priority is: str file in the request, str file from "structures", default str file.
+get_strus(Files,Params,Id,StruFiles):-
+    get_stru(Params,Id,DefaultStruFile), % TODO get_stru_param ; kleio_default_stru
+    get_stru_for_files(Files,DefaultStruFile,StruFiles).
+
+get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
+    get_stru_for_file(F,DefaultStruFile,S),
+    get_stru_for_files(Fs,DefaultStruFile,Ss).
+
+get_stru_for_files([],_,[]).
+
+% TBD - implement https://github.com/time-link/timelink-kleio/issues/7
+
+get_stru_for_file(File,__DefaultStruFile,StruFile):-
+    % get directories in path
+    prolog_to_os_filename(PrologFile, File),
+    file_directory_name(PrologFile,PrologPath),
+    % break path into directories
+    atomic_list_concat(Dirs,'/',PrologPath),
+    file_base_name(File,BaseName),
+    file_name_extension(BaseNameNoExt,_,BaseName),
+    match_stru_to_file(Dirs,BaseNameNoExt,StruFile),
+    !.
+get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
+
+% TODO use structure declaration in kleio file header
+% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
+% match cli file to stru with same name in structures directory
+match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
+    select('sources',Dirs,'structures',Dirs1),
+    atomic_list_concat(Dirs1,'/',Path),
+    atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
+    exists_file(StruFile),!.
+
+% match cli file sources/.../dir/xpto.cli with structures/dir.str 
+match_stru_to_file(Dirs,_,StruFile):-
+    last(Dirs,LastDir), % get last directory 
+    select('sources',Dirs,'structures',StruPath),
+    reverse(StruPath,RStruPath),
+    % get path to structures directory depth first
+    append(_,[structures|PathToStructures],RStruPath),
+    reverse(PathToStructures,SubPath),
+    % add file with lastdir name and extension str
+    file_name_extension(LastDir,'str',DirStru),
+    append(SubPath,[structures,DirStru],Path),
+    atomic_list_concat(Path,'/',StruFile),
+    exists_file(StruFile),!.
+
+% match cli file with gacto2.str or sources.str in structures directory depth first
+match_stru_to_file(Dirs,_,StruFile):-
+    select('sources',Dirs,'structures',StruPath),
+    % remove last element of Dirs1
+    reverse(StruPath,RStruPath),
+    append(_,RSubPath,RStruPath),
+    reverse(RSubPath,SubPath),
+    atomic_list_concat(SubPath,'/',Path),
+    (atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
+    ;
+    atomic_list_concat([Path,'/','sources.str'],'',StruFile)),
+    exists_file(StruFile),!.
+
 
 
 extract_file_names(FileStatus,Names):-
@@ -203,9 +378,9 @@ get_absolute_paths([F|Fs],[A|As],TokenInfo):-
     get_absolute_paths(Fs,As,TokenInfo).
 get_absolute_paths([],[],_):-!.
 
-%% translate(+KleioFiles,+StruFile,+Options) is det.
+%% translate(+KleioFiles,+StruFiles,+Options) is det.
 %
-% translates KleioFiles using the definitions on StruFile.
+% translates KleioFiles using the definitions on StruFiles.
 % * echo: if yes echoes in the "rpt" file the source lines
 % * 
 %
@@ -306,7 +481,8 @@ kleio_translation_status(KleioFile,TranslationStatus, Options) :-
             xml(XMLAttrs),
             org(_),  
             old(_),
-            ids(_)],Options),
+            ids(_),
+            'files.json'(_)],Options),
     option(name(Name),KleioAttrs),
     option(path(Path),KleioAttrs),
     option(directory(Directory),KleioAttrs),
