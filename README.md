@@ -311,6 +311,11 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2023-09-27 14:23:12 version 12.0.550
+
+Fixes problems with cleaning translation results.
+Now takes into account new "files.json" file.
+
 ### 2023-09-07 16:58:13 version 12.0.545
 
 Fixes bugs, first tests with timelink-py client.
