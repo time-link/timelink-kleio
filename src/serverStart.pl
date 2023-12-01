@@ -325,10 +325,11 @@ test_case(translations,File,Stru):-
     (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('tests/kleio-home/sources/api/notariais/docsregiospontepisc.cli',true).
+translate_file('sources/test_translations/varia/cartas.cli',true).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
