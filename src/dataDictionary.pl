@@ -194,7 +194,10 @@ element_of(E,G):-
     clioGroup(G,ID),
     get_prop(ID,ceteri,L),
     member(E,L).
-
+element_of(E,G):-
+      clioGroup(G,ID),
+      get_prop(ID,locus,L),
+      member(E,L).
 %*************************************************************
 % create_groups(NameList)
 %   creates, if not yet created, structures for the groups
