@@ -266,7 +266,7 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in tests/kleio-home/test_sources
+% assumes test sources in tests/kleio-home/reference_sources
 % to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
@@ -328,7 +328,7 @@ translate_file('sources/api/varia/auc_cartulario18.cli',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/test_translations/varia/cartas.cli',true).
+translate_file('sources/test_translations/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
@@ -336,6 +336,7 @@ translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
+translate_file('identifications/mhk_identification_toliveira.cli',true).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),

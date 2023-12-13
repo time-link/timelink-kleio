@@ -381,14 +381,14 @@ group_export(kleio,_) :- !,
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
     % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
-    xml_quote_attribute(Stru, QStru,utf8),
-    xml_quote_attribute(Data, QData,utf8),
-    %xml_quote_attribute(Date, QDate,utf8),
+    xml_quote_attribute_list(Stru, QStru,utf8),
+    xml_quote_attribute_list(Data, QData,utf8),
+    %xml_quote_attribute_list(Date, QDate,utf8),
     QDate = Date,
-    %xml_quote_attribute(Time, QTime,utf8),
+    %xml_quote_attribute_list(Time, QTime,utf8),
     QTime = Time,
-    xml_quote_attribute(OS, QOS,utf8),
-    xml_quote_attribute(Space, QSpace,utf8),
+    xml_quote_attribute_list(OS, QOS,utf8),
+    xml_quote_attribute_list(Space, QSpace,utf8),
     xml_write(['<KLEIO STRUCTURE="',QStru,'" SOURCE="',QData,'" TRANSLATOR="gactoxml2.str" WHEN="',QDate,' ',QTime,'" OBS="',QOS,'" SPACE="',QSpace,'">']),
     xml_nl.
 
@@ -488,7 +488,8 @@ authority_register_export(Register,Id):-
     set_prop(aregistry,id,Id),
     %
     belement_aspect(core,user,User),
-    set_prop(aregistry,user,User),
+    atomic_list_concat(User,'',UserString),
+    set_prop(aregistry,user,UserString),
     %
     belement_aspect(core,dbase,DBase),
     set_prop(aregistry,dbase,DBase),
@@ -549,13 +550,20 @@ rentity_occ_export(_,Id):-
   report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
   !.
 
+/* deals with values that are stored as list as well as atoms, lists break xml_quote_attribute */
+xml_quote_attribute_list([H|T],Quoted,Encoding):-!,
+  atomic_list_concat([H|T],' ',Atom),
+  xml_quote_attribute(Atom,Quoted,Encoding),!.
+xml_quote_attribute_list(Atom,Quoted,Encoding):-
+  xml_quote_attribute(Atom,Quoted,Encoding),!.
+
 export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
   xml_nl,
-  xml_quote_attribute(OccID,POccID,utf8),
-  xml_quote_attribute(ARId,PARId,utf8),
-  xml_quote_attribute(User,PUser,utf8),
-  xml_quote_attribute(Occurrence,POccurrence,utf8),
-  xml_quote_attribute(REId,PREId,utf8),
+  xml_quote_attribute_list(OccID,POccID,utf8),
+  xml_quote_attribute_list(ARId,PARId,utf8),
+  xml_quote_attribute_list(User,PUser,utf8),
+  xml_quote_attribute_list(Occurrence,POccurrence,utf8),
+  xml_quote_attribute_list(REId,PREId,utf8),
   xml_write(['<RELATION ID="',POccID,'" REGISTER="',PARId,'" USER="',PUser,'" ORG="',POccurrence,'" DEST="',PREId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
   xml_nl,!.
 

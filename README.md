@@ -307,6 +307,8 @@ Type ```make``` to see more targets that help in development.
       make kleio-stop | stop    stop running server
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
+
+
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
@@ -315,6 +317,10 @@ Type ```make``` to see more targets that help in development.
 
 Fixes problems with cleaning translation results.
 Now takes into account new "files.json" file.
+
+### 2023-12-13 18:44:37 version 12.1.554
+
+Fixes a bug in translation of identification files.
 
 ### 2023-09-07 16:58:13 version 12.0.545
 
