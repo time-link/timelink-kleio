@@ -645,7 +645,7 @@ kleio_stru_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D).
 kleio_stru_dir(D):-
-    source_file(FilePath),!, % get the Prolog source origin
+    source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
     file_directory_name(FilePath,D).
 
