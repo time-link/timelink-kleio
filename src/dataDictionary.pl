@@ -614,8 +614,6 @@ collect_groups_json([G|MoreGroups],Groups,FinalGroups):-
    UpdatedGroups=Groups.put([G=GInfo]),
    collect_groups_json(MoreGroups,UpdatedGroups,FinalGroups).
 
-
-
 collect_group_json(G,I):-
     clioGroup(G,ID),
     get_props(ID,P),
@@ -625,11 +623,16 @@ collect_group_json(G,I):-
     (get_prop(ID,pars,Pars); Pars=[]),
     (get_prop(ID,repetitio,Repetitio); Repetitio=[]),
     append(Pars,Repetitio, Includes),
-
-    I = G{'name':G,properties:P,minimal:C,typical:L,complete:X,includes:Includes}.
-
-
+    concat_lists_into_set(C, L, X, Complete),
+    I = G{'name':G,properties:P,minimal:C,typical:L,complete:Complete,includes:Includes}.
+   
 collect_group_json(_,_):-!.
+
+concat_lists_into_set(C, L, X, Result) :-
+      append(C, L, CL),
+      append(CL, X, CLX),
+      list_to_set(CLX, Result).
+
 
 group_to_html(File,G):-
     telling(O),
