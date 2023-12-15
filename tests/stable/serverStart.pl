@@ -2,6 +2,7 @@
 :-use_module(utilities).
 :-use_module(persistence).
 :-use_module(logging).
+:-use_module(kleiofiles).
 % for tests
 :-use_module(library(http/http_client)).
 :-use_module(library(http/http_open)).
@@ -328,7 +329,7 @@ translate_file('sources/api/varia/auc_cartulario18.cli',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',true).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('tests/kleio-home/sources/api/notariais/docsregiospontepisc.cli',true).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).

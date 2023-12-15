@@ -1,7 +1,7 @@
 Note =================================================
 Note Generic structure for the Source-Act-Person model
 Note   Now with geoentities and authority-registers
-Note   And Linked data
+Note   and Linked Data
 Note ================================================
 Note
 Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
@@ -37,8 +37,9 @@ note
 
 part 	name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
- position=structure,translator;
- part=historical-source,fonte,authority-register, identifications, link
+ position=structure,translator,obs;
+ part=historical-source,fonte,authority-register,
+      identifications, link
 
 note ============================================================
 note Basic historical source group
