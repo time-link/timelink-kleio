@@ -322,13 +322,14 @@ server_results([],[]).
 test_case(translations,File,Stru):- 
     Stru = 'system/conf/kleio/stru/gacto2.str',
     translate_file(File,Flag),
-    (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
+    Flag = true,
+    format('TESTING ~wn',[File]).
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/varia',false).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/test_translations/varia/cartas.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
+translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
@@ -336,7 +337,7 @@ translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('identifications/mhk_identification_toliveira.cli',true).
+translate_file('identifications/mhk_identification_toliveira.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
