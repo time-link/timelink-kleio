@@ -140,8 +140,7 @@ db_close:-
   do_auto_rels,  do_auto_rels2,
   process_cached_same_as,
   (get_value(clioPP,true)->clioPP_close;true),
-  error_count(E),
-  ( E = 0 -> change_to_ids;true),
+  report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
   report([writeln('Translation finished.')]),
@@ -149,14 +148,8 @@ db_close:-
   xml_close.
 
 
-/* we now rename the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
-  If org already exists we rename .cli to .old. If .old exists we discard it and rename .cli to .old.
 
-  The end result is: .cli is the last pretty printed translation with sucess.
-  .old is the last .cli that was translated
-  .org is the original .cli that was first translated with success.
-  */
- change_to_ids:-
+ report_translation:-
   get_value(stru_file,StruFile),
   report([format('Structure file: ~w~n',[StruFile])]),
   prolog_to_os_filename(PrologFile, StruFile),
@@ -179,6 +172,38 @@ db_close:-
   report([format('Original file: ~w~n',[Original])]),
   concat(SOURCE,'.old',Last),
   report([format('Previous version: ~w~n',[Last])]),
+  errors:error_count(ErrCount),
+  errors:warning_count(WarnCount),
+  ( ErrCount = 0 -> rename_files(D,SOURCE,Original,Last);true),
+  persistence:get_value(report,ReportFile),
+  % Generate a JSON file with information on the related files
+  FileDict = files{stru:StruFile, 
+                   stru_rpt:SrptPath,
+                   stru_json:JsonPath,
+                   kleio_file:D,
+                   kleio_original:Original,
+                   kleio_previous: Last,
+                   kleio_rpt: ReportFile,
+                   errors:ErrCount,
+                   warnings:WarnCount},
+  concat(SOURCE,'.files.json',KleioFilesInfo), 
+  open(KleioFilesInfo,write,KFI_Stream,[]),        
+  json_write_dict(KFI_Stream,FileDict),
+  close(KFI_Stream),
+  !.
+report_translation:-
+   error_out('** Problem renaming files.'),
+   report([writeln('** Problem renaming files.')]) .
+
+/* we now rename the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
+  If org already exists we rename .cli to .old. If .old exists we discard it and rename .cli to .old.
+
+  The end result is: .cli is the last pretty printed translation with sucess.
+  .old is the last .cli that was translated
+  .org is the original .cli that was first translated with success.
+  */
+rename_files(D,SOURCE,Original,Last):-
+  % report on kleio source file
   concat(SOURCE,'.ids',Ids),
   report([format('Temp file with ids: ~w~n',[Ids])]),
   /*
@@ -204,6 +229,7 @@ db_close:-
   ),
   (exists_file(Original)-> % rename original ".cli" to ".old"
     (
+
       rename_with_shell(D,Last),
       catch(
         chmod(D,+gw),
@@ -229,30 +255,7 @@ db_close:-
       E3,
       log_error('Could not change permissions of ~w : ~w ',[D,E3])
       ),
-  persistence:get_value(report,ReportFile),
-  %report([writeln('** '-Ids-'renamed to'-D)]),
-  %report([writeln('** Translation files closed.')]),
-  % Generate a JSON file with information on the related files
-  errors:error_count(ErrCount),
-  errors:warning_count(WarnCount),
-  FileDict = files{stru:StruFile, 
-                   stru_rpt:SrptPath,
-                   stru_json:JsonPath,
-                   kleio_file:D,
-                   kleio_original:Original,
-                   kleio_previous: Last,
-                   kleio_rpt: ReportFile,
-                   errors:ErrCount,
-                   warnings:WarnCount},
-  concat(SOURCE,'.files.json',KleioFilesInfo), 
-  open(KleioFilesInfo,write,KFI_Stream,[]),        
-  json_write_dict(KFI_Stream,FileDict),
-  close(KFI_Stream),
-  
   !.
-change_to_ids:-
-   error_out('** Problem renaming files.'),
-   report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
   Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2,'; rm -f ',Name1],
