@@ -247,6 +247,7 @@ test-semantics: .PHONY
 test-api: kleio-run-current
 	@echo To run api tests install newman 
 	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
+	@echo "Ensure that a current image exists by doing 'make build-local' "
 	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
