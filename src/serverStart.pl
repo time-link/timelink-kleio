@@ -326,9 +326,10 @@ test_case(translations,File,Stru):-
     format('TESTING ~wn',[File]).
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',false).
+translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/linked-data-error.cli',false).
 translate_file('sources/api/varia',false).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
@@ -338,6 +339,7 @@ translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('identifications/mhk_identification_toliveira.cli',false).
+translate_file('sources/api/varia/test-atr-date.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),

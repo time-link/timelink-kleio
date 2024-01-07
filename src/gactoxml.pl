@@ -683,7 +683,11 @@ geoentity_export(G,ID) :-
 
 attribute_export(G,ID) :-
     get_ancestor(__Anc,AncId),
-    (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+    (get_date(Date1) -> 
+      (Date = Date1, DateType = explicit)
+    ; 
+      (get_prop(act,date,Date), DateType = implicit)
+    ),
     clio_aspect(core,tipo,T),  % TODO: should it be type?
     clio_aspect(core,valor,V), % TODO: should it be value?
     assert(attribute_cache(AncId,ID,T,V)),
@@ -707,7 +711,9 @@ attribute_export(G,ID) :-
         )
         ; 
         true),
-    group_to_xml(G,ID,[id([ID],[],[]),entity([AncId],[],[]),date([Date],[],[])]).
+    Inferred = [id([ID],[],[]),entity([AncId],[],[])],
+    (DateType = implicit -> append(Inferred,[date([Date],[],[])],Elements); Elements = Inferred), 
+    group_to_xml(G,ID, Elements).
 
 
 relation_export(G,ID) :-
@@ -899,6 +905,25 @@ process_function_in_act(Group,Id):-
   !.
 process_function_in_act(_,_).
 
+/* Processing of special data types and linked data
+
+Bellow is special processing for linked data comments and dates.
+Currently this special processing is triggered at group processing level, i.e.,
+group processor, like attribute_export, act_export, call predicates to process
+dates and linked data. 
+
+But this does not scale and is not compatible with user defined groups.
+So it should go to element processing level. 
+
+If a given element is of a given type then spcial processing shoud lbe triggered.
+Currently elements have three aspectes: core, original, comment. In the future
+special type of elements would have extra aspects. For instance, dates would have "date_vale"
+or "data_range_value". Similarly element with linked data would have aspects "ldata_type" and 
+"ldata_uri".
+
+
+
+*/
 % Process linked data see issue:#6 
 %1. entity to entity: an entity in a record is the same as another entity in another 
 %   dataset. In this case the comment should be attached to the id of the entity
@@ -978,10 +1003,10 @@ process_xlink_attribute_type(Group,Id,Type, Value, (DatSource,XId),_TypeComment,
 process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
   error_out([' Could not generate linked data URI from ',TypeComment,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
 
-process_xlink_attribute_value(Group,Id,Type, Value, (_DataSource,_XID), _ValueComment,Uri):-
+process_xlink_attribute_value(Group,Id,Type, Value, (DataSource,_XID), _ValueComment,Uri):-
    % ls$estadia.@/"http://www.wikidata.org/wiki/Q16572"/15830800
    (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
-   atomic_list_concat([TypeFlat,'@'],'',LinkedAType),
+   atomic_list_concat([TypeFlat,'@',DataSource],'',LinkedAType),
    export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
 process_xlink_attribute_value(Group,Id,Text, _Value, (_DataSource,_XID),_ValueComment,_Uri):-
   error_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
@@ -1010,11 +1035,11 @@ get_sex(female,f):-!.
     TODO: implement https://github.com/time-link/timelink-kleio/issues/1
 
     Another alternative for the notation
-- "<date"before date 
-+ ">date" after date
+- "<date"before date  TBD
++ ">date" after date  TBD
 Date:  period starting in date
 :Date  period ending in date
-:date: date is part of period with start and end unknown 
+:date: date is part of period with start and end unknown TBD does not make sense
 Dates can be expressed as
 - yyyymmdd
 - yyyy-mm-dd 
@@ -1060,9 +1085,88 @@ get_date(DATE,EXTRA) where EXTRA would be a list with can contain one or several
 
 */
 get_date(DATE):-
-      belement_aspect(core,date,[A_DATE]),
-      is_a_number(A_DATE,DATE).
+      belement_aspect(core,date,[A|B]),
+      match_date([A|B],DATE),!.
 
+% get_date(DATE):-
+%   clio_aspect(core,date,[A|B]), % avoid empty lists
+%   match_date([A|B],DATE),!.
+
+% get_date(DATE):-
+%     clio_aspect(core,DATE_ELEMENT,[A|B]),
+%     clio_element_bclass(DATE_ELEMENT,date),
+%     match_date([A|B],DATE),!.
+
+match_date(List,Date):-
+  match_single_date(List,Date),!.
+
+match_date(List,Date):-
+  match_range(List,Date).
+
+match_single_date([Y,'-',M,'-',D],DATE):-
+  is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
+  Y1 > 31,
+  DATE is Y1*10000+M1*100+D1,!.
+% match D-M-Y
+match_single_date([D,'-',M,'-',Y],DATE2):-
+  is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
+  Y1 > 31,
+  DATE1 is Y1*10000+M1*100+D1,
+  atom_number(DATE2,DATE1),!.
+
+% match 000000 
+match_single_date([A_DATE],'00000000'):-
+  is_a_number(A_DATE,0),!.
+% match YYYYMMDD
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE1),
+  A is log10(DATE1),
+  A>7,
+  atom_number(DATE2,DATE1),!.
+% match YYYYMMD
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>6,
+  DATE1 is DATE*10,
+  atom_number(DATE2,DATE1),!.
+% match YYYYMM
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>5,
+  DATE1 is DATE*100,
+  atom_number(DATE2,DATE1),!.
+% match YYYY
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>3,
+  DATE1 is DATE*10000,
+  atom_number(DATE2,DATE1),!.
+
+
+match_range(List,Date):-
+  append(Date1,[':'|Date2],List),
+  match_single_date(Date1,Value1),
+  match_single_date(Date2,Value2),
+  atomic_list_concat([Value1,'.',Value2],DateRange),
+  atom_number(DateRange,Date),
+  !.
+
+% open range on the left .e.g. ":1425-12-10" 
+match_range([':'|Date1],Date):-
+  match_single_date(Date1,Value1),
+  atomic_list_concat([Value1,'.11111111'],DateRange),
+  atom_number(DateRange,Date),
+  !.
+
+match_range(List,Date):-
+  append(Date1,[':'],List),
+  match_single_date(Date1,Value1),
+  atomic_list_concat([Value1,'.99999999'],DateRange),
+  atom_number(DateRange,Date),
+  !.
 
 
 /*
@@ -1931,7 +2035,7 @@ belement_aspect(Aspect,BaseElement,Content) get the aspect corresponding to a ba
       a different name for it.
 
       belement_aspect is similar do clio_aspect (external.pl) but uses
-      clio_element_extends (external.pl) to find in the current broup elements
+      clio_element_extends (external.pl) to find in the current group elements
       the base element it is looking for.
 */
 belement_aspect(Aspect,Element,Content) :-
@@ -2012,9 +2116,8 @@ ielements_to_xml(Class,[Element|Rest]):-
   Element =.. [Name,Core,Original,Comment],
   iel_to_xml(Class,Name,Core,Original,Comment),
   ielements_to_xml(Class,Rest),!.
-  ielements_to_xml(__Class,[]):-!.
 
-
+ielements_to_xml(__Class,[]):-!.
 
 els_to_xml(Class,[ El | MoreEls ]) :-
   el_to_xml(Class,El),
