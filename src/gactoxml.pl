@@ -697,8 +697,13 @@ attribute_export(G,ID) :-
     atomic_list_concat(TC, '',TypeComment ),
     (detect_xlink(TypeComment,DataSource,Id) -> 
         (
-          generate_xlink(TypeComment,Uri),
-          process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri)
+          (generate_xlink(TypeComment,Uri),
+          process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri))
+          ;
+          warning_out(["Could not link data with ",
+                      TypeComment,
+                      "; is link$ definition for ",
+                      DataSource," missing?"])
         )
         ; 
         true),
@@ -706,9 +711,15 @@ attribute_export(G,ID) :-
     atomic_list_concat(VC, '',ValueComment ),
     (detect_xlink(ValueComment,DataSource2,Id2) -> 
         (
-          generate_xlink(ValueComment,Uri2),
-          process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2)
-        )
+          (generate_xlink(ValueComment,Uri2),
+            process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2))
+          ;
+          warning_out(["Could not link data with ",
+                      ValueComment,
+                      "; is link$ definition for ",
+                      DataSource2," missing?"])
+
+          )
         ; 
         true),
     Inferred = [id([ID],[],[]),entity([AncId],[],[])],
