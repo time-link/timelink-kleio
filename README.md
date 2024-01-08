@@ -277,7 +277,7 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 * Check current version with `make show-current` or
    `make show-last`
 * Tag image with semantic versioning
-  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number)
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number). Move current code to `stable`directory in `tests`.
   * if new image to be latest do `make tag-multi-latest` 
   
 
@@ -313,10 +313,17 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2024-01-07 12:20:12 version 12.1.557
+
+* Fixes problem with server failing if kleio-home does not contain system/conf/kleio #16
+* Improve json version of stru for better tool tips.
+* Fix bug with handling of implicit and explicit list of elements
+* Fixes error when using linked data notation with no link$ statement. Now issues warning.
+
 ### 2023-09-27 14:23:12 version 12.0.550
 
-Fixes problems with cleaning translation results.
-Now takes into account new "files.json" file.
+* Fixes problems with cleaning translation results.
+* Now takes into account new "files.json" file.
 
 ### 2023-12-13 18:44:37 version 12.1.554
 
