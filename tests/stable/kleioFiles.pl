@@ -110,7 +110,8 @@ kleio_file_set_relative(KleioFile,RelativeKleioFileSet, Options) :-
 %! kleio_file_clean(+KleioFile) is det.
 %  
 % Cleans the translation results of a kleio source file. The translation results are the
-% files with extensions: err, rpt, xml, ids (temp file), files.json and old. Note that files with extension "org" are
+% files with extensions: err, rpt, xml, ids (temp file), files.json and old. 
+% Note that files with extension "org" are
 % not the result of translation, they are in fact the original file before the first translation.
 %
 kleio_file_clean(File):-
@@ -644,7 +645,7 @@ kleio_stru_dir(D):-
     absolute_file_name(D1,D),
     exists_directory(D).
 kleio_stru_dir(D):-
-    source_file(FilePath),!, % get the Prolog source origin
+    source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
     file_directory_name(FilePath,D).
 

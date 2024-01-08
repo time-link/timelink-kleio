@@ -70,7 +70,7 @@ clear_xlink_patterns:-
 %   @shortName:Id
 
 detect_xlink(Text,ShortName,Id) :-
-    re_matchsub(".*@([a-z]*):\\ *([\\ 0-9a-zA-Z]*)", Text,S),
+    re_matchsub(".*@([a-z]*):\\ *([\\ 0-9a-zA-Z]*)", Text,S,[]),
     S=_{0:_,1:ShortName,2:Id}.
 
 %% replace_xid(+Pattern,+Id,-Link) is det.

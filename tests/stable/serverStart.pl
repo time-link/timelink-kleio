@@ -2,7 +2,6 @@
 :-use_module(utilities).
 :-use_module(persistence).
 :-use_module(logging).
-:-use_module(kleiofiles).
 % for tests
 :-use_module(library(http/http_client)).
 :-use_module(library(http/http_open)).
@@ -267,7 +266,7 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in tests/kleio-home/test_sources
+% assumes test sources in tests/kleio-home/reference_sources
 % to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
@@ -323,19 +322,24 @@ server_results([],[]).
 test_case(translations,File,Stru):- 
     Stru = 'system/conf/kleio/stru/gacto2.str',
     translate_file(File,Flag),
-    (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
+    Flag = true,
+    format('TESTING ~wn',[File]).
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
+translate_file('sources/api/linked_data/linked-data-error.cli',true).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/api/notariais/docsregiospontepisc.cli',true).
+translate_file('sources/api/varia/cartas.cli',false).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
+translate_file('identifications/mhk_identification_toliveira.cli',false).
+translate_file('sources/api/varia/test-atr-date.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
