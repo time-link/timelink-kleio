@@ -260,7 +260,7 @@ The following tags are used:
 
 To help manage the tags the following targets exist
 
-* ```make tag-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
+* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
 * ```make inc_NUMBER``` increment version with NUMBER in major | minor
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
