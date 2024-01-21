@@ -278,7 +278,7 @@ test_setup(EndPoint,Token):-
     concat(ClioDir,'/tests/',TestPath),
     format('Test dir: ~w~n',[TestPath]),
     working_directory(_,TestPath),
-    PORT=8089,
+    PORT=8090,
     Token = 'mytoken',
     setenv('KLEIO_SERVER_PORT', PORT),
     setenv('KLEIO_ADMIN_TOKEN',Token),
@@ -327,7 +327,8 @@ test_case(translations,File,Stru):-
 
 translate_file('sources/api/varia/auc_cartulario18.cli',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
-translate_file('sources/api/linked_data/linked-data-error.cli',true).
+translate_file('sources/api/linked_data/dehergne-locations-1644.cli',true).
+translate_file('sources/api/linked_data/linked-data-error.cli',false).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
