@@ -1060,7 +1060,11 @@ The attribute is duplicated with the type replaced with the external reference. 
 ```
  */
 
+
 process_linked_data(Group,Id):-
+  (clio_extends(Group,person)
+  ;clio_extends(Group,object)
+  ;clio_extends(Group,geoentity)),
   clio_aspect(comment,Element, Comment),
   atomic_list_concat(Comment,'',CommentString),
   detect_xlink(CommentString,DataSource,XId),
