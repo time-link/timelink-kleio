@@ -37,6 +37,45 @@
  kleio processor and this translator to understand that a person
  group called husband may follow and generate the appropriate
  kin relatioship.
+
+Clio export modules such as the current file are Prolog programs that define the way 
+ the Clio texts are converted. 
+
+ The interaction between the Clio translator and the export modules
+ is as follows:
+
+*  The translator processes a clio structure file and the clio data file.
+* It does the syntactic analysis and error checking in what regards compliance
+ 		of the data to the structure definition. 
+ * Once a Clio group is read from the data file by the translator a call is made to the export module
+ 		signalling that data for a group is available. 
+* The export module can then call back the Clio Translator code to request the data itself.
+
+
+Two sets of predicates are involved in this interchange:
+
+* the export predicates that are called by the translator
+* the Translator predicates that are called by the export modules.
+
+The export module must provide three predicates that are to be called
+  by the translator: db_init/0, db_store/0, db_close/0.
+
+* db_init 
+Is called when a new data file begins processing.
+The export module can set db_init to do initialization procedures like openning export files and setting up
+default values.
+
+* db_store
+Is called when a new clio group has been read by the
+translator. The export module can now call back the
+translator module to obtain the data.
+    
+* db_close
+Is called when the processing of the data file is finished
+The export module can close the export files and do general
+cleanup procedures.
+
+The call back predicates are defined in externals.pl
  
  @tbd TODO: The XML related stuff should be isolated from data model stuff. 
  Better to end each export predicate with the creation of dictionnary with the
@@ -295,6 +334,7 @@ db_store:-
   get_ancestor(_,AncID),
   add_to_prop(autorels,groups,(G, ID, AncID, CurrentLevel)),    % this is used by automatic relation processing
   save_group_path(P,G,ID),
+  process_linked_data(G,ID),
   (get_value(clioPP,true) -> %if necessary we produce a ids file
         (
         remove_id_prefix(ID,NID),
@@ -319,7 +359,7 @@ set_autorel_mode(''):-!.
 set_autorel_mode(O):-
     warning_out(['bad autorel mode =',O]),!.
 
-/* this saves the current path with the ids created by this translator modules
+/* this saves the current path with the ids created by this translator module
    current path for each processed group is stored as a group_path(Path) clause
    that is available latter for auto rel processing */
 save_group_path(Path,GroupName,GroupId):-
@@ -935,76 +975,103 @@ or "data_range_value". Similarly element with linked data would have aspects "ld
 
 
 */
-% Process linked data see issue:#6 
-%1. entity to entity: an entity in a record is the same as another entity in another 
-%   dataset. In this case the comment should be attached to the id of the entity
-%
-%    kleio$
-%       link$wikidata/"https://www.wikidata.org/wiki/$1"
-%      ...
-%     n$Matteo Ricci/id=deh-matteo-ricci#@wikidata:Q233340
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld1" 
-%             ORG="deh-matteo-ricci" 
-%             DEST="https://www.wikidata.org/wiki/Q233340"
-%             TYPE="LINK" 
-%             VALUE="SAME_AS" />
-%```
-%
-%Internally a relation would be generated with type "link" and value "same as"
-%
-%      n$Matteo Ricci/id=deh-matteo-ricci#@wikidata: Q233340
-%         rel$link/same as/"https://www.wikidata.org/wiki/Q233340"
-%    
-%2. attribute value to entity: the value of an attribute in Timelink
-%   is linked to an entity in another dataset.
-%
-%        ls$estadia/Cantão#@wikidata:Q16572/15830800
-%            
-%
-%Would generate:
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld2"
-%        ORG="deh-matteo-ricci-attr1"
-%        DEST="http://www.wikidata.org/wiki/Q16572"
-%        TYPE="LINK"
-%        VALUE="VALUE_IS"
-%    />
-%```
-%
-%Internally one could generate an extra atribute with the link
-%
-%      ls$estadia/Cantão#@wikidata:Q16572/15830800
-%      ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
-%
-%3. Type of attribute or relation to external property: 
-%   the type of an attribute in Timelink corresponds to a property
-%  in an external data set.
-%
-%    ls$estadia#@wikidata:Property:P551/Cantão#@wikidata:Q16572/15830800
-%
-%
-%this could generate 
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld3"
-%        ORG="deh-matteo-ricci-attr1"
-%        DEST="http://www.wikidata.org/wiki/Property:P551"
-%        TYPE="LINK"
-%        VALUE="TYPE_IS"
-%    />
-%```
-%
-%    ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
-%    ls$wikidata.P551.linked.value/"http://www.wikidata.org/wiki/Q16572"/15521006
-%
-%In relations:
-%
-%    n$João III/id=rei-joao-iii
-%       rel$parentesco#@wikidata: P1038/irmao#@wikidata: P3373/Isabel de Portugal/isabel-de-portugal
-%
+
+/**
+ * processing_linked_data(+Group,+ID) is det.
+* 
+* Processing linked data for the current group.
+
+Linked data, e.g., references to entities in the Semantic Web,areintroduced 
+through comments. e.g.
+
+```
+n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504
+```
+To solve the notation into a URI it is necessary to introduce a new attribute in `kleio` group:
+
+```
+Kleio$...
+      link$wikidata/"https://www.wikidata.org/wiki/$1"
+      link$geonames/"https://www.geonames.org/$1"
+
+     source$....
+         act$....
+             n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504    <-link on id (or name)
+                 ls$nascimento/Brescia#@wikidata:Q6221/1582.              <-link on attribute value
+                 
+      ...
+
+    geo1$Chekiang#Tche-kiang, hoje:Zhejiang, 浙江, @wikidata:Q16967/província <-- link on name
+
+```
+## semantics
+
+The handling of linked data notation differs according to the group/element combination in which the link is added.
+
+### Link in generic group elements (except in attributes and relations)
+
+For any group except those that extend `attribute` (atr, ls) the link generates a new attribute
+in the form
+
+ ```
+    ls$<GROUP>-<ELEMENT>-<LINK_TYPE>/<LINK_URI>
+```
+So
+```
+   n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504  
+
+   generates:
+
+       ls$wikidata-person-id/"http://wikidata.org/wiki/Q2707504"   <-- generated attribute (inferred date)
+  
+```
+
+### Links in attribute values
+
+Links in attribute values are assuming to refer to external representations of the value of the the attribubte.
+
+So the attribute is duplicated with a qualification in the attribute type and with the explicit url link as value.
+
+```
+     ls$<TYPE>.<LINK_TYPE>/<LINK_URI># original value/LINK_URI
+```
+So
+```
+     ls$nascimento/Brescia#@wikidata:Q6221/1582
+
+     generates:
+
+    ls$nascimento.wikidata/"http://wikidata.org/wiki/Q6221"#Brescia/1582. <-- generated
+
+```
+
+### Links in attribute types
+
+Links in attribute types are assumed to be links to external references to properties.
+The attribute is duplicated with the type replaced with the external reference. The value is kept, except if it was also linked externally. Then the link to the external reference of the value is used.
+
+```
+    ls$<LINK_URI>#original type/<VALUE> or <LINK_URI_VALUE>#original value
+    ls$nacionalidade#@wikidata:Property:P27/República de Veneza#@wikidata:Q4948
+   
+    generates:
+
+    ls$"http://wikidata.org/wiki/Property:P27"#nacionalidade/"http://wikidata.org/wiki/Q4948"#República de Veneza
+```
+ */
+
+process_linked_data(Group,Id):-
+  clio_aspect(comment,Element, Comment),
+  atomic_list_concat(Comment,'',CommentString),
+  detect_xlink(CommentString,DataSource,XId),
+  generate_xlink(CommentString,Uri),
+  atomic_list_concat([Group,'-',Element,'-',DataSource],'',LinkedAType),
+  export_auto_attribute(Id,'atr', 'attribute', 
+                        LinkedAType, '','', % attribute type: core, comment, original
+                        Uri,CommentString,XId % attr. value: core, comment, original
+                        ),!.
+
+process_linked_data(_,_):-!.
 
 process_xlink_attribute_type(Group,Id,Type, Value, (DatSource,XId),_TypeComment,Uri):-
   % ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
@@ -1374,7 +1441,7 @@ check_arel_scope((__P1,_,ID),(__P2,ID,_)):-!.
 /*
 
 Relations are defined based on paths
-A path is a list of groupName(ID) | sequence(C) | group(Name,ID) |extends(Class,ID) | clause(C).
+A path is a list of groupName(ID) | sequence(C) | group(Name,ID) | extends(Class,ID) | clause(C).
 ID is usually a variable that is bound to actual IDs when the match is done
 sequence(C) matches a sequence of groups including a empty one
 group(Name,ID) matches Name(ID) it is useful to extract a Group name.
@@ -1555,6 +1622,12 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   % report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,  ' to ',DestinationID])]),
   !.
 
+%! export_auto_attribute(+Entity,+Type,+Value) is det.
+%   Export an automatic attribute for Entity with Type and Value.
+%   This is used to export inferred attributes.
+% 
+%   Shortned version of export_auto_attribute/9
+
 export_auto_attribute(Entity,Type,Value) :- 
   export_auto_attribute(Entity,
                         'ls',
@@ -1566,6 +1639,19 @@ export_auto_attribute(Entity,Type,Value) :-
                         '',
                         '').
 
+%! export_auto_attribute(+Entity,+GroupName,+Class,+Type,+TypeComment,+TypeOriginal,+Value,+ValueComment,+ValueOriginal) is det.  
+%
+% @arg Entity is the entity to which the attribute is attached
+% @arg GroupName is the name of the group used for the attribute (e.g. ls,attr,...)
+% @arg Class is the database (POM) class corresponding to the attribute group
+% @arg Type is the type of the attribute
+% @arg TypeComment is the comment for the type of the attribute
+% @arg TypeOriginal is the original text for the type of the attribute
+% @arg Value is the value of the attribute
+% @arg ValueComment is the comment for the value of the attribute
+% @arg ValueOriginal is the original text for the value of the attribute
+%
+%   Export an automatic attribute for Entity with Type and Value.
 export_auto_attribute(Entity,
                         GroupName,
                         Class,
@@ -1575,8 +1661,8 @@ export_auto_attribute(Entity,
                         Value,
                         ValueComment,
                         ValueOriginal) :-
-        rch_class(ls,Class,Super,Table,Mapping),
-        ensure_class(ls,Class,Super,Table,Mapping),
+        rch_class(GroupName,Class,Super,Table,Mapping),
+        ensure_class(GroupName,Class,Super,Table,Mapping),
         AncId = Entity,
         gensymbol_local(atra,Rid),
         AId = AncId-Rid,
@@ -1609,7 +1695,7 @@ export_auto_attribute(Entity,
                     original:ValueOriginal
                     }
                   },
-        xml_write(['<GROUP ID="',AId,'" NAME="ls"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
+        xml_write(['<GROUP ID="',AId,'" NAME="',GroupName,'"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
         xml_nl,
         xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
         xml_nl,
@@ -2032,22 +2118,9 @@ clio_extends(Type,'relation-type'),
 ((clio_partof(Type,Group));(clio_partof(Type,Class),clio_extends(Group,Class))).
 
 get_rel_type(_,contained-in):-!.
-/*
-
-belement_aspect(Aspect,BaseElement,Content) get the aspect corresponding to a baseclass element
-  =========================================
-      The gacto.str allows the definition of elements that extend other elements
-      using the fons/source parameter. In this way a particular historical source
-      can give localized names to certain elements that are required by the
-      RCH model, like dates, Ids, names and sex of persons, etc...
-
-      In a more general way, the element inheritance mechanism allows
-       for the translator to find an expected element even if the source used
-      a different name for it.
-
-      belement_aspect is similar do clio_aspect (external.pl) but uses
-      clio_element_extends (external.pl) to find in the current group elements
-      the base element it is looking for.
+/**
+* belement_aspect(+Aspect:atom,+BaseElement:atom,-Content:list) is det
+* @deprecated Use externals:clio_belement_aspect/3 instead.
 */
 belement_aspect(Aspect,Element,Content) :-
           clio_elements(Els),						% list current elements
@@ -2254,15 +2327,14 @@ aspect_to_xml(Aspect,Content,XML):-
   append(['      <',Aspect,'><![CDATA['],C,P1),
   append(P1,[']]></',Aspect,'>'],XML),!.
 
-/*
- xml_write(List) : writes a list of atom to the current xml output file
- ================
-*/
+%!  xml_write(+List:list) is det.
+%
+%  Write a list of items to the current XML file.
 
 xml_write(List):-!,
-get_value(xmlfile,XMLFILE),
-with_output_to(string(S),xcleanwrite(List)),
-write(XMLFILE,S).
+  get_value(xmlfile,XMLFILE),
+  with_output_to(string(S),xcleanwrite(List)),
+  write(XMLFILE,S).
 
 xml_nl:-!,
 get_value(xmlfile,XMLFILE),
