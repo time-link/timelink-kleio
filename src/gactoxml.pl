@@ -402,6 +402,7 @@ group_export(kleio,_) :- !,
         ),
       ([AutoMode] = AR; AutoMode = ''),
       set_autorel_mode(AutoMode),
+    linkedData:clear_xlink_patterns,
     clio_stru_file(Stru),
     clio_data_file(Data),
     list_to_a0(O,OS),
@@ -1033,7 +1034,7 @@ Links in attribute values are assuming to refer to external representations of t
 So the attribute is duplicated with a qualification in the attribute type and with the explicit url link as value.
 
 ```
-     ls$<TYPE>.<LINK_TYPE>/<LINK_URI># original value/LINK_URI
+     ls$<LINK_TYPE>:<TYPE>/<LINK_URI># original value/LINK_URI
 ```
 So
 ```
@@ -1041,7 +1042,7 @@ So
 
      generates:
 
-    ls$nascimento.wikidata/"http://wikidata.org/wiki/Q6221"#Brescia/1582. <-- generated
+    ls$wikidata:nascimento/"http://wikidata.org/wiki/Q6221"#Brescia/1582. <-- generated
 
 ```
 
@@ -1051,25 +1052,26 @@ Links in attribute types are assumed to be links to external references to prope
 The attribute is duplicated with the type replaced with the external reference. The value is kept, except if it was also linked externally. Then the link to the external reference of the value is used.
 
 ```
-    ls$<LINK_URI>#original type/<VALUE> or <LINK_URI_VALUE>#original value
+    ls$<LINK_TYPE>:<LINK_TYPE_URI>#<LINK_URI>%original type/<VALUE> or <LINK_URI_VALUE>#original value
     ls$nacionalidade#@wikidata:Property:P27/República de Veneza#@wikidata:Q4948
    
     generates:
 
-    ls$"http://wikidata.org/wiki/Property:P27"#nacionalidade/"http://wikidata.org/wiki/Q4948"#República de Veneza
+    ls$wikidata:Property_P27#"http://wikidata.org/wiki/Property:P27"%nacionalidade/"http://wikidata.org/wiki/Q4948"#República de Veneza
 ```
  */
 
 
 process_linked_data(Group,Id):-
-  (clio_extends(Group,person)
-  ;clio_extends(Group,object)
-  ;clio_extends(Group,geoentity)),
+  clio_bclass(Group,GroupBClass),  % we use the base class of the group
+  memberchk(GroupBClass, [person,object,groentity]),
   clio_aspect(comment,Element, Comment),
-  atomic_list_concat(Comment,'',CommentString),
+  flatten_multiple_entry(Comment,FComment),
+  atomic_list_concat(FComment,'',CommentString),
   detect_xlink(CommentString,DataSource,XId),
   generate_xlink(CommentString,Uri),
-  atomic_list_concat([Group,'-',Element,'-',DataSource],'',LinkedAType),
+  clio_element_bclass(Element,ElementBClass), % and the base class of the element to generate the attribute type
+  atomic_list_concat([DataSource,':',GroupBClass,':',ElementBClass],'',LinkedAType),
   export_auto_attribute(Id,'atr', 'attribute', 
                         LinkedAType, '','', % attribute type: core, comment, original
                         Uri,CommentString,XId % attr. value: core, comment, original
@@ -1077,10 +1079,15 @@ process_linked_data(Group,Id):-
 
 process_linked_data(_,_):-!.
 
-process_xlink_attribute_type(Group,Id,Type, Value, (DatSource,XId),_TypeComment,Uri):-
+% TODO: reimplement as the above
+process_xlink_attribute_type(_Group,Id,Type, Value, (DatSource,XId),TypeComment,Uri):-
   % ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
-  atomic_list_concat(['@',DatSource,XId],'',LinkedAType),
-  export_auto_attribute(Id,Group, 'attribute', LinkedAType, Uri,'',Value,'',Type),!.
+  atomic_list_concat([DatSource,':',XId],'',LinkedAType),
+  export_auto_attribute(Id,
+                        'atr', 
+                        'attribute', 
+                        LinkedAType, Uri,TypeComment,
+                        Value,'',Type),!.
 
 process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
   error_out([' Could not generate linked data URI from ',TypeComment,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
@@ -1088,7 +1095,7 @@ process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
 process_xlink_attribute_value(Group,Id,Type, Value, (DataSource,_XID), _ValueComment,Uri):-
    % ls$estadia.@/"http://www.wikidata.org/wiki/Q16572"/15830800
    (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
-   atomic_list_concat([TypeFlat,'@',DataSource],'',LinkedAType),
+   atomic_list_concat([DataSource,':',TypeFlat],'',LinkedAType),
    export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
 process_xlink_attribute_value(Group,Id,Text, _Value, (_DataSource,_XID),_ValueComment,_Uri):-
   error_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
@@ -2285,9 +2292,18 @@ calc_length(mult(Core),Atom,Length):-
   atomic_list_concat(List, Atom),
   atom_length(Atom,Length).
 
- calc_length(mult(Core),Core,Length):-
+% not sure if this is needed
+ calc_length(mult(Core),Core,Length):-  % this is a hack to avoid the mult_to_list when the mult is a single element
   atomic(Core),
   atom_length(Core,Length). 
+
+%! flatten_multiple_entry(+Value,-List:list) is det.
+%
+%  If Value is a multiple entry, then List is unified with the list of value separated by ';'.
+flatten_multiple_entry(mult(Multi),List):-!, % this makes the predicate more flexible
+  mult_to_list(Multi,List).
+flatten_multiple_entry(List,List):-
+  is_list(List),!.
 
 mult_to_list([O],O):-!.
 mult_to_list([],[]):-!.
