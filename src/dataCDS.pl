@@ -389,7 +389,9 @@ getCDF(__A,E,Els,[]):-
 
 gaspect(A,L,Info):-
     g_asp(A,L,I),
-    (I = [Info]; Info = mult(I)),!. % flag multiple entries with mult%
+    (I = [Info]
+    ;(I=[],Info=I) 
+    ;Info = mult(I)),!. % flag multiple entries with mult%
 
 % very messy. fix it latter %
 g_asp(core,[[],_,_],[]).
