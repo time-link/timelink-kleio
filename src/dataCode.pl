@@ -177,7 +177,7 @@ initNewGroup(G):-
     getCDField(cgroupID,OID),
     updatePath(OG,OID,G,OLDPATH,NEWPATH),          
     resetGroupCounters(G),  
-    setCDS(cds(NEWPATH,G,[],0,[],[],[],core,[],[],[])),
+    setCDS(cds(NEWPATH,G,[],0,[],[],[],[],[],[],core,[],[],[])),
     % save the line information for the start of the group
     get_prop(line,number,L),
     get_prop(line,text,Line),
@@ -315,8 +315,8 @@ check_ename:-
     get_prop(ID,locus,LocusList),
     getCDField(locusCount,N),% get locus counter %
     N1 is N+1,               % increment counter %
-    member_nth(E,LocusList,N1),% find locus element %
-    setCDField(celement,E),    % set current el. to it %
+    member_nth(EName,LocusList,N1),% find locus element %
+    setCDField(celement,EName),    % set current el. to it %
     setCDField(locusCount,N1), % update locus counter %
     !.
 check_ename:-
@@ -339,11 +339,11 @@ check_ename:-
 %%
 storeElement:-
     getCDField(elementList,Elements),
-    getCDField(celement,E),
+    getCDField(celement,EName),
     getCDField(coreEntryList,CoreEntries),
     getCDField(originalEntryList,OriginalEntries),
     getCDField(commentEntryList,CommentEntries),
-    append(Elements,[element(E,[CoreEntries,OriginalEntries,CommentEntries])],NewEls),
+    append(Elements,[element(EName,[CoreEntries,OriginalEntries,CommentEntries])],NewEls),
     setCDField(elementList,NewEls),
     setCDField(celement,[]),
     setCDField(entryList,[]),
@@ -375,12 +375,17 @@ endEntry:-
     getCDField(caspect,CAspect),
     endEntry(CAspect),!.
 
+endEntry:-
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',endEntry],[line_number(L),line_text(Line)]),!.
+
 endEntry(core):-
     getCDField(coreEntryList,Elist),
     getCDField(ccore,C),
     rmv_lead_space(C,C1),                  % remove leading spaces %
     reverse(C1,Core),
-    append(Elist,[Core],NElist),   % add it to current list %
+    append(Elist,[entry(Core)],NElist),   % add it to current list %
     setCDField(coreEntryList,NElist),                % clean current entry %
     setCDField(ccore,[]),!.
 
@@ -389,7 +394,7 @@ endEntry(original):-
     getCDField(coriginal,C),
     rmv_lead_space(C,C1),                  % remove leading spaces %
     reverse(C1,Original),
-    append(Elist,[Original],NElist),   % add it to current list %
+    append(Elist,[entry(Original)],NElist),   % add it to current list %
     setCDField(originalEntryList,NElist),                % clean current entry %
     setCDField(coriginal,[]),!.
 
@@ -398,14 +403,10 @@ endEntry(comment):-
     getCDField(ccomment,C),
     rmv_lead_space(C,C1),                  % remove leading spaces %
     reverse(C1,Comment),
-    append(Elist,[Comment],NElist),   % add it to current list %
+    append(Elist,[entry(Comment)],NElist),   % add it to current list %
     setCDField(commentEntryList,NElist),                % clean current entry %
     setCDField(ccomment,[]),!.
 
-endEntry:-
-    get_prop(gline,number,L),
-    get_prop(gline,text,Line),
-    error_out(['** Failure: ',endEntry],[line_number(L),line_text(Line)]),!.
 
 rmv_trail_space(A,B):-
     reverse(A,C),
@@ -420,6 +421,7 @@ rmv_lead_space(A,A):-!.
 %******************************************************
 %  %
 newAspect(T):-
+    endEntry,
     setCDField(caspect,T),!.
 
 %******************************************************
