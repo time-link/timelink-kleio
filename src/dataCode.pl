@@ -320,7 +320,11 @@ check_ename:-
     setCDField(locusCount,N1), % update locus counter %
     !.
 check_ename:-
-    getCDField(entryList,Entries),   %get current entries %
+    %getCDField(entryList,Entries),   %get current entries %
+    getCDField(coreEntryList,CoreEntries),
+    getCDField(originalEntryList,OriginalEntries),
+    getCDField(commentEntryList,CommentEntries),
+    Entries = [CoreEntries,OriginalEntries,CommentEntries],
     with_output_to(string(S),printEntries(1,Entries)),
     get_prop(gline,number,L),
     get_prop(gline,text,Line),
@@ -369,7 +373,7 @@ newEntry:-
     endEntry,!.
 
 %  endEntry - adds current entry to the CDS entryList
-% this is a bug see issue #21 
+% 
 %  %
 endEntry:-
     getCDField(caspect,CAspect),

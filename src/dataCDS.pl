@@ -542,11 +542,19 @@ printElements([E|R]):-
 printEntries(_,[]):-!.
 printEntries(N,[E|R]):-
     printEntry(N,E),printEntries(N,R),!.
+% new style issue21
+printEntries(N,[Core,Original,Comment]):-
+    printAsp(N,core,Core),
+    printAsp(N,org,Original),
+    printAsp(N,com,Comment),nl,!.
 
 printEntry(N,entry(Core,Original,Comment)):-
     printAsp(N,core,Core),
     printAsp(N,org,Original),
     printAsp(N,com,Comment),nl,!.
+
+printAsp(N,Asp,[entry(V)|_]):-
+    printAsp(N,Asp,V),!.
 
 printAsp(_,_,[]):-!.
 printAsp(__N,core,V):-

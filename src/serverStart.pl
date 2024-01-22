@@ -325,8 +325,9 @@ test_case(translations,File,Stru):-
     Flag = true,
     format('TESTING ~wn',[File]).
 
-translate_file('sources/api/linked_data/dehergne-a.cli',true).
-translate_file('sources/api/bugs/bugs.cli',false).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
+translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
+translate_file('sources/api/bugs/bugs.cli',true).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-data-error.cli',false).
 translate_file('sources/api/varia',false).
