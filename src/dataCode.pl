@@ -33,7 +33,7 @@
     endElement (when an end of element is detected: '/')
     newAspect (when a new aspect is detected: '#' or "%")
     newEntry (when a new entry is detected: ';')
-    storeCore (when processing core information of an element).
+    storeAspect (when processing text for an aspect of an element).
    
 */
 :-use_module(logging).
@@ -340,11 +340,16 @@ check_ename:-
 storeElement:-
     getCDField(elementList,Elements),
     getCDField(celement,E),
-    getCDField(entryList,Entries),
-    append(Elements,[element(E,Entries)],NewEls),
+    getCDField(coreEntryList,CoreEntries),
+    getCDField(originalEntryList,OriginalEntries),
+    getCDField(commentEntryList,CommentEntries),
+    append(Elements,[element(E,[CoreEntries,OriginalEntries,CommentEntries])],NewEls),
     setCDField(elementList,NewEls),
     setCDField(celement,[]),
     setCDField(entryList,[]),
+    setCDField(coreEntryList,[]),
+    setCDField(originalEntryList,[]),
+    setCDField(commentEntryList,[]),
     setCDField(caspect,core),
     setCDField(ccore,[]),
     setCDField(coriginal,[]),
@@ -364,23 +369,37 @@ newEntry:-
     endEntry,!.
 
 %  endEntry - adds current entry to the CDS entryList
+% this is a bug see issue #21 
 %  %
 endEntry:-
-    getCDField(entryList,Elist),
+    getCDField(caspect,CAspect),
+    endEntry(CAspect),!.
+
+endEntry(core):-
+    getCDField(coreEntryList,Elist),
     getCDField(ccore,C),
-    getCDField(coriginal,O),
-    getCDField(ccomment,Cm),
     rmv_lead_space(C,C1),                  % remove leading spaces %
-    rmv_lead_space(O,O2),                    % if fact this removes trailing space %
-    rmv_lead_space(Cm,Cm1),
     reverse(C1,Core),
-    reverse(O2,Org),
-    reverse(Cm1,Com),
-    append(Elist,[entry(Core,Org,Com)],NElist),   % add it to current list %
-    setCDField(entryList,NElist),                % clean current entry %
-    setCDField(caspect,core),
-    setCDField(ccore,[]),
-    setCDField(coriginal,[]),
+    append(Elist,[Core],NElist),   % add it to current list %
+    setCDField(coreEntryList,NElist),                % clean current entry %
+    setCDField(ccore,[]),!.
+
+endEntry(original):-
+    getCDField(originalEntryList,Elist),
+    getCDField(coriginal,C),
+    rmv_lead_space(C,C1),                  % remove leading spaces %
+    reverse(C1,Original),
+    append(Elist,[Original],NElist),   % add it to current list %
+    setCDField(originalEntryList,NElist),                % clean current entry %
+    setCDField(coriginal,[]),!.
+
+endEntry(comment):-
+    getCDField(commentEntryList,Elist),
+    getCDField(ccomment,C),
+    rmv_lead_space(C,C1),                  % remove leading spaces %
+    reverse(C1,Comment),
+    append(Elist,[Comment],NElist),   % add it to current list %
+    setCDField(commentEntryList,NElist),                % clean current entry %
     setCDField(ccomment,[]),!.
 
 endEntry:-

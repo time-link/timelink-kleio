@@ -41,15 +41,21 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
                locusCount,   % certe count %
                elementList,  % element list %
                celement,     % current element %
-               entryList,    % current entries %
+               entryList,    % current entries
                caspect,       % current aspect being input%
-               ccore,        % current core %
-               coriginal,    % current original aspect %
-               ccomment]).   % current comment aspect %
+               ccore,        % current core, can have multiple entries %
+               coriginal,    % current original can have multiple entries %
+               ccomment]).   % current comment can have multiple entries %
 
  cpath=[DOC(DocID),Group1(GID1)...]
  elementList=[element(name,entryList),...]
- entryList=[entry(core,original,comment),...]
+ entryList=[entry(core,original,comment),...] DEPRECATED
+ entryList=[coreEntryList,originalEntryList,commentEntryList]
+ coreEntryList=[Entry|MoreEntries]
+ originalEntryList=[Entry|MoreEntries]
+ commentEntryList=[Entry|MoreEntries]
+
+ 
     
 ### Predicates that deal with the current data storage
     
@@ -89,6 +95,9 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
                 elementList: list,
                 celement: list,
                 entryList: list,
+                coreEntryList: list,
+                originalEntryList: list,
+                commentEntryList: list,
                 caspect: atom=core,
                 ccore:list,
                 coriginal:list,
@@ -102,8 +111,8 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
 %  cdsFields(L) lists legal fields of CDS
 %******************************************************
 %%
-cdsFields([cpath, cgroup,cgroupID,locusCount,elementList,celement,entryList,caspect,
-ccore, coriginal, ccomment]).
+cdsFields([cpath, cgroup,cgroupID,locusCount,elementList,entryList, coreEntryList, originalEntryList,
+commentEntryList, coriginal, ccomment]).
 
 
 % The following predicates are helpers to print in the console the names
@@ -146,9 +155,12 @@ getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
     get_prop(cds,cgroup,CGROUP),
     get_prop(cds,cgroupID,CGROUPID),
     get_prop(cds,locusCount,LOCUSCOUNT),
+    get_prop(cds,coreEntryList,CORE_ENTRIES),
+    get_prop(cds,originalEntryList,ORIGINAL_ENTRIES),
+    get_prop(cds,commentEntryList,COMMENT_ENTRIES),
     get_prop(cds,elementList,ELEMENTLIST),
     get_prop(cds,celement,CELEMENT),
-    get_prop(cds,entryList,ENTRYLIST),
+    ENTRYLIST = [CORE_ENTRIES,ORIGINAL_ENTRIES,COMMENT_ENTRIES],
     get_prop(cds,caspect,CASPECT),
     get_prop(cds,ccore,CCORE),
     get_prop(cds,coriginal,CORIGINAL),
@@ -165,7 +177,7 @@ getCDSR(CDSR):-
         locusCount(LOCUSCOUNT),
         elementList(ELEMENTLIST),
         celement(CELEMENT),
-        entryList(ENTRYLIST),
+        entryList(ENTRYLIST), % UPDATE SEE ABOVE
         caspect(CASPECT),
         ccore(CCORE),
         coriginal(CORIGINAL),
@@ -185,7 +197,11 @@ setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
     set_prop(cds,locusCount,LOCUSCOUNT),
     set_prop(cds,elementList,ELEMENTLIST),
     set_prop(cds,celement,CELEMENT),
+    [CORE_ENTRIES,ORIGINAL_ENTRIES,COMMENT_ENTRIES] = ENTRYLIST,
     set_prop(cds,entryList,ENTRYLIST),
+    set_prop(cds,coreEntryList,CORE_ENTRIES),
+    set_prop(cds,originalEntryList,ORIGINAL_ENTRIES),
+    set_prop(cds,commentEntryList,COMMENT_ENTRIES),
     set_prop(cds,caspect,CASPECT),
     set_prop(cds,ccore,CCORE),
     set_prop(cds,coriginal,CORIGINAL),
@@ -199,7 +215,7 @@ setCDSR(CDSR):-
     cdsr_locusCount(CDSR,LOCUSCOUNT),
     cdsr_elementList(CDSR,ELEMENTLIST),
     cdsr_celement(CDSR,CELEMENT),
-    cdsr_entryList(CDSR,ENTRYLIST),
+    cdsr_entryList(CDSR,ENTRYLIST), % Update see above
     cdsr_caspect(CDSR,CASPECT),
     cdsr_ccore(CDSR,CCORE),
     cdsr_coriginal(CDSR,CORIGINAL),
@@ -227,7 +243,7 @@ delCD:-del_props(cds),!.
 %******************************************************
 %  %
 cleanCD:-
-    setCDS(cds([],[],[],0,[],[],[],core,[],[],[])),!.
+    setCDS(cds([],[],[],0,[],[],[[],[],[]],core,[],[],[])),!.
 %******************************************************
 %  setCDField(Field,Value)- set Field in the CDS structure
 %        to Value
@@ -308,7 +324,8 @@ getCDFs(A,[E|Els],Elements,[C|Cores]):-
 getCDFs(_,[],_,[]):-!.
 %******************************************************
 %  get_aspect(Asp,Element,Core) return aspect info
-%    for Element.Aspect can be 'core', 'original', 'comment'
+%    for Element.
+%    Aspect can be 'core', 'original', 'comment'
 %     Returns [] if inexistant.
 %    When there are multiple entries for the information
 %    a structure mult(L) is returned where L is the list of
@@ -342,11 +359,11 @@ gaspect(A,L,Info):-
     (I = [Info]; Info = mult(I)),!. % flag multiple entries with mult%
 
 g_asp(__A,[],[]).
-g_asp(core,[entry(Core,_,_)|MoreEntries],[Core|MoreCore]):-
+g_asp(core,[[Core,_Original,_Comment]|MoreEntries],[Core|MoreCore]):-
     g_asp(core,MoreEntries,MoreCore).
-g_asp(original,[entry(_,Org,_)|MoreEntries],[Org|MoreOrg]):-
+g_asp(original,[[_,Org,_Comment]|MoreEntries],[Org|MoreOrg]):-
     g_asp(original,MoreEntries,MoreOrg).
-g_asp(comment,[entry(_,_,Comm)|MoreEntries],[Comm|MoreComm]):-
+g_asp(comment,[[_Core,_Original,Comm]|MoreEntries],[Comm|MoreComm]):-
     g_asp(comment,MoreEntries,MoreComm).
 
 % currently not used. make it an utility latter %
