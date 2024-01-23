@@ -9,7 +9,7 @@ echo
 echo "================================================"
 echo "Remote translating from kleio source dir " ${1}  
 echo "KLEIO_ADMIN_TOKEN: $KLEIO_ADMIN_TOKEN"
-basedir = ${1}
+basedir=${1}
 for file in ${basedir}; do
     if [ -e "${file}" ] 
     then
