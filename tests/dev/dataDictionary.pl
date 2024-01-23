@@ -84,7 +84,8 @@
 :-use_module(persistence).
 :-use_module(dataCDS).
 :-use_module(apiTranslations).
-:- use_module(library(http/json)).
+:-use_module(struSyntax).
+:-use_module(library(http/json)).
 
 % dynamic thread local
 ?-thread_local(clioStru_/1).
@@ -652,8 +653,9 @@ group_to_html(File,G):-
          ;
          true
          ),
-         % doc generation is not working
-    (clause(gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'),show_edocs(G));true),
+         % doc generation is not working This is because gdoc clauses are being assert inside struSyntax module
+         % so they are not visible here. check storeGroupDoc and storeElementDoc in struSyntax they need refactoring
+    (clause(struSyntax:gdoc(G,Doc),true)->(list_to_a0(Doc,SDoc),write(SDoc),writeln('<br>'),show_edocs(G));true),
     writeln('<blockquote>'),
     writelist0(['Minimal:<b>  ',G,'$']),show_positional(C,L),write('</b>'),
     writelist0(['Typical:<b>  ',G,'$']),show_locus(C,L),write('</b>'),
@@ -672,7 +674,7 @@ group_to_html(File,G):-
 	 
 show_edocs(G):-	 
 	write('<DL>'),
-	 clause(edoc(G,E,Doc),true),
+	 clause(struSyntax:edoc(G,E,Doc),true),
 	 write('<DT>'),write(E),write('</DT>'),
 	 list_to_a0(Doc,SDoc),write('<DD>'),write(SDoc),write('</DD>'),writeln('<br>'),
 	 fail.

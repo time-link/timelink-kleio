@@ -53,6 +53,7 @@ syntactic analysers.
 :-use_module(basicio).
 :-use_module(utilities).
 :-use_module(logging).
+:-use_module(linkedData).
 
 %%  clio_version(?V) is det.
 %  Returns the version of the translator.
@@ -107,8 +108,8 @@ stru(F):-
       file_base_name(Filename,Basename),
       report([nl,write('Processing structure:'),write(Basename),nl]),
       initStru(Filename),
-      retractall(gDoc(_,_)),
-      retractall(eDoc(_,_,_)),
+      retractall(struSyntax:gdoc(_,_)),
+      retractall(struSyntax:edoc(_,_,_)),
       readlines(cmd),
 	  report([perror_count]),
       closeStru(Filename),

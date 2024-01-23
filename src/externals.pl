@@ -19,47 +19,10 @@
 		clio_element_param/3,
 		clio_element_super/2,
 		clio_element_extends/2,
-		clio_element_bclass/2	
+		clio_element_bclass/2,
+		clio_belement_aspect/3
 	]).
-/** <module> This is the external interface (API) for the Clio export modules
-
- Serves as doc also.
-
- Clio export modules are Prolog programs that define the way 
- the Clio texts are converted. 
-
- The interaction between the Clio translator and the export modules
- is as follows:
-
-*  The translator processes a clio structure file and the clio data file.
-* It does the syntactic analysis and error checking in what regards compliance
- 		of the data to the structure definition. 
- * Once a Clio group is read from the data file by the translator a call is made to the export module
- 		signalling that data for a group is available. 
-* The export module can then call back the Clio Translator code to request the data itself.
-
-Two sets of predicates are involved in this interchange:
-
-* the export predicates that are called by the translator
-* the Translator predicates that are called by the export modules.
-
-The export module must provide three predicates that are to be called
-  by the translator: db_init/0, db_store/0, db_close/0.
-
-* db_init 
-Is called when a new data file begins processing.
-The export module can set db_init to do initialization procedures like openning export files and setting up
-default values.
-
-* db_store
-Is called when a new clio group has been read by the
-translator. The export module can now call back the
-translator module to obtain the data.
-    
-* db_close
-Is called when the processing of the data file is finished
-The export module can close the export files and do general
-cleanup procedures.
+/** <module> External interface (API) for the Clio export modules
 
 The call back predicates made available to export modules by the Clio 
 translator are the following:
@@ -81,6 +44,13 @@ translator are the following:
 		* clio_aspects(Aspect,ElementList,InfoList) The same as clio_aspect
                          but works with a list of elements returning a list
                           of values.
+		* clio_belement_aspect(Aspect,BaseElement,Content) get the aspect
+						  corresponding to a baseclass element. This is
+						  similar to clio_aspect but uses clio_element_extends
+						  to find in the current group elements the base element
+						  it is looking for. This is useful to find an expected
+						  element even if the source used a different name for it.
+						  
 
 * Processing information
 		* clio_data_file(File) the current data file name.
@@ -177,6 +147,51 @@ clio_element_bclass(Element,Bclass) :-
 		clio_element_extends(Element,Bclass),
 		\+ clio_element_super(_,Bclass),!.
 clio_element_bclass(Element,Element):-!.
+
+/**
+* clio_belement_aspect(+Aspect:atom,+BaseElement:atom,-Content:list) is det
+* 
+* @param Aspect atom, one of (core, original, comment)
+* @param BaseElement atom, the name of a base element, e.g. xsame_as
+* @param Content list, the content of the aspect for the base element
+* 
+* A base element is an element that is extended by other elements and
+* is normally associated with specific semantics during translation.
+* E.g. xsame_as (external same as) is assumed to contain the id of a 
+* group that refers to the same entity as the current group in another file.
+* 
+* Structure files allow the definition of elements that extend other elements
+* through the 'fons/source' parameter. This is used to make a version of an element
+* localized to a certain language, or to improve legibility of the transcription
+* so
+* ==
+* element name="xmesmo_que" source="xsame_as"
+* ==
+* means that the element 'xmesmo_que' is a version of 'xsame_as' in Portuguese.
+*
+* In other words, the element inheritance mechanism allows
+* for the translator to find an expected element even if the source used
+* a different name for it.
+*
+* `clio_belement_aspect/3` is similar do `clio_aspect/2` but uses
+* `clio_element_extends/2` to find in the current group elements
+*  the base element it is looking for.
+*
+*/
+clio_belement_aspect(Aspect,Element,Content) :-
+          clio_elements(Els),						% list current elements
+         % writeln(clio_elements(Els)),
+          member(Element,Els),	!,				% get one of them
+          clio_aspect(Aspect,Element,Content).      % if it does return aspect
+
+clio_belement_aspect(Aspect,BaseElement,Content) :-
+	clio_elements(Els),						% list current elements
+     % writeln(clio_elements(Els)),
+    member(Element,Els),					% get one of them
+    clio_element_extends(Element,BaseElement),!, % check if it extends the base el
+    clio_aspect(Aspect,Element,Content).      % if it does return aspect
+
+clio_belement_aspect(_,_,[]):- !.
 
 
 		

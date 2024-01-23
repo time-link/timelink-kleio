@@ -142,6 +142,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 :- use_module(library(http/json)).
 :- use_module(library(http/json_convert)).
 :- use_module(library(http/http_json)).
+:- use_module(library(http/http_cors)).
 :- use_module(library(debug)).
 :- use_module(library(pprint)).
 :- use_module(library(option)).
@@ -178,16 +179,18 @@ default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_numbe
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
 default_value(timeout,900):-!.
+default_value(cors,CorsList):- getenv('KLEIO_CORS_SITES',ListString),atomic_list_concat(CorsList, ',', ListString).
+default_value(cors,['*']) :- !.
 
 %! print_server_config is det.
 %
 % prints the configuration values of the server.
-%
 print_server_config:-
     restServer:default_value(server_port,SP),
     restServer:default_value(rest_port,RP),
     restServer:default_value(workers,Workers),
     restServer:default_value(timeout,Timeout),
+    restServer:default_value(cors,Cors),
     kleiofiles:kleio_home_dir(Home),
     kleiofiles:kleio_conf_dir(Conf),
     kleiofiles:kleio_stru_dir(StruDir),
@@ -203,9 +206,11 @@ print_server_config:-
     format('Version: ~t~w~n',[V]),
     format('Debug mode: ~t~w~n',[DEBUG]),
     format('Debug port: ~t~w~n',[SP]),
-    format('REST port: ~t~w~n',[RP]),
+    format('REST port: ~t~w (check if mapped in docker)~n',[RP]),
     format('Workers: ~t~w~n',[Workers]),
     format('Timeout: ~t~w~n',[Timeout]),
+    format('Cors: ~t~w~n',[Cors]),
+    format('/kleio_home dir on host: ~t~w~n',[Home]),
     format('Kleio_home_dir: ~t~w~n',[Home]),
     format('Kleio_conf_dir: ~t~w~n',[Conf]),
     format('Kleio_stru_dir: ~t~w~n',[StruDir]),
@@ -217,7 +222,49 @@ print_server_config:-
     format('kleio_source_dir: ~t~w~n',[Sources]),
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     format('~nLogging to: ~w~n',[Log]),
-    !.
+     !.
+
+save_kleio_config:-
+    (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
+    (tokens:get_kleio_admin(ATOKEN,_,_)
+        -> true 
+        ;
+        ATOKEN=null), % null is JSON convention for null
+    (getenv('KLEIO_HOME_LOCAL',HomeLocal)
+        -> true 
+        ;
+        HomeLocal=null), % null is JSON convention for null
+    restServer:default_value(rest_port,RP),
+    clio_version_version(V),
+    clio_version_build(B),
+    clio_version_date(D),
+    kleiofiles:kleio_home_dir(Home),
+    kleiofiles:kleio_conf_dir(Conf),
+    kleiofiles:kleio_admin_token_path(AdminTokenPath),
+    get_token_db_status(TDBS),
+    % get todays date
+    get_time(T), 
+    format_time(string(NowDateTime),'%FT%T%z',T),
+    % output config info
+    atom_concat('http://localhost:',RP,KURL),
+    KleioSetup = ksetup{kleio_home_local:HomeLocal,
+                        kleio_home:Home, 
+                        kleio_admin_token:ATOKEN,
+                        kleio_url:KURL,
+                        kleio_log:Log,
+                        kleio_version:V,
+                        kleio_version_build:B,
+                        keio_version_date:D,
+                        kleio_conf_dir:Conf,
+                        kleio_token_db_status:TDBS,
+                        kleio_admin_token_path:AdminTokenPath,
+                        kleio_setup_date:NowDateTime
+                        },
+    atom_concat(Home,'/.kleio.json',KleioSetupFile), 
+    open(KleioSetupFile,write,KFI_Stream,[]),        
+    json_write_dict(KFI_Stream,KleioSetup),
+    close(KFI_Stream).
+
 
 admin_token_exists:- getenv('KLEIO_ADMIN_TOKEN',_).
 admin_token_ok :- getenv('KLEIO_ADMIN_TOKEN',ATOKEN), sub_atom(ATOKEN,0,5,_,_).
@@ -253,9 +300,9 @@ get_token_db_status('Could not determine token status').
 % :- http_handler(root('rest/files/'),handle_files_request,[prefix,methods([get,put,post,delete])]). %workaround could not make it work as normal rest
 % :- http_handler(root('rest/structures/'),serve_structure_file,[prefix,method(get)]). % same workaround
 % :- http_handler(root('rest/upload'),upload,[id(upload),prefix,method(post)]).
-:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post])]).
-:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),method(post)]). % time limit in seconds
-:- http_handler(root(.), home_page, []).
+:- http_handler(root('rest/'), process_rest, [id(rest),time_limit(300),prefix,methods([get,delete,put,post,options])]).
+:- http_handler(root('json/'), process_json_rpc, [id('json-rpc'),time_limit(300),methods([post,options])]). % time limit in seconds
+:- http_handler(root(.), home_page, [methods([get,options])]).
 :- http_handler(root('forms/upload/'),upload_form,[]). % generate a form for uploading files
 :- http_handler(root(echo), echo_request, [prefix]).
 
@@ -282,10 +329,12 @@ start_debug_server:-
 start_rest_server:-
     default_value(rest_port,Port),
     default_value(workers,Number),
+    default_value(cors,Cors),
     log_debug('Starting REST server on port ~w with ~w worker threads. ~n',[Port,Number]),
     put_shared_value(pool_mode,message),
     set_shared_count(rest_request_count,1),
     set_shared_count(jsonrpc_request_count,1),
+    http:set_setting(cors,Cors),
     create_workers(Number),
     check_token_database,
     server(Port),
@@ -295,7 +344,8 @@ server(Port) :-
         default_value(timeout,Number),
         http_server(http_dispatch,
                     [ port(Port),timeout(Number) % 15 secs timeout on requests
-                    ]).
+                    ]),
+        save_kleio_config.
 
 %% server_idle(+Seconds) is det.
 %
@@ -342,7 +392,7 @@ show_server_activity:-
 % 
 check_token_database:- 
     check_token_database(exists),
-    check_token_database(has_tokens),!.
+    check_token_database(bootstrap),!.
 
 check_token_database(exists):-
     tokens:token_db_attached(TokensCurrent),
@@ -353,27 +403,22 @@ check_token_database(exists):-
     (exists_file(DB)->true;log_info('Token db at ~w does not exist. Will create.',[DB])),
     tokens:attach_token_db(DB),!.
 
+check_token_database(bootstrap):-
+    getenv('KLEIO_ADMIN_TOKEN',_),!.
 
-check_token_database(has_tokens):-
-    (tokens:user_token(_,_,_) -> 
-        true
-    ;
-        (% no tokens defined. We will generate a 'bootstrap' token with generate_token privilegies, and 5m life
-        A = bootstrap,
-        tokens:generate_token(A,[life_span(300),api([generate_token])],Token),
-        put_shared_value(bootstrap_token,token(Token)),
-        kleiofiles:kleio_conf_dir(KConf),
-        atom_concat(KConf,'/.bootstrap_token',BTokenFile),
-        open(BTokenFile,write,F,[]),
-        write(F,Token),
-        close(F)
-        )
-    ).
+check_token_database(bootstrap):-
+    % Generate a 'bootstrap' token with admin privileges
+    A = kleio_admin,
+    (tokens:invalidate_user(A);true),
+    kleiofiles:kleio_admin_token_path(AdminTokenFile),
+    tokens:get_admin_options(Opts),
+    tokens:generate_token(A,Opts,Token),
+    put_shared_value(bootstrap_admin_token,token(Token)),
+    open(AdminTokenFile,write,F,[]),
+    write(F,Token),
+    close(F).
 
-%% home_page(Request) is det.
-%
-% Generate a home page for the server.
-%
+
 home_page(_):-
         format('Content-type: text/html~n~n', []),
         format('<html>~n', []),
@@ -441,7 +486,15 @@ mime:mime_extension(Ext,Mime):-
 %   are caught by the server top level code and trigger the output. This seems to be used in cases where
 %   SWI will take care of the whole output, like http_reply_file/3 and http_reply_from_files/3.
 %
+process_rest(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([get,post,delete,put])
+                ]),
+    format('~n'). 
+
 process_rest(RestRequest):-
+    cors_enable(RestRequest,[methods([get,post,delete,put])]),
     inc_shared_count(rest_request_count,_),
     http_public_host(RestRequest, Hostname, Port, []),
     option(path_info(PInfo),RestRequest,''),
@@ -478,7 +531,7 @@ json_out(Params):-
     option(json(false),Params), 
     !,fail.
 json_out(_):-
-    httpd_wrapper:http_current_request(Request),
+        httpd_wrapper:http_current_request(Request),
     option(accept(List),Request),
     member(media(text/plain,_,_,_),List),!,fail.
 json_out(_):-
@@ -603,8 +656,15 @@ rest_exec(Operation,Id,Param,Results):-
 % Handles single requests and batch requests.
 % Decodes the request into JSONPayload and passes it to either process_json_batch/1 or process_json_request/1 .
 %
+process_json_rpc(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+                [ methods([post])
+                ]),
+    format('~n'). 
 process_json_rpc(Request):-
     %print_content_type(json),
+    cors_enable(Request,[methods([post])]),
     inc_shared_count(jsonrpc_request_count,_),
     catch(process_json_rpc_(Request),
         Error,
@@ -698,7 +758,7 @@ json_decode_command(json(JSONRequest),Id,Method,[token_info(TokenParams)|Params]
     option(params(json(Params)),JSONRequest),
     (option(token(Token),Params) -> 
         true
-        ; 
+        ;  
         throw(invalid_params(Id,'Missing parameter: token'))
     ),
     (tokens:decode_token(Token,_,TokenParams)->true; throw(invalid_params(Id,'Bad token'))).
@@ -865,6 +925,12 @@ return_sucess(json,upload,Id,_,Results):-
 % From: http://www.swi-prolog.org/howto/http/FileUpload.html
 % Generates a form to allow uploading of a file to the rest server
 %
+upload_form(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
 upload_form(Request) :-
     get_authorization_token(Request,Token),
     atomic_list_concat(['/rest/sources/uploads?token=',Token],URL),
@@ -1697,8 +1763,15 @@ rest_test(Request):-
     format('</html>~n').
 
 echo_request(Request) :-
+    option(method(options), Request), !,
+    cors_enable(Request,
+            [ methods([get,post,delete,put])
+            ]),
+    format('~n'). 
+
+echo_request(Request) :-
         format('Content-type: text/html~n~n', []),
-        format('<html>~n', []),
+        format('<html><body>Echoing request~n', []),
         format('<table border=1>~n'),
         print_request(Request),
         format('~n</table>~n'),
@@ -1707,7 +1780,7 @@ echo_request(Request) :-
         format('<table border=1>~n'),
         print_streams;
         format('~n</table>~n'),
-        format('</html>~n', []).
+        format('</body></html>~n', []).
 
 print_request([]).
 print_request([H|T]) :-

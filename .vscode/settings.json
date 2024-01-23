@@ -1,13 +1,11 @@
 {
     "prolog.executablePath": "/usr/bin/swipl",
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
         "**/.DS_Store": true,
-        "tests/dev/**":true,
-        "tests/stable/**":true
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/CVS": true
     },
     "todohighlight.isEnable": true,
     "todohighlight.include": [
@@ -26,5 +24,7 @@
         "latex"
     ],
     "timelink.showAllFilesInExplorer": true,
+    "timelink.kleio.kleioServerHome": "/Users/jrc/develop/timelink-kleio/tests/kleio-home",
+    "timelink.kleio.kleioServerUrl": "http://localhost:8089",
 
 }

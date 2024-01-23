@@ -1789,7 +1789,6 @@ print_request([H|T]) :-
         print_request(T).
 
 print_streams:-
-        format('Streams~n', []),
         current_stream(O,M,S),
         format('~w~10|~w~36|~w~n', [M,S,O]),
         fail.

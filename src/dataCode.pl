@@ -33,7 +33,7 @@
     endElement (when an end of element is detected: '/')
     newAspect (when a new aspect is detected: '#' or "%")
     newEntry (when a new entry is detected: ';')
-    storeCore (when processing core information of an element).
+    storeAspect (when processing text for an aspect of an element).
    
 */
 :-use_module(logging).
@@ -120,7 +120,9 @@ newGroup(N):-
     initNewGroup(N).% initialize a new one %
     
 newGroup(N):-
-    error_out(['** Failure. Could not process group ',N]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure. Could not process group ',N],[line_number(L),line_text(Line)]),!.
 
 %  newDoc(N) processes a new doc and does the newgroup
 %    processing afterwards
@@ -144,7 +146,9 @@ flushGroup:-
     check_elements(G,ID), % checks certe elements, etc.%
     db_store.   % here the user defined database storage is called %
 flushGroup:-
-    error_out(['** Failure. Could not process ',flushGroup]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure. Could not process ',flushGroup],[line_number(L),line_text(Line)]),!.
 
 check_elements(G,GID):- % tests if certe elements where registered%
     clioGroup(G,ID),         % see if it has a locus list %
@@ -152,7 +156,9 @@ check_elements(G,GID):- % tests if certe elements where registered%
     getCDElement_list(Els),
     setof(X,(member(X,CerteList), \+ member(X,Els)),[A|B]),
     list_to_a([A|B],Missing),
-    error_out(['** Error: missing element(s) in ',G,'(',GID,') must have: ' | Missing]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Error: missing element(s) in ',G,'(',GID,') must have: ' | Missing],[line_number(L),line_text(Line)]),!.
 check_elements(_,_):-!.
 
 
@@ -171,13 +177,20 @@ initNewGroup(G):-
     getCDField(cgroupID,OID),
     updatePath(OG,OID,G,OLDPATH,NEWPATH),          
     resetGroupCounters(G),  
-    setCDS(cds(NEWPATH,G,[],0,[],[],[],core,[],[],[])),
+    setCDS(cds(NEWPATH,G,[],0,[],[],[],[],[],[],core,[],[],[])),
+    % save the line information for the start of the group
+    get_prop(line,number,L),
+    get_prop(line,text,Line),
+    set_prop(gline,number,L),
+    set_prop(gline,text,Line),
     %writeln('exiting initNewGroup'-G),
 
     !.
 
 initNewGroup(G):-
-    error_out(['***', G, ' group not stored.']),
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['***', G, ' group not stored.'],[line_number(L),line_text(Line)]),
     getCDS(cds(CPATH,OG,OID,__LOCUSCOUNT,__ELEMENTLIST,__CELEMENT,
                 _ENTRYLIST,__CASPECT,__CCORE,__CORIGINAL,__CCOMMENT)),
     resetGroupCounters(G),  
@@ -200,8 +213,10 @@ updatePath(OldGroup,OldID,NewGroup,Path,NewPath):-
     updtp(OldGroup,OldID,NewGroup,Path,NewPath),!.
 
 updatePath(OldGroup,OldID,NewGroup,Path,Path):-
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
     error_out(['*** Current group ',NewGroup,' cannot be linked with previous group ',
-                    OldGroup,'(',OldID,')']),
+                    OldGroup,'(',OldID,')'], [line_number(L),line_text(Line)]),
     fail.
 
 % if old group is the same as new group no change in path %
@@ -250,7 +265,9 @@ newElement(E):-
     setCDField(celement,E),   % set current element %
     !.
 newElement(E):-
-    error_out(['** Failure: ',newElement(E)]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',newElement(E)], [line_number(L),line_text(Line)]),!.
 
 verify_element(E):-
     getCDField(cgroup,G),
@@ -259,7 +276,9 @@ verify_element(E):-
 velement(E,G):-element_of(E,G),!.
 velement(E,G):-
     \+ element_of(E,G),
-    error_out(['** ',G,' unknown element: ',E,'.']),
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** ',G,' unknown element: ',E,'.'], [line_number(L),line_text(Line)]),
     !.
 
 newElementR(E,CDSR,CDSRA):-
@@ -284,7 +303,9 @@ endElement:-
     check_ename,% see if current element has a name %
     storeElement,!.
 endElement:-
-    error_out(['** Failure: ',endElement]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',endElement], [line_number(L), line_text(Line)]),!.
 
 check_ename:-getCDField(celement,A), A\= [].
 check_ename:-
@@ -294,14 +315,20 @@ check_ename:-
     get_prop(ID,locus,LocusList),
     getCDField(locusCount,N),% get locus counter %
     N1 is N+1,               % increment counter %
-    member_nth(E,LocusList,N1),% find locus element %
-    setCDField(celement,E),    % set current el. to it %
+    member_nth(EName,LocusList,N1),% find locus element %
+    setCDField(celement,EName),    % set current el. to it %
     setCDField(locusCount,N1), % update locus counter %
     !.
 check_ename:-
-    getCDField(entryList,Entries),   %get current entries %
+    %getCDField(entryList,Entries),   %get current entries %
+    getCDField(coreEntryList,CoreEntries),
+    getCDField(originalEntryList,OriginalEntries),
+    getCDField(commentEntryList,CommentEntries),
+    Entries = [CoreEntries,OriginalEntries,CommentEntries],
     with_output_to(string(S),printEntries(1,Entries)),
-    error_out(['** Failure: undefined element. ',S]),
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: undefined element. ',S], [line_number(L), line_text(Line)]),
     setCDField(celement,'UNDEFINED'),
     !.
 
@@ -316,19 +343,26 @@ check_ename:-
 %%
 storeElement:-
     getCDField(elementList,Elements),
-    getCDField(celement,E),
-    getCDField(entryList,Entries),
-    append(Elements,[element(E,Entries)],NewEls),
+    getCDField(celement,EName),
+    getCDField(coreEntryList,CoreEntries),
+    getCDField(originalEntryList,OriginalEntries),
+    getCDField(commentEntryList,CommentEntries),
+    append(Elements,[element(EName,[CoreEntries,OriginalEntries,CommentEntries])],NewEls),
     setCDField(elementList,NewEls),
     setCDField(celement,[]),
     setCDField(entryList,[]),
+    setCDField(coreEntryList,[]),
+    setCDField(originalEntryList,[]),
+    setCDField(commentEntryList,[]),
     setCDField(caspect,core),
     setCDField(ccore,[]),
     setCDField(coriginal,[]),
     setCDField(ccomment,[]),
     !.
 storeElement:-
-    error_out(['** Failure: ',storeElement]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',storeElement], [line_number(L),line_text(Line)]),!.
 
 
 %******************************************************
@@ -339,27 +373,44 @@ newEntry:-
     endEntry,!.
 
 %  endEntry - adds current entry to the CDS entryList
+% 
 %  %
 endEntry:-
-    getCDField(entryList,Elist),
-    getCDField(ccore,C),
-    getCDField(coriginal,O),
-    getCDField(ccomment,Cm),
-    rmv_lead_space(C,C1),                  % remove leading spaces %
-    rmv_lead_space(O,O2),                    % if fact this removes trailing space %
-    rmv_lead_space(Cm,Cm1),
-    reverse(C1,Core),
-    reverse(O2,Org),
-    reverse(Cm1,Com),
-    append(Elist,[entry(Core,Org,Com)],NElist),   % add it to current list %
-    setCDField(entryList,NElist),                % clean current entry %
-    setCDField(caspect,core),
-    setCDField(ccore,[]),
-    setCDField(coriginal,[]),
-    setCDField(ccomment,[]),!.
+    getCDField(caspect,CAspect),
+    endEntry(CAspect),!.
 
 endEntry:-
-    error_out(['** Failure: ',endEntry]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',endEntry],[line_number(L),line_text(Line)]),!.
+
+endEntry(core):-
+    getCDField(coreEntryList,Elist),
+    getCDField(ccore,C),
+    rmv_lead_space(C,C1),                  % remove leading spaces %
+    reverse(C1,Core),
+    append(Elist,[entry(Core)],NElist),   % add it to current list %
+    setCDField(coreEntryList,NElist),                % clean current entry %
+    setCDField(ccore,[]),!.
+
+endEntry(original):-
+    getCDField(originalEntryList,Elist),
+    getCDField(coriginal,C),
+    rmv_lead_space(C,C1),                  % remove leading spaces %
+    reverse(C1,Original),
+    append(Elist,[entry(Original)],NElist),   % add it to current list %
+    setCDField(originalEntryList,NElist),                % clean current entry %
+    setCDField(coriginal,[]),!.
+
+endEntry(comment):-
+    getCDField(commentEntryList,Elist),
+    getCDField(ccomment,C),
+    rmv_lead_space(C,C1),                  % remove leading spaces %
+    reverse(C1,Comment),
+    append(Elist,[entry(Comment)],NElist),   % add it to current list %
+    setCDField(commentEntryList,NElist),                % clean current entry %
+    setCDField(ccomment,[]),!.
+
 
 rmv_trail_space(A,B):-
     reverse(A,C),
@@ -374,6 +425,7 @@ rmv_lead_space(A,A):-!.
 %******************************************************
 %  %
 newAspect(T):-
+    endEntry,
     setCDField(caspect,T),!.
 
 %******************************************************
@@ -383,7 +435,9 @@ newAspect(T):-
 %  %
 storeCore(I):-getCDField(caspect,A),stCore(A,I),!.
 storeCore(I):-
-    error_out(['** Failure: ',storeCore(I)]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',storeCore(I)],[line_number(L),line_text(Line)]),!.
 stCore(core,I):-
     getCDField(ccore,C),!,
     setCDField(ccore,[I|C]),!.
@@ -405,7 +459,9 @@ storeCoreR(CDSR,I,CDSR_Next):-
     stCoreR(CDSR,A,I,CDSR_Next),!.
 
 storeCoreR(_,I,_):-
-    error_out(['** Failure: ',storeCore(I)]),!.
+    get_prop(gline,number,L),
+    get_prop(gline,text,Line),
+    error_out(['** Failure: ',storeCore(I)],[line_number(L),line_text(Line)]),!.
 
 stCoreR(CDSR,core,I,CDSR_Next):-
     dataCDS:getCDRField(ccore,C,CDSR),!,

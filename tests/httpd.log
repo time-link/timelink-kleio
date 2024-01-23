@@ -2039,3 +2039,155 @@ completed(39, 0.0007150000000000004, 162, 200, ok).
 /*Fri Feb 11 21:11:12 2022*/ request(40, 1644613872.419, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(198),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
 completed(40, 0.0007770000000000016, 162, 200, ok).
 server(stopped, 1644613885).
+server(started, 1702365051).
+/*Tue Dec 12 15:10:50 2023*/ request(1, 1702365050.598, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(1, 0.021096999999999998, 58, 200, ok).
+/*Tue Dec 12 15:10:50 2023*/ request(2, 1702365050.639, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(2, 0.109376, 58, 200, ok).
+/*Tue Dec 12 15:10:50 2023*/ request(3, 1702365050.803, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(3, 0.054413, 2308, 500, error("goal unexpectedly failed: restServer:process_rest([path_info('translations/identifications/mhk_identification_toliveira.cli'),protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8089',restServer:http_dispatch,<stream>(0x7f8a8b054cf0),<stream>(0x7f8a8b054e00))),input(<stream>(0x7f8a8b054cf0)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken'),accept([media(application/json,[],1.0,[])])])\nIn:\n  [19] throw(error(goal_failed(...),_1096))\n  [18] http_dispatch:call_action(restServer:process_rest,[path_info('translations/identifications/mhk_identification_toliveira.cli'),...|...]) at /Applications/SWI-Prolog.app/Contents/swipl/library/http/http_dispatch.pl:1044\n  [16] time:run_alarm_goal('<garbage_collected>','<garbage_collected>') at /Applications/SWI-Prolog.app/Contents/swipl/library/time.pl:147\n  [15] setup_call_catcher_cleanup(time:alarm(300,...,...,...),time:run_alarm_goal(...,...),_1214,time:remove_alarm_notrace(...)) at /Applications/SWI-Prolog.app/Contents/swipl/boot/init.pl:679\n   [8] httpd_wrapper:call_handler('<garbage_collected>',3,'<garbage_collected>') at /Applications/SWI-Prolog.app/Contents/swipl/library/http/http_wrapper.pl:329\n   [7] catch(httpd_wrapper:call_handler(...,3,...),error(goal_failed(...),context(_1344,_1346)),httpd_wrapper:true) at /Applications/SWI-Prolog.app/Contents/swipl/boot/init.pl:565\n   [6] httpd_wrapper:handler_with_output_to(restServer:http_dispatch,3,'<garbage_collected>',current_output,error(goal_failed(...),context(_1410,_1412))) at /Applications/SWI-Prolog.app/Contents/swipl/library/http/http_wrapper.pl:308\n   [5] httpd_wrapper:handler_with_output_to('<garbage_collected>',3,'<garbage_collected>',<stream>(0x7f8a6b305c20),'<garbage_collected>') at /Applications/SWI-Prolog.app/Contents/swipl/library/http/http_wrapper.pl:318\n\nNote: some frames are missing due to last-call optimization.\nRe-run your program in debug mode (:- debug.) to get more detail.")).
+/*Tue Dec 12 15:25:15 2023*/ request(4, 1702365915.921, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(4, 0.0034149999999999996, 58, 200, ok).
+/*Tue Dec 12 15:25:15 2023*/ request(5, 1702365915.933, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(5, 0.125215, 58, 200, ok).
+/*Tue Dec 12 15:25:16 2023*/ request(6, 1702365916.136, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+/*Tue Dec 12 15:27:49 2023*/ request(7, 1702366069.889, [peer(ip(127,0,0,1)),method(options),request_uri('/json/'),path('/json/'),http_version(1-1),host(localhost),port(8089),connection('keep-alive'),access_control_request_method('POST'),access_control_request_headers('content-type'),origin('vscode-file://vscode-app'),user_agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.84.2 Chrome/114.0.5735.289 Electron/25.9.2 Safari/537.36'),sec_fetch_mode(cors),sec_fetch_site('cross-site'),sec_fetch_dest(empty)]).
+completed(7, 0.0012530000000000002, 0, 200, ok).
+/*Tue Dec 12 15:27:49 2023*/ request(8, 1702366069.891, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),host(localhost),port(8089),connection('keep-alive'),content_length(180),user_agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.84.2 Chrome/114.0.5735.289 Electron/25.9.2 Safari/537.36'),content_type('application/json'),origin('vscode-file://vscode-app'),sec_fetch_site('cross-site'),sec_fetch_mode(cors),sec_fetch_dest(empty)]).
+completed(8, 0.0022059999999999996, 98, 200, ok).
+completed(6, 0.04017, 153, 200, ok).
+/*Tue Dec 12 15:30:30 2023*/ request(9, 1702366230.574, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(9, 0.003309, 58, 200, ok).
+/*Tue Dec 12 15:30:30 2023*/ request(10, 1702366230.585, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(10, 0.10800799999999999, 58, 200, ok).
+/*Tue Dec 12 15:30:30 2023*/ request(11, 1702366230.740, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+/*Tue Dec 12 15:44:26 2023*/ request(12, 1702367066.482, [peer(ip(127,0,0,1)),method(options),request_uri('/json/'),path('/json/'),http_version(1-1),host(localhost),port(8089),connection('keep-alive'),access_control_request_method('POST'),access_control_request_headers('content-type'),origin('vscode-file://vscode-app'),user_agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.84.2 Chrome/114.0.5735.289 Electron/25.9.2 Safari/537.36'),sec_fetch_mode(cors),sec_fetch_site('cross-site'),sec_fetch_dest(empty)]).
+completed(12, 0.0016499999999999987, 0, 200, ok).
+/*Tue Dec 12 15:44:26 2023*/ request(13, 1702367066.485, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),host(localhost),port(8089),connection('keep-alive'),content_length(180),user_agent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.84.2 Chrome/114.0.5735.289 Electron/25.9.2 Safari/537.36'),content_type('application/json'),origin('vscode-file://vscode-app'),sec_fetch_site('cross-site'),sec_fetch_mode(cors),sec_fetch_dest(empty)]).
+completed(13, 0.00137000000000001, 98, 200, ok).
+completed(11, 0.030097, 153, 200, ok).
+/*Tue Dec 12 15:47:18 2023*/ request(14, 1702367238.408, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(14, 0.003482, 58, 200, ok).
+/*Tue Dec 12 15:47:18 2023*/ request(15, 1702367238.420, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(15, 0.112318, 58, 200, ok).
+/*Tue Dec 12 15:47:18 2023*/ request(16, 1702367238.585, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(16, 0.007474, 153, 200, ok).
+/*Tue Dec 12 16:03:24 2023*/ request(17, 1702368204.592, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(17, 0.0038339999999999997, 58, 200, ok).
+/*Tue Dec 12 16:03:24 2023*/ request(18, 1702368204.606, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(18, 0.12292700000000001, 58, 200, ok).
+/*Tue Dec 12 16:03:24 2023*/ request(19, 1702368204.784, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(19, 0.008091000000000001, 153, 200, ok).
+/*Tue Dec 12 16:04:33 2023*/ request(20, 1702368273.576, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(20, 0.003284, 58, 200, ok).
+/*Tue Dec 12 16:04:33 2023*/ request(21, 1702368273.588, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(21, 0.114177, 58, 200, ok).
+/*Tue Dec 12 16:04:33 2023*/ request(22, 1702368273.749, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(22, 0.007605, 153, 200, ok).
+/*Tue Dec 12 16:06:27 2023*/ request(23, 1702368387.188, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(23, 0.0035489999999999996, 58, 200, ok).
+/*Tue Dec 12 16:06:27 2023*/ request(24, 1702368387.200, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(24, 0.106116, 58, 200, ok).
+/*Tue Dec 12 16:06:27 2023*/ request(25, 1702368387.352, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(25, 0.008121, 153, 200, ok).
+/*Tue Dec 12 16:09:27 2023*/ request(26, 1702368567.647, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(26, 0.003351, 58, 200, ok).
+/*Tue Dec 12 16:09:27 2023*/ request(27, 1702368567.659, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(27, 0.116967, 58, 200, ok).
+/*Tue Dec 12 16:09:27 2023*/ request(28, 1702368567.825, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(28, 0.007627, 153, 200, ok).
+/*Tue Dec 12 16:11:36 2023*/ request(29, 1702368696.669, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(29, 0.002278, 58, 200, ok).
+/*Tue Dec 12 16:11:36 2023*/ request(30, 1702368696.679, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(30, 0.113302, 58, 200, ok).
+/*Tue Dec 12 16:11:36 2023*/ request(31, 1702368696.843, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/identifications/mhk_identification_toliveira.cli?id=1212&str=system/conf/kleio/stru/gacto2.str'),path('/rest/translations/identifications/mhk_identification_toliveira.cli'),search([id='1212',str='system/conf/kleio/stru/gacto2.str']),http_version(1-1),host(localhost),port(8089),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(31, 0.003123, 153, 200, ok).
+server(stopped, 1702368741).
+server(started, 1702462995).
+/*Wed Dec 13 18:23:14 2023*/ request(1, 1702462994.948, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(303),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(1, 0.017917, 135, 200, ok).
+/*Wed Dec 13 18:23:18 2023*/ request(2, 1702462998.461, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/sources/test_translations?&id=1234&echo=no&recurse=yes'),path('/rest/translations/sources/test_translations'),search(['&id'='1234',echo=no,recurse=yes]),http_version(1-1),host(localhost),port(8088),user_agent('curl/8.1.2'),authorization('Bearer admintoken'),content_length(0),content_type('application/x-www-form-urlencoded')]).
+completed(2, 0.011809, 2713, 200, ok).
+/*Wed Dec 13 18:23:20 2023*/ request(3, 1702463000.111, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(287),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(3, 0.000975, 135, 200, ok).
+/*Wed Dec 13 18:23:23 2023*/ request(4, 1702463003.864, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(293),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(4, 0.0008570000000000001, 135, 200, ok).
+/*Wed Dec 13 18:23:27 2023*/ request(5, 1702463007.696, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(287),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(5, 0.0009789999999999972, 135, 200, ok).
+/*Wed Dec 13 18:23:29 2023*/ request(6, 1702463009.636, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(289),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(6, 0.000827, 135, 200, ok).
+/*Wed Dec 13 18:23:33 2023*/ request(8, 1702463013.554, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(287),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:23:33 2023*/ request(7, 1702463013.554, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(298),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(7, 0.0008750000000000001, 135, 200, ok).
+completed(8, 0.0008759999999999999, 135, 200, ok).
+/*Wed Dec 13 18:23:37 2023*/ request(9, 1702463017.436, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(287),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:23:37 2023*/ request(10, 1702463017.436, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(298),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(9, 0.0008160000000000003, 135, 200, ok).
+completed(10, 0.0007260000000000044, 135, 200, ok).
+/*Wed Dec 13 18:23:39 2023*/ request(11, 1702463019.473, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(298),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(11, 0.0008160000000000001, 135, 200, ok).
+/*Wed Dec 13 18:23:43 2023*/ request(12, 1702463023.294, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(299),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(12, 0.0008160000000000001, 135, 200, ok).
+/*Wed Dec 13 18:23:45 2023*/ request(13, 1702463025.260, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(298),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(13, 0.0008180000000000002, 135, 200, ok).
+/*Wed Dec 13 18:23:47 2023*/ request(14, 1702463027.262, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(14, 0.0009270000000000001, 135, 200, ok).
+/*Wed Dec 13 18:23:52 2023*/ request(15, 1702463032.897, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(15, 0.0012170000000000002, 135, 200, ok).
+/*Wed Dec 13 18:23:54 2023*/ request(16, 1702463034.892, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(299),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:23:54 2023*/ request(17, 1702463034.892, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(298),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:23:54 2023*/ request(18, 1702463034.893, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:23:54 2023*/ request(19, 1702463034.893, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(16, 0.000853, 135, 200, ok).
+completed(17, 0.0007499999999999998, 135, 200, ok).
+completed(18, 0.0007139999999999994, 135, 200, ok).
+completed(19, 0.0007149999999999999, 135, 200, ok).
+/*Wed Dec 13 18:23:56 2023*/ request(20, 1702463036.824, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(20, 0.000807, 135, 200, ok).
+/*Wed Dec 13 18:24:08 2023*/ request(21, 1702463048.731, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(21, 0.0008669999999999997, 135, 200, ok).
+/*Wed Dec 13 18:24:12 2023*/ request(23, 1702463052.718, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:24:12 2023*/ request(22, 1702463052.718, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:24:12 2023*/ request(24, 1702463052.718, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(22, 0.0008520000000000003, 135, 200, ok).
+completed(24, 0.0007690000000000058, 135, 200, ok).
+completed(23, 0.0008219999999999998, 135, 200, ok).
+/*Wed Dec 13 18:24:24 2023*/ request(25, 1702463064.590, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(25, 0.0010689999999999996, 135, 200, ok).
+/*Wed Dec 13 18:24:26 2023*/ request(26, 1702463066.723, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(26, 0.0008220000000000033, 135, 200, ok).
+/*Wed Dec 13 18:24:40 2023*/ request(27, 1702463080.554, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(27, 0.0010710000000000025, 135, 200, ok).
+/*Wed Dec 13 18:24:50 2023*/ request(28, 1702463090.601, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(28, 0.0010279999999999942, 135, 200, ok).
+/*Wed Dec 13 18:24:50 2023*/ request(29, 1702463090.603, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:24:50 2023*/ request(30, 1702463090.603, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(295),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(29, 0.0008380000000000002, 135, 200, ok).
+completed(30, 0.0007980000000000001, 135, 200, ok).
+/*Wed Dec 13 18:24:56 2023*/ request(31, 1702463096.440, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(31, 0.0008719999999999995, 135, 200, ok).
+/*Wed Dec 13 18:25:02 2023*/ request(33, 1702463102.365, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:25:02 2023*/ request(32, 1702463102.365, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(33, 0.0009030000000000002, 135, 200, ok).
+completed(32, 0.0008429999999999965, 135, 200, ok).
+/*Wed Dec 13 18:25:06 2023*/ request(34, 1702463106.333, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(34, 0.0008140000000000005, 135, 200, ok).
+/*Wed Dec 13 18:25:16 2023*/ request(35, 1702463116.599, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(35, 0.0009410000000000009, 135, 200, ok).
+/*Wed Dec 13 18:25:22 2023*/ request(36, 1702463122.693, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:25:22 2023*/ request(37, 1702463122.693, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:25:22 2023*/ request(38, 1702463122.693, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+/*Wed Dec 13 18:25:22 2023*/ request(39, 1702463122.694, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(36, 0.0009270000000000042, 135, 200, ok).
+completed(37, 0.000893999999999999, 135, 200, ok).
+completed(38, 0.0007709999999999991, 135, 200, ok).
+completed(39, 0.0007229999999999997, 135, 200, ok).
+/*Wed Dec 13 18:25:38 2023*/ request(40, 1702463138.557, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(40, 0.0009360000000000011, 135, 200, ok).
+/*Wed Dec 13 18:25:38 2023*/ request(41, 1702463138.563, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(41, 0.0008309999999999984, 135, 200, ok).
+/*Wed Dec 13 18:25:38 2023*/ request(42, 1702463138.673, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(42, 0.0009119999999999996, 135, 200, ok).
+/*Wed Dec 13 18:26:47 2023*/ request(43, 1702463207.869, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(283),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
+completed(43, 0.0008890000000000009, 135, 200, ok).
+server(stopped, 1702463354).

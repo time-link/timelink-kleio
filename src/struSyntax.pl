@@ -40,6 +40,9 @@
 :-use_module(persistence).
 :-use_module(utilities).
 
+:-dynamic(gdoc/2).
+:-dynamic(edoc/3).
+
 compile_command(CMD,Tokens):- 
     stripSpaces(Tokens,CleanToks),
    % writeln(CleanToks),

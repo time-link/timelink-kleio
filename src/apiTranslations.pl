@@ -68,13 +68,15 @@ translations(post,Path,Mode,Id,Params):-
         ;
         apiSources:sources_in_dir(Path,Params,Files)
     ),
-    % TODO: if there is status(S) a filter is necessary, must do kleio_translation_status and filter_translations
+    % TODO: if there is status(S) a filter is necessary, must do kleio_translation_status 
+    %       and filter_translations
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
     % get_stru(Params,Id,StruFile),
-    % TBD replace with get_strus(Files,Params,Id,StruFiles) and pass to spawn_work
     get_strus(AbsFiles,Params,Id,StruFiles),
+    % TODO: check_user_mappings(TokenInfo) % load user defined mappings if any
+    % TODO: check_user_irules(TokenInfo) % load usr defined inference rules if any
     spawn_work(Spawn,AbsFiles,StruFiles,Echo,Jobs),
     convert_jobs_to_relative_paths(Jobs,RJobs,TokenInfo),
     translations_results(Mode,Id,Params,RJobs).
@@ -479,7 +481,8 @@ kleio_translation_status(KleioFile,TranslationStatus, Options) :-
             xml(XMLAttrs),
             org(_),  
             old(_),
-            ids(_)],Options),
+            ids(_),
+            'files.json'(_)],Options),
     option(name(Name),KleioAttrs),
     option(path(Path),KleioAttrs),
     option(directory(Directory),KleioAttrs),

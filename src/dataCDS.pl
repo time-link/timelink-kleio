@@ -41,15 +41,21 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
                locusCount,   % certe count %
                elementList,  % element list %
                celement,     % current element %
-               entryList,    % current entries %
+               entryList,    % current entries
                caspect,       % current aspect being input%
-               ccore,        % current core %
-               coriginal,    % current original aspect %
-               ccomment]).   % current comment aspect %
+               ccore,        % current core, can have multiple entries %
+               coriginal,    % current original can have multiple entries %
+               ccomment]).   % current comment can have multiple entries %
 
  cpath=[DOC(DocID),Group1(GID1)...]
  elementList=[element(name,entryList),...]
- entryList=[entry(core,original,comment),...]
+ entryList=[entry(core,original,comment),...] DEPRECATED
+ entryList=[coreEntryList,originalEntryList,commentEntryList]
+ coreEntryList=[Entry|MoreEntries]
+ originalEntryList=[Entry|MoreEntries]
+ commentEntryList=[Entry|MoreEntries]
+
+ 
     
 ### Predicates that deal with the current data storage
     
@@ -89,6 +95,9 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
                 elementList: list,
                 celement: list,
                 entryList: list,
+                coreEntryList: list,
+                originalEntryList: list,
+                commentEntryList: list,
                 caspect: atom=core,
                 ccore:list,
                 coriginal:list,
@@ -102,8 +111,9 @@ manipulated through a term, acessible through getCDS/1 and setCDS/1 and getCDFie
 %  cdsFields(L) lists legal fields of CDS
 %******************************************************
 %%
-cdsFields([cpath, cgroup,cgroupID,locusCount,elementList,celement,entryList,caspect,
-ccore, coriginal, ccomment]).
+cdsFields([cpath, cgroup,cgroupID,locusCount,elementList, celement,
+            entryList, coreEntryList, originalEntryList,commentEntryList, 
+            caspect,ccore, coriginal, ccomment]).
 
 
 % The following predicates are helpers to print in the console the names
@@ -141,14 +151,18 @@ print_cdsr_setCDRField:-!.
 %******************************************************
 %%
 getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
-                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)):-
+                ENTRYLIST,CoreEntryList, OriginalEntryList, CommentEntryList,
+                CASPECT,CCORE,CORIGINAL,CCOMMENT)):-
     get_prop(cds,cpath,CPATH),
     get_prop(cds,cgroup,CGROUP),
     get_prop(cds,cgroupID,CGROUPID),
     get_prop(cds,locusCount,LOCUSCOUNT),
     get_prop(cds,elementList,ELEMENTLIST),
     get_prop(cds,celement,CELEMENT),
-    get_prop(cds,entryList,ENTRYLIST),
+    get_prop(cds,entrylist,ENTRYLIST),
+    get_prop(cds,coreEntryList,CoreEntryList),
+    get_prop(cds,originalEntryList,OriginalEntryList),
+    get_prop(cds,commentEntryList,CommentEntryList),
     get_prop(cds,caspect,CASPECT),
     get_prop(cds,ccore,CCORE),
     get_prop(cds,coriginal,CORIGINAL),
@@ -157,7 +171,8 @@ getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
 % Record variant
 getCDSR(CDSR):-
     getCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
-                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)),
+                ENTRYLIST,CoreEntryList, OriginalEntryList, CommentEntryList,
+                CASPECT,CCORE,CORIGINAL,CCOMMENT)),
     make_cdsr([
         cpath(CPATH),
         cgroup(CGROUP),
@@ -165,7 +180,10 @@ getCDSR(CDSR):-
         locusCount(LOCUSCOUNT),
         elementList(ELEMENTLIST),
         celement(CELEMENT),
-        entryList(ENTRYLIST),
+        entryList(ENTRYLIST), 
+        coreEntryList(CoreEntryList),
+        originalEntryList(OriginalEntryList),
+        commentEntryList(CommentEntryList),
         caspect(CASPECT),
         ccore(CCORE),
         coriginal(CORIGINAL),
@@ -178,7 +196,8 @@ getCDSR(CDSR):-
 %******************************************************
 %%
 setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
-                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)):-
+                ENTRYLIST, CoreEntryList, OriginalEntryList, CommentEntryList,
+                CASPECT,CCORE,CORIGINAL,CCOMMENT)):-
     set_prop(cds,cpath,CPATH),
     set_prop(cds,cgroup,CGROUP),
     set_prop(cds,cgroupID,CGROUPID),
@@ -186,6 +205,9 @@ setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
     set_prop(cds,elementList,ELEMENTLIST),
     set_prop(cds,celement,CELEMENT),
     set_prop(cds,entryList,ENTRYLIST),
+    set_prop(cds,coreEntryList,CoreEntryList),
+    set_prop(cds,originalEntryList,OriginalEntryList),
+    set_prop(cds,commentEntryList,CommentEntryList),
     set_prop(cds,caspect,CASPECT),
     set_prop(cds,ccore,CCORE),
     set_prop(cds,coriginal,CORIGINAL),
@@ -199,13 +221,17 @@ setCDSR(CDSR):-
     cdsr_locusCount(CDSR,LOCUSCOUNT),
     cdsr_elementList(CDSR,ELEMENTLIST),
     cdsr_celement(CDSR,CELEMENT),
-    cdsr_entryList(CDSR,ENTRYLIST),
+    cdsr_entryList(CDSR,ENTRYLIST), % Update see above
+    cdsr_coreEntryList(CDSR,CoreEntryList), 
+    cdsr_originalEntryList(CDSR,OriginalEntryList),
+    cdsr_commentEntryList(CDSR,CommentEntryList),
     cdsr_caspect(CDSR,CASPECT),
     cdsr_ccore(CDSR,CCORE),
     cdsr_coriginal(CDSR,CORIGINAL),
     cdsr_ccomment(CDSR,CCOMMENT),
     setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
-                ENTRYLIST,CASPECT,CCORE,CORIGINAL,CCOMMENT)).
+                ENTRYLIST, CoreEntryList, OriginalEntryList, CommentEntryList,
+                CASPECT,CCORE,CORIGINAL,CCOMMENT)).
 
 %******************************************************
 %  createCD - creates an empty data storage structure
@@ -213,7 +239,8 @@ setCDSR(CDSR):-
 %  %
 createCD:-
     setCDS(cds(__CPATH,__CGROUP,__CGROUPID,__LOCUSCOUNT,__ELEMENTLIST,__CELEMENT,
-                _ENTRYLIST,__CASPECT,__CCORE,__CORIGINAL,__CCOMMENT)),
+                _ENTRYLIST,_CoreEntryList, _OriginalEntryList, _CommentEntryList,
+                __CASPECT,__CCORE,__CORIGINAL,__CCOMMENT)),
     cleanCD,!.
 %******************************************************
 %  delCD  erases current data storage structure
@@ -227,7 +254,23 @@ delCD:-del_props(cds),!.
 %******************************************************
 %  %
 cleanCD:-
-    setCDS(cds([],[],[],0,[],[],[],core,[],[],[])),!.
+        CPATH=[],
+        CGROUP=[],
+        CGROUPID=[],
+        LOCUSCOUNT=0,
+        ELEMENTLIST=[],
+        CELEMENT=[],
+        ENTRYLIST=[],
+        CoreEntryList=[],
+        OriginalEntryList=[],
+        CommentEntryList=[],
+        CASPECT=core,
+        CCORE=[],
+        CORIGINAL=[],
+        CCOMMENT=[],
+        setCDS(cds(CPATH,CGROUP,CGROUPID,LOCUSCOUNT,ELEMENTLIST,CELEMENT,
+                ENTRYLIST, CoreEntryList, OriginalEntryList, CommentEntryList,
+                CASPECT,CCORE,CORIGINAL,CCOMMENT)),!.
 %******************************************************
 %  setCDField(Field,Value)- set Field in the CDS structure
 %        to Value
@@ -249,6 +292,9 @@ setCDRField(locusCount,VALUE,OLD_CDSR,NEW_CDSR):-set_locusCount_of_cdsr(VALUE,OL
 setCDRField(elementList,VALUE,OLD_CDSR,NEW_CDSR):-set_elementList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
 setCDRField(celement,VALUE,OLD_CDSR,NEW_CDSR):-set_celement_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
 setCDRField(entryList,VALUE,OLD_CDSR,NEW_CDSR):-set_entryList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(coreEntryList,VALUE,OLD_CDSR,NEW_CDSR):-set_coreEntryList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(originalEntryList,VALUE,OLD_CDSR,NEW_CDSR):-set_originalEntryList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
+setCDRField(commentEntryList,VALUE,OLD_CDSR,NEW_CDSR):-set_commentEntryList_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
 setCDRField(caspect,VALUE,OLD_CDSR,NEW_CDSR):-set_caspect_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
 setCDRField(ccore,VALUE,OLD_CDSR,NEW_CDSR):-set_ccore_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
 setCDRField(coriginal,VALUE,OLD_CDSR,NEW_CDSR):-set_coriginal_of_cdsr(VALUE,OLD_CDSR,NEW_CDSR).
@@ -273,6 +319,9 @@ getCDRField(locusCount,LOCUSCOUNT,CDSR):-cdsr_locusCount(CDSR,LOCUSCOUNT).
 getCDRField(elementList,ELEMENTLIST,CDSR):-cdsr_elementList(CDSR,ELEMENTLIST).
 getCDRField(celement,CELEMENT,CDSR):-cdsr_celement(CDSR,CELEMENT).
 getCDRField(entryList,ENTRYLIST,CDSR):-cdsr_entryList(CDSR,ENTRYLIST).
+getCDRField(coreEntryList,COREENTRYLIST,CDSR):-cdsr_coreEntryList(CDSR,COREENTRYLIST).
+getCDRField(originalEntryList,ORIGINALENTRYLIST,CDSR):-cdsr_originalEntryList(CDSR,ORIGINALENTRYLIST).
+getCDRField(commentEntryList,COMMENTENTRYLIST,CDSR):-cdsr_commentEntryList(CDSR,COMMENTENTRYLIST).
 getCDRField(caspect,CASPECT,CDSR):-cdsr_caspect(CDSR,CASPECT).
 getCDRField(ccore,CCORE,CDSR):-cdsr_ccore(CDSR,CCORE).
 getCDRField(coriginal,CORIGINAL,CDSR):-cdsr_coriginal(CDSR,CORIGINAL).
@@ -308,7 +357,8 @@ getCDFs(A,[E|Els],Elements,[C|Cores]):-
 getCDFs(_,[],_,[]):-!.
 %******************************************************
 %  get_aspect(Asp,Element,Core) return aspect info
-%    for Element.Aspect can be 'core', 'original', 'comment'
+%    for Element.
+%    Aspect can be 'core', 'original', 'comment'
 %     Returns [] if inexistant.
 %    When there are multiple entries for the information
 %    a structure mult(L) is returned where L is the list of
@@ -339,15 +389,20 @@ getCDF(__A,E,Els,[]):-
 
 gaspect(A,L,Info):-
     g_asp(A,L,I),
-    (I = [Info]; Info = mult(I)),!. % flag multiple entries with mult%
+    (I = [Info]
+    ;(I=[],Info=I) 
+    ;Info = mult(I)),!. % flag multiple entries with mult%
 
-g_asp(__A,[],[]).
-g_asp(core,[entry(Core,_,_)|MoreEntries],[Core|MoreCore]):-
-    g_asp(core,MoreEntries,MoreCore).
-g_asp(original,[entry(_,Org,_)|MoreEntries],[Org|MoreOrg]):-
-    g_asp(original,MoreEntries,MoreOrg).
-g_asp(comment,[entry(_,_,Comm)|MoreEntries],[Comm|MoreComm]):-
-    g_asp(comment,MoreEntries,MoreComm).
+% very messy. fix it latter %
+g_asp(core,[[],_,_],[]).
+g_asp(original,[_,[],_],[]).
+g_asp(comment,[_,_,[]],[]).
+g_asp(core,[[entry(Core)|MoreEntries],Original,Comment],[Core|MoreCore]):-
+    g_asp(core,[MoreEntries,Original,Comment],MoreCore).
+g_asp(original,[Core,[entry(Org)|MoreEntries],Comment],[Org|MoreOrg]):-
+    g_asp(original,[Core,MoreEntries,Comment],MoreOrg).
+g_asp(comment,[Core,Original,[entry(Comm)|MoreEntries]],[Comm|MoreComm]):-
+    g_asp(comment,[Core,Original,MoreEntries],MoreComm).
 
 % currently not used. make it an utility latter %
 mk_string([A],A):-!. % single element lists-> element %
@@ -487,11 +542,19 @@ printElements([E|R]):-
 printEntries(_,[]):-!.
 printEntries(N,[E|R]):-
     printEntry(N,E),printEntries(N,R),!.
+% new style issue21
+printEntries(N,[Core,Original,Comment]):-
+    printAsp(N,core,Core),
+    printAsp(N,org,Original),
+    printAsp(N,com,Comment),nl,!.
 
 printEntry(N,entry(Core,Original,Comment)):-
     printAsp(N,core,Core),
     printAsp(N,org,Original),
     printAsp(N,com,Comment),nl,!.
+
+printAsp(N,Asp,[entry(V)|_]):-
+    printAsp(N,Asp,V),!.
 
 printAsp(_,_,[]):-!.
 printAsp(__N,core,V):-

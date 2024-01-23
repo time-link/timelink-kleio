@@ -34,16 +34,16 @@ Meaning of the various file extensions
 * old
   * Version of the kleio file before translation. Kept if something
     went wrong in the generation of ids for the new .cli file.
-* files.json
-  * JSON file with the names of the files used for this translation,
-    including the `str` file; also includes number of errors and warnings;
-    this file is only generated upon sucessful translation.
 * ids
   * This is an itermediate file produced during translation 
     thatwith a formatted copy of the original `kleio` file
     with explicit ids. If there are no errors in the translation
     the file is renamed with the `cli` extension and the original
     `.cli` file is renamed `.old`. 
+* files.json
+  * JSON file with the names of the files used for this translation,
+    including the `str` file; also includes number of errors and warnings;
+    this file is only generated upon sucessful translation.
 
 
 Example of a `.files.json` file:
@@ -61,4 +61,21 @@ Example of a `.files.json` file:
   "warnings":0
 }
 ```
+
+Note the references to the `str` file used for the translation
+of the `kleio` file and the files associated with its 
+processing. 
+
+The `str` can be located in a [variety of places](stru_file_location.md).
+
+For a given SFILE.`str` file the translator will produce two aditional
+files with the translation result:
+
+* SFILE.str.json
+  * with a Json representation of the schema defined in the `str` file.
+* SFILE.srpt
+  * with an human readable report on the processing of the structure and
+    any errors that occurred.
+    
+     
     

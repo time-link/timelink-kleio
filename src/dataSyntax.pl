@@ -92,16 +92,16 @@ element(storeCore(D)) --> [(__C,R)],{dquoteOn,%format('Got Unknown code: ~w:~w~n
 % every fill squence is stored as a single space
 %    and returns are skipped %
 element(storeCore(' '))-->fillSpace(__S),{!}. % mudar aqui o tratamento do espaco %
-element(newElement(E)) -->[(names,E)],dataflag3,{!}. % must precede store core %
+element(newElement(E)) -->[(names,E)],dataflag3,{!}. % equal sign, must precede store core %
 element(storeCore(E))  -->[(names,E)],{!}.
-element(endElement)    -->dataflag2,{!}.
+element(endElement)    -->dataflag2,{!}.  % slash
 element(true)          -->[(return,__R)],{!}. %,{name(S,[R]),storeCore(S),!}.%
-element(newEntry)      -->[(dataflag,8)],{!}.
-element(newAspect(original))-->[(dataflag,5)],{!}.
-element(newAspect(comment))-->[(dataflag,4)],{!}.
+element(newEntry)      -->[(dataflag,8)],{!}.  % semicolon, adicional values
+element(newAspect(original))-->[(dataflag,5)],{!}.  % percent original wording
+element(newAspect(comment))-->[(dataflag,4)],{!}.   % cardinal, comment
 element(storeCore(S))  -->[(dataflag,10)],[(dataflag,N)],
 		               {data_flag_char(N,C),name(S,[C]),!}.
-element(storeCore(S))  -->[(dataflag,10)],[(__T,V)],{name(S,[V]),!}.
+element(storeCore(S))  -->[(dataflag,10)],[(__T,V)],{name(S,[V]),!}.  % backslash
 element(storeCore(N))  -->[(number,N)],{!}.
 element(storeCore(QS)) -->[(dqstring,QS)],{!}. 
 element(storeCore(S)) -->[(dataflag,F)],
@@ -112,14 +112,15 @@ fillSpace(S)-->[(fill,S)],{!}.
 
 edef(E)-->names(E),dataflag3,{!}.
 
-dataflag1-->[(dataflag,1)],{!}.
-dataflag2-->[(dataflag,2)],{!}.
-dataflag5-->[(dataflag,5)],{!}.
-dataflag4-->[(dataflag,4)],{!}.
-dataflag3-->[(dataflag,3)],{!}.
-dataflag8-->[(dataflag,8)],{!}.
-dataflag9-->[(dataflag,9)],{!}.
-dataflag10-->[(dataflag,10)],{!}.
+dataflag1-->[(dataflag,1)],{!}.  % dollar sign
+dataflag2-->[(dataflag,2)],{!}.  % slash
+dataflag5-->[(dataflag,5)],{!}.  % percent (original words)
+dataflag4-->[(dataflag,4)],{!}.  % cardinal (comment)
+dataflag3-->[(dataflag,3)],{!}.  % equal 
+
+dataflag8-->[(dataflag,8)],{!}.  % semicolon
+dataflag9-->[(dataflag,9)],{!}.  % colon
+dataflag10-->[(dataflag,10)],{!}. % backslash
 
 % IMPORTANT ensure that tquoteClear is called at start of file processing.
 tquoteOn :- get_value(tquote,true).

@@ -15,6 +15,7 @@
 :-use_module(topLevel). 
 :-use_module(errors).
 :-use_module(logging).
+:-use_module(library(filesex)).
 
 /** <module> Reports
  
@@ -59,7 +60,8 @@ report_header(_):-
     report([pclio_version]),!.
 
 set_report_file(FILENAME):-
-    open_file_write(FILENAME),
+    open_file_write(FILENAME), 
+    catch(chmod(FILENAME,+gw),E,log_error('Could not change permissions of ~w : ~w ',[FILENAME,E])),
     put_value(report,FILENAME),
     set_report(off),!.
 
@@ -129,5 +131,5 @@ close_report_file:-
 %
 rep_call(M:P):-
     %log_debug('Report meta call. Module: ~w, Predicate: ~w',[M,P]),
-    catch(M:P,Error,(write('** ERROR IN REPORT ARGUMENT'-Error))).
+    catch(M:P,Error,(write('** ERROR IN REPORT ARGUMENT'-M-P-Error))).
 

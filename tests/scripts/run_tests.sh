@@ -6,7 +6,7 @@
 
 echo "================================================================" 
 echo "===                  KLEIO TRANSLATOR TESTS                  ===" 
-echo "================================================================" 
+echo "=================================/===============================" 
 mkdir -p ./reports/
 export REPORT_FILE=./reports/"test_report_`date \"+%Y-%m-%d_%H:%M:%S\"`.diff"
 source scripts/prepare_tests.sh >> $REPORT_FILE # this sets up the environment variables.
@@ -21,7 +21,7 @@ echo `date` `pwd` > $REPORT_FILE
 
 echo "================================================================" 
 echo "Translation of reference sources with stable translator"
-time ./scripts/kleio_translate_local.sh ${STABLE_CODE_DIR}/clioStart.pl ${STABLE_CODE_DIR}/gacto2.str $REFERENCE_TRANSLATIONS
+time ./scripts/kleio_translate_local.sh ${STABLE_CODE_DIR}/swiStart.pl ${STABLE_CODE_DIR}/gacto2.str $REFERENCE_TRANSLATIONS
 echo
 #echo "Translation of reference sources  with remote dev version of translator"
 #./aux/kleio_translate_local.sh dev/swiStart.pl dev/gacto2.str test_translations

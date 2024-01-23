@@ -260,7 +260,7 @@ The following tags are used:
 
 To help manage the tags the following targets exist
 
-* ```make tag-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
+* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
 * ```make inc_NUMBER``` increment version with NUMBER in major | minor
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
@@ -272,12 +272,13 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    `docker login --username timelinkserver` or other 
    authorized user.__
 * Test
+* Update version with `make inc-major` or `make inc-minor` 
 * Update release notes (bellow)
 * Commit code 
 * Check current version with `make show-current` or
    `make show-last`
 * Tag image with semantic versioning
-  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number)
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number). Move current code to `stable`directory in `tests`.
   * if new image to be latest do `make tag-multi-latest` 
   
 
@@ -307,11 +308,83 @@ Type ```make``` to see more targets that help in development.
       make kleio-stop | stop    stop running server
       make test-semantics       run semantic tests
       make test-api             run api tests (requires newman (npm install newman))
+
+
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+### 2024-01-23 07:16:28 version 12.3.561
 
-### 2023-03-28 14:49:22 version 11.1.534
+* Refactoring of linked data tratment. Notation for linked data remains the same
+  but it is allowed in any element of any group extending person,object or geoentity.
+* Generation of attributes from linked data notation was changed for clarity. See issue#6
+* Fixes a very old problem with handling ";" for multiple entries in comments and original wording.
+  This became a problem because linked data notation tends to produce comments with a bit of text
+  for context, and ";" shows up.
+
+### 2024-01-07 12:20:12 version 12.1.557
+
+* Fixes problem with server failing if kleio-home does not contain system/conf/kleio #16
+* Improve json version of stru for better tool tips.
+* Fix bug with handling of implicit and explicit list of elements
+* Fixes error when using linked data notation with no link$ statement. Now issues warning.
+
+### 2023-09-27 14:23:12 version 12.0.550
+
+* Fixes problems with cleaning translation results.
+* Now takes into account new "files.json" file.
+
+### 2023-12-13 18:44:37 version 12.1.554
+
+Fixes a bug in translation of identification files.
+
+### 2023-09-07 16:58:13 version 12.0.545
+
+Fixes bugs, first tests with timelink-py client.
+
+### 2023-07-04 04:34:23 version 12.0.540
+
+Adds linked data notation.
+
+1. Declare the external source, with an attribute of the kleio
+   document:
+      kleio$...
+         link$wikidata/"http://wikidata.org/wiki/$1"
+
+    The format of the link$ group is:
+        link$short-name/url-pattern
+
+    where `short-name` is a short name for an external sources
+    `url-pattern` should be a url containing a place
+    holder ($1) for a specific id of the data item to be linked
+
+2. Anotate element values with external ids
+
+    ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
+
+    The format of an external link annotation is:
+    
+        @short-name:id 
+
+On translation annotation such as 
+
+   ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
+
+will generate
+
+   ls$ jesuita-entrada@/https://www.wikidata.org/wiki/Q1171/15791200/obs=%Goa, Índia
+   
+### 2023-06-05 02:04:07 version 11.1.541
+
+* Improves line number reporting in error messages
+
+Internal:
+
+* Add XSD schema for Kleio export format
+* Improve make file (shows port when runing server)
+* Uses 8088 for api tests
+
+### 2023-03-28 14:49:22 version 11.1.536
 
 * Implements issue #7 allowing str files
   to be located close to the sources

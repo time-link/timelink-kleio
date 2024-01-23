@@ -29,19 +29,20 @@
 
 The _function_ is the predicate that implements the request and also the method name to be used in JSONRPC requests.
 
-| _entity_      | _HTTP Method_     | _function_       | _meaning_                   |
-| sources       | GET               | sources_get      | retrieve the source. If path is a directory returns list of source files |
-|               | POST (multipart)  | sources_upload   | upload a new source file  _Not available in JSON_RPC_|
-|               | PUT  (multipart)  | sources_update   | update an existing source file  _Not available in JSON_RPC_|
-|               | POST              | sources_copy     | copy an existing file to another location |
-|               | PUT               | sources_move     | move and existing file to another location |
-| tokens        | POST              | tokens_generate  | generate a token for a user |
-|               | DELETE            | tokens_invalidate| invalidate a token |
-| users         | DELETE            | tokens_invalidate| invalide a user token | 
-| translations  | POST              | translations_translate | translate the file(s) in Path
-|               | GET               | translations_get | get the translation result (kleio_set)
-|               | DELETE            | translations_delete |clear the translation result (derived files)
-|
+    |---------------|-------------------|------------------|----------------------------|
+    | _entity_      | _HTTP Method_     | _function_       | _meaning_                   |
+    | sources       | GET               | sources_get      | retrieve the source. If path is a directory returns list of source files |
+    |               | POST (multipart)  | sources_upload   | upload a new source file  _Not available in JSON_RPC_|
+    |               | PUT  (multipart)  | sources_update   | update an existing source file  _Not available in JSON_RPC_|
+    |               | POST              | sources_copy     | copy an existing file to another location |
+    |               | PUT               | sources_move     | move and existing file to another location |
+    | tokens        | POST              | tokens_generate  | generate a token for a user |
+    |               | DELETE            | tokens_invalidate| invalidate a token |
+    | users         | DELETE            | tokens_invalidate| invalide a user token | 
+    | translations  | POST              | translations_translate | translate the file(s) in Path
+    |               | GET               | translations_get | get the translation result (kleio_set)
+    |               | DELETE            | translations_delete |clear the translation result (derived files)
+    |
  Map the combination of HTTPMethod and Entity into a specific operation
  
  == 

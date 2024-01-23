@@ -133,16 +133,23 @@ p_error_warn_context(TYPE,Mess):-
 % $last_line_text(Last) : the texto the previous line (errors are normally detected on the line after the error)
 %
 p_error_warn_context(TYPE,Mess,Context):-
-   (option(file(Source_file),Context)->true; (get_value(data_file,DataFile),break_fname(DataFile,_,Source_file,_,_))),
+   (option(file(Source_file),Context)->
+      true
+      ; 
+      (
+         get_value(data_file,DataFile),
+         break_fname(DataFile,_,Source_file,_,_)
+      )
+   ),
    (option(line_number(N),Context)-> true; get_prop(line,number,N)),
    (option(line_text(Line),Context)->true;get_prop(line,text,Line)),
-   (option(last_line_text(Last),Context)->true;get_prop(line,last,Last)),
+   % (option(last_line_text(Last),Context)->true;get_prop(line,last,Last)),
    set_prop(line,previous,N), % we note the error line 
-   N2 is N-1, % we used to miss the line by one but now we we take the line number as good
+   N2 is N, % we used to miss the line by one but now we we take the line number as good
    %report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
-  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N),tab(1),perr(Mess), 
-           write('Near lines: '),write(N2),tab(1),write(Last),
-           write('Near lines: '),write(N) ,tab(1),write(Line),
+  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), 
+           % write('Near lines: '),write(N2),tab(1),write(Last),
+           write('Near lines: '),write(N2) ,tab(1),write(Line),
            nl,
        true]),!.
 
