@@ -1,0 +1,834 @@
+Tue 23 Jan 2024 06:11:52 AM UTC /workspaces/timelink-kleio/tests
+Comparing translation results.
+Tue 23 Jan 2024 06:22:56 AM UTC /workspaces/timelink-kleio/tests
+Only in kleio-home/sources/reference_translations/: .gitignore
+diff -r kleio-home/sources/reference_translations/reference_sources/bugs/bugs.err kleio-home/sources/test_translations/reference_sources/bugs/bugs.err
+diff -r kleio-home/sources/reference_translations/reference_sources/bugs/bugs.files.json kleio-home/sources/test_translations/reference_sources/bugs/bugs.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/bugs/bugs.ids kleio-home/sources/test_translations/reference_sources/bugs/bugs.ids
+<          n$maria; legetimada por elle; pai padre; legitimada%morreu em casa do seu pai;#morreu à nascenca;/id=o1740.14-per1
+>          n$maria%morreu em casa do seu pai; legetimada por elle#morreu à nascenca; pai padre; legitimada/id=o1740.14-per1
+diff -r kleio-home/sources/reference_translations/reference_sources/bugs/bugs.rpt kleio-home/sources/test_translations/reference_sources/bugs/bugs.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/bugs/bugs.xml kleio-home/sources/test_translations/reference_sources/bugs/bugs.xml
+<          <core><![CDATA[maria]]></core>      <core><![CDATA[ legetimada por elle]]></core>      <core><![CDATA[ pai padre]]></core>      <core><![CDATA[ legitimada]]></core>         <original><![CDATA[morreu em casa do seu pai]]></original>
+<          <comment><![CDATA[morreu à nascenca]]></comment>
+>          <core><![CDATA[maria]]></core>         <original><![CDATA[morreu em casa do seu pai]]></original>      <original><![CDATA[ legetimada por elle]]></original>
+>          <comment><![CDATA[morreu à nascenca]]></comment>      <comment><![CDATA[ pai padre]]></comment>      <comment><![CDATA[ legitimada]]></comment>
+diff -r kleio-home/sources/reference_translations/reference_sources/identifications/mhk_identification_toliveira.err kleio-home/sources/test_translations/reference_sources/identifications/mhk_identification_toliveira.err
+diff -r kleio-home/sources/reference_translations/reference_sources/identifications/mhk_identification_toliveira.files.json kleio-home/sources/test_translations/reference_sources/identifications/mhk_identification_toliveira.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/identifications/mhk_identification_toliveira.rpt kleio-home/sources/test_translations/reference_sources/identifications/mhk_identification_toliveira.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/identifications/mhk_identification_toliveira.xml kleio-home/sources/test_translations/reference_sources/identifications/mhk_identification_toliveira.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-a.err kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-a.err
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-a.files.json kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-a.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-a.rpt kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-a.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-a.xml kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-a.xml
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[@wikidataProperty]]></core>      <comment><![CDATA[https://www.wikidata.org/wiki/Property]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:Property:P551]]></core>      <comment><![CDATA[https://www.wikidata.org/wiki/Property:P551]]></comment>      <original><![CDATA[@wikidata:Property:P551]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-ordenacao-padre@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-ordenacao-padre]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-ordenacao-padre@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-ordenacao-padre]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[chegada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:chegada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[baptizado@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:baptizado]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[chegada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:chegada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[chegada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:chegada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[baptizado@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:baptizado]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[partida@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:partida]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-ordenacao-padre@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-ordenacao-padre]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[residencia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:residencia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[nascimento@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:nascimento]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-entrada@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-entrada]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[estadia@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:estadia]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[jesuita-votos-local@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:jesuita-votos-local]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[morte@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:morte]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-locations-1644.err kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-locations-1644.err
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-locations-1644.files.json kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-locations-1644.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-locations-1644.rpt kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-locations-1644.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/dehergne-locations-1644.xml kleio-home/sources/test_translations/reference_sources/linked_data/dehergne-locations-1644.xml
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[alternative-name@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:alternative-name]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[alternative-name@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:alternative-name]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[alternative-name@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[wikidata:alternative-name]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/linked-data-error.err kleio-home/sources/test_translations/reference_sources/linked_data/linked-data-error.err
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/linked-data-error.files.json kleio-home/sources/test_translations/reference_sources/linked_data/linked-data-error.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/linked-data-error.rpt kleio-home/sources/test_translations/reference_sources/linked_data/linked-data-error.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/linked_data/linked-data-error.xml kleio-home/sources/test_translations/reference_sources/linked_data/linked-data-error.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/docsregiospontepisc.err kleio-home/sources/test_translations/reference_sources/notariais/docsregiospontepisc.err
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/docsregiospontepisc.files.json kleio-home/sources/test_translations/reference_sources/notariais/docsregiospontepisc.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/docsregiospontepisc.rpt kleio-home/sources/test_translations/reference_sources/notariais/docsregiospontepisc.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/docsregiospontepisc.xml kleio-home/sources/test_translations/reference_sources/notariais/docsregiospontepisc.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notarial80.err kleio-home/sources/test_translations/reference_sources/notariais/notarial80.err
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notarial80.files.json kleio-home/sources/test_translations/reference_sources/notariais/notarial80.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notarial80.rpt kleio-home/sources/test_translations/reference_sources/notariais/notarial80.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notarial80.xml kleio-home/sources/test_translations/reference_sources/notariais/notarial80.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notlousa1.err kleio-home/sources/test_translations/reference_sources/notariais/notlousa1.err
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notlousa1.files.json kleio-home/sources/test_translations/reference_sources/notariais/notlousa1.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notlousa1.rpt kleio-home/sources/test_translations/reference_sources/notariais/notlousa1.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/notlousa1.xml kleio-home/sources/test_translations/reference_sources/notariais/notlousa1.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/perdoes.err kleio-home/sources/test_translations/reference_sources/notariais/perdoes.err
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/perdoes.files.json kleio-home/sources/test_translations/reference_sources/notariais/perdoes.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/perdoes.rpt kleio-home/sources/test_translations/reference_sources/notariais/perdoes.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/notariais/perdoes.xml kleio-home/sources/test_translations/reference_sources/notariais/perdoes.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.err kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.xml kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bap-com-celebrantes.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapt1714.err kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapt1714.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapt1714.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapt1714.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapt1714.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapt1714.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapt1714.xml kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapt1714.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.err kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.xml kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem1.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.err kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.xml kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/bapteirasproblem2.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.err kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.xml kleio-home/sources/test_translations/reference_sources/paroquiais/baptismos/rogeriodomingos_bap_problem.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.err kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.xml kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722-com-celebrante.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722.err kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/casamentos/cas1714-1722.xml kleio-home/sources/test_translations/reference_sources/paroquiais/casamentos/cas1714-1722.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/crisma/crisma1753.err kleio-home/sources/test_translations/reference_sources/paroquiais/crisma/crisma1753.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/crisma/crisma1753.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/crisma/crisma1753.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/crisma/crisma1753.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/crisma/crisma1753.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/crisma/crisma1753.xml kleio-home/sources/test_translations/reference_sources/paroquiais/crisma/crisma1753.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688b.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688b.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688b.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688b.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688b.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688b.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688b.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688b.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/ob1688.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/ob1688.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obit1714.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obit1714.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obit1714.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obit1714.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obit1714.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obit1714.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obit1714.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obit1714.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obiteirasproblem.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obiteirasproblem.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obiteirasproblem.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obiteirasproblem.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obiteirasproblem.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obiteirasproblem.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obiteirasproblem.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obiteirasproblem.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id_id.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort_id.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort_id.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/obitoShort.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/obitoShort.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/testeParentescos.err kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/testeParentescos.err
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/testeParentescos.files.json kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/testeParentescos.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/testeParentescos.rpt kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/testeParentescos.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/paroquiais/obitos/testeParentescos.xml kleio-home/sources/test_translations/reference_sources/paroquiais/obitos/testeParentescos.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/coja-rol-1841.err kleio-home/sources/test_translations/reference_sources/roisdeconfessados/coja-rol-1841.err
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/coja-rol-1841.files.json kleio-home/sources/test_translations/reference_sources/roisdeconfessados/coja-rol-1841.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/coja-rol-1841.rpt kleio-home/sources/test_translations/reference_sources/roisdeconfessados/coja-rol-1841.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/coja-rol-1841.xml kleio-home/sources/test_translations/reference_sources/roisdeconfessados/coja-rol-1841.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol1.err kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol1.err
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol1.files.json kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol1.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol1.rpt kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol1.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol1.xml kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol1.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol2.err kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol2.err
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol2.files.json kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol2.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol2.rpt kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol2.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol2.xml kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol2.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol3.err kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol3.err
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol3.files.json kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol3.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol3.rpt kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol3.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/roisdeconfessados/rol3.xml kleio-home/sources/test_translations/reference_sources/roisdeconfessados/rol3.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.err kleio-home/sources/test_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.files.json kleio-home/sources/test_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.rpt kleio-home/sources/test_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.xml kleio-home/sources/test_translations/reference_sources/varia/auc-alunos-264605-A-140337-140771.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc_cartulario18.err kleio-home/sources/test_translations/reference_sources/varia/auc_cartulario18.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc_cartulario18.files.json kleio-home/sources/test_translations/reference_sources/varia/auc_cartulario18.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc_cartulario18.rpt kleio-home/sources/test_translations/reference_sources/varia/auc_cartulario18.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/auc_cartulario18.xml kleio-home/sources/test_translations/reference_sources/varia/auc_cartulario18.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/cartas.err kleio-home/sources/test_translations/reference_sources/varia/cartas.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/cartas.files.json kleio-home/sources/test_translations/reference_sources/varia/cartas.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/cartas.rpt kleio-home/sources/test_translations/reference_sources/varia/cartas.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/cartas.xml kleio-home/sources/test_translations/reference_sources/varia/cartas.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/Devedores.err kleio-home/sources/test_translations/reference_sources/varia/Devedores.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/Devedores.files.json kleio-home/sources/test_translations/reference_sources/varia/Devedores.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/Devedores.rpt kleio-home/sources/test_translations/reference_sources/varia/Devedores.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/Devedores.xml kleio-home/sources/test_translations/reference_sources/varia/Devedores.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/eleicoes1.err kleio-home/sources/test_translations/reference_sources/varia/eleicoes1.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/eleicoes1.files.json kleio-home/sources/test_translations/reference_sources/varia/eleicoes1.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/eleicoes1.rpt kleio-home/sources/test_translations/reference_sources/varia/eleicoes1.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/eleicoes1.xml kleio-home/sources/test_translations/reference_sources/varia/eleicoes1.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/EmpFAfonso.err kleio-home/sources/test_translations/reference_sources/varia/EmpFAfonso.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/EmpFAfonso.files.json kleio-home/sources/test_translations/reference_sources/varia/EmpFAfonso.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/EmpFAfonso.rpt kleio-home/sources/test_translations/reference_sources/varia/EmpFAfonso.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/EmpFAfonso.xml kleio-home/sources/test_translations/reference_sources/varia/EmpFAfonso.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/genealdiversas.err kleio-home/sources/test_translations/reference_sources/varia/genealdiversas.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/genealdiversas.files.json kleio-home/sources/test_translations/reference_sources/varia/genealdiversas.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/genealdiversas.rpt kleio-home/sources/test_translations/reference_sources/varia/genealdiversas.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/genealdiversas.xml kleio-home/sources/test_translations/reference_sources/varia/genealdiversas.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/glopes-lap1561.err kleio-home/sources/test_translations/reference_sources/varia/glopes-lap1561.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/glopes-lap1561.files.json kleio-home/sources/test_translations/reference_sources/varia/glopes-lap1561.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/glopes-lap1561.rpt kleio-home/sources/test_translations/reference_sources/varia/glopes-lap1561.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/glopes-lap1561.xml kleio-home/sources/test_translations/reference_sources/varia/glopes-lap1561.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/ivcc.err kleio-home/sources/test_translations/reference_sources/varia/ivcc.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/ivcc.files.json kleio-home/sources/test_translations/reference_sources/varia/ivcc.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/ivcc.rpt kleio-home/sources/test_translations/reference_sources/varia/ivcc.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/ivcc.xml kleio-home/sources/test_translations/reference_sources/varia/ivcc.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/lrazao516pe.err kleio-home/sources/test_translations/reference_sources/varia/lrazao516pe.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/lrazao516pe.files.json kleio-home/sources/test_translations/reference_sources/varia/lrazao516pe.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/lrazao516pe.rpt kleio-home/sources/test_translations/reference_sources/varia/lrazao516pe.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/lrazao516pe.xml kleio-home/sources/test_translations/reference_sources/varia/lrazao516pe.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/misMesa.err kleio-home/sources/test_translations/reference_sources/varia/misMesa.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/misMesa.files.json kleio-home/sources/test_translations/reference_sources/varia/misMesa.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/misMesa.rpt kleio-home/sources/test_translations/reference_sources/varia/misMesa.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/misMesa.xml kleio-home/sources/test_translations/reference_sources/varia/misMesa.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/mp758-santiago-beduido.err kleio-home/sources/test_translations/reference_sources/varia/mp758-santiago-beduido.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/mp758-santiago-beduido.files.json kleio-home/sources/test_translations/reference_sources/varia/mp758-santiago-beduido.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/mp758-santiago-beduido.rpt kleio-home/sources/test_translations/reference_sources/varia/mp758-santiago-beduido.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/mp758-santiago-beduido.xml kleio-home/sources/test_translations/reference_sources/varia/mp758-santiago-beduido.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/nommiz.err kleio-home/sources/test_translations/reference_sources/varia/nommiz.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/nommiz.files.json kleio-home/sources/test_translations/reference_sources/varia/nommiz.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/nommiz.rpt kleio-home/sources/test_translations/reference_sources/varia/nommiz.rpt
+< 
+> 
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/nommiz.xml kleio-home/sources/test_translations/reference_sources/varia/nommiz.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/quotes.err kleio-home/sources/test_translations/reference_sources/varia/quotes.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/quotes.files.json kleio-home/sources/test_translations/reference_sources/varia/quotes.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/quotes.rpt kleio-home/sources/test_translations/reference_sources/varia/quotes.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/quotes.xml kleio-home/sources/test_translations/reference_sources/varia/quotes.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.err kleio-home/sources/test_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.files.json kleio-home/sources/test_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.rpt kleio-home/sources/test_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.xml kleio-home/sources/test_translations/reference_sources/varia/sourecoimbrabispcoimbra_apontamentosd.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/test-atr-date.err kleio-home/sources/test_translations/reference_sources/varia/test-atr-date.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/test-atr-date.files.json kleio-home/sources/test_translations/reference_sources/varia/test-atr-date.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/test-atr-date.rpt kleio-home/sources/test_translations/reference_sources/varia/test-atr-date.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/test-atr-date.xml kleio-home/sources/test_translations/reference_sources/varia/test-atr-date.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/vereacao.err kleio-home/sources/test_translations/reference_sources/varia/vereacao.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/vereacao.files.json kleio-home/sources/test_translations/reference_sources/varia/vereacao.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/vereacao.rpt kleio-home/sources/test_translations/reference_sources/varia/vereacao.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/vereacao.xml kleio-home/sources/test_translations/reference_sources/varia/vereacao.xml
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/xpto_comuns_soure.err kleio-home/sources/test_translations/reference_sources/varia/xpto_comuns_soure.err
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/xpto_comuns_soure.files.json kleio-home/sources/test_translations/reference_sources/varia/xpto_comuns_soure.files.json
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/xpto_comuns_soure.rpt kleio-home/sources/test_translations/reference_sources/varia/xpto_comuns_soure.rpt
+diff -r kleio-home/sources/reference_translations/reference_sources/varia/xpto_comuns_soure.xml kleio-home/sources/test_translations/reference_sources/varia/xpto_comuns_soure.xml
+Comparing translation results finished.
