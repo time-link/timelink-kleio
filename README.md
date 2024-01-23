@@ -272,6 +272,7 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    `docker login --username timelinkserver` or other 
    authorized user.__
 * Test
+* Update version with `make inc-major` or `make inc-minor` 
 * Update release notes (bellow)
 * Commit code 
 * Check current version with `make show-current` or
@@ -312,6 +313,14 @@ Type ```make``` to see more targets that help in development.
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+### 2024-01-23 07:16:28 version 12.3.561
+
+* Refactoring of linked data tratment. Notation for linked data remains the same
+  but it is allowed in any element of any group extending person,object or geoentity.
+* Generation of attributes from linked data notation was changed for clarity. See issue#6
+* Fixes a very old problem with handling ";" for multiple entries in comments and original wording.
+  This became a problem because linked data notation tends to produce comments with a bit of text
+  for context, and ";" shows up.
 
 ### 2024-01-07 12:20:12 version 12.1.557
 
