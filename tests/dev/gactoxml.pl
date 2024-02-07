@@ -37,6 +37,45 @@
  kleio processor and this translator to understand that a person
  group called husband may follow and generate the appropriate
  kin relatioship.
+
+Clio export modules such as the current file are Prolog programs that define the way 
+ the Clio texts are converted. 
+
+ The interaction between the Clio translator and the export modules
+ is as follows:
+
+*  The translator processes a clio structure file and the clio data file.
+* It does the syntactic analysis and error checking in what regards compliance
+ 		of the data to the structure definition. 
+ * Once a Clio group is read from the data file by the translator a call is made to the export module
+ 		signalling that data for a group is available. 
+* The export module can then call back the Clio Translator code to request the data itself.
+
+
+Two sets of predicates are involved in this interchange:
+
+* the export predicates that are called by the translator
+* the Translator predicates that are called by the export modules.
+
+The export module must provide three predicates that are to be called
+  by the translator: db_init/0, db_store/0, db_close/0.
+
+* db_init 
+Is called when a new data file begins processing.
+The export module can set db_init to do initialization procedures like openning export files and setting up
+default values.
+
+* db_store
+Is called when a new clio group has been read by the
+translator. The export module can now call back the
+translator module to obtain the data.
+    
+* db_close
+Is called when the processing of the data file is finished
+The export module can close the export files and do general
+cleanup procedures.
+
+The call back predicates are defined in externals.pl
  
  @tbd TODO: The XML related stuff should be isolated from data model stuff. 
  Better to end each export predicate with the creation of dictionnary with the
@@ -140,8 +179,7 @@ db_close:-
   do_auto_rels,  do_auto_rels2,
   process_cached_same_as,
   (get_value(clioPP,true)->clioPP_close;true),
-  error_count(E),
-  ( E = 0 -> change_to_ids;true),
+  report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
   report([writeln('Translation finished.')]),
@@ -149,14 +187,8 @@ db_close:-
   xml_close.
 
 
-/* we now rename the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
-  If org already exists we rename .cli to .old. If .old exists we discard it and rename .cli to .old.
 
-  The end result is: .cli is the last pretty printed translation with sucess.
-  .old is the last .cli that was translated
-  .org is the original .cli that was first translated with success.
-  */
- change_to_ids:-
+ report_translation:-
   get_value(stru_file,StruFile),
   report([format('Structure file: ~w~n',[StruFile])]),
   prolog_to_os_filename(PrologFile, StruFile),
@@ -179,6 +211,38 @@ db_close:-
   report([format('Original file: ~w~n',[Original])]),
   concat(SOURCE,'.old',Last),
   report([format('Previous version: ~w~n',[Last])]),
+  errors:error_count(ErrCount),
+  errors:warning_count(WarnCount),
+  ( ErrCount = 0 -> rename_files(D,SOURCE,Original,Last);true),
+  persistence:get_value(report,ReportFile),
+  % Generate a JSON file with information on the related files
+  FileDict = files{stru:StruFile, 
+                   stru_rpt:SrptPath,
+                   stru_json:JsonPath,
+                   kleio_file:D,
+                   kleio_original:Original,
+                   kleio_previous: Last,
+                   kleio_rpt: ReportFile,
+                   errors:ErrCount,
+                   warnings:WarnCount},
+  concat(SOURCE,'.files.json',KleioFilesInfo), 
+  open(KleioFilesInfo,write,KFI_Stream,[]),        
+  json_write_dict(KFI_Stream,FileDict),
+  close(KFI_Stream),
+  !.
+report_translation:-
+   error_out('** Problem renaming files.'),
+   report([writeln('** Problem renaming files.')]) .
+
+/* we now rename the .ids (pretty printed .cli and ids) to .cli and the .cli to .org.
+  If org already exists we rename .cli to .old. If .old exists we discard it and rename .cli to .old.
+
+  The end result is: .cli is the last pretty printed translation with sucess.
+  .old is the last .cli that was translated
+  .org is the original .cli that was first translated with success.
+  */
+rename_files(D,SOURCE,Original,Last):-
+  % report on kleio source file
   concat(SOURCE,'.ids',Ids),
   report([format('Temp file with ids: ~w~n',[Ids])]),
   /*
@@ -204,6 +268,7 @@ db_close:-
   ),
   (exists_file(Original)-> % rename original ".cli" to ".old"
     (
+
       rename_with_shell(D,Last),
       catch(
         chmod(D,+gw),
@@ -229,30 +294,7 @@ db_close:-
       E3,
       log_error('Could not change permissions of ~w : ~w ',[D,E3])
       ),
-  persistence:get_value(report,ReportFile),
-  %report([writeln('** '-Ids-'renamed to'-D)]),
-  %report([writeln('** Translation files closed.')]),
-  % Generate a JSON file with information on the related files
-  errors:error_count(ErrCount),
-  errors:warning_count(WarnCount),
-  FileDict = files{stru:StruFile, 
-                   stru_rpt:SrptPath,
-                   stru_json:JsonPath,
-                   kleio_file:D,
-                   kleio_original:Original,
-                   kleio_previous: Last,
-                   kleio_rpt: ReportFile,
-                   errors:ErrCount,
-                   warnings:WarnCount},
-  concat(SOURCE,'.files.json',KleioFilesInfo), 
-  open(KleioFilesInfo,write,KFI_Stream,[]),        
-  json_write_dict(KFI_Stream,FileDict),
-  close(KFI_Stream),
-  
   !.
-change_to_ids:-
-   error_out('** Problem renaming files.'),
-   report([writeln('** Problem renaming files.')]) .
 
 rename_with_shell(Name1,Name2):-
   Command = ['rm -f ',Name2,'; cp -fp ',Name1,' ',Name2,'; rm -f ',Name1],
@@ -292,6 +334,7 @@ db_store:-
   get_ancestor(_,AncID),
   add_to_prop(autorels,groups,(G, ID, AncID, CurrentLevel)),    % this is used by automatic relation processing
   save_group_path(P,G,ID),
+  process_linked_data(G,ID),
   (get_value(clioPP,true) -> %if necessary we produce a ids file
         (
         remove_id_prefix(ID,NID),
@@ -316,7 +359,7 @@ set_autorel_mode(''):-!.
 set_autorel_mode(O):-
     warning_out(['bad autorel mode =',O]),!.
 
-/* this saves the current path with the ids created by this translator modules
+/* this saves the current path with the ids created by this translator module
    current path for each processed group is stored as a group_path(Path) clause
    that is available latter for auto rel processing */
 save_group_path(Path,GroupName,GroupId):-
@@ -359,6 +402,7 @@ group_export(kleio,_) :- !,
         ),
       ([AutoMode] = AR; AutoMode = ''),
       set_autorel_mode(AutoMode),
+    linkedData:clear_xlink_patterns,
     clio_stru_file(Stru),
     clio_data_file(Data),
     list_to_a0(O,OS),
@@ -381,14 +425,14 @@ group_export(kleio,_) :- !,
     Date=Year-Month-Day,
     Time=Hour:Minute:Seconds,
     % REFACTOR create dict for data and pass on to runtime mapper (XML, JSON, etc...)
-    xml_quote_attribute(Stru, QStru,utf8),
-    xml_quote_attribute(Data, QData,utf8),
-    %xml_quote_attribute(Date, QDate,utf8),
+    xml_quote_attribute_list(Stru, QStru,utf8),
+    xml_quote_attribute_list(Data, QData,utf8),
+    %xml_quote_attribute_list(Date, QDate,utf8),
     QDate = Date,
-    %xml_quote_attribute(Time, QTime,utf8),
+    %xml_quote_attribute_list(Time, QTime,utf8),
     QTime = Time,
-    xml_quote_attribute(OS, QOS,utf8),
-    xml_quote_attribute(Space, QSpace,utf8),
+    xml_quote_attribute_list(OS, QOS,utf8),
+    xml_quote_attribute_list(Space, QSpace,utf8),
     xml_write(['<KLEIO STRUCTURE="',QStru,'" SOURCE="',QData,'" TRANSLATOR="gactoxml2.str" WHEN="',QDate,' ',QTime,'" OBS="',QOS,'" SPACE="',QSpace,'">']),
     xml_nl.
 
@@ -488,7 +532,8 @@ authority_register_export(Register,Id):-
     set_prop(aregistry,id,Id),
     %
     belement_aspect(core,user,User),
-    set_prop(aregistry,user,User),
+    atomic_list_concat(User,'',UserString),
+    set_prop(aregistry,user,UserString),
     %
     belement_aspect(core,dbase,DBase),
     set_prop(aregistry,dbase,DBase),
@@ -549,13 +594,20 @@ rentity_occ_export(_,Id):-
   report([writelist0ln(['**     Processing rentity occurence ',Occurrence])]),
   !.
 
+/* deals with values that are stored as list as well as atoms, lists break xml_quote_attribute */
+xml_quote_attribute_list([H|T],Quoted,Encoding):-!,
+  atomic_list_concat([H|T],' ',Atom),
+  xml_quote_attribute(Atom,Quoted,Encoding),!.
+xml_quote_attribute_list(Atom,Quoted,Encoding):-
+  xml_quote_attribute(Atom,Quoted,Encoding),!.
+
 export_attach_occ(xml,OccID,ARId,User,REId,Occurrence):-
   xml_nl,
-  xml_quote_attribute(OccID,POccID,utf8),
-  xml_quote_attribute(ARId,PARId,utf8),
-  xml_quote_attribute(User,PUser,utf8),
-  xml_quote_attribute(Occurrence,POccurrence,utf8),
-  xml_quote_attribute(REId,PREId,utf8),
+  xml_quote_attribute_list(OccID,POccID,utf8),
+  xml_quote_attribute_list(ARId,PARId,utf8),
+  xml_quote_attribute_list(User,PUser,utf8),
+  xml_quote_attribute_list(Occurrence,POccurrence,utf8),
+  xml_quote_attribute_list(REId,PREId,utf8),
   xml_write(['<RELATION ID="',POccID,'" REGISTER="',PARId,'" USER="',PUser,'" ORG="',POccurrence,'" DEST="',PREId,'" TYPE="META" VALUE="attach_to_rentity"/>']),
   xml_nl,!.
 
@@ -672,7 +724,11 @@ geoentity_export(G,ID) :-
 
 attribute_export(G,ID) :-
     get_ancestor(__Anc,AncId),
-    (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+    (get_date(Date1) -> 
+      (Date = Date1, DateType = explicit)
+    ; 
+      (get_prop(act,date,Date), DateType = implicit)
+    ),
     clio_aspect(core,tipo,T),  % TODO: should it be type?
     clio_aspect(core,valor,V), % TODO: should it be value?
     assert(attribute_cache(AncId,ID,T,V)),
@@ -680,23 +736,35 @@ attribute_export(G,ID) :-
     % Processing of linked data must go here
     clio_aspect(comment,tipo, TC), 
     atomic_list_concat(TC, '',TypeComment ),
-    (detect_xlink(TypeComment,DataSource,Id) -> 
+    (generate_xlink(TypeComment,Uri,DataSource,Id) -> 
         (
-          generate_xlink(TypeComment,Uri),
-          process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri)
+          (
+          process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri))
+          ;
+          warning_out(["Could not link data with ",
+                      TypeComment,
+                      "; is link$ definition for ",
+                      DataSource," missing?"])
         )
         ; 
         true),
     clio_aspect(comment,valor,VC),
     atomic_list_concat(VC, '',ValueComment ),
-    (detect_xlink(ValueComment,DataSource2,Id2) -> 
+    (generate_xlink(ValueComment,Uri2,DataSource2,Id2) -> 
         (
-          generate_xlink(ValueComment,Uri2),
           process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2)
-        )
+          ;
+          warning_out(["Could not link data with ",
+                      ValueComment,
+                      "; is link$ definition for ",
+                      DataSource2," missing?"])
+
+          )
         ; 
         true),
-    group_to_xml(G,ID,[id([ID],[],[]),entity([AncId],[],[]),date([Date],[],[])]).
+    Inferred = [id([ID],[],[]),entity([AncId],[],[])],
+    (DateType = implicit -> append(Inferred,[date([Date],[],[])],Elements); Elements = Inferred), 
+    group_to_xml(G,ID, Elements).
 
 
 relation_export(G,ID) :-
@@ -888,92 +956,147 @@ process_function_in_act(Group,Id):-
   !.
 process_function_in_act(_,_).
 
-% Process linked data see issue:#6 
-%1. entity to entity: an entity in a record is the same as another entity in another 
-%   dataset. In this case the comment should be attached to the id of the entity
-%
-%    kleio$
-%       link$wikidata/"https://www.wikidata.org/wiki/$1"
-%      ...
-%     n$Matteo Ricci/id=deh-matteo-ricci#@wikidata:Q233340
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld1" 
-%             ORG="deh-matteo-ricci" 
-%             DEST="https://www.wikidata.org/wiki/Q233340"
-%             TYPE="LINK" 
-%             VALUE="SAME_AS" />
-%```
-%
-%Internally a relation would be generated with type "link" and value "same as"
-%
-%      n$Matteo Ricci/id=deh-matteo-ricci#@wikidata: Q233340
-%         rel$link/same as/"https://www.wikidata.org/wiki/Q233340"
-%    
-%2. attribute value to entity: the value of an attribute in Timelink
-%   is linked to an entity in another dataset.
-%
-%        ls$estadia/Cantão#@wikidata:Q16572/15830800
-%            
-%
-%Would generate:
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld2"
-%        ORG="deh-matteo-ricci-attr1"
-%        DEST="http://www.wikidata.org/wiki/Q16572"
-%        TYPE="LINK"
-%        VALUE="VALUE_IS"
-%    />
-%```
-%
-%Internally one could generate an extra atribute with the link
-%
-%      ls$estadia/Cantão#@wikidata:Q16572/15830800
-%      ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
-%
-%3. Type of attribute or relation to external property: 
-%   the type of an attribute in Timelink corresponds to a property
-%  in an external data set.
-%
-%    ls$estadia#@wikidata:Property:P551/Cantão#@wikidata:Q16572/15830800
-%
-%
-%this could generate 
-%
-%```xml
-%<RELATION ID="deh-matteo-ricci-ld3"
-%        ORG="deh-matteo-ricci-attr1"
-%        DEST="http://www.wikidata.org/wiki/Property:P551"
-%        TYPE="LINK"
-%        VALUE="TYPE_IS"
-%    />
-%```
-%
-%    ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
-%    ls$wikidata.P551.linked.value/"http://www.wikidata.org/wiki/Q16572"/15521006
-%
-%In relations:
-%
-%    n$João III/id=rei-joao-iii
-%       rel$parentesco#@wikidata: P1038/irmao#@wikidata: P3373/Isabel de Portugal/isabel-de-portugal
-%
+/* Processing of special data types and linked data
 
-process_xlink_attribute_type(Group,Id,Type, Value, (DatSource,XId),_TypeComment,Uri):-
+Bellow is special processing for linked data comments and dates.
+Currently this special processing is triggered at group processing level, i.e.,
+group processor, like attribute_export, act_export, call predicates to process
+dates and linked data. 
+
+But this does not scale and is not compatible with user defined groups.
+So it should go to element processing level. 
+
+If a given element is of a given type then spcial processing shoud lbe triggered.
+Currently elements have three aspectes: core, original, comment. In the future
+special type of elements would have extra aspects. For instance, dates would have "date_vale"
+or "data_range_value". Similarly element with linked data would have aspects "ldata_type" and 
+"ldata_uri".
+
+
+
+*/
+
+/**
+ * processing_linked_data(+Group,+ID) is det.
+* 
+* Processing linked data for the current group.
+
+Linked data, e.g., references to entities in the Semantic Web,areintroduced 
+through comments. e.g.
+
+```
+n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504
+```
+To solve the notation into a URI it is necessary to introduce a new attribute in `kleio` group:
+
+```
+Kleio$...
+      link$wikidata/"https://www.wikidata.org/wiki/$1"
+      link$geonames/"https://www.geonames.org/$1"
+
+     source$....
+         act$....
+             n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504    <-link on id (or name)
+                 ls$nascimento/Brescia#@wikidata:Q6221/1582.              <-link on attribute value
+                 
+      ...
+
+    geo1$Chekiang#Tche-kiang, hoje:Zhejiang, 浙江, @wikidata:Q16967/província <-- link on name
+
+```
+## semantics
+
+The handling of linked data notation differs according to the group/element combination in which the link is added.
+
+### Link in generic group elements (except in attributes and relations)
+
+For any group except those that extend `attribute` (atr, ls) the link generates a new attribute
+in the form
+
+ ```
+    ls$<GROUP>-<ELEMENT>-<LINK_TYPE>/<LINK_URI>
+```
+So
+```
+   n$Giulio Aleni/id=deh-giulio-aleni#@wikidata:Q2707504  
+
+   generates:
+
+       ls$wikidata-person-id/"http://wikidata.org/wiki/Q2707504"   <-- generated attribute (inferred date)
+  
+```
+
+### Links in attribute values
+
+Links in attribute values are assuming to refer to external representations of the value of the the attribubte.
+
+So the attribute is duplicated with a qualification in the attribute type and with the explicit url link as value.
+
+```
+     ls$<LINK_TYPE>:<TYPE>/<LINK_URI># original value/LINK_URI
+```
+So
+```
+     ls$nascimento/Brescia#@wikidata:Q6221/1582
+
+     generates:
+
+    ls$wikidata:nascimento/"http://wikidata.org/wiki/Q6221"#Brescia/1582. <-- generated
+
+```
+
+### Links in attribute types
+
+Links in attribute types are assumed to be links to external references to properties.
+The attribute is duplicated with the type replaced with the external reference. The value is kept, except if it was also linked externally. Then the link to the external reference of the value is used.
+
+```
+    ls$<LINK_TYPE>:<LINK_TYPE_URI>#<LINK_URI>%original type/<VALUE> or <LINK_URI_VALUE>#original value
+    ls$nacionalidade#@wikidata:Property:P27/República de Veneza#@wikidata:Q4948
+   
+    generates:
+
+    ls$wikidata:Property_P27#"http://wikidata.org/wiki/Property:P27"%nacionalidade/"http://wikidata.org/wiki/Q4948"#República de Veneza
+```
+ */
+
+
+process_linked_data(Group,Id):-
+  clio_bclass(Group,GroupBClass),  % we use the base class of the group
+  \+ memberchk(GroupBClass, [attribute,relation]),  % everything but attribute and relations (see next)
+  clio_aspect(comment,Element, Comment),
+  flatten_multiple_entry(Comment,FComment),
+  atomic_list_concat(FComment,'',CommentString),
+  generate_xlink(CommentString,Uri,DataSource,XId),
+  clio_element_bclass(Element,ElementBClass), % and the base class of the element to generate the attribute type
+  atomic_list_concat([GroupBClass,':',ElementBClass,'@',DataSource],'',LinkedAType),
+  export_auto_attribute(Id,'atr', 'attribute', 
+                        LinkedAType, '','', % attribute type: core, comment, original
+                        Uri,CommentString,XId % attr. value: core, comment, original
+                        ),fail.
+
+process_linked_data(_,_):-!.
+
+% TODO: reimplement as the above
+process_xlink_attribute_type(_Group,Id,Type, Value, (DatSource,XId),TypeComment,Uri):-
   % ls$wikidata.P551#"http://www.wikidata.org/wiki/Property:P551"/Macerata/15521006
-  atomic_list_concat(['@',DatSource,XId],'',LinkedAType),
-  export_auto_attribute(Id,Group, 'attribute', LinkedAType, Uri,'',Value,'',Type),!.
+  atomic_list_concat([DatSource,':',XId],'',LinkedAType),
+  export_auto_attribute(Id,
+                        'atr', 
+                        'attribute', 
+                        LinkedAType, Uri,TypeComment,
+                        Value,'',Type),!.
 
 process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
   error_out([' Could not generate linked data URI from ',TypeComment,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
 
-process_xlink_attribute_value(Group,Id,Type, Value, (_DataSource,_XID), _ValueComment,Uri):-
-   % ls$estadia.linked.value/"http://www.wikidata.org/wiki/Q16572"/15830800
+process_xlink_attribute_value(Group,Id,Type, Value, (DataSource,_XID), _ValueComment,Uri):-
+   % ls$estadia.@/"http://www.wikidata.org/wiki/Q16572"/15830800
    (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
-   atomic_list_concat([TypeFlat,'@'],'',LinkedAType),
+   atomic_list_concat([TypeFlat,'@',DataSource],'',LinkedAType),
    export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
 process_xlink_attribute_value(Group,Id,Text, _Value, (_DataSource,_XID),_ValueComment,_Uri):-
-  error_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
+  warning_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
 
 /*
 infer_sex(Group,Sex)
@@ -999,11 +1122,11 @@ get_sex(female,f):-!.
     TODO: implement https://github.com/time-link/timelink-kleio/issues/1
 
     Another alternative for the notation
-- "<date"before date 
-+ ">date" after date
+- "<date"before date  TBD
++ ">date" after date  TBD
 Date:  period starting in date
 :Date  period ending in date
-:date: date is part of period with start and end unknown 
+:date: date is part of period with start and end unknown TBD does not make sense
 Dates can be expressed as
 - yyyymmdd
 - yyyy-mm-dd 
@@ -1049,9 +1172,88 @@ get_date(DATE,EXTRA) where EXTRA would be a list with can contain one or several
 
 */
 get_date(DATE):-
-      belement_aspect(core,date,[A_DATE]),
-      is_a_number(A_DATE,DATE).
+      belement_aspect(core,date,[A|B]),
+      match_date([A|B],DATE),!.
 
+% get_date(DATE):-
+%   clio_aspect(core,date,[A|B]), % avoid empty lists
+%   match_date([A|B],DATE),!.
+
+% get_date(DATE):-
+%     clio_aspect(core,DATE_ELEMENT,[A|B]),
+%     clio_element_bclass(DATE_ELEMENT,date),
+%     match_date([A|B],DATE),!.
+
+match_date(List,Date):-
+  match_single_date(List,Date),!.
+
+match_date(List,Date):-
+  match_range(List,Date).
+
+match_single_date([Y,'-',M,'-',D],DATE):-
+  is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
+  Y1 > 31,
+  DATE is Y1*10000+M1*100+D1,!.
+% match D-M-Y
+match_single_date([D,'-',M,'-',Y],DATE2):-
+  is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
+  Y1 > 31,
+  DATE1 is Y1*10000+M1*100+D1,
+  atom_number(DATE2,DATE1),!.
+
+% match 000000 
+match_single_date([A_DATE],'00000000'):-
+  is_a_number(A_DATE,0),!.
+% match YYYYMMDD
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE1),
+  A is log10(DATE1),
+  A>7,
+  atom_number(DATE2,DATE1),!.
+% match YYYYMMD
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>6,
+  DATE1 is DATE*10,
+  atom_number(DATE2,DATE1),!.
+% match YYYYMM
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>5,
+  DATE1 is DATE*100,
+  atom_number(DATE2,DATE1),!.
+% match YYYY
+match_single_date([A_DATE],DATE2):-
+  is_a_number(A_DATE,DATE),
+  A is log10(DATE),
+  A>3,
+  DATE1 is DATE*10000,
+  atom_number(DATE2,DATE1),!.
+
+
+match_range(List,Date):-
+  append(Date1,[':'|Date2],List),
+  match_single_date(Date1,Value1),
+  match_single_date(Date2,Value2),
+  atomic_list_concat([Value1,'.',Value2],DateRange),
+  atom_number(DateRange,Date),
+  !.
+
+% open range on the left .e.g. ":1425-12-10" 
+match_range([':'|Date1],Date):-
+  match_single_date(Date1,Value1),
+  atomic_list_concat([Value1,'.11111111'],DateRange),
+  atom_number(DateRange,Date),
+  !.
+
+match_range(List,Date):-
+  append(Date1,[':'],List),
+  match_single_date(Date1,Value1),
+  atomic_list_concat([Value1,'.99999999'],DateRange),
+  atom_number(DateRange,Date),
+  !.
 
 
 /*
@@ -1086,7 +1288,10 @@ get_group_id(Group,__BuiltinID,Id):- % if the element id exists, take it as the 
   clio_aspect(core,id,ID),ID \= [],!,
   list_to_a0(ID,Id0),
   check_id_prefix(Id0,Id),
-  (used_id(Id)->error_out(['** ID already used in this file: ',Id]);asserta(used_id(Id))),
+  get_prop(gline,number,L),
+  get_prop(gline,text,Line),
+  (used_id(Id)->error_out(['** ID already used in this file: ',Id],
+                          [line_number(L),line_text(Line)]);asserta(used_id(Id))),
   put_value(Group,Id),!.   % store the Id for latter reference
 
 get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancestor and concatenate
@@ -1245,7 +1450,7 @@ check_arel_scope((__P1,_,ID),(__P2,ID,_)):-!.
 /*
 
 Relations are defined based on paths
-A path is a list of groupName(ID) | sequence(C) | group(Name,ID) |extends(Class,ID) | clause(C).
+A path is a list of groupName(ID) | sequence(C) | group(Name,ID) | extends(Class,ID) | clause(C).
 ID is usually a variable that is bound to actual IDs when the match is done
 sequence(C) matches a sequence of groups including a empty one
 group(Name,ID) matches Name(ID) it is useful to extract a Group name.
@@ -1426,6 +1631,12 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   % report([writelist0ln(['   ** auto rel: ',Type,'/',Value,' from ',OriginID,  ' to ',DestinationID])]),
   !.
 
+%! export_auto_attribute(+Entity,+Type,+Value) is det.
+%   Export an automatic attribute for Entity with Type and Value.
+%   This is used to export inferred attributes.
+% 
+%   Shortned version of export_auto_attribute/9
+
 export_auto_attribute(Entity,Type,Value) :- 
   export_auto_attribute(Entity,
                         'ls',
@@ -1437,6 +1648,19 @@ export_auto_attribute(Entity,Type,Value) :-
                         '',
                         '').
 
+%! export_auto_attribute(+Entity,+GroupName,+Class,+Type,+TypeComment,+TypeOriginal,+Value,+ValueComment,+ValueOriginal) is det.  
+%
+% @arg Entity is the entity to which the attribute is attached
+% @arg GroupName is the name of the group used for the attribute (e.g. ls,attr,...)
+% @arg Class is the database (POM) class corresponding to the attribute group
+% @arg Type is the type of the attribute
+% @arg TypeComment is the comment for the type of the attribute
+% @arg TypeOriginal is the original text for the type of the attribute
+% @arg Value is the value of the attribute
+% @arg ValueComment is the comment for the value of the attribute
+% @arg ValueOriginal is the original text for the value of the attribute
+%
+%   Export an automatic attribute for Entity with Type and Value.
 export_auto_attribute(Entity,
                         GroupName,
                         Class,
@@ -1446,12 +1670,12 @@ export_auto_attribute(Entity,
                         Value,
                         ValueComment,
                         ValueOriginal) :-
-        rch_class(ls,Class,Super,Table,Mapping),
-        ensure_class(ls,Class,Super,Table,Mapping),
+        rch_class(GroupName,Class,Super,Table,Mapping),
+        ensure_class(GroupName,Class,Super,Table,Mapping),
         AncId = Entity,
         gensymbol_local(atra,Rid),
         AId = AncId-Rid,
-        (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+        (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date); Date = '00000000'),
         xml_nl,
         inccount(group,GroupNumber),
         clio_path(P),
@@ -1480,7 +1704,7 @@ export_auto_attribute(Entity,
                     original:ValueOriginal
                     }
                   },
-        xml_write(['<GROUP ID="',AId,'" NAME="ls"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
+        xml_write(['<GROUP ID="',AId,'" NAME="',GroupName,'"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="attribute" LINE="',N,'">']),
         xml_nl,
         xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
         xml_nl,
@@ -1903,22 +2127,9 @@ clio_extends(Type,'relation-type'),
 ((clio_partof(Type,Group));(clio_partof(Type,Class),clio_extends(Group,Class))).
 
 get_rel_type(_,contained-in):-!.
-/*
-
-belement_aspect(Aspect,BaseElement,Content) get the aspect corresponding to a baseclass element
-  =========================================
-      The gacto.str allows the definition of elements that extend other elements
-      using the fons/source parameter. In this way a particular historical source
-      can give localized names to certain elements that are required by the
-      RCH model, like dates, Ids, names and sex of persons, etc...
-
-      In a more general way, the element inheritance mechanism allows
-       for the translator to find an expected element even if the source used
-      a different name for it.
-
-      belement_aspect is similar do clio_aspect (external.pl) but uses
-      clio_element_extends (external.pl) to find in the current broup elements
-      the base element it is looking for.
+/**
+* belement_aspect(+Aspect:atom,+BaseElement:atom,-Content:list) is det
+* @deprecated Use externals:clio_belement_aspect/3 instead.
 */
 belement_aspect(Aspect,Element,Content) :-
           clio_elements(Els),						% list current elements
@@ -1998,9 +2209,8 @@ ielements_to_xml(Class,[Element|Rest]):-
   Element =.. [Name,Core,Original,Comment],
   iel_to_xml(Class,Name,Core,Original,Comment),
   ielements_to_xml(Class,Rest),!.
-  ielements_to_xml(__Class,[]):-!.
 
-
+ielements_to_xml(__Class,[]):-!.
 
 els_to_xml(Class,[ El | MoreEls ]) :-
   el_to_xml(Class,El),
@@ -2080,9 +2290,18 @@ calc_length(mult(Core),Atom,Length):-
   atomic_list_concat(List, Atom),
   atom_length(Atom,Length).
 
- calc_length(mult(Core),Core,Length):-
+% not sure if this is needed
+ calc_length(mult(Core),Core,Length):-  % this is a hack to avoid the mult_to_list when the mult is a single element
   atomic(Core),
   atom_length(Core,Length). 
+
+%! flatten_multiple_entry(+Value,-List:list) is det.
+%
+%  If Value is a multiple entry, then List is unified with the list of value separated by ';'.
+flatten_multiple_entry(mult(Multi),List):-!, % this makes the predicate more flexible
+  mult_to_list(Multi,List).
+flatten_multiple_entry(List,List):-
+  is_list(List),!.
 
 mult_to_list([O],O):-!.
 mult_to_list([],[]):-!.
@@ -2126,15 +2345,14 @@ aspect_to_xml(Aspect,Content,XML):-
   append(['      <',Aspect,'><![CDATA['],C,P1),
   append(P1,[']]></',Aspect,'>'],XML),!.
 
-/*
- xml_write(List) : writes a list of atom to the current xml output file
- ================
-*/
+%!  xml_write(+List:list) is det.
+%
+%  Write a list of items to the current XML file.
 
 xml_write(List):-!,
-get_value(xmlfile,XMLFILE),
-with_output_to(string(S),xcleanwrite(List)),
-write(XMLFILE,S).
+  get_value(xmlfile,XMLFILE),
+  with_output_to(string(S),xcleanwrite(List)),
+  write(XMLFILE,S).
 
 xml_nl:-!,
 get_value(xmlfile,XMLFILE),

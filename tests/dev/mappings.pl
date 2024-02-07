@@ -114,7 +114,7 @@ class source super entity table sources
      and
         kleiofile column kleiofile baseclass kleiofile coltype varchar colsize 512 colprecision 0 pkey 0 
      and
-        obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0
+        obs column obs baseclass obs coltype varchar colsize 32768 colprecision 0 pkey 0
      and
         replace column replaces baseclass replace coltype varchar colsize 254 colprecision 0 pkey 0.
 
@@ -471,9 +471,9 @@ class carta super act table cartas
      and
         date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0 
      and
-        loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0 
+        loc column loc baseclass loc coltype varchar colsize 128 colprecision 0 pkey 0 
      and
-        resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0 
+        resumo column resumo baseclass resumo coltype varchar colsize 16654 colprecision 0 pkey 0 
      and
         refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0 
      and

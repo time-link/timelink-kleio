@@ -220,6 +220,12 @@ test_escritura:-
             './tests/kleio-home/sources/api/varia/auc_cartulario18.cli',
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
+test_error_out:-
+    set_log_level(debug),
+    restServer:translate(
+            './tests/kleio-home/sources/api/notariais/docsregiospontepisc.cli',
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
 % testing other tricky c
 test_ucalumni:-
     set_log_level(debug),
@@ -260,7 +266,7 @@ show_prolog_stack:-!.
 % To run tests do:
 %    run_tests(server).
 %
-% assumes test sources in tests/kleio-home/test_sources
+% assumes test sources in tests/kleio-home/reference_sources
 % to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
@@ -272,7 +278,7 @@ test_setup(EndPoint,Token):-
     concat(ClioDir,'/tests/',TestPath),
     format('Test dir: ~w~n',[TestPath]),
     working_directory(_,TestPath),
-    PORT=8089,
+    PORT=8090,
     Token = 'mytoken',
     setenv('KLEIO_SERVER_PORT', PORT),
     setenv('KLEIO_ADMIN_TOKEN',Token),
@@ -316,18 +322,27 @@ server_results([],[]).
 test_case(translations,File,Stru):- 
     Stru = 'system/conf/kleio/stru/gacto2.str',
     translate_file(File,Flag),
-    (Flag = true; (format('~w skipped because test flag set to ~w~n',[File,Flag]),fail)).
+    Flag = true,
+    format('TESTING ~wn',[File]).
 
-translate_file('sources/api/varia/auc_cartulario18.cli',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
+translate_file('sources/api/linked_data/multiplelinks.cli',false).
+translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
+translate_file('sources/api/bugs/bugs.cli',true).
+translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
+translate_file('sources/api/linked_data/linked-data-error.cli',false).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('sources/api/varia/cartas.cli',false).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
+translate_file('identifications/mhk_identification_toliveira.cli',false).
+translate_file('sources/api/varia/test-atr-date.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
