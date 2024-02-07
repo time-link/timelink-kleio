@@ -313,7 +313,8 @@ Type ```make``` to see more targets that help in development.
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
-### 2024-02-07 12:29:23 version 12.4.566
+
+### 2024-02-07 13:03:06 version 12.4.567
 
 * Reverted to previous attribute format for linked data see [#27](https://github.com/time-link/timelink-kleio/issues/27)
 
