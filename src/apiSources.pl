@@ -73,7 +73,7 @@ Download, upload, fetch and list source files.
 % 
 % ### Method = put multipart: update (no json equivalent)
 %
-% If method is put and and the content is multipart encoded with a file file 
+% If method is put and and the content is multipart encoded with a  file 
 %    and the path correspons to an existing file then the file is uplodaded 
 %    and replaces the existing file.
 %

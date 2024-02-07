@@ -30,7 +30,7 @@
 The _function_ is the predicate that implements the request and also the method name to be used in JSONRPC requests.
 
     |---------------|-------------------|------------------|----------------------------|
-    | _entity_      | _HTTP Method_     | _function_       | _meaning_                   |
+    | _entity_      | _HTTP Method_     | _json_rpc_       | _meaning_                   |
     | sources       | GET               | sources_get      | retrieve the source. If path is a directory returns list of source files |
     |               | POST (multipart)  | sources_upload   | upload a new source file  _Not available in JSON_RPC_|
     |               | PUT  (multipart)  | sources_update   | update an existing source file  _Not available in JSON_RPC_|
@@ -46,31 +46,33 @@ The _function_ is the predicate that implements the request and also the method 
  Map the combination of HTTPMethod and Entity into a specific operation
  
  == 
-   /sources/path       GET (json:sources_get) if Path is a file returns the file (json:NOT IMPLEMENTED) if it is a directory returns list of sources
-   /sources/path       POST,PUT (json:NOT_IMPLEMENTED) upload a file
-   /sources/path       DELETE(json:sources_delete) delete source file
-   /directories/path   GET (json:directories_get),list of files and directories under path
-   /directories/path   POST,PUT (json:directories_create) create a directory
+   /sources/path       GET (json:sources_get) if Path is a file returns the file, if it is a directory returns list of sources
+   /sources/path       POST multipart (json:NOT_IMPLEMENTED) upload a source file to "path"
+   /sources/path       POST with param origin=path2 copy source file from "path2" to path
+   /sources/path       PUT multipart (json:NOT_IMPLEMENTED) update source file in path
+   /sources/path       PUT with origin=path2 (json:NOT_IMPLEMENTED) move source file from path2 to path
+   /sources/path       DELETE(json:sources_delete) delete source file or directory
+   /directories/path   GET (json:directories_get),list directories under path recurse=yes returns all subdirectories
+   /directories/path   POST  create a directory
+   /directories/path   POST(json:directories_create) create a directory
+   /directories/path   POST with origin=path2 (json:directories_copy) copy directory from path2 to path
    /directories/path   DELETE (json:directories_delete) removes a directory
-   /structures/path    GET se path é um ficheiro devolve o ficheiro, se é um directoria devolve lista
-   /structures/path    POST, PUT upload de um ficheiro de strutura.
-   /structures/path    DELETE eliminar um ficheiro ficheiro de estrutura
-   /sdirectories/path  GET list of structure files and directories under path
-   /sdirectories/path  POST,PUT create a directory
-   /sdirectories/path  DELETE removes a directory
+   /exports/path       GET the xml export file of the path (extension is ignored) if path dir returns list
    /translations/path  POST,PUT start a translation if path a directory translate all directory
    /translations/path  GET the result of the translation (kleioset)
    /translations/path  DELETE delete translation results, if path a directory delete all translations
    /reports/path       GET the translation report in path, if path a directory list all the reports in the dir
-   /sreports/path      GET the structure processing report in path, if path a directory list all the reports in the dir
-   /exports/path       GET the xml export file of the path (extension is ignored) if path dir returns list
-   /errors/path        GET the error sumaary
-   /originals/path     GET the original clio file (before the first translation)
-   /additions/path     GET list of files that need to be translated. 
-   /status/path        GEt the status of file(s) at path status can be VTEW and aditionally PQ (currently sources)
-   /processes/path     GET lista de ficheiros em tradução
-   /queued/path        GET lista de ficheiros em fila de espera para serem traduzidos.
    /versions           GET Information from repository (uses pseudo paths to specify)
+   /versions/remotes/branches/path GET (json: versions_get_remotes_branches) list of branches in the remote repository  
+   /versions/status/globsal    GET  (json:versions_get_global_status) global status of the repository
+   /versions/user-info/ GET (json:versions_get_user_info) name and email of the user
+   /versions/pull/path  GET  (json:versions_pull) pull from remote repository
+   /version/set-user-info PUT （json: versions_set_user_info) with &user_name and &user_email set name and email of the user
+   /versions/push       PUT (json:versions_push)  psuh to remote repository
+   /versions/commit     PUT (versions_commit) commit to local repository
+   /versions/reset      DELETE (json:versions_reset) reset local repository to &commit_ref
+   /structures/path    POST, PUT upload de um ficheiro de strutura.
+   /structures/path    DELETE eliminar um ficheiro ficheiro de estrutura
  == 
      
 **/ 

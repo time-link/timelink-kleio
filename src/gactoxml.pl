@@ -736,9 +736,9 @@ attribute_export(G,ID) :-
     % Processing of linked data must go here
     clio_aspect(comment,tipo, TC), 
     atomic_list_concat(TC, '',TypeComment ),
-    (detect_xlink(TypeComment,DataSource,Id) -> 
+    (generate_xlink(TypeComment,Uri,DataSource,Id) -> 
         (
-          (generate_xlink(TypeComment,Uri),
+          (
           process_xlink_attribute_type(G,AncId,T,V,(DataSource,Id),TypeComment,Uri))
           ;
           warning_out(["Could not link data with ",
@@ -750,10 +750,9 @@ attribute_export(G,ID) :-
         true),
     clio_aspect(comment,valor,VC),
     atomic_list_concat(VC, '',ValueComment ),
-    (detect_xlink(ValueComment,DataSource2,Id2) -> 
+    (generate_xlink(ValueComment,Uri2,DataSource2,Id2) -> 
         (
-          (generate_xlink(ValueComment,Uri2),
-            process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2))
+          process_xlink_attribute_value(G,AncId,T,V,(DataSource2,Id2),ValueComment,Uri2)
           ;
           warning_out(["Could not link data with ",
                       ValueComment,
@@ -1064,18 +1063,17 @@ The attribute is duplicated with the type replaced with the external reference. 
 
 process_linked_data(Group,Id):-
   clio_bclass(Group,GroupBClass),  % we use the base class of the group
-  memberchk(GroupBClass, [person,object,groentity]),
+  \+ memberchk(GroupBClass, [attribute,relation]),  % everything but attribute and relations (see next)
   clio_aspect(comment,Element, Comment),
   flatten_multiple_entry(Comment,FComment),
   atomic_list_concat(FComment,'',CommentString),
-  detect_xlink(CommentString,DataSource,XId),
-  generate_xlink(CommentString,Uri),
+  generate_xlink(CommentString,Uri,DataSource,XId),
   clio_element_bclass(Element,ElementBClass), % and the base class of the element to generate the attribute type
-  atomic_list_concat([DataSource,':',GroupBClass,':',ElementBClass],'',LinkedAType),
+  atomic_list_concat([GroupBClass,':',ElementBClass,'@',DataSource],'',LinkedAType),
   export_auto_attribute(Id,'atr', 'attribute', 
                         LinkedAType, '','', % attribute type: core, comment, original
                         Uri,CommentString,XId % attr. value: core, comment, original
-                        ),!.
+                        ),fail.
 
 process_linked_data(_,_):-!.
 
@@ -1095,10 +1093,10 @@ process_xlink_attribute_type(Group,Id,_Type,_Value,_,TypeComment,_Uri):-
 process_xlink_attribute_value(Group,Id,Type, Value, (DataSource,_XID), _ValueComment,Uri):-
    % ls$estadia.@/"http://www.wikidata.org/wiki/Q16572"/15830800
    (is_list(Type) -> atomic_list_concat(Type,'',TypeFlat); TypeFlat=Type),
-   atomic_list_concat([DataSource,':',TypeFlat],'',LinkedAType),
+   atomic_list_concat([TypeFlat,'@',DataSource],'',LinkedAType),
    export_auto_attribute(Id,Group,'attribute',LinkedAType,'','',Uri,'',Value),!.
 process_xlink_attribute_value(Group,Id,Text, _Value, (_DataSource,_XID),_ValueComment,_Uri):-
-  error_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
+  warning_out([' Could not generate linked data URI from ',Text,' in ',Group-Id,'. Check if the data source was declared as link$shortname/URLPattern under the kleio$ group.']),!.
 
 /*
 infer_sex(Group,Sex)
@@ -1677,7 +1675,7 @@ export_auto_attribute(Entity,
         AncId = Entity,
         gensymbol_local(atra,Rid),
         AId = AncId-Rid,
-        (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date)),
+        (get_date(Date1) -> Date = Date1 ; get_prop(act,date,Date); Date = '00000000'),
         xml_nl,
         inccount(group,GroupNumber),
         clio_path(P),
