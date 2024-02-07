@@ -53,6 +53,7 @@ prepare: clean
 	cp Dockerfile .build/
 	mv .build/src/gacto2.str .build/src/gacto2.str.bak
 	mv .build/src/topLevel.pl .build/src/topLevel.pl.bak
+	mv .build/Dockerfile .build/Dockerfile.bak
 	@sed -e "s/@@VERSION@@/${vn}/" \
 	    -e "s/@@BUILD@@/${bn}/" \
 	    -e "s/@@DATE@@/${cdate}/"\
@@ -63,6 +64,11 @@ prepare: clean
 	    -e "s/@@DATE@@/${cdate}/"\
 		.build/src/topLevel.pl.bak\
 		> .build/src/topLevel.pl
+	@sed -e "s/@@VERSION@@/${vn}/" \
+	    -e "s/@@BUILD@@/${bn}/" \
+	    -e "s/@@DATE@@/${cdate}/"\
+		.build/Dockerfile.bak\
+		> .build/Dockerfile
 	rm .build/src/*.bak
 	@ echo "Prepared for build ${bn} version ${vn}, ${cdate}"
 
