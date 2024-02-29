@@ -1476,7 +1476,7 @@ return_error(rest,E):- % this is a system error
 
 %
 % Codes in the Json-RPC spec:
-%
+% 
 % | _code_ | _message_        | _meaning_                                     |
 % | -32700 | Parse error      | Invalid JSON was received by the server.      |
 % | -32600 | Invalid Request  | The JSON sent is not a valid Request object.  |

@@ -260,7 +260,7 @@ The following tags are used:
 
 To help manage the tags the following targets exist
 
-* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last
+* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last build number
 * ```make inc_NUMBER``` increment version with NUMBER in major | minor
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
@@ -278,7 +278,8 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 * Check current version with `make show-current` or
    `make show-last`
 * Tag image with semantic versioning
-  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number). Move current code to `stable`directory in `tests`.
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number).
+  * Move current code to `stable`directory in `tests`.
   * if new image to be latest do `make tag-multi-latest`
 
 
@@ -313,6 +314,10 @@ Type ```make``` to see more targets that help in development.
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+
+### 2024-02-29 07:40:48 version 12.5.570
+
+Fix bugs, linked data ids now allow for dashes, improve error and warning line reporting
 
 ### 2024-02-07 13:03:06 version 12.4.567
 

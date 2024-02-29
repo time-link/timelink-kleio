@@ -11,7 +11,7 @@
 
 /** <module> Error reporting for kleio predicates
 
-## Error reporting 
+## Error reporting
 
 
 
@@ -60,7 +60,7 @@
 :-use_module(reports).
 
 %% initErrorCount is det.
-%  
+%
 initErrorCount:-
     setcount(errors,1),
     setcount(warnings,1).
@@ -69,7 +69,7 @@ initErrorCount:-
 % not sure this is a good idea, it means that no more than one message regarding the same line
 % so if two or more different errors occur in the same line only the first would be reported.
 % comment out because it does not look a good idea.
-%error_out(Mess):- 
+%error_out(Mess):-
 %   get_prop(line,number,N),
 %   get_prop(line,previous,N),
 %   !. % skipping repeated error in the same line.
@@ -95,7 +95,7 @@ error_out(Mess):-
 % $last_line_text(Last) : the texto the previous line (errors are normally detected on the line after the error)
 %
 error_out(Mess,Context):-
-   inccount(errors,_), 
+   inccount(errors,_),
    p_error_warn_context('ERROR',Mess,Context),!.
 
 %% warning_out(+Mess) is det.
@@ -135,7 +135,7 @@ p_error_warn_context(TYPE,Mess):-
 p_error_warn_context(TYPE,Mess,Context):-
    (option(file(Source_file),Context)->
       true
-      ; 
+      ;
       (
          get_value(data_file,DataFile),
          break_fname(DataFile,_,Source_file,_,_)
@@ -143,13 +143,13 @@ p_error_warn_context(TYPE,Mess,Context):-
    ),
    (option(line_number(N),Context)-> true; get_prop(line,number,N)),
    (option(line_text(Line),Context)->true;get_prop(line,text,Line)),
-   % (option(last_line_text(Last),Context)->true;get_prop(line,last,Last)),
-   set_prop(line,previous,N), % we note the error line 
-   N2 is N, % we used to miss the line by one but now we we take the line number as good
+   (option(last_line_text(Last),Context)->true;get_prop(line,last,Last)),
+   set_prop(line,previous,N), % we note the error line
+   N2 is N-1, % we used to miss the line by one but now we we take the line number as good
    %report([nl,writelist0([DataFile,':',N,':']),perr(Mess),nl,true]),
-  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess), 
-           % write('Near lines: '),write(N2),tab(1),write(Last),
-           write('Near lines: '),write(N2) ,tab(1),write(Line),
+  report([nl,write(TYPE),write(': '),write(Source_file),tab(1),write(line),tab(1), write(N2),tab(1),perr(Mess),
+           write('Near lines: '),write(N2),tab(1),write(Last),
+           write('Near lines: '),write(N) ,tab(1),write(Line),
            nl,
        true]),!.
 

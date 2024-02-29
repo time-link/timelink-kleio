@@ -15,7 +15,7 @@
 % Activate a rest server and a debug server.
 % Sets environment variables for the local tests directory
 % This should be run from clio top level directory
-% 
+%
 run_debug_server:-
     set_log_level(debug),
     log_debug("starting server with log level debug.",[]),
@@ -86,23 +86,23 @@ debug_server_until_idle:-
 % Used by testing shell scripts:
 %
 %      swipl -f dev/serverStart.pl -g run_server_until_idle -t halt
-% 
+%
 wait_for_idle(Secs) :- repeat,format('Waiting ~w seconds for server idle',[Secs]),restServer:server_idle(Secs).
 wait_for_idle(Secs) :- log_info('Rest Server idle for ~w seconds',[Secs]).
 
 %% run_test_server is det.
-% 
-% Sets up a test server with the environment set for running the test suites in `clio/test`. 
+%
+% Sets up a test server with the environment set for running the test suites in `clio/test`.
 % It is useful to simulate the test environment.
 %
 % This assumes that the server is started from a tests directory with the following internal layout
-% 
 %
-% $ KLEIO_HOME_DIR        : working dir. 
+%
+% $ KLEIO_HOME_DIR        : working dir.
 % $ KLEIO_SOURCE_DIR      : test_sources
 % $ KLEIO_CONF_DIR        : conf/kleio
 % $ KLEIO_STRU_DIR        : conf/kleio/stru/
-% $ KLEIO_TOKEN_DB        : conf/kleio/token_db 
+% $ KLEIO_TOKEN_DB        : conf/kleio/token_db
 % $ KLEIO_DEBUGGER_PORT   : 4000
 % $ KLEIO_SERVER_PORT     : 8088
 % $ KLEIO_WORKERS         : 6
@@ -115,7 +115,7 @@ run_test_server:-
     (exists_directory('kleio-home')->true
         ;
         throw(error(bad_directory(WD),context(run_test_server/0,'no kleio-home directoy')))),
-    
+
     setenv_dir('KLEIO_HOME_DIR',WD,'kleio-home'),
     setenv_dir('KLEIO_SOURCE_DIR',WD,'kleio-home/sources'),
     setenv_dir('KLEIO_CONF_DIR',WD,'kleio-home/system/conf/kleio'),
@@ -125,13 +125,13 @@ run_test_server:-
     % setenv('KLEIO_DEBUGGER_PORT',4000),
     setenv('KLEIO_SERVER_PORT', 8088),
     setenv('KLEIO_WORKERS',3),
-    setenv('KLEIO_IDLE_TIMEOUT',360), 
+    setenv('KLEIO_IDLE_TIMEOUT',360),
     run_debug_server.
 
 setenv_dir(Var,Dir,Value):-
     atomic_list_concat([Dir,Value], V),
     setenv(Var,V).
-    
+
 %% setup_and_run_server(ServerPredicate+,SetupInfo) is det.
 %
 % ServerPredicate is the name of the predicate to run the server, e.g.
@@ -192,10 +192,10 @@ stop_debug_server:-
 
 %% mhk_home(?Path) is det.
 %
-% Set or infer mhk-home path and 
+% Set or infer mhk-home path and
 % change working directory to it.
 % if Path is not und then it will
-% be bound 'mhk-home' dir user_home (getenv('HOME')) 
+% be bound 'mhk-home' dir user_home (getenv('HOME'))
 % If bound change working dir to Path
 %
 mhk_home(MH):-
@@ -295,7 +295,7 @@ test_cleanup:-
 
 rest_call(Protocol,Host,Method, Function,Path, Params,Token, Accept,Response,Status):-
     make_uri(Protocol,Host,Function,Path,Params,Uri),
-    http_get(Uri, Response, 
+    http_get(Uri, Response,
         [   method(Method),
             authorization(bearer(Token)),
             request_header(accept=Accept),
@@ -319,7 +319,7 @@ server_results([R|Rs],[D|Ds]):-
     server_results(Rs,Ds).
 server_results([],[]).
 
-test_case(translations,File,Stru):- 
+test_case(translations,File,Stru):-
     Stru = 'system/conf/kleio/stru/gacto2.str',
     translate_file(File,Flag),
     Flag = true,
@@ -328,9 +328,9 @@ test_case(translations,File,Stru):-
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
-translate_file('sources/api/bugs/bugs.cli',true).
+translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
-translate_file('sources/api/linked_data/linked-data-error.cli',false).
+translate_file('sources/api/linked_data/linked-data-error.cli',true).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
@@ -350,7 +350,7 @@ delete_test_sources(EndPoint,Token):-
     uri_data(authority,UComponents,Host),
     rest_call(Scheme,Host,'DELETE',directories,'sources/api',[id=1212,force=yes],Token,'application/json',Response,Status),
     server_response(Response,Id,Version,Results),
-    writeln('OK got answer'-Id-Version-Status),    
+    writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.
 copy_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
@@ -358,14 +358,14 @@ copy_test_sources(EndPoint,Token):-
     uri_data(authority,UComponents,Host),
     rest_call(Scheme,Host,'POST',directories,'sources/api',[id=1212,origin='sources/reference_sources'],Token,'application/json',Response,Status),
     server_response(Response,Id,Version,Results),
-    writeln('OK got answer'-Id-Version-Status),    
+    writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.
 :-begin_tests(server).
 
 test(translations,[
             setup(test_setup(EndPoint,Token)),
             forall(test_case(translations,File,Stru)),
-            cleanup(test_cleanup)]):- 
+            cleanup(test_cleanup)]):-
     uri_components(EndPoint,UComponents),
     writeln(UComponents),
     uri_data(scheme,UComponents,Scheme),
@@ -378,7 +378,7 @@ test(translations,[
     print_term(Results,[]),!.
     %dict_create(Dict,response,Data),
     %format('~n~nid:~w~n,~k',[Dict.id,Dict]).
-    
+
 
 
 :- end_tests(server).
