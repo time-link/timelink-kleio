@@ -1,5 +1,5 @@
 :- module(linkedData,
-        [ 
+        [
             store_xlink_pattern/2,
             clear_xlink_patterns/0,
             clear_xlink_data/0,
@@ -9,7 +9,7 @@
             xlink_data/2
         ]).
 /** <module> Predicates to handle linked data.
-    
+
 Linked data allows to map kleio data items to external
 data. This is described in issue:#6 of
 
@@ -34,8 +34,8 @@ Generating data links envolves two steps:
 
 
     The format of an external link annotation is:
-    
-        @short-name/id 
+
+        @short-name/id
 
 
 */
@@ -71,14 +71,14 @@ clear_xlink_patterns:-
 %   @shortName:Id
 
 detect_xlink(Text,ShortName,Id):-
-    re_split("@[a-z]*:\\s*[a-zA-Z0-9\\:]*",Text,List),
+    re_split("@[a-z]*:\\s*[a-zA-Z0-9\\:\\-]*",Text,List),
     member(Sequence,List),
     re_match("@",Sequence),
-    re_matchsub(".*@([a-z]*):[\\s]*([\\ 0-9a-zA-Z\\:]*)", Sequence,S,[]),
+    re_matchsub(".*@([a-z]*):[\\s]*([\\ 0-9a-zA-Z\\:\\-]*)", Sequence,S,[]),
     S=_{0:_,1:ShortName,2:Id}.
 
 %% replace_xid(+Pattern,+Id,-Link) is det.
-% 
+%
 %  Replace $1 in a Pattern with an Id.
 %  Fails if no $1 in string.
 %
