@@ -267,7 +267,6 @@ show_prolog_stack:-!.
 %    run_tests(server).
 %
 % assumes test sources in tests/kleio-home/reference_sources
-% to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
@@ -330,8 +329,9 @@ translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
-translate_file('sources/api/linked_data/linked-data-error.cli',true).
+translate_file('sources/api/linked_data/linked-data-error.cli',false).
 translate_file('sources/api/varia',false).
+translate_file('sources/api/issues/issue34.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
