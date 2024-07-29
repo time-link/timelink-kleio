@@ -273,6 +273,7 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    authorized user.__
 * Test
 * Update version with `make inc-major` or `make inc-minor`
+* Create docker image `make build-multi` (also pushes to repository tag with updated version)
 * Update release notes (bellow)
 * Commit code
 * Check current version with `make show-current` or
