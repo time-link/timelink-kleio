@@ -315,6 +315,27 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2024-07-29 07:52:13 version 12.6.572
+
+Added `property$NAME/VALUE` subgroup to the `kleio$` group.
+
+This allows for specifying file properties that affect the
+way the source is translated.
+
+The first (and only) property currently implemented is `multuple-entry-flag`
+that sets the character interpreted as separating multiples entries in a field
+(data flag 8 in the original Manfred Thaller implementation, see issue [#34](https://github.com/time-link/timelink-kleio/issues/34)
+
+Example, to set the separator to the pipe " | " character (ascii 124).
+
+```
+   property$multiple-entry-flag/124
+```
+
+Also:
+* fixes a bug where a false error related to permission in renaming files after
+  translation.
+
 ### 2024-02-29 07:40:48 version 12.5.570
 
 Fix bugs, linked data ids now allow for dashes, improve error and warning line reporting
