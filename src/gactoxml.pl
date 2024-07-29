@@ -463,6 +463,16 @@ group_export(Link,__ID):-
   atomic_list_concat(UrlPat,'',UP),
   store_xlink_pattern(SN,UP).
 
+% Dealing with properties
+
+group_export(Property,__ID):-
+  group_derived(Property,property),
+  clio_aspects(core,[name,value,obs],[Name,Value,__obs]),
+  atomic_list_concat(Name,'',SN),
+  atomic_list_concat(Value,'',SV),
+  get_value(data_file,DataFile),
+  set_prop(DataFile,SN,SV),!.
+
 group_export(Source,ID):-
     group_derived(Source,'historical-source'),
     historical_source_export(Source,ID),!.

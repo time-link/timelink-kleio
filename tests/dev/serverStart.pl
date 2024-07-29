@@ -267,8 +267,9 @@ show_prolog_stack:-!.
 %    run_tests(server).
 %
 % assumes test sources in tests/kleio-home/reference_sources
-% to setup in the terminal do cd tests; sh scripts/prepare_tests.sh
 %
+
+
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
     put_value(dir_before_tests,CD),
@@ -330,12 +331,16 @@ translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
-translate_file('sources/api/linked_data/linked-data-error.cli',true).
+translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/varia',false).
+% the next two go together
+translate_file('sources/api/issues/issue34.cli',true).
+translate_file('sources/api/issues/issue34b.cli',true).
+
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
@@ -360,6 +365,8 @@ copy_test_sources(EndPoint,Token):-
     server_response(Response,Id,Version,Results),
     writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.
+
+
 :-begin_tests(server).
 
 test(translations,[
