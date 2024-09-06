@@ -1265,7 +1265,6 @@ match_range(List,Date):-
   atom_number(DateRange,Date),
   !.
 
-
 /*
     get_y_m_d: get the date if it was entered with three element (day/month/year).
 
@@ -1308,9 +1307,11 @@ get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancesto
     get_ancestor(__Anc,Aid),!,
     clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters[??]
     sub_atom(Class,0,3,_,Seed),
-      repeat,
+    repeat,
     gensymbol_local(Seed,Gid),
-    (atom(Aid)->AAid=Aid;term_to_atom(Aid,AAid)),
+    (atom(Aid)->TempAAid=Aid;term_to_atom(Aid,TempAAid)),
+    % prefix with "__" if the ancestor id is not prefixed
+    (atom_concat('__',_,TempAAid) -> AAid=TempAAid ; atom_concat('__', TempAAid, AAid)),
      % we assumed that the ancestor''s id is prefixed so we do not check
     ((get_value(transcount,TransCount),TransCount>1) ->
         list_to_a0([AAid,'-',Gid,'-',TransCount],Id);
