@@ -59,6 +59,11 @@
 %*************************************************************
 % 
 % initStru: initializes the processing of strucutre def
+% TODO: for issue #12
+%.      get the current file name
+%.      associate line number, line text and last line
+%.        with the file name
+%.      
 %******************************************************
 %  %
 initStru(_):-
@@ -86,6 +91,8 @@ closeStru(_):-
 %    Deletes previous parameters and temporary information
 %    for the command and initializes default values for the
 %    parameters of the command.
+%
+%. For issue #12 we need to push the current file name
 %******************************************************
 %  %
 init_command(C):-
@@ -115,7 +122,11 @@ close_command(terminus,S):-
     %report([writelistln([' terminus',S])]),
     del_props(terminus),!.
 close_command(exitus,ok):-!.
-
+% lege read a file
+close_command(lege,S):-
+   check_complete(lege,S),
+   %report([writelistln([' lege',S])]),
+   !.
 
 
 %******************************************************
@@ -267,9 +278,21 @@ execParam(terminus,P,V):-
                        forma,ceteri,identificatio,cumule,solum]),
    error_out(['Error: unknown terminus param:',P,'=',V]),!.
 
+%*************************************************************
+% execParam lege nomen
+% should we check if file exists here? or latter in close_command?
+% we need a notation for the file_name
+% 
+%*************************************************************
+execParam(lege,nomen,Name):-
+   set_prop(lege,nomen,Name),!.
+
 %**************************************************************
 % execParam exitus nomen parameter
-%%
+%  checks the nomen parameter of the exitus command
+%  to see if it is the same as the nomen parameter of the
+%  nomino command.
+%
 execParam(exitus,nomen,N):-
     clioStru(M),
     (M = N -> true; error_out('bad nomen parameter of the exitus command'-N)),!.
@@ -313,6 +336,7 @@ requiredParams(nomino,[nomen,primum]).
 requiredParams(pars,[nomen]).
 requiredParams(terminus,[nomen]).
 requiredParams(exitus,[nomen]).
+requiredParams(lege,[nomen]).
 
 
 %% cache_command(+CmdInfo) is det.

@@ -424,11 +424,11 @@ get_file_attribute(File,Attribute,Value):-
 % The server tries to detect the "home directory" from which files will be served.
 % When running inside a container the home directory is normally mapped to /kleio-home
 % or /timelink-home or /mhk-home. If the home directory is not mapped, the server
-% The translator assumes a standard working directory HOME with the following structure:
+%  assumes a standard working directory HOME with the following structure:
 % * HOME/system/conf/kleio contains configuration information.
 % * HOME/system/conf/kleio/token_db is the token database.
 % * HOME/system/conf/kleio/stru/gacto2.str is the default structure file.
-% * HOME/sources or HOME/projects is the base directory for source files.
+% * HOME/sources or HOME/projects is the base directory for projects source files
 % * HOME/users/ is the base directory for user related information (e.g. specific stru files).
 %
 % if such a structure is not found the Server will create a 
@@ -666,7 +666,7 @@ kleio_default_stru(D):-
     atom_concat(Home, '/gacto2.str', D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
-kleio_default_stru(D):-
+kleio_default_stru(D):- % this is the built-in default
     working_directory(Home,Home),
     atom_concat(Home, '/src/gacto2.str', D1),
     absolute_file_name(D1,D),

@@ -130,6 +130,7 @@ params(pars,
      [nomen,ordo,sequentian,identificatio,signum,fons,
       prae,post,locus, ceteri,certe,pars,solum,semper,repetitio]).
 params(exitus,[nomen]).
+params(lege,[nomen]).
 
 
 val(nomino,nomen,V)-->[(name,V)].
@@ -261,7 +262,7 @@ command(confirmatio,notYet).
 command(continuatio,notYet).
 command(finis,notYet).
 command(inspectio,notYet).
-command(lege,notYet).
+command(lege,ok).
 command(negatio,notYet).
 command(optiones,notYet).
 command(quaero,notYet).
@@ -371,6 +372,8 @@ engkw(note,         nota).
 engkw(options,      optiones).
 engkw(order,        ordo).
 engkw(part,         pars).
+engkw(group,        pars).
+engkw(entity,       pars).
 engkw(more,         plures).
 engkw(after,        post).
 engkw(suffix,       post).
@@ -388,6 +391,7 @@ engkw(without,      sine).
 engkw(sign,         signum).
 engkw(only,         solum).
 engkw(element,      terminus).
+engkw(attribute,    terminus).
 engkw(yes,          sic).
 engkw(no,           non).
 engkw(permanent,    permanens).
