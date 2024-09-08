@@ -318,10 +318,17 @@ Type ```make``` to see more targets that help in development.
 
 ### 2024-07-29 08:39:10 version 12.6.573
 
-Changes the handling of automatic ids, both is generating and display. See issue #40
-This regex removes automatic ids from people in a Kleio file /id=.*-per[0-9\-]* replace with empty string
+Changes the handling of automatic ids, both is generating and display.
+See issue #40
+
+Automatic ids are now prefixed with "__" and not echoed in the translated
+file.
+
+This regex removes automatic ids from people in a Kleio file /id=.*-per[0-9\-]* replace with empty string.
+
 For geo entities use: /id=.*-geo[0-9\-]*
-*Do not remove automatic ids in databases where record linking exists, because existing identifications will be lost*
+
+*Do not remove automatic ids in databases where record linking exists, because existing identifications involving entities with automatic ids will need to be fixed, by prefixing those matching the patterns above with "__"*
 
 
 ### 2024-07-29 07:52:13 version 12.6.572
