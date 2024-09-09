@@ -7,10 +7,10 @@ part name=geodesc; source=pt-acto;
     also=obs;
     part=geo1,geo2,geo3,geo4,atr,rel
 
-note Idea similar EU NUTS https://ec.eur:-opa.eu/eurostat/web/nuts/background 
-note doc group geo1 A geographical entity of level 1. Levels geo1 to geo4 
+note Idea similar EU NUTS https://ec.eur:-opa.eu/eurostat/web/nuts/background
+note doc group geo1 A geographical entity of level 1. Levels geo1 to geo4
      are defined.
-note 
+note
 part name=geo1; source=geoentity;
     position=name,type,id;
     part=geo2,atr,rel
@@ -28,7 +28,7 @@ part name=geo4; source=geoentity;
     part=atr,rel
 */
 
-/* dynamic loading of mappings works 
+/* dynamic loading of mappings works
 
 using module mappings:
 
@@ -36,16 +36,19 @@ using module mappings:
 
     and then consulting a file with mapping definitions
 
-        consult('tests/kleio-home/mappings/geodesc-mapping.pl').  
+        consult('tests/kleio-home/mappings/geodesc-mapping.pl').
 
 */
-mapping geo1 to class geo1.
-class geo1 super entity table geoentities
+
+user_mapping geo1 to class geoentity.
+user_mapping geo2 to class geoentity.
+
+user_class geo1 super entity table geoentities
   with attributes
-        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1 
+        id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
      and
         type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0
 	  and
-        name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0 
+        name column name baseclass name coltype varchar colsize 64 colprecision 0 pkey 0
      and
         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
