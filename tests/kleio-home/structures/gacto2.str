@@ -48,7 +48,7 @@ part name=historical-source;
   guaranteed=id;
   also=type,date,year,loc,ref,obs,replace, kleiofile;
   position=id,year,type,ref;
-  part=historical-act
+  part=historical-act, end, fragment
 
 note ============================================================
 note GeoEntity: a spatial entity
@@ -263,7 +263,13 @@ note    echoes the new act before producing the previous act
 note    reports.
 note =============================================================
 
-part name=end; also=id ; position=id
+part name=end; also=id,obs ; position=obs
+
+note Synonym can be used to introduce fragment of texts
+note before the transcription to help co-pilot inteligence
+part name=fragment; source=end; position=text
+
+element name=text; source=obs
 
 note
 note =============================================================
