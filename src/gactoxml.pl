@@ -889,7 +889,7 @@ p_cached_same:-
 
 p_export_cached_same_as(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date):-
 xml_nl,
-xml_write(['<RELATION ID="',AncID-Rid,'" ORG="',Id,'" DEST="',SID,'" TYPE="META" VALUE="same_as"/>']),
+xml_write(['<RELATION ID="','__'-AncID-Rid,'" ORG="',Id,'" DEST="',SID,'" TYPE="META" VALUE="same_as"/>']),
 xml_nl,
   xml_write(['<GROUP ID="',AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'"  CLASS="relation" LINE="',N,'">']),
   xml_nl,
@@ -934,7 +934,7 @@ process_function_in_act(Group,Id):-
   length(P,CurrentLevel),
   get_prop(line,number,N),
   ThisLevel is CurrentLevel+1,
-  xml_write(['<GROUP ID="',AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="relation" LINE="',N,'">']),
+  xml_write(['<GROUP ID="','__'-AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="relation" LINE="',N,'">']),
   xml_nl,
   xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
   xml_nl,
@@ -958,7 +958,7 @@ process_function_in_act(Group,Id):-
   xml_nl,
   xml_write(['    <ELEMENT NAME="destination" CLASS="destination"><core>',ActId,'</core></ELEMENT>']),
   xml_nl,
-  xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>',AncID-Rid,'</core></ELEMENT>']),
+  xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>','__'-AncID-Rid,'</core></ELEMENT>']),
   xml_nl,
   xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
   xml_nl,
@@ -1265,7 +1265,6 @@ match_range(List,Date):-
   atom_number(DateRange,Date),
   !.
 
-
 /*
     get_y_m_d: get the date if it was entered with three element (day/month/year).
 
@@ -1308,9 +1307,11 @@ get_group_id(Group,__BuiltinID,Id):- % no explicit id. Get the id of the ancesto
     get_ancestor(__Anc,Aid),!,
     clio_bclass(Group,Class),% by using the base class we allow group processors to reset the counters[??]
     sub_atom(Class,0,3,_,Seed),
-      repeat,
+    repeat,
     gensymbol_local(Seed,Gid),
-    (atom(Aid)->AAid=Aid;term_to_atom(Aid,AAid)),
+    (atom(Aid)->TempAAid=Aid;term_to_atom(Aid,TempAAid)),
+    % prefix with "__" if the ancestor id is not prefixed
+    (atom_concat('__',_,TempAAid) -> AAid=TempAAid ; atom_concat('__', TempAAid, AAid)),
      % we assumed that the ancestor''s id is prefixed so we do not check
     ((get_value(transcount,TransCount),TransCount>1) ->
         list_to_a0([AAid,'-',Gid,'-',TransCount],Id);
@@ -1366,7 +1367,7 @@ link_ancestor: Generate a link between the ancestor and the current group
 link_ancestor(G,ID):-!,
     gensymbol_local(rela,Rid),
    get_ancestor(__AGroup,Gid),			%writeln( get_ancestor(AGroup,Gid)),% get the ancestor
-   xml_write(['<RELATION ID="',Gid-Rid,'" ORG="',ID,'" DEST="',Gid,'" TYPE="contained-in" VALUE="',G,'"/>']),
+   xml_write(['<RELATION ID="','__'-Gid-Rid,'" ORG="',ID,'" DEST="',Gid,'" TYPE="contained-in" VALUE="',G,'"/>']),
     xml_nl.
 
 
@@ -1609,7 +1610,7 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   length(P,CurrentLevel),
   ThisLevel is CurrentLevel+1,
   get_prop(line,number,N),
-  xml_write(['<GROUP ID="',AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="relation" LINE="',N,'">']),
+  xml_write(['<GROUP ID="','__'-AncID-Rid,'" NAME="relation"  ORDER="',GroupNumber,'" LEVEL="',ThisLevel,'" CLASS="relation" LINE="',N,'">']),
   xml_nl,
   xml_write(['    <ELEMENT NAME="line" CLASS="line"><core>',N,'</core></ELEMENT>']),
   xml_nl,
@@ -1633,7 +1634,7 @@ export_auto_rel((__Origin,OriginID),(__Destination,DestinationID),Type,Value) :-
   xml_nl,
   xml_write(['    <ELEMENT NAME="destination" CLASS="destination"><core>',DestinationID,'</core></ELEMENT>']),
   xml_nl,
-  xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>',AncID-Rid,'</core></ELEMENT>']),
+  xml_write(['    <ELEMENT NAME="id" CLASS="id"><core>','__'-AncID-Rid,'</core></ELEMENT>']),
   xml_nl,
   xml_write(['    <ELEMENT NAME="date" CLASS="date"><core>',Date,'</core></ELEMENT>']),
   xml_nl,

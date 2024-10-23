@@ -334,13 +334,15 @@ translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/varia',false).
 % the next two go together
-translate_file('sources/api/issues/issue34.cli',true).
-translate_file('sources/api/issues/issue34b.cli',true).
+translate_file('sources/api/issues/issue34.cli',false).
+translate_file('sources/api/issues/issue34b.cli',false).
+translate_file('sources/api/issues/issue40.cli',true).
+translate_file('sources/api/issues/issue36/issue36.cli',false).
 
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).

@@ -113,7 +113,7 @@ clioPP2(G,ID):-
 		;
 		(
 			(get_value(idout,false) ->  % if the id was not output so far, output it now.
-				writelist0(['/id=',ID])
+				(atom_concat('__',_,ID);writelist0(['/id=',ID]))
 			;
 				true
 			) % id was previously output
