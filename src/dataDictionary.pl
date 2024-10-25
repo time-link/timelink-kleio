@@ -35,21 +35,21 @@
     The data dictionnary stores the information contained in
     the kleio structure file
     FALTA AQUI A EXPLICACAO DAS ESTRUTURAS EXTERNAS
-    TODO: Para ter processamento com multiplos schemas (strus) podia-se usar 
+    TODO: Para ter processamento com multiplos schemas (strus) podia-se usar
     convenções semelhantes às que do mysql: use_stru(S) daqui em diante os comandos dizem respeito a S
     Isso talvez envolvesse apenas make_group e make_element e clioGroup e clioElement, mas tem de ser analisado com cuidado.
 
 * create_stru(S) S= status of nomino command
     creates a predicate clioStru(F) where F is the nomen
     parameter of the nomino command and copies the
-    other parameters of nomino as properties of F    
+    other parameters of nomino as properties of F
 *  clean_stru(F):- cleans any existing structure definition
      for file F
 *  isDoc(N) tests if N is a document
-*  anc_of(G,A) returns in A the ancestor of G    
-*  subgroups(G,S) S is the list of subgroups of G    
+*  anc_of(G,A) returns in A the ancestor of G
+*  subgroups(G,S) S is the list of subgroups of G
 *  element_of(E,G):- checks to which group belongs
-    element G.    
+    element G.
 *  create_groups(NameList)
      creates, if not yet created, clauses for the groups
      in NameList
@@ -66,13 +66,13 @@
      same as above but sets the property for a list of elements
 *  set_group_defaults(Group) sets default values
 *  set_element_defaults(Element) sets default values
-    
+
 *  all_groups(List) - list of all the currently defined groups
 *  all_elements(List) - list of all the currently defined elements
 *  show_stru:- show current structure definition
 *  show_groups:- show the properties of all groups
 *  show_elements:- show the properties of all elements
-    
+
 *  clean_groups. deletes previous group definitions
 *  clean_elements. deletes previous element definitions
 
@@ -146,7 +146,7 @@ isDoc(N):-
 %******************************************************
 %  %
 anc_of(G,[]):-isDoc(G).
-anc_of(G,A):-          
+anc_of(G,A):-
     clioGroup(A,ID),
     get_prop(ID,repetitio,L),
     member(G,L).
@@ -212,7 +212,7 @@ create_group(Group):-
    make_group(Group),
    set_group_defaults(Group),!.
 
-%% make_group(+Group) is det. 
+%% make_group(+Group) is det.
 %
 % Creates a group definition.
 %      Does nothing if there is already a group definition
@@ -262,7 +262,7 @@ make_element(Element):-
 
 %%  clioElement(?ElementName,?ElementId) is nondet.
 %
-% ElementName exists in the current schema with internal identifier 
+% ElementName exists in the current schema with internal identifier
 % ElementId
 %
 clioElement(ElementName,ElementId):-
@@ -347,7 +347,7 @@ set_pars_defaults(Group):-
    % store default params %
    set_prop(Id,ordo,sic),
    set_prop(Id,sequentia,sic),
-   set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc % 
+   set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc %
    set_prop(Id,post,non),
    set_prop(Id,prae,non),
    make_signum(Group,Signum),
@@ -361,7 +361,7 @@ make_signum(Group,Signum):- % take the first 3 letters of group name%
 mks(Chars,[A,B,C]):-
    append([A,B,C],_,Chars),!.
 mks([A,B],[A,B]):-!.
-mks([A],[A]):-!. 
+mks([A],[A]):-!.
 
 % pars, sine, signa, forma, ceteri, solum params not implemented %
 set_terminus_defaults(Element):-
@@ -371,7 +371,7 @@ set_terminus_defaults(Element):-
    set_prop(Id,primum,lingua),
    set_prop(Id,secundum,lingua),
    set_prop(Id,ordo,simplex),
-   set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc % 
+   set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc %
    set_prop(Id,post,non),
    set_prop(Id,prae,non),
    set_prop(Id,cumule,non),!.
@@ -388,7 +388,7 @@ set_generic_e(E):-
 set_generic_e(__E):-!.
 
 %*************************************************************
-% generic_groups(Group,List) 
+% generic_groups(Group,List)
 %      List contains the names of generic groups that match
 %      Group
 %*************************************************************
@@ -399,7 +399,7 @@ generic_groups(Group,List):-
    setof(G,(member(G,Prae);member(G,Post)),List),!. % union %
 
 %*************************************************************
-% generic_elements(Element,List) 
+% generic_elements(Element,List)
 %      List contains the names of generic elements that match
 %      Element
 %*************************************************************
@@ -464,7 +464,7 @@ copy_element(E,H):- %copies properties in H to E %
    clioElement(H,ID), %get id of element H)%
    get_props(ID,List),% get its properties %
    forall((member(P,List), P \= fons),(get_prop(ID,P,V),set_element_prop(E,P,V))),!.
- 
+
 %*************************************************************
 % copy_fons_g(Group,Groups)
 %      copies the proprieties of Group to Groups
@@ -516,7 +516,7 @@ show_stru:- \+ clioStru(__S),
 show_structure(S):-
     write('Structure definition for: '),write(S),tab(1),
     get_prop(S,primum,D), % get the document name %
-    write('document: '),writeln(D), 
+    write('document: '),writeln(D),
     shgroup(D,1),
     show_elements.
 shgroup(G,N):-
@@ -540,11 +540,11 @@ show_els(G,N):-
     N1 is N+5,show_props(ID,N1),
     fail.
 show_els(_,_):-!.
-    
+
 
 %*************************************************************
 % show_groups:- show the properties of all groups
-%      
+%
 %*************************************************************
 % %
 
@@ -586,11 +586,11 @@ make_html_doc(DocPath):-
 %}
 make_json_doc(ClioFile,JsonFile):-
    collect_groups_json(GroupsInfo),
-   JSON_STRU=json{path:ClioFile,groups:GroupsInfo}, 
+   JSON_STRU=json{path:ClioFile,groups:GroupsInfo},
    open_file_write(JsonFile),
    json_write_dict(JsonFile,JSON_STRU,[]),
    close_file(JsonFile),!.
-             
+
 show_groups_html:-
               clioGroup(G,_),
               %cd(doc),
@@ -625,7 +625,7 @@ collect_group_json(G,I):-
     append(Pars,Repetitio, Includes),
     concat_lists_into_set(C, L, X, Complete),
     I = G{'name':G,properties:P,minimal:C,typical:L,complete:Complete,includes:Includes}.
-   
+
 collect_group_json(_,_):-!.
 
 concat_lists_into_set(C, L, X, Result) :-
@@ -641,7 +641,7 @@ group_to_html(File,G):-
     writeln('<html>'),
     writeln('<head>'),
     writelist(['<title>',G,'</title>']),
-    writeln('</head>'),    
+    writeln('</head>'),
     writeln('<body>'),
     writeln('<!-- '),
     get_props(ID,P),
@@ -653,7 +653,7 @@ group_to_html(File,G):-
     (get_prop(ID,repetitio,Repetitio); Repetitio=[]),writeln(repetitio-Repetitio),!,
     writeln(' -->'),
     writelist0ln(['<font size="+2">',G,'$</font>']),
-    (member(fons,P) -> 
+    (member(fons,P) ->
         (writeln(' (based on  :'),get_prop(ID,fons,Fons),
          writelist0ln(['<A href="',Fons,'.html">',Fons,'</A>)<br>']))
          ;
@@ -666,7 +666,7 @@ group_to_html(File,G):-
     writelist0(['Minimal:<b>  ',G,'$']),show_positional(C,L),write('</b>'),
     writelist0(['Typical:<b>  ',G,'$']),show_locus(C,L),write('</b>'),
     sort(X,SX),merge_set(L,C,T),merge_set(T,SX,All),
-   
+
     writelist0(['Complete: <b>',G,'$']),show_positional(All,L), write('</b>'),
     sort(Pars,SPars),sort(Repetitio,SRepetitio),merge_set(SPars,SRepetitio,Includes),
     writeln('Occurs in: <b>'), show_ancestors(G),write('</b>'),
@@ -677,15 +677,15 @@ group_to_html(File,G):-
    % told,
     tell(O).
 
-	 
-show_edocs(G):-	 
+
+show_edocs(G):-
 	write('<DL>'),
 	 clause(struSyntax:edoc(G,E,Doc),true),
 	 write('<DT>'),write(E),write('</DT>'),
 	 list_to_a0(Doc,SDoc),write('<DD>'),write(SDoc),write('</DD>'),writeln('<br>'),
 	 fail.
 show_edocs(_):-!.
-	 
+
   % mostra todos os Locus (elementos posicionais) que sao certe (obrigatorios)
 
 show_positional(Certe,Locus):-
@@ -702,14 +702,14 @@ show_positional(__Certe,[],Ws,Ws):-!.
 show_nonpositional(Certe,Locus,yes):-
     member(C,Certe),
     \+ member(C,Locus),
-    write('/'),write(C),write('='),write('...'),    
+    write('/'),write(C),write('='),write('...'),
     fail.
 show_nonpositional(Certe,Locus,no):-
     % writeln(show_nonpositional(Certe,Locus,no)),
     member(C,Certe),
     \+ member(C,Locus),
-    write(C),write('='),write('...'),    
-    fail.    
+    write(C),write('='),write('...'),
+    fail.
 show_nonpositional(__Certe,__Locus,_):-write('<br>'),!.
 
 
@@ -730,18 +730,18 @@ show_includes([I|Rest],no):-
     show_includes(Rest,yes).
 show_includes([I|Rest],yes):-
     writelist0([', <A HREF="',I,'.html">',I,'</A>']),
-    show_includes(Rest,yes).  
-show_includes([],_):-write('<br>'),nl,!.  
+    show_includes(Rest,yes).
+show_includes([],_):-write('<br>'),nl,!.
 
 show_ancestors(G):-
     anc_of(G,A),
-    writelist0ln(['<A HREF="',A,'.html">',A,'</A>']),   
+    writelist0ln(['<A HREF="',A,'.html">',A,'</A>']),
     fail.
 show_ancestors(_):-writeln('<br>'),!.
-     
+
 %*************************************************************
 % show_elements:- show the properties of all elements
-%      
+%
 %*************************************************************
 % %
 show_elements:-nl,write('Elements (clioElement): '),listClioElements,
@@ -757,7 +757,7 @@ listClioElements:-nl,!.
 %*************************************************************
 % %
 clean_groups(__F):-
-   all_groups(List),      
+   all_groups(List),
    remove_groups(List),
    init_gensym(cgroup),!.
 
@@ -773,7 +773,7 @@ remove_groups([]):-!.
 %*************************************************************
 % %
 clean_elements(__F):-
-   all_elements(List),      
+   all_elements(List),
    remove_elements(List),
    init_gensym(cel),!.
 
@@ -787,7 +787,7 @@ remove_elements([]):-!.
 
 
 % vim: filetype=prolog ts=3
-% $Date$ 
+% $Date$
 % $Author$
 % $Id$
 % $Log: dataDictionary.pl,v $
