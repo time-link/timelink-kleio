@@ -316,6 +316,11 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2024-10-23 17:25:42 version 12.6.575
+
+Fixes problem with local token db that generated a false error of unkown method in some token operations.
+
+
 ### 2024-07-29 07:52:13 version 12.6.572
 
 Added `property$NAME/VALUE` subgroup to the `kleio$` group.
