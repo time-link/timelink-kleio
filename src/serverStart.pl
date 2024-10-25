@@ -321,7 +321,7 @@ server_results([R|Rs],[D|Ds]):-
 server_results([],[]).
 
 test_case(translations,File,Stru):-
-    Stru = 'system/conf/kleio/stru/gacto2.str',
+    Stru = 'structures/gacto2.str',
     translate_file(File,Flag),
     Flag = true,
     format('TESTING ~wn',[File]).
@@ -340,7 +340,7 @@ translate_file('sources/api/issues/issue34b.cli',true).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',true).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
