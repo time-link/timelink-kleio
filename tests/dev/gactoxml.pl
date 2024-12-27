@@ -1204,11 +1204,24 @@ match_single_date([Y,'-',M,'-',D],DATE):-
   is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
   Y1 > 31,
   DATE is Y1*10000+M1*100+D1,!.
+% Match Y-M day missing
+match_single_date([Y,'-',M],DATE):-
+  is_a_number(Y,Y1),is_a_number(M,M1),
+  Y1 > 31,
+  DATE is Y1*10000+M1*100,!.
+
 % match D-M-Y
 match_single_date([D,'-',M,'-',Y],DATE2):-
   is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
   Y1 > 31,
   DATE1 is Y1*10000+M1*100+D1,
+  atom_number(DATE2,DATE1),!.
+
+% match M-Y
+match_single_date([M,'-',Y],DATE2):-
+  is_a_number(Y,Y1),is_a_number(M,M1),
+  Y1 > 31,
+  DATE1 is Y1*10000+M1*100,
   atom_number(DATE2,DATE1),!.
 
 % match 000000

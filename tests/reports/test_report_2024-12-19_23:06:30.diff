@@ -1,0 +1,900 @@
+Thu Dec 19 23:06:30 WET 2024 /Users/jrc/develop/timelink-kleio/tests
+Comparing translation results.
+Thu Dec 19 23:13:01 WET 2024 /Users/jrc/develop/timelink-kleio/tests
+Only in kleio-home/sources/reference_translations: .gitignore
+diff -r kleio-home/sources/reference_translations/bugs/bugs.err kleio-home/sources/test_translations/bugs/bugs.err
+diff -r kleio-home/sources/reference_translations/bugs/bugs.files.json kleio-home/sources/test_translations/bugs/bugs.files.json
+diff -r kleio-home/sources/reference_translations/bugs/bugs.rpt kleio-home/sources/test_translations/bugs/bugs.rpt
+diff -r kleio-home/sources/reference_translations/bugs/bugs.xml kleio-home/sources/test_translations/bugs/bugs.xml
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.err kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.err
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.files.json kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.files.json
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.rpt kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.rpt
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.xml kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.xml
+diff -r kleio-home/sources/reference_translations/issues/issue21.files.json kleio-home/sources/test_translations/issues/issue21.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue21.rpt kleio-home/sources/test_translations/issues/issue21.rpt
+diff -r kleio-home/sources/reference_translations/issues/issue21.xml kleio-home/sources/test_translations/issues/issue21.xml
+diff -r kleio-home/sources/reference_translations/issues/issue34.cli kleio-home/sources/test_translations/issues/issue34.cli
+1,2c1
+< kleio$gacto2.str
+<     property$multiple-entry-flag/124
+<     fonte$issue34/2024
+>    property$multiple-entry-flag/124/id=root-pro1
+>    fonte$issue34/2024
+<         lista$mutiple-entries/0/0/0
+>       lista$mutiple-entries/0/0/0
+<          n$joaquim
+<             ls$nomes/joaquim|manuel|costa|ramos|carvalho/obs=neste caso
+<             usamos o caracter ascii 124 para separar diferentes valores para o mesmo elemento
+<             ls$nomes/joaquim;manuel;costa;ramos;carvalho/obs=neste caso
+<             o ponto e virgula não separa os nomes
+>          n$joaquim/id=mutiple-entries-per1
+>             ls$nomes/joaquim|manuel|costa|ramos|carvalho/obs=neste caso usamos o caracter ascii 124 para separar diferentes valores para o mesmo elemento
+>             ls$nomes/joaquim;manuel;costa;ramos;carvalho/obs=neste caso o ponto e virgula não separa os nomes
+<         b$b1788.1118/22/1/1788/vigario luis barreto de figueiredo castilho e o reverendo cosme dias ribeiro de coimbra
+>       b$b1788.1118/22/1/1788/vigario luis barreto de figueiredo castilho e o reverendo cosme dias ribeiro de coimbra
+<             n$bernardo/m/obs=diz a margem casais; fl.10v/id=b1788.1118-per1
+<                ls$datanasc/17880111
+\ No newline at end of file
+>          n$bernardo/m/obs=diz a margem casais; fl.10v/id=b1788.1118-per1
+>             ls$datanasc/17880111
+diff -r kleio-home/sources/reference_translations/issues/issue34.err kleio-home/sources/test_translations/issues/issue34.err
+< 1  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/issues/issue34.files.json kleio-home/sources/test_translations/issues/issue34.files.json
+<   "errors":1,
+>   "errors":0,
+Only in kleio-home/sources/reference_translations/issues: issue34.ids
+Only in kleio-home/sources/test_translations/issues: issue34.org
+diff -r kleio-home/sources/reference_translations/issues/issue34.rpt kleio-home/sources/test_translations/issues/issue34.rpt
+18,22d17
+< 
+< ERROR: issue34.cli line 3 ** INTERNAL ERROR: Failure: db_store
+< Near lines: 3 
+< Near lines: 4     fonte$issue34/2024
+< 
+< 1  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/issues/issue34.xml kleio-home/sources/test_translations/issues/issue34.xml
+<          <core><![CDATA[joaquim|manuel|costa|ramos|carvalho]]></core>   </ELEMENT>
+>          <core><![CDATA[joaquim]]></core>      <core><![CDATA[manuel]]></core>      <core><![CDATA[costa]]></core>      <core><![CDATA[ramos]]></core>      <core><![CDATA[carvalho]]></core>   </ELEMENT>
+<          <core><![CDATA[joaquim]]></core>      <core><![CDATA[manuel]]></core>      <core><![CDATA[costa]]></core>      <core><![CDATA[ramos]]></core>      <core><![CDATA[carvalho]]></core>   </ELEMENT>
+>          <core><![CDATA[joaquim;manuel;costa;ramos;carvalho]]></core>   </ELEMENT>
+<          <core><![CDATA[diz a margem casais]]></core>      <core><![CDATA[ fl.10v]]></core>   </ELEMENT>
+>          <core><![CDATA[diz a margem casais; fl.10v]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/issues/issue34b.files.json kleio-home/sources/test_translations/issues/issue34b.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue34b.rpt kleio-home/sources/test_translations/issues/issue34b.rpt
+diff -r kleio-home/sources/reference_translations/issues/issue34b.xml kleio-home/sources/test_translations/issues/issue34b.xml
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.cli kleio-home/sources/test_translations/issues/issue38/issue38.cli
+< kleio$
+<     link$wikidata/"https://www.wikidata.org/wiki/$1"
+>    link$wikidata/"https://www.wikidata.org/wiki/$1"/id=root-lin1
+>    fonte$issue38/2024
+3a5
+>       crono$1663-6/Fora da China/Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)/id=deh-chronologie-his127-78
+5,6c7
+<     fonte$issue38/2024
+<     crono$1663-6/Fora da China/Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)/id=deh-chronologie-his127-78
+>          lugar$Tonquim%Tonkin#@wikidata:Q622778/id=deh-chronologie-his127-78-geo91-78
+<     lugar$Tonquim%Tonkin#@wikidata:Q622778/id=deh-chronologie-his127-78-geo91-78
+>          topico$Perseguição aos Cristãos/id=deh-chronologie-his127-78-obj1-78
+<     topico$Perseguição aos Cristãos/id=deh-chronologie-his127-78-obj1-78
+>          topico$Companhia Francesa das Indias Orientais/id=deh-chronologie-his127-78-obj2-78
+12,14c13
+<     topico$Companhia Francesa das Indias Orientais/id=deh-chronologie-his127-78-obj2-78
+< 
+<     lugar$Cantão#@wikidata:Q16572/id=deh-chronologie-his127-78-geo92-78
+>          lugar$Cantão#@wikidata:Q16572/id=deh-chronologie-his127-78-geo92-78
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.err kleio-home/sources/test_translations/issues/issue38/issue38.err
+< 20  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.files.json kleio-home/sources/test_translations/issues/issue38/issue38.files.json
+<   "errors":20,
+>   "errors":0,
+Only in kleio-home/sources/reference_translations/issues/issue38: issue38.ids
+Only in kleio-home/sources/test_translations/issues/issue38: issue38.org
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.rpt kleio-home/sources/test_translations/issues/issue38/issue38.rpt
+19,127c19
+< 
+< ERROR: issue38.cli line 4 *** Current group crono cannot be linked with previous group fonte(issue38)
+< Near lines: 4     fonte$issue38/2024
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ***crono group not stored.
+< Near lines: 4     fonte$issue38/2024
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** Failure: undefined element. Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)
+< 
+< Near lines: 4     fonte$issue38/2024
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** ID already used in this file: issue38
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< ** Processing source fonte$issue38
+< 
+< ERROR: issue38.cli line 4 *** Current group lugar cannot be linked with previous group fonte(issue38)
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ***lugar group not stored.
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** Failure: undefined element.  lugar$Tonquim%Tonkin#@wikidata:Q622778
+< 
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** ID already used in this file: issue38
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< ** Processing source fonte$issue38
+< 
+< ERROR: issue38.cli line 4 *** Current group topico cannot be linked with previous group fonte(issue38)
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ***topico group not stored.
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** Failure: undefined element.  topico$Perseguição aos Cristãos
+< 
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** ID already used in this file: issue38
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< ** Processing source fonte$issue38
+< 
+< ERROR: issue38.cli line 4 *** Current group topico cannot be linked with previous group fonte(issue38)
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ***topico group not stored.
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** Failure: undefined element.  topico$Companhia Francesa das Indias Orientais
+< 
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** ID already used in this file: issue38
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< ** Processing source fonte$issue38
+< 
+< ERROR: issue38.cli line 4 *** Current group lugar cannot be linked with previous group fonte(issue38)
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ***lugar group not stored.
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** Failure: undefined element.  lugar$Cantão#@wikidata:Q16572
+< 
+< Near lines: 4 
+< Near lines: 5     fonte$issue38/2024
+< 
+< 
+< ERROR: issue38.cli line 4 ** ID already used in this file: issue38
+< Near lines: 4 Near lines: 5     fonte$issue38/2024
+< 
+< ** Processing source fonte$issue38
+> 8: crono$deh-chronologie-his127-78
+< 20  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.xml kleio-home/sources/test_translations/issues/issue38/issue38.xml
+29a30,37
+> <CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="crono">
+> </CLASS>
+< <GROUP ID="issue38" NAME="fonte" CLASS="source" ORDER="2" LEVEL="1" LINE="8">
+<     <ELEMENT NAME="id" CLASS="id"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>crono</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+<    <ELEMENT NAME="year" CLASS="undef">
+<          <core><![CDATA[2024]]></core>   </ELEMENT>
+<    <ELEMENT NAME="type" CLASS="type">
+<          <core><![CDATA[ crono$1663-6]]></core>   </ELEMENT>
+<    <ELEMENT NAME="ref" CLASS="ref">
+>     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+>    <ELEMENT NAME="data" CLASS="date">
+>          <core><![CDATA[1663-6]]></core>   </ELEMENT>
+>    <ELEMENT NAME="loc" CLASS="loc">
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+>    <ELEMENT NAME="description" CLASS="undef">
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+<    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+>          <core><![CDATA[16630600]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[crono]]></core>   </ELEMENT>
+51a58,63
+> <CLASS NAME="geoentity" SUPER="entity" TABLE="geoentities" GROUP="lugar">
+> </CLASS>
+< <GROUP ID="issue38" NAME="fonte" CLASS="source" ORDER="3" LEVEL="1" LINE="10">
+<     <ELEMENT NAME="id" CLASS="id"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>lugar</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+<    <ELEMENT NAME="year" CLASS="undef">
+<          <core><![CDATA[2024]]></core>   </ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="name" CLASS="name">
+>          <core><![CDATA[Tonquim]]></core>         <original><![CDATA[Tonkin]]></original>
+>          <comment><![CDATA[@wikidata:Q622778]]></comment>
+>    </ELEMENT>
+64,74c78
+<          <core><![CDATA[ crono$1663-6]]></core>   </ELEMENT>
+<    <ELEMENT NAME="ref" CLASS="ref">
+<          <core><![CDATA[Fora da China]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="date" CLASS="date">
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+<    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+>          <core><![CDATA[lugar]]></core>   </ELEMENT>
+< <CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="atr">
+> <CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+77a82,105
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-geo91-78</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>lugar</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>crono</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>deh-chronologie-his127-78-geo91-78</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>deh-chronologie-his127-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+> </GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="atr">
+<     <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-geo91-78</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[historical-source:UNDEFINED@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[geoentity:name@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>00000000</core></ELEMENT>
+< </GROUP>
+< <GROUP ID="issue38" NAME="fonte" CLASS="source" ORDER="5" LEVEL="1" LINE="12">
+>     <ELEMENT NAME="entity" CLASS="entity"><core>deh-chronologie-his127-78-geo91-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+> </GROUP><CLASS NAME="object" SUPER="entity" TABLE="objects" GROUP="object">
+> </CLASS>
+> <CLASS NAME="topico" SUPER="object" TABLE="topicos" GROUP="topico">
+> </CLASS>
+> 
+<     <ELEMENT NAME="id" CLASS="id"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+<    <ELEMENT NAME="year" CLASS="undef">
+<          <core><![CDATA[2024]]></core>   </ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>topico</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>topico</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="name" CLASS="name">
+>          <core><![CDATA[Perseguição aos Cristãos]]></core>   </ELEMENT>
+109,121c149
+<          <core><![CDATA[ crono$1663-6]]></core>   </ELEMENT>
+<    <ELEMENT NAME="ref" CLASS="ref">
+<          <core><![CDATA[Fora da China]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="date" CLASS="date">
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+<    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+>          <core><![CDATA[topico]]></core>   </ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[historical-source:UNDEFINED@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value">      <core><![CDATA[https://www.wikidata.org/wiki/Q622778]]></core>      <comment><![CDATA[@wikidata:Q622778]]></comment>      <original><![CDATA[Q622778]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>00000000</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-obj1-78</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>topico</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>crono</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>deh-chronologie-his127-78-obj1-78</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>deh-chronologie-his127-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+< <GROUP ID="issue38" NAME="fonte" CLASS="source" ORDER="7" LEVEL="1" LINE="14">
+<     <ELEMENT NAME="id" CLASS="id"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+<    <ELEMENT NAME="year" CLASS="undef">
+<          <core><![CDATA[2024]]></core>   </ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>topico</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>topico</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="name" CLASS="name">
+>          <core><![CDATA[Companhia Francesa das Indias Orientais]]></core>   </ELEMENT>
+148,162c178
+<          <core><![CDATA[ crono$1663-6]]></core>   </ELEMENT>
+<    <ELEMENT NAME="ref" CLASS="ref">
+<          <core><![CDATA[Fora da China]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="date" CLASS="date">
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+<    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+>          <core><![CDATA[topico]]></core>   </ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[historical-source:UNDEFINED@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value">      <core><![CDATA[https://www.wikidata.org/wiki/Q622778]]></core>      <comment><![CDATA[@wikidata:Q622778]]></comment>      <original><![CDATA[Q622778]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>00000000</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-obj2-78</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>topico</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>crono</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>deh-chronologie-his127-78-obj2-78</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>deh-chronologie-his127-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+< <GROUP ID="issue38" NAME="fonte" CLASS="source" ORDER="9" LEVEL="1" LINE="15">
+<     <ELEMENT NAME="id" CLASS="id"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>fonte</core></ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+<    <ELEMENT NAME="year" CLASS="undef">
+<          <core><![CDATA[2024]]></core>   </ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>lugar</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>geoentity</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="name" CLASS="name">
+>          <core><![CDATA[Cantão]]></core>         <comment><![CDATA[@wikidata:Q16572]]></comment>
+>    </ELEMENT>
+189,205c208
+<          <core><![CDATA[ crono$1663-6]]></core>   </ELEMENT>
+<    <ELEMENT NAME="ref" CLASS="ref">
+<          <core><![CDATA[Fora da China]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="UNDEFINED" CLASS="undef">
+<          <core><![CDATA[Perseguição em Tonkin. 1664-1770 Companhia Francesa das Indias Orientais (Cantão)]]></core>   </ELEMENT>
+<    <ELEMENT NAME="date" CLASS="date">
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+<    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+>          <core><![CDATA[lugar]]></core>   </ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>atr</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[historical-source:UNDEFINED@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value">      <core><![CDATA[https://www.wikidata.org/wiki/Q622778]]></core>      <comment><![CDATA[@wikidata:Q622778]]></comment>      <original><![CDATA[Q622778]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>00000000</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-geo92-78</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>lugar</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>crono</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>deh-chronologie-his127-78-geo92-78</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>deh-chronologie-his127-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>issue38</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>deh-chronologie-his127-78-geo92-78</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[historical-source:UNDEFINED@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[geoentity:name@wikidata]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>issue38</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>00000000</core></ELEMENT>
+>     <ELEMENT NAME="entity" CLASS="entity"><core>deh-chronologie-his127-78-geo92-78</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>16630600</core></ELEMENT>
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.err kleio-home/sources/test_translations/linked_data/dehergne-a.err
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.files.json kleio-home/sources/test_translations/linked_data/dehergne-a.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.rpt kleio-home/sources/test_translations/linked_data/dehergne-a.rpt
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.xml kleio-home/sources/test_translations/linked_data/dehergne-a.xml
+<          <core><![CDATA[Aguiar Souen, Joseph de (chin.) P. 8 Souen Jo-chô Kio-Jen To-Yin (Pf.: Suen ... Touo-In). N. 25 nov. 1714, Changshu (Tch'ang-chou), Kiang-sou. E. 21 sept. 1742]]></core>      <core><![CDATA[ était à Pékin en 1751. P. 1751 (Pf.). M. 1 janv. 1752, Pékin (Planchet p. 147). Pf. 807.]]></core>   </ELEMENT>
+>          <core><![CDATA[Aguiar Souen, Joseph de (chin.) P. 8 Souen Jo-chô Kio-Jen To-Yin (Pf.: Suen ... Touo-In). N. 25 nov. 1714, Changshu (Tch'ang-chou), Kiang-sou. E. 21 sept. 1742; était à Pékin en 1751. P. 1751 (Pf.). M. 1 janv. 1752, Pékin (Planchet p. 147). Pf. 807.]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.err kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.err
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.files.json kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.rpt kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.rpt
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.xml kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.xml
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.err kleio-home/sources/test_translations/linked_data/linked-datanw.err
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.files.json kleio-home/sources/test_translations/linked_data/linked-datanw.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.rpt kleio-home/sources/test_translations/linked_data/linked-datanw.rpt
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.xml kleio-home/sources/test_translations/linked_data/linked-datanw.xml
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.cli kleio-home/sources/test_translations/linked_data/multiplelinks.cli
+<    link$wikidata/"https://www.wikidata.org/wiki/$1"/id=root-lin1-2
+<    link$bnportugal/"http://id.bnportugal.gov.pt/aut/catbnp/$1"/id=root-lin2-2
+<    link$iarchive/"https://archive.org/details/$1"/id=root-lin3-2
+>    link$wikidata/"https://www.wikidata.org/wiki/$1"/id=root-lin2-2
+>    link$bnportugal/"http://id.bnportugal.gov.pt/aut/catbnp/$1"/id=root-lin3-2
+>    link$iarchive/"https://archive.org/details/$1"/id=root-lin4-2
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.err kleio-home/sources/test_translations/linked_data/multiplelinks.err
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.files.json kleio-home/sources/test_translations/linked_data/multiplelinks.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.rpt kleio-home/sources/test_translations/linked_data/multiplelinks.rpt
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.xml kleio-home/sources/test_translations/linked_data/multiplelinks.xml
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.err kleio-home/sources/test_translations/notariais/docsregiospontepisc.err
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.files.json kleio-home/sources/test_translations/notariais/docsregiospontepisc.files.json
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.rpt kleio-home/sources/test_translations/notariais/docsregiospontepisc.rpt
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.xml kleio-home/sources/test_translations/notariais/docsregiospontepisc.xml
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.err kleio-home/sources/test_translations/notariais/notarial80.err
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.files.json kleio-home/sources/test_translations/notariais/notarial80.files.json
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.rpt kleio-home/sources/test_translations/notariais/notarial80.rpt
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.xml kleio-home/sources/test_translations/notariais/notarial80.xml
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.err kleio-home/sources/test_translations/notariais/notlousa1.err
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.files.json kleio-home/sources/test_translations/notariais/notlousa1.files.json
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.rpt kleio-home/sources/test_translations/notariais/notlousa1.rpt
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.xml kleio-home/sources/test_translations/notariais/notlousa1.xml
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.err kleio-home/sources/test_translations/notariais/perdoes.err
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.files.json kleio-home/sources/test_translations/notariais/perdoes.files.json
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.rpt kleio-home/sources/test_translations/notariais/perdoes.rpt
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.xml kleio-home/sources/test_translations/notariais/perdoes.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.xml kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.err kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.err
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.err kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.err
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.xml
+<          <core><![CDATA[diz a margem casais]]></core>      <core><![CDATA[ so foram postos os oleos, visto ter sido baptizada em necessidade aos 21 de abril]]></core>   </ELEMENT>
+>          <core><![CDATA[diz a margem casais; so foram postos os oleos, visto ter sido baptizada em necessidade aos 21 de abril]]></core>   </ELEMENT>
+<          <core><![CDATA[vigario luis barreto de figueiredo castilho]]></core>      <core><![CDATA[ este assento so foi registado em 1781]]></core>   </ELEMENT>
+>          <core><![CDATA[vigario luis barreto de figueiredo castilho; este assento so foi registado em 1781]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.err kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.err
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.xml kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.err kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.err
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.xml kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.err kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.err
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.files.json kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.rpt kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.xml kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.err kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.err
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.files.json kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.rpt kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.xml kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.err kleio-home/sources/test_translations/paroquiais/obitos/ob1688.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.files.json kleio-home/sources/test_translations/paroquiais/obitos/ob1688.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.rpt kleio-home/sources/test_translations/paroquiais/obitos/ob1688.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.xml kleio-home/sources/test_translations/paroquiais/obitos/ob1688.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.err kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.files.json kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.rpt kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.xml kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.err kleio-home/sources/test_translations/paroquiais/obitos/obit1714.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.files.json kleio-home/sources/test_translations/paroquiais/obitos/obit1714.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.rpt kleio-home/sources/test_translations/paroquiais/obitos/obit1714.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.xml kleio-home/sources/test_translations/paroquiais/obitos/obit1714.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.err kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.files.json kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.rpt kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.xml kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.xml
+<          <core><![CDATA[sepultado em habito de santo antonio]]></core>   </ELEMENT>
+>          <core><![CDATA[sepultado em habito de santo antonio;]]></core>   </ELEMENT>
+<          <core><![CDATA[legitimada pelo pai]]></core>      <core><![CDATA[ morre em casa deste]]></core>   </ELEMENT>
+>          <core><![CDATA[legitimada pelo pai; morre em casa deste]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.err kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.err kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.err kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.xml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.err kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.files.json kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.rpt kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.rpt
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.xml kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.xml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.err kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.files.json kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.rpt kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.rpt
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.xml kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.xml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.err kleio-home/sources/test_translations/roisdeconfessados/rol1.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.files.json kleio-home/sources/test_translations/roisdeconfessados/rol1.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.rpt kleio-home/sources/test_translations/roisdeconfessados/rol1.rpt
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.xml kleio-home/sources/test_translations/roisdeconfessados/rol1.xml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.err kleio-home/sources/test_translations/roisdeconfessados/rol2.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.files.json kleio-home/sources/test_translations/roisdeconfessados/rol2.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.rpt kleio-home/sources/test_translations/roisdeconfessados/rol2.rpt
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.xml kleio-home/sources/test_translations/roisdeconfessados/rol2.xml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.err kleio-home/sources/test_translations/roisdeconfessados/rol3.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.files.json kleio-home/sources/test_translations/roisdeconfessados/rol3.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.rpt kleio-home/sources/test_translations/roisdeconfessados/rol3.rpt
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.xml kleio-home/sources/test_translations/roisdeconfessados/rol3.xml
+diff -r kleio-home/sources/reference_translations/varia/Devedores.err kleio-home/sources/test_translations/varia/Devedores.err
+diff -r kleio-home/sources/reference_translations/varia/Devedores.files.json kleio-home/sources/test_translations/varia/Devedores.files.json
+diff -r kleio-home/sources/reference_translations/varia/Devedores.rpt kleio-home/sources/test_translations/varia/Devedores.rpt
+diff -r kleio-home/sources/reference_translations/varia/Devedores.xml kleio-home/sources/test_translations/varia/Devedores.xml
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.err kleio-home/sources/test_translations/varia/EmpFAfonso.err
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.files.json kleio-home/sources/test_translations/varia/EmpFAfonso.files.json
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.rpt kleio-home/sources/test_translations/varia/EmpFAfonso.rpt
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.xml kleio-home/sources/test_translations/varia/EmpFAfonso.xml
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.err kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.err
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.files.json kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.files.json
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.rpt kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.rpt
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.xml kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.xml
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.err kleio-home/sources/test_translations/varia/auc_cartulario18.err
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.files.json kleio-home/sources/test_translations/varia/auc_cartulario18.files.json
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.rpt kleio-home/sources/test_translations/varia/auc_cartulario18.rpt
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.xml kleio-home/sources/test_translations/varia/auc_cartulario18.xml
+<          <core><![CDATA[o pao debulhado e limpo na eira]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ o vinho a bica do lagar e outras novidades no tempo do recolher]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar e outras novidades no tempo do recolher; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[do pomar]]></core>      <core><![CDATA[ pago dentro do mosteiro com pena de dez mil reais por incumprimento]]></core>      <core><![CDATA[ vinho a bica do lagar e fruta ao pe da arvore]]></core>   </ELEMENT>
+>          <core><![CDATA[do pomar; pago dentro do mosteiro com pena de dez mil reais por incumprimento; vinho a bica do lagar e fruta ao pe da arvore]]></core>   </ELEMENT>
+<          <core><![CDATA[o pao debulhado e limpo na eira]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar; primeira paga no ano seguinte;]]></core>   </ELEMENT>
+<          <core><![CDATA[medida nova]]></core>      <core><![CDATA[ pago no moinho por dia de s. miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[medida nova; pago no moinho por dia de s. miguel de setembro;]]></core>   </ELEMENT>
+<          <core><![CDATA[do pao proprio do lavrador]]></core>      <core><![CDATA[ foro e racao pagos na eira]]></core>      <core><![CDATA[ primeira paga por s. miguel de setembro no ano presente, nos lugares respectivos e ao mordomo do mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[do pao proprio do lavrador; foro e racao pagos na eira; primeira paga por s. miguel de setembro no ano presente, nos lugares respectivos e ao mordomo do mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[carneiro, cabrito e ovos pagos no mosteiro]]></core>      <core><![CDATA[ primeira paga pela pascoa do ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[carneiro, cabrito e ovos pagos no mosteiro; primeira paga pela pascoa do ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[na eira e ao tempo do seu recolher]]></core>      <core><![CDATA[ pago pelo natal]]></core>   </ELEMENT>
+>          <core><![CDATA[na eira e ao tempo do seu recolher; pago pelo natal]]></core>   </ELEMENT>
+<          <core><![CDATA[do pao do lavrador]]></core>      <core><![CDATA[ pao limpo e debulhado na eira]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ legumes ao tempo do recolher]]></core>   </ELEMENT>
+>          <core><![CDATA[do pao do lavrador; pao limpo e debulhado na eira; o vinho a bica do lagar; o linho curtido e enxuto; legumes ao tempo do recolher]]></core>   </ELEMENT>
+<          <core><![CDATA[segunda e terceira vidas]]></core>      <core><![CDATA[ por s. miguel de setembro e com abatimento de pensao por benfeitorias as casas e mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[segunda e terceira vidas; por s. miguel de setembro e com abatimento de pensao por benfeitorias as casas e mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[da casa do dito mosteiro]]></core>      <core><![CDATA[ assinou pelo foreiro]]></core>   </ELEMENT>
+>          <core><![CDATA[da casa do dito mosteiro; assinou pelo foreiro]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. joao baptista]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. joao baptista;]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro e no mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro e no mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis ao real]]></core>      <core><![CDATA[ por s.miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis ao real; por s.miguel de setembro]]></core>   </ELEMENT>
+<          <core><![CDATA[safra de dois em dois anos, feito no pote]]></core>      <core><![CDATA[ pelo entrudo]]></core>   </ELEMENT>
+>          <core><![CDATA[safra de dois em dois anos, feito no pote; pelo entrudo]]></core>   </ELEMENT>
+<          <core><![CDATA[a bica do lagar]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[a bica do lagar; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[safra de dois em dois anos]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[safra de dois em dois anos; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[pelo aluguer do carreto por cada quarteirao da racao]]></core>      <core><![CDATA[ pagam lopo anes e sua mulher branca anes]]></core>   </ELEMENT>
+>          <core><![CDATA[pelo aluguer do carreto por cada quarteirao da racao; pagam lopo anes e sua mulher branca anes]]></core>   </ELEMENT>
+<          <core><![CDATA[por cada quarteiro de racao de carreto]]></core>      <core><![CDATA[ pagam francisco anes e sua filha catarina lopes]]></core>   </ELEMENT>
+>          <core><![CDATA[por cada quarteiro de racao de carreto; pagam francisco anes e sua filha catarina lopes]]></core>   </ELEMENT>
+<          <core><![CDATA[pagam francisco anes e sua filha catarina lopes]]></core>      <core><![CDATA[ pao debulhado, limpo e pago na eira]]></core>      <core><![CDATA[ aves e ovos pagos no mosteiro por s. miguel de setembro]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ o linho curido e enxuto]]></core>   </ELEMENT>
+>          <core><![CDATA[pagam francisco anes e sua filha catarina lopes; pao debulhado, limpo e pago na eira; aves e ovos pagos no mosteiro por s. miguel de setembro; o vinho a bica do lagar; o linho curido e enxuto]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ seis mil reais por incumprimento]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; seis mil reais por incumprimento]]></core>   </ELEMENT>
+<          <core><![CDATA[aforamento para sempre celerado entre mosteiro de santa clara e andre afonso, de meio casal no qual mora]]></core>      <core><![CDATA[ um quarto de casal]]></core>      <core><![CDATA[ um oitavo de casal]]></core>      <core><![CDATA[ dois pedacos de mato, sitos em orelhudo]]></core>   </ELEMENT>
+>          <core><![CDATA[aforamento para sempre celerado entre mosteiro de santa clara e andre afonso, de meio casal no qual mora; um quarto de casal; um oitavo de casal; dois pedacos de mato, sitos em orelhudo]]></core>   </ELEMENT>
+<          <core><![CDATA[pao limpo na eira]]></core>      <core><![CDATA[ legumes]]></core>      <core><![CDATA[ vinho a bica do lagar]]></core>      <core><![CDATA[ linho curtido e enxuto no tendal]]></core>   </ELEMENT>
+>          <core><![CDATA[pao limpo na eira; legumes; vinho a bica do lagar; linho curtido e enxuto no tendal]]></core>   </ELEMENT>
+<          <core><![CDATA[emprazamento em tres vidas celebrado entre mosteiro de santa clara e alvaro botelho caldeira, de uns moinhos de moer pao]]></core>      <core><![CDATA[ um engenho que foi lagar de fazer azeite]]></core>      <core><![CDATA[ um pomar e umas casas com seu lagar para fazer vinho]]></core>      <core><![CDATA[ um pedaco de lameira]]></core>   </ELEMENT>
+>          <core><![CDATA[emprazamento em tres vidas celebrado entre mosteiro de santa clara e alvaro botelho caldeira, de uns moinhos de moer pao; um engenho que foi lagar de fazer azeite; um pomar e umas casas com seu lagar para fazer vinho; um pedaco de lameira]]></core>   </ELEMENT>
+<          <core><![CDATA[emprazamento em tres pessoas celebrado entre mosteiro de santa clara e jorge fernandes]]></core>      <core><![CDATA[ antonio rodrigues]]></core>      <core><![CDATA[ manuel fernandes]]></core>      <core><![CDATA[ simao rodrigues]]></core>      <core><![CDATA[ bras pires, de umas casas sitas no burgo do mosteiro de santa clara]]></core>   </ELEMENT>
+>          <core><![CDATA[emprazamento em tres pessoas celebrado entre mosteiro de santa clara e jorge fernandes; antonio rodrigues; manuel fernandes; simao rodrigues; bras pires, de umas casas sitas no burgo do mosteiro de santa clara]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ os tres primeiros inquilinos]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; os tres primeiros inquilinos]]></core>   </ELEMENT>
+<          <core><![CDATA[ por s. miguel de setembro]]></core>      <core><![CDATA[ os dois ultimos inquilinos]]></core>   </ELEMENT>
+>          <core><![CDATA[ por s. miguel de setembro; os dois ultimos inquilinos]]></core>   </ELEMENT>
+<          <core><![CDATA[novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e filipa leite, de umas casas, casais e outras propriedades sitas na freguesia de sta. maria do sobrado]]></core>      <core><![CDATA[ em riba douro]]></core>      <core><![CDATA[ na freguesia de sampaio, termo da vila de guimaraes]]></core>      <core><![CDATA[ na freguesia de s. martinho de butarim e dos pi�e]]></core>      <core><![CDATA[ na freguesia de santa maria de quintas, no termo de barcelos]]></core>   </ELEMENT>
+>          <core><![CDATA[novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e filipa leite, de umas casas, casais e outras propriedades sitas na freguesia de sta. maria do sobrado; em riba douro; na freguesia de sampaio, termo da vila de guimaraes; na freguesia de s. martinho de butarim e dos pi�e; na freguesia de santa maria de quintas, no termo de barcelos]]></core>   </ELEMENT>
+<          <core><![CDATA[novo aforamento em fatiosim celebrado entre mosteiro de santa clara e andre fernandes]]></core>      <core><![CDATA[ andre bras e simao pires, de uns matos com agua para moendas]]></core>   </ELEMENT>
+>          <core><![CDATA[novo aforamento em fatiosim celebrado entre mosteiro de santa clara e andre fernandes; andre bras e simao pires, de uns matos com agua para moendas]]></core>   </ELEMENT>
+<          <core><![CDATA[pao, trigo e segundas]]></core>      <core><![CDATA[ linho e legumes]]></core>   </ELEMENT>
+>          <core><![CDATA[pao, trigo e segundas; linho e legumes]]></core>   </ELEMENT>
+<          <core><![CDATA[aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e goncalo afonso]]></core>      <core><![CDATA[ luis afonso]]></core>      <core><![CDATA[ joao afonso]]></core>      <core><![CDATA[ domingos afonso]]></core>      <core><![CDATA[ rodrigo alvares]]></core>      <core><![CDATA[ simao rodrigues]]></core>      <core><![CDATA[ fernao gomes]]></core>      <core><![CDATA[ simao vaz]]></core>      <core><![CDATA[ joao afonso]]></core>      <core><![CDATA[ domingos vaz]]></core>      <core><![CDATA[ francisco pires]]></core>      <core><![CDATA[ francisco fernandes]]></core>      <core><![CDATA[ catarina vaz]]></core>      <core><![CDATA[ joao rodrigues, de umas terras, vinhas, currais, herancas e matos, sitos em gatoes, montemor-o-velho]]></core>   </ELEMENT>
+>          <core><![CDATA[aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e goncalo afonso; luis afonso; joao afonso; domingos afonso; rodrigo alvares; simao rodrigues; fernao gomes; simao vaz; joao afonso; domingos vaz; francisco pires; francisco fernandes; catarina vaz; joao rodrigues, de umas terras, vinhas, currais, herancas e matos, sitos em gatoes, montemor-o-velho]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/varia/cartas.err kleio-home/sources/test_translations/varia/cartas.err
+diff -r kleio-home/sources/reference_translations/varia/cartas.files.json kleio-home/sources/test_translations/varia/cartas.files.json
+diff -r kleio-home/sources/reference_translations/varia/cartas.rpt kleio-home/sources/test_translations/varia/cartas.rpt
+diff -r kleio-home/sources/reference_translations/varia/cartas.xml kleio-home/sources/test_translations/varia/cartas.xml
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.err kleio-home/sources/test_translations/varia/eleicoes1.err
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.files.json kleio-home/sources/test_translations/varia/eleicoes1.files.json
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.rpt kleio-home/sources/test_translations/varia/eleicoes1.rpt
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.xml kleio-home/sources/test_translations/varia/eleicoes1.xml
+diff -r kleio-home/sources/reference_translations/varia/genealdiversas.err kleio-home/sources/test_translations/varia/genealdiversas.err
+diff -r kleio-home/sources/reference_translations/varia/genealdiversas.files.json kleio-home/sources/test_translations/varia/genealdiversas.files.json
+diff -r kleio-home/sources/reference_translations/varia/genealdiversas.rpt kleio-home/sources/test_translations/varia/genealdiversas.rpt
+diff -r kleio-home/sources/reference_translations/varia/genealdiversas.xml kleio-home/sources/test_translations/varia/genealdiversas.xml
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.err kleio-home/sources/test_translations/varia/glopes-lap1561.err
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.files.json kleio-home/sources/test_translations/varia/glopes-lap1561.files.json
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.rpt kleio-home/sources/test_translations/varia/glopes-lap1561.rpt
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.xml kleio-home/sources/test_translations/varia/glopes-lap1561.xml
+diff -r kleio-home/sources/reference_translations/varia/ivcc.err kleio-home/sources/test_translations/varia/ivcc.err
+diff -r kleio-home/sources/reference_translations/varia/ivcc.files.json kleio-home/sources/test_translations/varia/ivcc.files.json
+diff -r kleio-home/sources/reference_translations/varia/ivcc.rpt kleio-home/sources/test_translations/varia/ivcc.rpt
+diff -r kleio-home/sources/reference_translations/varia/ivcc.xml kleio-home/sources/test_translations/varia/ivcc.xml
+< </GROUP><CLASS NAME="evento" SUPER="act" TABLE="eventos" GROUP="viagem">
+< </CLASS>
+< 
+> </GROUP>
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+<    <ELEMENT NAME="class" CLASS="class"><core>evento</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+<    <ELEMENT NAME="description" CLASS="description">
+>    <ELEMENT NAME="description" CLASS="undef">
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.err kleio-home/sources/test_translations/varia/lrazao516pe.err
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.files.json kleio-home/sources/test_translations/varia/lrazao516pe.files.json
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.rpt kleio-home/sources/test_translations/varia/lrazao516pe.rpt
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.xml kleio-home/sources/test_translations/varia/lrazao516pe.xml
+<          <core><![CDATA[0]]></core>   </ELEMENT>
+>          <core><![CDATA[178375181100]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/varia/misMesa.err kleio-home/sources/test_translations/varia/misMesa.err
+diff -r kleio-home/sources/reference_translations/varia/misMesa.files.json kleio-home/sources/test_translations/varia/misMesa.files.json
+diff -r kleio-home/sources/reference_translations/varia/misMesa.rpt kleio-home/sources/test_translations/varia/misMesa.rpt
+diff -r kleio-home/sources/reference_translations/varia/misMesa.xml kleio-home/sources/test_translations/varia/misMesa.xml
+<          <core><![CDATA[acordao que tomou em mesa o provedor e mais irmaos da santa casa sobre se riscar o licenciado antonio manhos de abreu]]></core>      <core><![CDATA[ razoes pelas quais ele e riscado-nao defendia a santa casa na forma a que era obrigado pelo compromisso, mas pondo-se pela parte contraria defendendo nao ser a dita santa casa previligiada querendo-lhe tirar a liberdade e isencao que prezam os seua caseiros ... de nao pagarem os oitavos sendo contra ela procurador dos rendeiros para convencerem a dita santa casa em juizo etc]]></core>   </ELEMENT>
+>          <core><![CDATA[acordao que tomou em mesa o provedor e mais irmaos da santa casa sobre se riscar o licenciado antonio manhos de abreu; razoes pelas quais ele e riscado-nao defendia a santa casa na forma a que era obrigado pelo compromisso, mas pondo-se pela parte contraria defendendo nao ser a dita santa casa previligiada querendo-lhe tirar a liberdade e isencao que prezam os seua caseiros ... de nao pagarem os oitavos sendo contra ela procurador dos rendeiros para convencerem a dita santa casa em juizo etc]]></core>   </ELEMENT>
+<          <core><![CDATA[muitas vezes nas ocasioes em que era necessario juntar-se os irmaos da mesa para as varias ocasioes necessarias principalmente nos acompanhamentos dos defuntos concluiu-se que todas as vezes que faltasse algum sem causa legitima na forma do estatuto seriam condenados pela primeira vez em dois tostoes para a casa da misericordia e pela segunda vez seriam riscados]]></core>      <core><![CDATA[ e que outrossi pediriam pela vila cada mes dois a saber, sob pena de doze vintens]]></core>   </ELEMENT>
+>          <core><![CDATA[muitas vezes nas ocasioes em que era necessario juntar-se os irmaos da mesa para as varias ocasioes necessarias principalmente nos acompanhamentos dos defuntos concluiu-se que todas as vezes que faltasse algum sem causa legitima na forma do estatuto seriam condenados pela primeira vez em dois tostoes para a casa da misericordia e pela segunda vez seriam riscados; e que outrossi pediriam pela vila cada mes dois a saber, sob pena de doze vintens]]></core>   </ELEMENT>
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.err kleio-home/sources/test_translations/varia/mp758-santiago-beduido.err
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.files.json kleio-home/sources/test_translations/varia/mp758-santiago-beduido.files.json
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.rpt kleio-home/sources/test_translations/varia/mp758-santiago-beduido.rpt
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.xml kleio-home/sources/test_translations/varia/mp758-santiago-beduido.xml
+diff -r kleio-home/sources/reference_translations/varia/nommiz.err kleio-home/sources/test_translations/varia/nommiz.err
+diff -r kleio-home/sources/reference_translations/varia/nommiz.files.json kleio-home/sources/test_translations/varia/nommiz.files.json
+diff -r kleio-home/sources/reference_translations/varia/nommiz.rpt kleio-home/sources/test_translations/varia/nommiz.rpt
+diff -r kleio-home/sources/reference_translations/varia/nommiz.xml kleio-home/sources/test_translations/varia/nommiz.xml
+diff -r kleio-home/sources/reference_translations/varia/quotes.err kleio-home/sources/test_translations/varia/quotes.err
+diff -r kleio-home/sources/reference_translations/varia/quotes.files.json kleio-home/sources/test_translations/varia/quotes.files.json
+diff -r kleio-home/sources/reference_translations/varia/quotes.rpt kleio-home/sources/test_translations/varia/quotes.rpt
+diff -r kleio-home/sources/reference_translations/varia/quotes.xml kleio-home/sources/test_translations/varia/quotes.xml
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.err kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.err
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.files.json kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.files.json
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.rpt kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.rpt
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.xml kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.xml
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.err kleio-home/sources/test_translations/varia/test-atr-date.err
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.files.json kleio-home/sources/test_translations/varia/test-atr-date.files.json
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.rpt kleio-home/sources/test_translations/varia/test-atr-date.rpt
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.xml kleio-home/sources/test_translations/varia/test-atr-date.xml
+diff -r kleio-home/sources/reference_translations/varia/vereacao.err kleio-home/sources/test_translations/varia/vereacao.err
+diff -r kleio-home/sources/reference_translations/varia/vereacao.files.json kleio-home/sources/test_translations/varia/vereacao.files.json
+diff -r kleio-home/sources/reference_translations/varia/vereacao.rpt kleio-home/sources/test_translations/varia/vereacao.rpt
+diff -r kleio-home/sources/reference_translations/varia/vereacao.xml kleio-home/sources/test_translations/varia/vereacao.xml
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.err kleio-home/sources/test_translations/varia/xpto_comuns_soure.err
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.files.json kleio-home/sources/test_translations/varia/xpto_comuns_soure.files.json
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.rpt kleio-home/sources/test_translations/varia/xpto_comuns_soure.rpt
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.xml kleio-home/sources/test_translations/varia/xpto_comuns_soure.xml
+Comparing translation results finished.
