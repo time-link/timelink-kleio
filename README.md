@@ -1,6 +1,6 @@
 # Kleio translation services for Timelink.
 
-`kleio-server` provides access to translation services for _Kleio_ files. 
+`kleio-server` provides access to translation services for _Kleio_ files.
 
 ## About `Kleio` files
 
@@ -38,9 +38,9 @@ This is how a (portuguese) baptism looks like in _Timelink_ Kleio notation:
                   ls$freguesia/lousa
 
 Text files implementing the Timelink Kleio notation can be translated by
-the _Timelink_ `kleio-server` and imported into the _Timelink_ relational database. 
+the _Timelink_ `kleio-server` and imported into the _Timelink_ relational database.
 
-Translation is _intelligent_ in the sense that it operates a _normalization_ of the source information, infering information from the context, and so greatly reducing the overhead of producing normalized data. 
+Translation is _intelligent_ in the sense that it operates a _normalization_ of the source information, infering information from the context, and so greatly reducing the overhead of producing normalized data.
 
 _Timelink_ database-services then implement a set of functions that allow the identification of people, reconstruction of biographies, inference of personal networks, and other funcionalities.
 
@@ -78,7 +78,7 @@ $ docker run -v $(PWD):/kleio-home -p 8088:8088 -d  timelink-server/kleio-server
 ```bash
 make build-local
 
-$ docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server  
+$ docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server
 ```
 
 ### Change the external linking port
@@ -86,13 +86,13 @@ $ docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server
 To have the server listening on port 8089
 
 ```console
-$ docker run -v $(PWD):/kleio-home -p 8088:8089 -d  kleio-server  
+$ docker run -v $(PWD):/kleio-home -p 8088:8089 -d  kleio-server
 ```
 
 ### Set an admin token
 
 ```console
-$ docker run -v $(PWD):/kleio-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server  
+$ docker run -v $(PWD):/kleio-home -e KLEIO_ADMIN_TOKEN=myprivatetoken -p 8088:8088 -d  kleio-server
 ```
 
 If `KLEIO_ADMIN_TOKEN` is not set the server will generate
@@ -101,7 +101,7 @@ obtained in the .kleio.json
 file in the directory mapped to /kleio-home
 
 ```console
-$docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server  
+$docker run -v $PWD:/kleio-home -p 8088:8088 -d  kleio-server
 
 $cat $PWD/.kleio.json
 ```
@@ -119,27 +119,27 @@ generate permission errors when accessed by the current user.
 To run the kleio server user the current user:
 
 ```console
-docker run -v $PWD:/kleio-home -u $(id -u):$(id -g) -p 8088:8088 -d  kleio-server  
+docker run -v $PWD:/kleio-home -u $(id -u):$(id -g) -p 8088:8088 -d  kleio-server
 ```
 
 ### More configuration options
 
 There are more environment variables that can be
-set to control the behaviour of `kleio-server`. 
+set to control the behaviour of `kleio-server`.
 
 The easiest way to test in to use `docker compose`
 with the `docker-compose.yaml`file in this directory
 and set the variables in a `.env` file:
 
 * Copy or rename  `.env-sample`  to `.env`.
-* Change variables according to your setup. 
+* Change variables according to your setup.
    * `KLEIO_HOME` should be set to a directory where kleio files reside.
-   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used. 
+   * `KLEIO_SERVER_IMAGE` can be set to run a specific image otherwise `timelinkserver/kleio-server:latest` is used.
    * `KLEIO_ADMIN_TOKEN` if you want to set a starting admin token. If the env variable `KLEIO_ADMIN_TOKEN` is unset
     then a token named `kleio-admin` is created on server startup with full admin permissions.
-     The token is written to file `/.admin_token` in `KLEIO_CONF_DIR`. 
+     The token is written to file `/.admin_token` in `KLEIO_CONF_DIR`.
      This token can be used to generate another token through an api
-      call and invalidate this one 
+      call and invalidate this one
    * `KLEIO_DEBUG`if "true" will produce debug information in the log.
    * More variables are available to fine tune the settings of the Kleio Server. See `.env-sample` for a full list.
 * run with `make kleio-run-latest` or `docker compose up`
@@ -154,27 +154,27 @@ Recommended tools:
 
 * `VSCode` with `VSC-Prolog` extension https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog
 * `Postman` https://www.postman.com
-  * Directory api/postman contains exported postman collections and environments. 
+  * Directory api/postman contains exported postman collections and environments.
 * `Postman-doc-gen`: generates static documentation from Postman collections https://github.com/karthiks3000/postman-doc-gen
 * `newman`: the command line tool for running Postman generated test suites https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
-  
+
 
 ### Running the server locally for debugging
 
-Easiest way: 
+Easiest way:
 + install swipl locally
 + install `VSC-Prolog` extension in `VSCode`
-+ open serverStart.pl on `VSCode` 
++ open serverStart.pl on `VSCode`
 + load the file with Option+X+L
-+ in the Prolog terminal that appears do 
-        
-      setenv('KLEIO_ADMIN_TOKEN','mytoken').    
++ in the Prolog terminal that appears do
+
+      setenv('KLEIO_ADMIN_TOKEN','mytoken').
       setup_and_run_server(run_debug_server,[port(8089)]).
 
-+ note that the server started in this way does not read the content 
-  of the .env file. 
-+ set spy points with tspy(_predicate_) 
-+ Clients can access the kleio-server using the token set above. 
++ note that the server started in this way does not read the content
+  of the .env file.
++ set spy points with tspy(_predicate_)
++ Clients can access the kleio-server using the token set above.
 
 See the `README.md` file inside the `tests` directory for more information on testing.
 
@@ -196,13 +196,13 @@ At the prompt start swi Prolog and change to the kleio-home directory
 Currently MHK debugging is done by starting
 the current build together with the other
 containers (mySQL/MariaDB, Caddy, Portainer and Kleio)
-through a Docker compose file and by attaching the Intellij 
+through a Docker compose file and by attaching the Intellij
 IDEA debugger to the running MHK app.
 
 The recomended way is to stop the kleio server that is
 started with MHK and start a local server in VSCode as
 explained above, and associating it with the same
-mhk-home directory of the MHK beeing jointly tested, 
+mhk-home directory of the MHK beeing jointly tested,
 as described bellow.
 
 In order for MHK to connect to the local running Kleio server the property `mhk.kleio.service`
@@ -215,7 +215,7 @@ http://127.0.0.1:8088 ot http://localhost:8088
 
 The sequence should be:
 1. Build new docker image of MHK
-2. Update local MHK install with 
+2. Update local MHK install with
    local image: `mhk update --local` (make sure
    mhk is updating from latest image wiht `mhk use-tag latest`)
 3. Start mhk with `mhk start`
@@ -226,10 +226,10 @@ IDEA with a Debug configuration.
 
 Start the Kleio server inside VSCode:
 + install `VSC-Prolog` extension in `VSCode`
-+ open serverStart.pl on `VSCode` 
++ open serverStart.pl on `VSCode`
 + load the file with Option+X+L
-+ in the Prolog terminal that appears do 
-  
++ in the Prolog terminal that appears do
+
       run_from_mhk_home(H,P)
 
 This will start a kleio server from USER_HOME/mhk-home
@@ -248,19 +248,19 @@ There two type of tests:
 See `README-tests.md` in the directory `tests` for details. The tests directory also contains
 reference files and the reference translator necessary to run both semantic and api tests.
 
-### Updating 
+### Updating
 #### Preparing images
- 
+
  * ```make build-local```: create a new local image, and tags it kleio-server:Knnn, with Knnn being a sequential build number
-  
+
 The following tags are used:
 * latest - latest useful build. Used to keep updated with latest release.
-* stable - stable build for a specific version. 
+* stable - stable build for a specific version.
 * _version_ - version number as MM.mm goes together with stable to provide clients with stable images for specific version.
 
 To help manage the tags the following targets exist
 
-* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last 
+* ```make tag-multi-TAG | tag-local-TAG``` tag last image with TAG in latest | unique | stable, note that _unique_ tags the last build number
 * ```make inc_NUMBER``` increment version with NUMBER in major | minor
 * ```make push-TAG``` push last image with TAG in latest | unique | stable, to the
 docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
@@ -268,19 +268,21 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 ## Release sequence
 
 * Create docker image `make build-multi` (also pushes to repository tag with current version)
-  * __Note that the reference repository is `timelinkserver/kleio-server` login before with 
-   `docker login --username timelinkserver` or other 
+  * __Note that the reference repository is `timelinkserver/kleio-server` login before with
+   `docker login --username timelinkserver` or other
    authorized user.__
 * Test
-* Update version with `make inc-major` or `make inc-minor` 
+* Update version with `make inc-major` or `make inc-minor`
+* Create docker image `make build-multi` (also pushes to repository tag with updated version)
 * Update release notes (bellow)
-* Commit code 
+* Commit code
 * Check current version with `make show-current` or
    `make show-last`
 * Tag image with semantic versioning
-  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number). Move current code to `stable`directory in `tests`.
-  * if new image to be latest do `make tag-multi-latest` 
-  
+  * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number).
+  * Move current code to `stable`directory in `tests`.
+  * if new image to be latest do `make tag-multi-latest`
+
 
 ## Make targets
 
@@ -313,6 +315,36 @@ Type ```make``` to see more targets that help in development.
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+
+### 2024-07-29 07:52:13 version 12.6.572
+
+Added `property$NAME/VALUE` subgroup to the `kleio$` group.
+
+This allows for specifying file properties that affect the
+way the source is translated.
+
+The first (and only) property currently implemented is `multuple-entry-flag`
+that sets the character interpreted as separating multiples entries in a field
+(data flag 8 in the original Manfred Thaller implementation, see issue [#34](https://github.com/time-link/timelink-kleio/issues/34)
+
+Example, to set the separator to the pipe " | " character (ascii 124).
+
+```
+   property$multiple-entry-flag/124
+```
+
+Also:
+* fixes a bug where a false error related to permission in renaming files after
+  translation.
+
+### 2024-02-29 07:40:48 version 12.5.570
+
+Fix bugs, linked data ids now allow for dashes, improve error and warning line reporting
+
+### 2024-02-07 13:03:06 version 12.4.567
+
+* Reverted to previous attribute format for linked data see [#27](https://github.com/time-link/timelink-kleio/issues/27)
+
 ### 2024-01-23 07:16:28 version 12.3.561
 
 * Refactoring of linked data tratment. Notation for linked data remains the same
@@ -363,17 +395,17 @@ Adds linked data notation.
     ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
 
     The format of an external link annotation is:
-    
-        @short-name:id 
 
-On translation annotation such as 
+        @short-name:id
+
+On translation annotation such as
 
    ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
 
 will generate
 
    ls$ jesuita-entrada@/https://www.wikidata.org/wiki/Q1171/15791200/obs=%Goa, Índia
-   
+
 ### 2023-06-05 02:04:07 version 11.1.541
 
 * Improves line number reporting in error messages
@@ -393,7 +425,7 @@ Internal:
 
 * At startup the server generates a `.kleio.json` file
   with the running configuration, including an admin token.
-  
+
 * New doc about [client setup](docs/doc/client_setup.md)
 
 * New translation result summary in json [translation results](docs/doc/translation_results.md)
@@ -413,7 +445,7 @@ Fixes CORS pre-flight requests.
 
 ### 2022-06-08 v10.17.456
 
-Adds cors capability. Set env KLEIO_CORS_SITES with 
+Adds cors capability. Set env KLEIO_CORS_SITES with
 comma separeted list of allowed sites or "*" for all.
 ### 2022-03-17 v10.16.452
 
@@ -426,7 +458,7 @@ e.g. "10", "10.16" and "10.16.452"
 * Added make targets for api-testing. Type "make help" for a list of targets
 * See `development` section bellow.
 
-### 2022-01-20 v10.15 
+### 2022-01-20 v10.15
   * generates a bootstrap token when run with no tokens defined. The bootstrap token expires after 5 minutes.
 
 ### 2021-10-09

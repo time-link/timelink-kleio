@@ -1,7 +1,7 @@
 {
   "groups": {
     "abonador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -211,7 +211,7 @@
       "typical": ["nome", "sexo" ]
     },
     "abonadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -414,7 +414,7 @@
       "typical": ["nome", "sexo" ]
     },
     "abstraction": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"abstraction",
@@ -434,7 +434,7 @@
       "typical": ["name", "type" ]
     },
     "acao": {
-      "complete": ["id", "obs", "data", "mesmo_que" ],
+      "complete": ["name", "type", "id", "obs", "data", "mesmo_que" ],
       "includes": ["referido", "referida", "atr", "rel" ],
       "minimal": ["name" ],
       "name":"acao",
@@ -454,7 +454,7 @@
       "typical": ["name", "type" ]
     },
     "acionista": {
-      "complete": ["obs", "mesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"acionista",
@@ -474,7 +474,7 @@
       "typical": ["nome", "sexo" ]
     },
     "acionistaf": {
-      "complete": ["obs", "mesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"acionistaf",
@@ -494,7 +494,7 @@
       "typical": ["nome", "sexo" ]
     },
     "acto": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "tipo", "loc", "obs", "ref" ],
       "includes": [
 	"presente",
 	"presente-f",
@@ -523,7 +523,7 @@
       "typical": ["id", "tipo", "dia", "mes", "ano", "loc", "obs" ]
     },
     "actorf": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -726,7 +726,7 @@
       "typical": ["nome", "sexo" ]
     },
     "actorm": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -936,7 +936,7 @@
       "typical": ["nome", "sexo" ]
     },
     "acus": {
-      "complete": ["literal", "origem", "obs", "id" ],
+      "complete": ["idcaso", "obs", "literal", "origem", "id" ],
       "includes": ["caso", "atr", "ls", "rel" ],
       "minimal": ["idcaso" ],
       "name":"acus",
@@ -957,7 +957,7 @@
       "typical": ["idcaso", "obs" ]
     },
     "acusa": {
-      "complete": ["literal", "origem", "obs", "id" ],
+      "complete": ["idcaso", "obs", "literal", "origem", "id" ],
       "includes": ["caso", "atr", "ls", "rel" ],
       "minimal": ["idcaso" ],
       "name":"acusa",
@@ -978,7 +978,7 @@
       "typical": ["idcaso", "obs" ]
     },
     "acusacao": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"acusacao",
@@ -998,7 +998,7 @@
       "typical": ["name", "type" ]
     },
     "acusada": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -1201,7 +1201,7 @@
       "typical": ["nome", "sexo" ]
     },
     "acusado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -1411,7 +1411,7 @@
       "typical": ["nome", "sexo" ]
     },
     "adenda": {
-      "complete": ["resumo", "refere", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "resumo", "refere", "obs" ],
       "includes": [
 	"evento",
 	"celebrante",
@@ -1441,7 +1441,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "afilhada": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"afilhada",
@@ -1461,7 +1461,7 @@
       "typical": ["name", "sex" ]
     },
     "afilhado": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"afilhado",
@@ -1481,7 +1481,7 @@
       "typical": ["name", "sex" ]
     },
     "aforamento": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"aforamento",
@@ -1501,7 +1501,7 @@
       "typical": ["name", "tipo" ]
     },
     "agente_financeiro": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -1711,7 +1711,7 @@
       "typical": ["nome", "sexo" ]
     },
     "agente_seguros": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -1921,7 +1921,7 @@
       "typical": ["nome", "sexo" ]
     },
     "amz": {
-      "complete": ["resumo", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "resumo", "obs" ],
       "includes": ["eleito", "eleitor", "referido" ],
       "minimal": ["id", "dia", "mes", "ano", "fol" ],
       "name":"amz",
@@ -1941,7 +1941,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol" ]
     },
     "apelacao": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"apelacao",
@@ -1961,7 +1961,7 @@
       "typical": ["name", "type" ]
     },
     "apelado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -2171,7 +2171,7 @@
       "typical": ["nome", "sexo" ]
     },
     "apelante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -2381,7 +2381,7 @@
       "typical": ["nome", "sexo" ]
     },
     "apelantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -2584,7 +2584,7 @@
       "typical": ["nome", "sexo" ]
     },
     "apontamentosd": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "obs" ],
       "includes": [
 	"freguesia",
 	"celebrante",
@@ -2614,7 +2614,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "apresentado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -2824,7 +2824,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ar": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "ref", "loc", "obs" ],
       "includes": ["proparr", "bemarr", "fornarr", "rendarr" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"ar",
@@ -2844,7 +2844,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "arrem": {
-      "complete": ["id", "mesmo_que", "xmesmo_que", "obs", "cota" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs", "cota" ],
       "includes": [
 	"pevent",
 	"viagem",
@@ -3147,7 +3147,7 @@
       "typical": ["nome", "sexo" ]
     },
     "arrematante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -3357,7 +3357,7 @@
       "typical": ["nome", "sexo" ]
     },
     "arrematantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -3560,7 +3560,7 @@
       "typical": ["nome", "sexo" ]
     },
     "arrendamento": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"arrendamento",
@@ -3580,7 +3580,7 @@
       "typical": ["name", "tipo" ]
     },
     "arrendataria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -3783,7 +3783,7 @@
       "typical": ["nome", "sexo" ]
     },
     "arrendatario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -3993,7 +3993,7 @@
       "typical": ["nome", "sexo" ]
     },
     "arrolamento": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "obs" ],
       "includes": ["rv", "rp", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"arrolamento",
@@ -4013,7 +4013,7 @@
       "typical": ["id", "ano", "mes", "dia" ]
     },
     "atr": {
-      "complete": ["data", "obs", "id" ],
+      "complete": ["tipo", "valor", "data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor" ],
       "name":"atr",
@@ -4032,7 +4032,7 @@
       "typical": ["tipo", "valor", "data" ]
     },
     "attribute": {
-      "complete": ["obs", "date", "id" ],
+      "complete": ["type", "value", "date", "obs", "id" ],
       "includes": [],
       "minimal": ["type", "value" ],
       "name":"attribute",
@@ -4050,7 +4050,7 @@
       "typical": ["type", "value", "date" ]
     },
     "authority-register": {
-      "complete": ["date", "user", "dbase" ],
+      "complete": ["id", "name", "date", "user", "dbase" ],
       "includes": ["authority-record" ],
       "minimal": ["id", "name", "date", "user", "dbase" ],
       "name":"authority-register",
@@ -4069,7 +4069,7 @@
       "typical": ["id", "name" ]
     },
     "automed": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": [
 	"terra",
 	"celebrante",
@@ -4099,7 +4099,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "autor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -4309,7 +4309,7 @@
       "typical": ["nome", "sexo" ]
     },
     "autorf": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -4512,7 +4512,7 @@
       "typical": ["nome", "sexo" ]
     },
     "autoridade": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -4722,7 +4722,17 @@
       "typical": ["nome", "sexo" ]
     },
     "b": {
-      "complete": ["celebrante", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"dian",
+	"mesn",
+	"anon",
+	"celebrante",
+	"obs"
+      ],
       "includes": ["celebrante", "n", "referido", "referida", "test" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"b",
@@ -4742,7 +4752,7 @@
       "typical": ["id", "dia", "mes", "ano", "dian", "mesn", "anon", "celebrante" ]
     },
     "bap": {
-      "complete": ["fol", "loc", "celebrante", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante", "obs" ],
       "includes": ["celebrante", "n", "test", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"bap",
@@ -4762,7 +4772,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante" ]
     },
     "bem": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"bem",
@@ -4783,6 +4793,7 @@
     },
     "bemarr": {
       "complete": [
+	"name",
 	"valor",
 	"prazo",
 	"condicao",
@@ -4811,7 +4822,7 @@
       "typical": ["name" ]
     },
     "beneficiaria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -5014,7 +5025,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -5224,7 +5235,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -5434,7 +5445,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -5644,7 +5655,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -5854,7 +5865,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario1-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -6064,7 +6075,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario1-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -6274,7 +6285,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -6484,7 +6495,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario2-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -6694,7 +6705,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario2-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -6904,7 +6915,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -7114,7 +7125,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario3-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -7324,7 +7335,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario3-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -7534,7 +7545,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -7744,7 +7755,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario4-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -7954,7 +7965,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario4-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -8164,7 +8175,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario5": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -8374,7 +8385,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario5-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -8584,7 +8595,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario5-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -8794,7 +8805,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario6": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -9004,7 +9015,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario6-procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -9214,7 +9225,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficiario6-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -9424,7 +9435,7 @@
       "typical": ["nome", "sexo" ]
     },
     "beneficio": {
-      "complete": ["resumo", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "resumo", "obs" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"beneficio",
@@ -9444,7 +9455,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "bio": {
-      "complete": ["obs", "loc", "tipo", "data" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "loc", "tipo", "data" ],
       "includes": ["n", "referido", "referida", "celebrante", "evento", "colega" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"bio",
@@ -9464,7 +9475,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "bispado": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"bispado",
@@ -9483,7 +9494,7 @@
       "typical": ["name" ]
     },
     "capela": {
-      "complete": ["obs", "resumo" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs", "resumo" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"capela",
@@ -9503,7 +9514,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "carta": {
-      "complete": ["resumo", "refere", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "resumo", "refere", "obs" ],
       "includes": [
 	"receptor",
 	"emissor",
@@ -9537,7 +9548,17 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "cartaperdao": {
-      "complete": ["cota", "local", "tipo", "tabeliao", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"cota",
+	"local",
+	"tipo",
+	"tabeliao",
+	"obs"
+      ],
       "includes": [
 	"perdoante",
 	"perdoante-m",
@@ -9580,7 +9601,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "cas": {
-      "complete": ["fol", "loc", "celebrante", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante", "obs" ],
       "includes": [
 	"celebrante",
 	"test",
@@ -9725,7 +9746,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante" ]
     },
     "caso": {
-      "complete": ["obs" ],
+      "complete": ["id", "tipo", "obs" ],
       "includes": ["acusado", "acusada", "referido", "referida" ],
       "minimal": ["id", "tipo" ],
       "name":"caso",
@@ -9745,7 +9766,7 @@
       "typical": ["id", "tipo" ]
     },
     "causa": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"causa",
@@ -9764,7 +9785,7 @@
       "typical": ["value" ]
     },
     "celebrante": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"celebrante",
@@ -9784,7 +9805,7 @@
       "typical": ["nome", "sexo" ]
     },
     "chanc": {
-      "complete": ["loc", "resumo", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "resumo", "obs" ],
       "includes": ["n", "referido", "referida", "item" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"chanc",
@@ -9804,7 +9825,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "cheater": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -10014,7 +10035,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -10224,7 +10245,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -10434,7 +10455,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador-representante1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -10644,7 +10665,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador-representante2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -10854,7 +10875,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador-representante3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -11064,7 +11085,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador-representante4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -11274,7 +11295,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -11484,7 +11505,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -11694,7 +11715,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -11904,7 +11925,7 @@
       "typical": ["nome", "sexo" ]
     },
     "cobrador4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -12114,7 +12135,7 @@
       "typical": ["nome", "sexo" ]
     },
     "comarca": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"comarca",
@@ -12133,7 +12154,7 @@
       "typical": ["name" ]
     },
     "comerciante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -12343,7 +12364,7 @@
       "typical": ["nome", "sexo" ]
     },
     "comprador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -12553,7 +12574,7 @@
       "typical": ["nome", "sexo" ]
     },
     "compradora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -12756,7 +12777,7 @@
       "typical": ["nome", "sexo" ]
     },
     "conf": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["referido", "referida", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"conf",
@@ -12777,7 +12798,7 @@
       "typical": ["name", "type" ]
     },
     "confirmante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -12987,7 +13008,7 @@
       "typical": ["nome", "sexo" ]
     },
     "confraria": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"confraria",
@@ -13007,7 +13028,7 @@
       "typical": ["name", "type" ]
     },
     "constituinte": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -13217,7 +13238,7 @@
       "typical": ["nome", "sexo" ]
     },
     "constituintef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -13420,7 +13441,7 @@
       "typical": ["nome", "sexo" ]
     },
     "contraente": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -13630,7 +13651,7 @@
       "typical": ["nome", "sexo" ]
     },
     "contraentef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -13833,7 +13854,7 @@
       "typical": ["nome", "sexo" ]
     },
     "convento": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "rel", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"convento",
@@ -13854,7 +13875,7 @@
       "typical": ["name", "type" ]
     },
     "couto": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["referido", "atr", "ls" ],
       "minimal": [],
       "name":"couto",
@@ -13873,7 +13894,7 @@
       "typical": ["name" ]
     },
     "credito": {
-      "complete": ["obs", "loc" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "loc" ],
       "includes": [
 	"n",
 	"credor",
@@ -13901,7 +13922,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "credor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -14111,7 +14132,7 @@
       "typical": ["nome", "sexo" ]
     },
     "credora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -14314,7 +14335,7 @@
       "typical": ["nome", "sexo" ]
     },
     "criada": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"criada",
@@ -14334,7 +14355,7 @@
       "typical": ["name", "sex" ]
     },
     "criado": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"criado",
@@ -14355,6 +14376,12 @@
     },
     "crime": {
       "complete": [
+	"forma",
+	"tipo",
+	"subtipo",
+	"dia",
+	"mes",
+	"ano",
 	"id",
 	"objecto",
 	"local",
@@ -14385,7 +14412,7 @@
       "typical": ["dia", "mes", "ano" ]
     },
     "crisma": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "ref", "loc", "obs" ],
       "includes": ["n", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"crisma",
@@ -14405,7 +14432,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "dador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -14615,7 +14642,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -14825,7 +14852,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -15035,7 +15062,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador1-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -15245,7 +15272,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -15455,7 +15482,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador2-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -15665,7 +15692,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -15875,7 +15902,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador3-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -16085,7 +16112,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -16295,7 +16322,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dador4-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -16505,7 +16532,7 @@
       "typical": ["nome", "sexo" ]
     },
     "debitado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -16715,7 +16742,7 @@
       "typical": ["nome", "sexo" ]
     },
     "defector": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -16925,7 +16952,7 @@
       "typical": ["nome", "sexo" ]
     },
     "defesa": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"defesa",
@@ -16945,7 +16972,7 @@
       "typical": ["name", "type" ]
     },
     "demanda": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"demanda",
@@ -16965,7 +16992,7 @@
       "typical": ["name", "type" ]
     },
     "demandado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -17175,7 +17202,7 @@
       "typical": ["nome", "sexo" ]
     },
     "demandador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -17385,7 +17412,7 @@
       "typical": ["nome", "sexo" ]
     },
     "demandadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -17588,7 +17615,16 @@
       "typical": ["nome", "sexo" ]
     },
     "denuncia": {
-      "complete": ["inquiridor", "escrivao", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"fol",
+	"inquiridor",
+	"escrivao",
+	"obs"
+      ],
       "includes": ["denunciante" ],
       "minimal": ["id", "dia", "mes", "ano", "fol" ],
       "name":"denuncia",
@@ -17608,7 +17644,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "denunciante": {
-      "complete": ["id", "mesmo_que", "xmesmo_que", "obs", "sexo" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": [
 	"acus",
 	"caso",
@@ -17821,7 +17857,7 @@
       "typical": ["nome", "sexo" ]
     },
     "destinataria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -18024,7 +18060,7 @@
       "typical": ["nome", "sexo" ]
     },
     "destinatario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -18234,7 +18270,7 @@
       "typical": ["nome", "sexo" ]
     },
     "destinatario1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -18444,7 +18480,7 @@
       "typical": ["nome", "sexo" ]
     },
     "destinatario2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -18654,7 +18690,17 @@
       "typical": ["nome", "sexo" ]
     },
     "devassa": {
-      "complete": ["folio", "visdor", "secretario", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"fol",
+	"folio",
+	"visdor",
+	"secretario",
+	"obs"
+      ],
       "includes": ["testo", "testa", "referido" ],
       "minimal": ["id", "dia", "mes", "ano", "fol" ],
       "name":"devassa",
@@ -18674,7 +18720,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "devedor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -18884,7 +18930,7 @@
       "typical": ["nome", "sexo" ]
     },
     "devedora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -19087,7 +19133,7 @@
       "typical": ["nome", "sexo" ]
     },
     "divida": {
-      "complete": ["id", "prazo", "moeda", "valorn", "obs" ],
+      "complete": ["valor", "juro", "id", "prazo", "moeda", "valorn", "obs" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["valor", "juro" ],
       "name":"divida",
@@ -19107,7 +19153,7 @@
       "typical": ["valor", "juro" ]
     },
     "doador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -19317,7 +19363,7 @@
       "typical": ["nome", "sexo" ]
     },
     "doadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -19520,7 +19566,17 @@
       "typical": ["nome", "sexo" ]
     },
     "docepiscopal": {
-      "complete": ["obs" ],
+      "complete": [
+	"id",
+	"tipo",
+	"fol",
+	"loc",
+	"sumario",
+	"dia",
+	"mes",
+	"ano",
+	"obs"
+      ],
       "includes": [
 	"atr",
 	"ls",
@@ -19568,7 +19624,17 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "docpontificio": {
-      "complete": ["obs" ],
+      "complete": [
+	"id",
+	"tipo",
+	"fol",
+	"loc",
+	"sumario",
+	"dia",
+	"mes",
+	"ano",
+	"obs"
+      ],
       "includes": [
 	"atr",
 	"ls",
@@ -19616,7 +19682,17 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "docregio": {
-      "complete": ["obs" ],
+      "complete": [
+	"id",
+	"tipo",
+	"fol",
+	"loc",
+	"sumario",
+	"dia",
+	"mes",
+	"ano",
+	"obs"
+      ],
       "includes": [
 	"atr",
 	"ls",
@@ -19664,7 +19740,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "donataria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -19867,7 +19943,7 @@
       "typical": ["nome", "sexo" ]
     },
     "donatario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -20077,7 +20153,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dotada": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -20280,7 +20356,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dotado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -20490,7 +20566,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dotante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -20700,7 +20776,7 @@
       "typical": ["nome", "sexo" ]
     },
     "dotantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -20903,7 +20979,7 @@
       "typical": ["nome", "sexo" ]
     },
     "eleicao": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": ["n", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"eleicao",
@@ -20923,7 +20999,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "eleito": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -21133,7 +21209,7 @@
       "typical": ["nome", "sexo" ]
     },
     "eleitor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -21343,7 +21419,7 @@
       "typical": ["nome", "sexo" ]
     },
     "emissor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -21553,7 +21629,7 @@
       "typical": ["nome", "sexo" ]
     },
     "emissor-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -21763,7 +21839,7 @@
       "typical": ["nome", "sexo" ]
     },
     "encarte": {
-      "complete": ["loc", "resumo", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "resumo", "obs" ],
       "includes": ["n", "referido", "referida", "item" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"encarte",
@@ -21800,7 +21876,7 @@
       "typical": ["id" ]
     },
     "endossado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -22010,7 +22086,7 @@
       "typical": ["nome", "sexo" ]
     },
     "endossante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -22220,7 +22296,7 @@
       "typical": ["nome", "sexo" ]
     },
     "enferma": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -22423,7 +22499,7 @@
       "typical": ["nome", "sexo" ]
     },
     "enfermo": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -22633,7 +22709,7 @@
       "typical": ["nome", "sexo" ]
     },
     "enfiteuta": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -22843,7 +22919,7 @@
       "typical": ["nome", "sexo" ]
     },
     "enfiteutaf": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -23046,7 +23122,7 @@
       "typical": ["nome", "sexo" ]
     },
     "engeitada": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"engeitada",
@@ -23066,7 +23142,7 @@
       "typical": ["name", "sex" ]
     },
     "engeitado": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"engeitado",
@@ -23086,7 +23162,7 @@
       "typical": ["name", "sex" ]
     },
     "enjeitada": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"enjeitada",
@@ -23106,7 +23182,7 @@
       "typical": ["name", "sex" ]
     },
     "enjeitado": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"enjeitado",
@@ -23126,7 +23202,7 @@
       "typical": ["name", "sex" ]
     },
     "escambador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -23336,7 +23412,7 @@
       "typical": ["nome", "sexo" ]
     },
     "escambadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -23539,7 +23615,7 @@
       "typical": ["nome", "sexo" ]
     },
     "escambo": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"escambo",
@@ -23559,7 +23635,7 @@
       "typical": ["name", "tipo" ]
     },
     "escrava": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"escrava",
@@ -23579,7 +23655,7 @@
       "typical": ["name", "sex" ]
     },
     "escravo": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"escravo",
@@ -23599,7 +23675,17 @@
       "typical": ["name", "sex" ]
     },
     "escritura": {
-      "complete": ["tipo", "fol", "sumario", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"loc",
+	"tipo",
+	"fol",
+	"sumario",
+	"obs"
+      ],
       "includes": [
 	"atr",
 	"ls",
@@ -23728,7 +23814,7 @@
       "typical": ["id", "dia", "mes", "ano", "tipo" ]
     },
     "escrivao": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -23938,7 +24024,7 @@
       "typical": ["nome", "sexo" ]
     },
     "estadia": {
-      "complete": ["obs", "id" ],
+      "complete": ["description", "dia", "mes", "ano", "obs", "id" ],
       "includes": [
 	"referido",
 	"referida",
@@ -23970,7 +24056,7 @@
       "typical": ["description", "dia", "mes", "ano" ]
     },
     "evento": {
-      "complete": ["obs", "id" ],
+      "complete": ["description", "dia", "mes", "ano", "obs", "id" ],
       "includes": [
 	"n",
 	"referido",
@@ -24102,7 +24188,7 @@
       "typical": ["description", "dia", "mes", "ano" ]
     },
     "fafilha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["mrfafilha", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"fafilha",
@@ -24123,7 +24209,7 @@
       "typical": ["nome", "sexo" ]
     },
     "fafilho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["merfafilho", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"fafilho",
@@ -24144,7 +24230,7 @@
       "typical": ["nome", "sexo" ]
     },
     "familia": {
-      "complete": ["id", "obs" ],
+      "complete": ["name", "id", "obs" ],
       "includes": [
 	"linha",
 	"celebrante",
@@ -24174,7 +24260,7 @@
       "typical": ["name" ]
     },
     "female": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"female",
@@ -24194,7 +24280,7 @@
       "typical": ["name", "sex" ]
     },
     "fiador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -24404,7 +24490,7 @@
       "typical": ["nome", "sexo" ]
     },
     "fiadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -24607,7 +24693,7 @@
       "typical": ["nome", "sexo" ]
     },
     "fianca": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"fianca",
@@ -24627,7 +24713,7 @@
       "typical": ["name", "tipo" ]
     },
     "filha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["fofilha", "fafilha", "mrfilha", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"filha",
@@ -24648,7 +24734,7 @@
       "typical": ["nome", "sexo" ]
     },
     "filho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["fofilho", "fafilho", "merfilho", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"filho",
@@ -24687,7 +24773,7 @@
       "typical": ["id" ]
     },
     "fofilha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["merfofilha", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"fofilha",
@@ -24708,7 +24794,7 @@
       "typical": ["nome", "sexo" ]
     },
     "fofilho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["merfofilho", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"fofilho",
@@ -24729,7 +24815,7 @@
       "typical": ["nome", "sexo" ]
     },
     "fogo": {
-      "complete": ["obs" ],
+      "complete": ["id", "local", "obs" ],
       "includes": [
 	"n",
 	"criado",
@@ -24761,10 +24847,13 @@
     },
     "fonte": {
       "complete": [
+	"id",
+	"year",
+	"type",
+	"ref",
 	"tipo",
 	"loc",
 	"localizacao",
-	"ref",
 	"data",
 	"ano",
 	"obs",
@@ -24844,7 +24933,7 @@
       "typical": ["id", "year", "type", "ref" ]
     },
     "fonte_info": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -25054,7 +25143,7 @@
       "typical": ["nome", "sexo" ]
     },
     "foreira": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -25257,7 +25346,7 @@
       "typical": ["nome", "sexo" ]
     },
     "foreiro": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -25468,6 +25557,7 @@
     },
     "fornarr": {
       "complete": [
+	"name",
 	"valor",
 	"prazo",
 	"condicao",
@@ -25496,7 +25586,7 @@
       "typical": ["name" ]
     },
     "fou": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel", "tcheou", "hien", "loc" ],
       "minimal": [],
       "name":"fou",
@@ -25515,7 +25605,7 @@
       "typical": ["name", "type", "id" ]
     },
     "freguesia": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": [
 	"atr",
 	"rel",
@@ -25555,7 +25645,7 @@
       "typical": ["name" ]
     },
     "fretador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -25782,7 +25872,7 @@
       "typical": []
     },
     "garantia": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"garantia",
@@ -25802,7 +25892,7 @@
       "typical": ["name", "tipo" ]
     },
     "genro": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"genro",
@@ -25822,7 +25912,7 @@
       "typical": ["name", "sex" ]
     },
     "geo1": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["geo2", "atr", "rel" ],
       "minimal": [],
       "name":"geo1",
@@ -25841,7 +25931,7 @@
       "typical": ["name", "type", "id" ]
     },
     "geo2": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["geo3", "atr", "rel" ],
       "minimal": [],
       "name":"geo2",
@@ -25860,7 +25950,7 @@
       "typical": ["name", "type", "id" ]
     },
     "geo3": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["geo4", "atr", "rel" ],
       "minimal": [],
       "name":"geo3",
@@ -25879,7 +25969,7 @@
       "typical": ["name", "type", "id" ]
     },
     "geo4": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel" ],
       "minimal": [],
       "name":"geo4",
@@ -25898,7 +25988,7 @@
       "typical": ["name", "type", "id" ]
     },
     "geodesc": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "obs" ],
       "includes": [
 	"geo1",
 	"geo2",
@@ -25933,7 +26023,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol" ]
     },
     "geoentity": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"geoentity",
@@ -25951,7 +26041,18 @@
       "typical": ["name" ]
     },
     "gov": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"diaf",
+	"mesf",
+	"anof",
+	"obs",
+	"ref",
+	"loc"
+      ],
       "includes": [
 	"pm",
 	"minAdj",
@@ -26152,7 +26253,7 @@
       "typical": ["id", "dia", "mes", "ano", "diaf", "mesf", "anof", "obs" ]
     },
     "gref": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"gref",
@@ -26171,7 +26272,7 @@
       "typical": ["name" ]
     },
     "group-element": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"group-element",
@@ -26189,7 +26290,7 @@
       "typical": ["value" ]
     },
     "hab": {
-      "complete": ["obs" ],
+      "complete": ["id", "cota", "data", "obs" ],
       "includes": ["n", "referido", "referida", "test" ],
       "minimal": ["id", "cota", "data" ],
       "name":"hab",
@@ -26209,7 +26310,7 @@
       "typical": ["id", "cota", "data" ]
     },
     "hien": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel", "loc" ],
       "minimal": [],
       "name":"hien",
@@ -26228,7 +26329,17 @@
       "typical": ["name", "type", "id" ]
     },
     "historical-act": {
-      "complete": ["loc", "ref", "obs", "day", "month", "year" ],
+      "complete": [
+	"id",
+	"type",
+	"date",
+	"loc",
+	"ref",
+	"obs",
+	"day",
+	"month",
+	"year"
+      ],
       "includes": [
 	"person",
 	"object",
@@ -26256,11 +26367,12 @@
     },
     "historical-source": {
       "complete": [
-	"type",
-	"date",
+	"id",
 	"year",
-	"loc",
+	"type",
 	"ref",
+	"date",
+	"loc",
 	"obs",
 	"replace",
 	"kleiofile"
@@ -26283,7 +26395,7 @@
       "typical": ["id", "year", "type", "ref" ]
     },
     "honra": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["referido", "atr", "ls" ],
       "minimal": [],
       "name":"honra",
@@ -26302,7 +26414,7 @@
       "typical": ["name" ]
     },
     "hospital": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "rel", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"hospital",
@@ -26323,7 +26435,7 @@
       "typical": ["name", "type" ]
     },
     "identifications": {
-      "complete": ["obs" ],
+      "complete": ["id", "name", "date", "user", "dbase", "mode", "obs" ],
       "includes": ["rentity", "rperson", "robject" ],
       "minimal": ["id", "name", "date", "user", "dbase", "mode" ],
       "name":"identifications",
@@ -26343,7 +26455,7 @@
       "typical": ["id", "name" ]
     },
     "idonatario": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"idonatario",
@@ -26363,7 +26475,7 @@
       "typical": ["name", "type" ]
     },
     "igreja": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "rel", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"igreja",
@@ -26384,7 +26496,7 @@
       "typical": ["name", "type" ]
     },
     "informador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -26594,7 +26706,7 @@
       "typical": ["nome", "sexo" ]
     },
     "inquiricao": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"inquiricao",
@@ -26614,7 +26726,7 @@
       "typical": ["name", "type" ]
     },
     "inquirida": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -26817,7 +26929,7 @@
       "typical": ["nome", "sexo" ]
     },
     "inquirido": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -27027,7 +27139,7 @@
       "typical": ["nome", "sexo" ]
     },
     "inquiridor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -27237,7 +27349,7 @@
       "typical": ["nome", "sexo" ]
     },
     "integr": {
-      "complete": ["obs", "data" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "data" ],
       "includes": [
 	"referido",
 	"referida",
@@ -27265,7 +27377,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "intermediario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -27475,7 +27587,7 @@
       "typical": ["nome", "sexo" ]
     },
     "irma": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"irma",
@@ -27495,7 +27607,7 @@
       "typical": ["nome", "sexo" ]
     },
     "irmandade": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"irmandade",
@@ -27515,7 +27627,7 @@
       "typical": ["name", "type" ]
     },
     "irmao": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"irmao",
@@ -27535,7 +27647,7 @@
       "typical": ["nome", "sexo" ]
     },
     "item": {
-      "complete": ["resumo", "id", "tipo", "obs" ],
+      "complete": ["titulo", "resumo", "id", "tipo", "obs" ],
       "includes": ["presente", "presente-f", "referido", "referida", "ls", "rel" ],
       "minimal": ["titulo" ],
       "name":"item",
@@ -27555,7 +27667,7 @@
       "typical": ["titulo" ]
     },
     "juiz": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -27765,7 +27877,7 @@
       "typical": ["nome", "sexo" ]
     },
     "juramento": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": ["n", "referido", "referida", "abonador", "abonadora", "escrivao" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"juramento",
@@ -27785,7 +27897,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "kin-daughter": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-daughter",
@@ -27805,7 +27917,7 @@
       "typical": ["nome", "sexo" ]
     },
     "kin-father": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-father",
@@ -27825,7 +27937,7 @@
       "typical": ["nome", "sexo" ]
     },
     "kin-husband": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-husband",
@@ -27845,7 +27957,7 @@
       "typical": ["nome", "sexo" ]
     },
     "kin-mother": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-mother",
@@ -27865,7 +27977,7 @@
       "typical": ["nome", "sexo" ]
     },
     "kin-son": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-son",
@@ -27885,7 +27997,7 @@
       "typical": ["nome", "sexo" ]
     },
     "kin-wife": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"kin-wife",
@@ -27908,8 +28020,8 @@
       "complete": [
 	"structure",
 	"translator",
-	"autorels",
 	"obs",
+	"autorels",
 	"prefix",
 	"translations"
       ],
@@ -27917,7 +28029,8 @@
 	"historical-source",
 	"fonte",
 	"authority-register",
-	"identifications"
+	"identifications",
+	"link"
       ],
       "minimal": [],
       "name":"kleio",
@@ -27932,10 +28045,10 @@
 	"sequentia",
 	"signum"
       ],
-      "typical": ["structure", "translator" ]
+      "typical": ["structure", "translator", "obs" ]
     },
     "lbach": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": ["n", "ts" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"lbach",
@@ -27955,7 +28068,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "lc": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "local", "obs" ],
       "includes": [
 	"atr",
 	"rel",
@@ -28070,7 +28183,7 @@
       "typical": ["id", "dia", "mes", "ano", "local" ]
     },
     "lcc": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "ref", "loc", "obs" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"lcc",
@@ -28090,7 +28203,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "let": {
-      "complete": ["obs" ],
+      "complete": ["id", "data", "cota", "obs" ],
       "includes": ["n", "ts" ],
       "minimal": ["id", "data", "cota" ],
       "name":"let",
@@ -28110,7 +28223,7 @@
       "typical": ["id" ]
     },
     "linha": {
-      "complete": ["obs", "id" ],
+      "complete": ["numero", "obs", "id" ],
       "includes": ["n", "atr", "ls", "rel" ],
       "minimal": ["numero" ],
       "name":"linha",
@@ -28130,8 +28243,25 @@
       ],
       "typical": ["numero" ]
     },
+    "link": {
+      "complete": ["shortname", "urlpattern", "id", "obs" ],
+      "includes": [],
+      "minimal": [],
+      "name":"link",
+      "properties": [
+	"ceteri",
+	"identificatio",
+	"locus",
+	"ordo",
+	"post",
+	"prae",
+	"sequentia",
+	"signum"
+      ],
+      "typical": ["shortname", "urlpattern" ]
+    },
     "lista": {
-      "complete": ["obs", "loc", "tipo", "data" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "loc", "tipo", "data" ],
       "includes": ["n", "referido", "referida", "celebrante", "evento", "colega" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"lista",
@@ -28151,7 +28281,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "loc": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel" ],
       "minimal": [],
       "name":"loc",
@@ -28170,7 +28300,7 @@
       "typical": ["name", "type", "id" ]
     },
     "local": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel" ],
       "minimal": [],
       "name":"local",
@@ -28189,7 +28319,7 @@
       "typical": ["name" ]
     },
     "locf": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"locf",
@@ -28208,7 +28338,7 @@
       "typical": ["value" ]
     },
     "locs": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"locs",
@@ -28227,7 +28357,7 @@
       "typical": ["value" ]
     },
     "louvado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -28437,7 +28567,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ls": {
-      "complete": ["data", "obs", "id" ],
+      "complete": ["tipo", "valor", "data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor" ],
       "name":"ls",
@@ -28456,7 +28586,7 @@
       "typical": ["tipo", "valor", "data" ]
     },
     "lugar": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["referido", "atr", "ls" ],
       "minimal": [],
       "name":"lugar",
@@ -28475,7 +28605,7 @@
       "typical": ["name" ]
     },
     "mad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmad", "mmad", "mrmad", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mad",
@@ -28496,7 +28626,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmad1", "mmad1", "mrmad1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mad1",
@@ -28517,7 +28647,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmad2", "mmad2", "mrmad2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mad2",
@@ -28538,7 +28668,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmad3", "mmad3", "mrmad3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mad3",
@@ -28559,7 +28689,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmad4", "mmad4", "mrmad4", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mad4",
@@ -28580,7 +28710,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmae", "mmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mae",
@@ -28601,7 +28731,7 @@
       "typical": ["nome", "sexo" ]
     },
     "male": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"male",
@@ -28621,7 +28751,7 @@
       "typical": ["name", "sex" ]
     },
     "marco": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"marco",
@@ -28641,7 +28771,7 @@
       "typical": ["name", "type" ]
     },
     "marido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmarido", "mmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"marido",
@@ -28662,7 +28792,7 @@
       "typical": ["nome", "sexo" ]
     },
     "marido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmarido1", "mmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"marido1",
@@ -28683,7 +28813,7 @@
       "typical": ["nome", "sexo" ]
     },
     "marido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmarido2", "mmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"marido2",
@@ -28704,7 +28834,7 @@
       "typical": ["nome", "sexo" ]
     },
     "marido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmarido3", "mmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"marido3",
@@ -28725,7 +28855,7 @@
       "typical": ["nome", "sexo" ]
     },
     "matricula": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "obs" ],
       "includes": [
 	"enfermo",
 	"enferma",
@@ -28758,7 +28888,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol" ]
     },
     "med": {
-      "complete": ["obs" ],
+      "complete": ["length", "cardinal", "obs" ],
       "includes": ["conf", "marco", "atr", "ls", "rel" ],
       "minimal": ["length" ],
       "name":"med",
@@ -28779,7 +28909,7 @@
       "typical": ["cardinal", "length" ]
     },
     "memoria58": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "obs" ],
       "includes": [
 	"freguesia",
 	"celebrante",
@@ -28809,7 +28939,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "merce": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "cota", "merce", "obs" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano", "cota", "merce" ],
       "name":"merce",
@@ -28829,7 +28959,7 @@
       "typical": ["id", "dia", "mes", "ano", "cota", "merce", "obs" ]
     },
     "merfilho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"merfilho",
@@ -28849,7 +28979,7 @@
       "typical": ["nome", "sexo" ]
     },
     "merfofilha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"merfofilha",
@@ -28869,7 +28999,7 @@
       "typical": ["nome", "sexo" ]
     },
     "merfofilho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"merfofilho",
@@ -28889,7 +29019,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mestre": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"mestre",
@@ -28909,7 +29039,7 @@
       "typical": ["nome", "sexo" ]
     },
     "milicias": {
-      "complete": ["obs", "loc" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "loc" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"milicias",
@@ -28929,7 +29059,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "misericordia": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "rel", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"misericordia",
@@ -28950,7 +29080,7 @@
       "typical": ["name", "type" ]
     },
     "mmad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmad",
@@ -28970,7 +29100,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmad1",
@@ -28990,7 +29120,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmad2",
@@ -29010,7 +29140,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmad3",
@@ -29030,7 +29160,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmad4",
@@ -29050,7 +29180,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmae", "mmmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmae",
@@ -29071,7 +29201,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmarido", "mmmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmarido",
@@ -29092,7 +29222,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido1", "mmpmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmarido1",
@@ -29113,7 +29243,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido2", "mmpmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmarido2",
@@ -29134,7 +29264,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido3", "mmpmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmarido3",
@@ -29155,7 +29285,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmae", "mmmmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmae",
@@ -29176,7 +29306,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmarido", "mmmmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmarido",
@@ -29197,7 +29327,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmarido1", "mmmmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmarido1",
@@ -29218,7 +29348,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmarido2", "mmmmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmarido2",
@@ -29239,7 +29369,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmarido3", "mmmmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmarido3",
@@ -29260,7 +29390,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmae",
@@ -29280,7 +29410,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmarido",
@@ -29300,7 +29430,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmarido1",
@@ -29320,7 +29450,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmarido2",
@@ -29340,7 +29470,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmarido3",
@@ -29360,7 +29490,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmulher",
@@ -29380,7 +29510,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmulher1",
@@ -29400,7 +29530,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmulher2",
@@ -29420,7 +29550,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmmulher3",
@@ -29440,7 +29570,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmnoiva",
@@ -29460,7 +29590,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmnoivo", "mmmmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmnoivo",
@@ -29481,7 +29611,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmulher", "mmmmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmulher",
@@ -29502,7 +29632,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmulher1", "mmmmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmulher1",
@@ -29523,7 +29653,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmulher2", "mmmmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmulher2",
@@ -29544,7 +29674,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmmulher3", "mmmmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmmulher3",
@@ -29565,7 +29695,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmn",
@@ -29585,7 +29715,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmnoiva", "mmmnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmnoiva",
@@ -29606,7 +29736,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmnoivo", "mmmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmnoivo",
@@ -29627,7 +29757,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmpai", "mmmpai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpai",
@@ -29648,7 +29778,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmae",
@@ -29668,7 +29798,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmarido",
@@ -29688,7 +29818,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmarido1",
@@ -29708,7 +29838,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmarido2",
@@ -29728,7 +29858,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmarido3",
@@ -29748,7 +29878,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmulher",
@@ -29768,7 +29898,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmulher1",
@@ -29788,7 +29918,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmulher2",
@@ -29808,7 +29938,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpmulher3",
@@ -29828,7 +29958,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpnoiva",
@@ -29848,7 +29978,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmpnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmpnoivo",
@@ -29868,7 +29998,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmulher", "mmmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmulher",
@@ -29889,7 +30019,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmulher1", "mmmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmulher1",
@@ -29910,7 +30040,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmulher2", "mmmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmulher2",
@@ -29931,7 +30061,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmmulher3", "mmmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mmulher3",
@@ -29952,7 +30082,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmn", "mmn", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mn",
@@ -29973,7 +30103,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmnoiva", "mmnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mnoiva",
@@ -29994,7 +30124,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmnoivo", "mmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mnoivo",
@@ -30015,7 +30145,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mosteiro": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "rel", "atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"mosteiro",
@@ -30036,7 +30166,7 @@
       "typical": ["name", "type" ]
     },
     "mpad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpad",
@@ -30056,7 +30186,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpad1",
@@ -30076,7 +30206,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpad2",
@@ -30096,7 +30226,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpad3",
@@ -30116,7 +30246,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpad4",
@@ -30136,7 +30266,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpai", "mmpai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpai",
@@ -30157,7 +30287,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmae", "mmpmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmae",
@@ -30178,7 +30308,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido", "mmpmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmarido",
@@ -30199,7 +30329,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido1", "mmpmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmarido1",
@@ -30220,7 +30350,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido2", "mmpmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmarido2",
@@ -30241,7 +30371,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmarido3", "mmpmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmarido3",
@@ -30262,7 +30392,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmae",
@@ -30282,7 +30412,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmarido",
@@ -30302,7 +30432,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmarido1",
@@ -30322,7 +30452,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmarido2",
@@ -30342,7 +30472,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmarido3",
@@ -30362,7 +30492,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmulher",
@@ -30382,7 +30512,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmulher1",
@@ -30402,7 +30532,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmulher2",
@@ -30422,7 +30552,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmmulher3",
@@ -30442,7 +30572,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmnoiva",
@@ -30462,7 +30592,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmnoivo", "mmpmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmnoivo",
@@ -30483,7 +30613,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmulher", "mmpmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmulher",
@@ -30504,7 +30634,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmulher1", "mmpmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmulher1",
@@ -30525,7 +30655,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmulher2", "mmpmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmulher2",
@@ -30546,7 +30676,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpmulher3", "mmpmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpmulher3",
@@ -30567,7 +30697,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpn",
@@ -30587,7 +30717,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpnoiva", "mmpnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpnoiva",
@@ -30608,7 +30738,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mpnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmpnoivo", "mmpnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mpnoivo",
@@ -30629,7 +30759,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmppai", "mmppai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppai",
@@ -30650,7 +30780,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmae",
@@ -30670,7 +30800,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmarido",
@@ -30690,7 +30820,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmarido1",
@@ -30710,7 +30840,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmarido2",
@@ -30730,7 +30860,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmarido3",
@@ -30750,7 +30880,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmulher",
@@ -30770,7 +30900,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmulher1",
@@ -30790,7 +30920,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmulher2",
@@ -30810,7 +30940,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppmulher3",
@@ -30830,7 +30960,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppnoiva",
@@ -30850,7 +30980,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mppnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mppnoivo",
@@ -30870,7 +31000,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrfafilha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrfafilha",
@@ -30890,7 +31020,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrfafilho": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrfafilho",
@@ -30910,7 +31040,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrfilha": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrfilha",
@@ -30930,7 +31060,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrmad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrmad",
@@ -30950,7 +31080,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrmad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrmad1",
@@ -30970,7 +31100,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrmad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrmad2",
@@ -30990,7 +31120,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrmad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrmad3",
@@ -31010,7 +31140,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mrmad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mrmad4",
@@ -31030,7 +31160,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmulher", "mmulher", "filha", "filho", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mulher",
@@ -31051,7 +31181,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmulher1", "mmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mulher1",
@@ -31072,7 +31202,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmulher2", "mmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mulher2",
@@ -31093,7 +31223,7 @@
       "typical": ["nome", "sexo" ]
     },
     "mulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pmulher3", "mmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"mulher3",
@@ -31114,7 +31244,7 @@
       "typical": ["nome", "sexo" ]
     },
     "n": {
-      "complete": ["sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": [
 	"pevent",
 	"viagem",
@@ -31417,7 +31547,7 @@
       "typical": ["nome", "sexo" ]
     },
     "na": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -31620,7 +31750,7 @@
       "typical": ["nome", "sexo" ]
     },
     "neta": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"neta",
@@ -31640,7 +31770,7 @@
       "typical": ["name", "sex" ]
     },
     "neto": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"neto",
@@ -31660,7 +31790,7 @@
       "typical": ["name", "sex" ]
     },
     "noiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"pnoiva",
 	"mnoiva",
@@ -31690,7 +31820,7 @@
       "typical": ["nome", "sexo" ]
     },
     "noivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"pnoivo",
 	"mnoivo",
@@ -31720,7 +31850,17 @@
       "typical": ["nome", "sexo" ]
     },
     "nom": {
-      "complete": ["fols", "subs", "esmola", "obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"fol",
+	"subs",
+	"esmola",
+	"fols",
+	"obs"
+      ],
       "includes": ["n", "referido" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"nom",
@@ -31740,7 +31880,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "subs", "esmola" ]
     },
     "nora": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"nora",
@@ -31760,7 +31900,7 @@
       "typical": ["name", "sex" ]
     },
     "o": {
-      "complete": ["obs", "id" ],
+      "complete": ["dia", "mes", "ano", "obs", "id" ],
       "includes": [
 	"celebrante",
 	"n",
@@ -31796,7 +31936,7 @@
       "typical": ["dia", "mes", "ano" ]
     },
     "obito": {
-      "complete": ["obs" ],
+      "complete": ["id", "mes", "ano", "dia", "fol", "celebrante", "obs" ],
       "includes": [
 	"celebrante",
 	"n",
@@ -31832,7 +31972,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "celebrante" ]
     },
     "object": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"object",
@@ -31851,7 +31991,7 @@
       "typical": ["name", "type" ]
     },
     "obra": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "id", "desc", "obs", "local" ],
       "includes": ["atr", "rel" ],
       "minimal": ["name" ],
       "name":"obra",
@@ -31871,7 +32011,7 @@
       "typical": ["name", "tipo", "id" ]
     },
     "occ": {
-      "complete": ["name", "atype", "func", "date", "id", "obs" ],
+      "complete": ["occurrence", "atype", "func", "date", "name", "id", "obs" ],
       "includes": [],
       "minimal": ["occurrence" ],
       "name":"occ",
@@ -31889,7 +32029,7 @@
       "typical": ["occurrence", "atype", "func", "date", "name" ]
     },
     "oficios": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"oficios",
@@ -31908,7 +32048,7 @@
       "typical": ["value" ]
     },
     "ordenancas": {
-      "complete": ["obs", "loc" ],
+      "complete": ["id", "dia", "mes", "ano", "obs", "loc" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"ordenancas",
@@ -31928,7 +32068,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "outorgante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -32138,7 +32278,7 @@
       "typical": ["nome", "sexo" ]
     },
     "outorgantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -32341,7 +32481,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppad", "mpad", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pad",
@@ -32362,7 +32502,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppad1", "mpad1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pad1",
@@ -32383,7 +32523,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppad2", "mpad2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pad2",
@@ -32404,7 +32544,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppad3", "mpad3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pad3",
@@ -32425,7 +32565,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppad4", "mpad4", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pad4",
@@ -32446,7 +32586,7 @@
       "typical": ["nome", "sexo" ]
     },
     "padroeiro": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -32656,7 +32796,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -32866,7 +33006,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -33076,7 +33216,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -33286,7 +33426,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador1-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -33496,7 +33636,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -33706,7 +33846,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador2-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -33916,7 +34056,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -34126,7 +34266,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador3-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -34336,7 +34476,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -34546,7 +34686,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador4-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -34756,7 +34896,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador5": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -34966,7 +35106,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pagador5-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -35176,7 +35316,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppai", "mpai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pai",
@@ -35197,7 +35337,7 @@
       "typical": ["nome", "sexo" ]
     },
     "parentef": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"parentef",
@@ -35217,7 +35357,7 @@
       "typical": ["nome", "sexo" ]
     },
     "parentem": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"parentem",
@@ -35237,7 +35377,17 @@
       "typical": ["nome", "sexo" ]
     },
     "pas": {
-      "complete": ["obs" ],
+      "complete": [
+	"id",
+	"dia",
+	"mes",
+	"ano",
+	"fol",
+	"local",
+	"destino",
+	"num",
+	"obs"
+      ],
       "includes": ["mestre", "n", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano", "fol", "local", "destino", "num" ],
       "name":"pas",
@@ -35257,7 +35407,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "local", "destino" ]
     },
     "pauta": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": ["n", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano", "loc" ],
       "name":"pauta",
@@ -35277,7 +35427,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "pdonatario": {
-      "complete": ["id", "obs", "same_as" ],
+      "complete": ["name", "sex", "id", "same_as", "obs" ],
       "includes": ["referido", "ls", "atr", "rel", "atr", "rel", "ls" ],
       "minimal": ["name", "sex" ],
       "name":"pdonatario",
@@ -35298,7 +35448,7 @@
       "typical": ["name", "sex", "id", "same_as" ]
     },
     "perdao": {
-      "complete": ["obs", "id" ],
+      "complete": ["tipo", "descricao", "dia", "mes", "ano", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["tipo", "descricao" ],
       "name":"perdao",
@@ -35318,7 +35468,7 @@
       "typical": ["dia", "mes", "ano" ]
     },
     "perdoada": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -35521,7 +35671,7 @@
       "typical": ["nome" ]
     },
     "perdoado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
       "includes": [
 	"atr",
 	"ls",
@@ -35731,7 +35881,7 @@
       "typical": ["nome" ]
     },
     "perdoante": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"perdoante",
@@ -35751,7 +35901,7 @@
       "typical": ["nome", "sexo" ]
     },
     "perdoante-f": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -35954,7 +36104,7 @@
       "typical": ["nome" ]
     },
     "perdoante-m": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
       "includes": [
 	"atr",
 	"ls",
@@ -36164,7 +36314,7 @@
       "typical": ["nome" ]
     },
     "person": {
-      "complete": ["id", "obs", "same_as" ],
+      "complete": ["name", "sex", "id", "same_as", "obs" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name", "sex" ],
       "name":"person",
@@ -36183,7 +36333,7 @@
       "typical": ["name", "sex", "id", "same_as" ]
     },
     "pevent": {
-      "complete": ["obs", "id" ],
+      "complete": ["description", "dia", "mes", "ano", "obs", "id" ],
       "includes": [
 	"referido",
 	"referida",
@@ -36215,7 +36365,7 @@
       "typical": ["description", "dia", "mes", "ano" ]
     },
     "pm": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -36425,7 +36575,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmad",
@@ -36445,7 +36595,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmad1",
@@ -36465,7 +36615,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmad2",
@@ -36485,7 +36635,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmad3",
@@ -36505,7 +36655,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmad4",
@@ -36525,7 +36675,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmae", "mpmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmae",
@@ -36546,7 +36696,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmarido", "mpmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmarido",
@@ -36567,7 +36717,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmarido1",
@@ -36587,7 +36737,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmarido2",
@@ -36607,7 +36757,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmarido3",
@@ -36627,7 +36777,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmae", "mpmmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmae",
@@ -36648,7 +36798,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmarido",
@@ -36668,7 +36818,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmarido1", "mpmmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmarido1",
@@ -36689,7 +36839,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmarido2", "mpmmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmarido2",
@@ -36710,7 +36860,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmarido3", "mpmmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmarido3",
@@ -36731,7 +36881,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmae",
@@ -36751,7 +36901,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmarido",
@@ -36771,7 +36921,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmarido1",
@@ -36791,7 +36941,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmarido2",
@@ -36811,7 +36961,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmarido3",
@@ -36831,7 +36981,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmulher",
@@ -36851,7 +37001,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmulher1",
@@ -36871,7 +37021,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmulher2",
@@ -36891,7 +37041,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmmulher3",
@@ -36911,7 +37061,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmnoiva",
@@ -36931,7 +37081,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmnoivo", "mpmmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmnoivo",
@@ -36952,7 +37102,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmulher", "mpmmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmulher",
@@ -36973,7 +37123,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmulher1", "mpmmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmulher1",
@@ -36994,7 +37144,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmulher2", "mpmmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmulher2",
@@ -37015,7 +37165,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmmulher3", "mpmmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmmulher3",
@@ -37036,7 +37186,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmn",
@@ -37056,7 +37206,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmnoiva", "mpmnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmnoiva",
@@ -37077,7 +37227,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmnoivo", "mpmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmnoivo",
@@ -37098,7 +37248,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmpai", "mpmpai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpai",
@@ -37119,7 +37269,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmae",
@@ -37139,7 +37289,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmarido",
@@ -37159,7 +37309,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmarido1",
@@ -37179,7 +37329,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmarido2",
@@ -37199,7 +37349,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmarido3",
@@ -37219,7 +37369,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmulher",
@@ -37239,7 +37389,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmulher1",
@@ -37259,7 +37409,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmulher2",
@@ -37279,7 +37429,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpmulher3",
@@ -37299,7 +37449,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpnoiva",
@@ -37319,7 +37469,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmpnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmpnoivo",
@@ -37339,7 +37489,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmulher", "mpmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmulher",
@@ -37360,7 +37510,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmulher1", "mpmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmulher1",
@@ -37381,7 +37531,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmulher2", "mpmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmulher2",
@@ -37402,7 +37552,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppmulher3", "mpmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pmulher3",
@@ -37423,7 +37573,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppn", "mpn", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pn",
@@ -37444,7 +37594,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppnoiva", "mpnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pnoiva",
@@ -37465,7 +37615,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppnoivo", "mpnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pnoivo",
@@ -37486,7 +37636,7 @@
       "typical": ["nome", "sexo" ]
     },
     "po": {
-      "complete": ["obs" ],
+      "complete": ["id", "cota", "data", "obs" ],
       "includes": ["n", "referido", "referida", "test" ],
       "minimal": ["id", "cota", "data" ],
       "name":"po",
@@ -37506,7 +37656,7 @@
       "typical": ["id", "cota", "data" ]
     },
     "ppad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppad",
@@ -37526,7 +37676,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppad1",
@@ -37546,7 +37696,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppad2",
@@ -37566,7 +37716,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppad3",
@@ -37586,7 +37736,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppad4",
@@ -37606,7 +37756,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppai", "mppai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppai",
@@ -37627,7 +37777,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmae", "mppmae", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmae",
@@ -37648,7 +37798,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmarido", "mppmarido", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmarido",
@@ -37669,7 +37819,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmarido1", "mppmarido1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmarido1",
@@ -37690,7 +37840,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmarido2", "mppmarido2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmarido2",
@@ -37711,7 +37861,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmarido3", "mppmarido3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmarido3",
@@ -37732,7 +37882,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmae",
@@ -37752,7 +37902,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmarido",
@@ -37772,7 +37922,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmarido1",
@@ -37792,7 +37942,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmarido2",
@@ -37812,7 +37962,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmarido3",
@@ -37832,7 +37982,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmulher",
@@ -37852,7 +38002,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmulher1",
@@ -37872,7 +38022,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmulher2",
@@ -37892,7 +38042,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmmulher3",
@@ -37912,7 +38062,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmnoiva",
@@ -37932,7 +38082,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmnoivo", "mppmnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmnoivo",
@@ -37953,7 +38103,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmulher", "mppmulher", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmulher",
@@ -37974,7 +38124,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmulher1", "mppmulher1", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmulher1",
@@ -37995,7 +38145,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmulher2", "mppmulher2", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmulher2",
@@ -38016,7 +38166,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppmulher3", "mppmulher3", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppmulher3",
@@ -38037,7 +38187,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppn": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppn",
@@ -38057,7 +38207,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppnoiva", "mppnoiva", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppnoiva",
@@ -38078,7 +38228,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ppnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["pppnoivo", "mppnoivo", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"ppnoivo",
@@ -38099,7 +38249,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppai": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ppppai", "mpppai", "atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppai",
@@ -38120,7 +38270,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmae": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmae",
@@ -38140,7 +38290,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmarido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmarido",
@@ -38160,7 +38310,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmarido1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmarido1",
@@ -38180,7 +38330,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmarido2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmarido2",
@@ -38200,7 +38350,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmarido3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmarido3",
@@ -38220,7 +38370,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmulher": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmulher",
@@ -38240,7 +38390,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmulher1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmulher1",
@@ -38260,7 +38410,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmulher2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmulher2",
@@ -38280,7 +38430,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppmulher3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppmulher3",
@@ -38300,7 +38450,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppnoiva": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppnoiva",
@@ -38320,7 +38470,7 @@
       "typical": ["nome", "sexo" ]
     },
     "pppnoivo": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["nome" ],
       "name":"pppnoivo",
@@ -38340,7 +38490,7 @@
       "typical": ["nome", "sexo" ]
     },
     "prazo": {
-      "complete": ["desc", "tipo", "id", "obs", "local" ],
+      "complete": ["name", "tipo", "desc", "id", "obs", "local" ],
       "includes": ["atr", "rel", "local" ],
       "minimal": ["name" ],
       "name":"prazo",
@@ -38360,7 +38510,7 @@
       "typical": ["name", "tipo" ]
     },
     "presente": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -38570,7 +38720,7 @@
       "typical": ["nome", "sexo" ]
     },
     "presente-f": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -38773,7 +38923,7 @@
       "typical": ["nome", "sexo" ]
     },
     "proc": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "loc", "obs" ],
       "includes": ["n", "referido", "referida", "test" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"proc",
@@ -38793,7 +38943,7 @@
       "typical": ["id", "dia", "mes", "ano", "loc" ]
     },
     "procurador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -39003,7 +39153,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-mad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-mad",
@@ -39023,7 +39173,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-mad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-mad1",
@@ -39043,7 +39193,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-mad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-mad2",
@@ -39063,7 +39213,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-mad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-mad3",
@@ -39083,7 +39233,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-mad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-mad4",
@@ -39103,7 +39253,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-pad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-pad",
@@ -39123,7 +39273,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-pad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-pad1",
@@ -39143,7 +39293,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-pad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-pad2",
@@ -39163,7 +39313,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-pad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-pad3",
@@ -39183,7 +39333,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procurador-pad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procurador-pad4",
@@ -39203,7 +39353,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -39406,7 +39556,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-mad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-mad",
@@ -39426,7 +39576,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-mad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-mad1",
@@ -39446,7 +39596,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-mad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-mad2",
@@ -39466,7 +39616,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-mad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-mad3",
@@ -39486,7 +39636,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-mad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-mad4",
@@ -39506,7 +39656,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-pad": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-pad",
@@ -39526,7 +39676,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-pad1": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-pad1",
@@ -39546,7 +39696,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-pad2": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-pad2",
@@ -39566,7 +39716,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-pad3": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-pad3",
@@ -39586,7 +39736,7 @@
       "typical": ["nome", "sexo" ]
     },
     "procuradora-pad4": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"procuradora-pad4",
@@ -39607,6 +39757,7 @@
     },
     "proparr": {
       "complete": [
+	"name",
 	"valor",
 	"prazo",
 	"condicao",
@@ -39634,8 +39785,25 @@
       ],
       "typical": ["name" ]
     },
+    "property": {
+      "complete": ["name", "value", "id", "obs" ],
+      "includes": [],
+      "minimal": [],
+      "name":"property",
+      "properties": [
+	"ceteri",
+	"identificatio",
+	"locus",
+	"ordo",
+	"post",
+	"prae",
+	"sequentia",
+	"signum"
+      ],
+      "typical": ["name", "value" ]
+    },
     "proprietario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -39845,7 +40013,7 @@
       "typical": ["nome", "sexo" ]
     },
     "province": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel", "fou" ],
       "minimal": [],
       "name":"province",
@@ -39864,7 +40032,7 @@
       "typical": ["name", "type", "id" ]
     },
     "provincia": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"provincia",
@@ -39883,7 +40051,7 @@
       "typical": ["name" ]
     },
     "pt-acto": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "ref", "loc", "obs" ],
       "includes": [
 	"celebrante",
 	"actorm",
@@ -39911,7 +40079,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "quitada": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -40114,7 +40282,7 @@
       "typical": ["nome", "sexo" ]
     },
     "quitado": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -40324,7 +40492,7 @@
       "typical": ["nome", "sexo" ]
     },
     "quitante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -40534,7 +40702,7 @@
       "typical": ["nome", "sexo" ]
     },
     "quitantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -40737,7 +40905,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -40947,7 +41115,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor-proc": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -41157,7 +41325,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -41367,7 +41535,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor1-proc": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -41577,7 +41745,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -41787,7 +41955,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor2-proc": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -41997,7 +42165,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -42207,7 +42375,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor3-proc": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -42417,7 +42585,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -42627,7 +42795,7 @@
       "typical": ["nome", "sexo" ]
     },
     "recebedor4-proc": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -42837,7 +43005,7 @@
       "typical": ["nome", "sexo" ]
     },
     "receptor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -43047,7 +43215,7 @@
       "typical": ["nome", "sexo" ]
     },
     "referida": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"referida",
@@ -43067,7 +43235,7 @@
       "typical": ["nome", "sexo" ]
     },
     "referido": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"referido",
@@ -43087,7 +43255,7 @@
       "typical": ["nome", "sexo" ]
     },
     "rel": {
-      "complete": ["data", "obs", "id" ],
+      "complete": ["tipo", "valor", "nomedest", "iddest", "data", "obs", "id" ],
       "includes": [],
       "minimal": ["tipo", "valor", "nomedest", "iddest" ],
       "name":"rel",
@@ -43106,7 +43274,7 @@
       "typical": ["tipo", "valor", "nomedest", "iddest" ]
     },
     "relation": {
-      "complete": ["obs", "date", "id" ],
+      "complete": ["type", "value", "destname", "destination", "obs", "date", "id" ],
       "includes": [],
       "minimal": ["type", "value", "destname", "destination" ],
       "name":"relation",
@@ -43131,7 +43299,7 @@
       "typical": []
     },
     "remetente": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -43341,7 +43509,7 @@
       "typical": ["nome", "sexo" ]
     },
     "renda": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"renda",
@@ -43362,6 +43530,7 @@
     },
     "rendarr": {
       "complete": [
+	"name",
 	"valor",
 	"prazo",
 	"condicao",
@@ -43390,7 +43559,7 @@
       "typical": ["name" ]
     },
     "rendeira": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -43593,7 +43762,7 @@
       "typical": ["nome", "sexo" ]
     },
     "rendeiro": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -43803,7 +43972,7 @@
       "typical": ["nome", "sexo" ]
     },
     "rentity": {
-      "complete": ["status", "user", "obs" ],
+      "complete": ["id", "description", "type", "status", "user", "obs" ],
       "includes": ["occ" ],
       "minimal": ["id", "description", "type" ],
       "name":"rentity",
@@ -43822,7 +43991,7 @@
       "typical": ["id", "description", "type" ]
     },
     "renunciante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -44032,7 +44201,7 @@
       "typical": ["nome", "sexo" ]
     },
     "renunciantef": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -44235,7 +44404,7 @@
       "typical": ["nome", "sexo" ]
     },
     "representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -44445,7 +44614,7 @@
       "typical": ["nome", "sexo" ]
     },
     "requerente": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -44655,7 +44824,7 @@
       "typical": ["nome", "sexo" ]
     },
     "requerido": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -44865,7 +45034,7 @@
       "typical": ["nome", "sexo" ]
     },
     "reu": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -45075,7 +45244,7 @@
       "typical": ["nome", "sexo" ]
     },
     "reuf": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -45278,7 +45447,7 @@
       "typical": ["nome", "sexo" ]
     },
     "rmerce": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "cota", "merce", "obs" ],
       "includes": ["n" ],
       "minimal": ["id", "dia", "mes", "ano", "cota", "merce" ],
       "name":"rmerce",
@@ -45298,7 +45467,7 @@
       "typical": ["id", "dia", "mes", "ano", "cota", "merce", "obs" ]
     },
     "robject": {
-      "complete": ["status", "user", "obs" ],
+      "complete": ["id", "sname", "type", "status", "user", "obs" ],
       "includes": ["occ", "ls", "atr", "rel" ],
       "minimal": ["id", "sname", "type" ],
       "name":"robject",
@@ -45317,7 +45486,7 @@
       "typical": ["id", "sname", "type" ]
     },
     "rol": {
-      "complete": ["ref", "loc", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "ref", "loc", "obs" ],
       "includes": ["fogo" ],
       "minimal": ["id", "dia", "mes", "ano" ],
       "name":"rol",
@@ -45337,7 +45506,7 @@
       "typical": ["id", "dia", "mes", "ano" ]
     },
     "rp": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nordem", "nome", "id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
       "includes": [
 	"atr",
 	"ls",
@@ -45547,7 +45716,7 @@
       "typical": ["nordem", "nome" ]
     },
     "rperson": {
-      "complete": ["status", "user", "obs" ],
+      "complete": ["id", "sname", "sex", "status", "user", "obs" ],
       "includes": ["occ", "ls", "atr", "rel" ],
       "minimal": ["id", "sname", "sex" ],
       "name":"rperson",
@@ -45566,7 +45735,7 @@
       "typical": ["id", "sname", "sex" ]
     },
     "rv": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nordem", "nome", "id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
       "includes": [
 	"atr",
 	"ls",
@@ -45776,7 +45945,7 @@
       "typical": ["nordem", "nome" ]
     },
     "sacr": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"sacr",
@@ -45795,7 +45964,7 @@
       "typical": ["value" ]
     },
     "senhoria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -45998,7 +46167,7 @@
       "typical": ["nome", "sexo" ]
     },
     "senhorio": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -46208,7 +46377,7 @@
       "typical": ["nome", "sexo" ]
     },
     "sentenca": {
-      "complete": ["obs", "id" ],
+      "complete": ["name", "type", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["name" ],
       "name":"sentenca",
@@ -46228,7 +46397,7 @@
       "typical": ["name", "type" ]
     },
     "sisa": {
-      "complete": ["juiz", "escrivao", "depositario", "data", "obs", "id" ],
+      "complete": ["valor", "juiz", "escrivao", "depositario", "data", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["valor" ],
       "name":"sisa",
@@ -46248,7 +46417,7 @@
       "typical": ["valor", "juiz", "escrivao", "depositario", "data" ]
     },
     "siza": {
-      "complete": ["juiz", "escrivao", "depositario", "data", "obs", "id" ],
+      "complete": ["valor", "juiz", "escrivao", "depositario", "data", "obs", "id" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["valor" ],
       "name":"siza",
@@ -46268,7 +46437,7 @@
       "typical": ["valor", "juiz", "escrivao", "depositario", "data" ]
     },
     "sobrinha": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"sobrinha",
@@ -46288,7 +46457,7 @@
       "typical": ["name", "sex" ]
     },
     "sobrinho": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"sobrinho",
@@ -46308,7 +46477,7 @@
       "typical": ["name", "sex" ]
     },
     "sogra": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"sogra",
@@ -46328,7 +46497,7 @@
       "typical": ["name", "sex" ]
     },
     "sogro": {
-      "complete": ["obs", "id", "same_as" ],
+      "complete": ["name", "sex", "obs", "id", "same_as" ],
       "includes": ["atr", "rel", "ls" ],
       "minimal": ["name" ],
       "name":"sogro",
@@ -46348,7 +46517,7 @@
       "typical": ["name", "sex" ]
     },
     "subenfiteuta": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -46558,7 +46727,7 @@
       "typical": ["nome", "sexo" ]
     },
     "subenfiteutaf": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -46761,7 +46930,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tabeliao": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -46971,7 +47140,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tcheou": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel", "loc" ],
       "minimal": [],
       "name":"tcheou",
@@ -46990,7 +47159,7 @@
       "typical": ["name", "type", "id" ]
     },
     "termo": {
-      "complete": ["fol", "loc", "celebrante", "obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante", "obs" ],
       "includes": [
 	"celebrante",
 	"test",
@@ -47135,7 +47304,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol", "loc", "celebrante" ]
     },
     "termoc": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": [],
       "name":"termoc",
@@ -47154,7 +47323,7 @@
       "typical": ["name" ]
     },
     "terra": {
-      "complete": ["type", "id", "obs" ],
+      "complete": ["name", "type", "id", "obs" ],
       "includes": ["atr", "rel", "proprietario", "med" ],
       "minimal": [],
       "name":"terra",
@@ -47173,7 +47342,7 @@
       "typical": ["name" ]
     },
     "test": {
-      "complete": ["sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"test",
@@ -47193,7 +47362,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testa": {
-      "complete": ["id", "mesmo_que", "xmesmo_que", "obs", "sexo" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": [
 	"acus",
 	"acusa",
@@ -47399,7 +47568,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -47609,7 +47778,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testadora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -47812,7 +47981,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testamentaria": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -48015,7 +48184,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testamentario": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -48225,7 +48394,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testamenteira": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -48428,7 +48597,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testamenteiro": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -48638,7 +48807,7 @@
       "typical": ["nome", "sexo" ]
     },
     "testamento": {
-      "complete": ["obs" ],
+      "complete": ["value", "obs" ],
       "includes": [],
       "minimal": ["value" ],
       "name":"testamento",
@@ -48657,7 +48826,7 @@
       "typical": ["value" ]
     },
     "testo": {
-      "complete": ["id", "mesmo_que", "xmesmo_que", "obs", "sexo" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": [
 	"acus",
 	"acusa",
@@ -48870,7 +49039,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -49080,7 +49249,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -49290,7 +49459,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador1": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -49500,7 +49669,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador1-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -49710,7 +49879,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador2": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -49920,7 +50089,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador2-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -50130,7 +50299,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador3": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -50340,7 +50509,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador3-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -50550,7 +50719,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador4": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -50760,7 +50929,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador4-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -50970,7 +51139,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador5": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -51180,7 +51349,7 @@
       "typical": ["nome", "sexo" ]
     },
     "tomador5-representante": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -51390,7 +51559,7 @@
       "typical": ["nome", "sexo" ]
     },
     "topico": {
-      "complete": ["id", "obs" ],
+      "complete": ["subject", "description", "id", "obs" ],
       "includes": ["atr", "ls", "rel" ],
       "minimal": ["subject", "description" ],
       "name":"topico",
@@ -51410,7 +51579,7 @@
       "typical": ["subject", "description" ]
     },
     "transportador": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -51620,7 +51789,7 @@
       "typical": ["nome", "sexo" ]
     },
     "ts": {
-      "complete": ["sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
+      "complete": ["nome", "sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "includes": [
 	"pevent",
 	"viagem",
@@ -51923,7 +52092,7 @@
       "typical": ["nome", "sexo" ]
     },
     "vedor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -52133,7 +52302,7 @@
       "typical": ["nome", "sexo" ]
     },
     "vendedor": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "sexo", "id", "obs", "mesmo_que", "xmesmo_que" ],
       "includes": [
 	"atr",
 	"ls",
@@ -52343,7 +52512,7 @@
       "typical": ["nome", "sexo" ]
     },
     "vendedora": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -52546,7 +52715,7 @@
       "typical": ["nome", "sexo" ]
     },
     "vereacao": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "fol", "obs" ],
       "includes": ["assunto" ],
       "minimal": ["id", "dia", "mes", "ano", "fol" ],
       "name":"vereacao",
@@ -52566,7 +52735,7 @@
       "typical": ["id", "dia", "mes", "ano", "fol" ]
     },
     "viagem": {
-      "complete": ["obs", "id" ],
+      "complete": ["description", "dia", "mes", "ano", "obs", "id" ],
       "includes": [
 	"referido",
 	"referida",
@@ -52598,7 +52767,7 @@
       "typical": ["description", "dia", "mes", "ano" ]
     },
     "vitima": {
-      "complete": ["obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": ["ls", "atr", "rel" ],
       "minimal": ["nome" ],
       "name":"vitima",
@@ -52618,7 +52787,7 @@
       "typical": ["nome", "sexo" ]
     },
     "vitima-f": {
-      "complete": ["sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
+      "complete": ["nome", "sexo", "obs", "mesmo_que", "xmesmo_que", "id" ],
       "includes": [
 	"atr",
 	"ls",
@@ -52821,7 +52990,7 @@
       "typical": ["nome" ]
     },
     "vitima-m": {
-      "complete": ["id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
+      "complete": ["nome", "id", "obs", "mesmo_que", "xmesmo_que", "sexo" ],
       "includes": [
 	"atr",
 	"ls",
@@ -53031,7 +53200,7 @@
       "typical": ["nome" ]
     },
     "wviagem": {
-      "complete": ["obs" ],
+      "complete": ["id", "dia", "mes", "ano", "barco", "obs" ],
       "includes": ["n", "referido", "referida" ],
       "minimal": ["id", "dia", "mes", "ano", "barco" ],
       "name":"wviagem",
@@ -53051,5 +53220,5 @@
       "typical": ["id", "dia", "mes", "ano", "barco" ]
     }
   },
-  "path":"/Users/jrc/develop/mhk-git/clio/src/gacto2.str"
+  "path":"/Users/jrc/develop/timelink-kleio/src/gacto2.str"
 }

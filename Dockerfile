@@ -1,5 +1,10 @@
 FROM swipl
 LABEL MAINTAINER="Joaquim Carvalho joaquim@uc.pt"
+LABEL DESCRIPTION="Kleio-server"
+LABEL VERSION="@@VERSION@@"
+LABEL BUILD="@@BUILD@@"
+LABEL BUILD_DATE="@@DATE@@"
+
 
 # We need git for the repository handling api using 
 # Following based on https://github.com/SamuelDebruyn/docker-debian-qgit/blob/master/Dockerfile

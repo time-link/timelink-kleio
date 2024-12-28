@@ -1,15 +1,15 @@
 :- module(linkedData,
-        [ 
+        [
             store_xlink_pattern/2,
             clear_xlink_patterns/0,
             clear_xlink_data/0,
             detect_xlink/3,
-            generate_xlink/2,
+            generate_xlink/4,
             xlink_pattern/2,
             xlink_data/2
         ]).
 /** <module> Predicates to handle linked data.
-    
+
 Linked data allows to map kleio data items to external
 data. This is described in issue:#6 of
 
@@ -34,17 +34,18 @@ Generating data links envolves two steps:
 
 
     The format of an external link annotation is:
-    
-        @short-name/id 
+
+        @short-name/id
 
 
 */
 :-use_module(library(pcre)).
+:-use_module(errors).
 :-dynamic xlink_pattern/2.
 :-dynamic xlink_data/2.
 
 ?-thread_local(xlink_pattern/2).
-?-thread_local(xlink_data/3).
+?-thread_local(xlink_data/2).
 
 
 %% store_xlink_url(?ShortName,?UrlPattern) is not det.
@@ -69,13 +70,16 @@ clear_xlink_patterns:-
 %  Detect a linked data annotation in the form
 %   @shortName:Id
 
-detect_xlink(Text,ShortName,Id) :-
-    re_matchsub(".*@([a-z]*):\\ *([\\ 0-9a-zA-Z]*)", Text,S,[]),
+detect_xlink(Text,ShortName,Id):-
+    re_split("@[a-z]*:\\s*[a-zA-Z0-9\\:\\-]*",Text,List),
+    member(Sequence,List),
+    re_match("@",Sequence),
+    re_matchsub(".*@([a-z]*):[\\s]*([\\ 0-9a-zA-Z\\:\\-]*)", Sequence,S,[]),
     S=_{0:_,1:ShortName,2:Id}.
 
 %% replace_xid(+Pattern,+Id,-Link) is det.
-% 
-%  Replace $1 in a string with an Id.
+%
+%  Replace $1 in a Pattern with an Id.
 %  Fails if no $1 in string.
 %
 replace_xid(Pattern,Id,Link) :-
@@ -89,12 +93,19 @@ replace_xid(Pattern,Id,Link) :-
 %
 %  Given a linked data annotation generate
 %  the URI of the linked data item.
-generate_xlink(Text,Uri):-
+generate_xlink(Text,Uri,S,I):-
     detect_xlink(Text,S,I),
     atom_string(SA,S),
-    clause(linkedData:xlink_pattern(SA,P),true),
-    replace_xid(P,I,Uri),
-    assertz(xlink_data(Uri,Text)).
+    (clause(linkedData:xlink_pattern(SA,P),true)->
+        (replace_xid(P,I,Uri)  % ,
+         % assertz(xlink_data(Uri,Text))
+        )
+        ;
+        warning_out(["Could not link data with ",
+            Text,
+            "; is link$ definition for ",
+            S," missing?"])
+        ).
 
 
 
