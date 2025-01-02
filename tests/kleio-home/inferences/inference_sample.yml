@@ -1,0 +1,99 @@
+# /** <module>This file contains the inference rules for automatic relations and attributes.
+
+#     an inference rule:
+# ==
+#      if PATH then ACTION
+#      or
+#      if PATH and PATH or PATH then ACTION and ACTION
+
+#      where
+#         PATH is a list of with the following elements:
+
+#         sequence(C)
+#             matches a sequence of groups including an empty one
+#         group(Name,ID)
+#             matches Name(ID) it is useful to extract a Group name.
+#         extends(Class,ID)
+#             will match any Name(ID) if Name is a group that extends Class.
+#         clause(C)
+#             will call the C predicate in Prolog
+
+#         ACTION is
+#         relation(type,value,idorigin,iddestinhation) -- generate a relation
+#         attribute(id,type,value). -- generate an attribute
+#         newscope.  -- clean current scope (forgets previous actor and objects).
+# ==
+#    */
+
+#  male actor and direct parents
+#    if [sequence(_),extends(actorm,N),pai(P)]
+#    then
+#         relation(parentesco,pai,P,N).
+- rule:
+  -if:
+    sequence: [sequence_, actorm:N, pai:P]
+  then:
+    - relation:
+        type: parentesco
+        value: pai
+        origin: P
+        destination: N
+#    if [sequence(_),extends(actorm,N),mae(M)]
+#    then
+#         relation(parentesco,mae,M,N).
+
+#    % female actor and direct parents
+#    if [sequence(_),extends(actorf,N),pai(P)]
+#    then
+#         relation(parentesco,pai,P,N).
+
+#    if [sequence(_),extends(actorf,N),mae(M)]
+#    then
+#         relation(parentesco,mae,M,N).
+- inference:
+    name: parentesco
+    description: >
+      This inference creates the parentesco relation between a person and his/her parents.
+    conditions:
+      - if:
+          - sequence: _
+          - extends: actorm
+          - pai: P
+        then:
+          - relation:
+              name: parentesco
+              parent: P
+              child: N
+      - if:
+          - sequence: _
+          - extends: actorm
+          - mae: M
+        then:
+          - relation:
+              name: parentesco
+              parent: M
+              child: N
+      - if:
+          - sequence: _
+          - extends: actorf
+          - pai: P
+        then:
+          - relation:
+              name: parentesco
+              parent: P
+              child: N
+      - if:
+          - sequence: _
+          - extends: actorf
+          - mae: M
+        then:
+          - relation:
+              name: parentesco
+              parent: M
+              child: N
+
+# if [sequence(Path),cas(C),noivo(N)] and [sequence(Path),cas(C),mulher1(M)]
+#     then
+#         relation(parentesco,foi-marido,N,M) and
+#         attribute(M,morta,antes).
+
