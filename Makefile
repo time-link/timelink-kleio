@@ -28,7 +28,7 @@ help: .PHONY
 	@echo "  make show-current         return the current version, build number"
 	@echo "  make show-last            return the last image build date, version, build number"
 	@echo "  make show-env             show KLEIO env variables currently defined"
-	@echo "  make inc-NUMBER           increment version with NUMBER in major | minor"
+	@echo "  make inc-VERSION           increment version with VERSION in major | minor | batch"
 	@echo "  make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file"
 	@echo "  make bootstrap-token      generate and register a token for 'admin' during bootstrap"
 	@echo "                                (only if no tokens exist and server running < 5 minutes)"
