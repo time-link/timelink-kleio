@@ -28,6 +28,58 @@ note
 note ================================================
 database name=kleio; first=kleio; identification=no
 
+note =====================
+note Base data types
+element name=number
+element name=string64
+element name=string256
+element name=text
+note ================================================
+note Elements for numerical dates
+note   Day - a two digit representation of day
+note   Month - a two digit representation of monthgact
+note   Year - a four digit representation of year
+note   Date - a eight digit representation of a date
+note                    yyyymmdd
+note ================================================
+element name=day; type=number
+element name=month; type=number
+element name=year; type=number
+element name=date;type=number
+
+note ================================================
+note Other base elements.
+note    By declaring them here we allow national
+note    language variations to be declared later on.
+note ================================================
+element name=id; identification=yes
+element name=same_as
+element name=xsame_as
+element name=entity
+element name=type;
+element name=class
+element name=ref
+element name=loc
+element name=page
+note pages in the document
+element name=pages
+element name=name
+element name=sex
+element name=obs
+element name=description
+element name=summary
+element name=value
+element name=origin
+element name=destination
+element name=destname
+element name=replace
+element name=inside
+element name=groupname
+element name=level
+element name=line
+element name=replace
+element name=kleiofile
+
 note ===============================================
 note doc group kleio This is the top level group of Kleio files.
      Specific historical sources must be added
@@ -129,8 +181,6 @@ note doc group property
 part name=property;
     position=name,value;
     also=id,obs
-
-
 
 note ===========================================================
 note rentity: a authority-record for a real entity
@@ -326,57 +376,11 @@ note    e.g. in obitos
 note
 part name=group-element; position=value; guaranteed=value; also=obs
 
-note =================================================
-note relation-type: pseudo group to flag the translator that a group name defines
-note                the function of the actor in the act. Actor introducing groups
-note                extend this one
-part name=relation-type
 note ================================================
-note Elements for numerical dates
-note   Day - a two digit representation of day
-note   Month - a two digit representation of monthgact
-note   Year - a four digit representation of year
-note   Date - a eight digit representation of a date
-note                    yyyymmdd
-note ================================================
-element name=day; type=number
-element name=month; type=number
-element name=year; type=number
-element name=date;type=number
+note relation-type groups that extend this one
+note signal a relation with enclosing group, e.g. function-in-act
 
-note ================================================
-note Other base elements.
-note    By declaring them here we allow national
-note    language variations to be declared later on.
-note ================================================
-element name=id; identification=yes
-element name=type
-element name=loc
-element name=obs
-element name=ref
-element name=page
-note pages in the document
-element name=pages
-element name=value
-element name=origin
-element name=destination
-element name=entity
-element name=same_as
-element name=xsame_as
-element name=name
-element name=sex
-element name=destname
-element name=destination
-element name=summary
-element name=description
-element name=replace
-element name=inside
-element name=class
-element name=level
-element name=line
-element name=groupname
-element name=replace
-element name=kleiofile
+part name=relation-type
 
 
 note ================================================
@@ -474,7 +478,7 @@ part name=acto;
 note ====================
 note eventos, cronologias
 note ====================
-part name=evento; source=pt-acto;
+part name=evento; source=event;
     position=description,dia,mes,ano;
     guaranteed=description;
     also=obs,id;

@@ -41,6 +41,7 @@ help: .PHONY
 	@echo "  make kleio-stop | stop    stop running server"
 	@echo "  make test-semantics       run semantic tests"
 	@echo "  make test-api             run api tests (requires newman (npm install newman))"
+	@echo "  make current-to-stable    copy current code in src to tests/stable. Future test-sematics will use "
 
 
 
@@ -95,8 +96,8 @@ show-last: .PHONY
 check-env:
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; \
 	exit 1; else exit 0; fi
-	
-	
+
+
 
 build-local: inc-build prepare
 	@docker build \
@@ -127,8 +128,8 @@ build-multi: build-local
 tag-multi-latest: .PHONY
 	docker buildx imagetools create timelinkserver/kleio-server:${patch} --tag timelinkserver/kleio-server:latest
 	@echo "timelinkserver/kleio-server:${patch} multi arch image tagged as latest"
-	
-tag-multi-stable: 
+
+tag-multi-stable:
 	docker buildx imagetools create timelinkserver/kleio-server:${patch} \
 		--tag timelinkserver/kleio-server:${vn}
 	docker buildx imagetools create timelinkserver/kleio-server:${patch} \
@@ -197,7 +198,7 @@ kleio-run-current: kleio-stop
 	docker compose up -d
 
 show-env:
-	@source .env; declare | grep "^KLEIO"; 
+	@source .env; declare | grep "^KLEIO";
 
 kleio-stop:
 	@if [ ! -f ".env" ]; then echo "ERROR: no .env file in current directory. Copy .env-sample and change as needed." ; fi
@@ -212,7 +213,7 @@ kleio-stop:
 	echo "Stopping server at dir ${KLEIO_HOME_DIR}	";\
 	docker compose config;\
 	docker compose stop
-	
+
 
 kleio-start: kleio-run-current
 
@@ -246,19 +247,19 @@ bootstrap-token:
 	   http://localhost:$$KLEIO_EXTERNAL_PORT/json/
 
 compose-up:
-    
+
 test-semantics: .PHONY
 	@cd tests; ./scripts/run_tests.sh
 
 test-api: kleio-run-current
-	@echo To run api tests install newman 
+	@echo To run api tests install newman
 	@echo https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
 	@echo "Ensure that a current image exists by doing 'make build-local' "
 	@source .env; \
 	if [ -e "$$PWD/tests/kleio-home" ]; then export KHOME="$$PWD/tests/kleio-home" ;  fi;\
 	if [ -z "$$KLEIO_HOME_DIR" ]; then export KLEIO_HOME_DIR="$$KHOME"; fi;\
     newman run api/postman/tests.json -e api/postman/tests.postman_environment.json --env-var "testadmintoken=$$KLEIO_ADMIN_TOKEN"  --env-var "KLEIO_HOME_DIR=$$KLEIO_HOME_DIR" -n 10 || true
-	@echo 
+	@echo
 	@echo See tests/README.md for tips on testing
 
 docs: .PHONY
@@ -271,4 +272,6 @@ docs: .PHONY
 test-vargs:
 	@echo $variable-args
 
-test-vargs-unique:
+
+current-to-stable:
+	cp -r ./src ./tests/stable

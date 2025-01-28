@@ -1,5 +1,5 @@
-kleio$gacto2.str
-    fonte$issue34b/2024/obs="""
+kleio$gacto2.str/translations=1
+   fonte$issue34b/2024/obs="""
         This tests that if the multiple-entry-flag property is not
         present then  ";" is used.
 
@@ -7,13 +7,13 @@ kleio$gacto2.str
         that the effect of the multiple-entry-flag property there does not persist.
         """
 
-        lista$mutiple-entries/0/0/0
+      lista$mutiple-entries/0/0/0
 
-         n$joaquim
+         n$joaquim/id=mutiple-entries-per1
             ls$nomes/joaquim|manuel|costa|ramos|carvalho/obs=neste caso será só um valor
             ls$nomes/joaquim;manuel;costa;ramos;carvalho/obs=neste caso vários valores (comportamento por omissão)
 
-        b$b1788.1118/22/1/1788/vigario luis barreto de figueiredo castilho e o reverendo cosme dias ribeiro de coimbra
+      b$b1788.1118/22/1/1788/vigario luis barreto de figueiredo castilho e o reverendo cosme dias ribeiro de coimbra
 
-            n$bernardo/m/obs=diz a margem casais; fl.10v/id=b1788.1118-per1
-               ls$datanasc/17880111
+         n$bernardo/m/obs=diz a margem casais; fl.10v/id=b1788.1118-per1
+            ls$datanasc/17880111

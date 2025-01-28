@@ -333,11 +333,14 @@ translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/varia',false).
-% the next two go together
 translate_file('sources/api/issues/issue21.cli',false).
-translate_file('sources/api/issues/issue34.cli',true).
-translate_file('sources/api/issues/issue34b.cli',false).
+% the next two go together
+translate_file('sources/api/issues/issue34.cli',false).
+translate_file('sources/api/issues/issue34b.cli',true).
 translate_file('sources/api/issues/issue38/issue38.cli',true).
+
+translate_file('sources/api/varia/lrazao516pe.cli',false).
+
 
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
@@ -347,7 +350,7 @@ translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
-translate_file('sources/api/varia/ivcc.cli',true).
+translate_file('sources/api/varia/ivcc.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('identifications/mhk_identification_toliveira.cli',false).
 translate_file('sources/api/varia/test-atr-date.cli',false).
