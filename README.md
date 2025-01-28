@@ -288,33 +288,48 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
 
 Type ```make``` to see more targets that help in development.
 
-      make build-local          build a local docker image and tag with new build number
-      make tag-local-TAG        tag last local image with TAG in latest | stable
-      make build-multi          build local mage and push multi platform docker imagea tagged with new build number
-                                (requires login in dokerhub with 'docker login' )
-      make tag-multi-TAG        tag last multi platform image with TAG in latest | stable
-      make show-build           return the current build number
-      make show-version         return the current version string (major.minor)
-      make show-current         return the current version, build number
-      make show-last            return the last image build date, version, build number
-      make show-env             show KLEIO env variables currently defined
-      make inc-NUMBER           increment version with NUMBER in major | minor
-      make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file
-      make bootstrap-token      generate and register a token for 'admin' during bootstrap
-                                    (only if no tokens exist and server running < 5 minutes)
-      make docs                 generate api docs (requires postman_doc_gen and api files)
-      make pull-tag tag=x.y.z   pull image with tag x.y.z from docker hub
-      make kleio-run-latest     start server with latest multi platform image, .env config and tests/docker_compose.yaml
-      make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml
-      make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml
-      make kleio-stop | stop    stop running server
-      make test-semantics       run semantic tests
-      make test-api             run api tests (requires newman (npm install newman))
+   make build-local          build a local docker image and tag with new build number
+   make tag-local-TAG        tag last local image with TAG in latest | stable
+   make build-multi          build local mage and push multi platform docker images tagged with new build number
+                                 (requires a previous 'docker login')
+   make tag-multi-TAG        tag last multi platform image with TAG in latest | stable
+   make show-build           return the current build number
+   make show-version         return the current version string (major.minor)
+   make show-current         return the current version, build number
+   make show-last            return the last image build date, version, build number
+   make show-env             show KLEIO env variables currently defined
+   make inc-VERSION           increment version with VERSION in major | minor | batch
+   make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file
+   make bootstrap-token      generate and register a token for 'admin' during bootstrap
+                                 (only if no tokens exist and server running < 5 minutes)
+   make docs                 generate api docs (requires postman_doc_gen and api files)
+   make pull-tag tag=x.y.z    pull image with tag x.y.z from docker hub
+   make kleio-run-latest    start server with latest multi platform image, .env config and tests/docker_compose.yaml
+   make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml
+   make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml
+   make kleio-stop | stop    stop running server
+   make test-semantics       run semantic tests
+   make test-api             run api tests (requires newman (npm install newman))
+   make current-to-stable    copy current code in src to tests/stable. Future test-sematics will use
 
 
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+
+### 2025-01-28 22:46:02 version 12.7.577
+
+* Improves handling of complex dates, implementing #1
+
+Now date ranges (2025-01-27:2025-02-04) and relative dates
+(>2025-01-27, <2025-02-04) are processed and a single
+value is produced that keeps sorting of dates reasonable.
+Rich information about dates is exported as a "date_extra_info"
+element with a JSON structure that reflects the complex date.
+
+* Fixes bugs related to incomplete dates #38
+
+
 
 ### 2024-07-29 07:52:13 version 12.6.572
 

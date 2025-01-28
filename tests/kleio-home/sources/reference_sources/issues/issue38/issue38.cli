@@ -1,22 +1,29 @@
-kleio$
+kleio$/translations=1
+   fonte$issue38/2024
 
-    fonte$issue38/2024
-        crono$1664-6/dates/Incomplete date only month and year
-            referido$John Smith
-                atr$date-type/singe-ymd/2025-01-28
-                atr$date-type/singe-ym/202501
-                atr$date-type/singe-ym/20250100
-                atr$date-type/singe-y/20250000
-                atr$date-type/singe-y/2025
-                atr$date-type/singe-missing/00000000
-                atr$date-type/relative-after/>20250128
-                atr$date-type/relative-before/<2025024
-                atr$date-type/range/2025-01-27:2025-02-03
-                atr$date-type/range-until/:2025-02-03
-                atr$date-type/range-from/2025-01-27:
-                atr$date-tpye/inherited
-        crono$1664:1670/dates/Date range
-        crono$1664:/dates/Data range open ended
-        crono$:1664/date/Date range open start
-        crono$>1664/dates/Date after
-        crono$<1664/dates/Date before
+      crono$1664-6/dates/Incomplete date only month and year/id=issue38-his1
+
+         referido$John Smith/id=issue38-his1-per1
+            atr$date-type/range-relative/>20250128:<20250204
+            atr$date-type/singe-ymd/2025-01-28
+            atr$date-type/singe-ym/202501
+            atr$date-type/singe-ym/20250100
+            atr$date-type/singe-y/20250000
+            atr$date-type/singe-y/2025
+            atr$date-type/singe-missing/00000000
+            atr$date-type/relative-after/>20250128
+            atr$date-type/relative-before/<2025024
+            atr$date-type/range/2025-01-27:2025-02-03
+            atr$date-type/range-until/:2025-02-03
+            atr$date-type/range-from/2025-01-27:
+            atr$date-tpye/inherited
+
+      crono$1664:1670/dates/Date range/id=issue38-his2
+
+      crono$1664:/dates/Data range open ended/id=issue38-his3
+
+      crono$:1664/date/Date range open start/id=issue38-his4
+
+      crono$>1664/dates/Date after/id=issue38-his5
+
+      crono$<1664/dates/Date before/id=issue38-his6

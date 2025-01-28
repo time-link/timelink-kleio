@@ -1204,7 +1204,7 @@ match_date(List,DateString, DateInfo2):-
 match_date(List,DateString, DateInfo2):-
   atomic_list_concat(List,OriginalValue),
   match_range(List,DateString,DateValue),
-  DateInfo=date{type:relative,original:OriginalValue,  date:DateValue, value:DateString},
+  DateInfo=date{type:range,original:OriginalValue,  date:DateValue, value:DateString},
   with_output_to(string(JSON), json_write(current_output,DateInfo)),
   DateInfo2 = DateInfo.put([json=JSON]),
   !.
@@ -1340,19 +1340,40 @@ match_single_date([A_DATE],DATE2, single{single:y, value:DATE1}):-
   DATE1 is DATE*10000,
   atom_number(DATE2,DATE1),!.
 
-% ran
-match_range(List,DateRangeString, single{from:Date1Extra, to:Date2Extra}):-
+% range
+match_range(List,DateRangeString, range{from:Date1Extra, to:Date2Extra}):-
   append(Date1,[':'|Date2],List),
-  match_single_date(Date1, _, Date1Extra),
+  (
+    match_single_date(Date1, _, Date1Extra)
+  ;
+    (
+      match_single_relative_date(Date1, _, RDate1Extra),
+      option(value(Date1Extra),RDate1Extra)
+    )
+  ),
   option(value(Value1), Date1Extra),
-  match_single_date(Date2,_, Date2Extra),
+  (
+    match_single_date(Date2,_, Date2Extra)
+  ;
+    (
+      match_single_relative_date(Date2,_, RDate2Extra),
+      option(value(Date2Extra),RDate2Extra)
+    )
+  ),
   option(value(Value2), Date2Extra),
   atomic_list_concat([Value1,'.',Value2],DateRangeString),
   !.
 
 % open range on the left .e.g. ":1425-12-10"
 match_range([':'|Date1],DateString, range{range_end: Date1Extra}):-
-  match_single_date(Date1, _, Date1Extra),
+  (
+  match_single_date(Date1, _, Date1Extra)
+;
+  (
+    match_single_relative_date(Date1, _, RDate1Extra),
+    option(value(Date1Extra),RDate1Extra)
+  )
+),
   option(value(Value1), Date1Extra),
   Date is Value1 - 0.1,
   atom_number(DateString,Date),
@@ -1360,7 +1381,14 @@ match_range([':'|Date1],DateString, range{range_end: Date1Extra}):-
 
 match_range(List,DateString, range{range_begin : Date1Extra}):-
   append(Date1,[':'],List),
-  match_single_date(Date1, _, Date1Extra),
+  (
+  match_single_date(Date1, _, Date1Extra)
+;
+  (
+    match_single_relative_date(Date1, _, RDate1Extra),
+    option(value(Date1Extra),RDate1Extra)
+  )
+),
   option(value(Value1), Date1Extra),
   Date is Value1 + 0.1,
   atom_number(DateString,Date),
