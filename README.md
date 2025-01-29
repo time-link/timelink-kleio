@@ -317,9 +317,9 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
-### 2025-01-28 22:46:02 version 12.7.577
+### 2025-01-28 22:46:02 version 12.7.579
 
-* Improves handling of complex dates, implementing #1
+* Improves handling of complex dates, implementing #1.
 
 Now date ranges (2025-01-27:2025-02-04) and relative dates
 (>2025-01-27, <2025-02-04) are processed and a single
