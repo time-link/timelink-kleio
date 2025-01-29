@@ -274,4 +274,4 @@ test-vargs:
 
 
 current-to-stable:
-	cp -r ./src ./tests/stable
+	cp -rf ./src/* ./tests/stable/
