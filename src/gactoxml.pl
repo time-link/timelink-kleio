@@ -88,6 +88,7 @@ The call back predicates are defined in externals.pl
 
 :-use_module(library('sgml')).
 :-use_module(library(http/json)).
+:-use_module(library(filesex)).
 
 :-use_module(clioPP).
 :-use_module(counters).
@@ -100,7 +101,7 @@ The call back predicates are defined in externals.pl
 :-use_module(reports).
 :-use_module(utilities).
 :-use_module(linkedData).
-:-use_module(library(filesex)).
+:-use_module(jsonUtilities).
 
 ?-thread_local(group_path/1).
 ?-thread_local(carel/4).
@@ -734,10 +735,10 @@ geoentity_export(G,ID) :-
 
 attribute_export(G,ID) :-
     get_ancestor(__Anc,AncId),
-    (get_date(Date1,Extra) ->
-      (Date = Date1, DateType = explicit, DateExtraInfo = Extra)
+    (get_date(Date,Extra) ->
+      (DateType = explicit)
     ; %  TODO: check if this works for events
-      (get_prop(act,date,Date), DateType = implicit,DateExtraInfo = [json=''])
+      (get_prop(act,date,Date), DateType = implicit,Extra=empty{})
     ),
     clio_belement_aspect(core,type,T),
     clio_belement_aspect(core,value,V),
@@ -772,10 +773,10 @@ attribute_export(G,ID) :-
           )
         ;
         true),
-    option(json(Json),DateExtraInfo),
-    Inferred = [id([ID],[],[]),entity([AncId],[],[]), date_extra_info([Json],[],[])],
+    dict_json_string(Extra,JsonString),
+    Inferred = [id([ID],[],[]),entity([AncId],[],[]), date_extra_info([JsonString],[],[])],
     (DateType = implicit ->  % if the date was inferred add it to elements
-        append(Inferred,[date([Date],[Extra],[])],Elements)
+        append(Inferred,[date([Date],[],[])],Elements)
         ;
         Elements = Inferred
         ),
@@ -1152,19 +1153,15 @@ Dates can be expressed as
 So
 - 1580:1640
 - 1580:1640-01-01
-- >1580:1641 Not implemented relative dates in ranges
+- >1580:1641
 - 1580: from 1580 onwards
-- :>1580 ending after 1580 Not implemented relative dates in ranges
+- :>1580 ending after 1580
 
 This would generate extra infered elements and kick in when date is not a number
 date formats above would be processed to produce a yyyymmdd date a
-get_date(DATE,EXTRA) where EXTRA would be a list with can contain one or several of:
+get_date(DATE,EXTRA) where EXTRA is a dictionary
+    and EXTRA_JSON a JSON string with the dictionary
 
-  before(Date) when date was prefixed with "<"
-  after(Date) when date was prefixed with ">"
-  range(Date1,Date2) when Date1:Date2
-  range_end(Date)  when :Date
-  range_begin(Date) when :Date
 
 */
 get_date(DATE):-
@@ -1173,7 +1170,8 @@ get_date(DATE):-
 
 get_date(DATE,EXTRA):-
   clio_belement_aspect(core,date,[A|B]),
-  match_date([A|B],DATE, EXTRA),!.
+  match_date([A|B],DATE, EXTRA),
+  !.
 
 % get_date(DATE):-
 %   clio_aspect(core,date,[A|B]), % avoid empty lists
@@ -1184,29 +1182,22 @@ get_date(DATE,EXTRA):-
 %     clio_element_bclass(DATE_ELEMENT,date),
 %     match_date([A|B],DATE),!.
 
-
-match_date(List,DateString, DateInfo2):-
+match_date(List,DateString, DateInfo):-
   atomic_list_concat(List,OriginalValue),
   match_single_date(List,DateString,DateValue),
   DateInfo=date{type:single,original:OriginalValue, date:DateValue, value: DateString},
-  with_output_to(string(JSON), json_write(current_output,DateInfo)),
-  DateInfo2 = DateInfo.put([json=JSON]),
   !.
 
-match_date(List,DateString, DateInfo2):-
+match_date(List,DateString, DateInfo):-
   atomic_list_concat(List,OriginalValue),
   match_single_relative_date(List,DateString,DateValue),
   DateInfo=date{type:relative,original:OriginalValue, date:DateValue, value:DateString},
-  with_output_to(string(JSON), json_write(current_output,DateInfo)),
-  DateInfo2 = DateInfo.put([json=JSON]),
   !.
 
-match_date(List,DateString, DateInfo2):-
+match_date(List,DateString, DateInfo):-
   atomic_list_concat(List,OriginalValue),
   match_range(List,DateString,DateValue),
   DateInfo=date{type:range,original:OriginalValue,  date:DateValue, value:DateString},
-  with_output_to(string(JSON), json_write(current_output,DateInfo)),
-  DateInfo2 = DateInfo.put([json=JSON]),
   !.
 
 % failed
@@ -1217,7 +1208,7 @@ match_date(List,0,[error(List)]):-
   fail,!.
 
 % date expressed as "before date"
-match_single_relative_date([<|List],Date, relative{relative:before, value:DateExtra}):-
+match_single_relative_date([<|List],Date, relative{subtype:before, value:DateExtra}):-
   match_single_date(List,_, DateExtra),
   option(value(DateValue),DateExtra),
   DateAdj is DateValue - 0.3,
@@ -1226,14 +1217,14 @@ match_single_relative_date([<|List],Date, relative{relative:before, value:DateEx
 
 % date expressed ad "after date"
 
-match_single_relative_date([>|List],Date,relative{relative:after, value:DateExtra}):-
+match_single_relative_date([>|List],Date,relative{subtype:after, value:DateExtra}):-
   match_single_date(List,_, DateExtra),
   option(value(DateValue), DateExtra),
   DateAdj is DateValue + 0.3,
   atom_number(Date,DateAdj),
   !.
 
-match_single_date([Y,'-',M,'-',D],DateString, single{single:ymd, value:DATE}):-
+match_single_date([Y,'-',M,'-',D],DateString, single{subtype:ymd, value:DATE}):-
   is_a_number(Y,Y1),
   Y1 > 31,Y1 < 9999,
   is_a_number(M,M1),
@@ -1244,7 +1235,7 @@ match_single_date([Y,'-',M,'-',D],DateString, single{single:ymd, value:DATE}):-
   atom_number(DateString, DATE),
   !.
 % Match Y-M day missing
-match_single_date([Y,'-',M],DateString, single{single:ymd, value:DATE}):-
+match_single_date([Y,'-',M],DateString, single{subtype:ymd, value:DATE}):-
   is_a_number(Y,Y1),is_a_number(M,M1),
   Y1 >= 0,Y1 < 9999,
   is_a_number(M,M1),
@@ -1254,7 +1245,7 @@ match_single_date([Y,'-',M],DateString, single{single:ymd, value:DATE}):-
   !.
 
 % match D-M-Y
-match_single_date([D,'-',M,'-',Y],DATE2, single{single: ymd, value:DATE1}):-
+match_single_date([D,'-',M,'-',Y],DATE2, single{subtype: ymd, value:DATE1}):-
   is_a_number(Y,Y1),is_a_number(M,M1),is_a_number(D,D1),
   Y1 > 0,Y1 < 9999,
   is_a_number(M,M1),
@@ -1277,12 +1268,12 @@ match_single_date([D,'-',M,'-',Y],DATE2, single{single: ymd, value:DATE1}):-
   atom_number(DATE2,DATE1),!.
 
 % match 0-0-0
-match_single_date([D,'-',M,'-',Y],'0', zero{single:missing, value:0}):-
+match_single_date([D,'-',M,'-',Y],'0', zero{subtype:missing, value:0}):-
   is_a_number(Y,0),is_a_number(M,0),is_a_number(D,0),
   !.
 
 % match M-Y
-match_single_date([M,'-',Y],DATE2, single{single:ym, value:DATE1}):-
+match_single_date([M,'-',Y],DATE2, single{subtype:ym, value:DATE1}):-
   is_a_number(Y,Y1),is_a_number(M,M1),
   Y1 >= 0,Y1 < 9999,
   is_a_number(M,M1),
@@ -1291,10 +1282,10 @@ match_single_date([M,'-',Y],DATE2, single{single:ym, value:DATE1}):-
   atom_number(DATE2,DATE1),!.
 
 % match 000000
-match_single_date([A_DATE],'00000000', single{single:missing, value:0}):-
+match_single_date([A_DATE],'00000000', single{subtype:missing, value:0}):-
   is_a_number(A_DATE,0),!.
 % match YYYY0000
-match_single_date([A_DATE],DATE2, single{single:y, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:y, value:DATE1}):-
   is_a_number(A_DATE,DATE1),
   A is log10(DATE1),
   A>7,
@@ -1302,7 +1293,7 @@ match_single_date([A_DATE],DATE2, single{single:y, value:DATE1}):-
   sub_atom(DATE2,4,4,0,'0000'),
   !.
 % match YYYYMM00
-match_single_date([A_DATE],DATE2, single{single:ym, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:ym, value:DATE1}):-
   is_a_number(A_DATE,DATE1),
   A is log10(DATE1),
   A>7,
@@ -1310,14 +1301,14 @@ match_single_date([A_DATE],DATE2, single{single:ym, value:DATE1}):-
   sub_atom(DATE2,6,2,0,'00'),
   !.
 % match YYYYMMDD
-match_single_date([A_DATE],DATE2, single{single:ymd, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:ymd, value:DATE1}):-
   is_a_number(A_DATE,DATE1),
   A is log10(DATE1),
   A>7,
   atom_number(DATE2,DATE1),
   !.
 % match YYYYMMD
-match_single_date([A_DATE],DATE2, single{single:ymd, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:ymd, value:DATE1}):-
   is_a_number(A_DATE,DATE),
   A is log10(DATE),
   A>6,
@@ -1326,14 +1317,14 @@ match_single_date([A_DATE],DATE2, single{single:ymd, value:DATE1}):-
 
   !.
 % match YYYYMM
-match_single_date([A_DATE],DATE2, single{single:ym, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:ym, value:DATE1}):-
   is_a_number(A_DATE,DATE),
   A is log10(DATE),
   A>5,
   DATE1 is DATE*100,
   atom_number(DATE2,DATE1),!.
 % match YYYY
-match_single_date([A_DATE],DATE2, single{single:y, value:DATE1}):-
+match_single_date([A_DATE],DATE2, single{subtype:y, value:DATE1}):-
   is_a_number(A_DATE,DATE),
   A is log10(DATE),
   A>3,
@@ -1341,10 +1332,13 @@ match_single_date([A_DATE],DATE2, single{single:y, value:DATE1}):-
   atom_number(DATE2,DATE1),!.
 
 % range
-match_range(List,DateRangeString, range{from:Date1Extra, to:Date2Extra}):-
+match_range(List,DateRangeString, range{subtype: from_to, from:RDate1Extra, to:RDate2Extra}):-
   append(Date1,[':'|Date2],List),
   (
-    match_single_date(Date1, _, Date1Extra)
+    (
+      match_single_date(Date1, _, Date1Extra),
+      RDate1Extra = Date1Extra
+    )
   ;
     (
       match_single_relative_date(Date1, _, RDate1Extra),
@@ -1353,7 +1347,10 @@ match_range(List,DateRangeString, range{from:Date1Extra, to:Date2Extra}):-
   ),
   option(value(Value1), Date1Extra),
   (
-    match_single_date(Date2,_, Date2Extra)
+    (
+      match_single_date(Date2,_, Date2Extra),
+      RDate2Extra = Date2Extra
+    )
   ;
     (
       match_single_relative_date(Date2,_, RDate2Extra),
@@ -1365,9 +1362,12 @@ match_range(List,DateRangeString, range{from:Date1Extra, to:Date2Extra}):-
   !.
 
 % open range on the left .e.g. ":1425-12-10"
-match_range([':'|Date1],DateString, range{range_end: Date1Extra}):-
+match_range([':'|Date1],DateString, range{subtype: to_only, to: RDate1Extra}):-
+(
   (
-  match_single_date(Date1, _, Date1Extra)
+    match_single_date(Date1, _, Date1Extra),
+    RDate1Extra = Date1Extra
+  )
 ;
   (
     match_single_relative_date(Date1, _, RDate1Extra),
@@ -1379,11 +1379,14 @@ match_range([':'|Date1],DateString, range{range_end: Date1Extra}):-
   atom_number(DateString,Date),
   !.
 
-match_range(List,DateString, range{range_begin : Date1Extra}):-
+match_range(List,DateString, range{subtype: from_only, from: RDate1Extra}):-
   append(Date1,[':'],List),
   (
-  match_single_date(Date1, _, Date1Extra)
-;
+    (
+      match_single_date(Date1, _, Date1Extra),
+      RDate1Extra = Date1Extra
+    )
+ ;
   (
     match_single_relative_date(Date1, _, RDate1Extra),
     option(value(Date1Extra),RDate1Extra)
