@@ -479,8 +479,8 @@ class carta super act table cartas
      and
         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
-mapping evento to class evento.
-class evento super act table eventos
+mapping event to class event.
+class event super act table events
    with attributes
         id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
      and

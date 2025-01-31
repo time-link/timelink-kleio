@@ -1,16 +1,18 @@
 # prepare tests
 # 1. cleans contents of test directories
 # 2. copies clio/src to clio/tests/dev folder
-# 3. copies .cli, .kleio .CLI .KLEIO from reference_sources 
+# 3. copies .cli, .kleio .CLI .KLEIO from reference_sources
 #      to reference_translations and test_translations
 # 4. cleans contents of test_translations directory
 # for more info see clio/tests/README.md
 # run this from clio/tests directory
-export KLEIO_HOME=kleio-home 
+export KLEIO_HOME=kleio-home
 export KLEIO_HOME_DIR=kleio-home
 export KLEIO_SOURCE_DIR=${KLEIO_HOME_DIR}/sources
 export KLEIO_CONF_DIR=${KLEIO_HOME_DIR}/system/conf/kleio
 export KLEIO_STRU_DIR=${KLEIO_HOME_DIR}/system/conf/kleio/stru
+# Alternate str file for the test run. newer versions get the str here
+export KLEIO_STRU_DIR_ALT=${KLEIO_HOME_DIR}/structures
 export KLEIO_TOKEN_DB=${KLEIO_CONF_DIR}/token_db
 export KLEIO_DEFAULT_STRU=${KLEIO_CONF_DIR}/stru/gacto2.str
 # export KLEIO_DEBUGGER_PORT=4000
@@ -29,9 +31,10 @@ export TRANSLATOR_SOURCE=../src/
 rm -rf $REFERENCE_TRANSLATIONS/*
 rm -rf $TEST_TRANSLATIONS/*
 rm -rf $DEV_CODE_DIR/*
-# 2. copy current src and reference sources 
+# 2. copy current src and reference sources
 cp ${TRANSLATOR_SOURCE}/*.pl $DEV_CODE_DIR/
 cp ${TRANSLATOR_SOURCE}/*.str $KLEIO_STRU_DIR/
+cp ${TRANSLATOR_SOURCE}/*.str $KLEIO_STRU_DIR_ALT/
 cp -R $REFERENCE_SOURCES/ $REFERENCE_TRANSLATIONS
 cp -R $REFERENCE_SOURCES/ $TEST_TRANSLATIONS
 # 3. List reference sources
@@ -43,5 +46,5 @@ mkdir -p reports
 
 echo ref sources: $REFERENCE_SOURCES
 echo test transl: $TEST_TRANSLATIONS
-echo sources dir: $TRANSLATOR_SOURCE  
+echo sources dir: $TRANSLATOR_SOURCE
 

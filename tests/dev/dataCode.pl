@@ -16,25 +16,25 @@
     data structure). When the end of a group is reached in
     the input data, the information in the temporary data
     structure is stored in the database. The exact form
-    the database storage takes is determined by the 
-    predicates in database predicates file. 
-    
+    the database storage takes is determined by the
+    predicates in database predicates file.
+
     The following preciates are defined bellow:
-    
+
     initData(FileName) intializes the processing of a
       data file
     closeData(FileName) finalizes the processing of a
       data file
-   
+
     storeEls takes a list of calls of the predicates bellow
-      and executes them in order.  
+      and executes them in order.
     newGroup (when a new group is detected)
     newElement( when an explicit element is detected: element=entry)
     endElement (when an end of element is detected: '/')
     newAspect (when a new aspect is detected: '#' or "%")
     newEntry (when a new entry is detected: ';')
     storeAspect (when processing text for an aspect of an element).
-   
+
 */
 :-use_module(logging).
 :-use_module(dataCDS).
@@ -53,7 +53,7 @@ initData(FileName):-
     log_debug('translate: initData --> ~w',[FileName]),
     delCD, %cleans temporary data storage%
     createCD, % creates an empty data storage structure%
-    initGroupCounters, 
+    initGroupCounters,
     initErrorCount,
     %put_value(max_errors,100),
     db_init, % call user defined database initialization code %
@@ -68,7 +68,7 @@ closeData(FileName):-
     db_close,!. % call user defined database clean-up code %
 %******************************************************
 %    storeEls takes a list of calls of the above predicates
-%      and executes them in order.  
+%      and executes them in order.
 %******************************************************
 % %
 storeEls(E):-
@@ -79,7 +79,7 @@ storeEls(_).
 
 %******************************************************
 %    storeElsR takes a list of calls of the above predicates
-%      and executes them in order. Recursive version 
+%      and executes them in order. Recursive version
 %      with record based CDS Storage
 %******************************************************
 % %
@@ -115,10 +115,10 @@ newGroup(N):-
     isDoc(N),!, % if it is a doc jump%
     newDoc(N).
 newGroup(N):-
-    \+ isDoc(N), !,   % if it is not %
+    \+ isDoc(N),   % if it is not %
     flushGroup,        % flush last group %
-    initNewGroup(N).% initialize a new one %
-    
+    initNewGroup(N), !.% initialize a new one %
+
 newGroup(N):-
     get_prop(gline,number,L),
     get_prop(gline,text,Line),
@@ -132,19 +132,19 @@ newDoc(N):-
     flushGroup,
     initNewGroup(N),!.
 
-%  flushGroup: flushes current group, storing it 
+%  flushGroup: flushes current group, storing it
 %    futures checks on certe will be made here
 %  %
 
 flushGroup:-
     getCDField(cgroup,[]),!. % no current group %
 flushGroup:-
-    getCDField(cgroup,G),!,
+    getCDField(cgroup,G),
     G \= [],
     endElement,
     makeID(ID),   % construct an ID for this group %
     check_elements(G,ID), % checks certe elements, etc.%
-    db_store.   % here the user defined database storage is called %
+    db_store,!.   % here the user defined database storage is called %
 flushGroup:-
     get_prop(gline,number,L),
     get_prop(gline,text,Line),
@@ -167,16 +167,16 @@ check_elements(_,_):-!.
 %    the precedent group is erased.
 %    change if the CDS table is changed
 %  %
-% FALTA VERIFICAR SE O GRUPO e' BOM 
+% FALTA VERIFICAR SE O GRUPO e' BOM
 %    se nao for e' preciso armazenar este facto para
 %    o processamento seguinte saltar o lixo %
-initNewGroup(G):- 
+initNewGroup(G):-
     %log_debug('Entering initNewGroup~w',[G]),
     getCDField(cpath,OLDPATH),
     getCDField(cgroup,OG),
     getCDField(cgroupID,OID),
-    updatePath(OG,OID,G,OLDPATH,NEWPATH),          
-    resetGroupCounters(G),  
+    updatePath(OG,OID,G,OLDPATH,NEWPATH),
+    resetGroupCounters(G),
     setCDS(cds(NEWPATH,G,[],0,[],[],[],[],[],[],core,[],[],[])),
     % save the line information for the start of the group
     get_prop(line,number,L),
@@ -193,7 +193,7 @@ initNewGroup(G):-
     error_out(['***', G, ' group not stored.'],[line_number(L),line_text(Line)]),
     getCDS(cds(CPATH,OG,OID,__LOCUSCOUNT,__ELEMENTLIST,__CELEMENT,
                 _ENTRYLIST,__CASPECT,__CCORE,__CORIGINAL,__CCOMMENT)),
-    resetGroupCounters(G),  
+    resetGroupCounters(G),
     setCDS(cds(CPATH,OG,OID,0,[],[],[],core,[],[],[])),!.
 
 %*********************************************************
@@ -223,29 +223,30 @@ updatePath(OldGroup,OldID,NewGroup,Path,Path):-
 updtp(NewGroup,_,NewGroup,P,P):-!.
 
 % if no path ancestor of NewGroup is a doc %
-updtp(Anc,OldID,__NewGroup,[],[A]):-
-    isDoc(Anc),
-    A=..[Anc,OldID],!.
+updtp(Doc,OldID,NewGroup,[],[A]):-
+    isDoc(Doc),
+    anc_of(NewGroup,Doc),
+    A=..[Doc,OldID],!.
 
 % if NewGroup is a document path = [] %
 updtp(__OldGroup,__OldID,NewGroup,_,[]):-
     isDoc(NewGroup),!.
 
-% else OldGroup is ancestor of NewGroup 
+% else OldGroup is ancestor of NewGroup
 %   Add OldGroup to path %
-updtp(OldGroup,OldID,NewGroup,Path,NewPath):- 
-    anc_of(NewGroup,OldGroup),         
+updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
+    anc_of(NewGroup,OldGroup),
     A=..[OldGroup,OldID],
     append(Path,[A],NewPath),!.
 
 % else see if ancestor is up in path %
-updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):- 
+updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     reverse(Path,RPath), %reverse the path list %
     member(A,RPath),     % get groups from path in reverse order%
-    A =.. [Anc,__AID],     % get group names %          
+    A =.. [Anc,__AID],     % get group names %
     anc_of(NewGroup,Anc),% see if they are the ancestor of newGroup%
     cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
-        
+
 cutListAfter([E|_L],E,[E]):-!.
 cutListAfter(L,G,NL):-
     append([A|B],[G|_C],L),
@@ -292,7 +293,7 @@ verify_elementR(E,CDSR):-
 
 %******************************************************
 %  endElement. adds current element to the current
-%    group element list. If no current element name is 
+%    group element list. If no current element name is
 %    defined the locus list of the current group is
 %    used to find an implicit element name
 %******************************************************
@@ -373,7 +374,7 @@ newEntry:-
     endEntry,!.
 
 %  endEntry - adds current entry to the CDS entryList
-% 
+%
 %  %
 endEntry:-
     getCDField(caspect,CAspect),
@@ -429,7 +430,7 @@ newAspect(T):-
     setCDField(caspect,T),!.
 
 %******************************************************
-%  storeCore(I) - add I to core information of current el. 
+%  storeCore(I) - add I to core information of current el.
 %    stores I according to CDS field caspect
 %******************************************************
 %  %
@@ -449,7 +450,7 @@ stCore(comment,I):-
     setCDField(ccomment,[I|C]),!.
 
 %******************************************************
-%  storeCoreR(I) - add I to core information of current el. 
+%  storeCoreR(I) - add I to core information of current el.
 %    stores I according to CDS field caspect
 %    Record version
 %******************************************************
@@ -483,7 +484,7 @@ initGroupCounters:-
     clioGroup(__G,ID),
     set_prop(ID,counter,0),
     fail,!.
-initGroupCounters:-!. 
+initGroupCounters:-!.
 
 %******************************************************
 %  resetGroupCounters(G) - reset group counters of
@@ -498,7 +499,7 @@ resetGroupCounters(G):-
     clioGroup(D,ID),
     rgc(ID),
     fail.
-resetGroupCounters(__G):-!. 
+resetGroupCounters(__G):-!.
 
 rgc(ID):-
     get_prop(ID,identificatio,non),
@@ -531,11 +532,11 @@ check_for_persistence(Field,Value):-
     dataCDS:getCDSR(CDSR),
     dataCDS:getCDRField(Field,Value,CDSR),!.
 
-    
+
 % vim: filetype=prolog ts=3
 /*
 	===============================================================================
- 	dataCode.pl 
+ 	dataCode.pl
 		  This file contains the predicates
 		  called by the syntactic analyser for data
 	     files.
@@ -543,7 +544,7 @@ check_for_persistence(Field,Value):-
  $Id$
  $Date$
  $Author$
- 
+
  History:
  ========
 
@@ -573,7 +574,7 @@ check_for_persistence(Field,Value):-
    Port to XSB 22:23 18-01-2000
 
    November 1999 ported to swi prolog
-   
+
 	In July 1991 the storeCore predicate was changed. Tokens
     are stored in reverse order to quicken things up and then
     reversed in endEntry.

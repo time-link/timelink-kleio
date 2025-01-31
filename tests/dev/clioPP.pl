@@ -108,7 +108,7 @@ clioPP2(G,ID):-
 	clioPP_locus(0,Locus,N), % this can set idout to true
 	clioPP_elements(N,Locus), % this can set idout to true
 	 % check if we need to print the id, except for groups not relevant
-	(member(Class,[attribute,relation,'group-element',kleio,end]) ->
+	(member(Class,[attribute,property, link, relation,'group-element',kleio,end]) ->
 		true
 		;
 		(

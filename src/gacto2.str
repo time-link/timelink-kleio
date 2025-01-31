@@ -2,7 +2,7 @@ Note =================================================
 Note Generic structure for the Source-Act-Person model
 Note   Now with geoentities and authority-registers
 Note ================================================
-Note
+Note REFERENCE VERSION BUILTIN str/gacto2.str
 Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
 Note =================================================================================================
 note
@@ -28,6 +28,58 @@ note
 note ================================================
 database name=kleio; first=kleio; identification=no
 
+note =====================
+note Base data types
+element name=number
+element name=string64
+element name=string256
+element name=text
+note ================================================
+note Elements for numerical dates
+note   Day - a two digit representation of day
+note   Month - a two digit representation of monthgact
+note   Year - a four digit representation of year
+note   Date - a eight digit representation of a date
+note                    yyyymmdd
+note ================================================
+element name=day; type=number
+element name=month; type=number
+element name=year; type=number
+element name=date;type=number
+
+note ================================================
+note Other base elements.
+note    By declaring them here we allow national
+note    language variations to be declared later on.
+note ================================================
+element name=id; identification=yes
+element name=same_as
+element name=xsame_as
+element name=entity
+element name=type;
+element name=class
+element name=ref
+element name=loc
+element name=page
+note pages in the document
+element name=pages
+element name=name
+element name=sex
+element name=obs
+element name=description
+element name=summary
+element name=value
+element name=origin
+element name=destination
+element name=destname
+element name=replace
+element name=inside
+element name=groupname
+element name=level
+element name=line
+element name=replace
+element name=kleiofile
+
 note ===============================================
 note doc group kleio This is the top level group of Kleio files.
      Specific historical sources must be added
@@ -38,7 +90,7 @@ part name=kleio;
  also=structure,translator,autorels,obs,prefix,translations;
  position=structure,translator,obs;
  part=historical-source,fonte,authority-register,
-      identifications, link
+      identifications,link, property
 
 note ============================================================
 note Basic historical source group
@@ -48,7 +100,7 @@ part name=historical-source;
   guaranteed=id;
   also=type,date,year,loc,ref,obs,replace, kleiofile;
   position=id,year,type,ref;
-  part=historical-act
+  part=historical-act,event
 
 note ============================================================
 note GeoEntity: a spatial entity
@@ -68,13 +120,15 @@ part name=geoentity;
    also=type,id,obs, same_as, xsame_as;
   part=ls,atr,rel
 
+part name=place; source=geoentity
+
 note ===========================================================
 note doc group authority-register a register of authority-records
 note    authority records are used to identify people, objects
 note    and to normalize vocabularies and other authority information.
 note    authority-registers must have an unique id, but a given community
 note    can have as many authority-registers as needed
-note
+note ===========================================================
 
 part name=authority-register;
     position=id,name;
@@ -97,8 +151,19 @@ part name=identifications;
     part=rentity,rperson,robject
 
 note ===========================================================
+note Linked data related information
 note doc group link
-note Declare a linked data target
+     Declare a linked data target
+
+     Example:
+        link$wikidata/"https://www.wikidata.org/wiki/$1"
+
+     And then annotate element values in comments
+
+        lugar$Cantão#@wikidata:Q16572
+
+
+note ===========================================================
 part name=link;
     position=shortname,urlpattern;
     also=id,obs
@@ -116,8 +181,6 @@ note doc group property
 part name=property;
     position=name,value;
     also=id,obs
-
-
 
 note ===========================================================
 note rentity: a authority-record for a real entity
@@ -165,19 +228,54 @@ part name=occ;
      also=name,atype,func,date,id,obs
 
 
-
-
-
-
 note ============================================================
+note Acts, events, cronologies
+note ============================================================
+
+note --------------------------
 note Basic historical act group
-note ============================================================
-
+note --------------------------
+note doc group historical-act represents an historical act
+        An historical act is a record of an event, something
+        that happened at a moment and place in time.
+        This form is used for records such as parish records
+        notarial acts.
+note doc element id an unique identifier (required)
+note doc element type the type of the act.
+note doc element date date in kleio format YYYYMMMDD ou YYYY-Month-Day
+note doc element day with month and year alternative to date
+note doc element month
+note doc element year
 part name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
      also=loc,ref,obs,day,month,year;
      arbitrary=person,object,geoentity,abstraction,ls,atr,rel
+
+note --------------------------------
+note Event - similar to act but no id
+note --------------------------------
+note doc group event Something that happened.
+        Used for registering events mentioned
+        in letters, chronicles, interviews, not
+        in formal records.
+note --------------------------------
+part name=event; source=historical-act;
+        position=description,day,month,year;
+        guaranteed=description;
+        part=person
+
+note --------------------------------
+note doc group cevent chronology event,
+           with date upfront, followed by place
+           (or context) and a description
+note --------------------------------
+
+part name=cevent; source=event;
+    position=data,loc,description;
+    guaranteed=data,loc,description;
+    also=id,obs,same_as, xsame_as;
+    part=person,topic,place
 
 note ============================================================
 note A person
@@ -233,6 +331,12 @@ note			of objects.
 note ===========================================================
 part name=abstraction; source=object
 
+note doc group topic topics, tags or keywords
+part name=topic; source=abstraction;
+	position=name,description;
+	guaranteed=name;
+	also=obs,id
+
 note ============================================================
 note Attribute
 note ============================================================
@@ -272,57 +376,11 @@ note    e.g. in obitos
 note
 part name=group-element; position=value; guaranteed=value; also=obs
 
-note =================================================
-note relation-type: pseudo group to flag the translator that a group name defines
-note                the function of the actor in the act. Actor introducing groups
-note                extend this one
-part name=relation-type
 note ================================================
-note Elements for numerical dates
-note   Day - a two digit representation of day
-note   Month - a two digit representation of monthgact
-note   Year - a four digit representation of year
-note   Date - a eight digit representation of a date
-note                    yyyymmdd
-note ================================================
-element name=day; type=number
-element name=month; type=number
-element name=year; type=number
-element name=date;type=number
+note relation-type groups that extend this one
+note signal a relation with enclosing group, e.g. function-in-act
 
-note ================================================
-note Other base elements.
-note    By declaring them here we allow national
-note    language variations to be declared later on.
-note ================================================
-element name=id; identification=yes
-element name=type
-element name=loc
-element name=obs
-element name=ref
-element name=page
-note pages in the document
-element name=pages
-element name=value
-element name=origin
-element name=destination
-element name=entity
-element name=same_as
-element name=xsame_as
-element name=name
-element name=sex
-element name=destname
-element name=destination
-element name=summary
-element name=description
-element name=replace
-element name=inside
-element name=class
-element name=level
-element name=line
-element name=groupname
-element name=replace
-element name=kleiofile
+part name=relation-type
 
 
 note ================================================
@@ -348,19 +406,17 @@ note doc element tipo tipo de fonte (registos paroquiais, livros notariais, etc.
 note doc element loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
 note doc element ref cota ou outra referencia de localizacao da fonte
 
-part	 name=fonte;
+part name=fonte;
       source=historical-source;
       guaranteed=id;
       also=tipo,loc,localizacao,ref,data,ano,obs,substitui;
-      arbitrary=acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
+      arbitrary=crono,cevent,acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
             adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
           gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
       memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
       pas,lcc,integr,movacao,geodesc
 
 element name=substitui; source=replace
-
-
 
 note *****************************************************************
 note doc group 'pt-acto' Forma generica de acto.
@@ -409,7 +465,6 @@ element name=fols; source=pages;
 element name=folio; source=pages;
 element name=folios; source=pages;
 
-
 note ****************************************************************
 note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
 note loc acto pt acto
@@ -420,11 +475,71 @@ part name=acto;
   position=id,tipo,dia,mes,ano,loc,obs;
   repeat=presente,presente-f,referido,referida,item,ls,atr,rel
 
+note ====================
+note eventos, cronologias
+note ====================
+part name=evento; source=event;
+    position=description,dia,mes,ano;
+    guaranteed=description;
+    also=obs,id;
+    part=n, referido,referida,
+        informador,defector,representante,
+        intermediario,topico,local,comerciante,agente_financeiro,agente_seguros,fonte_info,cheater,
+        beneficiario,beneficiario-representante,beneficiario-procurador,
+        beneficiario1,beneficiario1-representante,beneficiario1-procurador,
+        beneficiario2,beneficiario2-representante,beneficiario2-procurador,
+        beneficiario3,beneficiario3-representante,beneficiario3-procurador,
+        beneficiario4,beneficiario4-representante,beneficiario4-procurador,
+        beneficiario5,beneficiario5-representante,beneficiario5-procurador,
+        beneficiario6,beneficiario6-representante,beneficiario6-procurador,
+        cobrador,cobrador-representante,
+        cobrador1,cobrador-representante1,
+        cobrador2,cobrador-representante2,
+        cobrador3,cobrador-representante3,
+        cobrador4,cobrador-representante4,
+        destinatario,destinatario1,destinatario2,
+        dador,dador-representante,
+        dador1,dador1-representante,
+        dador2,dador2-representante,
+        dador3,dador3-representante,
+        dador4,dador4-representante,
+        debitado,
+        endossante,
+        endossado,
+        fretador,
+        pagador,pagador-representante,
+        pagador1,pagador1-representante,
+        pagador2,pagador2-representante,
+        pagador3,pagador3-representante,
+        pagador4,pagador4-representante,
+        pagador5,pagador5-representante,
+        receptor,
+        recebedor,recebedor-proc,
+        recebedor1,recebedor1-proc,
+        recebedor2,recebedor2-proc,
+        recebedor3,recebedor3-proc,
+        recebedor4,recebedor4-proc,
+        remetente,
+        tomador,tomador-representante,
+        tomador1,tomador1-representante,
+        tomador2,tomador2-representante,
+        tomador3,tomador3-representante,
+        tomador4,tomador4-representante,
+        tomador5,tomador5-representante,
+        vendedor,comprador,transportador,
+        emissor,emissor-representante
+
+
+
 part name=item; source=object;
     repeat=presente,presente-f,referido,referida,ls,rel;
     guaranteed=titulo;
     position=titulo;
     also=resumo,id,tipo,obs
+
+part name=topico; source=topic
+
+part name=lugar; source=place
 
 note *************************************************************************************************++++
 note livros de registo de acoes de companhias monopolistas - angelica vasconcelos, criada em 19-09-2013
@@ -1016,8 +1131,6 @@ note *****************************************************************
 
 part name=escambo; source=bem
 
-
-
 note *****************************************************************
 note Notariais - obra (contratacao de obras publicas e privadas)(criado por Ana Isabel)
 note *****************************************************************
@@ -1092,6 +1205,9 @@ part name=adenda; source=pt-acto;
     also=resumo,refere,obs;
     part=evento
 
+note ====================
+note eventos, cronologias
+note ====================
 part name=evento; source=pt-acto;
     position=description,dia,mes,ano;
     guaranteed=description;
@@ -1142,6 +1258,26 @@ part name=evento; source=pt-acto;
         tomador5,tomador5-representante,
         vendedor,comprador,transportador,
         emissor,emissor-representante
+
+note ============================================
+note doc group cevento chronology event,
+note           can be used inside source
+part name=cevento; source=evento;
+    position=data,loc,description;
+    guaranteed=data,loc,description;
+    also=id,obs,same_as,xsame_as;
+    part=person,topic,place
+
+note doc group crono synonym for cevento
+
+part name=crono; source=cevento;
+    part=referido,referida,lugar,topico
+
+part name=topico; source=topic
+
+part name=lugar; source=place
+
+
 note =====================================================================
 note Special prosopographical groups
 note =====================================================================
@@ -1158,16 +1294,11 @@ part name=pevent; source=evento;
     also=obs,id;
     part=referido,referida,person;
 
-note A certain number of sinonyms for clarity of transcription
+note A certain number of synonyms for clarity of transcription
 
 part name=viagem; source=pevent;
 
 part name=estadia; source=pevent;
-
-part name=topico; source=abstraction;
-    position=subject,description;
-    guaranteed=subject,description;
-    also=id,obs
 
 element name=subject;
 

@@ -1,8 +1,8 @@
 
 :-module(struSyntax,[
-    
+
     compile_command/2
-    
+
     ]).
 
 /**<module> Syntax of Kleio stucture files
@@ -15,15 +15,15 @@
     being called here. Execution of the command, the acutal
     processing of the strucutre definition is triggered by
     the syntactic rules as they decode the token list.
-    
+
     The grammar is mostly data driven: we don't expand
     each command variant. The grammar reflects
     the general form of a command and relies on data predicates
     to check for different command variants.
-    
+
     compile_command/1 is called by processLine/2 in topLevel.pl and calls predicates
     in struCode.pl and dataDictionnary.pl .
-    
+
     History
 
     *   stable OCT 90.
@@ -34,7 +34,7 @@
 *************************************************************
 */
 :-use_module(lexical).
-:-use_module(dataSyntax). 
+:-use_module(dataSyntax).
 :-use_module(struCode).
 :-use_module(errors).
 :-use_module(persistence).
@@ -43,7 +43,7 @@
 :-dynamic(gdoc/2).
 :-dynamic(edoc/3).
 
-compile_command(CMD,Tokens):- 
+compile_command(CMD,Tokens):-
     stripSpaces(Tokens,CleanToks),
    % writeln(CleanToks),
     phrase(cliocmd,[CMD|CleanToks]),!.
@@ -112,7 +112,7 @@ par(_,K)-->[(name,P)],{(\+ is_kw(P,K),
 badparam(C)-->badpar(C,P),equal,val(C,_,_),%try to skip a value anyway%
              {error_out(['***Bad parameter ',P,' for command ',C])},!.
 badparam(C)  --> par(C,P),equal,val(C,P2,V),
-                     {(P \= P2, 
+                     {(P \= P2,
                       error_out(['***Bad value ',V,
                     ' for ',P,' for command ',C]))},!.
 
@@ -201,7 +201,7 @@ elementDocName(G)       -->[(name,G)].
 getDocText([N,' '|R]) -->[(name,N)],getDocText(R),!.
 getDocText([N,' '|R]) -->[(number,N)],getDocText(R),!.
 getDocText(['"',N,'"',' '|R]) -->[(string,N)],getDocText(R),!.
-getDocText([N|R])     -->[(dataflag,Nb)],getDocText(R),{data_flag_char(Nb,C),name(N,[C])},!.
+getDocText([N|R])     -->[(dataflag,Nb)],getDocText(R),{lexical:data_flag_char(Nb,C),name(N,[C])},!.
 getDocText([N|R])     -->[(_,C)],getDocText(R),{name(N,[C])},!.
 getDocText([])        -->[],!.
 %
@@ -249,7 +249,7 @@ cliotype( relatio )--> [(_,V)],{is_kw(V, relatio)}.
 
 equal-->[(equal,_)],{!}.
 equal-->[(Op,_)],{Op \= equal,error_out('*** equal sign expected.'),fail}.
-        
+
 semicolon-->[(semicolon,_)],!.
 
 %command(nota,ok).%
@@ -269,7 +269,7 @@ command(repertorium,notYet).
 command(scribe,notYet).
 
 %******************************************************
-%  is_kw find a keyword; 
+%  is_kw find a keyword;
 %    takes C and checks if it is an keyword K %
 %    the behaviour of this predicate was changed
 %    to not required a unambiguous keyword prefix
@@ -295,8 +295,8 @@ fkw(T,K):-
     member(K,Ks).
 
 matchkw(T,K):-
-    engkw(EKW,K),   
-    name(EKW,LEKW),   
+    engkw(EKW,K),
+    name(EKW,LEKW),
     begins_with(T,LEKW).
 
 matchkw(T,K):-

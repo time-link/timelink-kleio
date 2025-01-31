@@ -173,8 +173,13 @@ perr(X):-
 check_continuation:-
    getcount(errors,N),
    (get_value(max_errors,M);M=100),
+   !,
+   check_continuation_1(N,M).
+
+check_continuation_1(N,M):-
    N =< M,!.
-check_continuation:-
+check_continuation_1(N,M):-
+   N > M,
    nl,report(
         [writeln('*** ERROR: MAXIMUM NUMBER OF ERRORS REACHED. TRANSLATION ABORTED.')]),
    !,fail.
