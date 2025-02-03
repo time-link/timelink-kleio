@@ -30,9 +30,16 @@ database name=kleio; first=kleio; identification=no
 
 note =====================
 note Base data types
+
+note doc element number Any number
 element name=number
+note doc element string64 64 chars strings like those used in ids.
+                          Use for elements that contain ids of other entities.
+                          Use "id" for entity own id.
 element name=string64
+note doc element string256 Longer strings
 element name=string256
+
 element name=text
 note ================================================
 note Elements for numerical dates
@@ -77,7 +84,6 @@ element name=inside
 element name=groupname
 element name=level
 element name=line
-element name=replace
 element name=kleiofile
 
 note ===============================================
@@ -240,12 +246,12 @@ note doc group historical-act represents an historical act
         that happened at a moment and place in time.
         This form is used for records such as parish records
         notarial acts.
-note doc element id an unique identifier (required)
-note doc element type the type of the act.
-note doc element date date in kleio format YYYYMMMDD ou YYYY-Month-Day
-note doc element day with month and year alternative to date
-note doc element month
-note doc element year
+note doc element-in-group id an unique identifier (required)
+note doc element-in-group type the type of the act.
+note doc element-in-group date date in kleio format YYYYMMMDD ou YYYY-Month-Day
+note doc element-in-group day with month and year alternative to date
+note doc element-in-group month
+note doc element-in-group year
 part name=historical-act;
      guaranteed=id,type,date;
      position=id,type,date;
@@ -401,22 +407,26 @@ note doc group fonte Este constitui o grupo principal para os documentos
 note loc group fonte pt fonte
 note loc group fonte en source
 note loc group fonte fr source
-note doc element id elemento obrigatorio, identifica unicamente a fonte na base de dados,
-note doc element tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
-note doc element loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
-note doc element ref cota ou outra referencia de localizacao da fonte
+note doc element-in-group id elemento obrigatorio, identifica unicamente a fonte na base de dados,
+note doc element-in-group tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
+note doc element-in-group loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
+note doc element-in-group ref cota ou outra referencia de localizacao da fonte
 
 part name=fonte;
       source=historical-source;
       guaranteed=id;
       also=tipo,loc,localizacao,ref,data,ano,obs,substitui;
-      arbitrary=crono,cevent,acto,amz,nom,carta,pauta,hab,proc,beneficio,chanc,encarte,rol,escritura,
-            adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,rmerce,merce,let,lbach,capela,
-          gov,familia,po,fim,devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
-      memoria58,apontamentosd,eleicao,juramento,lc,crisma,docregio,docpontificio,docepiscopal,automed,
-      pas,lcc,integr,movacao,geodesc
+      arbitrary=crono,cevent,acto,amz,nom,carta,pauta,hab,proc,beneficio,
+                chanc,encarte,rol,escritura,
+                adenda,arrolamento,cas,bap,b,termo,obito,o,ar,lista,
+                rmerce,merce,let,lbach,capela,
+                gov,familia,po,fim,
+                devassa,cartaperdao,denuncia,matricula,ordenancas,milicias,
+                memoria58,apontamentosd,eleicao,juramento,lc,
+                crisma,docregio,docpontificio,docepiscopal,automed,
+                pas,lcc,integr,movacao,geodesc
 
-element name=substitui; source=replace
+note element name=substitui; source=replace
 
 note *****************************************************************
 note doc group 'pt-acto' Forma generica de acto.
@@ -884,7 +894,7 @@ part name=bap; source=pt-acto;
   repeat=celebrante,n,
           test,referido,referida
 
-nota doc group b Baptimos, versao original usada em Soure.
+note doc group b Baptimos, versao original usada em Soure.
 part name=b; source=pt-acto;
   position=id,dia,mes,ano,dian,mesn,anon,celebrante;
   also=celebrante,obs;
@@ -1640,8 +1650,8 @@ note *********************** TOMBOS *********************************
 note doc group automed Auto de medição, corresponde a um acto  de
                 medição de extremas de uma terra ocorrido
                 num dia determinado. Usado para tombos.
-note doc element id elemento obrigatorio, identifica unicamente o auto de medicao
-note doc element loc local onde decorre o auto de medicao
+note doc element-in-group id elemento obrigatorio, identifica unicamente o auto de medicao
+note doc element-in-group loc local onde decorre o auto de medicao
 part name=automed;source=pt-acto;
       position=id,dia,mes,ano,loc;
       also=obs;
@@ -2130,6 +2140,10 @@ part name=tabeliao; source=actorm;
 part name=arrematante; source=actorm;
 part name=quitante; source=actorm;
 part name=quitado; source=actorm
+note doc group abonador o que abona a transação
+               do outorgante
+note doc element-in-group id elemento optional, se omisso um id automatic é gerado
+note doc element-in-group obs observações e comentários
 part name=abonador; source=actorm;
 part name=demandador; source=actorm;
 part name=demandado; source=actorm;

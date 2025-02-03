@@ -1,7 +1,8 @@
 
 :-module(struSyntax,[
 
-    compile_command/2
+    compile_command/2,
+    engkw/2
 
     ]).
 
@@ -41,6 +42,7 @@
 :-use_module(utilities).
 
 :-dynamic(gdoc/2).
+:-dynamic(edoc/2).
 :-dynamic(edoc/3).
 
 compile_command(CMD,Tokens):-
@@ -188,14 +190,17 @@ skipRest-->[].
 %
 inlineDoc-->groupDoc(gdoc(G,DOC)),{storeGroupDoc(gdoc(G,DOC)),!}.
 inlineDoc-->elementDoc(E),{storeElementDoc(E),!}.
+inlineDoc-->elementGroupDoc(E),{storeGroupElementDoc(E),!}.
 %inlineDoc-->{!}.
 groupDoc(gdoc(G,DOC)) -->docKeyword,groupDocKeyword,groupDocName(G),getDocText(DOC),!.
 elementDoc(edoc(E,DOC)) -->docKeyword,elementDocKeyword,elementDocName(E),getDocText(DOC),!.
+elementGroupDoc(edoc(E,DOC)) -->docKeyword,elementInGroupDocKeyword,elementDocName(E),getDocText(DOC),!.
 
 docKeyword            -->[(name,doc)].
 groupDocKeyword       -->[(name,group)].
 groupDocName(G)       -->[(name,G)].
 elementDocKeyword       -->[(name,element)].
+elementInGroupDocKeyword -->[(name,'element-in-group')].
 elementDocName(G)       -->[(name,G)].
 
 getDocText([N,' '|R]) -->[(name,N)],getDocText(R),!.
@@ -207,7 +212,8 @@ getDocText([])        -->[],!.
 %
 %
 storeGroupDoc(gdoc(G,DOC)):- assert(gdoc(G,DOC)),put_value(lastGroupDoc,G).
-storeElementDoc(edoc(E,DOC)):- (get_value(lastGroupDoc,G);G='*'),assert(edoc(G,E,DOC)).
+storeGroupElementDoc(edoc(E,DOC)):- (get_value(lastGroupDoc,G);G='*'),assert(edoc(G,E,DOC)).
+storeElementDoc(edoc(E,DOC)):- assert(edoc(E,DOC)).
 
 
 
