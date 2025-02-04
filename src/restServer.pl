@@ -397,6 +397,7 @@ check_token_database:-
 
 check_token_database(exists):-
     tokens:token_db_attached(TokensCurrent),
+    exists_file(TokensCurrent),
     log_info('Serving starting with token database at: ~w~n',[TokensCurrent]),!.
 
 check_token_database(exists):-

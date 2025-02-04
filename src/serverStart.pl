@@ -329,7 +329,7 @@ server_results([R|Rs],[D|Ds]):-
 server_results([],[]).
 
 test_case(translations,File,Stru):-
-    Stru = 'system/conf/kleio/stru/gacto2.str',
+    Stru = 'structures/gacto2.str',
     translate_file(File,Flag),
     Flag = true,
     format('TESTING ~wn',[File]).
