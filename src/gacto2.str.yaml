@@ -9,14 +9,14 @@ structure:
 - element:
     after: non
     before: non
-    description: '64 chars strings like those used in ids Use for elements that contain
+    description: '64 chars strings like those used in ids. Use for elements that contain
       ids of other entities. Use ""id"" for entity own id. '
     identification: non
     name: string64
 - element:
     after: non
     before: non
-    description:
+    description: 'Longer strings '
     identification: non
     name: string256
 - element:
@@ -28,7 +28,7 @@ structure:
 - element:
     after: non
     before: non
-    description: 'with month and year alternative to date '
+    description:
     identification: non
     name: day
     type: numerus
@@ -49,14 +49,14 @@ structure:
 - element:
     after: non
     before: non
-    description: 'date in kleio format YYYYMMMDD ou YYYY-Month-Day '
+    description:
     identification: non
     name: date
     type: numerus
 - element:
     after: non
     before: non
-    description: an unique identifier (required )
+    description:
     identification: sic
     name: id
 - element:
@@ -80,7 +80,7 @@ structure:
 - element:
     after: non
     before: non
-    description: 'the type of the act. '
+    description:
     identification: non
     name: type
 - element:
@@ -92,13 +92,13 @@ structure:
 - element:
     after: non
     before: non
-    description: 'cota ou outra referencia de localizacao da fonte '
+    description:
     identification: non
     name: ref
 - element:
     after: non
     before: non
-    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
+    description:
     identification: non
     name: loc
 - element:
@@ -128,7 +128,7 @@ structure:
 - element:
     after: non
     before: non
-    description: 'observações e comentários '
+    description:
     identification: non
     name: obs
 - element:
@@ -935,7 +935,7 @@ structure:
 - element:
     after: non
     before: non
-    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
+    description:
     identification: non
     name: tipo
     source: type
