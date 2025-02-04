@@ -114,7 +114,8 @@ $ KLEIO_TOKEN_DB        : Defaults KLEIO_CONF_DIR/token_db -- maintains the toke
 $ KLEIO_DEFAULT_STRU    : Default KLEIO_HOME/system/conf/kleio/stru/gacto2.str structure used by default
 $ KLEIO_DEBUGGER_PORT   : Port for the debug server (default 4000).
 $ KLEIO_SERVER_PORT     : Port for the REST server (default 8088).
-$ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
+$ KLEIO_SERVER_WORKERS  : Number of worker threads used by the rest server.
+$ KLEIO_ADMIN_TOKEN     : Admin token
 
 ## References
    *  http://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/http.html%27)
@@ -123,7 +124,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 ## NEXT STEPS
 * TODO: interaction with database server (vocabularies, etc..)
 * TODO: EndPoint to generate kleiodoc
-   
+
 **/
 
 
@@ -174,7 +175,7 @@ $ KLEIO_SERVER_WORKERS   : Number of worker threads used by the rest server.
 default_value(server_port,SP):-getenv('KLEIO_DEBUGGER_PORT',SSP), atom_number(SSP,SP),!.
 default_value(server_port,4000):-!.
 default_value(rest_port,RP):-getenv('KLEIO_SERVER_PORT',SRP), atom_number(SRP,RP),!.
-default_value(rest_port,8088):-!.
+default_value(rest_port,8087):-!.
 default_value(workers,Workers) :- getenv('KLEIO_SERVER_WORKERS',Atom),atom_number(Atom,Workers),!.
 default_value(workers,3):-!.
 default_value(timeout,Timeout) :- getenv('KLEIO_IDLE_TIMEOUT',Atom),atom_number(Atom,Timeout),!.
@@ -227,11 +228,11 @@ print_server_config:-
 save_kleio_config:-
     (get_shared_prop(log,file,Log)-> true; Log='*Logging not started'),
     (tokens:get_kleio_admin(ATOKEN,_,_)
-        -> true 
+        -> true
         ;
         ATOKEN=null), % null is JSON convention for null
     (getenv('KLEIO_HOME_LOCAL',HomeLocal)
-        -> true 
+        -> true
         ;
         HomeLocal=null), % null is JSON convention for null
     restServer:default_value(rest_port,RP),
@@ -243,12 +244,12 @@ save_kleio_config:-
     kleiofiles:kleio_admin_token_path(AdminTokenPath),
     get_token_db_status(TDBS),
     % get todays date
-    get_time(T), 
+    get_time(T),
     format_time(string(NowDateTime),'%FT%T%z',T),
     % output config info
     atom_concat('http://localhost:',RP,KURL),
     KleioSetup = ksetup{kleio_home_local:HomeLocal,
-                        kleio_home:Home, 
+                        kleio_home:Home,
                         kleio_admin_token:ATOKEN,
                         kleio_url:KURL,
                         kleio_log:Log,
@@ -260,8 +261,8 @@ save_kleio_config:-
                         kleio_admin_token_path:AdminTokenPath,
                         kleio_setup_date:NowDateTime
                         },
-    atom_concat(Home,'/.kleio.json',KleioSetupFile), 
-    open(KleioSetupFile,write,KFI_Stream,[]),        
+    atom_concat(Home,'/.kleio.json',KleioSetupFile),
+    open(KleioSetupFile,write,KFI_Stream,[]),
     json_write_dict(KFI_Stream,KleioSetup),
     close(KFI_Stream).
 
@@ -273,18 +274,18 @@ bootstrap_token_ok :- tokens:user_token(T,bootstrap,_), is_api_allowed(T,generat
 tokens_exist :- tokens:ensure_db, tokens:user_token(_,U,_), U \= bootstrap,!.
 
 get_token_db_status('Tokens exist') :- tokens_exist.
-get_token_db_status('No tokens defined but KLEIO_ADMIN_TOKEN env has valid value') :- 
+get_token_db_status('No tokens defined but KLEIO_ADMIN_TOKEN env has valid value') :-
     \+ tokens_exist,
     admin_token_ok,!.
-get_token_db_status('No tokens defined and bad KLEIO_ADMIN_TOKEN') :- 
+get_token_db_status('No tokens defined and bad KLEIO_ADMIN_TOKEN') :-
     \+ tokens_exist,
     admin_token_exists,
     \+ admin_token_ok,!.
 get_token_db_status('Waiting to generate first token') :- bootstrap_token_ok,!.
-get_token_db_status('No tokens, bootstrap token expired. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+get_token_db_status('No tokens, bootstrap token expired. Set env KLEIO_ADMIN_TOKEN or delete token_db') :-
     bootstrap_token_exists,
     \+ bootstrap_token_ok,!.
-get_token_db_status('Token generation blocked. Set env KLEIO_ADMIN_TOKEN or delete token_db') :- 
+get_token_db_status('Token generation blocked. Set env KLEIO_ADMIN_TOKEN or delete token_db') :-
     \+ tokens_exist,
     \+ admin_token_ok,
     \+ bootstrap_token_ok,!.
@@ -367,7 +368,7 @@ server_idle(Seconds):-log_debug('Server busy. Waited for ~w seconds.',[Seconds])
 
 %% ssa is det.
 %
-% Synomym for show_server_activity. 
+% Synomym for show_server_activity.
 %
 ssa:-show_server_activity.
 
@@ -389,8 +390,8 @@ show_server_activity:-
 %
 % Checks if token database exists, if not it initializes it.
 %
-% 
-check_token_database:- 
+%
+check_token_database:-
     check_token_database(exists),
     check_token_database(bootstrap),!.
 
@@ -451,13 +452,13 @@ home_page(_):-
 make_rest_url('',_,''):-!.
 make_rest_url(Path,Prefix,URL):-
     atom_concat(Prefix,Path,P1),
-    http_link_to_id(process_rest,path_postfix(P1),URL). % this escapes characters as needed. 
+    http_link_to_id(process_rest,path_postfix(P1),URL). % this escapes characters as needed.
 
 
 %% mime_extension(+Ext,-Mime) is nondet.
 %
-% Maps the mime types of kleio files. 
-% 
+% Maps the mime types of kleio files.
+%
 % See http://www.swi-prolog.org/pldoc/doc_for?object=mime%3Amime_extension/2
 %
 mime:mime_extension(Ext,Mime):-
@@ -468,13 +469,13 @@ mime:mime_extension(Ext,Mime):-
 %
 % Processes a REST request, in a three step approach.
 %
-%  1. Decode de command with rest_decode_command/4 extracting the _entity_ (type of object), 
-%   the _http_method_ and the _path_ to the object targetted. Since we deal 
-%       with files the _path_ is basically an id to the object. 
-%   For instance http://localhost:8088/rest/sources/baptisms/b1686.cli 
+%  1. Decode de command with rest_decode_command/4 extracting the _entity_ (type of object),
+%   the _http_method_ and the _path_ to the object targetted. Since we deal
+%       with files the _path_ is basically an id to the object.
+%   For instance http://localhost:8088/rest/sources/baptisms/b1686.cli
 %   the entity is "sources" the http_method is "GET" and the path is "baptisms/b1686.cli". The
 %   resulting operation to be performed will be _sources_get_ on the object "baptisms/b1686.cli" .
-%   
+%
 %   The request can contain aditional parameters encoded in the http standard way.
 %
 %   The decoded request is then passed to rest_exec/4 which will execute the operation and return the result.
@@ -491,7 +492,7 @@ process_rest(Request) :-
     cors_enable(Request,
                 [ methods([get,post,delete,put])
                 ]),
-    format('~n'). 
+    format('~n').
 
 process_rest(RestRequest):-
     cors_enable(RestRequest,[methods([get,post,delete,put])]),
@@ -527,8 +528,8 @@ json_out(Params):-
     !,fail.
 json_out(Params):-
     option(json(true),Params),!.
-json_out(Params):- 
-    option(json(false),Params), 
+json_out(Params):-
+    option(json(false),Params),
     !,fail.
 json_out(_):-
         httpd_wrapper:http_current_request(Request),
@@ -545,7 +546,7 @@ process_rest_error(Error):-
 %% rest_decode_command(+Request,-Id,-Method,-Params) is det.
 %
 % Decodes a REST call extracting Id, Method (API Call), Parameters.
-% 
+%
 % Tests if API token is registered and if Method is allowed for the user associated with the token.
 %
 rest_decode_command(Request,Id,method(Entity,HMethod,Object),
@@ -589,16 +590,16 @@ multipart_post_request(Request) :-
 %
 % True if Token has upload permission. If not throws forbidden exception
 upload_allowed(Token,Context):-
-    (is_api_allowed(Token,upload) -> 
+    (is_api_allowed(Token,upload) ->
         true
     ;
-        (  
-        throw(http_reply(forbidden(Context))) 
-        ) 
-    ).    
+        (
+        throw(http_reply(forbidden(Context)))
+        )
+    ).
 
 %! get_entity_object(+PathInfo,-Entity,-EntityId) is det.
-% 
+%
 % Extracts the the entity and the Object (normally a path) from the pathinfo).
 %
 get_entity_object(PathInfo,Entity,EntityId):-
@@ -611,7 +612,7 @@ get_entity_object(PathInfo,Entity,EntityId):-
 
 
 %! get_authorization_token(+Request,-Token) is det.
-%  
+%
 % Extract the autorization token from the request.
 % Normally in a Autorization header with the format "Bearer TOKEN"
 get_authorization_token(Request,Token):-
@@ -623,7 +624,7 @@ get_authorization_token(Request,Token):- % This allows debugging with forms
 %! is_collection(Entity,EntityId,TokenInfo) is det.
 %
 %  Determines if an entity of type Entity and id EntityId is a collection or a single entity.
-%  In fact checks if EntityId is a path to a directory of a single file. 
+%  In fact checks if EntityId is a path to a directory of a single file.
 %  Can be extended to handle patterns.
 %
 is_collection(sources,Path,TokenInfo):-
@@ -632,7 +633,7 @@ is_collection(sources,Path,TokenInfo):-
 
 %! rest_exec(+Operation, +RequestId,+Params,-Results) is det.
 %
-% Switches the execution of a specific operation 
+% Switches the execution of a specific operation
 %
 % In the new style Operation is a term: method(Entity,Object,Method).
 %   and rest_exec calls the goal Entity(Method,Object,Mode,Id,Params) note that results must be handled by the goal.
@@ -650,7 +651,7 @@ rest_exec(Operation,Id,Param,Results):-
     (json_out(Param)->Mode=json;Mode=rest),
     Goal =.. [Operation,Mode,Id,Param,Results],
     catch(call(Goal),error(existence_error(_,_),context(_,_)),fail).
-    
+
 %% process_json_rpc(+Request) is det.
 % Process a json RPC request, according to the json-RPC specs 2.0
 % Handles single requests and batch requests.
@@ -661,7 +662,7 @@ process_json_rpc(Request) :-
     cors_enable(Request,
                 [ methods([post])
                 ]),
-    format('~n'). 
+    format('~n').
 process_json_rpc(Request):-
     %print_content_type(json),
     cors_enable(Request,[methods([post])]),
@@ -738,7 +739,7 @@ process_json_request_(JSONRequest):-
     catch(json_exec(Method, Id, Params),
         error(Term,Code,Message),
         process_json_rpc_error(invalid_request(Id,error(Term,Code,Message)))).
-        
+
 
 process_json_request_(JSONRequest):- % TODO: Deprecated
     json_decode_command(JSONRequest,Id,Method,Params),
@@ -756,9 +757,9 @@ json_decode_command(json(JSONRequest),Id,Method,[token_info(TokenParams)|Params]
     option(id(Id),JSONRequest,null),
     option(method(Method),JSONRequest),
     option(params(json(Params)),JSONRequest),
-    (option(token(Token),Params) -> 
+    (option(token(Token),Params) ->
         true
-        ;  
+        ;
         throw(invalid_params(Id,'Missing parameter: token'))
     ),
     (tokens:decode_token(Token,_,TokenParams)->true; throw(invalid_params(Id,'Bad token'))).
@@ -779,7 +780,7 @@ json_exec(Op,Id,Param):-
 %% return_sucess(+Apitype,+Method,+Id,+Params,+Results) is det.
 %
 % Outputs results of API call. This is called by json_exec and rest_exec upon successfull execution of a request
-% 
+%
 %
 % Params:
 %
@@ -789,7 +790,7 @@ json_exec(Op,Id,Param):-
 % @arg Params original params of the request.
 % @arg Results results of the call
 %
-% Each combination of Apitype and Method requires a specific implementation a predicate 
+% Each combination of Apitype and Method requires a specific implementation a predicate
 % Method_results(+ApiType,+Id, +Params, +Results) which will be called bh this predicate in order
 % to output `Results` in a format compatible with the `Apitype`.
 %
@@ -855,7 +856,7 @@ default_results(json,Id,_Params,Results):-
     current_output(O),
     print_content_type(json),
     json_write(O,Return,[]).
-            
+
 print_content_type(rest):-
     format('Content-type: text/text~n~n', []).
 print_content_type(json):-
@@ -911,7 +912,7 @@ save_file(In, file(FileName, File), Options) :-
             tmp_file_stream(octet, File, Out),
             copy_stream_data(In, Out),
             close(Out)).
-  
+
 return_sucess(json,upload,Id,_,Results):-
             Id \= null,
             [destination(File)] = Results,
@@ -920,7 +921,7 @@ return_sucess(json,upload,Id,_,Results):-
                 result=File,
                 id=Id]),
             current_output(Out),json_write(Out,Return).
-        
+
 %% upload_form(+Request) is det.
 % From: http://www.swi-prolog.org/howto/http/FileUpload.html
 % Generates a form to allow uploading of a file to the rest server
@@ -930,7 +931,7 @@ upload_form(Request) :-
     cors_enable(Request,
             [ methods([get,post,delete,put])
             ]),
-    format('~n'). 
+    format('~n').
 upload_form(Request) :-
     get_authorization_token(Request,Token),
     atomic_list_concat(['/rest/sources/uploads?token=',Token],URL),
@@ -944,7 +945,7 @@ upload_form(Request) :-
                 table([],
                         [ tr([td(input([type(file), name(file),multiple]))]),
                         tr([
-                            td([ 
+                            td([
                             'Id:',input([type(number),name(id)]),
                             'path:',input([type(text),name(path_info)])
                             ])
@@ -964,11 +965,11 @@ upload_form(Request) :-
 %% serve_structure_file(+Request) is det.
 %
 % returns the content of a structure file (.str) or report file (.srpt)
-% Note: if it is desirable that special stru files are kept with sources, 
-% configure user token so that sources and structure dirs overlap 
+% Note: if it is desirable that special stru files are kept with sources,
+% configure user token so that sources and structure dirs overlap
 %
 serve_structure_file(_Request):-!.
-  
+
 /* serve_structure_file(Request):-
     option(path_info(FilePath),Request),
     http_parameters(Request,[
@@ -1008,7 +1009,7 @@ serve_structure_file(_Request):-!.
 % ### API CALL: translations
 % Translates a file or set of files. JSON and REST
 %
- 
+
 %% json_exec(+Method,+Id,+Params,?Results) is det.
 %
 % Hands over the execution of each method to the relevant server_exec predicate,
@@ -1041,8 +1042,8 @@ rest_exec(translations,Id,Params,[job(JobId),result(Result)]):-
 
 %%  server_exec(+Method,+Parameters,-Results) is det.
 %
-% Executes Method given Parameters and returns Results. 
-% Method and Parameters where extracted previously from the http request by either process_json_rpc or process_rest. 
+% Executes Method given Parameters and returns Results.
+% Method and Parameters where extracted previously from the http request by either process_json_rpc or process_rest.
 % Results will be handled to return_sucess/5 to be returned in the format appropriate to the resuest type.
 %
 
@@ -1116,7 +1117,7 @@ update(Dir,StruPar,Stru,Echo,TokenInfo,Results):-
 
 post_translate_jobs(_,_,_,[],[],[]):-!.
 post_translate_jobs(Echo,Stru,StruPar, [(Source,_,_,_)|MoreSources], [File|MoreFiles],[Result|MoreResults]):-
-    post_job(server_exec(translations,[echo(Echo),path(Source),stru_path(Stru),dat_path(File)],Result),JobId), 
+    post_job(server_exec(translations,[echo(Echo),path(Source),stru_path(Stru),dat_path(File)],Result),JobId),
     Result = translation([job(JobId),source(Source),structure(StruPar),echo(Echo)]),
     post_translate_jobs(Echo,Stru,StruPar,MoreSources,MoreFiles,MoreResults).
 
@@ -1141,7 +1142,7 @@ return_sucess(json,update,Id,Params,Results):-
     Id \= null,
     option(path(Path),Params,null),
     length(Results,L),
-    (Results = [] -> 
+    (Results = [] ->
         JTranslations=[]
         ;
         bagof(json(T),member(translation(T),Results),JTranslations)
@@ -1218,7 +1219,7 @@ return_sucess(json,clean,Id,_,Results):-
                 id=Id]),
         current_output(O),
         json_write(O,Return).
-%% 
+%%
 % ### API CALL: kleioset
 % Get information on kleio set of files.
 %
@@ -1287,7 +1288,7 @@ return_sucess(rest,kleioset,Id,_,Results):-
 json_exec(rmdir, Id, Params,Results):-
     server_exec(rmdir,[id(Id)|Params],Results),
     !.
-  
+
 server_exec(rmdir,[id(Id)|Params],Results):-
     rmdir([id(Id)|Params],Results).
 
@@ -1323,14 +1324,14 @@ rmdir([id(Id)|Params],Results):-
         ;
         kleio_resolve_source_file(Path,AbsPath,TokenInfo)
     ),
-    (exists_directory(AbsPath) -> 
+    (exists_directory(AbsPath) ->
         true
-        ; 
+        ;
         throw(error(Id,-32602,'Directory does not exist '-Path))
     ),
-    (DeleteContents = yes -> 
+    (DeleteContents = yes ->
         delete_directory_and_contents(AbsPath)
-        ; 
+        ;
         catch(delete_directory(AbsPath),Error,
             (log_error('delete_directory error:~w',[Error]),
             throw(error(Id,-32003,'Delete failed. Directory not empty?'-Path))))
@@ -1355,7 +1356,7 @@ return_sucess(json,rmdir,Id,_,Results):-
 json_exec(mkdir, Id, Params,Results):-
     server_exec(mkdir,[id(Id)|Params],Results),
     !.
-  
+
 server_exec(mkdir,[id(Id)|Params],Results):-
     mkdir([id(Id)|Params],Results).
 
@@ -1382,9 +1383,9 @@ mkdir([id(Id)|Params],Results):-
         ;
         kleio_resolve_source_file(Path,AbsPath,TokenInfo)
     ),
-    (exists_directory(AbsPath) -> 
+    (exists_directory(AbsPath) ->
         throw(error(Id,-32005,'Directory already exists '-Path))
-        ; 
+        ;
         true
     ),
     catch(make_directory_path(AbsPath),Error,
@@ -1417,7 +1418,7 @@ return_sucess(json,mkdir,Id,_,Results):-
 %  If not Code is set to -32000 and Id to null.
 % _REST Errors_
 %
-% REST errors are generated using the builtin exception http_reply/1. 
+% REST errors are generated using the builtin exception http_reply/1.
 % See http://www.swi-prolog.org/pldoc/man?section=httpserver
 %
 % For the standard Status codes see https://restfulapi.net/http-status-codes/
@@ -1452,15 +1453,15 @@ return_sucess(json,mkdir,Id,_,Results):-
 %      - unavailable(WhyHtml)
 %
 % Note: ErrorTerm above is a term like:
-%   * error(MessageName) or error(MessageName,context(predicate/arity,ContextInfo)) where MessageName is an ISO Prolog Error (see http://fsl.cs.illinois.edu/images/9/9c/PrologStandard.pdf p.8) 
+%   * error(MessageName) or error(MessageName,context(predicate/arity,ContextInfo)) where MessageName is an ISO Prolog Error (see http://fsl.cs.illinois.edu/images/9/9c/PrologStandard.pdf p.8)
 %   * A term associated with a message defined by prolog:message//1 see bellow.
 %
 % IMPORTANT note that swi uses throw(http_reply(....)) to generate output
-% which is not an error. See code for http_reply_file for an example. So 
+% which is not an error. See code for http_reply_file for an example. So
 % we need to pass the exception if it matches http_reply(.....). Only if it does
 % we have to hande it and wtap a http_reply(....) around for output
 %
-% The fact that throw(http_reply(..)) is used for output inside swipl httpd 
+% The fact that throw(http_reply(..)) is used for output inside swipl httpd
 % is very confusing and caused great pain during developmente before it was figured out.
 % See http://localhost:4040/pldoc/man?section=html-body
 return_error(rest,HTTP_ERROR):-
@@ -1476,7 +1477,7 @@ return_error(rest,E):- % this is a system error
 
 %
 % Codes in the Json-RPC spec:
-% 
+%
 % | _code_ | _message_        | _meaning_                                     |
 % | -32700 | Parse error      | Invalid JSON was received by the server.      |
 % | -32600 | Invalid Request  | The JSON sent is not a valid Request object.  |
@@ -1506,22 +1507,22 @@ return_error(json,http_reply(forbidden(Url),Headers,[])):-
 return_error(json,
                 http_reply(bad_request(destination_file_exists(File)),
                 Headers,_Context)):-
-    option('Request-id'(Id),Headers,null),                   
+    option('Request-id'(Id),Headers,null),
     atomic_list_concat(['Destination of copy or move exists: ',File],Message),
     json_error_output(-32007,Message,Id),!.
 
 
-return_error(json,http_reply(not_found(Path), Headers,_Context)):- 
-    option('Request-id'(Id),Headers,null),                   
+return_error(json,http_reply(not_found(Path), Headers,_Context)):-
+    option('Request-id'(Id),Headers,null),
     atomic_list_concat(['Resource not found: ',Path],Message),
-    json_error_output(-32008,Message,Id),!.   
+    json_error_output(-32008,Message,Id),!.
 
 return_error(json,http_reply(
                     bad_request(directory_not_exists(Directory)),
-                    Headers,_Context)):- 
-                    option('Request-id'(Id),Headers,null),                   
+                    Headers,_Context)):-
+                    option('Request-id'(Id),Headers,null),
                     atomic_list_concat(['Directory does not exist: ',Directory],Message),
-                    json_error_output(-32009,Message,Id),!.   
+                    json_error_output(-32009,Message,Id),!.
 
 return_error(json,http_reply(Error)):-
     return_error(json,http_reply(Error,[],[])).
@@ -1531,32 +1532,32 @@ return_error(json,http_reply(Error,Headers)):-
 
 
 return_error(json,parse_error(Id,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Parse Error: ',M], Message),
     json_error_output(-32700,Message,Id).
 
 return_error(json,invalid_request(Id,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Invalid request: ',M], Message),
     json_error_output(-32600,Message,Id).
 
 return_error(json,method_not_found(Id,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Method not found: ',M], Message),
     json_error_output(-32601,Message,Id).
 
 return_error(json,invalid_params(Id,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Invalid params: ',M], Message),
     json_error_output(-32602,Message,Id).
 
 return_error(json,internal_error(Id,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Internal error: ',M], Message),
     json_error_output(-32603,Message,Id).
 
 return_error(json,server_error(Id,Code,ErrorMessage)):-!,
-    with_output_to(string(M),write(ErrorMessage)),    
+    with_output_to(string(M),write(ErrorMessage)),
     atomic_list_concat(['Server error: ',M], Message),
     json_error_output(Code,Message,Id).
 
@@ -1585,7 +1586,7 @@ json_error_output(Code,Message,Id):-
 
 %% message templates for errors
 %
-% example: throw(http_reply(bad_request(bad_token))) 
+% example: throw(http_reply(bad_request(bad_token)))
 % whenever ErrorTerm is used in the http_reply error descriptions above
 %
 prolog:message(token_missing) -->
@@ -1651,15 +1652,15 @@ prolog_message(server_error(M)) -->
 %
 % Converts any term of type option=value in List to option(value) in OptionList.
 % If list contains option(value) terms they are copied to OptionList.
-% 
+%
 % This is useful when dealing with different formats of options or parameters in
-% rest requests, because swi builtin functions produce different results from 
+% rest requests, because swi builtin functions produce different results from
 % forms, get parameters, and json requests.
 %
 % Example:
 %
 %       convert_to_options([option1=value1, options(value2)],Options).
-%       Options = [option1(value1), options(value2)] 
+%       Options = [option1(value1), options(value2)]
 %
 convert_to_options([A=B|Rest],[T|Rest2]):-
     T =.. [A,B],
@@ -1694,7 +1695,7 @@ show_processing_status:-
         get_queued(Queue),
         length(Queue,Q),
         format('QUEUED JOBS: ~w~n',[Q]),
-        log_debug('QUEUED JOBS:~w',[Q]), 
+        log_debug('QUEUED JOBS:~w',[Q]),
         member(Proc,Queue),
         show_proc(Proc),
         fail.
@@ -1727,7 +1728,7 @@ show_job(Status,Q,Time,server_exec(translations,Options,_Result),number(N)):-
         option(path(Path),Options),
         format('~w: ~w ~w translating ~w [~w]~n',[Status,Q,Time,Path,N]),!.
 show_job(_,_,_,translate([],_Stru,_Echo),_):-!.
-show_job(Status,Q,Time,translate([Source|Sources],_Stru,_Echo),_):-   
+show_job(Status,Q,Time,translate([Source|Sources],_Stru,_Echo),_):-
         show_job(Status,Q,Time,translate(Source,_,_),_),
         show_job(Status,Q,Time,translate(Sources,_,_),_),!.
 show_job(Status,Q,Time,translate(Source,_Stru,_Echo),_):-
@@ -1767,7 +1768,7 @@ echo_request(Request) :-
     cors_enable(Request,
             [ methods([get,post,delete,put])
             ]),
-    format('~n'). 
+    format('~n').
 
 echo_request(Request) :-
         format('Content-type: text/html~n~n', []),
