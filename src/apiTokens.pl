@@ -6,6 +6,7 @@
 
 :- use_module(tokens).
 :- use_module(persistence).
+:- use_module(logging).
 
 /** <module> Api operation dealing with tokens.
 
@@ -19,19 +20,21 @@ Set privileges associated with tokens.
 % Entry point for REST calls related to tokens.
 %
 tokens(post,User,ResultType,Id,Params):-
+    log(debug,'Tokens post. user: ~w Params:~w~n',[User,Params]),
     tokens_generate(ResultType,Id,[user(User)|Params]).
 
 tokens(delete,Token,ResultType,Id,Params):-
+    log(debug,'Tokens delete. Params:~w~n',[Params]),
     tokens_invalidate(ResultType,Id,[user_token(Token)|Params]).
 
 %!users(+Method,+User,+ResultType,+Id,+Params) is det.
 %
 % Entry point for REST calls related to users.
-% 
+%
 % | _entity_      | _Method_     | _function_       | _meaning_                   |
 % | users       | DELETE            | userss_invalidate| invalidate a user token |
 %
-% 
+%
 users(delete,Token,ResultType,Id,Params):-
     users_invalidate(ResultType,Id,[user_token(Token)|Params]).
 
@@ -63,16 +66,17 @@ users(delete,Token,ResultType,Id,Params):-
 % 	* structures: (optional) base directory for user provided str files.
 %   * inferences: (optional) directory for aditional inference rules TODO:
 %   * mappings:   (optional) directory for aditional SOM-POM mappings. TODO:
-% 	* sources: (optional, required for user that do translations) 
+% 	* sources: (optional, required for user that do translations)
 %
 tokens_generate(ResultType,Id,Params):-
+    log(debug,'Tokens generate. Params:~w~n',[Params]),
     option(user(UserName),Params), % TODO: generate exception
     option(info(json(Info)),Params), % TODO: generate exception
     option(token(Token),Params),
-    (tokens:is_api_allowed(Token,generate_token) -> 
+    (tokens:is_api_allowed(Token,generate_token) ->
     true
     ;
-    throw(http_reply(method_not_allowed(tokens_generate,UserName),['Request-id'(Id)]))  
+    throw(http_reply(method_not_allowed(tokens_generate,UserName),['Request-id'(Id)]))
     ),
     restServer:convert_to_options(Info,TokenInfo),
     tokens:generate_token(UserName,TokenInfo,NewToken),
@@ -80,19 +84,20 @@ tokens_generate(ResultType,Id,Params):-
         (tokens:invalidate_token(BToken),put_shared_value(bootstrap_token,none))
         ;
         true
-        ), 
+        ),
     restServer:default_results(ResultType,Id,_,NewToken).
 
 %!tokens_invalidate(+ResultType,+Id, +Params) is det.
-% 
+%
 % Invalidates previously issued token.
 %
 tokens_invalidate(ResultType,Id, Params):-
+    log(debug,'Tokens invalidate. Params:~w~n',[Params]),
     option(token(Token),Params),
-    (is_api_allowed(Token,invalidate_token) -> 
+    (is_api_allowed(Token,invalidate_token) ->
     true
     ;
-    throw(http_reply(method_not_allowed(invalidate_token,Token),['Request-id'(Id)]))  
+    throw(http_reply(method_not_allowed(invalidate_token,Token),['Request-id'(Id)]))
     ),
     option(user_token(UserToken),Params),
     (tokens:get_user(UserToken,_) -> true; throw(error(Id,param_error('Invalid token')))),
@@ -100,16 +105,17 @@ tokens_invalidate(ResultType,Id, Params):-
    restServer:default_results(ResultType,Id,Params,UserToken).
 
 %!users_invalidate(+ResultType,+Id, +Params) is det.
-% 
+%
 % Invalidates previously issued tokens associated with an user.
 %
 users_invalidate(ResultType,Id,Params):-
+    log(debug,'users_invalidate. Params:~w~n',[Params]),
     option(user(User),Params),
     option(token(Token),Params),
-    (is_api_allowed(Token,invalidate_user) -> 
+    (is_api_allowed(Token,invalidate_user) ->
     true
     ;
-    throw(http_reply(method_not_allowed(tokens_user,User),['Request-id'(Id)]))  
+    throw(http_reply(method_not_allowed(tokens_user,User),['Request-id'(Id)]))
     ),
     (tokens:get_user(_,User) -> true; throw(error(Id,param_error('Invalid user')))),
     tokens:invalidate_user(User),
