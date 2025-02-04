@@ -2,7 +2,7 @@
     [
     generate_token/3,           % +UserName, +Options=[data_dir(Dir),stru_dir(Dir),api(List)], ?AccessToken
     decode_token/3,             % +Token, ?UserName, ?Options
-    invalidate_token/1,         % +Token 
+    invalidate_token/1,         % +Token
     invalidate_user/1,          % +User
     attach_token_db/1,          % +File
     update_token_options/2,       % +Token,+Permission
@@ -17,7 +17,7 @@
     ]).
 
 /** <module> user_tokens with API Tokens
- 
+
 ## User Management with tokens.
 
 To access the api incoming requests must provide an API Token.
@@ -26,7 +26,7 @@ The token is used as a key to the username, and a list of user information which
 
 * the path to the data dir, which can be absolute or relative to the server data dir.
 * the path to the structure dir, which can be absolute or relative to the server structure dir.
-* permissions of the user, a list of API calls allowed for this user and constrains 
+* permissions of the user, a list of API calls allowed for this user and constrains
 like expiry date, or source IP (IP source not yet implemented).
 
 To obtain a token the predicate generate_token/3 is used. It will persist the user information using swipl `persistency` API.
@@ -58,23 +58,25 @@ See: http://www.swi-prolog.org/pldoc/doc/_SWI_/library/persistency.pl
 
 default_token_db(D):-
     kleiofiles:kleio_conf_dir(CD),
+    log(debug,'tokens:default_token_db kleio_conf_dir ~w ~n',[CD]),
     atom_concat(CD, '/token_db',D).
 
 %% attach_token_db(+File) is det.
 % Use File to store generated tokens
 attach_token_db(F):-
     (
-        (db_attached(F1) -> % Module already attached to DB 
+        (db_attached(F1) -> % Module already attached to DB
             (F1 \= F ->  % Previous db is different, sync and detach
                 (db_sync(_What),
-                db_detach) 
+                db_detach)
             ;   % already attached to the file, do nothing
                 true
             )
         ; % Module not attached, attach.
             db_attach(F,[])
         )
-    ).
+    ),
+    log(debug,'tokens:attach_token_db ~w ~n',[F]).
 
 %% token_db_attached(?File) is det.
 % Returns current token database file, fails if none is defined.
@@ -89,6 +91,7 @@ ensure_db:-
 ensure_db:-
     kleiofiles:kleio_token_db(D),
     attach_token_db(D),
+    log(debug,'tokens:ensure_db ~w ~n',[D]),
     !.
 
 %% generate_token(+UserName,+Options,?AccessToken) is det.
@@ -97,7 +100,7 @@ ensure_db:-
 % Example: Options=[api([kleioset,translation,files,structures]),expire('2019-03-29')]
 %
 % If a valid token exists throws an exception. Use invalidate_token, or invalidade_user first.
-% 
+%
 generate_token(UserName,_,AccessToken):-
     ensure_db,
     user_has_token(UserName,AccessToken),
@@ -110,6 +113,8 @@ generate_token(UserName,Options,AccessToken):-
     atomic_list_concat([UserName,S,R],C),
     sha_hash(C,H,[]),
     hash_atom(H,AccessToken),
+    log(debug,'tokens:generate_token hash ~w token ~w ~n',
+        [H, AccessToken]),
     ( % check if token database was initialized, if not use default location
         token_db_attached(_F) ;
         (
@@ -209,10 +214,10 @@ update_token_options(Token,Options):-
 get_user(Token,User):-
     ensure_db,
     user_has_token(User,Token).             % +Token,?User
-    
+
 %% get_token_options(+Token,?Options) is det.
 % Get the options associated with a Token.
-% Checks the KLEIO_ADMIN_TOKEN env variable for admin 
+% Checks the KLEIO_ADMIN_TOKEN env variable for admin
 get_token_options(Token,Options):-      % +Token,?Permissions.
     ensure_db,
     decode_token(Token,_,Options),!.
@@ -235,7 +240,7 @@ get_data_dir(Token,DD):-
     option(data_dir(DD),P,'.').
 
 %% is_api_allowed(+Token,?APICall) is det.
-% True if APICall is allowed by the options associated with Token. 
+% True if APICall is allowed by the options associated with Token.
 % On backtracking gives all APICalls allowed for this token.
 is_api_allowed(Token,APICall):-     % +Token,?API_EndPoint, backtracks on all allowed API calls for this token
     ensure_db,
@@ -277,10 +282,11 @@ list_tokens:-
     writeln(U-O-T),
     fail.
 list_tokens.
-    
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TESTS 
+% TESTS
 % For docs see http://www.swi-prolog.org/pldoc/doc_for?object=section(%27packages/plunit.html%27)
+%
 % run_tests(tokens).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -291,7 +297,7 @@ setup_tests:- % we create a token
         api([translations,sources,files]),
         data_dir('sources/testes/'),
         stru_dir('system/conf/kleio/stru')
-        ],   
+        ],
     (invalidate_user('username');true), % invalidate just in case
     !,
     catch(generate_token('username',Options, Token),_Catcher,true),
@@ -310,7 +316,7 @@ test(generate_token,[true]):-
         token_db_attached(F),
         decode_token(Token,'username',Options),
         format('~nToken database at ~w~nToken:~w~nOptions: ~w~n',[F,Token,Options]),!.
- 
+
 test(generate_token_duplicate,[
     throws(error(username,-32600,'User already associated with token, invalidate user first.'))
     ]):-
@@ -334,7 +340,7 @@ test(decode_token):-
         api([translations,sources,files]),
         data_dir('sources/testes/'),
         stru_dir('system/conf/kleio/stru')
-        ]. 
+        ].
 
 test(invalidate_token,[fail]):-
     generate_token(invalid_user,[],Token),

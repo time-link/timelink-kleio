@@ -180,9 +180,11 @@ db_close:-
   do_auto_rels,  do_auto_rels2,
   process_cached_same_as,
   (get_value(clioPP,true)->clioPP_close;true),
+  get_prop(kleio,groups,Groups),
   report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
+  report([write('Groups in this file:'), writeln(Groups)]),
   report([writeln('Translation finished.')]),
   xml_nl,
   xml_close.
@@ -334,6 +336,7 @@ db_store:-
   process_same_as(G,ID),			% this was moved here so that any group can have  same_as elements
   get_ancestor(_,AncID),
   add_to_prop(autorels,groups,(G, ID, AncID, CurrentLevel)),    % this is used by automatic relation processing
+  add_to_prop(kleio,groups,G),  % keep track of this group
   save_group_path(P,G,ID),
   process_linked_data(G,ID),
   (get_value(clioPP,true) -> %if necessary we produce a ids file

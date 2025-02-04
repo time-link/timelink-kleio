@@ -1,9 +1,9 @@
 /** <module> Clio input Top level
- 
+
  # General description
- 
+
  Clio input is a set of Prolog programs that can
- translate Kleio source data files into a PROLOG 
+ translate Kleio source data files into a PROLOG
  database.
 
 
@@ -13,12 +13,12 @@ but normally a shell with the user interface is defined that calls
 the predicates here.
 
 clio_version/1: returns a string with the version of clio input,
-clio_init:- initialization procedures. 
+clio_init:- initialization procedures.
 
-stru(Filename): processes a file with a 
+stru(Filename): processes a file with a
 Kleio struture definition
 dat(Filename):  processes of kleio data file
-(requires a previously processed structure 
+(requires a previously processed structure
 definition through a stru run)
 
 readlines(Filetype): reads a file (either a structure
@@ -27,7 +27,7 @@ readlines(Filetype): reads a file (either a structure
     predicates to process each line.
 
 processLine(FileType,Tokens):- passes a line of tokens to the
-syntactic analysers. 
+syntactic analysers.
 
 
 */
@@ -44,9 +44,9 @@ syntactic analysers.
 :-use_module(dataSyntax).
 :-use_module(dataDictionary).
 :-use_module(struSyntax).
-:-use_module(struCode). 
-:-use_module(lexical). 
-:-use_module(reports). 
+:-use_module(struCode).
+:-use_module(lexical).
+:-use_module(reports).
 :-use_module(counters).
 :-use_module(errors).
 :-use_module(persistence).
@@ -88,16 +88,16 @@ pclio_version:-
 %  %
 clio_init:-
     (get_value(echo,E);E=no),%  if not defined echo initialy off %
-    put_value(echo,E),  
+    put_value(echo,E),
     initErrorCount, % error count %
     put_value(max_errors,10), % maximum number of errors %
     set_report(off),
-    !.  
+    !.
 %******************************************************
-%  stru: starts the processing of a file with a 
+%  stru: starts the processing of a file with a
 %        Kleio struture definition
 %******************************************************
-%  
+%
 % %
 
 stru(F):-
@@ -117,11 +117,13 @@ stru(F):-
       directory_file_path(Directory, _, Filename),
       concat(Basename,'.json',JsonFile),
       directory_file_path(Directory,JsonFile,JPath),
-      make_json_doc(Filename,JPath).
+      concat(Basename,'.yaml',Yamlfile),
+      directory_file_path(Directory,Yamlfile,YPath),
+      make_json_yaml_doc(Filename,JPath,YPath).
 
 %******************************************************
 %  dat:  starts the processing of kleio data file
-%        (requires a previously processed structure 
+%        (requires a previously processed structure
 %        definition through a stru run)
 %******************************************************
 % %
@@ -151,60 +153,60 @@ dat(F):-
 doc(StruFile,DestDir):-
     stru(StruFile),
     make_html_doc(DestDir).
-    
+
 %% processLine(+FileType,+Tokens) is det.
 %
-%  Process line doing syntactic analysis 
-%    Called by readlines. 
+%  Process line doing syntactic analysis
+%    Called by readlines.
 %    Takes the token lists created from current line by get_tokens/3
 %    and 'feeds' them to the syntatic analysers.
-%    
+%
 %    If FileType is 'cmd' processLine stores the command tokens until
 %       the command is complete and then passes it to the syntatic
 %       analyser (compile_command). A command is complete when a new
 %       command appears in the input line or when the eof is reached.
 
-%    
+%
 %    If FileType is 'dat' lines are passed to the syntactic analyser
 %    as they are read.
-%       
+%
 %   @tbd Avoid using dynamic predicate cmd/2 to store cache for multi line commands.
 %
 processLine(dat,Tokens):-
     compile_data(Tokens),!.
-  
+
   processLine(cmd,[]):-!.
   processLine(cmd,[(return,_)]):-!.
-  
+
   processLine(cmd,[(fill,_)|Tokens]):-
       fetch_command(cmd(OldCmd,OldTokens)),!,
       append(OldTokens,Tokens,NewTokens),
       cache_command(cmd(OldCmd,NewTokens)),!.
-  
+
   processLine(cmd,[(fill,_)|_]):-
       \+ clean_cached_command,
       error_out('Error, line begining with blank without previous command'),!.
-  
+
   processLine(cmd,[(Tok,Command)|Tokens]):-
       Tok \= fill,
       fetch_command(cmd(OldCmd,OldTokens)),!,
       compile_command(OldCmd,OldTokens),
       cache_command(cmd(Command,Tokens)),!.
-  
+
   processLine(cmd,[(Tok,Command)|Tokens]):-
       Tok \= fill,
       \+ clean_cached_command,
       cache_command(cmd(Command,Tokens)),!.
-  
+
   processLine(cmd,eof):-
     report([write('End of File'),nl]),
     (fetch_command(cmd(OldCmd,OldTokens)) -> (!,compile_command(OldCmd,OldTokens))
          ;
          true).
-  
+
 %% echo_line(+L,+Line) is det.
 %
-% Echoes a line, prefixed by the line number, 
+% Echoes a line, prefixed by the line number,
 % if global parameter (thread local) `echo`is "yes".
 %
 echo_line(L,Line):-
@@ -224,10 +226,10 @@ echo_line(_,_).
 %       basis and calls the apropriate
 %       predicates to process each line.
 %
-% _readlines_ processes lines in three steps: 
-%  
-% #    first the line is read as a list of chars; 
-% #    then 'getTokens/3' is called to transform the 
+% _readlines_ processes lines in three steps:
+%
+% #    first the line is read as a list of chars;
+% #    then 'getTokens/3' is called to transform the
 %       list of chars into a list of tokens
 %       (lexical analysis);
 % #   the Token list is passed to 'processLine/2' where
@@ -235,27 +237,27 @@ echo_line(_,_).
 %      (if the file is a command file) or converted
 %      and added to the internal database
 %      (if the file is a Clio source data file).
-%    
+%
 % _readlines_  consists of a failure driven loop built
 %    with a _repeat_ predicate (Built-in in LPA PROLOG).
 %
-%    The exit condition for the loop is that the last 
+%    The exit condition for the loop is that the last
 %    character read is a end of file character (Next=eof).
 %    Inside the loop the 'readline2' predicate is called to
 %    read a list of characters from the input file.
-%    
+%
 %    The actual input is done by readlines2/2
-%    which reads an input line as a list of chars. 
+%    which reads an input line as a list of chars.
 %
 %    Each char is represented by a structure (Char, Type),
-%    where 'Char' is the Ascii code for the char and 
+%    where 'Char' is the Ascii code for the char and
 %    'Type' is a constant that gives the type of the char,
-%    (digit, letter, eof, etc...). 
-%    Char types are defined by 'chartype' predicates in lexical.pl 
+%    (digit, letter, eof, etc...).
+%    Char types are defined by 'chartype' predicates in lexical.pl
 %
 %    The input line is echoed to the current output stream.
 %
-%             
+%
 readlines(FileType):-
     setcount(line,1),
     repeat,
@@ -271,5 +273,5 @@ readlines(FileType):-
     (Last = eof;not(errors:check_continuation)), % fail until end of file, or max errors reached %
     processLine(FileType,eof),!. % end of file reached %
 
-readlines(_):- 
+readlines(_):-
    error_out('Unexpected failure in readlines'),abort,!.
