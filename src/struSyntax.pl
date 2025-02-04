@@ -378,9 +378,7 @@ engkw(options,      optiones).
 engkw(order,        ordo).
 engkw(part,         pars).
 engkw(more,         plures).
-engkw(after,        post).
 engkw(suffix,       post).
-engkw(before,       prae).
 engkw(prefix,       prae).
 engkw(preparation,  prae).
 engkw(first,        primum).
@@ -391,7 +389,7 @@ engkw(repeat,       repetitio).
 engkw(write,        scribe).
 engkw(always,       semper).
 engkw(without,      sine).
-engkw(sign,         signum).
+engkw(idprefix,     signum).
 engkw(only,         solum).
 engkw(element,      terminus).
 engkw(yes,          sic).
