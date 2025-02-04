@@ -18,9 +18,9 @@
 %
 run_debug_server:-
     set_log_level(debug),
-    log_debug("starting server with log level debug.",[]),
+    log_debug("serverStart:run_debug_server starting server with log level debug.",[]),
     print_server_config,
-    log_debug("server config printed",[]),
+    log_debug("serverStart:run_debug_server server config printed",[]),
     set_prop(prolog_server,options,[allow(ip(_,_,_,_))]), % TODO: limit by subnet (first two numbers of host'sIP)
     restServer:start_debug_server, % we keep this for the semantic tests scripts until we find a better way
     restServer:start_rest_server,!.
@@ -92,7 +92,7 @@ wait_for_idle(Secs) :- log_info('Rest Server idle for ~w seconds',[Secs]).
 
 %% run_test_server is det.
 %
-% Sets up a test server with the environment set for running the test suites in `clio/test`.
+% Sets up a test server with the environment set for running the test suites in `tests`.
 % It is useful to simulate the test environment.
 %
 % This assumes that the server is started from a tests directory with the following internal layout
@@ -109,13 +109,22 @@ wait_for_idle(Secs) :- log_info('Rest Server idle for ~w seconds',[Secs]).
 % $ KLEIO_IDLE_TIMEOUT    : 60
 %
 run_test_server:-
-    writeln('RUN FROM THE clio/tests DIRECTORY'),
-    working_directory(WD,WD),
-    (atom_concat(_,'tests/',WD)->true;throw(bad_directory('run from tests directory'))),
+    writeln('RUN FROM THE ./tests DIRECTORY'),
+    working_directory(CurrentDir,CurrentDir),
+    (atom_concat(_,'tests/',CurrentDir)->  % check if it is tests
+        true
+    ;
+        (exists_directory('tests') ->  % if not in test move to tests
+            working_directory(_,'tests')
+        ;
+            throw(bad_directory('run from tests directory'))
+        )
+    ),
     (exists_directory('kleio-home')->true
         ;
         throw(error(bad_directory(WD),context(run_test_server/0,'no kleio-home directoy')))),
-
+    working_directory(WD,WD),
+    log(debug,'serverStart:run_test_server starting with kleio home: ~w ~n',[WD]),
     setenv_dir('KLEIO_HOME_DIR',WD,'kleio-home'),
     setenv_dir('KLEIO_SOURCE_DIR',WD,'kleio-home/sources'),
     setenv_dir('KLEIO_CONF_DIR',WD,'kleio-home/system/conf/kleio'),
@@ -126,6 +135,7 @@ run_test_server:-
     setenv('KLEIO_SERVER_PORT', 8088),
     setenv('KLEIO_WORKERS',3),
     setenv('KLEIO_IDLE_TIMEOUT',360),
+    setenv('KLEIO_ADMIN_TOKEN',mytoken),
     run_debug_server.
 
 setenv_dir(Var,Dir,Value):-
@@ -268,8 +278,6 @@ show_prolog_stack:-!.
 %
 % assumes test sources in tests/kleio-home/reference_sources
 %
-
-
 test_setup(EndPoint,Token):-
     working_directory(CD,CD),
     put_value(dir_before_tests,CD),
@@ -392,7 +400,4 @@ test(translations,[
     print_term(Results,[]),!.
     %dict_create(Dict,response,Data),
     %format('~n~nid:~w~n,~k',[Dict.id,Dict]).
-
-
-
 :- end_tests(server).
