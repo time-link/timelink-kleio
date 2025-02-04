@@ -317,6 +317,11 @@ Type ```make``` to see more targets that help in development.
 
 ( `make show-last` to have timestamp and version info)
 
+### 2025-02-04 13:02:43 version 12.8.583
+
+* Processing of str files now outputs version of str in YAML along with JSON.
+* Fixes bugs related to location of conf dir.
+
 ### 2025-01-28 22:46:02 version 12.7.579
 
 * Improves handling of complex dates, implementing #1.
