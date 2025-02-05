@@ -1,0 +1,57 @@
+- group:
+    name: devassa
+    description: "Devassas temporais nas visitas pastorais \n"
+    source: pt-acto
+    also: [folio, visdor, secretario, obs]
+    arbitrary: [testo, testa, referido]
+    guaranteed: [id, dia, mes, ano, fol]
+    idprefix: his
+    position: [id, dia, mes, ano]
+    prefix: non
+    suffix: non
+- group:
+    name: acus
+    description: '  '
+    source: object
+    also: [literal, origem, obs, id]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [idcaso]
+    idprefix: obj
+    part: [caso]
+    position: [idcaso, obs]
+    prefix: non
+    suffix: non
+- group:
+    name: acusa
+    description: '  '
+    source: acus
+    also: [literal, origem, obs, id]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [idcaso]
+    idprefix: obj
+    part: [caso]
+    position: [idcaso, obs]
+    prefix: non
+    suffix: non
+- group:
+    name: caso
+    description: '  '
+    source: object
+    also: [obs]
+    arbitrary: [acusado, acusada, referido, referida]
+    guaranteed: [id, tipo]
+    idprefix: obj
+    position: [id, tipo]
+    prefix: non
+    suffix: non
+- group:
+    name: denuncia
+    description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao\n"
+    source: pt-acto
+    also: [inquiridor, escrivao, obs]
+    arbitrary: [denunciante]
+    guaranteed: [id, dia, mes, ano, fol]
+    idprefix: his
+    position: [id, dia, mes, ano]
+    prefix: non
+    suffix: non

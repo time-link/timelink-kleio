@@ -1,0 +1,57 @@
+# contém habilitações de genere, com diferentes variantes
+
+- group:
+    also:
+    - obs
+    arbitrary:
+    - n
+    - referido
+    - referida
+    - test
+    description: Habilitacoes da Ordem de Cristo e Santo Oficio
+
+    guaranteed:
+    - id
+    - cota
+    - data
+    idprefix: his
+    name: hab
+    position:
+    - id
+    - cota
+    - data
+    prefix: non
+    source: pt-acto
+    suffix: non
+- group:
+    name: proc
+    source: hab
+    description: >
+      Variante de hab usada por Rosario Castico na Lousa.
+      Modifica
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    - loc
+- group:
+    name: po
+    description: Variante de "hab" para os processos de ordenação
+    source: hab
+- group:
+    name: chanc
+    description: "Chancelarias \n"
+    source: pt-acto
+    also: [loc, resumo, obs]
+    arbitrary: [n, referido, referida, item]
+    guaranteed: [id, dia, mes, ano]
+    idprefix: his
+    position: [id, dia, mes, ano, loc]
+    prefix: non
+    suffix: non

@@ -1,0 +1,60 @@
+- group:
+  name: nom
+  source: pt-acto
+  also:
+  - fols
+  - subs
+  - esmola
+  - obs
+  arbitrary:
+  - n
+  - referido
+  description: 'Nomeacoes de irmaos numa misericordia (A particular historical act
+    )
+
+    '
+  guaranteed:
+  - id
+  - dia
+  - mes
+  - ano
+  idprefix: his
+  position:
+  - id
+  - dia
+  - mes
+  - ano
+  - fol
+  - subs
+  - esmola
+  prefix: non
+  suffix: non
+- group:
+  name: amz
+  source: pt-acto
+  also:
+  - resumo
+  - obs
+  arbitrary:
+  - eleito
+  - eleitor
+  - referido
+  description: 'Assentos da mesa numa misericordia (A particular historical act
+    )
+
+    '
+  guaranteed:
+  - id
+  - dia
+  - mes
+  - ano
+  - fol
+  idprefix: his
+  position:
+  - id
+  - dia
+  - mes
+  - ano
+  - fol
+  prefix: non
+  suffix: non

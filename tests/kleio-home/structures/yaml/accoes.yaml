@@ -1,0 +1,48 @@
+
+- group:
+    name: acionista
+    description: Acionista
+    source: actorm
+    guaranteed:
+    - nome
+    also:
+    - obs
+    - mesmo_que
+    - id
+    arbitrary:
+    - ls
+    - atr
+    - rel
+- group:
+    name: integr
+    description: '  '
+    source: pt-acto
+    also: [obs, data]
+    arbitrary: [referido, referida, acionista, acionistaf, ls, rel, acao]
+    guaranteed: [id, dia, mes, ano]
+    idprefix: his
+    position: [id, dia, mes, ano]
+    prefix: non
+    suffix: non
+- group:
+    name: acao
+    description: '  '
+    source: object
+    also: [id, obs, data, mesmo_que]
+    arbitrary: [referido, referida, atr, rel]
+    guaranteed: [name]
+    idprefix: obj
+    position: [name, type]
+    prefix: non
+    suffix: non
+- group:
+    name: lcc
+    description: '  '
+    source: pt-acto
+    also: [ref, loc, obs]
+    arbitrary: [n]
+    guaranteed: [id, dia, mes, ano]
+    idprefix: his
+    position: [id, dia, mes, ano]
+    prefix: non
+    suffix: non

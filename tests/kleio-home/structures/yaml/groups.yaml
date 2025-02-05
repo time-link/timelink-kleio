@@ -1,0 +1,253 @@
+- include: elements.yaml
+- group:
+    also: [structure, translator, autorels, obs, prefix, translations]
+    description: "This is the top level group of Kleio files. Specific historical sources must be added to the part parameter of this group. \n"
+    idprefix: kle
+    name: kleio
+    part: [historical-source, fonte, authority-register, identifications, link, property]
+    position: [structure, translator, obs]
+    prefix: non
+    suffix: non
+- group:
+    also: [type, date, year, loc, ref, obs, replace, kleiofile]
+    description: ""
+    guaranteed: [id]
+    idprefix: his
+    name: historical-source
+    part: [historical-act, event]
+    position: [id, year, type, ref]
+    prefix: non
+    suffix: non
+- group:
+    also: [type, id, obs, same_as, xsame_as]
+    description: "GeoEntity :a spatial entity. An entity that represents a spatial entity in the sense of a conceptual representation of space. A geo-entity is not an object that has a particular position in place. It is rather something like the parish of X ,the place Y ,the region W. \n"
+    idprefix: geo
+    name: geoentity
+    part: [ls, atr, rel]
+    position: [name]
+    prefix: non
+    suffix: non
+- group:
+    also: [type, id, obs, same_as, xsame_as]
+    description: " "
+    idprefix: geo
+    name: place
+    part: [ls, atr, rel]
+    position: [name]
+    prefix: non
+    source: geoentity
+    suffix: non
+- group:
+    also: [date, user, dbase]
+    description: "a register of authority-records \n"
+    guaranteed: [id, name, date, user, dbase]
+    idprefix: aut
+    name: authority-register
+    part: [authority-record]
+    position: [id, name]
+    prefix: non
+    suffix: non
+- group:
+    also: [obs]
+    description: "Identifications are authority-registers for record linking. They contain real-entity records (people or objects )that aggregate occurrences in the source pertaining to the same person or entity. To keep imported records separate from local ones use a different user. \n"
+    guaranteed: [id, name, date, user, dbase, mode]
+    idprefix: aut
+    name: identifications
+    part: [rentity, rperson, robject]
+    position: [id, name]
+    prefix: non
+    source: authority-register
+    suffix: non
+- group:
+    also: [id, obs]
+    description: "Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\" And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 \n"
+    idprefix: lin
+    name: link
+    position: [shortname, urlpattern]
+    prefix: non
+    suffix: non
+- group:
+    also: [id, obs]
+    description: "A property of the file for the kleio parser. Properties are not stored in the database. They affect the parsing of the file. Examples :property $multiple-entry-flag /124 #ascii for pipe char \n"
+    idprefix: pro
+    name: property
+    position: [name, value]
+    prefix: non
+    suffix: non
+- group:
+    also: [status, user, obs]
+    description: "Rentity contains information about a real entity. Defines the standart name for the entity and what are the occurences ,in `occ `subgroups. \n"
+    guaranteed: [id, description, type]
+    idprefix: ren
+    name: rentity
+    part: [occ]
+    position: [id, description, type]
+    prefix: non
+    suffix: non
+- group:
+    also: [status, user, obs]
+    description: "contains information about a real person. \n"
+    guaranteed: [id, sname, sex]
+    idprefix: rpe
+    name: rperson
+    part: [occ, ls, atr, rel]
+    position: [id, sname, sex]
+    prefix: non
+    suffix: non
+- group:
+    also: [status, user, obs]
+    description: "contains information about a real object. \n"
+    guaranteed: [id, sname, type]
+    idprefix: rob
+    name: robject
+    part: [occ, ls, atr, rel]
+    position: [id, sname, type]
+    prefix: non
+    suffix: non
+- group:
+    also: [name, atype, func, date, id, obs]
+    description: "contains the ids of the occurrences of a real entity \n"
+    guaranteed: [occurrence]
+    idprefix: occ
+    name: occ
+    position: [occurrence, atype, func, date, name]
+    prefix: non
+    suffix: non
+- group:
+    also: [loc, ref, obs, day, month, year]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    description: "represents an historical act An historical act is a record of an event ,something that happened at a moment and place in time. This form is used for records such as parish records notarial acts. \ndate: date in kleio format YYYYMMMDD ou YYYY-Month-Day "
+    guaranteed: [id, type, date]
+    idprefix: his
+    name: historical-act
+    position: [id, type, date]
+    prefix: non
+    suffix: non
+- group:
+    also: [loc, ref, obs, day, month, year]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    description: "Something that happened. Used for registering events mentioned in letters ,chronicles ,interviews ,not in formal records. \n"
+    guaranteed: [description]
+    idprefix: his
+    name: event
+    part: [person]
+    position: [description, day, month, year]
+    prefix: non
+    source: historical-act
+    suffix: non
+- group:
+    also: [id, obs, same_as, xsame_as]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    description: "chronology event ,with date upfront ,followed by place (or context )and a description \n"
+    guaranteed: [data, loc, description]
+    idprefix: his
+    name: cevent
+    part: [person, topic, place]
+    position: [data, loc, description]
+    prefix: non
+    source: event
+    suffix: non
+- group:
+    also: [id, obs, same_as]
+    arbitrary: [atr, rel, ls]
+    description: " "
+    guaranteed: [name, sex]
+    idprefix: per
+    name: person
+    position: [name, sex, id, same_as, xsame_as]
+    prefix: non
+    suffix: non
+- group:
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, rel, ls]
+    description: " "
+    guaranteed: [name]
+    idprefix: per
+    name: female
+    position: [name, sex]
+    prefix: non
+    source: person
+    suffix: non
+- group:
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, rel, ls]
+    description: " "
+    guaranteed: [name]
+    idprefix: per
+    name: male
+    position: [name, sex]
+    prefix: non
+    source: person
+    suffix: non
+- group:
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+    description: " "
+    guaranteed: [name]
+    idprefix: obj
+    name: object
+    position: [name, type]
+    prefix: non
+    suffix: non
+- group:
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+    description: " "
+    guaranteed: [name]
+    idprefix: obj
+    name: abstraction
+    position: [name, type]
+    prefix: non
+    source: object
+    suffix: non
+- group:
+    also: [obs, id]
+    arbitrary: [atr, ls, rel]
+    description: "topics ,tags or keywords \n"
+    guaranteed: [name]
+    idprefix: obj
+    name: topic
+    position: [name, description]
+    prefix: non
+    source: abstraction
+    suffix: non
+- group:
+    also: [obs, date, id]
+    description: " "
+    guaranteed: [type, value]
+    idprefix: att
+    name: attribute
+    position: [type, value, date]
+    prefix: non
+    suffix: non
+- group:
+    also: [obs, date, id]
+    description: " "
+    guaranteed: [type, value, destname, destination]
+    idprefix: rel
+    name: relation
+    prefix: non
+    suffix: non
+- group:
+    also: [id]
+    description: " "
+    idprefix: end
+    name: end
+    position: [id]
+    prefix: non
+    suffix: non
+- group:
+    also: [obs]
+    description: " "
+    guaranteed: [value]
+    idprefix: gro
+    name: group-element
+    position: [value]
+    prefix: non
+    suffix: non
+- group:
+    description: " "
+    idprefix: rel
+    name: relation-type
+    prefix: non
+    suffix: non
