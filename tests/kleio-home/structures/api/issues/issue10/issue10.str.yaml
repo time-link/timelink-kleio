@@ -1,0 +1,2944 @@
+- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/issues/issue10/issue10.str
+- element:
+    description: 'Any number '
+    identification: non
+    name: number
+    prefix: non
+    suffix: non
+- element:
+    description: '64 chars strings like those used in ids. Use for elements that contain
+      ids of other entities. Use ""id"" for entity own id. '
+    identification: non
+    name: string64
+    prefix: non
+    suffix: non
+- element:
+    description: 'Longer strings '
+    identification: non
+    name: string256
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: text
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: day
+    prefix: non
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: month
+    prefix: non
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: year
+    prefix: non
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: date
+    prefix: non
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: sic
+    name: id
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: same_as
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: xsame_as
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: entity
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: type
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: class
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: ref
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: loc
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: page
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: pages
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: name
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sex
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: obs
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: description
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: summary
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: origin
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destination
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destname
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: replace
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: inside
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: groupname
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: level
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: line
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: kleiofile
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - structure
+    - translator
+    - autorels
+    - obs
+    - prefix
+    - translations
+    description: "This is the top level group of Kleio files. Specific historical
+      sources must be added to the part parameter of this group. \n"
+    idprefix: kle
+    name: kleio
+    part:
+    - historical-source
+    - authority-register
+    - link
+    - property
+    position:
+    - structure
+    - translator
+    - obs
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - type
+    - date
+    - year
+    - loc
+    - ref
+    - obs
+    - replace
+    - kleiofile
+    description: '
+
+      '
+    guaranteed:
+    - id
+    idprefix: his
+    name: historical-source
+    part:
+    - historical-act
+    - event
+    position:
+    - id
+    - year
+    - type
+    - ref
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - date
+    - user
+    - dbase
+    description: "a register of authority-records \n"
+    guaranteed:
+    - id
+    - name
+    - date
+    - user
+    - dbase
+    idprefix: aut
+    name: authority-register
+    part:
+    - authority-record
+    position:
+    - id
+    - name
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    description: "Identifications are authority-registers for record linking. They
+      contain real-entity records (people or objects )that aggregate occurrences in
+      the source pertaining to the same person or entity. To keep imported records
+      separate from local ones use a different user. \n"
+    guaranteed:
+    - id
+    - name
+    - date
+    - user
+    - dbase
+    - mode
+    idprefix: aut
+    name: identifications
+    part:
+    - rentity
+    - rperson
+    - robject
+    position:
+    - id
+    - name
+    prefix: non
+    source: authority-register
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    description: "Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\"
+      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572
+      \n"
+    idprefix: lin
+    name: link
+    position:
+    - shortname
+    - urlpattern
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    description: "A property of the file for the kleio parser. Properties are not
+      stored in the database. They affect the parsing of the file. Examples :property
+      $multiple-entry-flag /124 #ascii for pipe char \n"
+    idprefix: pro
+    name: property
+    position:
+    - name
+    - value
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - status
+    - user
+    - obs
+    description: "Rentity contains information about a real entity. Defines the standart
+      name for the entity and what are the occurences ,in `occ `subgroups. \n"
+    guaranteed:
+    - id
+    - description
+    - type
+    idprefix: ren
+    name: rentity
+    part:
+    - occ
+    position:
+    - id
+    - description
+    - type
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - status
+    - user
+    - obs
+    description: "contains information about a real person. \n"
+    guaranteed:
+    - id
+    - sname
+    - sex
+    idprefix: rpe
+    name: rperson
+    part:
+    - occ
+    - ls
+    - atr
+    - rel
+    position:
+    - id
+    - sname
+    - sex
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - status
+    - user
+    - obs
+    description: "contains information about a real object. \n"
+    guaranteed:
+    - id
+    - sname
+    - type
+    idprefix: rob
+    name: robject
+    part:
+    - occ
+    - ls
+    - atr
+    - rel
+    position:
+    - id
+    - sname
+    - type
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - name
+    - atype
+    - func
+    - date
+    - id
+    - obs
+    description: "contains the ids of the occurrences of a real entity \n"
+    guaranteed:
+    - occurrence
+    idprefix: occ
+    name: occ
+    position:
+    - occurrence
+    - atype
+    - func
+    - date
+    - name
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - pages
+    - obs
+    - day
+    - month
+    - year
+    arbitrary:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    description: "represents an historical act An historical act is a record of an
+      event ,something that happened at a moment and place in time. This form is used
+      for records such as parish records notarial acts. \ndate: date in kleio format
+      YYYYMMMDD ou YYYY-Month-Day "
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: his
+    name: historical-act
+    position:
+    - id
+    - type
+    - date
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - pages
+    - obs
+    - day
+    - month
+    - year
+    arbitrary:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    description: "Something that happened. Used for registering events mentioned in
+      letters ,chronicles ,interviews ,not in formal records. \n"
+    guaranteed:
+    - description
+    idprefix: his
+    name: event
+    part:
+    - person
+    position:
+    - description
+    - day
+    - month
+    - year
+    prefix: non
+    source: historical-act
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    arbitrary:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    description: "chronology event ,with date upfront ,followed by place (or context
+      )and a description \n"
+    guaranteed:
+    - data
+    - loc
+    - description
+    idprefix: his
+    name: cevent
+    part:
+    - person
+    - topic
+    - place
+    position:
+    - data
+    - loc
+    - description
+    prefix: non
+    source: event
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    arbitrary:
+    - atr
+    - rel
+    - ls
+    description: '
+
+      '
+    guaranteed:
+    - name
+    - sex
+    idprefix: per
+    name: person
+    position:
+    - name
+    - sex
+    - id
+    - same_as
+    - xsame_as
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - rel
+    - ls
+    description: '
+
+      '
+    guaranteed:
+    - name
+    idprefix: per
+    name: female
+    position:
+    - name
+    - sex
+    prefix: non
+    source: person
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - rel
+    - ls
+    description: '
+
+      '
+    guaranteed:
+    - name
+    idprefix: per
+    name: male
+    position:
+    - name
+    - sex
+    prefix: non
+    source: person
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - name
+    idprefix: obj
+    name: object
+    position:
+    - name
+    - type
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - name
+    idprefix: obj
+    name: abstraction
+    position:
+    - name
+    - type
+    prefix: non
+    source: object
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: "topics ,tags or keywords \n"
+    guaranteed:
+    - name
+    idprefix: obj
+    name: topic
+    position:
+    - name
+    - description
+    prefix: non
+    source: abstraction
+    suffix: non
+- group:
+    also:
+    - type
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    description: "GeoEntity :a spatial entity. An entity that represents a spatial
+      entity in the sense of a conceptual representation of space. A geo-entity is
+      not an object that has a particular position in place. It is rather something
+      like the parish of X ,the place Y ,the region W. \n"
+    idprefix: geo
+    name: geoentity
+    part:
+    - ls
+    - atr
+    - rel
+    position:
+    - name
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - type
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    description: '
+
+      '
+    idprefix: geo
+    name: place
+    part:
+    - ls
+    - atr
+    - rel
+    position:
+    - name
+    prefix: non
+    source: geoentity
+    suffix: non
+- group:
+    also:
+    - obs
+    - date
+    - id
+    description: '
+
+      '
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    position:
+    - type
+    - value
+    - date
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    - date
+    - id
+    description: '
+
+      '
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: relation
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - id
+    description: '
+
+      '
+    idprefix: end
+    name: end
+    position:
+    - id
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    description: '
+
+      '
+    guaranteed:
+    - value
+    idprefix: gro
+    name: group-element
+    position:
+    - value
+    prefix: non
+    suffix: non
+- group:
+    description: '
+
+      '
+    idprefix: rel
+    name: relation-type
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - tipo
+    - loc
+    - localizacao
+    - ref
+    - data
+    - ano
+    - obs
+    - substitui
+    description: "Este constitui o grupo principal para os documentos historicos portugueses.
+      Admite qualquer dos actos definidos aqui. \nid: elemento obrigatorio ,identifica
+      unicamente a fonte na base de dados ,"
+    guaranteed:
+    - id
+    idprefix: his
+    name: fonte
+    part:
+    - historical-act
+    - event
+    position:
+    - id
+    - year
+    - type
+    - ref
+    prefix: non
+    source: historical-source
+    suffix: non
+- group:
+    also:
+    - ref
+    - loc
+    - obs
+    arbitrary:
+    - celebrante
+    - actorm
+    - actorf
+    - object
+    - abstraction
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: pt-acto
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: historical-act
+    suffix: non
+- group:
+    arbitrary:
+    - actorm
+    - actorf
+    description: '
+
+      '
+    idprefix: rel
+    name: funcao-em-acto
+    prefix: non
+    source: relation-type
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    description: "fim indica o fim de um acto \n"
+    idprefix: end
+    name: fim
+    position:
+    - id
+    prefix: non
+    source: end
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: dia
+    prefix: non
+    source: day
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: mes
+    prefix: non
+    source: month
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: ano
+    prefix: non
+    source: year
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: data
+    prefix: non
+    source: date
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: tipo
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: valor
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: localizacao
+    prefix: non
+    source: loc
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: cota
+    prefix: non
+    source: ref
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: nome
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: mesmo_que
+    prefix: non
+    source: same_as
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: xmesmo_que
+    prefix: non
+    source: xsame_as
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sexo
+    prefix: non
+    source: sex
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: nomedest
+    prefix: non
+    source: destname
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: iddest
+    prefix: non
+    source: destination
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sumario
+    prefix: non
+    source: summary
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: fol
+    prefix: non
+    source: pages
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: fols
+    prefix: non
+    source: pages
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: folio
+    prefix: non
+    source: pages
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: folios
+    prefix: non
+    source: pages
+    suffix: non
+- group:
+    also:
+    - ref
+    - loc
+    - obs
+    arbitrary:
+    - presente
+    - presente-f
+    - referido
+    - referida
+    - item
+    - ls
+    - atr
+    - rel
+    description: "Actos genericos :servem para vereacoes etc. Compostos por items
+      e por pessoas \n"
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: acto
+    position:
+    - id
+    - tipo
+    - dia
+    - mes
+    - ano
+    - loc
+    - obs
+    prefix: non
+    source: pt-acto
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - pages
+    - obs
+    - day
+    - month
+    - year
+    arbitrary:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - description
+    idprefix: his
+    name: evento
+    part:
+    - person
+    position:
+    - description
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: event
+    suffix: non
+- group:
+    also:
+    - resumo
+    - id
+    - tipo
+    - obs
+    arbitrary:
+    - presente
+    - presente-f
+    - referido
+    - referida
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - titulo
+    idprefix: obj
+    name: item
+    position:
+    - titulo
+    prefix: non
+    source: object
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - name
+    idprefix: obj
+    name: topico
+    position:
+    - name
+    - description
+    prefix: non
+    source: topic
+    suffix: non
+- group:
+    also:
+    - type
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    description: '
+
+      '
+    idprefix: geo
+    name: lugar
+    part:
+    - ls
+    - atr
+    - rel
+    position:
+    - name
+    prefix: non
+    source: place
+    suffix: non
+- group:
+    also:
+    - obs
+    - date
+    - id
+    description: '
+
+      '
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    position:
+    - type
+    - value
+    - date
+    prefix: non
+    source: attribute
+    suffix: non
+- group:
+    also:
+    - data
+    - obs
+    - id
+    description: '
+
+      '
+    guaranteed:
+    - tipo
+    - valor
+    - nomedest
+    - iddest
+    identification: sic
+    idprefix: rel
+    name: rel
+    position:
+    - tipo
+    - valor
+    - nomedest
+    - iddest
+    prefix: non
+    source: relation
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - sexo
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - fofilho
+    - fafilho
+    - merfilho
+    - mrfafilho
+    - merfofilho
+    - filha
+    - fofilha
+    - fafilha
+    - mrfilha
+    - mrfafilha
+    - merfofilha
+    - irmao
+    - irma
+    - mulher
+    - pmulher
+    - ppmulher
+    - pppmulher
+    - mppmulher
+    - mpmulher
+    - pmpmulher
+    - mmpmulher
+    - mmulher
+    - pmmulher
+    - ppmmulher
+    - mpmmulher
+    - mmmulher
+    - pmmmulher
+    - mmmmulher
+    - mulher1
+    - pmulher1
+    - ppmulher1
+    - pppmulher1
+    - mppmulher1
+    - mpmulher1
+    - pmpmulher1
+    - mmpmulher1
+    - mmulher1
+    - pmmulher1
+    - ppmmulher1
+    - mpmmulher1
+    - mmmulher1
+    - pmmmulher1
+    - mmmmulher1
+    - mulher2
+    - pmulher2
+    - ppmulher2
+    - pppmulher2
+    - mppmulher2
+    - mpmulher2
+    - pmpmulher2
+    - mmpmulher2
+    - mmulher2
+    - pmmulher2
+    - ppmmulher2
+    - mpmmulher2
+    - mmmulher2
+    - pmmmulher2
+    - mmmmulher2
+    - mulher3
+    - pmulher3
+    - ppmulher3
+    - pppmulher3
+    - mppmulher3
+    - mpmulher3
+    - pmpmulher3
+    - mmpmulher3
+    - mmulher3
+    - pmmulher3
+    - ppmmulher3
+    - mpmmulher3
+    - mmmulher3
+    - pmmmulher3
+    - mmmmulher3
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procurador-pad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procurador-pad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procurador-pad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procurador-pad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - procurador-mad1
+    - procuradora-mad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - procurador-mad2
+    - procuradora-mad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - procurador-mad3
+    - procuradora-mad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - procurador-mad4
+    - procuradora-mad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: actorm
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: male
+    suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - filha
+    - irmao
+    - irma
+    - marido
+    - pmarido
+    - ppmarido
+    - pppmarido
+    - mppmarido
+    - mpmarido
+    - pmpmarido
+    - mmpmarido
+    - mmarido
+    - pmmarido
+    - ppmmarido
+    - mpmmarido
+    - mmmarido
+    - pmmmarido
+    - mmmmarido
+    - marido1
+    - pmarido1
+    - ppmarido1
+    - pppmarido1
+    - mppmarido1
+    - mpmarido1
+    - pmpmarido1
+    - mmpmarido1
+    - mmarido1
+    - pmmarido1
+    - ppmmarido1
+    - mpmmarido1
+    - mmmarido1
+    - pmmmarido1
+    - mmmmarido1
+    - marido2
+    - pmarido2
+    - ppmarido2
+    - pppmarido2
+    - mppmarido2
+    - mpmarido2
+    - pmpmarido2
+    - mmpmarido2
+    - mmarido2
+    - pmmarido2
+    - ppmmarido2
+    - mpmmarido2
+    - mmmarido2
+    - pmmmarido2
+    - mmmmarido2
+    - marido3
+    - pmarido3
+    - ppmarido3
+    - pppmarido3
+    - mppmarido3
+    - mpmarido3
+    - pmpmarido3
+    - mmpmarido3
+    - mmarido3
+    - pmmarido3
+    - ppmmarido3
+    - mpmmarido3
+    - mmmarido3
+    - pmmmarido3
+    - mmmmarido3
+    - noivo
+    - pnoivo
+    - ppnoivo
+    - pppnoivo
+    - mppnoivo
+    - mpnoivo
+    - pmpnoivo
+    - mmpnoivo
+    - mnoivo
+    - pmnoivo
+    - ppmnoivo
+    - mpmnoivo
+    - mmnoivo
+    - pmmnoivo
+    - mmmnoivo
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: actorf
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: female
+    suffix: non
+- group:
+    also:
+    - folio
+    - visdor
+    - secretario
+    - obs
+    arbitrary:
+    - testo
+    - testa
+    - referido
+    description: "Devassas temporais nas visitas pastorais \n"
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    - fol
+    idprefix: his
+    name: devassa
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: pt-acto
+    suffix: non
+- group:
+    also:
+    - literal
+    - origem
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - idcaso
+    idprefix: obj
+    name: acus
+    part:
+    - caso
+    position:
+    - idcaso
+    - obs
+    prefix: non
+    source: object
+    suffix: non
+- group:
+    also:
+    - literal
+    - origem
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - idcaso
+    idprefix: obj
+    name: acusa
+    part:
+    - caso
+    position:
+    - idcaso
+    - obs
+    prefix: non
+    source: acus
+    suffix: non
+- group:
+    also:
+    - obs
+    arbitrary:
+    - acusado
+    - acusada
+    - referido
+    - referida
+    description: '
+
+      '
+    guaranteed:
+    - id
+    - tipo
+    idprefix: obj
+    name: caso
+    position:
+    - id
+    - tipo
+    prefix: non
+    source: object
+    suffix: non
+- group:
+    also:
+    - id
+    - mesmo_que
+    - xmesmo_que
+    - obs
+    - sexo
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - fofilho
+    - fafilho
+    - merfilho
+    - mrfafilho
+    - merfofilho
+    - filha
+    - fofilha
+    - fafilha
+    - mrfilha
+    - mrfafilha
+    - merfofilha
+    - irmao
+    - irma
+    - mulher
+    - pmulher
+    - ppmulher
+    - pppmulher
+    - mppmulher
+    - mpmulher
+    - pmpmulher
+    - mmpmulher
+    - mmulher
+    - pmmulher
+    - ppmmulher
+    - mpmmulher
+    - mmmulher
+    - pmmmulher
+    - mmmmulher
+    - mulher1
+    - pmulher1
+    - ppmulher1
+    - pppmulher1
+    - mppmulher1
+    - mpmulher1
+    - pmpmulher1
+    - mmpmulher1
+    - mmulher1
+    - pmmulher1
+    - ppmmulher1
+    - mpmmulher1
+    - mmmulher1
+    - pmmmulher1
+    - mmmmulher1
+    - mulher2
+    - pmulher2
+    - ppmulher2
+    - pppmulher2
+    - mppmulher2
+    - mpmulher2
+    - pmpmulher2
+    - mmpmulher2
+    - mmulher2
+    - pmmulher2
+    - ppmmulher2
+    - mpmmulher2
+    - mmmulher2
+    - pmmmulher2
+    - mmmmulher2
+    - mulher3
+    - pmulher3
+    - ppmulher3
+    - pppmulher3
+    - mppmulher3
+    - mpmulher3
+    - pmpmulher3
+    - mmpmulher3
+    - mmulher3
+    - pmmulher3
+    - ppmmulher3
+    - mpmmulher3
+    - mmmulher3
+    - pmmmulher3
+    - mmmmulher3
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procurador-pad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procurador-pad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procurador-pad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procurador-pad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - procurador-mad1
+    - procuradora-mad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - procurador-mad2
+    - procuradora-mad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - procurador-mad3
+    - procuradora-mad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - procurador-mad4
+    - procuradora-mad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: testo
+    part:
+    - acus
+    - acusa
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorm
+    suffix: non
+- group:
+    also:
+    - id
+    - mesmo_que
+    - xmesmo_que
+    - obs
+    - sexo
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - filha
+    - irmao
+    - irma
+    - marido
+    - pmarido
+    - ppmarido
+    - pppmarido
+    - mppmarido
+    - mpmarido
+    - pmpmarido
+    - mmpmarido
+    - mmarido
+    - pmmarido
+    - ppmmarido
+    - mpmmarido
+    - mmmarido
+    - pmmmarido
+    - mmmmarido
+    - marido1
+    - pmarido1
+    - ppmarido1
+    - pppmarido1
+    - mppmarido1
+    - mpmarido1
+    - pmpmarido1
+    - mmpmarido1
+    - mmarido1
+    - pmmarido1
+    - ppmmarido1
+    - mpmmarido1
+    - mmmarido1
+    - pmmmarido1
+    - mmmmarido1
+    - marido2
+    - pmarido2
+    - ppmarido2
+    - pppmarido2
+    - mppmarido2
+    - mpmarido2
+    - pmpmarido2
+    - mmpmarido2
+    - mmarido2
+    - pmmarido2
+    - ppmmarido2
+    - mpmmarido2
+    - mmmarido2
+    - pmmmarido2
+    - mmmmarido2
+    - marido3
+    - pmarido3
+    - ppmarido3
+    - pppmarido3
+    - mppmarido3
+    - mpmarido3
+    - pmpmarido3
+    - mmpmarido3
+    - mmarido3
+    - pmmarido3
+    - ppmmarido3
+    - mpmmarido3
+    - mmmarido3
+    - pmmmarido3
+    - mmmmarido3
+    - noivo
+    - pnoivo
+    - ppnoivo
+    - pppnoivo
+    - mppnoivo
+    - mpnoivo
+    - pmpnoivo
+    - mmpnoivo
+    - mnoivo
+    - pmnoivo
+    - ppmnoivo
+    - mpmnoivo
+    - mmnoivo
+    - pmmnoivo
+    - mmmnoivo
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: testa
+    part:
+    - acus
+    - acusa
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorf
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - sexo
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - fofilho
+    - fafilho
+    - merfilho
+    - mrfafilho
+    - merfofilho
+    - filha
+    - fofilha
+    - fafilha
+    - mrfilha
+    - mrfafilha
+    - merfofilha
+    - irmao
+    - irma
+    - mulher
+    - pmulher
+    - ppmulher
+    - pppmulher
+    - mppmulher
+    - mpmulher
+    - pmpmulher
+    - mmpmulher
+    - mmulher
+    - pmmulher
+    - ppmmulher
+    - mpmmulher
+    - mmmulher
+    - pmmmulher
+    - mmmmulher
+    - mulher1
+    - pmulher1
+    - ppmulher1
+    - pppmulher1
+    - mppmulher1
+    - mpmulher1
+    - pmpmulher1
+    - mmpmulher1
+    - mmulher1
+    - pmmulher1
+    - ppmmulher1
+    - mpmmulher1
+    - mmmulher1
+    - pmmmulher1
+    - mmmmulher1
+    - mulher2
+    - pmulher2
+    - ppmulher2
+    - pppmulher2
+    - mppmulher2
+    - mpmulher2
+    - pmpmulher2
+    - mmpmulher2
+    - mmulher2
+    - pmmulher2
+    - ppmmulher2
+    - mpmmulher2
+    - mmmulher2
+    - pmmmulher2
+    - mmmmulher2
+    - mulher3
+    - pmulher3
+    - ppmulher3
+    - pppmulher3
+    - mppmulher3
+    - mpmulher3
+    - pmpmulher3
+    - mmpmulher3
+    - mmulher3
+    - pmmulher3
+    - ppmmulher3
+    - mpmmulher3
+    - mmmulher3
+    - pmmmulher3
+    - mmmmulher3
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procurador-pad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procurador-pad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procurador-pad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procurador-pad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - procurador-mad1
+    - procuradora-mad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - procurador-mad2
+    - procuradora-mad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - procurador-mad3
+    - procuradora-mad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - procurador-mad4
+    - procuradora-mad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: acusado
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorm
+    suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - filha
+    - irmao
+    - irma
+    - marido
+    - pmarido
+    - ppmarido
+    - pppmarido
+    - mppmarido
+    - mpmarido
+    - pmpmarido
+    - mmpmarido
+    - mmarido
+    - pmmarido
+    - ppmmarido
+    - mpmmarido
+    - mmmarido
+    - pmmmarido
+    - mmmmarido
+    - marido1
+    - pmarido1
+    - ppmarido1
+    - pppmarido1
+    - mppmarido1
+    - mpmarido1
+    - pmpmarido1
+    - mmpmarido1
+    - mmarido1
+    - pmmarido1
+    - ppmmarido1
+    - mpmmarido1
+    - mmmarido1
+    - pmmmarido1
+    - mmmmarido1
+    - marido2
+    - pmarido2
+    - ppmarido2
+    - pppmarido2
+    - mppmarido2
+    - mpmarido2
+    - pmpmarido2
+    - mmpmarido2
+    - mmarido2
+    - pmmarido2
+    - ppmmarido2
+    - mpmmarido2
+    - mmmarido2
+    - pmmmarido2
+    - mmmmarido2
+    - marido3
+    - pmarido3
+    - ppmarido3
+    - pppmarido3
+    - mppmarido3
+    - mpmarido3
+    - pmpmarido3
+    - mmpmarido3
+    - mmarido3
+    - pmmarido3
+    - ppmmarido3
+    - mpmmarido3
+    - mmmarido3
+    - pmmmarido3
+    - mmmmarido3
+    - noivo
+    - pnoivo
+    - ppnoivo
+    - pppnoivo
+    - mppnoivo
+    - mpnoivo
+    - pmpnoivo
+    - mmpnoivo
+    - mnoivo
+    - pmnoivo
+    - ppmnoivo
+    - mpmnoivo
+    - mmnoivo
+    - pmmnoivo
+    - mmmnoivo
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: acusada
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorf
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - sexo
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - fofilho
+    - fafilho
+    - merfilho
+    - mrfafilho
+    - merfofilho
+    - filha
+    - fofilha
+    - fafilha
+    - mrfilha
+    - mrfafilha
+    - merfofilha
+    - irmao
+    - irma
+    - mulher
+    - pmulher
+    - ppmulher
+    - pppmulher
+    - mppmulher
+    - mpmulher
+    - pmpmulher
+    - mmpmulher
+    - mmulher
+    - pmmulher
+    - ppmmulher
+    - mpmmulher
+    - mmmulher
+    - pmmmulher
+    - mmmmulher
+    - mulher1
+    - pmulher1
+    - ppmulher1
+    - pppmulher1
+    - mppmulher1
+    - mpmulher1
+    - pmpmulher1
+    - mmpmulher1
+    - mmulher1
+    - pmmulher1
+    - ppmmulher1
+    - mpmmulher1
+    - mmmulher1
+    - pmmmulher1
+    - mmmmulher1
+    - mulher2
+    - pmulher2
+    - ppmulher2
+    - pppmulher2
+    - mppmulher2
+    - mpmulher2
+    - pmpmulher2
+    - mmpmulher2
+    - mmulher2
+    - pmmulher2
+    - ppmmulher2
+    - mpmmulher2
+    - mmmulher2
+    - pmmmulher2
+    - mmmmulher2
+    - mulher3
+    - pmulher3
+    - ppmulher3
+    - pppmulher3
+    - mppmulher3
+    - mpmulher3
+    - pmpmulher3
+    - mmpmulher3
+    - mmulher3
+    - pmmulher3
+    - ppmmulher3
+    - mpmmulher3
+    - mmmulher3
+    - pmmmulher3
+    - mmmmulher3
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procurador-pad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procurador-pad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procurador-pad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procurador-pad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - procurador-mad1
+    - procuradora-mad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - procurador-mad2
+    - procuradora-mad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - procurador-mad3
+    - procuradora-mad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - procurador-mad4
+    - procuradora-mad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: referido
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorm
+    suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    - referido
+    - referida
+    - pai
+    - ppai
+    - pppai
+    - ppppai
+    - mpppai
+    - mppai
+    - pmppai
+    - mmppai
+    - mpai
+    - pmpai
+    - ppmpai
+    - mpmpai
+    - mmpai
+    - pmmpai
+    - mmmpai
+    - mae
+    - pmae
+    - ppmae
+    - pppmae
+    - mppmae
+    - mpmae
+    - pmpmae
+    - mmpmae
+    - mmae
+    - pmmae
+    - ppmmae
+    - mpmmae
+    - mmmae
+    - pmmmae
+    - mmmmae
+    - filho
+    - filha
+    - irmao
+    - irma
+    - marido
+    - pmarido
+    - ppmarido
+    - pppmarido
+    - mppmarido
+    - mpmarido
+    - pmpmarido
+    - mmpmarido
+    - mmarido
+    - pmmarido
+    - ppmmarido
+    - mpmmarido
+    - mmmarido
+    - pmmmarido
+    - mmmmarido
+    - marido1
+    - pmarido1
+    - ppmarido1
+    - pppmarido1
+    - mppmarido1
+    - mpmarido1
+    - pmpmarido1
+    - mmpmarido1
+    - mmarido1
+    - pmmarido1
+    - ppmmarido1
+    - mpmmarido1
+    - mmmarido1
+    - pmmmarido1
+    - mmmmarido1
+    - marido2
+    - pmarido2
+    - ppmarido2
+    - pppmarido2
+    - mppmarido2
+    - mpmarido2
+    - pmpmarido2
+    - mmpmarido2
+    - mmarido2
+    - pmmarido2
+    - ppmmarido2
+    - mpmmarido2
+    - mmmarido2
+    - pmmmarido2
+    - mmmmarido2
+    - marido3
+    - pmarido3
+    - ppmarido3
+    - pppmarido3
+    - mppmarido3
+    - mpmarido3
+    - pmpmarido3
+    - mmpmarido3
+    - mmarido3
+    - pmmarido3
+    - ppmmarido3
+    - mpmmarido3
+    - mmmarido3
+    - pmmmarido3
+    - mmmmarido3
+    - noivo
+    - pnoivo
+    - ppnoivo
+    - pppnoivo
+    - mppnoivo
+    - mpnoivo
+    - pmpnoivo
+    - mmpnoivo
+    - mnoivo
+    - pmnoivo
+    - ppmnoivo
+    - mpmnoivo
+    - mmnoivo
+    - pmmnoivo
+    - mmmnoivo
+    - pn
+    - ppn
+    - mpn
+    - mn
+    - pmn
+    - mmn
+    - pad
+    - ppad
+    - mpad
+    - procuradora-pad
+    - procurador-pad
+    - procurador-mad
+    - procuradora-mad
+    - pad1
+    - ppad1
+    - mpad1
+    - procuradora-pad1
+    - pad2
+    - ppad2
+    - mpad2
+    - procuradora-pad2
+    - pad3
+    - ppad3
+    - mpad3
+    - procuradora-pad3
+    - pad4
+    - ppad4
+    - mpad4
+    - procuradora-pad4
+    - mad
+    - pmad
+    - mmad
+    - mpad
+    - mrmad
+    - mad1
+    - pmad1
+    - mmad1
+    - mpad1
+    - mrmad1
+    - mad2
+    - pmad2
+    - mmad2
+    - mpad2
+    - mrmad2
+    - mad3
+    - pmad3
+    - mmad3
+    - mpad3
+    - mrmad3
+    - mad4
+    - pmad4
+    - mmad4
+    - mpad4
+    - mrmad4
+    - sogra
+    - sogro
+    - genro
+    - nora
+    - sobrinho
+    - sobrinha
+    - afilhado
+    - afilhada
+    - neto
+    - neta
+    - criada
+    - criado
+    - engeitado
+    - engeitada
+    description: '
+
+      '
+    guaranteed:
+    - nome
+    idprefix: per
+    name: referida
+    position:
+    - nome
+    - sexo
+    prefix: non
+    source: actorf
+    suffix: non
+- group:
+    also:
+    - inquiridor
+    - escrivao
+    - obs
+    arbitrary:
+    - denunciante
+    description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao
+      \n"
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    - fol
+    idprefix: his
+    name: denuncia
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: pt-acto
+    suffix: non

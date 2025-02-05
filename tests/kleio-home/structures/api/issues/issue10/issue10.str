@@ -1,0 +1,840 @@
+Note =================================================
+Note Generic structure for the Source-Act-Person model
+Note   Now with geoentities and authority-registers
+Note ================================================
+Note REFERENCE VERSION BUILTIN str/gacto2.str
+Note Gacto2.str - version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+Note =================================================================================================
+note
+note
+note  The name parameter in the database command designates
+note  the target source file.
+note  the read commands specify the structure file and the
+note    data file.
+
+note ================================================
+note ==============  SYSTEM DEFINITIONS =============
+note ================================================
+
+note ================================================
+note THIS SECTION CONTAINS SYSTEM PARAMETERS
+note IN NORMAL SITUATIONS THIS SHOULD NOT BE CHANGED
+note ================================================
+
+note ================================================
+note Database command. We use the kleio group as toplevel
+note                   group for all sources
+note
+note ================================================
+database name=kleio; first=kleio; identification=no
+
+note =====================
+note Base data types
+
+note doc element number Any number
+element name=number
+note doc element string64 64 chars strings like those used in ids.
+                          Use for elements that contain ids of other entities.
+                          Use "id" for entity own id.
+element name=string64
+note doc element string256 Longer strings
+element name=string256
+
+element name=text
+note ================================================
+note Elements for numerical dates
+note   Day - a two digit representation of day
+note   Month - a two digit representation of monthgact
+note   Year - a four digit representation of year
+note   Date - a eight digit representation of a date
+note                    yyyymmdd
+note ================================================
+element name=day; type=number
+element name=month; type=number
+element name=year; type=number
+element name=date;type=number
+
+note ================================================
+note Other base elements.
+note    By declaring them here we allow national
+note    language variations to be declared later on.
+note ================================================
+element name=id; identification=yes
+element name=same_as
+element name=xsame_as
+element name=entity
+element name=type;
+element name=class
+element name=ref
+element name=loc
+element name=page
+note pages in the document
+element name=pages
+element name=name
+element name=sex
+element name=obs
+element name=description
+element name=summary
+element name=value
+element name=origin
+element name=destination
+element name=destname
+element name=replace
+element name=inside
+element name=groupname
+element name=level
+element name=line
+element name=kleiofile
+
+note ===============================================
+note doc group kleio This is the top level group of Kleio files.
+     Specific historical sources must be added
+     to the part parameter of this group.
+note
+
+part name=kleio;
+ also=structure,translator,autorels,obs,prefix,translations;
+ position=structure,translator,obs;
+ part=historical-source,authority-register,
+            link, property
+
+note ============================================================
+note Basic historical source group
+note ============================================================
+
+part name=historical-source;
+  guaranteed=id;
+  also=type,date,year,loc,ref,obs,replace, kleiofile;
+  position=id,year,type,ref;
+  part=historical-act,event
+
+
+note ===========================================================
+note doc group authority-register a register of authority-records
+note    authority records are used to identify people, objects
+note    and to normalize vocabularies and other authority information.
+note    authority-registers must have an unique id, but a given community
+note    can have as many authority-registers as needed
+note ===========================================================
+
+part name=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase;
+    also=date,user,dbase;
+    part=authority-record
+
+note ===========================================================
+note identifications: a authority-register for identifications
+note doc group identifications
+     Identifications are authority-registers for record linking.
+     They contain real-entity records (people or objects) that aggregate
+     occurrences in the source pertaining to the same person or entity.
+     To keep imported records separate from local ones use a different user.
+part name=identifications;
+    source=authority-register;
+    position=id,name;
+    guaranteed=id,name,date,user,dbase,mode;
+    also=obs;
+    part=rentity,rperson,robject
+
+note ===========================================================
+note Linked data related information
+note doc group link
+     Declare a linked data target
+
+     Example:
+        link$wikidata/"https://www.wikidata.org/wiki/$1"
+
+     And then annotate element values in comments
+
+        lugar$Cantão#@wikidata:Q16572
+
+
+note ===========================================================
+part name=link;
+    position=shortname,urlpattern;
+    also=id,obs
+
+note ===========================================================
+note doc group property
+      A property of the file for the kleio parser.
+      Properties are not stored in the database.
+      They affect the parsing of the file.
+
+      Examples:
+
+      property$multiple-entry-flag/124#ascii for pipe char
+
+part name=property;
+    position=name,value;
+    also=id,obs
+
+note ===========================================================
+note rentity: a authority-record for a real entity
+note doc group rentity
+        Rentity contains information about a real entity.
+        Defines the standart name for the entity and what are the occurences,
+        in `occ` subgroups.
+part name=rentity;
+     position=id,description,type;
+     guaranteed=id,description,type;
+     also=status,user,obs;
+     part=occ
+note ===========================================================
+note rperson: a authority-record for a real person
+note doc group rperson contains information about a real person.
+note     Defines the standart name for the person, the sex, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=rperson;
+     position=id,sname,sex;
+     guaranteed=id,sname,sex;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+
+note ===========================================================
+note robject: a authority-record for a real object
+note doc group robject contains information about a real object.
+note     Defines the standart name for the object, the type, and what are the occurrences
+note    Note that real entities can have attributes and relations
+part name=robject;
+     position=id,sname,type;
+     guaranteed=id,sname,type;
+     also=status,user,obs;
+     part=occ,ls,atr,rel
+
+note ===========================================================
+note occ: an occurrence of a real entity
+note doc group occ contains the ids of the occurrences of a real entity
+note     Defines the id of the occ and optionally the name of the occurence
+note     the id_act of the act where it occurs, the type of act and the fucntion
+note     note that these optional information are just for documentation because they
+note    derive automatically from the occurrence id.
+part name=occ;
+     position=occurrence,atype,func,date,name;
+     guaranteed=occurrence;
+     also=name,atype,func,date,id,obs
+
+
+
+note ============================================================
+note Acts, events, cronologies
+note ============================================================
+
+note --------------------------
+note Basic historical act group
+note --------------------------
+note doc group historical-act represents an historical act
+        An historical act is a record of an event, something
+        that happened at a moment and place in time.
+        This form is used for records such as parish records
+        notarial acts.
+note doc element-in-group id an unique identifier (required)
+note doc element-in-group type the type of the act.
+note doc element-in-group date date in kleio format YYYYMMMDD ou YYYY-Month-Day
+note doc element-in-group day with month and year alternative to date
+note doc element-in-group month
+note doc element-in-group year
+part name=historical-act;
+     guaranteed=id,type,date;
+     position=id,type,date;
+     also=loc,ref,pages,obs,day,month,year;
+     arbitrary=person,object,geoentity,abstraction,ls,atr,rel
+
+note -------------------------------------------------------
+note Event - similar to act but no id and with a description
+note -------------------------------------------------------
+note doc group event Something that happened.
+        Used for registering events mentioned
+        in letters, chronicles, interviews, not
+        in formal records.
+note --------------------------------
+part name=event; source=historical-act;
+        position=description,day,month,year;
+        guaranteed=description;
+        part=person
+
+note --------------------------------
+note doc group cevent chronology event,
+           with date upfront, followed by place
+           (or context) and a description
+note --------------------------------
+
+part name=cevent; source=event;
+    position=data,loc,description;
+    guaranteed=data,loc,description;
+    also=id,obs,same_as, xsame_as;
+    part=person,topic,place
+
+note ============================================================
+note A person
+note	base class por persons
+note ============================================================
+part name=person ;
+            guaranteed=name,sex;
+            also=id,obs,same_as;
+            position=name,sex,id,same_as, xsame_as;
+            arbitrary=atr,rel,ls
+
+note ============================================================
+nota A Female person
+note	having this group is the fons/source line
+nota    notifies the translator that sex=female
+nota ============================================================
+
+part name=female ;
+  source=person;
+ guaranteed=name;
+ also=obs,id,same_as, xsame_as;
+ position=name,sex
+
+note ============================================================
+nota A Male person
+note	having this group is the fons/source line
+nota    notifies the translator that sex=male
+nota ============================================================
+
+part name=male ;
+ source=person;
+ guaranteed=name;
+ also=obs,id,same_as, xsame_as;
+ position=name,sex
+
+note ============================================================
+note Object Base class for objects
+note       Objects are similar to person, they take attributes
+note			and relations. They have a type to distinguish categories
+note			of objects.
+note ===========================================================
+part name=object;
+     guaranteed=name;
+     position=name,type;
+     also=obs,id, same_as, xsame_as;
+     arbitrary=atr,ls,rel
+
+note ============================================================
+note abstraction Base class for abstractions
+note       Abstractions are similar to objects, they take attributes
+note			and relations. They have a type to distinguish categories
+note			of objects.
+note ===========================================================
+part name=abstraction; source=object
+
+note doc group topic topics, tags or keywords
+part name=topic; source=abstraction;
+	position=name,description;
+	guaranteed=name;
+	also=obs,id
+
+
+note ============================================================
+note GeoEntity: a spatial entity
+note doc group geoentity
+
+     GeoEntity: a spatial entity.
+     An entity that represents a spatial entity
+     in the sense of a conceptual representation of space.
+     A geo-entity is not an object
+     that has a particular position in place.
+     It is rather something like
+     the parish of X, the place Y, the region W.
+note ============================================================
+
+part name=geoentity;
+  position=name;
+   also=type,id,obs, same_as, xsame_as;
+  part=ls,atr,rel
+
+part name=place; source=geoentity
+
+note ============================================================
+note Attribute
+note ============================================================
+
+part name=attribute ;
+ guaranteed=type,value ;
+ also=obs,date,id ;
+ position=type,value,date
+
+note ============================================================
+note Relation
+note ============================================================
+
+part name=relation ;
+ guaranteed=type,value,destname,destination ;
+ also=obs,date,id
+
+note
+note =============================================================
+note End - pseudo group to mark the end of acts
+note
+note    Having this group in source / fons path notifies
+note    the translator that the current act is finished
+note
+note    This is usefull because sometimes new acts begin
+note    with long multi-line elements and the translator
+note    echoes the new act before producing the previous act
+note    reports.
+note =============================================================
+
+part name=end; also=id ; position=id
+
+note
+note =============================================================
+note group-element - pseudo group for element entered as groups
+note    e.g. in obitos
+note
+part name=group-element; position=value; guaranteed=value; also=obs
+
+note ================================================
+note relation-type groups that extend this one
+note signal a relation with enclosing group, e.g. function-in-act
+
+part name=relation-type
+
+
+note ================================================
+note ======= END OF SYSTEM DEFINITIONS ==============
+note ================================================
+
+note ================================================
+note USER DEFINITIONS START HERE
+note ================================================
+
+note *****************************************************************
+note Portuguese Historical Sources
+note *****************************************************************
+
+note *****************************************************************
+note doc group fonte Este constitui o grupo principal para os documentos
+         historicos portugueses. Admite qualquer dos actos definidos aqui.
+note loc group fonte pt fonte
+note loc group fonte en source
+note loc group fonte fr source
+note doc element-in-group id elemento obrigatorio, identifica unicamente a fonte na base de dados,
+note doc element-in-group tipo tipo de fonte (registos paroquiais, livros notariais, etc...)
+note doc element-in-group loc localizacao da fonte (arquivo pessoal, AUC, ANTT).
+note doc element-in-group ref cota ou outra referencia de localizacao da fonte
+
+part name=fonte;
+      source=historical-source;
+      guaranteed=id;
+      also=tipo,loc,localizacao,ref,data,ano,obs,substitui;
+
+note element name=substitui; source=replace
+
+note *****************************************************************
+note doc group 'pt-acto' Forma generica de acto.
+note *****************************************************************
+
+part name=pt-acto; source=historical-act;
+     arbitrary=celebrante,actorm,
+         actorf,object,abstraction,ls,rel;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=ref,loc,obs
+
+note ****************************************************************
+note funcao-em-acto   -- tipo de relacao entre actor e acto
+note ****************************************************************
+part name=funcao-em-acto; source=relation-type;
+     repeat=actorm,actorf
+note ****************************************************************
+note doc group fim fim indica o fim de um acto
+note loc fim pt fim
+note loc fim en end
+note ****************************************************************
+part name=fim; source=end;
+     also=id,obs
+
+note ****************************************************************
+note Equivalencia entre o nome dos elementos em portugues e em ingles
+note ****************************************************************
+element name=dia; source=day
+element name=mes; source=month
+element name=ano; source=year
+element name=data; source=date
+element name=tipo; source=type
+element name=valor; source=value
+element name=localizacao; source=loc
+element name=cota; source=ref;
+element name=nome; source=name
+element name=mesmo_que; source=same_as
+element name=xmesmo_que; source=xsame_as
+element name=sexo; source=sex
+element name=nomedest; source=destname
+element name=iddest; source=destination
+element name=sumario; source=summary
+element name=fol; source=pages;
+element name=fols; source=pages;
+element name=folio; source=pages;
+element name=folios; source=pages;
+
+note ****************************************************************
+note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
+note loc acto pt acto
+note loc actor en actor
+note ****************************************************************
+part name=acto;
+  source=pt-acto;
+  position=id,tipo,dia,mes,ano,loc,obs;
+  repeat=presente,presente-f,referido,referida,item,ls,atr,rel
+
+note ====================
+note eventos, cronologias
+note ====================
+part name=evento; source=event;
+    position=description,dia,mes,ano;
+
+part name=item; source=object;
+    repeat=presente,presente-f,referido,referida,ls,rel;
+    guaranteed=titulo;
+    position=titulo;
+    also=resumo,id,tipo,obs
+
+part name=topico; source=topic
+
+part name=lugar; source=place
+
+part name=ls; source=attribute
+note *****************************************************************
+note  Relacoes
+note *****************************************************************
+part name=rel; source=relation;
+        position=tipo,valor,nomedest,iddest;
+        guaranteed=tipo,valor,nomedest,iddest;
+        also=data,obs,id;
+        identification=yes
+
+note *****************************************************************
+note Actores
+note    Os grupos seguintes definem o modo como os parentem se podem
+note    suceder aos actores dos actos.
+note *****************************************************************
+note Definicao generica de um actor masculino.
+note           nota: todos os parentes aqui enumerados tem de aparecer
+note           associados a parentef ou a parentem
+note *****************************************************************
+part name=actorm;
+  source=male;
+  position=nome,sexo;
+  guaranteed=nome;
+  also=id,obs,mesmo_que,xmesmo_que,sexo;
+  repeat=atr,ls,rel,referido,referida,
+          pai,
+              ppai,
+                  pppai,
+                      ppppai,
+                     mpppai,
+                  mppai,
+                     pmppai,
+                     mmppai,
+              mpai,
+                  pmpai,
+                     ppmpai,
+                     mpmpai,
+                  mmpai,
+                     pmmpai,
+                     mmmpai,
+          mae,
+              pmae,
+                  ppmae,
+                      pppmae,
+                      mppmae,
+                  mpmae,
+                      pmpmae,
+                      mmpmae,
+              mmae,
+                  pmmae,
+                     ppmmae,
+                     mpmmae,
+                  mmmae,
+                     pmmmae,
+                     mmmmae,
+          filho,
+                 fofilho,
+                 fafilho,
+                 merfilho,
+                 mrfafilho,
+                 merfofilho,
+          filha,
+                 fofilha,
+                 fafilha,
+                 mrfilha,
+                 mrfafilha,
+                 merfofilha,
+
+         irmao,
+         irma,
+          mulher,
+              pmulher,
+                 ppmulher,
+                     pppmulher,
+                     mppmulher,
+                 mpmulher,
+                     pmpmulher,
+                     mmpmulher,
+              mmulher,
+                 pmmulher,
+                     ppmmulher,
+                     mpmmulher,
+                 mmmulher,
+                     pmmmulher,
+                     mmmmulher,
+          mulher1,
+              pmulher1,
+                 ppmulher1,
+                     pppmulher1,
+                     mppmulher1,
+                 mpmulher1,
+                     pmpmulher1,
+                     mmpmulher1,
+              mmulher1,
+                 pmmulher1,
+                     ppmmulher1,
+                     mpmmulher1,
+                 mmmulher1,
+                     pmmmulher1,
+                     mmmmulher1,
+          mulher2,
+              pmulher2,
+                 ppmulher2,
+                     pppmulher2,
+                     mppmulher2,
+                 mpmulher2,
+                     pmpmulher2,
+                     mmpmulher2,
+              mmulher2,
+                 pmmulher2,
+                     ppmmulher2,
+                     mpmmulher2,
+                 mmmulher2,
+                     pmmmulher2,
+                     mmmmulher2,
+          mulher3,
+              pmulher3,
+                 ppmulher3,
+                     pppmulher3,
+                     mppmulher3,
+                 mpmulher3,
+                     pmpmulher3,
+                     mmpmulher3,
+              mmulher3,
+                 pmmulher3,
+                     ppmmulher3,
+                     mpmmulher3,
+                 mmmulher3,
+                     pmmmulher3,
+                     mmmmulher3,
+         pn,ppn,mpn,mn,pmn,mmn,
+         pad,ppad,mpad,
+            procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procurador-pad1,procuradora-pad1,
+            pad2,ppad2,mpad2,procurador-pad2,procuradora-pad2,
+            pad3,ppad3,mpad3,procurador-pad3,procuradora-pad3,
+            pad4,ppad4,mpad4,procurador-pad4,procuradora-pad4,
+
+            mad,pmad,mmad,mpad,mrmad,
+            mad1,pmad1,mmad1,mpad1,mrmad1,procurador-mad1,procuradora-mad1,
+            mad2,pmad2,mmad2,mpad2,mrmad2,procurador-mad2,procuradora-mad2,
+            mad3,pmad3,mmad3,mpad3,mrmad3,procurador-mad3,procuradora-mad3,
+            mad4,pmad4,mmad4,mpad4,mrmad4,procurador-mad4,procuradora-mad4,
+         sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+         criada,criado,engeitado,engeitada
+
+
+note *****************************************************************
+note Definicao generica de um actor feminino.
+note           nota: todos os parentes aqui enumerados tem de aparecer
+note           associados a parentef ou a parentem
+note *****************************************************************
+part name=actorf;
+     source=female;
+     position=nome,sexo;
+     guaranteed=nome;
+     also=sexo,obs,mesmo_que,xmesmo_que,id;
+     repeat=atr,ls,rel,referido,referida,
+         pai,
+              ppai,
+                  pppai,
+                      ppppai,
+                     mpppai,
+                  mppai,
+                     pmppai,
+                     mmppai,
+              mpai,
+                  pmpai,
+                     ppmpai,
+                     mpmpai,
+                  mmpai,
+                     pmmpai,
+                     mmmpai,
+          mae,
+              pmae,
+                  ppmae,
+                      pppmae,
+                      mppmae,
+                  mpmae,
+                      pmpmae,
+                      mmpmae,
+              mmae,
+                  pmmae,
+                     ppmmae,
+                     mpmmae,
+                  mmmae,
+                     pmmmae,
+                     mmmmae,
+          filho,
+          filha,
+         irmao,
+         irma,
+          marido,
+              pmarido,
+                 ppmarido,
+                     pppmarido,
+                     mppmarido,
+                 mpmarido,
+                     pmpmarido,
+                     mmpmarido,
+              mmarido,
+                 pmmarido,
+                     ppmmarido,
+                     mpmmarido,
+                 mmmarido,
+                     pmmmarido,
+                     mmmmarido,
+          marido1,
+              pmarido1,
+                 ppmarido1,
+                     pppmarido1,
+                     mppmarido1,
+                 mpmarido1,
+                     pmpmarido1,
+                     mmpmarido1,
+              mmarido1,
+                 pmmarido1,
+                     ppmmarido1,
+                     mpmmarido1,
+                 mmmarido1,
+                     pmmmarido1,
+                     mmmmarido1,
+          marido2,
+              pmarido2,
+                 ppmarido2,
+                     pppmarido2,
+                     mppmarido2,
+                 mpmarido2,
+                     pmpmarido2,
+                     mmpmarido2,
+              mmarido2,
+                 pmmarido2,
+                     ppmmarido2,
+                     mpmmarido2,
+                 mmmarido2,
+                     pmmmarido2,
+                     mmmmarido2,
+          marido3,
+              pmarido3,
+                 ppmarido3,
+                     pppmarido3,
+                     mppmarido3,
+                 mpmarido3,
+                     pmpmarido3,
+                     mmpmarido3,
+              mmarido3,
+                 pmmarido3,
+                     ppmmarido3,
+                     mpmmarido3,
+                 mmmarido3,
+                     pmmmarido3,
+                     mmmmarido3,
+
+         noivo,
+          pnoivo,
+               ppnoivo,
+                   pppnoivo,
+                   mppnoivo,
+               mpnoivo,
+                   pmpnoivo,
+                   mmpnoivo,
+          mnoivo,
+              pmnoivo,
+                  ppmnoivo,
+                  mpmnoivo,
+              mmnoivo,
+                  pmmnoivo,
+                  mmmnoivo,
+         pn,ppn,mpn,mn,pmn,mmn,
+         pad,ppad,mpad,procuradora-pad,procurador-pad,procurador-mad,procuradora-mad,
+            pad1,ppad1,mpad1,procuradora-pad1,
+              pad2,ppad2,mpad2,procuradora-pad2,
+             pad3,ppad3,mpad3,procuradora-pad3,
+             pad4,ppad4,mpad4,procuradora-pad4,
+
+              mad,pmad,mmad,mpad,mrmad,
+              mad1,pmad1,mmad1,mpad1,mrmad1,
+              mad2,pmad2,mmad2,mpad2,mrmad2,
+              mad3,pmad3,mmad3,mpad3,mrmad3,
+              mad4,pmad4,mmad4,mpad4,mrmad4,
+              sogra,sogro,genro,nora,sobrinho,sobrinha,afilhado,afilhada,neto,neta,
+              criada,criado,engeitado,engeitada
+
+
+
+
+note ****************************************************************
+note  doc group devassa Devassas temporais nas visitas pastorais
+note loc devassa pt devassa
+note loc devassa en visitation
+note ****************************************************************
+part name=devassa;
+ source=pt-acto;
+ repeat=testo,testa,referido;
+ guaranteed=id,dia,mes,ano,fol;
+ also=folio,visdor,secretario,obs;
+ position=id,dia,mes,ano
+
+part name=acus; source=object;
+  guaranteed=idcaso;
+  position=idcaso, obs;
+  also=literal,origem,obs,id;
+  part=caso
+
+
+part name=acusa; source=acus;
+  also=literal,origem,obs,id;
+  part=caso
+
+part name=caso; source=object;
+   position=id,tipo;
+   certe=id,tipo;
+   also=obs;
+   repeat=acusado,acusada,referido,referida
+
+part name=testo; source=actorm;
+    position=nome,sexo;
+    also=id,mesmo_que,xmesmo_que,obs,sexo;
+    guaranteed=nome;
+    part=acus,acusa
+
+part name=testa; source=actorf;
+    position=nome,sexo;
+    also=id,mesmo_que,xmesmo_que,obs,sexo;
+    guaranteed=nome;
+    part=acus,acusa
+
+part name=acusado; source=actorm;
+part name=acusada; source=actorf;
+part name=referido; source=actorm;
+part name=referida; source=actorf;
+
+note ****************************************************************
+note  doc group denuncia Denuncia de um caso como nos cadernos dos promotores da inquisicao
+note ****************************************************************
+part name=denuncia;
+     source=pt-acto;
+     repeat=denunciante;
+     guaranteed=id,dia,mes,ano,fol;
+     also=inquiridor,escrivao,obs;
+     position=id,dia,mes,ano
+
+
