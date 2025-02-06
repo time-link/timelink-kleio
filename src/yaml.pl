@@ -8,6 +8,7 @@
 :-use_module(library(yaml)).
 :-use_module(library(pprint)).
 :-use_module(persistence).
+:-use_module(kleioFiles).
 
 read_yaml_str(Filename,Data):-
     yaml_read(Filename,Data),
@@ -16,12 +17,13 @@ read_yaml_str(Filename,Data):-
 
 % example read mappings
 % File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/mappings/sample-mapping.yml',
-%    read_yaml_file(File,D),print_term(D,[]).
+%    read_yaml_str(File,D),print_term(D,[]).
 % example read str
 % File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/yaml/sample-str.yaml',
-%     read_yaml_file(File,D),print_term(D,[]).
+%     read_yaml_str(File,D),print_term(D,[]).
 inspect_yaml_str(YamlList):-
     member(YamlCMD, YamlList),
+    nl,
     inspect_yaml_str_cmd(YamlCMD),
     fail,
     !.
@@ -32,6 +34,16 @@ inspect_yaml_str_cmd(YamlTerm):-
     format('Command: ~w~n',[Command]),
     inspect_yaml_str_cmd(Command,Params),
     nl.
+
+inspect_yaml_str_cmd(file,Pars):-!,
+    is_dict(Pars),
+    bagof(Par=Value, Value = Pars.Par, ParList),
+    % writeln('Bagof Process element with pars '-ParList),
+    option(name(Name),ParList,name-missing),
+    member(Par=Value,ParList),
+    format('(~w)   ~w = ~w ~n', [Name,Par,Value]),
+    fail.
+inspect_yaml_str_cmd(file,_):-!.
 
 inspect_yaml_str_cmd(element,Pars):-!,
     is_dict(Pars),
