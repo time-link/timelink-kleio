@@ -44,6 +44,7 @@
 :-use_module(reports).
 :-use_module(persistence).
 :-use_module(utilities).
+:-use_module(externals).
 
 %  initData(FileName) intializes the processing of a
 %    data file
@@ -236,6 +237,15 @@ updtp(__OldGroup,__OldID,NewGroup,_,[]):-
 %   Add OldGroup to path %
 updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
     anc_of(NewGroup,OldGroup),
+    A=..[OldGroup,OldID],
+    append(Path,[A],NewPath),!.
+
+% the base classe of the Old Group is ancestor
+%  of the base class of the New Group
+updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
+    clio_bclass(OldGroup,BaseOld),
+    clio_bclass(NewGroup,BaseNew),
+    anc_of(BaseNew,BaseOld),
     A=..[OldGroup,OldID],
     append(Path,[A],NewPath),!.
 

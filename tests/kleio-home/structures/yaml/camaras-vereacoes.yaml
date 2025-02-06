@@ -1,0 +1,80 @@
+- include: pt-grupos.yaml
+- group:
+    name: vereacao
+    source: pt-acto
+    also: [obs]
+    arbitrary: [assunto]
+    description: "actas de vereacao \n"
+    guaranteed: [id, dia, mes, ano, fol]
+    idprefix: his
+    position: [id, dia, mes, ano, fol]
+    prefix: non
+    suffix: non
+- group:
+    name: pauta
+    source: pt-acto
+    also: [obs]
+    arbitrary: [n, referido, referida]
+    description: '  '
+    guaranteed: [id, dia, mes, ano, loc]
+    idprefix: his
+    position: [id, dia, mes, ano, loc]
+    prefix: non
+    suffix: non
+- group:
+    name: eleicao
+    source: pt-acto
+    also: [obs]
+    arbitrary: [n, referido, referida]
+    description: '  '
+    guaranteed: [id, dia, mes, ano, loc]
+    idprefix: his
+    position: [id, dia, mes, ano, loc]
+    prefix: non
+    suffix: non
+- group:
+    name: juramento
+    source: pt-acto
+    also: [obs]
+    arbitrary: [n, referido, referida, abonador, abonadora, escrivao]
+    description: '  '
+    guaranteed: [id, dia, mes, ano, loc]
+    idprefix: his
+    position: [id, dia, mes, ano, loc]
+    prefix: non
+    suffix: non
+- group:
+    name: rv
+    description: Parte de arrolamentos
+    position:
+    - nordem
+    - nome
+    guaranteed:
+    - nordem
+    - nome
+    source: actorm
+- group:
+    name: rp
+    description: Parte de arrolamentos
+    guaranteed:
+    - nordem
+    - nome
+    position:
+    - nordem
+    - nome
+    source: actorm
+- group:
+    name: Arrolamento
+    description: Arrolamentos e subsequente processo de eleicao das camaras
+    also: [obs]
+    arbitrary: [rv, rp, referido, referida]
+    guaranteed: [id, dia, mes, ano]
+    idprefix: his
+    position: [id, ano, mes, dia]
+    prefix: non
+    source: pt-acto
+    suffix: non
+- group:
+    name: arrem
+    description: Arrematante
+    source: n

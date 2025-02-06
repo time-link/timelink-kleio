@@ -1,5 +1,4 @@
-path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
-structure:
+- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
 - element:
     description: 'Any number '
     identification: non
@@ -1078,12 +1077,12 @@ structure:
     - obs
     - id
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: '
 
@@ -1202,7 +1201,7 @@ structure:
     - mes
     - ano
     prefix: non
-    source: pt-acto
+    source: event
     suffix: non
 - group:
     also:
@@ -3605,12 +3604,12 @@ structure:
     - same_as
     - xsame_as
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: 'chronology event ,
 
@@ -3639,12 +3638,12 @@ structure:
     - same_as
     - xsame_as
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: "synonym for cevento \n"
     guaranteed:
@@ -3701,12 +3700,12 @@ structure:
     - obs
     - id
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: "Personal event ,used inside people groups to register a personal
       event. Diferent from event /evento which are top level groups inside lists or
@@ -3732,12 +3731,12 @@ structure:
     - obs
     - id
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: '
 
@@ -3763,12 +3762,12 @@ structure:
     - obs
     - id
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
+    - person
     - object
+    - geoentity
     - abstraction
     - ls
+    - atr
     - rel
     description: '
 
