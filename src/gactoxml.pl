@@ -2066,20 +2066,37 @@ groupToClass(_,undef,undef,undef) :-!.
 class_attributes(Class,Attributes):-
         class Class super _ table _ with attributes Attributes,!.
 
-/* returns the Attribute in a class that corresponds to an element in a group */
+/* returns the Attribute in a class that corresponds to an element
+   in a group
+
+   This is where the very important mappig between Kleio Group Elements
+   and Database attributes is done.
+   */
 elementMapping(GroupClass,Element,Attr):-
-   class_attributes(GroupClass,Attributes),
-   rch_get_attribute(Element,Attributes,Attr).
+    % fetch the attribute list of the group class
+    % this is the sequence after "with attributes"
+    % in mappings.pl
+    % Case 1:
+    %   the element name matches an attribute
+    %   name in the attribute list of the
+    %   group class in mappings.pl
+    class_attributes(GroupClass,Attributes),
+    rch_get_attribute(Element,Attributes,Attr).
 elementMapping(GroupClass,Element,Attr):-
-   class_attributes(GroupClass,Attributes),
-   clio_element_extends(Element,SElement),
-   rch_get_attribute(SElement,Attributes,Attr).
+    % Case 2:
+    %   the element extends another element
+    %   that matches an attribute name in
+    %   in the attribute list of the group class
+    %   in mappings.pl
+    class_attributes(GroupClass,Attributes),
+    clio_element_extends(Element,SElement),
+    rch_get_attribute(SElement,Attributes,Attr).
 elementMapping(GroupClass,Element,Attr):-
    rch_class(_,GroupClass,Super,_,_),
    class_attributes(Super,Attributes),
    rch_get_attribute(Element,Attributes,Attr).
 
-/* the class of an element in a group */
+/* the class of an element in a group (baseclass in the mapping) */
 elementClass(relation,Element,undef):-  % optimizing shortcut for dest names in rel$ to avoid search to matching class which is undefined
    clio_element_extends(Element,destname),!.
 
@@ -2088,6 +2105,9 @@ elementClass(GroupClass,Element,Class):-
   atr_select(baseclass,Attr,Class),!.
 
 rch_get_attribute(Name, Attr and _, Attr):-
+  % this matches the element name with the first
+  % value of the attributes list in mappings.pl
+  % (the value before "column")
   atr_select(name,Attr,Name) .
 rch_get_attribute(Name, _Attr and MoreAttr, Attr2):-
   rch_get_attribute(Name, MoreAttr,Attr2).
