@@ -377,8 +377,8 @@ class caso super object table casos
      and
         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
-mapping acus to class acusacoes.
-class acusacoes super object table acusacoes
+mapping acus to class acusacao.
+class acusacao super object table acusacoes
     with attributes
         id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
     and
