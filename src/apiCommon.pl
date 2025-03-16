@@ -16,12 +16,12 @@
   $ _changes_ : source files newer than the last translation if any. This is a subset of _sources_.
   $ _tokens_  : tokens, must be present in request to regulate permissions and file access.
   $ _users_   : users invalidate user related tokens
- 
+
  Note that when a translation is deleted the corresponding entities in _reports_, _exports_ and _errors_
  are also deleted. Also that these derivative entities cannot be directly created, they result from creating
- translations. 
+ translations.
 
-  * _sreports_: are reports on the processing of structure files. They can contain errors, warnings and other human readable information. 
+  * _sreports_: are reports on the processing of structure files. They can contain errors, warnings and other human readable information.
  They result from the translation process, and can be retrieved.
 
 
@@ -38,14 +38,14 @@ The _function_ is the predicate that implements the request and also the method 
     |               | PUT               | sources_move     | move and existing file to another location |
     | tokens        | POST              | tokens_generate  | generate a token for a user |
     |               | DELETE            | tokens_invalidate| invalidate a token |
-    | users         | DELETE            | tokens_invalidate| invalide a user token | 
+    | users         | DELETE            | tokens_invalidate| invalide a user token |
     | translations  | POST              | translations_translate | translate the file(s) in Path
     |               | GET               | translations_get | get the translation result (kleio_set)
     |               | DELETE            | translations_delete |clear the translation result (derived files)
     |
  Map the combination of HTTPMethod and Entity into a specific operation
- 
- == 
+
+ ==
    /sources/path       GET (json:sources_get) if Path is a file returns the file, if it is a directory returns list of sources
    /sources/path       POST multipart (json:NOT_IMPLEMENTED) upload a source file to "path"
    /sources/path       POST with param origin=path2 copy source file from "path2" to path
@@ -63,7 +63,7 @@ The _function_ is the predicate that implements the request and also the method 
    /translations/path  DELETE delete translation results, if path a directory delete all translations
    /reports/path       GET the translation report in path, if path a directory list all the reports in the dir
    /versions           GET Information from repository (uses pseudo paths to specify)
-   /versions/remotes/branches/path GET (json: versions_get_remotes_branches) list of branches in the remote repository  
+   /versions/remotes/branches/path GET (json: versions_get_remotes_branches) list of branches in the remote repository
    /versions/status/globsal    GET  (json:versions_get_global_status) global status of the repository
    /versions/user-info/ GET (json:versions_get_user_info) name and email of the user
    /versions/pull/path  GET  (json:versions_pull) pull from remote repository
@@ -73,9 +73,9 @@ The _function_ is the predicate that implements the request and also the method 
    /versions/reset      DELETE (json:versions_reset) reset local repository to &commit_ref
    /structures/path    POST, PUT upload de um ficheiro de strutura.
    /structures/path    DELETE eliminar um ficheiro ficheiro de estrutura
- == 
-     
-**/ 
+ ==
+
+**/
 :-reexport('apiSources').
 :-reexport('apiTokens').
 :-reexport('apiDirectories').
@@ -84,5 +84,5 @@ The _function_ is the predicate that implements the request and also the method 
 :-reexport('apiReports').
 :-reexport('apiGit').
 :-reexport('apiIdentifications').
- 
- 
+:-reexport('apiLog').
+
