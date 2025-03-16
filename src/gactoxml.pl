@@ -141,14 +141,14 @@ db_init:-
     concat(SOURCE,'.xml',XMLFILE),put_value(xmlfile,XMLFILE),
     log_debug('translate: xmlfile --> ~w~n',[XMLFILE]),
     open_file_write(XMLFILE),
-    catch(chmod(XMLFILE,+gw),E,log_error('Could not change permissions of ~w : ~w ',[XMLFILE,E])),
+    catch(chmod(XMLFILE,+gw),E,log_error('db_init: could not change permissions of xml file ~w : ~w ',[XMLFILE,E])),
     % prolog_to_os_filename(PD,D), file_directory_name(PD,Dir).
     (concat(__X,'_ids',Base)
          -> put_value(clioPP,false) % this is a ids file, no PP necessary
          ; (
        concat(SOURCE,'.ids',PPFILE),
        open_file_write(PPFILE),
-       catch(chmod(PPFILE,+gw),E2,log_error('Could not change permissions of ~w : ~w ',[PPFILE,E2])),
+       catch(chmod(PPFILE,+gw),E2,log_error('db_init: could not change permissions of ids file ~w : ~w ',[PPFILE,E2])),
        put_value(clioppfile,PPFILE),
        put_value(clioPP,true)
          )
@@ -207,8 +207,8 @@ db_close:-
   atomic_list_concat([PrologPath,'/',JsonFile],JsonPath),
   report([format('Structure in JSON: ~w~n',[JsonPath])]),
   % report on kleio source file
-  get_value(data_file,D),
-  report([format('~nKleio file: ~w~n',[D])]),
+  get_value(data_file,ClioFile),
+  report([format('~nKleio file: ~w~n',[ClioFile])]),
   get_value(source_file,SOURCE),
   concat(SOURCE,'.org',Original),
   report([format('Original file: ~w~n',[Original])]),
@@ -216,13 +216,13 @@ db_close:-
   report([format('Previous version: ~w~n',[Last])]),
   errors:error_count(ErrCount),
   errors:warning_count(WarnCount),
-  ( ErrCount = 0 -> rename_files(D,SOURCE,Original,Last);true),
+  ( ErrCount = 0 -> rename_files(ClioFile,SOURCE,Original,Last);true),
   persistence:get_value(report,ReportFile),
   % Generate a JSON file with information on the related files
   FileDict = files{stru:StruFile,
                    stru_rpt:SrptPath,
                    stru_json:JsonPath,
-                   kleio_file:D,
+                   kleio_file:ClioFile,
                    kleio_original:Original,
                    kleio_previous: Last,
                    kleio_rpt: ReportFile,
@@ -244,7 +244,7 @@ report_translation:-
   .old is the last .cli that was translated
   .org is the original .cli that was first translated with success.
   */
-rename_files(D,SOURCE,Original,Last):-
+rename_files(ClioFile,SOURCE,Original,Last):-
   % report on kleio source file
   concat(SOURCE,'.ids',Ids),
   report([format('Temp file with ids: ~w~n',[Ids])]),
@@ -272,30 +272,30 @@ rename_files(D,SOURCE,Original,Last):-
   (exists_file(Original)-> % rename original ".cli" to ".old"
     (
 
-      rename_with_shell(D,Last),
+      rename_with_shell(ClioFile,Last),
       catch(
-        chmod(D,+gw),
+        chmod(ClioFile,+gw),
         E,
-        log_error('Could not change permissions of ~w : ~w ',[D,E])
+        log_error('rename_files: could not change permissions of ~w : ~w ',[ClioFile,E])
         ),
-      report([writeln('** '-D-'renamed to'-Last)])
+      report([writeln('** '-ClioFile-'renamed to'-Last)])
     )
     ;  % no ".org" file. Rename ".cli" to ".org"
       (
-          rename_with_shell(D,Original),
+          rename_with_shell(ClioFile,Original),
           catch(
               chmod(Original,+gw),
               E2,
-              log_error('Could not change permissions of ~w : ~w ',[Original,E2])
+              log_error('rename_files: could not change permissions of ~w : ~w ',[Original,E2])
               )
-          % , report([writeln('** '-D-'renamed to'-Original)])
+          % , report([writeln('** '-ClioFile-'renamed to'-Original)])
       )
   ),
-  rename_with_shell(Ids,D), % rename ".ids" to ".cli"
+  rename_with_shell(Ids,ClioFile), % rename ".ids" to ".cli"
   catch(
-      chmod(D,+gw),
+      chmod(ClioFile,+gw),
       E3,
-      log_error('Could not change permissions of ~w : ~w ',[D,E3])
+      log_error('rename_files: could not change permissions of ~w : ~w ',[ClioFile,E3])
       ),
   !.
 
@@ -474,8 +474,8 @@ group_export(Property,__ID):-
   clio_aspects(core,[name,value,obs],[Name,Value,__obs]),
   atomic_list_concat(Name,'',SN),
   atomic_list_concat(Value,'',SV),
-  get_value(data_file,DataFile),
-  set_prop(DataFile,SN,SV),!.
+  get_value(data_file,ClioFile),
+  set_prop(ClioFile,SN,SV),!.
 
 group_export(Source,ID):-
     group_derived(Source,'historical-source'),

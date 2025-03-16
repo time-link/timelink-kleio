@@ -501,7 +501,7 @@ process_rest(RestRequest):-
     option(path_info(PInfo),RestRequest,''),
     http_link_to_id(process_rest,path_postfix(PInfo),HREF),
     log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
-    log_debug('~n~nREQUEST-REST received on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
+    log_debug('~n~nREQUEST-REST~nreceived on host ~w:~w~w~n~@~n',[Hostname,Port,HREF,print_term(request(RestRequest),[output(logfile)])]),
     catch(process_rest_request(RestRequest),
         Error,
         process_rest_error(Error)
@@ -687,7 +687,7 @@ process_json_rpc_(Request):-
         throw(parse_error(null, ParseError))),
     % if JSONRequest is a list we have a batch.
     log_debug('>>>>>>>>>>>>>>>>>>>> ~n',[]),
-    log_debug('JSON-RPC: ~w~n',[JSONPayload]),
+    log_debug('JSON-RPC:~n ~w~n',[JSONPayload]),
     (is_list(JSONPayload) ->
         process_json_batch(JSONPayload);
         process_json_request(JSONPayload)
