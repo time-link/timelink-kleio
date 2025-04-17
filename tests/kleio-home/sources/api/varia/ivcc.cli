@@ -1,6 +1,5 @@
-kleio$gacto2.str/translations=1
-   fonte$ivcc/tipo=fonte-jesuita/ano=1719
-      /obs="""
+kleio$gacto2.str/translations=2
+   fonte$ivcc/tipo=fonte-jesuita/ano=1719/obs="""
       Franco (S.I.), Antonio, Imagem da virtude em o noviciado da Companhia de
       Jesus no Real Collegio de Jesus de Coimbra em Portugal
       (Évora: na Officina da Universidade, 1719)
@@ -10,10 +9,7 @@ kleio$gacto2.str/translations=1
 
       Depois focamos nos missionários para a China."""
 
-
-      lista$ivc-c1/0/0/1719/obs=
-      Dá-se sumária notícia do Real Colégio de Jesus de Coimbra.
-         Descreve o espaço da alta onde está localizaddo o colégio e a organização interna do edifício.
+      lista$ivc-c1/0/0/1719/obs= Dá-se sumária notícia do Real Colégio de Jesus de Coimbra. Descreve o espaço da alta onde está localizaddo o colégio e a organização interna do edifício.
 
          n$Colégio de Coimbra/id=colegio-coimbra/obs=Notas sobre a História do Colégio
             ls$construction/start/15470414/obs=p.3
@@ -82,8 +78,8 @@ kleio$gacto2.str/translations=1
 
             viagem$Portugal Índia/0/0/1541/id=ivc-francisco-xavier-his4-38
 
-         n$Paulo Camarte/id=ivc-paulo-camarte
-            ls$nacionalidade/Itália
+               n$Paulo Camarte/id=ivc-paulo-camarte
+                  ls$nacionalidade/Itália
 
          n$Simão Rodrigues/id=ivc-simao-rodrigues/obs=Membro do grupo inicial de Jesuítas, primeiro em Portugal com Francisco Xavier.
             ls$estadia/Mosteiro de Santo Antão-o-Velho/15410000/obs="Na raiz do monte do castelo de Lisboa"
@@ -405,13 +401,11 @@ kleio$gacto2.str/translations=1
 
             viagem$Chaul, defender de ataque/0/0/1558#inferido/id=ivc-goncalo-da-silveira-his1-85
 
-               referido$Gonçalo da Silveira/id=ivc-goncalo-da-silveira-his1-85-per1-85/mesmo_que=ivc-goncalo-da-silveira
-               /obs=""" With Chaul menaced by the 'Melique', the Governor could not  prepare a defense army and asked Gonçalo to preach the danger, which he  did, gathering great number of people and donations to pay soldiers.
+               referido$Gonçalo da Silveira/id=ivc-goncalo-da-silveira-his1-85-per1-85/id=ivc-goncalo-da-silveira-his1-per1/mesmo_que=ivc-goncalo-da-silveira/obs=""" With Chaul menaced by the 'Melique', the Governor could not  prepare a defense army and asked Gonçalo to preach the danger, which he  did, gathering great number of people and donations to pay soldiers.
 
                   E  em breve tempo se achou o governador em Chaul com três mil portugueses,  que é o maior poder de gente Portuguesa, que ajunta o Vice-Rei, agora a  gente da terra.
 
                   Surprised, the atacker made peace"""
-               /id=ivc-goncalo-da-silveira-his1-per1
 
                referido$Francisco Barreto/mesmo_que=ivc-francisco-barreto/id=ivc-goncalo-da-silveira-his1-85-per2-85
 
@@ -483,7 +477,7 @@ kleio$gacto2.str/translations=1
                   ls$titulo/Senhor
 
                referida$Luísa/id=ivc-doc4-per2-92-per1-96/obs="""See https://www.geni.com/people/Luisa-de-Vasconcelos/6000000017017436413"""
-                  ls$titulo/ls$titulo/dona
+                  ls$titulo/dona
                   rel$kin/wife/Pantaleão de Sá/ivc-pantaleao-de-sa
 
             estadia$Ilha de Moçambique/0/2/1560/id=ivc-goncalo-da-silveira-his2-101
@@ -695,7 +689,7 @@ kleio$gacto2.str/translations=1
                ls$titulo/Senhor
 
             referida$Luísa/mesmo_que=ivc-doc4-per2-92-per1-96/id=ivc-doc4-per2-92-per2-102
-               ls$titulo/ls$titulo/dona
+               ls$titulo/dona
                rel$kin/wife/Pantaleão de Sá/ivc-pantaleao-de-sa
 
       lista$ivc-bio-antonio-de-almeida/0/0/1719/obs=tom.2.liv.3.cap.30
