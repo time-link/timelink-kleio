@@ -4,9 +4,7 @@
 # Entities are used to create new classes in the person oriented model
 # and are only necessary if a group contains information not present in the
 # base Person Oriented Model
-- mapping:
-    name: minutes
-    class: minutes
+- mapping: { name: minutes, class: minutes }
 - class:
     name: minutes
     extends: act
@@ -15,37 +13,12 @@
       This class represents the minutes of a meeting.
       It is a subclass of the class act.
     attributes:
-      - name: id  # name of the attribute in class
-        column: id  # name of the columns in the table
-        extends: id  # element class in the source model
-        type: string  # type for column
-        size: 64  # size of the column
-        pkey: true #
-      - name: the_day
-        colum: the_day
-        type: number
-        size: 2
-        precision: 0  # number of decimal places
-        extends: day
-      - name: the_month
-        type: number
-        extends: month
-      - name: the_year
-        column: the_year
-        type: number
-        extends: year
-      - name: summary
-        type: string
-        extends: text
-        size: 32768
-      - name: pages  # pages in the minutes book
-        type: string
-        size: 64
-      - name: obs  # any other observation
-        type: text
-- mapping:   # a synonym for the minutes class
-    name: acta
-    class: minutes
-- mapping:  # a synonym for the minutes class
-    name: amz
-    class: minutes
+      - { name: id, column: id, class: id, type: string, size: 64, pkey: true }
+      - { name: the_day, colum: the_day, type: number, size: 2, precision: 0, class: day }
+      - { name: the_month, type: number, class: month }
+      - { name: the_year, column: the_year, type: number, class: year }
+      - { name: summary, type: string, class: text, size: 32768 }
+      - { name: pages, type: string, class: string, size: 64 }
+      - { name: obs, type: text, class: text, size: 32768 }
+- mapping: { name: acta, class: minutes }
+- mapping: { name: amz, class: minutes }

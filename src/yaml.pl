@@ -16,8 +16,7 @@ read_yaml_str(Filename,Data):-
     inspect_yaml_str(Data).
 
 % example read mappings
-% File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/mappings/sample-mapping.yml',
-%    read_yaml_str(File,D),print_term(D,[]).
+% File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/mappings/sample-mapping.yml', read_yaml_str(File,D),print_term(D,[]).
 % example read str
 % File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/yaml/sample-str.yaml',
 %     read_yaml_str(File,D),print_term(D,[]).
