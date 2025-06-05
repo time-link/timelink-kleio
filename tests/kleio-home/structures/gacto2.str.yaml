@@ -23,6 +23,7 @@
     identification: non
     name: text
     prefix: non
+    source: obs
     suffix: non
 - element:
     description:
@@ -53,9 +54,7 @@
     suffix: non
     type: numerus
 - element:
-    description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
-      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.exº fonte
-      $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
+    description:
     identification: sic
     name: id
     prefix: non
@@ -91,13 +90,13 @@
     prefix: non
     suffix: non
 - element:
-    description: 'cota ou outra referencia de localizacao da fonte '
+    description:
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
+    description:
     identification: non
     name: loc
     prefix: non
@@ -732,14 +731,29 @@
 - group:
     also:
     - id
+    - obs
     description: '
 
       '
     idprefix: end
     name: end
     position:
-    - id
+    - obs
     prefix: non
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    description: '
+
+      '
+    idprefix: end
+    name: fragment
+    position:
+    - text
+    prefix: non
+    source: end
     suffix: non
 - group:
     also:
@@ -934,7 +948,7 @@
     suffix: non
     type: numerus
 - element:
-    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
+    description:
     identification: non
     name: tipo
     prefix: non
@@ -1482,8 +1496,7 @@
     arbitrary:
     - n
     - referido
-    description: 'Nomeacoes de irmaos numa misericordia (A particular historical act
-      )
+    description: '
 
       '
     guaranteed:
@@ -1512,8 +1525,7 @@
     - eleito
     - eleitor
     - referido
-    description: 'Assentos da mesa numa misericordia (A particular historical act
-      )
+    description: '
 
       '
     guaranteed:
@@ -1538,7 +1550,9 @@
     - obs
     arbitrary:
     - assunto
-    description: "actas de vereacao \n"
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
