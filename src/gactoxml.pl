@@ -727,11 +727,15 @@ object_export(G,ID) :-
     !.
 
 geoentity_export(G,ID) :-
-  (belement_aspect(core,id,[])
-              ->  IdElement=[id([ID],[],[]),type([G],[],[])]
-              ;   IdElement=[type([G],[],[])]),
+  (clio_belement_aspect(core,id,[])
+              ->  IdElement=[id([ID],[],[])]
+              ;   IdElement=[]),
+  (clio_belement_aspect(core,type,[])
+              ->  TypeElement=[type([G],[],[])]
+              ;   TypeElement=[]),
+  append([IdElement,TypeElement],InferredElements),
   assertz(same_as_cached_id(ID)),
-  group_to_xml(G,ID,IdElement),
+  group_to_xml(G,ID,InferredElements),
   process_function_in_act(G,ID),
   % report(writeln(G-ID-'** was stored with function in ACT verify act')),
   !.
@@ -1206,7 +1210,7 @@ match_date(List,DateString, DateInfo):-
 % failed
 match_date(List,0,[error(List)]):-
   append(['Bad date format:'], List, M1),
-  append(M1, ['. Use YYYYMMDD, YYYY-MM-DD, FROM_DATE:UNTIL_DATE'], M2),
+  append(M1, ['. Use YYYYMMDD, YYYY-MM-DD, FROM_DATE:UNTIL_DATE, >DATE or <DATE'], M2),
   error_out(M2),
   fail,!.
 

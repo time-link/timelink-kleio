@@ -272,6 +272,8 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    `docker login --username timelinkserver` or other
    authorized user.__
 * Test
+  * `make test-semantics` to run semantic tests
+  * `make test-api` to run api tests
 * Update version with `make inc-major` or `make inc-minor`
 * Create docker image `make build-multi` (also pushes to repository tag with updated version)
 * Update release notes (bellow)
@@ -280,7 +282,7 @@ docker repository defined in the DOCKER_REPOSITORY variable in the Makefile.
    `make show-last`
 * Tag image with semantic versioning
   * if new image is stable version do `make tag-multi-stable` (this also tags latest commit with last version number).
-  * Move current code to `stable`directory in `tests`.
+  * Move current code to `stable`directory in `tests` with `make current_to_stable`
   * if new image to be latest do `make tag-multi-latest`
 
 
@@ -316,6 +318,11 @@ Type ```make``` to see more targets that help in development.
 ## Release notes
 
 ( `make show-last` to have timestamp and version info)
+
+### 2025-06-06 15:04:02 version 12.9.588
+
+Fixes a bug in the processing of geoentities that caused that the element `type` was always set to the name of the group used to record the geoentity, even if an explicity `type$` element was present in the geoentity element. Now the `type` is set to the groupname only if no `type` element is present.
+
 
 ### 2025-02-04 13:02:43 version 12.8.583
 

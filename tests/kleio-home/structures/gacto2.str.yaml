@@ -23,7 +23,6 @@
     identification: non
     name: text
     prefix: non
-    source: obs
     suffix: non
 - element:
     description:
@@ -54,7 +53,9 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte
+      $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
     identification: sic
     name: id
     prefix: non
@@ -90,13 +91,13 @@
     prefix: non
     suffix: non
 - element:
-    description:
+    description: 'cota ou outra referencia de localizacao da fonte '
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description:
+    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
     identification: non
     name: loc
     prefix: non
@@ -731,29 +732,14 @@
 - group:
     also:
     - id
-    - obs
     description: '
 
       '
     idprefix: end
     name: end
     position:
-    - obs
-    prefix: non
-    suffix: non
-- group:
-    also:
     - id
-    - obs
-    description: '
-
-      '
-    idprefix: end
-    name: fragment
-    position:
-    - text
     prefix: non
-    source: end
     suffix: non
 - group:
     also:
@@ -948,7 +934,7 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
     identification: non
     name: tipo
     prefix: non
@@ -1496,7 +1482,8 @@
     arbitrary:
     - n
     - referido
-    description: '
+    description: 'Nomeacoes de irmaos numa misericordia (A particular historical act
+      )
 
       '
     guaranteed:
@@ -1525,7 +1512,8 @@
     - eleito
     - eleitor
     - referido
-    description: '
+    description: 'Assentos da mesa numa misericordia (A particular historical act
+      )
 
       '
     guaranteed:
@@ -1550,9 +1538,7 @@
     - obs
     arbitrary:
     - assunto
-    description: '
-
-      '
+    description: "actas de vereacao \n"
     guaranteed:
     - id
     - dia
