@@ -131,7 +131,7 @@
     position: [occurrence, atype, func, date, name]
 - group:
     name: historical-act
-    description: "represents an historical act An historical act is a record of an event ,something that happened at a moment and place in time. This form is used for records such as parish records notarial acts. \ndate: date in kleio format YYYYMMMDD ou YYYY-Month-Day "
+    description: "Represents an historical act, i.e. a record of an event ,something that happened at a moment and place in time. This form is used for records such as parish records notarial acts. \ndate: date in kleio format YYYYMMMDD ou YYYY-Month-Day "
     also: [loc, ref, obs, day, month, year]
     arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
     guaranteed: [id, type, date]

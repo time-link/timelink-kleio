@@ -1,0 +1,23 @@
+# ****************************************************************
+# Equivalencia entre o nome dos elementos em portugues e em ingles
+# ****************************************************************
+
+- element: { name: dia, description: , source: day, type: number }
+- element: { name: mes, description: , source: month, type: number }
+- element: { name: ano, description: , source: year, type: number }
+- element: { name: data, description: , source: date, type: number }
+- element: { name: tipo, description: Tipo em atributos, relações e actos, entre outros, source: type }
+- element: { name: valor, description: Valor em atributos e relações, source: value }
+- element: { name: localizacao, description: No sentido de local., source: loc }
+- element: { name: cota, description: "No sentido de referência de documento em arquivo ou biblioteca", source: ref }
+- element: { name: nome, description: , source: name }
+- element: { name: mesmo_que, description: Indica de outra ocorrência da mesma entidade no mesmo ficheiro, source: same_as }
+- element: { name: xmesmo_que, description: Id de outra ocorrência desta entidade em outro ficheiro, source: xsame_as }
+- element: { name: sexo, description: , source: sex }
+- element: { name: nomedest, description: Nome do destino de uma relação, source: destname }
+- element: { name: iddest, description: Id do destino de uma relação, source: destination }
+- element: { name: sumario, description: "Resumo de um documento, Usar triplas aspas para textos longos multi linha", source: summary }
+- element: { name: fol, description: , source: ref, identification: non, prefix: non, suffix: non }
+- element: { name: fols, description: , source: pages, identification: non, prefix: non, suffix: non }
+- element: { name: folio, description: , source: pages, identification: non, prefix: non, suffix: non }
+- element: { name: folios, description: , source: pages, identification: non, prefix: non, suffix: non }
