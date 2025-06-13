@@ -604,7 +604,7 @@ make_json_yaml_doc(ClioFile,JsonFile, YamlFile):-
    append(GroupsInfo,ElementsInfo,StruItems),
    sort(id,@=<,StruItems,StruItemsSorted),
    remove_key(id,StruItemsSorted,StruItemsFinal),
-   JSON_STRU=json{path:ClioFile,structure:StruItemsFinal},
+   JSON_STRU=[path{path:ClioFile}|StruItemsFinal],
    open_file_write(JsonFile),
    json_write_dict(JsonFile,JSON_STRU,[]),
    close_file(JsonFile),

@@ -80,7 +80,10 @@ attach_token_db(F):-
 
 %% token_db_attached(?File) is det.
 % Returns current token database file, fails if none is defined.
-token_db_attached(F):-db_attached(F).
+token_db_attached(F):-
+    db_attached(F),
+    exists_file(F).
+
 
 %% ensure_db is det.
 %
@@ -90,6 +93,10 @@ ensure_db:-
     !.
 ensure_db:-
     kleiofiles:kleio_token_db(D),
+    (exists_file(D)->true
+        ; % if file does not exist, create it
+        true
+       ),
     attach_token_db(D),
     log(debug,'tokens:ensure_db ~w ~n',[D]),
     !.

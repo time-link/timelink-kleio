@@ -1,0 +1,14 @@
+- mapping: { name: person, class: person }
+- class:
+    name: person
+    extends: person
+    table: entities
+    description: >
+      This class represents a person.
+      It is a subclass of the class entity.
+    attributes:
+      - { name: id, column: id, class: id, type: string, size: 64, pkey: 1 }
+      - { name: name, column: name, class: name, type: string, size: 128, pkey: 0 }
+      - { name: sex, column: sex, class: sex, type: string, size: 1, pkey = 0 }
+      - { name: obs, column: obs, class: text, type: text, size: 32768, pkey = 0 }
+

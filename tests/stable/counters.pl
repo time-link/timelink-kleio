@@ -13,7 +13,7 @@
 :-use_module('persistence').
 
 /** <module> Counters
-   
+
 Utility predicates to deal with counters.
 Counters are local to threads.
 Shared counters are shared between all threads.
@@ -27,7 +27,7 @@ Shared counters are shared between all threads.
 setcount(COUNTER,VALUE):-
     atom_concat(COUNTER,'_counter_',C_NAME),
     put_value(C_NAME,VALUE),!.
- 
+
  %% getcount(+COUNTER,?VALUE) is det.
  %
  %  Get current value of a counter.
@@ -35,7 +35,7 @@ setcount(COUNTER,VALUE):-
  getcount(COUNTER,VALUE):-
     atom_concat(COUNTER,'_counter_',C_NAME),
     get_value(C_NAME,VALUE).
- 
+
  %% inccount(+COUNTER,?VALUE) is det.
  %
  %  Increment counter, return previous value.
@@ -44,7 +44,11 @@ setcount(COUNTER,VALUE):-
     getcount(COUNTER,VALUE),
     V is VALUE+1,
    setcount(COUNTER,V),!.
- 
+
+inccount(COUNTER,VALUE,0):-
+    \+ getcount(COUNTER,VALUE),
+   setcount(COUNTER,0),!.
+
  %% deccount(+COUNTER,?VALUE) is det.
  %
  %   Decrement value, return previous value.
@@ -61,7 +65,7 @@ setcount(COUNTER,VALUE):-
 set_shared_count(COUNTER,VALUE):-
     atom_concat(COUNTER,'_counter_',C_NAME),
     put_shared_value(C_NAME,VALUE),!.
- 
+
  %% get_shared_count(+COUNTER,?VALUE) is det.
  %
  %  Get current value of a counter.
@@ -69,7 +73,7 @@ set_shared_count(COUNTER,VALUE):-
  get_shared_count(COUNTER,VALUE):-
     atom_concat(COUNTER,'_counter_',C_NAME),
     get_shared_value(C_NAME,VALUE).
- 
+
  %% inc_shared_count(+COUNTER,?VALUE) is det.
  %
  %  Increment counter, return previous value.
@@ -78,7 +82,7 @@ set_shared_count(COUNTER,VALUE):-
     get_shared_count(COUNTER,VALUE),
     V is VALUE+1,
    set_shared_count(COUNTER,V),!.
- 
+
  %% dec_shared_count(+COUNTER,?VALUE) is det.
  %
  %   Decrement value, return previous value.

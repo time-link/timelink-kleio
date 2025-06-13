@@ -329,7 +329,7 @@ server_results([R|Rs],[D|Ds]):-
 server_results([],[]).
 
 test_case(translations,File,Stru):-
-    Stru = 'system/conf/kleio/stru/gacto2.str',
+    Stru = 'structures/gacto2.str',
     translate_file(File,Flag),
     Flag = true,
     format('TESTING ~wn',[File]).
@@ -340,18 +340,17 @@ translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
-translate_file('sources/api/varia',false).
+translate_file('sources/api/varia/nommiz.cli',true).
+translate_file('sources/api/varia/dehergne-residences.cli',false).
+translate_file('sources/api/varia/mp758-santiago-beduido.cli',false).
 translate_file('sources/api/issues/issue21.cli',false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue34b.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
-translate_file('sources/api/issues/issue1/issue1.cli',true).
+translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
-
 translate_file('sources/api/varia/lrazao516pe.cli',false).
-
-
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).

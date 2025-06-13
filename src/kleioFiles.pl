@@ -555,7 +555,9 @@ kleio_home_dir(D):-
 %  but can be overriden by environment variable KLEIO_CONF_DIR.
 % if none of the above exists, it is created as KLEIO_HOME/.kleio/conf/
 %
-kleio_conf_dir(D):-getenv('KLEIO_CONF_DIR', D),!.
+kleio_conf_dir(D):-
+    getenv('KLEIO_CONF_DIR', D),
+    exists_directory(D),!.
 kleio_conf_dir(D):-
     kleio_home_dir(H),
     atom_concat(H, '/.kleio/conf', D1),
@@ -577,7 +579,9 @@ kleio_conf_dir('.').
 % Returns the path to the token database, normally KLEIO_CONF_DIR/token_db,
 %  but can be overriden by environment variable KLEIO_TOKEN_DB.
 %
-kleio_token_db(D):-getenv('KLEIO_TOKEN_DB', D),!.
+kleio_token_db(D):-
+    getenv('KLEIO_TOKEN_DB', D),
+    exists_file(D),!.
 kleio_token_db(D):-
     kleio_conf_dir(C),
     atom_concat(C, '/token_db', D1),
