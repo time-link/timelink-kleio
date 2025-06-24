@@ -54,6 +54,7 @@ syntactic analysers.
 :-use_module(utilities).
 :-use_module(logging).
 :-use_module(linkedData).
+:-use_module(yamlSupport).
 
 %%  clio_version(?V) is det.
 %  Returns the version of the translator.
@@ -99,8 +100,14 @@ clio_init:-
 %******************************************************
 %
 % %
-
 stru(F):-
+    file_name_extension(_, Ext, F),
+    stru(F, Ext).
+
+stru(F, yaml):-
+    stru_yaml(F).% normalize name as atom
+
+stru(F,str):-
       atom_string(Filename,F), % normalize name as atom
       open_file_read(Filename),
       set_input(Filename),

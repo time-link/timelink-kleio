@@ -12,13 +12,13 @@
 
 :-use_module(persistence).
 :-use_module(utilities).
-:-use_module(topLevel). 
+:-use_module(topLevel).
 :-use_module(errors).
 :-use_module(logging).
 :-use_module(library(filesex)).
 
 /** <module> Reports
- 
+
  # Reporting
 
  Sending text to a disk file and optionally to the console
@@ -28,8 +28,8 @@
 % Prepare reporting system to send output to file and console.
 % Output to ReportFile is done with report/1 predicate.
 % It is the same as prepare_report(ReportFile,[type(console)]).
-% This is kept for compatibility since originally all output of 
-% 
+% This is kept for compatibility since originally all output of
+%
 % @see: prepare_report/2 for full documentation
 %
 prepare_report(R):-prepare_report(R,[type(console)]).
@@ -60,14 +60,14 @@ report_header(_):-
     report([pclio_version]),!.
 
 set_report_file(FILENAME):-
-    open_file_write(FILENAME), 
-    catch(chmod(FILENAME,+gw),E,log_error('Could not change permissions of ~w : ~w ',[FILENAME,E])),
+    open_file_write(FILENAME),
+    catch(chmod(FILENAME,+gw),E,log_error('set_report_file: could not change permissions of ~w : ~w ',[FILENAME,E])),
     put_value(report,FILENAME),
     set_report(off),!.
 
 %% set_report(+OnOFF) is det.
 %  Turn reporting on and off.
-%  
+%
 % @param OnOFF if on, subsequent calls to report/1 will output to file set in prepare_report/2.
 %
 set_report(on):-put_value(rep_stat,on),!.
@@ -85,7 +85,7 @@ report_status(X):- get_value(rep_stat,X),!.
 %    Executes the predicates in PREDICATE_LIST directing output to the
 %    file set in prepare_report/2. If type(console) was included as an option
 %    in prepare_report/2 then the output is also sent to the console.
-%   
+%
 % @see prepare_report/2
 %
 report(L):-report_status(X), X=off,repexec(L),!.
@@ -116,7 +116,7 @@ repexec(A):- !, rep_call(A).
 
 %% close_report_file is det.
 % Closes current report file.
-% 
+%
 % @see prepare_report/2
 % @see report/1
 %
@@ -126,7 +126,7 @@ close_report_file:-
 
 %% rep_call(+Predicate) is nondet.
 %
-%  Wrapper for call meta predicate for modular use 
+%  Wrapper for call meta predicate for modular use
 % see http://www.swi-prolog.org/pldoc/man?section=metapred
 %
 rep_call(M:P):-

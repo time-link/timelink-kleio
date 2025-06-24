@@ -26,7 +26,7 @@
             path_sep/1
           ]).
 /** <module> swiCompatibilty (included in "utilities.pl")
- 
+
  Contains predicate s to extend or modify SWI prolog on windows/linux,
    for compatibility with other Prologs, namely Salford PROLOG
    for the PRIME, and LPA for the Mac.
@@ -38,7 +38,7 @@
 
  _This Module is not meant for direct import. It is rexported in module "utilities"_
 
- Importing module utilities (use_module(utilities) gives access to the predicates 
+ Importing module utilities (use_module(utilities) gives access to the predicates
  published by this module.
 
 
@@ -61,7 +61,7 @@
        *  Revision 1.2  2005/03/10 14:42:04  joaquim
            *  snapshot commit for purpose of moving the cvs directory.
        *  Revision 1.1  2004/04/08 14:45:24  ltiago
-           * Source code has passed from Joaquim to Tiago. Since that, source was 
+           * Source code has passed from Joaquim to Tiago. Since that, source was
                reconfigured to work on a windows platform under Apache Tomcat 5.0.18
            * File build.xml, web.xml and velocity.properties were changed
 
@@ -104,9 +104,9 @@
 on(M,L):-member(M,L).
 
 %% writelist0(+L) is det.
-% writes the elements of a list 
+% writes the elements of a list
 %
-% @see writelist0ln(L) same but with a return at the end 
+% @see writelist0ln(L) same but with a return at the end
 %
 
 writelist0(L):-
@@ -119,21 +119,21 @@ make_textual(A,T):-format(string(T),"~p",[A]).
 %% writelist0ln(+L) is det.
 % writes the elements of a list with new line at the end.
 %
-% @see writelist0(L) same but without a newline at the end 
+% @see writelist0(L) same but without a newline at the end
 %
 writelist0ln(L):-writelist0(L),nl.
 
 %% writelist(+L) is det.
-%  write the members of list L with a space in between 
-% 
+%  write the members of list L with a space in between
+%
 % @see writelistln(L) same but with return at the end
 %
 writelist(L):-atomic_list_concat(L,' ',A),write(A).
 
 %% writelistln(+L) is det.
-%  write the members of list L with a space in between 
+%  write the members of list L with a space in between
 % and end with new line,.
-% 
+%
 % @see writelist(L) same but with no new line at end
 %
 writelistln(L):-writelist(L),nl.
@@ -203,7 +203,7 @@ path_sep('/').
 
 %% open_file_read(+F) is det.
 %  Opens file  F for reading.
-% 
+%
 open_file_read(F):-
     current_stream(F,read,_),
     close(F,[force(true)]),
@@ -245,11 +245,11 @@ consult_file(F):-
 %% chdir(?Dir) is det.
 % Returns the current directory or changes the current directory.
 %
-% *Important* 
+% *Important*
 %    * chdir/1 is not thread safe. Current directory will change in every running thread
 %
 % @see working_directory/2
-% 
+%
 
 chdir(D):-var(D),working_directory(D,D),!.
 chdir(D):-working_directory(_,D),!.

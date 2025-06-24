@@ -113,7 +113,7 @@ storeElsR_A(CDSR,newElement(C),CDSR_A):-
 %  %
 
 newGroup(N):-
-    isDoc(N),!, % if it is a doc jump%
+    dataDictionary:isDoc(N),!, % if it is a doc jump%
     newDoc(N).
 newGroup(N):-
     \+ isDoc(N),   % if it is not %

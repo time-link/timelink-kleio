@@ -104,7 +104,7 @@ init_command(C):-
 close_command(nomino,S):-
     check_complete(nomino,S),
     %report([write(' nomino command'),write(S)]),
-    create_stru(S), % store structure information%
+    dataDictionary:create_stru(S), % store structure information%
     del_props(nomino),!.
 close_command(pars,S):-
     check_complete(pars,S),
@@ -166,7 +166,9 @@ set_defaults(exitus):-!.
 % identificatio = first entry of first element is id %
 
 execParam(nomino,Param,ParValue):-
-   member_check(Param,[nomen,primum,modus,antiquum,identificatio,plures]),
+   member_check(Param,[nomen,primum,modus,antiquum,
+                        identificatio,plures,nota]),
+
    set_prop(nomino,Param,ParValue),!.
 
 % the scribe parameter can appear several times %
@@ -177,7 +179,8 @@ execParam(nomino,scribe,Type):-
 % default: unknown nomino param %
 execParam(nomino,P,V):-
  \+ member_check(P,
-        [nomen,primum,modus,antiquum,identificatio,scribe,plures]),
+        [nomen,primum,modus,antiquum,identificatio,
+        scribe,plures,nota]),
    error_out(['** Error: nomino param:',P,'=',V]),!.
 
 
@@ -201,32 +204,31 @@ execParam(pars,Param,_):-
    error_out('** Nomen parameter needed in pars before other parameters'),!.
 
 execParam(pars,Param,Value):-
-   member_check(Param,
-               [ordo,sequentia,identificatio,
-                post,prae,locus,signum,
-                ceteri,certe,pars,semper,repetitio,
-                nota]),
+   member_check(Param,[ordo,sequentia,identificatio,post,prae,locus,signum,
+             ceteri,certe,pars,semper,repetitio,nota]),
    get_prop(pars,nomen,Groups),        % get current group names%
-   set_groups_prop(Groups,Param,Value),% store the values %
+   dataDictionary:set_groups_prop(Groups,Param,Value),% store the values %
    !.
 
 %*************************************************************
 % execParam pars fons parameter
-%%
+%
 execParam(pars,fons,Group):-
+   execFons(Group),!.
+execParam(pars,fons,Group):-
+   report([tab(3),write('Error processing fons/source value '),
+            write(Group),nl]),!.
 
-   get_prop(pars,nomen,Groups),        % get current group names%
-  set_groups_prop(Groups,fons,Group),  % we store the fons parameter (new AUG 97 %
-   copy_fons_g(Group,Groups), %copy the fons group top current ones %
-   !.
 %*************************************************************
 % default: unknown pars param %
 
 execParam(pars,P,V):-
- \+ member_check(P,[nomen,ordo,sequentia,identificatio,post,prae,locus,
-             ceteri,certe,fons,signum]),
+ \+ member_check(P,[nomen,ordo,sequentia,identificatio,
+                    post,prae,locus,
+                    ceteri,certe,fons,signum,
+                    nota]),
    report([tab(3),write('Error: unknown pars param:'),
-   write(P),write('='),write(V),nl]),!.
+            write(P),write('='),write(V),nl]),!.
 
 %*************************************************************
 % execParam terminus directive
@@ -234,9 +236,10 @@ execParam(pars,P,V):-
 %/
 
 execParam(terminus,nomen,NameList):-
-   set_prop(terminus,nomen,NameList),
+   (is_list(NameList) -> NameList2 = NameList ; NameList2 = [NameList]),
+   set_prop(terminus,nomen,NameList2),
    %report([writelist(['Reading terminus for:'|NameList])]),
-   create_elements(NameList),!.
+   create_elements(NameList2),!.
 %*************************************************************
 % a group of params have their value stored as properties
 % of the groups named in nomen parameter
@@ -267,7 +270,7 @@ execParam(terminus,fons,Element):-
 
 execParam(terminus,P,V):-
  \+ member_check(P,[modus,primum,secundum,ordo,post,fons,prae,pars,sine,signa,
-                       forma,ceteri,identificatio,cumule,solum, nota]),
+                       forma,ceteri,identificatio,cumule,solum,nota]),
    error_out(['Error: unknown terminus param:',P,'=',V]),!.
 
 %**************************************************************
@@ -276,6 +279,15 @@ execParam(terminus,P,V):-
 execParam(exitus,nomen,N):-
     clioStru(M),
     (M = N -> true; error_out('bad nomen parameter of the exitus command'-N)),!.
+
+% execFons
+execFons(Group):-
+   get_prop(pars,nomen,Groups), % get current group names%
+   dataDictionary:set_groups_prop(Groups,fons,Group),  % we store the fons parameter (new AUG 97 %
+   copy_fons_g(Group,Groups), %copy the fons group top current ones %
+   !.
+
+
 %*************************************************************
 %
 %***********************************************************

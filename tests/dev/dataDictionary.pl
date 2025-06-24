@@ -29,7 +29,8 @@
         clean_elements/1,
         make_html_doc/1,
         make_json_yaml_doc/3
-    ]).
+]).
+
 /** <module> Code for dealing with the data dictionary.
 
     The data dictionnary stores the information contained in
@@ -138,7 +139,10 @@ clean_stru(F):-
 %  %
 isDoc(N):-
     clioStru(S),         % check if this is a new doc %
-    get_prop(S,primum,N).
+    get_prop(S,primum,N2),
+    atom_string(N,N2).
+
+
 %******************************************************
 %  anc_of(G,A) returns in A the ancestor of G
 %   backtracks on several ancestors
@@ -175,12 +179,23 @@ anc_of_i(G,A):-
    get_prop(AID,fons,FA),
    anc_of(FG,FA),
    writeln('DEBUG-FOUND '-FA-' through '-FG).
-%******************************************************
-%  subgroups(G,S) S is the list of subgroups of G
-%******************************************************
-%  %
+
+/** <predicate> subgroups(+Group, -Subgroups) is det
+   @summary Retrieves the list of subgroups contained within a given group.
+   @param Group The group whose subgroups are to be found.
+   @param Subgroups The list of groups contained within Group.
+   @description
+      Given a group identifier, this predicate unifies Subgroups with the list of groups
+      that are directly contained within the specified Group.
+*/
 subgroups(G,S):-
-    findall(D,(anc_of(D,G),clioGroup(D,_)),S),!.
+   findall(D,(anc_of(D,G),clioGroup(D,_)),S),!.
+
+extend_groups(G,S):-
+   findall(D, externals:clio_extends(D,G),S),
+   !.
+
+
 %******************************************************
 %  element_of(E,G):- checks to which group belongs
 %    element G.
@@ -210,6 +225,10 @@ create_groups([]):-!.
 create_groups([Group|OtherGroups]):-
    create_group(Group),
    create_groups(OtherGroups),!.
+create_groups(Group):-
+   atomic(Group), % Group is an atom %
+   create_group(Group),!.
+
 create_group(Group):-
    make_group(Group),
    set_group_defaults(Group),!.
@@ -294,7 +313,11 @@ get_group_prop(G,P,V):-
 %*************************************************************
 % %
 set_groups_prop(L,P,V):-
+   is_list(L),
    forall(member(G,L),set_group_prop(G,P,V)),!.
+set_groups_prop(A,P,V):-
+   atomic(A),
+   set_group_prop(A,P,V),!.
 
 %*************************************************************
 % set_element_prop(Element,Property,Value)
@@ -487,10 +510,11 @@ copy_element(E,H):- %copies properties in H to E %
 % %
 copy_fons_g(Group,Groups):-
    clioGroup(Group,__ID),
-   forall(member(G,Groups),copy_group(G,Group)),!.
+   (is_list(Groups) -> LGroups = Groups; LGroups = [Groups]),
+   forall(member(G,LGroups),copy_group(G,Group)),!.
 copy_fons_g(Group,__Groups):-
    \+ clioGroup(Group,__ID),
-   warning_out(['copy_fons - undefined fons group',Group]),!.
+   warning_out(['copy_fons - undefined fons/source group',Group]),!.
 
 %*************************************************************
 % copy_fons_e(Element,Elements)
@@ -501,9 +525,11 @@ copy_fons_g(Group,__Groups):-
 copy_fons_e(Element,Elements):-
    clioElement(Element,__ID),
    forall(member(E,Elements),copy_element(E,Element)),!.
-copy_fons_e(Element,__Elements):-
+copy_fons_e(Element,Elements):-
    \+ clioElement(Element,__ID),
-   warning_out('copy_fons - undefined fons element'),!.
+   get_value(stru_file,StruFile),
+   atomic_list_concat(Elements,', ',AElement),
+   warning_out([' Undefined source/fons element "', Element, '"" in definition of ', AElement],[file(StruFile)]),!.
 
 %*************************************************************
 % all_groups(List) - list of all the currently defined groups
@@ -522,7 +548,7 @@ all_elements(List):-findall(E,clioElement(E,_),List),!.
 %******************************************************
 %  %
 show_stru:-
-    clioStru(S),
+    clioStru(S),!,
     show_structure(S).
 show_stru:- \+ clioStru(__S),
           error_out('**No structure definition.'),!.
@@ -533,13 +559,19 @@ show_structure(S):-
     write('document: '),writeln(D),
     shgroup(D,1),
     show_elements.
+
+show_group(G):-
+      shgroup(G,1).
+
 shgroup(G,N):-
     clioGroup(G,ID),
     tab(N),write(G),
     N1 is N+5,show_props(ID,N1),
     subgroups(G,L),
-    tab(N1),writelist0ln(['Subgroups of ',G,': ',L]),
-    shgroups(L,N1),
+    nl,tab(N1),writelistln(["Contains: "| L]),
+    extend_groups(G,ExtGroups),
+    tab(N1), writelistln(["Extended by: "| ExtGroups]),
+    nl,shgroups(L,N1),
     tab(N),write('End '),writeln(G).
 shgroups([],_):-!.
 shgroups([G|R],N):-
