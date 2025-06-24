@@ -1,4 +1,4 @@
-- path: /kleio-home/structures/gacto2.str
+- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
 - element:
     description: 'Any number '
     identification: non
@@ -53,7 +53,9 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte
+      $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
     identification: sic
     name: id
     prefix: non
@@ -89,13 +91,13 @@
     prefix: non
     suffix: non
 - element:
-    description:
+    description: 'cota ou outra referencia de localizacao da fonte '
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description:
+    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
     identification: non
     name: loc
     prefix: non
@@ -932,7 +934,7 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
     identification: non
     name: tipo
     prefix: non
@@ -1363,7 +1365,7 @@
     - dia
     - mes
     - ano
-    - fol
+    - folio
     idprefix: his
     name: devassa
     position:

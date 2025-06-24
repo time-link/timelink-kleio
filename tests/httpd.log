@@ -6678,3 +6678,7 @@ completed(4, 0.0007169999999999989, 134, 200, ok).
 completed(5, 0.0006899999999999996, 134, 200, ok).
 /*Fri Jun  6 11:55:49 2025*/ request(6, 1749182149.422, [peer(ip(127,0,0,1)),method(post),request_uri('/json/'),path('/json/'),http_version(1-1),content_length(213),content_type('application/json; charset=utf-8'),host(localhost),port(8088),connection(close)]).
 completed(6, 0.001413000000000001, 134, 200, ok).
+server(started, 1750740033).
+/*Tue Jun 24 12:40:33 2025*/ request(1, 1750740033.462, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/sources/test_translations?&id=1234&echo=no&recurse=yes'),path('/rest/translations/sources/test_translations'),search(['&id'='1234',echo=no,recurse=yes]),http_version(1-1),host(localhost),port(8088),user_agent('curl/8.7.1'),authorization('Bearer admintoken'),content_length(0),content_type('application/x-www-form-urlencoded')]).
+completed(1, 0.019996, 3338, 200, ok).
+server(stopped, 1750740389).
