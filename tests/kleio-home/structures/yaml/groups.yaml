@@ -217,11 +217,28 @@
     idprefix: att
     position: [type, value, date]
 - group:
+    name: ls
+    description: "alias for attribute"
+    source: attribute
+- group:
+    name: attr
+    description: "alias for attribute"
+    source: attribute
+- group:
+    name: atr
+    description: "alias for attribute"
+    source: attribute
+- group:
     name: relation
     description: " "
     also: [obs, date, id]
     guaranteed: [type, value, destname, destination]
+    position: [type, value, destname, destination, date]
     idprefix: rel
+- group:
+    name: rel
+    description: "alias for relation"
+    source: relation
 - group:
     name: end
     description: " "

@@ -123,14 +123,15 @@ badpar(C,P)-->[(_,P)],{(params(C,L),\+ member_check(P,L))}.
 
 params(nota,_).
 params(nomino,
-      [nomen,primum,modus,antiquum,scribe,plures,identificatio]).
+      [nomen,primum,modus,antiquum,scribe,plures,identificatio,nota]).
 params(terminus,
       [nomen,modus,primum,secundum,ordo,fons,prae,post,
        pars,sine,signa,forma,ceteri,identificatio,cumule,
-       solum]).
+       solum, nota]).
 params(pars,
      [nomen,ordo,sequentian,identificatio,signum,fons,
-      prae,post,locus, ceteri,certe,pars,solum,semper,repetitio]).
+      prae,post,locus, ceteri,certe,pars,solum,semper,
+      nota,repetitio]).
 params(exitus,[nomen]).
 
 
@@ -374,9 +375,11 @@ engkw(negate,       negatio).
 engkw(name,         nomen).
 engkw(database,     nomino).
 engkw(note,         nota).
+engkw(description,  nota).
 engkw(options,      optiones).
 engkw(order,        ordo).
 engkw(part,         pars).
+engkw(group,         pars).
 engkw(more,         plures).
 engkw(suffix,       post).
 engkw(prefix,       prae).
@@ -401,6 +404,7 @@ engkw(terms,        nomina).
 engkw(names,        nomina).
 engkw(structure,    structura).
 engkw(parts,        partes).
+engkw(contains,      pars).
 engkw(text,         lingua).
 engkw(date,         tempora).
 engkw(number,       numerus).

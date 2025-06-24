@@ -217,7 +217,7 @@ db_close:-
   errors:error_count(ErrCount),
   errors:warning_count(WarnCount),
   ( ErrCount = 0 -> rename_files(ClioFile,SOURCE,Original,Last);true),
-  persistence:get_value(report,ReportFile),
+  (persistence:get_value(report,ReportFile); ReportFile = '<console>'),
   % Generate a JSON file with information on the related files
   FileDict = files{stru:StruFile,
                    stru_rpt:SrptPath,

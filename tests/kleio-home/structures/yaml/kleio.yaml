@@ -1,0 +1,13 @@
+- file:
+    name: kleio.yaml
+    description: Just the Kleio group for tests
+
+- group:
+    name: kleio
+    description: |
+        This is the top level group of Kleio files.
+
+    also: [structure, translator, autorels, obs, prefix, translations]
+    idprefix: kle
+    part: [historical-source, authority-register, link, property]
+    position: [structure, translator, obs]

@@ -1,57 +1,111 @@
+- database:
+    name: devassas
+    first: kleio
+
+- include: system.yaml
+- include: pt-elements.yaml
+- include: pt-actors.yaml
+
+- element:
+    name: [visdor,secretario,inquiridor,escrivao]
+    source: name
+- element:
+    name: folio
+    source: page
+- element:
+    name: idcaso
+    source: id
+- element:
+    name: literal
+    source: obs
+- element:
+    name: origem
+    source: obs
+
 - group:
     name: devassa
     description: "Devassas temporais nas visitas pastorais \n"
     source: pt-acto
-    also: [folio, visdor, secretario, obs]
-    arbitrary: [testo, testa, referido]
-    guaranteed: [id, dia, mes, ano, fol]
-    idprefix: his
+    also: [folio, fol, visdor, secretario, obs]
+    contains: [testo, testa, referido]
+    guaranteed: [id, dia, mes, ano, folio]
     position: [id, dia, mes, ano]
+
+- group:
+    name: testo
+    source: actorm
+    guaranteed:
+    - nome
+    position:
+    - nome
+    - sexo
+    repeat:
+    - acus
+    - acusa
+    - ls
+    - rel
+
+    idprefix: test
+- group:
+    name: testa
+    source: actorf
+    position:
+    - nome
+    - sexo
+    part:
+    - acus
+    - acusa
+    idprefix: test
     prefix: non
     suffix: non
 - group:
+    description: 'Acusação em devassa'
     name: acus
-    description: '  '
     source: object
-    also: [literal, origem, obs, id]
-    arbitrary: [atr, ls, rel]
     guaranteed: [idcaso]
-    idprefix: obj
-    part: [caso]
     position: [idcaso, obs]
-    prefix: non
-    suffix: non
+    also: [literal, origem, obs, id]
+    contains: [caso]
 - group:
     name: acusa
-    description: '  '
+    description: 'Sinónimo de "acus"  '
     source: acus
-    also: [literal, origem, obs, id]
-    arbitrary: [atr, ls, rel]
-    guaranteed: [idcaso]
-    idprefix: obj
-    part: [caso]
-    position: [idcaso, obs]
-    prefix: non
-    suffix: non
 - group:
+    description: 'Caso denunciado em devassa'
     name: caso
-    description: '  '
     source: object
-    also: [obs]
-    arbitrary: [acusado, acusada, referido, referida]
-    guaranteed: [id, tipo]
-    idprefix: obj
     position: [id, tipo]
-    prefix: non
-    suffix: non
+    also: [obs]
+    guaranteed: [id, tipo]
+    contains: [acusado, acusada, referido, referida]
 - group:
-    name: denuncia
     description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao\n"
     source: pt-acto
+    name: denuncia
     also: [inquiridor, escrivao, obs]
-    arbitrary: [denunciante]
     guaranteed: [id, dia, mes, ano, fol]
-    idprefix: his
     position: [id, dia, mes, ano]
-    prefix: non
-    suffix: non
+    contains: [denunciante]
+- group:
+    name: acusado
+    description: "Pessoa acusada num caso"
+    source: actorm
+    position: [nome]
+    also: [obs, id]
+- group:
+    name: acusada
+    description: "Pessoa acusada num caso"
+    source: actorf
+    position: [nome]
+    also: [obs, id]
+
+# este deviam estar em pt-actors.yaml
+- group:
+    name: referido
+    description: "Homem referida num caso"
+    source: male
+- group:
+    name: referida
+    description: "Mulher referida num caso"
+    source: female
+

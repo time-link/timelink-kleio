@@ -1,4 +1,4 @@
-- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
+- path: /kleio-home/structures/gacto2.str
 - element:
     description: 'Any number '
     identification: non
@@ -53,9 +53,7 @@
     suffix: non
     type: numerus
 - element:
-    description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
-      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte
-      $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
+    description:
     identification: sic
     name: id
     prefix: non

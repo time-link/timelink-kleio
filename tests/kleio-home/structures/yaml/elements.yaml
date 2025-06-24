@@ -19,7 +19,11 @@
         parameter. This will allow better processing of
         database mappings.
 
-        New eleme
+        For instance,
+
+        element:
+            name: comment
+            source: obs
 
         To process sources in other languages new elements
         should be defined using the ones bellow as source.
@@ -32,7 +36,6 @@
 
 # Basic data types. Usefull to define the type of data field in
 #      the destination database.
-
 - element:
     name: number
     description: 'Any number '
@@ -126,11 +129,11 @@
     description: The value of an attribute or relation
 - element:
     name: class
-    description:
+    description: The class of an entity (e.g. person, object)
 - element:
     name: loc
     description: >
-        Location of an entity or acts.
+        Location (place) of an entity or act.
         Sometimes in sources it is used to register the location
         of the source (archive, library, etc).
 

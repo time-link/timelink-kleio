@@ -1,6 +1,6 @@
 
 :-module(struCode,[
-    
+
     initStru/1,
     closeStru/1,
     init_command/1,
@@ -16,7 +16,7 @@
 
   This file contains code called by the DCG grammar that
     analyses strucutre definitions in the stru syntax window
-    
+
     The processing of commands stores temporary information
     about commands and also creates an internal representation
     of the structure. This temporary information is stored
@@ -25,24 +25,24 @@
     set to ok ot notOk by check_complete. The values of the
     parameters of the nomino command are stored as properties
     associated to the 'nomino' atom.
- 
+
   Predicates:
 
   * initStru(_): initialization predicate for structures
   * closeStru(_): 'clean-up' predicate for structures.
   * init_comand(C) initializes the processing of command C
-  * close_command(C,S): ends processing of command and 
+  * close_command(C,S): ends processing of command and
     returns status S, makes completeness checks.
-    
+
   * set_defaults(Command) sets the default values
         for parameters of the command and deletes
        previous values.
-    
+
   * execParam(C,P,V) takes appropriate action for each param-value pair
-    
-  * check_complete(CMD,Result) -- checks if CMD has all the 
+
+  * check_complete(CMD,Result) -- checks if CMD has all the
       params it must have it returns OK in result
-       
+
 
 */
 
@@ -57,7 +57,7 @@
 % same as dynamic but thread safe.
 ?-thread_local(cmd/2).
 %*************************************************************
-% 
+%
 % initStru: initializes the processing of strucutre def
 %******************************************************
 %  %
@@ -68,7 +68,7 @@ initStru(_):-
    !.
 
   %%  clean_commands is det.
-  %  erases any temporary command information 
+  %  erases any temporary command information
   %
   clean_commands:-
     retractall(cmd(_,_)).
@@ -89,14 +89,14 @@ closeStru(_):-
 %******************************************************
 %  %
 init_command(C):-
-   del_props(C), 
+   del_props(C),
    set_defaults(C),!.
 
 %******************************************************
-%  close_command(C,S): ends processing of command and 
+%  close_command(C,S): ends processing of command and
 %    returns status S
 %
-%  nomino: create a structure clause and 
+%  nomino: create a structure clause and
 %    clean nomino props
 %******************************************************
 %  %
@@ -104,7 +104,7 @@ init_command(C):-
 close_command(nomino,S):-
     check_complete(nomino,S),
     %report([write(' nomino command'),write(S)]),
-    create_stru(S), % store structure information%
+    dataDictionary:create_stru(S), % store structure information%
     del_props(nomino),!.
 close_command(pars,S):-
     check_complete(pars,S),
@@ -157,7 +157,7 @@ set_defaults(exitus):-!.
 %******************************************************
 %  %
 %******************************************************
-%  
+%
 % a group of parameters have their values stored as properties
 %   for the nomino nomen filename %
 % primum = document name %
@@ -166,7 +166,9 @@ set_defaults(exitus):-!.
 % identificatio = first entry of first element is id %
 
 execParam(nomino,Param,ParValue):-
-   member_check(Param,[nomen,primum,modus,antiquum,identificatio,plures]),
+   member_check(Param,[nomen,primum,modus,antiquum,
+                        identificatio,plures,nota]),
+
    set_prop(nomino,Param,ParValue),!.
 
 % the scribe parameter can appear several times %
@@ -177,7 +179,8 @@ execParam(nomino,scribe,Type):-
 % default: unknown nomino param %
 execParam(nomino,P,V):-
  \+ member_check(P,
-        [nomen,primum,modus,antiquum,identificatio,scribe,plures]),
+        [nomen,primum,modus,antiquum,identificatio,
+        scribe,plures,nota]),
    error_out(['** Error: nomino param:',P,'=',V]),!.
 
 
@@ -185,7 +188,7 @@ execParam(nomino,P,V):-
 % execParam pars directive
 %*************************************************************
 %/
-  
+
 execParam(pars,nomen,NameList):-
    set_prop(pars,nomen,NameList),
    %report([writelist(['Reading pars for:'|NameList])]),
@@ -199,41 +202,44 @@ execParam(pars,Param,_):-
    Param \= nomen,
    \+ get_prop(pars,nomen,_), % no nomen, nothing else works %
    error_out('** Nomen parameter needed in pars before other parameters'),!.
- 
+
 execParam(pars,Param,Value):-
    member_check(Param,[ordo,sequentia,identificatio,post,prae,locus,signum,
-             ceteri,certe,pars,semper,repetitio]),
+             ceteri,certe,pars,semper,repetitio,nota]),
    get_prop(pars,nomen,Groups),        % get current group names%
-   set_groups_prop(Groups,Param,Value),% store the values %    
+   dataDictionary:set_groups_prop(Groups,Param,Value),% store the values %
    !.
 
 %*************************************************************
 % execParam pars fons parameter
-%%
+%
 execParam(pars,fons,Group):-
-   
-   get_prop(pars,nomen,Groups),        % get current group names%
-  set_groups_prop(Groups,fons,Group),  % we store the fons parameter (new AUG 97 %
-   copy_fons_g(Group,Groups), %copy the fons group top current ones %
-   !.
+   execFons(Group),!.
+execParam(pars,fons,Group):-
+   report([tab(3),write('Error processing fons/source value '),
+            write(Group),nl]),!.
+
 %*************************************************************
 % default: unknown pars param %
 
 execParam(pars,P,V):-
- \+ member_check(P,[nomen,ordo,sequentia,identificatio,post,prae,locus,
-             ceteri,certe,fons,signum]),
+ \+ member_check(P,[nomen,ordo,sequentia,identificatio,
+                    post,prae,locus,
+                    ceteri,certe,fons,signum,
+                    nota]),
    report([tab(3),write('Error: unknown pars param:'),
-   write(P),write('='),write(V),nl]),!.
+            write(P),write('='),write(V),nl]),!.
 
 %*************************************************************
 % execParam terminus directive
 %*************************************************************
 %/
-  
+
 execParam(terminus,nomen,NameList):-
-   set_prop(terminus,nomen,NameList),
+   (is_list(NameList) -> NameList2 = NameList ; NameList2 = [NameList]),
+   set_prop(terminus,nomen,NameList2),
    %report([writelist(['Reading terminus for:'|NameList])]),
-   create_elements(NameList),!.
+   create_elements(NameList2),!.
 %*************************************************************
 % a group of params have their value stored as properties
 % of the groups named in nomen parameter
@@ -243,12 +249,12 @@ execParam(terminus,Param,_):-
    Param \= nomen,
    \+ get_prop(terminus,nomen,_), % no nomen, nothing else works %
    error_out('** Nomen parameter needed in terminus before other parameters'),!.
- 
+
 execParam(terminus,Param,Value):-
    member_check(Param,[modus,primum,secundum,ordo,post,prae,pars,sine,signa,
-                       forma,ceteri,identificatio,cumule,solum]),
+                       forma,ceteri,identificatio,cumule,solum,nota]),
    get_prop(terminus,nomen,Elements), % get current element names%
-   set_elements_prop(Elements,Param,Value),% store the values %    
+   set_elements_prop(Elements,Param,Value),% store the values %
    !.
 
 %*************************************************************
@@ -264,7 +270,7 @@ execParam(terminus,fons,Element):-
 
 execParam(terminus,P,V):-
  \+ member_check(P,[modus,primum,secundum,ordo,post,fons,prae,pars,sine,signa,
-                       forma,ceteri,identificatio,cumule,solum]),
+                       forma,ceteri,identificatio,cumule,solum,nota]),
    error_out(['Error: unknown terminus param:',P,'=',V]),!.
 
 %**************************************************************
@@ -273,22 +279,31 @@ execParam(terminus,P,V):-
 execParam(exitus,nomen,N):-
     clioStru(M),
     (M = N -> true; error_out('bad nomen parameter of the exitus command'-N)),!.
+
+% execFons
+execFons(Group):-
+   get_prop(pars,nomen,Groups), % get current group names%
+   dataDictionary:set_groups_prop(Groups,fons,Group),  % we store the fons parameter (new AUG 97 %
+   copy_fons_g(Group,Groups), %copy the fons group top current ones %
+   !.
+
+
 %*************************************************************
-% 
+%
 %***********************************************************
-% check_complete(CMD,Result) -- checks if CMD has all the 
+% check_complete(CMD,Result) -- checks if CMD has all the
 %      params it must have it returns OK in result
 %    if the command has not all the params then it returns
 %    notOk and set the property status  to
-%    notOk. 
+%    notOk.
 %***********************************************************
-%% 
+%%
 check_complete(CMD,Result):-
    member(CMD,[nomino,pars,terminus]),
    requiredParams(CMD,List),
    missingParam(CMD,List),
    (get_prop(CMD,status,Result); Result = ok),!.
-   
+
 check_complete(CMD, notOk):-
    \+ member(CMD,[nomino,pars]),
    report([write('Completeness check not implemented for: '),
@@ -334,7 +349,7 @@ clean_cached_command:-
     retract(cmd(_,_)).
 
 % vim: filetype=prolog ts=3
-% $Date$ 
+% $Date$
 % $Author$
 % $Id$
 % $Log: struCode.pl,v $

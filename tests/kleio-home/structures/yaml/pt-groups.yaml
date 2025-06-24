@@ -4,12 +4,12 @@
     name: fonte
     description: "Este constitui o grupo principal para os documentos historicos portugueses. Admite qualquer dos actos definidos aqui. \nid: elemento obrigatorio ,identifica unicamente a fonte na base de dados ,"
     source: historical-source
+    position: [id, year, type, ref]
     also: [tipo, loc, localizacao, ref, data, ano, obs, substitui]
     arbitrary: [crono, cevent, acto, amz, nom, carta, pauta, hab, proc, beneficio, chanc, encarte, rol, escritura, adenda, arrolamento, cas, bap, b, termo, obito, o, ar, lista, rmerce, merce, let, lbach, capela, gov, familia, po, fim, devassa, cartaperdao, denuncia, matricula, ordenancas, milicias, memoria58, apontamentosd, eleicao, juramento, lc, crisma, docregio, docpontificio, docepiscopal, automed, pas, lcc, integr, movacao, geodesc]
     guaranteed: [id]
     idprefix: his
     part: [historical-act, event]
-    position: [id, year, type, ref]
     prefix: non
     suffix: non
 
