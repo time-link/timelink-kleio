@@ -1,0 +1,258 @@
+- include: elements.yaml
+- file:
+    name: groups.yaml
+    description: |
+        This file contains the definitions of the core groups
+        used in the Kleio schemas.
+
+        The groups are defined in a YAML list, each group
+        being a dictionary with the following keys:
+
+        - name: the name of the group
+        - description: a description of the group
+        - position: a list of elements that can be registred without specifying the
+                    name of the element, for instance
+
+                    group:
+                        name: person
+                        position: [id, name, sex]
+                        guaranteed: [id, name, sex]
+
+                    This means that the following is valid:
+
+                        person$id001/João/M
+
+        - guaranteed: a list of elements that must be present
+        - also: a list of elements that can optionally be present
+        - idprefix: the prefix for the ids of the group
+        - part: a list of others groups that can be contained in this groups.
+        - source: the group that this groups extends. This group keeps the
+                    value of the keys of the source group, except if overriden
+
+- group:
+    name: kleio
+    description: |
+        This is the top level group of Kleio files.
+
+    also: [structure, translator, autorels, obs, prefix, translations]
+    idprefix: kle
+    part: [historical-source, authority-register, link, property]
+    position: [structure, translator, obs]
+
+- group:
+    name: historical-source
+    description: |
+
+        Main group to register historical sources.
+        A historical source is a document or a set of documents
+        that are the source of historical information.
+
+        Specific types of sources are defined by extending this group.
+
+    also: [type, date, year, loc, ref, obs, replace, kleiofile]
+    guaranteed: [id]
+    idprefix: his
+    part: [historical-act, event]
+    position: [id, year, type, ref]
+- group:
+    name: geoentity
+    description: "GeoEntity :a spatial entity. An entity that represents a spatial entity in the sense of a conceptual representation of space. A geo-entity is not an object that has a particular position in place. It is rather something like the parish of X ,the place Y ,the region W. \n"
+    also: [type, id, obs, same_as, xsame_as]
+    idprefix: geo
+    part: [ls, atr, rel]
+    position: [name]
+- group:
+    name: place
+    description: " "
+    also: [type, id, obs, same_as, xsame_as]
+    idprefix: geo
+    part: [ls, atr, rel]
+    position: [name]
+    source: geoentity
+- group:
+    name: authority-register
+    description: "a register of authority-records \n"
+    also: [date, user, dbase]
+    guaranteed: [id, name, date, user, dbase]
+    idprefix: aut
+    part: [authority-record]
+    position: [id, name]
+- group:
+    name: identifications
+    description: "Identifications are authority-registers for record linking. They contain real-entity records (people or objects )that aggregate occurrences in the source pertaining to the same person or entity. To keep imported records separate from local ones use a different user. \n"
+    also: [obs]
+    guaranteed: [id, name, date, user, dbase, mode]
+    idprefix: aut
+    part: [rentity, rperson, robject]
+    position: [id, name]
+    source: authority-register
+- group:
+    name: link
+    description: "Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\" And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 \n"
+    also: [id, obs]
+    idprefix: lin
+    position: [shortname, urlpattern]
+- group:
+    name: property
+    description: "A property of the file for the kleio parser. Properties are not stored in the database. They affect the parsing of the file. Examples :property $multiple-entry-flag /124 #ascii for pipe char \n"
+    also: [id, obs]
+    idprefix: pro
+    position: [name, value]
+- group:
+    name: rentity
+    description: "Rentity contains information about a real entity. Defines the standart name for the entity and what are the occurences ,in `occ `subgroups. \n"
+    also: [status, user, obs]
+    guaranteed: [id, description, type]
+    idprefix: ren
+    part: [occ]
+    position: [id, description, type]
+- group:
+    name: rperson
+    description: "contains information about a real person. \n"
+    also: [status, user, obs]
+    guaranteed: [id, sname, sex]
+    idprefix: rpe
+    part: [occ, ls, atr, rel]
+    position: [id, sname, sex]
+- group:
+    name: robject
+    description: "contains information about a real object. \n"
+    also: [status, user, obs]
+    guaranteed: [id, sname, type]
+    idprefix: rob
+    part: [occ, ls, atr, rel]
+    position: [id, sname, type]
+- group:
+    name: occ
+    description: "contains the ids of the occurrences of a real entity \n"
+    also: [name, atype, func, date, id, obs]
+    guaranteed: [occurrence]
+    idprefix: occ
+    position: [occurrence, atype, func, date, name]
+- group:
+    name: historical-act
+    description: "Represents an historical act, i.e. a record of an event ,something that happened at a moment and place in time. This form is used for records such as parish records notarial acts. \ndate: date in kleio format YYYYMMMDD ou YYYY-Month-Day "
+    also: [loc, ref, obs, day, month, year]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    guaranteed: [id, type, date]
+    idprefix: his
+    position: [id, type, date]
+- group:
+    name: event
+    description: "Something that happened. Used for registering events mentioned in letters ,chronicles ,interviews ,not in formal records. \n"
+    also: [loc, ref, obs, day, month, year]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    guaranteed: [description]
+    idprefix: his
+    part: [person]
+    position: [description, day, month, year]
+    source: historical-act
+- group:
+    name: cevent
+    description: "chronology event ,with date upfront ,followed by place (or context )and a description \n"
+    also: [id, obs, same_as, xsame_as]
+    arbitrary: [person, object, geoentity, abstraction, ls, atr, rel]
+    guaranteed: [data, loc, description]
+    idprefix: his
+    part: [person, topic, place]
+    position: [data, loc, description]
+    source: event
+- group:
+    name: person
+    description: " "
+    also: [id, obs, same_as, xsame_as]
+    arbitrary: [atr, rel, ls]
+    guaranteed: [name, sex]
+    idprefix: per
+    position: [name, sex, id, same_as, xsame_as]
+- group:
+    name: female
+    description: " "
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, rel, ls]
+    guaranteed: [name]
+    idprefix: per
+    position: [name, sex]
+    source: person
+- group:
+    name: male
+    description: " "
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, rel, ls]
+    guaranteed: [name]
+    idprefix: per
+    position: [name, sex]
+    source: person
+- group:
+    name: object
+    description: " "
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [name]
+    idprefix: obj
+    position: [name, type]
+- group:
+    name: abstraction
+    description: " "
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [name]
+    idprefix: obj
+    position: [name, type]
+    source: object
+- group:
+    name: topic
+    description: "topics ,tags or keywords \n"
+    also: [obs, id]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [name]
+    idprefix: obj
+    position: [name, description]
+    source: abstraction
+- group:
+    name: attribute
+    description: " "
+    also: [obs, date, id]
+    guaranteed: [type, value]
+    idprefix: att
+    position: [type, value, date]
+- group:
+    name: ls
+    description: "alias for attribute"
+    source: attribute
+- group:
+    name: attr
+    description: "alias for attribute"
+    source: attribute
+- group:
+    name: atr
+    description: "alias for attribute"
+    source: attribute
+- group:
+    name: relation
+    description: " "
+    also: [obs, date, id]
+    guaranteed: [type, value, destname, destination]
+    position: [type, value, destname, destination, date]
+    idprefix: rel
+- group:
+    name: rel
+    description: "alias for relation"
+    source: relation
+- group:
+    name: end
+    description: " "
+    also: [id]
+    idprefix: end
+    position: [id]
+- group:
+    name: group-element
+    description: " "
+    also: [obs]
+    guaranteed: [value]
+    idprefix: gro
+    position: [value]
+- group:
+    name: relation-type
+    description: " "
+    idprefix: rel

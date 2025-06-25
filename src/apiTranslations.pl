@@ -332,8 +332,14 @@ get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
 match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
     select('sources',Dirs,'structures',Dirs1),
     atomic_list_concat(Dirs1,'/',Path),
-    atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
-    exists_file(StruFile),!.
+    (
+        atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
+        exists_file(StruFile)
+    ;
+        atomic_list_concat([Path,'/',BaseNameNoExt,'.yaml'],'',StruFile),
+        exists_file(StruFile)
+    ),
+    !.
 
 % match cli file sources/.../dir/xpto.cli with structures/dir.str
 match_stru_to_file(Dirs,_,StruFile):-
@@ -343,11 +349,23 @@ match_stru_to_file(Dirs,_,StruFile):-
     % get path to structures directory depth first
     append(_,[structures|PathToStructures],RStruPath),
     reverse(PathToStructures,SubPath),
-    % add file with lastdir name and extension str
+    % add file with lastdir name and extension str or yaml
     file_name_extension(LastDir,'str',DirStru),
-    append(SubPath,[structures,DirStru],Path),
-    atomic_list_concat(Path,'/',StruFile),
-    exists_file(StruFile),!.
+    append(SubPath,[structures,DirStru],PathStr),
+    atomic_list_concat(PathStr,'/',StruFileStr),
+    exists_file(StruFileStr),!,
+    StruFile = StruFileStr.
+match_stru_to_file(Dirs,_,StruFile):-
+    last(Dirs,LastDir),
+    select('sources',Dirs,'structures',StruPath),
+    reverse(StruPath,RStruPath),
+    append(_,[structures|PathToStructures],RStruPath),
+    reverse(PathToStructures,SubPath),
+    file_name_extension(LastDir,'yaml',DirYaml),
+    append(SubPath,[structures,DirYaml],PathYaml),
+    atomic_list_concat(PathYaml,'/',StruFileYaml),
+    exists_file(StruFileYaml),!,
+    StruFile = StruFileYaml.
 
 % match cli file with gacto2.str or sources.str in structures directory depth first
 match_stru_to_file(Dirs,_,StruFile):-
@@ -357,9 +375,13 @@ match_stru_to_file(Dirs,_,StruFile):-
     append(_,RSubPath,RStruPath),
     reverse(RSubPath,SubPath),
     atomic_list_concat(SubPath,'/',Path),
-    (atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
+    (
+        atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
     ;
-    atomic_list_concat([Path,'/','sources.str'],'',StruFile)),
+        atomic_list_concat([Path,'/','sources.str'],'',StruFile)
+    ;
+        atomic_list_concat([Path,'/','system.yaml'],'',StruFile)
+    ),
     exists_file(StruFile),!.
 
 

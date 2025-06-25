@@ -142,7 +142,7 @@ normalize_str_path(File,Path):-
 
 % resolve system dir
 create_str_path([system|MoreDirs],[SysStruDir|MoreDirs]):-!,
-    kleioFiles:kleio_stru_dir(SysStruDir).
+    kleio_stru_dir(SysStruDir).
 
 % resolve structures dir
 create_str_path([structures|MoreDirs],[LocalStruDir|MoreDirs]):-!,

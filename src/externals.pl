@@ -24,7 +24,7 @@
 	]).
 /** <module> External interface (API) for the Clio export modules
 
-The call back predicates made available to export modules by the Clio 
+The call back predicates made available to export modules by the Clio
 translator are the following:
 
 * Access to the current group
@@ -37,7 +37,7 @@ translator are the following:
 		* clio_elements(Els) returns the list of the names of available
                           elements in the current group
 		* clio_aspect(Aspect,Element,Info) Aspect must be one of
-                          (core, original, comment), Element the 
+                          (core, original, comment), Element the
                           name of an element. Info is a variable
                           that will be bound to the Aspect of Element
                           in the current group.
@@ -50,7 +50,7 @@ translator are the following:
 						  to find in the current group elements the base element
 						  it is looking for. This is useful to find an expected
 						  element even if the source used a different name for it.
-						  
+
 
 * Processing information
 		* clio_data_file(File) the current data file name.
@@ -59,7 +59,7 @@ translator are the following:
                              processed by the translator.
 		* clio_report(R):- outputs to Clio current le. R is a list
                             standard prolog output predicates (write, nl,tab)
-                            This list is executed by clio_report once sending 
+                            This list is executed by clio_report once sending
                             the output to the screen and a second time sending
                             the output to the current Clio report file.
 
@@ -78,11 +78,11 @@ translator are the following:
 		* clio_group_param(Group,Param,Value) Returns Value given Group and Param
                             This allows inspection of the group definition as stored
                             during processing of the structure (added AUG 97)
- 
+
 
 		* clio_element_param(Element,Param,Value) Returns Value given Element and Param.
 									 This allows inspection of the structure.
-		* clio_element_super(E,G) G extends directly E, e.g. E appears in fons/source 
+		* clio_element_super(E,G) G extends directly E, e.g. E appears in fons/source
                               parameter of G.
 								of G. E can be though as the super class of G.
 		* clio_element_extends(G,E) Same as clio_element_super(E,G) but backtracks giving sources
@@ -90,9 +90,9 @@ translator are the following:
 		* clio_element_bclass(G,B) B is the base class of G, i.e. the root of the source/fons
 									hierarchy for G. If G that not extend any other group
 									then G is the base class of itself.
-     
 
- @tbd Get more consistent naming of predicates so that data dictionnary predicates are more easily 
+
+ @tbd Get more consistent naming of predicates so that data dictionnary predicates are more easily
  		distinguished from current group predicates. Also this could be made available externally via rest.
 */
 
@@ -114,7 +114,7 @@ clio_data_line(N,L):- get_prop(line,number,N),
                       get_prop(line,text,L).
 
 % processing information
-clio_report(R):-report(R). 
+clio_report(R):-report(R).
 clio_data_file(File):-get_value(data_file,File).
 clio_stru_file(File):-get_value(stru_file,File).
 
@@ -148,18 +148,19 @@ clio_element_bclass(Element,Bclass) :-
 		\+ clio_element_super(_,Bclass),!.
 clio_element_bclass(Element,Element):-!.
 
+
 /**
 * clio_belement_aspect(+Aspect:atom,+BaseElement:atom,-Content:list) is det
-* 
+*
 * @param Aspect atom, one of (core, original, comment)
 * @param BaseElement atom, the name of a base element, e.g. xsame_as
 * @param Content list, the content of the aspect for the base element
-* 
+*
 * A base element is an element that is extended by other elements and
 * is normally associated with specific semantics during translation.
-* E.g. xsame_as (external same as) is assumed to contain the id of a 
+* E.g. xsame_as (external same as) is assumed to contain the id of a
 * group that refers to the same entity as the current group in another file.
-* 
+*
 * Structure files allow the definition of elements that extend other elements
 * through the 'fons/source' parameter. This is used to make a version of an element
 * localized to a certain language, or to improve legibility of the transcription
@@ -194,7 +195,7 @@ clio_belement_aspect(Aspect,BaseElement,Content) :-
 clio_belement_aspect(_,_,[]):- !.
 
 
-		
+
 
 % vim: filetype=prolog ts=3
 % $Date$

@@ -337,7 +337,7 @@ test_case(translations,File,Stru):-
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
-translate_file('sources/api/bugs/bugs.cli',false).
+translate_file('sources/api/bugs/bugs.cli',true).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/varia/nommiz.cli',true).
@@ -347,6 +347,7 @@ translate_file('sources/api/issues/issue21.cli',false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
+%
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
