@@ -180,7 +180,14 @@ db_close:-
   do_auto_rels,  do_auto_rels2,
   process_cached_same_as,
   (get_value(clioPP,true)->clioPP_close;true),
-  get_prop(kleio,groups,Groups),
+  setof(S,
+          G^(
+            get_prop(kleio,groups,Gs),
+            member(G,Gs),
+            externals:clio_extends(G,S)
+            ),
+          Supers),
+  append(Supers,Gs,Groups),
   report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
