@@ -180,18 +180,12 @@ db_close:-
   do_auto_rels,  do_auto_rels2,
   process_cached_same_as,
   (get_value(clioPP,true)->clioPP_close;true),
-  setof(S,
-          G^(
-            get_prop(kleio,groups,Gs),
-            member(G,Gs),
-            externals:clio_extends(G,S)
-            ),
-          Supers),
-  append(Supers,Gs,Groups),
   report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
-  report([write('Groups in this file:'), writeln(Groups)]),
+  get_prop(kleio,groups,ExplicitGroups),
+  dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),
+  report([write('Groups in this file:'), writeln(OrderedGroups)]),
   report([writeln('Translation finished.')]),
   xml_nl,
   xml_close.

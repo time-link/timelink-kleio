@@ -22,6 +22,7 @@
         set_element_defaults/1,
         all_groups/1,
         all_elements/1,
+        classes_topological_order/2,
         show_stru/0,
         show_groups/0,
         show_elements/0,
@@ -88,6 +89,8 @@
 :-use_module(struSyntax).
 :-use_module(library(http/json)).
 :-use_module(library(yaml)).
+:-use_module(library(ugraphs)).
+:-use_module(library(lists)).
 
 % dynamic thread local
 ?-thread_local(clioStru_/1).
@@ -542,6 +545,36 @@ all_groups(List):-findall(G,clioGroup(G,_),List),!.
 %*************************************************************
 % %
 all_elements(List):-findall(E,clioElement(E,_),List),!.
+
+%**************************************************************
+% classes_topological_order(+Classes,-Hierarchy)
+% Build a hierarchy of classes from the given list of classes.
+% The hierarchiy is the list of Classes and their superclasses
+% in topological order, roots first.
+%**************************************************************
+classes_topological_order(Cs, Sorted) :-
+    % Collect all classes in the hierarchy (including Cs and all superclasses)
+    findall(Class, (member(C, Cs), reachable(C, Class)), ClassesList),
+    sort(ClassesList, AllClasses),
+    % Build graph: edges from superclass to subclass
+    maplist(collect_subclasses(AllClasses), AllClasses, Graph),
+    % Perform topological sort
+    top_sort(Graph, Sorted).
+
+isSuper(C, S) :-
+    clioGroup(C, ID),
+    get_prop(ID, fons, S),!.
+
+% Traverse superclass hierarchy
+reachable(C, C).
+reachable(C, X) :-
+    isSuper(C, S),
+    reachable(S, X).
+
+% Collect immediate subclasses of a superclass
+collect_subclasses(AllClasses, S, S-Subs) :-
+    findall(C, (member(C, AllClasses), isSuper(C, S)), Subs).
+
 
 %******************************************************
 %  show_stru:- show current structure definition

@@ -1,5 +1,5 @@
 :- module(utilities,
-        [ 
+        [
             member_check/2,
             member_nth/3,
             nth_arg/3,
@@ -24,7 +24,7 @@
 :-use_module(persistence).
 
 /** <module> Utilities
- 
+
  # Utilities.pl
 
 Contains usefull predicates or programs im plemented on
@@ -32,7 +32,7 @@ standard (Edinburgh) PROLOG. System dependent predicates,
 even if they would qualify as "utilities", are in a special
 file, called xxxx.compatibility.pl, where xxxx identifies the
 system to which they apply.
- 
+
 */
 
 % this is shared by all the threads and used in counters.
@@ -47,7 +47,7 @@ system to which they apply.
 %
 %   Check if X is a member of list L.
 %   Non backtrackable version of member.
-% 
+%
 % @tbd use bultin memberchk/2
 %
 member_check(X,[X|_Xs]):-!.
@@ -129,7 +129,7 @@ begins_with(SmallList,BigList):-
 %  @param Fields    specifies the variables in the query that are to
 %            be output.
 %  @param  Predicate - is the query.
-% 
+%
 export(F,_format,_fields,_predicate):-
       open_file_write(F),
        tell(F),
@@ -169,14 +169,14 @@ list_to_a([A|R],S):-
     concat(A1,S1,S),!.
 
 %% l_dif(+A,+B,?C) is det.
-% C is the list of elements of A not in B 
+% C is the list of elements of A not in B
 %
 l_dif([],_,[]):-!.
 l_dif([A|B],M,X):-
     member_check(A,M),!,
-    l_dif(B,M,X). 
+    l_dif(B,M,X).
 l_dif([A|B],M,[A|X]):-
-    l_dif(B,M,X),!.     
+    l_dif(B,M,X),!.
 
 %% gensymbol(+ROOT,-SYMBOL) is det.
 % generates a symbol from ROOT.
@@ -195,18 +195,18 @@ gensymbol(Root,Atom):-
     Num is Num1+1,
     set_shared_prop(current_num,Root,Num).
  get_num(Root,1):-set_shared_prop(current_num,Root,1),!.
- 
+
 %% gensymbol_local(+ROOT,-SYMBOL) is det.
-%  Generates a symbol from ROOT. Symbols are unique to the local thread. 
+%  Generates a symbol from ROOT. Symbols are unique to the local thread.
 %  This means that paralel threads will generate the same symbols.
 %
-% @tbd TODO: reimplement gensymbol after deciding if it is thread local 
+% @tbd TODO: reimplement gensymbol after deciding if it is thread local
 % or not. Currently is global.
 %
 gensymbol_local(Root,Atom):-
     get_num_local(Root,Num),
     atom_concat(Root,Num,Atom),!.
- 
+
  get_num_local(Root,Num):-
     get_prop(current_num,Root,Num1),!,
     Num is Num1+1,
@@ -223,11 +223,11 @@ gensymbol_local(Root,Atom):-
  %    resets gensymbol counter.
  %
  setgensymbol_local(S,N) :- set_prop(current_num,S,N),!.
- 
+
  %% init_gensym(+ANON) is det.
  % Does nothing. Kept for not breaking the code since funcionality is purely cosmetic.
  % Originally allowed to init a gensym generator with a given number
- % so that generated symbols would start from that number. In SWI native 
+ % so that generated symbols would start from that number. In SWI native
  % implementation of gensym it always start with zero.
  % Can't do in swi without reimplementing the whole gensym stuff.
  %
@@ -257,8 +257,7 @@ afirst_n(S,N,T):-
     stringof(L,S),
     first_n(L,N,M),
     stringof(M,T),!.
-
-/* 
+/*
 ## Pre-2007-Git History
 
  Joaquim Carvalho, Florence, May 88
