@@ -186,6 +186,8 @@ db_close:-
   get_prop(kleio,groups,ExplicitGroups),
   dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),
   report([write('Groups in this file:'), writeln(OrderedGroups)]),
+  setof(E,G^Es^(member(G,OrderedGroups),dataDictionary:group_elements(G,Es),member(E,Es)),Els),
+  report([write('Elements in this file:'), writeln(Els)]),
   report([writeln('Translation finished.')]),
   xml_nl,
   xml_close.

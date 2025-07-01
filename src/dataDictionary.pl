@@ -8,6 +8,7 @@
         anc_of/2,
         subgroups/2,
         element_of/2,
+        group_elements/2,
         create_groups/1,
         create_elements/1,
         copy_fons_e/2,
@@ -218,6 +219,15 @@ element_of(E,G):-
       clioGroup(G,ID),
       get_prop(ID,locus,L),
       member(E,L).
+
+%*******************************************************
+% group_elements(G,Elements)
+%   returns the list of elements that belong to group G
+%********************************************************
+% %
+group_elements(G,Elements):-
+   setof(E,element_of(E,G),Elements),!.
+
 %*************************************************************
 % create_groups(NameList)
 %   creates, if not yet created, structures for the groups
