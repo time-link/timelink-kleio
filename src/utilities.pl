@@ -17,7 +17,8 @@
             setgensymbol_local/2,
             a_upper_to_lower/2,
             upper_to_lower/2,
-            afirst_n/3
+            afirst_n/3,
+            print_with_newlines/1
         ]).
 
 :-reexport('swiCompatibility').
@@ -257,6 +258,21 @@ afirst_n(S,N,T):-
     stringof(L,S),
     first_n(L,N,M),
     stringof(M,T),!.
+
+%% print_with_newlines(+Atom) is det.
+%
+%  Prints an atom, interpreting literal '\n' as newlines.
+print_with_newlines(Atom) :-
+    % 1. Split the atom into parts using '\n' as a delimiter.
+    %    The backslash must be escaped: '\\n'.
+    atomic_list_concat(Parts, '\\n', Atom),
+
+    % 2. Join the parts back together using the '~n' format specifier.
+    atomic_list_concat(Parts, '~n', FormatString),
+
+    % 3. Use format/2 to print the result.
+    format(FormatString, []).
+
 /*
 ## Pre-2007-Git History
 
