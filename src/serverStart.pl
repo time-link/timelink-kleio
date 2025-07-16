@@ -364,7 +364,7 @@ translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
 translate_file('sources/api/bugs/bugs.cli',false).
-translate_file('sources/api/genealogias/llcdp34.cli',true).
+translate_file('sources/api/genealogias/llcdp34.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/varia/nommiz.cli',false).
@@ -376,7 +376,7 @@ translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
 %
 translate_file('sources/api/issues/issue1/issue1.cli',false).
-translate_file('sources/api/issues/issue10/issue10.cli',true).
+translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
@@ -384,7 +384,7 @@ translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
-translate_file('sources/api/roisdeconfessados/rol1.cli',true).
+translate_file('sources/api/roisdeconfessados/rol1.cli',false).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/varia/ivcc.cli',false).
