@@ -11,7 +11,7 @@
     file_processing/3,
     files_processing/2,
     kleio_processing_status/3,
-    get_stru/3                  %get_stru(+Params,+Id,-StruFile) is det.
+    get_stru_param/3                  %get_stru_param(+Params,+Id,-StruFile) is det.
         ]).
 /** <module> Api operations dealing with translation
 
@@ -73,7 +73,7 @@ translations(post,Path,Mode,Id,Params):-
     get_absolute_paths(Files,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
-    % get_stru(Params,Id,StruFile),
+    % get the structure (schema) definition files for each kleio file to translate
     get_strus(AbsFiles,Params,Id,StruFiles),
     % TODO: check_user_mappings(TokenInfo) % load user defined mappings if any
     % TODO: check_user_irules(TokenInfo) % load usr defined inference rules if any
@@ -260,7 +260,7 @@ spawn_work2(yes,[],[],_,[]):-!.
 
 
 
-%! get_stru(+Params,+Id,-StruFile) is det.
+%! get_stru_param(+Params,+Id,-StruFile) is det.
 % Get the path to the structure file associated with a translation request
 % if it is defined in the request parameters structure(S), if not return the default structure
 %
@@ -269,8 +269,7 @@ spawn_work2(yes,[],[],_,[]):-!.
 %  Params: parameters of the request
 %  StruFile: structure file to be used in the translation
 %
-% TODO refactor to only check the paramenters rename to get_stru_param
-get_stru(Params,Id,StruFile):-
+get_stru_param(Params,Id,StruFile):-
     option(token_info(TokenInfo),Params),
     kleiofiles:kleio_default_stru(DefaultStru),
     (option(structure(SFile),Params) ->
@@ -294,7 +293,7 @@ get_stru(Params,Id,StruFile):-
     ).
 
 %! get_strus(+Files,+Params,+Id,-StruFiles) is det.
-% Get the path to the structure file associated with a translation request
+% Get the paths to the structures files associated with a translation request
 % Parameters:
 %  Files: list of files to be translated
 %  Params: parameters of the request
@@ -303,7 +302,7 @@ get_stru(Params,Id,StruFile):-
 %
 %  So the priority is: str file in the request, str file from "structures", default str file.
 get_strus(Files,Params,Id,StruFiles):-
-    get_stru(Params,Id,DefaultStruFile), % TODO get_stru_param ; kleio_default_stru
+    get_stru_param(Params,Id,DefaultStruFile), % TODO get_stru_param ; kleio_default_stru
     get_stru_for_files(Files,DefaultStruFile,StruFiles).
 
 get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
@@ -312,8 +311,8 @@ get_stru_for_files([F|Fs],DefaultStruFile,[S|Ss]):-
 
 get_stru_for_files([],_,[]).
 
-% TBD - implement https://github.com/time-link/timelink-kleio/issues/7
-
+% get_stru_for_file(+File,+DefaultStruFile,-StruFile) is det.
+% Get the structure file for a given file, if it exists.
 get_stru_for_file(File,__DefaultStruFile,StruFile):-
     % get directories in path
     prolog_to_os_filename(PrologFile, File),
@@ -328,20 +327,40 @@ get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
 
 % TODO use structure declaration in kleio file header
 % Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
+
+% match cli file to stru with name BaseNameNoExt + '-structure.yaml' in the same directory
+match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
+    atomic_list_concat([BaseNameNoExt,'-structure.yaml'],'',StruFileYaml),
+    atomic_list_concat(Dirs,'/',Path),
+    atomic_list_concat([Path,'/',StruFileYaml],'',StruFile),
+    exists_file(StruFile),!,
+    StruFile = StruFileYaml.
+
 % match cli file to stru with same name in structures directory
 match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
     select('sources',Dirs,'structures',Dirs1),
     atomic_list_concat(Dirs1,'/',Path),
     (
-        atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
-        exists_file(StruFile)
-    ;
         atomic_list_concat([Path,'/',BaseNameNoExt,'.yaml'],'',StruFile),
+        exists_file(StruFile)
+        ;
+        atomic_list_concat([Path,'/',BaseNameNoExt,'.str'],'',StruFile),
         exists_file(StruFile)
     ),
     !.
 
 % match cli file sources/.../dir/xpto.cli with structures/dir.str
+match_stru_to_file(Dirs,_,StruFile):-
+    last(Dirs,LastDir),
+    select('sources',Dirs,'structures',StruPath),
+    reverse(StruPath,RStruPath),
+    append(_,[structures|PathToStructures],RStruPath),
+    reverse(PathToStructures,SubPath),
+    file_name_extension(LastDir,'yaml',DirYaml),
+    append(SubPath,[structures,DirYaml],PathYaml),
+    atomic_list_concat(PathYaml,'/',StruFileYaml),
+    exists_file(StruFileYaml),!,
+    StruFile = StruFileYaml.
 match_stru_to_file(Dirs,_,StruFile):-
     last(Dirs,LastDir), % get last directory
     select('sources',Dirs,'structures',StruPath),
@@ -355,19 +374,8 @@ match_stru_to_file(Dirs,_,StruFile):-
     atomic_list_concat(PathStr,'/',StruFileStr),
     exists_file(StruFileStr),!,
     StruFile = StruFileStr.
-match_stru_to_file(Dirs,_,StruFile):-
-    last(Dirs,LastDir),
-    select('sources',Dirs,'structures',StruPath),
-    reverse(StruPath,RStruPath),
-    append(_,[structures|PathToStructures],RStruPath),
-    reverse(PathToStructures,SubPath),
-    file_name_extension(LastDir,'yaml',DirYaml),
-    append(SubPath,[structures,DirYaml],PathYaml),
-    atomic_list_concat(PathYaml,'/',StruFileYaml),
-    exists_file(StruFileYaml),!,
-    StruFile = StruFileYaml.
 
-% match cli file with gacto2.str or sources.str in structures directory depth first
+% match cli file with system.yaml, gacto2.str or sources.str in structures directory depth first
 match_stru_to_file(Dirs,_,StruFile):-
     select('sources',Dirs,'structures',StruPath),
     % remove last element of Dirs1
@@ -376,14 +384,13 @@ match_stru_to_file(Dirs,_,StruFile):-
     reverse(RSubPath,SubPath),
     atomic_list_concat(SubPath,'/',Path),
     (
-        atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
-    ;
-        atomic_list_concat([Path,'/','sources.str'],'',StruFile)
-    ;
         atomic_list_concat([Path,'/','system.yaml'],'',StruFile)
+        ;
+        atomic_list_concat([Path,'/','sources.str'],'',StruFile)
+        ;
+        atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
     ),
     exists_file(StruFile),!.
-
 
 
 extract_file_names(FileStatus,Names):-
@@ -733,3 +740,16 @@ clean_translation(_Path,_Type,_Id,_Params,Results):-
 %
 clean_translation_results(Mode,Id,_,Results):-
     default_results(Mode,Id,_,Results).
+
+
+test_case('tests/kleio-home/sources/api/paroquiais/baptismos/bapt1714.cli',
+           'tests/kleio-home/structures/baptismos.yaml').
+
+:-begin_tests(get_stru).
+
+test(get_stru,[setup(kleiofiles:kleio_default_stru(DefaultStru)),
+               forall(test_case(File,StruFile)),
+               true]):-
+    get_stru_for_file(File,DefaultStru,StruFile).
+
+:-end_tests(get_stru).

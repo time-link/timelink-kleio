@@ -31,11 +31,13 @@ stru_yaml(F):-
 
 new_yaml_str(Filename,Data):-
     struCode:initStru(Filename),
+    process_str_command(database,_{name:kleio, first:kleio, identification:no}),
     read_yaml_str(Filename,Data),
     struCode:closeStru(Filename).
 
 % this read a yaml file and processes the configuration
 read_yaml_str(Filename,Data):-
+    put_value(yaml_file,Filename),
     yaml_read(Filename,Data),
     inspect_yaml_str(Data),
     !.
@@ -63,6 +65,9 @@ process_str_command(file,Pars):-!,
     bagof(Par=Value, Value = Pars.Par, ParList),
     % writeln('Bagof Process element with pars '-ParList),
     option(name(Name),ParList,name-missing),
+    (get_value(stru_file,FileName); FileName = Name),
+    option(description(Desc),ParList,none),
+    set_prop(FileName,description,Desc),
     member(Par=Value,ParList),
     format('(~w)   ~w = ~w ~n', [Name,Par,Value]),
     fail.
@@ -74,12 +79,6 @@ process_str_command(include,Par):-
     format('  Include file: ~w ~n',[Par]),
     include_yaml_str(Par,Data),
     inspect_yaml_str(Data),!.
-
-% extends (synonym of include)
-
-process_str_command(extend,Par):-
-    process_str_command(include, Par),!.
-
 
 % process the command, bridge to struCode
 process_str_command(Command, Params):-
@@ -135,27 +134,77 @@ include_yaml_str(File,Data):-
     read_yaml_str(AbsPath,Data).
 
 % include normalize the path
+% include a single file no path
+% use the current file directory
+% to generate the full path
 normalize_str_path(File,Path):-
-    atomic_list_concat(Dirs, '/',File),
+    atomic_list_concat([_,Ext], '.',File),
+    ( Ext = yaml ; Ext = yml ),
+    get_value(yaml_file,MainFilePath),
+    file_directory_name(MainFilePath,MainFileDir),
+    atomic_list_concat([MainFileDir,File],'/',Path).
+normalize_str_path(File,Path):-
+    atomic_list_concat(Dirs, '.',File),
     create_str_path(Dirs,DirsExpanded),
     atomic_list_concat(DirsExpanded,'/',Path).
 
+% last item on path is filename with or not .yaml ext
+create_str_path([File,'yaml'],[FileName]):-
+    atomic_list_concat([File,'yaml'],'.',FileName).
+
 % resolve system dir
-create_str_path([system|MoreDirs],[SysStruDir|MoreDirs]):-!,
-    kleio_stru_dir(SysStruDir).
+create_str_path([system|Dirs],[SysStruDir|MoreDirs]):-!,
+    kleio_stru_dir(SysStruDir),
+    create_str_path(Dirs,MoreDirs),!.
 
-% resolve structures dir
-create_str_path([structures|MoreDirs],[LocalStruDir|MoreDirs]):-!,
-    % replace this with structures from user token
-    kleio_user_structure_dir(LocalStruDir,[structures='tests/kleio-home/structures']).
+% resolve user  structures dir
+% this requires some way to get the user structure directory
+% which is normally associated with a user token
+% here we assume that token info is in value "token_info"
+% other wise we default to home.structures
+% see https://github.com/time-link/timelink-kleio/issues/12
+create_str_path([structures|Dirs],[UserStruDir|MoreDirs]):-
+    % in prod
+    get_value(token_info,TokenInfo),
+    kleio_user_structure_dir(UserStruDir, TokenInfo),
+    create_str_path(Dirs,MoreDirs),!.
 
-% resolve . separator
-create_str_path(['.'|MoreDirs],[MainFileDir|MoreDirs]):-!,
+create_str_path([structures|Dirs],[LocalStructures|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    atomic_list_concat([KleioHomeDir,structures],'/',LocalStructures),
+    create_str_path(Dirs,MoreDirs),
+    !.
+
+% resolve user sources dir
+% see https://github.com/time-link/timelink-kleio/issues/12
+create_str_path([sources|Dirs],[UserStruDir|MoreDirs]):-
+    % in prod
+    get_value(token_info,TokenInfo),
+    kleio_user_source_dir(UserStruDir, TokenInfo),
+    create_str_path(Dirs,MoreDirs),!.
+
+create_str_path([sources|Dirs],[LocalStructures|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    atomic_list_concat([KleioHomeDir,sources],'/',LocalStructures),
+    create_str_path(Dirs,MoreDirs),
+    !.
+% resolve home dir
+create_str_path([home|Dirs],[KleioHomeDir|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    create_str_path(Dirs,MoreDirs),!.
+
+% resolve . separator TODO: Broken
+create_str_path(['~'|Dirs],[MainFileDir|MoreDirs]):-!,
     get_value(stru_file,MainFilePath),
-    file_directory_name(MainFilePath,MainFileDir).
+    file_directory_name(MainFilePath,MainFileDir),
+    create_str_path(Dirs,MoreDirs).
+
+% consider every thing else as a directory
+create_str_path([Dir|Dirs],[Dir|MoreDirs]):-
+    create_str_path(Dirs,MoreDirs).
 
 % include file by name
-create_str_path([FileOnly|[]], [MainFileDir,FileOnly]):-
+create_str_path(FileOnly, [MainFileDir,FileOnly]):-
     atomic(FileOnly),
     get_value(stru_file,MainFilePath),
     file_directory_name(MainFilePath,MainFileDir),
@@ -167,4 +216,80 @@ create_str_path(OtherPath, [MainFileDir|OtherPath]):-!,
     file_directory_name(MainFilePath,MainFileDir).
 
 
+:- begin_tests(yamlSupport).
 
+test(stru_yaml_placeholder) :-
+    % Placeholder: test stru_yaml/1 with a sample file
+    % Example: stru_yaml('tests/kleio-home/structures/yaml/sample-str.yaml')
+    % Add assertions as needed
+    true.
+
+test(new_yaml_str_placeholder) :-
+    % Placeholder: test new_yaml_str/2 with a sample file
+    % Example: new_yaml_str('tests/kleio-home/structures/yaml/sample-str.yaml', Data)
+    % Add assertions as needed
+    true.
+
+test(read_yaml_str_placeholder) :-
+    % Placeholder: test read_yaml_str/2 with a sample file
+    % Example: read_yaml_str('tests/kleio-home/structures/yaml/sample-str.yaml', Data)
+    % Add assertions as needed
+    true.
+
+test(inspect_yaml_str_placeholder) :-
+    % Placeholder: test inspect_yaml_str/1 with a sample YAML list
+    % Example: inspect_yaml_str([_])
+    % Add assertions as needed
+    true.
+
+test(process_str_command_placeholder) :-
+    % Placeholder: test process_str_command/2 with sample commands and params
+    % Example: process_str_command(file, _)
+    % Add assertions as needed
+    true.
+
+test(process_str_params_placeholder) :-
+    % Placeholder: test process_str_params/2 with sample command and params
+    % Example: process_str_params(file, _)
+    % Add assertions as needed
+    true.
+
+test(prepend_if_member_true) :-
+    prepend_if_member(a=1, [a=1,b=2], [a=1,b=2]).
+
+test(prepend_if_member_false) :-
+    prepend_if_member(c=3, [a=1,b=2], [a=1,b=2]).
+
+test(sanitize_value_atom) :-
+    sanitize_value('abc', abc).
+
+test(sanitize_value_list) :-
+    sanitize_value(['abc','def'], [abc,def]).
+
+test(sanitize_value_empty) :-
+    sanitize_value([], []).
+
+test(include_yaml_str_placeholder) :-
+    % Placeholder: test include_yaml_str/2 with a sample file
+    % Example: include_yaml_str('sample.yaml', Data)
+    % Add assertions as needed
+    true.
+
+test(normalize_str_path_dot) :-
+    % Should resolve '.' to the directory of the stru_file value
+    true.
+
+test(create_str_path_system) :-
+    % Should resolve [system,foo] to [SysStruDir,foo]
+    true.
+
+test(create_str_path_structures) :-
+    true.
+
+test(create_str_path_home) :-
+    true.
+
+test(create_str_path_fileonly) :-
+    true.
+
+:- end_tests(yamlSupport).

@@ -183,18 +183,13 @@ db_close:-
   report_translation,
   xml_write(['</KLEIO>']),
   report([perror_count]),
-  get_prop(kleio,groups,ExplicitGroups),
-  dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),
-  report([write('Groups in this file:'), writeln(OrderedGroups)]),
-  setof(E,G^Es^(member(G,OrderedGroups),dataDictionary:group_elements(G,Es),member(E,Es)),Els),
-  report([write('Elements in this file:'), writeln(Els)]),
   report([writeln('Translation finished.')]),
   xml_nl,
   xml_close.
 
 
 
- report_translation:-
+report_translation:-
   get_value(stru_file,StruFile),
   report([format('Structure file: ~w~n',[StruFile])]),
   prolog_to_os_filename(PrologFile, StruFile),
@@ -219,7 +214,24 @@ db_close:-
   report([format('Previous version: ~w~n',[Last])]),
   errors:error_count(ErrCount),
   errors:warning_count(WarnCount),
+  concat(SOURCE,'-structure.yaml',LocalYamlFile),
+  concat(SOURCE,'-structure.json',LocalJsonFile),
   ( ErrCount = 0 -> rename_files(ClioFile,SOURCE,Original,Last);true),
+  get_prop(kleio,groups,ExplicitGroups),
+  dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),
+  report([write('Groups in this file:'), writeln(OrderedGroups)]),
+  setof(E,G^Es^(member(G,OrderedGroups),dataDictionary:group_elements(G,Es),member(E,Es)),Els),
+  report([write('Elements in this file:'), writeln(Els)]),
+  (exists_file(LocalYamlFile) ->
+      (report([writeln('Structure YAML file already exists, not generating new one.')]),
+      true)
+     ;
+     (
+      dataDictionary:collect_groups_json(OrderedGroups,GroupsInfo,[]),
+      dataDictionary:collect_elements_json(Els,ElementsInfo),
+      dataDictionary:make_json_yaml(ClioFile,LocalJsonFile,LocalYamlFile, GroupsInfo,ElementsInfo)
+    )
+  ),
   (persistence:get_value(report,ReportFile); ReportFile = '<console>'),
   % Generate a JSON file with information on the related files
   FileDict = files{stru:StruFile,
@@ -1134,10 +1146,13 @@ infer_sex(__G,S):-
       belement_aspect(core,sex,[S]).
 
 infer_sex(G,S):-
+    get_sex(G,S),!.
+
+infer_sex(G,S):-
       clio_extends(G,Class),
       get_sex(Class,S),!.
 infer_sex(G,'?'):-
-error_out(['** could not infer sex for'-G]).
+  error_out(['** could not infer sex for'-G]).
 
 get_sex(male,m):-!.
 get_sex(female,f):-!.

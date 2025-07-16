@@ -2,6 +2,7 @@
 		clio_isdoc/1,
 		clio_path/1,
 		clio_group/2,
+		clio_element/2,
 		clio_anc/2,
 		clio_elements/1,
 		clio_aspect/3,
@@ -106,6 +107,7 @@ translator are the following:
 clio_isdoc(D):-isDoc(D).
 clio_path(P):-getCDField(cpath,P).
 clio_group(G,I):-getCDField(cgroup,G),getCDField(cgroupID,I).
+clio_element(E,I):-getCDField(celement,E),getCDField(celementID,I).
 clio_anc(A,ID):-getCDAnc(A,ID).
 clio_elements(Els):-getCDElement_list(Els).
 clio_aspect(A,E,I):-get_aspect(A,E,I).

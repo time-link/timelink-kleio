@@ -257,7 +257,30 @@ test_quotes:-
             './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
             yes).
 
+test_all:-
+    set_log_level(debug),
+    findall(File,
+        ( walk_subdirs('./tests/kleio-home/sources/api/', File),
+          ( file_name_extension(_, 'cli', File)
+          ; file_name_extension(_, 'kleio', File)
+          )
+        ),
+        AllFiles),
+    restServer:translate(
+            AllFiles,
+            './tests/kleio-home/system/conf/kleio/stru/gacto2.str',
+            yes).
 
+walk_subdirs(Dir, File) :-
+    exists_directory(Dir),
+    directory_files(Dir, Entries),
+    member(Entry, Entries),
+    \+ member(Entry, ['.', '..']),
+    atomic_list_concat([Dir, Entry], '/', Path),
+    (   exists_directory(Path)
+    ->  walk_subdirs(Path, File)
+    ;   File = Path
+    ).
 
 show_prolog_stack:-
     member(StackType,[local,global,trail]),
@@ -334,13 +357,17 @@ test_case(translations,File,Stru):-
     Flag = true,
     format('TESTING ~wn',[File]).
 
+% yaml str testing
+translate_file('sources/api/yaml/pt-groups.kleio', false).
+
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
 translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
-translate_file('sources/api/bugs/bugs.cli',true).
+translate_file('sources/api/bugs/bugs.cli',false).
+translate_file('sources/api/genealogias/llcdp34.cli',true).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
-translate_file('sources/api/varia/nommiz.cli',true).
+translate_file('sources/api/varia/nommiz.cli',false).
 translate_file('sources/api/varia/dehergne-residences.cli',false).
 translate_file('sources/api/varia/mp758-santiago-beduido.cli',false).
 translate_file('sources/api/issues/issue21.cli',false).
@@ -349,7 +376,7 @@ translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
 %
 translate_file('sources/api/issues/issue1/issue1.cli',false).
-translate_file('sources/api/issues/issue10/issue10.cli',false).
+translate_file('sources/api/issues/issue10/issue10.cli',true).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).
@@ -357,6 +384,7 @@ translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
 translate_file('sources/api/paroquiais/baptismos/',false).
+translate_file('sources/api/roisdeconfessados/rol1.cli',true).
 translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/varia/ivcc.cli',false).
@@ -386,7 +414,7 @@ copy_test_sources(EndPoint,Token):-
 
 test(translations,[
             setup(test_setup(EndPoint,Token)),
-            forall(test_case(translations,File,Stru)),
+            forall(test_case(translations,File,_)),
             cleanup(test_cleanup)]):-
     uri_components(EndPoint,UComponents),
     writeln(UComponents),
@@ -394,7 +422,7 @@ test(translations,[
     writeln(Scheme),
     uri_data(authority,UComponents,Host),
     writeln(Host),
-    rest_call(Scheme,Host,'POST',translations,File,[id=1212,str=Stru],Token,'application/json',Response,Status),
+    rest_call(Scheme,Host,'POST',translations,File,[id=1212],Token,'application/json',Response,Status),
     server_response(Response,Id,Version,Results),
     writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.

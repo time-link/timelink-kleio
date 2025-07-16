@@ -126,7 +126,7 @@ stru(F,str):-
       directory_file_path(Directory,JsonFile,JPath),
       concat(Basename,'.yaml',Yamlfile),
       directory_file_path(Directory,Yamlfile,YPath),
-      make_json_yaml_doc(Filename,JPath,YPath).
+      make_json_yaml_str(Filename,JPath,YPath).
 
 %******************************************************
 %  dat:  starts the processing of kleio data file
