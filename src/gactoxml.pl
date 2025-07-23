@@ -203,6 +203,7 @@ report_translation:-
   % create json file name
   file_name_extension(BaseNameNoExt,'.str.json',JsonFile),
   atomic_list_concat([PrologPath,'/',JsonFile],JsonPath),
+  % TODO: Do we need this?
   report([format('Structure in JSON: ~w~n',[JsonPath])]),
   % report on kleio source file
   get_value(data_file,ClioFile),
@@ -216,6 +217,7 @@ report_translation:-
   errors:warning_count(WarnCount),
   concat(SOURCE,'-structure.yaml',LocalYamlFile),
   concat(SOURCE,'-structure.json',LocalJsonFile),
+  report([format('Local structure file: ~w~n',[LocalYamlFile])]),
   ( ErrCount = 0 -> rename_files(ClioFile,SOURCE,Original,Last);true),
   get_prop(kleio,groups,ExplicitGroups),
   dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),

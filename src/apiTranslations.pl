@@ -384,7 +384,7 @@ match_stru_to_file(Dirs,_,StruFile):-
     reverse(RSubPath,SubPath),
     atomic_list_concat(SubPath,'/',Path),
     (
-        atomic_list_concat([Path,'/','system.yaml'],'',StruFile)
+        atomic_list_concat([Path,'/','sources-structure.yaml'],'',StruFile)
         ;
         atomic_list_concat([Path,'/','sources.str'],'',StruFile)
         ;

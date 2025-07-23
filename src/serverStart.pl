@@ -359,6 +359,7 @@ test_case(translations,File,Stru):-
 
 % yaml str testing
 translate_file('sources/api/yaml/pt-groups.kleio', false).
+translate_file('sources/api', true).
 
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
@@ -422,7 +423,7 @@ test(translations,[
     writeln(Scheme),
     uri_data(authority,UComponents,Host),
     writeln(Host),
-    rest_call(Scheme,Host,'POST',translations,File,[id=1212],Token,'application/json',Response,Status),
+    rest_call(Scheme,Host,'POST',translations,File,[id=1212, recurse=yes],Token,'application/json',Response,Status),
     server_response(Response,Id,Version,Results),
     writeln('OK got answer'-Id-Version-Status),
     print_term(Results,[]),!.
