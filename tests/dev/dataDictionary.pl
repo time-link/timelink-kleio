@@ -28,7 +28,7 @@
         clean_groups/1,
         clean_elements/1,
         make_html_doc/1,
-        make_json_yaml_doc/3
+        make_json_yaml_str/3
 ]).
 
 /** <module> Code for dealing with the data dictionary.
@@ -613,7 +613,7 @@ make_html_doc(DocPath):-
              show_groups_html,
              working_directory(_,CD),!.
 
-%! make_json_yaml_doc(+ClioFile,+JsonFile,+YamlFile) is det.
+%! make_json_yaml_str(+ClioFile,+JsonFile,+YamlFile) is det.
 %  Generate a JSON and YAML representations the kleio stru file (Schema)
 %
 % Format of the json file

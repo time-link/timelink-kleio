@@ -12,7 +12,6 @@
 	"prefix",
 	"translations"
       ],
-      "description":"This is the top level group of Kleio files. Specific historical sources must be added to the part parameter of this group. \n",
       "idprefix":"kle",
       "name":"kleio",
       "part": [
@@ -38,7 +37,6 @@
 	"replace",
 	"kleiofile"
       ],
-      "description":"\n",
       "guaranteed": ["id" ],
       "idprefix":"his",
       "name":"historical-source",
@@ -60,7 +58,6 @@
 	"atr",
 	"rel"
       ],
-      "description":"represents an historical act An historical act is a record of an event ,something that happened at a moment and place in time. This form is used for records such as parish records notarial acts. \ndate: date in kleio format YYYYMMMDD ou YYYY-Month-Day ",
       "guaranteed": ["id", "type", "date" ],
       "idprefix":"his",
       "name":"historical-act",
@@ -73,7 +70,6 @@
     "group": {
       "also": ["id", "obs", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name", "sex" ],
       "idprefix":"per",
       "name":"person",
@@ -86,7 +82,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"female",
@@ -100,7 +95,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"male",
@@ -114,7 +108,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"object",
@@ -127,7 +120,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"abstraction",
@@ -140,7 +132,6 @@
   {
     "group": {
       "also": ["obs", "date", "id" ],
-      "description":"\n",
       "guaranteed": ["type", "value" ],
       "idprefix":"att",
       "name":"attribute",
@@ -152,7 +143,6 @@
   {
     "group": {
       "also": ["obs", "date", "id" ],
-      "description":"\n",
       "guaranteed": ["type", "value", "destname", "destination" ],
       "idprefix":"rel",
       "name":"relation",
@@ -163,7 +153,6 @@
   {
     "group": {
       "also": ["id" ],
-      "description":"\n",
       "idprefix":"end",
       "name":"end",
       "position": ["id" ],
@@ -431,7 +420,7 @@
 	"substitui"
       ],
       "arbitrary": ["escritura", "atr", "rel" ],
-      "description":"Este constitui o grupo principal para os documentos historicos portugueses. Admite qualquer dos actos definidos aqui. \nid: elemento obrigatorio ,identifica unicamente a fonte na base de dados ,",
+      "description":"Este constitui o grupo principal para os documentos historicos portugueses. Admite qualquer dos actos definidos aqui. ",
       "guaranteed": ["id" ],
       "idprefix":"his",
       "name":"fonte",
@@ -464,7 +453,6 @@
 	"ls",
 	"rel"
       ],
-      "description":"\n",
       "guaranteed": ["id", "dia", "mes", "ano" ],
       "idprefix":"his",
       "name":"pt-acto",
@@ -477,7 +465,7 @@
   {
     "group": {
       "also": ["obs" ],
-      "description":"fim indica o fim de um acto \n",
+      "description":"fim indica o fim de um acto ",
       "idprefix":"end",
       "name":"fim",
       "position": ["id" ],
@@ -634,7 +622,6 @@
     "group": {
       "also": ["resumo", "id", "tipo", "obs" ],
       "arbitrary": ["presente", "presente-f", "referido", "referida", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["titulo" ],
       "idprefix":"obj",
       "name":"item",
@@ -757,7 +744,6 @@
 	"juiz",
 	"item"
       ],
-      "description":"\n",
       "guaranteed": ["id", "dia", "mes", "ano", "loc" ],
       "idprefix":"his",
       "name":"escritura",
@@ -771,7 +757,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"demanda",
@@ -785,7 +770,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"acusacao",
@@ -799,7 +783,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"sentenca",
@@ -813,7 +796,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"defesa",
@@ -827,7 +809,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"inquiricao",
@@ -841,7 +822,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"apelacao",
@@ -855,7 +835,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"renda",
@@ -889,7 +868,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"bem",
@@ -913,7 +891,6 @@
     "group": {
       "also": ["id", "prazo", "moeda", "valorn", "obs" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["valor", "juro" ],
       "idprefix":"obj",
       "name":"divida",
@@ -927,7 +904,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"garantia",
@@ -941,7 +917,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"fianca",
@@ -955,7 +930,6 @@
     "group": {
       "also": ["juiz", "escrivao", "depositario", "data", "obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["valor" ],
       "idprefix":"obj",
       "name":"siza",
@@ -969,7 +943,6 @@
     "group": {
       "also": ["juiz", "escrivao", "depositario", "data", "obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["valor" ],
       "idprefix":"obj",
       "name":"sisa",
@@ -983,7 +956,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"aforamento",
@@ -997,7 +969,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"prazo",
@@ -1011,7 +982,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"arrendamento",
@@ -1025,7 +995,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"escambo",
@@ -1039,7 +1008,6 @@
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"obra",
@@ -1243,7 +1211,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"actorm",
@@ -1540,7 +1507,6 @@
 	"engeitada",
 	"engeitado"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"n",
@@ -1554,7 +1520,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"referido",
@@ -1568,7 +1533,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"celebrante",
@@ -1582,7 +1546,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad",
@@ -1596,7 +1559,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad",
@@ -1610,7 +1572,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad1",
@@ -1624,7 +1585,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad1",
@@ -1638,7 +1598,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad2",
@@ -1652,7 +1611,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad2",
@@ -1666,7 +1624,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad3",
@@ -1680,7 +1637,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad3",
@@ -1694,7 +1650,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad4",
@@ -1708,7 +1663,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad4",
@@ -1912,7 +1866,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"presente",
@@ -1926,7 +1879,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mestre",
@@ -2130,7 +2082,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"eleitor",
@@ -2334,7 +2285,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"eleito",
@@ -2538,7 +2488,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nordem", "nome" ],
       "idprefix":"per",
       "name":"rv",
@@ -2742,7 +2691,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nordem", "nome" ],
       "idprefix":"per",
       "name":"rp",
@@ -3039,7 +2987,6 @@
 	"engeitada",
 	"engeitado"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"arrem",
@@ -3053,7 +3000,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"acionista",
@@ -3257,7 +3203,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"devedor",
@@ -3461,7 +3406,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"credor",
@@ -3665,7 +3609,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fiador",
@@ -3869,7 +3812,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"comprador",
@@ -4073,7 +4015,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vendedor",
@@ -4277,7 +4218,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"louvado",
@@ -4481,7 +4421,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"doador",
@@ -4685,7 +4624,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"donatario",
@@ -4889,7 +4827,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dotado",
@@ -5093,7 +5030,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dotante",
@@ -5297,7 +5233,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"senhorio",
@@ -5501,7 +5436,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"rendeiro",
@@ -5705,7 +5639,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"foreiro",
@@ -5909,7 +5842,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"enfiteuta",
@@ -6113,7 +6045,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"subenfiteuta",
@@ -6317,7 +6248,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"constituinte",
@@ -6521,7 +6451,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"outorgante",
@@ -6725,7 +6654,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"arrendatario",
@@ -6929,7 +6857,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testador",
@@ -7133,7 +7060,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testamentario",
@@ -7337,7 +7263,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testamenteiro",
@@ -7541,7 +7466,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"contraente",
@@ -7745,7 +7669,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"renunciante",
@@ -7949,7 +7872,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador",
@@ -8153,7 +8075,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"escrivao",
@@ -8357,7 +8278,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tabeliao",
@@ -8561,7 +8481,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"arrematante",
@@ -8765,7 +8684,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"quitante",
@@ -8969,7 +8887,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"quitado",
@@ -9173,7 +9090,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"abonador",
@@ -9377,7 +9293,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"demandador",
@@ -9581,7 +9496,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"demandado",
@@ -9785,7 +9699,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"escambador",
@@ -9989,7 +9902,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"reu",
@@ -10193,7 +10105,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"inquirido",
@@ -10397,7 +10308,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"inquiridor",
@@ -10601,7 +10511,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"apelante",
@@ -10805,7 +10714,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"apelado",
@@ -11009,7 +10917,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vedor",
@@ -11213,7 +11120,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"autor",
@@ -11417,7 +11323,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"autoridade",
@@ -11621,7 +11526,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario",
@@ -11825,7 +11729,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"padroeiro",
@@ -12029,7 +11932,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"apresentado",
@@ -12233,7 +12135,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"confirmante",
@@ -12437,7 +12338,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"comerciante",
@@ -12641,7 +12541,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"proprietario",
@@ -12845,7 +12744,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"juiz",
@@ -13049,7 +12947,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"requerente",
@@ -13253,7 +13150,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"requerido",
@@ -13550,7 +13446,6 @@
 	"engeitada",
 	"engeitado"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ts",
@@ -13564,7 +13459,6 @@
     "group": {
       "also": ["sexo", "id", "mesmo_que", "xmesmo_que", "obs" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"test",
@@ -13768,7 +13662,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testo",
@@ -13973,7 +13866,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"denunciante",
@@ -14178,7 +14070,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"acusado",
@@ -14382,7 +14273,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"enfermo",
@@ -14586,7 +14476,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"destinatario",
@@ -14790,7 +14679,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"destinatario1",
@@ -14994,7 +14882,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"destinatario2",
@@ -15198,7 +15085,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"remetente",
@@ -15402,7 +15288,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario-representante",
@@ -15606,7 +15491,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario-procurador",
@@ -15810,7 +15694,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario1",
@@ -16014,7 +15897,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario1-representante",
@@ -16218,7 +16100,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario1-procurador",
@@ -16422,7 +16303,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario2",
@@ -16626,7 +16506,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario2-representante",
@@ -16830,7 +16709,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario2-procurador",
@@ -17034,7 +16912,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario3",
@@ -17238,7 +17115,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario3-representante",
@@ -17442,7 +17318,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario3-procurador",
@@ -17646,7 +17521,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario4",
@@ -17850,7 +17724,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario4-representante",
@@ -18054,7 +17927,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario4-procurador",
@@ -18258,7 +18130,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario5",
@@ -18462,7 +18333,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario5-representante",
@@ -18666,7 +18536,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario5-procurador",
@@ -18870,7 +18739,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario6",
@@ -19074,7 +18942,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario6-representante",
@@ -19278,7 +19145,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiario6-procurador",
@@ -19482,7 +19348,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador",
@@ -19686,7 +19551,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador-representante",
@@ -19890,7 +19754,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador1",
@@ -20094,7 +19957,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador1-representante",
@@ -20298,7 +20160,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador2",
@@ -20502,7 +20363,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador2-representante",
@@ -20706,7 +20566,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador3",
@@ -20910,7 +20769,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador3-representante",
@@ -21114,7 +20972,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador4",
@@ -21318,7 +21175,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador4-representante",
@@ -21522,7 +21378,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador5",
@@ -21726,7 +21581,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"tomador5-representante",
@@ -21930,7 +21784,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador",
@@ -22134,7 +21987,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador-representante",
@@ -22338,7 +22190,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador1",
@@ -22542,7 +22393,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador1-representante",
@@ -22746,7 +22596,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador2",
@@ -22950,7 +22799,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador2-representante",
@@ -23154,7 +23002,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador3",
@@ -23358,7 +23205,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador3-representante",
@@ -23562,7 +23408,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador4",
@@ -23766,7 +23611,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador4-representante",
@@ -23970,7 +23814,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador5",
@@ -24174,7 +24017,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pagador5-representante",
@@ -24378,7 +24220,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador",
@@ -24582,7 +24423,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador-representante",
@@ -24786,7 +24626,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador1",
@@ -24990,7 +24829,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador1-representante",
@@ -25194,7 +25032,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador2",
@@ -25398,7 +25235,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador2-representante",
@@ -25602,7 +25438,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador3",
@@ -25806,7 +25641,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador3-representante",
@@ -26010,7 +25844,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador4",
@@ -26214,7 +26047,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dador4-representante",
@@ -26418,7 +26250,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador",
@@ -26622,7 +26453,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador-representante",
@@ -26826,7 +26656,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador1",
@@ -27030,7 +26859,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador-representante1",
@@ -27234,7 +27062,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador2",
@@ -27438,7 +27265,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador-representante2",
@@ -27642,7 +27468,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador3",
@@ -27846,7 +27671,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador-representante3",
@@ -28050,7 +27874,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador4",
@@ -28254,7 +28077,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cobrador-representante4",
@@ -28458,7 +28280,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"endossante",
@@ -28662,7 +28483,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"endossado",
@@ -28866,7 +28686,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"debitado",
@@ -29070,7 +28889,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor",
@@ -29274,7 +29092,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor1",
@@ -29478,7 +29295,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor2",
@@ -29682,7 +29498,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor3",
@@ -29886,7 +29701,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor4",
@@ -30090,7 +29904,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor-proc",
@@ -30294,7 +30107,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor1-proc",
@@ -30498,7 +30310,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor2-proc",
@@ -30702,7 +30513,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor3-proc",
@@ -30906,7 +30716,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"recebedor4-proc",
@@ -31110,7 +30919,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"informador",
@@ -31314,7 +31122,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"defector",
@@ -31518,7 +31325,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"intermediario",
@@ -31722,7 +31528,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fretador",
@@ -31926,7 +31731,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"receptor",
@@ -32130,7 +31934,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"emissor",
@@ -32334,7 +32137,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"emissor-representante",
@@ -32538,7 +32340,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"representante",
@@ -32742,7 +32543,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"agente_financeiro",
@@ -32946,7 +32746,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"agente_seguros",
@@ -33150,7 +32949,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"cheater",
@@ -33354,7 +33152,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fonte_info",
@@ -33558,7 +33355,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"transportador",
@@ -33755,7 +33551,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"actorf",
@@ -33769,7 +33564,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"referida",
@@ -33966,7 +33760,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"na",
@@ -33980,7 +33773,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad",
@@ -33994,7 +33786,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad",
@@ -34008,7 +33799,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad1",
@@ -34022,7 +33812,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad1",
@@ -34036,7 +33825,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad2",
@@ -34050,7 +33838,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad2",
@@ -34064,7 +33851,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad3",
@@ -34078,7 +33864,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad3",
@@ -34092,7 +33877,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad4",
@@ -34106,7 +33890,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad4",
@@ -34303,7 +34086,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"enferma",
@@ -34500,7 +34282,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"presente-f",
@@ -34697,7 +34478,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testa",
@@ -34712,7 +34492,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"acionistaf",
@@ -34909,7 +34688,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"devedora",
@@ -35106,7 +34884,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"credora",
@@ -35303,7 +35080,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fiadora",
@@ -35500,7 +35276,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"compradora",
@@ -35697,7 +35472,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vendedora",
@@ -35894,7 +35668,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"doadora",
@@ -36091,7 +35864,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"donataria",
@@ -36288,7 +36060,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dotantef",
@@ -36485,7 +36256,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"dotada",
@@ -36682,7 +36452,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"senhoria",
@@ -36879,7 +36648,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"rendeira",
@@ -37076,7 +36844,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"foreira",
@@ -37273,7 +37040,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"enfiteutaf",
@@ -37470,7 +37236,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"subenfiteutaf",
@@ -37667,7 +37432,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"constituintef",
@@ -37864,7 +37628,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"outorgantef",
@@ -38061,7 +37824,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"arrendataria",
@@ -38258,7 +38020,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"acusada",
@@ -38455,7 +38216,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testadora",
@@ -38652,7 +38412,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testamentaria",
@@ -38849,7 +38608,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testamenteira",
@@ -39046,7 +38804,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"contraentef",
@@ -39243,7 +39000,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"renunciantef",
@@ -39440,7 +39196,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora",
@@ -39637,7 +39392,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"arrematantef",
@@ -39834,7 +39588,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"abonadora",
@@ -40031,7 +39784,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"quitantef",
@@ -40228,7 +39980,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"quitada",
@@ -40425,7 +40176,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"demandadora",
@@ -40622,7 +40372,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"escambadora",
@@ -40819,7 +40568,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"reuf",
@@ -41016,7 +40764,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"inquirida",
@@ -41213,7 +40960,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"apelantef",
@@ -41410,7 +41156,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"autorf",
@@ -41607,7 +41352,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"beneficiaria",
@@ -41804,7 +41548,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"destinataria",
@@ -41818,7 +41561,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"perdoante",
@@ -42022,7 +41764,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"perdoante-m",
@@ -42219,7 +41960,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"perdoante-f",
@@ -42423,7 +42163,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"perdoado",
@@ -42620,7 +42359,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"perdoada",
@@ -42634,7 +42372,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vitima",
@@ -42838,7 +42575,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vitima-m",
@@ -43035,7 +42771,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"vitima-f",
@@ -43048,7 +42783,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor" ],
       "identification":"sic",
       "idprefix":"att",
@@ -43062,7 +42796,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor" ],
       "identification":"sic",
       "idprefix":"att",
@@ -43076,7 +42809,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor", "nomedest", "iddest" ],
       "identification":"sic",
       "idprefix":"rel",

@@ -1,0 +1,96 @@
+# ****************************************************************
+# Equivalencia entre o nome dos elementos em portugues e em ingles
+# ****************************************************************
+
+- element:
+    name: dia
+    description: Sinónimo de day
+    source: day
+    type: number
+- element:
+    name: mes
+    description: Sinónimo de month
+    source: month
+    type: number
+- element:
+    name: ano
+    description: Sinónimo de year
+    source: year
+    type: number
+- element:
+    name: data
+    description: Sinónimo de date
+    source: date
+    type: number
+- element:
+    name: tipo
+    description: >
+      Sinónimo de Type, tipo em atributos, relações e actos, entre outros.
+    source: type
+- element:
+    name: valor
+    description: Sinónimo de value, valor em atributos e relações
+    source: value
+- element:
+    name: localizacao
+    description: No sentido de local
+    source: loc
+- element:
+    name: cota
+    description: >
+      Sinónimo de ref, aqui: referência de documento em arquivo ou biblioteca
+    source: ref
+- element:
+    name: nome
+    description:
+    source: name
+- element:
+    name: mesmo_que
+    description: Id de  outra ocorrência da mesma entidade no mesmo ficheiro
+    source: same_as
+- element:
+    name: xmesmo_que
+    description: Indica outra ocorrência desta entidade em outro ficheiro
+    source: xsame_as
+- element:
+    name: sexo
+    description: Sinónimo de sexo (género)
+    source: sex
+- element:
+    name: nomedest
+    description: Nome do destino de uma relação ( para clareza, não altera o nome do destino)
+    source: destname
+- element:
+    name: iddest
+    description: Id do destino de uma relação, deve existir neste ficheiro
+    source: destination
+- element:
+    name: sumario
+    description: Resumo de um documento, usar triplas aspas para textos longos multi linha
+    source: summary
+- element:
+    name: pagina
+    description: >
+      Sinónimo de page, usado para indicar página em documento ou livro.
+    source: page
+- element:
+    name: paginas
+    description: >
+      Sinónimo de pages, usado para indicar páginas (e.g. 1-12) em documento ou livro.
+    source: pages
+- element:
+    name: fol
+    description: Fólio, equivalente de pagina, usado em documentos manuscritos
+    source: page
+- element:
+    name: fols
+    description: Fólios, equivalente de pages, usado em documentos manuscritos
+    source: pages
+- element:
+    name: folio
+    description: sinónimo de folio, usado em documentos manuscritos
+    source: page
+- element:
+    name: folios
+    description: sinónimo de folios, usado em documentos manuscritos
+    source: pages

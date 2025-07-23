@@ -1,0 +1,136 @@
+- include: groups.yaml
+- file:
+    name: pt-actors.yaml
+    description: "Actors in acts and events PT version"
+- group:
+    name: na
+    source: actorf
+- group:
+    name: enferma
+    source: actorf
+
+- group:
+    name: presente-f
+    source: actorf
+- group:
+    name: testa
+    part:
+    - acus
+    - acusa
+    source: actorf
+- group:
+    name: acionistaf
+    source: actorf
+- group:
+    name: devedora
+    source: actorf
+- group:
+    name: credora
+    source: actorf
+- group:
+    name: fiadora
+    source: actorf
+- group:
+    name: compradora
+    source: actorf
+- group:
+    name: vendedora
+    source: actorf
+- group:
+    name: doadora
+    source: actorf
+- group:
+    name: donataria
+    source: actorf
+- group:
+    name: dotantef
+    source: actorf
+- group:
+    name: dotada
+    source: actorf
+- group:
+    name: senhoria
+    source: actorf
+- group:
+    name: foreira
+    source: actorf
+- group:
+    name: enfiteutaf
+    source: actorf
+- group:
+    name: subenfiteutaf
+    source: actorf
+- group:
+    name: constituintef
+    source: actorf
+- group:
+    name: outorgantef
+    source: actorf
+- group:
+    name: arrendataria
+    source: actorf
+- group:
+    name: acusada
+    source: actorf
+- group:
+    name: testadora
+    source: actorf
+- group:
+    name: testamentaria
+    source: actorf
+- group:
+    name: testamenteira
+    source: actorf
+- group:
+    name: contraentef
+    source: actorf
+- group:
+    name: renunciantef
+    source: actorf
+- group:
+    name: procuradora
+    source: actorf
+- group:
+    name: arrematantef
+    source: actorf
+- group:
+    name: abonadora
+    source: actorf
+- group:
+    name: quitantef
+    source: actorf
+- group:
+    name: quitada
+    source: actorf
+- group:
+    name: demandadora
+    source: actorf
+- group:
+    name: escambadora
+    source: actorf
+- group:
+    name: reuf
+    source: actorf
+- group:
+    name: inquirida
+    source: actorf
+- group:
+    name: apelantef
+    source: actorf
+- group:
+    name: autorf
+    source: actorf
+- group:
+    name: beneficiaria
+    source: actorf
+- group:
+    name: destinataria
+    source: actorf
+- group:
+    name: perdoante-f
+    source: actorf
+- group:
+    name: perdoada
+    source: actorf
+- group:
+    name: vitima

@@ -53,7 +53,8 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,
     identification: sic
     name: id
     prefix: non
@@ -89,13 +90,13 @@
     prefix: non
     suffix: non
 - element:
-    description:
+    description: 'cota ou outra referencia de localizacao da fonte '
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description:
+    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
     identification: non
     name: loc
     prefix: non
@@ -210,8 +211,8 @@
     - obs
     - prefix
     - translations
-    description: "This is the top level group of Kleio files. Specific historical
-      sources must be added to the part parameter of this group. \n"
+    description: 'This is the top level group of Kleio files. Specific historical
+      sources must be added to the part parameter of this group. '
     idprefix: kle
     name: kleio
     part:
@@ -235,9 +236,6 @@
     - obs
     - replace
     - kleiofile
-    description: '
-
-      '
     guaranteed:
     - id
     idprefix: his
@@ -257,7 +255,7 @@
     - date
     - user
     - dbase
-    description: "a register of authority-records \n"
+    description: 'a register of authority-records '
     guaranteed:
     - id
     - name
@@ -276,10 +274,10 @@
 - group:
     also:
     - obs
-    description: "Identifications are authority-registers for record linking. They
+    description: 'Identifications are authority-registers for record linking. They
       contain real-entity records (people or objects )that aggregate occurrences in
       the source pertaining to the same person or entity. To keep imported records
-      separate from local ones use a different user. \n"
+      separate from local ones use a different user. '
     guaranteed:
     - id
     - name
@@ -303,9 +301,7 @@
     also:
     - id
     - obs
-    description: "Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\"
-      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572
-      \n"
+    description:
     idprefix: lin
     name: link
     position:
@@ -317,9 +313,9 @@
     also:
     - id
     - obs
-    description: "A property of the file for the kleio parser. Properties are not
+    description: 'A property of the file for the kleio parser. Properties are not
       stored in the database. They affect the parsing of the file. Examples :property
-      $multiple-entry-flag /124 #ascii for pipe char \n"
+      $multiple-entry-flag /124 #ascii for pipe char '
     idprefix: pro
     name: property
     position:
@@ -332,8 +328,8 @@
     - status
     - user
     - obs
-    description: "Rentity contains information about a real entity. Defines the standart
-      name for the entity and what are the occurences ,in `occ `subgroups. \n"
+    description: 'Rentity contains information about a real entity. Defines the standart
+      name for the entity and what are the occurences ,in `occ `subgroups. '
     guaranteed:
     - id
     - description
@@ -353,7 +349,7 @@
     - status
     - user
     - obs
-    description: "contains information about a real person. \n"
+    description: 'contains information about a real person. '
     guaranteed:
     - id
     - sname
@@ -376,7 +372,7 @@
     - status
     - user
     - obs
-    description: "contains information about a real object. \n"
+    description: 'contains information about a real object. '
     guaranteed:
     - id
     - sname
@@ -402,7 +398,7 @@
     - date
     - id
     - obs
-    description: "contains the ids of the occurrences of a real entity \n"
+    description: 'contains the ids of the occurrences of a real entity '
     guaranteed:
     - occurrence
     idprefix: occ
@@ -432,10 +428,9 @@
     - ls
     - atr
     - rel
-    description: "represents an historical act An historical act is a record of an
+    description: 'represents an historical act An historical act is a record of an
       event ,something that happened at a moment and place in time. This form is used
-      for records such as parish records notarial acts. \ndate: date in kleio format
-      YYYYMMMDD ou YYYY-Month-Day "
+      for records such as parish records notarial acts. '
     guaranteed:
     - id
     - type
@@ -465,8 +460,8 @@
     - ls
     - atr
     - rel
-    description: "Something that happened. Used for registering events mentioned in
-      letters ,chronicles ,interviews ,not in formal records. \n"
+    description: 'Something that happened. Used for registering events mentioned in
+      letters ,chronicles ,interviews ,not in formal records. '
     guaranteed:
     - description
     idprefix: his
@@ -495,8 +490,8 @@
     - ls
     - atr
     - rel
-    description: "chronology event ,with date upfront ,followed by place (or context
-      )and a description \n"
+    description: 'chronology event ,with date upfront ,followed by place (or context
+      )and a description '
     guaranteed:
     - data
     - loc
@@ -523,9 +518,6 @@
     - atr
     - rel
     - ls
-    description: '
-
-      '
     guaranteed:
     - name
     - sex
@@ -549,9 +541,6 @@
     - atr
     - rel
     - ls
-    description: '
-
-      '
     guaranteed:
     - name
     idprefix: per
@@ -572,9 +561,6 @@
     - atr
     - rel
     - ls
-    description: '
-
-      '
     guaranteed:
     - name
     idprefix: per
@@ -595,9 +581,6 @@
     - atr
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - name
     idprefix: obj
@@ -617,9 +600,6 @@
     - atr
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - name
     idprefix: obj
@@ -638,7 +618,7 @@
     - atr
     - ls
     - rel
-    description: "topics ,tags or keywords \n"
+    description: 'topics ,tags or keywords '
     guaranteed:
     - name
     idprefix: obj
@@ -656,10 +636,10 @@
     - obs
     - same_as
     - xsame_as
-    description: "GeoEntity :a spatial entity. An entity that represents a spatial
+    description: 'GeoEntity :a spatial entity. An entity that represents a spatial
       entity in the sense of a conceptual representation of space. A geo-entity is
       not an object that has a particular position in place. It is rather something
-      like the parish of X ,the place Y ,the region W. \n"
+      like the parish of X ,the place Y ,the region W. '
     idprefix: geo
     name: geoentity
     part:
@@ -677,9 +657,6 @@
     - obs
     - same_as
     - xsame_as
-    description: '
-
-      '
     idprefix: geo
     name: place
     part:
@@ -696,9 +673,6 @@
     - obs
     - date
     - id
-    description: '
-
-      '
     guaranteed:
     - type
     - value
@@ -715,9 +689,6 @@
     - obs
     - date
     - id
-    description: '
-
-      '
     guaranteed:
     - type
     - value
@@ -730,9 +701,6 @@
 - group:
     also:
     - id
-    description: '
-
-      '
     idprefix: end
     name: end
     position:
@@ -742,9 +710,6 @@
 - group:
     also:
     - obs
-    description: '
-
-      '
     guaranteed:
     - value
     idprefix: gro
@@ -754,9 +719,6 @@
     prefix: non
     suffix: non
 - group:
-    description: '
-
-      '
     idprefix: rel
     name: relation-type
     prefix: non
@@ -771,9 +733,8 @@
     - ano
     - obs
     - substitui
-    description: "Este constitui o grupo principal para os documentos historicos portugueses.
-      Admite qualquer dos actos definidos aqui. \nid: elemento obrigatorio ,identifica
-      unicamente a fonte na base de dados ,"
+    description: 'Este constitui o grupo principal para os documentos historicos portugueses.
+      Admite qualquer dos actos definidos aqui. '
     guaranteed:
     - id
     idprefix: his
@@ -802,9 +763,6 @@
     - abstraction
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - id
     - dia
@@ -824,9 +782,6 @@
     arbitrary:
     - actorm
     - actorf
-    description: '
-
-      '
     idprefix: rel
     name: funcao-em-acto
     prefix: non
@@ -836,7 +791,7 @@
     also:
     - id
     - obs
-    description: "fim indica o fim de um acto \n"
+    description: 'fim indica o fim de um acto '
     idprefix: end
     name: fim
     position:
@@ -877,7 +832,7 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
     identification: non
     name: tipo
     prefix: non
@@ -995,8 +950,8 @@
     - ls
     - atr
     - rel
-    description: "Actos genericos :servem para vereacoes etc. Compostos por items
-      e por pessoas \n"
+    description: 'Actos genericos :servem para vereacoes etc. Compostos por items
+      e por pessoas '
     guaranteed:
     - id
     - dia
@@ -1032,9 +987,6 @@
     - ls
     - atr
     - rel
-    description: '
-
-      '
     guaranteed:
     - description
     idprefix: his
@@ -1062,9 +1014,6 @@
     - referida
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - titulo
     idprefix: obj
@@ -1082,9 +1031,6 @@
     - atr
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - name
     idprefix: obj
@@ -1102,9 +1048,6 @@
     - obs
     - same_as
     - xsame_as
-    description: '
-
-      '
     idprefix: geo
     name: lugar
     part:
@@ -1121,9 +1064,6 @@
     - obs
     - date
     - id
-    description: '
-
-      '
     guaranteed:
     - type
     - value
@@ -1141,9 +1081,6 @@
     - data
     - obs
     - id
-    description: '
-
-      '
     guaranteed:
     - tipo
     - valor
@@ -1357,9 +1294,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -1560,9 +1494,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -1583,7 +1514,7 @@
     - testo
     - testa
     - referido
-    description: "Devassas temporais nas visitas pastorais \n"
+    description: 'Devassas temporais nas visitas pastorais '
     guaranteed:
     - id
     - dia
@@ -1610,9 +1541,6 @@
     - atr
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - idcaso
     idprefix: obj
@@ -1635,9 +1563,6 @@
     - atr
     - ls
     - rel
-    description: '
-
-      '
     guaranteed:
     - idcaso
     idprefix: obj
@@ -1658,9 +1583,6 @@
     - acusada
     - referido
     - referida
-    description: '
-
-      '
     guaranteed:
     - id
     - tipo
@@ -1869,9 +1791,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2075,9 +1994,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2288,9 +2204,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2491,9 +2404,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2701,9 +2611,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2904,9 +2811,6 @@
     - criado
     - engeitado
     - engeitada
-    description: '
-
-      '
     guaranteed:
     - nome
     idprefix: per
@@ -2924,8 +2828,7 @@
     - obs
     arbitrary:
     - denunciante
-    description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao
-      \n"
+    description: 'Denuncia de um caso como nos cadernos dos promotores da inquisicao '
     guaranteed:
     - id
     - dia

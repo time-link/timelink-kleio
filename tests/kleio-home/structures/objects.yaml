@@ -1,0 +1,551 @@
+- path: object
+- group:
+    name: convento
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [atr, rel]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: mosteiro
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [atr, rel]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: misericordia
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [atr, rel]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: hospital
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [atr, rel]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: irmandade
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: confraria
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: idonatario
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: conf
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [referido, referida]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: marco
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: proparr
+    note: '  '
+    source: object
+    position: [name]
+    guaranteed: [name]
+    also: [valor, prazo, condicao, obs, id, mesmo_que, xmesmo_que]
+    part: [arrem, fiador]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: bemarr
+    note: '  '
+    source: proparr
+    position: [name]
+    guaranteed: [name]
+    also: [valor, prazo, condicao, obs, id, mesmo_que, xmesmo_que]
+    part: [arrem, fiador]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: fornarr
+    note: '  '
+    source: proparr
+    position: [name]
+    guaranteed: [name]
+    also: [valor, prazo, condicao, obs, id, mesmo_que, xmesmo_que]
+    part: [arrem, fiador]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: rendarr
+    note: '  '
+    source: proparr
+    position: [name]
+    guaranteed: [name]
+    also: [valor, prazo, condicao, obs, id, mesmo_que, xmesmo_que]
+    part: [arrem, fiador]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: fogo
+    note: '  '
+    source: object
+    position: [id, local]
+    guaranteed: [id, local]
+    also: [obs]
+    arbitrary:
+    - n
+    - criado
+    - criada
+    - engeitado
+    - engeitada
+    - enjeitado
+    - enjeitada
+    - escravo
+    - escrava
+    - fim
+- group:
+    name: bem
+    note: '  '
+    source: object
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: divida
+    note: '  '
+    source: object
+    position: [valor, juro]
+    guaranteed: [valor, juro]
+    also: [id, prazo, moeda, valorn, obs]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: garantia
+    note: '  '
+    source: bem
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: fianca
+    note: '  '
+    source: garantia
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: siza
+    note: '  '
+    source: object
+    position: [valor, juiz, escrivao, depositario, data]
+    guaranteed: [valor]
+    also: [juiz, escrivao, depositario, data, obs, id]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: sisa
+    note: '  '
+    source: siza
+    position: [valor, juiz, escrivao, depositario, data]
+    guaranteed: [valor]
+    also: [juiz, escrivao, depositario, data, obs, id]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: aforamento
+    note: '  '
+    source: bem
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: prazo
+    note: '  '
+    source: aforamento
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: arrendamento
+    note: '  '
+    source: bem
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: escambo
+    note: '  '
+    source: bem
+    position: [name, tipo]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel, local]
+- group:
+    name: obra
+    note: '  '
+    source: object
+    position: [name, tipo, id]
+    guaranteed: [name]
+    also: [desc, tipo, id, obs, local]
+    arbitrary: [atr, rel]
+- group:
+    name: linha
+    note: '  '
+    source: object
+    position: [numero]
+    guaranteed: [numero]
+    also: [obs, id, same_as, xsame_as]
+    part: [n]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: igreja
+    note: '  '
+    source: object
+    position: [name, type]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    part: [atr, rel]
+    arbitrary: [atr, ls, rel]
+- group:
+    name: fornarr
+    note: '  '
+    part:
+    - arrem
+    - fiador
+    position:
+    - name
+    source: proparr
+- group:
+    also:
+    - valor
+    - prazo
+    - condicao
+    - obs
+    - id
+    - mesmo_que
+    - xmesmo_que
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - name
+    name: rendarr
+    note: '  '
+    part:
+    - arrem
+    - fiador
+    position:
+    - name
+    source: proparr
+- group:
+    also:
+    - obs
+    arbitrary:
+    - n
+    - criado
+    - criada
+    - engeitado
+    - engeitada
+    - enjeitado
+    - enjeitada
+    - escravo
+    - escrava
+    - fim
+    guaranteed:
+    - id
+    - local
+    name: fogo
+    note: '  '
+    position:
+    - id
+    - local
+    source: object
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: bem
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: object
+- group:
+    also:
+    - id
+    - prazo
+    - moeda
+    - valorn
+    - obs
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - valor
+    - juro
+    name: divida
+    note: '  '
+    position:
+    - valor
+    - juro
+    source: object
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: garantia
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: bem
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: fianca
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: garantia
+- group:
+    also:
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - valor
+    name: siza
+    note: '  '
+    position:
+    - valor
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    source: object
+- group:
+    also:
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    - obs
+    - id
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - valor
+    name: sisa
+    note: '  '
+    position:
+    - valor
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    source: siza
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: aforamento
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: bem
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: prazo
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: aforamento
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: arrendamento
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: bem
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    name: escambo
+    note: '  '
+    position:
+    - name
+    - tipo
+    source: bem
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    guaranteed:
+    - name
+    name: obra
+    note: '  '
+    position:
+    - name
+    - tipo
+    - id
+    source: object
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - numero
+    name: linha
+    note: '  '
+    part:
+    - n
+    position:
+    - numero
+    source: object
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - name
+    name: igreja
+    note: '  '
+    part:
+    - atr
+    - rel
+    position:
+    - name
+    - type
+    source: object

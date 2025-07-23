@@ -1,0 +1,545 @@
+- file:
+    name: groups.yaml
+    description: |
+        This file contains the definitions of the core groups
+        used in the Kleio schemas.
+
+        The groups are defined in a YAML list, each group
+        being a dictionary with the following keys:
+
+        - name: the name of the group
+        - description: a description of the group
+        - position: a list of elements that can be registred without specifying the
+                    name of the element, for instance
+
+                    - group:
+                        name: person
+                        position: [id, name, sex]
+                        guaranteed: [id, name, sex]
+
+                    This means that the following is valid:
+
+                        person$id001/João/M
+
+        - guaranteed: a list of elements that must be present
+        - also: a list of elements that can optionally be present
+        - idprefix: the prefix for the ids of the group
+        - contains: a list of others groups that can be contained in this group.
+        - contains: same as "part": a list of groups that can be contained in this group
+        - source: the group that this groups extends. This group keeps the
+                    value of the parameters of the source group, except if overriden
+
+        Groups defiend in this file:
+        - kleio
+        - historical-source
+        - authority-register
+        - identifications
+        - link
+        - property
+        - historical-act
+        - event
+        - cevent
+        - text
+        - authority-record
+        - rentity
+        - rperson
+        - robject
+        - occ
+        - geoentity
+        - place
+        - person
+        - female
+        - male
+        - object
+        - abstraction
+        - topic
+        - end
+        - attribute
+        - ls
+        - attr
+        - atr
+        - relation
+        - rel
+        - group-element
+        - relation
+
+- group:
+    name: kleio
+    description: |
+        This is the top level group of Kleio files.
+        It serves as a container for historical sources,
+        authority registers, and other processing related
+        groups.
+
+    also: [structure, translator, autorels, obs, prefix, translations]
+    idprefix: kle
+    contains: [historical-source, authority-register, link, property]
+    position: [structure, translator, obs]
+
+- group:
+    name: historical-source
+    description: >
+
+        Main group to register historical sources.
+        A historical sources contain the records of historical acts
+        or events that happened in the past. They can also contain
+        lists of people, objects, geoentities, abstractions, etc.
+
+        Specific types of sources are defined by extending this group.
+
+        Each source has a unique id, which is compulsory.
+        The id shoud be unique across all sources in the project.
+        To avoid conflicts it is recommended that the id is the same
+        as the file name of the source, without the extension.
+
+
+    position: [id, year, type, loc, ref]
+    also: [date,year,obs,replace,kleiofile]
+    guaranteed: [id]
+    idprefix: his
+    contains: [historical-act, event, text]
+
+# Authority registers
+- group:
+    name: authority-register
+    description: >
+        An authority register is container for authority records.
+        Authority records in Timelink are similar to authory records
+        in library systems. They are used to register identification
+        of real entities (people, objects, etc.) and to link them.
+
+        Currently the only authority register defined is the
+        "identifications" register, which is used to record the
+        real entities (people or objects) that
+        aggregate occurrences in the source.
+
+        This is an "abstract" group, meaning that it is not
+        intended to be used directly, but rather extended by
+        other groups that define specific authority registers.
+    also: [date, user, dbase]
+    guaranteed: [id, name, date, user, dbase]
+    idprefix: aut
+    contains: [authority-record]
+    position: [id, name]
+
+- group:
+    name: identifications
+    source: authority-register
+    description: >
+        Identifications are authority-registers for record linking.
+        They contain real-entity records (people or objects ) that
+        aggregate occurrences in the source pertaining to the same person
+        or entity.
+    position: [id, name]
+    guaranteed: [id, name, date, user, dbase, mode]
+    contains: [rentity, rperson, robject]
+    also: [obs]
+    idprefix: ids
+
+- group:
+    name: link
+    description: |
+        Defines a shortcut for insert links to external data
+        as comments in the kleio file.
+
+        A link can be recorded as @shortcut:external-id
+
+        Example: link$wikidata/"https://www.wikidata.org/wiki/$1"
+
+        And then annotate element values in comments
+
+         ls$place-of-stay/Canton#@wikidata:Q16572
+
+        See https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/
+    position: [shortname, urlpattern]
+    also: [id, obs]
+    idprefix: lin
+
+- group:
+    name: property
+    description: >
+        A property of the file for the kleio parser.
+        Properties are not stored in the database.
+        They affect the parsing of the file.
+
+        Currently only the "multiple-entry-flag" property is defined.
+        It is used to indicate to separate multiple values for a group element
+
+        Example:
+            property$multiple-entry-flag/124/obs=ascii for pipe char
+
+    position: [name, value]
+    also: [id, obs]
+    idprefix: pro
+
+# Inside historical sources
+- group:
+    name: historical-act
+    description: >
+        Represents an historical act, i.e. a record of an event ,
+        something that happened at a moment and place in time.
+        This form is used for records such as parish records notarial acts.
+
+    position: [id, type, date]
+    guaranteed: [id, type, date]
+    also: [loc, ref, obs, day, month, year]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
+    idprefix: hac
+
+- group:
+    name: event
+    source: historical-act
+    description: >
+        Something that happened. Used for registering events mentioned
+        in letters ,chronicles ,interviews ,not in formal records.
+    position: [description, date]
+    guaranteed: [description]
+    also: [loc, ref, obs, day, month, year]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
+    idprefix: evt
+
+- group:
+    name: cevent
+    source: event
+    description: >
+        Chronology event, used to transcribe chronologies,
+        with date upfront, followed by place (or context ) and a description.
+
+    position: [data, loc, description]
+    guaranteed: [data, loc, description]
+    also: [id, obs, same_as, xsame_as]
+    contains: [person, object, geoentity, abstraction, ls, attr, rel]
+
+    idprefix: cro
+
+- group:
+    name: ulist
+    source: historical-act
+    description: >
+        A list of unique people, objects, geoentities, abstractions, etc.
+        "Unique" means that the same person, object, geoentity, abstraction, etc.
+        is not repeated in the list. Use case: prosopographies, biographical dicionaries, etc.
+        household lists, etc.
+    idprefix: ul
+
+- group:
+    name: text
+    description: >
+        Used to record the original text. Use triple quotes to preserve
+        line breaks and indentation.
+
+        Example:
+            text$"""
+            This is a text
+            with line breaks
+            and indentation.
+            """
+
+        This group can be used to record the original text of
+        historical acts, events, before the corresponding kleio
+        notation allowing tools as co-pilot to help with the transcription.
+    position: [text]
+    guaranteed: [text]
+    also: [id, obs]
+    idprefix: txt
+
+# Inside authority registers
+- group:
+    name: authority-record
+    description: >
+        An authority record is an entry in an authority register.
+        This is an "abstract" group, meaning that it is not
+        intended to be used directly
+    position: [id]
+    guaranteed: [id]
+    also: [name, obs, date, user, dbase]
+    idprefix: arc
+
+# Inside identifications authority register
+- group:
+    name: rentity
+    source: authority-record
+    description: >
+        Rentity contains information about a real entity.
+        Defines the standart name for the entity and what are the occurences,
+        in `occ `subgroups.
+    position: [id, description, type]
+    also: [status, user, obs]
+    guaranteed: [id, description, type]
+    idprefix: ren
+    contains: [occ]
+- group:
+    name: rperson
+    source: rentity
+    description: >
+        Contains information about a real person.
+        Only occurs inside the identifications authority register.
+    position: [id, sname, sex]
+    also: [status, user, obs]
+    guaranteed: [id, sname, sex]
+    idprefix: rpe
+    contains: [occ, ls, atr, rel]
+- group:
+    name: robject
+    source: rentity
+    description: >
+        Contains information about a real object.
+        Only occurs inside the identifications authority register.
+    position: [id, sname, type]
+    also: [status, user, obs]
+    guaranteed: [id, sname, type]
+    idprefix: rob
+    contains: [occ, ls, atr, rel]
+- group:
+    name: occ
+    description: >
+        Contains the ids of the occurrences of a real entity.
+        Only occurs inside the identifications authority register.
+
+    position: [occurrence, atype, func, date, name]
+    guaranteed: [occurrence]
+    also: [name, atype, func, date, id, obs]
+    idprefix: occ
+
+# Inside acts and events
+- group:
+    name: geoentity
+    description: >
+        An entity that endures due to a specific position location in space,
+        in spite of changes in its caracteristics and specific boundaries.
+
+        Examples of geoentities are: a parish, a place, a region, a country, etc.
+        See wikidata:Q56061  Administrative Territorial Entity
+        and wikidata:Q486972 Human Settlement
+
+    position: [name]
+    guaranteed: [name]
+    also: [type, id, obs, same_as, xsame_as]
+    contains: [ls, atr, rel]
+    idprefix: geo
+- group:
+    name: place
+    description: Synonym for geoentity, used for places in the kleio file.
+    source: geoentity
+# people
+- group:
+    name: person
+    description: A person.
+    position: [name, sex]
+    guaranteed: [name, sex]
+    also: [id, obs, same_as, xsame_as]
+    contains: [atr, rel, ls]
+    idprefix: per
+- group:
+    name: female
+    source: person
+    description: A female person. Groups based on this have female gender
+    position: [name]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    contains: [atr, rel, ls,]
+    idprefix: fper
+- group:
+    name: male
+    source: person
+    description: A Male person. Groups based on this have male gender
+    position: [name]
+    guaranteed: [name]
+    also: [obs, id, same_as, xsame_as]
+    contains: [atr, rel, ls]
+    idprefix: mper
+- group:
+    name: kin-m
+    source: male
+    description: >
+        A male person related by kin to an actor in an act or event.
+- group:
+    name: kin-f
+    source: female
+    description: >
+        A female person related by kin to an actor in an act or event.
+- group:
+    name: actorf
+    source: female
+    contains: [ls,atr,rel,kin-m,kin-f]
+    decription: >
+        A female actor in an act or event.
+- group:
+    name: actorm
+    source: male
+    contains: [ls,atr,rel,kin-m,kin-f]
+    description: >
+        A male actor in an act or event.
+#
+- group:
+    name: object
+    description: >
+        Anything that is not a person or geoentity,
+        includes abstractions, animals, plants, objects, etc.
+    position: [name, type]
+    guaranteed: [name]
+    also: [type, obs, id, same_as, xsame_as]
+    contains: [atr, ls, rel]
+    idprefix: obj
+- group:
+    name: abstraction
+    source: object
+    description: An abstraction, such as a concept, idea, or event.
+    position: [name, type]
+    also: [obs, id, same_as, xsame_as]
+    guaranteed: [name]
+    contains: [atr, ls, rel]
+    idprefix: obj
+- group:
+    name: topic
+    source: abstraction
+    description: An topic, such as a subject or theme.
+    position: [name, description]
+    guaranteed: [name]
+    also: [obs, id]
+    contains: [atr, ls, rel]
+    idprefix: top
+- group:
+    name: end
+    description: |
+        Used to trigger inference rules before the end of an act or event
+
+        Inference rules, that infer relations such as kinship and attributes
+        such as civil status are normally triggered by the end of an act such as
+        a marriage, baptism, or burial.
+
+        Some acts or events however contain a large number of items that are
+        independent one from the other and do not need to be processed
+        together.
+
+        Household list (róis de confessados) are an example of this,
+        where each item is independent from the others and inference rules
+        apply to each household item independently.
+
+        By adding an "end" group after each household item, the inference rules
+        are triggered and context information is cleared, so that the next item
+        can be processed independently.
+
+        Example:
+            end$end of household 3
+    position: [obs]
+    also: [id]
+    idprefix: end
+
+# attributes of people, geoentities, objects, etc.
+- group:
+    name: attribute
+    position: [type, value, date]
+    description: Registers time varying attributes of people, objects, geoentities, etc.
+    guaranteed: [type, value]
+    also: [obs, date, id]
+    idprefix: att
+- group:
+    name: ls
+    description: Alias for attribute, short for "life story".
+    source: attribute
+- group:
+    name: attr
+    description: Shor for attribute, used usually for metadata attributes.
+    source: attribute
+- group:
+    name: atr
+    description: Alias for attribute
+    source: attribute
+
+#  Relations between people, objects, geoentities, etc.
+- group:
+    name: relation
+    description: >
+        A relation between two or more entities, such as people, objects,
+        geoentities, etc.
+
+        Relation have a type (kinship, professional...) and a
+        value (e.g. "father", "mother", "colleague", etc.).
+
+        Some special relations are generated automatically by the parser,
+        such as "identification" relations to register that two entities
+        are the same (generated from "same_as" and "xsame_as" elements),
+        and "function-in-act" relations to register the function of an
+        entity in an act.
+
+    position: [type, value, destname, destination, date]
+    guaranteed: [type, value, destname, destination]
+    also: [obs, date, id]
+    idprefix: rel
+- group:
+    name: rel
+    description: Short hand for relation
+    source: relation
+    idprefix: rel
+
+# Other groups
+- group:
+    name: group-element
+    description: >
+        A group whose name correspondes to the name
+        of an element of the enclosig group. During import
+        the value of the first element of the group
+        is used as the value of the element in the enclosing group.
+
+        For example, if the enclosing group is "burial"
+        with an element "place_of_burial", one can use
+
+        burial$1580-01-01/place_of_death=Canton/place_of_burial=Macao
+            /masses=9
+            n$Mary Smith
+              husband$John Smith
+                ls$residence/Zhuhai
+                ls$profession/merchant
+
+        if in the sources the values of the elements appear later
+        in the source, one can use the group-element as such:
+
+        burial$1580-01-01
+            n$Mary Smith
+              husband$John Smith
+                ls$residence/Zhuhai
+                ls$profession/merchant
+            place_of_death$Canton
+            place_of_burial$Macao
+            masses$9
+
+        with place_of_death, place_of_burial and masses being
+        group-elements, which will be processed as elements
+        of the enclosing group "burial".
+
+    guaranteed: [value]
+    idprefix: gev
+    position: [value]
+
+- group:
+    name: relation-type
+    description: " "
+    idprefix: rel
+
+- group:
+    name: attribute-list
+    description: >
+        A list, similar to an act, enclosing people, objects,
+        geoentities, abstractions, etc. which will receive
+        automatically a predefined attribute with type and value
+        defined in the enclosing group.
+
+        alist$cat1/1611-04-01/jesuit-province/Portugal
+            person$Francisco de Sousa
+            person$João da Silva
+
+        after processing, the people will have
+            person$Francisco de Sousa
+                ls$jesuit-province/Portugal/1611-04-01
+            person$João da Silva
+                ls$jesuit-province/Portugal/1611-04-01
+
+
+    position: [id, date, type, value]
+    guaranteed: [id, type, value]
+    also: [obs, loc, ref]
+    idprefix: alist
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, attribute-list]
+
+

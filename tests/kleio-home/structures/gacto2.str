@@ -98,6 +98,12 @@ part name=kleio;
  part=historical-source,fonte,authority-register,
       identifications,link, property
 
+element name=autorels; source=type
+element name=structure; source=value
+element name=translator; source=type
+element name=prefix; source=id
+element name=translations; source=number
+
 note ============================================================
 note Basic historical source group
 note ============================================================
@@ -142,6 +148,8 @@ part name=authority-register;
     also=date,user,dbase;
     part=authority-record
 
+element name=dbase; source=string256
+
 note ===========================================================
 note identifications: a authority-register for identifications
 note doc group identifications
@@ -156,6 +164,7 @@ part name=identifications;
     also=obs;
     part=rentity,rperson,robject
 
+element name=mode; source=type
 note ===========================================================
 note Linked data related information
 note doc group link
@@ -173,6 +182,9 @@ note ===========================================================
 part name=link;
     position=shortname,urlpattern;
     also=id,obs
+
+element name=shortname; source=type
+element name=urlpattern; source=value
 
 note ===========================================================
 note doc group property
@@ -199,6 +211,10 @@ part name=rentity;
      guaranteed=id,description,type;
      also=status,user,obs;
      part=occ
+
+element name=status; source=type
+element name=user; source=name
+
 note ===========================================================
 note rperson: a authority-record for a real person
 note doc group rperson contains information about a real person.
@@ -209,6 +225,8 @@ part name=rperson;
      guaranteed=id,sname,sex;
      also=status,user,obs;
      part=occ,ls,atr,rel
+
+element name=sname; source=name
 
 note ===========================================================
 note robject: a authority-record for a real object
@@ -233,6 +251,9 @@ part name=occ;
      guaranteed=occurrence;
      also=name,atype,func,date,id,obs
 
+element name=atype; source=type
+element name=func; source=type
+element name=occurrence; source=id
 
 note ============================================================
 note Acts, events, cronologies
@@ -426,7 +447,7 @@ part name=fonte;
                 crisma,docregio,docpontificio,docepiscopal,automed,
                 pas,lcc,integr,movacao,geodesc
 
-note element name=substitui; source=replace
+element name=substitui; source=replace
 
 note *****************************************************************
 note doc group 'pt-acto' Forma generica de acto.
@@ -438,6 +459,8 @@ part name=pt-acto; source=historical-act;
      position=id,dia,mes,ano;
      guaranteed=id,dia,mes,ano;
      also=ref,loc,obs
+
+element name=celebrante; source=name
 
 note ****************************************************************
 note funcao-em-acto   -- tipo de relacao entre actor e acto
@@ -456,13 +479,16 @@ note ****************************************************************
 note Equivalencia entre o nome dos elementos em portugues e em ingles
 note ****************************************************************
 element name=dia; source=day
+element name=dian; source=day
 element name=mes; source=month
+element name=mesn; source=month
 element name=ano; source=year
+element name=anon; source=year
 element name=data; source=date
 element name=tipo; source=type
 element name=valor; source=value
 element name=localizacao; source=loc
-element name=cota; source=ref;
+element name=cota; source=ref
 element name=nome; source=name
 element name=mesmo_que; source=same_as
 element name=xmesmo_que; source=xsame_as
@@ -470,10 +496,11 @@ element name=sexo; source=sex
 element name=nomedest; source=destname
 element name=iddest; source=destination
 element name=sumario; source=summary
-element name=fol; source=pages;
-element name=fols; source=pages;
-element name=folio; source=pages;
-element name=folios; source=pages;
+element name=fol; source=pages
+element name=fols; source=pages
+element name=folio; source=pages
+element name=fol; source=folio
+element name=folios; source=pages
 
 note ****************************************************************
 note doc group acto Actos genericos: servem para vereacoes etc. Compostos por items e por pessoas
@@ -547,6 +574,8 @@ part name=item; source=object;
     position=titulo;
     also=resumo,id,tipo,obs
 
+element name=titulo; source=value
+
 part name=topico; source=topic
 
 part name=lugar; source=place
@@ -588,15 +617,23 @@ note ****************************************************************
 part name=devassa;
  source=pt-acto;
  repeat=testo,testa,referido;
- guaranteed=id,dia,mes,ano,folio;
+ guaranteed=id,dia,mes,ano;
  also=folio,visdor,secretario,obs;
  position=id,dia,mes,ano
+
+element name=visdor; source=name
+element name=secretario; source=name
+
 
 part name=acus; source=object;
   guaranteed=idcaso;
   position=idcaso, obs;
   also=literal,origem,obs,id;
   part=caso
+
+element name=idcaso; source=id
+element name=literal; source=obs
+element name=origem; source=value
 
 
 part name=acusa; source=acus;
@@ -629,6 +666,9 @@ part name=nom;
  guaranteed=id,dia,mes,ano;
  also=fols,subs,esmola,obs;
  position=id,dia,mes,ano,fol,subs,esmola
+
+element name=esmola; source=value
+element name=subs; source=value
 
 note *****************************************************************
 note  doc group amz Assentos da mesa numa misericordia (A particular historical act)
@@ -1100,6 +1140,11 @@ part name=divida; source=object;
     position=valor,juro;
     also=id,prazo,moeda,valorn,obs
 
+element name=juro; source=value
+element name=moeda; source=value
+element name=valorn; source=value
+element name=prazo; source=value
+
 part name=garantia; source=bem;
 
 part name=fianca; source=garantia;
@@ -1112,6 +1157,9 @@ part name=siza; source=object;
      position=valor,juiz,escrivao,depositario,data;
      also=juiz,escrivao,depositario,data,obs,id
 
+element name=depositario; source=name
+element name=juiz; source=name
+element name=escrivao; source=name
 
 part name=sisa; source=siza
 
@@ -1209,6 +1257,9 @@ part name=carta; source=pt-acto;
     position=id,dia,mes,ano,loc;
     also=resumo,refere,obs;
     part=receptor,emissor,evento,topico,emissor-representante
+
+element name=resumo; source=obs
+element name=refere; source=name
 
 part name=adenda; source=pt-acto;
     position=id,dia,mes,ano,loc;
@@ -1453,6 +1504,7 @@ part name=linha; source=object;
  guaranteed=numero;
  part=n
 
+element name=numero; source=number
 note *****************************************************************
 note Cartas de perdao
 note *****************************************************************
@@ -1463,11 +1515,25 @@ part name=cartaperdao; source=pt-acto;
  part=perdoante,perdoante-m,perdoante-f,perdoado,perdoada,vitima,vitima-m,vitima-f,
       crime,perdao,test,referido,referida,tabeliao
 
+element name=tabeliao; source=name
+
 
 part name=crime; source=abstraction;
   position=dia,mes,ano;
   guaranteed=forma,tipo,subtipo;
   also=id,objecto,local,descricao,tempo,instrumento,pronuncia,ocorrencia,situacao,obs
+
+element name=descricao; source=obs
+element name=subtipo; source=value
+element name=forma; source=value
+element name=instrumento; source=value
+element name=objecto; source=value
+element name=local; source=value
+element name=tempo; source=value
+element name=pronuncia; source=value
+element name=ocorrencia; source=value
+element name=situacao; source=value
+
 
 part name=perdao; source=abstraction;
   position=dia,mes,ano;
@@ -1629,6 +1695,9 @@ part name=pas; source=pt-acto;
      position=id,dia,mes,ano,fol,local,destino;
      also=obs;
      arbitrary=mestre,n,referido,referida;
+
+element name=destino; source=value
+element name=num; source=value
 
 
 note *****************************************************************

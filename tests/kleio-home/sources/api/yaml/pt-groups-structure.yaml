@@ -1,0 +1,479 @@
+- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/yaml/pt-groups.kleio
+- element:
+    description: Not defined
+    name: autorels
+- element:
+    description: Not defined
+    name: prefix
+- element:
+    description: Not defined
+    name: structure
+- element:
+    description: Not defined
+    name: substitui
+- element:
+    description: Not defined
+    name: translations
+- element:
+    description: Not defined
+    name: translator
+- group:
+    also:
+    - structure
+    - translator
+    - autorels
+    - obs
+    - prefix
+    - translations
+    counter: 1
+    description: 'This is the top level group of Kleio files. Specific historical
+      sources must be added to the part parameter of this group. '
+    idprefix: kle
+    name: kleio
+    note: 'This is the top level group of Kleio files.
+
+      It serves as a container for historical sources,
+
+      authority registers, and other processing related
+
+      groups.
+
+      '
+    part:
+    - historical-source
+    - authority-register
+    - link
+    - property
+    position:
+    - structure
+    - translator
+    - obs
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - date
+    - year
+    - obs
+    - replace
+    - kleiofile
+    counter: 0
+    guaranteed:
+    - id
+    idprefix: his
+    name: historical-source
+    note: '
+
+      Main group to register historical sources. A historical sources contain the
+      records of historical acts or events that happened in the past. They can also
+      contain lists of people, objects, geoentities, abstractions, etc.
+
+      Specific types of sources are defined by extending this group.
+
+      Each source has a unique id, which is compulsory. The id shoud be unique across
+      all sources in the project. To avoid conflicts it is recommended that the id
+      is the same as the file name of the source, without the extension.
+
+      '
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - year
+    - type
+    - loc
+    - ref
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    counter: 0
+    description: 'represents an historical act An historical act is a record of an
+      event ,something that happened at a moment and place in time. This form is used
+      for records such as parish records notarial acts. '
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: hac
+    name: historical-act
+    note: 'Represents an historical act, i.e. a record of an event , something that
+      happened at a moment and place in time. This form is used for records such as
+      parish records notarial acts.
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - id
+    - type
+    - date
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    counter: 1
+    guaranteed:
+    - name
+    - sex
+    idprefix: per
+    name: person
+    note: A person.
+    part:
+    - atr
+    - rel
+    - ls
+    position:
+    - name
+    - sex
+    prefix: non
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
+    part:
+    - atr
+    - rel
+    - ls
+    position:
+    - name
+    prefix: non
+    source: person
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: day
+    note: two digit representation of the day
+    prefix: non
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: month
+    note: two digit representation of the month
+    prefix: non
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: year
+    note: four digit representation of the year
+    prefix: non
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: date
+    note: "Date in the format YYYYMMDD or YYYY-MM-DD.\nAlso allows ranges like 2021-01-01:2021-01-31\nand
+      relative dates like >2021-01-01\n\nFor more information on date formats see:\n
+      \ see: https://github.com/time-link/timelink-kleio/issues/1\n"
+    prefix: non
+    suffix: non
+    type: string64
+- element:
+    description: elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,
+    identification: yes
+    name: id
+    note: 'The id of the entity. This element is used to identify the entity in the
+      database. It is used to link entities in the database. It is a string64 element.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: same_as
+    note: 'This element is used to link occurrences of the same entity in the same
+      file. At the end of processing it is checked if the destination entity exists
+      in the sames file. If not an error is raised.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: xsame_as
+    note: 'This element is used to link occurrences of the same entity
+
+      in diferent files.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: type
+    note: The type of an attribute, relation, act or other entity.
+    prefix: non
+    suffix: non
+- element:
+    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
+    identification: non
+    name: loc
+    note: 'Location (place) of an entity or act. Sometimes in sources it is used to
+      register the location of the source (archive, library, etc).
+
+      '
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: name
+    note: name, normally of a person
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sex
+    note: Gender of a person
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: obs
+    note:
+    prefix: non
+    suffix: non
+- element:
+    description: 'cota ou outra referencia de localizacao da fonte '
+    identification: non
+    name: ref
+    note: 'Call number of any reference to document in archive or libraries.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: replace
+    note: 'Register id of an entity that should be replaced by the entity with this
+      element. Currently used in sources to replace earlier version of the same source
+      under a diferent id.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: kleiofile
+    note: Path of the file where the entity is registered
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: dia
+    note: Sinónimo de day
+    prefix: non
+    source: day
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: mes
+    note: Sinónimo de month
+    prefix: non
+    source: month
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: ano
+    note: Sinónimo de year
+    prefix: non
+    source: year
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: data
+    note: Sinónimo de date
+    prefix: non
+    source: date
+    suffix: non
+    type: number
+- element:
+    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
+    identification: non
+    name: tipo
+    note: 'Sinónimo de Type, tipo em atributos, relações e actos, entre outros.
+
+      '
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: localizacao
+    note: No sentido de local
+    prefix: non
+    source: loc
+    suffix: non
+- group:
+    also:
+    - data
+    - obs
+    - substitui
+    counter: 1
+    description: 'Este constitui o grupo principal para os documentos historicos portugueses.
+      Admite qualquer dos actos definidos aqui. '
+    guaranteed:
+    - id
+    idprefix: his
+    name: fonte
+    note: 'Este constitui o grupo principal para os documentos
+
+      historicos portugueses. Admite qualquer dos grupos
+
+      que tenham "acto" ou "evento" como fonte.
+
+      '
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - ano
+    - tipo
+    - localizacao
+    - ref
+    prefix: non
+    source: historical-source
+    suffix: non
+- group:
+    also:
+    - ref
+    - loc
+    - obs
+    counter: 0
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: pt-acto
+    note: A Portuguese act. Abstract class.
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: historical-act
+    suffix: non
+- group:
+    also:
+    - ref
+    - data
+    - loc
+    - obs
+    arbitrary:
+    - presente
+    - presente-f
+    - referido
+    - referida
+    - item
+    - ls
+    - atr
+    - rel
+    counter: 1
+    description: 'Actos genericos :servem para vereacoes etc. Compostos por items
+      e por pessoas '
+    guaranteed:
+    - id
+    - tipo
+    - dia
+    - mes
+    - ano
+    idprefix: act
+    name: acto
+    note: "Actos genericos, servem para vereacoes etc.\nTem id, tipo, dia, mes, ano,
+      loc e obs.\nCompostos por items e por pessoas\nExemplo:\n\nacto$v1793-2/juramento
+      de posse dos almotaces/1/3/1793/f.18v/para os meses de marco e abril\n\n    presente$francisco
+      quaresma\n        ls$titulo/bacharel\n        ls$cargo/almotace/obs=marco e
+      abril\n        ls$assina/sim\n\n    presente$jose joaquim de araujo tavares\n
+      \       ls$titulo/bacharel\n        ls$cargo/almotace/obs=marco e abril\n        ls$assina/sim\n\n
+      \   presente$domingos de macedo e fretias\n        ls$cargo/escrivao da camara/obs=com
+      comissao\n"
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - id
+    - tipo
+    - dia
+    - mes
+    - ano
+    - loc
+    prefix: non
+    source: pt-acto
+    suffix: non

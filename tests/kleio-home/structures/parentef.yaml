@@ -1,0 +1,110 @@
+- path: parentef
+- group: {name: parentef, description: '', source: female}
+- group: {name: kin-mother, description: '', source: parentef}
+- group: {name: kin-wife, description: '', source: parentef}
+- group: {name: kin-daughter, description: '', source: parentef}
+- group: {name: mppai, description: '', source: kin-mother, part: [pmppai, mmppai]}
+- group: {name: mpai, description: '', source: kin-mother, part: [pmpai, mmpai]}
+- group: {name: mmpai, description: '', source: kin-mother, part: [pmmpai, mmmpai]}
+- group: {name: mae, description: '', source: kin-mother, part: [pmae, mmae]}
+- group: {name: mppmae, description: '', source: kin-mother}
+- group: {name: mpmae, description: '', source: kin-mother, part: [pmpmae, mmpmae]}
+- group: {name: mmpmae, description: '', source: kin-mother}
+- group: {name: mmae, description: '', source: kin-mother, part: [pmmae, mmmae]}
+- group: {name: mpmmae, description: '', source: kin-mother}
+- group: {name: mmmae, description: '', source: kin-mother, part: [pmmmae, mmmmae]}
+- group: {name: mmmmae, description: '', source: kin-mother}
+- group: {name: mppmarido, description: '', source: kin-mother}
+- group: {name: mpmarido, description: '', source: kin-mother, part: [pmpmarido, mmpmarido]}
+- group: {name: mmarido, description: '', source: kin-mother, part: [pmmarido, mmmarido]}
+- group: {name: mpmmarido, description: '', source: kin-mother}
+- group: {name: mmmarido, description: '', source: kin-mother, part: [pmmmarido, mmmmarido]}
+- group: {name: mmmmarido, description: '', source: kin-mother}
+- group: {name: mppmarido1, description: '', source: kin-mother}
+- group: {name: mpmarido1, description: '', source: kin-mother, part: [pmpmarido1, mmpmarido1]}
+- group: {name: mmarido1, description: '', source: kin-mother, part: [pmpmarido1, mmpmarido1]}
+- group: {name: mpmmarido1, description: '', source: kin-mother}
+- group: {name: mmmarido1, description: '', source: kin-mother, part: [pmmmarido1, mmmmarido1]}
+- group: {name: mmmmarido1, description: '', source: kin-mother}
+- group: {name: mppmarido2, description: '', source: kin-mother}
+- group: {name: mpmarido2, description: '', source: kin-mother, part: [pmpmarido2, mmpmarido2]}
+- group: {name: mmarido2, description: '', source: kin-mother, part: [pmpmarido2, mmpmarido2]}
+- group: {name: mpmmarido2, description: '', source: kin-mother}
+- group: {name: mmmarido2, description: '', source: kin-mother, part: [pmmmarido2, mmmmarido2]}
+- group: {name: mmmmarido2, description: '', source: kin-mother}
+- group: {name: mppmarido3, description: '', source: kin-mother}
+- group: {name: mpmarido3, description: '', source: kin-mother, part: [pmpmarido3, mmpmarido3]}
+- group: {name: mmarido3, description: '', source: kin-mother, part: [pmpmarido3, mmpmarido3]}
+- group: {name: mpmmarido3, description: '', source: kin-mother}
+- group: {name: mmmarido3, description: '', source: kin-mother, part: [pmmmarido3, mmmmarido3]}
+- group: {name: mmmmarido3, description: '', source: kin-mother}
+- group: {name: mulher, description: '', source: kin-wife, part: [pmulher, mmulher, filha, filho]}
+- group: {name: mppmulher, description: '', source: kin-mother}
+- group: {name: mpmulher, description: '', source: kin-mother, part: [pmpmulher, mmpmulher]}
+- group: {name: mmpmulher, description: '', source: kin-mother}
+- group: {name: mmulher, description: '', source: kin-mother, part: [pmmulher, mmmulher]}
+- group: {name: mpmmulher, description: '', source: kin-mother}
+- group: {name: mmmulher, description: '', source: kin-mother, part: [pmmmulher, mmmmulher]}
+- group: {name: mmmmulher, description: '', source: kin-mother}
+- group: {name: mulher1, description: '', source: kin-wife, part: [pmulher1, mmulher1]}
+- group: {name: mppmulher1, description: '', source: kin-mother}
+- group: {name: mpmulher1, description: '', source: kin-mother, part: [pmpmulher1, mmpmulher1]}
+- group: {name: mmpmulher1, description: '', source: kin-mother}
+- group: {name: mmulher1, description: '', source: kin-mother, part: [pmmulher1, mmmulher1]}
+- group: {name: mpmmulher1, description: '', source: kin-mother}
+- group: {name: mmmulher1, description: '', source: kin-mother, part: [pmmmulher1, mmmmulher1]}
+- group: {name: mmmmulher1, description: '', source: kin-mother}
+- group: {name: mulher2, description: '', source: kin-wife, part: [pmulher2, mmulher2]}
+- group: {name: mppmulher2, description: '', source: kin-mother}
+- group: {name: mpmulher2, description: '', source: kin-mother, part: [pmpmulher2, mmpmulher2]}
+- group: {name: mmpmulher2, description: '', source: kin-mother}
+- group: {name: mmulher2, description: '', source: kin-mother, part: [pmmulher2, mmmulher2]}
+- group: {name: mpmmulher2, description: '', source: kin-mother}
+- group: {name: mmmulher2, description: '', source: kin-mother, part: [pmmmulher2, mmmmulher2]}
+- group: {name: mmmmulher2, description: '', source: kin-mother}
+- group: {name: mulher3, description: '', source: kin-wife, part: [pmulher3, mmulher3]}
+- group: {name: mppmulher3, description: '', source: kin-mother}
+- group: {name: mpmulher3, description: '', source: kin-mother, part: [pmpmulher3, mmpmulher3]}
+- group: {name: mmpmulher3, description: '', source: kin-mother}
+- group: {name: mmulher3, description: '', source: kin-mother, part: [pmmulher3, mmmulher3]}
+- group: {name: mpmmulher3, description: '', source: kin-mother}
+- group: {name: mmmulher3, description: '', source: kin-mother, part: [pmmmulher3, mmmmulher3]}
+- group: {name: mmmmulher3, description: '', source: kin-mother}
+- group: {name: noiva, description: '', source: kin-wife, part: [pnoiva, mnoiva, marido1, marido2, marido3]}
+- group: {name: mppnoiva, description: '', source: kin-mother}
+- group: {name: mpnoiva, description: '', source: kin-mother, part: [pmpnoiva, mmpnoiva]}
+- group: {name: mnoiva, description: '', source: kin-mother, part: [pmnoiva, mmnoiva]}
+- group: {name: mpmnoiva, description: '', source: kin-mother}
+- group: {name: mmnoiva, description: '', source: kin-mother, part: [pmmnoiva, mmmnoiva]}
+- group: {name: mmmnoiva, description: '', source: kin-mother}
+- group: {name: mppnoivo, description: '', source: kin-mother}
+- group: {name: mpnoivo, description: '', source: kin-mother, part: [pmpnoivo, mmpnoivo]}
+- group: {name: mnoivo, description: '', source: kin-mother, part: [pmnoivo, mmnoivo]}
+- group: {name: mpmnoivo, description: '', source: kin-mother, part: [pmpmnoivo, mmpmnoivo]}
+- group: {name: mmnoivo, description: '', source: kin-mother, part: [pmmnoivo, mmmnoivo]}
+- group: {name: mmmnoivo, description: '', source: kin-mother, part: [pmmmnoivo, mmmmnoivo]}
+- group: {name: irma, description: '', source: parentef}
+- group: {name: fafilho, description: '', source: kin-daughter, part: [merfafilho]}
+- group: {name: merfilho, description: '', source: kin-wife}
+- group: {name: merfofilho, description: '', source: kin-wife}
+- group: {name: filha, description: '', source: kin-daughter, part: [fofilha, fafilha, mrfilha]}
+- group: {name: fafilha, description: '', source: kin-daughter, part: [mrfafilha]}
+- group: {name: merfofilha, description: '', source: kin-wife}
+- group: {name: mn, description: '', source: kin-mother, part: [pmn, mmn]}
+- group: {name: mpn, description: '', source: kin-mother}
+- group: {name: mmn, description: '', source: kin-mother}
+- group: {name: mad, description: '', source: parentef, part: [pmad, mmad, mrmad]}
+- group: {name: mpad, description: '', source: kin-mother}
+- group: {name: mmad, description: '', source: kin-mother}
+- group: {name: mad1, description: '', source: parentef, part: [pmad1, mmad1, mrmad1]}
+- group: {name: mpad1, description: '', source: kin-mother}
+- group: {name: mmad1, description: '', source: kin-mother}
+- group: {name: mad2, description: '', source: parentef, part: [pmad2, mmad2, mrmad2]}
+- group: {name: mpad2, description: '', source: kin-mother}
+- group: {name: mmad2, description: '', source: kin-mother}
+- group: {name: mad3, description: '', source: parentef, part: [pmad3, mmad3, mrmad3]}
+- group: {name: mpad3, description: '', source: kin-mother}
+- group: {name: mmad3, description: '', source: kin-mother}
+- group: {name: mad4, description: '', source: parentef, part: [pmad4, mmad4, mrmad4]}
+- group: {name: mpad4, description: '', source: kin-mother}
+- group: {name: mmad4, description: '', source: kin-mother}

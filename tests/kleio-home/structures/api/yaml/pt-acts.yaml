@@ -1,0 +1,1207 @@
+- file:
+      name: pt-acts.yaml
+      description: |
+          Ficheiro com os actos principais para a estrutura de
+          documentos historicos portugueses:
+
+- group:
+      name: integr
+      arbitrary:
+          - referido
+          - referida
+          - acionista
+          - acionistaf
+          - ls
+          - rel
+          - acao
+      source: pt-acto
+- group:
+      name: lcc
+      arbitrary:
+          - n
+      source: pt-acto
+- group:
+      name: devassa
+      arbitrary:
+          - testo
+          - testa
+          - referido
+      description: "Devassas temporais nas visitas pastorais "
+      source: pt-acto
+- group:
+      name: denuncia
+      source: pt-acto
+      arbitrary:
+          - denunciante
+      description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao "
+- group:
+      name: nom
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+      description:
+          Nomeacoes de irmaos numa misericordia (A particular historical act
+          )
+- group:
+      name: amz
+      source: pt-acto
+      arbitrary:
+          - eleito
+          - eleitor
+          - referido
+      description: Assentos da mesa numa misericordia (A particular historical act )
+- group:
+      name: vereacao
+      source: pt-acto
+      arbitrary:
+          - assunto
+      description: "actas de vereacao "
+- group:
+      name: pauta
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+- group:
+      name: eleicao
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+- group:
+      name: juramento
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - abonador
+          - abonadora
+          - escrivao
+- group:
+      name: hab
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - test
+      description:
+          Habilitacoes da Ordem de Cristo e Santo Oficio (A particular historical
+          act ).
+- group:
+      name: proc
+      source: hab
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - test
+- group:
+      name: po
+      source: hab
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - test
+- group:
+      name: beneficio
+      source: pt-acto
+      arbitrary:
+          - n
+      description: "Beneficios colacoes numa colegiada "
+- group:
+      name: chanc
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - item
+      description: "Chancelarias "
+- group:
+      name: encarte
+      source: chanc
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - item
+      description: "Encartes "
+- group:
+      name: arrolamento
+      source: pt-acto
+      arbitrary:
+          - rv
+          - rp
+          - referido
+          - referida
+- group:
+      arbitrary:
+          - n
+      description: Extincao de capelas segundo as chancelarias regias (D.Jose )
+      name: capela
+      source: pt-acto
+- group:
+      description: "Casamentos "
+      name: cas
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - test
+          - referida
+          - referido
+          - noivo
+          - pnoivo
+          - ppnoivo
+          - pppnoivo
+          - mppnoivo
+          - mpnoivo
+          - pmpnoivo
+          - mmpnoivo
+          - mnoivo
+          - pmnoivo
+          - ppmnoivo
+          - mpmnoivo
+          - mmnoivo
+          - pmmnoivo
+          - mmmnoivo
+          - mulher1
+          - pmulher1
+          - ppmulher1
+          - pppmulher1
+          - mppmulher1
+          - mpmulher1
+          - pmpmulher1
+          - mmpmulher1
+          - mmulher1
+          - pmmulher1
+          - ppmmulher1
+          - mpmmulher1
+          - mmmulher1
+          - pmmmulher1
+          - mmmmulher1
+          - mulher2
+          - pmulher2
+          - ppmulher2
+          - pppmulher2
+          - mppmulher2
+          - mpmulher2
+          - pmpmulher2
+          - mmpmulher2
+          - mmulher2
+          - pmmulher2
+          - ppmmulher2
+          - mpmmulher2
+          - mmmulher2
+          - pmmmulher2
+          - mmmmulher2
+          - mulher3
+          - pmulher3
+          - ppmulher3
+          - pppmulher3
+          - mppmulher3
+          - mpmulher3
+          - pmpmulher3
+          - mmpmulher3
+          - mmulher3
+          - pmmulher3
+          - ppmmulher3
+          - mpmmulher3
+          - mmmulher3
+          - pmmmulher3
+          - mmmmulher3
+          - noiva
+          - pnoiva
+          - ppnoiva
+          - pppnoiva
+          - mppnoiva
+          - mpnoiva
+          - pmpnoiva
+          - mmpnoiva
+          - mnoiva
+          - pmnoiva
+          - ppmnoiva
+          - mpmnoiva
+          - mmnoiva
+          - pmmnoiva
+          - mmmnoiva
+          - marido1
+          - pmarido1
+          - ppmarido1
+          - pppmarido1
+          - mppmarido1
+          - mpmarido1
+          - pmpmarido1
+          - mmpmarido1
+          - mmarido1
+          - pmmarido1
+          - ppmmarido1
+          - mpmmarido1
+          - mmmarido1
+          - pmmmarido1
+          - mmmmarido1
+          - marido2
+          - pmarido2
+          - ppmarido2
+          - pppmarido2
+          - mppmarido2
+          - mpmarido2
+          - pmpmarido2
+          - mmpmarido2
+          - mmarido2
+          - pmmarido2
+          - ppmmarido2
+          - mpmmarido2
+          - mmmarido2
+          - pmmmarido2
+          - mmmmarido2
+          - marido3
+          - pmarido3
+          - ppmarido3
+          - pppmarido3
+          - mppmarido3
+          - mpmarido3
+          - pmpmarido3
+          - mmpmarido3
+          - mmarido3
+          - pmmarido3
+          - ppmmarido3
+          - mpmmarido3
+          - mmmarido3
+          - pmmmarido3
+          - mmmmarido3
+- group:
+      name: termo
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - test
+          - referida
+          - referido
+          - noivo
+          - pnoivo
+          - ppnoivo
+          - pppnoivo
+          - mppnoivo
+          - mpnoivo
+          - pmpnoivo
+          - mmpnoivo
+          - mnoivo
+          - pmnoivo
+          - ppmnoivo
+          - mpmnoivo
+          - mmnoivo
+          - pmmnoivo
+          - mmmnoivo
+          - mulher1
+          - pmulher1
+          - ppmulher1
+          - pppmulher1
+          - mppmulher1
+          - mpmulher1
+          - pmpmulher1
+          - mmpmulher1
+          - mmulher1
+          - pmmulher1
+          - ppmmulher1
+          - mpmmulher1
+          - mmmulher1
+          - pmmmulher1
+          - mmmmulher1
+          - mulher2
+          - pmulher2
+          - ppmulher2
+          - pppmulher2
+          - mppmulher2
+          - mpmulher2
+          - pmpmulher2
+          - mmpmulher2
+          - mmulher2
+          - pmmulher2
+          - ppmmulher2
+          - mpmmulher2
+          - mmmulher2
+          - pmmmulher2
+          - mmmmulher2
+          - mulher3
+          - pmulher3
+          - ppmulher3
+          - pppmulher3
+          - mppmulher3
+          - mpmulher3
+          - pmpmulher3
+          - mmpmulher3
+          - mmulher3
+          - pmmulher3
+          - ppmmulher3
+          - mpmmulher3
+          - mmmulher3
+          - pmmmulher3
+          - mmmmulher3
+          - noiva
+          - pnoiva
+          - ppnoiva
+          - pppnoiva
+          - mppnoiva
+          - mpnoiva
+          - pmpnoiva
+          - mmpnoiva
+          - mnoiva
+          - pmnoiva
+          - ppmnoiva
+          - mpmnoiva
+          - mmnoiva
+          - pmmnoiva
+          - mmmnoiva
+          - marido1
+          - pmarido1
+          - ppmarido1
+          - pppmarido1
+          - mppmarido1
+          - mpmarido1
+          - pmpmarido1
+          - mmpmarido1
+          - mmarido1
+          - pmmarido1
+          - ppmmarido1
+          - mpmmarido1
+          - mmmarido1
+          - pmmmarido1
+          - mmmmarido1
+          - marido2
+          - pmarido2
+          - ppmarido2
+          - pppmarido2
+          - mppmarido2
+          - mpmarido2
+          - pmpmarido2
+          - mmpmarido2
+          - mmarido2
+          - pmmarido2
+          - ppmmarido2
+          - mpmmarido2
+          - mmmarido2
+          - pmmmarido2
+          - mmmmarido2
+          - marido3
+          - pmarido3
+          - ppmarido3
+          - pppmarido3
+          - mppmarido3
+          - mpmarido3
+          - pmpmarido3
+          - mmpmarido3
+          - mmarido3
+          - pmmarido3
+          - ppmmarido3
+          - mpmmarido3
+          - mmmarido3
+          - pmmmarido3
+          - mmmmarido3
+- group:
+      name: bap
+      source: pt-acto
+      description:
+          Baptismos (variante usada nos registos da Lousa por Rosario Campos
+          e em Óbidos )
+      arbitrary:
+          - celebrante
+          - n
+          - test
+          - referido
+          - referida
+- group:
+      name: b
+      source: pt-acto
+      description: "Baptimos ,versao original usada em Soure. "
+      arbitrary:
+          - celebrante
+          - n
+          - referido
+          - referida
+          - test
+- group:
+      name: obito
+      source: pt-acto
+      description: "Obitos "
+      arbitrary:
+          - celebrante
+          - n
+          - marido
+          - mulher
+          - pai
+          - mae
+          - referido
+          - referida
+          - sacr
+          - testamento
+          - testamenteiro
+          - locs
+          - locf
+          - causa
+          - oficios
+- group:
+      description:
+          "Óbitos. Estilo usado em Soure ,sem o id do obito ,mas aceita o id
+          opcionalmente. "
+      name: o
+      source: obito
+      arbitrary:
+          - celebrante
+          - n
+          - marido
+          - mulher
+          - pai
+          - mae
+          - referido
+          - referida
+          - sacr
+          - testamento
+          - testamenteiro
+          - locs
+          - locf
+          - causa
+          - oficios
+- group:
+      name: ar
+      source: pt-acto
+      arbitrary:
+          - proparr
+          - bemarr
+          - fornarr
+          - rendarr
+- group:
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - celebrante
+          - evento
+          - colega
+      name: lista
+      source: pt-acto
+- group:
+      name: ordenancas
+      source: lista
+      arbitrary:
+          - n
+- group:
+      name: credito
+      source: lista
+      arbitrary:
+          - n
+          - credor
+          - credora
+          - devedor
+          - devedora
+          - procurador
+          - procuradora
+- group:
+      name: milicias
+      source: ordenancas
+      arbitrary:
+          - n
+- group:
+      name: rmerce
+      source: pt-acto
+      arbitrary:
+          - n
+- group:
+      name: merce
+      source: rmerce
+      arbitrary:
+          - n
+- group:
+      name: let
+      source: pt-acto
+      arbitrary:
+          - n
+          - ts
+- group:
+      name: lbach
+      source: let
+      arbitrary:
+          - n
+          - ts
+- group:
+      name: rol
+      source: pt-acto
+      arbitrary:
+          - fogo
+- group:
+      name: crisma
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida
+- group:
+      name: escritura
+      source: pt-acto
+      arbitrary:
+          - atr
+          - ls
+          - devedor
+          - devedora
+          - credor
+          - credora
+          - fiador
+          - fiadora
+          - test
+          - comprador
+          - compradora
+          - vendedor
+          - vendedora
+          - louvado
+          - doador
+          - doadora
+          - donatario
+          - donataria
+          - dotante
+          - dotantef
+          - dotado
+          - dotada
+          - senhorio
+          - senhoria
+          - rendeiro
+          - rendeira
+          - arrendatario
+          - arrendataria
+          - testador
+          - testadora
+          - testamentario
+          - testamentaria
+          - testamenteiro
+          - testamenteira
+          - contraente
+          - contraentef
+          - renunciante
+          - renunciantef
+          - procurador
+          - procuradora
+          - escrivao
+          - arrematante
+          - arrematantef
+          - foreiro
+          - foreira
+          - enfiteuta
+          - subenfiteuta
+          - enfiteutaf
+          - subenfiteutaf
+          - constituinte
+          - constituintef
+          - outorgante
+          - outorgantef
+          - referido
+          - referida
+          - divida
+          - garantia
+          - fianca
+          - bem
+          - doacao
+          - arrendamento
+          - aforamento
+          - demanda
+          - acusacao
+          - destinatario
+          - requerente
+          - requerido
+          - defesa
+          - sentenca
+          - escambo
+          - siza
+          - sisa
+          - prazo
+          - obra
+          - escrivao
+          - abonador
+          - abonadora
+          - tabeliao
+          - quitante
+          - quitantef
+          - quitado
+          - quitada
+          - demandador
+          - demandadora
+          - demandado
+          - escambador
+          - escambadora
+          - reu
+          - reuf
+          - vedor
+          - inquiricao
+          - inquirido
+          - inquirida
+          - inquiridor
+          - apelacao
+          - apelado
+          - apelante
+          - apelantef
+          - apresentado
+          - padroeiro
+          - confirmante
+          - beneficiario
+          - beneficiaria
+          - autor
+          - autoridade
+          - renda
+          - juiz
+          - item
+- group:
+      description: "Letra de câmbio ,usado no projecto DyncoopNet. "
+      name: lc
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - atr
+          - rel
+          - beneficiario
+          - beneficiario-representante
+          - beneficiario-procurador
+          - beneficiario1
+          - beneficiario1-representante
+          - beneficiario1-procurador
+          - beneficiario2
+          - beneficiario2-representante
+          - beneficiario2-procurador
+          - beneficiario3
+          - beneficiario3-representante
+          - beneficiario3-procurador
+          - beneficiario4
+          - beneficiario4-representante
+          - beneficiario4-procurador
+          - beneficiario5
+          - beneficiario5-representante
+          - beneficiario5-procurador
+          - beneficiario6
+          - beneficiario6-representante
+          - beneficiario6-procurador
+          - cobrador
+          - cobrador-representante
+          - cobrador1
+          - cobrador-representante1
+          - cobrador2
+          - cobrador-representante2
+          - cobrador3
+          - cobrador-representante3
+          - cobrador4
+          - cobrador-representante4
+          - destinatario
+          - destinatario1
+          - destinatario2
+          - dador
+          - dador-representante
+          - dador1
+          - dador1-representante
+          - dador2
+          - dador2-representante
+          - dador3
+          - dador3-representante
+          - dador4
+          - dador4-representante
+          - debitado
+          - endossante
+          - endossado
+          - local
+          - pagador
+          - pagador-representante
+          - pagador1
+          - pagador1-representante
+          - pagador2
+          - pagador2-representante
+          - pagador3
+          - pagador3-representante
+          - pagador4
+          - pagador4-representante
+          - pagador5
+          - pagador5-representante
+          - recebedor
+          - recebedor-proc
+          - recebedor1
+          - recebedor1-proc
+          - recebedor2
+          - recebedor2-proc
+          - recebedor3
+          - recebedor3-proc
+          - recebedor4
+          - recebedor4-proc
+          - referido
+          - remetente
+          - tomador
+          - tomador-representante
+          - tomador1
+          - tomador1-representante
+          - tomador2
+          - tomador2-representante
+          - tomador3
+          - tomador3-representante
+          - tomador4
+          - tomador4-representante
+          - tomador5
+          - tomador5-representante
+- group:
+      name: carta
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - receptor
+          - emissor
+          - evento
+          - topico
+          - emissor-representante
+- group:
+      name: adenda
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - evento
+- group:
+      description: Biographical description (from biographical dictionnaries ,etc )
+      name: bio
+      source: lista
+      arbitrary:
+          - n
+          - referido
+          - referida
+          - celebrante
+          - evento
+          - colega
+- group:
+      name: gov
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - pm
+          - minAdj
+          - minDefNac
+          - minSemPasta
+          - minCoordInterter
+          - secEstAdm
+          - secEstAssEcon
+          - minAdmInt
+          - minJust
+          - subsecEstAdmJudic
+          - minCoordEcon
+          - secEstFin
+          - subsecEstOrc
+          - secEstOrc
+          - subsecEstTes
+          - secEstTes
+          - secEstPlanEcon
+          - secEstIndEEner
+          - secEstAgri
+          - secEstComExtETur
+          - secEstPesc
+          - minNegEstr
+          - secEstNegEstr
+          - minEquiSocEAmb
+          - secEstObPub
+          - secEstTranECom
+          - secEstHabEUrb
+          - secEstMarMer
+          - secEstAmb
+          - minEduECult
+          - secEstAdmEsc
+          - secEstAssCultEInvCient
+          - secEstDespEAccSocEsc
+          - secEstRefEdu
+          - minTrab
+          - secEstEmig
+          - secEstTrab
+          - minAssSoc
+          - secEstSau
+          - secEstSegSoc
+          - minComSoc
+          - minEcon
+          - secEstAbastEPrec
+          - secEstOrientPedag
+          - secEstEmpreg
+          - minIndETecn
+          - secEstIndETecn
+          - subsecEstProgInd
+          - subsecEstAdmInt
+          - subsecEstAdmInd
+          - secEstAdmInt
+          - subsecEstFomCoop
+          - subsecEstAdjMinComExt
+          - secEstInvPub
+          - subsecEstSeg
+          - secEstConstCiv
+          - secEstRecHidESanBas
+          - secEstDespEJuv
+          - secEstDescol
+          - minHabUrbEConst
+          - vpm
+          - subsecEst
+          - secEstPopEmpreg
+          - secEstIntegAdm
+          - secEstFlor
+          - minComETur
+          - secEstTur
+          - secEstPlan
+          - minRepRegAutMad
+          - minRepRegAutAcor
+          - secEstAdmLocEReg
+          - secEstAdmPub
+          - secEstCultEEducPerm
+          - secEstCoopExt
+          - minPlanECoordEcon
+          - secEstPlanRecHum
+          - subsecEstComInt
+          - secEstEnsSupEInvCient
+          - secEstEstrAgra
+          - minAgriEPesc
+          - secEstFomAgra
+          - secEstJust
+          - secEstRecupSoc
+          - secEstComAlim
+          - secEstComNAlim
+          - subsecEstDefCons
+          - secEstEnerEMin
+          - secEstIndLig
+          - secEstIndPes
+          - secEstFormProf
+          - secEstRetorn
+          - secEstInf
+          - minCoop
+          - minFin
+          - secEstCoopEconComPaisSoc
+          - secEstAdjPMAssAdm
+          - secEstAdjPMAssPol
+          - secEstComEIndAgri
+          - secEstIndLigEPes
+          - secEstAdmEEquiEsc
+          - secEstEnsSup
+          - minFin
+          - subsecEstFin
+          - secEstOrc
+          - secEstTes
+          - subsecEstAmb
+          - subsecEstComSoc
+          - secEstComSoc
+          - secEstAdmInt
+          - subsecEstTur
+          - minEquipSocEAmb
+          - subsecEstTran
+          - subsecEstAdjPM
+          - minObPub
+          - subsecEstObPub
+          - minComExt
+          - secEstComExt
+          - subsecEstComExt
+          - minComInt
+          - secEstComInt
+          - secEstAbast
+          - secEstJuvEDesp
+          - subsecEstAdmInt
+          - minTranECom
+          - secEstCult
+          - secEstAdmRegELoc
+          - secEstPlanEOrc
+          - subsecEstPlan
+          - subsecEstInvPub
+          - subsecEstAdjMinFin
+          - minEquiSoc
+          - minEduEInvCient
+          - secEstInvCient
+          - subsecEstAdjMinAgriEPesc
+          - subsecEstAdjMinPesc
+          - subsecEstAdjMinTrab
+          - subsecEstTrab
+          - secEstTrab
+          - secEstCoop
+          - subsecEstAdjMinHabUrbEConst
+          - subsecEstHabUrbEConst
+          - subsecEstConstCiv
+          - subsecEstEstrAgra
+          - secEstAdjPM
+          - subsecEstAdjPM
+          - minEst
+          - secEstPopEEmpreg
+          - secEstCoordEcon
+          - secEstJust
+          - subsecEstFlor
+          - ma
+          - mab
+          - mc
+          - me
+          - mej
+          - mf
+          - mfo
+          - mg
+          - mi
+          - mip
+          - mj
+          - mm
+          - mmu
+          - mco
+          - mop
+          - mopci
+          - mp
+          - mr
+          - mt
+          - mtps
+          - pc
+          - mipba
+      source: pt-acto
+- group:
+      name: familia
+      part:
+          - linha
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      source: pt-acto
+- group:
+      name: cartaperdao
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - perdoante
+          - perdoante-m
+          - perdoante-f
+          - perdoado
+          - perdoada
+          - vitima
+          - vitima-m
+          - vitima-f
+          - crime
+          - perdao
+          - test
+          - referido
+          - referida
+          - tabeliao
+      source: pt-acto
+- group:
+      description: "Documento régio. "
+      name: docregio
+      source: pt-acto
+      arbitrary:
+          - atr
+          - ls
+          - rel
+          - item
+          - autor
+          - autorf
+          - destinatario
+          - destinataria
+          - beneficiario
+          - beneficiaria
+          - referido
+          - referida
+          - bem
+          - demanda
+          - acusacao
+          - sentenca
+          - defesa
+          - tabeliao
+          - procurador
+          - test
+          - juiz
+          - demandador
+          - reu
+          - apresentado
+          - padroeiro
+          - autoridade
+          - divida
+- group:
+      description: "Documento Pontefício "
+      name: docpontificio
+      source: docregio
+      arbitrary:
+          - atr
+          - ls
+          - rel
+          - item
+          - autor
+          - autorf
+          - destinatario
+          - destinataria
+          - beneficiario
+          - beneficiaria
+          - referido
+          - referida
+          - bem
+          - demanda
+          - acusacao
+          - sentenca
+          - defesa
+          - tabeliao
+          - procurador
+          - test
+          - juiz
+          - demandador
+          - reu
+          - apresentado
+          - padroeiro
+          - autoridade
+          - divida
+- group:
+      name: docepiscopal
+      source: docregio
+      arbitrary:
+          - atr
+          - ls
+          - rel
+          - item
+          - autor
+          - autorf
+          - destinatario
+          - destinataria
+          - beneficiario
+          - beneficiaria
+          - referido
+          - referida
+          - bem
+          - demanda
+          - acusacao
+          - sentenca
+          - defesa
+          - tabeliao
+          - procurador
+          - test
+          - juiz
+          - demandador
+          - reu
+          - apresentado
+          - padroeiro
+          - autoridade
+          - divida
+- group:
+      description: "Matricula de doentes no Hospital das Caldas da Rainha. "
+      name: matricula
+      part:
+          - enfermo
+          - enferma
+          - referido
+          - referida
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+- group:
+      description: "A description of geographic entities. "
+      name: geodesc
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - geo1
+          - geo2
+          - geo3
+          - geo4
+          - atr
+          - rel
+      source: pt-acto
+- group:
+      description: "Formato para registo das memórias paroquiais de 1758 "
+      name: memoria58
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      part:
+          - freguesia
+      source: pt-acto
+- group:
+      description: "Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes. "
+      name: apontamentosd
+      part:
+          - freguesia
+      source: memoria58
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+- group:
+      name: automed
+      part:
+          - terra
+      source: pt-acto
+      arbitrary:
+          - celebrante
+          - actorm
+          - actorf
+          - object
+          - abstraction
+          - ls
+          - rel
+      description:
+          "Auto de medição ,corresponde a um acto de medição de extremas de
+          uma terra ocorrido num dia determinado. Usado para tombos. "
+- group:
+      name: pas
+      source: pt-acto
+      arbitrary:
+          - mestre
+          - n
+          - referido
+          - referida
+- group:
+      name: wviagem
+      source: pt-acto
+      arbitrary:
+          - n
+          - referido
+          - referida

@@ -1,0 +1,129 @@
+# Portuguese main groups
+- include: system.yaml
+- include: pt-elements.yaml
+- file:
+    name: pt-groups.yaml
+    description: |
+            Ficheiro com os grupos principais para a estrutura de
+            documentos historicos portugueses:
+            fonte
+            pt-acto
+            fim
+            acto
+            evento
+            item
+            topico
+            lugar
+- group:
+    name: fonte
+    source: historical-source
+    description: |
+        Este constitui o grupo principal para os documentos
+        historicos portugueses. Admite qualquer dos grupos
+        que tenham "acto" ou "evento" como fonte.
+
+    position: [id, ano, tipo, localizacao, ref]
+    also: [ data, obs, substitui]
+    guaranteed: [id]
+    idprefstru(ix: fonte
+
+
+- group:
+    name: pt-acto
+    source: historical-act
+    description: A Portuguese act. Abstract class.
+    position: [id, dia, mes, ano]
+    also: [ref, loc, obs]
+    guaranteed: [id, dia, mes, ano]
+    idprefix: his
+
+- group:
+    name: fim
+    description: >
+      Fim de um acto ou de parte de um acto que pode ser processada
+      para inferir valores, por exemplo o fim de um fogo num longo rol de confessados (acto)
+    source: end
+    also: [id, obs]
+    idprefix: end
+    position: [id]
+    prefix: non
+    suffix: non
+
+- group:
+    name: acto
+    description: |
+        Actos genericos, servem para vereacoes etc.
+        Tem id, tipo, dia, mes, ano, loc e obs.
+        Compostos por items e por pessoas
+        Exemplo:
+
+        acto$v1793-2/juramento de posse dos almotaces/1/3/1793/f.18v/para os meses de marco e abril
+
+            presente$francisco quaresma
+                ls$titulo/bacharel
+                ls$cargo/almotace/obs=marco e abril
+                ls$assina/sim
+
+            presente$jose joaquim de araujo tavares
+                ls$titulo/bacharel
+                ls$cargo/almotace/obs=marco e abril
+                ls$assina/sim
+
+            presente$domingos de macedo e fretias
+                ls$cargo/escrivao da camara/obs=com comissao
+
+    source: pt-acto
+    position: [id, tipo, dia, mes, ano, loc]
+    guaranteed: [id, tipo, dia, mes, ano]
+    also: [ref, data, loc, obs]
+    arbitrary: [presente, presente-f, referido, referida, item, ls, atr, rel]
+    idprefix: act
+
+- group:
+    name: evento
+    description: >
+         Algo que aconteceu, mas que não é um acto formal
+         por exemplo uma descrição de um evento numa carta.
+    source: pt-acto
+    also: [obs, id]
+    arbitrary: [celebrante, actorm, actorf, object, abstraction, ls, rel]
+    guaranteed: [description]
+    idprefix: evt
+    part: [n, referido, referida, informador, defector, representante, intermediario, topico, local, comerciante, agente_financeiro, agente_seguros, fonte_info, cheater, beneficiario, beneficiario-representante, beneficiario-procurador, beneficiario1, beneficiario1-representante, beneficiario1-procurador, beneficiario2, beneficiario2-representante, beneficiario2-procurador, beneficiario3, beneficiario3-representante, beneficiario3-procurador, beneficiario4, beneficiario4-representante, beneficiario4-procurador, beneficiario5, beneficiario5-representante, beneficiario5-procurador, beneficiario6, beneficiario6-representante, beneficiario6-procurador, cobrador, cobrador-representante, cobrador1, cobrador-representante1, cobrador2, cobrador-representante2, cobrador3, cobrador-representante3, cobrador4, cobrador-representante4, destinatario, destinatario1, destinatario2, dador, dador-representante, dador1, dador1-representante, dador2, dador2-representante, dador3, dador3-representante, dador4, dador4-representante, debitado, endossante, endossado, fretador, pagador, pagador-representante, pagador1, pagador1-representante, pagador2, pagador2-representante, pagador3, pagador3-representante, pagador4, pagador4-representante, pagador5, pagador5-representante, receptor, recebedor, recebedor-proc, recebedor1, recebedor1-proc, recebedor2, recebedor2-proc, recebedor3, recebedor3-proc, recebedor4, recebedor4-proc, remetente, tomador, tomador-representante, tomador1, tomador1-representante, tomador2, tomador2-representante, tomador3, tomador3-representante, tomador4, tomador4-representante, tomador5, tomador5-representante, vendedor, comprador, transportador, emissor, emissor-representante]
+    position: [description, dia, mes, ano]
+
+- group:
+    name: item
+    description: parte de um acto, por exemplo um assunto numa acta
+    source: object
+    position: [titulo]
+    guaranteed: [titulo]
+    also: [resumo, id, tipo, obs]
+    arbitrary: [presente, presente-f, referido, referida, ls, rel]
+    idprefix: itm
+
+
+- group:
+    name: topico
+    description: '
+      '
+    source: topic
+    also: [obs, id]
+    arbitrary: [atr, ls, rel]
+    guaranteed: [name]
+    idprefix: obj
+    position: [name, description]
+    prefix: non
+    suffix: non
+
+- group:
+    name: lugar
+    description: '
+      '
+    source: geoentity
+    also: [type, id, obs, same_as, xsame_as]
+    idprefix: geo
+    part: [referido, atr, ls]
+    position: [name]
+    prefix: non
+    suffix: non

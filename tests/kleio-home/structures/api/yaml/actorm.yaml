@@ -1,0 +1,172 @@
+- file:
+    name: pt-groups.yaml
+    description: >
+        Ficheiro com nome de actores nos actos portugueses
+
+- group: {name: n, description: '', source: actorm}
+- group: {name: outorgante, description: '', source: actorm}
+- group: {name: procurador, description: '', source: actorm}
+- group: {name: proprietario, description: '', source: actorm}
+- group: {name: constituinte, description: '', source: actorm}
+- group: {name: escrivao, description: '', source: actorm}
+- group: {name: tabeliao, description: '', source: actorm}
+# actas de eleicoes
+- group: {name: presente, description: '', source: actorm}
+- group: {name: eleitor, description: '', source: actorm}
+- group: {name: eleito, description: '', source: actorm}
+# dívidas
+- group: {name: devedor, description: '', source: actorm}
+- group: {name: credor, description: '', source: actorm}
+- group: {name: fiador, description: '', source: actorm}
+# venda
+- group: {name: comprador, description: '', source: actorm}
+- group: {name: vendedor, description: '', source: actorm}
+# doações
+- group: {name: doador, description: '', source: actorm}
+- group: {name: donatario, description: '', source: actorm}
+- group: {name: dotado, description: '', source: actorm}
+- group: {name: dotante, description: '', source: actorm}
+# aforamentos, arrendamentos
+- group: {name: senhorio, description: '', source: actorm}
+- group: {name: rendeiro, description: '', source: actorm}
+- group: {name: foreiro, description: '', source: actorm}
+- group: {name: enfiteuta, description: '', source: actorm}
+- group: {name: subenfiteuta, description: '', source: actorm}
+- group: {name: arrendatario, description: '', source: actorm}
+# testamentos
+- group: {name: testador, description: '', source: actorm}
+- group: {name: testamentario, description: '', source: actorm}
+- group: {name: testamenteiro, description: '', source: actorm}
+# dívidas
+- group: {name: contraente, description: '', source: actorm}
+- group: {name: renunciante, description: '', source: actorm}
+- group: {name: arrematante, description: '', source: actorm}
+- group: {name: quitante, description: '', source: actorm}
+- group: {name: quitado, description: '', source: actorm}
+- group: {name: abonador, description: '', source: actorm}
+# demandas
+- group: {name: demandador, description: '', source: actorm}
+- group: {name: demandado, description: '', source: actorm}
+- group: {name: escambador, description: '', source: actorm}
+- group: {name: reu, description: '', source: actorm}
+- group: {name: inquirido, description: '', source: actorm}
+- group: {name: inquiridor, description: '', source: actorm}
+- group: {name: apelante, description: '', source: actorm}
+- group: {name: apelado, description: '', source: actorm}
+- group: {name: vedor, description: '', source: actorm}
+- group: {name: autor, description: '', source: actorm}
+- group: {name: autoridade, description: '', source: actorm}
+# apresentações
+- group: {name: beneficiario, description: '', source: actorm}
+- group: {name: padroeiro, description: '', source: actorm}
+- group: {name: apresentado, description: '', source: actorm}
+- group: {name: confirmante, description: '', source: actorm}
+- group: {name: comerciante, description: '', source: actorm}
+- group: {name: juiz, description: '', source: actorm}
+- group: {name: requerente, description: '', source: actorm}
+- group: {name: requerido, description: '', source: actorm}
+- group: {name: pm, description: '', source: actorm}
+- group: {name: ts, description: '', source: n}
+- group: {name: testo, description: '', part: [acus, acusa], source: actorm}
+- group: {name: denunciante, description: '', part: [acus, caso], source: actorm}
+- group: {name: acusado, description: '', source: actorm}
+- group: {name: enfermo, description: '', source: actorm}
+# letras de câmbio
+- group: {name: destinatario, description: '', source: actorm}
+- group: {name: destinatario1, description: '', source: actorm}
+- group: {name: destinatario2, description: '', source: actorm}
+- group: {name: remetente, description: '', source: actorm}
+- group: {name: beneficiario-representante, description: '', source: actorm}
+- group: {name: beneficiario-procurador, description: '', source: actorm}
+- group: {name: beneficiario1, description: '', source: actorm}
+- group: {name: beneficiario1-representante, description: '', source: actorm}
+- group: {name: beneficiario1-procurador, description: '', source: actorm}
+- group: {name: beneficiario2, description: '', source: actorm}
+- group: {name: beneficiario2-representante, description: '', source: actorm}
+- group: {name: beneficiario2-procurador, description: '', source: actorm}
+- group: {name: beneficiario3, description: '', source: actorm}
+- group: {name: beneficiario3-representante, description: '', source: actorm}
+- group: {name: beneficiario3-procurador, description: '', source: actorm}
+- group: {name: beneficiario4, description: '', source: actorm}
+- group: {name: beneficiario4-representante, description: '', source: actorm}
+- group: {name: beneficiario4-procurador, description: '', source: actorm}
+- group: {name: beneficiario5, description: '', source: actorm}
+- group: {name: beneficiario5-representante, description: '', source: actorm}
+- group: {name: beneficiario5-procurador, description: '', source: actorm}
+- group: {name: beneficiario6, description: '', source: actorm}
+- group: {name: beneficiario6-representante, description: '', source: actorm}
+- group: {name: beneficiario6-procurador, description: '', source: actorm}
+- group: {name: tomador, description: '', source: actorm}
+- group: {name: tomador-representante, description: '', source: actorm}
+- group: {name: tomador1, description: '', source: actorm}
+- group: {name: tomador1-representante, description: '', source: actorm}
+- group: {name: tomador2, description: '', source: actorm}
+- group: {name: tomador2-representante, description: '', source: actorm}
+- group: {name: tomador3, description: '', source: actorm}
+- group: {name: tomador3-representante, description: '', source: actorm}
+- group: {name: tomador4, description: '', source: actorm}
+- group: {name: tomador4-representante, description: '', source: actorm}
+- group: {name: tomador5, description: '', source: actorm}
+- group: {name: tomador5-representante, description: '', source: actorm}
+- group: {name: pagador, description: '', source: actorm}
+- group: {name: pagador-representante, description: '', source: actorm}
+- group: {name: pagador1, description: '', source: actorm}
+- group: {name: pagador1-representante, description: '', source: actorm}
+- group: {name: pagador2, description: '', source: actorm}
+- group: {name: pagador2-representante, description: '', source: actorm}
+- group: {name: pagador3, description: '', source: actorm}
+- group: {name: pagador3-representante, description: '', source: actorm}
+- group: {name: pagador4, description: '', source: actorm}
+- group: {name: pagador4-representante, description: '', source: actorm}
+- group: {name: pagador5, description: '', source: actorm}
+- group: {name: pagador5-representante, description: '', source: actorm}
+- group: {name: dador, description: '', source: actorm}
+- group: {name: dador-representante, description: '', source: actorm}
+- group: {name: dador1, description: '', source: actorm}
+- group: {name: dador1-representante, description: '', source: actorm}
+- group: {name: dador2, description: '', source: actorm}
+- group: {name: dador2-representante, description: '', source: actorm}
+- group: {name: dador3, description: '', source: actorm}
+- group: {name: dador3-representante, description: '', source: actorm}
+- group: {name: dador4, description: '', source: actorm}
+- group: {name: dador4-representante, description: '', source: actorm}
+- group: {name: cobrador, description: '', source: actorm}
+- group: {name: cobrador-representante, description: '', source: actorm}
+- group: {name: cobrador1, description: '', source: actorm}
+- group: {name: cobrador-representante1, description: '', source: actorm}
+- group: {name: cobrador2, description: '', source: actorm}
+- group: {name: cobrador-representante2, description: '', source: actorm}
+- group: {name: cobrador3, description: '', source: actorm}
+- group: {name: cobrador-representante3, description: '', source: actorm}
+- group: {name: cobrador4, description: '', source: actorm}
+- group: {name: cobrador-representante4, description: '', source: actorm}
+- group: {name: endossante, description: '', source: actorm}
+- group: {name: endossado, description: '', source: actorm}
+- group: {name: debitado, description: '', source: actorm}
+- group: {name: recebedor, description: '', source: actorm}
+- group: {name: recebedor1, description: '', source: actorm}
+- group: {name: recebedor2, description: '', source: actorm}
+- group: {name: recebedor3, description: '', source: actorm}
+- group: {name: recebedor4, description: '', source: actorm}
+- group: {name: recebedor-proc, description: '', source: actorm}
+- group: {name: recebedor1-proc, description: '', source: actorm}
+- group: {name: recebedor2-proc, description: '', source: actorm}
+- group: {name: recebedor3-proc, description: '', source: actorm}
+- group: {name: recebedor4-proc, description: '', source: actorm}
+- group: {name: informador, description: '', source: actorm}
+- group: {name: defector, description: '', source: actorm}
+- group: {name: intermediario, description: '', source: actorm}
+- group: {name: fretador, description: '', source: actorm}
+- group: {name: receptor, description: '', source: actorm}
+- group: {name: emissor, description: '', source: actorm}
+- group: {name: emissor-representante, description: '', source: actorm}
+- group: {name: representante, description: '', source: actorm}
+- group: {name: agente_financeiro, description: '', source: actorm}
+- group: {name: agente_seguros, description: '', source: actorm}
+- group: {name: cheater, description: '', source: actorm}
+- group: {name: fonte_info, description: '', source: actorm}
+- group: {name: transportador, description: '', source: actorm}
+- group: {name: perdoante-m, description: '', source: actorm}
+- group: {name: perdoado, description: '', source: actorm}
+- group: {name: vitima-m, description: '', source: actorm}
+- group: {name: louvado, description: '', source: actorm}
