@@ -1,0 +1,341 @@
+[
+  {"path":"object"},
+  {"group": {"arbitrary": ["atr", "ls", "rel" ],"name":"object"}},
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"abstraction",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "description":"topics ,tags or keywords ",
+      "name":"topic",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["presente", "presente-f", "referido", "referida", "ls", "rel" ],
+      "name":"item",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"topico",
+      "source":"topic"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["referido", "referida", "atr", "rel" ],
+      "name":"acao",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"acus",
+      "part": ["caso" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"acusa",
+      "part": ["caso" ],
+      "source":"acus"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["acusado", "acusada", "referido", "referida" ],
+      "name":"caso",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"proparr",
+      "part": ["arrem", "fiador" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"bemarr",
+      "part": ["arrem", "fiador" ],
+      "source":"proparr"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"fornarr",
+      "part": ["arrem", "fiador" ],
+      "source":"proparr"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"rendarr",
+      "part": ["arrem", "fiador" ],
+      "source":"proparr"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": [
+	"n",
+	"criado",
+	"criada",
+	"engeitado",
+	"engeitada",
+	"enjeitado",
+	"enjeitada",
+	"escravo",
+	"escrava",
+	"fim"
+      ],
+      "name":"fogo",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"demanda",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"acusacao",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"sentenca",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"defesa",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"inquiricao",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"apelacao",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"renda",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"bem",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"divida",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"garantia",
+      "source":"bem"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"fianca",
+      "source":"garantia"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"siza",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"sisa",
+      "source":"siza"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"aforamento",
+      "source":"bem"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"prazo",
+      "source":"aforamento"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"arrendamento",
+      "source":"bem"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "rel", "local" ],
+      "name":"escambo",
+      "source":"bem"
+    }
+  },
+  {
+    "group": {"arbitrary": ["atr", "rel" ],"name":"obra","source":"object"}
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"linha",
+      "part": ["n" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"crime",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"perdao",
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"igreja",
+      "part": ["atr", "rel" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"convento",
+      "part": ["atr", "rel" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"mosteiro",
+      "part": ["atr", "rel" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"misericordia",
+      "part": ["atr", "rel" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"hospital",
+      "part": ["atr", "rel" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"irmandade",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"confraria",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"idonatario",
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"med",
+      "part": ["conf", "marco" ],
+      "source":"abstraction"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"conf",
+      "part": ["referido", "referida" ],
+      "source":"object"
+    }
+  },
+  {
+    "group": {
+      "arbitrary": ["atr", "ls", "rel" ],
+      "name":"marco",
+      "source":"object"
+    }
+  }
+]
