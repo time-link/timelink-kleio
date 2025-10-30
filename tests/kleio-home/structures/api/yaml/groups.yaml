@@ -99,6 +99,12 @@
     idprefix: his
     contains: [historical-act, event, text]
 
+- group:
+    name: source
+    source: historical-source
+    description: >
+        Alias for ´historical-source'
+
 # Authority registers
 - group:
     name: authority-register
@@ -183,7 +189,7 @@
     position: [id, type, date]
     guaranteed: [id, type, date]
     also: [loc, ref, obs, day, month, year]
-    contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, event, end]
     idprefix: hac
 
 - group:
@@ -192,6 +198,10 @@
     description: >
         Something that happened. Used for registering events mentioned
         in letters ,chronicles ,interviews ,not in formal records.
+
+        Can also be used inside a formal dated record to record information
+        about something that occurred at another time, e.g. in a dated letter
+        that includes information about different things that occurred in the past
     position: [description, date]
     guaranteed: [description]
     also: [loc, ref, obs, day, month, year]
@@ -402,7 +412,23 @@
 - group:
     name: end
     description: |
-        Used to trigger inference rules before the end of an act or event
+        Used to mark the end of the enclosing group. Useful in 2 cenarios:
+
+        1) To prevent that subsequent groups to be interpreted as subgroups
+           of the current group in structures where there is ambiguity.
+
+        letter$from x to y/2025-07-26
+            /obs=João reports meeting Joaquim and Maria the day before
+                 and Joaquim said he met António on 25-6
+            author$João
+            mentioned$Joaquim/obs=described yesterday meeting
+                cevent$meeting/2025-06-25
+                    mentioned$António
+                    end$ends cevent, further mentions
+            mentioned$Maria
+
+        2) To trigger the processing and exporting of groups in acts with
+           long list of groups.
 
         Inference rules, that infer relations such as kinship and attributes
         such as civil status are normally triggered by the end of an act such as
@@ -535,10 +561,10 @@
             person$João da Silva
                 ls$jesuit-province/Portugal/1611-04-01
 
-
-    position: [id, date, type, value]
-    guaranteed: [id, type, value]
-    also: [obs, loc, ref]
+    source: abstraction
+    position: [type, value]
+    guaranteed: [type, value]
+    also: [id, date, obs, loc, ref]
     idprefix: alist
     contains: [person, object, geoentity, abstraction, ls, atr, rel, attribute-list]
 
