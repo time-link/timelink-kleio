@@ -7148,3 +7148,10 @@ completed(14, 0.067636, 56, 200, ok).
 /*Wed Jul 16 21:15:42 2025*/ request(15, 1752671742.097, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/sources/api?id=1212&recurse=yes'),path('/rest/translations/sources/api'),search([id='1212',recurse=yes]),http_version(1-1),host(localhost),port(8090),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
 completed(15, 0.047917, 4846, 200, ok).
 server(stopped, 1752747671).
+server(started, 1761817019).
+/*Thu Oct 30 17:36:59 2025*/ request(1, 1761817019.419, [peer(ip(127,0,0,1)),method(delete),request_uri('/rest/directories/sources/api?id=1212&force=yes'),path('/rest/directories/sources/api'),search([id='1212',force=yes]),http_version(1-1),host(localhost),port(8090),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(1, 0.007751999999999999, 56, 200, ok).
+/*Thu Oct 30 17:36:59 2025*/ request(2, 1761817019.447, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/directories/sources/api?id=1212&origin=sources/reference_sources'),path('/rest/directories/sources/api'),search([id='1212',origin='sources/reference_sources']),http_version(1-1),host(localhost),port(8090),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(2, 0.023062, 56, 200, ok).
+/*Thu Oct 30 17:36:59 2025*/ request(3, 1761817019.496, [peer(ip(127,0,0,1)),method(post),request_uri('/rest/translations/sources/api/yaml/jcatalog.kleio?id=1212&recurse=yes'),path('/rest/translations/sources/api/yaml/jcatalog.kleio'),search([id='1212',recurse=yes]),http_version(1-1),host(localhost),port(8090),user_agent('SWI-Prolog'),connection(close),authorization('Bearer mytoken')]).
+completed(3, 0.001085, 111, 200, ok).
