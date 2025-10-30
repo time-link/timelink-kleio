@@ -359,7 +359,8 @@ test_case(translations,File,Stru):-
 
 % yaml str testing
 translate_file('sources/api/yaml/pt-groups.kleio', false).
-translate_file('sources/api', true).
+translate_file('sources/api/yaml/jcatalog.kleio', true).
+translate_file('sources/api', false).
 
 translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
@@ -376,7 +377,7 @@ translate_file('sources/api/issues/issue21.cli',false).
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
 %
-translate_file('sources/api/issues/issue1/issue1.cli',false).
+translate_file('sources/api/issues/issue1/issue1.cli',true).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).

@@ -333,8 +333,7 @@ match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
     atomic_list_concat([BaseNameNoExt,'-structure.yaml'],'',StruFileYaml),
     atomic_list_concat(Dirs,'/',Path),
     atomic_list_concat([Path,'/',StruFileYaml],'',StruFile),
-    exists_file(StruFile),!,
-    StruFile = StruFileYaml.
+    exists_file(StruFile),!.
 
 % match cli file to stru with same name in structures directory
 match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
