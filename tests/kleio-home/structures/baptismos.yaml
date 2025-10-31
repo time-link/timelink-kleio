@@ -18,11 +18,8 @@
     arbitrary: [celebrante, n, referido, referida, test]
     idprefix: bap
 
-
-
-
-
 - group:
+    name: n
     also:
     - sexo
     - id
@@ -133,8 +130,7 @@
     - pppmulher3
     - mppmulher3
     - mpmulher3
-    - pmpmulher3
-    - mmpmulher3
+    - pmp
     - mmulher3
     - pmmulher3
     - ppmmulher3
@@ -318,7 +314,6 @@
     guaranteed:
     - nome
     idprefix: per
-    name: n
     position:
     - nome
     - sexo

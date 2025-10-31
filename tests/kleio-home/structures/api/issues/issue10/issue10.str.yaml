@@ -53,8 +53,7 @@
     suffix: non
     type: numerus
 - element:
-    description: elemento obrigatorio ,identifica unicamente a fonte na base de dados
-      ,
+    description:
     identification: sic
     name: id
     prefix: non
@@ -90,13 +89,13 @@
     prefix: non
     suffix: non
 - element:
-    description: 'cota ou outra referencia de localizacao da fonte '
+    description:
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
+    description:
     identification: non
     name: loc
     prefix: non
@@ -301,7 +300,8 @@
     also:
     - id
     - obs
-    description:
+    description: 'Declare a linked data target Example :link $wikidata /""https://www.wikidata.org/wiki/$1""
+      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 '
     idprefix: lin
     name: link
     position:
@@ -832,7 +832,7 @@
     suffix: non
     type: numerus
 - element:
-    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
+    description:
     identification: non
     name: tipo
     prefix: non

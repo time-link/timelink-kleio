@@ -1,14 +1,18 @@
 - group:
     name: n
+    description: 'Pessoa genérica ou principal actor de um acto (criança em baptismo)'
     source: actorm
 - group:
+    description: 'Pessoa presente num acto, geralmente como testemunha, mas não participante directo'
     name: presente
     source: actorm
 - group:
     name: eleitor
+    descição: 'Pessoa com direito a voto num acto eleitoral'
     source: actorm
 - group:
     name: eleito
+    descição: 'Pessoa eleita num acto eleitoral'
     source: actorm
 - group:
     name: rv
