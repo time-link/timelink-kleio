@@ -313,6 +313,18 @@ get_stru_for_files([],_,[]).
 
 % get_stru_for_file(+File,+DefaultStruFile,-StruFile) is det.
 % Get the structure file for a given file, if it exists.
+
+% TODO use structure declaration in kleio file header
+% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
+get_stru_for_file(File,__DefaultStruFile,StruFile):-
+    open(File,read,Stream,[]),
+    read_line_to_string(Stream,Line),
+    close(Stream),
+    atomic_list_concat([Kleio|_],'/',Line),
+    (atomic_list_concat([kleio,FileSpec|_],'$',Kleio);FileSpec=''),
+    normalize_str_path(FileSpec,StruFile),
+    !.
+
 get_stru_for_file(File,__DefaultStruFile,StruFile):-
     % get directories in path
     prolog_to_os_filename(PrologFile, File),
@@ -324,9 +336,6 @@ get_stru_for_file(File,__DefaultStruFile,StruFile):-
     match_stru_to_file(Dirs,BaseNameNoExt,StruFile),
     !.
 get_stru_for_file(__,DefaultStruFile,DefaultStruFile):-!.
-
-% TODO use structure declaration in kleio file header
-% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
 
 % match cli file to stru with name BaseNameNoExt + '-structure.yaml' in the same directory
 match_stru_to_file(Dirs,BaseNameNoExt,StruFile):-
