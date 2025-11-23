@@ -1,0 +1,62 @@
+(* Kleio Notation Grammar with Named Tokens *)
+
+(* Main document structure *)
+document = { line_ending }, { group_declaration, { line_ending } } ;
+
+(* Group structure *)
+group_declaration = indentation, group_head, { group_body_item } ;
+group_head = group_name_token, [ group_marker ], { positional_element }, { element_separator, element } ;
+group_body_item = line_ending, group_declaration | line_ending, indentation, element_line ;
+element_line = element_separator, element ;
+
+(* Group components *)
+group_name_token = identifier ;
+group_marker = GROUP_MARKER ; (* '$' *)
+positional_element = element_value ;
+
+(* Element structure *)
+element = element_name, element_assignment, element_content ;
+element_name = identifier ;
+element_content = [ element_value, { multiple_value_separator, element_value } ] ;
+element_value = simple_value | quoted_string | multiline_string ;
+
+(* Element aspects *)
+element_with_aspects = element_name, element_assignment, core_aspect,
+                      [ original_marker, original_aspect ],
+                      [ comment_marker, comment_aspect ] ;
+core_aspect = element_value ;
+original_aspect = element_value ;
+comment_aspect = element_value ;
+
+(* Value types *)
+simple_value = { value_character } ;
+value_character = ? any character except special characters ? ;
+quoted_string = string_delimiter, { string_character }, string_delimiter ;
+string_character = ? any character including escaped quotes ? ;
+multiline_string = multiline_string_delimiter, { any_character }, multiline_string_delimiter ;
+
+(* Identifiers *)
+identifier = letter, { letter | digit | "-" | "_" } ;
+letter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" |
+         "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" |
+         "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" |
+         "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+(* Named tokens for special characters *)
+GROUP_MARKER = '$' ;
+ELEMENT_ASSIGNMENT = '=' ;
+ELEMENT_SEPARATOR = '/' ;
+ORIGINAL_MARKER = '%' ;
+COMMENT_MARKER = '#' ;
+MULTIPLE_VALUE_SEPARATOR = '|' ;
+ALTERNATIVE_SEPARATOR = ';' ;
+STRING_DELIMITER = '"' ;
+MULTILINE_STRING_DELIMITER = '"""' ;
+
+(* Whitespace and formatting *)
+indentation = { whitespace } ;
+line_ending = { whitespace }, NEWLINE, { whitespace } ;
+whitespace = ' ' | '\t' ;
+NEWLINE = '\n' | '\r\n' | '\r' ;
+any_character = ? any character ? ;
