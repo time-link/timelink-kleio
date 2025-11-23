@@ -1,5 +1,16 @@
-import re
-from typing import List, Optional, Any
+"""
+A SAX-like parser for the Kleio notation.
+
+This module provides a parser for Kleio, a notation used for historical data input.
+The parser works in a SAX-like manner, emitting events as it processes the input
+document. Users should implement a handler class that inherits from
+`KleioParserHandler` to process these events.
+
+The main components are:
+- `KleioParser`: The main parser class that takes a handler and processes Kleio text.
+- `KleioParserHandler`: An abstract base class defining the interface for event handlers.
+"""
+
 
 class KleioParserHandler:
     """
@@ -29,6 +40,7 @@ class KleioParserHandler:
         """Called when an element aspect ends"""
         pass
 
+
 class KleioParser:
     """
     Parser for Kleio notation following the EBNF grammar
@@ -57,12 +69,9 @@ class KleioParser:
     def parse(self, text: str):
         """Parse the entire Kleio document"""
         lines = text.splitlines()
-        i = 0
-        while i < len(lines):
-            line = lines[i]
+        for line in lines:
             if line.strip():
                 self._parse_line(line)
-            i += 1
 
     def _get_indent_level(self, line: str) -> int:
         """Calculate the indentation level of a line"""
@@ -133,6 +142,10 @@ class KleioParser:
 
     def _parse_named_element(self, element_str: str):
         """Parse a named element with name=value format"""
+        if self.tokens['ELEMENT_ASSIGNMENT'] not in element_str:
+            # Handle case where assignment is missing, treat as positional
+            self._parse_positional_element(element_str)
+            return
         name, value_str = element_str.split(self.tokens['ELEMENT_ASSIGNMENT'], 1)
         name = name.strip()
 
@@ -155,6 +168,12 @@ class KleioParser:
 
         if has_original and has_comment:
             # Has all three aspects: core%original#comment
+            if self.tokens['ORIGINAL_MARKER'] not in value_str or self.tokens['COMMENT_MARKER'] not in value_str:
+                # Fallback if markers are malformed
+                self.handler.start_element_aspect("core")
+                self._emit_text(value_str)
+                self.handler.end_element_aspect("core")
+                return
             core_part, rest = value_str.split(self.tokens['ORIGINAL_MARKER'], 1)
             original_part, comment_part = rest.split(self.tokens['COMMENT_MARKER'], 1)
 
@@ -172,6 +191,11 @@ class KleioParser:
 
         elif has_original:
             # Has core and original: core%original
+            if self.tokens['ORIGINAL_MARKER'] not in value_str:
+                self.handler.start_element_aspect("core")
+                self._emit_text(value_str)
+                self.handler.end_element_aspect("core")
+                return
             core_part, original_part = value_str.split(self.tokens['ORIGINAL_MARKER'], 1)
 
             self.handler.start_element_aspect("core")
@@ -184,6 +208,11 @@ class KleioParser:
 
         elif has_comment:
             # Has core and comment: core#comment
+            if self.tokens['COMMENT_MARKER'] not in value_str:
+                self.handler.start_element_aspect("core")
+                self._emit_text(value_str)
+                self.handler.end_element_aspect("core")
+                return
             core_part, comment_part = value_str.split(self.tokens['COMMENT_MARKER'], 1)
 
             self.handler.start_element_aspect("core")
@@ -205,6 +234,7 @@ class KleioParser:
         # For now, we just pass through - in a real implementation you might
         # want to handle string delimiters, normalize whitespace, etc.
         pass
+
 
 # Example implementation of the handler
 class ExampleKleioHandler(KleioParserHandler):
@@ -229,6 +259,7 @@ class ExampleKleioHandler(KleioParserHandler):
 
     def end_element_aspect(self, aspect: str):
         print(f"    End Aspect: {aspect}")
+
 
 # Usage example:
 if __name__ == "__main__":
