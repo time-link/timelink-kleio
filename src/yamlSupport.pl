@@ -1,5 +1,6 @@
 :-module(yamlSupport, [
-    stru_yaml/1
+    stru_yaml/1,
+    normalize_str_path/2
     ]).
 
 /** <module> Processing YAML files
@@ -12,7 +13,7 @@
 % example read mappings
 % File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/mappings/sample-mapping.yml', new_yaml_str(File,D),print_term(D,[]).
 % example read str
-% File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/yaml/sample-str.yaml',stru_yaml(File), show_stru).
+% File='/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/yaml/sample-str.yaml', stru_yaml(File), show_stru).
 :-use_module(library(yaml)).
 :-use_module(library(pprint)).
 :-use_module(persistence).
@@ -133,87 +134,6 @@ include_yaml_str(File,Data):-
     absolute_file_name(Path,AbsPath),
     read_yaml_str(AbsPath,Data).
 
-% include normalize the path
-% include a single file no path
-% use the current file directory
-% to generate the full path
-normalize_str_path(File,Path):-
-    atomic_list_concat([_,Ext], '.',File),
-    ( Ext = yaml ; Ext = yml ),
-    get_value(yaml_file,MainFilePath),
-    file_directory_name(MainFilePath,MainFileDir),
-    atomic_list_concat([MainFileDir,File],'/',Path).
-normalize_str_path(File,Path):-
-    atomic_list_concat(Dirs, '.',File),
-    create_str_path(Dirs,DirsExpanded),
-    atomic_list_concat(DirsExpanded,'/',Path).
-
-% last item on path is filename with or not .yaml ext
-create_str_path([File,'yaml'],[FileName]):-
-    atomic_list_concat([File,'yaml'],'.',FileName).
-
-% resolve system dir
-create_str_path([system|Dirs],[SysStruDir|MoreDirs]):-!,
-    kleio_stru_dir(SysStruDir),
-    create_str_path(Dirs,MoreDirs),!.
-
-% resolve user  structures dir
-% this requires some way to get the user structure directory
-% which is normally associated with a user token
-% here we assume that token info is in value "token_info"
-% other wise we default to home.structures
-% see https://github.com/time-link/timelink-kleio/issues/12
-create_str_path([structures|Dirs],[UserStruDir|MoreDirs]):-
-    % in prod
-    get_value(token_info,TokenInfo),
-    kleio_user_structure_dir(UserStruDir, TokenInfo),
-    create_str_path(Dirs,MoreDirs),!.
-
-create_str_path([structures|Dirs],[LocalStructures|MoreDirs]):-
-    kleio_home_dir(KleioHomeDir),
-    atomic_list_concat([KleioHomeDir,structures],'/',LocalStructures),
-    create_str_path(Dirs,MoreDirs),
-    !.
-
-% resolve user sources dir
-% see https://github.com/time-link/timelink-kleio/issues/12
-create_str_path([sources|Dirs],[UserStruDir|MoreDirs]):-
-    % in prod
-    get_value(token_info,TokenInfo),
-    kleio_user_source_dir(UserStruDir, TokenInfo),
-    create_str_path(Dirs,MoreDirs),!.
-
-create_str_path([sources|Dirs],[LocalStructures|MoreDirs]):-
-    kleio_home_dir(KleioHomeDir),
-    atomic_list_concat([KleioHomeDir,sources],'/',LocalStructures),
-    create_str_path(Dirs,MoreDirs),
-    !.
-% resolve home dir
-create_str_path([home|Dirs],[KleioHomeDir|MoreDirs]):-
-    kleio_home_dir(KleioHomeDir),
-    create_str_path(Dirs,MoreDirs),!.
-
-% resolve . separator TODO: Broken
-create_str_path(['~'|Dirs],[MainFileDir|MoreDirs]):-!,
-    get_value(stru_file,MainFilePath),
-    file_directory_name(MainFilePath,MainFileDir),
-    create_str_path(Dirs,MoreDirs).
-
-% consider every thing else as a directory
-create_str_path([Dir|Dirs],[Dir|MoreDirs]):-
-    create_str_path(Dirs,MoreDirs).
-
-% include file by name
-create_str_path(FileOnly, [MainFileDir,FileOnly]):-
-    atomic(FileOnly),
-    get_value(stru_file,MainFilePath),
-    file_directory_name(MainFilePath,MainFileDir),
-    !.
-
-% include other paths
-create_str_path(OtherPath, [MainFileDir|OtherPath]):-!,
-    get_value(yaml_file,MainFilePath),
-    file_directory_name(MainFilePath,MainFileDir).
 
 
 :- begin_tests(yamlSupport).

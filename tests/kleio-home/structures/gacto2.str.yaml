@@ -53,7 +53,8 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,
     identification: sic
     name: id
     prefix: non
@@ -89,13 +90,13 @@
     prefix: non
     suffix: non
 - element:
-    description:
+    description: 'cota ou outra referencia de localizacao da fonte '
     identification: non
     name: ref
     prefix: non
     suffix: non
 - element:
-    description:
+    description: localizacao da fonte (arquivo pessoal ,AUC ,ANTT ).
     identification: non
     name: loc
     prefix: non
@@ -1030,7 +1031,7 @@
     suffix: non
     type: numerus
 - element:
-    description:
+    description: tipo de fonte (registos paroquiais ,livros notariais ,etc... )
     identification: non
     name: tipo
     prefix: non
