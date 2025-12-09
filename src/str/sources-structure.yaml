@@ -1,4 +1,6 @@
-- path: /Users/jrc/develop/timelink-kleio/src/gacto2.str
+- file: 
+    name: /Users/jrc/develop/timelink-kleio/src/gacto2.str
+    description: Generated from gacto2.str 
 - element:
     description: 'Any number '
     identification: non
@@ -227,6 +229,41 @@
     - obs
     prefix: non
     suffix: non
+- element:
+    description:
+    identification: non
+    name: autorels
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: structure
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translator
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: sic
+    name: prefix
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translations
+    prefix: non
+    source: number
+    suffix: non
 - group:
     also:
     - type
@@ -311,6 +348,13 @@
     - name
     prefix: non
     suffix: non
+- element:
+    description:
+    identification: non
+    name: dbase
+    prefix: non
+    source: string256
+    suffix: non
 - group:
     also:
     - obs
@@ -337,6 +381,13 @@
     prefix: non
     source: authority-register
     suffix: non
+- element:
+    description:
+    identification: non
+    name: mode
+    prefix: non
+    source: type
+    suffix: non
 - group:
     also:
     - id
@@ -349,6 +400,20 @@
     - shortname
     - urlpattern
     prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: shortname
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: urlpattern
+    prefix: non
+    source: value
     suffix: non
 - group:
     also:
@@ -385,6 +450,20 @@
     - type
     prefix: non
     suffix: non
+- element:
+    description:
+    identification: non
+    name: status
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: user
+    prefix: non
+    source: name
+    suffix: non
 - group:
     also:
     - status
@@ -407,6 +486,13 @@
     - sname
     - sex
     prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sname
+    prefix: non
+    source: name
     suffix: non
 - group:
     also:
@@ -451,6 +537,27 @@
     - date
     - name
     prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: atype
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: func
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: sic
+    name: occurrence
+    prefix: non
+    source: id
     suffix: non
 - group:
     also:
@@ -805,6 +912,13 @@
     prefix: non
     source: historical-source
     suffix: non
+- element:
+    description:
+    identification: non
+    name: substitui
+    prefix: non
+    source: replace
+    suffix: non
 - group:
     also:
     - ref
@@ -832,6 +946,13 @@
     - ano
     prefix: non
     source: historical-act
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: celebrante
+    prefix: non
+    source: name
     suffix: non
 - group:
     arbitrary:
@@ -865,6 +986,14 @@
 - element:
     description:
     identification: non
+    name: dian
+    prefix: non
+    source: day
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
     name: mes
     prefix: non
     source: month
@@ -873,7 +1002,23 @@
 - element:
     description:
     identification: non
+    name: mesn
+    prefix: non
+    source: month
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
     name: ano
+    prefix: non
+    source: year
+    suffix: non
+    type: numerus
+- element:
+    description:
+    identification: non
+    name: anon
     prefix: non
     source: year
     suffix: non
@@ -1175,6 +1320,13 @@
     prefix: non
     source: object
     suffix: non
+- element:
+    description:
+    identification: non
+    name: titulo
+    prefix: non
+    source: value
+    suffix: non
 - group:
     also:
     - obs
@@ -1297,7 +1449,6 @@
     - dia
     - mes
     - ano
-    - folio
     idprefix: his
     name: devassa
     position:
@@ -1307,6 +1458,20 @@
     - ano
     prefix: non
     source: pt-acto
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: visdor
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: secretario
+    prefix: non
+    source: name
     suffix: non
 - group:
     also:
@@ -1329,6 +1494,27 @@
     - obs
     prefix: non
     source: object
+    suffix: non
+- element:
+    description:
+    identification: sic
+    name: idcaso
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: literal
+    prefix: non
+    source: obs
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: origem
+    prefix: non
+    source: value
     suffix: non
 - group:
     also:
@@ -1423,6 +1609,20 @@
     - esmola
     prefix: non
     source: pt-acto
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: esmola
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: subs
+    prefix: non
+    source: value
     suffix: non
 - group:
     also:
@@ -2611,7 +2811,7 @@
     identification: non
     name: local
     prefix: non
-    source: loc
+    source: value
     suffix: non
 - group:
     also:
@@ -2959,6 +3159,34 @@
     prefix: non
     source: object
     suffix: non
+- element:
+    description:
+    identification: non
+    name: juro
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: moeda
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: valorn
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: prazo
+    prefix: non
+    source: value
+    suffix: non
 - group:
     also:
     - desc
@@ -3025,6 +3253,27 @@
     - data
     prefix: non
     source: object
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: depositario
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: juiz
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: escrivao
+    prefix: non
+    source: name
     suffix: non
 - group:
     also:
@@ -3323,6 +3572,20 @@
     - loc
     prefix: non
     source: pt-acto
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: resumo
+    prefix: non
+    source: obs
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: refere
+    prefix: non
+    source: name
     suffix: non
 - group:
     also:
@@ -3791,6 +4054,13 @@
     prefix: non
     source: object
     suffix: non
+- element:
+    description:
+    identification: non
+    name: numero
+    prefix: non
+    source: number
+    suffix: non
 - group:
     also:
     - cota
@@ -3833,6 +4103,13 @@
     prefix: non
     source: pt-acto
     suffix: non
+- element:
+    description:
+    identification: non
+    name: tabeliao
+    prefix: non
+    source: name
+    suffix: non
 - group:
     also:
     - id
@@ -3861,6 +4138,69 @@
     - ano
     prefix: non
     source: abstraction
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: descricao
+    prefix: non
+    source: obs
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: subtipo
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: forma
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: instrumento
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: objecto
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: tempo
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: pronuncia
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: ocorrencia
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: situacao
+    prefix: non
+    source: value
     suffix: non
 - group:
     also:
@@ -4826,6 +5166,20 @@
     - destino
     prefix: non
     source: pt-acto
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destino
+    prefix: non
+    source: value
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: num
+    prefix: non
+    source: value
     suffix: non
 - group:
     also:

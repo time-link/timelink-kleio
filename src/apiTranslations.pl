@@ -314,8 +314,6 @@ get_stru_for_files([],_,[]).
 % get_stru_for_file(+File,+DefaultStruFile,-StruFile) is det.
 % Get the structure file for a given file, if it exists.
 
-% TODO use structure declaration in kleio file header
-% Note: open(F,read,Stream,[]),read_line_to_string(Stream,Line),close(Stream), atomic_list_concat([Kleio|_],'/',Line), (atomic_list_concat([K,Stru|_],'$',Kleio);Stru=''),!.
 get_stru_for_file(File,__DefaultStruFile,StruFile):-
     open(File,read,Stream,[]),
     read_line_to_string(Stream,Line),

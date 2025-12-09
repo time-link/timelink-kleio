@@ -375,10 +375,11 @@ translate_file('sources/api/issues/issue21.cli',false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
+translate_file('sources/api/locate_stru_file/default-stru.kleio',true).
 %
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
-translate_file('sources/api/issues/issue15/issue15.cli',true).
+translate_file('sources/api/issues/issue15/issue15.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).

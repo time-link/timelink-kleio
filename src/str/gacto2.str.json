@@ -1,5 +1,14 @@
 [
-  {"path":"/Users/jrc/develop/timelink-kleio/src/gacto2.str"},
+  {
+    "file": [
+      {
+	"description":"Automatically generated structure file",
+	"json_path":"/Users/jrc/develop/timelink-kleio/src/str/gacto2.str.json",
+	"origin":"/Users/jrc/develop/timelink-kleio/src/str/gacto2.str",
+	"yaml_path":"/Users/jrc/develop/timelink-kleio/src/str/gacto2.str.yaml"
+      }
+    ]
+  },
   {
     "element": {
       "description":"Any number ",
@@ -328,6 +337,56 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"autorels",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"structure",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"translator",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"sic",
+      "name":"prefix",
+      "prefix":"non",
+      "source":"id",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"translations",
+      "prefix":"non",
+      "source":"number",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": [
 	"type",
@@ -386,6 +445,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"dbase",
+      "prefix":"non",
+      "source":"string256",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["obs" ],
       "description":"Identifications are authority-registers for record linking. They contain real-entity records (people or objects )that aggregate occurrences in the source pertaining to the same person or entity. To keep imported records separate from local ones use a different user. ",
@@ -400,6 +469,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"mode",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["id", "obs" ],
       "description":"Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\" And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 ",
@@ -407,6 +486,26 @@
       "name":"link",
       "position": ["shortname", "urlpattern" ],
       "prefix":"non",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"shortname",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"urlpattern",
+      "prefix":"non",
+      "source":"value",
       "suffix":"non"
     }
   },
@@ -435,6 +534,26 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"status",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"user",
+      "prefix":"non",
+      "source":"name",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["status", "user", "obs" ],
       "description":"contains information about a real person. ",
@@ -444,6 +563,16 @@
       "part": ["occ", "ls", "atr", "rel" ],
       "position": ["id", "sname", "sex" ],
       "prefix":"non",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"sname",
+      "prefix":"non",
+      "source":"name",
       "suffix":"non"
     }
   },
@@ -469,6 +598,36 @@
       "name":"occ",
       "position": ["occurrence", "atype", "func", "date", "name" ],
       "prefix":"non",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"atype",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"func",
+      "prefix":"non",
+      "source":"type",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"sic",
+      "name":"occurrence",
+      "prefix":"non",
+      "source":"id",
       "suffix":"non"
     }
   },
@@ -746,6 +905,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"substitui",
+      "prefix":"non",
+      "source":"replace",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["ref", "loc", "obs" ],
       "arbitrary": [
@@ -763,6 +932,16 @@
       "position": ["id", "dia", "mes", "ano" ],
       "prefix":"non",
       "source":"historical-act",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"celebrante",
+      "prefix":"non",
+      "source":"name",
       "suffix":"non"
     }
   },
@@ -803,6 +982,17 @@
     "element": {
       "description":"",
       "identification":"non",
+      "name":"dian",
+      "prefix":"non",
+      "source":"day",
+      "suffix":"non",
+      "type":"numerus"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
       "name":"mes",
       "prefix":"non",
       "source":"month",
@@ -814,7 +1004,29 @@
     "element": {
       "description":"",
       "identification":"non",
+      "name":"mesn",
+      "prefix":"non",
+      "source":"month",
+      "suffix":"non",
+      "type":"numerus"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
       "name":"ano",
+      "prefix":"non",
+      "source":"year",
+      "suffix":"non",
+      "type":"numerus"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"anon",
       "prefix":"non",
       "source":"year",
       "suffix":"non",
@@ -1145,6 +1357,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"titulo",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
@@ -1221,12 +1443,32 @@
       "also": ["folio", "visdor", "secretario", "obs" ],
       "arbitrary": ["testo", "testa", "referido" ],
       "description":"Devassas temporais nas visitas pastorais ",
-      "guaranteed": ["id", "dia", "mes", "ano", "folio" ],
+      "guaranteed": ["id", "dia", "mes", "ano" ],
       "idprefix":"his",
       "name":"devassa",
       "position": ["id", "dia", "mes", "ano" ],
       "prefix":"non",
       "source":"pt-acto",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"visdor",
+      "prefix":"non",
+      "source":"name",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"secretario",
+      "prefix":"non",
+      "source":"name",
       "suffix":"non"
     }
   },
@@ -1241,6 +1483,36 @@
       "position": ["idcaso", "obs" ],
       "prefix":"non",
       "source":"object",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"sic",
+      "name":"idcaso",
+      "prefix":"non",
+      "source":"id",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"literal",
+      "prefix":"non",
+      "source":"obs",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"origem",
+      "prefix":"non",
+      "source":"value",
       "suffix":"non"
     }
   },
@@ -1296,6 +1568,26 @@
       "position": ["id", "dia", "mes", "ano", "fol", "subs", "esmola" ],
       "prefix":"non",
       "source":"pt-acto",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"esmola",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"subs",
+      "prefix":"non",
+      "source":"value",
       "suffix":"non"
     }
   },
@@ -2168,7 +2460,7 @@
       "identification":"non",
       "name":"local",
       "prefix":"non",
-      "source":"loc",
+      "source":"value",
       "suffix":"non"
     }
   },
@@ -2435,6 +2727,46 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"juro",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"moeda",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"valorn",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"prazo",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["desc", "tipo", "id", "obs", "local" ],
       "arbitrary": ["atr", "rel", "local" ],
@@ -2470,6 +2802,36 @@
       "position": ["valor", "juiz", "escrivao", "depositario", "data" ],
       "prefix":"non",
       "source":"object",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"depositario",
+      "prefix":"non",
+      "source":"name",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"juiz",
+      "prefix":"non",
+      "source":"name",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"escrivao",
+      "prefix":"non",
+      "source":"name",
       "suffix":"non"
     }
   },
@@ -2698,6 +3060,26 @@
       "position": ["id", "dia", "mes", "ano", "loc" ],
       "prefix":"non",
       "source":"pt-acto",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"resumo",
+      "prefix":"non",
+      "source":"obs",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"refere",
+      "prefix":"non",
+      "source":"name",
       "suffix":"non"
     }
   },
@@ -3091,6 +3473,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"numero",
+      "prefix":"non",
+      "source":"number",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": ["cota", "local", "tipo", "tabeliao", "obs" ],
       "arbitrary": [
@@ -3128,6 +3520,16 @@
     }
   },
   {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"tabeliao",
+      "prefix":"non",
+      "source":"name",
+      "suffix":"non"
+    }
+  },
+  {
     "group": {
       "also": [
 	"id",
@@ -3148,6 +3550,96 @@
       "position": ["dia", "mes", "ano" ],
       "prefix":"non",
       "source":"abstraction",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"descricao",
+      "prefix":"non",
+      "source":"obs",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"subtipo",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"forma",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"instrumento",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"objecto",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"tempo",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"pronuncia",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"ocorrencia",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"situacao",
+      "prefix":"non",
+      "source":"value",
       "suffix":"non"
     }
   },
@@ -3816,6 +4308,26 @@
       "position": ["id", "dia", "mes", "ano", "fol", "local", "destino" ],
       "prefix":"non",
       "source":"pt-acto",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"destino",
+      "prefix":"non",
+      "source":"value",
+      "suffix":"non"
+    }
+  },
+  {
+    "element": {
+      "description":"",
+      "identification":"non",
+      "name":"num",
+      "prefix":"non",
+      "source":"value",
       "suffix":"non"
     }
   },
