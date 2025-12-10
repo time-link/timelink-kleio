@@ -381,7 +381,25 @@ match_stru_to_file(Dirs,_,StruFile):-
     exists_file(StruFileStr),!,
     StruFile = StruFileStr.
 
-% match cli file with system.yaml, gacto2.str or sources.str in structures directory depth first
+% match cli file with sources-structure.yaml,gacto2.str or sources.str in sources directory depth first
+match_stru_to_file(Dirs,_,StruFile):-
+    Dirs = StruPath,
+    % remove last element of Dirs1
+    reverse(StruPath,RStruPath),
+    append(_,RSubPath,RStruPath),
+    reverse(RSubPath,SubPath),
+    atomic_list_concat(SubPath,'/',Path),
+    (
+        atomic_list_concat([Path,'/','sources-structure.yaml'],'',StruFile)
+        ;
+        atomic_list_concat([Path,'/','sources.str'],'',StruFile)
+        ;
+        atomic_list_concat([Path,'/','gacto2.str'],'',StruFile)
+    ),
+    exists_file(StruFile),!.
+
+
+% match cli file with sources-structure.yaml,gacto2.str or sources.str in structures directory depth first
 match_stru_to_file(Dirs,_,StruFile):-
     select('sources',Dirs,'structures',StruPath),
     % remove last element of Dirs1
