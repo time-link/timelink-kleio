@@ -248,6 +248,10 @@ There two type of tests:
 See `README-tests.md` in the directory `tests` for details. The tests directory also contains
 reference files and the reference translator necessary to run both semantic and api tests.
 
+### Agent-like Components
+
+The system contains several autonomous components that operate independently. See [AGENTS.md](AGENTS.md) for detailed information about these agent-like components.
+
 ### Updating
 #### Preparing images
 

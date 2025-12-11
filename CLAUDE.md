@@ -34,6 +34,10 @@ Timelink-Kleio is a translation server for Kleio notation files. It provides RES
 - **.str.yaml files**: YAML alternative format for structure definitions
 - **src/str/**: New modular YAML structure components (groups.yaml, elements.yaml, system.yaml)
 
+## Agent-like Components
+
+The system contains several autonomous components that operate independently. See [AGENTS.md](AGENTS.md) for detailed information about these agent-like components.
+
 ## Development Commands
 
 ### Local Development with SWI-Prolog
