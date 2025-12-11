@@ -1,0 +1,105 @@
+devassa$devassa/dev1698/7/6/1698
+	/visdor=manuel soares gouveira
+	#secretario: jeronimo pimentel
+	/paroco=?
+	/cota=III\/D,4,4,48
+	/folio=?
+	/obs=em muito mau estado
+	
+testemunha$t1698-1/manuel gomes/m
+	ls$ec/c
+	ls$profissao/?#ilegivel
+	ls$residencia/novos
+	ls$idade/58
+	ls$assina/b
+	
+	caso$c1698-1/amanc/alexandre gomes;francisca/a1698-1;a1698-2
+		acusado$a1698-1/alexandre gomes/m
+			ls$ec/s
+			ls$freguesia/pombal?
+			ls$residencia/paleao
+		acusada$a1698-2/francisca/f
+			ls$alcunha/serrana
+			ls$ec/c#marido ausente
+			ls$residencia/paleao
+			ls$naturalidade/santiago da guarda#segundo a testemunha
+				francisco rodrigues. Isso explicaria a alcunha "serrana"
+	acus$1/c1698-1/amanc/literal=ela pariu uma crianca ha um ano + ou -
+	
+	caso$c1698-2/amanc/maria da folha;manuel neto/a1698-3;a1698-4
+		acusada$a1698-3/maria da folha/f
+			/obs=teria ido para Condeixa-a-Nova por volta de 1698
+					ver devassa de 1698
+			ls$ec/s
+			
+		acusado$a1698-4/manuel neto/m
+			ls$profissao/pedreiro
+			ls$ec/c
+			ls$freguesia/ansiao#teria ido residir para ansiao por
+						volta de 1698
+	acus$1/c1698-2/amanc/literal=teriam ido viver para condeixa-a-nova
+	
+testemunha$t1698-2/antonio ferreira/m
+	ls$ec/c
+	ls$profissao/vive de seu trabalho
+	ls$residencia/paleao
+	ls$idade/45
+	ls$assina/+
+	acus$2/c1698-1/amanc
+	
+testemunha$t1698-3/manuel ferreira/m
+	ls$ec/c
+	ls$profissao/sapateiro
+	ls$residencia/soure
+	ls$idade/27
+	ls$assina/b
+	
+	acus$3/c1698-2/amanc
+	
+testemunha$t1698-4/antonio lopes/m
+	ls$profissao/alfaiate
+	ls$residencia/soure
+	ls$idade/27
+	ls$assina/b
+	acus$4/c1698-2/amanc
+	
+testemunha$t1698-5/francisco rodrigues/m
+	ls$ec/c
+	ls$residencia/paleao
+	ls$profissao/trabalhador#ocorre no mesmo documento com
+		"vive de seu trabalho"
+	ls$idade/45
+	ls$assina/m
+	acus$5/c1698-1/amanc/obs=diz que ela veio de santiago da guarda
+	
+testemunha$t1698-6/mateus rodrigues/m
+	ls$ec/c
+	ls$residencia/soure
+	ls$profissao/cacador de perdizes
+	ls$idade/60
+	ls$assina/m
+	
+	caso$c1698-3/dev/maria ruiva/a1698-5
+		acusada$a1698-5/maria ruiva/f
+			ls$ec/s
+			ls$residencia/soure
+	acus$6/c1698-3/dev/literal=pariu tres vezes, a ultima
+		ha um ano, sem se saber quem e' o pai
+		
+testemunha$t1698-7/isabel mendes/f
+	ls$ec/s
+	ls$residencia/soure
+	ls$idade/40
+	rel$parentesco/filha/? fernandes/t1698-7b
+	referido$t1698-7b/? fernandes/m
+		ls$morto/antes
+	acus$7/c1698-3/dev
+	
+testemunha$t1698-8/maria de cuova?/f
+	rel$parentesco/mulher/matias rodrigues/t1698-8b
+	referido$matias rodrigues/id=t1698-8b
+		/obs=talvez seja t1698-6
+		ls$ec/c
+		ls$profissao/cacador
+	acus$8/c1698-3/dev
+
