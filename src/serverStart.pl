@@ -358,6 +358,7 @@ test_case(translations,File,Stru):-
     format('TESTING ~wn',[File]).
 
 % yaml str testing
+translate_file('sources/api/', true).  % all reference sources
 translate_file('sources/api/yaml/pt-groups.kleio', false).
 translate_file('sources/api/yaml/jcatalog.kleio', false).
 translate_file('sources/api', false).
@@ -375,7 +376,7 @@ translate_file('sources/api/issues/issue21.cli',false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
-translate_file('sources/api/locate_stru_file/default-stru.kleio',true).
+translate_file('sources/api/locate_stru_file/default-stru.kleio',false).
 %
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).

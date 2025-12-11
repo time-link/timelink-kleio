@@ -94,6 +94,7 @@
 :-use_module(library(yaml)).
 :-use_module(library(ugraphs)).
 :-use_module(library(lists)).
+:-use_module(library(date)).
 
 % dynamic thread local
 ?-thread_local(clioStru_/1).
@@ -706,7 +707,16 @@ make_json_yaml(ClioFile,JsonFile,YamlFile,GroupsInfo,ElementsInfo):-
    append(ElementsInfo,GroupsInfo,StruItems),
    sort(id,@=<,StruItems,StruItemsSorted),
    remove_key(id,StruItemsSorted,StruItemsFinal),
-   FileHeader = [file{json_path:JsonFile,yaml_path:YamlFile,description:'Automatically generated structure file', origin:ClioFile}],
+   get_time(TimeStamp),
+   stamp_date_time(TimeStamp, DateTime, 'UTC'),
+   format_time(atom(Date), '%Y-%m-%d', DateTime),
+   get_value(stru_file,StruFile),
+   FileHeader = [file{json_path:JsonFile,
+                  yaml_path:YamlFile,
+                  description:'Automatically generated structure file', 
+                  origin:ClioFile, 
+                  date:Date,
+                  stru:StruFile}],
    JSON_STRU=[file{file:FileHeader}|StruItemsFinal],
    open_file_write(JsonFile),
    json_write_dict(JsonFile,JSON_STRU,[]),
