@@ -1,6 +1,11 @@
 # Portuguese main groups
 - include: system.yaml
 - include: pt-elements.yaml
+- include: pt-parentem.yaml
+- include: pt-parentef.yaml
+- include: pt-actorm.yaml
+- include: pt-actorf.yaml
+
 - file:
     name: pt-groups.yaml
     description: |
@@ -35,6 +40,7 @@
     position: [id, dia, mes, ano]
     also: [ref, loc, obs]
     guaranteed: [id, dia, mes, ano]
+    contains: [actorm,actorf,item]
     idprefix: his
 
 - group:
@@ -54,6 +60,7 @@
     description: |
         Actos genericos, servem para vereacoes etc.
         Tem id, tipo, dia, mes, ano, loc e obs.
+        Distinguem-se de pt-acto por terem o tipo como obrigatório
         Compostos por items e por pessoas
         Exemplo:
 
@@ -76,7 +83,6 @@
     position: [id, tipo, dia, mes, ano, loc]
     guaranteed: [id, tipo, dia, mes, ano]
     also: [ref, data, loc, obs]
-    arbitrary: [presente, presente-f, referido, referida, item, ls, atr, rel]
     idprefix: act
 
 - group:

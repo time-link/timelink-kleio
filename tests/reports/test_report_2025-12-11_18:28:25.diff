@@ -1,0 +1,1876 @@
+Thu Dec 11 18:28:25 CST 2025 /Users/jrc/develop/timelink-kleio/tests
+Comparing translation results.
+Thu Dec 11 18:33:54 CST 2025 /Users/jrc/develop/timelink-kleio/tests
+Only in kleio-home/sources/reference_translations: .gitignore
+Only in kleio-home/sources/test_translations/bugs: bugs-structure.json
+Only in kleio-home/sources/test_translations/bugs: bugs-structure.yaml
+diff -r kleio-home/sources/reference_translations/bugs/bugs.err kleio-home/sources/test_translations/bugs/bugs.err
+diff -r kleio-home/sources/reference_translations/bugs/bugs.files.json kleio-home/sources/test_translations/bugs/bugs.files.json
+diff -r kleio-home/sources/reference_translations/bugs/bugs.rpt kleio-home/sources/test_translations/bugs/bugs.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/bugs/bugs-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,link,person,ls,pt-acto,fonte,male,lista,actorm,n]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,valor,value,xmesmo_que,xsame_as,year]
+32d34
+< Groups in this file:[ls,n,lista,fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/bugs/bugs.xml kleio-home/sources/test_translations/bugs/bugs.xml
+Only in kleio-home/sources/test_translations/identifications: mhk_identification_toliveira-structure.json
+Only in kleio-home/sources/test_translations/identifications: mhk_identification_toliveira-structure.yaml
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.err kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.err
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.files.json kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.files.json
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.rpt kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/identifications/mhk_identification_toliveira-structure.yaml
+> Groups in this file:[authority-register,kleio,occ,rperson,identifications]
+> Elements in this file:[atype,autorels,date,dbase,func,id,mode,name,obs,occurrence,prefix,sex,sname,status,structure,translations,translator,user]
+286d288
+< Groups in this file:[occ,rperson,identifications,kleio]
+diff -r kleio-home/sources/reference_translations/identifications/mhk_identification_toliveira.xml kleio-home/sources/test_translations/identifications/mhk_identification_toliveira.xml
+Only in kleio-home/sources/test_translations/issues/issue1: issue1-structure.json
+Only in kleio-home/sources/test_translations/issues/issue1: issue1-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue1/issue1.files.json kleio-home/sources/test_translations/issues/issue1/issue1.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue1/issue1.rpt kleio-home/sources/test_translations/issues/issue1/issue1.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue1/issue1-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,link,person,ls,event,fonte,male,evento,referido,cevento,crono]
+> Elements in this file:[ano,autorels,data,date,day,description,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,valor,value,xmesmo_que,xsame_as,year]
+32d34
+< Groups in this file:[ls,referido,crono,fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue1/issue1.xml kleio-home/sources/test_translations/issues/issue1/issue1.xml
+Only in kleio-home/sources/test_translations/issues/issue10: issue10-structure.json
+Only in kleio-home/sources/test_translations/issues/issue10: issue10-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue10/issue10.files.json kleio-home/sources/test_translations/issues/issue10/issue10.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue10/issue10.rpt kleio-home/sources/test_translations/issues/issue10/issue10.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue10/issue10-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,acus,caso,female,male,rel,devassa,actorf,actorm,referido,acusada,testa,acusado,testo]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,folio,id,idcaso,iddest,kleiofile,literal,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,origem,prefix,ref,replace,same_as,secretario,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,visdor,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[referido,testa,rel,acusada,acusado,caso,acus,ls,testo,devassa,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue10/issue10.xml kleio-home/sources/test_translations/issues/issue10/issue10.xml
+< <CLASS NAME="acusacoes" SUPER="object" TABLE="acusacoes" GROUP="acus">
+> <CLASS NAME="acusacao" SUPER="object" TABLE="acusacoes" GROUP="acus">
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+<    <ELEMENT NAME="class" CLASS="class"><core>acusacoes</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>acusacao</core></ELEMENT>
+Only in kleio-home/sources/test_translations/issues/issue15: issue15-structure.json
+Only in kleio-home/sources/test_translations/issues/issue15: issue15-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue15/issue15.cli kleio-home/sources/test_translations/issues/issue15/issue15.cli
+<    fonte$issue15/Não sabemos/tipo=vereacoes/localizacao=AHMC/data=17930000%1793/ano=1793
+>    fonte$issue15/Não sabemos/vereacoes/AHMC/data=17930000%1793
+<             mulher$joaquina correia de melo/obs=teste, nao está presente, só para testar geração de famílias/id=v1793-1-per1-per5
+>          mulher$joaquina correia de melo/obs=teste, nao está presente, só para testar geração de famílias/id=v1793-1-per1-per5
+diff -r kleio-home/sources/reference_translations/issues/issue15/issue15.files.json kleio-home/sources/test_translations/issues/issue15/issue15.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue15/issue15.rpt kleio-home/sources/test_translations/issues/issue15/issue15.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue15/issue15-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,ls,pt-acto,fonte,item,female,male,acto,actorf,parentef,actorm,parentem,referido,presente-f,kin-daughter,kin-mother,kin-wife,presente,kin-father,kin-son,filha,mae,mulher,pai,filho]
+> Elements in this file:[ano,atr,autorels,data,date,day,dia,id,item,kleiofile,loc,localizacao,ls,mes,mesmo_que,month,name,nome,obs,prefix,presente,presente-f,ref,referida,referido,rel,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,titulo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+34d36
+< Groups in this file:[referido,item,presente-f,mulher,filha,filho,mae,pai,ls,presente,acto,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue15/issue15.xml kleio-home/sources/test_translations/issues/issue15/issue15.xml
+<    <ELEMENT NAME="year" CLASS="undef">
+>    <ELEMENT NAME="ano" CLASS="undef">
+<          <core><![CDATA[1793]]></core>   </ELEMENT>
+>          <core><![CDATA[Não sabemos]]></core>   </ELEMENT>
+<    <ELEMENT NAME="inside" CLASS="inside"><core>v1793-1-per1</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>v1793-1</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+979,993d978
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>v1793-1-per1</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type"><core>parentesco</core></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value"><core>marido</core></ELEMENT>
+<     <ELEMENT NAME="destname" CLASS="destname"><core>n/a</core></ELEMENT>
+<     <ELEMENT NAME="origin" CLASS="origin"><core>v1793-1-per1</core></ELEMENT>
+<     <ELEMENT NAME="destination" CLASS="destination"><core>v1793-1-per1-per5</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+< </GROUP>
+<     <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+999,1024d983
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[ec]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value">      <core><![CDATA[c]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>v1793-1-per1</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+< </GROUP>
+<     <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>v1793-1-per1-per5</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+<     <ELEMENT NAME="type" CLASS="type">      <core><![CDATA[ec]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value">      <core><![CDATA[c]]></core>      <comment><![CDATA[]]></comment>      <original><![CDATA[]]></original></ELEMENT>
+<     <ELEMENT NAME="entity" CLASS="entity"><core>v1793-1-per1-per5</core></ELEMENT>
+<     <ELEMENT NAME="date" CLASS="date"><core>17930221</core></ELEMENT>
+< </GROUP>
+<     <ELEMENT NAME="line" CLASS="line"><core>53</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>v1793-1-per1</core></ELEMENT>
+<     <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+<     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+Only in kleio-home/sources/test_translations/issues: issue21-structure.json
+Only in kleio-home/sources/test_translations/issues: issue21-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue21.files.json kleio-home/sources/test_translations/issues/issue21.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue21.rpt kleio-home/sources/test_translations/issues/issue21.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue21-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,pt-acto,fonte,male,obito,actorm,n]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,xmesmo_que,xsame_as,year]
+32d34
+< Groups in this file:[n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue21.xml kleio-home/sources/test_translations/issues/issue21.xml
+Only in kleio-home/sources/test_translations/issues: issue34-structure.json
+Only in kleio-home/sources/test_translations/issues: issue34-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue34.files.json kleio-home/sources/test_translations/issues/issue34.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue34.rpt kleio-home/sources/test_translations/issues/issue34.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue34-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,property,ls,pt-acto,fonte,male,b,lista,actorm,n]
+> Elements in this file:[ano,anon,autorels,celebrante,data,date,day,dia,dian,id,kleiofile,loc,localizacao,mes,mesmo_que,mesn,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+34d36
+< Groups in this file:[b,ls,n,lista,fonte,property,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue34.xml kleio-home/sources/test_translations/issues/issue34.xml
+Only in kleio-home/sources/test_translations/issues: issue34b-structure.json
+Only in kleio-home/sources/test_translations/issues: issue34b-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue34b.files.json kleio-home/sources/test_translations/issues/issue34b.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue34b.rpt kleio-home/sources/test_translations/issues/issue34b.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue34b-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,male,b,lista,actorm,n]
+> Elements in this file:[ano,anon,autorels,celebrante,data,date,day,dia,dian,id,kleiofile,loc,localizacao,mes,mesmo_que,mesn,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+34d36
+< Groups in this file:[b,ls,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue34b.xml kleio-home/sources/test_translations/issues/issue34b.xml
+Only in kleio-home/sources/test_translations/issues/issue38: issue38-structure.json
+Only in kleio-home/sources/test_translations/issues/issue38: issue38-structure.yaml
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.files.json kleio-home/sources/test_translations/issues/issue38/issue38.files.json
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.rpt kleio-home/sources/test_translations/issues/issue38/issue38.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/issue38/issue38-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,event,fonte,male,atr,evento,referido,cevento,crono]
+> Elements in this file:[ano,autorels,data,date,day,description,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+37d39
+< Groups in this file:[atr,referido,crono,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/issues/issue38/issue38.xml kleio-home/sources/test_translations/issues/issue38/issue38.xml
+Only in kleio-home/sources/test_translations/linked_data: dehergne-a-structure.json
+Only in kleio-home/sources/test_translations/linked_data: dehergne-a-structure.yaml
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.err kleio-home/sources/test_translations/linked_data/dehergne-a.err
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.files.json kleio-home/sources/test_translations/linked_data/dehergne-a.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.rpt kleio-home/sources/test_translations/linked_data/dehergne-a.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/linked_data/dehergne-a-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,link,person,relation,ls,pt-acto,fonte,female,male,rel,lista,parentef,actorm,parentem,referido,kin-mother,n,irmao,kin-father,mae,pai,pmae]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,valor,value,xmesmo_que,xsame_as,year]
+40d42
+< Groups in this file:[irmao,pmae,mae,pai,rel,referido,ls,n,lista,fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-a.xml kleio-home/sources/test_translations/linked_data/dehergne-a.xml
+<          <core><![CDATA[Aguiar Souen, Joseph de (chin.) P. 8 Souen Jo-chô Kio-Jen To-Yin (Pf.: Suen ... Touo-In). N. 25 nov. 1714, Changshu (Tch'ang-chou), Kiang-sou. E. 21 sept. 1742]]></core>      <core><![CDATA[ était à Pékin en 1751. P. 1751 (Pf.). M. 1 janv. 1752, Pékin (Planchet p. 147). Pf. 807.]]></core>   </ELEMENT>
+>          <core><![CDATA[Aguiar Souen, Joseph de (chin.) P. 8 Souen Jo-chô Kio-Jen To-Yin (Pf.: Suen ... Touo-In). N. 25 nov. 1714, Changshu (Tch'ang-chou), Kiang-sou. E. 21 sept. 1742; était à Pékin en 1751. P. 1751 (Pf.). M. 1 janv. 1752, Pékin (Planchet p. 147). Pf. 807.]]></core>   </ELEMENT>
+Only in kleio-home/sources/test_translations/linked_data: dehergne-locations-1644-structure.json
+Only in kleio-home/sources/test_translations/linked_data: dehergne-locations-1644-structure.yaml
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.err kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.err
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.files.json kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.rpt kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644-structure.yaml
+> Groups in this file:[attribute,geoentity,historical-act,historical-source,kleio,link,relation,ls,geo1,geo2,geo3,pt-acto,fonte,rel,atr,geodesc]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,month,name,nomedest,obs,prefix,ref,replace,same_as,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,valor,value,xsame_as,year]
+37d39
+< Groups in this file:[rel,geo3,atr,geo2,geo1,geodesc,fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/linked_data/dehergne-locations-1644.xml kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.xml
+Only in kleio-home/sources/test_translations/linked_data: linked-datanw-structure.json
+Only in kleio-home/sources/test_translations/linked_data: linked-datanw-structure.yaml
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.err kleio-home/sources/test_translations/linked_data/linked-datanw.err
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.files.json kleio-home/sources/test_translations/linked_data/linked-datanw.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.rpt kleio-home/sources/test_translations/linked_data/linked-datanw.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,pt-acto,fonte,male,lista,actorm,n]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,xmesmo_que,xsame_as,year]
+36d38
+< Groups in this file:[n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/linked_data/linked-datanw.xml kleio-home/sources/test_translations/linked_data/linked-datanw.xml
+Only in kleio-home/sources/test_translations/linked_data: multiplelinks-structure.json
+Only in kleio-home/sources/test_translations/linked_data: multiplelinks-structure.yaml
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.err kleio-home/sources/test_translations/linked_data/multiplelinks.err
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.files.json kleio-home/sources/test_translations/linked_data/multiplelinks.files.json
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.rpt kleio-home/sources/test_translations/linked_data/multiplelinks.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/linked_data/multiplelinks-structure.yaml
+> Groups in this file:[historical-source,kleio,link,fonte]
+> Elements in this file:[ano,autorels,data,date,id,kleiofile,loc,localizacao,obs,prefix,ref,replace,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,year]
+31d33
+< Groups in this file:[fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/linked_data/multiplelinks.xml kleio-home/sources/test_translations/linked_data/multiplelinks.xml
+Only in kleio-home/sources/test_translations/locate_stru_file: default-stru-structure.json
+Only in kleio-home/sources/test_translations/locate_stru_file: default-stru-structure.yaml
+diff -r kleio-home/sources/reference_translations/locate_stru_file/default-stru.err kleio-home/sources/test_translations/locate_stru_file/default-stru.err
+< 3  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/locate_stru_file/default-stru.files.json kleio-home/sources/test_translations/locate_stru_file/default-stru.files.json
+<   "errors":3,
+>   "errors":0,
+Only in kleio-home/sources/reference_translations/locate_stru_file: default-stru.ids
+diff -r kleio-home/sources/reference_translations/locate_stru_file/default-stru.kleio kleio-home/sources/test_translations/locate_stru_file/default-stru.kleio
+< kleio$
+<   fonte$default-stru/2025/tests
+<       /data=2025-07-14/substitui=pt-groups-tests
+<       /obs="Portuguese main groups"
+>    fonte$default-stru/2025/tests/data=2025-07-14/substitui=pt-groups-tests/obs="Portuguese main groups"
+6,9c4
+<     acto$pt-act1/exemplo de acto genérico/14/7/2025/mbook-air
+<       /obs="Exemplo de acto genérico"
+<       person$joaquim/m
+<       female$joana
+>       acto$pt-act1/exemplo de acto genérico/14/7/2025/mbook-air/"Exemplo de acto genérico"
+10a6
+>          person$joaquim/m/id=pt-act1-per1
+11a8
+>          female$joana/id=pt-act1-per2
+Only in kleio-home/sources/test_translations/locate_stru_file: default-stru.org
+diff -r kleio-home/sources/reference_translations/locate_stru_file/default-stru.rpt kleio-home/sources/test_translations/locate_stru_file/default-stru.rpt
+20,34d19
+< 
+< ERROR: default-stru.kleio line 7 *** Current group female cannot be linked with previous group person(per-1)
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 
+< ERROR: default-stru.kleio line 7 ***female group not stored.
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 
+< ERROR: default-stru.kleio line 7 ** Failure. Could not process group female
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 3  errors. 
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/locate_stru_file/default-stru-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,pt-acto,fonte,female,acto]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,month,name,obs,prefix,ref,replace,same_as,sex,structure,substitui,tipo,translations,translator,type,xsame_as,year]
+> 0  errors. 
+47d35
+< Groups in this file:[person,acto,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/locate_stru_file/default-stru.xml kleio-home/sources/test_translations/locate_stru_file/default-stru.xml
+< <GROUP ID="joana" NAME="person" CLASS="person" ORDER="5" LEVEL="3" LINE="12">
+<     <ELEMENT NAME="id" CLASS="id"><core>joana</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>person</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>female</core></ELEMENT>
+<          <core><![CDATA[joaquim]]></core>   </ELEMENT>
+>          <core><![CDATA[joana]]></core>   </ELEMENT>
+<          <core><![CDATA[m]]></core>   </ELEMENT>
+>          <core><![CDATA[f]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[pt-act1-per2]]></core>   </ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>joana</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>pt-act1-per2</core></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value"><core>person</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>female</core></ELEMENT>
+<     <ELEMENT NAME="origin" CLASS="origin"><core>joana</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>pt-act1-per2</core></ELEMENT>
+Only in kleio-home/sources/test_translations/notariais: docsregiospontepisc-structure.json
+Only in kleio-home/sources/test_translations/notariais: docsregiospontepisc-structure.yaml
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.err kleio-home/sources/test_translations/notariais/docsregiospontepisc.err
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.files.json kleio-home/sources/test_translations/notariais/docsregiospontepisc.files.json
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.rpt kleio-home/sources/test_translations/notariais/docsregiospontepisc.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/notariais/docsregiospontepisc-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,ls,pt-acto,fonte,bem,item,male,docregio,actorm,referido,docepiscopal,docpontificio,autor,beneficiario,destinatario]
+> Elements in this file:[ano,autorels,data,date,day,desc,dia,fol,id,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,resumo,same_as,sex,sexo,structure,substitui,sumario,tipo,titulo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+36d38
+< Groups in this file:[docepiscopal,referido,ls,docpontificio,bem,beneficiario,destinatario,autor,item,docregio,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/notariais/docsregiospontepisc.xml kleio-home/sources/test_translations/notariais/docsregiospontepisc.xml
+Only in kleio-home/sources/test_translations/notariais: notarial80-structure.json
+Only in kleio-home/sources/test_translations/notariais: notarial80-structure.yaml
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.err kleio-home/sources/test_translations/notariais/notarial80.err
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.files.json kleio-home/sources/test_translations/notariais/notarial80.files.json
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.rpt kleio-home/sources/test_translations/notariais/notarial80.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/notariais/notarial80-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,bem,divida,siza,female,male,rel,atr,escritura,aforamento,garantia,actorf,parentef,actorm,referido,test,compradora,dotada,vendedora,kin-wife,comprador,constituinte,credor,devedor,dotante,fiador,foreiro,senhorio,vendedor,mulher]
+> Elements in this file:[ano,autorels,data,date,day,depositario,desc,destination,destname,dia,escrivao,fol,id,iddest,juiz,juro,kleiofile,loc,local,localizacao,mes,mesmo_que,moeda,month,name,nome,nomedest,obs,prazo,prefix,ref,replace,same_as,sex,sexo,structure,substitui,sumario,tipo,translations,translator,type,valor,valorn,value,xmesmo_que,xsame_as,year]
+54d56
+< Groups in this file:[aforamento,foreiro,senhorio,vendedora,comprador,garantia,divida,fiador,credor,devedor,constituinte,rel,dotada,mulher,dotante,siza,atr,bem,referido,test,vendedor,ls,compradora,escritura,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/notariais/notarial80.xml kleio-home/sources/test_translations/notariais/notarial80.xml
+Only in kleio-home/sources/test_translations/notariais: notlousa1-structure.json
+Only in kleio-home/sources/test_translations/notariais: notlousa1-structure.yaml
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.err kleio-home/sources/test_translations/notariais/notlousa1.err
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.files.json kleio-home/sources/test_translations/notariais/notlousa1.files.json
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.rpt kleio-home/sources/test_translations/notariais/notlousa1.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/notariais/notlousa1-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,abstraction,bem,divida,female,male,perdoante,vitima,rel,atr,cartaperdao,escritura,crime,actorf,actorm,referido,arrendataria,credora,devedora,doadora,dotada,fiadora,foreira,perdoada,procuradora,quitantef,vendedora,arrendatario,beneficiario,comprador,credor,devedor,doador,dotado,fiador,foreiro,outorgante,perdoado,procurador,quitado,quitante,rendeiro,testador,testamentario,vendedor]
+> Elements in this file:[ano,autorels,cota,data,date,day,desc,descricao,destination,destname,dia,fol,forma,id,iddest,instrumento,juro,kleiofile,loc,local,localizacao,mes,mesmo_que,moeda,month,name,nome,nomedest,objecto,obs,ocorrencia,prazo,prefix,pronuncia,ref,replace,same_as,sex,sexo,situacao,structure,substitui,subtipo,sumario,tabeliao,tempo,tipo,translations,translator,type,valor,valorn,value,xmesmo_que,xsame_as,year]
+166d168
+< Groups in this file:[quitantef,fiador,credora,foreiro,doadora,fiadora,perdoada,crime,vitima,perdoado,perdoante,cartaperdao,procuradora,referido,foreira,arrendatario,vendedora,testamentario,testador,rendeiro,arrendataria,devedora,dotado,rel,dotada,doador,quitado,quitante,beneficiario,bem,vendedor,comprador,procurador,outorgante,divida,devedor,atr,credor,escritura,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/notariais/notlousa1.xml kleio-home/sources/test_translations/notariais/notlousa1.xml
+Only in kleio-home/sources/test_translations/notariais: perdoes-structure.json
+Only in kleio-home/sources/test_translations/notariais: perdoes-structure.yaml
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.err kleio-home/sources/test_translations/notariais/perdoes.err
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.files.json kleio-home/sources/test_translations/notariais/perdoes.files.json
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.rpt kleio-home/sources/test_translations/notariais/perdoes.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/notariais/perdoes-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,abstraction,female,male,perdoante,vitima,rel,cartaperdao,crime,perdao,actorf,parentef,actorm,parentem,referido,test,perdoada,perdoante-f,kin-mother,perdoado,perdoante-m,vitima-m,kin-father,mae,pai]
+> Elements in this file:[ano,autorels,cota,data,date,day,descricao,destination,destname,dia,forma,id,iddest,instrumento,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,objecto,obs,ocorrencia,prefix,pronuncia,ref,replace,same_as,sex,sexo,situacao,structure,substitui,subtipo,tabeliao,tempo,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+72d74
+< Groups in this file:[perdoada,vitima-m,perdoante-m,mae,perdoante-f,pai,referido,test,perdao,crime,perdoado,vitima,rel,ls,perdoante,cartaperdao,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/notariais/perdoes.xml kleio-home/sources/test_translations/notariais/perdoes.xml
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bap-com-celebrantes-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bap-com-celebrantes-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,female,male,bap,parentef,actorm,parentem,referido,kin-mother,mad,n,kin-father,pad,celebrante,mn,mrmad,pmad,pn]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,year]
+35d37
+< Groups in this file:[mrmad,pmad,mad,pad,mn,pn,n,ls,celebrante,bap,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.xml kleio-home/sources/test_translations/paroquiais/baptismos/bap-com-celebrantes.xml
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapt1714-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapt1714-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,bap,parentef,actorm,parentem,referido,kin-mother,mad,n,kin-father,pad,celebrante,mmad,mmn,mn,mrmad,pmad,pmn,pn,ppad]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,year]
+95d97
+< Groups in this file:[ppad,mmn,pmn,rel,referido,mmad,mrmad,pmad,mad,pad,mn,pn,n,ls,celebrante,bap,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.xml
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapteirasproblem1-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapteirasproblem1-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,b,parentef,actorm,parentem,referido,kin-mother,mad,n,kin-father,pad,test,mae,mmad,mmae,mpad,mpai,mrmad,pai,pmad,pmae,ppad,ppai]
+> Elements in this file:[ano,anon,autorels,celebrante,data,date,day,destination,destname,dia,dian,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,mesn,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,year]
+132d134
+< Groups in this file:[mmad,mpad,referido,mrmad,pmad,test,rel,mad,ppad,pad,mmae,pmae,mae,mpai,ppai,pai,ls,n,b,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem1.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem1.xml
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapteirasproblem2-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: bapteirasproblem2-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.files.json kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.rpt kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,b,parentef,actorm,parentem,referido,kin-mother,mad,n,kin-father,pad,test,mae,mmad,mmae,mpad,mpai,mrmad,pai,pmad,pmae,ppad,ppai]
+> Elements in this file:[ano,anon,autorels,celebrante,data,date,day,destination,destname,dia,dian,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,mesn,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,year]
+161d163
+< Groups in this file:[ppad,mmad,mpad,referido,pmad,test,rel,mrmad,mad,pad,mmae,pmae,mae,mpai,ppai,ls,pai,n,b,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/bapteirasproblem2.xml kleio-home/sources/test_translations/paroquiais/baptismos/bapteirasproblem2.xml
+<          <core><![CDATA[diz a margem casais]]></core>      <core><![CDATA[ so foram postos os oleos, visto ter sido baptizada em necessidade aos 21 de abril]]></core>   </ELEMENT>
+>          <core><![CDATA[diz a margem casais; so foram postos os oleos, visto ter sido baptizada em necessidade aos 21 de abril]]></core>   </ELEMENT>
+<          <core><![CDATA[vigario luis barreto de figueiredo castilho]]></core>      <core><![CDATA[ este assento so foi registado em 1781]]></core>   </ELEMENT>
+>          <core><![CDATA[vigario luis barreto de figueiredo castilho; este assento so foi registado em 1781]]></core>   </ELEMENT>
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: rogeriodomingos_bap_problem-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/baptismos: rogeriodomingos_bap_problem-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,relation,pt-acto,fonte,female,male,rel,bap,parentef,referida,actorm,parentem,kin-mother,n,kin-father,pad,mpad,ppad]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,year]
+33d35
+< Groups in this file:[rel,referida,mpad,ppad,pad,n,bap,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.xml kleio-home/sources/test_translations/paroquiais/baptismos/rogeriodomingos_bap_problem.xml
+Only in kleio-home/sources/test_translations/paroquiais/casamentos: cas1714-1722-com-celebrante-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/casamentos: cas1714-1722-com-celebrante-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,female,male,cas,parentef,parentem,referido,test,kin-mother,kin-wife,kin-father,kin-husband,celebrante,mmulher1,mnoiva,mnoivo,mulher1,noiva,pmulher1,pnoiva,pnoivo,noivo]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[test,mmulher1,pmulher1,mulher1,mnoiva,pnoiva,noiva,mnoivo,ls,pnoivo,noivo,celebrante,cas,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.xml kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-com-celebrante.xml
+Only in kleio-home/sources/test_translations/paroquiais/casamentos: cas1714-1722-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/casamentos: cas1714-1722-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.files.json kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.rpt kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,cas,parentef,parentem,referido,test,kin-mother,kin-wife,kin-father,kin-husband,mmulher1,mnoiva,mnoivo,mulher1,noiva,pmulher1,pnoiva,pnoivo,marido1,noivo]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+152d154
+< Groups in this file:[marido1,rel,referido,test,mmulher1,pmulher1,mulher1,mnoiva,pnoiva,noiva,mnoivo,ls,pnoivo,noivo,cas,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/casamentos/cas1714-1722.xml kleio-home/sources/test_translations/paroquiais/casamentos/cas1714-1722.xml
+Only in kleio-home/sources/test_translations/paroquiais/crisma: crisma1753-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/crisma: crisma1753-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.err kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.err
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.files.json kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.rpt kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/crisma/crisma1753-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,crisma,parentef,referida,actorm,parentem,kin-mother,mad,n,kin-father,pad,mae,mrmad,pai]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[rel,referida,pad,mrmad,mad,mae,ls,pai,n,crisma,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/crisma/crisma1753.xml kleio-home/sources/test_translations/paroquiais/crisma/crisma1753.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: ob1688-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: ob1688-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.files.json kleio-home/sources/test_translations/paroquiais/obitos/ob1688.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.rpt kleio-home/sources/test_translations/paroquiais/obitos/ob1688.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/ob1688-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locs,oficios,sacr,testamento,pt-acto,fonte,female,male,rel,obito,parentef,actorm,parentem,o,kin-mother,n,kin-father,kin-husband,mae,pai,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+97d99
+< Groups in this file:[rel,mae,pai,testamento,oficios,sacr,locs,marido,ls,n,o,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688.xml kleio-home/sources/test_translations/paroquiais/obitos/ob1688.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: ob1688b-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: ob1688b-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.files.json kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.rpt kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/ob1688b-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locs,oficios,sacr,testamento,pt-acto,fonte,female,male,rel,obito,parentef,actorm,parentem,o,kin-mother,n,kin-father,kin-husband,mae,pai,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+97d99
+< Groups in this file:[rel,mae,pai,testamento,oficios,sacr,locs,marido,ls,n,o,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/ob1688b.xml kleio-home/sources/test_translations/paroquiais/obitos/ob1688b.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obit1714-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obit1714-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.files.json kleio-home/sources/test_translations/paroquiais/obitos/obit1714.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.rpt kleio-home/sources/test_translations/paroquiais/obitos/obit1714.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/obit1714-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locs,sacr,testamento,pt-acto,fonte,male,rel,obito,actorm,parentem,referido,n,kin-father,kin-husband,pai,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+59d61
+< Groups in this file:[pai,rel,referido,marido,locs,testamento,sacr,ls,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obit1714.xml kleio-home/sources/test_translations/paroquiais/obitos/obit1714.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obiteirasproblem-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obiteirasproblem-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.files.json kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.rpt kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locf,locs,oficios,sacr,testamento,pt-acto,fonte,female,male,rel,obito,parentef,referida,actorm,parentem,referido,kin-mother,kin-wife,n,kin-father,kin-husband,mae,mulher,mulher1,mulher2,pai,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+65d67
+< Groups in this file:[mulher,mulher2,mulher1,testamento,rel,referido,referida,locf,oficios,sacr,marido,locs,mae,ls,pai,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obiteirasproblem.xml kleio-home/sources/test_translations/paroquiais/obitos/obiteirasproblem.xml
+<          <core><![CDATA[sepultado em habito de santo antonio]]></core>   </ELEMENT>
+>          <core><![CDATA[sepultado em habito de santo antonio;]]></core>   </ELEMENT>
+<          <core><![CDATA[legitimada pelo pai]]></core>      <core><![CDATA[ morre em casa deste]]></core>   </ELEMENT>
+>          <core><![CDATA[legitimada pelo pai; morre em casa deste]]></core>   </ELEMENT>
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locf,locs,sacr,pt-acto,fonte,male,rel,obito,actorm,parentem,referido,n,kin-husband,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[locf,sacr,locs,marido,rel,ls,referido,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort_id-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort_id-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locf,locs,sacr,pt-acto,fonte,male,rel,obito,actorm,parentem,referido,n,kin-husband,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[locf,sacr,locs,marido,rel,ls,referido,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort_id_id-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: obitoShort_id_id-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.err kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.files.json kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.rpt kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,relation,ls,locs,sacr,pt-acto,fonte,male,rel,obito,actorm,parentem,referido,n,kin-husband,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+36d38
+< Groups in this file:[sacr,locs,marido,rel,ls,referido,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/obitoShort_id_id.xml kleio-home/sources/test_translations/paroquiais/obitos/obitoShort_id_id.xml
+Only in kleio-home/sources/test_translations/paroquiais/obitos: testeParentescos-structure.json
+Only in kleio-home/sources/test_translations/paroquiais/obitos: testeParentescos-structure.yaml
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.err kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.err
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.files.json kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.files.json
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.rpt kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos-structure.yaml
+> Groups in this file:[attribute,group-element,historical-act,historical-source,kleio,person,ls,causa,locf,locs,pt-acto,fonte,female,male,obito,parentef,actorm,parentem,kin-mother,kin-wife,n,kin-father,kin-husband,mae,mulher,pai,marido]
+> Elements in this file:[ano,autorels,celebrante,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+36d38
+< Groups in this file:[mulher,marido,mae,locs,ls,pai,locf,causa,n,obito,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/paroquiais/obitos/testeParentescos.xml kleio-home/sources/test_translations/paroquiais/obitos/testeParentescos.xml
+Only in kleio-home/sources/test_translations/roisdeconfessados: coja-rol-1841-structure.json
+Only in kleio-home/sources/test_translations/roisdeconfessados: coja-rol-1841-structure.yaml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.err kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.files.json kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.rpt kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,fogo,female,male,rel,atr,rol,afilhada,criada,engeitada,neta,nora,parentef,referida,sobrinha,sogra,actorm,afilhado,criado,engeitado,escravo,genro,neto,parentem,referido,sobrinho,sogro,irma,kin-daughter,kin-mother,kin-wife,n,irmao,kin-father,kin-husband,kin-son,filha,mae,mulher,pai,marido,filho]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[escravo,engeitada,pai,nora,genro,sogro,sobrinha,neta,referida,sobrinho,afilhado,afilhada,marido,irmao,mae,engeitado,criado,rel,referido,irma,neto,sogra,filha,filho,mulher,criada,atr,n,fogo,rol,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/coja-rol-1841.xml kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.xml
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol1-structure.json
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol1-structure.yaml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.err kleio-home/sources/test_translations/roisdeconfessados/rol1.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.files.json kleio-home/sources/test_translations/roisdeconfessados/rol1.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.rpt kleio-home/sources/test_translations/roisdeconfessados/rol1.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/roisdeconfessados/rol1-structure.yaml
+> Groups in this file:[attribute,end,historical-act,historical-source,kleio,object,person,relation,ls,fim,pt-acto,fonte,fogo,female,male,rel,rol,criada,escrava,neta,parentef,referida,actorm,criado,escravo,parentem,referido,kin-daughter,kin-mother,kin-wife,n,kin-father,kin-son,filha,mae,mulher,pai,pmulher,filho]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[escravo,escrava,neta,mae,pai,pmulher,referido,rel,referida,filha,criado,fim,criada,filho,mulher,ls,n,fogo,rol,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol1.xml kleio-home/sources/test_translations/roisdeconfessados/rol1.xml
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol2-structure.json
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol2-structure.yaml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.err kleio-home/sources/test_translations/roisdeconfessados/rol2.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.files.json kleio-home/sources/test_translations/roisdeconfessados/rol2.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.rpt kleio-home/sources/test_translations/roisdeconfessados/rol2.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/roisdeconfessados/rol2-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,fogo,female,male,rel,rol,criada,engeitada,escrava,parentef,referida,actorm,criado,engeitado,escravo,parentem,referido,kin-daughter,kin-mother,kin-wife,n,kin-father,kin-son,filha,mae,mmulher,mulher,pai,filho]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[escrava,escravo,engeitado,mae,mmulher,pai,engeitada,referida,criado,criada,rel,referido,filha,filho,mulher,ls,n,fogo,rol,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol2.xml kleio-home/sources/test_translations/roisdeconfessados/rol2.xml
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol3-structure.json
+Only in kleio-home/sources/test_translations/roisdeconfessados: rol3-structure.yaml
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.err kleio-home/sources/test_translations/roisdeconfessados/rol3.err
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.files.json kleio-home/sources/test_translations/roisdeconfessados/rol3.files.json
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.rpt kleio-home/sources/test_translations/roisdeconfessados/rol3.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/roisdeconfessados/rol3-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,fogo,female,male,rel,rol,criada,escrava,parentef,referida,actorm,criado,escravo,parentem,referido,kin-daughter,kin-mother,kin-wife,n,kin-father,kin-son,filha,mae,mmulher,mulher,pai,filho]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[escrava,escravo,mae,mmulher,pai,criado,criada,referida,rel,referido,filha,filho,mulher,ls,n,fogo,rol,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/roisdeconfessados/rol3.xml kleio-home/sources/test_translations/roisdeconfessados/rol3.xml
+Only in kleio-home/sources/test_translations/varia: Devedores-structure.json
+Only in kleio-home/sources/test_translations/varia: Devedores-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/Devedores.err kleio-home/sources/test_translations/varia/Devedores.err
+diff -r kleio-home/sources/reference_translations/varia/Devedores.files.json kleio-home/sources/test_translations/varia/Devedores.files.json
+diff -r kleio-home/sources/reference_translations/varia/Devedores.rpt kleio-home/sources/test_translations/varia/Devedores.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/Devedores-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,male,rel,lista,actorm,referido,n]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+33d35
+< Groups in this file:[referido,rel,ls,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/Devedores.xml kleio-home/sources/test_translations/varia/Devedores.xml
+Only in kleio-home/sources/test_translations/varia: EmpFAfonso-structure.json
+Only in kleio-home/sources/test_translations/varia: EmpFAfonso-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.err kleio-home/sources/test_translations/varia/EmpFAfonso.err
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.files.json kleio-home/sources/test_translations/varia/EmpFAfonso.files.json
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.rpt kleio-home/sources/test_translations/varia/EmpFAfonso.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/EmpFAfonso-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,bem,female,male,rel,atr,escritura,aforamento,actorf,referida,actorm,referido,test,prazo,enfiteutaf,enfiteuta,procurador,senhorio,tabeliao]
+> Elements in this file:[ano,autorels,data,date,day,desc,destination,destname,dia,fol,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,sumario,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+49d51
+< Groups in this file:[referida,atr,prazo,tabeliao,test,enfiteutaf,enfiteuta,rel,procurador,ls,referido,senhorio,escritura,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/EmpFAfonso.xml kleio-home/sources/test_translations/varia/EmpFAfonso.xml
+Only in kleio-home/sources/test_translations/varia: auc-alunos-264605-A-140337-140771-structure.json
+Only in kleio-home/sources/test_translations/varia: auc-alunos-264605-A-140337-140771-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.err kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.err
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.files.json kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.files.json
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.rpt kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,female,male,atr,lista,parentef,actorm,parentem,kin-mother,n,kin-father,mae,pai]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+32d34
+< Groups in this file:[mae,pai,ls,atr,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/auc-alunos-264605-A-140337-140771.xml kleio-home/sources/test_translations/varia/auc-alunos-264605-A-140337-140771.xml
+Only in kleio-home/sources/test_translations/varia: auc_cartulario18-structure.json
+Only in kleio-home/sources/test_translations/varia: auc_cartulario18-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.err kleio-home/sources/test_translations/varia/auc_cartulario18.err
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.files.json kleio-home/sources/test_translations/varia/auc_cartulario18.files.json
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.rpt kleio-home/sources/test_translations/varia/auc_cartulario18.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/auc_cartulario18-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,relation,ls,pt-acto,fonte,bem,female,male,rel,atr,escritura,aforamento,actorf,referida,actorm,referido,test,prazo,foreira,senhoria,foreiro,renunciante]
+> Elements in this file:[ano,autorels,data,date,day,desc,destination,destname,dia,fol,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,sumario,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+93d95
+< Groups in this file:[renunciante,prazo,referida,referido,test,atr,aforamento,rel,foreira,foreiro,ls,senhoria,escritura,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/auc_cartulario18.xml kleio-home/sources/test_translations/varia/auc_cartulario18.xml
+<          <core><![CDATA[o pao debulhado e limpo na eira]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ o vinho a bica do lagar e outras novidades no tempo do recolher]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar e outras novidades no tempo do recolher; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[do pomar]]></core>      <core><![CDATA[ pago dentro do mosteiro com pena de dez mil reais por incumprimento]]></core>      <core><![CDATA[ vinho a bica do lagar e fruta ao pe da arvore]]></core>   </ELEMENT>
+>          <core><![CDATA[do pomar; pago dentro do mosteiro com pena de dez mil reais por incumprimento; vinho a bica do lagar e fruta ao pe da arvore]]></core>   </ELEMENT>
+<          <core><![CDATA[o pao debulhado e limpo na eira]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[o pao debulhado e limpo na eira; o linho curtido e enxuto; o vinho a bica do lagar; primeira paga no ano seguinte;]]></core>   </ELEMENT>
+<          <core><![CDATA[medida nova]]></core>      <core><![CDATA[ pago no moinho por dia de s. miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[medida nova; pago no moinho por dia de s. miguel de setembro;]]></core>   </ELEMENT>
+<          <core><![CDATA[do pao proprio do lavrador]]></core>      <core><![CDATA[ foro e racao pagos na eira]]></core>      <core><![CDATA[ primeira paga por s. miguel de setembro no ano presente, nos lugares respectivos e ao mordomo do mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[do pao proprio do lavrador; foro e racao pagos na eira; primeira paga por s. miguel de setembro no ano presente, nos lugares respectivos e ao mordomo do mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[carneiro, cabrito e ovos pagos no mosteiro]]></core>      <core><![CDATA[ primeira paga pela pascoa do ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[carneiro, cabrito e ovos pagos no mosteiro; primeira paga pela pascoa do ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[na eira e ao tempo do seu recolher]]></core>      <core><![CDATA[ pago pelo natal]]></core>   </ELEMENT>
+>          <core><![CDATA[na eira e ao tempo do seu recolher; pago pelo natal]]></core>   </ELEMENT>
+<          <core><![CDATA[do pao do lavrador]]></core>      <core><![CDATA[ pao limpo e debulhado na eira]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ o linho curtido e enxuto]]></core>      <core><![CDATA[ legumes ao tempo do recolher]]></core>   </ELEMENT>
+>          <core><![CDATA[do pao do lavrador; pao limpo e debulhado na eira; o vinho a bica do lagar; o linho curtido e enxuto; legumes ao tempo do recolher]]></core>   </ELEMENT>
+<          <core><![CDATA[segunda e terceira vidas]]></core>      <core><![CDATA[ por s. miguel de setembro e com abatimento de pensao por benfeitorias as casas e mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[segunda e terceira vidas; por s. miguel de setembro e com abatimento de pensao por benfeitorias as casas e mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[da casa do dito mosteiro]]></core>      <core><![CDATA[ assinou pelo foreiro]]></core>   </ELEMENT>
+>          <core><![CDATA[da casa do dito mosteiro; assinou pelo foreiro]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. joao baptista]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. joao baptista;]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro e no mosteiro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro e no mosteiro]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis ao real]]></core>      <core><![CDATA[ por s.miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis ao real; por s.miguel de setembro]]></core>   </ELEMENT>
+<          <core><![CDATA[safra de dois em dois anos, feito no pote]]></core>      <core><![CDATA[ pelo entrudo]]></core>   </ELEMENT>
+>          <core><![CDATA[safra de dois em dois anos, feito no pote; pelo entrudo]]></core>   </ELEMENT>
+<          <core><![CDATA[a bica do lagar]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[a bica do lagar; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro]]></core>   </ELEMENT>
+<          <core><![CDATA[da moeda corrente de seis ceitis]]></core>      <core><![CDATA[ por s. miguel de setembro]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[da moeda corrente de seis ceitis; por s. miguel de setembro; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[safra de dois em dois anos]]></core>      <core><![CDATA[ primeira paga no ano seguinte]]></core>   </ELEMENT>
+>          <core><![CDATA[safra de dois em dois anos; primeira paga no ano seguinte]]></core>   </ELEMENT>
+<          <core><![CDATA[pelo aluguer do carreto por cada quarteirao da racao]]></core>      <core><![CDATA[ pagam lopo anes e sua mulher branca anes]]></core>   </ELEMENT>
+>          <core><![CDATA[pelo aluguer do carreto por cada quarteirao da racao; pagam lopo anes e sua mulher branca anes]]></core>   </ELEMENT>
+<          <core><![CDATA[por cada quarteiro de racao de carreto]]></core>      <core><![CDATA[ pagam francisco anes e sua filha catarina lopes]]></core>   </ELEMENT>
+>          <core><![CDATA[por cada quarteiro de racao de carreto; pagam francisco anes e sua filha catarina lopes]]></core>   </ELEMENT>
+<          <core><![CDATA[pagam francisco anes e sua filha catarina lopes]]></core>      <core><![CDATA[ pao debulhado, limpo e pago na eira]]></core>      <core><![CDATA[ aves e ovos pagos no mosteiro por s. miguel de setembro]]></core>      <core><![CDATA[ o vinho a bica do lagar]]></core>      <core><![CDATA[ o linho curido e enxuto]]></core>   </ELEMENT>
+>          <core><![CDATA[pagam francisco anes e sua filha catarina lopes; pao debulhado, limpo e pago na eira; aves e ovos pagos no mosteiro por s. miguel de setembro; o vinho a bica do lagar; o linho curido e enxuto]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ seis mil reais por incumprimento]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; seis mil reais por incumprimento]]></core>   </ELEMENT>
+<          <core><![CDATA[aforamento para sempre celerado entre mosteiro de santa clara e andre afonso, de meio casal no qual mora]]></core>      <core><![CDATA[ um quarto de casal]]></core>      <core><![CDATA[ um oitavo de casal]]></core>      <core><![CDATA[ dois pedacos de mato, sitos em orelhudo]]></core>   </ELEMENT>
+>          <core><![CDATA[aforamento para sempre celerado entre mosteiro de santa clara e andre afonso, de meio casal no qual mora; um quarto de casal; um oitavo de casal; dois pedacos de mato, sitos em orelhudo]]></core>   </ELEMENT>
+<          <core><![CDATA[pao limpo na eira]]></core>      <core><![CDATA[ legumes]]></core>      <core><![CDATA[ vinho a bica do lagar]]></core>      <core><![CDATA[ linho curtido e enxuto no tendal]]></core>   </ELEMENT>
+>          <core><![CDATA[pao limpo na eira; legumes; vinho a bica do lagar; linho curtido e enxuto no tendal]]></core>   </ELEMENT>
+<          <core><![CDATA[emprazamento em tres vidas celebrado entre mosteiro de santa clara e alvaro botelho caldeira, de uns moinhos de moer pao]]></core>      <core><![CDATA[ um engenho que foi lagar de fazer azeite]]></core>      <core><![CDATA[ um pomar e umas casas com seu lagar para fazer vinho]]></core>      <core><![CDATA[ um pedaco de lameira]]></core>   </ELEMENT>
+>          <core><![CDATA[emprazamento em tres vidas celebrado entre mosteiro de santa clara e alvaro botelho caldeira, de uns moinhos de moer pao; um engenho que foi lagar de fazer azeite; um pomar e umas casas com seu lagar para fazer vinho; um pedaco de lameira]]></core>   </ELEMENT>
+<          <core><![CDATA[emprazamento em tres pessoas celebrado entre mosteiro de santa clara e jorge fernandes]]></core>      <core><![CDATA[ antonio rodrigues]]></core>      <core><![CDATA[ manuel fernandes]]></core>      <core><![CDATA[ simao rodrigues]]></core>      <core><![CDATA[ bras pires, de umas casas sitas no burgo do mosteiro de santa clara]]></core>   </ELEMENT>
+>          <core><![CDATA[emprazamento em tres pessoas celebrado entre mosteiro de santa clara e jorge fernandes; antonio rodrigues; manuel fernandes; simao rodrigues; bras pires, de umas casas sitas no burgo do mosteiro de santa clara]]></core>   </ELEMENT>
+<          <core><![CDATA[por s. miguel de setembro]]></core>      <core><![CDATA[ os tres primeiros inquilinos]]></core>   </ELEMENT>
+>          <core><![CDATA[por s. miguel de setembro; os tres primeiros inquilinos]]></core>   </ELEMENT>
+<          <core><![CDATA[ por s. miguel de setembro]]></core>      <core><![CDATA[ os dois ultimos inquilinos]]></core>   </ELEMENT>
+>          <core><![CDATA[ por s. miguel de setembro; os dois ultimos inquilinos]]></core>   </ELEMENT>
+<          <core><![CDATA[novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e filipa leite, de umas casas, casais e outras propriedades sitas na freguesia de sta. maria do sobrado]]></core>      <core><![CDATA[ em riba douro]]></core>      <core><![CDATA[ na freguesia de sampaio, termo da vila de guimaraes]]></core>      <core><![CDATA[ na freguesia de s. martinho de butarim e dos pi�e]]></core>      <core><![CDATA[ na freguesia de santa maria de quintas, no termo de barcelos]]></core>   </ELEMENT>
+>          <core><![CDATA[novo emprazamento em tres vidas celebrado entre mosteiro de santa clara e filipa leite, de umas casas, casais e outras propriedades sitas na freguesia de sta. maria do sobrado; em riba douro; na freguesia de sampaio, termo da vila de guimaraes; na freguesia de s. martinho de butarim e dos pi�e; na freguesia de santa maria de quintas, no termo de barcelos]]></core>   </ELEMENT>
+<          <core><![CDATA[novo aforamento em fatiosim celebrado entre mosteiro de santa clara e andre fernandes]]></core>      <core><![CDATA[ andre bras e simao pires, de uns matos com agua para moendas]]></core>   </ELEMENT>
+>          <core><![CDATA[novo aforamento em fatiosim celebrado entre mosteiro de santa clara e andre fernandes; andre bras e simao pires, de uns matos com agua para moendas]]></core>   </ELEMENT>
+<          <core><![CDATA[pao, trigo e segundas]]></core>      <core><![CDATA[ linho e legumes]]></core>   </ELEMENT>
+>          <core><![CDATA[pao, trigo e segundas; linho e legumes]]></core>   </ELEMENT>
+<          <core><![CDATA[aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e goncalo afonso]]></core>      <core><![CDATA[ luis afonso]]></core>      <core><![CDATA[ joao afonso]]></core>      <core><![CDATA[ domingos afonso]]></core>      <core><![CDATA[ rodrigo alvares]]></core>      <core><![CDATA[ simao rodrigues]]></core>      <core><![CDATA[ fernao gomes]]></core>      <core><![CDATA[ simao vaz]]></core>      <core><![CDATA[ joao afonso]]></core>      <core><![CDATA[ domingos vaz]]></core>      <core><![CDATA[ francisco pires]]></core>      <core><![CDATA[ francisco fernandes]]></core>      <core><![CDATA[ catarina vaz]]></core>      <core><![CDATA[ joao rodrigues, de umas terras, vinhas, currais, herancas e matos, sitos em gatoes, montemor-o-velho]]></core>   </ELEMENT>
+>          <core><![CDATA[aforamento em fatiosim para sempre celebrado entre mosteiro de santa clara e goncalo afonso; luis afonso; joao afonso; domingos afonso; rodrigo alvares; simao rodrigues; fernao gomes; simao vaz; joao afonso; domingos vaz; francisco pires; francisco fernandes; catarina vaz; joao rodrigues, de umas terras, vinhas, currais, herancas e matos, sitos em gatoes, montemor-o-velho]]></core>   </ELEMENT>
+Only in kleio-home/sources/test_translations/varia: cartas-structure.json
+Only in kleio-home/sources/test_translations/varia: cartas-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/cartas.err kleio-home/sources/test_translations/varia/cartas.err
+diff -r kleio-home/sources/reference_translations/varia/cartas.files.json kleio-home/sources/test_translations/varia/cartas.files.json
+diff -r kleio-home/sources/reference_translations/varia/cartas.rpt kleio-home/sources/test_translations/varia/cartas.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/cartas-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,carta,parentef,actorm,parentem,referido,kin-mother,emissor,kin-father,mae,pai]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,refere,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+38d40
+< Groups in this file:[rel,referido,mae,pai,ls,emissor,carta,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/cartas.xml kleio-home/sources/test_translations/varia/cartas.xml
+Only in kleio-home/sources/test_translations/varia: dehergne-residences-structure.json
+Only in kleio-home/sources/test_translations/varia: dehergne-residences-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/dehergne-residences.err kleio-home/sources/test_translations/varia/dehergne-residences.err
+diff -r kleio-home/sources/reference_translations/varia/dehergne-residences.files.json kleio-home/sources/test_translations/varia/dehergne-residences.files.json
+diff -r kleio-home/sources/reference_translations/varia/dehergne-residences.rpt kleio-home/sources/test_translations/varia/dehergne-residences.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/dehergne-residences-structure.yaml
+> Groups in this file:[attribute,geoentity,historical-act,historical-source,kleio,link,ls,geo1,geo2,geo3,pt-acto,fonte,atr,geodesc]
+> Elements in this file:[ano,autorels,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,month,name,obs,prefix,ref,replace,same_as,shortname,structure,substitui,tipo,translations,translator,type,urlpattern,valor,value,xsame_as,year]
+32d34
+< Groups in this file:[geo3,atr,geo2,geo1,geodesc,fonte,link,kleio]
+diff -r kleio-home/sources/reference_translations/varia/dehergne-residences.xml kleio-home/sources/test_translations/varia/dehergne-residences.xml
+Only in kleio-home/sources/test_translations/varia: eleicoes1-structure.json
+Only in kleio-home/sources/test_translations/varia: eleicoes1-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.err kleio-home/sources/test_translations/varia/eleicoes1.err
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.files.json kleio-home/sources/test_translations/varia/eleicoes1.files.json
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.rpt kleio-home/sources/test_translations/varia/eleicoes1.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/eleicoes1-structure.yaml
+> Groups in this file:[attribute,end,historical-act,historical-source,kleio,person,ls,fim,pt-acto,fonte,male,amz,actorm,eleito,eleitor]
+> Elements in this file:[ano,autorels,data,date,day,dia,fol,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+59d61
+< Groups in this file:[fim,eleito,ls,eleitor,amz,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/eleicoes1.xml kleio-home/sources/test_translations/varia/eleicoes1.xml
+Only in kleio-home/sources/test_translations/varia: glopes-lap1561-structure.json
+Only in kleio-home/sources/test_translations/varia: glopes-lap1561-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.err kleio-home/sources/test_translations/varia/glopes-lap1561.err
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.files.json kleio-home/sources/test_translations/varia/glopes-lap1561.files.json
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.rpt kleio-home/sources/test_translations/varia/glopes-lap1561.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/glopes-lap1561-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,pas,parentef,referida,actorm,parentem,referido,irma,kin-daughter,kin-mother,kin-wife,n,irmao,kin-father,kin-husband,kin-son,mestre,filha,mae,mmulher,mulher,pai,pmulher,marido,filho]
+> Elements in this file:[ano,autorels,data,date,day,destination,destino,destname,dia,fol,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,num,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+1845d1847
+< Groups in this file:[referido,referida,irmao,mmulher,pmulher,filha,marido,rel,filho,mulher,irma,mae,pai,ls,n,mestre,pas,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/glopes-lap1561.xml kleio-home/sources/test_translations/varia/glopes-lap1561.xml
+Only in kleio-home/sources/test_translations/varia: ivcc-structure.json
+Only in kleio-home/sources/test_translations/varia: ivcc-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/ivcc.err kleio-home/sources/test_translations/varia/ivcc.err
+diff -r kleio-home/sources/reference_translations/varia/ivcc.files.json kleio-home/sources/test_translations/varia/ivcc.files.json
+diff -r kleio-home/sources/reference_translations/varia/ivcc.rpt kleio-home/sources/test_translations/varia/ivcc.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/ivcc-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,event,pt-acto,fonte,female,male,rel,evento,carta,lista,parentef,referida,actorm,parentem,referido,pevent,kin-mother,emissor,n,receptor,kin-father,estadia,viagem,mae,mmae,pai,pmae,ppai]
+> Elements in this file:[ano,autorels,data,date,day,description,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,refere,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+91d93
+< Groups in this file:[receptor,emissor,carta,evento,estadia,pevent,referida,mmae,pmae,mae,ppai,pai,viagem,rel,referido,ls,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/ivcc.xml kleio-home/sources/test_translations/varia/ivcc.xml
+Only in kleio-home/sources/test_translations/varia: lrazao516pe-structure.json
+Only in kleio-home/sources/test_translations/varia: lrazao516pe-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.err kleio-home/sources/test_translations/varia/lrazao516pe.err
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.files.json kleio-home/sources/test_translations/varia/lrazao516pe.files.json
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.rpt kleio-home/sources/test_translations/varia/lrazao516pe.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/lrazao516pe-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,male,rel,atr,lc,lcc,actorm,parentem,referido,beneficiario,dador,n,pagador,tomador,irmao,kin-father,kin-husband,pai,marido]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,local,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+109d111
+< Groups in this file:[beneficiario,pagador,tomador,dador,atr,lc,irmao,pai,rel,referido,marido,ls,n,lcc,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/lrazao516pe.xml kleio-home/sources/test_translations/varia/lrazao516pe.xml
+Only in kleio-home/sources/test_translations/varia: misMesa-structure.json
+Only in kleio-home/sources/test_translations/varia: misMesa-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/misMesa.err kleio-home/sources/test_translations/varia/misMesa.err
+diff -r kleio-home/sources/reference_translations/varia/misMesa.files.json kleio-home/sources/test_translations/varia/misMesa.files.json
+diff -r kleio-home/sources/reference_translations/varia/misMesa.rpt kleio-home/sources/test_translations/varia/misMesa.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/misMesa-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,female,male,rel,amz,referida,actorm,referido,eleito,eleitor]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,fol,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+115d117
+< Groups in this file:[referida,rel,eleitor,eleito,ls,referido,amz,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/misMesa.xml kleio-home/sources/test_translations/varia/misMesa.xml
+<          <core><![CDATA[acordao que tomou em mesa o provedor e mais irmaos da santa casa sobre se riscar o licenciado antonio manhos de abreu]]></core>      <core><![CDATA[ razoes pelas quais ele e riscado-nao defendia a santa casa na forma a que era obrigado pelo compromisso, mas pondo-se pela parte contraria defendendo nao ser a dita santa casa previligiada querendo-lhe tirar a liberdade e isencao que prezam os seua caseiros ... de nao pagarem os oitavos sendo contra ela procurador dos rendeiros para convencerem a dita santa casa em juizo etc]]></core>   </ELEMENT>
+>          <core><![CDATA[acordao que tomou em mesa o provedor e mais irmaos da santa casa sobre se riscar o licenciado antonio manhos de abreu; razoes pelas quais ele e riscado-nao defendia a santa casa na forma a que era obrigado pelo compromisso, mas pondo-se pela parte contraria defendendo nao ser a dita santa casa previligiada querendo-lhe tirar a liberdade e isencao que prezam os seua caseiros ... de nao pagarem os oitavos sendo contra ela procurador dos rendeiros para convencerem a dita santa casa em juizo etc]]></core>   </ELEMENT>
+<          <core><![CDATA[muitas vezes nas ocasioes em que era necessario juntar-se os irmaos da mesa para as varias ocasioes necessarias principalmente nos acompanhamentos dos defuntos concluiu-se que todas as vezes que faltasse algum sem causa legitima na forma do estatuto seriam condenados pela primeira vez em dois tostoes para a casa da misericordia e pela segunda vez seriam riscados]]></core>      <core><![CDATA[ e que outrossi pediriam pela vila cada mes dois a saber, sob pena de doze vintens]]></core>   </ELEMENT>
+>          <core><![CDATA[muitas vezes nas ocasioes em que era necessario juntar-se os irmaos da mesa para as varias ocasioes necessarias principalmente nos acompanhamentos dos defuntos concluiu-se que todas as vezes que faltasse algum sem causa legitima na forma do estatuto seriam condenados pela primeira vez em dois tostoes para a casa da misericordia e pela segunda vez seriam riscados; e que outrossi pediriam pela vila cada mes dois a saber, sob pena de doze vintens]]></core>   </ELEMENT>
+Only in kleio-home/sources/test_translations/varia: mp758-santiago-beduido-structure.json
+Only in kleio-home/sources/test_translations/varia: mp758-santiago-beduido-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.err kleio-home/sources/test_translations/varia/mp758-santiago-beduido.err
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.files.json kleio-home/sources/test_translations/varia/mp758-santiago-beduido.files.json
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.rpt kleio-home/sources/test_translations/varia/mp758-santiago-beduido.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/mp758-santiago-beduido-structure.yaml
+> Groups in this file:[attribute,geoentity,historical-act,historical-source,kleio,object,relation,ls,bispado,comarca,freguesia,gref,lugar,provincia,termoc,pt-acto,fonte,idonatario,igreja,irmandade,rel,atr,memoria58]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,month,name,nomedest,obs,prefix,ref,replace,same_as,structure,substitui,tipo,translations,translator,type,valor,value,xsame_as,year]
+33d35
+< Groups in this file:[irmandade,igreja,idonatario,lugar,termoc,comarca,bispado,provincia,gref,rel,atr,freguesia,memoria58,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/mp758-santiago-beduido.xml kleio-home/sources/test_translations/varia/mp758-santiago-beduido.xml
+Only in kleio-home/sources/test_translations/varia: nommiz-structure.json
+Only in kleio-home/sources/test_translations/varia: nommiz-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/nommiz.err kleio-home/sources/test_translations/varia/nommiz.err
+diff -r kleio-home/sources/reference_translations/varia/nommiz.files.json kleio-home/sources/test_translations/varia/nommiz.files.json
+diff -r kleio-home/sources/reference_translations/varia/nommiz.rpt kleio-home/sources/test_translations/varia/nommiz.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/nommiz-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,relation,ls,pt-acto,fonte,male,rel,nom,actorm,referido,n]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,esmola,fol,fols,id,iddest,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,nomedest,obs,prefix,ref,replace,same_as,sex,sexo,structure,subs,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+256d258
+< Groups in this file:[rel,referido,ls,n,nom,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/nommiz.xml kleio-home/sources/test_translations/varia/nommiz.xml
+Only in kleio-home/sources/test_translations/varia: quotes-structure.json
+Only in kleio-home/sources/test_translations/varia: quotes-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/quotes.err kleio-home/sources/test_translations/varia/quotes.err
+diff -r kleio-home/sources/reference_translations/varia/quotes.files.json kleio-home/sources/test_translations/varia/quotes.files.json
+diff -r kleio-home/sources/reference_translations/varia/quotes.rpt kleio-home/sources/test_translations/varia/quotes.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/quotes-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,male,lista,actorm,n]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+34d36
+< Groups in this file:[ls,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/quotes.xml kleio-home/sources/test_translations/varia/quotes.xml
+Only in kleio-home/sources/test_translations/varia: sourecoimbrabispcoimbra_apontamentosd-structure.json
+Only in kleio-home/sources/test_translations/varia: sourecoimbrabispcoimbra_apontamentosd-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.err kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.err
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.files.json kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.files.json
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.rpt kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd-structure.yaml
+> Groups in this file:[attribute,geoentity,historical-act,historical-source,kleio,object,relation,ls,bispado,comarca,freguesia,gref,lugar,termoc,pt-acto,fonte,igreja,rel,atr,memoria58,apontamentosd]
+> Elements in this file:[ano,autorels,data,date,day,destination,destname,dia,id,iddest,kleiofile,loc,localizacao,mes,month,name,nomedest,obs,prefix,ref,replace,same_as,structure,substitui,tipo,translations,translator,type,valor,value,xsame_as,year]
+33d35
+< Groups in this file:[igreja,comarca,lugar,termoc,bispado,gref,rel,atr,freguesia,apontamentosd,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/sourecoimbrabispcoimbra_apontamentosd.xml kleio-home/sources/test_translations/varia/sourecoimbrabispcoimbra_apontamentosd.xml
+Only in kleio-home/sources/test_translations/varia: test-atr-date-structure.json
+Only in kleio-home/sources/test_translations/varia: test-atr-date-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.err kleio-home/sources/test_translations/varia/test-atr-date.err
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.files.json kleio-home/sources/test_translations/varia/test-atr-date.files.json
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.rpt kleio-home/sources/test_translations/varia/test-atr-date.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/test-atr-date-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,person,ls,pt-acto,fonte,male,atr,lista,actorm,parentem,n,kin-father,pai]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+32d34
+< Groups in this file:[pai,ls,atr,n,lista,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/test-atr-date.xml kleio-home/sources/test_translations/varia/test-atr-date.xml
+Only in kleio-home/sources/test_translations/varia: vereacao-structure.json
+Only in kleio-home/sources/test_translations/varia: vereacao-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/vereacao.err kleio-home/sources/test_translations/varia/vereacao.err
+diff -r kleio-home/sources/reference_translations/varia/vereacao.files.json kleio-home/sources/test_translations/varia/vereacao.files.json
+diff -r kleio-home/sources/reference_translations/varia/vereacao.rpt kleio-home/sources/test_translations/varia/vereacao.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/vereacao-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,ls,pt-acto,fonte,item,female,male,acto,actorf,parentef,actorm,parentem,referido,presente-f,kin-daughter,kin-mother,kin-wife,presente,kin-father,kin-son,filha,mae,mulher,pai,filho]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,titulo,translations,translator,type,valor,value,xmesmo_que,xsame_as,year]
+34d36
+< Groups in this file:[referido,item,presente-f,mulher,filha,filho,mae,pai,ls,presente,acto,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/vereacao.xml kleio-home/sources/test_translations/varia/vereacao.xml
+Only in kleio-home/sources/test_translations/varia: xpto_comuns_soure-structure.json
+Only in kleio-home/sources/test_translations/varia: xpto_comuns_soure-structure.yaml
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.err kleio-home/sources/test_translations/varia/xpto_comuns_soure.err
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.files.json kleio-home/sources/test_translations/varia/xpto_comuns_soure.files.json
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.rpt kleio-home/sources/test_translations/varia/xpto_comuns_soure.rpt
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,pt-acto,fonte,female,male,chanc,referida,referido]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,mesmo_que,month,name,nome,obs,prefix,ref,replace,resumo,same_as,sex,sexo,structure,substitui,tipo,translations,translator,type,xmesmo_que,xsame_as,year]
+383d385
+< Groups in this file:[referida,referido,chanc,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/varia/xpto_comuns_soure.xml kleio-home/sources/test_translations/varia/xpto_comuns_soure.xml
+Only in kleio-home/sources/test_translations/yaml: jcatalog-structure.srpt
+diff -r kleio-home/sources/reference_translations/yaml/jcatalog.err kleio-home/sources/test_translations/yaml/jcatalog.err
+< 85  errors. 
+< 0  warnings.
+> 0  errors. 
+> 1  warnings.
+diff -r kleio-home/sources/reference_translations/yaml/jcatalog.files.json kleio-home/sources/test_translations/yaml/jcatalog.files.json
+<   "errors":85,
+<   "warnings":0
+>   "errors":0,
+>   "warnings":1
+Only in kleio-home/sources/reference_translations/yaml: jcatalog.ids
+diff -r kleio-home/sources/reference_translations/yaml/jcatalog.kleio kleio-home/sources/test_translations/yaml/jcatalog.kleio
+< kleio$
+<     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+<         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+<             comunity$Province/Portugal
+<                 /obs=falta transcrever os 4 primeiros nomes
+<             comunity$College/São Roque
+<                 father$5/Diogo Vieira%Diego Viera
+<                     ls$birth-place/Funchal
+<                     ls$diocesis/Funchal
+<                     ls$age/62
+<                     ls$strength/enfermo
+<                     ls$years-at-company/35
+<                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+<                     ls$function/predico#no passado
+<                     ls$function/cofessou#no passado
+<                     ls$funcrion/missions#ando en missiones no passado
+<                     ls$function/confesses#some times
+<                     ls$vows/4v#ha 20 anos/1567#aprox.
+>    source$ARSI-LUS-44I-1/1587/jesuit catalog/fol1/ARSI-LUS-44I
+19a4
+>       jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+20a6,21
+>          comunity$Province/Portugal/obs=falta transcrever os 4 primeiros nomes/id=1587-T1-LUS-44I-1-obj1
+> 
+>          comunity$College/São Roque/id=1587-T1-LUS-44I-1-obj2
+> 
+>             father$5/Diogo Vieira%Diego Viera/id=1587-T1-LUS-44I-1-obj2-per1
+>                ls$birth-place/Funchal
+>                ls$diocesis/Funchal
+>                ls$age/62
+>                ls$strength/enfermo
+>                ls$years-at-company/35
+>                ls$studies/master of arts#acabo sus studios: es maestro en artes
+>                ls$function/predico#no passado
+>                ls$function/cofessou#no passado
+>                ls$funcrion/missions#ando en missiones no passado
+>                ls$function/confesses#some times
+>                ls$vows/4v#ha 20 anos/1567#aprox.
+Only in kleio-home/sources/test_translations/yaml: jcatalog.org
+diff -r kleio-home/sources/reference_translations/yaml/jcatalog.rpt kleio-home/sources/test_translations/yaml/jcatalog.rpt
+17a18
+> ** Processing source source$ARSI-LUS-44I-1
+< ERROR: jcatalog.kleio line 0 *** Current group source cannot be linked with previous group kleio(kle-1)
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+> WARNING: jcatalog.kleio line 2 * Warning: Filename should match source Id to avoid errors. File: jcatalog Id: ARSI-LUS-44I-1.
+> Near lines: 2     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+> Near lines: 3         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+23,619c24
+< 
+< ERROR: jcatalog.kleio line 0 ***source group not stored.
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group source
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. jesuit catalog
+< 
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** kleio unknown element: ref.
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** kleio unknown element: loc.
+< Near lines: 0 kleio$
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group jcatalog cannot be linked with previous group kleio(kle-2)
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***jcatalog group not stored.
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group jcatalog
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 1587-T1-LUS-44I-1
+< 
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Portugal
+< 
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 1587
+< 
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. T1
+< 
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** kleio unknown element: date.
+< Near lines: 0     source$ARSI-LUS-44I-1/1587/jesuit catalog/ref=ARSI-LUS-44I/loc=fol1
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group comunity cannot be linked with previous group kleio(kle-3)
+< Near lines: 0         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***comunity group not stored.
+< Near lines: 0         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group comunity
+< Near lines: 0         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Province
+< 
+< Near lines: 0         jcatalog$1587-T1-LUS-44I-1/Portugal/1587/T1/date=1587-04-01
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Portugal
+< 
+< Near lines: 0             comunity$Province/Portugal
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group comunity cannot be linked with previous group kleio(kle-4)
+< Near lines: 0                 /obs=falta transcrever os 4 primeiros nomes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***comunity group not stored.
+< Near lines: 0                 /obs=falta transcrever os 4 primeiros nomes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group comunity
+< Near lines: 0                 /obs=falta transcrever os 4 primeiros nomes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. College
+< 
+< Near lines: 0                 /obs=falta transcrever os 4 primeiros nomes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. São Roque
+< 
+< Near lines: 0             comunity$College/São Roque
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group father cannot be linked with previous group kleio(kle-5)
+< Near lines: 0             comunity$College/São Roque
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***father group not stored.
+< Near lines: 0             comunity$College/São Roque
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group father
+< Near lines: 0             comunity$College/São Roque
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 5
+< 
+< Near lines: 0             comunity$College/São Roque
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Diogo Vieira%Diego Viera
+< 
+< Near lines: 0                 father$5/Diogo Vieira%Diego Viera
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-6)
+< Near lines: 0                 father$5/Diogo Vieira%Diego Viera
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                 father$5/Diogo Vieira%Diego Viera
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                 father$5/Diogo Vieira%Diego Viera
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. birth-place
+< 
+< Near lines: 0                 father$5/Diogo Vieira%Diego Viera
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Funchal
+< 
+< Near lines: 0                     ls$birth-place/Funchal
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-7)
+< Near lines: 0                     ls$birth-place/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$birth-place/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$birth-place/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. diocesis
+< 
+< Near lines: 0                     ls$birth-place/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. Funchal
+< 
+< Near lines: 0                     ls$diocesis/Funchal
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-8)
+< Near lines: 0                     ls$diocesis/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$diocesis/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$diocesis/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. age
+< 
+< Near lines: 0                     ls$diocesis/Funchal
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 62
+< 
+< Near lines: 0                     ls$age/62
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-9)
+< Near lines: 0                     ls$age/62
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$age/62
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$age/62
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. strength
+< 
+< Near lines: 0                     ls$age/62
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. enfermo
+< 
+< Near lines: 0                     ls$strength/enfermo
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-10)
+< Near lines: 0                     ls$strength/enfermo
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$strength/enfermo
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$strength/enfermo
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. years-at-company
+< 
+< Near lines: 0                     ls$strength/enfermo
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 35
+< 
+< Near lines: 0                     ls$years-at-company/35
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-11)
+< Near lines: 0                     ls$years-at-company/35
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$years-at-company/35
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$years-at-company/35
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. studies
+< 
+< Near lines: 0                     ls$years-at-company/35
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. master of arts#acabo sus studios: es maestro en artes
+< 
+< Near lines: 0                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-12)
+< Near lines: 0                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. function
+< 
+< Near lines: 0                     ls$studies/master of arts#acabo sus studios: es maestro en artes
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. predico#no passado
+< 
+< Near lines: 0                     ls$function/predico#no passado
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-13)
+< Near lines: 0                     ls$function/predico#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$function/predico#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$function/predico#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. function
+< 
+< Near lines: 0                     ls$function/predico#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. cofessou#no passado
+< 
+< Near lines: 0                     ls$function/cofessou#no passado
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-14)
+< Near lines: 0                     ls$function/cofessou#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$function/cofessou#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$function/cofessou#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. funcrion
+< 
+< Near lines: 0                     ls$function/cofessou#no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. missions#ando en missiones no passado
+< 
+< Near lines: 0                     ls$funcrion/missions#ando en missiones no passado
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-15)
+< Near lines: 0                     ls$funcrion/missions#ando en missiones no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$funcrion/missions#ando en missiones no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$funcrion/missions#ando en missiones no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. function
+< 
+< Near lines: 0                     ls$funcrion/missions#ando en missiones no passado
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. confesses#some times
+< 
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+< 
+< ERROR: jcatalog.kleio line 0 *** Current group ls cannot be linked with previous group kleio(kle-16)
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ***ls group not stored.
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure. Could not process group ls
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. vows
+< 
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 4v#ha 20 anos
+< 
+< Near lines: 0                     ls$function/confesses#some times
+< Near lines: 1 kleio$
+< 
+< 
+< ERROR: jcatalog.kleio line 0 ** Failure: undefined element. 1567#aprox.
+< 
+< Near lines: 0 Near lines: 1 kleio$
+< 
+< =========================
+< kleio translation started
+< =========================
+< Structure: 
+< Prefix: 
+< Autorel: 
+< Obs: 1587
+< Translation count not set or invalid, counting as zero: 
+> 4: jcatalog$1587-T1-LUS-44I-1
+< 85  errors. 
+< 0  warnings.
+< Groups in this file:[kleio]
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/yaml/jcatalog-structure.yaml
+> Groups in this file:[attribute,historical-act,historical-source,kleio,object,person,ls,ulist,source,abstraction,male,jcatalog,attribute-list,father,comunity]
+> Elements in this file:[autorels,date,day,id,kleiofile,loc,month,name,number,obs,prefix,province,ref,replace,same_as,sex,structure,translations,translator,type,value,xsame_as,year]
+> Structure YAML file already exists, not generating new one.
+> 0  errors. 
+> 1  warnings.
+diff -r kleio-home/sources/reference_translations/yaml/jcatalog.xml kleio-home/sources/test_translations/yaml/jcatalog.xml
+> <CLASS NAME="source" SUPER="entity" TABLE="sources" GROUP="source">
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>3</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>source</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>root</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>source</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>1</core></ELEMENT>
+>    <ELEMENT NAME="year" CLASS="undef">
+>          <core><![CDATA[1587]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[jesuit catalog]]></core>   </ELEMENT>
+>    <ELEMENT NAME="ref" CLASS="ref">
+>          <core><![CDATA[ARSI-LUS-44I]]></core>   </ELEMENT>
+>    <ELEMENT NAME="loc" CLASS="loc">
+>          <core><![CDATA[fol1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[0]]></core>   </ELEMENT>
+>    <ELEMENT NAME="kleiofile" CLASS="kleiofile">
+> </GROUP>
+> <CLASS NAME="act" SUPER="entity" TABLE="acts" GROUP="jcatalog">
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>jcatalog</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>ARSI-LUS-44I-1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>act</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>2</core></ELEMENT>
+>    <ELEMENT NAME="province" CLASS="undef">
+>          <core><![CDATA[Portugal]]></core>   </ELEMENT>
+>    <ELEMENT NAME="year" CLASS="undef">
+>          <core><![CDATA[1587]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[T1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[1587-04-01]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[jcatalog]]></core>   </ELEMENT>
+> </GROUP>
+> <CLASS NAME="object" SUPER="entity" TABLE="objects" GROUP="comunity">
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>comunity</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>object</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[Province]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="undef">
+>          <core><![CDATA[Portugal]]></core>   </ELEMENT>
+>    <ELEMENT NAME="obs" CLASS="obs">
+>          <core><![CDATA[falta transcrever os 4 primeiros nomes]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[comunity]]></core>   </ELEMENT>
+> </GROUP>
+> <CLASS NAME="relation" SUPER="entity" TABLE="relations" GROUP="relation">
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj1</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>comunity</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>jcatalog</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>1587-T1-LUS-44I-1-obj1</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>1587-T1-LUS-44I-1</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>15870401</core></ELEMENT>
+> </GROUP>
+>     <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>comunity</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>object</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>3</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[College]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="undef">
+>          <core><![CDATA[São Roque]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2]]></core>   </ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[comunity]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>7</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>comunity</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>jcatalog</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>1587-T1-LUS-44I-1-obj2</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>1587-T1-LUS-44I-1</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>15870401</core></ELEMENT>
+> </GROUP><CLASS NAME="person" SUPER="entity" TABLE="persons" GROUP="father">
+>      <ATTRIBUTE NAME="sex" COLUMN="sex" CLASS="sex" TYPE="char" SIZE="1" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>father</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>person</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>4</core></ELEMENT>
+>    <ELEMENT NAME="number" CLASS="undef">
+>          <core><![CDATA[5]]></core>   </ELEMENT>
+>    <ELEMENT NAME="name" CLASS="name">
+>          <core><![CDATA[Diogo Vieira]]></core>         <original><![CDATA[Diego Viera]]></original>
+>    </ELEMENT>
+>    <ELEMENT NAME="sex" CLASS="sex">
+>          <core><![CDATA[m]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>8</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>     <ELEMENT NAME="class" CLASS="class"><core>relation</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>     <ELEMENT NAME="type" CLASS="type"><core>function-in-act</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>father</core></ELEMENT>
+>     <ELEMENT NAME="destname" CLASS="destname"><core>jcatalog</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>     <ELEMENT NAME="destination" CLASS="destination"><core>1587-T1-LUS-44I-1</core></ELEMENT>
+>     <ELEMENT NAME="date" CLASS="date"><core>15870401</core></ELEMENT>
+> </GROUP><CLASS NAME="attribute" SUPER="entity" TABLE="attributes" GROUP="ls">
+> </CLASS>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>9</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[birth-place]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[Funchal]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>10</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[diocesis]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[Funchal]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att2]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>11</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[age]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[62]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att3]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>12</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[strength]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[enfermo]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att4]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>13</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[years-at-company]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[35]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att5]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>14</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[studies]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[master of arts]]></core>         <comment><![CDATA[acabo sus studios: es maestro en artes]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att6]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>15</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[function]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[predico]]></core>         <comment><![CDATA[no passado]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att7]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>16</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[function]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[cofessou]]></core>         <comment><![CDATA[no passado]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att8]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>17</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[funcrion]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[missions]]></core>         <comment><![CDATA[ando en missiones no passado]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att9]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>18</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[function]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[confesses]]></core>         <comment><![CDATA[some times]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att10]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{}]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[15870401]]></core>   </ELEMENT>
+> </GROUP>
+> 
+>     <ELEMENT NAME="line" CLASS="line"><core>21</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>ls</core></ELEMENT>
+>    <ELEMENT NAME="inside" CLASS="inside"><core>1587-T1-LUS-44I-1-obj2-per1</core></ELEMENT>
+>    <ELEMENT NAME="class" CLASS="class"><core>attribute</core></ELEMENT>
+>     <ELEMENT NAME="level" CLASS="level"><core>5</core></ELEMENT>
+>    <ELEMENT NAME="type" CLASS="type">
+>          <core><![CDATA[vows]]></core>   </ELEMENT>
+>    <ELEMENT NAME="value" CLASS="value">
+>          <core><![CDATA[4v]]></core>         <comment><![CDATA[ha 20 anos]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="date" CLASS="date">
+>          <core><![CDATA[1567]]></core>         <comment><![CDATA[aprox.]]></comment>
+>    </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1-att11]]></core>   </ELEMENT>
+>    <ELEMENT NAME="entity" CLASS="entity">
+>          <core><![CDATA[1587-T1-LUS-44I-1-obj2-per1]]></core>   </ELEMENT>
+>    <ELEMENT NAME="date_extra_info" CLASS="undef">
+>          <core><![CDATA[{
+>   "date": {"subtype":"y","value":15670000},
+>   "original":"1567",
+>   "type":"single",
+>   "value":"15670000"
+> }]]></core>   </ELEMENT>
+> </GROUP>
+Only in kleio-home/sources/test_translations/yaml: pt-groups-structure.json
+Only in kleio-home/sources/test_translations/yaml: pt-groups-structure.yaml
+diff -r kleio-home/sources/reference_translations/yaml/pt-groups.err kleio-home/sources/test_translations/yaml/pt-groups.err
+< 3  errors. 
+> 0  errors. 
+diff -r kleio-home/sources/reference_translations/yaml/pt-groups.files.json kleio-home/sources/test_translations/yaml/pt-groups.files.json
+<   "errors":3,
+>   "errors":0,
+Only in kleio-home/sources/reference_translations/yaml: pt-groups.ids
+diff -r kleio-home/sources/reference_translations/yaml/pt-groups.kleio kleio-home/sources/test_translations/yaml/pt-groups.kleio
+< kleio$
+<   fonte$pt-groups/2023/tests/mb-air
+<       /data=2025-07-14/substitui=pt-groups-tests
+<       /obs="Portuguese main groups"
+>    fonte$pt-groups/2023/tests/mb-air/data=2025-07-14/substitui=pt-groups-tests/obs="Portuguese main groups"
+6,9c4
+<     acto$pt-act1/exemplo de acto genérico/14/7/2025/mbook-air
+<       /obs="Exemplo de acto genérico"
+<       person$joaquim/m
+<       female$joana
+>       acto$pt-act1/exemplo de acto genérico/14/7/2025/mbook-air/"Exemplo de acto genérico"
+10a6
+>          person$joaquim/m/id=pt-act1-per1
+11a8
+>          female$joana/id=pt-act1-per2
+Only in kleio-home/sources/test_translations/yaml: pt-groups.org
+diff -r kleio-home/sources/reference_translations/yaml/pt-groups.rpt kleio-home/sources/test_translations/yaml/pt-groups.rpt
+20,34d19
+< 
+< ERROR: pt-groups.kleio line 7 *** Current group female cannot be linked with previous group person(per-1)
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 
+< ERROR: pt-groups.kleio line 7 ***female group not stored.
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 
+< ERROR: pt-groups.kleio line 7 ** Failure. Could not process group female
+< Near lines: 7       person$joaquim/m
+< Near lines: 8       person$joaquim/m
+< 
+< 3  errors. 
+> Local structure file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/yaml/pt-groups-structure.yaml
+> Groups in this file:[historical-act,historical-source,kleio,person,pt-acto,fonte,female,acto]
+> Elements in this file:[ano,autorels,data,date,day,dia,id,kleiofile,loc,localizacao,mes,month,name,obs,prefix,ref,replace,same_as,sex,structure,substitui,tipo,translations,translator,type,xsame_as,year]
+> 0  errors. 
+47d35
+< Groups in this file:[person,acto,fonte,kleio]
+diff -r kleio-home/sources/reference_translations/yaml/pt-groups.xml kleio-home/sources/test_translations/yaml/pt-groups.xml
+< <GROUP ID="joana" NAME="person" CLASS="person" ORDER="5" LEVEL="3" LINE="12">
+<     <ELEMENT NAME="id" CLASS="id"><core>joana</core></ELEMENT>
+<     <ELEMENT NAME="groupname" CLASS="groupname"><core>person</core></ELEMENT>
+>     <ELEMENT NAME="groupname" CLASS="groupname"><core>female</core></ELEMENT>
+<          <core><![CDATA[joaquim]]></core>   </ELEMENT>
+>          <core><![CDATA[joana]]></core>   </ELEMENT>
+<          <core><![CDATA[m]]></core>   </ELEMENT>
+>          <core><![CDATA[f]]></core>   </ELEMENT>
+>    <ELEMENT NAME="id" CLASS="id">
+>          <core><![CDATA[pt-act1-per2]]></core>   </ELEMENT>
+<     <ELEMENT NAME="inside" CLASS="inside"><core>joana</core></ELEMENT>
+>     <ELEMENT NAME="inside" CLASS="inside"><core>pt-act1-per2</core></ELEMENT>
+<     <ELEMENT NAME="value" CLASS="value"><core>person</core></ELEMENT>
+>     <ELEMENT NAME="value" CLASS="value"><core>female</core></ELEMENT>
+<     <ELEMENT NAME="origin" CLASS="origin"><core>joana</core></ELEMENT>
+>     <ELEMENT NAME="origin" CLASS="origin"><core>pt-act1-per2</core></ELEMENT>
+Comparing translation results finished.

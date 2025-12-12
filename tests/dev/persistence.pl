@@ -9,7 +9,7 @@
     del_shared_prop/2,
     get_shared_props/2,
     get_shared_cons/2,
-    set_prop/3,has_prop/2,get_prop/3,del_prop/2,
+    set_prop/3,has_prop/2,get_prop/3,get_prop/4,del_prop/2,
     del_props/1,get_props/2,get_cons/2,
     add_to_prop/3,show_props/1,show_props/2,
     add_value/2,exists_value/2,has_value/2,has_values/2,remove_value/2,replace_value/3]).
@@ -162,6 +162,11 @@ get_prop(Atom,Prop,Value):-
 
 get_prop_(Atom,Prop,Value):-clause(prop_(Atom,Prop,Value),true).
 
+% get_prop with default value
+get_prop(Atom,Prop,Value, __Default):-
+    get_prop(Atom,Prop,Value),
+    !.
+get_prop(_,_,Default,Default).
 
 %% del_prop(+Atom,+Prop) is det.
 % remove Prop from Atom

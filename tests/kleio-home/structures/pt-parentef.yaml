@@ -1,8 +1,5 @@
 - path: parentef
-- group: {name: parentef, description: '', source: female}
-- group: {name: kin-mother, description: '', source: parentef}
-- group: {name: kin-wife, description: '', source: parentef}
-- group: {name: kin-daughter, description: '', source: parentef}
+- group: {name: parentef, description: '', source: kin-f}
 - group: {name: mppai, description: '', source: kin-mother, part: [pmppai, mmppai]}
 - group: {name: mpai, description: '', source: kin-mother, part: [pmpai, mmpai]}
 - group: {name: mmpai, description: '', source: kin-mother, part: [pmmpai, mmmpai]}

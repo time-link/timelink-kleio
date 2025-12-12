@@ -1,0 +1,11 @@
+# Setting PATH for Python 3.13
+# The original version is saved in .zprofile.pysave
+export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+
+# Homebrew setup
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Pyenv setup - only in .zprofile (login shell)
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)" >/dev/null 2>&1

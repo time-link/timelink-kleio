@@ -1,6 +1,15 @@
 [
   {
-    "path":"/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str"
+    "file": [
+      {
+	"date":"2025-12-12",
+	"description":"Automatically generated structure file",
+	"json_path":"/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str.json",
+	"origin":"/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str",
+	"stru":"/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str",
+	"yaml_path":"/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str.yaml"
+      }
+    ]
   },
   {
     "group": {
@@ -12,7 +21,6 @@
 	"prefix",
 	"translations"
       ],
-      "description":"\n",
       "idprefix":"kle",
       "name":"kleio",
       "part": ["fonte" ],
@@ -33,7 +41,6 @@
 	"replace",
 	"kleiofile"
       ],
-      "description":"\n",
       "guaranteed": ["id" ],
       "idprefix":"his",
       "name":"historical-source",
@@ -55,7 +62,6 @@
 	"atr",
 	"rel"
       ],
-      "description":"\n",
       "guaranteed": ["id", "type", "date" ],
       "idprefix":"his",
       "name":"historical-act",
@@ -68,7 +74,6 @@
     "group": {
       "also": ["id", "obs", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name", "sex" ],
       "idprefix":"per",
       "name":"person",
@@ -81,7 +86,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"female",
@@ -95,7 +99,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"male",
@@ -109,7 +112,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"object",
@@ -122,7 +124,6 @@
     "group": {
       "also": ["obs", "id" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"obj",
       "name":"abstraction",
@@ -135,7 +136,6 @@
   {
     "group": {
       "also": ["obs", "date", "id" ],
-      "description":"\n",
       "guaranteed": ["type", "value" ],
       "idprefix":"att",
       "name":"attribute",
@@ -147,7 +147,6 @@
   {
     "group": {
       "also": ["obs", "date", "id" ],
-      "description":"\n",
       "guaranteed": ["type", "value", "destname", "destination" ],
       "idprefix":"rel",
       "name":"relation",
@@ -158,7 +157,6 @@
   {
     "group": {
       "also": ["id" ],
-      "description":"\n",
       "idprefix":"end",
       "name":"end",
       "position": ["id" ],
@@ -208,7 +206,7 @@
   },
   {
     "element": {
-      "description":"elemento obrigatorio ,identifica unicamente a fonte na base de dados ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte $bap-1680 deve estar num ficheiro chamado bap-1680.cli ",
+      "description":"elemento obrigatorio ,identifica unicamente a fonte na base de dados ,",
       "identification":"sic",
       "name":"id",
       "prefix":"non",
@@ -446,7 +444,7 @@
 	"substitui"
       ],
       "arbitrary": ["bap", "b", "termo" ],
-      "description":"Este constitui o grupo principal para os documentos historicos portugueses. Admite qualquer dos actos definidos aqui. \n",
+      "description":"Este constitui o grupo principal para os documentos historicos portugueses. Admite qualquer dos actos definidos aqui. ",
       "guaranteed": ["id" ],
       "idprefix":"his",
       "name":"fonte",
@@ -480,7 +478,6 @@
 	"rel",
 	"fim"
       ],
-      "description":"\n",
       "guaranteed": ["id", "dia", "mes", "ano" ],
       "idprefix":"his",
       "name":"pt-acto",
@@ -493,7 +490,7 @@
   {
     "group": {
       "also": ["obs" ],
-      "description":"fim indica o fim de um acto \n",
+      "description":"fim indica o fim de um acto ",
       "idprefix":"end",
       "name":"fim",
       "position": ["id" ],
@@ -700,7 +697,7 @@
     "group": {
       "also": ["fol", "loc", "celebrante", "obs" ],
       "arbitrary": ["celebrante", "n", "test", "referido", "referida" ],
-      "description":"Baptismos (variante usada nos registos da Lousa por Rosario Campos e em ?bidos )\n",
+      "description":"Baptismos (variante usada nos registos da Lousa por Rosario Campos e em ?bidos )",
       "guaranteed": ["id", "dia", "mes", "ano" ],
       "idprefix":"his",
       "name":"bap",
@@ -714,7 +711,7 @@
     "group": {
       "also": ["celebrante", "obs" ],
       "arbitrary": ["celebrante", "n", "referido", "referida", "test" ],
-      "description":"Baptimos ,versao original usada em Soure. \n",
+      "description":"Baptimos ,versao original usada em Soure. ",
       "guaranteed": ["id", "dia", "mes", "ano" ],
       "idprefix":"his",
       "name":"b",
@@ -918,7 +915,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"actorm",
@@ -1215,7 +1211,6 @@
 	"engeitada",
 	"engeitado"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"n",
@@ -1229,7 +1224,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"referido",
@@ -1243,7 +1237,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"celebrante",
@@ -1257,7 +1250,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"test",
@@ -1271,7 +1263,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad",
@@ -1285,7 +1276,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad",
@@ -1299,7 +1289,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad1",
@@ -1313,7 +1302,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad1",
@@ -1327,7 +1315,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad2",
@@ -1341,7 +1328,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad2",
@@ -1355,7 +1341,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad3",
@@ -1369,7 +1354,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad3",
@@ -1383,7 +1367,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-pad4",
@@ -1397,7 +1380,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procurador-mad4",
@@ -1594,7 +1576,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"actorf",
@@ -1608,7 +1589,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"referida",
@@ -1805,7 +1785,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"na",
@@ -1819,7 +1798,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad",
@@ -1833,7 +1811,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad",
@@ -1847,7 +1824,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad1",
@@ -1861,7 +1837,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad1",
@@ -1875,7 +1850,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad2",
@@ -1889,7 +1863,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad2",
@@ -1903,7 +1876,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad3",
@@ -1917,7 +1889,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad3",
@@ -1931,7 +1902,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-pad4",
@@ -1945,7 +1915,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id" ],
       "arbitrary": ["ls", "atr", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"procuradora-mad4",
@@ -2142,7 +2111,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"enferma",
@@ -2339,7 +2307,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"presente-f",
@@ -2536,7 +2503,6 @@
 	"engeitado",
 	"engeitada"
       ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"testa",
@@ -2551,7 +2517,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"parentem",
@@ -2565,7 +2530,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-father",
@@ -2579,7 +2543,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-husband",
@@ -2593,7 +2556,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-son",
@@ -2607,7 +2569,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"parentef",
@@ -2621,7 +2582,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-mother",
@@ -2635,7 +2595,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-wife",
@@ -2649,7 +2608,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"kin-daughter",
@@ -2663,7 +2621,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pai",
@@ -2678,7 +2635,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppai",
@@ -2693,7 +2649,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppai",
@@ -2708,7 +2663,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppai",
@@ -2723,7 +2677,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpai",
@@ -2738,7 +2691,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpai",
@@ -2753,7 +2705,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpai",
@@ -2768,7 +2719,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mae",
@@ -2783,7 +2733,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmae",
@@ -2798,7 +2747,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmae",
@@ -2813,7 +2761,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmae",
@@ -2827,7 +2774,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmae",
@@ -2841,7 +2787,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmae",
@@ -2856,7 +2801,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmae",
@@ -2870,7 +2814,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmae",
@@ -2884,7 +2827,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmae",
@@ -2899,7 +2841,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmae",
@@ -2914,7 +2855,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmae",
@@ -2928,7 +2868,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmae",
@@ -2942,7 +2881,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmae",
@@ -2957,7 +2895,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmae",
@@ -2971,7 +2908,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmae",
@@ -2985,7 +2921,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"marido",
@@ -3000,7 +2935,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmarido",
@@ -3015,7 +2949,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmarido",
@@ -3030,7 +2963,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmarido",
@@ -3044,7 +2976,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmarido",
@@ -3058,7 +2989,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmarido",
@@ -3073,7 +3003,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmarido",
@@ -3087,7 +3016,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmarido",
@@ -3101,7 +3029,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmarido",
@@ -3116,7 +3043,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmarido",
@@ -3130,7 +3056,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmarido",
@@ -3144,7 +3069,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmarido",
@@ -3158,7 +3082,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmarido",
@@ -3173,7 +3096,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmarido",
@@ -3187,7 +3109,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmarido",
@@ -3201,7 +3122,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"marido1",
@@ -3216,7 +3136,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmarido1",
@@ -3230,7 +3149,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmarido1",
@@ -3245,7 +3163,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmarido1",
@@ -3259,7 +3176,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmarido1",
@@ -3273,7 +3189,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmarido1",
@@ -3288,7 +3203,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmarido1",
@@ -3302,7 +3216,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmarido1",
@@ -3316,7 +3229,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmarido1",
@@ -3331,7 +3243,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmarido1",
@@ -3346,7 +3257,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmarido1",
@@ -3360,7 +3270,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmarido1",
@@ -3374,7 +3283,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmarido1",
@@ -3389,7 +3297,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmarido1",
@@ -3403,7 +3310,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmarido1",
@@ -3417,7 +3323,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"marido2",
@@ -3432,7 +3337,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmarido2",
@@ -3446,7 +3350,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmarido2",
@@ -3461,7 +3364,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmarido2",
@@ -3475,7 +3377,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmarido2",
@@ -3489,7 +3390,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmarido2",
@@ -3504,7 +3404,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmarido2",
@@ -3518,7 +3417,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmarido2",
@@ -3532,7 +3430,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmarido2",
@@ -3547,7 +3444,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmarido2",
@@ -3562,7 +3458,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmarido2",
@@ -3576,7 +3471,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmarido2",
@@ -3590,7 +3484,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmarido2",
@@ -3605,7 +3498,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmarido2",
@@ -3619,7 +3511,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmarido2",
@@ -3633,7 +3524,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"marido3",
@@ -3648,7 +3538,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmarido3",
@@ -3662,7 +3551,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmarido3",
@@ -3677,7 +3565,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmarido3",
@@ -3691,7 +3578,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmarido3",
@@ -3705,7 +3591,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmarido3",
@@ -3720,7 +3605,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmarido3",
@@ -3734,7 +3618,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmarido3",
@@ -3748,7 +3631,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmarido3",
@@ -3763,7 +3645,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmarido3",
@@ -3778,7 +3659,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmarido3",
@@ -3792,7 +3672,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmarido3",
@@ -3806,7 +3685,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmarido3",
@@ -3821,7 +3699,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmarido3",
@@ -3835,7 +3712,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmarido3",
@@ -3849,7 +3725,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mulher",
@@ -3864,7 +3739,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmulher",
@@ -3879,7 +3753,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmulher",
@@ -3894,7 +3767,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmulher",
@@ -3908,7 +3780,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmulher",
@@ -3922,7 +3793,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmulher",
@@ -3937,7 +3807,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmulher",
@@ -3951,7 +3820,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmulher",
@@ -3965,7 +3833,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmulher",
@@ -3980,7 +3847,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmulher",
@@ -3995,7 +3861,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmulher",
@@ -4009,7 +3874,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmulher",
@@ -4023,7 +3887,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmulher",
@@ -4038,7 +3901,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmulher",
@@ -4052,7 +3914,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmulher",
@@ -4066,7 +3927,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mulher1",
@@ -4081,7 +3941,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmulher1",
@@ -4096,7 +3955,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmulher1",
@@ -4111,7 +3969,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmulher1",
@@ -4125,7 +3982,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmulher1",
@@ -4139,7 +3995,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmulher1",
@@ -4154,7 +4009,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmulher1",
@@ -4168,7 +4022,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmulher1",
@@ -4182,7 +4035,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmulher1",
@@ -4197,7 +4049,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmulher1",
@@ -4212,7 +4063,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmulher1",
@@ -4226,7 +4076,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmulher1",
@@ -4240,7 +4089,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmulher1",
@@ -4255,7 +4103,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmulher1",
@@ -4269,7 +4116,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmulher1",
@@ -4283,7 +4129,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mulher2",
@@ -4298,7 +4143,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmulher2",
@@ -4313,7 +4157,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmulher2",
@@ -4328,7 +4171,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmulher2",
@@ -4342,7 +4184,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmulher2",
@@ -4356,7 +4197,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmulher2",
@@ -4371,7 +4211,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmulher2",
@@ -4385,7 +4224,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmulher2",
@@ -4399,7 +4237,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmulher2",
@@ -4414,7 +4251,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmulher2",
@@ -4429,7 +4265,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmulher2",
@@ -4443,7 +4278,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmulher2",
@@ -4457,7 +4291,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmulher2",
@@ -4472,7 +4305,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmulher2",
@@ -4486,7 +4318,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmulher2",
@@ -4500,7 +4331,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mulher3",
@@ -4515,7 +4345,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmulher3",
@@ -4530,7 +4359,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmulher3",
@@ -4545,7 +4373,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppmulher3",
@@ -4559,7 +4386,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppmulher3",
@@ -4573,7 +4399,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmulher3",
@@ -4588,7 +4413,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpmulher3",
@@ -4602,7 +4426,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpmulher3",
@@ -4616,7 +4439,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmulher3",
@@ -4631,7 +4453,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmulher3",
@@ -4646,7 +4467,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmmulher3",
@@ -4660,7 +4480,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmmulher3",
@@ -4674,7 +4493,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmulher3",
@@ -4689,7 +4507,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmmulher3",
@@ -4703,7 +4520,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmmulher3",
@@ -4717,7 +4533,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"noiva",
@@ -4732,7 +4547,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pnoiva",
@@ -4747,7 +4561,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppnoiva",
@@ -4762,7 +4575,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppnoiva",
@@ -4776,7 +4588,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppnoiva",
@@ -4790,7 +4601,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpnoiva",
@@ -4805,7 +4615,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpnoiva",
@@ -4819,7 +4628,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpnoiva",
@@ -4833,7 +4641,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mnoiva",
@@ -4848,7 +4655,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmnoiva",
@@ -4863,7 +4669,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmnoiva",
@@ -4877,7 +4682,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmnoiva",
@@ -4891,7 +4695,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmnoiva",
@@ -4906,7 +4709,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmnoiva",
@@ -4920,7 +4722,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmnoiva",
@@ -4934,7 +4735,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"noivo",
@@ -4949,7 +4749,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pnoivo",
@@ -4964,7 +4763,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppnoivo",
@@ -4979,7 +4777,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pppnoivo",
@@ -4993,7 +4790,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mppnoivo",
@@ -5007,7 +4803,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpnoivo",
@@ -5022,7 +4817,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmpnoivo",
@@ -5036,7 +4830,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmpnoivo",
@@ -5050,7 +4843,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mnoivo",
@@ -5065,7 +4857,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmnoivo",
@@ -5080,7 +4871,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppmnoivo",
@@ -5095,7 +4885,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpmnoivo",
@@ -5110,7 +4899,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmnoivo",
@@ -5125,7 +4913,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmmnoivo",
@@ -5140,7 +4927,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmmnoivo",
@@ -5155,7 +4941,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"irma",
@@ -5169,7 +4954,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"filho",
@@ -5184,7 +4968,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fofilho",
@@ -5199,7 +4982,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fafilho",
@@ -5214,7 +4996,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"merfilho",
@@ -5228,7 +5009,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrfafilho",
@@ -5242,7 +5022,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"merfofilho",
@@ -5256,7 +5035,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"filha",
@@ -5271,7 +5049,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fofilha",
@@ -5286,7 +5063,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"fafilha",
@@ -5301,7 +5077,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrfilha",
@@ -5315,7 +5090,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrfafilha",
@@ -5329,7 +5103,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"merfofilha",
@@ -5343,7 +5116,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"irmao",
@@ -5357,7 +5129,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pn",
@@ -5372,7 +5143,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mn",
@@ -5387,7 +5157,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppn",
@@ -5401,7 +5170,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpn",
@@ -5415,7 +5183,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmn",
@@ -5429,7 +5196,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmn",
@@ -5443,7 +5209,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pad",
@@ -5458,7 +5223,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mad",
@@ -5473,7 +5237,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppad",
@@ -5487,7 +5250,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmad",
@@ -5501,7 +5263,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpad",
@@ -5515,7 +5276,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmad",
@@ -5529,7 +5289,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrmad",
@@ -5543,7 +5302,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pad1",
@@ -5558,7 +5316,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mad1",
@@ -5573,7 +5330,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppad1",
@@ -5587,7 +5343,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmad1",
@@ -5601,7 +5356,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpad1",
@@ -5615,7 +5369,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmad1",
@@ -5629,7 +5382,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrmad1",
@@ -5643,7 +5395,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pad2",
@@ -5658,7 +5409,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mad2",
@@ -5673,7 +5423,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppad2",
@@ -5687,7 +5436,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmad2",
@@ -5701,7 +5449,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpad2",
@@ -5715,7 +5462,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmad2",
@@ -5729,7 +5475,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrmad2",
@@ -5743,7 +5488,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pad3",
@@ -5758,7 +5502,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mad3",
@@ -5773,7 +5516,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppad3",
@@ -5787,7 +5529,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmad3",
@@ -5801,7 +5542,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpad3",
@@ -5815,7 +5555,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmad3",
@@ -5829,7 +5568,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrmad3",
@@ -5843,7 +5581,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pad4",
@@ -5858,7 +5595,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mad4",
@@ -5873,7 +5609,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"ppad4",
@@ -5887,7 +5622,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"pmad4",
@@ -5901,7 +5635,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mpad4",
@@ -5915,7 +5648,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mmad4",
@@ -5929,7 +5661,6 @@
     "group": {
       "also": ["obs", "mesmo_que", "xmesmo_que", "id", "sexo" ],
       "arbitrary": ["atr", "ls", "rel" ],
-      "description":"\n",
       "guaranteed": ["nome" ],
       "idprefix":"per",
       "name":"mrmad4",
@@ -5943,7 +5674,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"afilhado",
@@ -5957,7 +5687,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"genro",
@@ -5971,7 +5700,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"criado",
@@ -5985,7 +5713,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"escravo",
@@ -5999,7 +5726,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"engeitado",
@@ -6013,7 +5739,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"enjeitado",
@@ -6027,7 +5752,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"sobrinho",
@@ -6041,7 +5765,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"sogro",
@@ -6055,7 +5778,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"neto",
@@ -6069,7 +5791,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"nora",
@@ -6083,7 +5804,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"afilhada",
@@ -6097,7 +5817,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"criada",
@@ -6111,7 +5830,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"escrava",
@@ -6125,7 +5843,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"engeitada",
@@ -6139,7 +5856,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"enjeitada",
@@ -6153,7 +5869,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"sobrinha",
@@ -6167,7 +5882,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"sogra",
@@ -6181,7 +5895,6 @@
     "group": {
       "also": ["obs", "id", "same_as" ],
       "arbitrary": ["atr", "rel", "ls" ],
-      "description":"\n",
       "guaranteed": ["name" ],
       "idprefix":"per",
       "name":"neta",
@@ -6194,7 +5907,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor" ],
       "identification":"sic",
       "idprefix":"att",
@@ -6208,7 +5920,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor" ],
       "identification":"sic",
       "idprefix":"att",
@@ -6222,7 +5933,6 @@
   {
     "group": {
       "also": ["data", "obs", "id" ],
-      "description":"\n",
       "guaranteed": ["tipo", "valor", "nomedest", "iddest" ],
       "identification":"sic",
       "idprefix":"rel",

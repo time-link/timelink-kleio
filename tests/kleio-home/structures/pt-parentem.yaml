@@ -1,8 +1,7 @@
-- path: parentem
-- group: {description: '', name: parentem, source: male}
-- group: {description: '', name: kin-father, source: parentem}
-- group: {description: '', name: kin-husband, source: parentem}
-- group: {description: '', name: kin-son, source: parentem}
+- file:
+  name: pt-parentem
+  description: Parentes masculinos de um actor
+- group: {description: '', name: parentem, source: kin-m}
 - group: {description: '', name: pai, part: [ppai, mpai], source: kin-father}
 - group: {description: '', name: ppai, part: [pppai, mppai], source: kin-father}
 - group: {description: '', name: pppai, part: [ppppai, mpppai], source: kin-father}

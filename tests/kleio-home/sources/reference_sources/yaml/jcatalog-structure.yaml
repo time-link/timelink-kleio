@@ -2,8 +2,8 @@
   name: jcatalog-structure.yaml
   description: >
     Structure for Jesuit catalogues.
-- include: structures.api.yaml.groups.yaml
-- include: structures.api.yaml.elements.yaml
+- include: structures.groups.yaml
+- include: structures.elements.yaml
 - group:
     name: source
     source: historical-source
