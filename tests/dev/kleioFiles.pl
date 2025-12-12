@@ -28,7 +28,8 @@
         kleio_resolve_structure_file/3,
         kleio_file_clean/1,
         kleio_file_delete/1,
-        kleio_mime_type/2
+        kleio_mime_type/2,
+        normalize_str_path/2
     ]).
 
 :-use_module(library(filesex)).
@@ -651,30 +652,73 @@ kleio_stru_dir(D):-
 kleio_stru_dir(D):-
     source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
-    file_directory_name(FilePath,D).
+    file_directory_name(FilePath,H),
+    atom_concat(H, '/stru', D1),
+    absolute_file_name(D1,D),
+    exists_directory(D).
+
+
+kleio_stru_dir(D):-
+    source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
+    % get the directory from FilePath
+    file_directory_name(FilePath,D1),
+    absolute_file_name(D1,D),
+    exists_directory(D).
+
+%% kleio_default_stru_names(-StruNames:list) is det.
+%
+%  Provides the default list of structure file names used by the Kleio system.
+%  The list typically includes the main structure definition file and the system configuration file.
+%
+%  @param StruNames A list of file names (as atoms or strings) representing the default structure files.
+kleio_default_stru_names(['sources-structure.yaml','gacto2.str']).
 
 %% kleio_default_stru(?Path) is det.
 % Returns the path to the default stru for translations,
-% normally KLEIO_STRU_DIR/gacto2.str but can be overriden by environment
+% NAME of default stru given by kleio_default_stru_names/1 which is a list of names
+% normally KLEIO_STRU_DIR/NAME or sources-structure.yaml but can be overriden by environment
 % variable KLEIO_DEFAULT_STRU.
-% if none tries gacto2.str in the working dir
-
-kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
+% if none tries names in the working dir or working dir/str
+kleio_default_stru(D):-
+    getenv('KLEIO_DEFAULT_STRU', D1),
+    absolute_file_name(D1,D),
+    exists_file(D),
+    !.
 kleio_default_stru(D):-
     kleio_stru_dir(H),
-    atom_concat(H, '/gacto2.str', D1),
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(H, '/', H1),
+    atom_concat(H1, N, D1),
+    absolute_file_name(D1,D),
+    exists_file(D),
+    !.
+kleio_default_stru(D):-
+    kleio_conf_dir(H),
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(H, '/kleio/stru', H1),
+    atom_concat(H1, N, D1),
+    absolute_file_name(D1,D),
+    exists_file(D),
+    !.
+kleio_default_stru(D):-
+    working_directory(Home,Home),
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(Home, '/stru', Home1), % stru structure in working dir of the server dir
+    atom_concat(Home1, N, D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
 kleio_default_stru(D):-
-    working_directory(Home,Home),
-    atom_concat(Home, '/gacto2.str', D1),
+    working_directory(Home,Home), % in working dir of the serverr
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(Home, '/', Home1),
+    atom_concat(Home1, N, D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
-kleio_default_stru(D):-
-    working_directory(Home,Home),
-    atom_concat(Home, '/src/gacto2.str', D1),
-    absolute_file_name(D1,D),
-    exists_file(D),!.
+
 kleio_default_stru(_):-
     logging:log_warning('No default structure file found',[]),
     fail.
@@ -803,4 +847,86 @@ kleio_mime_type(FileName,MimeType):- % TODO: why? these are files with no ext
     (Ext = 'xml' -> MimeType=text/xml
         ;
     MimeType=text/Ext),!.
+
+% include normalize the path
+% include a single file no path
+% use the current file directory
+% to generate the full path
+normalize_str_path(File,Path):-
+    atomic_list_concat([_,Ext], '.',File),
+    ( Ext = yaml ; Ext = yml ),
+    get_value(yaml_file,MainFilePath),
+    file_directory_name(MainFilePath,MainFileDir),
+    atomic_list_concat([MainFileDir,File],'/',Path).
+normalize_str_path(File,Path):-
+    atomic_list_concat(Dirs, '.',File),
+    create_str_path(Dirs,DirsExpanded),
+    atomic_list_concat(DirsExpanded,'/',Path).
+
+% last item on path is filename with or not .yaml ext
+create_str_path([File,'yaml'],[FileName]):-
+    atomic_list_concat([File,'yaml'],'.',FileName).
+
+% resolve system dir
+create_str_path([system|Dirs],[SysStruDir|MoreDirs]):-!,
+    kleio_stru_dir(SysStruDir),
+    create_str_path(Dirs,MoreDirs),!.
+
+% resolve user  structures dir
+% this requires some way to get the user structure directory
+% which is normally associated with a user token
+% here we assume that token info is in value "token_info"
+% other wise we default to home.structures
+% see https://github.com/time-link/timelink-kleio/issues/12
+create_str_path([structures|Dirs],[UserStruDir|MoreDirs]):-
+    % in prod
+    get_value(token_info,TokenInfo),
+    kleio_user_structure_dir(UserStruDir, TokenInfo),
+    create_str_path(Dirs,MoreDirs),!.
+
+create_str_path([structures|Dirs],[LocalStructures|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    atomic_list_concat([KleioHomeDir,structures],'/',LocalStructures),
+    create_str_path(Dirs,MoreDirs),
+    !.
+
+% resolve user sources dir
+% see https://github.com/time-link/timelink-kleio/issues/12
+create_str_path([sources|Dirs],[UserStruDir|MoreDirs]):-
+    % in prod
+    get_value(token_info,TokenInfo),
+    kleio_user_source_dir(UserStruDir, TokenInfo),
+    create_str_path(Dirs,MoreDirs),!.
+
+create_str_path([sources|Dirs],[LocalStructures|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    atomic_list_concat([KleioHomeDir,sources],'/',LocalStructures),
+    create_str_path(Dirs,MoreDirs),
+    !.
+% resolve home dir
+create_str_path([home|Dirs],[KleioHomeDir|MoreDirs]):-
+    kleio_home_dir(KleioHomeDir),
+    create_str_path(Dirs,MoreDirs),!.
+
+% resolve . separator TODO: Broken
+create_str_path(['~'|Dirs],[MainFileDir|MoreDirs]):-!,
+    get_value(stru_file,MainFilePath),
+    file_directory_name(MainFilePath,MainFileDir),
+    create_str_path(Dirs,MoreDirs).
+
+% consider every thing else as a directory
+create_str_path([Dir|Dirs],[Dir|MoreDirs]):-
+    create_str_path(Dirs,MoreDirs).
+
+% include file by name
+create_str_path(FileOnly, [MainFileDir,FileOnly]):-
+    atomic(FileOnly),
+    get_value(stru_file,MainFilePath),
+    file_directory_name(MainFilePath,MainFileDir),
+    !.
+
+% include other paths
+create_str_path(OtherPath, [MainFileDir|OtherPath]):-!,
+    get_value(yaml_file,MainFilePath),
+    file_directory_name(MainFilePath,MainFileDir).
 

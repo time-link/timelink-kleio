@@ -8,6 +8,7 @@
         anc_of/2,
         subgroups/2,
         element_of/2,
+        group_elements/2,
         create_groups/1,
         create_elements/1,
         copy_fons_e/2,
@@ -22,13 +23,16 @@
         set_element_defaults/1,
         all_groups/1,
         all_elements/1,
+        classes_topological_order/2,
         show_stru/0,
         show_groups/0,
         show_elements/0,
         clean_groups/1,
         clean_elements/1,
         make_html_doc/1,
-        make_json_yaml_str/3
+        make_json_yaml_str/3,
+        make_json_yaml_hierarchy/3,
+        make_json_yaml_hierarchy/4
 ]).
 
 /** <module> Code for dealing with the data dictionary.
@@ -88,6 +92,9 @@
 :-use_module(struSyntax).
 :-use_module(library(http/json)).
 :-use_module(library(yaml)).
+:-use_module(library(ugraphs)).
+:-use_module(library(lists)).
+:-use_module(library(date)).
 
 % dynamic thread local
 ?-thread_local(clioStru_/1).
@@ -168,6 +175,7 @@ anc_of(G,A):-
     clioGroup(A,ID),
     get_prop(ID,pars,L),
     member(G,L).
+
 %anc_of(G,A):- % check inheritance
 %   anc_of_i(G,A).
 
@@ -215,6 +223,15 @@ element_of(E,G):-
       clioGroup(G,ID),
       get_prop(ID,locus,L),
       member(E,L).
+
+%*******************************************************
+% group_elements(G,Elements)
+%   returns the list of elements that belong to group G
+%********************************************************
+% %
+group_elements(G,Elements):-
+   setof(E,element_of(E,G),Elements),!.
+
 %*************************************************************
 % create_groups(NameList)
 %   creates, if not yet created, structures for the groups
@@ -307,6 +324,13 @@ set_group_prop(G,P,V):-
 get_group_prop(G,P,V):-
    clioGroup(G,I),
    get_prop(I,P,V).
+get_group_prop(G,P,V):-
+   clioGroup(G,I),
+   \+ get_prop(I,P,_), % if property does not exist
+   struSyntax:engkw(P,EP),  % try in english
+   get_prop(I,EP,V).
+
+
 %*************************************************************
 % set_groups_prop(List,Prop,Value)
 %      same as above but sets the property for a list of groups
@@ -543,6 +567,36 @@ all_groups(List):-findall(G,clioGroup(G,_),List),!.
 % %
 all_elements(List):-findall(E,clioElement(E,_),List),!.
 
+%**************************************************************
+% classes_topological_order(+Classes,-Hierarchy)
+% Build a hierarchy of classes from the given list of classes.
+% The hierarchiy is the list of Classes and their superclasses
+% in topological order, roots first.
+%**************************************************************
+classes_topological_order(Cs, Sorted) :-
+    % Collect all classes in the hierarchy (including Cs and all superclasses)
+    findall(Class, (member(C, Cs), reachable(C, Class)), ClassesList),
+    sort(ClassesList, AllClasses),
+    % Build graph: edges from superclass to subclass
+    maplist(collect_subclasses(AllClasses), AllClasses, Graph),
+    % Perform topological sort
+    top_sort(Graph, Sorted).
+
+isSuper(C, S) :-
+    clioGroup(C, ID),
+    get_prop(ID, fons, S),!.
+
+% Traverse superclass hierarchy
+reachable(C, C).
+reachable(C, X) :-
+    isSuper(C, S),
+    reachable(S, X).
+
+% Collect immediate subclasses of a superclass
+collect_subclasses(AllClasses, S, S-Subs) :-
+    findall(C, (member(C, AllClasses), isSuper(C, S)), Subs).
+
+
 %******************************************************
 %  show_stru:- show current structure definition
 %******************************************************
@@ -630,13 +684,40 @@ make_html_doc(DocPath):-
 % 		{	}
 %     ]
 %}
-make_json_yaml_doc(ClioFile,JsonFile, YamlFile):-
+make_json_yaml_str(ClioFile,JsonFile, YamlFile):-
    collect_groups_json(GroupsInfo),
    collect_elements_json(ElementsInfo),
-   append(GroupsInfo,ElementsInfo,StruItems),
+   make_json_yaml(ClioFile,JsonFile,YamlFile,GroupsInfo,ElementsInfo),
+   !.
+
+% make_json_yaml_hierarchy(+Root,+ClioFile,+JsonFile,+YamlFile) is det.
+%  Generate a JSON and YAML representations of the kleio stru file (Schema)
+%  with hierarchy of groups at certain root
+make_json_yaml_hierarchy(Root,JsonFile,YamlFile):-
+   make_json_yaml_hierarchy(Root,JsonFile,YamlFile,[only([fons,pars,repetitio,nota])]).
+
+make_json_yaml_hierarchy(Root,JsonFile,YamlFile,Options):-
+   setof(AF,externals:clio_extends(AF,Root),Groups),
+   dataDictionary:classes_topological_order(Groups,HGroups),
+   dataDictionary:collect_groups_json(HGroups,Info,Options),
+   !,
+   dataDictionary:make_json_yaml(Root,JsonFile,YamlFile,Info,[]).
+
+make_json_yaml(ClioFile,JsonFile,YamlFile,GroupsInfo,ElementsInfo):-
+   append(ElementsInfo,GroupsInfo,StruItems),
    sort(id,@=<,StruItems,StruItemsSorted),
    remove_key(id,StruItemsSorted,StruItemsFinal),
-   JSON_STRU=[path{path:ClioFile}|StruItemsFinal],
+   get_time(TimeStamp),
+   stamp_date_time(TimeStamp, DateTime, 'UTC'),
+   format_time(atom(Date), '%Y-%m-%d', DateTime),
+   get_value(stru_file,StruFile),
+   FileHeader = [file{json_path:JsonFile,
+                  yaml_path:YamlFile,
+                  description:'Automatically generated structure file', 
+                  origin:ClioFile, 
+                  date:Date,
+                  stru:StruFile}],
+   JSON_STRU=[file{file:FileHeader}|StruItemsFinal],
    open_file_write(JsonFile),
    json_write_dict(JsonFile,JSON_STRU,[]),
    close_file(JsonFile),
@@ -644,6 +725,8 @@ make_json_yaml_doc(ClioFile,JsonFile, YamlFile):-
    yaml_write(YamlFile,JSON_STRU),
    close_file(YamlFile),
    !.
+
+
 
 show_groups_html:-
               clioGroup(G,_),
@@ -659,15 +742,30 @@ show_groups_html:-!.
 
 collect_groups_json(GroupsInfo):-
    setof(G,I^clioGroup(G,I),ListOfGroups),
-   collect_groups_json(ListOfGroups,GroupsInfo),
+   collect_groups_json(ListOfGroups,GroupsInfo, []),
    !.
 
-collect_groups_json([G|MoreGroups],[GInfo|MoreGInfo]):-
-   %writeln(G),
-   collect_group_json(G,GInfo),
-   collect_groups_json(MoreGroups,MoreGInfo).
+collect_groups_json(GroupsInfo, Options):-
+   setof(G,I^clioGroup(G,I),ListOfGroups),
+   collect_groups_json(ListOfGroups,GroupsInfo,Options),
+   !.
 
-collect_groups_json([],[]):-!.
+%% collect_groups_json(+ListOfGroups, -GroupsInfo, +Options) is det.
+% Collects information about groups in the current schema.
+% ListOfGroups is a list of group names,
+% GroupsInfo is a list of dictionaries with information about each group.
+% Options is a list of options for collecting group information.
+collect_groups_json([G|MoreGroups],[GInfo|MoreGInfo],Options):-
+   %writeln(G),
+   collect_group_json(G,GInfo,Options),!,
+   collect_groups_json(MoreGroups,MoreGInfo, Options).
+
+collect_groups_json([G|MoreGroups],MoreGInfo,Options):-
+   %writeln(G),
+   \+ collect_group_json(G,_,Options),!,
+   collect_groups_json(MoreGroups,MoreGInfo, Options).
+
+collect_groups_json([],[],_):-!.
 
 collect_elements_json(ElementsInfo):-
    setof(E,I^clioElement(E,I),ListOfElements),
@@ -692,31 +790,29 @@ remove_key(_,[],[]):-!.
 
 
 collect_group_json(G,I):-
+   collect_group_json(G,I,[]).
+
+collect_group_json(G,I,Options):-
    clioGroup(G,ID),
    GroupInfo = G{'name':G},
-   get_props(ID,P),
+   option(only(Props), Options, []), % get options for properties
+   (Props = [] -> get_props(ID,P); P = Props),
    collect_props(ID,P,GroupInfo,GroupInfoUpdated),
    % check for inline documentation
    (clause(struSyntax:gdoc(G,GDoc),true)->
-      true
+      (atomic_list_concat(GDoc, Description),
+      GroupInfoUpdated2 = GroupInfoUpdated.put([description=Description]))
       ;
-      GDoc=['']
+      GroupInfoUpdated2 = GroupInfoUpdated
    ),
-   (bagof(
-      EDoc,(
-      clause(struSyntax:edoc(G,E,Doc),true),
-      atomic_list_concat([E,': '|Doc],EDoc)
-      ),
-      EDocs)
-   ;
-      EDocs=['']
-   ),
-   atomic_list_concat(GDoc,SGDoc),
-   atomic_list_concat(EDocs,'\n',SEDocs),
-   atomic_list_concat([SGDoc,SEDocs],'\n',Description),
-   I = group{group:GroupInfoUpdated.put([description=Description])}.put([id=ID]).
-
-collect_group_json(_,_):-!.
+   I = group{group:GroupInfoUpdated2}.put([id=ID]),
+   !.
+% group does not exist, create a dummy group
+collect_group_json(G, __GroupInfo,_):-
+   \+ clioGroup(G,_),
+   % GroupInfo = group{group:G{'name':G}.put([description:'<undefined>'])},
+   % writeln(['** Warning: group definition for ',G,' not found, creating dummy group']),
+   fail.
 
 collect_element_json(E,I):-
    clioElement(E,ID),
@@ -732,13 +828,26 @@ collect_element_json(E,I):-
    atomic_list_concat(EDoc,Description),
    I = element{element:ElementInfoUpdated.put([description=Description])}.put([id=ID]).
 
-collect_element_json(_,_):-!.
+collect_element_json(E,ElementInfo):-
+   ElementInfo = element{element:E{'name':E}.put([description='Not defined'])}.put([id='*noid*']),
+   writeln('** ERROR element definition not found '-E),!.
 
 collect_props(ID,[Prop|MoreProps],GInfo, GInfoUpdated):-
+   has_prop(ID,Prop),!,
    get_prop(ID,Prop, Value),
    (engkw(EngProp,Prop);EngProp=Prop),
    GInfoWithProp = GInfo.put(EngProp, Value),
    collect_props(ID,MoreProps,GInfoWithProp,GInfoUpdated).
+% handles prop names in English
+collect_props(ID,[EngProp|MoreProps],GInfo, GInfoUpdated):-
+   engkw(EngProp,LatinProp),
+   has_prop(ID,LatinProp),!,
+   get_prop(ID,LatinProp, Value),
+   GInfoWithProp = GInfo.put(EngProp, Value),
+   collect_props(ID,MoreProps,GInfoWithProp,GInfoUpdated).
+collect_props(ID,[Prop|MoreProps],GInfo, GInfoUpdated):-
+   \+ has_prop(ID,Prop),!,
+   collect_props(ID,MoreProps,GInfo,GInfoUpdated).
 
 collect_props(__,[],GInfo, GInfo).
 

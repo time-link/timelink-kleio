@@ -652,7 +652,18 @@ kleio_stru_dir(D):-
 kleio_stru_dir(D):-
     source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
-    file_directory_name(FilePath,D).
+    file_directory_name(FilePath,H),
+    atom_concat(H, '/stru', D1),
+    absolute_file_name(D1,D),
+    exists_directory(D).
+
+
+kleio_stru_dir(D):-
+    source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
+    % get the directory from FilePath
+    file_directory_name(FilePath,D1),
+    absolute_file_name(D1,D),
+    exists_directory(D).
 
 %% kleio_default_stru_names(-StruNames:list) is det.
 %
@@ -660,15 +671,19 @@ kleio_stru_dir(D):-
 %  The list typically includes the main structure definition file and the system configuration file.
 %
 %  @param StruNames A list of file names (as atoms or strings) representing the default structure files.
-kleio_default_stru_names(['gacto2.str', 'system.yaml']).
+kleio_default_stru_names(['sources-structure.yaml','gacto2.str']).
 
 %% kleio_default_stru(?Path) is det.
 % Returns the path to the default stru for translations,
 % NAME of default stru given by kleio_default_stru_names/1 which is a list of names
-% normally KLEIO_STRU_DIR/NAME or system.yaml but can be overriden by environment
+% normally KLEIO_STRU_DIR/NAME or sources-structure.yaml but can be overriden by environment
 % variable KLEIO_DEFAULT_STRU.
 % if none tries names in the working dir or working dir/str
-kleio_default_stru(D):-getenv('KLEIO_DEFAULT_STRU', D),!.
+kleio_default_stru(D):-
+    getenv('KLEIO_DEFAULT_STRU', D1),
+    absolute_file_name(D1,D),
+    exists_file(D),
+    !.
 kleio_default_stru(D):-
     kleio_stru_dir(H),
     kleio_default_stru_names(Ns),
@@ -676,23 +691,34 @@ kleio_default_stru(D):-
     atom_concat(H, '/', H1),
     atom_concat(H1, N, D1),
     absolute_file_name(D1,D),
+    exists_file(D),
+    !.
+kleio_default_stru(D):-
+    kleio_conf_dir(H),
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(H, '/kleio/stru', H1),
+    atom_concat(H1, N, D1),
+    absolute_file_name(D1,D),
+    exists_file(D),
+    !.
+kleio_default_stru(D):-
+    working_directory(Home,Home),
+    kleio_default_stru_names(Ns),
+    member(N,Ns),
+    atom_concat(Home, '/stru', Home1), % stru structure in working dir of the server dir
+    atom_concat(Home1, N, D1),
+    absolute_file_name(D1,D),
     exists_file(D),!.
 kleio_default_stru(D):-
-    working_directory(Home,Home), % this is the install dir of the server
+    working_directory(Home,Home), % in working dir of the serverr
     kleio_default_stru_names(Ns),
     member(N,Ns),
     atom_concat(Home, '/', Home1),
     atom_concat(Home1, N, D1),
     absolute_file_name(D1,D),
     exists_file(D),!.
-kleio_default_stru(D):-
-    working_directory(Home,Home),
-    kleio_default_stru_names(Ns),
-    member(N,Ns),
-    atom_concat(Home, '/str', Home1), % str structure in source dir
-    atom_concat(Home1, N, D1),
-    absolute_file_name(D1,D),
-    exists_file(D),!.
+
 kleio_default_stru(_):-
     logging:log_warning('No default structure file found',[]),
     fail.

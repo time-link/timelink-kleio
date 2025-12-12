@@ -1,4 +1,4 @@
-kleio$gacto.str/gactoxml.str/translations=1
+kleio$gacto.str/gactoxml.str/translations=10
    fonte$casamentos 1693/tipo=reg paroquiais/data= 16930000/localizacao= 116
 
       cas$c1693.1/7/1/1693/igreja matriz/luis alvares pinto
@@ -71,7 +71,8 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$manuel cardoso/id=c1693.3-per7
             ls$residencia/soure
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.3-per8
+         test$joao/id=c1693.3-per8
+            ls$cargo/tesoureiro
 
       cas$c1693.4/1/2/1693/igreja matriz/luis alvares pinto
 
@@ -144,7 +145,8 @@ kleio$gacto.str/gactoxml.str/translations=1
 
          test$antonio fernandes toucinho/id=c1693.6-per8
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.6-per9
+         test$joao/id=c1693.6-per9
+            ls$cargo/tesoureiro
             ls$residencia/soure
 
       cas$c1693.7/13/4/1693/igreja matriz/luis alvares pinto
@@ -223,7 +225,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
       cas$c1693.10/3/5/1693/ermida de s.geraldo/luis alvares pinto
 
-         noivo$manuel homem de quadros/mesmo_que=c6-7/id=c1693.10-per1
+         noivo$manuel homem de quadros/id=c1693.10-per1
 
             pnoivo$rodrigo homem de quadros/id=c1693.10-per2
                ls$residencia/soure
@@ -232,7 +234,7 @@ kleio$gacto.str/gactoxml.str/translations=1
             mnoivo$isabel da silva mascarenhas/id=c1693.10-per3
                ls$morta/antes
 
-         noiva$isabel maria de castelo branco/mesmo_que=c6-7-isa/id=c1693.10-per4
+         noiva$isabel maria de castelo branco/id=c1693.10-per4
             ls$nome/isabel maria de castelo branco
             ls$titulo/dona
 
@@ -288,11 +290,12 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$maria ferreira/id=c1693.12-per6
 
-         test$sebastiao machado da costa/mesmo_que=c12-8/id=c1693.12-per7
+         test$sebastiao machado da costa/id=c1693.12-per7
             ls$nome/sebastiao machado
             ls$residencia/soure
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.12-per8
+         test$joao/id=c1693.12-per8
+            ls$cargo/tesoureiro
 
       cas$c1693.13/17/5/1693/igreja matriz/jose pinto
 
@@ -317,8 +320,9 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$antonio rodrigues/id=c1693.13-per8
             ls$residencia/sobral
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.13-per9
+         test$joao/id=c1693.13-per9
             ls$residencia/soure
+            ls$cargo/tesoureiro
 
       cas$c1693.14/20/5/1693/igreja matriz/jose pinto
 
@@ -642,11 +646,12 @@ kleio$gacto.str/gactoxml.str/translations=1
             ls$residencia/paleao
             ls$profissao/sapateiro
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.26-per8
+         test$joao/id=c1693.26-per8
+            ls$cargo/tesoureiro
 
       cas$c1693.27/10/9/1693/ermida de s.mateus/manuel duarte de porto panelas
 
-         noivo$jose da cunha de sa/mesmo_que=c180-7/id=c1693.27-per1
+         noivo$jose da cunha de sa/id=c1693.27-per1
 
             pnoivo$manuel da cunha homem/id=c1693.27-per2
                ls$residencia/quinta do sobral
@@ -743,7 +748,8 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$ana rodrigues/id=c1693.30-per6
 
-         test$joao/mesmo_que=joaotesoura/id=c1693.30-per7
+         test$joao/id=c1693.30-per7
+            ls$cargo/tesoureiro
             ls$residencia/soure
 
          test$manuel pinto/id=c1693.30-per8
@@ -769,7 +775,7 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$gaspar antunes/id=c1693.31-per7
             ls$residencia/olho marinho
 
-         test$domingos goncalves/mesmo_que=c2-7/id=c1693.31-per8
+         test$domingos goncalves/id=c1693.31-per8
             ls$residencia/casais do espirito santo
 
       cas$c1693.32/12/10/1693/igreja matriz/luis alvares pinto
@@ -789,7 +795,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$maria gaspar/id=c1693.32-per5
 
-         test$domingos goncalves/mesmo_que=c2-7/id=c1693.32-per6
+         test$domingos goncalves/id=c1693.32-per6
             ls$residencia/casais
 
          test$gaspar antunes/id=c1693.32-per7
@@ -836,7 +842,7 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$jose barbosa canais/id=c1693.34-per7
             ls$residencia/soure
 
-         test$domingos goncalves/mesmo_que=c2-7/id=c1693.34-per8
+         test$domingos goncalves/id=c1693.34-per8
             ls$residencia/casais do espirito santo
 
       cas$c1693.35/3/11/1693/igreja matriz/luis alvares pinto
@@ -858,7 +864,7 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$jose barbosa canais/id=c1693.35-per7
             ls$residencia/soure
 
-         test$domingos goncalves/mesmo_que=c2-7/id=c1693.35-per8
+         test$domingos goncalves/id=c1693.35-per8
             ls$residencia/casais do espirito santo
 
       cas$c1693.36/4/11/1693/igreja matriz/luis alvares pinto
@@ -878,7 +884,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$isabel rodrigues/id=c1693.36-per6
 
-         test$joao da costa de vasconcelos/mesmo_que=c12-7/id=c1693.36-per7
+         test$joao da costa de vasconcelos/id=c1693.36-per7
             ls$residencia/soure
 
          test$vasco botelho/id=c1693.36-per8
@@ -947,7 +953,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$isabel rodrigues/id=c1693.39-per6
 
-         test$sebastiao soares coelho/mesmo_que=sscoelho/id=c1693.39-per7
+         test$sebastiao soares coelho/id=c1693.39-per7
             ls$residencia/soure
 
          test$luis coelho/id=c1693.39-per8

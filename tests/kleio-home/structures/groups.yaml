@@ -369,6 +369,41 @@
     description: >
         A female person related by kin to an actor in an act or event.
 - group:
+    name: kin-father
+    source: kin-m
+    description: >
+        A male person related by kin to an actor in an act or event.
+
+- group:
+    name: kin-mother
+    source: kin-f
+    description: >
+        A female person related by kin to an actor in an act or event.
+
+
+- group:
+    name: kin-husband
+    source: kin-m
+    description: >
+        A male person related by kin to an actor in an act or event.
+
+- group:
+    name: kin-wife
+    source: kin-f
+    description: >
+        A female person related by kin to an actor in an act or event.
+
+- group:
+    name: kin-son
+    source: kin-m
+    description: >
+        A male person related by kin to an actor in an act or event.
+- group:
+    name: kin-daughter
+    source: kin-f
+    description: >
+        A female person related by kin to an actor in an act or event.
+- group:
     name: actorf
     source: female
     contains: [ls,atr,rel,kin-m,kin-f]

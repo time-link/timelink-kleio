@@ -1,0 +1,12 @@
+# Pyenv setup - only initialization (moved to .zprofile for efficiency)
+# Note: Actual PYENV_ROOT and PATH setup moved to .zprofile
+
+# SWI Prolog path
+export PATH="$PATH:/Applications/SWI-Prolog.app/Contents/MacOS"
+
+# Pip user bin directory
+export PATH="/Users/jrc/.local/bin:$PATH"
+
+# SSL certificate handling
+# requires pip install --upgrade certifi
+export SSL_CERT_FILE=$(python -m certifi)

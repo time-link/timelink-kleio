@@ -257,6 +257,16 @@ updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     anc_of(NewGroup,Anc),% see if they are the ancestor of newGroup%
     cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
 
+updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
+    clio_bclass(NewGroup,BaseNew),
+    reverse(Path,RPath), %reverse the path list %
+    member(A,RPath),     % get groups from path in reverse order%
+    A =.. [Anc,__AID],     % get group names %
+    clio_bclass(Anc,BaseAnc),
+    anc_of(BaseNew,BaseAnc),% see if they are the ancestor of newGroup%
+    cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
+
+
 cutListAfter([E|_L],E,[E]):-!.
 cutListAfter(L,G,NL):-
     append([A|B],[G|_C],L),

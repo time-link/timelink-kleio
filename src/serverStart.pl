@@ -357,7 +357,15 @@ test_case(translations,File,Stru):-
     Flag = true,
     format('TESTING ~wn',[File]).
 
+list_active_tests:-
+    translate_file(File,true),
+    writeln(File),
+    fail.
+list_active_tests.
+
 % yaml str testing
+translate_file('sources/api/', false).  % all reference sources
+translate_file('sources/api/issues/issue15/issue15.cli', true).  % all reference sources
 translate_file('sources/api/yaml/pt-groups.kleio', false).
 translate_file('sources/api/yaml/jcatalog.kleio', false).
 translate_file('sources/api', false).
@@ -375,10 +383,11 @@ translate_file('sources/api/issues/issue21.cli',false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
+translate_file('sources/api/locate_stru_file/default-stru.kleio',false).
 %
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
-translate_file('sources/api/issues/issue15/issue15.cli',true).
+translate_file('sources/api/issues/issue15/issue15.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
 translate_file('sources/api/varia/cartas.cli',false).

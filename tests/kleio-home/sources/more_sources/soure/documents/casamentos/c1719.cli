@@ -1,4 +1,4 @@
-kleio$gacto.str/gactoxml.str/translations=1
+kleio$gacto.str/gactoxml.str/translations=6
    fonte$casamentos 1719/tipo=reg paroquiais/data=17190000/localizacao=285
 
       cas$c1719.1/23/1/1719/igreja matriz/manuel duarte
@@ -92,7 +92,8 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$antonio dos santos/id=c1719.3-per9
             ls$residencia/casa velha
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1719.3-per10
+         test$manuel rodrigues alvaro/id=c1719.3-per10
+            ls$profissao/padre
 
       cas$c1719.4/20/2/1719/nossa senhora de finisterra/manuel rodrigues (vigario)
 
@@ -204,9 +205,9 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$maria joao/id=c1719.7-per6
 
-         test$pedro de brito da silva/mesmo_que=c6-7-ped/id=c1719.7-per7
+         test$pedro de brito da silva/id=c1719.7-per7
 
-         referida$isabel da silva/mesmo_que=c6-7-isa/id=c1719.7-per8
+         referida$isabel da silva/id=c1719.7-per8
             ls$titulo/dona
             ls$ec/v
             rel$parentesco/mae/pedro de brito da silva/c6-7-ped
@@ -396,7 +397,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$catarina simoes/id=c1719.13-per6
 
-         test$vicente colaco de morais/mesmo_que=c104-7/id=c1719.13-per7
+         test$vicente colaco de morais/id=c1719.13-per7
             ls$residencia/soure
 
          test$pedro de eiro matoso/id=c1719.13-per8
@@ -405,7 +406,7 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$manuel pinto de miranda/id=c1719.13-per9
             ls$residencia/soure
 
-         test$sebastiao machado da costa/mesmo_que=c12-8/id=c1719.13-per10
+         test$sebastiao machado da costa/id=c1719.13-per10
             ls$residencia/soure
 
       cas$c1719.14/10/7/1719/igreja matriz/manuel rodrigues (vigario)
@@ -472,13 +473,14 @@ kleio$gacto.str/gactoxml.str/translations=1
          noiva$leogarda maria pessoa da silva/id=cnoiva19071719
             rel$parentesco/grau 3c#por bula pontificia/joao de sequeira coelho/cnoivo19071719
 
-            pnoiva$sebastiao colaco leitao/mesmo_que=c68-7/id=c1719.15-per3
+            pnoiva$sebastiao colaco leitao/id=c1719.15-per3
                ls$morto/antes
                ls$residencia/soure
 
             mnoiva$maria de jesus/id=c1719.15-per4
 
-         test$manuel pessoa leitao/mesmo_que=ppessoa/id=c1719.15-per5
+         test$manuel pessoa leitao/id=c1719.15-per5
+            ls$profissao/padre
 
          test$joao colaco de morais/id=ctest19071719
 
@@ -488,7 +490,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
          test$domingos joao hospitaleiro/id=c1719.15-per7
 
-         referido$vicente colaco de morais/mesmo_que=c104-7/id=c1719.15-per8
+         referido$vicente colaco de morais/id=c1719.15-per8
             rel$parentesco/tio/leogarda maria pessoa da silva/cnoiva19071719
             rel$sociabilidade/procurador em casamento/leogarda maria pessoa da silva/cnoiva19071719
 
@@ -509,8 +511,9 @@ kleio$gacto.str/gactoxml.str/translations=1
 
             mnoiva$maria rodrigues/id=c1719.16-per6
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1719.16-per7
+         test$manuel rodrigues alvaro/id=c1719.16-per7
             ls$cargo/tesoureiro da igreja
+            ls$profissao/padre
 
          test$jose simoes/id=c1719.16-per8
             ls$residencia/presa
@@ -681,7 +684,7 @@ kleio$gacto.str/gactoxml.str/translations=1
                ls$freguesia/varzea de gois
                ls$naturalidade/freguesia de varzea de gois
 
-         test$domingos goncalves galhardo/mesmo_que=dggalhardo/id=c1719.21-per7
+         test$domingos goncalves galhardo/id=c1719.21-per7
             ls$residencia/soure
 
          test$manuel de brito/id=c1719.21-per8

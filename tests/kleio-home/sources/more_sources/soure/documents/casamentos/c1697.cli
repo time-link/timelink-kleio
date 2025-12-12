@@ -1,5 +1,5 @@
-kleio$gacto.str/gactoxml.str/translations=1
-   fonte$casamentos 1697/tipo=reg paroquiais/data=16970000/localizacao=fol.?
+kleio$gacto.str/gactoxml.str/translations=12
+   fonte$c1697/substitui=casamentos 1697/tipo=reg paroquiais/data=16970000/localizacao=fol.?
 
       cas$c1697-47/14/1/1697/igreja matriz/luis alvares pinto
 
@@ -119,11 +119,13 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$joao madeira/id=c50-8
             ls$residencia/paleao
 
-         test$manuel rodrigues alvaro/id=c50-9/mesmo_que=c2-8
+         test$manuel rodrigues alvaro/id=c50-9
+            ls$profissao/padre
 
       cas$c1697-51/5/2/1697/igreja matriz/padre jose pinto
 
-         referido$jose pinto/id=c51-r1/mesmo_que=c13-r1
+         referido$jose pinto/id=c51-r1
+            ls$profissao/padre
 
          noivo$domingos andre/id=c51-1
             ls$residencia/barrosas%barrosos#ao pe do mogadouro[entao deve ser barrosas]
@@ -201,7 +203,8 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$simao domingues/id=c53-8
             ls$residencia/casconho
 
-         test$manuel rodrigues alvaro/id=c53-9/mesmo_que=c2-8
+         test$manuel rodrigues alvaro/id=c53-9
+            ls$profissao/padre
 
       cas$c1697-54/11/2/1697/igreja matriz/luis alvares pinto
 
@@ -507,7 +510,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
          test$manuel domingues/id=c64-7
             ls$residencia/casconho
-            ls$alcunha/o mais velho
+            ls$alcunha/mais velho
 
          test$marcos joao/id=c64-8/obs=possivelmente filho de c64-2
             ls$residencia/simoes
@@ -781,7 +784,8 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$domingos lopes/id=c73-8
             ls$residencia/casa velha
 
-         test$lopo nunes pinto/id=c73-9/mesmo_que=c1-7
+         test$lopo nunes pinto/id=c73-9
+            ls$profissao/padre
 
       cas$c1697-74/27/5/1697/igreja matriz/luis alvares pinto
 
@@ -844,7 +848,7 @@ kleio$gacto.str/gactoxml.str/translations=1
                ls$residencia/casal das galinhas
                ls$morta/antes
 
-         test$paulo ribeiro cabral/id=c75-7/mesmo_que=c24-7
+         test$paulo ribeiro cabral/id=c75-7
             ls$residencia/soure
             ls$profissao/capitao-mor
 
@@ -916,7 +920,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
       cas$c1697-78/19/8/1697/igreja matriz/lopo nunes pinto
 
-         referido$lopo nunes pinto/id=c78-r1/mesmo_que=c1-7
+         referido$lopo nunes pinto/id=c78-r1
             ls$residencia/soure
             ls$profissao/padre/obs=celebra o casamento 78
 
@@ -939,17 +943,17 @@ kleio$gacto.str/gactoxml.str/translations=1
             ls$residencia/soure
             ls$alcunha/moco
 
-         test$luis cordeiro/id=c78-8/mesmo_que=c26-8
+         test$luis cordeiro/id=c78-8
             ls$residencia/soure
             ls$cargo/tesoureiro da igreja
 
-         test$manuel rodrigues alvaro/id=c78-9/mesmo_que=c2-8
+         test$manuel rodrigues alvaro/id=c78-9
             ls$residencia/soure
-            ls$profisso/padre
+            ls$profissao/padre
 
       cas$c1697-79/1/10/1697/igreja matriz/frei jose pinto
 
-         referido$jose pinto/id=c79-r1/mesmo_que=c13-r1
+         referido$jose pinto/id=c79-r1
             ls$titulo/frei
             ls$profissao/padre#celebra o casamento 79
 
@@ -979,7 +983,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
       cas$c1697-80/7/10/1697/igreja matriz/jose pinto
 
-         referido$jose pinto/id=c80-r1/mesmo_que=c13-r1
+         referido$jose pinto/id=c80-r1
             ls$titulo/frei
             ls$profissao/padre#celebra o casamento 80
 
@@ -1088,11 +1092,11 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$antonio de melo e ataide/id=c83-7
             ls$residencia/quinta da capa rota%na sua quinta...
 
-         test$antonio manhos/id=c83-8/mesmo_que=c5-7
+         test$antonio manhos/id=c83-8
             ls$residencia/soure
             ls$titulo/licenciado
 
-         test$manuel simoes/id=c83-9/mesmo_que=c28-7
+         test$manuel simoes/id=c83-9
             ls$alcunha/moco
             ls$residencia/casa velha
 
@@ -1182,7 +1186,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
       cas$c1697-86/25/11/1697/igreja matriz/frei jose pinto
 
-         referido$jose pinto/id=c86-r1/mesmo_que=c13-r1
+         referido$jose pinto/id=c86-r1
             ls$titulo/frei
             ls$cargo/beneficiado da igreja de soure
             ls$profissao/padre#celebra o casamento 86
@@ -1216,7 +1220,7 @@ kleio$gacto.str/gactoxml.str/translations=1
 
       cas$c1697-87/26/11/1697/ermida de s.joao, paleao/frei jose pinto
 
-         referido$jose pinto/id=c87-r1/mesmo_que=c13-r1
+         referido$jose pinto/id=c87-r1
             ls$titulo/frei
             ls$cargo/beneficiado da igreja de soure
             ls$profissao/padre#celebra o casamento 87
@@ -1363,7 +1367,7 @@ kleio$gacto.str/gactoxml.str/translations=1
          test$manuel goncalves/id=c91-7
             ls$residencia/fatacos
 
-         test$domingos goncalves/id=c91-8/mesmo_que=c2-7
+         test$domingos goncalves/id=c91-8
             ls$residencia/casais do espirito santo
             ls$profissao/padre
 
@@ -1451,7 +1455,7 @@ kleio$gacto.str/gactoxml.str/translations=1
                ls$residencia/casal de galinhas
                ls$morta/antes
 
-         test$domingos goncalves/id=c94-7/mesmo_que=c2-7
+         test$domingos goncalves/id=c94-7
             ls$residencia/casais do espirito santo
             ls$profissao/padre
 

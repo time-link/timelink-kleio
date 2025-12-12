@@ -1,4 +1,4 @@
-kleio$gacto.str/gactoxml.str/translations=2
+kleio$gacto.str/gactoxml.str/translations=12
    fonte$casamentos 1717/tipo=reg paroquiais/data= 17170000/localizacao=140v (272v)
 
       cas$c1717.1/11/1/1717/igreja matriz/manuel duarte
@@ -98,7 +98,7 @@ kleio$gacto.str/gactoxml.str/translations=2
          test$manuel ferreira/id=c1717.3-per10
             ls$alcunha/moco
 
-         test$manuel pessoa leitao/mesmo_que=ppessoa/id=c1717.3-per11
+         test$manuel pessoa leitao/id=c1717.3-per11
             ls$titulo/licenciado
             ls$profissao/padre
 
@@ -135,7 +135,7 @@ kleio$gacto.str/gactoxml.str/translations=2
          test$joao rodrigues alvaro/id=sacrista1
             ls$cargo/sacristao da igreja de soure
 
-         test$henrique barbosa canais/mesmo_que=hbcanais/id=c1717.4-per10
+         test$henrique barbosa canais/id=c1717.4-per10
             ls$nome/henrique barbosa
 
       cas$c1717.5/18/1/1717/igreja matriz/manuel duarte
@@ -191,7 +191,7 @@ kleio$gacto.str/gactoxml.str/translations=2
             ls$cargo/vigario de tapeus
             ls$profissao/padre
 
-         test$jose barbosa canais/mesmo_que=c17-7/id=c1717.6-per8
+         test$jose barbosa canais/id=c1717.6-per8
 
          test$antonio lourenco/id=c1717.6-per9
             rel$parentesco/genro/jose barbosa canais/c17-7
@@ -226,13 +226,13 @@ kleio$gacto.str/gactoxml.str/translations=2
             mnoiva$luisa de almeida e sampaio/id=c1717.7-per5
                ls$titulo/dona
 
-         referido$luis manhos de abreu/mesmo_que=lmabreu/id=c1717.7-per6
+         referido$luis manhos de abreu/id=c1717.7-per6
             rel$sociabilidade/procurador em casamento/luisa maria de almeida e sampaio/cnoiva22041717
 
-         test$sebastiao machado da costa/mesmo_que=c12-8/id=c1717.7-per7
+         test$sebastiao machado da costa/id=c1717.7-per7
 
          test$joao da costa/id=c1717.7-per8
-            rel$parentesco/filho/sebastiao machado da costa/c12-8
+            rel$parentesco/filho/sebastiao machado da costa/c1717.7-per7
 
          test$antonio manhos/id=c1717.7-per9
             ls$profissao/padre
@@ -310,7 +310,7 @@ kleio$gacto.str/gactoxml.str/translations=2
 
             mnoiva$isabel gaspar/id=c1717.9-per6
 
-         test$domingos goncalves galhardo/mesmo_que=dggalhardo/id=c1717.9-per7
+         test$domingos goncalves galhardo/id=c1717.9-per7
             ls$residencia/soure
 
          test$domingos joao/id=c1717.9-per8
@@ -476,30 +476,31 @@ kleio$gacto.str/gactoxml.str/translations=2
 
       cas$c1717.15/27/6/1717/igreja de nossa senhora de finisterra/manuel rodrigues (vigario)
 
-         noivo$henrique barbosa canais/mesmo_que=hbcanais/id=c1717.15-per1
+         noivo$henrique barbosa canais/id=c1717.15-per1
 
-            pnoivo$jose barbosa canais/mesmo_que=c17-7/id=c1717.15-per2
+            pnoivo$jose barbosa canais/id=c1717.15-per2
 
             mnoivo$antonia/id=c1717.15-per3
                ls$titulo/dona
 
-         noiva$angela maria/mesmo_que=c12-8-ang/id=c1717.15-per4
+         noiva$angela maria/id=c1717.15-per4
 
-            pnoiva$sebastiao machado da costa/mesmo_que=c12-8/id=c1717.15-per5
+            pnoiva$sebastiao machado da costa/id=c1717.15-per5
                ls$residencia/soure
 
             mnoiva$angela luisa/id=c1717.15-per5b
 
          referido$joao da costa machado/id=c1717.15-per6
             ls$ec/s
-            rel$parentesco/filho/sebastiao machado da costa/c12-8
-            rel$sociabilidade/procurador em casamento/angela maria/c12-8-ang
+            rel$parentesco/filho/sebastiao machado da costa/c1717.15-per5
+            rel$sociabilidade/procurador em casamento/angela maria/c1717.15-per5
 
          test$antonio galvao ribeiro/id=c1717.15-per7
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1717.15-per8
+         test$manuel rodrigues alvaro/id=c1717.15-per8
+            ls$profissao/padre
 
-         test$jose barbosa canais/mesmo_que=c17-7/id=c1717.15-per9
+         test$jose barbosa canais/id=c1717.15-per9
 
          test$francisca/id=c1717.15-per10
             ls$ec/s
@@ -523,8 +524,9 @@ kleio$gacto.str/gactoxml.str/translations=2
                ls$alcunha/barrinha
                ls$residencia/soure
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1717.16-per6
+         test$manuel rodrigues alvaro/id=c1717.16-per6
             ls$cargo/tesoureiro
+            ls$profissao/padre
 
          test$joao rodrigues alvaro/mesmo_que=sacrista1/id=c1717.16-per7
             ls$cargo/sacristao
@@ -635,8 +637,9 @@ kleio$gacto.str/gactoxml.str/translations=2
          test$antonio dos santos/id=c1717.19-per11
             ls$profissao/cirurgiao
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1717.19-per12
+         test$manuel rodrigues alvaro/id=c1717.19-per12
             ls$cargo/tesoureiro
+            ls$profissao/padre
 
          test$joao rodrigues alvaro/id=c1717.19-per13
             ls$residencia/soure
@@ -734,7 +737,8 @@ kleio$gacto.str/gactoxml.str/translations=2
          test$antonio martins/id=c1717.22-per8
             ls$residencia/carvalheira de cima
 
-         test$manuel rodrigues alvaro/mesmo_que=padre_alvaro/id=c1717.22-per9
+         test$manuel rodrigues alvaro/id=c1717.22-per9
+            ls$profissao/padre
 
          test$joao rodrigues alvaro/mesmo_que=sacrista1/id=c1717.22-per10
             ls$alcunha/moco

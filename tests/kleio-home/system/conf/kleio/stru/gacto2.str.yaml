@@ -1,4 +1,8 @@
-- path: ./tests/kleio-home/system/conf/kleio/stru/gacto2.str
+- file:
+  - description: Automatically generated structure file
+    json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/system/conf/kleio/stru/gacto2.str.json
+    origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/system/conf/kleio/stru/gacto2.str
+    yaml_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/system/conf/kleio/stru/gacto2.str.yaml
 - element:
     description: 'Any number '
     identification: non
@@ -1447,7 +1451,6 @@
     - dia
     - mes
     - ano
-    - folio
     idprefix: his
     name: devassa
     position:
