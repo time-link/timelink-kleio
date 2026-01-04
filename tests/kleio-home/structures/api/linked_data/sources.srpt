@@ -1,9 +1,53 @@
 KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
-31-10-2025 11-36
+Current time: 2026-01-04 20:27:02
+
 
 Processing structure:sources.str
 Creating new structure definition for: kleio
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 300 Warning: Element destination already defined. element properties will be merged.
+Near lines: 300 element name=destination
+Near lines: 301 element name=summary
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 309 Warning: Element replace already defined. element properties will be merged.
+Near lines: 309 element name=replace
+Near lines: 310 element name=kleiofile
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 442 Warning: Group acao already defined. command properties will be merged.
+Near lines: 442 
+Near lines: 443 note ****************************************************************
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 940 Warning: Element sumario already defined. element properties will be merged.
+Near lines: 940 element name=sumario; source=summary
+Near lines: 941 element name=fol; source=ref;
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 942 Warning: Element fol already defined. element properties will be merged.
+Near lines: 942 
+Near lines: 943 note *****************************************************************
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 2217 Warning: Group beneficiario already defined. command properties will be merged.
+Near lines: 2217 part name=beneficiario;source=actorm
+Near lines: 2218 part name=beneficiario-representante;source=actorm
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 2312 Warning: Group vendedor already defined. command properties will be merged.
+Near lines: 2312 part name=vendedor;source=actorm
+Near lines: 2313 part name=comprador;source=actorm
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/issues/issue15/issue15.cli line 2313 Warning: Group comprador already defined. command properties will be merged.
+Near lines: 2313 part name=comprador;source=actorm
+Near lines: 2314 part name=transportador;source=actorm
+
 End of File
 0  errors. 
-0  warnings.
+8  warnings.
 -----------End of structure --------
+0  errors. 
+8  warnings.
+Structure processing finished.

@@ -89,6 +89,7 @@ closeStru(_):-
 %******************************************************
 %  %
 init_command(C):-
+   put_value(current_command,C),
    del_props(C),
    set_defaults(C),!.
 
@@ -125,9 +126,9 @@ close_command(exitus,ok):-!.
 %******************************************************
 %  %
 set_defaults(CMD):-
-   \+ member(CMD,[nomino,pars,terminus,exitus]),
-   report([write('** Set defaults not implemented for: '),
-           write(CMD),nl]),!.
+   \+ member(CMD,[nomino,pars,terminus,exitus, nota]),
+   errors:error_out(['** Set defaults not implemented for: ',CMD]),
+   !.
 
 set_defaults(nomino):-
    set_prop(nomino,modus,permanens),
@@ -201,7 +202,8 @@ execParam(pars,nomen,NameList):-
 execParam(pars,Param,_):-
    Param \= nomen,
    \+ get_prop(pars,nomen,_), % no nomen, nothing else works %
-   error_out('** Nomen parameter needed in pars before other parameters'),!.
+   get_value(stru_file,StruFile),
+   error_out('** Nomen/name parameter needed in pars/ before other parameters', [file(StruFile)]),!.
 
 execParam(pars,Param,Value):-
    member_check(Param,[ordo,sequentia,identificatio,post,prae,locus,signum,
@@ -216,6 +218,9 @@ execParam(pars,Param,Value):-
 execParam(pars,fons,Group):-
    execFons(Group),!.
 execParam(pars,fons,Group):-
+   get_value(stru_file,StruFile), 
+   errors:error_out(['** Error processing fons/source value ',
+                     Group], [file(StruFile)]),
    report([tab(3),write('Error processing fons/source value '),
             write(Group),nl]),!.
 

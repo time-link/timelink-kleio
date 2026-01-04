@@ -211,7 +211,10 @@ initNewGroup(G):-
 %  new group at the lowest level.
 %%
 updatePath(OldGroup,OldID,NewGroup,Path,NewPath):-
-    updtp(OldGroup,OldID,NewGroup,Path,NewPath),!.
+    logging:log_debug('~n   >> UpdatePath ~w/~w with ~w~n',[Path,OldGroup,NewGroup]),
+    updtp(OldGroup,OldID,NewGroup,Path,NewPath),
+    logging:log_debug('~n   << Sucess UpdatePath ~w/~w~n',[NewPath,NewGroup]),
+!.
 
 updatePath(OldGroup,OldID,NewGroup,Path,Path):-
     get_prop(gline,number,L),
@@ -226,7 +229,7 @@ updtp(NewGroup,_,NewGroup,P,P):-!.
 % if no path ancestor of NewGroup is a doc %
 updtp(Doc,OldID,NewGroup,[],[A]):-
     isDoc(Doc),
-    anc_of(NewGroup,Doc),
+    contained_by(NewGroup,Doc),
     A=..[Doc,OldID],!.
 
 % if NewGroup is a document path = [] %
@@ -236,16 +239,7 @@ updtp(__OldGroup,__OldID,NewGroup,_,[]):-
 % else OldGroup is ancestor of NewGroup
 %   Add OldGroup to path %
 updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
-    anc_of(NewGroup,OldGroup),
-    A=..[OldGroup,OldID],
-    append(Path,[A],NewPath),!.
-
-% the base classe of the Old Group is ancestor
-%  of the base class of the New Group
-updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
-    clio_bclass(OldGroup,BaseOld),
-    clio_bclass(NewGroup,BaseNew),
-    anc_of(BaseNew,BaseOld),
+    contained_by(NewGroup,OldGroup),
     A=..[OldGroup,OldID],
     append(Path,[A],NewPath),!.
 
@@ -254,7 +248,7 @@ updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     reverse(Path,RPath), %reverse the path list %
     member(A,RPath),     % get groups from path in reverse order%
     A =.. [Anc,__AID],     % get group names %
-    anc_of(NewGroup,Anc),% see if they are the ancestor of newGroup%
+    contained_by(NewGroup,Anc),% see if they are the ancestor of newGroup%
     cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
 
 updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
@@ -263,7 +257,7 @@ updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     member(A,RPath),     % get groups from path in reverse order%
     A =.. [Anc,__AID],     % get group names %
     clio_bclass(Anc,BaseAnc),
-    anc_of(BaseNew,BaseAnc),% see if they are the ancestor of newGroup%
+    contained_by(BaseNew,BaseAnc),% see if they are the ancestor of newGroup%
     cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
 
 

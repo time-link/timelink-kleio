@@ -1,4 +1,10 @@
-- path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/linked_data/sources.str
+- file:
+  - date: 2026-01-04
+    description: Automatically generated structure file
+    json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/linked_data/sources.str.json
+    origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/linked_data/sources.str
+    stru: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/linked_data/sources.str
+    yaml_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/linked_data/sources.str.yaml
 - group:
     also:
     - structure
@@ -115,8 +121,7 @@
     also:
     - id
     - obs
-    description: 'Declare a linked data target Example :link $wikidata /""https://www.wikidata.org/wiki/$1""
-      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 '
+    description:
     idprefix: lin
     name: link
     position:
@@ -228,9 +233,6 @@
     - ls
     - atr
     - rel
-    description: 'represents an historical act An historical act is a record of an
-      event ,something that happened at a moment and place in time. This form is used
-      for records such as parish records notarial acts. '
     guaranteed:
     - id
     - type

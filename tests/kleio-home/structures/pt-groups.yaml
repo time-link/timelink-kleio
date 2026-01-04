@@ -1,11 +1,4 @@
 # Portuguese main groups
-- include: system.yaml
-- include: pt-elements.yaml
-- include: pt-parentem.yaml
-- include: pt-parentef.yaml
-- include: pt-actorm.yaml
-- include: pt-actorf.yaml
-
 - file:
     name: pt-groups.yaml
     description: |
@@ -19,6 +12,12 @@
             item
             topico
             lugar
+
+- include: groups.yaml
+- include: pt-elements.yaml
+- include: pt-actors.yaml
+- include: pt-parents.yaml
+
 - group:
     name: fonte
     source: historical-source
@@ -27,10 +26,26 @@
         historicos portugueses. Admite qualquer dos grupos
         que tenham "acto" ou "evento" como fonte.
 
-    position: [id, ano, tipo, localizacao, ref]
-    also: [ data, obs, substitui]
+        Notas
+
+        1. Segundo campo posicionall
+
+        Atualmente o segundo campo posicional, a seguir ao 
+        "id" é "tipo" ("registos paroquiais", "vereações", etc). 
+        Ficheiros que assumam "data" ou "ano" necesitam de ser
+        modificados ou usar um ficheiro de estrutura alterado 
+        para correcta interpretação e mapeamento para a base de dados.
+
+        2. Utilização do campo "ano"
+
+        O campo "ano" deve ser evitado uma vez que o campo
+        "data" permite o registo de datas só com o ano, sem
+        necessidade de introdução de zeros para o mês e ano.
+        
     guaranteed: [id]
-    idprefstru(ix: fonte
+    position: [id, tipo]
+    also: [ data, ano, localizacao, loc, ref, obs, substitui]
+    idprefix: fonte
 
 
 - group:
@@ -80,9 +95,9 @@
                 ls$cargo/escrivao da camara/obs=com comissao
 
     source: pt-acto
-    position: [id, tipo, dia, mes, ano, loc]
+    position: [id, tipo, dia, mes, ano, loc, obs]
     guaranteed: [id, tipo, dia, mes, ano]
-    also: [ref, data, loc, obs]
+    also: [ref, data]
     idprefix: act
 
 - group:

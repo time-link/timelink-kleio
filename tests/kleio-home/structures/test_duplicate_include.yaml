@@ -1,0 +1,8 @@
+- file:
+    name: test duplicate structure top level
+    description: file to test duplicate inclusion of other files
+- include: test_duplicate_1.yaml
+- include: test_duplicate_2.yaml
+- include: vereacoes.yaml
+
+

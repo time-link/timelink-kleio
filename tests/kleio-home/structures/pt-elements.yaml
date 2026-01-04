@@ -1,7 +1,10 @@
 # ****************************************************************
 # Equivalencia entre o nome dos elementos em portugues e em ingles
 # ****************************************************************
-
+- file:
+    name: pt-elements.yaml
+    description: Portuguese names for Timelink core elements. See elements.yaml
+- include: elements.yaml
 - element:
     name: dia
     description: Sinónimo de day
@@ -94,3 +97,22 @@
     name: folios
     description: sinónimo de folios, usado em documentos manuscritos
     source: pages
+- element:
+    name: substitui
+    description: >
+        Usado em fontes para indicar que a fonte
+        corrente deve substituir our com o id igual
+        ao valor deste element. Usado para mudar o id
+        de fontes ja importadas
+    source: replaces
+- element:
+    name: titulo
+    source: title
+    description: title of a work (e.g. a book)
+- element:
+    name: resumo
+    source: summary
+
+    
+
+

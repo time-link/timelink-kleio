@@ -1,0 +1,17 @@
+- file:
+    name: Redefine Groups and Elements
+    description: >
+      Testing the redefinitions of groups and Elements.
+      After processing do show_group(mygroup) and show_element(myelement)
+- group:
+    name: my-group
+    description: first definition
+    position: [el1, el2, el3]
+    guaranteed: [el1]
+    also: [el4, el5, el6 ]
+
+- group:
+    name: my-group
+    description: second definition, changes position order
+    position: [el2, el1, el3]
+    guaranteed: [el2]

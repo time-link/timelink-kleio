@@ -1,0 +1,42 @@
+- file:
+    name: Baptismos
+    description: Grupos para baptimos quer "bap" e "b"
+
+- include: pt-groups.yaml
+- include: pt-parents.yaml
+- include: pt-actors.yaml
+
+
+- element:
+    name: celebrante
+    source: name
+- element:
+    name: anon
+    source: ano
+- element:
+    name: mesn
+    source: mes
+- element:
+    name: dian
+    source: dia
+
+- group:
+    name: bap
+    source: pt-acto
+    description: > 
+        "Baptismos (variante usada nos registos da Lousa por Rosario Campos e em Óbidos )"
+    position: [id, dia, mes, ano, fol, loc, celebrante]
+    also: [fol, loc, celebrante, obs]
+    guaranteed: [id, dia, mes, ano]
+    contains: [celebrante, n, test, referido, referida]
+    idprefix: bap
+
+- group:
+    name: b
+    source: pt-acto
+    description: "Baptimos ,versao original usada em Soure."
+    position: [id, dia, mes, ano, dian, mesn, anon, celebrante]
+    guaranteed: [id, dia, mes, ano]
+    also: [celebrante, obs]
+    contais: [celebrante, n, referido, referida, test]
+    idprefix: bap

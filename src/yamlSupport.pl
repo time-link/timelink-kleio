@@ -18,6 +18,7 @@
 :-use_module(library(pprint)).
 :-use_module(persistence).
 :-use_module(kleioFiles).
+:-use_module(reports).
 :-use_module(struCode).
 :-use_module(struSyntax). % need to check vocabulary
 :-use_module(dataSyntax).
@@ -27,74 +28,130 @@
 stru_yaml(F):-
     atom_string(Filename,F), % normalize name as atom
     put_value(stru_file,Filename),
+    put_value(stru_files_read,[]),
     set_prop(Filename,type,str_yaml),
+    push(stru_files_stack, ''),
     new_yaml_str(Filename,_).
 
 new_yaml_str(Filename,Data):-
+    report([format('~nProcessing YAML structure (schema):~n   ~w~n~n',[Filename])]),
     struCode:initStru(Filename),
     process_str_command(database,_{name:kleio, first:kleio, identification:no}),
     read_yaml_str(Filename,Data),
-    struCode:closeStru(Filename).
+    struCode:closeStru(Filename),
+    report([perror_count]),
+    report([writeln('Structure processing finished.')]).
 
 % this read a yaml file and processes the configuration
 read_yaml_str(Filename,Data):-
     put_value(yaml_file,Filename),
-    yaml_read(Filename,Data),
-    inspect_yaml_str(Data),
+    get_value(stru_files_read,ReadFiles),
+    get_value(stru_files_stack,Stack),
+    (member(Filename, ReadFiles) -> 
+        errors:warning_out(
+            ['WARNING: Ignoring previously processed file'],
+        [file(Filename),file_type(stru)])
+    ;
+        (
+        length(Stack,Len),
+        Ident is Len * 3,
+        report([format('~n~*c >> Reading: ~w~n',[Ident,32,Filename])]),
+        yaml_read(Filename,Data),
+        report([format('~*c << Read ~w~n',[Ident,32,Filename])]),
+        push(stru_files_stack, Filename),
+        add_value(stru_files_read,Filename),
+        inspect_yaml_str(Data),
+        pop(stru_files_stack,_)
+        )
+    ),
     !.
 
 % loop through the yaml structure
 inspect_yaml_str(YamlList):-
+    get_value(yaml_file,Filename),
+    get_value(stru_files_stack,Stack),
+    length(Stack,Len),
+    Ident is Len * 3,
+    report([format('~*c ++ Inspecting: ~w~n',[Ident,32,Filename])]),
     member(YamlCMD, YamlList),
     inspect_yaml_str_cmd(YamlCMD),
-    fail,
+    fail.
+
+inspect_yaml_str(_):-!,
+    get_value(yaml_file,Filename),
+    get_value(stru_files_stack,Stack),
+    length(Stack,Len),
+    Ident is Len * 3,
+    report([format('~*c -- Inspected ~w~n',[Ident,32,Filename])]),
     !.
-inspect_yaml_str(_):-!.
 
 % process each command in the yaml structure
 % first extract the parameters
 inspect_yaml_str_cmd(YamlTerm):-
     Params = YamlTerm.Command,
-    format('Command: ~w~n',[Command]),
-    format('  Pars: ~w~n', Params),
+    % format('Command: ~w~n',[Command]),
+    % format('  Pars: ~w~n', Params),
     process_str_command(Command,Params),
     nl.
 
 % file command starts a file of definitions
 process_str_command(file,Pars):-!,
+    put_value(current_command,file),
     is_dict(Pars),
     bagof(Par=Value, Value = Pars.Par, ParList),
     % writeln('Bagof Process element with pars '-ParList),
-    option(name(Name),ParList,name-missing),
-    (get_value(stru_file,FileName); FileName = Name),
+    option(name(Name),ParList,name-missing),!,
+    get_value(yaml_file,Filename),
+    get_value(stru_files_stack,Stack),
+    length(Stack,Len),
+    Ident is Len  * 3,
+    report([format('~n~*c == Structure name: ~w~n~*c      from ~w ~n',[Ident,32,Name,Ident,32,Filename])]),
+    (get_value(stru_file,Filename); Filename = Name),
     option(description(Desc),ParList,none),
-    set_prop(FileName,description,Desc),
-    member(Par=Value,ParList),
-    format('(~w)   ~w = ~w ~n', [Name,Par,Value]),
-    fail.
+    set_prop(Filename,description,Desc),
+    !.
 process_str_command(file,_):-!.
 
 % include command
 process_str_command(include,Par):-
+    put_value(current_command,include),
+    get_value(yaml_file,Filename),
     atomic(Par),!,
-    format('  Include file: ~w ~n',[Par]),
-    include_yaml_str(Par,Data),
-    inspect_yaml_str(Data),!.
+    get_value(stru_files_stack,Stack),
+    length(Stack,Len),
+    Ident is Len * 3,
+    report([format('~*c >> Including file: ~w~n~*c      from ~w ~n',[Ident,32,Par,Ident,32,Filename])]),
+    include_yaml_str(Par,_),
+    report([format('~*c << Included file: ~w~n~*c      from ~w ~n',[Ident,32,Par,Ident,32,Filename])]),
+    !.
 
 % process the command, bridge to struCode
 process_str_command(Command, Params):-
     % the InternalCommand is the original Kleio latin command
     % in latter versions could be in english
     % this legacy code is to keep the old commands working
-    struSyntax:is_kw(Command,InternalCommand),!,
+    struSyntax:is_kw(Command,InternalCommand),
+    struSyntax:command(InternalCommand,ok),!,
     struCode:init_command(InternalCommand),
     process_str_params(InternalCommand, Params),
     struCode:close_command(InternalCommand,_).
 
+process_str_command(name, Params):-
+    put_value(current_command,name),
+    get_value(stru_file,Filename),
+    error_out(['*** "name" command out of context, should be in file command: ',[Params]],[file(Filename)]),!.
+
+process_str_command(description, Params):-
+    put_value(current_command,description),
+    get_value(stru_file,Filename),
+    error_out(['*** "description" command out of context, should be in file command: ',[Params]],[file(Filename)]),!.
 
 % bad command
 process_str_command(Command, Params):-
-    error_out(['*** Unknow command. Check spelling. ',[Command, ' '|Params]]),!.
+    put_value(current_command,Command),
+    get_value(stru_file,Filename),
+
+    error_out(['*** Unknow command in YAML file. Check spelling. ',[Command, ' '|Params]],[file(Filename)]),!.
 
 process_str_params(InternalCommand, Params):-
     is_dict(Params),

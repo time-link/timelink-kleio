@@ -1,5 +1,5 @@
 - file:
-  - date: 2025-12-12
+  - date: 2025-12-18
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str.json
     origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/baptismos.str
@@ -235,8 +235,9 @@
     suffix: non
     type: numerus
 - element:
-    description: elemento obrigatorio ,identifica unicamente a fonte na base de dados
-      ,
+    description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
+      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte
+      $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
     identification: sic
     name: id
     prefix: non

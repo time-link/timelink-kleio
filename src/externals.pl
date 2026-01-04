@@ -133,7 +133,7 @@ clio_bclass(Group,Bclass) :-
 		\+ clio_super(_,Bclass),!.
 clio_bclass(Group,Group) :-!.
 
-clio_partof(P,G) :- anc_of(G,P).
+clio_partof(P,G) :- contained_by(G,P).
 clio_parts(G,Ps) :- subgroups(G,Ps).
 
 clio_element_param(E,P,V):-get_element_prop(E,P,V).

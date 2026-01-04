@@ -2116,6 +2116,8 @@ elementMapping(GroupClass,Element,Attr):-
     clio_element_extends(Element,SElement),
     rch_get_attribute(SElement,Attributes,Attr).
 elementMapping(GroupClass,Element,Attr):-
+   % the group extends another group which
+   % has a mapping for the element
    rch_class(_,GroupClass,Super,_,_),
    class_attributes(Super,Attributes),
    rch_get_attribute(Element,Attributes,Attr).
@@ -2255,7 +2257,7 @@ error_out(['** INTERNAL ERROR: problems exporting attributes mappings (rattribut
 /*
 
 Outputs element mappings, one at a time
-  DEPREACTED see rattribute2_xml
+  DEPRECATED see rattribute2_xml
 */
 rattribute_xml([Attribute | More],Pkeys) :-
 rch_element_class(Attribute,Class,Column,Type,Length,Precision,_),
@@ -2432,7 +2434,9 @@ el_to_xml2(GClass,El,Core):-
     aspect_to_xml(core,Core,CoreXML),
     aspect_to_xml(original,Original,OriginalXML),
     aspect_to_xml(comment,Comment,CommentXML),!,
-     /* If a group element is not mapped to an attribute of the group class then
+     /* TODO: check this, it should export the super class of the element.
+
+        If a group element is not mapped to an attribute of the group class then
         it is not possible to find the elementClass of the group element.
         We use undef to mark those. This is not an error because we use elements that
         do not correspond to database fields. For instance in acts we have elements for
@@ -2440,7 +2444,9 @@ el_to_xml2(GClass,El,Core):-
         date. The elements are combined and the date value computed during export.
         Note that DBClass in idb only fetches the group element that are mapped to class attributes */
       calc_length(Core,ACore,ALength),
-      (elementClass(GClass,El,Class)  ->
+      (clio_element_bclass(El,BClass) ; BClass='undef'),!,
+      (clio_element_super(Super,El) ; Super='core'),!,
+      (elementClass(GClass,El,Class) ->
           (
             (elementMapping(GClass,El,Attr), atr_select(colsize,Attr,Length))
           ;
@@ -2458,7 +2464,11 @@ el_to_xml2(GClass,El,Core):-
         )
       ; true
     ),
-     xml_write( [ '   <ELEMENT NAME="' , El , '" CLASS="',Class,'">' ]),
+     xml_write([
+          '   <ELEMENT NAME="', El, '" ',
+          'SUPER_CLASS="',Super,'" ',
+          'BASE_CLASS="',BClass,'" ' ,
+          'CLASS="',Class,'">' ]),
      xml_nl,
      xml_write(['   '|CoreXML]),
     (OriginalXML \= [] -> (xml_write(['   '|OriginalXML]), xml_nl);true),

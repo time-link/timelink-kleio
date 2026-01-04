@@ -1,0 +1,188 @@
+KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
+Current time: 2025-12-16 13:39:10
+
+
+Processing YAML structure (schema):
+   /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml
+
+Creating new structure definition for: kleio
+
+       >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml
+       << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml
+          ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml
+
+          == Structure name: test duplicate structure top level
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml 
+          >> Including file: test_duplicate_1.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml 
+
+          >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml
+          << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml
+             ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml
+
+             == Structure name: test duplicate 1
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml 
+             >> Including file: test_duplicate_2.yaml
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml 
+
+             >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml
+             << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml
+                ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml
+
+                == Structure name: test duplicate 2
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml 
+                -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml
+             << Included file: test_duplicate_2.yaml
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_1.yaml 
+             -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml
+          << Included file: test_duplicate_1.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_include.yaml 
+          >> Including file: test_duplicate_2.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml 
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml Command include WARNING: Ignoring previously processed file
+          << Included file: test_duplicate_2.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml 
+          >> Including file: vereacoes.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml 
+
+          >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml
+          << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml
+             ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml
+
+             == Structure name: vereacoes.yaml
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml 
+             >> Including file: structures.pt-groups.yaml
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml 
+
+             >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml
+             << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml
+                ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml
+
+                == Structure name: pt-groups.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml 
+                >> Including file: groups.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml 
+
+                >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml
+                << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml
+                   ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml
+
+                   == Structure name: groups.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml 
+                   >> Including file: elements.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml 
+
+                   >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+                   << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+                      ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+
+                      == Structure name: elements.yml
+                           from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+                      -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+                   << Included file: elements.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml 
+                   -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+                << Included file: groups.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml 
+                >> Including file: pt-elements.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+
+                >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml
+                << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml
+                   ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml
+
+                   == Structure name: pt-elements.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml 
+                   >> Including file: elements.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml 
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml Command include WARNING: Ignoring previously processed file
+                   << Included file: elements.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml 
+                   -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
+                << Included file: pt-elements.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+                >> Including file: pt-actors.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+
+                >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml
+                << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml
+                   ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml
+
+                   == Structure name: pt-actors
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml 
+                   >> Including file: pt-actorm.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml 
+
+                   >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml
+                   << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml
+                      ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml
+
+                      == Structure name: pt-actorm.yaml
+                           from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml 
+                      -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml
+                   << Included file: pt-actorm.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actors.yaml 
+                   >> Including file: pt-actorf.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml 
+
+                   >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml
+                   << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml
+                      ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml
+
+                      == Structure name: pt-actorf.yaml
+                           from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml 
+                      -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml
+                   << Included file: pt-actorf.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorm.yaml 
+                   -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml
+                << Included file: pt-actors.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+                >> Including file: pt-parents.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml 
+
+                >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml
+                << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml
+                   ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml
+
+                   == Structure name: pt-parents.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml 
+                   >> Including file: pt-parentef.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml 
+
+                   >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml
+                   << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml
+                      ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml
+
+                      == Structure name: pt-parentef
+                           from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml 
+                      -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml
+                   << Included file: pt-parentef.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml 
+                   >> Including file: pt-parentem.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml 
+
+                   >> Reading: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+                   << Read /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+                      ++ Inspecting: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+
+                      == Structure name: pt-parentem
+                           from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml 
+                      -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+                   << Included file: pt-parentem.yaml
+                        from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentef.yaml 
+                   -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+                << Included file: pt-parents.yaml
+                     from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-actorf.yaml 
+                -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+             << Included file: structures.pt-groups.yaml
+                  from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/vereacoes.yaml 
+             -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+          << Included file: vereacoes.yaml
+               from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/test_duplicate_2.yaml 
+          -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parentem.yaml
+-----------End of structure --------
+0  errors. 
+2  warnings.
+Structure processing finished.

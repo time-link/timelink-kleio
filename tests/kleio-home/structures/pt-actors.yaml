@@ -1,5 +1,7 @@
-- include: pt-groups.yaml
 - file:
-  name: pt-actors
-  description: "Actors in acts and events PT version"
-
+     name: pt-actors
+     description: "Actors in acts and events PT version"
+- include: pt-groups.yaml
+- include: pt-parents.yaml
+- include: pt-actorm.yaml
+- include: pt-actorf.yaml

@@ -36,11 +36,12 @@
         - identifications
         - link
         - property
-        - historical-act
         - event
+        - historical-act
         - cevent
         - text
         - authority-record
+        - entity
         - rentity
         - rperson
         - robject
@@ -62,7 +63,7 @@
         - rel
         - group-element
         - relation
-
+- include: elements.yaml
 - group:
     name: kleio
     description: |
@@ -103,7 +104,7 @@
     name: source
     source: historical-source
     description: >
-        Alias for ´historical-source'
+        Alias for 'historical-source'
 
 # Authority registers
 - group:
@@ -180,21 +181,7 @@
 
 # Inside historical sources
 - group:
-    name: historical-act
-    description: >
-        Represents an historical act, i.e. a record of an event ,
-        something that happened at a moment and place in time.
-        This form is used for records such as parish records notarial acts.
-
-    position: [id, type, date]
-    guaranteed: [id, type, date]
-    also: [loc, ref, obs, day, month, year]
-    contains: [person, object, geoentity, abstraction, ls, atr, rel, event, end]
-    idprefix: hac
-
-- group:
     name: event
-    source: historical-act
     description: >
         Something that happened. Used for registering events mentioned
         in letters ,chronicles ,interviews ,not in formal records.
@@ -208,9 +195,33 @@
     contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
     idprefix: evt
 
+- group: 
+    name: entity
+    description: >
+        An entity is a thing that exists independently of other things.
+        It is a thing that has a name and a type.
+    position: [id, type, name]
+    guaranteed: [id, type, name]
+    also: [obs, same_as, xsame_as]
+    contains: [atr, rel, ls]
+    idprefix: ent
+
+- group:
+    name: historical-act
+    description: >
+        Represents an historical act, i.e. a record of an event ,
+        something that happened at a moment and place in time.
+        This form is used for records such as parish records notarial acts.
+    source: event
+    position: [id, type, date]
+    guaranteed: [id, type, date]
+    also: [loc, ref, obs, day, month, year]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, cevent, end]
+    idprefix: hac
+
+
 - group:
     name: cevent
-    source: event
     description: >
         Chronology event, used to transcribe chronologies,
         with date upfront, followed by place (or context ) and a description.
@@ -312,6 +323,7 @@
     idprefix: occ
 
 # Inside acts and events
+
 - group:
     name: geoentity
     description: >
@@ -321,12 +333,12 @@
         Examples of geoentities are: a parish, a place, a region, a country, etc.
         See wikidata:Q56061  Administrative Territorial Entity
         and wikidata:Q486972 Human Settlement
-
+    source: entity
     position: [name]
     guaranteed: [name]
     also: [type, id, obs, same_as, xsame_as]
-    contains: [ls, atr, rel]
     idprefix: geo
+
 - group:
     name: place
     description: Synonym for geoentity, used for places in the kleio file.
@@ -335,10 +347,10 @@
 - group:
     name: person
     description: A person.
+    source: entity
     position: [name, sex]
     guaranteed: [name, sex]
     also: [id, obs, same_as, xsame_as]
-    contains: [atr, rel, ls]
     idprefix: per
 - group:
     name: female
@@ -347,7 +359,6 @@
     position: [name]
     guaranteed: [name]
     also: [obs, id, same_as, xsame_as]
-    contains: [atr, rel, ls,]
     idprefix: fper
 - group:
     name: male
@@ -356,7 +367,6 @@
     position: [name]
     guaranteed: [name]
     also: [obs, id, same_as, xsame_as]
-    contains: [atr, rel, ls]
     idprefix: mper
 - group:
     name: kin-m
@@ -379,7 +389,6 @@
     source: kin-f
     description: >
         A female person related by kin to an actor in an act or event.
-
 
 - group:
     name: kin-husband
@@ -421,6 +430,7 @@
     description: >
         Anything that is not a person or geoentity,
         includes abstractions, animals, plants, objects, etc.
+    source: entity
     position: [name, type]
     guaranteed: [name]
     also: [type, obs, id, same_as, xsame_as]

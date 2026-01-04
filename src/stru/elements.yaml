@@ -185,12 +185,16 @@
 # Elements related to the processing of files
 # ===========================================
 - element:
-    name: replace
+    name: replaces
     description: |
         Register id of an entity that should be replaced by the
         entity with this element. Currently used in sources to replace
         earlier version of the same source under a diferent id.
     source: string64
+    
+- element:
+    name: replace
+    source: replaces
 
 - element:
     name: inside

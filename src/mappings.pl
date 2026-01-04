@@ -205,7 +205,7 @@ class item super object table items
       and
         titulo column titulo baseclass titulo coltype varchar colsize 128 colprecision 0 pkey 0
      and
-        resumo column resumo baseclass resumo coltype varchar colsize 2048 colprecision 0 pkey 0 .
+        resumo column resumo baseclass resumo coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
 mapping proparr to class proparr.
 class proparr super object table prop_arrem
@@ -251,7 +251,7 @@ class 'registo-merces' super act table rmerces
      and
         fol column fol baseclass fol coltype varchar colsize 64 colprecision 0 pkey 0
      and
-        resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0
+        resumo column resumo baseclass resumo coltype varchar colsize 16654 colprecision 0 pkey 0
      and
         obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
@@ -499,7 +499,7 @@ class adenda super act table adendas
      and
         loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0
      and
-        resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0
+        resumo column resumo baseclass resumo coltype varchar colsize 16654 colprecision 0 pkey 0
      and
         refere column refere baseclass refere coltype varchar colsize 1024 colprecision 0 pkey 0
      and

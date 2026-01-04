@@ -357,51 +357,49 @@ test_case(translations,File,Stru):-
     Flag = true,
     format('TESTING ~wn',[File]).
 
-list_active_tests:-
+ltests:-
     translate_file(File,true),
     writeln(File),
     fail.
-list_active_tests.
+ltests.
 
 % yaml str testing
-translate_file('sources/api/', false).  % all reference sources
-translate_file('sources/api/issues/issue15/issue15.cli', true).  % all reference sources
-translate_file('sources/api/yaml/pt-groups.kleio', false).
-translate_file('sources/api/yaml/jcatalog.kleio', false).
-translate_file('sources/api', false).
-translate_file('sources/api/linked_data/dehergne-a.cli',false).
-translate_file('sources/api/linked_data/multiplelinks.cli',false).
-translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
+
+translate_file('identifications/mhk_identification_toliveira.cli',false).
+translate_file('sources/api/', true).  % all reference sources
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/genealogias/llcdp34.cli',false).
+translate_file('sources/api/issues/issue1/issue1.cli',false).
+translate_file('sources/api/issues/issue10/issue10.cli',false).
+translate_file('sources/api/issues/issue15/issue15.cli', false).  % all reference sources
+translate_file('sources/api/issues/issue21.cli',false).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
-translate_file('sources/api/varia/nommiz.cli',false).
+translate_file('sources/api/linked_data/multiplelinks.cli',false).
+translate_file('sources/api/locate_stru_file/default-stru.kleio',false).
+translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
+translate_file('sources/api/paroquiais/baptismos/',false).
+translate_file('sources/api/paroquiais/baptismos/bap-encadeado.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
+translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
+translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
+translate_file('sources/api/roisdeconfessados/rol1.cli',false).
+translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/varia/dehergne-residences.cli',false).
+translate_file('sources/api/varia/ivcc.cli',false).
+translate_file('sources/api/varia/lrazao516pe.cli',false).
+translate_file('sources/api/varia/lrazao516pe.cli',false).
 translate_file('sources/api/varia/mp758-santiago-beduido.cli',false).
-translate_file('sources/api/issues/issue21.cli',false).
+translate_file('sources/api/varia/nommiz.cli',false).
+translate_file('sources/api/varia/test-atr-date.cli',false).
+translate_file('sources/api/yaml/jcatalog.kleio', false).
+translate_file('sources/api/yaml/pt-groups.kleio', false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
-translate_file('sources/api/locate_stru_file/default-stru.kleio',false).
-%
-translate_file('sources/api/issues/issue1/issue1.cli',false).
-translate_file('sources/api/issues/issue10/issue10.cli',false).
-translate_file('sources/api/issues/issue15/issue15.cli',false).
-translate_file('sources/api/varia/lrazao516pe.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bap-com-celebrantes.cli',false).
-translate_file('sources/api/varia/cartas.cli',false).
-translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapteirasproblem1.cli',false).
-translate_file('sources/api/paroquiais/baptismos/bapt1714.cli',false).
-translate_file('sources/api/paroquiais/baptismos/',false).
-translate_file('sources/api/roisdeconfessados/rol1.cli',false).
-translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('sources/api/varia/lrazao516pe.cli',false).
-translate_file('sources/api/varia/ivcc.cli',false).
-translate_file('sources/api/notariais/docsregiospontepisc.cli',false).
-translate_file('identifications/mhk_identification_toliveira.cli',false).
-translate_file('sources/api/varia/test-atr-date.cli',false).
+
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),

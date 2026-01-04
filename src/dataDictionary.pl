@@ -5,7 +5,7 @@
         clioGroup/2,
         clioElement/2,
         isDoc/1,
-        anc_of/2,
+        contained_by/2,
         subgroups/2,
         element_of/2,
         group_elements/2,
@@ -51,7 +51,7 @@
 *  clean_stru(F):- cleans any existing structure definition
      for file F
 *  isDoc(N) tests if N is a document
-*  anc_of(G,A) returns in A the ancestor of G
+*  contained_by(G,A) returns in A the ancestor of G
 *  subgroups(G,S) S is the list of subgroups of G
 *  element_of(E,G):- checks to which group belongs
     element G.
@@ -90,6 +90,7 @@
 :-use_module(dataCDS).
 :-use_module(apiTranslations).
 :-use_module(struSyntax).
+:-use_module(logging).
 :-use_module(library(http/json)).
 :-use_module(library(yaml)).
 :-use_module(library(ugraphs)).
@@ -100,6 +101,8 @@
 ?-thread_local(clioStru_/1).
 ?-thread_local(clioGroup_/2).
 ?-thread_local(clioElement_/2).
+?-thread_local(contained_by_cache/2). % cache for inferred containment
+?-thread_local(not_contained_by_cache/2).
 
 
 
@@ -137,6 +140,8 @@ clean_stru(F):-
    del_props(F),       % delete previous properties %
    clean_groups(F),       % clean groups definition %
    clean_elements(F),      % clean elements definition %
+   retractall(contained_by_cache(_, _)),
+   retractall(not_contained_by_cache(_, _)),
    setgensymbol_local(str,10000),!.  % set counter so symbols sort
 
 %******************************************************
@@ -151,42 +156,106 @@ isDoc(N):-
 
 
 %******************************************************
-%  anc_of(G,A) returns in A the ancestor of G
-%   backtracks on several ancestors
+%  contained_by(G,A) returns in A the container of G
+%   backtracks on several containers
 %    by order of the structure definition file
-%    If no ancestor (the case with documents)
+%    If no container (the case with documents)
 %    A = []
+%
+% Note that during stru processing the properties
+% of the super group are copied to the group 
+% before the group properties are processed.
+%
+% This means that if a group does not define a
+% property that its supergroup possesses then
+% then the property will be copied to the group
+% and appear as its own.
+%
+%  - group:
+%    - name: historical-source
+%    - contains: [historical-act, event, text]
+% - group:
+%    - name: fonte
+%    - source: historical-source
+% contains(fonte,X) X = [historical-act, event, text]
 %******************************************************
 %  %
-anc_of(G,[]):-isDoc(G).
-anc_of(G,A):-
+contained_by(G,[]):-isDoc(G).
+contained_by(G,A):-
+   contained_by_direct(G,A).
+contained_by(G,A):-
+   contained_by_super(G,A).
+
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,repetitio,L),
     member(G,L).
-anc_of(G,A):-
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,semper,L),
     member(G,L).
-anc_of(G,A):-
-    clioGroup(A,__ID),
-    get_prop(G,solum,L),
-    member(A,L).
-anc_of(G,A):-
+contained_by_direct(G,A):-
+    clioGroup(A,ID),
+    get_prop(ID,solum,L),
+    member(G,L).
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,pars,L),
     member(G,L).
 
-%anc_of(G,A):- % check inheritance
-%   anc_of_i(G,A).
+% a super class of the old group
+%
+contained_by_super(G,A):-
+    atom(G),atom(A),
+    logging:log_debug('>> ~w is not a direct part of ~w. Testing with super classes~n',[G,A]),
+    clause(contained_by_cache(G,A), true),
+    logging:log_debug('Found ~w as part of ~w from cached result~n',[G,A]),
+    !.
+% check if failure was cached
+contained_by_super(G,A):-
+    atom(G),atom(A),
+    clause(not_contained_by_cache(G,A), true),
+    logging:log_debug('Failed ~w as part of ~w from cached result~n',[G,A]),
+    !,fail.
 
-anc_of_i(G,A):-
-   writeln('DEBUG-finding by inheritance ascestor of'-G),
-   clioGroup(G,GID),
-   get_prop(GID,fons,FG),
-   clioGroup(A,AID),
-   get_prop(AID,fons,FA),
-   anc_of(FG,FA),
-   writeln('DEBUG-FOUND '-FA-' through '-FG).
+% if we are here then G is not a part of A
+% so we check for a super class of G that is a part of A
+contained_by_super(G,A):-
+    logging:log_debug('Testing if a super of ~w is part of ~w~n',[G,A]),
+    atom(G),atom(A),
+    externals:clio_parts(A,AParts),
+    dataDictionary:super_groups(G,GSupers),
+    logging:log_debug('Testing for ~w in ~w~n',[GSupers,AParts]),
+    lists_have_common_member(GSupers,AParts,Common),!,
+    logging:log_debug('Success: ~w has part ~w which is a super class of ~w~n',[A,Common,G]),
+    assert(contained_by_cache(G,A)),
+    !.
+% if we are here then G is not a part of A nor an ancestor of A
+% so we check for a super class of G that is a part of super class of A
+contained_by_super(G,A):-
+    logging:log_debug('Testing if a super of ~w is part of a super class of ~w~n',[G,A]),
+    atom(G),atom(A),
+    dataDictionary:super_groups(A,ASupers),
+    dataDictionary:super_groups(G,GSupers),
+    logging:log_debug('Ancestor ~w extends ~w~n',[A,ASupers]),
+    logging:log_debug('Group ~w extends ~w~n',[G,GSupers]),
+    member(ASuper,ASupers),
+    externals:clio_parts(ASuper,AParts), 
+    logging:log_debug('~w has parts ~w~n',[ASuper,AParts]),
+    AParts = [_|_], % if no parts in Super no point in testing
+    logging:log_debug('Looking for any of ~w in ~w~n', [GSupers,AParts]),
+    lists_have_common_member(GSupers,AParts,Common),!,
+    logging:log_debug('Success: ~w is a super class of ~w which has part ~w which is a super class of ~w~n',[A, ASuper,Common,G]),
+    assert(contained_by_cache(G,A)),
+    !.
+
+% if we are here then G is not a part of A neither their super groups
+% so we report failure
+contained_by_super(G,A):-
+    logging:log_debug('>> ~w is not a part of ~w nor their super groups. Caching result~n',[G,A]),
+    assert(not_contained_by_cache(G,A)),
+    fail.
+
 
 /** <predicate> subgroups(+Group, -Subgroups) is det
    @summary Retrieves the list of subgroups contained within a given group.
@@ -197,12 +266,14 @@ anc_of_i(G,A):-
       that are directly contained within the specified Group.
 */
 subgroups(G,S):-
-   findall(D,(anc_of(D,G),clioGroup(D,_)),S),!.
+   findall(D,(contained_by_direct(D,G),clioGroup(D,_)),S),!.
 
 extend_groups(G,S):-
    findall(D, externals:clio_extends(D,G),S),
    !.
 
+super_groups(G,S):-
+   findall(D, externals:clio_extends(G,D),S).
 
 %******************************************************
 %  element_of(E,G):- checks to which group belongs
@@ -256,8 +327,13 @@ create_group(Group):-
 %      Does nothing if there is already a group definition
 %      for Group
 %
+%  TODO: if group exists should it keep existing properties?
+%
 make_group(Group):-
-   clioGroup(Group,_),!.
+   clioGroup(Group,_),
+   warning_out(['Warning: Group ',Group,' already defined.',
+      ' command properties will be merged.']),
+   !.
 
 make_group(Group):-
    gensymbol_local(str,Id),   % generate an Id %
@@ -293,7 +369,10 @@ create_element(Element):-
 %*************************************************************
 % %
 make_element(Element):-
-   clioElement(Element,_),!.
+   clioElement(Element,_),
+   warning_out(['Warning: Element ',Element,' already defined.',
+      ' element properties will be merged.']),
+   !.
 make_element(Element):-
    gensymbol_local(str,Id),   % generate an Id %
    assert(clioElement_(Element,Id)),!.
@@ -958,7 +1037,7 @@ show_includes([I|Rest],yes):-
 show_includes([],_):-write('<br>'),nl,!.
 
 show_ancestors(G):-
-    anc_of(G,A),
+    contained_by(G,A),
     writelist0ln(['<A HREF="',A,'.html">',A,'</A>']),
     fail.
 show_ancestors(_):-writeln('<br>'),!.

@@ -1,9 +1,38 @@
 KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
-31-10-2025 11-37
+Current time: 2026-01-04 20:27:51
+
 
 Processing structure:auc_cartulario18.str
 Creating new structure definition for: kleio
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/paroquiais/obitos/obiteirasproblem.cli line 172 Warning: Element destination already defined. element properties will be merged.
+Near lines: 172 element name=destination
+Near lines: 173 element name=summary
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/paroquiais/obitos/obiteirasproblem.cli line 181 Warning: Element replace already defined. element properties will be merged.
+Near lines: 181 element name=replace
+Near lines: 182 element name=kleiofile
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/paroquiais/obitos/obiteirasproblem.cli line 872 Warning: Group beneficiario already defined. command properties will be merged.
+Near lines: 872 part name=beneficiario;source=actorm
+Near lines: 873 part name=beneficiario-representante;source=actorm
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/paroquiais/obitos/obiteirasproblem.cli line 967 Warning: Group vendedor already defined. command properties will be merged.
+Near lines: 967 part name=vendedor;source=actorm
+Near lines: 968 part name=comprador;source=actorm
+
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/api/paroquiais/obitos/obiteirasproblem.cli line 968 Warning: Group comprador already defined. command properties will be merged.
+Near lines: 968 part name=comprador;source=actorm
+Near lines: 969 part name=transportador;source=actorm
+
 End of File
 0  errors. 
-0  warnings.
+5  warnings.
 -----------End of structure --------
+0  errors. 
+5  warnings.
+Structure processing finished.
