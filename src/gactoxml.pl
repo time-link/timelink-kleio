@@ -291,7 +291,7 @@ rename_files(ClioFile,SOURCE,Original,Last):-
 
       rename_with_shell(ClioFile,Last),
       catch(
-        chmod(ClioFile,+gw),
+        chmod(ClioFile,+gw),  % CHECK: ClioFile should no longer exist at this point, but we change permissions just in case
         E,
         log_error('rename_files: could not change permissions of ~w : ~w ',[ClioFile,E])
         ),
