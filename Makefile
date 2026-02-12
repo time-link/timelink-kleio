@@ -34,6 +34,7 @@ help: .PHONY
 	@echo "                                (only if no tokens exist and server running < 5 minutes)"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
 	@echo "  make pull-tag tag=x.y.z    pull image with tag x.y.z from docker hub"
+	@echo "  make yaml-format FILES=... format specified YAML files (reorder keys in group/element)"
 
 	@echo "  make kleio-run-latest    start server with latest multi platform image, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml"
@@ -275,3 +276,10 @@ test-vargs:
 
 current-to-stable:
 	cp -rf ./src/* ./tests/stable/
+
+yaml-format: .PHONY
+	@if [ -z "$${FILES}" ]; then \
+		echo "Usage: make yaml-format FILES='file1.yaml ...'"; \
+	else \
+		python3 yaml_reorder.py $${FILES}; \
+	fi
