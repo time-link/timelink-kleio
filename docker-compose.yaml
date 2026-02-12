@@ -18,4 +18,5 @@ services:
       - KLEIO_SERVER_WORKERS
       - KLEIO_SERVER_PORT
       - KLEIO_ADMIN_TOKEN
+      - KLEIO_LOG_STDOUT=true
     restart: unless-stopped

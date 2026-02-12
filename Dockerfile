@@ -16,5 +16,6 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install git &
 # Install the kleio-server src
 COPY ./src /usr/local/timelink/clio/src
 WORKDIR /usr/local/timelink/clio/src
-
+# make the log of kleio server go to stdout
+ENV KLEIO_LOG_STDOUT=true
 CMD ["swipl", "-f" , "serverStart.pl","-g","run_server_forever"]
