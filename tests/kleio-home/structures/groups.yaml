@@ -29,7 +29,7 @@
         - source: the group that this groups extends. This group keeps the
                     value of the parameters of the source group, except if overriden
 
-        Groups defiend in this file:
+        Groups defined in this file:
         - kleio
         - historical-source
         - authority-register
@@ -64,6 +64,33 @@
         - group-element
         - relation
 - include: elements.yaml
+
+- group:
+    name: event
+    description: >
+        Something that happened. Used for registering events mentioned
+        in letters ,chronicles ,interviews ,not in formal records.
+
+        Can also be used inside a formal dated record to record information
+        about something that occurred at another time, e.g. in a dated letter
+        that includes information about different things that occurred in the past
+    position: [description, date]
+    guaranteed: [description]
+    also: [loc, ref, obs, day, month, year]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
+    idprefix: evt
+
+- group: 
+    name: entity
+    description: >
+        An entity is a thing that exists independently of other things.
+        It is a thing that has a name and a type.
+    position: [id, type, name]
+    guaranteed: [id, type, name]
+    also: [obs, same_as, xsame_as]
+    contains: [attribute, relation, atr, rel, ls]
+    idprefix: ent
+
 - group:
     name: kleio
     description: |
@@ -71,6 +98,8 @@
         It serves as a container for historical sources,
         authority registers, and other processing related
         groups.
+
+        I has no representation in the database (person oriented model)
 
     also: [structure, translator, autorels, obs, prefix, translations]
     idprefix: kle
@@ -95,6 +124,7 @@
 
 
     position: [id, year, type, loc, ref]
+    source: entity
     also: [date,year,obs,replace,kleiofile]
     guaranteed: [id]
     idprefix: his
@@ -162,6 +192,14 @@
     also: [id, obs]
     idprefix: lin
 
+- element:
+    name: shortname
+    source: string64
+
+- element:
+    name: urlpattern
+    source: string256
+
 - group:
     name: property
     description: >
@@ -180,31 +218,6 @@
     idprefix: pro
 
 # Inside historical sources
-- group:
-    name: event
-    description: >
-        Something that happened. Used for registering events mentioned
-        in letters ,chronicles ,interviews ,not in formal records.
-
-        Can also be used inside a formal dated record to record information
-        about something that occurred at another time, e.g. in a dated letter
-        that includes information about different things that occurred in the past
-    position: [description, date]
-    guaranteed: [description]
-    also: [loc, ref, obs, day, month, year]
-    contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
-    idprefix: evt
-
-- group: 
-    name: entity
-    description: >
-        An entity is a thing that exists independently of other things.
-        It is a thing that has a name and a type.
-    position: [id, type, name]
-    guaranteed: [id, type, name]
-    also: [obs, same_as, xsame_as]
-    contains: [atr, rel, ls]
-    idprefix: ent
 
 - group:
     name: historical-act
@@ -225,13 +238,27 @@
     description: >
         Chronology event, used to transcribe chronologies,
         with date upfront, followed by place (or context ) and a description.
-
+    source: event
     position: [data, loc, description]
     guaranteed: [data, loc, description]
     also: [id, obs, same_as, xsame_as]
     contains: [person, object, geoentity, abstraction, ls, attr, rel]
-
     idprefix: cro
+
+- group:
+    name: crono
+    description: Synonim for cevent, used for chronologies in the kleio file.
+    source: cevent
+
+- group:
+    name: pevent
+    description: >
+        A Personal event, can be contained inside person, as opposed
+        to a cevent that is used to record events in the sources.
+        cevent contain people and objects, while pevent is contained in
+        people and objects.
+    source: event
+    position: [data, loc, description]
 
 - group:
     name: ulist
@@ -299,7 +326,7 @@
     also: [status, user, obs]
     guaranteed: [id, sname, sex]
     idprefix: rpe
-    contains: [occ, ls, atr, rel]
+    contains: [occ, ls, atr, rel, attribute, relation]
 - group:
     name: robject
     source: rentity
@@ -310,7 +337,7 @@
     also: [status, user, obs]
     guaranteed: [id, sname, type]
     idprefix: rob
-    contains: [occ, ls, atr, rel]
+    contains: [occ, ls, atr, rel, attribute, relation]
 - group:
     name: occ
     description: >
@@ -334,9 +361,9 @@
         See wikidata:Q56061  Administrative Territorial Entity
         and wikidata:Q486972 Human Settlement
     source: entity
-    position: [name]
+    position: [name, type]
     guaranteed: [name]
-    also: [type, id, obs, same_as, xsame_as]
+    also: [id, obs, same_as, xsame_as]
     idprefix: geo
 
 - group:
@@ -613,4 +640,51 @@
     idprefix: alist
     contains: [person, object, geoentity, abstraction, ls, atr, rel, attribute-list]
 
+- group:
+      name: geodesc
+      description: "A Hierarchical group for geoentities. "
+      source: historical-act
+      position: [id, day, month, year]
+      guaranteed: [id, day, month, year] # TODO change to date
+      contains:
+          - geo1
+          - atr
+          - attr 
+          - attribute
+          - rel
+          - relation
+- group:
+    name: geo1
+    description: 'A geographical entity of level 1. Levels geo1 to geo4 are defined. '
+    source: geoentity
+    contains: [geo2, atr, attr, attribute, rel, relation]
+    position: [name, type, id]
+    also: [same_as, xsame_as, obs]
+    idprefix: geo1
 
+- group:
+    name: geo2
+    description: 'A geographical entity of level 2. Levels geo1 to geo4 are defined. '
+    source: geoentity
+    contains: [geo3, atr, attr, attribute, rel, relation]
+    position: [name, type, id]
+    also: [same_as, xsame_as, obs]
+    idprefix: geo2 
+
+- group:
+    name: geo3
+    description: 'A geographical entity of level 3. Levels geo1 to geo4 are defined. '
+    source: geoentity
+    contains: [geo4, atr, attr, attribute, rel, relation]
+    position: [name, type, id]
+    also: [same_as, xsame_as, obs]
+    idprefix: geo3 
+
+- group:
+    name: geo4
+    description: 'A geographical entity of level 2. Levels geo1 to geo4 are defined. '
+    source: geoentity
+    contains: [geo3, atr, attr, attribute, rel, relation]
+    position: [name, type, id]
+    also: [same_as, xsame_as, obs]
+    idprefix: geo4 

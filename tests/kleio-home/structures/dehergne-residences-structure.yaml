@@ -1,0 +1,32 @@
+-   group:
+      name: province
+      description: >
+        Province in Dehergne's list
+      source: geo1
+      also:
+      -   type
+      -   id
+      -   obs
+      -   same_as
+      -   xsame_as
+      contains:
+      -   atr
+      -   rel
+      -   fou
+-   group:
+      name: fou
+      source: geo2
+      contains:
+      -   atr
+      -   rel
+      -   tcheou
+      -   hien
+      -   loc
+
+-   group:
+      name: tcheou
+      source: geo3
+
+-   group:
+      name: hien
+      source: geo3

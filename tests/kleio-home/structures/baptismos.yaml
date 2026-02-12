@@ -6,7 +6,6 @@
 - include: pt-parents.yaml
 - include: pt-actors.yaml
 
-
 - element:
     name: celebrante
     source: name
@@ -38,5 +37,5 @@
     position: [id, dia, mes, ano, dian, mesn, anon, celebrante]
     guaranteed: [id, dia, mes, ano]
     also: [celebrante, obs]
-    contais: [celebrante, n, referido, referida, test]
+    contains: [celebrante, n, referido, referida, test]
     idprefix: bap

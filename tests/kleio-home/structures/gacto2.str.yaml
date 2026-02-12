@@ -1,10 +1,4 @@
-- file:
-  - date: 2025-12-18
-    description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str.json
-    origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
-    stru: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str
-    yaml_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/gacto2.str.yaml
+- path: /kleio-home/structures/gacto2.str
 - element:
     description: 'Any number '
     identification: non
@@ -60,7 +54,7 @@
     type: numerus
 - element:
     description: 'elemento obrigatorio ,identifica unicamente a fonte na base de dados
-      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.ex ºfonte
+      ,deve ser igual ao nome do ficheiro usado para registar a fonte. P.exº fonte
       $bap-1680 deve estar num ficheiro chamado bap-1680.cli '
     identification: sic
     name: id
@@ -218,8 +212,8 @@
     - obs
     - prefix
     - translations
-    description: 'This is the top level group of Kleio files. Specific historical
-      sources must be added to the part parameter of this group. '
+    description: "This is the top level group of Kleio files. Specific historical
+      sources must be added to the part parameter of this group. \n"
     idprefix: kle
     name: kleio
     part:
@@ -280,6 +274,9 @@
     - obs
     - replace
     - kleiofile
+    description: '
+
+      '
     guaranteed:
     - id
     idprefix: his
@@ -301,10 +298,10 @@
     - obs
     - same_as
     - xsame_as
-    description: 'GeoEntity :a spatial entity. An entity that represents a spatial
+    description: "GeoEntity :a spatial entity. An entity that represents a spatial
       entity in the sense of a conceptual representation of space. A geo-entity is
       not an object that has a particular position in place. It is rather something
-      like the parish of X ,the place Y ,the region W. '
+      like the parish of X ,the place Y ,the region W. \n"
     idprefix: geo
     name: geoentity
     part:
@@ -322,6 +319,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: place
     part:
@@ -338,7 +338,7 @@
     - date
     - user
     - dbase
-    description: 'a register of authority-records '
+    description: "a register of authority-records \n"
     guaranteed:
     - id
     - name
@@ -364,10 +364,10 @@
 - group:
     also:
     - obs
-    description: 'Identifications are authority-registers for record linking. They
+    description: "Identifications are authority-registers for record linking. They
       contain real-entity records (people or objects )that aggregate occurrences in
       the source pertaining to the same person or entity. To keep imported records
-      separate from local ones use a different user. '
+      separate from local ones use a different user. \n"
     guaranteed:
     - id
     - name
@@ -398,8 +398,9 @@
     also:
     - id
     - obs
-    description: 'Declare a linked data target Example :link $wikidata /""https://www.wikidata.org/wiki/$1""
-      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572 '
+    description: "Declare a linked data target Example :link $wikidata /\"\"https://www.wikidata.org/wiki/$1\"\"
+      And then annotate element values in comments lugar $Cantão #@wikidata :Q16572
+      \n"
     idprefix: lin
     name: link
     position:
@@ -425,9 +426,9 @@
     also:
     - id
     - obs
-    description: 'A property of the file for the kleio parser. Properties are not
+    description: "A property of the file for the kleio parser. Properties are not
       stored in the database. They affect the parsing of the file. Examples :property
-      $multiple-entry-flag /124 #ascii for pipe char '
+      $multiple-entry-flag /124 #ascii for pipe char \n"
     idprefix: pro
     name: property
     position:
@@ -440,8 +441,8 @@
     - status
     - user
     - obs
-    description: 'Rentity contains information about a real entity. Defines the standart
-      name for the entity and what are the occurences ,in `occ `subgroups. '
+    description: "Rentity contains information about a real entity. Defines the standart
+      name for the entity and what are the occurences ,in `occ `subgroups. \n"
     guaranteed:
     - id
     - description
@@ -475,7 +476,7 @@
     - status
     - user
     - obs
-    description: 'contains information about a real person. '
+    description: "contains information about a real person. \n"
     guaranteed:
     - id
     - sname
@@ -505,7 +506,7 @@
     - status
     - user
     - obs
-    description: 'contains information about a real object. '
+    description: "contains information about a real object. \n"
     guaranteed:
     - id
     - sname
@@ -531,7 +532,7 @@
     - date
     - id
     - obs
-    description: 'contains the ids of the occurrences of a real entity '
+    description: "contains the ids of the occurrences of a real entity \n"
     guaranteed:
     - occurrence
     idprefix: occ
@@ -581,9 +582,10 @@
     - ls
     - atr
     - rel
-    description: 'represents an historical act An historical act is a record of an
+    description: "represents an historical act An historical act is a record of an
       event ,something that happened at a moment and place in time. This form is used
-      for records such as parish records notarial acts. '
+      for records such as parish records notarial acts. \ndate: date in kleio format
+      YYYYMMMDD ou YYYY-Month-Day "
     guaranteed:
     - id
     - type
@@ -612,8 +614,8 @@
     - ls
     - atr
     - rel
-    description: 'Something that happened. Used for registering events mentioned in
-      letters ,chronicles ,interviews ,not in formal records. '
+    description: "Something that happened. Used for registering events mentioned in
+      letters ,chronicles ,interviews ,not in formal records. \n"
     guaranteed:
     - description
     idprefix: his
@@ -642,8 +644,8 @@
     - ls
     - atr
     - rel
-    description: 'chronology event ,with date upfront ,followed by place (or context
-      )and a description '
+    description: "chronology event ,with date upfront ,followed by place (or context
+      )and a description \n"
     guaranteed:
     - data
     - loc
@@ -670,6 +672,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     - sex
@@ -693,6 +698,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -713,6 +721,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -733,6 +744,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -752,6 +766,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -770,7 +787,7 @@
     - atr
     - ls
     - rel
-    description: 'topics ,tags or keywords '
+    description: "topics ,tags or keywords \n"
     guaranteed:
     - name
     idprefix: obj
@@ -786,6 +803,9 @@
     - obs
     - date
     - id
+    description: '
+
+      '
     guaranteed:
     - type
     - value
@@ -802,6 +822,9 @@
     - obs
     - date
     - id
+    description: '
+
+      '
     guaranteed:
     - type
     - value
@@ -814,6 +837,9 @@
 - group:
     also:
     - id
+    description: '
+
+      '
     idprefix: end
     name: end
     position:
@@ -823,6 +849,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -832,6 +861,9 @@
     prefix: non
     suffix: non
 - group:
+    description: '
+
+      '
     idprefix: rel
     name: relation-type
     prefix: non
@@ -901,8 +933,9 @@
     - integr
     - movacao
     - geodesc
-    description: 'Este constitui o grupo principal para os documentos historicos portugueses.
-      Admite qualquer dos actos definidos aqui. '
+    description: "Este constitui o grupo principal para os documentos historicos portugueses.
+      Admite qualquer dos actos definidos aqui. \nid: elemento obrigatorio ,identifica
+      unicamente a fonte na base de dados ,"
     guaranteed:
     - id
     idprefix: his
@@ -938,6 +971,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -964,6 +1000,9 @@
     arbitrary:
     - actorm
     - actorf
+    description: '
+
+      '
     idprefix: rel
     name: funcao-em-acto
     prefix: non
@@ -973,7 +1012,7 @@
     also:
     - id
     - obs
-    description: 'fim indica o fim de um acto '
+    description: "fim indica o fim de um acto \n"
     idprefix: end
     name: fim
     position:
@@ -1156,8 +1195,8 @@
     - ls
     - atr
     - rel
-    description: 'Actos genericos :servem para vereacoes etc. Compostos por items
-      e por pessoas '
+    description: "Actos genericos :servem para vereacoes etc. Compostos por items
+      e por pessoas \n"
     guaranteed:
     - id
     - dia
@@ -1188,6 +1227,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - description
     idprefix: his
@@ -1317,6 +1359,9 @@
     - referida
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - titulo
     idprefix: obj
@@ -1341,6 +1386,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -1358,6 +1406,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: lugar
     part:
@@ -1381,6 +1432,9 @@
     - ls
     - rel
     - acao
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1407,6 +1461,9 @@
     - referida
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -1424,6 +1481,9 @@
     - obs
     arbitrary:
     - n
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1449,7 +1509,7 @@
     - testo
     - testa
     - referido
-    description: 'Devassas temporais nas visitas pastorais '
+    description: "Devassas temporais nas visitas pastorais \n"
     guaranteed:
     - id
     - dia
@@ -1489,6 +1549,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - idcaso
     idprefix: obj
@@ -1532,6 +1595,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - idcaso
     idprefix: obj
@@ -1552,6 +1618,9 @@
     - acusada
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - tipo
@@ -1570,7 +1639,8 @@
     - obs
     arbitrary:
     - denunciante
-    description: 'Denuncia de um caso como nos cadernos dos promotores da inquisicao '
+    description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao
+      \n"
     guaranteed:
     - id
     - dia
@@ -1596,8 +1666,10 @@
     arbitrary:
     - n
     - referido
-    description: Nomeacoes de irmaos numa misericordia (A particular historical act
+    description: 'Nomeacoes de irmaos numa misericordia (A particular historical act
       )
+
+      '
     guaranteed:
     - id
     - dia
@@ -1638,7 +1710,10 @@
     - eleito
     - eleitor
     - referido
-    description: Assentos da mesa numa misericordia (A particular historical act )
+    description: 'Assentos da mesa numa misericordia (A particular historical act
+      )
+
+      '
     guaranteed:
     - id
     - dia
@@ -1661,7 +1736,7 @@
     - obs
     arbitrary:
     - assunto
-    description: 'actas de vereacao '
+    description: "actas de vereacao \n"
     guaranteed:
     - id
     - dia
@@ -1686,6 +1761,9 @@
     - n
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1710,6 +1788,9 @@
     - n
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1737,6 +1818,9 @@
     - abonador
     - abonadora
     - escrivao
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1762,8 +1846,10 @@
     - referido
     - referida
     - test
-    description: Habilitacoes da Ordem de Cristo e Santo Oficio (A particular historical
+    description: 'Habilitacoes da Ordem de Cristo e Santo Oficio (A particular historical
       act ).
+
+      '
     guaranteed:
     - id
     - cota
@@ -1785,6 +1871,9 @@
     - referido
     - referida
     - test
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1809,6 +1898,9 @@
     - referido
     - referida
     - test
+    description: '
+
+      '
     guaranteed:
     - id
     - cota
@@ -1828,7 +1920,7 @@
     - obs
     arbitrary:
     - n
-    description: 'Beneficios colacoes numa colegiada '
+    description: "Beneficios colacoes numa colegiada \n"
     guaranteed:
     - id
     - dia
@@ -1856,7 +1948,7 @@
     - referido
     - referida
     - item
-    description: 'Chancelarias '
+    description: "Chancelarias \n"
     guaranteed:
     - id
     - dia
@@ -1883,7 +1975,7 @@
     - referido
     - referida
     - item
-    description: 'Encartes '
+    description: "Encartes \n"
     guaranteed:
     - id
     - dia
@@ -1908,6 +2000,9 @@
     - rp
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -1929,7 +2024,9 @@
     - resumo
     arbitrary:
     - n
-    description: Extincao de capelas segundo as chancelarias regias (D.Jose )
+    description: 'Extincao de capelas segundo as chancelarias regias (D.Jose )
+
+      '
     guaranteed:
     - id
     - dia
@@ -2078,7 +2175,7 @@
     - mmmarido3
     - pmmmarido3
     - mmmmarido3
-    description: 'Casamentos '
+    description: "Casamentos \n"
     guaranteed:
     - id
     - dia
@@ -2229,6 +2326,9 @@
     - mmmarido3
     - pmmmarido3
     - mmmmarido3
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2260,8 +2360,10 @@
     - test
     - referido
     - referida
-    description: Baptismos (variante usada nos registos da Lousa por Rosario Campos
+    description: 'Baptismos (variante usada nos registos da Lousa por Rosario Campos
       e em Óbidos )
+
+      '
     guaranteed:
     - id
     - dia
@@ -2290,7 +2392,7 @@
     - referido
     - referida
     - test
-    description: 'Baptimos ,versao original usada em Soure. '
+    description: "Baptimos ,versao original usada em Soure. \n"
     guaranteed:
     - id
     - dia
@@ -2329,7 +2431,7 @@
     - locf
     - causa
     - oficios
-    description: 'Obitos '
+    description: "Obitos \n"
     guaranteed:
     - id
     - mes
@@ -2366,8 +2468,8 @@
     - locf
     - causa
     - oficios
-    description: 'Óbitos. Estilo usado em Soure ,sem o id do obito ,mas aceita o id
-      opcionalmente. '
+    description: "Óbitos. Estilo usado em Soure ,sem o id do obito ,mas aceita o id
+      opcionalmente. \n"
     guaranteed:
     - dia
     - mes
@@ -2384,6 +2486,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2396,6 +2501,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2408,6 +2516,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2420,6 +2531,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2432,6 +2546,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2444,6 +2561,9 @@
 - group:
     also:
     - obs
+    description: '
+
+      '
     guaranteed:
     - value
     idprefix: gro
@@ -2463,6 +2583,9 @@
     - bemarr
     - fornarr
     - rendarr
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2491,6 +2614,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -2516,6 +2642,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -2541,6 +2670,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -2566,6 +2698,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -2591,6 +2726,9 @@
     - celebrante
     - evento
     - colega
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2612,6 +2750,9 @@
     - loc
     arbitrary:
     - n
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2639,6 +2780,9 @@
     - devedora
     - procurador
     - procuradora
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2660,6 +2804,9 @@
     - loc
     arbitrary:
     - n
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2680,6 +2827,9 @@
     - obs
     arbitrary:
     - n
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2705,6 +2855,9 @@
     - obs
     arbitrary:
     - n
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2731,6 +2884,9 @@
     arbitrary:
     - n
     - ts
+    description: '
+
+      '
     guaranteed:
     - id
     - data
@@ -2748,6 +2904,9 @@
     arbitrary:
     - n
     - ts
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2772,6 +2931,9 @@
     - obs
     arbitrary:
     - fogo
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2801,6 +2963,9 @@
     - escravo
     - escrava
     - fim
+    description: '
+
+      '
     guaranteed:
     - id
     - local
@@ -2828,6 +2993,9 @@
     - n
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2958,6 +3126,9 @@
     - renda
     - juiz
     - item
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -2985,6 +3156,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3005,6 +3179,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3025,6 +3202,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3045,6 +3225,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3065,6 +3248,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3085,6 +3271,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3105,6 +3294,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3126,6 +3318,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3154,6 +3349,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - valor
     - juro
@@ -3204,6 +3402,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3225,6 +3426,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3247,6 +3451,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - valor
     idprefix: obj
@@ -3293,6 +3500,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - valor
     idprefix: obj
@@ -3317,6 +3527,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3338,6 +3551,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3359,6 +3575,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3380,6 +3599,9 @@
     - atr
     - rel
     - local
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3400,6 +3622,9 @@
     arbitrary:
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -3418,6 +3643,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: local
     part:
@@ -3439,7 +3667,7 @@
     - abstraction
     - ls
     - rel
-    description: 'Letra de câmbio ,usado no projecto DyncoopNet. '
+    description: "Letra de câmbio ,usado no projecto DyncoopNet. \n"
     guaranteed:
     - id
     - dia
@@ -3557,6 +3785,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -3606,6 +3837,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -3638,7 +3872,9 @@
     - ls
     - atr
     - rel
-    description: chronology event ,
+    description: 'chronology event ,
+
+      '
     guaranteed:
     - data
     - loc
@@ -3670,7 +3906,7 @@
     - ls
     - atr
     - rel
-    description: 'synonym for cevento '
+    description: "synonym for cevento \n"
     guaranteed:
     - data
     - loc
@@ -3702,7 +3938,9 @@
     - celebrante
     - evento
     - colega
-    description: Biographical description (from biographical dictionnaries ,etc )
+    description: 'Biographical description (from biographical dictionnaries ,etc )
+
+      '
     guaranteed:
     - id
     - dia
@@ -3730,9 +3968,9 @@
     - ls
     - atr
     - rel
-    description: 'Personal event ,used inside people groups to register a personal
+    description: "Personal event ,used inside people groups to register a personal
       event. Diferent from event /evento which are top level groups inside lists or
-      sources '
+      sources \n"
     guaranteed:
     - description
     idprefix: his
@@ -3761,6 +3999,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - description
     idprefix: his
@@ -3789,6 +4030,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - description
     idprefix: his
@@ -3824,6 +4068,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -4028,6 +4275,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: his
@@ -4049,6 +4299,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - numero
     idprefix: obj
@@ -4082,6 +4335,9 @@
     - abstraction
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - id
     idprefix: his
@@ -4132,6 +4388,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - forma
     - tipo
@@ -4216,6 +4475,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - tipo
     - descricao
@@ -4259,7 +4521,7 @@
     - padroeiro
     - autoridade
     - divida
-    description: 'Documento régio. '
+    description: "Documento régio. \n"
     guaranteed:
     - id
     - tipo
@@ -4307,7 +4569,7 @@
     - padroeiro
     - autoridade
     - divida
-    description: 'Documento Pontefício '
+    description: "Documento Pontefício \n"
     guaranteed:
     - id
     - tipo
@@ -4355,6 +4617,9 @@
     - padroeiro
     - autoridade
     - divida
+    description: '
+
+      '
     guaranteed:
     - id
     - tipo
@@ -4382,7 +4647,7 @@
     - abstraction
     - ls
     - rel
-    description: 'Matricula de doentes no Hospital das Caldas da Rainha. '
+    description: "Matricula de doentes no Hospital das Caldas da Rainha. \n"
     guaranteed:
     - id
     idprefix: his
@@ -4412,7 +4677,7 @@
     - abstraction
     - ls
     - rel
-    description: 'A description of geographic entities. '
+    description: "A description of geographic entities. \n"
     guaranteed:
     - id
     idprefix: his
@@ -4440,7 +4705,8 @@
     - obs
     - same_as
     - xsame_as
-    description: 'A geographical entity of level 1. Levels geo1 to geo4 are defined. '
+    description: "A geographical entity of level 1. Levels geo1 to geo4 are defined.
+      \n"
     idprefix: geo
     name: geo1
     part:
@@ -4461,6 +4727,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: geo2
     part:
@@ -4481,6 +4750,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: geo3
     part:
@@ -4501,6 +4773,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: geo4
     part:
@@ -4520,6 +4795,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: province
     part:
@@ -4540,6 +4818,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: fou
     part:
@@ -4562,6 +4843,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: tcheou
     part:
@@ -4582,6 +4866,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: hien
     part:
@@ -4602,6 +4889,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: loc
     part:
@@ -4625,7 +4915,7 @@
     - abstraction
     - ls
     - rel
-    description: 'Formato para registo das memórias paroquiais de 1758 '
+    description: "Formato para registo das memórias paroquiais de 1758 \n"
     guaranteed:
     - id
     idprefix: his
@@ -4651,7 +4941,8 @@
     - abstraction
     - ls
     - rel
-    description: 'Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes. '
+    description: "Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes.
+      \n"
     guaranteed:
     - id
     idprefix: his
@@ -4673,6 +4964,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: freguesia
     part:
@@ -4708,6 +5002,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: gref
     part:
@@ -4726,6 +5023,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: provincia
     part:
@@ -4744,6 +5044,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: termoc
     part:
@@ -4762,6 +5065,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: bispado
     part:
@@ -4780,6 +5086,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: comarca
     part:
@@ -4798,6 +5107,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: couto
     part:
@@ -4816,6 +5128,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: honra
     part:
@@ -4837,6 +5152,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4860,6 +5178,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4883,6 +5204,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4906,6 +5230,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4929,6 +5256,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4952,6 +5282,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4972,6 +5305,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -4992,6 +5328,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -5011,6 +5350,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     - sex
@@ -5041,8 +5383,9 @@
     - abstraction
     - ls
     - rel
-    description: 'Auto de medição ,corresponde a um acto de medição de extremas de
-      uma terra ocorrido num dia determinado. Usado para tombos. '
+    description: "Auto de medição ,corresponde a um acto de medição de extremas de
+      uma terra ocorrido num dia determinado. Usado para tombos. \nid: elemento obrigatorio
+      ,identifica unicamente o auto de medicao "
     guaranteed:
     - id
     - dia
@@ -5068,6 +5411,9 @@
     - obs
     - same_as
     - xsame_as
+    description: '
+
+      '
     idprefix: geo
     name: terra
     part:
@@ -5087,6 +5433,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - length
     idprefix: obj
@@ -5110,6 +5459,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -5133,6 +5485,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: obj
@@ -5151,6 +5506,9 @@
     - n
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -5194,6 +5552,9 @@
     - n
     - referido
     - referida
+    description: '
+
+      '
     guaranteed:
     - id
     - dia
@@ -5408,6 +5769,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5708,6 +6072,9 @@
     - criado
     - engeitada
     - engeitado
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5728,6 +6095,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5748,6 +6118,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5768,6 +6141,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5788,6 +6164,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5808,6 +6187,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5828,6 +6210,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5848,6 +6233,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5868,6 +6256,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5888,6 +6279,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5908,6 +6302,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5928,6 +6325,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -5948,6 +6348,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -6155,6 +6558,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -6175,6 +6581,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -6382,6 +6791,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -6589,6 +7001,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -6796,6 +7211,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nordem
     - nome
@@ -7004,6 +7422,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nordem
     - nome
@@ -7305,6 +7726,9 @@
     - criado
     - engeitada
     - engeitado
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -7324,6 +7748,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -7531,6 +7958,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -7738,6 +8168,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -7945,6 +8378,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -8152,6 +8588,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -8359,6 +8798,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -8566,6 +9008,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -8773,6 +9218,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -8980,6 +9428,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -9187,6 +9638,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -9394,6 +9848,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -9601,6 +10058,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -9808,6 +10268,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -10015,6 +10478,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -10222,6 +10688,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -10429,6 +10898,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -10636,6 +11108,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -10843,6 +11318,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -11050,6 +11528,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -11257,6 +11738,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -11464,6 +11948,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -11671,6 +12158,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -11878,6 +12368,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -12085,6 +12578,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -12292,6 +12788,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -12499,6 +12998,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -12706,6 +13208,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -12913,6 +13418,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -13120,6 +13628,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -13327,6 +13838,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -13534,7 +14048,8 @@
     - criado
     - engeitado
     - engeitada
-    description: 'o que abona a transação do outorgante '
+    description: "o que abona a transação do outorgante \nid: elemento optional ,se
+      omisso um id automatic é gerado "
     guaranteed:
     - nome
     idprefix: per
@@ -13742,6 +14257,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -13949,6 +14467,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -14156,6 +14677,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -14363,6 +14887,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -14570,6 +15097,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -14777,6 +15307,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -14984,6 +15517,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -15191,6 +15727,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -15398,6 +15937,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -15605,6 +16147,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -15812,6 +16357,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -16019,6 +16567,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -16226,6 +16777,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -16433,6 +16987,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -16640,6 +17197,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -16847,6 +17407,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -17054,6 +17617,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -17261,6 +17827,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -17468,6 +18037,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -17675,6 +18247,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -17882,6 +18457,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -18182,6 +18760,9 @@
     - criado
     - engeitada
     - engeitado
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -18203,6 +18784,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -18410,6 +18994,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -18620,6 +19207,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -18830,6 +19420,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -19037,6 +19630,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -19244,6 +19840,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -19451,6 +20050,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -19658,6 +20260,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -19865,6 +20470,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -20072,6 +20680,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -20279,6 +20890,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -20486,6 +21100,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -20693,6 +21310,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -20900,6 +21520,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -21107,6 +21730,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -21314,6 +21940,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -21521,6 +22150,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -21728,6 +22360,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -21935,6 +22570,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -22142,6 +22780,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -22349,6 +22990,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -22556,6 +23200,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -22763,6 +23410,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -22970,6 +23620,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -23177,6 +23830,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -23384,6 +24040,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -23591,6 +24250,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -23798,6 +24460,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -24005,6 +24670,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -24212,6 +24880,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -24419,6 +25090,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -24626,6 +25300,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -24833,6 +25510,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -25040,6 +25720,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -25247,6 +25930,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -25454,6 +26140,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -25661,6 +26350,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -25868,6 +26560,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -26075,6 +26770,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -26282,6 +26980,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -26489,6 +27190,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -26696,6 +27400,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -26903,6 +27610,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -27110,6 +27820,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -27317,6 +28030,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -27524,6 +28240,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -27731,6 +28450,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -27938,6 +28660,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -28145,6 +28870,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -28352,6 +29080,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -28559,6 +29290,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -28766,6 +29500,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -28973,6 +29710,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -29180,6 +29920,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -29387,6 +30130,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -29594,6 +30340,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -29801,6 +30550,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -30008,6 +30760,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -30215,6 +30970,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -30422,6 +31180,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -30629,6 +31390,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -30836,6 +31600,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -31043,6 +31810,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -31250,6 +32020,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -31457,6 +32230,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -31664,6 +32440,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -31871,6 +32650,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -32078,6 +32860,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -32285,6 +33070,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -32492,6 +33280,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -32699,6 +33490,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -32906,6 +33700,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -33113,6 +33910,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -33320,6 +34120,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -33527,6 +34330,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -33734,6 +34540,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -33941,6 +34750,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -34148,6 +34960,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -34355,6 +35170,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -34562,6 +35380,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -34769,6 +35590,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -34976,6 +35800,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -35183,6 +36010,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -35390,6 +36220,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -35597,6 +36430,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -35804,6 +36640,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -36011,6 +36850,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -36218,6 +37060,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -36425,6 +37270,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -36632,6 +37480,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -36839,6 +37690,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -37046,6 +37900,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -37253,6 +38110,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -37460,6 +38320,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -37667,6 +38530,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -37874,6 +38740,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38081,6 +38950,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38288,6 +39160,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38495,6 +39370,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38695,6 +39573,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38715,6 +39596,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38915,6 +39799,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38935,6 +39822,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38955,6 +39845,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38975,6 +39868,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -38995,6 +39891,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39015,6 +39914,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39035,6 +39937,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39055,6 +39960,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39075,6 +39983,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39095,6 +40006,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39115,6 +40029,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39315,6 +40232,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39515,6 +40435,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39715,6 +40638,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39737,6 +40663,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -39937,6 +40866,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -40137,6 +41069,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -40337,6 +41272,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -40537,6 +41475,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -40737,6 +41678,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -40937,6 +41881,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -41137,6 +42084,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -41337,6 +42287,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -41537,6 +42490,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -41737,6 +42693,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -41937,6 +42896,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -42137,6 +43099,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -42337,6 +43302,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -42537,6 +43505,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -42737,6 +43708,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -42937,6 +43911,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -43137,6 +44114,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -43337,6 +44317,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -43537,6 +44520,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -43737,6 +44723,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -43937,6 +44926,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -44137,6 +45129,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -44337,6 +45332,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -44537,6 +45535,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -44737,6 +45738,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -44937,6 +45941,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -45137,6 +46144,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -45337,6 +46347,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -45537,6 +46550,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -45737,6 +46753,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -45937,6 +46956,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46137,6 +47159,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46337,6 +47362,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46537,6 +47565,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46737,6 +47768,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46937,6 +47971,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -46957,6 +47994,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47164,6 +48204,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47363,6 +48406,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47569,6 +48615,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47768,6 +48817,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47787,6 +48839,9 @@
     - ls
     - atr
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -47994,6 +49049,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48193,6 +49251,9 @@
     - criado
     - engeitado
     - engeitada
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48213,6 +49274,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48234,6 +49298,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48255,6 +49322,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48276,6 +49346,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48297,6 +49370,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48318,6 +49394,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48339,6 +49418,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48360,6 +49442,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48381,6 +49466,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48405,6 +49493,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48429,6 +49520,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48453,6 +49547,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48477,6 +49574,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48501,6 +49601,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48525,6 +49628,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48549,6 +49655,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48573,6 +49682,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48597,6 +49709,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48621,6 +49736,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48642,6 +49760,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48663,6 +49784,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48687,6 +49811,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48708,6 +49835,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48729,6 +49859,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48753,6 +49886,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48777,6 +49913,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48798,6 +49937,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48819,6 +49961,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48843,6 +49988,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48864,6 +50012,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48885,6 +50036,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48909,6 +50063,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48933,6 +50090,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48957,6 +50117,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48978,6 +50141,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -48999,6 +50165,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49023,6 +50192,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49044,6 +50216,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49065,6 +50240,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49089,6 +50267,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49110,6 +50291,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49131,6 +50315,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49152,6 +50339,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49176,6 +50366,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49197,6 +50390,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49218,6 +50414,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49242,6 +50441,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49263,6 +50465,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49287,6 +50492,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49308,6 +50516,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49329,6 +50540,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49353,6 +50567,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49374,6 +50591,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49395,6 +50615,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49419,6 +50642,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49443,6 +50669,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49464,6 +50693,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49485,6 +50717,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49509,6 +50744,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49530,6 +50768,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49551,6 +50792,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49575,6 +50819,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49596,6 +50843,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49620,6 +50870,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49641,6 +50894,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49662,6 +50918,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49686,6 +50945,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49707,6 +50969,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49728,6 +50993,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49752,6 +51020,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49776,6 +51047,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49797,6 +51071,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49818,6 +51095,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49842,6 +51122,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49863,6 +51146,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49884,6 +51170,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49908,6 +51197,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49929,6 +51221,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49953,6 +51248,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49974,6 +51272,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -49995,6 +51296,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50019,6 +51323,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50040,6 +51347,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50061,6 +51371,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50085,6 +51398,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50109,6 +51425,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50130,6 +51449,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50151,6 +51473,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50175,6 +51500,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50196,6 +51524,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50217,6 +51548,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50243,6 +51577,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50267,6 +51604,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50291,6 +51631,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50312,6 +51655,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50333,6 +51679,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50357,6 +51706,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50378,6 +51730,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50399,6 +51754,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50423,6 +51781,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50447,6 +51808,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50468,6 +51832,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50489,6 +51856,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50513,6 +51883,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50534,6 +51907,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50555,6 +51931,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50579,6 +51958,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50603,6 +51985,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50627,6 +52012,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50648,6 +52036,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50669,6 +52060,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50693,6 +52087,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50714,6 +52111,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50735,6 +52135,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50759,6 +52162,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50783,6 +52189,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50804,6 +52213,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50825,6 +52237,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50849,6 +52264,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50870,6 +52288,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50891,6 +52312,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50915,6 +52339,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50939,6 +52366,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50963,6 +52393,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -50984,6 +52417,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51005,6 +52441,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51029,6 +52468,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51050,6 +52492,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51071,6 +52516,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51095,6 +52543,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51119,6 +52570,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51140,6 +52594,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51161,6 +52618,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51185,6 +52645,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51206,6 +52669,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51227,6 +52693,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51251,6 +52720,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51275,6 +52747,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51299,6 +52774,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51320,6 +52798,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51341,6 +52822,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51365,6 +52849,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51386,6 +52873,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51407,6 +52897,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51431,6 +52924,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51455,6 +52951,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51476,6 +52975,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51497,6 +52999,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51521,6 +53026,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51542,6 +53050,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51563,6 +53074,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51590,6 +53104,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51614,6 +53131,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51638,6 +53158,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51659,6 +53182,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51680,6 +53206,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51704,6 +53233,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51725,6 +53257,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51746,6 +53281,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51770,6 +53308,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51794,6 +53335,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51815,6 +53359,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51836,6 +53383,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51860,6 +53410,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51881,6 +53434,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51902,6 +53458,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51929,6 +53488,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51953,6 +53515,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51977,6 +53542,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -51998,6 +53566,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52019,6 +53590,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52043,6 +53617,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52064,6 +53641,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52085,6 +53665,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52109,6 +53692,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52133,6 +53719,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52157,6 +53746,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52181,6 +53773,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52205,6 +53800,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52229,6 +53827,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52253,6 +53854,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52274,6 +53878,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52299,6 +53906,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52322,6 +53932,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52345,6 +53958,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52366,6 +53982,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52387,6 +54006,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52408,6 +54030,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52433,6 +54058,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52456,6 +54084,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52479,6 +54110,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52500,6 +54134,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52521,6 +54158,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52542,6 +54182,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52563,6 +54206,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52587,6 +54233,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52611,6 +54260,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52632,6 +54284,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52653,6 +54308,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52674,6 +54332,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52695,6 +54356,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52719,6 +54383,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52744,6 +54411,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52765,6 +54435,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52786,6 +54459,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52807,6 +54483,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52828,6 +54507,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52849,6 +54531,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52873,6 +54558,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52898,6 +54586,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52919,6 +54610,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52940,6 +54634,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52961,6 +54658,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -52982,6 +54682,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53003,6 +54706,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53027,6 +54733,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53052,6 +54761,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53073,6 +54785,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53094,6 +54809,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53115,6 +54833,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53136,6 +54857,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53157,6 +54881,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53181,6 +54908,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53206,6 +54936,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53227,6 +54960,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53248,6 +54984,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53269,6 +55008,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53290,6 +55032,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53311,6 +55056,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53335,6 +55083,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53360,6 +55111,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53381,6 +55135,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53402,6 +55159,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53423,6 +55183,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53444,6 +55207,9 @@
     - atr
     - ls
     - rel
+    description: '
+
+      '
     guaranteed:
     - nome
     idprefix: per
@@ -53464,6 +55230,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53484,6 +55253,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53504,6 +55276,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53524,6 +55299,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53544,6 +55322,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53564,6 +55345,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53584,6 +55368,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53604,6 +55391,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53624,6 +55414,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53644,6 +55437,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53664,6 +55460,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53684,6 +55483,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53704,6 +55506,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53724,6 +55529,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53744,6 +55552,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53764,6 +55575,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53784,6 +55598,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53804,6 +55621,9 @@
     - atr
     - rel
     - ls
+    description: '
+
+      '
     guaranteed:
     - name
     idprefix: per
@@ -53819,6 +55639,9 @@
     - data
     - obs
     - id
+    description: '
+
+      '
     guaranteed:
     - tipo
     - valor
@@ -53837,6 +55660,9 @@
     - data
     - obs
     - id
+    description: '
+
+      '
     guaranteed:
     - tipo
     - valor
@@ -53855,6 +55681,9 @@
     - data
     - obs
     - id
+    description: '
+
+      '
     guaranteed:
     - tipo
     - valor

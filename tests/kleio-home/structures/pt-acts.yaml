@@ -20,14 +20,44 @@
       arbitrary:
           - n
       source: pt-acto
+
+# devassas das visitas pastorais
+
 - group:
       name: devassa
-      arbitrary:
+      description: >
+        Devassas temporais nas visitas pastorais. As devassas
+        incluem testemunhas (testo$ e testa$ m/f); as testemunhas
+        incluem acusacoes (acus$) de casos (caso$)
+      source: pt-acto
+      position: [id, dia, mes, ano]
+      also: [folio, visdor, obs]
+      contains:
           - testo
           - testa
           - referido
-      description: "Devassas temporais nas visitas pastorais "
-      source: pt-acto
+          - referida
+- group:
+    name: acus 
+    description: > 
+        Acusações em devassas e inquéritos.
+        As acusações em devassas são contidas em testemunhas.
+        Tem como elementoso id do caso, "origem" "literal"
+    source: object
+    position: [idcaso, obs] 
+    guaranteed: [idcaso]
+    also: [literal, origem, obs, id]
+    contains: [caso]
+- group:
+    name: caso
+    description: Um caso numa devassa ou inquérito
+    source: object
+    position: [id, tipo]
+    guaranteed: [id, tipo]
+    also: [obs]
+    contains: [acusado, acusada, referido, referida]
+#  fim devassas
+
 - group:
       name: denuncia
       source: pt-acto
@@ -1127,25 +1157,7 @@
           - abstraction
           - ls
           - rel
-- group:
-      description: "A description of geographic entities. "
-      name: geodesc
-      arbitrary:
-          - celebrante
-          - actorm
-          - actorf
-          - object
-          - abstraction
-          - ls
-          - rel
-      part:
-          - geo1
-          - geo2
-          - geo3
-          - geo4
-          - atr
-          - rel
-      source: pt-acto
+
 - group:
       description: "Formato para registo das memórias paroquiais de 1758 "
       name: memoria58

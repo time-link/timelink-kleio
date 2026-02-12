@@ -1,4 +1,4 @@
-
+- include: pt-sources-structure.yaml
 - group:
     name: acionista
     description: Acionista
@@ -9,7 +9,7 @@
     - obs
     - mesmo_que
     - id
-    arbitrary:
+    contains:
     - ls
     - atr
     - rel
@@ -18,7 +18,7 @@
     description: '  '
     source: pt-acto
     also: [obs, data]
-    arbitrary: [referido, referida, acionista, acionistaf, ls, rel, acao]
+    contains: [referido, referida, acionista, acionistaf, ls, rel, acao]
     guaranteed: [id, dia, mes, ano]
     idprefix: his
     position: [id, dia, mes, ano]
@@ -29,7 +29,7 @@
     description: '  '
     source: object
     also: [id, obs, data, mesmo_que]
-    arbitrary: [referido, referida, atr, rel]
+    contains: [referido, referida, atr, rel]
     guaranteed: [name]
     idprefix: obj
     position: [name, type]
@@ -40,7 +40,7 @@
     description: '  '
     source: pt-acto
     also: [ref, loc, obs]
-    arbitrary: [n]
+    contains: [n]
     guaranteed: [id, dia, mes, ano]
     idprefix: his
     position: [id, dia, mes, ano]
