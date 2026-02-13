@@ -3,49 +3,60 @@
     name: pt-actorf
     description: A portuguese female actor
     source: actorf
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
-- group: {name: na, source: pt-actorf}
-- group: {name: referida, source: pt-actorf}
-- group: {name: enferma, source: pt-actorf}
-- group: {name: presente-f, source: pt-actorf}
-- group: {name: testa, part: [acus, acusa], source: pt-actorf}
+
+- group: 
+    name: referida
+    description: >
+        Pessoa referida num acto, não necessariamente presente.
+        Estas pessoas não podem incluir eventos pessoais "pevent", 
+        para evitar sequências recursivas de pessoa-pevent-pessoa-pevent-...
+    source: pt-actorf
+    contains: [attribute, relation]
+
+- group: {name: abonadora, source: pt-actorf}
 - group: {name: acionistaf, source: pt-actorf}
-- group: {name: devedora, source: pt-actorf}
-- group: {name: credora, source: pt-actorf}
-- group: {name: fiadora, source: pt-actorf}
+- group: {name: acusada, source: pt-actorf}
+- group: {name: apelantef, source: pt-actorf}
+- group: {name: arrematantef, source: pt-actorf}
+- group: {name: arrendataria, source: pt-actorf}
+- group: {name: autorf, source: pt-actorf}
+- group: {name: beneficiaria, source: pt-actorf}
 - group: {name: compradora, source: pt-actorf}
-- group: {name: vendedora, source: pt-actorf}
+- group: {name: constituintef, source: pt-actorf}
+- group: {name: contraentef, source: pt-actorf}
+- group: {name: credora, source: pt-actorf}
+- group: {name: criada, source: pt-actorf}
+- group: {name: demandadora, source: pt-actorf}
+- group: {name: destinataria, source: pt-actorf}
+- group: {name: devedora, source: pt-actorf}
 - group: {name: doadora, source: pt-actorf}
 - group: {name: donataria, source: pt-actorf}
-- group: {name: dotantef, source: pt-actorf}
 - group: {name: dotada, source: pt-actorf}
-- group: {name: senhoria, source: pt-actorf}
-- group: {name: foreira, source: pt-actorf}
+- group: {name: dotantef, source: pt-actorf}
+- group: {name: enferma, source: pt-actorf}
 - group: {name: enfiteutaf, source: pt-actorf}
-- group: {name: subenfiteutaf, source: pt-actorf}
-- group: {name: constituintef, source: pt-actorf}
+- group: {name: engeitada, source: pt-actorf}
+- group: {name: escambadora, source: pt-actorf}
+- group: {name: escrava, source: pt-actorf}
+- group: {name: fiadora, source: pt-actorf}
+- group: {name: foreira, source: pt-actorf}
+- group: {name: inquirida, source: pt-actorf}
+- group: {name: na, source: pt-actorf}
 - group: {name: outorgantef, source: pt-actorf}
-- group: {name: arrendataria, source: pt-actorf}
-- group: {name: acusada, source: pt-actorf}
+- group: {name: perdoada, source: pt-actorf}
+- group: {name: perdoante-f, source: pt-actorf}
+- group: {name: presente-f, source: pt-actorf}
+- group: {name: procuradora, source: pt-actorf}
+- group: {name: quitada, source: pt-actorf}
+- group: {name: quitantef, source: pt-actorf}
+- group: {name: renunciantef, source: pt-actorf}
+- group: {name: reuf, source: pt-actorf}
+- group: {name: senhoria, source: pt-actorf}
+- group: {name: subenfiteutaf, source: pt-actorf}
+- group: {name: testa, part: [acus, acusa], source: pt-actorf}
 - group: {name: testadora, source: pt-actorf}
 - group: {name: testamentaria, source: pt-actorf}
 - group: {name: testamenteira, source: pt-actorf}
-- group: {name: contraentef, source: pt-actorf}
-- group: {name: renunciantef, source: pt-actorf}
-- group: {name: procuradora, source: pt-actorf}
-- group: {name: arrematantef, source: pt-actorf}
-- group: {name: abonadora, source: pt-actorf}
-- group: {name: quitantef, source: pt-actorf}
-- group: {name: quitada, source: pt-actorf}
-- group: {name: demandadora, source: pt-actorf}
-- group: {name: escambadora, source: pt-actorf}
-- group: {name: reuf, source: pt-actorf}
-- group: {name: inquirida, source: pt-actorf}
-- group: {name: apelantef, source: pt-actorf}
-- group: {name: autorf, source: pt-actorf}
-- group: {name: beneficiaria, source: pt-actorf}
-- group: {name: destinataria, source: pt-actorf}
-- group: {name: perdoante-f, source: pt-actorf}
-- group: {name: perdoada, source: pt-actorf}
-- group: {name: vitima, source: pt-actorf}
+- group: {name: vendedora, source: pt-actorf}

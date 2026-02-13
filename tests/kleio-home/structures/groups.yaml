@@ -228,7 +228,7 @@
     source: event
     position: [id, type, date]
     guaranteed: [id, type, date]
-    also: [loc, ref, obs, day, month, year]
+    also: [loc, ref, obs, day, month, year, summary]
     contains: [person, object, geoentity, abstraction, ls, atr, rel, cevent, end]
     idprefix: hac
 
@@ -239,8 +239,8 @@
         Chronology event, used to transcribe chronologies,
         with date upfront, followed by place (or context ) and a description.
     source: event
-    position: [data, loc, description]
-    guaranteed: [data, loc, description]
+    position: [date, loc, description]
+    guaranteed: [date, loc, description]
     also: [id, obs, same_as, xsame_as]
     contains: [person, object, geoentity, abstraction, ls, attr, rel]
     idprefix: cro
@@ -257,8 +257,10 @@
         to a cevent that is used to record events in the sources.
         cevent contain people and objects, while pevent is contained in
         people and objects.
+        This class should be specialized with a specific list of
+        contained groups, to avoid recursive sequences of person-pevent-person-pevent-...  
     source: event
-    position: [data, loc, description]
+    position: [date, loc, description]
 
 - group:
     name: ulist
@@ -377,6 +379,7 @@
     source: entity
     position: [name, sex]
     guaranteed: [name, sex]
+    contains: [attribute, relation, pevent]
     also: [id, obs, same_as, xsame_as]
     idprefix: per
 - group:
@@ -442,13 +445,11 @@
 - group:
     name: actorf
     source: female
-    contains: [ls,atr,rel,kin-m,kin-f]
     decription: >
         A female actor in an act or event.
 - group:
     name: actorm
     source: male
-    contains: [ls,atr,rel,kin-m,kin-f]
     description: >
         A male actor in an act or event.
 #
@@ -461,7 +462,7 @@
     position: [name, type]
     guaranteed: [name]
     also: [type, obs, id, same_as, xsame_as]
-    contains: [atr, ls, rel]
+    contains: [attribute, relation, pevent]
     idprefix: obj
 - group:
     name: abstraction
@@ -470,7 +471,6 @@
     position: [name, type]
     also: [obs, id, same_as, xsame_as]
     guaranteed: [name]
-    contains: [atr, ls, rel]
     idprefix: obj
 - group:
     name: topic
@@ -479,7 +479,6 @@
     position: [name, description]
     guaranteed: [name]
     also: [obs, id]
-    contains: [atr, ls, rel]
     idprefix: top
 - group:
     name: end

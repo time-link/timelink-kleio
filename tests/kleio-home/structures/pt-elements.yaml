@@ -39,6 +39,10 @@
     description: No sentido de local
     source: loc
 - element:
+    name: local
+    description: No sentido de local
+    source: loc
+- element:
     name: cota
     description: >
       Sinónimo de ref, aqui: referência de documento em arquivo ou biblioteca
@@ -97,6 +101,19 @@
     name: folios
     description: sinónimo de folios, usado em documentos manuscritos
     source: pages
+- element:
+    name: sumário
+    description: Resumo de um documento, usar triplas aspas para textos longos multi linha
+    source: summary
+- element:
+    name: descricao
+    source: sumario
+    description: >
+        Usado para descrever o conteúdo de um elemento
+- element:
+    name: desc
+    source: descricao
+    
 - element:
     name: substitui
     description: >

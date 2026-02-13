@@ -5,25 +5,25 @@
     name: pt-kin-m
     description: A portuguese male kin
     source: kin-m
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-father
     description: A portuguese father
     source: kin-father
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-husband
     description: A portuguese husband
     source: kin-husband
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-son
     description: A portuguese son    
     source: kin-son
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 
 - group: {description: '', name: parentem, source: kin-m}
@@ -149,3 +149,8 @@
 - group: {description: '', name: ppad4, source: pt-kin-father}
 - group: {description: '', name: pmad4, source: pt-kin-father}
 - group: {description: '', name: mrmad4, source: pt-kin-father}
+- group: {description: '', name: neto, source: pt-kin-m}
+- group: {description: '', name: afilhado, source: pt-kin-m}
+- group: {description: '', name: sogro, source: pt-kin-m}
+- group: {description: '', name: sobrinho, source: pt-kin-m}
+- group: {description: '', name: genro, source: pt-kin-m}

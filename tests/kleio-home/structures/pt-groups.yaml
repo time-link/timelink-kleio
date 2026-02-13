@@ -43,7 +43,7 @@
         necessidade de introdução de zeros para o mês e ano.
         
     guaranteed: [id]
-    position: [id, tipo]
+    position: [id, tipo, loc, ref]
     also: [ data, ano, localizacao, loc, ref, obs, substitui]
     idprefix: fonte
 
@@ -53,7 +53,7 @@
     source: historical-act
     description: A Portuguese act. Abstract class.
     position: [id, dia, mes, ano]
-    also: [ref, loc, obs]
+    also: [data, ref, loc, fol, tipo, sumario, resumo, obs]
     guaranteed: [id, dia, mes, ano]
     contains: [actorm,actorf,item]
     idprefix: his
@@ -148,3 +148,82 @@
     position: [name]
     prefix: non
     suffix: non
+
+- group:
+    name: bem
+    description: Um bem móvel ou imóvel, por exemplo um edifício, um terreno, um objecto, etc.
+    source: object
+    position:
+    - name
+    - tipo
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    contains:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    idprefix: bem
+
+- group:
+    name: fogo
+    source: object
+    position: [id, local]
+    guaranteed: [id,local]
+    description: |
+        Um fogo, ou agregado familiar, no sentido de "household", em que n$ é
+        a cabeça do agregado, com os parentes enumerados em relação
+        a n$ e outros membros do agregado, por exemplo criados.
+    contains:
+        - n
+        - criado
+        - criada
+        - engeitado
+        - engeitada
+        - enjeitado
+        - enjeitada
+        - escravo
+        - escrava
+        - referido
+        - referida
+        - fim
+
+
+- group:
+    name: viagem
+    description: Viagem, enquanto evento pessoal, parte de uma pessoa
+    also:
+       - obs
+       - id
+    contains: [referido, referida]  # we need this to prevent recursive inclusion of pt-actorf and pt-actorm
+    guaranteed:
+      - description
+    idprefix: via
+    position:
+     - description
+     - dia
+     - mes
+     - ano
+    source: pevent
+
+- group:
+    name: pevento
+    description: >
+         Um evento pessoal, parte de uma pessoa, por exemplo uma viagem, um casamento, um baptismo, etc.
+    source: pevent
+    position: [description, dia, mes, ano]
+    also: [obs, id]
+    contains: [referido, referida]
+    guaranteed: [description]
+    idprefix: evt
+
+- group:
+    name: estadia
+    description: >
+         Um evento de estadia em um local, por exemplo um hotel, uma casa, etc.
+    source: pevento

@@ -5,25 +5,25 @@
     name: pt-kin-f
     description: A portuguese female kin
     source: kin-f
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-mother
     description: A portuguese mother
     source: kin-mother
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-wife
     description: A portuguese wife
     source: kin-wife
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 - group:
     name: pt-kin-daughter
     description: A portuguese daughter
     source: kin-daughter
-    position: [nome]
+    position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 
 
@@ -133,3 +133,8 @@
 - group: {name: mad4, description: '', source: parentef, part: [pmad4, mmad4, mrmad4]}
 - group: {name: mpad4, description: '', source: pt-kin-mother}
 - group: {name: mmad4, description: '', source: pt-kin-mother}
+- group: {name: neta, description: '', source: pt-kin-f}
+- group: {name: sogra, description: '', source: pt-kin-f}
+- group: {name: afilhada, description: '', source: pt-kin-f}
+- group: {name: sobrinha, description: '', source: pt-kin-f}
+- group: {name: nora, description: '', source: pt-kin-f}

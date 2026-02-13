@@ -2,8 +2,26 @@
       name: pt-acts.yaml
       description: |
           Ficheiro com os actos principais para a estrutura de
-          documentos historicos portugueses:
+          documentos historicos portugueses e elementos
+          associados a eles
+- include: pt-elements.yaml
 - include: pt-groups.yaml
+
+# Elementos adicionais em actos
+- element: {name: juro, source: string256}
+- element: {name: moeda, source: string256}
+- element: {name: prazo, source: string256}
+- element: {name: valorn, source: number}
+
+# alguns actos registam o nome de pessoas como elementos
+- element: {name: depositario, source: name}
+- element: {name: juiz, source: name}
+- element: {name: escrivao, source: name}
+- element: {name: tabeliao, source: name}
+- element: {name: celebrante, source: name}
+- element: {name: visdor, source: name}
+
+
 - group:
       name: integr
       arbitrary:
@@ -31,7 +49,7 @@
         incluem acusacoes (acus$) de casos (caso$)
       source: pt-acto
       position: [id, dia, mes, ano]
-      also: [folio, visdor, obs]
+      also: [folio, fol, visdor, obs]
       contains:
           - testo
           - testa
@@ -56,6 +74,9 @@
     guaranteed: [id, tipo]
     also: [obs]
     contains: [acusado, acusada, referido, referida]
+- element: {name: idcaso, source:id}
+- element: {name: origem, source: text}
+- element: {name: literal, source: text}
 #  fim devassas
 
 - group:
@@ -67,20 +88,36 @@
 - group:
       name: nom
       source: pt-acto
-      arbitrary:
+      contains:
           - n
           - referido
       description:
           Nomeacoes de irmaos numa misericordia (A particular historical act
           )
+# Misericórdias
 - group:
       name: amz
+      description: Assentos da mesa numa misericordia (A particular historical act )
       source: pt-acto
-      arbitrary:
+      position: [id, dia, mes, ano, fol]
+      also: [sub,esmola, resumo, obs]
+      contains:
           - eleito
           - eleitor
           - referido
-      description: Assentos da mesa numa misericordia (A particular historical act )
+- elemento: {name: sub, source: string256}
+- elemento:  {name: esmola, source: string256}
+- group:
+    name: nom
+    source: pt-acto
+    description: >
+        Nomeacoes de irmaos numa misericordia
+    position: [id, dia, mes, ano, fol, subs, esmola]
+    guaranteed: [id, dia, mes, ano]
+    also: [fols, subs, esmola, obs]
+    contains: [n, referido]
+    idprefix: nom
+
 - group:
       name: vereacao
       source: pt-acto
@@ -180,7 +217,8 @@
       description: "Casamentos "
       name: cas
       source: pt-acto
-      arbitrary:
+      position: [id, dia, mes, ano, fol, local, celebrante]
+      contains:
           - celebrante
           - test
           - referida
@@ -459,7 +497,8 @@
       name: obito
       source: pt-acto
       description: "Obitos "
-      arbitrary:
+      position: [id, dia, mes, ano, fol, local, celebrante]
+      contains:
           - celebrante
           - n
           - marido
@@ -481,7 +520,8 @@
           opcionalmente. "
       name: o
       source: obito
-      arbitrary:
+      position: [dia, mes, ano]
+      contains:
           - celebrante
           - n
           - marido
@@ -497,6 +537,71 @@
           - locf
           - causa
           - oficios
+- group:
+    name: oficios
+    description: Ofícios em registos de óbito
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: ofs
+- group:
+    name: sacr
+    description: Sacramentos em registos de óbito
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: sac
+- group:
+    name: testamento
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: tst
+- group:
+    name: locs
+    description: Local de sepultura
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: lcs
+- group:
+    name: locf
+    description: Local de falecimento
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: lcf
+- group:
+    name: causa
+    description: Causa de falecimento
+    source: group-element
+    position:
+    - value
+    also:
+    - obs
+    guaranteed:
+    - value
+    idprefix: cau
 - group:
       name: ar
       source: pt-acto
@@ -572,129 +677,129 @@
           - referida
 - group:
       name: escritura
+      description: Uma escritura notarial
+      position: [id, dia, mes, ano, tipo]
       source: pt-acto
-      arbitrary:
-          - atr
-          - ls
-          - devedor
-          - devedora
-          - credor
-          - credora
-          - fiador
-          - fiadora
-          - test
-          - comprador
-          - compradora
-          - vendedor
-          - vendedora
-          - louvado
-          - doador
-          - doadora
-          - donatario
-          - donataria
-          - dotante
-          - dotantef
-          - dotado
-          - dotada
-          - senhorio
-          - senhoria
-          - rendeiro
-          - rendeira
-          - arrendatario
-          - arrendataria
-          - testador
-          - testadora
-          - testamentario
-          - testamentaria
-          - testamenteiro
-          - testamenteira
-          - contraente
-          - contraentef
-          - renunciante
-          - renunciantef
-          - procurador
-          - procuradora
-          - escrivao
-          - arrematante
-          - arrematantef
-          - foreiro
-          - foreira
-          - enfiteuta
-          - subenfiteuta
-          - enfiteutaf
-          - subenfiteutaf
-          - constituinte
-          - constituintef
-          - outorgante
-          - outorgantef
-          - referido
-          - referida
-          - divida
-          - garantia
-          - fianca
-          - bem
-          - doacao
-          - arrendamento
-          - aforamento
-          - demanda
-          - acusacao
-          - destinatario
-          - requerente
-          - requerido
-          - defesa
-          - sentenca
-          - escambo
-          - siza
-          - sisa
-          - prazo
-          - obra
-          - escrivao
+      contains:
           - abonador
           - abonadora
-          - tabeliao
-          - quitante
-          - quitantef
-          - quitado
-          - quitada
-          - demandador
-          - demandadora
-          - demandado
-          - escambador
-          - escambadora
-          - reu
-          - reuf
-          - vedor
-          - inquiricao
-          - inquirido
-          - inquirida
-          - inquiridor
+          - acusacao
+          - aforamento
           - apelacao
           - apelado
           - apelante
           - apelantef
           - apresentado
-          - padroeiro
-          - confirmante
-          - beneficiario
-          - beneficiaria
+          - arrematante
+          - arrematantef
+          - arrendamento
+          - arrendataria
+          - arrendatario
+          - atr
           - autor
           - autoridade
-          - renda
-          - juiz
+          - bem
+          - beneficiaria
+          - beneficiario
+          - comprador
+          - compradora
+          - confirmante
+          - constituinte
+          - constituintef
+          - contraente
+          - contraentef
+          - credor
+          - credora
+          - defesa
+          - demanda
+          - demandado
+          - demandador
+          - demandadora
+          - destinatario
+          - devedor
+          - devedora
+          - divida
+          - doacao
+          - doador
+          - doadora
+          - donataria
+          - donatario
+          - dotada
+          - dotado
+          - dotante
+          - dotantef
+          - enfiteuta
+          - enfiteutaf
+          - escambador
+          - escambadora
+          - escambo
+          - escrivao
+          - escrivao
+          - fiador
+          - fiadora
+          - fianca
+          - foreira
+          - foreiro
+          - garantia
+          - inquiricao
+          - inquirida
+          - inquirido
+          - inquiridor
           - item
+          - juiz
+          - louvado
+          - ls
+          - obra
+          - outorgante
+          - outorgantef
+          - padroeiro
+          - prazo
+          - procurador
+          - procuradora
+          - quitada
+          - quitado
+          - quitante
+          - quitantef
+          - referida
+          - referido
+          - renda
+          - rendeira
+          - rendeiro
+          - renunciante
+          - renunciantef
+          - requerente
+          - requerido
+          - reu
+          - reuf
+          - senhoria
+          - senhorio
+          - sentenca
+          - sisa
+          - siza
+          - subenfiteuta
+          - subenfiteutaf
+          - tabeliao
+          - test
+          - testador
+          - testadora
+          - testamentaria
+          - testamentario
+          - testamenteira
+          - testamenteiro
+          - vedor
+          - vendedor
+          - vendedora
 - group:
       description: "Letra de câmbio ,usado no projecto DyncoopNet. "
       name: lc
       source: pt-acto
-      arbitrary:
+      position: [id, dia, mes, ano, loc]
+      contains:
           - celebrante
           - actorm
           - actorf
           - object
           - abstraction
-          - ls
-          - rel
-      part:
           - atr
           - rel
           - beneficiario
@@ -784,7 +889,9 @@
 - group:
       name: carta
       source: pt-acto
-      arbitrary:
+      position: [titulo, dia, mes, ano, ref]
+      guaranteed: [titulo, dia, mes, ano]
+      contains:
           - celebrante
           - actorm
           - actorf
@@ -792,7 +899,6 @@
           - abstraction
           - ls
           - rel
-      part:
           - receptor
           - emissor
           - evento
@@ -1019,17 +1125,18 @@
           - ls
           - rel
       source: pt-acto
+
+# carta de perdão
 - group:
       name: cartaperdao
-      arbitrary:
-          - celebrante
-          - actorm
-          - actorf
-          - object
-          - abstraction
-          - ls
-          - rel
-      part:
+      position: [id, dia, mes, ano]
+      also:
+            - cota
+            - local
+            - tipo
+            - tabeliao
+            - obs
+      contains:
           - perdoante
           - perdoante-m
           - perdoante-f
@@ -1045,6 +1152,52 @@
           - referida
           - tabeliao
       source: pt-acto
+- group:
+    name: perdao
+    source: abstraction
+    also:
+    - obs
+    - id
+    guaranteed:
+    - tipo
+    - descricao
+    idprefix: perd
+    position:
+    - dia
+    - mes
+    - ano
+- group:
+    name: crime
+    source: abstraction
+    position:
+    - dia
+    - mes
+    - ano
+    also:
+    - id
+    - objecto
+    - local
+    - descricao
+    - tempo
+    - instrumento
+    - pronuncia
+    - ocorrencia
+    - situacao
+    - obs
+    guaranteed:
+    - forma
+    - tipo
+    - subtipo
+    idprefix: cri
+- element: {name: forma, source: text}
+- element: {name: instrumento, source: text}
+- element: {name: objecto, source: text}
+- element: {name: ocorrencia, source: text}
+- element: {name: pronuncia, source: text}
+- element: {name: situacao, source: text}
+- element: {name: subtipo, source: string256}
+- element: {name: tempo, source: string256}
+
 - group:
       description: "Documento régio. "
       name: docregio
@@ -1217,3 +1370,175 @@
           - n
           - referido
           - referida
+- group:
+    name: siza
+    description: Registo de pagamento de siza ou sisa,usado em documentos do século XVI e XVII
+    source: object
+    position:
+    - valor
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    also:
+    - juiz
+    - escrivao
+    - depositario
+    - data
+    - obs
+    - id
+    contains:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - valor
+    idprefix: siz
+
+- group:
+    name: garantia
+    source: bem
+    position:
+    - name
+    - tipo
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    arbitrary:
+    - atr
+    - rel
+    - local
+    guaranteed:
+    - name
+    idprefix: gar
+
+- group:
+    name: divida
+    also:
+    - id
+    - prazo
+    - moeda
+    - valorn
+    - obs
+    arbitrary:
+    - atr
+    - ls
+    - rel
+    guaranteed:
+    - valor
+    - juro
+    idprefix: obj
+    position:
+    - valor
+    - juro
+    prefix: non
+    source: object
+    suffix: non
+
+- group:
+    name: aforamento
+    source: bem
+- group:
+    name: prazo
+    source: aforamento
+
+# Usado por Lia Nunes para registos de passagens
+- group:
+    name: pas
+    description: Passagem, registo de viagens (Lia Nunes)
+    also:
+    - obs
+    contains: 
+    - mestre
+    - n
+    - referido
+    - referida
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    - fol
+    - local
+    - destino
+    - num
+    idprefix: pas
+    position: [id, dia, mes, ano, fol, local, destino]
+    source: pt-acto
+
+- group:
+    name: mestre
+    source: pt-actorm
+
+- element: {name: destino, source: local}
+
+# Memórias paroquiais de 1758
+- group:
+    name: memoria58
+    source: pt-acto
+    description: "Formato para registo das memórias paroquiais de 1758 \n"
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    also:
+    - obs
+    guaranteed:
+    - id
+    idprefix: m58
+    contains:
+    - freguesia
+- group:
+    name: apontamentos
+    source: memoria58
+    description: "Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes. "
+
+- group:
+    name: freguesia
+    description: >
+       Freguesia, usada para registos de memórias paroquiais de 1758 e outros semelhantes
+    source: geoentity
+    contains: 
+        - attributo
+        - relation
+        - gref
+        - provincia
+        - comarca
+        - couto
+        - honra
+        - hospital
+        - termoc
+        - lugar
+        - misericordia
+        - mosteiro
+        - idonatario
+        - pdonatario
+        - igreja
+        - irmandade
+        - bispado
+        - confraria
+        - convento
+        - referido
+
+- group: {name: provincia, source: geoentity}
+- group: {name: bispado, source: geoentity}
+- group: {name: comarca, source: geoentity}
+- group: {name: termo, source: geoentity}
+- group: {name: termoc, source: geoentity}
+- group: {name: honra, source: geoentity}
+- group: {name: gref, source: geoentity}
+- group: {name: couto, source: geoentity}
+- group: {name: igreja, source: geoentity}
+- group: {name: irmandade, source: abstraction}
+- group: {name: hospital, source: abstraction}
+- group: {name: confraria, source: abstraction}
+- group: {name: convento, source: object}
+- group: {name: mosteiro, source: object}
+- group: {name: misericordia, source: abstraction}
+- group: {name: idonatario, source: abstraction}
+- group: {name: pdonatario, source: pt-actorm}
+
