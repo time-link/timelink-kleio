@@ -2951,7 +2951,7 @@
 															"",
 															"pm.test(\"Request-id is present\", function () {",
 															"    var jsonData = pm.response.json();",
-															"    var rid = _.parseInt(pm.environment.get(\"request_id\")); ",
+															"    var rid = parseInt(pm.environment.get(\"request_id\")); ",
 															"    pm.expect(jsonData.id).to.eql(rid);",
 															"});"
 														],
@@ -3182,7 +3182,7 @@
 															"",
 															"pm.test(\"Request-id is present\", function () {",
 															"    var jsonData = pm.response.json();",
-															"    var rid = _.parseInt(pm.environment.get(\"request_id\")); ",
+															"    var rid = parseInt(pm.environment.get(\"request_id\")); ",
 															"    pm.expect(jsonData.id).to.eql(rid);",
 															"});",
 															""
@@ -4338,7 +4338,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"var request_id = _.parseInt(environment.request_id);",
+							"var request_id = parseInt(pm.environment.get(\"request_id\"));",
 							"// console.log(\"current request-id: \"+request_id);",
 							"pm.environment.set(\"request_id\",request_id+1);",
 							""
