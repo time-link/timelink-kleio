@@ -502,6 +502,14 @@ group_export(Act,ID) :-
   group_derived(Act,'historical-act'),
   historical_act_export(Act,ID),!.
 
+group_export(Event,ID) :- % currently we handle events as acts
+  group_derived(Event,'cevent'),
+  historical_act_export(Event,ID),!.
+
+group_export(Event,ID) :- % currently we handle events as acts
+  group_derived(Event,'pevent'),
+  historical_act_export(Event,ID),!.
+
 group_export(Person,ID) :-
   group_derived(Person,person),
   person_export(Person,ID),!.
@@ -852,7 +860,7 @@ process_same_as(__Group,Id):-
   assertz(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date)),
   (clause(same_as_cached_id(SID),true)->true
     ;
-    warning_out(['destination id of "same as" not found. Will check again at the end of file.'])
+    log_debug('destination id of "same as" not found. Will check again at the end of file.',[])
     ),
   !.
 
