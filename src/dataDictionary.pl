@@ -181,6 +181,9 @@ isDoc(N):-
 %******************************************************
 %  %
 contained_by(G,[]):-isDoc(G).
+
+contained_by(G,G):- !,fail. % avoid loops
+
 contained_by(G,A):-
    contained_by_direct(G,A).
 contained_by(G,A):-
@@ -226,7 +229,7 @@ contained_by_super(G,A):-
     externals:clio_parts(A,AParts),
     dataDictionary:super_groups(G,GSupers),
     logging:log_debug('Testing for ~w in ~w~n',[GSupers,AParts]),
-    lists_have_common_member(GSupers,AParts,Common),!,
+    lists_have_common_member([G|GSupers],AParts,Common),!,
     logging:log_debug('Success: ~w has part ~w which is a super class of ~w~n',[A,Common,G]),
     assert(contained_by_cache(G,A)),
     !.
@@ -243,9 +246,9 @@ contained_by_super(G,A):-
     externals:clio_parts(ASuper,AParts), 
     logging:log_debug('~w has parts ~w~n',[ASuper,AParts]),
     AParts = [_|_], % if no parts in Super no point in testing
-    logging:log_debug('Looking for any of ~w in ~w~n', [GSupers,AParts]),
-    lists_have_common_member(GSupers,AParts,Common),!,
-    logging:log_debug('Success: ~w is a super class of ~w which has part ~w which is a super class of ~w~n',[A, ASuper,Common,G]),
+    logging:log_debug('Looking for any of ~w in ~w~n', [[G|GSupers],AParts]),
+    lists_have_common_member([G|GSupers],AParts,Common),!,
+    logging:log_debug('Success: ~w is a sub class of ~w which has part ~w matching ~w or a super class of it~n',[A, ASuper,Common,G]),
     assert(contained_by_cache(G,A)),
     !.
 
@@ -698,13 +701,36 @@ show_group(G):-
 
 shgroup(G,N):-
     clioGroup(G,ID),
-    tab(N),write(G),
-    N1 is N+5,show_props(ID,N1),
+    nl,tab(N),write('Group:'), writeln(G),
+    N1 is N+5,
+   (get_prop(ID, nota, Nota) ->
+      (nl, tab(N1),format("~w~n",[Nota]));
+      true
+   ),
+   (get_prop(ID, fons, Source) ->
+      (nl,tab(N1),format("source: ~w~n",[Source]));
+      true
+   ),
+   (get_prop(ID, locus, Pos) ->
+      (tab(N1),format("position: ~w~n",[Pos]));
+      true
+   ),
+   (get_prop(ID, certe, Certe) ->
+      (tab(N1),format("guaranteed: ~w~n",[Certe]));
+      true
+   ),
+   (get_prop(ID, ceteri, Also) ->
+      (tab(N1),format("also: ~w~n",[Also]));
+      true
+   ),
     subgroups(G,L),
-    nl,tab(N1),writelistln(["Contains: "| L]),
-    extend_groups(G,ExtGroups),
-    tab(N1), writelistln(["Extended by: "| ExtGroups]),
-    nl,shgroups(L,N1),
+    nl,tab(N1),format("Contains: ~w~n",[L]),
+
+    (setof(S,externals:clio_super(G,S),ExtGroups) -> true ; ExtGroups = []),
+    tab(N1), format("Extended by: ~w~n", [ExtGroups]),
+    % nl,tab(N1),writelistln(["Properties (internal): "]),
+    % show_props(ID,N1),
+    % nl,shgroups(L,N1),
     tab(N),write('End '),writeln(G).
 shgroups([],_):-!.
 shgroups([G|R],N):-

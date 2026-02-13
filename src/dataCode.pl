@@ -157,11 +157,15 @@ check_elements(G,GID):- % tests if certe elements where registered%
     getCDElement_list(Els),
     setof(X,(member(X,CerteList), \+ member(X,Els)),[A|B]),
     list_to_a([A|B],Missing),
+    % get the super class for each Els using clio_element_extends(El,Super)
+    % And check if that solves the missing elements
+    findall(S,(member(M,Els),clio_element_extends(M,S)),SMissing),
+    setof(X,(member(X,CerteList), \+ member(X,SMissing)),[_|_]),   
     get_prop(gline,number,L),
     get_prop(gline,text,Line),
     error_out(['** Error: missing element(s) in ',G,'(',GID,') must have: ' | Missing],[line_number(L),line_text(Line)]),!.
-check_elements(_,_):-!.
 
+check_elements(_,_):-!.
 
 %  initNewGroup(G). Intializes a new group on the current
 %    data storage structure. Information regarding
@@ -213,6 +217,8 @@ initNewGroup(G):-
 updatePath(OldGroup,OldID,NewGroup,Path,NewPath):-
     logging:log_debug('~n   >> UpdatePath ~w/~w with ~w~n',[Path,OldGroup,NewGroup]),
     updtp(OldGroup,OldID,NewGroup,Path,NewPath),
+    check_for_recursion(NewGroup, NewPath),
+    !,
     logging:log_debug('~n   << Sucess UpdatePath ~w/~w~n',[NewPath,NewGroup]),
 !.
 
@@ -241,7 +247,7 @@ updtp(__OldGroup,__OldID,NewGroup,_,[]):-
 updtp(OldGroup,OldID,NewGroup,Path,NewPath):-
     contained_by(NewGroup,OldGroup),
     A=..[OldGroup,OldID],
-    append(Path,[A],NewPath),!.
+    append(Path,[A],NewPath). % needs to backtrack
 
 % else see if ancestor is up in path %
 updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
@@ -249,7 +255,7 @@ updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     member(A,RPath),     % get groups from path in reverse order%
     A =.. [Anc,__AID],     % get group names %
     contained_by(NewGroup,Anc),% see if they are the ancestor of newGroup%
-    cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
+    cutListAfter(Path,A,NewPath). % if so cut path at that point %
 
 updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     clio_bclass(NewGroup,BaseNew),
@@ -258,7 +264,21 @@ updtp(__OldGroup,__OldID,NewGroup,Path,NewPath):-
     A =.. [Anc,__AID],     % get group names %
     clio_bclass(Anc,BaseAnc),
     contained_by(BaseNew,BaseAnc),% see if they are the ancestor of newGroup%
-    cutListAfter(Path,A,NewPath),!. % if so cut path at that point %
+    cutListAfter(Path,A,NewPath). % if so cut path at that point %
+
+%%  check_for_recursion(NewGroup,Path) 
+%% checks if the new group is already in the path. 
+%% If it is, then there is a recursive sequence of groups and 
+%% the new group cannot be linked to the path. 
+%% This check is necessary to avoid infinite loops in the case of 
+%% recursive group containing itself.
+check_for_recursion(NewGroup,Path):-
+    member(A,Path),
+    A =.. [NewGroup, __OGID], % if this succeeds, then the new group is already in the path
+    !,
+    logging:log_debug('   !! Recursion detected: ~w contains ~w~n',[Path,NewGroup]),
+    fail. 
+check_for_recursion(_,_):-!.
 
 
 cutListAfter([E|_L],E,[E]):-!.
@@ -279,6 +299,7 @@ newElement(E):-
     verify_element(E),
     setCDField(celement,E),   % set current element %
     !.
+
 newElement(E):-
     get_prop(gline,number,L),
     get_prop(gline,text,Line),
@@ -289,6 +310,9 @@ verify_element(E):-
     velement(E,G),!.
 
 velement(E,G):-element_of(E,G),!.
+velement(E,G):-
+    clio_element_extends(E,S),  % check if element extends super class %
+    element_of(S,G),!.
 velement(E,G):-
     \+ element_of(E,G),
     get_prop(gline,number,L),
