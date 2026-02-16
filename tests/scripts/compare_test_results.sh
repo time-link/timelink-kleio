@@ -4,5 +4,5 @@
 echo "Comparing translation results." 
 echo `date` `pwd` 
 
-diff -r $REFERENCE_TRANSLATIONS/ $TEST_TRANSLATIONS/ | grep -v -f scripts/exclude_while_comparing.grep 
+diff -r -b $REFERENCE_TRANSLATIONS/ $TEST_TRANSLATIONS/ | grep -v -f scripts/exclude_while_comparing.grep 
 echo "Comparing translation results finished."
