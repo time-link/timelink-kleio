@@ -214,6 +214,10 @@
     source: replaces
 
 - element:
+    name: subs
+    source: replace
+
+- element:
      name: autorels
      source: control
      description: >
@@ -253,7 +257,16 @@
         currently unused.
     source: control
 
+- element:
+    name: urlpattern
+    description: >
+        Patter of a URL in linked data, use "$1" in place of linked id.
 
+    source: string256
+
+- element:
+    name: shortname
+    description: short pattern of a URL in linked data, used in the link group.
 
 - element:
     name: inside
@@ -280,3 +293,12 @@
     name: kleiofile
     description: Path of the file where the entity is registered
     source: string256
+
+# Elements associated with authority registers and records
+- element: {name: atype, type: string256}
+- element: {name: dbase, type: string256}
+- element: {name: func, type: string256}
+- element: {name: mode, type: string256}
+- element: {name: occurrence, type: id}
+- element: {name: status, type: string256}
+- element: {name: user, type: string256}

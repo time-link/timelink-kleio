@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-02-13
+  - date: 2026-02-16
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/varia/auc_cartulario18.str.json
     origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/api/varia/auc_cartulario18.str
@@ -23,8 +23,6 @@
     position:
     - structure
     - translator
-    prefix: non
-    suffix: non
 - group:
     also:
     - type
@@ -46,8 +44,6 @@
     - year
     - type
     - ref
-    prefix: non
-    suffix: non
 - group:
     also:
     - loc
@@ -74,8 +70,6 @@
     - id
     - type
     - date
-    prefix: non
-    suffix: non
 - group:
     also:
     - id
@@ -95,8 +89,6 @@
     - sex
     - id
     - same_as
-    prefix: non
-    suffix: non
 - group:
     also:
     - obs
@@ -113,9 +105,7 @@
     position:
     - name
     - sex
-    prefix: non
     source: person
-    suffix: non
 - group:
     also:
     - obs
@@ -132,9 +122,7 @@
     position:
     - name
     - sex
-    prefix: non
     source: person
-    suffix: non
 - group:
     also:
     - obs
@@ -150,8 +138,6 @@
     position:
     - name
     - type
-    prefix: non
-    suffix: non
 - group:
     also:
     - obs
@@ -167,9 +153,7 @@
     position:
     - name
     - type
-    prefix: non
     source: object
-    suffix: non
 - group:
     also:
     - obs
@@ -184,8 +168,6 @@
     - type
     - value
     - date
-    prefix: non
-    suffix: non
 - group:
     also:
     - obs
@@ -198,8 +180,6 @@
     - destination
     idprefix: rel
     name: relation
-    prefix: non
-    suffix: non
 - group:
     also:
     - id
@@ -207,8 +187,6 @@
     name: end
     position:
     - id
-    prefix: non
-    suffix: non
 - element:
     description:
     identification: non
@@ -403,9 +381,7 @@
     - year
     - type
     - ref
-    prefix: non
     source: historical-source
-    suffix: non
 - element:
     description:
     identification: non
@@ -438,9 +414,7 @@
     - dia
     - mes
     - ano
-    prefix: non
     source: historical-act
-    suffix: non
 - group:
     also:
     - obs
@@ -449,9 +423,7 @@
     name: fim
     position:
     - id
-    prefix: non
     source: end
-    suffix: non
 - element:
     description:
     identification: non
@@ -573,9 +545,7 @@
     name: item
     position:
     - titulo
-    prefix: non
     source: object
-    suffix: non
 - group:
     also:
     - tipo
@@ -705,9 +675,7 @@
     - mes
     - ano
     - tipo
-    prefix: non
     source: pt-acto
-    suffix: non
 - group:
     also:
     - obs
@@ -723,9 +691,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -741,9 +707,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -759,9 +723,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -777,9 +739,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -795,9 +755,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -813,9 +771,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - group:
     also:
     - obs
@@ -831,9 +787,7 @@
     position:
     - name
     - type
-    prefix: non
     source: abstraction
-    suffix: non
 - element:
     description:
     identification: non
@@ -866,9 +820,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: object
-    suffix: non
 - element:
     description:
     identification: non
@@ -895,9 +847,7 @@
     position:
     - valor
     - juro
-    prefix: non
     source: object
-    suffix: non
 - group:
     also:
     - desc
@@ -916,9 +866,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: bem
-    suffix: non
 - group:
     also:
     - desc
@@ -937,9 +885,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: garantia
-    suffix: non
 - group:
     also:
     - juiz
@@ -962,9 +908,7 @@
     - escrivao
     - depositario
     - data
-    prefix: non
     source: object
-    suffix: non
 - group:
     also:
     - juiz
@@ -987,9 +931,7 @@
     - escrivao
     - depositario
     - data
-    prefix: non
     source: siza
-    suffix: non
 - group:
     also:
     - desc
@@ -1008,9 +950,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: bem
-    suffix: non
 - group:
     also:
     - desc
@@ -1029,9 +969,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: aforamento
-    suffix: non
 - group:
     also:
     - desc
@@ -1050,9 +988,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: bem
-    suffix: non
 - group:
     also:
     - desc
@@ -1071,9 +1007,7 @@
     position:
     - name
     - tipo
-    prefix: non
     source: bem
-    suffix: non
 - group:
     also:
     - desc
@@ -1092,9 +1026,7 @@
     - name
     - tipo
     - id
-    prefix: non
     source: object
-    suffix: non
 - group:
     also:
     - id
@@ -1299,9 +1231,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: male
-    suffix: non
 - group:
     also:
     - sexo
@@ -1599,9 +1529,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - obs
@@ -1619,9 +1547,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: male
-    suffix: non
 - group:
     also:
     - obs
@@ -1639,9 +1565,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1659,9 +1583,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1679,9 +1601,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1699,9 +1619,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1719,9 +1637,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1739,9 +1655,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1759,9 +1673,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1779,9 +1691,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1799,9 +1709,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1819,9 +1727,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - obs
@@ -1839,9 +1745,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - id
@@ -2046,9 +1950,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - obs
@@ -2066,9 +1968,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referido
-    suffix: non
 - group:
     also:
     - id
@@ -2273,9 +2173,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -2480,9 +2378,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -2688,9 +2584,7 @@
     position:
     - nordem
     - nome
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -2896,9 +2790,7 @@
     position:
     - nordem
     - nome
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -3196,9 +3088,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: n
-    suffix: non
 - group:
     also:
     - obs
@@ -3215,9 +3105,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -3422,9 +3310,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -3629,9 +3515,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -3836,9 +3720,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -4043,9 +3925,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -4250,9 +4130,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -4457,9 +4335,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -4664,9 +4540,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -4871,9 +4745,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -5078,9 +4950,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -5285,9 +5155,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -5492,9 +5360,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -5699,9 +5565,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -5906,9 +5770,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -6113,9 +5975,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -6320,9 +6180,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -6527,9 +6385,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -6734,9 +6590,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -6941,9 +6795,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -7148,9 +7000,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -7355,9 +7205,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -7562,9 +7410,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -7769,9 +7615,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -7976,9 +7820,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -8183,9 +8025,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -8390,9 +8230,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -8597,9 +8435,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -8804,9 +8640,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -9011,9 +8845,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -9218,9 +9050,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -9425,9 +9255,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -9632,9 +9460,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -9839,9 +9665,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -10046,9 +9870,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -10253,9 +10075,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -10460,9 +10280,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -10667,9 +10485,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -10874,9 +10690,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -11081,9 +10895,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -11288,9 +11100,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -11495,9 +11305,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -11702,9 +11510,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -11909,9 +11715,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -12116,9 +11920,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -12323,9 +12125,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -12530,9 +12330,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -12737,9 +12535,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -12944,9 +12740,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -13151,9 +12945,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -13358,9 +13150,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -13565,9 +13355,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - sexo
@@ -13865,9 +13653,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: n
-    suffix: non
 - group:
     also:
     - sexo
@@ -13886,9 +13672,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: male
-    suffix: non
 - group:
     also:
     - id
@@ -14096,9 +13880,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -14306,9 +14088,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -14513,9 +14293,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -14720,9 +14498,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -14927,9 +14703,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -15134,9 +14908,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -15341,9 +15113,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -15548,9 +15318,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -15755,9 +15523,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -15962,9 +15728,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -16169,9 +15933,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -16376,9 +16138,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -16583,9 +16343,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -16790,9 +16548,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -16997,9 +16753,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -17204,9 +16958,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -17411,9 +17163,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -17618,9 +17368,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -17825,9 +17573,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -18032,9 +17778,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -18239,9 +17983,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -18446,9 +18188,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -18653,9 +18393,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -18860,9 +18598,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -19067,9 +18803,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -19274,9 +19008,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -19481,9 +19213,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -19688,9 +19418,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -19895,9 +19623,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -20102,9 +19828,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -20309,9 +20033,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -20516,9 +20238,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -20723,9 +20443,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -20930,9 +20648,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -21137,9 +20853,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -21344,9 +21058,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -21551,9 +21263,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -21758,9 +21468,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -21965,9 +21673,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -22172,9 +21878,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -22379,9 +22083,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -22586,9 +22288,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -22793,9 +22493,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -23000,9 +22698,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -23207,9 +22903,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -23414,9 +23108,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -23621,9 +23313,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -23828,9 +23518,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -24035,9 +23723,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -24242,9 +23928,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -24449,9 +24133,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -24656,9 +24338,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -24863,9 +24543,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -25070,9 +24748,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -25277,9 +24953,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -25484,9 +25158,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -25691,9 +25363,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -25898,9 +25568,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -26105,9 +25773,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -26312,9 +25978,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -26519,9 +26183,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -26726,9 +26388,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -26933,9 +26593,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -27140,9 +26798,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -27347,9 +27003,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -27554,9 +27208,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -27761,9 +27413,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -27968,9 +27618,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -28175,9 +27823,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -28382,9 +28028,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -28589,9 +28233,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -28796,9 +28438,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -29003,9 +28643,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -29210,9 +28848,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -29417,9 +29053,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -29624,9 +29258,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -29831,9 +29463,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -30038,9 +29668,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -30245,9 +29873,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -30452,9 +30078,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -30659,9 +30283,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -30866,9 +30488,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -31073,9 +30693,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -31280,9 +30898,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -31487,9 +31103,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -31694,9 +31308,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -31901,9 +31513,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -32108,9 +31718,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -32315,9 +31923,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -32522,9 +32128,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -32729,9 +32333,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -32936,9 +32538,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -33143,9 +32743,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -33350,9 +32948,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -33557,9 +33153,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -33764,9 +33358,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -33971,9 +33563,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - id
@@ -34178,9 +33768,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - sexo
@@ -34378,9 +33966,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: female
-    suffix: non
 - group:
     also:
     - obs
@@ -34398,9 +33984,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: female
-    suffix: non
 - group:
     also:
     - sexo
@@ -34598,9 +34182,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - obs
@@ -34618,9 +34200,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34638,9 +34218,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34658,9 +34236,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34678,9 +34254,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34698,9 +34272,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34718,9 +34290,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34738,9 +34308,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34758,9 +34326,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34778,9 +34344,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - obs
@@ -34798,9 +34362,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: referida
-    suffix: non
 - group:
     also:
     - sexo
@@ -34998,9 +34560,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -35198,9 +34758,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - id
@@ -35401,9 +34959,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - obs
@@ -35420,9 +34976,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -35620,9 +35174,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -35820,9 +35372,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -36020,9 +35570,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -36220,9 +35768,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -36420,9 +35966,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -36620,9 +36164,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -36820,9 +36362,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -37020,9 +36560,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -37220,9 +36758,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -37420,9 +36956,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -37620,9 +37154,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -37820,9 +37352,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -38020,9 +37550,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -38220,9 +37748,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -38420,9 +37946,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -38620,9 +38144,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -38820,9 +38342,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -39020,9 +38540,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -39220,9 +38738,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -39420,9 +38936,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -39620,9 +39134,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -39820,9 +39332,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -40020,9 +39530,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -40220,9 +39728,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -40420,9 +39926,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -40620,9 +40124,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -40820,9 +40322,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -41020,9 +40520,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -41220,9 +40718,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -41420,9 +40916,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -41620,9 +41114,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -41820,9 +41312,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -42020,9 +41510,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -42220,9 +41708,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -42420,9 +41906,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - sexo
@@ -42620,9 +42104,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - obs
@@ -42640,9 +42122,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: person
-    suffix: non
 - group:
     also:
     - id
@@ -42846,9 +42326,7 @@
     name: perdoante-m
     position:
     - nome
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - sexo
@@ -43045,9 +42523,7 @@
     name: perdoante-f
     position:
     - nome
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - id
@@ -43251,9 +42727,7 @@
     name: perdoado
     position:
     - nome
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - sexo
@@ -43450,9 +42924,7 @@
     name: perdoada
     position:
     - nome
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - obs
@@ -43470,9 +42942,7 @@
     position:
     - nome
     - sexo
-    prefix: non
     source: person
-    suffix: non
 - group:
     also:
     - id
@@ -43676,9 +43146,7 @@
     name: vitima-m
     position:
     - nome
-    prefix: non
     source: actorm
-    suffix: non
 - group:
     also:
     - sexo
@@ -43875,9 +43343,7 @@
     name: vitima-f
     position:
     - nome
-    prefix: non
     source: actorf
-    suffix: non
 - group:
     also:
     - data
@@ -43893,9 +43359,7 @@
     - tipo
     - valor
     - data
-    prefix: non
     source: attribute
-    suffix: non
 - group:
     also:
     - data
@@ -43911,9 +43375,7 @@
     - tipo
     - valor
     - data
-    prefix: non
     source: ls
-    suffix: non
 - group:
     also:
     - data
@@ -43932,6 +43394,4 @@
     - valor
     - nomedest
     - iddest
-    prefix: non
     source: relation
-    suffix: non
