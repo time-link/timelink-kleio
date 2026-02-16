@@ -1,4 +1,9 @@
 - file:
     name: test duplicate 1
     description: file to test duplicate inclusion of other files
+
+- group:
+    name: testduplicate1
+    description: group to test duplicate inclusion of other files
+
 - include: test_duplicate_2.yaml

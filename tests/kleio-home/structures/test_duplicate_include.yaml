@@ -1,8 +1,18 @@
 - file:
     name: test duplicate structure top level
     description: file to test duplicate inclusion of other files
+
+- group:
+    name: testduplicatetop
+    description: group to test duplicate inclusion of other files
+    
+- element:
+    name: testduplicateelement
+    description: element to test duplicate inclusion of other files
+    source: string64
+
 - include: test_duplicate_1.yaml
 - include: test_duplicate_2.yaml
-- include: vereacoes.yaml
+
 
 
