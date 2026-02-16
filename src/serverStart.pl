@@ -375,7 +375,7 @@ translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/issues/issue15/issue15.cli', false).  % all reference sources
 translate_file('sources/api/issues/issue21.cli',false).
 translate_file('sources/api/linked_data/',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',false).
+translate_file('sources/api/linked_data/dehergne-a.cli',true).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
@@ -394,7 +394,7 @@ translate_file('sources/api/varia/cartas.cli',false).
 translate_file('sources/api/varia/dehergne-residences.cli',false).
 translate_file('sources/api/varia/ivcc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
-translate_file('sources/api/varia/dev1692.cli',true).
+translate_file('sources/api/varia/dev1692.cli',false).
 translate_file('sources/api/varia/mp758-santiago-beduido.cli',false).
 translate_file('sources/api/varia/nommiz.cli',false).
 translate_file('sources/api/varia/test-atr-date.cli',false).
