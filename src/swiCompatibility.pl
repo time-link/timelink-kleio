@@ -82,12 +82,13 @@
 */
 
 :- use_module(library(lists)).
+:- use_module(library(thread)).
 
 %*******************************************************************
 % these dynamic predicates are shared among threads.
 %*******************************************************************
 ?-dynamic(remember_/2).
-?-dynamic(prop_/2).
+?-dynamic(prop_/3).
 
 %*******************************************************************
 % A. General purpose predicates %
@@ -351,10 +352,11 @@ concat(X,Y) :- concat_atom(X,Y).
 % @see recall/2
 %
 remember(Name,Value):-
-    retractall(remember_(Name,_)),!,
-    assert(remember_(Name,Value)).
-remember(Name,Value):-
-    assert(remember_(Name,Value)),!.
+    with_mutex(remember_mutex,
+        ( retractall(remember_(Name,_)),
+          assertz(remember_(Name,Value))
+        )
+    ).
 
 %% recall(+Name,-Value) is det.
 % Recall a stored valued, shared among threads.
@@ -368,7 +370,9 @@ recall(Name,Value) :- remember_(Name,Value).
 % @see recall2/2
 % @see remember2/2
 forget(Name):-
-    retractall(remember_(Name,_)),!.
+    with_mutex(remember_mutex,
+        retractall(remember_(Name,_))
+    ).
 
 %%  remember2(+Name,+Value) is det.
 %  stores a value associated with a name.

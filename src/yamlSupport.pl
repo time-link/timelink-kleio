@@ -30,8 +30,8 @@ stru_yaml(F):-
     put_value(stru_file,Filename),
     put_value(stru_files_read,[]),
     set_prop(Filename,type,str_yaml),
-    push(stru_files_stack, ''),
-    new_yaml_str(Filename,_).
+    put_value(stru_files_stack, []),
+    new_yaml_str(Filename,_),!.
 
 new_yaml_str(Filename,Data):-
     report([format('~nProcessing YAML structure (schema):~n   ~w~n~n',[Filename])]),
@@ -40,17 +40,19 @@ new_yaml_str(Filename,Data):-
     read_yaml_str(Filename,Data),
     struCode:closeStru(Filename),
     report([perror_count]),
-    report([writeln('Structure processing finished.')]).
+    report([writeln('Structure processing finished.')]),!.
 
 % this read a yaml file and processes the configuration
 read_yaml_str(Filename,Data):-
     put_value(yaml_file,Filename),
     get_value(stru_files_read,ReadFiles),
     get_value(stru_files_stack,Stack),
+
     (member(Filename, ReadFiles) -> 
+        peek(stru_files_stack, TopFile),
         errors:warning_out(
-            ['WARNING: Ignoring previously processed file'],
-        [file(Filename),file_type(stru)])
+            ['Ignoring previously processed file: ',Filename],
+        [file(TopFile),file_type(stru)])
     ;
         (
         length(Stack,Len),
@@ -91,8 +93,7 @@ inspect_yaml_str_cmd(YamlTerm):-
     Params = YamlTerm.Command,
     % format('Command: ~w~n',[Command]),
     % format('  Pars: ~w~n', Params),
-    process_str_command(Command,Params),
-    nl.
+    process_str_command(Command,Params),!.
 
 % file command starts a file of definitions
 process_str_command(file,Pars):-!,
@@ -105,8 +106,7 @@ process_str_command(file,Pars):-!,
     get_value(stru_files_stack,Stack),
     length(Stack,Len),
     Ident is Len  * 3,
-    report([format('~n~*c == Structure name: ~w~n~*c      from ~w ~n',[Ident,32,Name,Ident,32,Filename])]),
-    (get_value(stru_file,Filename); Filename = Name),
+    report([format('~n~*c == File name: ~w~n~*c      from ~w ~n',[Ident,32,Name,Ident,32,Filename])]),
     option(description(Desc),ParList,none),
     set_prop(Filename,description,Desc),
     !.
@@ -134,7 +134,7 @@ process_str_command(Command, Params):-
     struSyntax:command(InternalCommand,ok),!,
     struCode:init_command(InternalCommand),
     process_str_params(InternalCommand, Params),
-    struCode:close_command(InternalCommand,_).
+    struCode:close_command(InternalCommand,_),!.
 
 process_str_command(name, Params):-
     put_value(current_command,name),
@@ -189,7 +189,7 @@ sanitize_value(V,V):-!.
 include_yaml_str(File,Data):-
     normalize_str_path(File,Path),
     absolute_file_name(Path,AbsPath),
-    read_yaml_str(AbsPath,Data).
+    read_yaml_str(AbsPath,Data),!.
 
 
 

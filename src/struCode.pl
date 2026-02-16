@@ -307,7 +307,18 @@ check_complete(CMD,Result):-
    member(CMD,[nomino,pars,terminus]),
    requiredParams(CMD,List),
    missingParam(CMD,List),
-   (get_prop(CMD,status,Result); Result = ok),!.
+   (get_prop(CMD, nomen, Names); Names = ['noname*']),
+   (peek(stru_files_stack,YamlFile); YamlFile = '<NO FILE>'),
+   (get_value(stru_file,Filename); Filename = '<NO FILE>'),
+   (get_prop(CMD,status,Result); Result = ok),
+   forall(member(Name,Names),(
+         set_prop(Name, stru_file, Filename),
+         set_prop(Name, yaml_file_cmd, YamlFile),
+         set_prop(Name, name,Name),
+         set_prop(Name,status,Result)
+      )),
+   % logging:log_debug('== ~w was defined in ~w. ~n',[Name,YamlFile]),
+   !.
 
 check_complete(CMD, notOk):-
    \+ member(CMD,[nomino,pars]),

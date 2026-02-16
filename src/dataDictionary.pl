@@ -25,6 +25,7 @@
         all_elements/1,
         classes_topological_order/2,
         show_stru/0,
+        show_group/1,
         show_groups/0,
         show_elements/0,
         clean_groups/1,
@@ -334,13 +335,14 @@ create_group(Group):-
 %
 make_group(Group):-
    clioGroup(Group,_),
-   warning_out(['Warning: Group ',Group,' already defined.',
+   warning_out(['Group ',Group,' already defined.',
       ' command properties will be merged.']),
    !.
 
 make_group(Group):-
    gensymbol_local(str,Id),   % generate an Id %
-   assert(clioGroup_(Group,Id)),!. % TODO: make multi schema aware
+   assert(clioGroup_(Group,Id)),
+   !. % TODO: make multi schema aware
 
 %% clioGroup(?GroupName,?GroupId) is nondet.
 %
@@ -474,13 +476,14 @@ set_element_defaults(E):-
    !.
 
 set_pars_defaults(Group):-    % Currently we skip the defaults, they are meaningless
-   clioGroup(Group,Id),      %get the group id %
+   clioGroup(Group,Id),!,      %get the group id %
+   % logging:log_debug('>> setting group defaults for ~w id ~w ~n',[Group,Id]),
    % store default params %
    % set_prop(Id,ordo,sic),
    % set_prop(Id,sequentia,sic),
    % set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc %
-   set_prop(Id,post,non),  % check Kleio Manual p. 71-72
-   set_prop(Id,prae,non),  % check Kleio Manual p. 71-72
+   % set_prop(Id,post,non),  % check Kleio Manual p. 71-72
+   % set_prop(Id,prae,non),  % check Kleio Manual p. 71-72
    make_signum(Group,Signum),
    set_prop(Id,signum,Signum),!.
 
@@ -496,7 +499,7 @@ mks([A],[A]):-!.
 
 % pars, sine, signa, forma, ceteri, solum params not implemented %
 set_terminus_defaults(Element):-  % currently we do not implement defaults.
-   clioElement(Element,Id),      %get the element id %
+   clioElement(Element,Id), !,     %get the element id %
    % store default params %
    %set_prop(Id,modus,lingua),
    %set_prop(Id,primum,lingua),
@@ -690,11 +693,15 @@ show_stru:- \+ clioStru(__S),
           error_out('**No structure definition.'),!.
 
 show_structure(S):-
-    write('Structure definition for: '),write(S),tab(1),
-    get_prop(S,primum,D), % get the document name %
-    write('document: '),writeln(D),
-    shgroup(D,1),
-    show_elements.
+   get_value(stru_file,StruFile),
+   write('Top level group: '),writeln(S),nl,
+   write('Structure file: '),writeln(StruFile),
+   get_value(stru_files_read,FilesRead),
+   reverse(FilesRead,FilesReadRev),
+   writeln('Files included: '),
+   forall(member(F,FilesReadRev),(tab(2),writeln(F))),
+   nl,write('Groups: '),listClioGroups,
+   nl,write('Elements: '),listClioElements.
 
 show_group(G):-
       shgroup(G,1).
@@ -702,36 +709,54 @@ show_group(G):-
 shgroup(G,N):-
     clioGroup(G,ID),
     nl,tab(N),write('Group:'), writeln(G),
+    tab(N),write('Id: '), writeln(ID),
+
     N1 is N+5,
-   (get_prop(ID, nota, Nota) ->
-      (nl, tab(N1),format("~w~n",[Nota]));
-      true
-   ),
-   (get_prop(ID, fons, Source) ->
-      (nl,tab(N1),format("source: ~w~n",[Source]));
-      true
-   ),
-   (get_prop(ID, locus, Pos) ->
-      (tab(N1),format("position: ~w~n",[Pos]));
-      true
-   ),
-   (get_prop(ID, certe, Certe) ->
-      (tab(N1),format("guaranteed: ~w~n",[Certe]));
-      true
-   ),
-   (get_prop(ID, ceteri, Also) ->
-      (tab(N1),format("also: ~w~n",[Also]));
-      true
-   ),
+    (get_prop(ID, name, Name) ->
+       (nl, tab(N1),format("name: ~w~n",[Name]));
+       true
+    ),
+    (get_prop(ID, nota, Nota) ->
+    (nl, tab(N1),format("~w~n",[Nota]));
+    true
+    ),
+    (get_prop(ID, fons, Source) ->
+    (nl,tab(N1),format("source: ~w~n",[Source]));
+    true
+    ),
+    (get_prop(ID, locus, Pos) ->
+    (tab(N1),format("position: ~w~n",[Pos]));
+    true
+    ),
+    (get_prop(ID, certe, Certe) ->
+    (tab(N1),format("guaranteed: ~w~n",[Certe]));
+    true
+    ),
+    (get_prop(ID, ceteri, Also) ->
+    (tab(N1),format("also: ~w~n",[Also]));
+    true
+    ),
     subgroups(G,L),
     nl,tab(N1),format("Contains: ~w~n",[L]),
-
+    
     (setof(S,externals:clio_super(G,S),ExtGroups) -> true ; ExtGroups = []),
     tab(N1), format("Extended by: ~w~n", [ExtGroups]),
     % nl,tab(N1),writelistln(["Properties (internal): "]),
     % show_props(ID,N1),
     % nl,shgroups(L,N1),
-    tab(N),write('End '),writeln(G).
+    (get_prop(G, stru_file, StruFile) ->
+    (nl, tab(N1), format("Structure: ~w~n", [StruFile]));
+    true
+    ),
+    (get_prop(G, yaml_file_cmd, YamlFile) ->
+    (tab(N1), format("Defined in: ~w~n", [YamlFile]));
+    true
+    ),
+    (get_prop(G, status, Status) ->
+       (tab(N1),format("Status: ~w~n",[Status]));
+       true
+    ),
+    tab(N),nl, write('End '),writeln(G).
 shgroups([],_):-!.
 shgroups([G|R],N):-
     shgroup(G,N),
@@ -1081,6 +1106,39 @@ show_elements:-nl,write('Elements (clioElement): '),listClioElements,
 listClioElements:-clioElement(E,_),
                 write(E),tab(1),fail.
 listClioElements:-nl,!.
+
+show_element(E):-
+      sh_element(E,0).
+
+sh_element(E,N0):-
+      clioElement(E,ID),
+      N is N0+3,
+      nl,
+      tab(N0),write('Element:'), writeln(E),
+      tab(N0),write('Id: '), writeln(ID),
+      (get_prop(ID, nota, Nota) ->
+         (nl, tab(N0),format("~w~n",[Nota]));
+         true
+      ),
+      (get_prop(ID, fons, Source) ->
+         (nl, tab(N),format("Source: ~w~n",[Source]));
+         true
+      ),
+      (setof(S,externals:clio_element_super(E,S),ExtEls) -> true ; ExtEls = []),
+      nl, tab(N), format("Extended by: ~w~n", [ExtEls]),      
+      (get_prop(E, stru_file, StruFile) ->
+         (nl, tab(N), format("Structure: ~w~n", [StruFile]));
+         true
+      ),
+      (get_prop(E, yaml_file_cmd, YamlFile) ->
+         (tab(N), format("Defined in: ~w~n", [YamlFile]));
+         true
+      ),
+      (get_prop(ID, status, Status) ->
+         (tab(N),format("Status: ~w~n",[Status]));
+         true
+      ),
+      tab(N),nl, write('End '),writeln(E).
 %*************************************************************
 % clean_groups. deletes previous group definitions
 %*************************************************************

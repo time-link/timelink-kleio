@@ -101,10 +101,10 @@ clio_init:-
 % %
 stru(F):-
     file_name_extension(_, Ext, F),
-    stru(F, Ext).
+    stru(F, Ext),!.
 
 stru(F, yaml):-
-    stru_yaml(F).% normalize name as atom
+    stru_yaml(F),!. % normalize name as atom
 
 stru(F,str):-
       atom_string(Filename,F), % normalize name as atom
@@ -127,7 +127,7 @@ stru(F,str):-
       directory_file_path(Directory,Yamlfile,YPath),
       make_json_yaml_str(Filename,JPath,YPath),
       report([perror_count]),
-      report([writeln('Structure processing finished.')]).
+      report([writeln('Structure processing finished.')]),!.
 
 %******************************************************
 %  dat:  starts the processing of kleio data file
