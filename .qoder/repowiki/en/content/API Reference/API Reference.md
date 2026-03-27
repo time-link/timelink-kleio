@@ -1,1519 +1,527 @@
 # API Reference
 
 <cite>
-**Referenced Files in This Document**   
-- [api.json](file://api/postman/api.json)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
+**Referenced Files in This Document**
 - [restServer.pl](file://src/restServer.pl)
-- [apiSources.pl](file://src/apiSources.pl)
 - [apiTranslations.pl](file://src/apiTranslations.pl)
-- [apiExports.pl](file://src/apiExports.pl)
+- [apiSources.pl](file://src/apiSources.pl)
 - [apiTokens.pl](file://src/apiTokens.pl)
-- [apiDirectories.pl](file://src/apiDirectories.pl)
 - [apiGit.pl](file://src/apiGit.pl)
-- [errors.pl](file://src/errors.pl)
-- [test_report_2025-12-13_11:19:25.diff](file://tests/reports/test_report_2025-12-13_11:19:25.diff)
-- [environment.json](file://api/postman/environment.json)
-- [tests.postman_environment.json](file://api/postman/tests.postman_environment.json)
+- [kleioFiles.pl](file://src/kleioFiles.pl)
+- [tokens.pl](file://src/tokens.pl)
+- [apiCommon.pl](file://src/apiCommon.pl)
+- [apiExports.pl](file://src/apiExports.pl)
+- [apiDirectories.pl](file://src/apiDirectories.pl)
+- [api/postman/api.json](file://api/postman/api.json)
+- [api/postman/environment.json](file://api/postman/environment.json)
+- [README.md](file://README.md)
+- [docs/doc/client_setup.md](file://docs/doc/client_setup.md)
 </cite>
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Authentication](#authentication)
-3. [Endpoint Overview](#endpoint-overview)
-4. [/sources Endpoint](#sources-endpoint)
-5. [/translations Endpoint](#translations-endpoint)
-6. [/exports Endpoint](#exports-endpoint)
-7. [/tokens Endpoint](#tokens-endpoint)
-8. [/directories Endpoint](#directories-endpoint)
-9. [/versions Endpoint](#versions-endpoint)
-10. [Error Handling](#error-handling)
-11. [Rate Limiting and Security](#rate-limiting-and-security)
-12. [Client Implementation Guidelines](#client-implementation-guidelines)
-13. [Debugging and Monitoring](#debugging-and-monitoring)
-14. [Migration Notes](#migration-notes)
+2. [Project Structure](#project-structure)
+3. [Core Components](#core-components)
+4. [Architecture Overview](#architecture-overview)
+5. [Detailed Component Analysis](#detailed-component-analysis)
+6. [Dependency Analysis](#dependency-analysis)
+7. [Performance Considerations](#performance-considerations)
+8. [Troubleshooting Guide](#troubleshooting-guide)
+9. [Conclusion](#conclusion)
+10. [Appendices](#appendices)
 
 ## Introduction
+This document provides comprehensive API documentation for the REST and JSON-RPC endpoints exposed by the kleio-server. It covers authentication via bearer tokens, endpoint semantics, request/response schemas, parameter validation, error handling, and operational guidance. It focuses on the following endpoint groups:
+- Translations service: POST /translations, GET /translations/:id
+- Sources management: GET /sources, POST /sources/upload
+- File operations: GET /files/*, POST /files/copy
+- Token management: POST /tokens/generate, POST /tokens/invalidate
+- Git integration: POST /git/pull, POST /git/push
 
-The timelink-kleio RESTful API provides programmatic access to the Kleio translation system, enabling clients to manage source files, initiate translations, retrieve exports, and perform version control operations. The API is available in both REST and JSON-RPC 2.0 versions, with REST being preferred for simple file operations and JSON-RPC for complex interactions.
+The server supports both REST and JSON-RPC protocols. Authentication is mandatory and enforced via bearer tokens issued by the server.
 
-The API follows a resource-oriented architecture with endpoints for managing sources, translations, exports, directories, and Git operations. All endpoints require token-based authentication, with tokens granting specific permissions based on user roles. The API supports both synchronous and asynchronous operations, with translation jobs being processed in the background.
+## Project Structure
+The API surface is implemented across modular Prolog modules. The REST dispatcher routes requests to entity-specific handlers, which validate tokens, resolve paths, and execute operations. Supporting modules provide token management, file resolution, and Git utilities.
 
-This documentation covers all API endpoints, including their HTTP methods, URL patterns, request/response schemas, authentication requirements, and error handling strategies. Examples are drawn from actual Postman collections and test cases to ensure accuracy.
-
-**Section sources**
-- [api.json](file://api/postman/api.json)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
-- [restServer.pl](file://src/restServer.pl)
-
-## Authentication
-
-The timelink-kleio API uses token-based authentication for all endpoints. Clients must include a valid token in the Authorization header of each request using the Bearer scheme.
-
-### Token Generation
-
-Tokens are generated through the `/json/` JSON-RPC endpoint using the `tokens_generate` method. The token generation request requires an admin token and specifies the user's permissions and access restrictions.
-
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "tokens_generate",
-    "params": {
-        "user": "tester",
-        "info": {
-            "comment": "An user able to translate, upload and delete files, and also create and remove directories",
-            "api": [
-                "sources",
-                "kleioset",
-                "files",
-                "structures",
-                "translations",
-                "upload",
-                "delete",
-                "mkdir",
-                "rmdir"
-            ],
-            "structures": "users/tester/stru",
-            "sources": "sources/api_tests"
-        },
-        "token": "{{testadmintoken}}"
-    },
-    "id": 1
-}
+```mermaid
+graph TB
+Client["Client"]
+REST["REST Dispatcher<br/>process_rest/1"]
+Tokens["Token Decoder<br/>tokens:decode_token/3"]
+Sources["Sources Handler<br/>apiSources:sources/5"]
+Translations["Translations Handler<br/>apiTranslations:translations/5"]
+TokensAPI["Tokens Handler<br/>apiTokens:tokens/5"]
+GitAPI["Git Handler<br/>apiGit:versions/5"]
+Files["File Resolution<br/>kleioFiles:*"]
+Git["Git Utilities<br/>gitUtilities:*"]
+Client --> REST
+REST --> Tokens
+REST --> Sources
+REST --> Translations
+REST --> TokensAPI
+REST --> GitAPI
+Sources --> Files
+Translations --> Files
+GitAPI --> Git
 ```
 
-The response contains the generated token:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": "8312070ca229c81feaeb29a973f5132d795a0db4",
-    "id": 1
-}
-```
-
-### Token Permissions
-
-Tokens are associated with specific permissions that determine what operations the user can perform:
-
-- **sources**: Access to source files
-- **kleioset**: Retrieve translation status information
-- **files**: Download files
-- **structures**: Access to structure files
-- **translations**: Initiate translations
-- **upload**: Upload or update files
-- **delete**: Delete files or directories
-- **mkdir**: Create directories
-- **rmdir**: Remove directories
-- **generate_token**: Generate new tokens (admin privilege)
-- **invalidate_token**: Revoke tokens (admin privilege)
-- **invalidate_user**: Revoke all tokens for a user (admin privilege)
-
-### Authentication Header
-
-All API requests must include the Authorization header:
-
-```
-Authorization: Bearer 8312070ca229c81feaeb29a973f5132d795a0db4
-```
-
-Requests without a valid token will receive a 401 Unauthorized response.
+**Diagram sources**
+- [restServer.pl](file://src/restServer.pl#L491-L515)
+- [apiSources.pl](file://src/apiSources.pl#L28-L174)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L34-L82)
+- [apiTokens.pl](file://src/apiTokens.pl#L18-L28)
+- [apiGit.pl](file://src/apiGit.pl#L23-L108)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L753-L800)
+- [tokens.pl](file://src/tokens.pl#L141-L151)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [apiTokens.pl](file://src/apiTokens.pl)
-- [restServer.pl](file://src/restServer.pl)
+- [restServer.pl](file://src/restServer.pl#L491-L515)
+- [apiCommon.pl](file://src/apiCommon.pl#L28-L76)
 
-## Endpoint Overview
+## Core Components
+- REST Dispatcher: Parses requests, extracts Authorization, resolves entity/object/method, validates uploads, and invokes handlers.
+- Token System: Validates bearer tokens and enforces API permissions per token.
+- Entity Handlers: Implement specific operations for sources, translations, tokens, directories, exports, and git.
+- File Utilities: Resolve relative paths to absolute locations under the configured home directory and enforce security by returning relative paths in responses.
+- Git Utilities: Provide repository status, remotes, pull, push, commit, set user info, and reset operations.
 
-The timelink-kleio API provides several endpoints for managing different aspects of the Kleio translation system. The API supports both REST and JSON-RPC 2.0 protocols, with REST being the preferred method for most operations.
-
-### Protocol Selection
-
-The API offers two protocols:
-- **REST**: Preferred for simple file operations like retrieving sources and exports
-- **JSON-RPC 2.0**: Required for complex operations like token management and should be used for all other functions
-
-Clients should use JSON-RPC for most operations and fall back to REST only for simple file fetching.
-
-### Base URL
-
-The base URL for the API is configurable but typically follows the pattern:
-```
-http://localhost:8088/
-```
-
-The port number may vary based on the server configuration.
-
-### Request Structure
-
-REST requests use standard HTTP methods (GET, POST, PUT, DELETE) with parameters passed in the query string or request body. JSON-RPC requests are POST requests to the `/json/` endpoint with a JSON payload containing the method, parameters, and request ID.
-
-### Response Format
-
-Successful responses return JSON data with a 200 OK status code. Error responses follow the JSON-RPC 2.0 error format with appropriate HTTP status codes.
+Key behaviors:
+- Authentication: All endpoints require a valid bearer token; missing or invalid tokens cause HTTP 400 or 403 responses.
+- CORS: Enabled globally with configurable allowed origins via environment variable.
+- Uploads: Multipart POST/PUT for file uploads; upload permission is validated per token.
+- JSON vs REST: JSON-RPC uses method names and params; REST uses resource paths and query parameters.
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [restServer.pl](file://src/restServer.pl)
+- [restServer.pl](file://src/restServer.pl#L553-L579)
+- [restServer.pl](file://src/restServer.pl#L590-L600)
+- [tokens.pl](file://src/tokens.pl#L141-L151)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L753-L800)
 
-## /sources Endpoint
+## Architecture Overview
+The server exposes a unified REST interface with JSON-RPC support. Requests are authenticated centrally, routed to entity handlers, and executed with appropriate permission checks. Responses are formatted consistently, and file downloads are served directly when requested.
 
-The `/sources` endpoint manages Kleio source files, allowing clients to retrieve, upload, copy, move, and delete source files.
-
-### GET /sources/{path}
-
-Retrieves a source file or lists files in a directory.
-
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/sources/{path}`
-
-**Parameters**:
-- `path` (required): Path to the file or directory
-- `recurse` (optional): If "yes", recursively list files in subdirectories
-- `url` (optional): If "yes", return URLs for retrieving files
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-GET /rest/sources/paroquiais/casamentos/cas1714-1722.cli?id=1987 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-Accept: application/json
-```
-
-**Response Schema (JSON)**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "mime_type": "text/cli",
-        "url": "/rest/sources/paroquiais/casamentos/cas1714-1722.cli"
-    }
-}
+```mermaid
+sequenceDiagram
+participant C as "Client"
+participant D as "REST Dispatcher"
+participant T as "Token Validator"
+participant H as "Entity Handler"
+participant F as "File Resolver"
+participant G as "Git Utils"
+C->>D : "HTTP Request (Authorization : Bearer)"
+D->>T : "Decode token and validate"
+T-->>D : "Token info or error"
+alt "Valid token"
+D->>H : "Invoke handler (entity, method, object)"
+opt "Sources/Translations"
+H->>F : "Resolve relative path"
+F-->>H : "Absolute path or error"
+end
+opt "Git"
+H->>G : "Execute git operation"
+G-->>H : "Result or error"
+end
+H-->>D : "Success result"
+D-->>C : "200 OK (JSON or file)"
+else "Invalid token"
+D-->>C : "400 Bad Request or 403 Forbidden"
+end
 ```
 
-When requesting a directory with `url=yes`, the response contains a list of file URLs:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "/rest/sources/paroquiais/baptismos/b1685.cli",
-        "/rest/sources/paroquiais/baptismos/b1686.cli"
-    ]
-}
+**Diagram sources**
+- [restServer.pl](file://src/restServer.pl#L491-L515)
+- [restServer.pl](file://src/restServer.pl#L553-L579)
+- [tokens.pl](file://src/tokens.pl#L141-L151)
+- [apiSources.pl](file://src/apiSources.pl#L28-L104)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L34-L82)
+- [apiGit.pl](file://src/apiGit.pl#L23-L108)
+
+## Detailed Component Analysis
+
+### Translations Service
+- Endpoint: POST /rest/translations/:path
+  - Purpose: Start translation for a file or directory.
+  - Authentication: Requires token with translations permission.
+  - Parameters:
+    - structure: Optional structure file to use.
+    - echo: Include source lines in report if yes.
+    - recurse: Descend into subdirectories if yes.
+    - spawn: Distribute jobs across workers if yes; otherwise single-worker mode.
+    - status: Filter by translation status (when used with GET).
+  - Response: List of jobs with associated files.
+  - Notes: Supports both REST and JSON-RPC (translations_translate).
+
+- Endpoint: GET /rest/translations/:path
+  - Purpose: Retrieve translation status/results (kleio_set).
+  - Authentication: Requires files permission.
+  - Parameters:
+    - recurse: yes/no.
+    - status: Filter by status.
+    - url: yes to return URLs for retrieval.
+  - Response: List of files with status, timestamps, sizes, and derived URLs.
+
+- Endpoint: DELETE /rest/translations/:path
+  - Purpose: Clear translation results (derived files).
+  - Authentication: Requires translations permission.
+  - Behavior: Deletes rpt, err, xml, ids, files.json, old; preserves original.
+
+```mermaid
+flowchart TD
+Start(["POST /rest/translations/:path"]) --> Validate["Validate token and permissions"]
+Validate --> Resolve["Resolve path to absolute"]
+Resolve --> Decide{"Spawn enabled?"}
+Decide --> |Yes| Spawn["Distribute jobs across workers"]
+Decide --> |No| Single["Single-worker processing"]
+Spawn --> Jobs["Build job list"]
+Single --> Jobs
+Jobs --> Result["Return job list"]
 ```
 
-### POST /sources/{path} (Upload)
-
-Uploads a new source file.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/rest/sources/{path}`
-
-**Content-Type**: multipart/form-data
-
-**Authentication**: Required (upload permission)
-
-**Request Example**:
-```
-POST /rest/sources/new_directory/new_file.cli HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="new_file.cli"
-Content-Type: text/cli
-
-[File content]
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "new_directory/new_file.cli"
-}
-```
-
-### PUT /sources/{path} (Update)
-
-Updates an existing source file.
-
-**HTTP Method**: PUT
-
-**URL Pattern**: `/rest/sources/{path}`
-
-**Content-Type**: multipart/form-data
-
-**Authentication**: Required (upload permission)
-
-**Request Example**:
-```
-PUT /rest/sources/existing_directory/existing_file.cli HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="existing_file.cli"
-Content-Type: text/cli
-
-[Updated file content]
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "existing_directory/existing_file.cli"
-}
-```
-
-### POST /sources/{path} (Copy)
-
-Copies a source file to a new location.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/rest/sources/{path}?origin={source_path}`
-
-**Authentication**: Required (upload permission)
-
-**Request Example**:
-```
-POST /rest/sources/new_location/copied_file.cli?origin=sources/old_location/original_file.cli&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "new_location/copied_file.cli"
-}
-```
-
-### PUT /sources/{path} (Move)
-
-Moves a source file to a new location.
-
-**HTTP Method**: PUT
-
-**URL Pattern**: `/rest/sources/{path}?origin={source_path}`
-
-**Authentication**: Required (upload permission)
-
-**Request Example**:
-```
-PUT /rest/sources/new_location/moved_file.cli?origin=sources/old_location/original_file.cli&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "new_location/moved_file.cli"
-}
-```
-
-### DELETE /sources/{path}
-
-Deletes a source file or directory.
-
-**HTTP Method**: DELETE
-
-**URL Pattern**: `/rest/sources/{path}`
-
-**Parameters**:
-- `force` (optional): If "yes", removes directory even if not empty
-
-**Authentication**: Required (delete permission)
-
-**Request Example**:
-```
-DELETE /rest/sources/unwanted_directory?force=yes&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "unwanted_directory/file1.cli",
-        "unwanted_directory/file2.cli"
-    ]
-}
-```
+**Diagram sources**
+- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L241-L253)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
-- [apiSources.pl](file://src/apiSources.pl)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L34-L139)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L141-L163)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L86-L123)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L124-L139)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L53-L92)
 
-## /translations Endpoint
+Practical examples:
+- Start translation for a directory (REST):
+  - curl -X POST "http://localhost:8088/rest/translations/sources/api/paroquiais" -H "Authorization: Bearer YOUR_TOKEN" -H "Content-Type: application/json" -d '{"recurse":"yes","spawn":"yes"}'
+- Start translation for a file (JSON-RPC):
+  - {"jsonrpc":"2.0","method":"translations_translate","params":{"path":"sources/api/paroquiais/baptismos/bapt1714.cli","echo":"no","structure":"system/conf/kleio/stru/gacto2.str"},"id":1,"token":"YOUR_TOKEN"}
 
-The `/translations` endpoint manages the translation process, allowing clients to initiate translations, retrieve translation status, and clean translation results.
+### Sources Management
+- Endpoint: GET /rest/sources/:path
+  - Purpose: Download a file or list files in a directory.
+  - Authentication: Requires files permission.
+  - Parameters:
+    - url: yes to return URLs instead of raw content.
+    - recurse: yes to recurse into subdirectories.
+  - Response: File content (binary) or list of files/URLs.
 
-### POST /translations/{path}
+- Endpoint: POST /rest/sources/:path (multipart/form-data)
+  - Purpose: Upload a new file to :path.
+  - Authentication: Requires upload permission.
+  - Constraints: Destination must not exist; directory must exist.
+  - Response: Success result.
 
-Starts a translation of the specified file or directory.
+- Endpoint: PUT /rest/sources/:path (multipart/form-data)
+  - Purpose: Replace an existing file at :path.
+  - Authentication: Requires upload permission.
+  - Constraints: Destination must exist; directory must exist.
+  - Response: Success result.
 
-**HTTP Method**: POST
+- Endpoint: POST /rest/sources/:path?origin=:dest (copy)
+  - Purpose: Copy an existing file to a new location.
+  - Authentication: Requires upload permission.
+  - Constraints: Destination must not exist; directory must exist.
+  - Response: Success result.
 
-**URL Pattern**: `/rest/translations/{path}`
+- Endpoint: PUT /rest/sources/:path?origin=:dest (move)
+  - Purpose: Move an existing file to a new location.
+  - Authentication: Requires upload permission.
+  - Constraints: Destination must not exist; directory must exist.
+  - Response: Success result.
 
-**Authentication**: Required (translations permission)
+- Endpoint: DELETE /rest/sources/:path
+  - Purpose: Delete a file or directory (recursively).
+  - Authentication: Requires delete permission.
+  - Constraints: Cannot delete files currently queued or processing; deletes derived artifacts.
+  - Response: List of deleted items.
 
-**Parameters**:
-- `structure` (optional): Structure file to use for translation
-- `echo` (optional): If "yes", include source lines in the report
-- `recurse` (optional): If "yes", translate files in subdirectories
-- `status` (optional): Filter files by translation status
-- `spawn` (optional): If "yes", distribute files to different workers
-
-**Request Example**:
-```
-POST /rest/translations/paroquiais/baptismos?recurse=yes&echo=yes&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-Content-Type: application/json
-
-{
-    "structure": "structures/baptismos.yaml"
-}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        {
-            "job": 1,
-            "sources": [
-                "paroquiais/baptismos/b1685.cli",
-                "paroquiais/baptismos/b1686.cli"
-            ]
-        }
-    ]
-}
-```
-
-### GET /translations/{path}
-
-Retrieves the translation status of files.
-
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/translations/{path}`
-
-**Authentication**: Required (translations permission)
-
-**Parameters**:
-- `recurse` (optional): If "yes", include files in subdirectories
-- `status` (optional): Filter by translation status (V, T, E, W, P, Q)
-- `tstatus` (optional): Filter by file type (F for files, D for directories)
-
-**Request Example**:
-```
-GET /rest/translations?recurse=yes&tstatus=T&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-Accept: application/json
+```mermaid
+sequenceDiagram
+participant C as "Client"
+participant S as "Sources Handler"
+participant FS as "File Resolver"
+C->>S : "POST /rest/sources/ : path (multipart)"
+S->>FS : "Resolve destination path"
+FS-->>S : "Absolute path"
+S-->>C : "200 OK or error"
 ```
 
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        {
-            "name": "b1685.cli",
-            "path": "paroquiais/baptismos/b1685.cli",
-            "source_url": "/rest/sources/paroquiais/baptismos/b1685.cli",
-            "status": "V",
-            "modified": 1556194205.0,
-            "modified_string": "2019-04-25 12:30:05",
-            "modified_rfc1123": "Thu, 25 Apr 2019 12:30:05 GMT",
-            "modified_iso": "2019-04-25T12:30:05",
-            "size": 1234,
-            "directory": "paroquiais/baptismos",
-            "errors": 0,
-            "warnings": 2,
-            "version": "ClioInput 2.0",
-            "translated": 1556194205.0,
-            "translated_string": "25-Apr-2019 12:30",
-            "rpt_url": "/rest/reports/paroquiais/baptismos/b1685.cli",
-            "xml_url": "/rest/exports/paroquiais/baptismos/b1685.cli",
-            "more_url": "/rest/sources/paroquiais/baptismos/b1685.cli.files.json"
-        }
-    ]
-}
-```
-
-### DELETE /translations/{path}
-
-Cleans translation results (deletes derived files).
-
-**HTTP Method**: DELETE
-
-**URL Pattern**: `/rest/translations/{path}`
-
-**Parameters**:
-- `recurse` (optional): If "yes", clean translations in subdirectories
-
-**Authentication**: Required (translations permission)
-
-**Request Example**:
-```
-DELETE /rest/translations/paroquiais/baptismos?recurse=yes&d=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "paroquiais/baptismos/b1685.cli",
-        "paroquiais/baptismos/b1686.cli"
-    ]
-}
-```
+**Diagram sources**
+- [apiSources.pl](file://src/apiSources.pl#L125-L142)
+- [apiSources.pl](file://src/apiSources.pl#L324-L352)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
-- [apiTranslations.pl](file://src/apiTranslations.pl)
+- [apiSources.pl](file://src/apiSources.pl#L28-L104)
+- [apiSources.pl](file://src/apiSources.pl#L109-L124)
+- [apiSources.pl](file://src/apiSources.pl#L145-L173)
+- [apiSources.pl](file://src/apiSources.pl#L324-L411)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L111-L144)
 
-## /exports Endpoint
+Practical examples:
+- Upload a file (REST):
+  - curl -X POST "http://localhost:8088/rest/sources/myfolder/newfile.cli" -H "Authorization: Bearer YOUR_TOKEN" -F "file=@/path/to/local/file.cli"
+- Copy a file (REST):
+  - curl -X POST "http://localhost:8088/rest/sources/target.cli?origin=sources/original.cli" -H "Authorization: Bearer YOUR_TOKEN"
+- Delete a directory (REST):
+  - curl -X DELETE "http://localhost:8088/rest/sources/myfolder" -H "Authorization: Bearer YOUR_TOKEN"
 
-The `/exports` endpoint retrieves XML export files generated from translated Kleio source files.
+### File Operations
+- Endpoint: GET /rest/files/*
+  - Purpose: Download a file by constructing a sources URL.
+  - Authentication: Requires files permission.
+  - Behavior: Returns file content directly or a redirect to a signed URL.
 
-### GET /exports/{path}
+- Endpoint: POST /rest/files/copy
+  - Purpose: Copy a file from origin to destination.
+  - Authentication: Requires upload permission.
+  - Parameters: origin, destination.
+  - Response: Success result.
 
-Retrieves an XML export file or lists exports in a directory.
+- Endpoint: POST /rest/files/move
+  - Purpose: Move a file from origin to destination.
+  - Authentication: Requires upload permission.
+  - Parameters: origin, destination.
+  - Response: Success result.
 
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/exports/{path}`
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-GET /rest/exports/paroquiais/baptismos/b1685.cli HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response**:
-The response returns the XML file content with appropriate Content-Type headers:
-```
-HTTP/1.1 200 OK
-Content-Type: application/xml
-Content-Disposition: attachment; filename="b1685.xml"
-
-[XML content]
-```
-
-When requesting a directory, the response lists available exports:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "/rest/exports/paroquiais/baptismos/b1685.cli",
-        "/rest/exports/paroquiais/baptismos/b1686.cli"
-    ]
-}
-```
+Notes:
+- The server constructs URLs for file retrieval using the sources base path and returns relative paths to avoid exposing absolute filesystem locations.
 
 **Section sources**
-- [apiExports.pl](file://src/apiExports.pl)
-- [api.json](file://api/postman/api.json)
+- [apiExports.pl](file://src/apiExports.pl#L14-L19)
+- [apiSources.pl](file://src/apiSources.pl#L354-L411)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L753-L800)
 
-## /tokens Endpoint
+### Token Management
+- Endpoint: POST /rest/tokens/generate
+  - Purpose: Generate a new token for a user.
+  - Authentication: Requires token with generate_token permission.
+  - Parameters:
+    - user: Username.
+    - info: JSON object with comment, api permissions, structures, sources.
+  - Response: New token string.
 
-The `/tokens` endpoint manages authentication tokens, allowing administrators to generate and invalidate tokens.
+- Endpoint: POST /rest/tokens/invalidate
+  - Purpose: Invalidate a specific token.
+  - Authentication: Requires token with invalidate_token permission.
+  - Parameters:
+    - user_token: Token to invalidate.
+  - Response: The invalidated token.
 
-### POST /json/ (tokens_generate)
+- Endpoint: DELETE /rest/users/:token
+  - Purpose: Invalidate all tokens for a user.
+  - Authentication: Requires token with invalidate_user permission.
+  - Response: The user whose tokens were invalidated.
 
-Generates a new authentication token.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/json/`
-
-**Authentication**: Required (generate_token permission)
-
-**Request Schema**:
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "tokens_generate",
-    "params": {
-        "user": "string",
-        "info": {
-            "comment": "string",
-            "api": ["string"],
-            "structures": "string",
-            "sources": "string"
-        },
-        "token": "string"
-    },
-    "id": "number"
-}
+```mermaid
+sequenceDiagram
+participant C as "Client"
+participant T as "Tokens Handler"
+participant TK as "Token Store"
+C->>T : "POST /rest/tokens/generate"
+T->>TK : "Generate token with options"
+TK-->>T : "New token"
+T-->>C : "200 OK with token"
 ```
 
-**Request Example**:
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "tokens_generate",
-    "params": {
-        "user": "tester",
-        "info": {
-            "comment": "An user able to translate, upload and delete files",
-            "api": [
-                "sources",
-                "kleioset",
-                "files",
-                "structures",
-                "translations",
-                "upload",
-                "delete",
-                "mkdir",
-                "rmdir"
-            ],
-            "structures": "users/tester/stru",
-            "sources": "sources/api_tests"
-        },
-        "token": "7c689b969e59c0a244a5778b43cb7da135a90056"
-    },
-    "id": 1
-}
-```
-
-**Response Schema**:
-```json
-{
-    "jsonrpc": "2.0",
-    "result": "8312070ca229c81feaeb29a973f5132d795a0db4",
-    "id": 1
-}
-```
-
-### DELETE /json/ (tokens_invalidate)
-
-Invalidates a token.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/json/`
-
-**Authentication**: Required (invalidate_token permission)
-
-**Request Schema**:
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "tokens_invalidate",
-    "params": {
-        "user_token": "string",
-        "token": "string"
-    },
-    "id": "number"
-}
-```
-
-**Request Example**:
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "tokens_invalidate",
-    "params": {
-        "user_token": "8312070ca229c81feaeb29a973f5132d795a0db4",
-        "token": "7c689b969e59c0a244a5778b43cb7da135a90056"
-    },
-    "id": 1
-}
-```
-
-**Response Schema**:
-```json
-{
-    "jsonrpc": "2.0",
-    "result": "8312070ca229c81feaeb29a973f5132d795a0db4",
-    "id": 1
-}
-```
+**Diagram sources**
+- [apiTokens.pl](file://src/apiTokens.pl#L22-L28)
+- [apiTokens.pl](file://src/apiTokens.pl#L71-L88)
+- [tokens.pl](file://src/tokens.pl#L104-L139)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [apiTokens.pl](file://src/apiTokens.pl)
+- [apiTokens.pl](file://src/apiTokens.pl#L18-L28)
+- [apiTokens.pl](file://src/apiTokens.pl#L38-L39)
+- [apiTokens.pl](file://src/apiTokens.pl#L71-L122)
+- [tokens.pl](file://src/tokens.pl#L104-L139)
 
-## /directories Endpoint
+Practical examples:
+- Generate a token (JSON-RPC via Postman collection):
+  - Method: tokens_generate
+  - Params: {user: "tester", info: {api: ["sources","translations","upload","delete"], sources:"sources/api_tests"}, token:"ADMIN_TOKEN"}
+- Invalidate a token (REST):
+  - curl -X DELETE "http://localhost:8088/rest/tokens/ABC123" -H "Authorization: Bearer ADMIN_TOKEN" -H "Content-Type: application/json" -d '{"user_token":"ABC123"}'
 
-The `/directories` endpoint manages directories containing source files.
+### Git Integration
+- Endpoint: GET /rest/versions/status/global/:path
+  - Purpose: Retrieve global repository status.
+  - Authentication: Requires files permission.
+  - Response: Structured status object.
 
-### GET /directories/{path}
+- Endpoint: GET /rest/versions/remotes/branches/:path
+  - Purpose: List remote branches.
+  - Authentication: Requires files permission.
+  - Response: Branch list.
 
-Lists directories in the specified path.
+- Endpoint: GET /rest/versions/user-info/:path
+  - Purpose: Get configured user name/email.
+  - Authentication: Requires files permission.
+  - Response: {git_user_name, git_user_email}.
 
-**HTTP Method**: GET
+- Endpoint: GET /rest/versions/pull/:path
+  - Purpose: Perform pull from remote.
+  - Authentication: Requires files permission.
+  - Response: {git_output, git_error, git_exit_status}.
 
-**URL Pattern**: `/rest/directories/{path}`
+- Endpoint: PUT /rest/versions/push/:path
+  - Purpose: Perform push to remote.
+  - Authentication: Requires files permission.
+  - Response: {git_output, git_error, git_exit_status}.
 
-**Parameters**:
-- `recurse` (optional): If "yes", recursively list subdirectories
+- Endpoint: PUT /rest/versions/commit/:path
+  - Purpose: Commit staged/changed files.
+  - Authentication: Requires files permission.
+  - Parameters: commit_files, add_files, commit_message.
+  - Response: {git_output, git_error, git_exit_status}.
 
-**Authentication**: Required (files permission)
+- Endpoint: PUT /rest/versions/set-user-info/:path
+  - Purpose: Set user name/email.
+  - Authentication: Requires files permission.
+  - Parameters: user_name, user_email.
+  - Response: {git_output, git_error, git_exit_status}.
 
-**Request Example**:
-```
-GET /rest/directories/paroquiais?recurse=yes&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
+- Endpoint: DELETE /rest/versions/reset/:path
+  - Purpose: Reset working tree to a commit.
+  - Authentication: Requires files permission.
+  - Parameters: reset_mode, commit_ref.
+  - Response: {git_output, git_error, git_exit_status}.
 
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "paroquiais/baptismos",
-        "paroquiais/casamentos",
-        "paroquiais/obitos"
-    ]
-}
-```
-
-### POST /directories/{path}
-
-Creates a new directory.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/rest/directories/{path}`
-
-**Authentication**: Required (mkdir permission)
-
-**Request Example**:
-```
-POST /rest/directories/new_directory?id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "new_directory"
-}
-```
-
-### POST /directories/{path} (Copy)
-
-Copies a directory to a new location.
-
-**HTTP Method**: POST
-
-**URL Pattern**: `/rest/directories/{path}?origin={source_path}`
-
-**Authentication**: Required (mkdir permission)
-
-**Request Example**:
-```
-POST /rest/directories/new_location?origin=directories/old_location&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
+```mermaid
+flowchart TD
+Start(["PUT /rest/versions/commit/:path"]) --> Validate["Validate token and permissions"]
+Validate --> Resolve["Resolve repo path"]
+Resolve --> Commit["Run commit with params"]
+Commit --> Result["Return git output/error/status"]
 ```
 
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "new_location"
-}
-```
-
-### DELETE /directories/{path}
-
-Removes a directory.
-
-**HTTP Method**: DELETE
-
-**URL Pattern**: `/rest/directories/{path}`
-
-**Parameters**:
-- `force` (optional): If "yes", removes directory even if not empty
-
-**Authentication**: Required (delete permission)
-
-**Request Example**:
-```
-DELETE /rest/directories/unwanted_directory?force=yes&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": "unwanted_directory"
-}
-```
+**Diagram sources**
+- [apiGit.pl](file://src/apiGit.pl#L110-L124)
+- [apiGit.pl](file://src/apiGit.pl#L126-L154)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [apiDirectories.pl](file://src/apiDirectories.pl)
+- [apiGit.pl](file://src/apiGit.pl#L23-L108)
+- [apiGit.pl](file://src/apiGit.pl#L156-L189)
 
-## /versions Endpoint
+Practical examples:
+- Pull (REST):
+  - curl -X GET "http://localhost:8088/rest/versions/pull/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN"
+- Push (REST):
+  - curl -X PUT "http://localhost:8088/rest/versions/push/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN"
+- Commit (REST):
+  - curl -X PUT "http://localhost:8088/rest/versions/commit/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN" -H "Content-Type: application/json" -d '{"add_files":".","commit_files":".","commit_message":"Update"}'
 
-The `/versions` endpoint provides Git repository operations for version control of source files.
+## Dependency Analysis
+The following diagram shows key dependencies among modules involved in API handling.
 
-### GET /versions/status/global/{path}
-
-Retrieves the global status of the Git repository.
-
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/versions/status/global/{path}`
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-GET /rest/versions/status/global/sources?id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "directory": "tests/kleio-home/sources",
-        "git_root": "tests/kleio-home/sources",
-        "branch": "main",
-        "status": "clean",
-        "report": "On branch main\nYour branch is up to date with 'origin/main'.\n\nnothing to commit, working tree clean\n"
-    }
-}
+```mermaid
+graph LR
+RS["restServer.pl"]
+ATS["apiTranslations.pl"]
+AS["apiSources.pl"]
+AT["apiTokens.pl"]
+AG["apiGit.pl"]
+AKF["kleioFiles.pl"]
+TOK["tokens.pl"]
+AEXP["apiExports.pl"]
+AD["apiDirectories.pl"]
+RS --> AS
+RS --> ATS
+RS --> AT
+RS --> AG
+AS --> AKF
+ATS --> AKF
+AG --> AKF
+AT --> TOK
+AEXP --> AS
 ```
 
-### GET /versions/remotes/branches/{path}
-
-Lists branches in the remote repository.
-
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/versions/remotes/branches/{path}`
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-GET /rest/versions/remotes/branches/sources?id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": [
-        "main",
-        "develop",
-        "feature/new-translator"
-    ]
-}
-```
-
-### GET /versions/pull/{path}
-
-Pulls changes from the remote repository.
-
-**HTTP Method**: GET
-
-**URL Pattern**: `/rest/versions/pull/{path}`
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-GET /rest/versions/pull/sources?id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "git_output": [
-            "remote: Enumerating objects: 5, done.",
-            "remote: Counting objects: 100% (5/5), done.",
-            "remote: Compressing objects: 100% (3/3), done.",
-            "remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0",
-            "Unpacking objects: 100% (3/3), 305 bytes | 305.00 KiB/s, done.",
-            "From github.com:user/repo",
-            "   abc1234..def5678  main       -> origin/main",
-            "Updating abc1234..def5678",
-            "Fast-forward",
-            " file1.cli | 2 ++",
-            " 1 file changed, 2 insertions(+)"
-        ],
-        "git_error": [],
-        "git_exit_status": 0
-    }
-}
-```
-
-### PUT /versions/push/{path}
-
-Pushes changes to the remote repository.
-
-**HTTP Method**: PUT
-
-**URL Pattern**: `/rest/versions/push/{path}`
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-PUT /rest/versions/push/sources?id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "git_output": [
-            "Counting objects: 3, done.",
-            "Delta compression using up to 8 threads.",
-            "Compressing objects: 100% (3/3), done.",
-            "Writing objects: 100% (3/3), 305 bytes | 305.00 KiB/s, done.",
-            "Total 3 (delta 1), reused 0 (delta 0)",
-            "remote: Resolving deltas: 100% (1/1), completed with 1 local object.",
-            "To github.com:user/repo.git",
-            "   abc1234..def5678  main -> main"
-        ],
-        "git_error": [],
-        "git_exit_status": 0
-    }
-}
-```
-
-### PUT /versions/commit/{path}
-
-Commits changes to the local repository.
-
-**HTTP Method**: PUT
-
-**URL Pattern**: `/rest/versions/commit/{path}`
-
-**Parameters**:
-- `commit_message`: Commit message
-- `add_files`: Files to add (optional)
-- `commit_files`: Specific files to commit (optional)
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-PUT /rest/versions/commit/sources?commit_message=Update+sources&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "git_output": [
-            "[main abc1234] Update sources",
-            " 1 file changed, 2 insertions(+)"
-        ],
-        "git_error": [],
-        "git_exit_status": 0
-    }
-}
-```
-
-### PUT /versions/set-user-info/{path}
-
-Sets the Git user information.
-
-**HTTP Method**: PUT
-
-**URL Pattern**: `/rest/versions/set-user-info/{path}`
-
-**Parameters**:
-- `user_name`: User name
-- `user_email`: User email
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-PUT /rest/versions/set-user-info/sources?user_name=John+Doe&user_email=john@example.com&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "git_output": [],
-        "git_error": [],
-        "git_exit_status": 0
-    }
-}
-```
-
-### DELETE /versions/reset/{path}
-
-Resets the local repository to a specific commit.
-
-**HTTP Method**: DELETE
-
-**URL Pattern**: `/rest/versions/reset/{path}`
-
-**Parameters**:
-- `reset_mode`: Reset mode (--soft, --mixed, --hard)
-- `commit_ref`: Commit reference (default: HEAD)
-
-**Authentication**: Required (files permission)
-
-**Request Example**:
-```
-DELETE /rest/versions/reset/sources?reset_mode=--hard&commit_ref=HEAD~1&id=1 HTTP/1.1
-Authorization: Bearer {{remotetoken}}
-```
-
-**Response Schema**:
-```json
-{
-    "id": 1,
-    "jsonrpc": "2.0",
-    "result": {
-        "git_output": [
-            "HEAD is now at abc1234 Previous commit"
-        ],
-        "git_error": [],
-        "git_exit_status": 0
-    }
-}
-```
+**Diagram sources**
+- [restServer.pl](file://src/restServer.pl#L491-L515)
+- [apiSources.pl](file://src/apiSources.pl#L28-L104)
+- [apiTranslations.pl](file://src/apiTranslations.pl#L34-L82)
+- [apiTokens.pl](file://src/apiTokens.pl#L18-L28)
+- [apiGit.pl](file://src/apiGit.pl#L23-L108)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L753-L800)
+- [tokens.pl](file://src/tokens.pl#L141-L151)
+- [apiExports.pl](file://src/apiExports.pl#L14-L19)
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [apiGit.pl](file://src/apiGit.pl)
+- [restServer.pl](file://src/restServer.pl#L491-L515)
+- [apiCommon.pl](file://src/apiCommon.pl#L78-L88)
 
-## Error Handling
+## Performance Considerations
+- Concurrency: The server uses worker threads configured via environment variable. Adjust workers to balance throughput and resource usage.
+- Translation scheduling: Use spawn=yes for parallel processing; spawn=no reduces contention for shared resources.
+- Caching: Translations GET caches status results for repeated queries to reduce load.
+- File serving: Binary file downloads are streamed directly by the server to minimize memory overhead.
 
-The timelink-kleio API follows standard HTTP status codes and JSON-RPC 2.0 error formats for error reporting.
+[No sources needed since this section provides general guidance]
 
-### HTTP Status Codes
+## Troubleshooting Guide
+Common issues and resolutions:
+- Authentication failures:
+  - Cause: Missing or invalid Authorization header.
+  - Resolution: Obtain a valid token from the admin and include "Authorization: Bearer YOUR_TOKEN".
+- Permission denied:
+  - Cause: Token lacks required API permission (e.g., upload, delete, translations).
+  - Resolution: Generate a token with appropriate api permissions.
+- File not found:
+  - Cause: Path does not exist or is outside the configured sources area.
+  - Resolution: Verify relative path under sources and ensure directories exist.
+- Upload conflicts:
+  - Cause: Destination file exists for POST or missing for PUT.
+  - Resolution: Use POST for new files, PUT for replacement, or delete the destination first.
+- Git errors:
+  - Cause: Invalid repository path or credentials.
+  - Resolution: Ensure path resolves to a valid Git repository and credentials are configured.
 
-- **200 OK**: Successful response
-- **400 Bad Request**: Invalid request parameters
-- **401 Unauthorized**: Missing or invalid authentication token
-- **403 Forbidden**: Token does not have required permissions
-- **404 Not Found**: Requested resource does not exist
-- **405 Method Not Allowed**: HTTP method not supported for the endpoint
-- **500 Internal Server Error**: Server error during request processing
-
-### JSON-RPC Error Format
-
-Error responses follow the JSON-RPC 2.0 specification:
-
-```json
-{
-    "jsonrpc": "2.0",
-    "error": {
-        "code": -32602,
-        "message": "Invalid params",
-        "data": "Structure file does not exist"
-    },
-    "id": 1
-}
-```
-
-### Common Error Codes
-
-- **-32700**: Parse error (invalid JSON)
-- **-32600**: Invalid request
-- **-32601**: Method not found
-- **-32602**: Invalid params
-- **-32003**: Delete failed (directory not empty)
-- **-32004**: Could not create directory
-- **-32005**: Directory already exists
-
-### Error Response Examples
-
-**Authentication Required**:
-```json
-{
-    "jsonrpc": "2.0",
-    "error": {
-        "code": -32602,
-        "message": "Bad token"
-    },
-    "id": 1
-}
-```
-
-**Insufficient Permissions**:
-```json
-{
-    "jsonrpc": "2.0",
-    "error": {
-        "code": 403,
-        "message": "Forbidden"
-    },
-    "id": 1
-}
-```
-
-**Resource Not Found**:
-```json
-{
-    "jsonrpc": "2.0",
-    "error": {
-        "code": 404,
-        "message": "Not Found"
-    },
-    "id": 1
-}
-```
-
-**Invalid Parameters**:
-```json
-{
-    "jsonrpc": "2.0",
-    "error": {
-        "code": -32602,
-        "message": "Invalid params",
-        "data": "Structure file does not exist"
-    },
-    "id": 1
-}
-```
-
-The API also includes detailed error reporting in translation processes, with error counts and specific error messages in the translation reports.
+Monitoring:
+- Server logs: Enable debug mode via environment variable to capture detailed logs.
+- Health endpoint: The server’s home page displays request counts and processing status.
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [errors.pl](file://src/errors.pl)
-- [restServer.pl](file://src/restServer.pl)
+- [restServer.pl](file://src/restServer.pl#L553-L579)
+- [tokens.pl](file://src/tokens.pl#L249-L257)
+- [kleioFiles.pl](file://src/kleioFiles.pl#L284-L292)
+- [README.md](file://README.md#L125-L146)
 
-## Rate Limiting and Security
+## Conclusion
+The kleio-server provides a robust REST and JSON-RPC interface for managing Kleio sources, translations, tokens, and Git operations. By enforcing bearer token authentication, validating permissions, and offering flexible parameterization, it enables secure and scalable integrations. Use the examples and guidelines above to implement clients and automate workflows effectively.
 
-The timelink-kleio API implements several security measures to protect the system and ensure fair usage.
+[No sources needed since this section summarizes without analyzing specific files]
+
+## Appendices
+
+### Authentication and Authorization
+- Header: Authorization: Bearer YOUR_TOKEN
+- Token validation occurs centrally; handlers rely on decoded token info to enforce permissions.
+- Admin token: Set via environment variable or generated automatically at startup.
+
+**Section sources**
+- [restServer.pl](file://src/restServer.pl#L615-L624)
+- [tokens.pl](file://src/tokens.pl#L141-L151)
+- [README.md](file://README.md#L92-L112)
+
+### CORS Configuration
+- Configure allowed origins via environment variable; defaults allow all when not set.
+- Preflight OPTIONS requests are supported.
+
+**Section sources**
+- [restServer.pl](file://src/restServer.pl#L183-L184)
+- [restServer.pl](file://src/restServer.pl#L492-L496)
 
 ### Rate Limiting
+- No built-in rate limiting is implemented in the server code. Consider deploying behind a reverse proxy with rate limiting policies if needed.
 
-The API does not implement explicit rate limiting at the application level. However, server configuration may impose limits through:
+[No sources needed since this section provides general guidance]
 
-- Worker thread limits (configured via KLEIO_SERVER_WORKERS environment variable)
-- Request timeout (default 300 seconds, configurable via server configuration)
-- Connection limits imposed by the underlying HTTP server
-
-Clients should implement reasonable retry logic with exponential backoff when encountering server errors.
-
-### Security Considerations
-
-#### Authentication and Authorization
-
-- All endpoints require token-based authentication
-- Tokens are associated with specific permissions that limit user actions
-- Admin tokens are required for token management operations
-- Tokens can be invalidated individually or for entire users
-
-#### Input Validation
-
-- All file operations validate paths against the user's allowed directories
-- File uploads check for existing files to prevent accidental overwrites
-- Directory operations validate that target directories exist before file operations
-
-#### Server Configuration
-
-Security-related environment variables:
-- **KLEIO_ADMIN_TOKEN**: Admin token for initial setup
-- **KLEIO_CORS_SITES**: CORS allowed sites (default: *)
-- **KLEIO_SERVER_WORKERS**: Number of worker threads
-- **KLEIO_IDLE_TIMEOUT**: Server idle timeout
-
-#### Secure Practices
-
-- Use HTTPS in production environments
-- Rotate admin tokens periodically
-- Limit token permissions to the minimum required
-- Monitor server logs for suspicious activity
-- Keep the server software updated
+### Practical Examples and Postman
+- Postman collection and environment files demonstrate typical workflows and token usage patterns.
 
 **Section sources**
-- [restServer.pl](file://src/restServer.pl)
-- [apiTokens.pl](file://src/apiTokens.pl)
+- [api/postman/api.json](file://api/postman/api.json#L1-L800)
+- [api/postman/environment.json](file://api/postman/environment.json#L1-L109)
 
-## Client Implementation Guidelines
-
-This section provides guidelines for implementing clients for the timelink-kleio API in various programming languages.
-
-### General Guidelines
-
-1. **Use JSON-RPC for most operations**: While REST is available for simple file operations, JSON-RPC is the preferred protocol for most interactions.
-
-2. **Handle authentication properly**: Store tokens securely and handle token expiration and invalidation.
-
-3. **Implement proper error handling**: Check HTTP status codes and JSON-RPC error responses.
-
-4. **Use appropriate timeouts**: Set reasonable timeouts for requests, especially for translation operations which may take time.
-
-5. **Follow rate limiting best practices**: Implement exponential backoff for retries.
-
-### Python Example
-
-```python
-import requests
-import json
-
-class TimelinkKleioClient:
-    def __init__(self, base_url, token):
-        self.base_url = base_url
-        self.token = token
-        self.headers = {
-            'Authorization': f'Bearer {token}',
-            'Content-Type': 'application/json'
-        }
-    
-    def make_json_rpc_call(self, method, params):
-        payload = {
-            'jsonrpc': '2.0',
-            'method': method,
-            'params': params,
-            'id': 1
-        }
-        
-        response = requests.post(
-            f'{self.base_url}/json/',
-            headers=self.headers,
-            json=payload
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            if 'error' in result:
-                raise Exception(f"API Error: {result['error']}")
-            return result['result']
-        else:
-            response.raise_for_status()
-    
-    def get_sources(self, path, recurse=False):
-        params = {
-            'path': path,
-            'token': self.token
-        }
-        if recurse:
-            params['recurse'] = 'yes'
-            
-        return self.make_json_rpc_call('sources_get', params)
-    
-    def translate(self, path, structure=None):
-        params = {
-            'path': path,
-            'token': self.token
-        }
-        if structure:
-            params['structure'] = structure
-            
-        return self.make_json_rpc_call('translations_translate', params)
-```
-
-### JavaScript Example
-
-```javascript
-class TimelinkKleioClient {
-    constructor(baseUrl, token) {
-        this.baseUrl = baseUrl;
-        this.token = token;
-        this.headers = {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        };
-    }
-    
-    async makeJsonRpcCall(method, params) {
-        const payload = {
-            jsonrpc: '2.0',
-            method: method,
-            params: params,
-            id: 1
-        };
-        
-        const response = await fetch(`${this.baseUrl}/json/`, {
-            method: 'POST',
-            headers: this.headers,
-            body: JSON.stringify(payload)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        if (result.error) {
-            throw new Error(`API Error: ${JSON.stringify(result.error)}`);
-        }
-        
-        return result.result;
-    }
-    
-    async getSources(path, recurse = false) {
-        const params = {
-            path: path,
-            token: this.token
-        };
-        
-        if (recurse) {
-            params.recurse = 'yes';
-        }
-        
-        return await this.makeJsonRpcCall('sources_get', params);
-    }
-    
-    async translate(path, structure = null) {
-        const params = {
-            path: path,
-            token: this.token
-        };
-        
-        if (structure) {
-            params.structure = structure;
-        }
-        
-        return await this.makeJsonRpcCall('translations_translate', params);
-    }
-}
-```
-
-### Java Example
-
-```java
-import java.io.*;
-import java.net.*;
-import java.nio.charset.StandardCharsets;
-import com.google.gson.*;
-
-public class TimelinkKleioClient {
-    private String baseUrl;
-    private String token;
-    private Gson gson;
-    
-    public TimelinkKleioClient(String baseUrl, String token) {
-        this.baseUrl = baseUrl;
-        this.token = token;
-        this.gson = new Gson();
-    }
-    
-    public Object makeJsonRpcCall(String method, Object params) 
-            throws IOException {
-        String url = baseUrl + "/json/";
-        String jsonPayload = gson.toJson(new JsonRpcRequest(method, params));
-        
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Authorization", "Bearer " + token);
-        connection.setDoOutput(true);
-        
-        try (OutputStream os = connection.getOutputStream()) {
-            byte[] input = jsonPayload.getBytes(StandardCharsets.UTF_8);
-            os.write(input, 0, input.length);
-        }
-        
-        int responseCode = connection.getResponseCode();
-        if (responseCode != 200) {
-            throw new IOException("HTTP error code: " + responseCode);
-        }
-        
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-            StringBuilder response = new StringBuilder();
-            String responseLine;
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
-            }
-            
-            JsonObject jsonResponse = JsonParser.parseString(response.toString()).getAsJsonObject();
-            if (jsonResponse.has("error")) {
-                throw new IOException("API Error: " + jsonResponse.get("error").toString());
-            }
-            
-            return jsonResponse.get("result");
-        }
-    }
-    
-    // Inner classes for JSON-RPC request
-    private static class JsonRpcRequest {
-        public String jsonrpc = "2.0";
-        public String method;
-        public Object params;
-        public int id = 1;
-        
-        public JsonRpcRequest(String method, Object params) {
-            this.method = method;
-            this.params = params;
-        }
-    }
-}
-```
+### Client Setup
+- Discover server parameters (URL, admin token) via the generated configuration file or environment variables.
 
 **Section sources**
-- [api.json](file://api/postman/api.json)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
-
-## Debugging and Monitoring
-
-This section covers debugging tools and monitoring approaches for the timelink-kleio API.
-
-### Test Report Diffs
-
-The system generates test report diffs to compare translation results. These diffs are stored in the `tests/reports/` directory and can be used to verify the consistency of translation outputs.
-
-Example diff file (`test_report_2025-12-13_11:19:25.diff`):
-```
-Sat Dec 13 11:19:25 CST 2025 tests
-Comparing translation results.
-Sat Dec 13 11:20:53 CST 2025 tests
-Only in kleio-home/sources/reference_translations: .gitignore
-diff -r kleio-home/sources/reference_translations/issue15/issue15.cli kleio-home/sources/test_translations/issue15/issue15.cli
-> kleio$structures.vereacoes.yaml
-< 
->             
-< 
->             
-19a20
-> 
-Only in kleio-home/sources/reference_translations/issue15: issue15.err
-Only in kleio-home/sources/reference_translations/issue15: issue15.files.json
-Only in kleio-home/sources/reference_translations/issue15: issue15.org
-Only in kleio-home/sources/reference_translations/issue15: issue15.rpt
-Only in kleio-home/sources/reference_translations/issue15: issue15.xml
-Comparing translation results finished.
-```
-
-These diffs show:
-- Files present in one directory but not the other
-- Line-by-line differences in file content
-- Translation artifacts (err, rpt, xml files) that exist in the reference but not in the test
-
-### Server Monitoring
-
-The API server provides several monitoring endpoints and capabilities:
-
-#### Home Page
-The server home page (root URL) provides real-time status information:
-- Current server time
-- REST and JSON-RPC request counts
-- Server configuration values
-- Processing status of translation jobs
-
-#### Activity Monitoring
-The `show_server_activity/0` predicate provides detailed server status:
-- Current processing status of jobs
-- Active threads
-- Request counts
-
-### Logging
-
-The system maintains comprehensive logs for debugging:
-- **Request logging**: All incoming requests are logged with headers and parameters
-- **Error logging**: Detailed error information is recorded
-- **Translation logging**: Progress of translation jobs is tracked
-
-Log entries include timestamps and contextual information to aid in debugging.
-
-### Postman Collections
-
-The API includes comprehensive Postman collections for testing and debugging:
-- **api.json**: Main API specification with examples
-- **api-tests.postman_collection.json**: Complete test suite for API functionality
-- **environment.json**: Environment variables for testing
-- **tests.postman_environment.json**: Test-specific environment configuration
-
-These collections can be imported into Postman to test API endpoints and verify functionality.
-
-**Section sources**
-- [test_report_2025-12-13_11:19:25.diff](file://tests/reports/test_report_2025-12-13_11:19:25.diff)
-- [api-tests.postman_collection.json](file://api/postman/api-tests.postman_collection.json)
-- [environment.json](file://api/postman/environment.json)
-- [tests.postman_environment.json](file://api/postman/tests.postman_environment.json)
-- [restServer.pl](file://src/restServer.pl)
-
-## Migration Notes
-
-This section provides information about backwards compatibility and migration considerations.
-
-### Backwards Compatibility
-
-The timelink-kleio API maintains backwards compatibility for existing clients:
-
-- **Endpoint stability**: Core endpoints (/sources, /translations, /exports) have stable URL patterns
-- **Response format consistency**: JSON response structures remain consistent across versions
-- **Error code stability**: Standard HTTP status codes and JSON-RPC error codes are preserved
-
-### Deprecation Policy
-
-When features are deprecated:
-1. They remain functional for at least two major releases
-2. Deprecation notices are included in API responses
-3. Documentation is updated to indicate deprecated features
-4. Alternative approaches are provided
-
-### Versioning
-
-The API does not use URL versioning. Instead, versioning is managed through:
-- **Semantic versioning** of the server software
-- **Backwards-compatible changes** in API behavior
-- **Deprecation cycles** for removing features
-
-Clients should specify the exact server version they are tested against in their documentation.
-
-### Breaking Changes
-
-No breaking changes are planned for the core API endpoints. If breaking changes are necessary in the future:
-1. A new API version will be introduced with a versioned URL path
-2. The old version will be maintained for a migration period
-3. Comprehensive migration guides will be provided
-
-**Section sources**
-- [api.json](file://api/postman/api.json)
-- [restServer.pl](file://src/restServer.pl)
+- [docs/doc/client_setup.md](file://docs/doc/client_setup.md#L1-L284)
+- [README.md](file://README.md#L64-L66)

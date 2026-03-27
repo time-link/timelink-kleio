@@ -66,30 +66,51 @@ provide further utilities related to management of kleio files in the file syste
 %   kleio(Attributes),rpt(Attributes),err(Attributes),xml(Attributes), org(Attributes).
 %   where Attributes are file attributes as produced by file_attributes/2
 %
-kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)]):-
-    file_attributes(KleioFile,KleioAttrs),
-    (exists_directory(KleioFile) ->
-        (RptAttrs=[],ErrAttrs=[],XMLAttrs=[],OrgAttrs=[],OldAttrs=[],IdsAttrs=[],KStatus='D') % is a directory
-    ;
-    (
-    file_name_extension(BaseName,_Ext,KleioFile), % extract the base name of the name without extension
-    file_name_extension(BaseName,rpt,RptFile),
-    file_name_extension(BaseName,err,ErrFile),
-    file_name_extension(BaseName,xml,XMLFile),
-    file_name_extension(BaseName,org,OrgFile),
-    file_name_extension(BaseName,old,OldFile),
-    file_name_extension(BaseName,ids,IdsFile),
-    file_name_extension(BaseName,'files.json',FilesJsonFile),
-
-    (exists_file(RptFile) -> file_attributes(RptFile,RptAttrs); RptAttrs=[]),
-    (exists_file(ErrFile) -> file_attributes(ErrFile,ErrAttrs); ErrAttrs=[]),
-    (exists_file(XMLFile) -> file_attributes(XMLFile,XMLAttrs); XMLAttrs=[]),
-    (exists_file(OrgFile) -> file_attributes(OrgFile,OrgAttrs); OrgAttrs=[]),
-    (exists_file(OldFile) -> file_attributes(OldFile,OldAttrs); OldAttrs=[]),
-    (exists_file(IdsFile) -> file_attributes(IdsFile,IdsAttrs); IdsAttrs=[]),
-    (exists_file(FilesJsonFile) -> file_attributes(FilesJsonFile,FilesJsonAttrs); FilesJsonAttrs=[]),
-    kset_status([kleio(KleioAttrs),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)],KStatus)
-    )),!.
+kleio_file_set(KleioFile, [
+        kleio([tstatus(KStatus)|KleioAttrs]),
+        rpt(RptAttrs),
+        err(ErrAttrs),
+        xml(XMLAttrs),
+        org(OrgAttrs),
+        old(OldAttrs),
+        ids(IdsAttrs),
+        'files.json'(FilesJsonAttrs)
+    ]) :-
+    file_attributes(KleioFile, KleioAttrs),
+    (   exists_directory(KleioFile)
+    ->  RptAttrs = [],
+        ErrAttrs = [],
+        XMLAttrs = [],
+        OrgAttrs = [],
+        OldAttrs = [],
+        IdsAttrs = [],
+        KStatus = 'D'
+    ;   file_name_extension(BaseName, _Ext, KleioFile),
+        file_name_extension(BaseName, rpt,          RptFile),
+        file_name_extension(BaseName, err,          ErrFile),
+        file_name_extension(BaseName, xml,          XMLFile),
+        file_name_extension(BaseName, org,          OrgFile),
+        file_name_extension(BaseName, old,          OldFile),
+        file_name_extension(BaseName, ids,          IdsFile),
+        file_name_extension(BaseName, 'files.json', FilesJsonFile),
+        (exists_file(RptFile)      -> file_attributes(RptFile,      RptAttrs)      ; RptAttrs      = []),
+        (exists_file(ErrFile)      -> file_attributes(ErrFile,      ErrAttrs)      ; ErrAttrs      = []),
+        (exists_file(XMLFile)      -> file_attributes(XMLFile,      XMLAttrs)      ; XMLAttrs      = []),
+        (exists_file(OrgFile)      -> file_attributes(OrgFile,      OrgAttrs)      ; OrgAttrs      = []),
+        (exists_file(OldFile)      -> file_attributes(OldFile,      OldAttrs)      ; OldAttrs      = []),
+        (exists_file(IdsFile)      -> file_attributes(IdsFile,      IdsAttrs)      ; IdsAttrs      = []),
+        (exists_file(FilesJsonFile) -> file_attributes(FilesJsonFile, FilesJsonAttrs) ; FilesJsonAttrs = []),
+        kset_status([
+            kleio(KleioAttrs),
+            rpt(RptAttrs),
+            err(ErrAttrs),
+            xml(XMLAttrs),
+            org(OrgAttrs),
+            old(OldAttrs),
+            ids(IdsAttrs),
+            'files.json'(FilesJsonAttrs)
+        ], KStatus)
+    ), !.
 
 %% kleio_file_set_relative(+KleioFile,-RelativeKleioFileSet,+TokenOptions) is det.
 % Same as kleio_file_set, but the paths are relative to the user sources directory as contained in a Token.
