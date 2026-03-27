@@ -18,6 +18,8 @@ all: help
 
 help: .PHONY
 	@echo "usage:"
+	@echo "  # Building and tagging images:"
+	@echo "  make inc-VERSION          increment version with VERSION in major | minor | batch"
 	@echo "  make build-local          build a local docker image and tag with new build number"
 	@echo "  make tag-local-TAG        tag last local image with TAG in latest | stable"
 	@echo "  make build-multi          build local mage and push multi platform docker images tagged with new build number"
@@ -28,15 +30,16 @@ help: .PHONY
 	@echo "  make show-current         return the current version, build number"
 	@echo "  make show-last            return the last image build date, version, build number"
 	@echo "  make show-env             show KLEIO env variables currently defined"
-	@echo "  make inc-VERSION           increment version with VERSION in major | minor | batch"
 	@echo "  make gen-token            generate a string suitable for KLEIO_ADMIN_TOKEN for .env file"
 	@echo "  make bootstrap-token      generate and register a token for 'admin' during bootstrap"
 	@echo "                                (only if no tokens exist and server running < 5 minutes)"
 	@echo "  make docs                 generate api docs (requires postman_doc_gen and api files)"
-	@echo "  make pull-tag tag=x.y.z    pull image with tag x.y.z from docker hub"
+	@echo "  make pull-tag tag=x.y.z   pull image with tag x.y.z from docker hub"
+	@echo "  # YAML structures handling"
 	@echo "  make yaml-format FILES=... format specified YAML files (reorder keys in group/element)"
-
-	@echo "  make kleio-run-latest    start server with latest multi platform image, .env config and tests/docker_compose.yaml"
+	@echo "  make yaml-stru-cpy        copy structure yaml files from tests/kleio-home/structures to src/stru"
+	@echo "  # Running server and tests:"
+	@echo "  make kleio-run-latest     start server with latest multi platform image, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-run-current    start server with most recent build, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-stop | stop    stop running server"
@@ -53,14 +56,14 @@ prepare: clean
 	mkdir -p .build
 	cp -r ./src .build
 	cp Dockerfile .build/
-	mv .build/src/gacto2.str .build/src/gacto2.str.bak
+	mv .build/src/stru/sources-structure.yaml .build/src/sources-structure.yaml.bak
 	mv .build/src/topLevel.pl .build/src/topLevel.pl.bak
 	mv .build/Dockerfile .build/Dockerfile.bak
 	@sed -e "s/@@VERSION@@/${vn}/" \
 	    -e "s/@@BUILD@@/${bn}/" \
 	    -e "s/@@DATE@@/${cdate}/"\
-		.build/src/gacto2.str.bak\
-		> .build/src/gacto2.str
+		.build/src/sources-structure.yaml.bak\
+		> .build/src/sources-structure.yaml
 	@sed -e "s/@@VERSION@@/${vn}/" \
 	    -e "s/@@BUILD@@/${bn}/" \
 	    -e "s/@@DATE@@/${cdate}/"\
@@ -283,3 +286,7 @@ yaml-format: .PHONY
 	else \
 		python3 yaml_reorder.py $${FILES}; \
 	fi
+
+yaml-stru-cpy:
+	echo "Copying structure yaml files from tests/kleio-home/structures to src/stru"
+	cp -rf tests/kleio-home/structures/*.yaml src/stru 

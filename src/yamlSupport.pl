@@ -40,6 +40,9 @@ new_yaml_str(Filename,Data):-
     read_yaml_str(Filename,Data),
     struCode:closeStru(Filename),
     report([perror_count]),
+    error_count(N),warning_count(W),
+    put_value(stru_errors,N),
+    put_value(stru_warnings,W),
     report([writeln('Structure processing finished.')]),!.
 
 % this read a yaml file and processes the configuration

@@ -359,6 +359,16 @@ file_attributes(F,[name(N),
     size_file(F,S),
     more_attributes(F,T,E,More),!. % get more attributes specific of the file type
 
+%% more_attributes(+File,+Time,+Extension,-Attributes) is det.
+%
+%   Get more attributes of a file, depending on the extension.
+%   This predicate is called by file_attributes/2.
+%   If the extension is 'err', it reads the error file and returns
+%   the number of errors and warnings, the version of the translator
+%   and the date of translation.
+%   It caches the results in a shared property to avoid reading the file
+%   again if the file has not changed.
+%
 more_attributes(F,T,err,MoreAttr):-
     get_shared_prop(F,more_attributes,cached(T1,MoreAttr)),
     format_time(string(TS),'%Y-%m-%d %H:%M:%S',T1),
@@ -384,7 +394,22 @@ more_attributes(F,T,err,MoreAttr):-
 more_attributes(_,_,_,[]):-!.
 
 extract_date(String,Date):-
-    split_string(String," ", " ", [DateS,TimeS]),
+    (split_string(String," ", " ", [DateS,TimeS])
+    ;
+     split_string(String, " ", " ", ["Current", "time:",DateS,TimeS])
+    ),
+    split_string(DateS,"-","-",[YearS,MonthS,DayS]),
+    number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
+    split_string(TimeS,":",":\r",[HourS,MinuteS,SecondS]),
+    number_string(Hour,HourS),number_string(Minute,MinuteS),number_string(Second,SecondS),
+    date_time_stamp(date(Year,Month,Day,Hour,Minute,Second,_,_,_), Date),!.
+
+% legacy version, old format
+extract_date(String,Date):-
+    (split_string(String," ", " ", [DateS,TimeS])
+    ;
+     split_string(String, " ", " ", ["Current", "time:",DateS,TimeS])
+    ),
     split_string(DateS,"-","-",[DayS,MonthS,YearS]),
     number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
     split_string(TimeS,"-","-\r",[HourS,MinuteS]),
@@ -649,6 +674,7 @@ kleio_stru_dir(D):-
     atom_concat(H, '/stru', D1),
     absolute_file_name(D1,D),
     exists_directory(D).
+
 kleio_stru_dir(D):-
     source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
@@ -930,3 +956,49 @@ create_str_path(OtherPath, [MainFileDir|OtherPath]):-!,
     get_value(yaml_file,MainFilePath),
     file_directory_name(MainFilePath,MainFileDir).
 
+
+:- begin_tests(kleiofiles).
+
+test(kleio_file_set_basic, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    assertion(is_list(Set)),
+    assertion(member(kleio(_), Set)),
+    assertion(member(rpt(_), Set)),
+    assertion(member(err(_), Set)),
+    assertion(member(xml(_), Set)).
+
+test(kleio_file_set_content, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    member(kleio(Attrs), Set),
+    assertion(member(name('rol1.cli'), Attrs)),
+    assertion(member(base('rol1'), Attrs)),
+    assertion(member(extension('cli'), Attrs)),
+    assertion(member(tstatus(_), Attrs)), !.
+
+test(kleio_file_set_tstatus_T, [condition(true)]) :-
+    % This test assumes rol1.cli has not been translated or RPT is missing/old
+    % Based on the manual test output where tstatus(T) was seen.
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    member(kleio(Attrs), Set),
+    member(tstatus(Status), Attrs),
+    assertion(Status == 'T'), !.
+
+test(kleio_file_set_directory, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados', Dir),
+    exists_directory(Dir),
+    kleio_file_set(Dir, Set),
+    member(kleio(Attrs), Set),
+    assertion(member(tstatus('D'), Attrs)),
+    assertion(member(is_directory(yes), Attrs)), !.
+
+:- end_tests(kleiofiles).

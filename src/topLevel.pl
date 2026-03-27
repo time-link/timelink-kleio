@@ -78,7 +78,7 @@ pclio_version:-
     get_time(T),
 
     format_time(string(TimeStr), '%Y-%m-%d %H:%M:%S', T),
-    write('Current time: '), write(TimeStr), nl,
+    write(TimeStr), nl,
     nl,
     !.
 %******************************************************
@@ -127,6 +127,9 @@ stru(F,str):-
       directory_file_path(Directory,Yamlfile,YPath),
       make_json_yaml_str(Filename,JPath,YPath),
       report([perror_count]),
+      error_count(N),warning_count(W),
+      put_value(stru_errors,N),
+      put_value(stru_warnings,W),
       report([writeln('Structure processing finished.')]),!.
 
 %******************************************************

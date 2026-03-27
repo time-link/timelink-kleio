@@ -335,7 +335,8 @@ create_group(Group):-
 %
 make_group(Group):-
    clioGroup(Group,_),
-   warning_out(['Group ',Group,' already defined.',
+   group_exists(File),
+   warning_out(['Group ',Group,' already defined (',File,')',
       ' command properties will be merged.']),
    !.
 
@@ -344,6 +345,9 @@ make_group(Group):-
    assert(clioGroup_(Group,Id)),
    !. % TODO: make multi schema aware
 
+group_exists(YamlFile):-   % dummy predicate for trace purposes.
+   (peek(stru_files_stack,YamlFile); YamlFile = '<NO FILE>'),
+   !.
 %% clioGroup(?GroupName,?GroupId) is nondet.
 %
 % GroupName is a Group defined in the current Scheme and GroupId

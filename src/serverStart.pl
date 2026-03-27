@@ -158,7 +158,7 @@ setenv_dir(Var,Dir,Value):-
 % $ tokens(Path): path to token_db
 % $ dstru(S) : path to default stru
 % $ dport(Number) : debug port (not all server run predicates activate the debugger)
-% $ port(Number): main serer port.
+% $ port(Number): main server port.
 % $ workers(Number): number of workers
 %
 %
@@ -369,13 +369,14 @@ translate_file('identifications/mhk_identification_toliveira.cli',false).
 translate_file('sources/api/', false).  % all reference sources
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/genealogias/llcdp34.cli',false).
-translate_file('sources/api/issues/',false).
+translate_file('sources/api/issues/',true).
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/issues/issue15/issue15.cli', false).  % all reference sources
-translate_file('sources/api/issues/issue21.cli',false).
+translate_file('sources/api/issues/issue21.cli',true).
+translate_file('sources/api/issues/element_name.cli',false).
 translate_file('sources/api/linked_data/',false).
-translate_file('sources/api/linked_data/dehergne-a.cli',true).
+translate_file('sources/api/linked_data/dehergne-a.cli',false).
 translate_file('sources/api/linked_data/dehergne-locations-1644.cli',false).
 translate_file('sources/api/linked_data/linked-datanw.cli',false).
 translate_file('sources/api/linked_data/multiplelinks.cli',false).
@@ -391,6 +392,7 @@ translate_file('sources/api/paroquiais/obitos/ob1688.cli',false).
 translate_file('sources/api/roisdeconfessados',false).
 translate_file('sources/api/varia',false).
 translate_file('sources/api/varia/cartas.cli',false).
+translate_file('sources/api/varia/auc-alunos-264605-A-140337-140771.cli',false).
 translate_file('sources/api/varia/dehergne-residences.cli',false).
 translate_file('sources/api/varia/ivcc.cli',false).
 translate_file('sources/api/varia/lrazao516pe.cli',false).
@@ -404,7 +406,8 @@ translate_file('sources/api/yaml/pt-groups.kleio', false).
 % the next two go together
 translate_file('sources/api/issues/issue34.cli',false).
 translate_file('sources/api/issues/issue38/issue38.cli',false).
-
+% test directly is the reference_sources dir (for different status)
+translate_file('sources/reference_sources/varia/auc-alunos-264605-A-140337-140771.cli',false).
 
 delete_test_sources(EndPoint,Token):-
     uri_components(EndPoint,UComponents),
