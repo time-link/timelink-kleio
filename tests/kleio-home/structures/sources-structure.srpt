@@ -1,5 +1,5 @@
 KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
-Current time: 2026-02-15 18:28:00
+2026-03-10 10:14:53
 
 
 Processing YAML structure (schema):
@@ -22,6 +22,8 @@ Creating new structure definition for: kleio
 
        == File name: elements.yml
             from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml Command terminus  Undefined source/fons element "string64ma"" in definition of sex
        -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
     << Included file: elements.yaml
          from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/sources-structure.yaml 
@@ -40,6 +42,12 @@ Creating new structure definition for: kleio
 WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml Command include Ignoring previously processed file: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
        << Included file: elements.yaml
             from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/groups.yaml 
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Warning: Element shortname already defined. element properties will be merged.
+Near lines: 9 Near lines: 10 
+
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Warning: Element urlpattern already defined. element properties will be merged.
+Near lines: 9 Near lines: 10 
        -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml
     << Included file: groups.yaml
          from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/elements.yaml 
@@ -191,13 +199,17 @@ WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups
           << Included file: pt-groups.yaml
                from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-elements.yaml 
 
-WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml Command pars Group nom already defined. command properties will be merged.
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Group nom already defined (/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-acts.yaml) command properties will be merged.
+Near lines: 9 Near lines: 10 
 
-WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml Command pars Group pas already defined. command properties will be merged.
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Group pas already defined (/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-acts.yaml) command properties will be merged.
+Near lines: 9 Near lines: 10 
 
-WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml Command pars Group memoria58 already defined. command properties will be merged.
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Group memoria58 already defined (/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-acts.yaml) command properties will be merged.
+Near lines: 9 Near lines: 10 
 
-WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml Command pars Group termo already defined. command properties will be merged.
+WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/test_translations/issues/element_name.cli line 9 Group termo already defined (/Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-acts.yaml) command properties will be merged.
+Near lines: 9 Near lines: 10 
           -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml
        << Included file: pt-acts.yaml
             from /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-parents.yaml 
@@ -207,5 +219,5 @@ WARNING: /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups
     -- Inspected /Users/jrc/develop/timelink-kleio/tests/kleio-home/structures/pt-groups.yaml
 -----------End of structure --------
 0  errors. 
-11  warnings.
+14  warnings.
 Structure processing finished.

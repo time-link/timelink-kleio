@@ -5,6 +5,7 @@
 # example: ./scripts/kleio_translate_remote.sh /
 # a kleio server must be started before see kleio_start_server.sh
 # TODO: much simpler: use update method it will translate all files that need translating
+source scripts/env_tests.sh
 echo
 echo "================================================"
 echo "Remote translating from kleio source dir " ${1}  

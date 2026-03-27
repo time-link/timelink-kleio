@@ -33,7 +33,8 @@
         Atualmente o segundo campo posicional, a seguir ao 
         "id" é "tipo" ("registos paroquiais", "vereações", etc). 
         Ficheiros que assumam "data" ou "ano" necessitam de ser
-        modificados ou usar um ficheiro de estrutura alterado 
+        modificados, usar a variante fonted$ ouusar um 
+        ficheiro de estrutura que altere o parâmentro "pos"  de fonte$
         para correcta interpretação e mapeamento para a base de dados.
 
         2. Utilização do campo "ano"
@@ -43,10 +44,18 @@
         necessidade de introdução de zeros para o mês e ano.
         
     guaranteed: [id]
-    position: [id, tipo, loc, ref]
+    position: [id, tipo]
     also: [ data, ano, localizacao, loc, ref, obs, substitui]
-    idprefix: fonte
+    idprefix: fon
 
+- group:
+    name: fonted
+    source: fonte
+    description: |
+        Variante de fonte em que o segundo campo posicional é "data" e não "tipo". 
+        Esta variante é necessária para ficheiros que assumam "data" ou "ano" como segundo
+        campo posicional.
+    position: [id, data, tipo]
 
 - group:
     name: pt-acto

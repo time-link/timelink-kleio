@@ -2,6 +2,7 @@
 #
 # This can be used with the stable version or the development versuin
 #  usage: kleio_translate_local CLIO_START_FILE CLIO_STRU KLEIO_SOURCES
+set -x
 echo "=============================================="
 echo "Translating kleio files in dir " ${3}  "with" $1 "and structure file " $2
 PWD=`pwd`
@@ -14,7 +15,7 @@ for file in $kleio_files; do
     then
         echo
         echo "Translating " `pwd` $file
-        echo swipl -f  $1 -- -sf $2 -df "$file" -echo no >/dev/null
+        echo swipl -f  $1 -- -sf $2 -df "$file" -echo no
         swipl -f  $1 -- -sf $2 -df "$file" -echo no >/dev/null
     else
         echo ${file} " NOT FOUND"

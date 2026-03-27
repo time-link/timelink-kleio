@@ -46,6 +46,10 @@
     position: [id, province, year, type]
     arbitrary: [comunity]
 
+- element:
+    name: province
+    source: loc
+
 - group:
     name: comunity
     source: attribute-list

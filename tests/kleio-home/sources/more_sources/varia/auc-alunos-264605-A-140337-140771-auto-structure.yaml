@@ -1,0 +1,906 @@
+- file:
+  - date: 2026-02-21
+    description: Automatically generated structure file
+    json_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/reference_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/reference_sources/varia/auc-alunos-264605-A-140337-140771.cli
+    stru: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/reference_sources/varia/auc-alunos-264605-A-140337-140771-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio/tests/kleio-home/sources/reference_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.yaml
+- element:
+    description:
+    identification: non
+    name: day
+    note:
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: month
+    note:
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: year
+    note:
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: date
+    note:
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: id
+    note:
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: same_as
+    note:
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: xsame_as
+    note:
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: type
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note:
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: loc
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: name
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: description
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sex
+    note:
+    prefix: non
+    source: string64ma
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: obs
+    note:
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: summary
+    note:
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: ref
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: replace
+    note:
+    prefix: non
+    source: replaces
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: autorels
+    note:
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: prefix
+    note:
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: structure
+    note:
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translations
+    note:
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translator
+    note:
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: kleiofile
+    note:
+    prefix: non
+    source: string256
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    counter: 0
+    guaranteed:
+    - description
+    idprefix: evt
+    name: event
+    note: 'Something that happened. Used for registering events mentioned in letters
+      ,chronicles ,interviews ,not in formal records.
+
+      Can also be used inside a formal dated record to record information about something
+      that occurred at another time, e.g. in a dated letter that includes information
+      about different things that occurred in the past
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - description
+    - date
+- group:
+    also:
+    - obs
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - id
+    - type
+    - name
+    idprefix: ent
+    name: entity
+    note: 'An entity is a thing that exists independently of other things. It is a
+      thing that has a name and a type.
+
+      '
+    part:
+    - attribute
+    - relation
+    - atr
+    - rel
+    - ls
+    position:
+    - id
+    - type
+    - name
+- group:
+    also:
+    - structure
+    - translator
+    - autorels
+    - obs
+    - prefix
+    - translations
+    counter: 1
+    idprefix: kle
+    name: kleio
+    note: 'This is the top level group of Kleio files.
+
+      It serves as a container for historical sources,
+
+      authority registers, and other processing related
+
+      groups.
+
+
+      I has no representation in the database (person oriented model)
+
+      '
+    part:
+    - historical-source
+    - authority-register
+    - link
+    - property
+    position:
+    - structure
+    - translator
+    - obs
+- group:
+    also:
+    - date
+    - year
+    - obs
+    - replace
+    - kleiofile
+    counter: 0
+    guaranteed:
+    - id
+    idprefix: his
+    name: historical-source
+    note: '
+
+      Main group to register historical sources. A historical sources contain the
+      records of historical acts or events that happened in the past. They can also
+      contain lists of people, objects, geoentities, abstractions, etc.
+
+      Specific types of sources are defined by extending this group.
+
+      Each source has a unique id, which is compulsory. The id shoud be unique across
+      all sources in the project. To avoid conflicts it is recommended that the id
+      is the same as the file name of the source, without the extension.
+
+      '
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - year
+    - type
+    - loc
+    - ref
+    source: entity
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    - summary
+    counter: 0
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: hac
+    name: historical-act
+    note: 'Represents an historical act, i.e. a record of an event , something that
+      happened at a moment and place in time. This form is used for records such as
+      parish records notarial acts.
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - cevent
+    - end
+    position:
+    - id
+    - type
+    - date
+    source: event
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    - sex
+    idprefix: per
+    name: person
+    note: A person.
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    - sex
+    source: entity
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: male
+    note: A Male person. Groups based on this have male gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-m
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-f
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-father
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-m
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-mother
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-f
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: actorm
+    note: 'A male actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 11533
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 1503
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: atr
+    note: Alias for attribute
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- element:
+    description:
+    identification: non
+    name: dia
+    note:
+    prefix: non
+    source: day
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: mes
+    note:
+    prefix: non
+    source: month
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: ano
+    note:
+    prefix: non
+    source: year
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: data
+    note:
+    prefix: non
+    source: date
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: tipo
+    note:
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: localizacao
+    note:
+    prefix: non
+    source: loc
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: nome
+    note:
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: mesmo_que
+    note:
+    prefix: non
+    source: same_as
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: xmesmo_que
+    note:
+    prefix: non
+    source: xsame_as
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sexo
+    note:
+    prefix: non
+    source: sex
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sumario
+    note:
+    prefix: non
+    source: summary
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: fol
+    note:
+    prefix: non
+    source: page
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: substitui
+    note:
+    prefix: non
+    source: replaces
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: resumo
+    note:
+    prefix: non
+    source: summary
+    suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-kin-mother
+    note: A portuguese mother
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-mother
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 2
+    guaranteed:
+    - name
+    idprefix: fper
+    name: mae
+    note:
+    part:
+    - pmae
+    - mmae
+    position:
+    - nome
+    - sexo
+    source: pt-kin-mother
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-father
+    note: A portuguese father
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-father
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 252
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pai
+    note:
+    part:
+    - ppai
+    - mpai
+    position:
+    - nome
+    - sexo
+    source: pt-kin-father
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-actorm
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 501
+    guaranteed:
+    - name
+    idprefix: mper
+    name: n
+    note: 'Pessoa genérica ou principal actor de um acto  (criança em baptismo). Sexo
+      deve registado depois do nome.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    - sex
+    source: pt-actorm
+- group:
+    also:
+    - data
+    - ano
+    - localizacao
+    - loc
+    - ref
+    - obs
+    - substitui
+    counter: 1
+    guaranteed:
+    - id
+    idprefix: fon
+    name: fonte
+    note: "Este constitui o grupo principal para os documentos\nhistoricos portugueses.
+      Admite qualquer dos grupos\nque tenham \"acto\" ou \"evento\" como fonte.\n\nNotas\n\n1.
+      Segundo campo posicional\n\nAtualmente o segundo campo posicional, a seguir
+      ao \n\"id\" é \"tipo\" (\"registos paroquiais\", \"vereações\", etc). \nFicheiros
+      que assumam \"data\" ou \"ano\" necessitam de ser\nmodificados ou usar um ficheiro
+      de estrutura alterado \npara correcta interpretação e mapeamento para a base
+      de dados.\n\n2. Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado
+      uma vez que o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
+      de introdução de zeros para o mês e ano.\n"
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - tipo
+    source: historical-source
+- group:
+    also:
+    - data
+    - ref
+    - loc
+    - fol
+    - tipo
+    - sumario
+    - resumo
+    - obs
+    counter: 0
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: pt-acto
+    note: A Portuguese act. Abstract class.
+    part:
+    - actorm
+    - actorf
+    - item
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    source: historical-act
+- group:
+    also:
+    - data
+    - ref
+    - loc
+    - fol
+    - tipo
+    - sumario
+    - resumo
+    - obs
+    arbitrary:
+    - n
+    - referido
+    - referida
+    - celebrante
+    - evento
+    - colega
+    counter: 1
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: lista
+    note: A Portuguese act. Abstract class.
+    part:
+    - actorm
+    - actorf
+    - item
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    source: pt-acto

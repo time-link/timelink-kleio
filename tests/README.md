@@ -35,6 +35,7 @@ false positive errors by this process. There are three ways to deal with that:
 * backport the change to the current reference implementation (if you want to keep it)
 * make the current version the reference version (by copying it to tests/stable)
 * exclude the diference in generated ouput with patterns in the file `tests/scripts/exclude_while_comparing.grep`
+
 ### Overall structure
 
 The test root directory has the following layout:
@@ -50,28 +51,146 @@ The test root directory has the following layout:
 * `stable` directory contains the stable version of the translator.
 * `dev` directory contains the development version of the translator.
 * `scripts` contains auxiliary scripts to manage the testing process.
+* `.env-tests` is the centralized configuration file for all test scripts.
 
-    * `run_tests.sh`
-      * translates a set of reference files by a stable version of the translator and compares with the translation of the same files by a development version.
-        * erases `reference_translations` and `test_translations` and recreates them with the content of `reference_sources`
-        *  runs stable code on `reference_translations` and dev code on `test_translations`
-        *  compares the results with a diff
-    * `prepare_tests.sh`
-      * setup directories and files for testing. Used by `run_tests-sh`. In detail:
-        * cleans the directories `reference_translations`, `test_translations` and `dev`
-        * copies the source files in `reference_sources` to `reference_translations` and `test_translations`
-        * copies the translator code in `../src` to `dev`.
-    * `kleio_translate_local.sh`
-      * auxiliary script to translate files by calling SWI Prolog directly. Used for the reference translations.
-    * `kleio_translate_reference.sh`
-      * copies sources in `reference_sources`to `reference_translations` and translates them with stable translator.
-    * `kleio_translate_remote.sh`
-      * translates files using the server mode of the translator (calls `kleio_server_start.sh` to start the server).
-        Uses `curl`to make a *rest* request to the server.
-    * `clean_tests.sh`
-      * cleans the testing files, and starts testing in a clean state. Unlike `prepare_tests.sh` does not copy a new development version from `clio/src` to `tests/dev`
-    * `compare_test_results.sh`
-      * compares the result of reference and test translations by making a diff on `reference_translations` and `test_translations`, excluding non relevant differences with the patterns in `exclude_while_comparing.grep`.
+## Configuration: `.env-tests`
+
+All test scripts share a single configuration file: `.env-tests`. This file defines directory paths,
+server settings, and other parameters used throughout the testing pipeline.
+
+Edit `.env-tests` to change defaults such as the server port, admin token, or directory paths.
+All scripts accept an optional `[env-file]` parameter to use an alternative configuration file.
+
+Key variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `KLEIO_HOME` | `kleio-home` | Root of the Kleio installation |
+| `KLEIO_SERVER_PORT` | `8088` | Server port for REST API testing |
+| `KLEIO_ADMIN_TOKEN` | `admintoken` | Token for API authentication |
+| `REFERENCE_SOURCES` | `kleio-home/sources/reference_sources` | Directory with input `.cli` files |
+| `REFERENCE_TRANSLATIONS` | `kleio-home/sources/reference_translations` | Output from stable translator |
+| `TEST_TRANSLATIONS` | `kleio-home/sources/test_translations` | Output from dev translator |
+| `STABLE_CODE_DIR` | `stable` | Stable translator code |
+| `DEV_CODE_DIR` | `dev` | Dev translator code (copied from `../src/`) |
+| `TRANSLATOR_SOURCE` | `../src/` | Current translator source code |
+| `REPORT_DIR` | `./reports` | Where test reports are saved |
+
+## Test Scripts
+
+All scripts must be run from the `tests/` directory.
+Every script sources `.env-tests` automatically. You can override this by passing an alternative
+environment file as the last argument.
+
+### Quick Reference
+
+| Script | Purpose | Can run independently? |
+|--------|---------|----------------------|
+| `prepare_tests.sh` | Setup environment, copy files | Yes |
+| `kleio_translate_local.sh` | Translate files with local Prolog | Yes |
+| `kleio_start_server.sh` | Start the Kleio test server | Yes |
+| `kleio_translate_remote.sh` | Translate files via REST API | Yes (needs running server) |
+| `kleio_stop_server.sh` | Stop the test server | Yes |
+| `compare_test_results.sh` | Compare reference vs test output | Yes |
+| `clean_tests.sh` | Clean test directories | Yes |
+| `test_files.sh` | List files that would be translated | Yes |
+| `run_tests.sh` | Full pipeline (all steps) | Yes |
+| `run_tests_local.sh` | Full pipeline without server | Yes |
+| `run_stable_translations.sh` | Translate with stable only | Yes |
+| `run_remote_translations.sh` | Translate with dev server only | Yes |
+
+### Running the full test suite
+
+From the top level of the repository:
+
+    make test-semantics
+
+Or from the `tests/` directory:
+
+    ./scripts/run_tests.sh
+
+This runs the complete pipeline: prepare, translate with stable, translate with dev server, compare.
+
+### Running individual steps
+
+The key advantage of the refactored scripts is that each step can be run independently.
+This means you can, for instance, redo the comparison without having to retranslate everything.
+
+#### 1. Prepare the test environment
+
+    cd tests
+    ./scripts/prepare_tests.sh
+
+This cleans the test directories, copies the current source code from `../src/` to `dev/`,
+copies structure files to the configuration directories, and copies the reference sources
+into both `reference_translations` and `test_translations`.
+
+#### 2. Translate with the stable translator (reference)
+
+    ./scripts/kleio_translate_local.sh stable/swiStart.pl stable/gacto2.str kleio-home/sources/reference_translations
+
+Or use the convenience wrapper:
+
+    ./scripts/run_stable_translations.sh
+
+This produces the baseline output in `reference_translations/` that the dev output will be compared against.
+
+#### 3. Translate with the dev translator
+
+**Local mode** (calls SWI-Prolog directly, no server):
+
+    ./scripts/kleio_translate_local.sh dev/swiStart.pl dev/gacto2.str kleio-home/sources/test_translations
+
+**Server mode** (uses REST API):
+
+    # Start the server (runs in background)
+    ./scripts/kleio_start_server.sh dev/serverStart.pl &
+    sleep 5
+
+    # Send translation requests
+    ./scripts/kleio_translate_remote.sh sources/test_translations
+
+    # Stop the server when done
+    ./scripts/kleio_stop_server.sh
+
+#### 4. Compare results
+
+    ./scripts/compare_test_results.sh
+
+This compares `reference_translations/` with `test_translations/`, filtering out expected
+differences (timestamps, auto-generated IDs, file paths) using the patterns in
+`scripts/exclude_while_comparing.grep`.
+
+To save the comparison to a report file:
+
+    ./scripts/compare_test_results.sh > reports/my_comparison.diff
+
+To compare two specific directories:
+
+    ./scripts/compare_test_results.sh /path/to/reference /path/to/test
+
+### Common workflows
+
+**Re-run comparison after adjusting `exclude_while_comparing.grep`:**
+
+    # No need to retranslate, just re-compare
+    ./scripts/compare_test_results.sh
+
+**Translate and compare in local-only mode (no server):**
+
+    ./scripts/run_tests_local.sh
+
+**Re-run only the dev translation and compare:**
+
+    # Translate with dev (local mode)
+    ./scripts/kleio_translate_local.sh dev/swiStart.pl dev/gacto2.str kleio-home/sources/test_translations
+
+    # Compare
+    ./scripts/compare_test_results.sh
+
+**Use a custom configuration:**
+
+    ./scripts/run_tests.sh ./my-custom.env
 
 ### Testing small changes
 
@@ -136,6 +255,16 @@ And this is how an inconformity looks like:
     <          <core><![CDATA[na listagem de irmaos de 1729 fl.cento e quarenta e dois afirma-se serem "dos rios"]]></core>   </ELEMENT>
     >          <core><![CDATA[rios"/obs=na listagem de irmaos de 1729 fl.cento e quarenta e dois afirma-se serem "dos rios"]]></core>   </ELEMENT>
     >
+
+### Filtering expected differences
+
+The file `scripts/exclude_while_comparing.grep` contains regex patterns for differences
+that are expected between the stable and dev translators (timestamps, auto-generated IDs,
+version strings, file paths, etc.).
+
+When a new feature changes output deliberately, add a pattern to this file to suppress
+the expected difference in future comparisons.
+
 ## Api and server tests
 
 There is also a test suite of API calls in REST and JSON-RPC format. This tests that each function works as expected, but does not check the

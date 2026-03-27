@@ -477,7 +477,8 @@
       description:
           Baptismos (variante usada nos registos da Lousa por Rosario Campos
           e em Óbidos )
-      arbitrary:
+      position: [id, dia, mes, ano, fol, local, celebrante]
+      contains:
           - celebrante
           - n
           - test
@@ -487,6 +488,7 @@
       name: b
       source: pt-acto
       description: "Baptimos ,versao original usada em Soure. "
+      position: [id, dia, mes, ano, celebrante]
       arbitrary:
           - celebrante
           - n
@@ -1474,6 +1476,7 @@
     source: pt-actorm
 
 - element: {name: destino, source: local}
+- element: {name: num, source: number}
 
 # Memórias paroquiais de 1758
 - group:

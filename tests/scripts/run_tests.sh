@@ -4,7 +4,7 @@
 # requires swipl in the PATH download from https://www.swi-prolog.org
 #
 # WARNING: this only works if script run from "tests" directory.
-
+source scripts/env_tests.sh
 echo "================================================================"
 echo "===                  KLEIO TRANSLATOR TESTS                  ==="
 echo "=================================/==============================="

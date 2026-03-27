@@ -4003,6 +4003,37 @@
     guaranteed:
     - description
     idprefix: his
+    name: pevento
+    part:
+    - referido
+    - referida
+    - person
+    position:
+    - description
+    - dia
+    - mes
+    - ano
+    prefix: non
+    source: pevent
+    suffix: non
+- group:
+    also:
+    - obs
+    - id
+    arbitrary:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    description: '
+
+      '
+    guaranteed:
+    - description
+    idprefix: his
     name: viagem
     part:
     - referido
@@ -5789,6 +5820,7 @@
     - obs
     arbitrary:
     - pevent
+    - pevento
     - viagem
     - estadia
     - atr
@@ -7443,6 +7475,7 @@
     - cota
     arbitrary:
     - pevent
+    - pevento
     - viagem
     - estadia
     - atr
@@ -18477,6 +18510,7 @@
     - obs
     arbitrary:
     - pevent
+    - pevento
     - viagem
     - estadia
     - atr
