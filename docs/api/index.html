@@ -1740,6 +1740,312 @@ POST http://localhost:8089/json/
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
+                                            structures_get_file <span class="lock-icon"></span>
+                                        </div>
+                                     </div>
+                                    <div class="url">http://{{endpoint}}/json/</div>
+                                    
+                                    <div class="description request-description">
+                                        <p><p>Get a structure file. Returns file information and attributes.</p></p>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">HEADERS</div>
+                                        <hr>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">Content-Type</div>
+                                            <div class="value col-md-9 col-xs-12">application/json</div>
+                                            <div class="description col-md-9 col-xs-12"><p>None</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">BODY <span class="body-type">raw</span></div>
+                                        <hr>
+                                            <div class="raw-body code-snippet">
+                                              <pre class="body-block click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="structures_get_file">
+                                                  <code>
+                                                    
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "system/conf/kleio/stru/gacto2.str",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1987
+}
+                                                  </code>
+                                              </pre>
+                                            </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 examples">
+                                <div class="sample-request">
+                                    <div class="heading">
+                                        <span>Example Request</span>
+                                    </div>
+                                    <div class="responses-index">
+                                        <div class="dropdown response-name">
+                                            <button class="btn   responses-dropdown truncate" type="button" id="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                              <span id="selected" class="response-name-label">Structures Get File</span>
+                                                <span class="caret"></span>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
+                                                <li class="truncate" data-request-info="13" data-response-info="response_19">Structures Get File</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formatted-requests " data-request-id="13"  data-id="response_19">
+                                    <div class="request code-snippet">
+                                        <div>
+                                            <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="Structures Get File">
+                                                <code class="is-highlighted">
+POST http://localhost:8089/json/
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "system/conf/kleio/stru/gacto2.str",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1
+}</code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                    <div class="sample-response">
+                                        <div class="heading">
+                                            <span>Example Response</span>
+                                        </div>
+                                        <div class="responses-index">
+                                            <div class="response-status">
+                                                <span>200 - OK</span>
+                                            </div>
+                                        </div>
+                                        <div class="responses code-snippet">
+                                            <div>
+                                                <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="Structures Get File">
+                                                    <code class="is-highlighted">
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+        "file": {
+            "name": "gacto2.str",
+            "size": 1234,
+            "modified": "2024-01-15T10:30:00Z"
+        }
+    }
+}</code>
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row row-no-padding row-eq-height">
+                            <div class="col-md-6 col-xs-12 section">
+                                <div class="api-information" id="14">
+                                     <div class="heading">
+                                        <div class="name">
+                                            <span class="POST method" >POST</span>
+                                            structures_get_directory <span class="lock-icon"></span>
+                                        </div>
+                                     </div>
+                                    <div class="url">http://{{endpoint}}/json/</div>
+                                    
+                                    <div class="description request-description">
+                                        <p><p>Get a list of structure files in a directory.</p></p>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">HEADERS</div>
+                                        <hr>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">Content-Type</div>
+                                            <div class="value col-md-9 col-xs-12">application/json</div>
+                                            <div class="description col-md-9 col-xs-12"><p>None</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">BODY <span class="body-type">raw</span></div>
+                                        <hr>
+                                            <div class="raw-body code-snippet">
+                                              <pre class="body-block click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="structures_get_directory">
+                                                  <code>
+                                                    
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "system/conf/kleio/stru",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1988
+}
+                                                  </code>
+                                              </pre>
+                                            </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 examples">
+                                <div class="sample-request">
+                                    <div class="heading">
+                                        <span>Example Request</span>
+                                    </div>
+                                    <div class="responses-index">
+                                        <div class="dropdown response-name">
+                                            <button class="btn   responses-dropdown truncate" type="button" id="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                              <span id="selected" class="response-name-label">structures_get_directory</span>
+                                                <span class="caret"></span>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
+                                                <li class="truncate" data-request-info="14" data-response-info="response_20">structures_get_directory</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formatted-requests " data-request-id="14"  data-id="response_20">
+                                    <div class="request code-snippet">
+                                        <div>
+                                            <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="structures_get_directory">
+                                                <code class="is-highlighted">
+POST http://localhost:8089/json/
+
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "system/conf/kleio/stru",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1988
+}</code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row row-no-padding row-eq-height">
+                            <div class="col-md-6 col-xs-12 section">
+                                <div class="api-information" id="15">
+                                     <div class="heading">
+                                        <div class="name">
+                                            <span class="POST method" >POST</span>
+                                            structures_get_with_kleio_param <span class="lock-icon"></span>
+                                        </div>
+                                     </div>
+                                    <div class="url">http://{{endpoint}}/json/</div>
+                                    
+                                    <div class="description request-description">
+                                        <p><p>Get the structure file associated with a specific Kleio source file using the kleio parameter.</p></p>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">HEADERS</div>
+                                        <hr>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">Content-Type</div>
+                                            <div class="value col-md-9 col-xs-12">application/json</div>
+                                            <div class="description col-md-9 col-xs-12"><p>None</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">BODY <span class="body-type">raw</span></div>
+                                        <hr>
+                                            <div class="raw-body code-snippet">
+                                              <pre class="body-block click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="structures_get_with_kleio_param">
+                                                  <code>
+                                                    
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "",
+        "kleio": "sources/reference_sources/padre_alexandre/padre_alexandre.cli",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1989
+}
+                                                  </code>
+                                              </pre>
+                                            </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 examples">
+                                <div class="sample-request">
+                                    <div class="heading">
+                                        <span>Example Request</span>
+                                    </div>
+                                    <div class="responses-index">
+                                        <div class="dropdown response-name">
+                                            <button class="btn   responses-dropdown truncate" type="button" id="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                              <span id="selected" class="response-name-label">structures_get_with_kleio_param</span>
+                                                <span class="caret"></span>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
+                                                <li class="truncate" data-request-info="15" data-response-info="response_21">structures_get_with_kleio_param</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formatted-requests " data-request-id="15"  data-id="response_21">
+                                    <div class="request code-snippet">
+                                        <div>
+                                            <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="structures_get_with_kleio_param">
+                                                <code class="is-highlighted">
+POST http://localhost:8089/json/
+
+{
+    "jsonrpc": "2.0",
+    "method": "structures_get",
+    "params": {
+        "path": "",
+        "kleio": "sources/reference_sources/padre_alexandre/padre_alexandre.cli",
+        "token": "{{remotetoken}}"
+    },
+    "id": 1989
+}</code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row row-no-padding row-eq-height">
+                            <div class="col-md-6 col-xs-12 section">
+                                <div class="api-information" id="16">
+                                     <div class="heading">
+                                        <div class="name">
+                                            <span class="POST method" >POST</span>
                                             translations_translate <span class="lock-icon"></span>
                                         </div>
                                      </div>
@@ -1811,12 +2117,12 @@ different users can accesss free workers more easily.</li>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="13" data-response-info="response_19">translations_translate</li>
+                                                <li class="truncate" data-request-info="16" data-response-info="response_22">translations_translate</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="13"  data-id="response_19">
+                                <div class="formatted-requests " data-request-id="16"  data-id="response_22">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="translations_translate">
@@ -1842,7 +2148,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="14">
+                                <div class="api-information" id="17">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -1906,12 +2212,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="14" data-response-info="response_20">translations_get</li>
+                                                <li class="truncate" data-request-info="17" data-response-info="response_23">translations_get</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="14"  data-id="response_20">
+                                <div class="formatted-requests " data-request-id="17"  data-id="response_23">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="translations_get">
@@ -1938,7 +2244,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="15">
+                                <div class="api-information" id="18">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -1997,12 +2303,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="15" data-response-info="response_21">users_invalidate_user_coordinatior</li>
+                                                <li class="truncate" data-request-info="18" data-response-info="response_24">users_invalidate_user_coordinatior</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="15"  data-id="response_21">
+                                <div class="formatted-requests " data-request-id="18"  data-id="response_24">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="users_invalidate_user_coordinatior">
@@ -2024,7 +2330,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="16">
+                                <div class="api-information" id="19">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -2083,12 +2389,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="16" data-response-info="response_22">users_invalidate_user_normal</li>
+                                                <li class="truncate" data-request-info="19" data-response-info="response_25">users_invalidate_user_normal</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="16"  data-id="response_22">
+                                <div class="formatted-requests " data-request-id="19"  data-id="response_25">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="users_invalidate_user_normal">
@@ -2110,7 +2416,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="17">
+                                <div class="api-information" id="20">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -2180,12 +2486,12 @@ using logs and diff list.</li>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="17" data-response-info="response_23">versions_get_status_global</li>
+                                                <li class="truncate" data-request-info="20" data-response-info="response_26">versions_get_status_global</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="17"  data-id="response_23">
+                                <div class="formatted-requests " data-request-id="20"  data-id="response_26">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="versions_get_status_global">
@@ -2200,7 +2506,7 @@ GET http://localhost:8089/rest/versions/status/global/?id=1234&recurse=yes</code
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="18">
+                                <div class="api-information" id="21">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -2268,12 +2574,12 @@ GET http://localhost:8089/rest/versions/status/global/?id=1234&recurse=yes</code
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="18" data-response-info="response_24">versions_commit</li>
+                                                <li class="truncate" data-request-info="21" data-response-info="response_27">versions_commit</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="18"  data-id="response_24">
+                                <div class="formatted-requests " data-request-id="21"  data-id="response_27">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="versions_commit">
@@ -2301,7 +2607,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="19">
+                                <div class="api-information" id="22">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -2356,12 +2662,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="19" data-response-info="response_25">versions_set_user_info</li>
+                                                <li class="truncate" data-request-info="22" data-response-info="response_28">versions_set_user_info</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="19"  data-id="response_25">
+                                <div class="formatted-requests " data-request-id="22"  data-id="response_28">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="versions_set_user_info">
@@ -2388,7 +2694,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="20">
+                                <div class="api-information" id="23">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -2441,12 +2747,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="20" data-response-info="response_26">versions_get_user_info</li>
+                                                <li class="truncate" data-request-info="23" data-response-info="response_29">versions_get_user_info</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="20"  data-id="response_26">
+                                <div class="formatted-requests " data-request-id="23"  data-id="response_29">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="versions_get_user_info">
@@ -2471,7 +2777,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="21">
+                                <div class="api-information" id="24">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -2526,12 +2832,12 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="21" data-response-info="response_27">versions_reset</li>
+                                                <li class="truncate" data-request-info="24" data-response-info="response_30">versions_reset</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="21"  data-id="response_27">
+                                <div class="formatted-requests " data-request-id="24"  data-id="response_30">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper is-expandable" data-title="versions_reset">
@@ -2558,7 +2864,7 @@ POST http://localhost:8089/json/
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="22">
+                                <div class="api-information" id="25">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -2609,13 +2915,13 @@ POST http://localhost:8089/json/
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="22" data-response-info="response_28">Sources get file (json output)</li>
-                                                <li class="truncate" data-request-info="22" data-response-info="response_29">Sources Get File</li>
+                                                <li class="truncate" data-request-info="25" data-response-info="response_31">Sources get file (json output)</li>
+                                                <li class="truncate" data-request-info="25" data-response-info="response_32">Sources Get File</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="22"  data-id="response_28">
+                                <div class="formatted-requests " data-request-id="25"  data-id="response_31">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources get file (json output)">
@@ -2651,7 +2957,7 @@ GET http://localhost:8089/rest/sources/paroquiais/casamentos/cas1714-1722.cli?id
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="22"  data-id="response_29">
+                                <div class="formatted-requests hide" data-request-id="25"  data-id="response_32">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources Get File">
@@ -5699,7 +6005,7 @@ kleio$gacto.str/translations=13
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="23">
+                                <div class="api-information" id="26">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -5765,14 +6071,14 @@ kleio$gacto.str/translations=13
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="23" data-response-info="response_30">sources_get_files text result</li>
-                                                <li class="truncate" data-request-info="23" data-response-info="response_31">sources_get_files text url results</li>
-                                                <li class="truncate" data-request-info="23" data-response-info="response_32">sources_get_files json results urls</li>
+                                                <li class="truncate" data-request-info="26" data-response-info="response_33">sources_get_files text result</li>
+                                                <li class="truncate" data-request-info="26" data-response-info="response_34">sources_get_files text url results</li>
+                                                <li class="truncate" data-request-info="26" data-response-info="response_35">sources_get_files json results urls</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="23"  data-id="response_30">
+                                <div class="formatted-requests " data-request-id="26"  data-id="response_33">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="sources_get_files text result">
@@ -5811,7 +6117,7 @@ varia/xpto_comuns_soure.kleio
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="23"  data-id="response_31">
+                                <div class="formatted-requests hide" data-request-id="26"  data-id="response_34">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="sources_get_files text url results">
@@ -5850,7 +6156,7 @@ GET http://localhost:8089/rest/sources/varia?id=1234&recurse=no&url=yes</code>
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="23"  data-id="response_32">
+                                <div class="formatted-requests hide" data-request-id="26"  data-id="response_35">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="sources_get_files json results urls">
@@ -5898,7 +6204,7 @@ GET http://localhost:8089/rest/sources/varia?id=1234&recurse=no&url=yes</code>
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="24">
+                                <div class="api-information" id="27">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="DELETE method" >DELETE</span>
@@ -5955,12 +6261,12 @@ GET http://localhost:8089/rest/sources/varia?id=1234&recurse=no&url=yes</code>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="24" data-response-info="response_33">Sources Delete Files ( json output)</li>
+                                                <li class="truncate" data-request-info="27" data-response-info="response_36">Sources Delete Files ( json output)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="24"  data-id="response_33">
+                                <div class="formatted-requests " data-request-id="27"  data-id="response_36">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources Delete Files ( json output)">
@@ -6000,7 +6306,7 @@ DELETE http://localhost:8089/rest/sources/paroquiais/baptismos/problems?id=1234&
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="25">
+                                <div class="api-information" id="28">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="DELETE method" >DELETE</span>
@@ -6051,12 +6357,12 @@ DELETE http://localhost:8089/rest/sources/paroquiais/baptismos/problems?id=1234&
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="25" data-response-info="response_34">Sources delete file (json output)</li>
+                                                <li class="truncate" data-request-info="28" data-response-info="response_37">Sources delete file (json output)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="25"  data-id="response_34">
+                                <div class="formatted-requests " data-request-id="28"  data-id="response_37">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources delete file (json output)">
@@ -6096,7 +6402,7 @@ DELETE http://localhost:8089/rest/sources/paroquiais/baptismos/bap1720.cli?id=12
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="26">
+                                <div class="api-information" id="29">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -6173,12 +6479,12 @@ If a file with the same name exists the request will throw and exception.</p></p
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="26" data-response-info="response_35">Source Upload (new)</li>
+                                                <li class="truncate" data-request-info="29" data-response-info="response_38">Source Upload (new)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="26"  data-id="response_35">
+                                <div class="formatted-requests " data-request-id="29"  data-id="response_38">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Source Upload (new)">
@@ -6219,7 +6525,7 @@ POST http://localhost:8089/rest/sources/paroquiais/baptismos
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="27">
+                                <div class="api-information" id="30">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -6277,12 +6583,12 @@ POST http://localhost:8089/rest/sources/paroquiais/baptismos
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="27" data-response-info="response_36">sources_copy_file</li>
+                                                <li class="truncate" data-request-info="30" data-response-info="response_39">sources_copy_file</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="27"  data-id="response_36">
+                                <div class="formatted-requests " data-request-id="30"  data-id="response_39">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="sources_copy_file">
@@ -6297,7 +6603,7 @@ POST http://localhost:8089/rest/sources/copies</code>
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="28">
+                                <div class="api-information" id="31">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="PUT method" >PUT</span>
@@ -6362,12 +6668,12 @@ POST http://localhost:8089/rest/sources/copies</code>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="28" data-response-info="response_37">Source upload (replace)</li>
+                                                <li class="truncate" data-request-info="31" data-response-info="response_40">Source upload (replace)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="28"  data-id="response_37">
+                                <div class="formatted-requests " data-request-id="31"  data-id="response_40">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Source upload (replace)">
@@ -6404,7 +6710,7 @@ paroquiais/baptismos/bap1720.cli
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="29">
+                                <div class="api-information" id="32">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="PUT method" >PUT</span>
@@ -6462,12 +6768,12 @@ paroquiais/baptismos/bap1720.cli
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="29" data-response-info="response_38">sources_put_move_file</li>
+                                                <li class="truncate" data-request-info="32" data-response-info="response_41">sources_put_move_file</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="29"  data-id="response_38">
+                                <div class="formatted-requests " data-request-id="32"  data-id="response_41">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="sources_put_move_file">
@@ -6482,7 +6788,7 @@ PUT http://localhost:8089/rest/sources/paroquiais/moved</code>
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="30">
+                                <div class="api-information" id="33">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -6545,12 +6851,12 @@ PUT http://localhost:8089/rest/sources/paroquiais/moved</code>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="30" data-response-info="response_39">directories_get</li>
+                                                <li class="truncate" data-request-info="33" data-response-info="response_42">directories_get</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="30"  data-id="response_39">
+                                <div class="formatted-requests " data-request-id="33"  data-id="response_42">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="directories_get">
@@ -6565,7 +6871,7 @@ GET http://localhost:8089/rest/directories/?id=1234&recurse=yes</code>
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="31">
+                                <div class="api-information" id="34">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="DELETE method" >DELETE</span>
@@ -6623,12 +6929,12 @@ If directory not empty requires force=yes</p></p>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="31" data-response-info="response_40">directories_delete</li>
+                                                <li class="truncate" data-request-info="34" data-response-info="response_43">directories_delete</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="31"  data-id="response_40">
+                                <div class="formatted-requests " data-request-id="34"  data-id="response_43">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="directories_delete">
@@ -6643,7 +6949,7 @@ DELETE http://localhost:8089/rest/directories/paroquiais/baptismos/problems?id=1
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="32">
+                                <div class="api-information" id="35">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -6694,12 +7000,12 @@ DELETE http://localhost:8089/rest/directories/paroquiais/baptismos/problems?id=1
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="32" data-response-info="response_41">directories_create</li>
+                                                <li class="truncate" data-request-info="35" data-response-info="response_44">directories_create</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="32"  data-id="response_41">
+                                <div class="formatted-requests " data-request-id="35"  data-id="response_44">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="directories_create">
@@ -6714,7 +7020,7 @@ POST http://localhost:8089/rest/directories/paroquiais/baptismos/problems?id=123
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="33">
+                                <div class="api-information" id="36">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -6771,12 +7077,12 @@ POST http://localhost:8089/rest/directories/paroquiais/baptismos/problems?id=123
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="33" data-response-info="response_42">directories_copy</li>
+                                                <li class="truncate" data-request-info="36" data-response-info="response_45">directories_copy</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="33"  data-id="response_42">
+                                <div class="formatted-requests " data-request-id="36"  data-id="response_45">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="directories_copy">
@@ -6791,7 +7097,90 @@ POST http://localhost:8089/rest/directories/sources/postman_tests?id=1234&origin
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="34">
+                                <div class="api-information" id="37">
+                                     <div class="heading">
+                                        <div class="name">
+                                            <span class="GET method" >GET</span>
+                                            structures_get <span class="lock-icon"></span>
+                                        </div>
+                                     </div>
+                                    <div class="url">http://{{endpoint}}/rest/structures/system/conf/kleio/stru?id=1234&recurse=yes</div>
+                                    
+                                    <div class="description request-description">
+                                        <p><p>Gets structure files in the specified path. If path is a file, returns file info. If path is a directory, returns list of structure files (.str, .yaml, .srpt). Use recurse=yes to recurse into subdirectories. Use kleio=PATH param to resolve structure for a specific Kleio source file.</p></p>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">HEADERS</div>
+                                        <hr>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">Accept</div>
+                                            <div class="value col-md-9 col-xs-12">application/json</div>
+                                            <div class="description col-md-9 col-xs-12"><p>Prefer json output</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    
+                                    <div class="request-body">
+                                        <div class="body-heading">PARAMS</div>
+                                        <hr>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">id</div>
+                                            <div class="value col-md-9 col-xs-12">1234</div>
+                                            <div class="description col-md-9 col-xs-12"><p>None</p>
+                                            </div>
+                                          </div>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">recurse</div>
+                                            <div class="value col-md-9 col-xs-12">yes</div>
+                                            <div class="description col-md-9 col-xs-12"><p>If yes, recurse into subdirectories</p>
+                                            </div>
+                                          </div>
+                                          <div class="param row">
+                                            <div class="name col-md-3 col-xs-12">kleio</div>
+                                            <div class="value col-md-9 col-xs-12">sources/reference_sources/padre_alexandre/padre_alexandre.cli</div>
+                                            <div class="description col-md-9 col-xs-12"><p>Path to Kleio file to resolve its associated structure</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 examples">
+                                <div class="sample-request">
+                                    <div class="heading">
+                                        <span>Example Request</span>
+                                    </div>
+                                    <div class="responses-index">
+                                        <div class="dropdown response-name">
+                                            <button class="btn   responses-dropdown truncate" type="button" id="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                              <span id="selected" class="response-name-label">structures_get</span>
+                                                <span class="caret"></span>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
+                                                <li class="truncate" data-request-info="37" data-response-info="response_46">structures_get</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formatted-requests " data-request-id="37"  data-id="response_46">
+                                    <div class="request code-snippet">
+                                        <div>
+                                            <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="structures_get">
+                                                <code class="is-highlighted">
+GET http://localhost:8089/rest/structures/system/conf/kleio/stru?id=1234&recurse=yes</code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row row-no-padding row-eq-height">
+                            <div class="col-md-6 col-xs-12 section">
+                                <div class="api-information" id="38">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="POST method" >POST</span>
@@ -6878,12 +7267,12 @@ different users can accesss free workers more easily.</li>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="34" data-response-info="response_43">translations_post</li>
+                                                <li class="truncate" data-request-info="38" data-response-info="response_47">translations_post</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="34"  data-id="response_43">
+                                <div class="formatted-requests " data-request-id="38"  data-id="response_47">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="translations_post">
@@ -6898,7 +7287,7 @@ POST http://localhost:8089/rest/translations/testes/sources/perdoes/perdoesega/p
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="35">
+                                <div class="api-information" id="39">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -7002,13 +7391,13 @@ POST http://localhost:8089/rest/translations/testes/sources/perdoes/perdoesega/p
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="35" data-response-info="response_44">translations_get json output</li>
-                                                <li class="truncate" data-request-info="35" data-response-info="response_45">translations_get text output</li>
+                                                <li class="truncate" data-request-info="39" data-response-info="response_48">translations_get json output</li>
+                                                <li class="truncate" data-request-info="39" data-response-info="response_49">translations_get text output</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="35"  data-id="response_44">
+                                <div class="formatted-requests " data-request-id="39"  data-id="response_48">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="translations_get json output">
@@ -7799,7 +8188,7 @@ GET http://localhost:8089/rest/translations?id=&recurse=yes</code>
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="35"  data-id="response_45">
+                                <div class="formatted-requests hide" data-request-id="39"  data-id="response_49">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="translations_get text output">
@@ -8581,7 +8970,7 @@ ids:
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="36">
+                                <div class="api-information" id="40">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="DELETE method" >DELETE</span>
@@ -8685,13 +9074,13 @@ ids:
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="36" data-response-info="response_46">translations_get text output</li>
-                                                <li class="truncate" data-request-info="36" data-response-info="response_47">translations_get json output</li>
+                                                <li class="truncate" data-request-info="40" data-response-info="response_50">translations_get text output</li>
+                                                <li class="truncate" data-request-info="40" data-response-info="response_51">translations_get json output</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="36"  data-id="response_46">
+                                <div class="formatted-requests " data-request-id="40"  data-id="response_50">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="translations_get text output">
@@ -9468,7 +9857,7 @@ ids:
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="36"  data-id="response_47">
+                                <div class="formatted-requests hide" data-request-id="40"  data-id="response_51">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="translations_get json output">
@@ -10264,7 +10653,7 @@ GET http://localhost:8089/rest/translations?id=&recurse=yes</code>
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="37">
+                                <div class="api-information" id="41">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -10304,13 +10693,13 @@ GET http://localhost:8089/rest/translations?id=&recurse=yes</code>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="37" data-response-info="response_48">Sources get file (json output)</li>
-                                                <li class="truncate" data-request-info="37" data-response-info="response_49">Sources Get File</li>
+                                                <li class="truncate" data-request-info="41" data-response-info="response_52">Sources get file (json output)</li>
+                                                <li class="truncate" data-request-info="41" data-response-info="response_53">Sources Get File</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="37"  data-id="response_48">
+                                <div class="formatted-requests " data-request-id="41"  data-id="response_52">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources get file (json output)">
@@ -10346,7 +10735,7 @@ GET http://localhost:8089/rest/sources/paroquiais/casamentos/cas1714-1722.cli?id
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="37"  data-id="response_49">
+                                <div class="formatted-requests hide" data-request-id="41"  data-id="response_53">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources Get File">
@@ -13394,7 +13783,7 @@ kleio$gacto.str/translations=13
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="38">
+                                <div class="api-information" id="42">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -13445,13 +13834,13 @@ kleio$gacto.str/translations=13
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="38" data-response-info="response_50">Sources Get File</li>
-                                                <li class="truncate" data-request-info="38" data-response-info="response_51">Sources get file (json output)</li>
+                                                <li class="truncate" data-request-info="42" data-response-info="response_54">Sources Get File</li>
+                                                <li class="truncate" data-request-info="42" data-response-info="response_55">Sources get file (json output)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="38"  data-id="response_50">
+                                <div class="formatted-requests " data-request-id="42"  data-id="response_54">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources Get File">
@@ -16494,7 +16883,7 @@ kleio$gacto.str/translations=13
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="38"  data-id="response_51">
+                                <div class="formatted-requests hide" data-request-id="42"  data-id="response_55">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources get file (json output)">
@@ -16535,7 +16924,7 @@ GET http://localhost:8089/rest/sources/paroquiais/casamentos/cas1714-1722.cli?id
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="39">
+                                <div class="api-information" id="43">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -16612,12 +17001,12 @@ using logs and diff list.</li>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="39" data-response-info="response_52">versions_get_status_global comparing to upstream master</li>
+                                                <li class="truncate" data-request-info="43" data-response-info="response_56">versions_get_status_global comparing to upstream master</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="39"  data-id="response_52">
+                                <div class="formatted-requests " data-request-id="43"  data-id="response_56">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="versions_get_status_global comparing to upstream master">
@@ -17761,7 +18150,7 @@ NEXT PUSH
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="40">
+                                <div class="api-information" id="44">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="PUT method" >PUT</span>
@@ -17823,12 +18212,12 @@ NEXT PUSH
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="40" data-response-info="response_53">versions_put_pull (simple)</li>
+                                                <li class="truncate" data-request-info="44" data-response-info="response_57">versions_put_pull (simple)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="40"  data-id="response_53">
+                                <div class="formatted-requests " data-request-id="44"  data-id="response_57">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="versions_put_pull (simple)">
@@ -17865,7 +18254,7 @@ error=[]
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="41">
+                                <div class="api-information" id="45">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="PUT method" >PUT</span>
@@ -17933,12 +18322,12 @@ error=[]
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="41" data-response-info="response_54">versions_put_pull (simple)</li>
+                                                <li class="truncate" data-request-info="45" data-response-info="response_58">versions_put_pull (simple)</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="41"  data-id="response_54">
+                                <div class="formatted-requests " data-request-id="45"  data-id="response_58">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="versions_put_pull (simple)">
@@ -17975,7 +18364,7 @@ error=[]
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="42">
+                                <div class="api-information" id="46">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -18051,12 +18440,12 @@ using logs and diff list.</li>
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="42" data-response-info="response_55">versions_get_remote_branches</li>
+                                                <li class="truncate" data-request-info="46" data-response-info="response_59">versions_get_remote_branches</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="42"  data-id="response_55">
+                                <div class="formatted-requests " data-request-id="46"  data-id="response_59">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="versions_get_remote_branches">
@@ -18071,7 +18460,7 @@ GET http://localhost:8089/rest/versions/remotes/branches?id=1234&compare_to_brac
                         </div>
                         <div class="row row-no-padding row-eq-height">
                             <div class="col-md-6 col-xs-12 section">
-                                <div class="api-information" id="43">
+                                <div class="api-information" id="47">
                                      <div class="heading">
                                         <div class="name">
                                             <span class="GET method" >GET</span>
@@ -18115,13 +18504,13 @@ GET http://localhost:8089/rest/versions/remotes/branches?id=1234&compare_to_brac
                                             </button>
 
                                             <ul class="dropdown-menu" aria-labelledby="f678f251-1750-4e3a-b5d8-05b4c6b0fb37_dropdown">
-                                                <li class="truncate" data-request-info="43" data-response-info="response_56">Sources get file (json output)</li>
-                                                <li class="truncate" data-request-info="43" data-response-info="response_57">Sources Get File</li>
+                                                <li class="truncate" data-request-info="47" data-response-info="response_60">Sources get file (json output)</li>
+                                                <li class="truncate" data-request-info="47" data-response-info="response_61">Sources Get File</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="formatted-requests " data-request-id="43"  data-id="response_56">
+                                <div class="formatted-requests " data-request-id="47"  data-id="response_60">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources get file (json output)">
@@ -18157,7 +18546,7 @@ GET http://localhost:8089/rest/sources/paroquiais/casamentos/cas1714-1722.cli?id
                                     </div>
                                     
                                 </div>
-                                <div class="formatted-requests hide" data-request-id="43"  data-id="response_57">
+                                <div class="formatted-requests hide" data-request-id="47"  data-id="response_61">
                                     <div class="request code-snippet">
                                         <div>
                                             <pre class="click-to-expand-wrapper is-snippet-wrapper " data-title="Sources Get File">
@@ -21220,7 +21609,7 @@ kleio$gacto.str/translations=13
     <script src="js/bootstrap-treeview.min.js"></script>
     <script src="js/main.min.js"></script>
     <script type="application/javascript">
-        var data = [{'text': 'JSON-RPC-V2', 'nodes': [{'text': 'tokens', 'nodes': [{'text': 'Invalidate_normal_user', 'href': '#1', 'method': 'POST'}, {'text': 'tokens_generate_user_token_normal', 'href': '#2', 'method': 'POST'}, {'text': 'tokens_generate_user_coordinator', 'href': '#3', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'sources', 'nodes': [{'text': 'sources_get_file', 'href': '#4', 'method': 'POST'}, {'text': 'sources_get_files', 'href': '#5', 'method': 'POST'}, {'text': 'sources_delete_file', 'href': '#6', 'method': 'POST'}, {'text': 'sources_delete_files', 'href': '#7', 'method': 'POST'}, {'text': 'sources_copy_file', 'href': '#8', 'method': 'POST'}, {'text': 'sources_move_file', 'href': '#9', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'directories', 'nodes': [{'text': 'directories_get', 'href': '#10', 'method': 'POST'}, {'text': 'directories_delete', 'href': '#11', 'method': 'POST'}, {'text': 'directories_create', 'href': '#12', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'translations', 'nodes': [{'text': 'translations_translate', 'href': '#13', 'method': 'POST'}, {'text': 'translations_get', 'href': '#14', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'users', 'nodes': [{'text': 'users_invalidate_user_coordinatior', 'href': '#15', 'method': 'POST'}, {'text': 'users_invalidate_user_normal', 'href': '#16', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'versions', 'nodes': [{'text': 'versions_get_status_global', 'href': '#17', 'method': 'GET'}, {'text': 'versions_commit', 'href': '#18', 'method': 'POST'}, {'text': 'versions_set_user_info', 'href': '#19', 'method': 'POST'}, {'text': 'versions_get_user_info', 'href': '#20', 'method': 'POST'}, {'text': 'versions_reset', 'href': '#21', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'REST V2', 'nodes': [{'text': 'sources', 'nodes': [{'text': 'get', 'nodes': [{'text': 'sources_get_file', 'href': '#22', 'method': 'GET'}, {'text': 'sources_get_files', 'href': '#23', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'delete', 'nodes': [{'text': 'sources_delete_files', 'href': '#24', 'method': 'DELETE'}, {'text': 'source_delete_file', 'href': '#25', 'method': 'DELETE'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'post', 'nodes': [{'text': 'sources_upload_new_file', 'href': '#26', 'method': 'POST'}, {'text': 'sources_copy_file', 'href': '#27', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'put', 'nodes': [{'text': 'sources_upload_new_version', 'href': '#28', 'method': 'PUT'}, {'text': 'sources_put_move_file', 'href': '#29', 'method': 'PUT'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'directories', 'nodes': [{'text': 'directories_get', 'href': '#30', 'method': 'GET'}, {'text': 'directories_delete', 'href': '#31', 'method': 'DELETE'}, {'text': 'directories_create', 'href': '#32', 'method': 'POST'}, {'text': 'directories_copy', 'href': '#33', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'translations', 'nodes': [{'text': 'post', 'nodes': [{'text': 'translations_post', 'href': '#34', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'get', 'nodes': [{'text': 'translations_get', 'href': '#35', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'delete', 'nodes': [{'text': 'translations_delete', 'href': '#36', 'method': 'DELETE'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'exports', 'nodes': [{'text': 'get', 'nodes': [{'text': 'exports_get_file', 'href': '#37', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'reports', 'nodes': [{'text': 'get', 'nodes': [{'text': 'reports_get_file', 'href': '#38', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'versions', 'nodes': [{'text': 'versions_get_status_global', 'href': '#39', 'method': 'GET'}, {'text': 'versions_put_pull', 'href': '#40', 'method': 'PUT'}, {'text': 'versions_put_pull upstream', 'href': '#41', 'method': 'PUT'}, {'text': 'versions_get_remote_branches', 'href': '#42', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'identifications', 'nodes': [{'text': 'get', 'nodes': [{'text': 'identifications_get_file', 'href': '#43', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}]
+        var data = [{'text': 'JSON-RPC-V2', 'nodes': [{'text': 'tokens', 'nodes': [{'text': 'Invalidate_normal_user', 'href': '#1', 'method': 'POST'}, {'text': 'tokens_generate_user_token_normal', 'href': '#2', 'method': 'POST'}, {'text': 'tokens_generate_user_coordinator', 'href': '#3', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'sources', 'nodes': [{'text': 'sources_get_file', 'href': '#4', 'method': 'POST'}, {'text': 'sources_get_files', 'href': '#5', 'method': 'POST'}, {'text': 'sources_delete_file', 'href': '#6', 'method': 'POST'}, {'text': 'sources_delete_files', 'href': '#7', 'method': 'POST'}, {'text': 'sources_copy_file', 'href': '#8', 'method': 'POST'}, {'text': 'sources_move_file', 'href': '#9', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'directories', 'nodes': [{'text': 'directories_get', 'href': '#10', 'method': 'POST'}, {'text': 'directories_delete', 'href': '#11', 'method': 'POST'}, {'text': 'directories_create', 'href': '#12', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'structures', 'nodes': [{'text': 'structures_get_file', 'href': '#13', 'method': 'POST'}, {'text': 'structures_get_directory', 'href': '#14', 'method': 'POST'}, {'text': 'structures_get_with_kleio_param', 'href': '#15', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'translations', 'nodes': [{'text': 'translations_translate', 'href': '#16', 'method': 'POST'}, {'text': 'translations_get', 'href': '#17', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'users', 'nodes': [{'text': 'users_invalidate_user_coordinatior', 'href': '#18', 'method': 'POST'}, {'text': 'users_invalidate_user_normal', 'href': '#19', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'versions', 'nodes': [{'text': 'versions_get_status_global', 'href': '#20', 'method': 'GET'}, {'text': 'versions_commit', 'href': '#21', 'method': 'POST'}, {'text': 'versions_set_user_info', 'href': '#22', 'method': 'POST'}, {'text': 'versions_get_user_info', 'href': '#23', 'method': 'POST'}, {'text': 'versions_reset', 'href': '#24', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'REST V2', 'nodes': [{'text': 'sources', 'nodes': [{'text': 'get', 'nodes': [{'text': 'sources_get_file', 'href': '#25', 'method': 'GET'}, {'text': 'sources_get_files', 'href': '#26', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'delete', 'nodes': [{'text': 'sources_delete_files', 'href': '#27', 'method': 'DELETE'}, {'text': 'source_delete_file', 'href': '#28', 'method': 'DELETE'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'post', 'nodes': [{'text': 'sources_upload_new_file', 'href': '#29', 'method': 'POST'}, {'text': 'sources_copy_file', 'href': '#30', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'put', 'nodes': [{'text': 'sources_upload_new_version', 'href': '#31', 'method': 'PUT'}, {'text': 'sources_put_move_file', 'href': '#32', 'method': 'PUT'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'directories', 'nodes': [{'text': 'directories_get', 'href': '#33', 'method': 'GET'}, {'text': 'directories_delete', 'href': '#34', 'method': 'DELETE'}, {'text': 'directories_create', 'href': '#35', 'method': 'POST'}, {'text': 'directories_copy', 'href': '#36', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'structures', 'nodes': [{'text': 'structures_get', 'href': '#37', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'translations', 'nodes': [{'text': 'post', 'nodes': [{'text': 'translations_post', 'href': '#38', 'method': 'POST'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'get', 'nodes': [{'text': 'translations_get', 'href': '#39', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'delete', 'nodes': [{'text': 'translations_delete', 'href': '#40', 'method': 'DELETE'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'exports', 'nodes': [{'text': 'get', 'nodes': [{'text': 'exports_get_file', 'href': '#41', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'reports', 'nodes': [{'text': 'get', 'nodes': [{'text': 'reports_get_file', 'href': '#42', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'versions', 'nodes': [{'text': 'versions_get_status_global', 'href': '#43', 'method': 'GET'}, {'text': 'versions_put_pull', 'href': '#44', 'method': 'PUT'}, {'text': 'versions_put_pull upstream', 'href': '#45', 'method': 'PUT'}, {'text': 'versions_get_remote_branches', 'href': '#46', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}, {'text': 'identifications', 'nodes': [{'text': 'get', 'nodes': [{'text': 'identifications_get_file', 'href': '#47', 'method': 'GET'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}], 'icon': 'fas fa-folder', 'selectable': 'false'}]
         $('#tree').treeview({
             data: data,
             levels: 10,

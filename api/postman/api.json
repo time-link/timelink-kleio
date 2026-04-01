@@ -1351,6 +1351,239 @@
 					]
 				},
 				{
+					"name": "structures",
+					"item": [
+						{
+							"name": "structures_get_file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Body contains file info\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"file\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{remotetoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"structures_get\",\n    \"params\": {\n        \"path\": \"system/conf/kleio/stru/gacto2.str\",\n        \"token\": \"{{remotetoken}}\"\n    },\n    \"id\": 1987\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Get a structure file. Returns file information and attributes."
+							},
+							"response": [
+								{
+									"name": "Structures Get File",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"structures_get\",\n    \"params\": {\n        \"path\": \"system/conf/kleio/stru/gacto2.str\",\n        \"token\": \"{{remotetoken}}\"\n    },\n    \"id\": 1\n}"
+										},
+										"url": {
+											"raw": "http://{{endpoint}}/json/",
+											"protocol": "http",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"json",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Thu, 25 Apr 2019 12:30:05 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "200"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"jsonrpc\": \"2.0\",\n    \"result\": {\n        \"file\": {\n            \"name\": \"gacto2.str\",\n            \"size\": 1234,\n            \"modified\": \"2024-01-15T10:30:00Z\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "structures_get_directory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Body contains directory listing\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"directory\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{remotetoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"structures_get\",\n    \"params\": {\n        \"path\": \"system/conf/kleio/stru\",\n        \"token\": \"{{remotetoken}}\"\n    },\n    \"id\": 1988\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Get a list of structure files in a directory."
+							},
+							"response": []
+						},
+						{
+							"name": "structures_get_with_kleio_param",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Body contains kleio and structure\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"kleio\");",
+											"    pm.expect(pm.response.text()).to.include(\"structure\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{remotetoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"structures_get\",\n    \"params\": {\n        \"path\": \"\",\n        \"kleio\": \"sources/reference_sources/padre_alexandre/padre_alexandre.cli\",\n        \"token\": \"{{remotetoken}}\"\n    },\n    \"id\": 1989\n}"
+								},
+								"url": {
+									"raw": "http://{{endpoint}}/json/",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"json",
+										""
+									]
+								},
+								"description": "Get the structure file associated with a specific Kleio source file using the kleio parameter."
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "translations",
 					"item": [
 						{
@@ -3151,6 +3384,99 @@
 									]
 								},
 								"description": "Creates the directory in path copying the content of directory in param origin."
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{remotetoken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "structures",
+					"item": [
+						{
+							"name": "structures_get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{remotetoken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"description": "Prefer json output",
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://{{endpoint}}/rest/structures/system/conf/kleio/stru?id=1234&recurse=yes",
+									"protocol": "http",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"rest",
+										"structures",
+										"system",
+										"conf",
+										"kleio",
+										"stru"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1234"
+										},
+										{
+											"key": "recurse",
+											"value": "yes",
+											"description": "If yes, recurse into subdirectories"
+										},
+										{
+											"key": "kleio",
+											"value": "sources/reference_sources/padre_alexandre/padre_alexandre.cli",
+											"description": "Path to Kleio file to resolve its associated structure",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Gets structure files in the specified path. If path is a file, returns file info. If path is a directory, returns list of structure files (.str, .yaml, .srpt). Use recurse=yes to recurse into subdirectories. Use kleio=PATH param to resolve structure for a specific Kleio source file."
 							},
 							"response": []
 						}

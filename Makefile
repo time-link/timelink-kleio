@@ -268,10 +268,9 @@ test-api: kleio-run-current
 
 docs: .PHONY
 	@echo "Requires postman_doc_gen https://github.com/karthiks3000/postman-doc-gen"
-	@echo "Requires Postman API export at ./api/api.json"
-	@echo "Requires Postman environment export at ./api/environment.json"
+	@echo "Requires Postman API export at ./api/postman/api.json"
 	@echo "Generating doc..."
-	@postman_doc_gen api/postman/api.json -o docs/api -e api/postman/environment.json
+	@./postman_doc_gen api/postman/api.json -o docs/api -e api/postman/environment.json
 
 test-vargs:
 	@echo $variable-args

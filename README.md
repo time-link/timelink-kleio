@@ -154,9 +154,42 @@ Recommended tools:
 
 * `VSCode` with `VSC-Prolog` extension https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog
 * `Postman` https://www.postman.com
-  * Directory api/postman contains exported postman collections and environments.
-* `Postman-doc-gen`: generates static documentation from Postman collections https://github.com/karthiks3000/postman-doc-gen
 * `newman`: the command line tool for running Postman generated test suites https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/
+
+### API Documentation
+
+The API documentation is generated from Postman collections using `postman_doc_gen`.
+
+#### Update the Postman Collection
+
+1. Open Postman desktop app
+2. Import the collection: **Import** → select `api/postman/api.json`
+3. Import the environment: **Import** → select `api/postman/tests.postman_environment.json`
+4. Make your changes in Postman (add/modify endpoints, descriptions, etc.)
+5. Export the collection: Right-click collection → **Export** → select **Collection v2.1** format
+6. Save to `api/postman/api.json`
+
+#### Install postman_doc_gen
+
+Download the binary from https://github.com/karthiks3000/postman-doc-gen/releases
+
+```bash
+# Download for macOS/Linux
+curl -L -o postman_doc_gen https://github.com/karthiks3000/postman-doc-gen/releases/download/1.2.0/postman_doc_gen
+chmod +x postman_doc_gen
+```
+
+#### Generate API Documentation
+
+```bash
+# Using make
+make docs
+
+# Or directly
+./postman_doc_gen api/postman/api.json -o docs/api -e api/postman/environment.json
+```
+
+The generated documentation is available at [docs/api/index.html](docs/api/index.html)
 
 
 ### Running the server locally for debugging
