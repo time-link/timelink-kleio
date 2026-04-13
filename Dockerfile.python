@@ -1,0 +1,33 @@
+FROM python:3.11-slim
+
+LABEL MAINTAINER="Joaquim Carvalho joaquim@uc.pt"
+LABEL DESCRIPTION="Kleio-server (Python)"
+LABEL VERSION="0.1.0"
+
+# Install git (needed by GitPython for git operations)
+RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install git && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy pyproject.toml first for layer caching
+COPY pyproject.toml .
+
+# Install dependencies
+RUN pip install --no-cache-dir -e .
+
+# Copy the kleio package
+COPY kleio/ ./kleio/
+
+# Copy structure files
+COPY src/stru/ ./src/stru/
+
+# Set environment variables
+ENV KLEIO_HOME_DIR=/kleio-home
+ENV KLEIO_LOG_STDOUT=true
+
+# Expose port
+EXPOSE 8088
+
+# Run the server
+CMD ["uvicorn", "kleio.api.app:app", "--host", "0.0.0.0", "--port", "8088"]
