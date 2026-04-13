@@ -1,0 +1,265 @@
+# Default inference rules for Portuguese genealogical patterns
+# Based on the Prolog inference engine in src/inference.pl
+#
+# These rules generate relationships and attributes from Kleio notation
+# historical documents. The main patterns covered are:
+# - Parent-child relationships (pai, mae)
+# - Grandparent relationships (ppai, mpai, pmae, mmae)
+# - Marriage relationships (marido, mulher, noivo, noiva)
+# - Sibling relationships (irmao, irma)
+# - Child relationships (filho, filha)
+
+rules:
+  # ============================================
+  # Father relationships
+  # ============================================
+  
+  - name: father_of_male_actor
+    description: "Generate father relationship from pai to male actor"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorm, bind: child_id}
+      - group: {name: pai, bind: father_id}
+    then:
+      - relation: {type: parentesco, value: pai, origin: father_id, dest: child_id}
+
+  - name: father_of_female_actor
+    description: "Generate father relationship from pai to female actor"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorf, bind: child_id}
+      - group: {name: pai, bind: father_id}
+    then:
+      - relation: {type: parentesco, value: pai, origin: father_id, dest: child_id}
+
+  # ============================================
+  # Mother relationships
+  # ============================================
+  
+  - name: mother_of_male_actor
+    description: "Generate mother relationship from mae to male actor"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorm, bind: child_id}
+      - group: {name: mae, bind: mother_id}
+    then:
+      - relation: {type: parentesco, value: mae, origin: mother_id, dest: child_id}
+
+  - name: mother_of_female_actor
+    description: "Generate mother relationship from mae to female actor"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorf, bind: child_id}
+      - group: {name: mae, bind: mother_id}
+    then:
+      - relation: {type: parentesco, value: mae, origin: mother_id, dest: child_id}
+
+  # ============================================
+  # Parents as a couple
+  # ============================================
+  
+  - name: parents_couple
+    description: "Generate husband relation from pai to mae (parents as couple)"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: pai, bind: father_id}
+    then:
+      - relation: {type: parentesco, value: marido, origin: father_id, dest: mother_id}
+      - attribute: {entity: father_id, type: ec, value: c}
+      - attribute: {entity: mother_id, type: ec, value: c}
+
+  # ============================================
+  # Son and Daughter relationships
+  # ============================================
+  
+  - name: son_of_person
+    description: "Generate son relationship from filho to person"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: person, bind: parent_id}
+      - group: {name: filho, bind: son_id}
+    then:
+      - relation: {type: parentesco, value: filho, origin: son_id, dest: parent_id}
+
+  - name: daughter_of_person
+    description: "Generate daughter relationship from filha to person"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: person, bind: parent_id}
+      - group: {name: filha, bind: daughter_id}
+    then:
+      - relation: {type: parentesco, value: filha, origin: daughter_id, dest: parent_id}
+
+  # ============================================
+  # Brother and Sister relationships
+  # ============================================
+  
+  - name: brother_of_person
+    description: "Generate brother relationship from irmao to person"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: person, bind: person_id}
+      - group: {name: irmao, bind: brother_id}
+    then:
+      - relation: {type: parentesco, value: irmao, origin: brother_id, dest: person_id}
+
+  - name: sister_of_person
+    description: "Generate sister relationship from irma to person"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: person, bind: person_id}
+      - group: {name: irma, bind: sister_id}
+    then:
+      - relation: {type: parentesco, value: irma, origin: sister_id, dest: person_id}
+
+  # ============================================
+  # Marriage relationships
+  # ============================================
+  
+  - name: male_actor_with_wife
+    description: "Generate husband relation from male actor to wife"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorm, bind: husband_id}
+      - group: {name: mulher, bind: wife_id}
+    then:
+      - relation: {type: parentesco, value: marido, origin: husband_id, dest: wife_id}
+      - attribute: {entity: husband_id, type: ec, value: c}
+      - attribute: {entity: wife_id, type: ec, value: c}
+
+  - name: female_actor_with_husband
+    description: "Generate wife relation from female actor to husband"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorf, bind: wife_id}
+      - group: {name: marido, bind: husband_id}
+    then:
+      - relation: {type: parentesco, value: mulher, origin: wife_id, dest: husband_id}
+      - attribute: {entity: wife_id, type: ec, value: c}
+      - attribute: {entity: husband_id, type: ec, value: c}
+
+  # ============================================
+  # Grandfather relationships (paternal)
+  # ============================================
+  
+  - name: paternal_grandfather
+    description: "Generate father relation from paternal grandfather (ppai) to father"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: pai, bind: son_id}
+      - group: {name: ppai, bind: parent_id}
+    then:
+      - relation: {type: parentesco, value: pai, origin: parent_id, dest: son_id}
+
+  - name: paternal_grandmother
+    description: "Generate mother relation from paternal grandmother (pmae) to father"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: pai, bind: son_id}
+      - group: {name: pmae, bind: parent_id}
+    then:
+      - relation: {type: parentesco, value: mae, origin: parent_id, dest: son_id}
+
+  # ============================================
+  # Grandmother relationships (maternal)
+  # ============================================
+  
+  - name: maternal_grandfather
+    description: "Generate father relation from maternal grandfather (mpai) to mother"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: mae, bind: son_id}
+      - group: {name: mpai, bind: parent_id}
+    then:
+      - relation: {type: parentesco, value: pai, origin: parent_id, dest: son_id}
+
+  - name: maternal_grandmother
+    description: "Generate mother relation from maternal grandmother (mmae) to mother"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: mae, bind: son_id}
+      - group: {name: mmae, bind: parent_id}
+    then:
+      - relation: {type: parentesco, value: mae, origin: parent_id, dest: son_id}
+
+  # ============================================
+  # Marriage record relationships (noivo/noiva)
+  # ============================================
+  
+  - name: marriage_groom_bride
+    description: "Generate husband relation between groom (noivo) and bride (noiva)"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: cas}
+      - group: {name: noivo, bind: groom_id}
+    then:
+      - relation: {type: parentesco, value: marido, origin: groom_id, dest: bride_id}
+      - attribute: {entity: groom_id, type: ec, value: c}
+      - attribute: {entity: bride_id, type: ec, value: c}
+
+  - name: marriage_bride_groom
+    description: "Generate wife relation between bride (noiva) and groom (noivo)"
+    priority: 0
+    when:
+      - sequence: any
+      - group: {name: cas}
+      - group: {name: noiva, bind: bride_id}
+    then:
+      - relation: {type: parentesco, value: mulher, origin: bride_id, dest: groom_id}
+      - attribute: {entity: bride_id, type: ec, value: c}
+      - attribute: {entity: groom_id, type: ec, value: c}
+
+  # ============================================
+  # Previous marriages (widow/widower)
+  # ============================================
+  
+  - name: previous_wife_1
+    description: "Generate previous husband relation for first previous wife (mulher1)"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorm, bind: husband_id}
+      - group: {name: mulher1, bind: wife_id}
+    then:
+      - relation: {type: parentesco, value: foi-marido, origin: husband_id, dest: wife_id}
+      - attribute: {entity: wife_id, type: morta, value: antes}
+
+  - name: previous_husband_1
+    description: "Generate previous wife relation for first previous husband (marido1)"
+    priority: 0
+    when:
+      - sequence: any
+      - extends: {base: actorf, bind: wife_id}
+      - group: {name: marido1, bind: husband_id}
+    then:
+      - relation: {type: parentesco, value: foi-mulher, origin: wife_id, dest: husband_id}
+      - attribute: {entity: husband_id, type: morto, value: antes}
+
+  # ============================================
+  # Scope management
+  # ============================================
+  
+  - name: new_scope_historical_act
+    description: "Reset scope when entering a historical act"
+    priority: 100
+    when:
+      - sequence: any
+      - extends: {base: historical-act}
+    then:
+      - newscope: true
