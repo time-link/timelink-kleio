@@ -136,6 +136,67 @@ And this is how an inconformity looks like:
     <          <core><![CDATA[na listagem de irmaos de 1729 fl.cento e quarenta e dois afirma-se serem "dos rios"]]></core>   </ELEMENT>
     >          <core><![CDATA[rios"/obs=na listagem de irmaos de 1729 fl.cento e quarenta e dois afirma-se serem "dos rios"]]></core>   </ELEMENT>
     >
+
+### Semantic equivalence tests: Python server vs stable Prolog
+
+The repository contains a Python reimplementation of the kleio server (`kleio/`
+package, FastAPI/uvicorn). To prove the Python translator produces output
+equivalent to the Prolog one, the **same semantic-test methodology** is reused,
+with the stable Prolog translator kept as the reference and the Python server
+playing the role the Prolog dev server normally plays.
+
+The Python equivalence test:
+
+- **reference leg** — unchanged: the stable Prolog translator
+  (`tests/stable/swiStart.pl` + `tests/stable/gacto2.str`) is run as a local
+  CLI, one `swipl` process per file, writing into `reference_translations/`.
+- **test leg** — the Python server (`kleio.api.app`) is started with
+  `KLEIO_HOME_DIR` pointing at `tests/kleio-home`, then driven through the same
+  REST contract, writing into `test_translations/`.
+- **compare leg** — unchanged: `diff -r reference_translations/ test_translations/`
+  filtered through the same `scripts/exclude_while_comparing.grep`.
+
+Run it from the top level of the repository:
+
+     make test-semantics-python
+
+Or directly from the `tests/` directory:
+
+     ./scripts/run_tests_python.sh
+
+The report is written to `tests/reports/test_report_python_<timestamp>.diff`
+and the server log to `tests/kleio_start_python_server.log`. As with the Prolog
+semantic test, a clean run is an empty diff body (only header / `diff -r ...`
+marker lines remain).
+
+Two notes on the Python leg:
+
+1. The Python `POST /rest/translations` endpoint translates **one file per
+   call** (there is no `recurse=yes` directory mode yet), so
+   `kleio_translate_python.sh` enumerates the corpus and POSTs each file, then
+   polls `GET /rest/translations/{path}` until the job completes.
+2. The Python schema loader reads **YAML** structures only (legacy `.str` files
+   are deprecated and not used by the Python version), so the test leg is given
+   an explicit YAML structure file — `sources-structure.yaml` by default (the
+   modular entry point that includes the core groups and the Portuguese source
+   schemas). Override with `KLEIO_DEFAULT_STRU_YAML=<file>`.
+
+Useful environment variables:
+
+- `KLEIO_TEST_SUBDIR` — translate only a subtree, e.g.
+  `KLEIO_TEST_SUBDIR=sources/test_translations/paroquiais/baptismos`.
+- `KLEIO_DEFAULT_STRU_YAML` — structure file (relative to the structures dir or
+  absolute) used by the Python leg. Defaults to `sources-structure.yaml`, the
+  modular entry point. Legacy `.str` files are not supported by the Python
+  version.
+- `KLEIO_PER_FILE_TIMEOUT` — seconds to wait for one file's translation
+  (default 120).
+
+The Python equivalence test shares `scripts/prepare_tests.sh`,
+`scripts/compare_test_results.sh` and `scripts/exclude_while_comparing.grep`
+with the Prolog semantic test, so the filter rules and corpus are always in
+sync.
+
 ## Api and server tests
 
 There is also a test suite of API calls in REST and JSON-RPC format. This tests that each function works as expected, but does not check the

@@ -9,6 +9,11 @@ tests/kleio_home/sources/more_sources
 tests/kleio_home/sources/reference_translations
 tests/kleio_home/sources/test_translations
 httpd.log
+# Python semantic-test harness runtime artifacts
+tests/reports/test_report_python_*.diff
+tests/kleio_start_python_server.log
+.python_server.pid
+.python_server.port
 tests/kleio-home/system/conf/kleio/stru/gacto.str
 tests/kleio-home/system/conf/kleio/stru/gacto2.str.json
 tests/kleio_start_server.log

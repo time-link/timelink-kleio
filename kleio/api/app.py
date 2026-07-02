@@ -150,3 +150,13 @@ def create_app(config: Optional[KleioConfig] = None) -> FastAPI:
         return {"status": "healthy"}
     
     return app
+
+
+# Module-level ASGI application instance.
+#
+# uvicorn / Dockerfile.python / README_PKLEIO.md all reference
+# `kleio.api.app:app`. Created eagerly from environment variables (KleioConfig
+# reads KLEIO_HOME_DIR, KLEIO_ADMIN_TOKEN, etc.), so `uvicorn kleio.api.app:app`
+# just works. Tests build their own app via create_app(test_config) and are not
+# affected by this instance.
+app = create_app()
