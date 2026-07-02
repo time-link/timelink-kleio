@@ -1,6 +1,7 @@
 # Kleio notation
 
 ## What is Kleio notation?
+
 Kleio notation is a notation for transcribing historical sources.
 
 Kleio notation uses special characters to anotate the text.
@@ -22,6 +23,7 @@ Elements represent attributes of the groups (equivalent to fields in a database)
 Aspects represent diferent representations of the elements.
 
 There are three aspects:
+
 - core: the main value of the element, it corresponds to the `value` field in the database.
 - original: the original wording used for the element in the source. This can be original spelling, abbreviations, units, that are normalzed in the core aspect.
 - comment: a comment about the element.
@@ -58,6 +60,7 @@ The special characters are:
 Group names must start with a letter and can have digits, hifens and underscores.
 
 ### Element names
+
 Element names must start with a letter and can have digits, hifens and underscores.
 
 ## Schema (structure) files
@@ -67,6 +70,7 @@ A schema file is a text file that defines the structure of a specific kleio nota
 Schema files are text files and can use the origingal kleio notation for defining groups and elements, or can use a more modern syntax based in YAML.
 
 Schema file define:
+
 - groups: which groups are allowed in the notation
 - group hierarchy: which groups can be nested inside other groups
 - elements: which elements are allowed in each group
