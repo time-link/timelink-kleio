@@ -10,10 +10,13 @@ tests/kleio_home/sources/reference_translations
 tests/kleio_home/sources/test_translations
 httpd.log
 # Python semantic-test harness runtime artifacts
-tests/reports/test_report_python_*.diff
 tests/kleio_start_python_server.log
 .python_server.pid
 .python_server.port
+# The full filtered diff is large (multi-MB); the small summary report
+# (test_report_python_*.diff) is committable, the verbose diff is local-only.
+tests/reports/*.fulldiff
+tests/reports/latest_python.fulldiff
 tests/kleio-home/system/conf/kleio/stru/gacto.str
 tests/kleio-home/system/conf/kleio/stru/gacto2.str.json
 tests/kleio_start_server.log

@@ -104,19 +104,33 @@ source scripts/kleio_stop_python_server.sh
 echo
 
 # ----------------------------------------------------------------------------
-# Compare leg: filtered recursive diff (unchanged Prolog methodology).
+# Compare leg: filtered recursive diff with a per-file summary on top.
+#
+# Uses compare_test_results_python.sh, which runs the SAME filtered diff as the
+# Prolog compare_test_results.sh (same exclude_while_comparing.grep) but prepends
+# a per-file breakdown so large diffs stay debuggable. The summary lists each
+# differing file with its diff-line count (descending), making it obvious which
+# files dominate the diff.
 # ----------------------------------------------------------------------------
-source scripts/compare_test_results.sh >> "$REPORT_FILE"
+source scripts/compare_test_results_python.sh >> "$REPORT_FILE"
 
-# Keep a stable pointer to the latest report so it's easy to find without
-# grepping for a timestamp (tests/reports/latest_python.diff).
+# Keep stable pointers to the latest report so they're easy to find without
+# grepping for a timestamp:
+#   reports/latest_python.diff        -> summary report (small, committable)
+#   reports/latest_python.fulldiff    -> full filtered diff (large, local)
 ln -sf "$(basename "$REPORT_FILE")" reports/latest_python.diff
+if [ -f "${REPORT_FILE}.fulldiff" ]; then
+  ln -sf "$(basename "${REPORT_FILE}.fulldiff")" reports/latest_python.fulldiff
+fi
 
 echo
-echo "Tests done. Report: $REPORT_FILE"
+echo "Tests done."
+echo "  Summary report : $REPORT_FILE"
 echo "                   (symlink: tests/reports/latest_python.diff)"
+if [ -f "${REPORT_FILE}.fulldiff" ]; then
+  echo "  Full diff      : ${REPORT_FILE}.fulldiff"
+  echo "                   (symlink: tests/reports/latest_python.fulldiff)"
+fi
 echo
-echo "Quick check of diff size:"
-LINES=$(grep -cve '^\s*$' "$REPORT_FILE" 2>/dev/null || echo 0)
-echo "  non-blank lines in filtered report: ${LINES}"
-echo "  (a clean run shows only header/diff-marker lines)"
+echo "Top of the summary:"
+sed -n '1,/The full filtered diff is in/p' "$REPORT_FILE"
