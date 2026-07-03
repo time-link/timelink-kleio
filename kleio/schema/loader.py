@@ -301,9 +301,13 @@ def _set_group_properties(group: GroupDef, data: dict[str, Any], errors: ErrorAc
     if order:
         group.order = order
     
-    # Identification
+    # Identification (identificatio). Normalize YAML booleans to sic/non.
     ident = data.get('identification', data.get('identificatio', ''))
-    if ident:
+    if ident is True or str(ident).strip().lower() in ('yes', 'true', 'sic'):
+        group.identification = "sic"
+    elif ident is False or str(ident).strip().lower() in ('no', 'false', 'non'):
+        group.identification = "non"
+    elif ident:
         group.identification = ident
     
     # Prefix (prae)
@@ -407,9 +411,15 @@ def _set_element_properties(element: ElementDef, data: dict[str, Any], errors: E
     if order:
         element.order = order
     
-    # Identification
+    # Identification (identificatio). YAML may parse "yes"/"no" or
+    # "true"/"false" as booleans; normalize to the canonical "sic"/"non"
+    # strings the rest of the code compares against.
     ident = data.get('identification', data.get('identificatio', ''))
-    if ident:
+    if ident is True or str(ident).strip().lower() in ('yes', 'true', 'sic'):
+        element.identification = "sic"
+    elif ident is False or str(ident).strip().lower() in ('no', 'false', 'non'):
+        element.identification = "non"
+    elif ident:
         element.identification = ident
     
     # Prefix (prae)

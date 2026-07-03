@@ -359,31 +359,46 @@ class GroupBuilder:
     
     def _make_id(self) -> str:
         """Generate an ID for the current group.
-        
-        From dataCDS.pl makeID/1. Uses the group's idprefix (signum) plus
-        an auto-incremented counter, or an element with identificatio=sic.
-        
+
+        Mirrors Prolog dataCDS.pl makeID/1 and mkid_count/3:
+          1. If an element with identification=sic is present, its core text is
+             the ID (e.g. fonte$coja-rol-1841 -> id element -> "coja-rol-1841").
+          2. Otherwise build a hierarchical ID from the parent's ID plus the
+             group's idprefix (signum) plus a per-parent counter:
+                 <parentId>-<signum><counter>
+             e.g. child "atr" of "fogo1-per7" -> "fogo1-per7-att1".
+             The counter is scoped to the parent (path) so siblings of the same
+             group type get distinct counters but the same parentId prefix,
+             yielding globally-unique IDs. This is what prevents the exporter's
+             tree-builder from conflating groups that share a flat idprefix.
+
         Returns:
             The generated ID string.
         """
         group_name = self.state.current_group
         group_def = self.schema.get_group(group_name)
-        
+
         if group_def is None:
             return ""
-        
-        # Check if there's an element with identificatio=sic that should be the ID
+
+        # 1. Explicit ID from an identification=sic element.
         for element in self.state.elements:
             element_def = self.schema.get_element(element.name)
             if element_def and element_def.identification == "sic":
-                # Use the core text of this element as the ID
                 core_text = element.get_core_text()
                 if core_text:
                     return core_text
-        
-        # Use counter-based ID
+
+        # 2. Hierarchical counter-based ID: <parentId>-<signum><counter>.
         idprefix = group_def.idprefix or group_name
         count = self._inc_group_count(group_name)
+
+        # The parent ID is the ID of the immediately-enclosing group, available
+        # from the current path. Root groups (no parent) get a flat idprefix-N.
+        if self.state.path:
+            parent_id = self.state.path[-1][1]
+            if parent_id:
+                return f"{parent_id}-{idprefix}{count}"
         return f"{idprefix}-{count}"
     
     def _check_elements(self, group: str, group_id: str) -> None:
