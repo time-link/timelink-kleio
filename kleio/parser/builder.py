@@ -388,10 +388,14 @@ class GroupBuilder:
     
     def _check_elements(self, group: str, group_id: str) -> None:
         """Verify that guaranteed (certe) elements are present.
-        
+
         From dataCode.pl check_elements/2. Warns if required elements
         are missing from the group.
-        
+
+        A required element is also satisfied by an alias: e.g. a group requiring
+        ``name`` is satisfied by the Portuguese alias ``nome`` (defined with
+        ``source: name``). See SchemaRegistry.element_satisfied.
+
         Args:
             group: The group name.
             group_id: The group ID.
@@ -399,21 +403,16 @@ class GroupBuilder:
         group_def = self.schema.get_group(group)
         if group_def is None:
             return
-        
-        # Get list of element names present in the group
+
+        # Get set of element names present in the group
         present_elements = {el.name for el in self.state.elements}
-        
+
         # Check guaranteed elements
         missing = []
         for required in group_def.guaranteed:
-            if required not in present_elements:
-                # Check if element extends a superclass that is present
-                element_def = self.schema.get_element(required)
-                if element_def and element_def.source:
-                    if element_def.source in present_elements:
-                        continue
+            if not self.schema.element_satisfied(required, present_elements):
                 missing.append(required)
-        
+
         if missing:
             missing_str = ", ".join(missing)
             self.errors.error(

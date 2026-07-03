@@ -217,9 +217,36 @@ class SchemaRegistry:
             
             result.append(source)
             current = source
-        
+
         return result
-    
+
+    def element_satisfied(self, required: str, present: set[str]) -> bool:
+        """Check whether a required element is satisfied by the present elements.
+
+        An element ``R`` is satisfied if either:
+          - ``R`` itself is present, or
+          - some present element is an alias for ``R`` — i.e. ``R`` appears in
+            the present element's source/fons inheritance chain.
+
+        This matters for localized schemas: e.g. a group may require ``name``
+        (``guaranteed: [name]``) while the source file uses the Portuguese alias
+        ``nome`` (defined with ``source: name``). ``nome`` satisfies ``name``.
+
+        Args:
+            required: The required element name (from a group's guaranteed list).
+            present: The set of element names actually present in the group.
+
+        Returns:
+            True if the requirement is satisfied.
+        """
+        if required in present:
+            return True
+        # Some present element resolves (via its source chain) to `required`.
+        for el in present:
+            if required in self.super_elements(el):
+                return True
+        return False
+
     def base_class(self, group: str) -> str:
         """Get the base class (root of inheritance chain) for a group.
         

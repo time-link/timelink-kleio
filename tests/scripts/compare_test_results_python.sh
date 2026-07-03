@@ -2,18 +2,16 @@
 # Compare translation results: Python server vs stable Prolog reference.
 #
 # This is the Python-specific counterpart of compare_test_results.sh. It runs
-# the SAME filtered recursive diff (so the methodology and the
-# exclude_while_comparing.grep filter are identical), but prepends a per-file
-# summary so that large diffs (the Python reimplementation currently produces
-# multi-million-line diffs) stay debuggable.
+# the SAME filtered diff (same exclude_while_comparing.grep), but:
+#   - diffs file-by-file so one oversized/bloated file cannot hang the whole
+#     compare (the Python exporter currently emits ~50x too many GROUPs for
+#     some files, producing multi-GB diffs),
+#   - prepends a per-file summary so large diffs stay debuggable.
 #
 # The summary lists, for every file that differs:
 #     <diff-line-count> <reference-relative-path>
-# sorted by descending diff-line-count, so the files responsible for most of
-# the diff noise are at the top. It also reports counts of:
-#   - files only in reference (Python failed to translate / produced no output)
-#   - files only in test (Python produced extra artifacts)
-#   - files that differ
+# sorted by descending diff-line-count. Oversized files (either side larger
+# than MAX_FILE_KB) are reported as BLOATED (skipped) rather than diffed.
 #
 # Output goes to stdout; run_tests_python.sh redirects it into the report file.
 # Run from the tests/ directory; needs REFERENCE_TRANSLATIONS and
@@ -21,72 +19,97 @@
 
 set -u
 
+# Skip diffing a file pair when either side exceeds this size. Prevents the
+# compare from running for hours on exporter-bloated XML. Override via env.
+MAX_FILE_KB="${KLEIO_COMPARE_MAX_FILE_KB:-20480}"   # 20 MB
+
 echo "Comparing translation results (Python vs stable Prolog)."
 echo "$(date) $(pwd)"
 echo
 
-# ----------------------------------------------------------------------------
-# Produce the raw filtered diff once, into a temp file, so we can summarize it
-# and emit it verbatim. The full diff can be very large (multi-MB) while the
-# Python reimplementation diverges from Prolog, so we also persist it to a
-# separate file next to the report for offline debugging.
-# ----------------------------------------------------------------------------
+REF="${REFERENCE_TRANSLATIONS}"
+TST="${TEST_TRANSLATIONS}"
+EXCLUDE=scripts/exclude_while_comparing.grep
+
+# Temp file holding the full filtered diff across all comparable files.
 RAW_DIFF_TMP="$(mktemp -t kleiopydiff)"
-trap 'rm -f "${RAW_DIFF_TMP}"' EXIT
+# Temp file listing per-file results for the summary.
+SUMMARY_TMP="$(mktemp -t kleiopysum)"
+trap 'rm -f "${RAW_DIFF_TMP}" "${SUMMARY_TMP}"' EXIT
 
-diff -r -b "${REFERENCE_TRANSLATIONS}/" "${TEST_TRANSLATIONS}/" \
-  | grep -v -f scripts/exclude_while_comparing.grep > "${RAW_DIFF_TMP}"
+ONLY_REF=0
+ONLY_TEST=0
+N_DIFFER=0
+N_BLOATED=0
+N_IDENTICAL=0
 
-# If REPORT_FILE is set (run_tests_python.sh sets it), mirror the full filtered
-# diff into <report>.fulldiff so the summary report stays small and committable
-# while the verbose diff remains available locally for debugging.
+# Walk every file present in either tree, computing relative paths once.
+# Use a temp file so the while-read loop stays in this shell (bash 3.2 has no
+# mapfile; a pipe would subshell and lose our counters).
+ALL_TMP="$(mktemp -t kleioall)"
+trap 'rm -f "${RAW_DIFF_TMP}" "${SUMMARY_TMP}" "${ALL_TMP}"' EXIT
+( cd "${REF}" && find . -type f | sort ) > "${ALL_TMP}.ref"
+( cd "${TST}" && find . -type f | sort ) > "${ALL_TMP}.tst"
+# Union of relative paths, sorted, unique.
+cat "${ALL_TMP}.ref" "${ALL_TMP}.tst" | sort -u > "${ALL_TMP}"
+rm -f "${ALL_TMP}.ref" "${ALL_TMP}.tst"
+
+while IFS= read -r rel; do
+  rel="${rel#./}"
+  r="${REF}/${rel}"
+  t="${TST}/${rel}"
+  if [ -f "$r" ] && [ -f "$t" ]; then
+    # Both exist: compare, unless either is oversized.
+    rkb=$(( $(stat -f%z "$r" 2>/dev/null || stat -c%s "$r" 2>/dev/null || echo 0) / 1024 ))
+    tkb=$(( $(stat -f%z "$t" 2>/dev/null || stat -c%s "$t" 2>/dev/null || echo 0) / 1024 ))
+    if [ "$rkb" -gt "$MAX_FILE_KB" ] || [ "$tkb" -gt "$MAX_FILE_KB" ]; then
+      N_BLOATED=$((N_BLOATED + 1))
+      printf 'BLOATED  %8dKB/%dKB  %s\n' "$rkb" "$tkb" "$rel" >> "${SUMMARY_TMP}"
+      continue
+    fi
+    # Filtered diff for this one file.
+    fdiff=$(diff -b "$r" "$t" | grep -v -f "${EXCLUDE}")
+    if [ -z "$fdiff" ]; then
+      N_IDENTICAL=$((N_IDENTICAL + 1))
+    else
+      N_DIFFER=$((N_DIFFER + 1))
+      nlines=$(printf '%s\n' "$fdiff" | grep -cve '^\s*$' || true)
+      printf '%8d  %s\n' "$nlines" "$rel" >> "${SUMMARY_TMP}"
+      {
+        echo "diff -b ${REF}/${rel} ${TST}/${rel}"
+        printf '%s\n' "$fdiff"
+        echo
+      } >> "${RAW_DIFF_TMP}"
+    fi
+  elif [ -f "$r" ]; then
+    ONLY_REF=$((ONLY_REF + 1))
+    printf 'ONLY-REF  %s\n' "$rel" >> "${SUMMARY_TMP}"
+  else
+    ONLY_TEST=$((ONLY_TEST + 1))
+    printf 'ONLY-TEST  %s\n' "$rel" >> "${SUMMARY_TMP}"
+  fi
+done < "${ALL_TMP}"
+
+# Persist the full filtered diff for offline debugging.
 if [ -n "${REPORT_FILE:-}" ]; then
   cp "${RAW_DIFF_TMP}" "${REPORT_FILE}.fulldiff"
 fi
 
 # ----------------------------------------------------------------------------
-# Summary: per-file diff-line counts, plus only-in/differ counts.
-#
-# Each file's diff block starts with a line beginning "diff -r" or "Only in".
-# Count the body lines following each such header.
+# Summary.
 # ----------------------------------------------------------------------------
 echo "==================== SUMMARY ===================="
 echo
-
-# "Only in reference" => Python produced no output for that source (failed).
-ONLY_REF=$(grep -c "^Only in ${REFERENCE_TRANSLATIONS}" "${RAW_DIFF_TMP}" || true)
-ONLY_TEST=$(grep -c "^Only in ${TEST_TRANSLATIONS}" "${RAW_DIFF_TMP}" || true)
-N_DIFFER=$(grep -c "^diff -r" "${RAW_DIFF_TMP}" || true)
+echo "Files identical (filtered)                         : ${N_IDENTICAL}"
+echo "Files that differ                                  : ${N_DIFFER}"
 echo "Files only in reference (Python produced no output): ${ONLY_REF}"
 echo "Files only in test (Python produced extra output)  : ${ONLY_TEST}"
-echo "Files that differ                                  : ${N_DIFFER}"
+echo "Files skipped (either side > ${MAX_FILE_KB}KB)        : ${N_BLOATED}"
 echo
 
-echo "Per-file differing-line counts (descending):"
+echo "Per-file breakdown (descending by diff-line count; BLOATED/ONLY-* listed after):"
 echo "  (diff-line-count  file)"
-# Walk the raw diff, grouping by header. awk is portable (bash 3.2 / zsh).
-# A diff header looks like:  diff -r -b <refpath> <testpath>
-# so the reference path is the LAST field but one ($NF-1). Using NF keeps it
-# correct regardless of how many flags diff emits.
-awk '
-/^diff -r / {
-    if (hdr != "") printf "%8d  %s\n", n, file;
-    hdr = $0;
-    # Reference path is the second-to-last field on the diff header line.
-    file = $(NF-1);
-    sub(/^.*\/reference_translations\//, "", file);
-    n = 0;
-    next
-}
-/^Only in / {
-    if (hdr != "") { printf "%8d  %s\n", n, file; hdr = "" }
-    next
-}
-{ n++ }
-END {
-    if (hdr != "") printf "%8d  %s\n", n, file;
-}
-' "${RAW_DIFF_TMP}" | sort -rn
+sort -rn "${SUMMARY_TMP}"
 echo
 if [ -n "${REPORT_FILE:-}" ] && [ -f "${REPORT_FILE}.fulldiff" ]; then
   echo "The full filtered diff is in: ${REPORT_FILE}.fulldiff"
