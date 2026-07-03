@@ -629,53 +629,61 @@ def translate_file(
     schema: SchemaRegistry,
     errors: ErrorAccumulator,
     on_group: Callable[[ParsedGroup], None] | None = None,
+    on_line: Callable[[int, str], None] | None = None,
 ) -> list[ParsedGroup]:
     """Translate a .cli file to a list of ParsedGroup objects.
-    
+
     This is the main entry point that wires together:
     lexer -> syntax parser -> group builder
-    
+
     Args:
         source_path: Path to the .cli file to translate.
         schema: The loaded structure schema.
         errors: Error accumulator for validation errors.
         on_group: Optional callback invoked with each completed group.
-        
+        on_line: Optional callback invoked with (line_number, line_text) for
+            each non-empty source line. Used to echo source lines into the
+            translation report when echo is enabled.
+
     Returns:
         List of completed ParsedGroup objects.
     """
     source_path = Path(source_path)
-    
+
     # Create builder
     builder = GroupBuilder(schema, errors, on_group_complete=on_group)
-    
+
     # Read and process file line by line
     quote_state = QuoteState()
-    
+
     with open(source_path, "r", encoding="utf-8") as f:
         for line_number, line in enumerate(f, start=1):
             # Remove trailing newline but preserve other whitespace
             line = line.rstrip("\n\r")
-            
+
             # Skip empty lines
             if not line.strip():
                 continue
-            
+
+            # Echo the source line to the report (no-op unless echo=yes).
+            if on_line:
+                on_line(line_number, line)
+
             # Set context for error reporting
             builder.set_context(line_number, line)
-            
+
             # Tokenize
             tokens = tokenize_data(line)
-            
+
             # Parse tokens into actions
             actions = parse_line(tokens, quote_state)
-            
+
             # Process actions
             builder.process_actions(actions)
-    
+
     # Close builder to flush final group
     builder.close()
-    
+
     return builder.completed_groups
 
 

@@ -74,44 +74,61 @@ async def _do_translation(
     source_path: Path,
     structure_path: Path | None,
     output_dir: Path,
-    config: KleioConfig
+    config: KleioConfig,
+    echo: bool = False,
 ) -> None:
     """Execute translation in background.
-    
+
     Args:
         job_id: The job ID for tracking.
         source_path: Absolute path to the source file.
         structure_path: Optional path to structure file.
         output_dir: Directory for output files.
         config: Server configuration.
+        echo: If True, echo every source line into the .rpt report file.
     """
     from kleio.schema.registry import SchemaRegistry
     from kleio.parser.builder import translate_file
     from kleio.export.xml_exporter import XmlExporter
+    from kleio.export.report_writer import ReportWriter
     from kleio.inference.engine import InferenceEngine
     from kleio.inference.rules import get_default_rules
     from kleio.errors import ErrorAccumulator
-    
+
     task_info = _translation_tasks[job_id]
     task_info["status"] = "processing"
     task_info["updated"] = datetime.now().isoformat()
-    
+
     try:
         # Initialize error accumulator
         errors = ErrorAccumulator(max_errors=config.max_errors)
-        
+
         # Load schema
         schema = SchemaRegistry()
         if structure_path and structure_path.exists():
             schema.load(structure_path, errors)
         else:
-            # Use default structure
-            default_stru = config.structures_dir / "gacto2.str"
-            if default_stru.exists():
-                schema.load(default_stru, errors)
+            # Use default structure. The Python loader reads YAML only (legacy
+            # .str files are deprecated), so default to sources-structure.yaml.
+            for candidate in ("sources-structure.yaml", "gacto2.str.yaml"):
+                default_stru = config.structures_dir / candidate
+                if default_stru.exists():
+                    schema.load(default_stru, errors)
+                    structure_path = default_stru
+                    break
             else:
                 raise ValueError("No structure file available")
-        
+
+        # Create report writer (.rpt/.err). It collects group markers and,
+        # when echo=True, an echo of every source line.
+        report = ReportWriter(
+            source_file=str(source_path),
+            output_dir=output_dir,
+            errors=errors,
+            echo=echo,
+            structure_file=str(structure_path) if structure_path else "",
+        )
+
         # Create exporter
         exporter = XmlExporter()
         exporter.init(
@@ -120,15 +137,22 @@ async def _do_translation(
             schema=schema,
             structure_file=str(structure_path) if structure_path else ""
         )
-        
-        # Translate file
+
+        # Translate file. Both the XML exporter and the report writer receive
+        # group-completion callbacks; the report writer also receives per-line
+        # callbacks for the optional echo.
+        def _on_group(group):
+            exporter.export_group(group)
+            report.on_group(group)
+
         groups = translate_file(
             source_path,
             schema,
             errors,
-            on_group=exporter.export_group
+            on_group=_on_group,
+            on_line=report.on_line,
         )
-        
+
         # Apply inference rules if available
         inference_results = None
         try:
@@ -140,27 +164,30 @@ async def _do_translation(
                 # Use default rules
                 for rule in get_default_rules():
                     engine.register_rule(rule)
-            
+
             if engine.get_rules():
                 inference_results = engine.apply_rules(groups, schema.structure)
         except Exception as e:
             logger.warning(f"Inference failed: {e}")
-        
-        # Close exporter
+
+        # Close exporter (writes .xml + .files.json)
         output_files = exporter.close(inference_results)
-        
+
+        # Close report writer (writes .rpt + .err)
+        output_files.extend(report.close())
+
         # Update task info
         task_info["status"] = "completed"
         task_info["errors"] = errors.error_count
         task_info["warnings"] = errors.warning_count
         task_info["output_files"] = output_files
         task_info["message"] = f"Translated {len(groups)} groups"
-        
+
     except Exception as e:
         logger.error(f"Translation failed: {e}")
         task_info["status"] = "error"
         task_info["message"] = str(e)
-    
+
     finally:
         task_info["updated"] = datetime.now().isoformat()
 
@@ -212,14 +239,18 @@ async def start_translation(
         "updated": datetime.now().isoformat(),
     }
     
-    # Queue translation as background task
+    # Queue translation as background task. The echo flag controls whether the
+    # .rpt report echoes every source line (echo=yes) or only group markers and
+    # diagnostics (echo=no, the default).
+    echo_flag = str(body.echo).strip().lower() in ("yes", "true", "1")
     background_tasks.add_task(
         _do_translation,
         job_id,
         source_path,
         structure_path,
         output_dir,
-        config
+        config,
+        echo_flag,
     )
     
     return {

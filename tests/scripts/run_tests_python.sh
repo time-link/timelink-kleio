@@ -107,8 +107,14 @@ echo
 # Compare leg: filtered recursive diff (unchanged Prolog methodology).
 # ----------------------------------------------------------------------------
 source scripts/compare_test_results.sh >> "$REPORT_FILE"
+
+# Keep a stable pointer to the latest report so it's easy to find without
+# grepping for a timestamp (tests/reports/latest_python.diff).
+ln -sf "$(basename "$REPORT_FILE")" reports/latest_python.diff
+
 echo
-echo "Tests done. Check $REPORT_FILE"
+echo "Tests done. Report: $REPORT_FILE"
+echo "                   (symlink: tests/reports/latest_python.diff)"
 echo
 echo "Quick check of diff size:"
 LINES=$(grep -cve '^\s*$' "$REPORT_FILE" 2>/dev/null || echo 0)
