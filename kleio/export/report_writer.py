@@ -47,6 +47,7 @@ class ReportWriter:
         errors: ErrorAccumulator,
         *,
         echo: bool = False,
+        schema=None,
         structure_file: str = "",
         prefix: str = "",
         autorel: str = "",
@@ -61,6 +62,9 @@ class ReportWriter:
             output_dir: Directory in which to write the ``.rpt``/``.err`` files.
             errors: The error accumulator holding translation diagnostics.
             echo: If ``True``, echo every input source line to the ``.rpt``.
+            schema: Optional SchemaRegistry, used to echo only act-inheriting
+                groups in the report (see on_group). When None, all groups with
+                an id are echoed.
             structure_file: Structure (schema) file name, for the report header.
             prefix: Source id prefix (if any), for the report header.
             autorel: Autorel prefix (if any), for the report header.
@@ -72,6 +76,7 @@ class ReportWriter:
         self._output_dir = Path(output_dir)
         self._errors = errors
         self._echo = echo
+        self._schema = schema
         self._structure_file = structure_file
         self._prefix = prefix
         self._autorel = autorel
@@ -108,20 +113,37 @@ class ReportWriter:
     def on_group(self, group: ParsedGroup) -> None:
         """Record a completed group.
 
-        Emits the ``<line>: <group>$<id>`` marker for top-level act groups
-        (matching the Prolog report) and tracks the group name for the footer.
+        Tracks every group name for the footer's ``Groups in this file:[...]``
+        list, and emits the ``<line>: <group>$<id>`` marker for act groups only.
+
+        With echo off, the Prolog report (gactoxml.pl historical_act_export,
+        line 673) prints a ``<line>: <group>$<id>`` marker ONLY for groups that
+        inherit from ``historical-act`` (i.e. base class ``event``: bap, obito,
+        cas, rol, lista, escritura, devassa, ...). Person/object/attribute/
+        relation/link groups are not echoed. Without this filter the report
+        would list every nested group (n, ls, referido, atr, ...) and not match
+        the reference.
         """
         # Track every group name for the footer's "Groups in this file:" list.
         if group.name and group.name not in self._group_names_seen:
             self._group_names.append(group.name)
             self._group_names_seen.add(group.name)
 
-        # The Prolog report prints a "<line>: <group>$<id>" marker for each
-        # "act" group (the children of the fonte/source group). We approximate
-        # this by emitting a marker for groups that carry an id and sit one
-        # level below the document root (level 2 in a typical kleio/fonte/bap
-        # hierarchy). This is the line that the semantic diff actually compares.
-        if group.id and group.level >= 2:
+        if not group.id or self._schema is None:
+            return
+
+        # Source groups: emit a "** Processing source <name>$<id>" marker,
+        # matching Prolog's historical_source_export (gactoxml.pl:639).
+        supers = self._schema.super_groups(group.name)
+        if "historical-source" in supers:
+            self._lines.append(f"** Processing source {group.name}${group.id}")
+            return
+
+        # Act groups: emit the "<line>: <group>$<id>" marker, matching Prolog's
+        # historical_act_export (gactoxml.pl:673). 'event' is the Python
+        # schema's root for Prolog's 'historical-act'.
+        base = self._schema.base_class(group.name)
+        if base == "event":
             self._lines.append(f"{group.line_number}: {group.name}${group.id}")
 
     # ------------------------------------------------------------------

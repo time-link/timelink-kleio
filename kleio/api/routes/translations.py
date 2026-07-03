@@ -120,12 +120,15 @@ async def _do_translation(
                 raise ValueError("No structure file available")
 
         # Create report writer (.rpt/.err). It collects group markers and,
-        # when echo=True, an echo of every source line.
+        # when echo=True, an echo of every source line. The schema is passed so
+        # that, with echo off, only act-inheriting groups are echoed (matching
+        # the Prolog report's historical_act_export behaviour).
         report = ReportWriter(
             source_file=str(source_path),
             output_dir=output_dir,
             errors=errors,
             echo=echo,
+            schema=schema,
             structure_file=str(structure_path) if structure_path else "",
         )
 
