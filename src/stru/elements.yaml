@@ -36,37 +36,47 @@
 
 # Basic data types. Usefull to define the type of data field in
 #      the destination database.
+
 - element:
     name: number
     description: Any number
+    abstract: true
 - element:
     name: string64
     description: '64 chars strings like those used in ids. Use for elements that contain
       ids of other entities. Use ""id"" for entity own id. '
+    abstract: true
 - element:
     name: string256
     description: Longer strings, like names or short descriptions.
+    abstract: true
 - element:
     name: text
     description: Long texts, like descriptions, summaries, etc.
+    abstract: true
 - element:
     name: control
     description: Element that affect the processing of files, mostly used in "kleio" group and "source"
+    abstract: true
 - element:
         name: json
         description: json data (used internally)
+        abstract: true
 # ================================
 # Elements used for dates
 # ================================
 - element:
     name: day
     description: two digit representation of the day
+    source: number
 - element:
     name: month
     description: two digit representation of the month
+    source: number
 - element:
     name: year
     description: four digit representation of the year
+    source: number
 - element:
     name: date
     description: |
@@ -129,23 +139,28 @@
 - element:
     name: type
     description: The type of an attribute, relation, act or other entity.
+    source: string256
 - element:
     name: value
     description: The value of an attribute or relation
+    source: text
 - element:
     name: class
     description: The class of an entity (e.g. person, object)
+    source: string64
 - element:
     name: loc
     description: >
         Location (place) of an entity or act.
         Sometimes in sources it is used to register the location
         of the source (archive, library, etc).
+    source: string256
 
 #  People and objects
 - element:
     name: name
     description: name, normally of a person
+    source: string256
 - element:
     name: description
     description: Similar to name, but for objects or events
@@ -165,6 +180,7 @@
 - element:
     name: sex
     description: Gender of a person
+    source: string64
 
 #  elements for longer texts
 - element:

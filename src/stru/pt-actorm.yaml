@@ -21,10 +21,11 @@
     name: n
     description: >
         Pessoa genérica ou principal actor de um acto 
-        (criança em baptismo).
+        (e.g. criança em baptismo).
         Sexo deve registado depois do nome.
     source: pt-actorm
-    position: [name,sex]
+    contains: [referido, referida]
+    position: [nome, sexo]
 
 - group: 
     name: referido

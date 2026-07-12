@@ -81,7 +81,7 @@
     contains: [person, object, geoentity, abstraction, ls, atr, rel, end]
     idprefix: evt
 
-- group: 
+- group:
     name: entity
     description: >
         An entity is a thing that exists independently of other things.
@@ -91,6 +91,7 @@
     also: [obs, same_as, xsame_as]
     contains: [attribute, relation, atr, rel, ls]
     idprefix: ent
+    abstract: true
 
 - group:
     name: kleio

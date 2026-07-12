@@ -127,11 +127,11 @@ params(nomino,
 params(terminus,
       [nomen,modus,primum,secundum,ordo,fons,prae,post,
        pars,sine,signa,forma,ceteri,identificatio,cumule,
-       solum, nota]).
+       solum,abstractus, nota]).
 params(pars,
      [nomen,ordo,sequentian,identificatio,signum,fons,
       prae,post,locus, ceteri,certe,pars,solum,semper,
-      nota,repetitio]).
+      abstractus,nota,repetitio]).
 params(exitus,[nomen]).
 
 
@@ -324,6 +324,7 @@ keyword(clio, cumulatio ).
 keyword(clio, exitus).
 keyword(clio, finis ).
 keyword(clio, fons ).
+keyword(clio, abstractus ).
 keyword(clio, identificatio ).
 keyword(clio, inspectio ).
 keyword(clio, lege ).
@@ -365,6 +366,7 @@ engkw(continue,     continuatio).
 engkw(continuation, continuatio).
 engkw(cumulate,     cumulatio).
 engkw(exit,         exitus).
+engkw(abstract,     abstractus).
 engkw(stop,         finis).
 engkw(source,       fons).
 engkw(identification,identificatio).

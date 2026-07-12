@@ -207,7 +207,7 @@ execParam(pars,Param,_):-
 
 execParam(pars,Param,Value):-
    member_check(Param,[ordo,sequentia,identificatio,post,prae,locus,signum,
-             ceteri,certe,pars,semper,repetitio,nota]),
+             ceteri,certe,pars,semper,repetitio,nota,abstractus]),
    get_prop(pars,nomen,Groups),        % get current group names%
    dataDictionary:set_groups_prop(Groups,Param,Value),% store the values %
    !.
@@ -231,7 +231,7 @@ execParam(pars,P,V):-
  \+ member_check(P,[nomen,ordo,sequentia,identificatio,
                     post,prae,locus,
                     ceteri,certe,fons,signum,
-                    nota]),
+                    nota,abstractus]),
    report([tab(3),write('Error: unknown pars param:'),
             write(P),write('='),write(V),nl]),!.
 
@@ -257,7 +257,7 @@ execParam(terminus,Param,_):-
 
 execParam(terminus,Param,Value):-
    member_check(Param,[modus,primum,secundum,ordo,post,prae,pars,sine,signa,
-                       forma,ceteri,identificatio,cumule,solum,nota]),
+                       forma,ceteri,identificatio,cumule,solum,nota,abstractus]),
    get_prop(terminus,nomen,Elements), % get current element names%
    set_elements_prop(Elements,Param,Value),% store the values %
    !.
@@ -275,7 +275,7 @@ execParam(terminus,fons,Element):-
 
 execParam(terminus,P,V):-
  \+ member_check(P,[modus,primum,secundum,ordo,post,fons,prae,pars,sine,signa,
-                       forma,ceteri,identificatio,cumule,solum,nota]),
+                       forma,ceteri,identificatio,cumule,solum,nota,abstractus]),
    error_out(['Error: unknown terminus param:',P,'=',V]),!.
 
 %**************************************************************

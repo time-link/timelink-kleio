@@ -597,7 +597,7 @@ copy_groups(G,[A|B]):-
 copy_group(G,H):- %copies properties in H to G %
    clioGroup(H,ID), %get id of group H)%
    get_props(ID,List),% get its properties %
-   forall((member(P,List),P \= fons),(get_prop(ID,P,V),set_group_prop(G,P,V))),!.
+   forall((member(P,List),P \= fons,P \= abstractus),(get_prop(ID,P,V),set_group_prop(G,P,V))),!.
 
 %*************************************************************
 % copy_elements(Element, List)
@@ -613,7 +613,7 @@ copy_elements(E,[A|B]):-
 copy_element(E,H):- %copies properties in H to E %
    clioElement(H,ID), %get id of element H)%
    get_props(ID,List),% get its properties %
-   forall((member(P,List), P \= fons),(get_prop(ID,P,V),set_element_prop(E,P,V))),!.
+   forall((member(P,List), P \= fons, P \= abstractus),(get_prop(ID,P,V),set_element_prop(E,P,V))),!.
 
 %*************************************************************
 % copy_fons_g(Group,Groups)

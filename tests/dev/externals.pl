@@ -14,6 +14,7 @@
 		clio_super/2,
 		clio_extends/2,
 		clio_bclass/2,
+		clio_abstract_class/1,
 		clio_partof/2,
 		clio_parts/2,
 		clio_group_param/3,
@@ -21,6 +22,7 @@
 		clio_element_super/2,
 		clio_element_extends/2,
 		clio_element_bclass/2,
+		clio_element_abstract_class/1,
 		clio_belement_aspect/3
 	]).
 /** <module> External interface (API) for the Clio export modules
@@ -125,13 +127,45 @@ clio_group_param(G,P,V):-get_group_prop(G,P,V).
 clio_super(Super,Group):-clio_group_param(Group,fons,Super).
 clio_extends(Group,Super):-clio_group_param(Group,fons,Super).
 clio_extends(Group,Super):-clio_group_param(Group,fons,F),clio_extends(F,Super).
-% this defined the base class of a group, i.e.,
-%   the root of the fons/source hierarchy for this group
-% this means: get a super class of Group that has no super class.
-clio_bclass(Group,Bclass) :-
-		clio_extends(Group,Bclass),
-		\+ clio_super(_,Bclass),!.
-clio_bclass(Group,Group) :-!.
+
+% clio_abstract_class(Class) succeeds when Class is an abstract class, i.e. one
+% declared with the "abstract" property in the structure file (YAML "abstract:
+% true"). In the YAML schemas these are the over-generic roots introduced for
+% database mapping (e.g. group "entity") or the basic data-type elements
+% (string64, string256, number, text...). See issue #58: an abstract class is
+% not semantically significant and should not be reported as the "base class".
+clio_abstract_class(Class) :- clio_group_param(Class, abstractus, true).
+
+% clio_bclass(Group,Bclass): the base class of Group.
+%
+% Semantics (issue #58): Bclass is the highest ancestor of Group in the
+% fons/source hierarchy (including Group itself) that is NOT an abstract class.
+% Abstract classes (marked with "abstract: true", e.g. "entity" or a basic
+% data-type element) are over-generic roots introduced for database mapping and
+% are skipped. Therefore:
+%   clio_bclass(fonte)             = historical-source  (chain: fonte,historical-source,entity; entity abstract)
+%   clio_bclass(historical-source) = historical-source  (chain: historical-source,entity; entity abstract)
+%   clio_bclass(person)            = person             (chain: person,entity; entity abstract)
+%   clio_bclass(ls)                = attribute          (chain: ls,attribute; attribute not abstract)
+%   clio_bclass(entity)            = entity             (no fons, but entity itself is the answer)
+%   clio_bclass(event)             = event              (no fons)
+clio_bclass(Group, Bclass) :-
+		findall(A, clio_extends(Group, A), Chain),
+		( Chain = [] -> Bclass = Group
+		; last_non_abstract(Chain, Bclass, Group) ),
+		!.
+clio_bclass(Group, Group) :- !.
+
+% last_non_abstract(+Chain, -Result, +Fallback): Chain is the list of ancestors
+% of a group/element ordered from nearest to farthest (as produced by
+% clio_extends/2). Result is the farthest ancestor that is not abstract; if all
+% ancestors are abstract (or the list is empty) Result = Fallback.
+last_non_abstract(Chain, Result, _Fallback) :-
+		reverse(Chain, FarToNear),
+		member(Result, FarToNear),
+		\+ clio_abstract_class(Result),
+		!.
+last_non_abstract(_Chain, Fallback, Fallback).
 
 clio_partof(P,G) :- contained_by(G,P).
 clio_parts(G,Ps) :- subgroups(G,Ps).
@@ -143,12 +177,37 @@ clio_element_extends(Element,Super):-
 clio_element_extends(Element,Super):-
 		clio_element_param(Element,fons,F),
 		clio_element_extends(F,Super).
-							% this defined the base class of an element, i.e.,
-							%   the root of the fons/source hierarchy for this element
-clio_element_bclass(Element,Bclass) :-
-		clio_element_extends(Element,Bclass),
-		\+ clio_element_super(_,Bclass),!.
-clio_element_bclass(Element,Element):-!.
+
+% clio_element_abstract_class(Element) succeeds when Element is an abstract
+% element, i.e. one declared with "abstract: true" in the structure file. These
+% are the basic data types (string64, string256, number, text, ...) used as
+% roots for database mapping. See issue #58.
+clio_element_abstract_class(Element) :- clio_element_param(Element, abstractus, true).
+
+% clio_element_bclass(Element,Bclass): the base class of Element.
+%
+% Semantics (issue #58): as clio_bclass/2 but for elements. Bclass is the
+% highest ancestor of Element (including Element itself) that is NOT an
+% abstract element (a data type marked with "abstract: true"). Therefore:
+%   clio_element_bclass(nome) = name      (chain: nome,name,string256; string256 abstract)
+%   clio_element_bclass(name) = name      (chain: name,string256; string256 abstract)
+%   clio_element_bclass(loc)  = loc       (chain: loc,string256; string256 abstract)
+%   clio_element_bclass(sex)  = sex       (no fons)
+clio_element_bclass(Element, Bclass) :-
+		findall(A, clio_element_extends(Element, A), Chain),
+		( Chain = [] -> Bclass = Element
+		; last_non_abstract_el(Chain, Bclass, Element) ),
+		!.
+clio_element_bclass(Element, Element) :- !.
+
+% last_non_abstract_el(+Chain, -Result, +Fallback): as last_non_abstract/3 but
+% for elements.
+last_non_abstract_el(Chain, Result, _Fallback) :-
+		reverse(Chain, FarToNear),
+		member(Result, FarToNear),
+		\+ clio_element_abstract_class(Result),
+		!.
+last_non_abstract_el(_Chain, Fallback, Fallback).
 
 
 /**

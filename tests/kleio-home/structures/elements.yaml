@@ -40,22 +40,28 @@
 - element:
     name: number
     description: Any number
+    abstract: true
 - element:
     name: string64
     description: '64 chars strings like those used in ids. Use for elements that contain
       ids of other entities. Use ""id"" for entity own id. '
+    abstract: true
 - element:
     name: string256
     description: Longer strings, like names or short descriptions.
+    abstract: true
 - element:
     name: text
     description: Long texts, like descriptions, summaries, etc.
+    abstract: true
 - element:
     name: control
     description: Element that affect the processing of files, mostly used in "kleio" group and "source"
+    abstract: true
 - element:
         name: json
         description: json data (used internally)
+        abstract: true
 # ================================
 # Elements used for dates
 # ================================
@@ -174,7 +180,7 @@
 - element:
     name: sex
     description: Gender of a person
-    source: string64ma
+    source: string64
 
 #  elements for longer texts
 - element:

@@ -1293,6 +1293,24 @@
           - ls
           - rel
 
+# Memórias paroquiais de 1758
+- group:
+    name: memoria58
+    source: pt-acto
+    description: "Formato para registo das memórias paroquiais de 1758 \n"
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    also:
+    - obs
+    guaranteed:
+    - id
+    idprefix: m58
+    contains:
+    - freguesia
+
 - group:
       description: "Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes. "
       name: apontamentosd
@@ -1437,24 +1455,6 @@
 - element: {name: destino, source: local}
 - element: {name: num, source: number}
 
-# Memórias paroquiais de 1758
-- group:
-    name: memoria58
-    source: pt-acto
-    description: "Formato para registo das memórias paroquiais de 1758 \n"
-    position:
-    - id
-    - dia
-    - mes
-    - ano
-    also:
-    - obs
-    guaranteed:
-    - id
-    idprefix: m58
-    contains:
-    - freguesia
-    
 - group:
     name: apontamentos
     source: memoria58
