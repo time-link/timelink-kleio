@@ -12,6 +12,7 @@
             item
             topico
             lugar
+            rel override para termos data= em vez de date=
 
 - include: groups.yaml
 - include: pt-elements.yaml
@@ -209,7 +210,7 @@
     also:
        - obs
        - id
-    contains: [referido, referida]  # we need this to prevent recursive inclusion of pt-actorf and pt-actorm
+    contains: [viajante, referido, referida]  # we need this to prevent recursive inclusion of pt-actorf and pt-actorm
     guaranteed:
       - description
     idprefix: via
@@ -219,6 +220,15 @@
      - mes
      - ano
     source: pevent
+    
+- group:
+    name: viajante
+    description: >
+         Uma pessoa que viaja, parte de um evento pessoal
+    source: person
+    position: [nome, sexo]
+    guaranteed: [nome]
+    idprefix: vjt
 
 - group:
     name: pevento
@@ -236,3 +246,30 @@
     description: >
          Um evento de estadia em um local, por exemplo um hotel, uma casa, etc.
     source: pevento
+
+- group:
+      name: familia
+      position: [name, id]
+      description: >
+        Uma família em genealogias
+      part:
+          - linha
+      source: object
+
+- group:
+    name: linha
+    source: object
+    description: >
+      Uma linha de uma familia em genealogias
+    position: [numero]
+    guaranteed: [numero]
+    contains: [n]
+
+- group:
+    name: rel
+    description: Short hand for relation Portuguese Override to have data= instead of date=
+    source: relation
+    position: [type, value, destname, destination, data]
+    guaranteed: [type, value, destname, destination]
+    also: [obs, data, id]
+    idprefix: rel

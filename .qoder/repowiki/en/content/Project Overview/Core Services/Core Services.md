@@ -16,7 +16,20 @@
 - [gitUtilities.pl](file://src/gitUtilities.pl)
 - [topLevel.pl](file://src/topLevel.pl)
 - [api.json](file://api/postman/api.json)
+- [kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh)
+- [run_tests.sh](file://tests/scripts/run_tests.sh)
+- [prepare_tests.sh](file://tests/scripts/prepare_tests.sh)
+- [kleio_translate_remote.sh](file://tests/scripts/kleio_translate_remote.sh)
+- [kleio_translate_local.sh](file://tests/scripts/kleio_translate_local.sh)
+- [test_files.sh](file://tests/scripts/test_files.sh)
 </cite>
+
+## Update Summary
+**Changes Made**
+- Updated server configuration section to reflect default REST port change from 8087 to 8088
+- Enhanced server startup script documentation with improved test infrastructure
+- Added documentation for enhanced translation pipeline and test automation
+- Updated practical workflows to reflect new port configuration and improved test scripts
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -40,17 +53,20 @@ This document describes the core services provided by the kleio-server API. The 
 
 It explains the intelligent translation workflow, provides concrete request/response patterns, enumerates REST endpoints, and demonstrates how services integrate in typical workflows such as uploading sources, requesting translations, and managing file operations.
 
+**Updated** The server now defaults to port 8088 instead of 8087, and includes enhanced test infrastructure with improved translation pipeline automation.
+
 ## Project Structure
 The server is implemented as a layered Prolog application with:
 - A REST/JSON-RPC server front-end
 - Domain-specific API modules for each service category
 - Shared utilities for tokens, file resolution, and Git operations
 - Integration with the underlying Kleio translator engine
+- Enhanced test infrastructure with automated translation pipeline
 
 ```mermaid
 graph TB
 subgraph "Server Frontend"
-RS["restServer.pl"]
+RS["restServer.pl<br/>Default Port: 8088"]
 AC["apiCommon.pl"]
 end
 subgraph "Core Services"
@@ -67,6 +83,14 @@ TF["tokens.pl"]
 KL["kleioFiles.pl"]
 GU["gitUtilities.pl"]
 TL["topLevel.pl"]
+end
+subgraph "Enhanced Test Infrastructure"
+TS["kleio_start_server.sh"]
+RT["run_tests.sh"]
+PT["prepare_tests.sh"]
+LTR["kleio_translate_remote.sh"]
+LTL["kleio_translate_local.sh"]
+TFIL["test_files.sh"]
 end
 RS --> AC
 AC --> TR
@@ -87,22 +111,22 @@ EX --> SR
 RP --> SR
 GT --> GU
 TK --> TF
+TS --> RS
+RT --> TS
+PT --> RT
+LTR --> RS
+LTL --> TR
+TFIL --> LTL
 ```
 
 **Diagram sources**
-- [restServer.pl](file://src/restServer.pl#L300-L350)
-- [apiCommon.pl](file://src/apiCommon.pl#L78-L89)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L1-L50)
-- [apiSources.pl](file://src/apiSources.pl#L1-L40)
-- [apiDirectories.pl](file://src/apiDirectories.pl#L1-L20)
-- [apiExports.pl](file://src/apiExports.pl#L1-L21)
-- [apiReports.pl](file://src/apiReports.pl#L1-L21)
-- [apiGit.pl](file://src/apiGit.pl#L1-L30)
-- [apiTokens.pl](file://src/apiTokens.pl#L1-L20)
-- [tokens.pl](file://src/tokens.pl#L1-L40)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L1-L40)
-- [gitUtilities.pl](file://src/gitUtilities.pl#L1-L25)
-- [topLevel.pl](file://src/topLevel.pl#L34-L55)
+- [restServer.pl](file://src/restServer.pl#L172-L184)
+- [kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh#L1-L22)
+- [run_tests.sh](file://tests/scripts/run_tests.sh#L1-L39)
+- [prepare_tests.sh](file://tests/scripts/prepare_tests.sh#L1-L33)
+- [kleio_translate_remote.sh](file://tests/scripts/kleio_translate_remote.sh#L1-L14)
+- [kleio_translate_local.sh](file://tests/scripts/kleio_translate_local.sh#L1-L24)
+- [test_files.sh](file://tests/scripts/test_files.sh#L1-L14)
 
 **Section sources**
 - [restServer.pl](file://src/restServer.pl#L300-L350)
@@ -115,6 +139,7 @@ This section outlines the five primary service categories and their responsibili
   - Purpose: Start, query, and clean translations for Kleio sources
   - Key endpoints: POST/GET/DELETE /rest/translations/{path}
   - Intelligent workflow: Normalizes structure selection, supports parallel processing, caches status for performance, and computes derived URLs for reports and exports
+  - **Updated** Enhanced with improved test automation and validation pipeline
 
 - Sources service
   - Purpose: Retrieve, upload, copy, move, and delete source files
@@ -151,10 +176,12 @@ The server routes requests through a central dispatcher that:
 - Invokes domain-specific handlers
 - Formats results in REST or JSON-RPC formats
 
+**Updated** The server now defaults to port 8088, providing better integration with modern development environments and container orchestration systems.
+
 ```mermaid
 sequenceDiagram
 participant Client as "Client"
-participant RS as "restServer.process_rest"
+participant RS as "restServer.process_rest<br/>Port : 8088"
 participant TOK as "tokens.decode_token"
 participant API as "Entity Handler"
 participant UTIL as "kleioFiles/gitUtilities"
@@ -186,10 +213,11 @@ RS-->>Client : "formatted response (REST/JSON-RPC)"
   - Parallelization: spawns worker jobs when requested; otherwise batches files under a single structure
   - Status reporting: caches translation status for directories to reduce overhead
   - Derived artifacts: cleans/returns reports, exports, and metadata
+  - **Enhanced** Improved test automation with automated validation against reference translations
 
 ```mermaid
 flowchart TD
-Start(["POST /rest/translations/{path}"]) --> CheckPerm["Check 'translations' permission"]
+Start(["POST /rest/translations/{path}<br/>Port: 8088"]) --> CheckPerm["Check 'translations' permission"]
 CheckPerm --> ResolvePath["Resolve absolute path"]
 ResolvePath --> IsDir{"Is directory?"}
 IsDir --> |Yes| ListFiles["List files (recurse optional)"]
@@ -463,7 +491,7 @@ The following diagram shows key dependencies among core modules and shared utili
 
 ```mermaid
 graph LR
-RS["restServer.pl"] --> AC["apiCommon.pl"]
+RS["restServer.pl<br/>Port: 8088"] --> AC["apiCommon.pl"]
 AC --> TR["apiTranslations.pl"]
 AC --> SR["apiSources.pl"]
 AC --> DR["apiDirectories.pl"]
@@ -507,8 +535,7 @@ TK --> TF
 - Parallel translation: When spawn is enabled, files are distributed across workers to improve throughput; otherwise, a single structure is processed once to minimize contention.
 - File listing: Directory traversal supports recursion; use sparingly for large trees to avoid heavy scans.
 - Git operations: Fetch/pull can be slow; consider batching and avoiding unnecessary network calls.
-
-[No sources needed since this section provides general guidance]
+- **Updated** Server now defaults to port 8088, improving compatibility with modern development environments and reducing port conflicts.
 
 ## Troubleshooting Guide
 Common issues and resolutions:
@@ -522,7 +549,7 @@ Common issues and resolutions:
 
 - Not found resource
   - Symptom: 404 Not Found
-  - Resolution: Verify path resolves to an existing file or directory under the user’s sources scope
+  - Resolution: Verify path resolves to an existing file or directory under the user's sources scope
 
 - Translation failures
   - Symptom: Errors/warnings in report; status indicates E/W
@@ -532,15 +559,19 @@ Common issues and resolutions:
   - Symptom: Fetch/Pull errors
   - Resolution: Check network connectivity, remote URL, and credentials; review returned error messages
 
+- **Updated** Port conflicts with default server port
+  - Symptom: Server fails to start or connection refused
+  - Resolution: Check if port 8088 is available; use KLEIO_SERVER_PORT environment variable to change port; verify firewall settings
+
 **Section sources**
 - [restServer.pl](file://src/restServer.pl#L560-L600)
 - [apiTranslations.pl](file://src/apiTranslations.pl#L528-L577)
 - [gitUtilities.pl](file://src/gitUtilities.pl#L201-L224)
 
 ## Conclusion
-The kleio-server API provides a cohesive set of services for translating, managing, and integrating Kleio sources with Git. Its token-based security model enforces granular permissions, while intelligent translation workflows and caching optimize performance. Together, these services enable robust workflows for uploading sources, requesting translations, and managing file operations within the Timelink ecosystem.
+The kleio-server API provides a cohesive set of services for translating, managing, and integrating Kleio sources with Git. Its token-based security model enforces granular permissions, while intelligent translation workflows and caching optimize performance. The enhanced test infrastructure with improved translation pipeline and automated validation ensures reliable operation across development and production environments. Together, these services enable robust workflows for uploading sources, requesting translations, and managing file operations within the Timelink ecosystem.
 
-[No sources needed since this section summarizes without analyzing specific files]
+**Updated** The migration to port 8088 improves deployment flexibility and reduces configuration complexity in modern development environments.
 
 ## Appendices
 
@@ -604,7 +635,7 @@ The kleio-server API provides a cohesive set of services for translating, managi
 ```mermaid
 sequenceDiagram
 participant Admin as "Admin"
-participant RS as "restServer"
+participant RS as "restServer<br/>Port : 8088"
 participant SR as "apiSources"
 participant TR as "apiTranslations"
 participant EX as "apiExports"
@@ -656,3 +687,38 @@ EX-->>Admin : "xml"
 - [gitUtilities.pl](file://src/gitUtilities.pl#L291-L314)
 - [gitUtilities.pl](file://src/gitUtilities.pl#L371-L425)
 - [gitUtilities.pl](file://src/gitUtilities.pl#L528-L549)
+
+#### Enhanced Test Infrastructure and Translation Pipeline
+**Updated** The enhanced test infrastructure provides comprehensive automation for validating translation workflows:
+
+- **Server Startup**: `./tests/scripts/kleio_start_server.sh` launches the server on port 8088 with configurable startup goals
+- **Automated Testing**: `./tests/scripts/run_tests.sh` orchestrates comprehensive translation validation against reference implementations
+- **Environment Setup**: `./tests/scripts/prepare_tests.sh` configures test environments with reference sources and translation targets
+- **Remote Translation**: `./tests/scripts/kleio_translate_remote.sh` validates translation pipeline against the running server
+- **Local Translation**: `./tests/scripts/kleio_translate_local.sh` provides standalone translation testing capabilities
+- **File Discovery**: `./tests/scripts/test_files.sh` identifies and processes test files systematically
+
+```mermaid
+flowchart TD
+Start(["Test Execution"]) --> Prepare["prepare_tests.sh<br/>Setup test environment"]
+Prepare --> StartServer["kleio_start_server.sh<br/>Start server on port 8088"]
+StartServer --> RemoteTranslate["kleio_translate_remote.sh<br/>Test remote translation"]
+RemoteTranslate --> StopServer["kleio_stop_server.sh<br/>Stop server"]
+StopServer --> Compare["compare_test_results.sh<br/>Validate results"]
+Compare --> Report["Generate test report"]
+Report --> End(["Complete"])
+```
+
+**Diagram sources**
+- [run_tests.sh](file://tests/scripts/run_tests.sh#L1-L39)
+- [prepare_tests.sh](file://tests/scripts/prepare_tests.sh#L1-L33)
+- [kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh#L1-L22)
+- [kleio_translate_remote.sh](file://tests/scripts/kleio_translate_remote.sh#L1-L14)
+
+**Section sources**
+- [kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh#L1-L22)
+- [run_tests.sh](file://tests/scripts/run_tests.sh#L1-L39)
+- [prepare_tests.sh](file://tests/scripts/prepare_tests.sh#L1-L33)
+- [kleio_translate_remote.sh](file://tests/scripts/kleio_translate_remote.sh#L1-L14)
+- [kleio_translate_local.sh](file://tests/scripts/kleio_translate_local.sh#L1-L24)
+- [test_files.sh](file://tests/scripts/test_files.sh#L1-L14)

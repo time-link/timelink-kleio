@@ -215,15 +215,15 @@ report_translation:-
   report([format('Previous version: ~w~n',[Last])]),
   errors:error_count(ErrCount),
   errors:warning_count(WarnCount),
-  concat(SOURCE,'-structure.yaml',LocalYamlFile),
-  concat(SOURCE,'-structure.json',LocalJsonFile),
+  concat(SOURCE,'-auto-structure.yaml',LocalYamlFile),
+  concat(SOURCE,'-auto-structure.json',LocalJsonFile),
   report([format('Local structure file: ~w~n',[LocalYamlFile])]),
   ( ErrCount = 0 -> rename_files(ClioFile,SOURCE,Original,Last);true),
   get_prop(kleio,groups,ExplicitGroups),
   dataDictionary:classes_topological_order(ExplicitGroups,OrderedGroups),
-  report([write('Groups in this file:'), writeln(OrderedGroups)]),
+  report([nl,write('Groups in this file: '), writeln(OrderedGroups)]),
   setof(E,G^Es^(member(G,OrderedGroups),dataDictionary:group_elements(G,Es),member(E,Es)),Els),
-  report([write('Elements in this file:'), writeln(Els)]),
+  report([write('Elements in this file: '), writeln(Els),nl]),
   (exists_file(LocalYamlFile) ->
       (report([writeln('Structure YAML file already exists, not generating new one.')]),
       true)
@@ -236,6 +236,7 @@ report_translation:-
   ),
   (persistence:get_value(report,ReportFile); ReportFile = '<console>'),
   % Generate a JSON file with information on the related files
+  get_value(stru_errors,SErrCount), get_value(stru_warnings,SWarnCount),
   FileDict = files{stru:StruFile,
                    stru_rpt:SrptPath,
                    stru_json:JsonPath,
@@ -243,6 +244,8 @@ report_translation:-
                    kleio_original:Original,
                    kleio_previous: Last,
                    kleio_rpt: ReportFile,
+                   stru_errors: SErrCount,
+                   stru_warnings: SWarnCount,
                    errors:ErrCount,
                    warnings:WarnCount},
   concat(SOURCE,'.files.json',KleioFilesInfo),
@@ -291,7 +294,7 @@ rename_files(ClioFile,SOURCE,Original,Last):-
 
       rename_with_shell(ClioFile,Last),
       catch(
-        chmod(ClioFile,+gw),
+        chmod(ClioFile,+gw),  % CHECK: ClioFile should no longer exist at this point, but we change permissions just in case
         E,
         log_error('rename_files: could not change permissions of ~w : ~w ',[ClioFile,E])
         ),
@@ -413,8 +416,10 @@ group_export(kleio,_) :- !,
         writeln('=========================')
         ]),
     clio_aspects(core,[structure,translator,autorels,obs,prefix,translations],[S,___T,AR,O,SP,TC]),
+    clio_stru_file(Stru),
     report([
-        writelist0ln(['Structure: '|S]),
+        writelist0ln(['Declared structure: '|S]),
+        writelist0ln(['Used structure: '|Stru]),
         writelist0ln(['Prefix: '|SP]),
         writelist0ln(['Autorel: '|SP]),
         writelist0ln(['Translation count: '|TC]),
@@ -424,7 +429,6 @@ group_export(kleio,_) :- !,
       ([AutoMode] = AR; AutoMode = ''),
       set_autorel_mode(AutoMode),
     linkedData:clear_xlink_patterns,
-    clio_stru_file(Stru),
     clio_data_file(Data),
     list_to_a0(O,OS),
     list_to_a0(SP,Space),
@@ -463,15 +467,15 @@ Groups related to authority registers
 group_export(Register,ID):-
     group_derived(Register,'authority-register'),
     authority_register_export(Register,ID),!.
-group_export(REntity,ID):-
-   group_derived(REntity,'rentity'),
-   rentity_export(REntity,ID),!.
 group_export(RPerson,ID):-
     group_derived(RPerson,'rperson'),
     rperson_export(RPerson,ID),!.
 group_export(ROject,ID):-
-      group_derived(ROject,'robject'),
-      robject_export(ROject,ID),!.
+    group_derived(ROject,'robject'),
+    robject_export(ROject,ID),!.
+group_export(REntity,ID):-
+       group_derived(REntity,'rentity'),
+       rentity_export(REntity,ID),!.
 group_export(Occ,ID):-
         group_derived(Occ,'occ'),
         rentity_occ_export(Occ,ID),!.
@@ -501,6 +505,14 @@ group_export(Source,ID):-
 group_export(Act,ID) :-
   group_derived(Act,'historical-act'),
   historical_act_export(Act,ID),!.
+
+group_export(Event,ID) :- % currently we handle events as acts
+  group_derived(Event,'cevent'),
+  historical_act_export(Event,ID),!.
+
+group_export(Event,ID) :- % currently we handle events as acts
+  group_derived(Event,'pevent'),
+  historical_act_export(Event,ID),!.
 
 group_export(Person,ID) :-
   group_derived(Person,person),
@@ -852,7 +864,7 @@ process_same_as(__Group,Id):-
   assertz(same_as_cached(AncID,Rid,Id,SID,GroupNumber,ThisLevel,N,Date)),
   (clause(same_as_cached_id(SID),true)->true
     ;
-    warning_out(['destination id of "same as" not found. Will check again at the end of file.'])
+    log_debug('destination id of "same as" not found. Will check again at the end of file.',[])
     ),
   !.
 
@@ -1102,13 +1114,13 @@ The attribute is duplicated with the type replaced with the external reference. 
 
 
 process_linked_data(Group,Id):-
-  clio_bclass(Group,GroupBClass),  % we use the base class of the group
+  clio_extends(Group,GroupBClass),  % we use the base class of the group
   \+ memberchk(GroupBClass, [attribute,relation]),  % everything but attribute and relations (see next)
   clio_aspect(comment,Element, Comment),
   flatten_multiple_entry(Comment,FComment),
   atomic_list_concat(FComment,'',CommentString),
   generate_xlink(CommentString,Uri,DataSource,XId),
-  clio_element_bclass(Element,ElementBClass), % and the base class of the element to generate the attribute type
+  clio_element_extends(Element,ElementBClass), % and the base class of the element to generate the attribute type
   atomic_list_concat([GroupBClass,':',ElementBClass,'@',DataSource],'',LinkedAType),
   export_auto_attribute(Id,'atr', 'attribute',
                         LinkedAType, '','', % attribute type: core, comment, original
@@ -2116,6 +2128,8 @@ elementMapping(GroupClass,Element,Attr):-
     clio_element_extends(Element,SElement),
     rch_get_attribute(SElement,Attributes,Attr).
 elementMapping(GroupClass,Element,Attr):-
+   % the group extends another group which
+   % has a mapping for the element
    rch_class(_,GroupClass,Super,_,_),
    class_attributes(Super,Attributes),
    rch_get_attribute(Element,Attributes,Attr).
@@ -2255,7 +2269,7 @@ error_out(['** INTERNAL ERROR: problems exporting attributes mappings (rattribut
 /*
 
 Outputs element mappings, one at a time
-  DEPREACTED see rattribute2_xml
+  DEPRECATED see rattribute2_xml
 */
 rattribute_xml([Attribute | More],Pkeys) :-
 rch_element_class(Attribute,Class,Column,Type,Length,Precision,_),
@@ -2432,7 +2446,9 @@ el_to_xml2(GClass,El,Core):-
     aspect_to_xml(core,Core,CoreXML),
     aspect_to_xml(original,Original,OriginalXML),
     aspect_to_xml(comment,Comment,CommentXML),!,
-     /* If a group element is not mapped to an attribute of the group class then
+     /* TODO: check this, it should export the super class of the element.
+
+        If a group element is not mapped to an attribute of the group class then
         it is not possible to find the elementClass of the group element.
         We use undef to mark those. This is not an error because we use elements that
         do not correspond to database fields. For instance in acts we have elements for
@@ -2440,7 +2456,9 @@ el_to_xml2(GClass,El,Core):-
         date. The elements are combined and the date value computed during export.
         Note that DBClass in idb only fetches the group element that are mapped to class attributes */
       calc_length(Core,ACore,ALength),
-      (elementClass(GClass,El,Class)  ->
+      (clio_element_bclass(El,BClass) ; BClass='undef'),!,
+      (clio_element_super(Super,El) ; Super='core'),!,
+      (elementClass(GClass,El,Class) ->
           (
             (elementMapping(GClass,El,Attr), atr_select(colsize,Attr,Length))
           ;
@@ -2458,7 +2476,11 @@ el_to_xml2(GClass,El,Core):-
         )
       ; true
     ),
-     xml_write( [ '   <ELEMENT NAME="' , El , '" CLASS="',Class,'">' ]),
+     xml_write([
+          '   <ELEMENT NAME="', El, '" ',
+          'SUPER_CLASS="',Super,'" ',
+          'BASE_CLASS="',BClass,'" ' ,
+          'CLASS="',Class,'">' ]),
      xml_nl,
      xml_write(['   '|CoreXML]),
     (OriginalXML \= [] -> (xml_write(['   '|OriginalXML]), xml_nl);true),

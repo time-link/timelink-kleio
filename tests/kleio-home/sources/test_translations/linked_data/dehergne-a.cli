@@ -1,7 +1,14 @@
 kleio$gacto2.str/translations=175
    link$wikidata/"https://www.wikidata.org/wiki/$1"
    link$bnportugal/"http://id.bnportugal.gov.pt/aut/catbnp/$1"
-   fonte$dehergne-a/1973/Dicionário Biográfico/loc=Online archive.org:details:bhsi37#Sobre o autor @wikidata:Q17057616 @bnportugal:129297/obs=Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973. Letra A
+   link$archive/"https://archive.org/details/bhsi37/page/$1/mode/1up"/obs="""
+
+    The online version is offset by 37 pages forward, i.e. to refer to
+    page 239, use the link: dehergne-online:276
+   """
+   link$bdconline/"https://bdcconline.net/en/stories/$1"/obs=Biographical Dictionary of Chinese Christianity
+
+   fonte$dehergne-a/Dicionário Biográfico/data=1973/loc=Online archive.org:details:bhsi37#Sobre o autor @wikidata:Q17057616 @bnportugal:129297/obs=Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973. Letra A
 
       lista$dehergne-notices-a/0/0/0
 
@@ -165,7 +172,7 @@ kleio$gacto2.str/translations=175
             Golvers, Noël, “Aigenler, Adam”, Conimbricenses.org Encyclopedia, Mário Santiago de Carvalho, Simone Guidi (eds.), doi = “10.5281/zenodo.3355406”, URL = “http://www.conimbricenses.org/encyclopedia/aigenler-adam”, latest revision: July, 30th, 2019."""
 
             referido$Prospero Intorcetta/id=deh-adam-algenler-ref1/obs=Dehergne 414
-               rel$sociabilidade/Companheiro/Adam Algenler/deh-adam-algenler/data=16730315
+               rel$sociabilidade/Companheiro/Adam Algenler/deh-adam-algenler/16730315
                ls$embarque/[Para a China]/16730315
 
          n$Afonso Aires/id=deh-afonso-aires
@@ -243,7 +250,7 @@ kleio$gacto2.str/translations=175
             ls$morte/Fukien (Rio de «Tchin-tcheou»)#A caminho do Japão/16110000#com António de Abreu
 
             referido$António de Abreu/id=deh-joao-alberto-ref1/mesmo_que=deh-antonio-de-abreu
-               rel$sociabilidade/Companheiro/João Alberto/deh-joao-alberto/data=16110000
+               rel$sociabilidade/Companheiro/João Alberto/deh-joao-alberto/16110000
                ls$morte/Fukien (Rio de «Tchin-tcheou»)#A caminho do Japão/16110000#com António de Abreu
 
          n$Pierre Albier/id=deh-pierre-albier
@@ -308,9 +315,9 @@ kleio$gacto2.str/translations=175
             ls$dehergne/16/obs=Alcaraz, Hernando de (espagn.) P. 16 N. Navalafuente, d. de Tolède 1532 -E. « Compluti », Alcalâ, 13 avril 1558., MA en 1565. Emb. sur le Chagas, 25 mars 1565 (W 101)., arr. Goa 1566, puis Cochin., se rend en Chine. Il écrit de « Chine» (= Macao), 27 oct. 1567 (Schütte, 27). P. vers 1559. V. « ad professionem promovendus », meurt avant ses V. (DI. VII, 311). M. dans un second naufrage en 1568, près du Siam, se rendant au Japon (DI. VII, 708., VIII, 30, 121). St François de Borgia écrit au « P* Maestro Alcaraz, China », le 27 oct. 1567 (Hisp. 68. 101) = Macao. DI. VI, 18*, 798, 808. Nadal II 556 et 205-209. Bernard, 81.
 
             referido$Francisco Borja/id=deh-hernando-de-alcaraz-ref1
-               rel$sociabilidade/escreve a/Hernando de Alcaraz/deh-hernando-de-alcaraz/data=15671027
+               rel$sociabilidade/escreve a/Hernando de Alcaraz/deh-hernando-de-alcaraz/15671027
 
-         n$Giulio Aleni/id=deh-giulio-aleni#@bdcconline:aleni-giulio
+         n$Giulio Aleni/id=deh-giulio-aleni#@bdconline:aleni-giulio
             ls$nacionalidade/Itália
             ls$jesuita-estatuto/Padre
             ls$nome/Giulio Alenis
@@ -378,7 +385,7 @@ kleio$gacto2.str/translations=175
 
             referido$Philippe Couplet/id=deh-michel-alfonso-chen-ref1/obs=Dehergne 221
                ls$jesuita-estatuto/Padre
-               rel$sociabilidade/Companheiro/Michel Alfonso Chen/deh-michel-alfonso-chen/data=16810000
+               rel$sociabilidade/Companheiro/Michel Alfonso Chen/deh-michel-alfonso-chen/16810000
                ls$partida/Europa# @wikidata:Q46/16810000
                ls$jesuita-cargo/Procurador das missões da China/16810000
 
@@ -523,7 +530,7 @@ kleio$gacto2.str/translations=175
             ls$nome/Luís de Almeyda
             ls$nascimento/Lisboa# @wikidata:Q597/15250000#cerca de, numa família de cristãos-novos
             ls$cargo/Capitão de navio/15550000
-            rel$profissional/Empregado de/Duarte da Gama/deh-luis-de-almeida-ref1/data=15550000
+            rel$profissional/Empregado de/Duarte da Gama/deh-luis-de-almeida-ref1/15550000
             ls$estadia/Lampacao%Lampacao (île du Kwangtung)/15550000#a caminho do Japão
             ls$jesuita-entrada/Japão# @wikidata:Q17/15560000#como "indiferente" ou auxiliar laico
             ls$jesuita-tarefa/Funda o hospital de Funai%(actual Oita, ilha de Kyushu)/15570000#e outros, não especificados
@@ -536,10 +543,10 @@ kleio$gacto2.str/translations=175
             ls$dehergne/25/obs=DHGE (Rivière)., EC (Lamalle)., Verbo (A. Casimiro). — Schilling, D. Dos Schutwesen der Jesuiten in Japon (1551-1614), 1931 (cr dans RHM 1934, 16-28)., Bourdon, Léon, Luis de A., chirurgien et marchand, dans Mélanges d'études portugaises offerts à M. Georges Le Gentil, Lisbonne, 1949, et cf. Brotéria 51 (Lisbonne 1950), 186-197, une lettre inédite de L. de A.., de Pina, Luis, art. dans Estudos 26 (Coïmbre 1950), 351-390, et dans Brotéria 34 (Lisbonne 1943), 422-426., Pacheco, Diego, art. dans Studia n° 26 (Lisbonne 1969), 57-114., Texeira, M., Luis de A. médico, commerciante e missionârio, BEM 1970, 521-582., Schùtte, 874., Streit IV n° 1409. Nous citons ici ce missionnaire du Japon en tant qu'il fut aux origines de l'histoire de Macao, et de l'apostolat des hôpitaux dans l'Extrême-Orient. Lus. 58, 88-95 le dit fr. coadj., à tort.
 
             referido$Duarte da Gama/id=deh-luis-de-almeida-ref1
-               rel$profissional/Patrão/Luís de Almeida/deh-luis-de-almeida/data=15550000
+               rel$profissional/Patrão/Luís de Almeida/deh-luis-de-almeida/15550000
 
             referido$Belchior Miguel Carneiro Leitão/xmesmo_que=deh-belchior-miguel-carneiro-leitao/id=deh-luis-de-almeida-ref2
-               rel$eclesiastica/Ordena/Luís de Almeida/deh-luis-de-almeida/data=15800000
+               rel$eclesiastica/Ordena/Luís de Almeida/deh-luis-de-almeida/15800000
                ls$titulo/Monsenhor
                ls$estadia/Macau# @wikidata:Q14773/15800000
 
@@ -695,9 +702,9 @@ kleio$gacto2.str/translations=175
             ls$morte/[Perto de Hainan]#naufrágio, a caminho de Tonquim/16460226
             ls$dehergne/32/obs=Amaral, Gaspar do (port.) P. 32 N. 1592 « Covaceira », Curvaceira (Carvalheira?) d. Vizeu -E. 1 juin 1608 à l'âge de 14 ans. Emb. 24 mars 1623 (W 684), A. 1623 et va au Tonkin dont il connaît très bien la langue, où il fera plus de 40.000 baptêmes et où il devient en 1631 supérieur de la mission., vice-provincial du Japon de 1642 à août 1645, réside à Macao. V. 6 janv. 1638 au Tonkin, pr. (Lus. 5, 210) « Tun Kim in sacello S.J. ». M. 26 févr. 1646, naufrage à la hauteur de Hainan, en route vers le Tonkin (HS 47, 30v., Schutte, 406., JS 80, 41-44v). Pf. 217., Verbo (A. Casimiro). AnG 751. Etait fils de Diogo Fernandes de Amaral et de Domingas Francisca. Nous ne voyons pas qu'il travaillé en Chine., mais nous le citons, après Pfister, pour son rôle dans une consulte tenue à Macao en 1640 concernant la Chine.
 
-            pai$Diogo Fernandes de Amaral/id=deh-gaspar-do-amaral-pai
+         pai$Diogo Fernandes de Amaral/id=deh-gaspar-do-amaral-pai
 
-            mae$Domingas Francica/id=deh-gaspar-do-amaral-mae
+         mae$Domingas Francica/id=deh-gaspar-do-amaral-mae
 
          n$Miguel do Amaral/id=deh-miguel-do-amaral
             ls$nacionalidade/Portugal
@@ -734,8 +741,8 @@ kleio$gacto2.str/translations=175
             ls$estadia/Goa# @wikidata:Q1171/17140000
             ls$jesuita-cargo/Vice-provincial do Japão/17190000/obs=durante a doença do P. João Pereira
             ls$jesuita-cargo/Vice-provincial do Japão/17200000/obs=durante a doença do P. João Pereira
-            rel$institucional/Substitui/João Pereira/deh-miguel-do-amaral-ref3/data=17190000/obs=durante a doença deste
-            rel$institucional/Substitui/João Pereira/deh-miguel-do-amaral-ref3/data=12090000/obs=durante a doença deste
+            rel$institucional/Substitui/João Pereira/deh-miguel-do-amaral-ref3/17190000/obs=durante a doença deste
+            rel$institucional/Substitui/João Pereira/deh-miguel-do-amaral-ref3/12090000/obs=durante a doença deste
             ls$jesuita-cargo/Procurador da vice-província da China/17220000
             ls$partida/Europa# @wikidata:Q46/17220000#chamado em 1722, depois desta data
             ls$chegada/Lisboa# @wikidata:Q597/17251001
@@ -751,7 +758,7 @@ kleio$gacto2.str/translations=175
                ls$titulo/Rei de Portugal
 
             referido$José Monteiro/id=deh-miguel-do-amaral-ref2/obs=Dehergne 563
-               rel$institucional/Substitui/Miguel do Amaral/deh-miguel-do-amaral/data=17140000/obs=durante seis meses segundo a entrada de Monteiro
+               rel$institucional/Substitui/Miguel do Amaral/deh-miguel-do-amaral/17140000/obs=durante seis meses segundo a entrada de Monteiro
                ls$jesuita-estatuto/Padre
                ls$jesuita-cargo/Vice-provincial do Japão/17140000/obs=a partir de, durante seis meses segundo a entrada de Monteiro
 
@@ -791,8 +798,8 @@ kleio$gacto2.str/translations=175
             ls$jesuita-entrada/Avignon# @wikidata:Q6397/17370927
             ls$estadia/Lorient# @wikidata:Q71724/17491229#até
             ls$embarque/Villeflix/17491229
-            rel$sociabilidade/Companheiro/Jean-Régis-Lieou/deh-jean-joseph-marie-amiot-ref1/data=17491229
-            rel$sociabilidade/Companheiro/Philippe-Stanislas K'ang/deh-jean-joseph-marie-amiot-ref2/data=17491229
+            rel$sociabilidade/Companheiro/Jean-Régis-Lieou/deh-jean-joseph-marie-amiot-ref1/17491229
+            rel$sociabilidade/Companheiro/Philippe-Stanislas K'ang/deh-jean-joseph-marie-amiot-ref2/17491229
             ls$estadia/Cantão# @wikidata:Q16572/17500727
             ls$estadia/Pequim# @wikidata:Q956/17510822
             ls$profissao/Astrónomo
@@ -807,31 +814,31 @@ kleio$gacto2.str/translations=175
             ls$dehergne/35/obs=Beaucoup de ses mss sont à BN. ms fr.., ms chin.., ms Bréquigny., Estampes et à B. Inst. — Il signe toujours Amiot, jamais Amyot. Streit VII, 3419 a souligné l'importance d'AMiOT pour l'histoire de la sinologie: il fit connaître à la France l'empereur K'Ien Long, et, à ce titre, il se trouva tout désigné pour prendre la relève de Yang et Kao (v. ces mots) dans la préparation de sa Correspondance littéraire, et autres travaux publiés en la collection connue sous ce titre résumé Mémoires concernant les Chinois (cf. MCC t. I, p. IV) depuis 1776 à 1814. Cf. aussi La Chine au temps des Lumières, t. I, Henri Bertin dans le sillage de la Chine (par J. S. de Sacy et M. Antoine, Paris, Les Belles Lettres, 1970).
             ls$dehergne/35/obs=Pf. 837., DHGE (E.M. Rivière)., DBF (H. Chomon)., NCE (B. Lahiff) - Rochbmonteix, C. de, Joseph Amiot et les derniers survivants de la Mission française à Pékin 1750-1795, Paris, 1915 ., Amyot, Alphonse, Vie et testament du R. P. Amiot, Paris, 1881., Davin, Emm., dans Bull. Association Guill. Budé, Paris, 1961, 380-395., Huard, Sonolet, Wong, Mesmer en Chine, Trois lettres médicales du R. P. Amiot, Rev. de Synthèse t. 81 (i960), 61-98., Streit VII 3419., XII 1135. Dissertation on the Music of the Chinese, Ancient and Modem. By JeanJoseph-Marie Amiot. Translated by Bryna Lieberman, edited by Frédéric Lmberman, Brown University, Providence, Rhode Island. En préparation.
 
-            pai$Louis Amiot/id=deh-jean-joseph-marie-amiot-pai
-               ls$profissao/Notário
-               ls$cargo/Notário régio em Touloun
+         pai$Louis Amiot/id=deh-jean-joseph-marie-amiot-pai
+            ls$profissao/Notário
+            ls$cargo/Notário régio em Touloun
 
-            referido$Jean-Régis-Lieou/xmesmo_que=deh-jean-regis-lieou/id=deh-jean-joseph-marie-amiot-ref1
-               ls$estadia/Lorient# @wikidata:Q71724/17491229#até
-               ls$embarque/Villeflix/17491229
+         referido$Jean-Régis-Lieou/xmesmo_que=deh-jean-regis-lieou/id=deh-jean-joseph-marie-amiot-ref1
+            ls$estadia/Lorient# @wikidata:Q71724/17491229#até
+            ls$embarque/Villeflix/17491229
 
-            referido$Philippe-Stanislas K'ang/id=deh-jean-joseph-marie-amiot-ref2
-               ls$estadia/Lorient# @wikidata:Q71724/17491229#até
-               ls$embarque/Villeflix/17491229
+         referido$Philippe-Stanislas K'ang/id=deh-jean-joseph-marie-amiot-ref2
+            ls$estadia/Lorient# @wikidata:Q71724/17491229#até
+            ls$embarque/Villeflix/17491229
 
-            referido$Luís XIV/id=deh-deh-jean-joseph-marie-amiot-ref3
-               ls$tarefa/Assina o brevete de Amiot como superior das missões francesas na China em caso de impedimento do P. Bourgeois/17791118
+         referido$Luís XIV/id=deh-deh-jean-joseph-marie-amiot-ref3
+            ls$tarefa/Assina o brevete de Amiot como superior das missões francesas na China em caso de impedimento do P. Bourgeois/17791118
 
-            referido$François Bourgeois/id=deh-jean-joseph-marie-amiot-ref4
-               ls$jesuita-cargo/Superior das missões francesas na China/17791118
+         referido$François Bourgeois/id=deh-jean-joseph-marie-amiot-ref4
+            ls$jesuita-cargo/Superior das missões francesas na China/17791118
 
-            referido$Vergennes/id=deh-jean-joseph-marie-amiot-ref5
-               rel$eclesiástica/Propõe como vigário apostólico de Pequim/Jean-Joseph-Marie Amiot/deh-jean-joseph-marie-amiot/data=17800000
+         referido$Vergennes/id=deh-jean-joseph-marie-amiot-ref5
+            rel$eclesiástica/Propõe como vigário apostólico de Pequim/Jean-Joseph-Marie Amiot/deh-jean-joseph-marie-amiot/17800000
 
-            referido$François Hugon/id=deh-jean-joseph-marie-amiot-ref6
-               rel$eclesiastica/Ordena/Jean-Joseph-Marie Amiot/deh-jean-joseph-marie-amiot/data=17461221
-               ls$cargo/Bispo de Filadélfia/17461221
-               ls$cargo/Sufragâneo do bispo de Besançon/17461221
+         referido$François Hugon/id=deh-jean-joseph-marie-amiot-ref6
+            rel$eclesiastica/Ordena/Jean-Joseph-Marie Amiot/deh-jean-joseph-marie-amiot/17461221
+            ls$cargo/Bispo de Filadélfia/17461221
+            ls$cargo/Sufragâneo do bispo de Besançon/17461221
 
          n$Paolo-Agostino Amoretti/id=deh-paolo-agostino-amoretti
             ls$nacionalidade/Itália
@@ -876,7 +883,7 @@ kleio$gacto2.str/translations=175
             referido$Alessandro Cicero/xmesmo_que=deh-alessandro-cicero/id=deh-pierre-amys-ref1
                ls$cargo/Bispo de Nanquim/17010000
                ls$titulo/Monsenhor
-               rel$institucional/Opõe-se à partida de/Pierre Amys/deh-pierre-amys/data=17010000
+               rel$institucional/Opõe-se à partida de/Pierre Amys/deh-pierre-amys/17010000
 
          n$António de Andrade/id=deh-antonio-de-andrade
             ls$nacionalidade/Portugal
@@ -940,7 +947,7 @@ kleio$gacto2.str/translations=175
             ls$dehergne/42/obs=Antonini, Giacomo (ital.) P. 42 Jen Tchong-Tao Tche-Yuan (Pf.). N. 29 mai 1701, « Utinensis », Udine -E. 24 avril 1718, Venise. Emb. 2 avril 1734 pour la Chine (Lus. 48, 199v., W 1808)., A. Macao 1737 (JS 134, 434)., quitte Macao 12 janv. 1738 avec Félix da Rocha, arr. Pékin 8 avril (NZM 1966, 33). V. 8 déc. 1738, Pékin, pr. (Lus. 15 II, 334). M. 7 nov. 1739, Pékin (HS 53a, 28., Planchet, p. 184). Pf. 748.
 
             referido$Félix da Rocha/id=deh-giacomo-antonini-ref1
-               rel$sociabilidade/Companheiro/Giacomo Antonini/deh-giacomo-antonini/data=17380112
+               rel$sociabilidade/Companheiro/Giacomo Antonini/deh-giacomo-antonini/17380112
                ls$estadia/Macau# @wikidata:Q14773/17380112#antes de
                ls$partida/Pequim# @wikidata:Q956/17380112
                ls$chegada/Pequim# @wikidata:Q956/17380408
@@ -1024,7 +1031,7 @@ kleio$gacto2.str/translations=175
             ls$dehergne/47/obs=Archambaud (Archambault), Louis (franç.) P. 47 N. « Turonicus », en Touraine 27 sept. 1662 -E. 29 oct. 1677, Paris (Franc. 15, 269). A. à Goa en 1693, venu par voie de terre avec le P. Grimaldi., empêché par les Portugais de Goa de gagner la Chine (BN: ms. fr. 25056 f 29 et 82., cf JS 199 I, 83v., SF VI 109-110). P. 1690 (Franc. 16, 32). M. 1 mai 1694, le lieu fait difficulté: au Bengale (BN: ms. fr. 25056 f° 29 et 82)., à Bassora d'Arabie (Franc. 46)., en Perse (HS 49, 176v et HS 50, 36v). Pf. 374.
 
             referido$Claudio Filippo Grimaldi/id=deh-louis-archambaud-ref1
-               rel$sociabilidade/Companheiro/Louis Archambaud/deh-louis-archambaud/data=16930000
+               rel$sociabilidade/Companheiro/Louis Archambaud/deh-louis-archambaud/16930000
                ls$estadia/Goa# @wikidata:Q1171/16930000#vindo por terra
 
          n$Juan Antonio Arnedo/id=deh-juan-antonio-arnedo
@@ -1078,7 +1085,7 @@ kleio$gacto2.str/translations=175
             ls$embarque/[Para a China]/16840401#data de acordo com a entrada de Arnedo
             ls$wicky/1234/16840401
             ls$wicky-viagem/107/161840000#16840401 segundo Dehergne
-            rel$sociabilidade/Companheiro/Juan Antonio Arnedo/deh-jose-ramon-arxo-ref1/data=16840401
+            rel$sociabilidade/Companheiro/Juan Antonio Arnedo/deh-jose-ramon-arxo-ref1/16840401
             ls$estadia/Guangzhou%Canton#@wikidata:Q16572/16841100
             ls$estadia/Shansi/16870000
             ls$estadia/Hukwang/16910000
@@ -1138,14 +1145,14 @@ kleio$gacto2.str/translations=175
             ls$dehergne/51/obs=cf le dossier de la Cong. des Rites: Archivio délia Postulazione générale délia C. d. G., Rome, cod. N. 430. LE XXIII, 124, WB n° 694: 12 septembre. Pf. 811., EC (A. Tesio). Pf. 811., EC (A. Tesio). Relação Summaria do Martyrio dos Veneraveis Padres Anton. J. Henriques e Tristao Francisco de A., Macau, 1896., Massara, Enrico, Dei Padri Tristano Francesco de Attimis e Antonio Giuseppe Henriquez .. Vita e Documenti, Cividale, 1908., Rossi, Gabriel, Documenta circa vitam et martyrium Patrum A. J. Henriquez et T. de Athemis, T'ou-sè-wè, 1891., Patriarca, E., Venerab. P. Fr. d'A., San Begnigno, 1939 (hors commerce., donne photocopies de pièces d'archives). Fils de Girolamo comte d'ArriMls et de Taddea Rodolfi Codroipo. Le martyr était l'aîné de 18 enfants (Patriarca, 15)., cf. la Généalogie à la B. communale d'Udine, Fondo Joppi, N. 716.
 
             referido$Lodovico Forni/id=deh-tristano-attimis-ref1
-               rel$eclesiastica/Ordena/Tristano Attimis/deh-tristano-attimis/data=17360900
+               rel$eclesiastica/Ordena/Tristano Attimis/deh-tristano-attimis/17360900
                ls$titulo/Monsenhor
                ls$titulo/Príncipe-bispo de Reggio Emilia/17360900
 
-            pai$Girolamo d'Attimis/id=deh-tristano-attimis-pai
-               ls$titulo/Conde d'Attimis
+         pai$Girolamo d'Attimis/id=deh-tristano-attimis-pai
+            ls$titulo/Conde d'Attimis
 
-            mae$Taddea Rodolfi Codroipo/id=deh-tristano-attimis-mae
+         mae$Taddea Rodolfi Codroipo/id=deh-tristano-attimis-mae
 
          n$Jean-Denis Attiret/id=deh-jean-denis-attiret
             ls$nacionalidade/França
@@ -1170,12 +1177,12 @@ kleio$gacto2.str/translations=175
             referido$K'ien-Long/id=deh-jean-denis-attiret-ref1
                ls$titulo/Imperador da China/17540000
 
-            pai$Jean-Claude Attiret/id=deh-jean-denis-attiret-pai
-               ls$profissao/Mestre marceneiro
-               ls$profissao/Pintor
+         pai$Jean-Claude Attiret/id=deh-jean-denis-attiret-pai
+            ls$profissao/Mestre marceneiro
+            ls$profissao/Pintor
 
-            mae$Claude Françoise Guinard/id=deh-jean-denis-attiret-ref2
-               ls$baptizado/Dole# @wikidata:Q205586/17020731
+         mae$Claude Françoise Guinard/id=deh-jean-denis-attiret-ref2
+            ls$baptizado/Dole# @wikidata:Q205586/17020731
 
          n$Humbert Augery/id=deh-humbert-augery
             ls$nacionalidade/França
@@ -1264,22 +1271,22 @@ kleio$gacto2.str/translations=175
                ls$estadia/Moscovo# @wikidata:Q649
                ls$morte/Istambul# @wikidata:Q406/16890900
 
-            pai$Pierre Avril/id=deh-philippe-avril-pai
-               ls$titulo/Écuyer/obs=segundo wikipédia, na época moderna esta parece ser a forma de a nobreza sem título se apresentar em documentação, não me parece que corresponda ao escudeiro em português, portanto não traduzi
-               ls$profissao/Advogado
-               ls$cargo/Advogado no Parlamento%escuyer advocat en parlement
+         pai$Pierre Avril/id=deh-philippe-avril-pai
+            ls$titulo/Écuyer/obs=segundo wikipédia, na época moderna esta parece ser a forma de a nobreza sem título se apresentar em documentação, não me parece que corresponda ao escudeiro em português, portanto não traduzi
+            ls$profissao/Advogado
+            ls$cargo/Advogado no Parlamento%escuyer advocat en parlement
 
-            mae$Anne de Lestoille/id=deh-philippe-avril-mae
+         mae$Anne de Lestoille/id=deh-philippe-avril-mae
 
-               pmae$Noël de Lestoille/id=deh-philippe-avril-pmae
-                  ls$cargo/Procurador no tribunal presidial de Angoulême%siège présidial
+            pmae$Noël de Lestoille/id=deh-philippe-avril-pmae
+               ls$cargo/Procurador no tribunal presidial de Angoulême%siège présidial
 
-            irmao$Pierre-Avril/id=deh-philippe-avril-irmao
-               ls$estatuto/Padre/obs=deseja seguir viagem para a China com o seu irmao
+         irmao$Pierre-Avril/id=deh-philippe-avril-irmao
+            ls$estatuto/Padre/obs=deseja seguir viagem para a China com o seu irmao
 
-            referido$Pierre Audoin/id=deh-philippe-avril-ref3
-               ls$profissao/Notário
-               ls$residencia/Angoulême# @wikidata:Q134346/16840817
+         referido$Pierre Audoin/id=deh-philippe-avril-ref3
+            ls$profissao/Notário
+            ls$residencia/Angoulême# @wikidata:Q134346/16840817
 
          n$Bartolomeu de Azevedo/id=deh-bartolomeu-de-azevedo
             ls$nacionalidade/Portugal
@@ -1307,7 +1314,7 @@ kleio$gacto2.str/translations=175
             ls$embarque/S. Pedro de Alcântara/16650420#não para a China
             ls$wicky/1067/16650420
             ls$wicky-viagem/93/16650420
-            rel$institucional/Substitui/Manuel Mendes/deh-joao-antonio-de-azevedo-ref1/data=16920000
+            rel$institucional/Substitui/Manuel Mendes/deh-joao-antonio-de-azevedo-ref1/16920000
             ls$dehergne/58/obs=Azevedo, João Antonio de (port.) P. 58 Emb. 20 avril 1665 sur le S. Pedro de Alcântara (W 1067) pas pour la Chine. En 1692, il remplace le P. Emmanuel Mendes à Nanchang (Nan-tch'ang fou) du Kiangsi (prétend JA 49-V-22 f° 168). Une confusion avec le P. J.A. Arnedo, lui aussi au Kiangsi, ne nous semble pas exclue. La notice serait alors à supprimer.
 
             referido$Manuel Mendes/id=deh-joao-antonio-de-azevedo-ref1/obs=Dehergne 545

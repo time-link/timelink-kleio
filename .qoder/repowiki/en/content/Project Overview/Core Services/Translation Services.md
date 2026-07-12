@@ -13,7 +13,18 @@
 - [tests/kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.cli](file://tests/kleio-home/sources/test_translations/paroquiais/baptismos/bapt1714.cli)
 - [tests/kleio-home/structures/baptismos.yaml](file://tests/kleio-home/structures/baptismos.yaml)
 - [src/stru/gacto2.str](file://src/stru/gacto2.str)
+- [tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json](file://tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json)
+- [tests/kleio-home/sources/reference_translations/linked_data/dehergne-a.files.json](file://tests/kleio-home/sources/reference_translations/linked_data/dehergne-a.files.json)
+- [tests/kleio-home/sources/more_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.yaml](file://tests/kleio-home/sources/more_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.yaml)
+- [tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.files.json](file://tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bap-com-celebrantes.files.json)
 </cite>
+
+## Update Summary
+**Changes Made**
+- Updated structure file naming convention documentation to reflect the transition from -structure.yaml to -auto-structure.yaml
+- Added documentation for enhanced .files.json output format with structure error and warning counts
+- Updated date parsing capabilities documentation to include YYYY-MM-DD format support
+- Enhanced export and reporting system documentation with new structure file naming and counting features
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -29,6 +40,8 @@
 
 ## Introduction
 This document explains the translation services of kleio-server with a focus on the intelligent translation process that parses Kleio source files, normalizes structure and syntax, infers contextual information from historical documents, and produces structured outputs. It covers the translation workflow from upload to processing and structured output generation, details the REST and JSON-RPC APIs for translation operations, and documents supported formats, error handling, and integration patterns with other Timelink services.
+
+**Updated** Enhanced with improved structure file naming conventions (-auto-structure.yaml), expanded .files.json output with structure error/warning counts, and enhanced date parsing capabilities supporting YYYY-MM-DD format.
 
 ## Project Structure
 The translation subsystem is implemented as a layered stack:
@@ -59,7 +72,8 @@ subgraph "Outputs"
 XML[".xml"]
 ERR[".err/.rpt"]
 META[".files.json"]
-end
+AUTO["-auto-structure.yaml"]
+END
 RS --> AT
 AT --> TL
 TL --> DS
@@ -69,6 +83,7 @@ GX --> IF
 GX --> XML
 GX --> ERR
 GX --> META
+GX --> AUTO
 ```
 
 **Diagram sources**
@@ -89,8 +104,10 @@ GX --> META
 - REST/JSON-RPC server: routes requests, decodes JSON payloads, and invokes API methods.
 - Translation API: starts translation jobs, queries statuses, and cleans results.
 - CLIO engine: compiles structure and data files with robust syntax analysis and error reporting.
-- Export module: generates XML output, metadata, and pretty-printed IDs.
+- Export module: generates XML output, metadata, and pretty-printed IDs with enhanced structure file management.
 - Inference module: derives relations and attributes from document patterns.
+
+**Updated** Enhanced export module now generates -auto-structure.yaml files and includes structure error/warning counts in .files.json output.
 
 **Section sources**
 - [restServer.pl](file://src/restServer.pl#L43-L106)
@@ -117,6 +134,8 @@ API->>TL : "translate(Files, Stru, Echo)"
 TL->>TL : "stru/1 or dat/1"
 TL->>EX : "db_init/db_store/db_close"
 EX-->>TL : "XML + metadata"
+EX-->>EX : "Generate -auto-structure.yaml"
+EX-->>EX : "Update .files.json with structure counts"
 TL-->>API : "status updates"
 API-->>REST : "job ids and relative paths"
 REST-->>Client : "JSON response"
@@ -147,7 +166,7 @@ REST-->>Client : "JSON response"
 ```mermaid
 flowchart TD
 Start(["POST translations"]) --> Resolve["Resolve Path<br/>List Files/Directories"]
-Resolve --> SelectStru["Select Structure Files<br/>(default or per-file)"]
+Resolve --> SelectStru["Select Structure Files<br/>(default or per-file)<br/>-auto-structure.yaml"]
 SelectStru --> Spawn{"Spawn enabled?"}
 Spawn --> |Yes| Parallel["Post jobs per file"]
 Spawn --> |No| Single["Post single job with merged stru"]
@@ -170,6 +189,7 @@ Jobs --> End(["Response with jobs"])
 - Structure files (.str/.yaml):
   - Parsed via struSyntax.pl grammar and compiled into internal dictionaries.
   - Supports English keywords and normalized parameter validation.
+  - **Updated** Now generates -auto-structure.yaml files when structure files don't exist locally.
 - Data files (.cli):
   - Tokenized and parsed by dataSyntax.pl with support for triple/double quotes, escaped sequences, and element grouping.
   - Line-by-line compilation drives storage into a temporary structure (CDS) and subsequent export.
@@ -181,6 +201,7 @@ B --> C["struCode/dataDictionary<br/>internal schema"]
 D["Data File (.cli)"] --> E["lexical/get_tokens"]
 E --> F["dataSyntax.pl<br/>compile_data/grammar"]
 F --> G["CDS storage<br/>and export triggers"]
+G --> H["gactoxml.pl<br/>Generate -auto-structure.yaml"]
 ```
 
 **Diagram sources**
@@ -188,6 +209,7 @@ F --> G["CDS storage<br/>and export triggers"]
 - [struSyntax.pl](file://src/struSyntax.pl#L103-L121)
 - [dataSyntax.pl](file://src/dataSyntax.pl#L38-L62)
 - [dataSyntax.pl](file://src/dataSyntax.pl#L65-L66)
+- [gactoxml.pl](file://src/gactoxml.pl#L227-L236)
 
 **Section sources**
 - [struSyntax.pl](file://src/struSyntax.pl#L12-L36)
@@ -214,28 +236,55 @@ J --> K["Generate relations/attributes"]
 
 ### Export and Structured Output Generation
 - Export module writes XML output, pretty-printed IDs, and metadata files.
+- **Updated** Enhanced .files.json output now includes structure-specific error and warning counts (stru_errors, stru_warnings).
+- **Updated** Automatically generates -auto-structure.yaml files when they don't exist locally.
 - Generates .xml, .rpt, .err, .ids, and .files.json for downstream consumption and integration.
 
 ```mermaid
 flowchart TD
 L["db_init"] --> M["group_to_xml for each group"]
 M --> N["db_store"]
-N --> O["db_close<br/>rename files, generate .files.json"]
+N --> O["db_close<br/>rename files, generate .files.json<br/>with structure counts"]
+O --> P["Generate -auto-structure.yaml<br/>if not exists"]
 ```
 
 **Diagram sources**
 - [gactoxml.pl](file://src/gactoxml.pl#L129-L188)
-- [gactoxml.pl](file://src/gactoxml.pl#L333-L370)
+- [gactoxml.pl](file://src/gactoxml.pl#L237-L255)
+- [gactoxml.pl](file://src/gactoxml.pl#L227-L236)
 
 **Section sources**
 - [gactoxml.pl](file://src/gactoxml.pl#L129-L188)
 - [gactoxml.pl](file://src/gactoxml.pl#L192-L252)
 
+### Enhanced Date Parsing Capabilities
+- **Updated** Improved date parsing now supports YYYY-MM-DD format in addition to existing formats.
+- Supports various date formats including YYYY, YYYY-MM, YYYY-MM-DD, and relative dates.
+- Enhanced precision handling for date ranges and individual dates.
+
+```mermaid
+flowchart TD
+Q["Date Input"] --> R{"Format Check"}
+R --> |"YYYY-MM-DD"| S["match_single_date<br/>subtype: ymd<br/>value: YYYYMMDD"]
+R --> |"YYYY-MM"| T["match_single_date<br/>subtype: ym<br/>value: YYYYMM00"]
+R --> |"YYYY"| U["match_single_date<br/>subtype: y<br/>value: YYYY0000"]
+R --> |"Range"| V["match_range<br/>from_to/from_only/to_only"]
+```
+
+**Diagram sources**
+- [gactoxml.pl](file://src/gactoxml.pl#L1342-L1371)
+- [gactoxml.pl](file://src/gactoxml.pl#L1373-L1437)
+
+**Section sources**
+- [gactoxml.pl](file://src/gactoxml.pl#L1342-L1371)
+- [gactoxml.pl](file://src/gactoxml.pl#L1373-L1437)
+
 ### Practical Examples: Historical Documents
 - Baptisms (Lousa corpus):
-  - Structure: baptismos.yaml defines groups and elements for “bap” and “b”.
+  - Structure: baptismos.yaml defines groups and elements for "bap" and "b".
   - Data: bapt1714.cli demonstrates typical baptism act entries with persons, parents, godparents, and relations.
   - Processing: structure selected per file or default; translation produces XML and metadata.
+  - **Updated** Automatic generation of -auto-structure.yaml files for documentation and future reference.
 
 ```mermaid
 sequenceDiagram
@@ -250,7 +299,8 @@ loop "Act groups"
 TL->>EX : "db_store (person, parents, relations)"
 end
 TL->>EX : "db_close"
-EX-->>U : "XML + .files.json"
+EX-->>EX : "Generate -auto-structure.yaml"
+EX-->>U : "XML + .files.json<br/>with structure counts"
 ```
 
 **Diagram sources**
@@ -302,6 +352,7 @@ GX --> IF["inference.pl"]
   - REST JSON-RPC supports batch requests for multiple operations.
 - Worker threads:
   - Configurable via environment variable for server concurrency.
+- **Updated** Enhanced structure file management reduces redundant processing by automatically generating -auto-structure.yaml files.
 
 **Section sources**
 - [apiTranslations.pl](file://src/apiTranslations.pl#L46-L49)
@@ -313,10 +364,14 @@ GX --> IF["inference.pl"]
   - Unauthorized tokens trigger HTTP 403 with request-id included.
 - Missing structure files:
   - Validation throws errors when requested or default structure files do not exist.
+  - **Updated** System now automatically generates -auto-structure.yaml files when structure files are missing.
 - File resolution:
   - Ensure paths resolve under configured source directories; otherwise, not_found responses are returned.
 - Error and report files:
   - .err and .rpt files capture translation diagnostics; review for syntax and validation issues.
+  - **Updated** .files.json now includes structure-specific error and warning counts for better debugging.
+- **Updated** Structure file naming:
+  - Local structure files are now named -auto-structure.yaml instead of -structure.yaml for clarity.
 
 **Section sources**
 - [apiTranslations.pl](file://src/apiTranslations.pl#L55-L63)
@@ -325,7 +380,7 @@ GX --> IF["inference.pl"]
 - [gactoxml.pl](file://src/gactoxml.pl#L179-L188)
 
 ## Conclusion
-The kleio-server translation services provide a robust, extensible pipeline for transforming historical documents into structured, linked data. The system integrates REST/JSON-RPC orchestration, intelligent inference, and standardized export formats, enabling scalable batch processing and seamless integration with Timelink services.
+The kleio-server translation services provide a robust, extensible pipeline for transforming historical documents into structured, linked data. The system integrates REST/JSON-RPC orchestration, intelligent inference, and standardized export formats, enabling scalable batch processing and seamless integration with Timelink services. **Updated** Recent enhancements include improved structure file management with automatic -auto-structure.yaml generation, enhanced .files.json output with structure error/warning counts, and expanded date parsing capabilities supporting YYYY-MM-DD format.
 
 ## Appendices
 
@@ -360,14 +415,19 @@ The kleio-server translation services provide a robust, extensible pipeline for 
 - Output formats:
   - XML (.xml) via export module.
   - Reports: .rpt and .err.
-  - Metadata: .files.json with related file references.
+  - Metadata: .files.json with related file references and structure error/warning counts.
   - Pretty-printed IDs: .ids (optional).
+  - **Updated** Local structure files: -auto-structure.yaml (automatically generated).
+- **Updated** Enhanced .files.json structure:
+  - Includes stru_errors and stru_warnings for structure-specific diagnostics.
+  - Provides comprehensive file relationship tracking.
 
 **Section sources**
 - [struSyntax.pl](file://src/struSyntax.pl#L106-L130)
 - [topLevel.pl](file://src/topLevel.pl#L109-L130)
 - [gactoxml.pl](file://src/gactoxml.pl#L141-L155)
-- [gactoxml.pl](file://src/gactoxml.pl#L238-L252)
+- [gactoxml.pl](file://src/gactoxml.pl#L238-L255)
+- [tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json](file://tests/kleio-home/sources/reference_translations/paroquiais/baptismos/bapt1714.files.json#L1-L11)
 
 ### Integration Patterns with Timelink Services
 - Exports endpoint:
@@ -376,8 +436,30 @@ The kleio-server translation services provide a robust, extensible pipeline for 
   - Link declarations and cross-reference patterns enable external linkage during export.
 - Authority registers:
   - Identifications and authority-register groups support entity normalization and linking.
+- **Updated** Enhanced integration with structure management:
+  - Automatic -auto-structure.yaml generation improves documentation and future processing.
+  - Structure error/warning counts in .files.json enable better quality assurance workflows.
 
 **Section sources**
 - [apiExports.pl](file://src/apiExports.pl#L14-L19)
 - [gactoxml.pl](file://src/gactoxml.pl#L172-L188)
 - [src/stru/gacto2.str](file://src/stru/gacto2.str#L144-L167)
+
+### Structure File Naming Conventions
+- **Updated** Local structure files are now named with -auto-structure.yaml suffix for clarity and distinction.
+- Automatic generation occurs when structure files don't exist locally.
+- **Updated** .files.json output now includes structure-specific error and warning counts (stru_errors, stru_warnings).
+
+**Section sources**
+- [gactoxml.pl](file://src/gactoxml.pl#L218-L236)
+- [gactoxml.pl](file://src/gactoxml.pl#L239-L250)
+- [tests/kleio-home/sources/more_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.yaml](file://tests/kleio-home/sources/more_sources/varia/auc-alunos-264605-A-140337-140771-auto-structure.yaml#L1-L10)
+
+### Date Parsing Enhancements
+- **Updated** Enhanced date parsing now supports YYYY-MM-DD format with proper precision handling.
+- Supports comprehensive date formats: YYYY, YYYY-MM, YYYY-MM-DD, and relative date ranges.
+- Improved error handling and validation for date inputs.
+
+**Section sources**
+- [gactoxml.pl](file://src/gactoxml.pl#L1342-L1371)
+- [gactoxml.pl](file://src/gactoxml.pl#L1373-L1437)

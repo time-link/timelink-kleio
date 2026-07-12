@@ -89,6 +89,7 @@ closeStru(_):-
 %******************************************************
 %  %
 init_command(C):-
+   put_value(current_command,C),
    del_props(C),
    set_defaults(C),!.
 
@@ -125,9 +126,9 @@ close_command(exitus,ok):-!.
 %******************************************************
 %  %
 set_defaults(CMD):-
-   \+ member(CMD,[nomino,pars,terminus,exitus]),
-   report([write('** Set defaults not implemented for: '),
-           write(CMD),nl]),!.
+   \+ member(CMD,[nomino,pars,terminus,exitus, nota]),
+   errors:error_out(['** Set defaults not implemented for: ',CMD]),
+   !.
 
 set_defaults(nomino):-
    set_prop(nomino,modus,permanens),
@@ -201,7 +202,8 @@ execParam(pars,nomen,NameList):-
 execParam(pars,Param,_):-
    Param \= nomen,
    \+ get_prop(pars,nomen,_), % no nomen, nothing else works %
-   error_out('** Nomen parameter needed in pars before other parameters'),!.
+   get_value(stru_file,StruFile),
+   error_out('** Nomen/name parameter needed in pars/ before other parameters', [file(StruFile)]),!.
 
 execParam(pars,Param,Value):-
    member_check(Param,[ordo,sequentia,identificatio,post,prae,locus,signum,
@@ -216,6 +218,9 @@ execParam(pars,Param,Value):-
 execParam(pars,fons,Group):-
    execFons(Group),!.
 execParam(pars,fons,Group):-
+   get_value(stru_file,StruFile), 
+   errors:error_out(['** Error processing fons/source value ',
+                     Group], [file(StruFile)]),
    report([tab(3),write('Error processing fons/source value '),
             write(Group),nl]),!.
 
@@ -302,7 +307,18 @@ check_complete(CMD,Result):-
    member(CMD,[nomino,pars,terminus]),
    requiredParams(CMD,List),
    missingParam(CMD,List),
-   (get_prop(CMD,status,Result); Result = ok),!.
+   (get_prop(CMD, nomen, Names); Names = ['noname*']),
+   (peek(stru_files_stack,YamlFile); YamlFile = '<NO FILE>'),
+   (get_value(stru_file,Filename); Filename = '<NO FILE>'),
+   (get_prop(CMD,status,Result); Result = ok),
+   forall(member(Name,Names),(
+         set_prop(Name, stru_file, Filename),
+         set_prop(Name, yaml_file_cmd, YamlFile),
+         set_prop(Name, name,Name),
+         set_prop(Name,status,Result)
+      )),
+   % logging:log_debug('== ~w was defined in ~w. ~n',[Name,YamlFile]),
+   !.
 
 check_complete(CMD, notOk):-
    \+ member(CMD,[nomino,pars]),

@@ -3,13 +3,26 @@
 <cite>
 **Referenced Files in This Document**
 - [elements.yaml](file://src/stru/elements.yaml)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml)
 - [yamlSupport.pl](file://src/yamlSupport.pl)
 - [struCode.pl](file://src/struCode.pl)
 - [struSyntax.pl](file://src/struSyntax.pl)
 - [dataCode.pl](file://src/dataCode.pl)
 - [gactoxml.pl](file://src/gactoxml.pl)
 - [externals.pl](file://src/externals.pl)
+- [sources-structure.yaml](file://src/stru/sources-structure.yaml)
+- [pt-sources-structure.yaml](file://src/stru/pt-sources-structure.yaml)
+- [pt-acts.yaml](file://src/stru/pt-acts.yaml)
+- [pt-groups.yaml](file://src/stru/pt-groups.yaml)
 </cite>
+
+## Update Summary
+**Changes Made**
+- Added documentation for new element types: control, json, date_extra_info, sname, and urlpattern
+- Updated element categories to include processing control elements and JSON data elements
+- Added comprehensive coverage of Portuguese-specific element definitions
+- Enhanced examples with new element types and their usage patterns
+- Updated architecture diagrams to reflect expanded element system
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -29,6 +42,8 @@ This document explains how element definitions are specified and processed in th
 - Validation logic, type checking, and constraint enforcement
 - Element inheritance via source/specialization and reuse strategies
 - Guidelines for designing reusable element definitions
+- **Updated**: Expanded coverage of new element types including control, json, date_extra_info, sname, and urlpattern
+- **Updated**: Comprehensive Portuguese-specific element definitions and localization support
 
 ## Project Structure
 The element definition system centers around:
@@ -36,6 +51,7 @@ The element definition system centers around:
 - A YAML processor that translates YAML commands into internal structure definitions
 - A syntax and code layer that validates and stores element definitions
 - Runtime utilities that enforce element inheritance and validate usage
+- **Updated**: Portuguese-specific element definitions for localized processing
 
 ```mermaid
 graph TB
@@ -45,10 +61,13 @@ C --> D["struCode.pl<br/>init_command/close_command"]
 D --> E["dataDictionary.pl<br/>create_stru/1"]
 E --> F["dataCode.pl<br/>element_of/2,<br/>clio_element_extends/2"]
 F --> G["gactoxml.pl<br/>elementClass/3,<br/>clio_element_super/2,<br/>clio_element_bclass/2"]
+H["Portuguese Elements<br/>pt-elements.yaml"] --> A
+I["Portuguese Structures<br/>pt-*.yaml"] --> H
 ```
 
 **Diagram sources**
-- [elements.yaml](file://src/stru/elements.yaml#L1-L221)
+- [elements.yaml](file://src/stru/elements.yaml#L1-L305)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml#L1-L136)
 - [yamlSupport.pl](file://src/yamlSupport.pl#L28-L69)
 - [struSyntax.pl](file://src/struSyntax.pl#L48-L101)
 - [struCode.pl](file://src/struCode.pl#L91-L118)
@@ -56,13 +75,15 @@ F --> G["gactoxml.pl<br/>elementClass/3,<br/>clio_element_super/2,<br/>clio_elem
 - [gactoxml.pl](file://src/gactoxml.pl#L2455-L2485)
 
 **Section sources**
-- [elements.yaml](file://src/stru/elements.yaml#L1-L221)
+- [elements.yaml](file://src/stru/elements.yaml#L1-L305)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml#L1-L136)
 - [yamlSupport.pl](file://src/yamlSupport.pl#L28-L69)
 - [struSyntax.pl](file://src/struSyntax.pl#L48-L101)
 - [struCode.pl](file://src/struCode.pl#L91-L118)
 
 ## Core Components
 - elements.yaml: Defines the base element catalog with names, descriptions, and optional semantic markers (e.g., identification, source).
+- **Updated**: pt-elements.yaml: Portuguese-specific element definitions providing localized names and types for core elements.
 - yamlSupport.pl: Loads YAML structure files, normalizes paths, and dispatches commands to the structure compiler.
 - struSyntax.pl: Provides the grammar and keyword mapping for structure commands and parameters.
 - struCode.pl: Implements command execution, parameter handling, and completion checks for structure definitions.
@@ -70,7 +91,8 @@ F --> G["gactoxml.pl<br/>elementClass/3,<br/>clio_element_super/2,<br/>clio_elem
 - gactoxml.pl: Exports element metadata and enforces constraints like database field lengths.
 
 **Section sources**
-- [elements.yaml](file://src/stru/elements.yaml#L39-L221)
+- [elements.yaml](file://src/stru/elements.yaml#L39-L305)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml#L8-L136)
 - [yamlSupport.pl](file://src/yamlSupport.pl#L28-L69)
 - [struSyntax.pl](file://src/struSyntax.pl#L124-L135)
 - [struCode.pl](file://src/struCode.pl#L148-L280)
@@ -119,25 +141,70 @@ Elements in elements.yaml are defined as a list of element blocks. Each block sp
 - identification: Optional flag indicating this element carries entity identity
 - source: Optional base element to specialize (inheritance)
 
-Categories of elements:
-- Simple elements: Basic data carriers (e.g., string types, numeric types, text).
-- Compound elements: Logical aggregations of date parts (day, month, year) or composite identifiers.
-- Reference elements: Pointers to entities or relations (e.g., id, same_as, xsame_as, entity, origin, destination).
+**Updated**: Categories of elements now include:
 
-Examples present in the base catalog:
-- Simple: number, string64, string256, text
-- Compound: day, month, year, date
-- Identification and references: id, same_as, xsame_as, entity, origin, destination
-- Standard: type, value, class, loc
-- Text: obs, summary
-- Source metadata: ref, page, pages
-- Processing: replaces/replaces, inside
-- Provenance: groupname, level, line, kleiofile
+- **Basic Data Types**: Core data carriers for database mapping
+  - number: Numeric type for downstream mapping
+  - string64: Short identifiers
+  - string256: Names or short descriptions
+  - text: Long free-form text
+  - **New**: json: JSON data storage for complex structures
 
-These definitions are the foundation for specialized element sets in domain-specific structures.
+- **Processing Control Elements**: Elements that affect file processing
+  - **New**: control: Base element type for processing control
+  - autorels: Automatic relation generation mode
+  - prefix: ID prefixing for namespace isolation
+  - structure: Structure file path specification
+  - translations: Translation count tracking
+  - translator: Module name for data mapping
+
+- **Date and Time Elements**: Temporal data representation
+  - day, month, year: Numeric parts
+  - date: String-like date with supported formats and ranges
+  - **New**: date_extra_info: JSON-encoded complex date information
+
+- **Identification and References**: Entity and relationship pointers
+  - id: Entity identifier (identification: yes), sourced from string64
+  - same_as: Local cross-file linking, sourced from string64
+  - xsame_as: Cross-file linking, sourced from string64
+  - entity, origin, destination: Relation pointers, sourced from string64
+
+- **Standard and Descriptive Elements**: Common semantic roles
+  - type, value, class, loc: Common semantic roles
+  - name, description, destname: Person/object/event descriptors
+  - sex: Gender indicator
+  - **New**: sname: Standardized entity names for canonical identification
+
+- **Text and Provenance Elements**: Documentation and source tracking
+  - obs, summary: Descriptive text
+  - ref, page, pages: Archival reference metadata
+  - replaces/replace/subs: Replacement mapping
+  - inside: Containment relationship
+  - groupname, level, line, kleiofile: Source provenance
+
+- **URL and Linking Elements**: Linked data integration
+  - **New**: urlpattern: URL pattern template for linked data
+  - shortname: Short URL pattern for link groups
+
+**Updated**: Portuguese-specific element definitions provide localized names while maintaining the same functionality:
+
+- **Date Elements**: dia (day), mes (month), ano (year), data (date)
+- **Core Elements**: tipo (type), valor (value), localizacao/local (location)
+- **Reference Elements**: mesmo_que (same_as), xmesmo_que (xsame_as)
+- **Text Elements**: sumario/resumo (summary), descricao/desc (description)
+- **Documentation Elements**: cota (ref), pagina/paginas (page/pages)
+- **Historical Terms**: fol/fols/folio/folios (folios), titulo (title)
+
+These definitions demonstrate:
+- Naming conventions (lowercase, descriptive)
+- Type hints for downstream processing
+- Identification flags for identity-sensitive elements
+- Source-based specialization for localization or readability
+- **New**: JSON-based complex date handling for enhanced temporal precision
 
 **Section sources**
-- [elements.yaml](file://src/stru/elements.yaml#L39-L221)
+- [elements.yaml](file://src/stru/elements.yaml#L39-L305)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml#L8-L136)
 
 ### YAML to Internal Representation Compilation
 The YAML loader reads a structure file and iterates through its commands:
@@ -235,42 +302,69 @@ X-->>X : "Warn if ALength > Length"
 ### Examples of Element Definitions from the Base Catalog
 Below are representative definitions from the base elements.yaml, illustrating categories and properties:
 
-- Simple elements
+**Updated**: Enhanced examples with new element types:
+
+- **Basic Data Types**
   - number: Numeric type for downstream mapping
   - string64: Short identifiers
   - string256: Names or short descriptions
   - text: Long free-form text
+  - **New**: json: JSON data storage for complex structures
 
-- Date-related elements
+- **Processing Control Elements**
+  - **New**: control: Base element type for processing control
+  - autorels: Automatic relation generation mode
+  - prefix: ID prefixing for namespace isolation
+  - structure: Structure file path specification
+  - translations: Translation count tracking
+  - translator: Module name for data mapping
+
+- **Date and Time Elements**
   - day, month, year: Numeric parts
   - date: String-like date with supported formats and ranges
+  - **New**: date_extra_info: JSON-encoded complex date information
 
-- Identification and references
+- **Identification and References**
   - id: Entity identifier (identification: yes), sourced from string64
   - same_as: Local cross-file linking, sourced from string64
   - xsame_as: Cross-file linking, sourced from string64
   - entity, origin, destination: Relation pointers, sourced from string64
 
-- Standard and descriptive elements
+- **Standard and Descriptive Elements**
   - type, value, class, loc: Common semantic roles
   - name, description, destname: Person/object/event descriptors
   - sex: Gender indicator
+  - **New**: sname: Standardized entity names for canonical identification
 
-- Text and provenance
+- **Text and Provenance**
   - obs, summary: Descriptive text
   - ref, page, pages: Archival reference metadata
   - replaces/replace: Replacement mapping, sourced from string64
   - inside: Containment relationship, sourced from string64
   - groupname, level, line, kleiofile: Source provenance
 
+- **URL and Linking Elements**
+  - **New**: urlpattern: URL pattern template for linked data
+  - shortname: Short URL pattern for link groups
+
+**Updated**: Portuguese-specific element examples:
+- **Date Localization**: dia (day), mes (month), ano (year), data (date)
+- **Core Localization**: tipo (type), valor (value), localizacao/local (location)
+- **Reference Localization**: mesmo_que (same_as), xmesmo_que (xsame_as)
+- **Text Localization**: sumario/resumo (summary), descricao/desc (description)
+- **Documentation Localization**: cota (ref), pagina/paginas (page/pages), fol/fols/folio/folios (folios)
+
 These definitions demonstrate:
 - Naming conventions (lowercase, descriptive)
 - Type hints for downstream processing
 - Identification flags for identity-sensitive elements
 - Source-based specialization for localization or readability
+- **New**: JSON-based complex date handling for enhanced temporal precision
+- **New**: Portuguese localization providing culturally appropriate terminology
 
 **Section sources**
-- [elements.yaml](file://src/stru/elements.yaml#L39-L221)
+- [elements.yaml](file://src/stru/elements.yaml#L39-L305)
+- [pt-elements.yaml](file://src/stru/pt-elements.yaml#L8-L136)
 
 ### Guidelines for Reusable Element Definitions
 - Prefer specialization via source to reuse base semantics while localizing naming.
@@ -279,6 +373,10 @@ These definitions demonstrate:
 - Use type hints to guide downstream mapping and validation.
 - Group related elements consistently across structures for maintainability.
 - Leverage include to modularize shared definitions across projects.
+- **New**: Use control elements for processing directives that affect file handling.
+- **New**: Use json elements for complex data structures requiring flexible schemas.
+- **New**: Use sname elements for standardized entity naming in canonical contexts.
+- **New**: Use urlpattern elements for linked data integration with templated URLs.
 
 ## Dependency Analysis
 The following diagram shows how the key modules depend on each other in the element definition and validation pipeline.
@@ -291,6 +389,7 @@ SC --> DD["dataDictionary.pl"]
 DD --> DC["dataCode.pl"]
 DC --> GX["gactoxml.pl"]
 GX --> DC
+PT["Portuguese Elements<br/>pt-elements.yaml"] --> Y
 ```
 
 **Diagram sources**
@@ -311,6 +410,8 @@ GX --> DC
 - Validation via element_of/2 and clio_element_extends/2 is linear in the number of elements in the current group and the depth of inheritance.
 - YAML loading and parameter processing are O(n) over the number of commands and parameters.
 - Export-time length checks are O(m) per element, where m is the number of aspects (core/original/comment).
+- **New**: JSON processing for date_extra_info adds computational overhead for complex date parsing.
+- **New**: Portuguese element localization requires additional validation for localized element names.
 
 ## Troubleshooting Guide
 Common issues and resolutions:
@@ -318,6 +419,9 @@ Common issues and resolutions:
 - Missing required parameters: check_complete/2 reports missing parameters for commands (e.g., nomen, primum). Add the required parameters to the YAML command.
 - YAML path resolution: include_yaml_str/2 normalizes and resolves paths. Verify file paths and directory permissions.
 - Export warnings for field length: gactoxml.pl warns when element values exceed database column sizes. Adjust element definitions or mapping constraints accordingly.
+- **New**: JSON validation errors: date_extra_info elements require valid JSON format. Validate JSON structure before processing.
+- **New**: Portuguese element conflicts: Ensure localized element names don't conflict with base element definitions.
+- **New**: URL pattern validation: urlpattern elements require proper template syntax with $1 placeholders.
 
 **Section sources**
 - [dataCode.pl](file://src/dataCode.pl#L312-L321)
@@ -327,3 +431,7 @@ Common issues and resolutions:
 
 ## Conclusion
 The Kleio element definition system provides a robust, extensible framework for specifying and validating elements in YAML-based structure files. Through inheritance via source, specialization, and strict validation, it enables consistent semantics across diverse schemas. The compilation pipeline from YAML to internal representations, coupled with export-time constraints, ensures reliable processing and mapping to downstream systems.
+
+**Updated**: Recent enhancements significantly expand the system's capabilities with new element types including control elements for processing directives, JSON elements for complex data structures, enhanced date handling with date_extra_info, standardized naming with sname, and URL pattern templates with urlpattern. The addition of comprehensive Portuguese-specific element definitions demonstrates the system's internationalization capabilities while maintaining backward compatibility and extensibility.
+
+The system continues to evolve with improved type definitions, corrected element sources, and enhanced validation logic, providing a solid foundation for complex historical and genealogical data processing workflows.

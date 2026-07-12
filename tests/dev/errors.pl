@@ -137,11 +137,11 @@ p_error_warn_context(TYPE,Mess,Context):-
       true
       ;
       (
-         get_value(data_file,DataFile),
-         break_fname(DataFile,_,Source_file,_,_)
-      )
+         (get_value(data_file,Source_file)
+         ; 
+         get_value(stru_file,Source_file))      )
    ),
-   (get_prop(Source_file,type,Source_type); Source_type=dat),
+   (get_prop(Source_file,type,Source_type); option(file_type(Source_type),Context); Source_type=dat),
    (Source_type == 'dat' ->
       (
          (option(line_number(N),Context)-> true; get_prop(line,number,N)),
@@ -156,10 +156,13 @@ p_error_warn_context(TYPE,Mess,Context):-
                nl,
             true])
       )
-   ;
+   ;  % non dat file
       (
-         report([nl,write(TYPE),write(': '),write(Source_file),perr(Mess)])
-      )
+         (get_value(current_command,Command); Command=none),
+         (get_value(yaml_file,Yaml_file); Yaml_file=none)
+      ),
+      (Yaml_file \= none -> Stru_file=Yaml_file; Stru_file=Source_file),
+         report([nl,format('~w: ~w Command ~w ', [TYPE,Stru_file, Command]),perr(Mess)])
    ),
    !.
 

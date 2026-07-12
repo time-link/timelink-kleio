@@ -510,7 +510,6 @@ note ****************************************************************
 part name=acto;
   source=pt-acto;
   position=id,tipo,dia,mes,ano,loc,obs;
-  repeat=presente,presente-f,referido,referida,item,ls,atr,rel
 
 note ====================
 note eventos, cronologias
@@ -1299,11 +1298,15 @@ part name=pevent; source=evento;
     position=description,dia,mes,ano;
     guaranteed=description;
     also=obs,id;
-    part=referido,referida,person;
+    part=n,referido,referida,person;
 
 note A certain number of synonyms for clarity of transcription
 part name=pevento; source=pevent;
+
 part name=viagem; source=pevent;
+    part=viajante,referido,referida
+part name=viajante; source=person
+
 part name=estadia; source=pevent;
 
 element name=subject;
@@ -1492,8 +1495,8 @@ note felgaio -
 note doc group felgaio Formato preparado para o registo das genealogias
       do Felgueiras Gaio.
 note *****************************************************************
-part name=familia; source=pt-acto;
- position=name;
+part name=familia; source=object;
+ position=name,id;
  guaranteed=name;
  also=id,obs;
  part=linha
@@ -3038,9 +3041,9 @@ note *****************************************************************
 note Atributos
 note *****************************************************************
 part name=ls; source=attribute;
-        position=tipo,valor,data;
-        guaranteed=tipo,valor;
-        also=data,obs,id;
+        position=type,value,date;
+        guaranteed=type,value;
+        also=date,obs,id;
         identification=yes
 part name=atr; source=ls
 
@@ -3048,7 +3051,7 @@ note *****************************************************************
 note  Relacoes
 note *****************************************************************
 part name=rel; source=relation;
-        position=tipo,valor,nomedest,iddest;
-        guaranteed=tipo,valor,nomedest,iddest;
-        also=data,obs,id;
+        position=type,value,destname,destination;
+        guaranteed=type,value,destname,destination;
+        also=date,data,obs,id;
         identification=yes

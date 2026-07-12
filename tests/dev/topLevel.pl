@@ -76,10 +76,9 @@ clio_version_date('@@DATE@@').
 pclio_version:-
     clio_version(P),writeln(P),
     get_time(T),
-    convert_time(T,Year,Month,Day,Hour,Min,_,_), D = Day-Month-Year,
-    write(D),
-    Time = Hour-Min,
-    tab(1),write(Time),
+
+    format_time(string(TimeStr), '%Y-%m-%d %H:%M:%S', T),
+    write(TimeStr), nl,
     nl,
     !.
 %******************************************************
@@ -102,10 +101,10 @@ clio_init:-
 % %
 stru(F):-
     file_name_extension(_, Ext, F),
-    stru(F, Ext).
+    stru(F, Ext),!.
 
 stru(F, yaml):-
-    stru_yaml(F).% normalize name as atom
+    stru_yaml(F),!. % normalize name as atom
 
 stru(F,str):-
       atom_string(Filename,F), % normalize name as atom
@@ -126,7 +125,12 @@ stru(F,str):-
       directory_file_path(Directory,JsonFile,JPath),
       concat(Basename,'.yaml',Yamlfile),
       directory_file_path(Directory,Yamlfile,YPath),
-      make_json_yaml_str(Filename,JPath,YPath).
+      make_json_yaml_str(Filename,JPath,YPath),
+      report([perror_count]),
+      error_count(N),warning_count(W),
+      put_value(stru_errors,N),
+      put_value(stru_warnings,W),
+      report([writeln('Structure processing finished.')]),!.
 
 %******************************************************
 %  dat:  starts the processing of kleio data file

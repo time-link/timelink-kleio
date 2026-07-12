@@ -66,30 +66,51 @@ provide further utilities related to management of kleio files in the file syste
 %   kleio(Attributes),rpt(Attributes),err(Attributes),xml(Attributes), org(Attributes).
 %   where Attributes are file attributes as produced by file_attributes/2
 %
-kleio_file_set(KleioFile,[kleio([tstatus(KStatus)|KleioAttrs]),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)]):-
-    file_attributes(KleioFile,KleioAttrs),
-    (exists_directory(KleioFile) ->
-        (RptAttrs=[],ErrAttrs=[],XMLAttrs=[],OrgAttrs=[],OldAttrs=[],IdsAttrs=[],KStatus='D') % is a directory
-    ;
-    (
-    file_name_extension(BaseName,_Ext,KleioFile), % extract the base name of the name without extension
-    file_name_extension(BaseName,rpt,RptFile),
-    file_name_extension(BaseName,err,ErrFile),
-    file_name_extension(BaseName,xml,XMLFile),
-    file_name_extension(BaseName,org,OrgFile),
-    file_name_extension(BaseName,old,OldFile),
-    file_name_extension(BaseName,ids,IdsFile),
-    file_name_extension(BaseName,'files.json',FilesJsonFile),
-
-    (exists_file(RptFile) -> file_attributes(RptFile,RptAttrs); RptAttrs=[]),
-    (exists_file(ErrFile) -> file_attributes(ErrFile,ErrAttrs); ErrAttrs=[]),
-    (exists_file(XMLFile) -> file_attributes(XMLFile,XMLAttrs); XMLAttrs=[]),
-    (exists_file(OrgFile) -> file_attributes(OrgFile,OrgAttrs); OrgAttrs=[]),
-    (exists_file(OldFile) -> file_attributes(OldFile,OldAttrs); OldAttrs=[]),
-    (exists_file(IdsFile) -> file_attributes(IdsFile,IdsAttrs); IdsAttrs=[]),
-    (exists_file(FilesJsonFile) -> file_attributes(FilesJsonFile,FilesJsonAttrs); FilesJsonAttrs=[]),
-    kset_status([kleio(KleioAttrs),rpt(RptAttrs),err(ErrAttrs),xml(XMLAttrs),org(OrgAttrs),old(OldAttrs),ids(IdsAttrs),'files.json'(FilesJsonAttrs)],KStatus)
-    )),!.
+kleio_file_set(KleioFile, [
+        kleio([tstatus(KStatus)|KleioAttrs]),
+        rpt(RptAttrs),
+        err(ErrAttrs),
+        xml(XMLAttrs),
+        org(OrgAttrs),
+        old(OldAttrs),
+        ids(IdsAttrs),
+        'files.json'(FilesJsonAttrs)
+    ]) :-
+    file_attributes(KleioFile, KleioAttrs),
+    (   exists_directory(KleioFile)
+    ->  RptAttrs = [],
+        ErrAttrs = [],
+        XMLAttrs = [],
+        OrgAttrs = [],
+        OldAttrs = [],
+        IdsAttrs = [],
+        KStatus = 'D'
+    ;   file_name_extension(BaseName, _Ext, KleioFile),
+        file_name_extension(BaseName, rpt,          RptFile),
+        file_name_extension(BaseName, err,          ErrFile),
+        file_name_extension(BaseName, xml,          XMLFile),
+        file_name_extension(BaseName, org,          OrgFile),
+        file_name_extension(BaseName, old,          OldFile),
+        file_name_extension(BaseName, ids,          IdsFile),
+        file_name_extension(BaseName, 'files.json', FilesJsonFile),
+        (exists_file(RptFile)      -> file_attributes(RptFile,      RptAttrs)      ; RptAttrs      = []),
+        (exists_file(ErrFile)      -> file_attributes(ErrFile,      ErrAttrs)      ; ErrAttrs      = []),
+        (exists_file(XMLFile)      -> file_attributes(XMLFile,      XMLAttrs)      ; XMLAttrs      = []),
+        (exists_file(OrgFile)      -> file_attributes(OrgFile,      OrgAttrs)      ; OrgAttrs      = []),
+        (exists_file(OldFile)      -> file_attributes(OldFile,      OldAttrs)      ; OldAttrs      = []),
+        (exists_file(IdsFile)      -> file_attributes(IdsFile,      IdsAttrs)      ; IdsAttrs      = []),
+        (exists_file(FilesJsonFile) -> file_attributes(FilesJsonFile, FilesJsonAttrs) ; FilesJsonAttrs = []),
+        kset_status([
+            kleio(KleioAttrs),
+            rpt(RptAttrs),
+            err(ErrAttrs),
+            xml(XMLAttrs),
+            org(OrgAttrs),
+            old(OldAttrs),
+            ids(IdsAttrs),
+            'files.json'(FilesJsonAttrs)
+        ], KStatus)
+    ), !.
 
 %% kleio_file_set_relative(+KleioFile,-RelativeKleioFileSet,+TokenOptions) is det.
 % Same as kleio_file_set, but the paths are relative to the user sources directory as contained in a Token.
@@ -359,6 +380,16 @@ file_attributes(F,[name(N),
     size_file(F,S),
     more_attributes(F,T,E,More),!. % get more attributes specific of the file type
 
+%% more_attributes(+File,+Time,+Extension,-Attributes) is det.
+%
+%   Get more attributes of a file, depending on the extension.
+%   This predicate is called by file_attributes/2.
+%   If the extension is 'err', it reads the error file and returns
+%   the number of errors and warnings, the version of the translator
+%   and the date of translation.
+%   It caches the results in a shared property to avoid reading the file
+%   again if the file has not changed.
+%
 more_attributes(F,T,err,MoreAttr):-
     get_shared_prop(F,more_attributes,cached(T1,MoreAttr)),
     format_time(string(TS),'%Y-%m-%d %H:%M:%S',T1),
@@ -384,7 +415,22 @@ more_attributes(F,T,err,MoreAttr):-
 more_attributes(_,_,_,[]):-!.
 
 extract_date(String,Date):-
-    split_string(String," ", " ", [DateS,TimeS]),
+    (split_string(String," ", " ", [DateS,TimeS])
+    ;
+     split_string(String, " ", " ", ["Current", "time:",DateS,TimeS])
+    ),
+    split_string(DateS,"-","-",[YearS,MonthS,DayS]),
+    number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
+    split_string(TimeS,":",":\r",[HourS,MinuteS,SecondS]),
+    number_string(Hour,HourS),number_string(Minute,MinuteS),number_string(Second,SecondS),
+    date_time_stamp(date(Year,Month,Day,Hour,Minute,Second,_,_,_), Date),!.
+
+% legacy version, old format
+extract_date(String,Date):-
+    (split_string(String," ", " ", [DateS,TimeS])
+    ;
+     split_string(String, " ", " ", ["Current", "time:",DateS,TimeS])
+    ),
     split_string(DateS,"-","-",[DayS,MonthS,YearS]),
     number_string(Day,DayS),number_string(Month,MonthS),number_string(Year,YearS),
     split_string(TimeS,"-","-\r",[HourS,MinuteS]),
@@ -649,6 +695,7 @@ kleio_stru_dir(D):-
     atom_concat(H, '/stru', D1),
     absolute_file_name(D1,D),
     exists_directory(D).
+
 kleio_stru_dir(D):-
     source_file(kleio_stru_dir(_),FilePath),!, % get the Prolog source origin
     % get the directory from FilePath
@@ -930,3 +977,49 @@ create_str_path(OtherPath, [MainFileDir|OtherPath]):-!,
     get_value(yaml_file,MainFilePath),
     file_directory_name(MainFilePath,MainFileDir).
 
+
+:- begin_tests(kleiofiles).
+
+test(kleio_file_set_basic, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    assertion(is_list(Set)),
+    assertion(member(kleio(_), Set)),
+    assertion(member(rpt(_), Set)),
+    assertion(member(err(_), Set)),
+    assertion(member(xml(_), Set)).
+
+test(kleio_file_set_content, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    member(kleio(Attrs), Set),
+    assertion(member(name('rol1.cli'), Attrs)),
+    assertion(member(base('rol1'), Attrs)),
+    assertion(member(extension('cli'), Attrs)),
+    assertion(member(tstatus(_), Attrs)), !.
+
+test(kleio_file_set_tstatus_T, [condition(true)]) :-
+    % This test assumes rol1.cli has not been translated or RPT is missing/old
+    % Based on the manual test output where tstatus(T) was seen.
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados/rol1.cli', File),
+    exists_file(File),
+    kleio_file_set(File, Set),
+    member(kleio(Attrs), Set),
+    member(tstatus(Status), Attrs),
+    assertion(Status == 'T'), !.
+
+test(kleio_file_set_directory, [condition(true)]) :-
+    kleio_home_dir(Home),
+    atom_concat(Home, '/sources/reference_sources/roisdeconfessados', Dir),
+    exists_directory(Dir),
+    kleio_file_set(Dir, Set),
+    member(kleio(Attrs), Set),
+    assertion(member(tstatus('D'), Attrs)),
+    assertion(member(is_directory(yes), Attrs)), !.
+
+:- end_tests(kleiofiles).

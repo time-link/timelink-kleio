@@ -49,3 +49,14 @@ Original file:
 Previous version:
 Temp file with ids:
 -renamed to-
+# Timestamps in .err/.rpt files (YYYY-MM-DD HH:MM:SS)
+[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\s[0-9][0-9]:[0-9][0-9]:[0-9][0-9]
+# Header format differences between stable and dev translators
+^< Structure: gacto2.str$
+^> Declared structure: gacto2.str$
+^> Used structure:
+# Extra blank lines introduced by dev header format
+^> $
+# Diff add/delete markers left after content filtering
+^[0-9]*a[0-9]*$
+^[0-9]*d[0-9]*$

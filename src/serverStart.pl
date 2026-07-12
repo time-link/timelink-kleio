@@ -365,15 +365,15 @@ ltests.
 
 % yaml str testing
 
-translate_file('identifications/mhk_identification_toliveira.cli',false).
+translate_file('sources/api/identifications/mhk_identification_toliveira.cli',true).
 translate_file('sources/api/', false).  % all reference sources
 translate_file('sources/api/bugs/bugs.cli',false).
 translate_file('sources/api/genealogias/llcdp34.cli',false).
-translate_file('sources/api/issues/',true).
+translate_file('sources/api/issues/',false).
 translate_file('sources/api/issues/issue1/issue1.cli',false).
 translate_file('sources/api/issues/issue10/issue10.cli',false).
 translate_file('sources/api/issues/issue15/issue15.cli', false).  % all reference sources
-translate_file('sources/api/issues/issue21.cli',true).
+translate_file('sources/api/issues/issue21.cli',false).
 translate_file('sources/api/issues/element_name.cli',false).
 translate_file('sources/api/linked_data/',false).
 translate_file('sources/api/linked_data/dehergne-a.cli',false).

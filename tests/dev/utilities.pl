@@ -18,7 +18,9 @@
             a_upper_to_lower/2,
             upper_to_lower/2,
             afirst_n/3,
-            print_with_newlines/1
+            print_with_newlines/1,
+            lists_have_common_member/2,
+            lists_have_common_member/3
         ]).
 
 :-reexport('swiCompatibility').
@@ -272,6 +274,49 @@ print_with_newlines(Atom) :-
 
     % 3. Use format/2 to print the result.
     format(FormatString, []).
+
+
+%% lists_have_common_member(+List1, +List2) is semidet.
+%
+% Succeeds if List1 and List2 have at least one member in common.
+% Fails otherwise.
+%
+% Example:
+%
+% ?- lists_have_common_member([a, b, c], [d, b, e])
+%
+%    true
+%
+% ?- lists_have_common_member([a, b, c], [d, e, f])
+%
+%    false
+%
+
+lists_have_common_member([H|_], List2) :-
+    member_check(H, List2), !.
+lists_have_common_member([_|T], List2) :-
+    lists_have_common_member(T, List2).
+
+%% lists_have_common_member(+List1, +List2, ?Common) is semidet.
+%
+% Succeeds if List1 and List2 have at least one member in common,
+% unifying Common with the first common member found.
+% Fails otherwise.
+%
+% Example:
+%
+% ?- lists_have_common_member([a, b, c], [d, b, e], X)
+%
+%    X = b
+%
+% ?- lists_have_common_member([a, b, c], [d, e, f], X)
+%
+%    false
+%
+lists_have_common_member([H|_], List2, H) :-
+    member_check(H, List2), !.
+lists_have_common_member([_|T], List2, Common) :-
+    lists_have_common_member(T, List2, Common).
 
 /*
 ## Pre-2007-Git History

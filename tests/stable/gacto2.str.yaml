@@ -1185,13 +1185,12 @@
     - loc
     - obs
     arbitrary:
-    - presente
-    - presente-f
-    - referido
-    - referida
-    - item
+    - celebrante
+    - actorm
+    - actorf
+    - object
+    - abstraction
     - ls
-    - atr
     - rel
     description: "Actos genericos :servem para vereacoes etc. Compostos por items
       e por pessoas \n"
@@ -3974,6 +3973,7 @@
     idprefix: his
     name: pevent
     part:
+    - n
     - referido
     - referida
     - person
@@ -4005,6 +4005,7 @@
     idprefix: his
     name: pevento
     part:
+    - n
     - referido
     - referida
     - person
@@ -4036,9 +4037,9 @@
     idprefix: his
     name: viagem
     part:
+    - viajante
     - referido
     - referida
-    - person
     position:
     - description
     - dia
@@ -4046,6 +4047,32 @@
     - ano
     prefix: non
     source: pevent
+    suffix: non
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    arbitrary:
+    - atr
+    - rel
+    - ls
+    description: '
+
+      '
+    guaranteed:
+    - name
+    - sex
+    idprefix: per
+    name: viajante
+    position:
+    - name
+    - sex
+    - id
+    - same_as
+    - xsame_as
+    prefix: non
+    source: person
     suffix: non
 - group:
     also:
@@ -4067,6 +4094,7 @@
     idprefix: his
     name: estadia
     part:
+    - n
     - referido
     - referida
     - person
@@ -4297,11 +4325,7 @@
     - id
     - obs
     arbitrary:
-    - celebrante
-    - actorm
-    - actorf
-    - object
-    - abstraction
+    - atr
     - ls
     - rel
     description: '
@@ -4309,14 +4333,15 @@
       '
     guaranteed:
     - name
-    idprefix: his
+    idprefix: obj
     name: familia
     part:
     - linha
     position:
     - name
+    - id
     prefix: non
-    source: pt-acto
+    source: object
     suffix: non
 - group:
     also:
@@ -55668,48 +55693,49 @@
     suffix: non
 - group:
     also:
-    - data
+    - date
     - obs
     - id
     description: '
 
       '
     guaranteed:
-    - tipo
-    - valor
+    - type
+    - value
     identification: sic
     idprefix: att
     name: ls
     position:
-    - tipo
-    - valor
-    - data
+    - type
+    - value
+    - date
     prefix: non
     source: attribute
     suffix: non
 - group:
     also:
-    - data
+    - date
     - obs
     - id
     description: '
 
       '
     guaranteed:
-    - tipo
-    - valor
+    - type
+    - value
     identification: sic
     idprefix: att
     name: atr
     position:
-    - tipo
-    - valor
-    - data
+    - type
+    - value
+    - date
     prefix: non
     source: ls
     suffix: non
 - group:
     also:
+    - date
     - data
     - obs
     - id
@@ -55717,18 +55743,18 @@
 
       '
     guaranteed:
-    - tipo
-    - valor
-    - nomedest
-    - iddest
+    - type
+    - value
+    - destname
+    - destination
     identification: sic
     idprefix: rel
     name: rel
     position:
-    - tipo
-    - valor
-    - nomedest
-    - iddest
+    - type
+    - value
+    - destname
+    - destination
     prefix: non
     source: relation
     suffix: non

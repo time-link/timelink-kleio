@@ -11,7 +11,8 @@
     file_processing/3,
     files_processing/2,
     kleio_processing_status/3,
-    get_stru_param/3                  %get_stru_param(+Params,+Id,-StruFile) is det.
+    get_stru_param/3,
+    get_stru_for_file/3                  %get_stru_param(+Params,+Id,-StruFile) is det.
         ]).
 /** <module> Api operations dealing with translation
 

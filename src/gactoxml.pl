@@ -467,15 +467,15 @@ Groups related to authority registers
 group_export(Register,ID):-
     group_derived(Register,'authority-register'),
     authority_register_export(Register,ID),!.
-group_export(REntity,ID):-
-   group_derived(REntity,'rentity'),
-   rentity_export(REntity,ID),!.
 group_export(RPerson,ID):-
     group_derived(RPerson,'rperson'),
     rperson_export(RPerson,ID),!.
 group_export(ROject,ID):-
-      group_derived(ROject,'robject'),
-      robject_export(ROject,ID),!.
+    group_derived(ROject,'robject'),
+    robject_export(ROject,ID),!.
+group_export(REntity,ID):-
+       group_derived(REntity,'rentity'),
+       rentity_export(REntity,ID),!.
 group_export(Occ,ID):-
         group_derived(Occ,'occ'),
         rentity_occ_export(Occ,ID),!.
@@ -1114,13 +1114,13 @@ The attribute is duplicated with the type replaced with the external reference. 
 
 
 process_linked_data(Group,Id):-
-  clio_bclass(Group,GroupBClass),  % we use the base class of the group
+  clio_extends(Group,GroupBClass),  % we use the base class of the group
   \+ memberchk(GroupBClass, [attribute,relation]),  % everything but attribute and relations (see next)
   clio_aspect(comment,Element, Comment),
   flatten_multiple_entry(Comment,FComment),
   atomic_list_concat(FComment,'',CommentString),
   generate_xlink(CommentString,Uri,DataSource,XId),
-  clio_element_bclass(Element,ElementBClass), % and the base class of the element to generate the attribute type
+  clio_element_extends(Element,ElementBClass), % and the base class of the element to generate the attribute type
   atomic_list_concat([GroupBClass,':',ElementBClass,'@',DataSource],'',LinkedAType),
   export_auto_attribute(Id,'atr', 'attribute',
                         LinkedAType, '','', % attribute type: core, comment, original

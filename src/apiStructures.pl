@@ -74,7 +74,7 @@ structures(get, Path, _Mode, Id, _) :-
 % If absolute_path is a file, return file info.
 % If absolute_path is a directory, return list of structure files.
 
-structures_abs_get(Mode, Id, Params, Results) :-
+structures_abs_get(__Mode, Id, Params, Results) :-
     option(absolute_path(AbsPath), Params),
     option(path(RelPath), Params),
     (exists_file(AbsPath) ->

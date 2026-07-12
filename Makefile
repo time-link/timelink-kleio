@@ -44,6 +44,7 @@ help: .PHONY
 	@echo "  make kleio-run-tag tag=x.y.z    start server with image with tag x.y.z, .env config and tests/docker_compose.yaml"
 	@echo "  make kleio-stop | stop    stop running server"
 	@echo "  make test-semantics       run semantic tests"
+	@echo "  make redo-test-semantics  re-run semantic tests (dev only, skips stable translation)"
 	@echo "  make test-api             run api tests (requires newman (npm install newman))"
 	@echo "  make current-to-stable    copy current code in src to tests/stable. Future test-sematics will use "
 
@@ -254,6 +255,9 @@ compose-up:
 
 test-semantics: .PHONY
 	@cd tests; ./scripts/run_tests.sh
+
+redo-test-semantics: .PHONY
+	@cd tests; ./scripts/redo_run_tests.sh
 
 test-api: kleio-run-current
 	@echo To run api tests install newman

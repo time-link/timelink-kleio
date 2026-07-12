@@ -1,0 +1,722 @@
+- file:
+  - date: 2026-07-06
+    description: Automatically generated structure file
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.cli
+    stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644-auto-structure.yaml
+- element:
+    description:
+    identification: non
+    name: day
+    note: two digit representation of the day
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: month
+    note: two digit representation of the month
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: year
+    note: four digit representation of the year
+    prefix: non
+    source: number
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: date
+    note: "Date in the format YYYYMMDD or YYYY-MM-DD.\nAlso allows ranges like 2021-01-01:2021-01-31\nand
+      relative dates like >2021-01-01\n\nFor more information on date formats see:\n
+      \ see: https://github.com/time-link/timelink-kleio/issues/1\n"
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: id
+    note: 'The id of the entity. This element is used to identify the entity in the
+      database. It is used to link entities in the database. It is a string64 element.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: same_as
+    note: 'This element is used to link occurrences of the same entity in the same
+      file. At the end of processing it is checked if the destination entity exists
+      in the sames file. If not an error is raised.
+
+      '
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: xsame_as
+    note: 'This element is used to link occurrences of the same entity
+
+      in diferent files.
+
+      '
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: destination
+    note: id of the destination of a relation
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: type
+    note: The type of an attribute, relation, act or other entity.
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: loc
+    note: 'Location (place) of an entity or act. Sometimes in sources it is used to
+      register the location of the source (archive, library, etc).
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: name
+    note: name, normally of a person
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: description
+    note: Similar to name, but for objects or events
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destname
+    note: Name of destination in a relation
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: obs
+    note: observations, comments, notes, etc. Use triplas aspas for long multi line
+      texts
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: summary
+    note: Summary of a document, use triplas aspas for long multi line texts
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: ref
+    note: 'Call number of any reference to document in archive or libraries.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: replace
+    note: 'Register id of an entity that should be replaced by the entity with this
+      element. Currently used in sources to replace earlier version of the same source
+      under a diferent id.
+
+      '
+    prefix: non
+    source: replaces
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: autorels
+    note: 'determines the mode of generation of automatic relations. Curremtçy unused
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: prefix
+    note: 'Prefix all ids in the current file with this prefix. Used to avoid duplicate
+      ids in different files. Equivalent to the concept of namespace.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: structure
+    note: 'Path to the structure (schema) to be used.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translations
+    note: 'Number of times this file was translated. Used in the generation of automatic
+      ids when a file is translated, then edited, and new ids need to be generated.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translator
+    note: 'Name of the translator, in the sense of a module that takes the source
+      data and maps it to a person oriented database. Originally to allow diferent
+      target databases currently unused.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: urlpattern
+    note: 'Patter of a URL in linked data, use "$1" in place of linked id.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: shortname
+    note: short pattern of a URL in linked data, used in the link group.
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: kleiofile
+    note: Path of the file where the entity is registered
+    prefix: non
+    source: string256
+    suffix: non
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    counter: 0
+    guaranteed:
+    - description
+    idprefix: evt
+    name: event
+    note: 'Something that happened. Used for registering events mentioned in letters
+      ,chronicles ,interviews ,not in formal records.
+
+      Can also be used inside a formal dated record to record information about something
+      that occurred at another time, e.g. in a dated letter that includes information
+      about different things that occurred in the past
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - description
+    - date
+- group:
+    also:
+    - obs
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - id
+    - type
+    - name
+    idprefix: ent
+    name: entity
+    note: 'An entity is a thing that exists independently of other things. It is a
+      thing that has a name and a type.
+
+      '
+    part:
+    - attribute
+    - relation
+    - atr
+    - rel
+    - ls
+    position:
+    - id
+    - type
+    - name
+- group:
+    also:
+    - structure
+    - translator
+    - autorels
+    - obs
+    - prefix
+    - translations
+    counter: 1
+    idprefix: kle
+    name: kleio
+    note: 'This is the top level group of Kleio files.
+
+      It serves as a container for historical sources,
+
+      authority registers, and other processing related
+
+      groups.
+
+
+      I has no representation in the database (person oriented model)
+
+      '
+    part:
+    - historical-source
+    - authority-register
+    - link
+    - property
+    position:
+    - structure
+    - translator
+    - obs
+- group:
+    also:
+    - date
+    - year
+    - obs
+    - replace
+    - kleiofile
+    counter: 0
+    guaranteed:
+    - id
+    idprefix: his
+    name: historical-source
+    note: '
+
+      Main group to register historical sources. A historical sources contain the
+      records of historical acts or events that happened in the past. They can also
+      contain lists of people, objects, geoentities, abstractions, etc.
+
+      Specific types of sources are defined by extending this group.
+
+      Each source has a unique id, which is compulsory. The id shoud be unique across
+      all sources in the project. To avoid conflicts it is recommended that the id
+      is the same as the file name of the source, without the extension.
+
+      '
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - year
+    - type
+    - loc
+    - ref
+    source: entity
+- group:
+    also:
+    - id
+    - obs
+    counter: 2
+    idprefix: lin
+    name: link
+    note: "Defines a shortcut for insert links to external data\nas comments in the
+      kleio file.\n\nA link can be recorded as @shortcut:external-id\n\nExample: link$wikidata/\"https://www.wikidata.org/wiki/$1\"\n\nAnd
+      then annotate element values in comments\n\n ls$place-of-stay/Canton#@wikidata:Q16572\n\nSee
+      https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/\n"
+    position:
+    - shortname
+    - urlpattern
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    - summary
+    counter: 0
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: hac
+    name: historical-act
+    note: 'Represents an historical act, i.e. a record of an event , something that
+      happened at a moment and place in time. This form is used for records such as
+      parish records notarial acts.
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - cevent
+    - end
+    position:
+    - id
+    - type
+    - date
+    source: event
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: geo
+    name: geoentity
+    note: 'An entity that endures due to a specific position location in space, in
+      spite of changes in its caracteristics and specific boundaries.
+
+      Examples of geoentities are: a parish, a place, a region, a country, etc. See
+      wikidata:Q56061  Administrative Territorial Entity and wikidata:Q486972 Human
+      Settlement
+
+      '
+    part:
+    - attribute
+    - relation
+    - atr
+    - rel
+    - ls
+    position:
+    - name
+    - type
+    source: entity
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 217
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: atr
+    note: Alias for attribute
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: relation
+    note: 'A relation between two or more entities, such as people, objects, geoentities,
+      etc.
+
+      Relation have a type (kinship, professional...) and a value (e.g. "father",
+      "mother", "colleague", etc.).
+
+      Some special relations are generated automatically by the parser, such as "identification"
+      relations to register that two entities are the same (generated from "same_as"
+      and "xsame_as" elements), and "function-in-act" relations to register the function
+      of an entity in an act.
+
+      '
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - date
+- group:
+    also:
+    - obs
+    - data
+    - id
+    counter: 4
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: rel
+    note: Short hand for relation Portuguese Override to have data= instead of date=
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - data
+    source: relation
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    - summary
+    counter: 1
+    guaranteed:
+    - id
+    - day
+    - month
+    - year
+    idprefix: hac
+    name: geodesc
+    note: 'A Hierarchical group for geoentities. '
+    part:
+    - geo1
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - id
+    - day
+    - month
+    - year
+    source: historical-act
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 18
+    guaranteed:
+    - name
+    idprefix: geo1
+    name: geo1
+    note: 'A geographical entity of level 1. Levels geo1 to geo4 are defined. '
+    part:
+    - geo2
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 62
+    guaranteed:
+    - name
+    idprefix: geo2
+    name: geo2
+    note: 'A geographical entity of level 2. Levels geo1 to geo4 are defined. '
+    part:
+    - geo3
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 135
+    guaranteed:
+    - name
+    idprefix: geo3
+    name: geo3
+    note: 'A geographical entity of level 3. Levels geo1 to geo4 are defined. '
+    part:
+    - geo4
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
+- element:
+    description:
+    identification: non
+    name: ano
+    note: Sinónimo de year
+    prefix: non
+    source: year
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: data
+    note: Sinónimo de date
+    prefix: non
+    source: date
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: tipo
+    note: 'Sinónimo de Type, tipo em atributos, relações e actos, entre outros.
+
+      '
+    prefix: non
+    source: type
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: localizacao
+    note: No sentido de local
+    prefix: non
+    source: loc
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: substitui
+    note: 'Usado em fontes para indicar que a fonte corrente deve substituir our com
+      o id igual ao valor deste element. Usado para mudar o id de fontes ja importadas
+
+      '
+    prefix: non
+    source: replaces
+    suffix: non
+- group:
+    also:
+    - data
+    - ano
+    - localizacao
+    - loc
+    - ref
+    - obs
+    - substitui
+    counter: 1
+    guaranteed:
+    - id
+    idprefix: fon
+    name: fonte
+    note: "Este constitui o grupo principal para os documentos\nhistoricos portugueses.
+      Admite qualquer dos grupos\nque tenham \"acto\" ou \"evento\" como fonte.\n\nNotas\n\n1.
+      Segundo campo posicional\n\nAtualmente o segundo campo posicional, a seguir
+      ao \n\"id\" é \"tipo\" (\"registos paroquiais\", \"vereações\", etc). \nFicheiros
+      que assumam \"data\" ou \"ano\" necessitam de ser\nmodificados, usar a variante
+      fonted$ ouusar um \nficheiro de estrutura que altere o parâmentro \"pos\"  de
+      fonte$\npara correcta interpretação e mapeamento para a base de dados.\n\n2.
+      Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado uma vez que
+      o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
+      de introdução de zeros para o mês e ano.\n"
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - tipo
+    source: historical-source

@@ -5,7 +5,7 @@ Kleio notation is a notation for transcribing historical sources.
 
 Kleio notation uses special characters to anotate the text.
 
-Kleio notation files are plain text files with extension `.cli` our `.kleio`.
+Kleio notation files are plain text files with extension `.cli` or `.kleio`.
 
 ## Main concepts
 
@@ -48,7 +48,7 @@ The special characters are:
 | `#`| comment aspect | `name=John Doe#This is a comment`|
 | `|`| multiple values separator | `nationality=Portuguese|Spanish` |
 | `;`| alterative separator for multiple values, set by parameter | `nationality=Portuguese;Spanish` |
-| `"`| string delimiter, allows for special characters in strung | `url="https://www.example.com/?q=hello world"` |
+| `"`| string delimiter, allows for special characters in string | `url="https://www.example.com/?q=hello world"` |
 | `"""`| multi-line string delimiter | `description="""This is a multi-line description. It can span multiple lines."""` |
 
 ## Special words
@@ -72,7 +72,7 @@ Schema file define:
 - elements: which elements are allowed in each group
 - positional named elements: elements that appear in a defined order after the groupname, without the need to specify the element name. E.g. person$John Done  is equivalent to person$name=John Done if element "name" is defined as the first positional element in the group "person"
 
-## white space handling
+## White space handling
 
 All withespace is colapsed to a single space, except inside strings delimited by `"` or `"""`.
 

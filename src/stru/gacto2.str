@@ -1304,6 +1304,9 @@ part name=pevent; source=evento;
 note A certain number of synonyms for clarity of transcription
 
 part name=viagem; source=pevent;
+    part=viajante,referido,referida
+
+part name=viajante; source=person
 
 part name=estadia; source=pevent;
 
@@ -1493,8 +1496,8 @@ note felgaio -
 note doc group felgaio Formato preparado para o registo das genealogias
       do Felgueiras Gaio.
 note *****************************************************************
-part name=familia; source=pt-acto;
- position=name;
+part name=familia; source=object;
+ position=name,id;
  guaranteed=name;
  also=id,obs;
  part=linha

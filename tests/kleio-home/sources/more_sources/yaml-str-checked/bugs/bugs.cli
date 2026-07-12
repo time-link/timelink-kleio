@@ -1,0 +1,30 @@
+kleio$gacto2.str/translations=51
+   link$wikidata/"https://www.wikidata.org/wiki/$1"/id=root-lin2-44
+   fonte$bugs/data=2024/obs="""
+      This tests personal events (pevent), in this case "viagem"
+      Personal events occur inside a person or object
+      they may contain other persons or objects but to avoid
+      recursive loops the persons and objects occurring inside
+      a specific type of personal event cannot be be the same group as the 
+      person or object containing the personal event.
+
+      In this case, since "n$" includes "viagem", "viagem"
+      cannot include "n$"
+      """
+
+       acto$chegada-1/chegada/16/1/1780/ribeira de lagares, souselas, casas de antonio rodrigues/ref=155v-161
+
+         n$Francisco Xavier/id=ivc-francisco-xavier
+         n$Simão Rodrigues/id=ivc-simao-rodrigues/obs=Membro do grupo inicial de Jesuítas, primeiro em Portugal com Francisco Xavier.
+
+            viagem$Itália Portugal (terra)/0/0/1540/id=ivc-francisco-xavier-his6-35
+
+               viajante$Pedro de Mascarenhas/m/id=ivc-pedro-de-mascarenhas-emb
+                  ls$cargo/Embaixador de Portugal na Santa Sé
+
+            viagem$Portugal Índia/0/0/1541/id=ivc-francisco-xavier-his4-38
+
+               viajante$Paulo Camarte/m/id=ivc-paulo-camarte
+                  ls$nacionalidade/Itália
+
+ 

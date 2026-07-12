@@ -85,15 +85,7 @@
       arbitrary:
           - denunciante
       description: "Denuncia de um caso como nos cadernos dos promotores da inquisicao "
-- group:
-      name: nom
-      source: pt-acto
-      contains:
-          - n
-          - referido
-      description:
-          Nomeacoes de irmaos numa misericordia (A particular historical act
-          )
+
 # Misericórdias
 - group:
       name: amz
@@ -1114,19 +1106,7 @@
           - pc
           - mipba
       source: pt-acto
-- group:
-      name: familia
-      part:
-          - linha
-      arbitrary:
-          - celebrante
-          - actorm
-          - actorf
-          - object
-          - abstraction
-          - ls
-          - rel
-      source: pt-acto
+
 
 # carta de perdão
 - group:
@@ -1314,20 +1294,6 @@
           - rel
 
 - group:
-      description: "Formato para registo das memórias paroquiais de 1758 "
-      name: memoria58
-      arbitrary:
-          - celebrante
-          - actorm
-          - actorf
-          - object
-          - abstraction
-          - ls
-          - rel
-      part:
-          - freguesia
-      source: pt-acto
-- group:
       description: "Sinónimo de memoria58 para uso do Alexandre Pinto em fontes semelhantes. "
       name: apontamentosd
       part:
@@ -1357,14 +1323,7 @@
       description:
           "Auto de medição ,corresponde a um acto de medição de extremas de
           uma terra ocorrido num dia determinado. Usado para tombos. "
-- group:
-      name: pas
-      source: pt-acto
-      arbitrary:
-          - mestre
-          - n
-          - referido
-          - referida
+
 - group:
       name: wviagem
       source: pt-acto
@@ -1495,6 +1454,7 @@
     idprefix: m58
     contains:
     - freguesia
+    
 - group:
     name: apontamentos
     source: memoria58
@@ -1530,8 +1490,8 @@
 - group: {name: provincia, source: geoentity}
 - group: {name: bispado, source: geoentity}
 - group: {name: comarca, source: geoentity}
-- group: {name: termo, source: geoentity}
-- group: {name: termoc, source: geoentity}
+- group: {name: termog, source: geoentity, description: "Termo genérico ou não especificado"}
+- group: {name: termoc, source: geoentity, description: "Termo concelhio"}
 - group: {name: honra, source: geoentity}
 - group: {name: gref, source: geoentity}
 - group: {name: couto, source: geoentity}

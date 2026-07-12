@@ -5,7 +5,7 @@
         clioGroup/2,
         clioElement/2,
         isDoc/1,
-        anc_of/2,
+        contained_by/2,
         subgroups/2,
         element_of/2,
         group_elements/2,
@@ -25,6 +25,7 @@
         all_elements/1,
         classes_topological_order/2,
         show_stru/0,
+        show_group/1,
         show_groups/0,
         show_elements/0,
         clean_groups/1,
@@ -51,7 +52,7 @@
 *  clean_stru(F):- cleans any existing structure definition
      for file F
 *  isDoc(N) tests if N is a document
-*  anc_of(G,A) returns in A the ancestor of G
+*  contained_by(G,A) returns in A the ancestor of G
 *  subgroups(G,S) S is the list of subgroups of G
 *  element_of(E,G):- checks to which group belongs
     element G.
@@ -90,6 +91,7 @@
 :-use_module(dataCDS).
 :-use_module(apiTranslations).
 :-use_module(struSyntax).
+:-use_module(logging).
 :-use_module(library(http/json)).
 :-use_module(library(yaml)).
 :-use_module(library(ugraphs)).
@@ -100,6 +102,8 @@
 ?-thread_local(clioStru_/1).
 ?-thread_local(clioGroup_/2).
 ?-thread_local(clioElement_/2).
+?-thread_local(contained_by_cache/2). % cache for inferred containment
+?-thread_local(not_contained_by_cache/2).
 
 
 
@@ -137,6 +141,8 @@ clean_stru(F):-
    del_props(F),       % delete previous properties %
    clean_groups(F),       % clean groups definition %
    clean_elements(F),      % clean elements definition %
+   retractall(contained_by_cache(_, _)),
+   retractall(not_contained_by_cache(_, _)),
    setgensymbol_local(str,10000),!.  % set counter so symbols sort
 
 %******************************************************
@@ -151,42 +157,109 @@ isDoc(N):-
 
 
 %******************************************************
-%  anc_of(G,A) returns in A the ancestor of G
-%   backtracks on several ancestors
+%  contained_by(G,A) returns in A the container of G
+%   backtracks on several containers
 %    by order of the structure definition file
-%    If no ancestor (the case with documents)
+%    If no container (the case with documents)
 %    A = []
+%
+% Note that during stru processing the properties
+% of the super group are copied to the group 
+% before the group properties are processed.
+%
+% This means that if a group does not define a
+% property that its supergroup possesses then
+% then the property will be copied to the group
+% and appear as its own.
+%
+%  - group:
+%    - name: historical-source
+%    - contains: [historical-act, event, text]
+% - group:
+%    - name: fonte
+%    - source: historical-source
+% contains(fonte,X) X = [historical-act, event, text]
 %******************************************************
 %  %
-anc_of(G,[]):-isDoc(G).
-anc_of(G,A):-
+contained_by(G,[]):-isDoc(G).
+
+contained_by(G,G):- !,fail. % avoid loops
+
+contained_by(G,A):-
+   contained_by_direct(G,A).
+contained_by(G,A):-
+   contained_by_super(G,A).
+
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,repetitio,L),
     member(G,L).
-anc_of(G,A):-
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,semper,L),
     member(G,L).
-anc_of(G,A):-
-    clioGroup(A,__ID),
-    get_prop(G,solum,L),
-    member(A,L).
-anc_of(G,A):-
+contained_by_direct(G,A):-
+    clioGroup(A,ID),
+    get_prop(ID,solum,L),
+    member(G,L).
+contained_by_direct(G,A):-
     clioGroup(A,ID),
     get_prop(ID,pars,L),
     member(G,L).
 
-%anc_of(G,A):- % check inheritance
-%   anc_of_i(G,A).
+% a super class of the old group
+%
+contained_by_super(G,A):-
+    atom(G),atom(A),
+    logging:log_debug('>> ~w is not a direct part of ~w. Testing with super classes~n',[G,A]),
+    clause(contained_by_cache(G,A), true),
+    logging:log_debug('Found ~w as part of ~w from cached result~n',[G,A]),
+    !.
+% check if failure was cached
+contained_by_super(G,A):-
+    atom(G),atom(A),
+    clause(not_contained_by_cache(G,A), true),
+    logging:log_debug('Failed ~w as part of ~w from cached result~n',[G,A]),
+    !,fail.
 
-anc_of_i(G,A):-
-   writeln('DEBUG-finding by inheritance ascestor of'-G),
-   clioGroup(G,GID),
-   get_prop(GID,fons,FG),
-   clioGroup(A,AID),
-   get_prop(AID,fons,FA),
-   anc_of(FG,FA),
-   writeln('DEBUG-FOUND '-FA-' through '-FG).
+% if we are here then G is not a part of A
+% so we check for a super class of G that is a part of A
+contained_by_super(G,A):-
+    logging:log_debug('Testing if a super of ~w is part of ~w~n',[G,A]),
+    atom(G),atom(A),
+    externals:clio_parts(A,AParts),
+    dataDictionary:super_groups(G,GSupers),
+    logging:log_debug('Testing for ~w in ~w~n',[GSupers,AParts]),
+    lists_have_common_member([G|GSupers],AParts,Common),!,
+    logging:log_debug('Success: ~w has part ~w which is a super class of ~w~n',[A,Common,G]),
+    assert(contained_by_cache(G,A)),
+    !.
+% if we are here then G is not a part of A nor an ancestor of A
+% so we check for a super class of G that is a part of super class of A
+contained_by_super(G,A):-
+    logging:log_debug('Testing if a super of ~w is part of a super class of ~w~n',[G,A]),
+    atom(G),atom(A),
+    dataDictionary:super_groups(A,ASupers),
+    dataDictionary:super_groups(G,GSupers),
+    logging:log_debug('Ancestor ~w extends ~w~n',[A,ASupers]),
+    logging:log_debug('Group ~w extends ~w~n',[G,GSupers]),
+    member(ASuper,ASupers),
+    externals:clio_parts(ASuper,AParts), 
+    logging:log_debug('~w has parts ~w~n',[ASuper,AParts]),
+    AParts = [_|_], % if no parts in Super no point in testing
+    logging:log_debug('Looking for any of ~w in ~w~n', [[G|GSupers],AParts]),
+    lists_have_common_member([G|GSupers],AParts,Common),!,
+    logging:log_debug('Success: ~w is a sub class of ~w which has part ~w matching ~w or a super class of it~n',[A, ASuper,Common,G]),
+    assert(contained_by_cache(G,A)),
+    !.
+
+% if we are here then G is not a part of A neither their super groups
+% so we report failure
+contained_by_super(G,A):-
+    logging:log_debug('>> ~w is not a part of ~w nor their super groups. Caching result~n',[G,A]),
+    assert(not_contained_by_cache(G,A)),
+    fail.
+
 
 /** <predicate> subgroups(+Group, -Subgroups) is det
    @summary Retrieves the list of subgroups contained within a given group.
@@ -197,12 +270,14 @@ anc_of_i(G,A):-
       that are directly contained within the specified Group.
 */
 subgroups(G,S):-
-   findall(D,(anc_of(D,G),clioGroup(D,_)),S),!.
+   findall(D,(contained_by_direct(D,G),clioGroup(D,_)),S),!.
 
 extend_groups(G,S):-
    findall(D, externals:clio_extends(D,G),S),
    !.
 
+super_groups(G,S):-
+   findall(D, externals:clio_extends(G,D),S).
 
 %******************************************************
 %  element_of(E,G):- checks to which group belongs
@@ -256,13 +331,23 @@ create_group(Group):-
 %      Does nothing if there is already a group definition
 %      for Group
 %
+%  TODO: if group exists should it keep existing properties?
+%
 make_group(Group):-
-   clioGroup(Group,_),!.
+   clioGroup(Group,_),
+   group_exists(File),
+   warning_out(['Group ',Group,' already defined (',File,')',
+      ' command properties will be merged.']),
+   !.
 
 make_group(Group):-
    gensymbol_local(str,Id),   % generate an Id %
-   assert(clioGroup_(Group,Id)),!. % TODO: make multi schema aware
+   assert(clioGroup_(Group,Id)),
+   !. % TODO: make multi schema aware
 
+group_exists(YamlFile):-   % dummy predicate for trace purposes.
+   (peek(stru_files_stack,YamlFile); YamlFile = '<NO FILE>'),
+   !.
 %% clioGroup(?GroupName,?GroupId) is nondet.
 %
 % GroupName is a Group defined in the current Scheme and GroupId
@@ -293,7 +378,10 @@ create_element(Element):-
 %*************************************************************
 % %
 make_element(Element):-
-   clioElement(Element,_),!.
+   clioElement(Element,_),
+   warning_out(['Warning: Element ',Element,' already defined.',
+      ' element properties will be merged.']),
+   !.
 make_element(Element):-
    gensymbol_local(str,Id),   % generate an Id %
    assert(clioElement_(Element,Id)),!.
@@ -392,13 +480,14 @@ set_element_defaults(E):-
    !.
 
 set_pars_defaults(Group):-    % Currently we skip the defaults, they are meaningless
-   clioGroup(Group,Id),      %get the group id %
+   clioGroup(Group,Id),!,      %get the group id %
+   % logging:log_debug('>> setting group defaults for ~w id ~w ~n',[Group,Id]),
    % store default params %
    % set_prop(Id,ordo,sic),
    % set_prop(Id,sequentia,sic),
    % set_prop(Id,identificatio,non),% MUDAR deve ser sic se for um doc %
-   set_prop(Id,post,non),  % check Kleio Manual p. 71-72
-   set_prop(Id,prae,non),  % check Kleio Manual p. 71-72
+   % set_prop(Id,post,non),  % check Kleio Manual p. 71-72
+   % set_prop(Id,prae,non),  % check Kleio Manual p. 71-72
    make_signum(Group,Signum),
    set_prop(Id,signum,Signum),!.
 
@@ -414,7 +503,7 @@ mks([A],[A]):-!.
 
 % pars, sine, signa, forma, ceteri, solum params not implemented %
 set_terminus_defaults(Element):-  % currently we do not implement defaults.
-   clioElement(Element,Id),      %get the element id %
+   clioElement(Element,Id), !,     %get the element id %
    % store default params %
    %set_prop(Id,modus,lingua),
    %set_prop(Id,primum,lingua),
@@ -608,25 +697,70 @@ show_stru:- \+ clioStru(__S),
           error_out('**No structure definition.'),!.
 
 show_structure(S):-
-    write('Structure definition for: '),write(S),tab(1),
-    get_prop(S,primum,D), % get the document name %
-    write('document: '),writeln(D),
-    shgroup(D,1),
-    show_elements.
+   get_value(stru_file,StruFile),
+   write('Top level group: '),writeln(S),nl,
+   write('Structure file: '),writeln(StruFile),
+   get_value(stru_files_read,FilesRead),
+   reverse(FilesRead,FilesReadRev),
+   writeln('Files included: '),
+   forall(member(F,FilesReadRev),(tab(2),writeln(F))),
+   nl,write('Groups: '),listClioGroups,
+   nl,write('Elements: '),listClioElements.
 
 show_group(G):-
       shgroup(G,1).
 
 shgroup(G,N):-
     clioGroup(G,ID),
-    tab(N),write(G),
-    N1 is N+5,show_props(ID,N1),
+    nl,tab(N),write('Group:'), writeln(G),
+    tab(N),write('Id: '), writeln(ID),
+
+    N1 is N+5,
+    (get_prop(ID, name, Name) ->
+       (nl, tab(N1),format("name: ~w~n",[Name]));
+       true
+    ),
+    (get_prop(ID, nota, Nota) ->
+    (nl, tab(N1),format("~w~n",[Nota]));
+    true
+    ),
+    (get_prop(ID, fons, Source) ->
+    (nl,tab(N1),format("source: ~w~n",[Source]));
+    true
+    ),
+    (get_prop(ID, locus, Pos) ->
+    (tab(N1),format("position: ~w~n",[Pos]));
+    true
+    ),
+    (get_prop(ID, certe, Certe) ->
+    (tab(N1),format("guaranteed: ~w~n",[Certe]));
+    true
+    ),
+    (get_prop(ID, ceteri, Also) ->
+    (tab(N1),format("also: ~w~n",[Also]));
+    true
+    ),
     subgroups(G,L),
-    nl,tab(N1),writelistln(["Contains: "| L]),
-    extend_groups(G,ExtGroups),
-    tab(N1), writelistln(["Extended by: "| ExtGroups]),
-    nl,shgroups(L,N1),
-    tab(N),write('End '),writeln(G).
+    nl,tab(N1),format("Contains: ~w~n",[L]),
+    
+    (setof(S,externals:clio_super(G,S),ExtGroups) -> true ; ExtGroups = []),
+    tab(N1), format("Extended by: ~w~n", [ExtGroups]),
+    % nl,tab(N1),writelistln(["Properties (internal): "]),
+    % show_props(ID,N1),
+    % nl,shgroups(L,N1),
+    (get_prop(G, stru_file, StruFile) ->
+    (nl, tab(N1), format("Structure: ~w~n", [StruFile]));
+    true
+    ),
+    (get_prop(G, yaml_file_cmd, YamlFile) ->
+    (tab(N1), format("Defined in: ~w~n", [YamlFile]));
+    true
+    ),
+    (get_prop(G, status, Status) ->
+       (tab(N1),format("Status: ~w~n",[Status]));
+       true
+    ),
+    tab(N),nl, write('End '),writeln(G).
 shgroups([],_):-!.
 shgroups([G|R],N):-
     shgroup(G,N),
@@ -958,7 +1092,7 @@ show_includes([I|Rest],yes):-
 show_includes([],_):-write('<br>'),nl,!.
 
 show_ancestors(G):-
-    anc_of(G,A),
+    contained_by(G,A),
     writelist0ln(['<A HREF="',A,'.html">',A,'</A>']),
     fail.
 show_ancestors(_):-writeln('<br>'),!.
@@ -976,6 +1110,39 @@ show_elements:-nl,write('Elements (clioElement): '),listClioElements,
 listClioElements:-clioElement(E,_),
                 write(E),tab(1),fail.
 listClioElements:-nl,!.
+
+show_element(E):-
+      sh_element(E,0).
+
+sh_element(E,N0):-
+      clioElement(E,ID),
+      N is N0+3,
+      nl,
+      tab(N0),write('Element:'), writeln(E),
+      tab(N0),write('Id: '), writeln(ID),
+      (get_prop(ID, nota, Nota) ->
+         (nl, tab(N0),format("~w~n",[Nota]));
+         true
+      ),
+      (get_prop(ID, fons, Source) ->
+         (nl, tab(N),format("Source: ~w~n",[Source]));
+         true
+      ),
+      (setof(S,externals:clio_element_super(E,S),ExtEls) -> true ; ExtEls = []),
+      nl, tab(N), format("Extended by: ~w~n", [ExtEls]),      
+      (get_prop(E, stru_file, StruFile) ->
+         (nl, tab(N), format("Structure: ~w~n", [StruFile]));
+         true
+      ),
+      (get_prop(E, yaml_file_cmd, YamlFile) ->
+         (tab(N), format("Defined in: ~w~n", [YamlFile]));
+         true
+      ),
+      (get_prop(ID, status, Status) ->
+         (tab(N),format("Status: ~w~n",[Status]));
+         true
+      ),
+      tab(N),nl, write('End '),writeln(E).
 %*************************************************************
 % clean_groups. deletes previous group definitions
 %*************************************************************

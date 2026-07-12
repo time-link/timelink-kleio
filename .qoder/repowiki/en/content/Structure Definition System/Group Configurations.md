@@ -4,7 +4,7 @@
 **Referenced Files in This Document**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml)
 - [tests/kleio-home/structures/pt-groups.yaml](file://tests/kleio-home/structures/pt-groups.yaml)
-- [tests/kleio-home/structures/glopes.str](file://tests/kleio-home/structures/glopes.str)
+- [src/stru/elements.yaml](file://src/stru/elements.yaml)
 - [src/struSyntax.pl](file://src/struSyntax.pl)
 - [src/struCode.pl](file://src/struCode.pl)
 - [src/dataDictionary.pl](file://src/dataDictionary.pl)
@@ -15,6 +15,14 @@
 - [src/kleioExport.xsd](file://src/kleioExport.xsd)
 - [tests/stable/kleioExport.xsd](file://tests/stable/kleioExport.xsd)
 </cite>
+
+## Update Summary
+**Changes Made**
+- Updated group composition syntax from 'part' to 'contains' throughout the documentation
+- Added comprehensive coverage of new group types: event, entity, cevent, pevent, ulist, text, and source
+- Enhanced element source corrections documentation (string64 → id)
+- Expanded group description fields with proper documentation
+- Updated containment relationships and inheritance patterns
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -30,6 +38,8 @@
 
 ## Introduction
 This document explains how group configurations work in the Kleio structure system. Groups define modular schemas that organize related elements into cohesive units. They support inheritance, containment, and positional element registration, enabling reusable, extensible, and maintainable schema designs across diverse historical sources.
+
+**Updated** Enhanced with new group types and improved syntax documentation reflecting the transition from 'part' to 'contains' for group composition.
 
 ## Project Structure
 The group configuration system centers around:
@@ -80,7 +90,7 @@ GACTOXML --> XSD
   - also: optional elements
   - position: ordered elements for positional registration
   - arbitrary: elements allowed anywhere within the group
-  - contains/part: child groups permitted inside this group
+  - contains: child groups permitted inside this group (updated from 'part')
   - source: parent group to inherit properties from
   - idprefix: identifier prefix for instances of this group
 - Compiler pipeline:
@@ -88,6 +98,8 @@ GACTOXML --> XSD
   - Parameter validation and defaults
   - Property propagation and inheritance
   - Containment resolution and ancestor queries
+
+**Updated** Enhanced documentation of group composition syntax, now using 'contains' instead of the deprecated 'part' keyword.
 
 **Section sources**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L8-L30)
@@ -130,17 +142,19 @@ YPROC-->>YAML : "processed schema"
 ### Group Definition Syntax and Semantics
 - Keys and roles:
   - name: group identity
-  - description: human-readable documentation
+  - description: human-readable documentation (enhanced with proper descriptions)
   - position: ordered elements enabling positional registration
   - guaranteed: required elements enforced at parse-time
   - also: optional elements
   - arbitrary: elements allowed anywhere
-  - contains/part: child groups permitted inside
+  - contains: child groups permitted inside (updated from 'part')
   - source: parent group for inheritance
   - idprefix: instance ID prefix
 - Positional registration example:
   - When a group defines position, elements can be registered without explicit names in that order
   - Guaranteed elements must be present; optional elements may be omitted
+
+**Updated** Improved documentation of group composition syntax, emphasizing the use of 'contains' over the deprecated 'part' keyword.
 
 **Section sources**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L8-L30)
@@ -171,18 +185,20 @@ KeepSource --> End
 - [src/struCode.pl](file://src/struCode.pl#L288-L293)
 
 ### Containment and Child Group Relationships
-- contains/part define which groups may appear inside another
+- contains defines which groups may appear inside another (updated from 'part')
 - contained_by resolves direct and inherited containment relationships
 - This supports hierarchical composition and modular schema design
 
 ```mermaid
 flowchart TD
-A["Parent Group"] --> B["Direct child via contains/part"]
+A["Parent Group"] --> B["Direct child via contains"]
 A --> C["Inherited child via source"]
 Query["contained_by(child, parent)"] --> Result{"Matches direct or inherited?"}
 Result --> |Yes| Found["Returns parent"]
 Result --> |No| NotFound["No match"]
 ```
+
+**Updated** Clarified that 'contains' is the current syntax for defining child group relationships, replacing the older 'part' keyword.
 
 **Diagram sources**
 - [src/dataDictionary.pl](file://src/dataDictionary.pl#L160-L204)
@@ -208,9 +224,12 @@ Result --> |No| NotFound["No match"]
 - Conditional groups: leverage arbitrary elements for flexible composition
 - Hierarchical groups: extend base groups via source to inherit and refine properties
 
+**Updated** Added comprehensive coverage of new group types including event, entity, cevent, pevent, ulist, text, and source groups.
+
 Examples from the codebase:
 - Base groups define core schemas (e.g., historical-source, person, object)
 - National/custom groups extend base groups (e.g., Portuguese-specific groups)
+- New specialized groups: event (general events), entity (core entity type), cevent (chronology events), pevent (personal events), ulist (unique lists), text (text recording), source (historical source alias)
 
 **Section sources**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L32-L39)
@@ -247,18 +266,38 @@ ResolveInherit --> Export["Export and mapping"]
 - Positional registration simplifies common patterns
 - Arbitrary elements support variability across datasets
 
+**Updated** Enhanced documentation of modular design patterns with new group types and improved containment relationships.
+
 **Section sources**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L27-L30)
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L12-L13)
 
 ### Group Inheritance, Nested Structures, and Dynamic Composition
 - Inheritance: child groups inherit properties from parents; overrides apply where specified
-- Nested structures: contains/part define allowable children; contained_by resolves relationships
+- Nested structures: contains defines allowable children; contained_by resolves relationships
 - Dynamic composition: arbitrary elements permit flexible element placement within groups
+
+**Updated** Comprehensive coverage of new group types and their inheritance patterns, including specialized event and entity groups.
 
 **Section sources**
 - [src/dataDictionary.pl](file://src/dataDictionary.pl#L160-L204)
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L27-L30)
+
+### Element Source Corrections and Type Safety
+**Updated** Added documentation for element source corrections, particularly the transition from string64 to id for identifier elements.
+
+- Element source corrections:
+  - string64 → id for entity identifiers (proper type safety)
+  - string256 → string64 for URL patterns and similar elements
+  - Enhanced type safety across element definitions
+- Type hierarchy improvements:
+  - id inherits from string64 for consistent identifier handling
+  - same_as, xsame_as, entity, origin, destination inherit from id
+  - Proper source chain ensures consistent processing
+
+**Section sources**
+- [src/stru/elements.yaml](file://src/stru/elements.yaml#L87-L125)
+- [src/stru/groups.yaml](file://src/stru/groups.yaml#L196-L202)
 
 ### Guidelines for Effective Group Organization
 - Naming conventions:
@@ -267,7 +306,7 @@ ResolveInherit --> Export["Export and mapping"]
 - Group organization:
   - Define minimal base groups with shared properties
   - Extend via source to specialize behavior
-  - Use contains/part to express composition
+  - Use contains to express composition (updated syntax)
 - Membership strategies:
   - Use guaranteed for strict requirements
   - Use also for optional flexibility
@@ -277,8 +316,13 @@ ResolveInherit --> Export["Export and mapping"]
   - Keep inheritance shallow to reduce complexity
   - Document source relationships and rationale
   - Validate frequently against representative datasets
+- New group types:
+  - Leverage event, entity, cevent, pevent for specialized use cases
+  - Use ulist for unique entity collections
+  - Apply text for original text preservation
+  - Utilize source as historical-source alias
 
-[No sources needed since this section provides general guidance]
+**Updated** Added guidelines for working with new group types and updated syntax requirements.
 
 ## Dependency Analysis
 Group configurations depend on:
@@ -313,8 +357,9 @@ EXPORT --> XSD["kleioExport.xsd"]
 - Inheritance and containment resolution are performed during schema processing; keep hierarchies shallow for faster lookups
 - Positional element registration reduces ambiguity and speeds parsing for common patterns
 - Avoid excessive use of arbitrary elements to maintain predictable validation costs
+- New group types (event, entity, cevent, pevent) provide specialized processing paths for improved performance
 
-[No sources needed since this section provides general guidance]
+**Updated** Added performance considerations for new group types and their optimized processing paths.
 
 ## Troubleshooting Guide
 Common issues and resolutions:
@@ -326,10 +371,18 @@ Common issues and resolutions:
   - Resolution: verify parameter names and command spelling against supported keywords
 - Circular inheritance or containment:
   - Symptom: unexpected behavior or resolution failures
-  - Resolution: review source and contains/part relationships to eliminate cycles
+  - Resolution: review source and contains relationships to eliminate cycles
 - Positional registration mismatches:
   - Symptom: errors when positional elements are not in the expected order
-  - Resolution: align element order with the group’s position specification
+  - Resolution: align element order with the group's position specification
+- Syntax errors with 'contains' vs 'part':
+  - Symptom: errors about unknown 'part' parameter
+  - Resolution: use 'contains' instead of the deprecated 'part' keyword
+- Element source type errors:
+  - Symptom: type mismatch errors for identifier elements
+  - Resolution: ensure elements inherit from proper base types (id, string64, string256)
+
+**Updated** Added troubleshooting guidance for new syntax requirements and element type corrections.
 
 **Section sources**
 - [src/struCode.pl](file://src/struCode.pl#L306-L337)
@@ -337,13 +390,18 @@ Common issues and resolutions:
 - [src/struSyntax.pl](file://src/struSyntax.pl#L114-L121)
 
 ## Conclusion
-Group configurations in Kleio provide a powerful, extensible mechanism for organizing schema definitions. Through inheritance, containment, and flexible membership strategies, schemas become modular, reusable, and maintainable. Proper use of guaranteed, also, position, and arbitrary elements ensures robust validation and adaptable data modeling across diverse historical sources.
+Group configurations in Kleio provide a powerful, extensible mechanism for organizing schema definitions. Through inheritance, containment, and flexible membership strategies, schemas become modular, reusable, and maintainable. The enhanced group types (event, entity, cevent, pevent, ulist, text, source) and improved syntax (contains instead of part) enable more precise and maintainable schema designs. Proper use of guaranteed, also, position, and arbitrary elements ensures robust validation and adaptable data modeling across diverse historical sources.
+
+**Updated** Enhanced conclusion reflecting the improved group system with new types, corrected syntax, and better type safety.
 
 ## Appendices
 
 ### Appendix A: Example Group Definitions
 - Core groups: define foundational schemas (e.g., historical-source, person, object)
 - National/custom groups: extend core groups for specific domains (e.g., Portuguese groups)
+- New specialized groups: event, entity, cevent, pevent, ulist, text, source for enhanced functionality
+
+**Updated** Added comprehensive coverage of new group types and their applications.
 
 **Section sources**
 - [src/stru/groups.yaml](file://src/stru/groups.yaml#L32-L39)
@@ -359,3 +417,18 @@ Group configurations in Kleio provide a powerful, extensible mechanism for organ
 - [tests/dev/gactoxml.pl](file://tests/dev/gactoxml.pl#L2428-L2460)
 - [src/kleioExport.xsd](file://src/kleioExport.xsd#L25-L50)
 - [tests/stable/kleioExport.xsd](file://tests/stable/kleioExport.xsd#L25-L50)
+
+### Appendix C: New Group Types and Their Applications
+**New** Comprehensive documentation of newly added group types:
+
+- **event**: General-purpose event recording for informal historical accounts
+- **entity**: Core entity type serving as foundation for person, object, geoentity
+- **cevent**: Chronology event for chronological transcriptions
+- **pevent**: Personal event contained within persons/objects
+- **ulist**: Unique entity lists for prosopographies and biographical dictionaries
+- **text**: Original text preservation with triple-quote support
+- **source**: Historical-source alias for simplified usage
+
+**Section sources**
+- [src/stru/groups.yaml](file://src/stru/groups.yaml#L69-L300)
+- [src/stru/groups.yaml](file://src/stru/groups.yaml#L357-L525)

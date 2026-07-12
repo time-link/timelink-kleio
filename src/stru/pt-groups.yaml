@@ -200,7 +200,7 @@
     also:
        - obs
        - id
-    contains: [referido, referida]  # we need this to prevent recursive inclusion of pt-actorf and pt-actorm
+    contains: [viajante, referido, referida]  # we need this to prevent recursive inclusion of pt-actorf and pt-actorm
     guaranteed:
       - description
     idprefix: via
@@ -210,6 +210,15 @@
      - mes
      - ano
     source: pevent
+
+- group:
+    name: viajante
+    description: >
+         Uma pessoa que viaja, parte de um evento pessoal
+    source: person
+    position: [nome, sexo]
+    guaranteed: [nome]
+    idprefix: vjt
 
 - group:
     name: pevento

@@ -12,10 +12,11 @@
     set_prop/3,has_prop/2,get_prop/3,get_prop/4,del_prop/2,
     del_props/1,get_props/2,get_cons/2,
     add_to_prop/3,show_props/1,show_props/2,
-    add_value/2,exists_value/2,has_value/2,has_values/2,remove_value/2,replace_value/3]).
-
-
+    add_value/2,exists_value/2,has_value/2,has_values/2,remove_value/2,replace_value/3,
+    push/2,pop/2,pop/3,peek/2]).
 :-use_module(utilities).
+:-use_module(library(thread)).
+:-dynamic prop_/3.
 
 /** <module> Persistent variables and atom properties.
 
@@ -77,15 +78,13 @@ get_shared_value(NAME,VALUE):-recall(NAME,VALUE),!.
 %
 % ----------------------------------------
 set_shared_prop(Atom,Prop,Value):-
-    atom(Atom),atom(Prop),
-    retractall(prop_(Atom,Prop,_)),
-    !,
-    assert(prop_(Atom,Prop,Value)).
-
- set_shared_prop(Atom,Prop,Value):-
-    atom(Atom),atom(Prop),
-    !,
-    assert(prop_(Atom,Prop,Value)).
+     atom(Atom),atom(Prop),
+     with_mutex(prop_mutex,
+          ( retractall(prop_(Atom,Prop,_)),
+            assertz(prop_(Atom,Prop,Value))
+          )
+     ),
+     !.
 
 %% get_shared_prop(+Atom,+Prop,?Value) is det.
 %
@@ -96,10 +95,16 @@ set_shared_prop(Atom,Prop,Value):-
 %% del_shared_prop(+Atom,+Prop) is det.
 %  delete shared property of atomn
  del_shared_prop(Atom,Prop) :-
-    retractall(prop_(Atom,Prop,_)),!.
+      with_mutex(prop_mutex,
+            retractall(prop_(Atom,Prop,_))
+      ),
+      !.
 
  del_shared_props(Atom) :-
-    retractall(prop_(Atom,_,_)),!.
+     with_mutex(prop_mutex,
+          retractall(prop_(Atom,_,_))
+     ),
+     !.
 
 %% get_shared_props(+Atom,-Props) is det.
 %  Get all the shared properties of an atom
@@ -237,7 +242,7 @@ add_to_prop(O,P,V):-
      get_prop(O,P,OldValue),
      \+ member(V,OldValue),
      set_prop(O,P,[V|OldValue]),!.
-% it it is do nothing %
+% if it is do nothing %
 add_to_prop(O,P,V):-
      get_prop(O,P,OldValue),
      member(V,OldValue),!.
@@ -344,3 +349,43 @@ rmv_value(Atom,OldVal,List):-
      remember2(Atom, NewList),
      fail.
 rmv_value(_,_,_):-!.
+
+
+%% push(+Atom,+Value) is det.
+% Push a Value onto the named Stack.
+% Atom is the name of the stack.
+% Value is the element to push onto the stack.
+% The current stack is retrieved, the value is pushed, and the new stack is stored.
+%
+push(Atom, Value) :-
+    (get_value(Atom, Stack) -> true; Stack = []),
+    put_value(Atom, [Value|Stack]).
+
+%% pop(+Atom,?Value) is det.
+% Pop a Value from the named Stack.
+% Atom is the name of the stack.
+% Value is the popped element.
+% Fails if the stack is empty.
+% The stack is updated after popping.
+%
+pop(Atom, Value) :-
+    get_value(Atom, [Value|Rest]),
+    put_value(Atom, Rest).
+
+%% pop(+Atom,?Value,?Stack) is det.
+% Pop a Value from the named Stack, returning both the popped Value and the remaining Stack.
+% Atom is the name of the stack.
+% Value is the popped element.
+% Stack is the resulting stack (after popping).
+% Fails if the stack is empty.
+% The stack is updated after popping.
+%
+pop(Atom, Value, Stack) :-
+    get_value(Atom, [Value|Stack]),
+    put_value(Atom, Stack).
+
+%% peek(+Atom,?Value) is det.
+% Peek the top Value from the named Stack without modifying it.
+%
+peek(Atom, Value) :-
+    get_value(Atom, [Value|_]).
