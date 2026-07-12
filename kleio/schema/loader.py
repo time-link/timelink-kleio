@@ -283,24 +283,60 @@ def _set_group_properties(group: GroupDef, data: dict[str, Any], errors: ErrorAc
     else:
         group.also = list(also) if also else []
     
-    # Contains (pars) - subgroups
-    contains = data.get('contains', data.get('pars', []))
-    if isinstance(contains, str):
-        group.contains = [contains]
-    else:
-        group.contains = list(contains) if contains else []
-    
+    # Contains (pars) - subgroups.
+    #
+    # In the Python version, at this stage, the subgroup fields ``contains``,
+    # ``pars``, ``part``, ``repeat`` (``repetitio``/``arbitrary``),
+    # ``always`` (``semper``) and ``only`` (``solum``) are treated as
+    # synonyms: every entry they declare is merged into a single
+    # containment set on ``group.contains``. The Prolog parser used
+    # these names with subtle distinctions (e.g. ``repetitio`` for
+    # repeatable subgroups, ``semper`` for name/count pairs,
+    # ``solum`` for exclusive subgroups); preserving those constraints
+    # here is deferred to a later stage. ``group_def.repeat``/``always``/
+    # ``only`` are still populated below from their original fields so
+    # the raw data is not lost, but the canonical merged set used by
+    # ``contained_by`` lives on ``group.contains``.
+    subgroup_fields = (
+        data.get('contains', data.get('pars', [])),
+        data.get('part', []),
+        data.get('repeat', data.get('repetitio', data.get('arbitrary', []))),
+        data.get('always', data.get('semper', [])),
+        data.get('only', data.get('solum', [])),
+    )
+    merged: list[str] = []
+    seen: set[str] = set()
+    for src in subgroup_fields:
+        if isinstance(src, str):
+            src = [src]
+        if not src:
+            continue
+        for item in src:
+            # Some fields (e.g. ``always``) use [name, count] pairs; take
+            # the first element as the subgroup name.
+            if isinstance(item, (list, tuple)):
+                if not item:
+                    continue
+                item = item[0]
+            if not isinstance(item, str):
+                continue
+            if item in seen:
+                continue
+            seen.add(item)
+            merged.append(item)
+    group.contains = merged
+
     # ID prefix (signum)
     if 'idprefix' in data:
         group.idprefix = data['idprefix']
     if 'signum' in data:
         group.idprefix = data['signum']
-    
+
     # Order (ordo)
     order = data.get('order', data.get('ordo', ''))
     if order:
         group.order = order
-    
+
     # Identification (identificatio). Normalize YAML booleans to sic/non.
     ident = data.get('identification', data.get('identificatio', ''))
     if ident is True or str(ident).strip().lower() in ('yes', 'true', 'sic'):
@@ -309,34 +345,36 @@ def _set_group_properties(group: GroupDef, data: dict[str, Any], errors: ErrorAc
         group.identification = "non"
     elif ident:
         group.identification = ident
-    
+
     # Prefix (prae)
     if 'prefix' in data:
         group.prefix = data['prefix']
     if 'prae' in data:
         group.prefix = data['prae']
-    
+
     # Suffix (post)
     if 'suffix' in data:
         group.suffix = data['suffix']
     if 'post' in data:
         group.suffix = data['post']
-    
-    # Repeat (repetitio) - also called 'arbitrary'
+
+    # Repeat (repetitio) - also called 'arbitrary'.
+    # Populated for later-stage constraint work; entries are also part
+    # of group.contains via the merge above.
     repeat = data.get('repeat', data.get('repetitio', data.get('arbitrary', [])))
     if isinstance(repeat, str):
         group.repeat = [repeat]
     else:
         group.repeat = list(repeat) if repeat else []
-    
-    # Always (semper) - name/count pairs
+
+    # Always (semper) - name/count pairs.
     always = data.get('always', data.get('semper', []))
     if isinstance(always, str):
         group.always = [always]
     else:
         group.always = list(always) if always else []
-    
-    # Only (solum) - exclusive subgroups
+
+    # Only (solum) - exclusive subgroups.
     only = data.get('only', data.get('solum', []))
     if isinstance(only, str):
         group.only = [only]

@@ -1,0 +1,1241 @@
+Kleio Python vs Prolog semantic comparison (structural)
+Generated: 2026-07-11T21:43:39.906197
+Reference (Prolog): /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/reference_translations
+Test (Python)     : /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/test_translations
+Files considered  : 55
+==============================================================================
+
+[FAIL] bugs/bugs.xml — 8 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'bugs' != 'root-lin2-44' (normalized)
+    - fonte: element 'data' '2024' != None
+    - fonte: element 'date' '20240000' != None
+    - fonte: element 'obs' 'testing' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: child count 1 != 0
+
+[FAIL] identifications/mhk_identification_toliveira.xml — 260 difference(s)
+    - [0]/rperson: element 'user' 'toliveira' != None
+    - [0]/rperson: element 'description' 'Agostinho de Barros' != None
+    - [0]/rperson: element 'the_class' 'rperson' != None
+    - [0]/rperson: child count 0 != 2
+    - [1]/rperson: element 'user' 'toliveira' != None
+    - [1]/rperson: element 'description' 'Alessandro Cicero' != None
+    - [1]/rperson: element 'the_class' 'rperson' != None
+    - [1]/rperson: child count 0 != 4
+    - [2]/rperson: element 'user' 'toliveira' != None
+    - [2]/rperson: element 'description' 'Alessandro Valignano' != None
+    - [2]/rperson: element 'the_class' 'rperson' != None
+    - [2]/rperson: child count 0 != 4
+    - [3]/rperson: element 'user' 'toliveira' != None
+    - [3]/rperson: element 'description' 'Álvaro da Silveira' != None
+    - [3]/rperson: element 'the_class' 'rperson' != None
+    - [3]/rperson: child count 0 != 4
+    - [4]/rperson: element 'user' 'toliveira' != None
+    - [4]/rperson: element 'description' 'André da Costa' != None
+    - [4]/rperson: element 'the_class' 'rperson' != None
+    - [4]/rperson: child count 0 != 3
+    - [5]/rperson: element 'user' 'toliveira' != None
+    - [5]/rperson: element 'description' 'André Fernandes' != None
+    - [5]/rperson: element 'the_class' 'rperson' != None
+    - [5]/rperson: child count 0 != 3
+    - [6]/rperson: element 'user' 'toliveira' != None
+    ... and 235 more
+
+[FAIL] issues/issue21.xml — 9 difference(s)
+    - fonte: element 'tipo' None != '1973'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1973' != None
+    - [0]/obito: element 'date' '17401016' != None
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'maria' != None
+    - [0]/[0]/n: element 'name' None != 'maria'
+    - [0]/[0]/n: child count 2 != 0
+
+[FAIL] linked_data/dehergne-a.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-a' != 'kle-1-lin1' (normalized)
+    - fonte: element 'data' '1973' != None
+    - fonte: element 'loc' 'Online archive.org:details:bhsi37' != None
+    - fonte: element 'date' '19730000' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'tipo' 'Dicionário Biográfico' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'obs' 'Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973. Letra A' != None
+    - fonte: child count 3 != 0
+
+[FAIL] linked_data/dehergne-locations-1644.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-locations-1644' != 'kle-1-lin1' (normalized)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'substitui' 'dehergne-map-1644' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'year' '1644' != None
+    - fonte: element 'tipo' 'geoinformation' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'obs' '"""\n      Planche: Carte des Chrétientés Chinoises de la fin des Ming (1644).p. 353\n\n      _Diocèse_\n      Depuis 1514, l\'évêché de Funchal (île de Madère)\n      s\'étend jusqu\'aux extrémi-\n      tés de l\'Asie. Depuis le 3 nov. 1534 est\n      créé l\'évêché de Goa, dont est déta-\n      ché, le 23 janv. 1576, le diocèse de\n      Macao, qui sera amputé, 14 février\n      1588, du Japon (évêché de Funai):\n      l\'évêché de Macao comprend théori-\n      quement tout l\'empire de Chine.\n\n      _Provinces Jésuites_\n\n      la vice-province du Japon (province en\n      1611); en 1623, la vice-province de Chine\n      indépendante du Japon en est déta-\n      chée; mais un visiteur jésuite contrôle\n      l\'une et l\'autre.\n\n      La Chine impériale distingue dans chaque province civile les _fou_, préfec-\n      tures ou villes de premier ordre, dont dépendent les _tcheou_ et les _hien_. D\'au-\n      tres agglomérations importantes comme Tientsin (alors wei) ou encore Amoy\n      et Fatshan n\'ont pas reçu le titre de hien. Dans notre tableau, les villes autres\n      que les fou sont mises en italiques, et la capitale de chaque province, en\n      majuscule. Sur la carte, nous mettons en lettres majuscules les seuls fou et\n      tcheou possédant une chrétienté (pour les tcheou, majuscules penchées); les\n      hien, en lettres ordinaires, et nous n\'inscrivons (en petites lettres) que les\n      bourgs et demeures chrétiennes antérieures à la persécution de 1615.\n         Pour les jésuites de l\'époque, le mot collège désigne une résidence prin-\n      cipale d\'où dépendent (d\'un point de vue économique beaucoup plus que juri-\n      dique), un certain nombre de petites résidences qui lui sont rattachées. La\n      carte, qui accompagne ces pages comme celle des résidences en 1701, est due au\n      Père Pierre Moreau, SJ., et nous lui exprimons ici nos remerciements.\n         Une résidence est une maison propriété de la mission: elle est soit occupée\n      par un ou plusieurs missionnaire (ici: R) ou cette anné-là, sans prêtre\n      à demeure (R\'); tandis que le mot église s\'applique à une chapelle, un oratoire\n      ou un temple plus important ; d\'autres fois, le prêtre dit la messe chez des fidè-\n      les, dans leur propre maison. Toute résidence possède une église ou oratoire.\n      Sur la carte, les Résidences sont marquées par un cercle. Résidences et chré-\n      tientés sont, à l\'époque, presque toutes aux Jésuites. Dans le cas contraire,\n      nous faisons suivre le nom de la localité de la mention de l\'Ordre qui les pos-\n      sède: (OP), Dominicains; (OFM), Franciscains; (OESA), Augustins.\n         On observera que le cours du Fleuve Jaune n\'était pas le même qu\'actuel-\n      lement, et que les chrétientés se sont développées le long des grandes routes\n      (le fait est frappant pour la région du Kiangnan). Pour les chrétientés an-\n      ciennes des Ming voir aussi MS XVI, 1957 (avec carte en couleurs).\n\n      N.B. N.B. Pour compléter ce tableau des antiquités chrétiennes de la Chine, rap-\n      pelons qu\'en Mongolie à Olon-Sume, ancienne capitale des Ongiit nestoriens,\n      il y eut, outre une église nestorienne, une église catholique de Giovanni de Mon-\n      tecorvino (1247-1328) « le plus ancien exemple de sanctuaire catholique en Ex-\n      trême-Orient » Egami, Namio dans Journal Asiatique, CCXL 1952, 155-167 cf NZM\n      1954, p. 56); du même, Découverte \'l\'église romaine\' établie au XIII\' siècle\n      en Mongolie, Conferenze, Rome, 1955, 41-55; cf BernahdC-Maitrb], Henri, La dé-\n      couverte des Nestoriens Mongols aux Ordos et l\'Histoire ancienne du Christia-\n      nisme en Extrême-Orient, Tientsin, 1935. — Les ruines de l\'église franciscaine\n      de Nankin au XIV* siècle ont été décrites par Prip-Molleb dans la revue\n      danoise Artes; résumé dans Chinese Recorder, 1935, 654-656 et hors-texte 641.\n      Etc.\n\n      NOTA TRANSCRIÇÃO\n\n      "geo1$ = Provincia"\n      "geo2$ = fou (perfeitura ou cidade de 1ª ordem)"\n      "geo3$ = tcheou-hien"\n\n      Em cada entrada o formato é\n\n         "geoN$Nome geográfico/Tipo (província, fou, tcheou-hien)/id=deh-r1644-nome"\n\n      Exº\n         "geo1$Chekiang#Zhejiang/província/deh-r1644-chekiang"\n         "geo2$Hangchou#Hangzhou/capital provincial/deh-r1644-hangzhou"\n         "geo3$Fuyang/tchou-hien/deh-r1644-fuyang"\n\n      Nos locais onde há presença de missionários:\n\n         "atr$residencia-missao/Jesuíta/16110000 (onde aparece R)"\n         "atr$residencia-missao/Dominicanos%OP/16560000"\n                        (quando passa a residência de outra ordem\n                         ver abreviaturas na legenda do mapa, exº p.354 em Kinhua)\n         "atr$activa/sim/16110000"         (onde só aparece uma data)\n\n      edited by Skye\n      and Joaquim Carvalho\n      and Alicia\n      """' != None
+    - fonte: child count 1 != 0
+
+[FAIL] linked_data/linked-datanw.xml — 8 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1973' != None
+    - [0]/lista: element 'date' '0' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'Giulio Aleni' != None
+    - [0]/[0]/n: element 'name' None != 'Giulio Aleni'
+    - [0]/[0]/n: child count 2 != 0
+
+[FAIL] linked_data/multiplelinks.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'multiplelinks' != 'kle-1-lin1' (normalized)
+    - fonte: element 'loc' 'Internet Archive' != None
+    - fonte: element 'date' '0' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'year' '1973' != None
+    - fonte: element 'tipo' 'Dicionário Biográfico' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'obs' 'Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973.' != None
+    - fonte: child count 3 != 0
+
+[SKIP] locate_stru_file/default-stru.xml — no Python XML at default-stru.xml
+
+[FAIL] notariais/docsregiospontepisc.xml — 52 difference(s)
+    - fonte: element 'date' '17800000' != None
+    - [0]/docregio: element 'date' '17800101' != None
+    - [0]/docregio: element 'type' 'docregio' != None
+    - [0]/[0]/item: element 'type' 'item' != None
+    - [0]/[0]/item: child count 1 != 0
+    - [0]/[1]/autor: element 'sex' 'm' != None
+    - [0]/[1]/autor: child count 1 != 0
+    - [0]/[2]/destinatario: element 'sex' 'm' != None
+    - [0]/[2]/destinatario: child count 1 != 0
+    - [0]/[3]/beneficiario: element 'sex' 'm' != None
+    - [0]/[3]/beneficiario: child count 1 != 0
+    - [0]/[4]/bem: id 'docreg-1-obj1-3' != 'docreg-1-bem1' (normalized)
+    - [0]/[4]/bem: element 'type' 'bem' != None
+    - [0]/[4]/bem: child count 1 != 0
+    - [1]/docpontificio: element 'date' '13400101' != None
+    - [1]/docpontificio: element 'type' 'docpontificio' != None
+    - [1]/docpontificio: child count 4 != 5
+    - [1]/[0]/item: element 'type' 'item' != None
+    - [1]/[0]/item: child count 1 != 0
+    - [1]/[1]/autor: element 'sex' 'm' != None
+    - [1]/[1]/autor: child count 2 != 1
+    - [1]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [1]/[1]/[0]/relation: id 'docpapal-1-rela7' != 'docpapal-1-per1-att1' (normalized)
+    - [1]/[1]/[0]/relation: element 'value' 'autor' != 'papa'
+    - [1]/[1]/[0]/relation: element 'date' '13400101' != None
+    ... and 27 more
+
+[FAIL] notariais/notarial80.xml — 4056 difference(s)
+    - fonte: element 'date' '17800000' != None
+    - [0]/escritura: element 'date' '17800116' != None
+    - [0]/escritura: element 'type' 'escritura' != None
+    - [0]/[0]/compradora: element 'sex' 'f' != None
+    - [0]/[0]/compradora: child count 4 != 3
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'not1780-e1-rela1' != 'not1780-e1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'compradora' != 'val de ferro'
+    - [0]/[0]/[0]/relation: element 'date' '17800116' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[0]/[0]/relation: element 'destname' 'escritura' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'not1780-e1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'not1780-e1' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'val de ferro' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'v'
+    - [0]/[0]/[1]/ls: element 'date' '17800116' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'not1780-e1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'ec'
+    - [0]/[0]/[1]/ls: element 'tipo' 'residencia' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'valor' 'v' != None
+    - [0]/[0]/[2]/ls: element 'value' None != 'nao'
+    - [0]/[0]/[2]/ls: element 'date' '17800116' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'not1780-e1-per1' != None
+    - [0]/[0]/[2]/ls: element 'type' None != 'assina'
+    ... and 4031 more
+
+[FAIL] notariais/notlousa1.xml — 5280 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1728' != None
+    - fonte: element 'tipo' None != '1728'
+    - fonte: element 'loc' None != 'notariais'
+    - fonte: element 'type' 'notariais' != None
+    - [0]/escritura: element 'date' '17280522' != None
+    - [0]/escritura: element 'type' 'escritura' != None
+    - [0]/[0]/credor: element 'sex' 'm' != None
+    - [0]/[0]/credor: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[0]/[0]/relation: id 'lnot95-1-rela1' != 'lnot95-1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'credor' != 'foz de arouce'
+    - [0]/[0]/[0]/relation: element 'date' '17280522' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[0]/[0]/relation: element 'destname' 'escritura' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'lnot95-1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'lnot95-1' != None
+    - [0]/[1]/devedor: element 'sex' 'm' != None
+    - [0]/[1]/devedor: child count 2 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[1]/[0]/relation: id 'lnot95-1-rela2' != 'lnot95-1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'devedor' != 'alca perna'
+    - [0]/[1]/[0]/relation: element 'date' '17280522' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[1]/[0]/relation: element 'destname' 'escritura' != None
+    ... and 5255 more
+
+[FAIL] notariais/perdoes.xml — 6742 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '0' != None
+    - fonte: element 'tipo' None != '0'
+    - fonte: element 'loc' None != 'perdoes'
+    - fonte: element 'type' 'perdoes' != None
+    - [0]/cartaperdao: element 'date' '15951204' != None
+    - [0]/cartaperdao: element 'type' 'cartaperdao' != None
+    - [0]/[0]/perdoante: element 'sex' 'm' != None
+    - [0]/[0]/perdoante: child count 6 != 5
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id '14g61-rela1' != '14g61-perd1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'perdoante' != 'quinta da freiria'
+    - [0]/[0]/[0]/relation: element 'date' '15951204' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[0]/[0]/relation: element 'destname' 'cartaperdao' != None
+    - [0]/[0]/[0]/relation: element 'origin' '14g61-perd1' != None
+    - [0]/[0]/[0]/relation: element 'destination' '14g61' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'quinta da freiria' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'caseiro'
+    - [0]/[0]/[1]/ls: element 'date' '15951204' != None
+    - [0]/[0]/[1]/ls: element 'entity' '14g61-perd1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'profissao'
+    - [0]/[0]/[1]/ls: element 'tipo' 'residencia' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'valor' 'caseiro' != None
+    ... and 6717 more
+
+[FAIL] paroquiais/baptismos/bap-com-celebrantes.xml — 173 difference(s)
+    - fonte: id 'lousa-bap-com-celebrantes' != 'bap-com-celebrantes' (normalized)
+    - fonte: element 'date' '0' != None
+    - [0]/bap: id 'lousa-b1714-1' != 'b1714-1' (normalized)
+    - [0]/bap: element 'date' '17140106' != None
+    - [0]/bap: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/bap: element 'local' None != 'igreja de sao silvestre'
+    - [0]/bap: element 'type' 'bap' != None
+    - [0]/bap: child count 10 != 6
+    - [0]/[0]/celebrante: id 'lousa-b1714-1-per1' != 'b1714-1-per1' (normalized)
+    - [0]/[0]/celebrante: element 'sex' 'm' != None
+    - [0]/[0]/celebrante: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'lousa-b1714-1-rela1' != 'b1714-1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'celebrante' != 'padre'
+    - [0]/[0]/[0]/relation: element 'date' '17140106' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'profissao'
+    - [0]/[0]/[0]/relation: element 'destname' 'bap' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'lousa-b1714-1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'lousa-b1714-1' != None
+    - [0]/[1]/n: id 'lousa-b1714-1-per1b' != 'b1714-1-per1b' (normalized)
+    - [0]/[1]/n: element 'sexo' 'f' != None
+    - [0]/[1]/n: element 'nome' 'filipa' != None
+    - [0]/[1]/n: element 'name' None != 'filipa'
+    - [0]/[1]/n: child count 6 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    ... and 148 more
+
+[FAIL] paroquiais/baptismos/bapt1714.xml — 3157 difference(s)
+    - fonte: id 'lousa-bapt1714' != 'bapt1714' (normalized)
+    - fonte: element 'date' '0' != None
+    - [0]/bap: id 'lousa-b1714-1' != 'b1714-1' (normalized)
+    - [0]/bap: element 'date' '17140106' != None
+    - [0]/bap: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/bap: element 'local' None != 'igreja de sao silvestre'
+    - [0]/bap: element 'type' 'bap' != None
+    - [0]/bap: child count 10 != 6
+    - [0]/[0]/celebrante: id 'lousa-b1714-1-per1-2' != 'b1714-1-per1-2' (normalized)
+    - [0]/[0]/celebrante: element 'sex' 'm' != None
+    - [0]/[0]/celebrante: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'lousa-b1714-1-rela1' != 'b1714-1-per1-2-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'celebrante' != 'padre'
+    - [0]/[0]/[0]/relation: element 'date' '17140106' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'profissao'
+    - [0]/[0]/[0]/relation: element 'destname' 'bap' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'lousa-b1714-1-per1-2' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'lousa-b1714-1' != None
+    - [0]/[1]/n: id 'lousa-b1714-1-per1' != 'b1714-1-per1' (normalized)
+    - [0]/[1]/n: element 'sexo' 'f' != None
+    - [0]/[1]/n: element 'nome' 'filipa' != None
+    - [0]/[1]/n: element 'name' None != 'filipa'
+    - [0]/[1]/n: child count 6 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    ... and 3132 more
+
+[SKIP] paroquiais/baptismos/bapteirasproblem1.xml — no Python XML at bapteirasproblem1.xml
+
+[SKIP] paroquiais/baptismos/bapteirasproblem2.xml — no Python XML at bapteirasproblem2.xml
+
+[FAIL] paroquiais/baptismos/bug_mesmo_que.xml — 18 difference(s)
+    - fonte: element 'date' '20240000' != None
+    - [0]/b: element 'date' '17590213' != None
+    - [0]/b: element 'dian' 'vigario luis barreto de figueiredo castilho' != None
+    - [0]/b: element 'type' 'b' != None
+    - [0]/b: element 'UNDEFINED' None != 'vigario luis barreto de figueiredo castilho'
+    - [0]/b: child count 1 != 10
+    - [0]/[0]/n: element 'nome' 'joaquim' != None
+    - [0]/[0]/n: element 'sexo' 'm' != None
+    - [0]/[0]/n: element 'name' None != 'joaquim'
+    - [0]/[0]/n: child count 6 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'b1759.514-rela1' != 'b1759.514-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != '17590205'
+    - [0]/[0]/[0]/relation: element 'date' '17590213' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'datanasc'
+    - [0]/[0]/[0]/relation: element 'destname' 'b' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'b1759.514-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'b1759.514' != None
+
+[FAIL] paroquiais/baptismos/lousa-bap-encadeado.xml — 32 difference(s)
+    - fonte: id 'lousa-bap-encadeado' != 'bap-encadeado' (normalized)
+    - fonte: element 'date' '0' != None
+    - [0]/bap: id 'lousa-b1714-1' != 'b1714-1' (normalized)
+    - [0]/bap: element 'date' '17140106' != None
+    - [0]/bap: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/bap: element 'local' None != 'igreja de sao silvestre'
+    - [0]/bap: element 'type' 'bap' != None
+    - [0]/[0]/n: id 'lousa-b1714-1-per1b' != 'b1714-1-per1b' (normalized)
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'filipa' != None
+    - [0]/[0]/n: element 'name' None != 'filipa'
+    - [0]/[0]/n: child count 1 != 0
+    - [1]/bap: id 'lousa-b1714-2' != 'b1714-2' (normalized)
+    - [1]/bap: element 'loc' 'manuel lopes serra (padre)' != None
+    - [1]/bap: element 'date' '0' != None
+    - [1]/bap: element 'local' None != 'manuel lopes serra (padre)'
+    - [1]/bap: element 'type' 'bap' != None
+    - [1]/[0]/n: id 'lousa-b1714-2-per1b' != 'b1714-2-per1b' (normalized)
+    - [1]/[0]/n: element 'sexo' 'f' != None
+    - [1]/[0]/n: element 'nome' 'francisca' != None
+    - [1]/[0]/n: element 'name' None != 'francisca'
+    - [1]/[0]/n: child count 1 != 0
+    - [2]/bap: id 'lousa-b1714-3' != 'b1714-3' (normalized)
+    - [2]/bap: element 'date' '17140117' != None
+    - [2]/bap: element 'loc' 'igreja de sao silvestre' != None
+    ... and 7 more
+
+[FAIL] paroquiais/baptismos/rogeriodomingos_bap_problem.xml — 13 difference(s)
+    - fonte: id 'rd-rogeriodomingos_bap_problem' != 'rogeriodomingos_bap_problem' (normalized)
+    - fonte: element 'date' '0' != None
+    - [0]/bap: id 'rd-b1714-1b' != 'b1714-1b' (normalized)
+    - [0]/bap: element 'date' '17140106' != None
+    - [0]/bap: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/bap: element 'local' None != 'igreja de sao silvestre'
+    - [0]/bap: element 'type' 'bap' != None
+    - [0]/bap: child count 1 != 5
+    - [0]/[0]/n: id 'rd-b1714-1b-per1' != 'b1714-1b-per1' (normalized)
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'antonio' != None
+    - [0]/[0]/n: element 'name' None != 'antonio'
+    - [0]/[0]/n: child count 3 != 0
+
+[FAIL] paroquiais/casamentos/cas1714-1722-com-celebrante.xml — 149 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' 'localizacao-a.u.c.' != None
+    - [0]/cas: element 'date' '17140208' != None
+    - [0]/cas: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/cas: element 'local' None != 'igreja de sao silvestre'
+    - [0]/cas: element 'type' 'cas' != None
+    - [0]/cas: child count 14 != 7
+    - [0]/[0]/celebrante: element 'sex' 'm' != None
+    - [0]/[0]/celebrante: child count 1 != 0
+    - [0]/[1]/noivo: element 'sex' 'm' != None
+    - [0]/[1]/noivo: child count 3 != 0
+    - [0]/[2]/noiva: group name 'noiva' != 'pnoivo'
+    - [0]/[2]/noiva: element 'sex' 'f' != None
+    - [0]/[2]/noiva: element 'nome' 'ana fernandes' != 'pedro martins'
+    - [0]/[2]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[2]/[0]/relation: id 'c1714-1-rela5' != 'c1714-1-per3-att1' (normalized)
+    - [0]/[2]/[0]/relation: element 'value' 'noiva' != 'antes'
+    - [0]/[2]/[0]/relation: element 'date' '17140208' != None
+    - [0]/[2]/[0]/relation: element 'type' 'function-in-act' != 'morto'
+    - [0]/[2]/[0]/relation: element 'destname' 'cas' != None
+    - [0]/[2]/[0]/relation: element 'origin' 'c1714-1-per5' != None
+    - [0]/[2]/[0]/relation: element 'destination' 'c1714-1' != None
+    - [0]/[2]/[1]/pnoiva: group name 'pnoiva' != 'ls'
+    - [0]/[2]/[1]/pnoiva: id 'c1714-1-per6' != 'c1714-1-per3-att2' (normalized)
+    - [0]/[2]/[1]/pnoiva: element 'sex' 'm' != None
+    ... and 124 more
+
+[FAIL] paroquiais/casamentos/cas1714-1722.xml — 8648 difference(s)
+    - fonte: element 'tipo' None != 'localizacao-a.u.c.'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' 'localizacao-a.u.c.' != None
+    - [0]/cas: element 'date' '17140208' != None
+    - [0]/cas: element 'loc' 'igreja de sao silvestre' != None
+    - [0]/cas: element 'local' None != 'igreja de sao silvestre'
+    - [0]/cas: element 'type' 'cas' != None
+    - [0]/cas: child count 11 != 6
+    - [0]/[0]/noivo: element 'sex' 'm' != None
+    - [0]/[0]/noivo: child count 3 != 0
+    - [0]/[1]/noiva: group name 'noiva' != 'pnoivo'
+    - [0]/[1]/noiva: element 'sex' 'f' != None
+    - [0]/[1]/noiva: element 'nome' 'ana fernandes' != 'pedro martins'
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'c1714-1-rela4' != 'c1714-1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'noiva' != 'antes'
+    - [0]/[1]/[0]/relation: element 'date' '17140208' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'morto'
+    - [0]/[1]/[0]/relation: element 'destname' 'cas' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'c1714-1-per4' != None
+    - [0]/[1]/[0]/relation: element 'destination' 'c1714-1' != None
+    - [0]/[1]/[1]/pnoiva: group name 'pnoiva' != 'ls'
+    - [0]/[1]/[1]/pnoiva: id 'c1714-1-per5' != 'c1714-1-per2-att2' (normalized)
+    - [0]/[1]/[1]/pnoiva: element 'sex' 'm' != None
+    - [0]/[1]/[1]/pnoiva: element 'value' None != 'prilhao'
+    ... and 8623 more
+
+[FAIL] paroquiais/crisma/crisma1753.xml — 34 difference(s)
+    - fonte: id 'quelfes-crisma1753' != 'crisma1753' (normalized)
+    - fonte: element 'date' '17531228' != None
+    - [0]/crisma: id 'quelfes-cr1753' != 'cr1753' (normalized)
+    - [0]/crisma: element 'date' '17531228' != None
+    - [0]/crisma: element 'type' 'crisma' != None
+    - [0]/crisma: child count 4 != 18
+    - [0]/[0]/n: id 'quelfes-cr1753-per1' != 'cr1753-per1' (normalized)
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'joana' != None
+    - [0]/[0]/n: element 'name' None != 'joana'
+    - [0]/[0]/n: child count 4 != 0
+    - [0]/[1]/n: group name 'n' != 'pai'
+    - [0]/[1]/n: id 'quelfes-cr1753-per6' != 'cr1753-per1-per2' (normalized)
+    - [0]/[1]/n: element 'sex' 'm' != None
+    - [0]/[1]/n: element 'nome' 'antónio' != 'domingos gomes'
+    - [0]/[1]/n: child count 4 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'quelfes-cr1753-rela6' != 'cr1753-per1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'n' != 'quelfes'
+    - [0]/[1]/[0]/relation: element 'date' '17531228' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[1]/[0]/relation: element 'destname' 'crisma' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'quelfes-cr1753-per6' != None
+    - [0]/[1]/[0]/relation: element 'destination' 'quelfes-cr1753' != None
+    - [0]/[2]/n: group name 'n' != 'mae'
+    ... and 9 more
+
+[FAIL] paroquiais/obitos/ob1688.xml — 1596 difference(s)
+    - fonte: element 'date' '16880000' != None
+    - [0]/o: element 'date' '16880101' != None
+    - [0]/o: element 'type' 'o' != None
+    - [0]/o: child count 5 != 3
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'antonia francisca' != None
+    - [0]/[0]/n: element 'name' None != 'antonia francisca'
+    - [0]/[0]/n: child count 4 != 2
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'obitos 1688-his1-rela1' != 'obitos 1688-his1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'v'
+    - [0]/[0]/[0]/relation: element 'date' '16880101' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'ec'
+    - [0]/[0]/[0]/relation: element 'destname' 'o' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'obitos 1688-his1' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'v' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'mogadouro'
+    - [0]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'residencia'
+    - [0]/[0]/[1]/ls: element 'tipo' 'ec' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/locs: group name 'locs' != 'marido'
+    - [0]/[1]/locs: id 'obitos 1688-his1-gro1' != 'obitos 1688-his1-per1-per2' (normalized)
+    ... and 1571 more
+
+[FAIL] paroquiais/obitos/ob1688b.xml — 1596 difference(s)
+    - fonte: element 'date' '16880000' != None
+    - [0]/o: element 'date' '16880101' != None
+    - [0]/o: element 'type' 'o' != None
+    - [0]/o: child count 5 != 3
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'antonia francisca' != None
+    - [0]/[0]/n: element 'name' None != 'antonia francisca'
+    - [0]/[0]/n: child count 4 != 2
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'obitos 1688-his1-rela1' != 'obitos 1688-his1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'v'
+    - [0]/[0]/[0]/relation: element 'date' '16880101' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'ec'
+    - [0]/[0]/[0]/relation: element 'destname' 'o' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'obitos 1688-his1' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'v' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'mogadouro'
+    - [0]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'residencia'
+    - [0]/[0]/[1]/ls: element 'tipo' 'ec' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/locs: group name 'locs' != 'marido'
+    - [0]/[1]/locs: id 'obitos 1688-his1-gro1' != 'obitos 1688-his1-per1-per2' (normalized)
+    ... and 1571 more
+
+[FAIL] paroquiais/obitos/obit1714.xml — 712 difference(s)
+    - fonte: element 'tipo' None != 'localizacao-A.U.C.'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' 'localizacao-A.U.C.' != None
+    - [0]/obito: element 'date' '17140130' != None
+    - [0]/obito: element 'local' None != 'manuel lopes serra (prior)'
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: element 'celebrante' 'manuel lopes serra (prior)' != None
+    - [0]/obito: child count 5 != 4
+    - [0]/[0]/n: element 'sexo' 'm' != None
+    - [0]/[0]/n: element 'nome' 'manuel quaresma' != None
+    - [0]/[0]/n: element 'name' None != 'manuel quaresma'
+    - [0]/[0]/n: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'o1714-1-rela1' != 'o1714-1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'ribeira'
+    - [0]/[0]/[0]/relation: element 'date' '17140130' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'morada'
+    - [0]/[0]/[0]/relation: element 'destname' 'obito' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'o1714-1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'o1714-1' != None
+    - [0]/[1]/sacr: id 'o1714-1-gro1' != 'o1714-1-sac1' (normalized)
+    - [0]/[2]/testamento: id 'o1714-1-gro2' != 'o1714-1-tst1' (normalized)
+    - [0]/[3]/locs: id 'o1714-1-gro3' != 'o1714-1-lcs1' (normalized)
+    - [1]/obito: element 'date' '17140205' != None
+    - [1]/obito: element 'local' None != 'manuel lopes serra (prior)'
+    ... and 687 more
+
+[FAIL] paroquiais/obitos/obiteirasproblem.xml — 1713 difference(s)
+    - fonte: element 'tipo' None != '1740-1745'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1740-1745' != None
+    - [0]/obito: element 'date' '17400123' != None
+    - [0]/obito: element 'local' None != 'vigario fabiao soares paredes'
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: element 'celebrante' 'vigario fabiao soares paredes' != None
+    - [0]/obito: child count 8 != 4
+    - [0]/[0]/n: id 'o1740.1-per1' != 'o1740.1-mper1' (normalized)
+    - [0]/[0]/n: element 'nome' 'maria' != None
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'name' None != 'maria'
+    - [0]/[0]/n: child count 3 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'o1740.1-rela1' != 'o1740.1-mper1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'eiras'
+    - [0]/[0]/[0]/relation: element 'date' '17400123' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'naturalidade'
+    - [0]/[0]/[0]/relation: element 'destname' 'obito' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'o1740.1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'o1740.1' != None
+    - [0]/[1]/locs: group name 'locs' != 'pai'
+    - [0]/[1]/locs: id 'o1740.1-gro1' != 'o1740.1-mper1' (normalized)
+    - [0]/[1]/locs: element 'value' 'igreja matriz de eiras' != None
+    - [0]/[1]/locs: element 'nome' None != 'manuel bernardes'
+    ... and 1688 more
+
+[FAIL] paroquiais/obitos/obitoShort.xml — 29 difference(s)
+    - fonte: id 'soure-obitoShort' != 'obitoShort' (normalized)
+    - fonte: element 'date' '16880000' != None
+    - [0]/obito: id 'soure-o1740.12' != 'o1740.12' (normalized)
+    - [0]/obito: element 'date' '17401007' != None
+    - [0]/obito: element 'local' None != 'vigario fabiao soares paredes'
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: element 'celebrante' 'vigario fabiao soares paredes' != None
+    - [0]/obito: child count 4 != 6
+    - [0]/[0]/n: id 'soure-1740-o12-luisa' != '1740-o12-luisa' (normalized)
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'luisa gomes' != None
+    - [0]/[0]/n: element 'name' None != 'luisa gomes'
+    - [0]/[0]/n: child count 3 != 0
+    - [0]/[1]/locs: group name 'locs' != 'referido'
+    - [0]/[1]/locs: id 'soure-o1740.12-gro1' != '1740-o12-luisa-per1' (normalized)
+    - [0]/[1]/locs: element 'value' 'igreja matriz de s. martinho da torre' != None
+    - [0]/[1]/locs: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[1]/locs: element 'nome' None != 'antonio da cunha roxo'
+    - [0]/[1]/locs: child count 0 != 3
+    - [0]/[2]/sacr: group name 'sacr' != 'marido'
+    - [0]/[2]/sacr: id 'soure-o1740.12-gro2' != '1740-o12-luisa-per2' (normalized)
+    - [0]/[2]/sacr: element 'value' 'sim' != None
+    - [0]/[2]/sacr: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[2]/sacr: element 'nome' None != 'manuel gomes da costa'
+    - [0]/[2]/sacr: child count 0 != 1
+    ... and 4 more
+
+[FAIL] paroquiais/obitos/obitoShort_id.xml — 29 difference(s)
+    - fonte: id 'soure-obitoShort_id' != 'obitoShort_id' (normalized)
+    - fonte: element 'date' '16880000' != None
+    - [0]/obito: id 'soure-obitoShort_id_id' != 'obitoShort_id_id' (normalized)
+    - [0]/obito: element 'date' '17401007' != None
+    - [0]/obito: element 'local' None != 'vigario fabiao soares paredes'
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: element 'celebrante' 'vigario fabiao soares paredes' != None
+    - [0]/obito: child count 4 != 6
+    - [0]/[0]/n: id 'soure-1740-o12-luisa' != '1740-o12-luisa' (normalized)
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'luisa gomes' != None
+    - [0]/[0]/n: element 'name' None != 'luisa gomes'
+    - [0]/[0]/n: child count 3 != 0
+    - [0]/[1]/locs: group name 'locs' != 'referido'
+    - [0]/[1]/locs: id 'soure-obitoShort_id_id-gro1' != '1740-o12-luisa-per1' (normalized)
+    - [0]/[1]/locs: element 'value' 'igreja matriz de s. martinho da torre' != None
+    - [0]/[1]/locs: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[1]/locs: element 'nome' None != 'antonio da cunha roxo'
+    - [0]/[1]/locs: child count 0 != 3
+    - [0]/[2]/sacr: group name 'sacr' != 'marido'
+    - [0]/[2]/sacr: id 'soure-obitoShort_id_id-gro2' != '1740-o12-luisa-per2' (normalized)
+    - [0]/[2]/sacr: element 'value' 'sim' != None
+    - [0]/[2]/sacr: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[2]/sacr: element 'nome' None != 'manuel gomes da costa'
+    - [0]/[2]/sacr: child count 0 != 1
+    ... and 4 more
+
+[FAIL] paroquiais/obitos/obitoShort_id_id.xml — 33 difference(s)
+    - fonte: id 'soure-obitoShort_id_id' != 'obitoShort_id_id' (normalized)
+    - fonte: element 'date' '16880000' != None
+    - [0]/obito: id 'soure-o1740.12' != 'o1740.12' (normalized)
+    - [0]/obito: element 'date' '17401007' != None
+    - [0]/obito: element 'local' None != 'vigario fabiao soares paredes'
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: element 'celebrante' 'vigario fabiao soares paredes' != None
+    - [0]/obito: child count 3 != 5
+    - [0]/[0]/n: id 'soure-1740-o12-luisa' != '1740-o12-luisa' (normalized)
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'luisa gomes' != None
+    - [0]/[0]/n: element 'name' None != 'luisa gomes'
+    - [0]/[0]/n: child count 3 != 0
+    - [0]/[1]/locs: group name 'locs' != 'referido'
+    - [0]/[1]/locs: id 'soure-o1740.12-gro1' != '1740-o12-luisa-per1' (normalized)
+    - [0]/[1]/locs: element 'value' 'igreja matriz de s. martinho da torre' != None
+    - [0]/[1]/locs: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[1]/locs: element 'nome' None != 'antonio da cunha roxo'
+    - [0]/[1]/locs: child count 0 != 3
+    - [0]/[2]/sacr: group name 'sacr' != 'marido'
+    - [0]/[2]/sacr: id 'soure-o1740.12-gro2' != '1740-o12-luisa-per2' (normalized)
+    - [0]/[2]/sacr: element 'value' 'sim' != None
+    - [0]/[2]/sacr: element 'obs' None != 'teve filhos com luisa gomes'
+    - [0]/[2]/sacr: element 'nome' None != 'manuel gomes da costa'
+    - [0]/[2]/sacr: child count 4 != 1
+    ... and 8 more
+
+[FAIL] paroquiais/obitos/testeParentescos.xml — 109 difference(s)
+    - fonte: element 'date' '16880000' != None
+    - [0]/obito: element 'date' '16880101' != None
+    - [0]/obito: element 'type' 'obito' != None
+    - [0]/obito: child count 7 != 5
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'nome' 'antonia francisca' != None
+    - [0]/[0]/n: element 'name' None != 'antonia francisca'
+    - [0]/[0]/n: child count 1 != 0
+    - [0]/[1]/causa: id 'ox-1-gro1' != 'ox-1-cau1' (normalized)
+    - [0]/[2]/locf: id 'ox-1-gro2' != 'ox-1-lcf1' (normalized)
+    - [0]/[3]/pai: element 'sex' 'm' != None
+    - [0]/[3]/pai: child count 3 != 2
+    - [0]/[3]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[3]/[0]/relation: id 'ox-1-rela2' != 'ox-1-per2-att1' (normalized)
+    - [0]/[3]/[0]/relation: element 'value' 'pai' != 'mogadouro'
+    - [0]/[3]/[0]/relation: element 'date' '16880101' != None
+    - [0]/[3]/[0]/relation: element 'type' 'function-in-act' != 'residencia'
+    - [0]/[3]/[0]/relation: element 'destname' 'obito' != None
+    - [0]/[3]/[0]/relation: element 'origin' 'ox-1-per2' != None
+    - [0]/[3]/[0]/relation: element 'destination' 'ox-1' != None
+    - [0]/[3]/[1]/ls: element 'valor' 'mogadouro' != None
+    - [0]/[3]/[1]/ls: element 'value' None != 'antes'
+    - [0]/[3]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[3]/[1]/ls: element 'entity' 'ox-1-per2' != None
+    - [0]/[3]/[1]/ls: element 'type' None != 'morto'
+    ... and 84 more
+
+[FAIL] roisdeconfessados/coja-rol-1841.xml — 6918 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1841' != None
+    - fonte: element 'tipo' None != '1841'
+    - fonte: element 'loc' None != 'rol de confessados'
+    - fonte: element 'type' 'rol de confessados' != None
+    - [0]/rol: element 'date' '18410928' != None
+    - [0]/rol: element 'type' 'rol' != None
+    - [0]/rol: child count 380 != 1617
+    - [0]/[0]/fogo: element 'type' 'fogo' != None
+    - [0]/[0]/fogo: child count 2 != 3
+    - [0]/[0]/[0]/relation: group name 'relation' != 'n'
+    - [0]/[0]/[0]/relation: id 'rol1-rela1' != 'fogo1-per7' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'fogo' != None
+    - [0]/[0]/[0]/relation: element 'sex' None != 'm'
+    - [0]/[0]/[0]/relation: element 'date' '18410928' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != None
+    - [0]/[0]/[0]/relation: element 'name' None != 'luciano jose pereira'
+    - [0]/[0]/[0]/relation: element 'destname' 'rol' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'fogo1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'rol1' != None
+    - [0]/[0]/[0]/relation: child count 0 != 3
+    - [0]/[0]/[1]/n: group name 'n' != 'criada'
+    - [0]/[0]/[1]/n: element 'sexo' 'm' != 'f'
+    - [0]/[0]/[1]/n: element 'sex' 'm' != None
+    - [0]/[0]/[1]/n: element 'nome' 'luciano jose pereira' != 'luisa'
+    ... and 6893 more
+
+[FAIL] roisdeconfessados/rol1.xml — 1941 difference(s)
+    - fonte: element 'date' '17750505' != None
+    - [0]/rol: element 'date' '17750505' != None
+    - [0]/rol: element 'type' 'rol' != None
+    - [0]/rol: child count 208 != 609
+    - [0]/[0]/fogo: element 'type' 'fogo' != None
+    - [0]/[0]/fogo: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'n'
+    - [0]/[0]/[0]/relation: id 'r1775-rela1' != 'r1775-f1-per1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'fogo' != None
+    - [0]/[0]/[0]/relation: element 'sex' None != 'm'
+    - [0]/[0]/[0]/relation: element 'date' '17750505' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != None
+    - [0]/[0]/[0]/relation: element 'name' None != 'manuel alvares da cruz'
+    - [0]/[0]/[0]/relation: element 'destname' 'rol' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'r1775-f1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'r1775' != None
+    - [0]/[0]/[0]/relation: child count 0 != 1
+    - [0]/[1]/fogo: group name 'fogo' != 'mulher'
+    - [0]/[1]/fogo: id 'r1775-f2' != 'r1775-f1-per1-per2' (normalized)
+    - [0]/[1]/fogo: element 'local' 'eiras' != None
+    - [0]/[1]/fogo: element 'nome' None != 'rita do amaral'
+    - [0]/[1]/fogo: element 'type' 'fogo' != None
+    - [0]/[1]/fogo: child count 2 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'r1775-rela13' != 'r1775-f1-per1-per2-att1' (normalized)
+    ... and 1916 more
+
+[FAIL] roisdeconfessados/rol2.xml — 1918 difference(s)
+    - fonte: element 'date' '17760511' != None
+    - [0]/rol: element 'date' '17760511' != None
+    - [0]/rol: element 'type' 'rol' != None
+    - [0]/rol: child count 204 != 608
+    - [0]/[0]/fogo: element 'type' 'fogo' != None
+    - [0]/[0]/fogo: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'n'
+    - [0]/[0]/[0]/relation: id 'r1776-rela1' != 'r1776-f1-per1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'fogo' != None
+    - [0]/[0]/[0]/relation: element 'sex' None != 'm'
+    - [0]/[0]/[0]/relation: element 'date' '17760511' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != None
+    - [0]/[0]/[0]/relation: element 'name' None != 'manuel alvares da cruz'
+    - [0]/[0]/[0]/relation: element 'destname' 'rol' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'r1776-f1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'r1776' != None
+    - [0]/[0]/[0]/relation: child count 0 != 1
+    - [0]/[1]/fogo: group name 'fogo' != 'mulher'
+    - [0]/[1]/fogo: id 'r1776-f2' != 'r1776-f1-per1-per2' (normalized)
+    - [0]/[1]/fogo: element 'local' 'eiras' != None
+    - [0]/[1]/fogo: element 'nome' None != 'rita do amaral'
+    - [0]/[1]/fogo: element 'type' 'fogo' != None
+    - [0]/[1]/fogo: child count 2 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'r1776-rela10' != 'r1776-f1-per1-per2-att1' (normalized)
+    ... and 1893 more
+
+[FAIL] roisdeconfessados/rol3.xml — 2042 difference(s)
+    - fonte: element 'date' '17770505' != None
+    - [0]/rol: element 'date' '17770505' != None
+    - [0]/rol: element 'type' 'rol' != None
+    - [0]/rol: child count 216 != 618
+    - [0]/[0]/fogo: element 'type' 'fogo' != None
+    - [0]/[0]/fogo: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'n'
+    - [0]/[0]/[0]/relation: id 'r1777-rela1' != 'r1777-f1-per1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'fogo' != None
+    - [0]/[0]/[0]/relation: element 'sex' None != 'm'
+    - [0]/[0]/[0]/relation: element 'date' '17770505' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != None
+    - [0]/[0]/[0]/relation: element 'name' None != 'manuel alvares da cruz'
+    - [0]/[0]/[0]/relation: element 'destname' 'rol' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'r1777-f1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'r1777' != None
+    - [0]/[0]/[0]/relation: child count 0 != 1
+    - [0]/[1]/fogo: group name 'fogo' != 'mulher'
+    - [0]/[1]/fogo: id 'r1777-f2' != 'r1777-f1-per1-per2' (normalized)
+    - [0]/[1]/fogo: element 'local' 'eiras' != None
+    - [0]/[1]/fogo: element 'nome' None != 'rita do amaral'
+    - [0]/[1]/fogo: element 'type' 'fogo' != None
+    - [0]/[1]/fogo: child count 2 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'r1777-rela9' != 'r1777-f1-per1-per2-att1' (normalized)
+    ... and 2017 more
+
+[FAIL] varia/Devedores.xml — 361 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1770' != None
+    - [0]/lista: element 'date' '17850000' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/lista: child count 14 != 15
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'antonio de campos branco' != None
+    - [0]/[0]/n: element 'name' None != 'antonio de campos branco'
+    - [0]/[0]/n: child count 4 != 3
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'orf-acb-devedores-eiras-rela1' != 'acb-eiras-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'meio conego da se de coimbra'
+    - [0]/[0]/[0]/relation: element 'date' '17850000' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'cargo'
+    - [0]/[0]/[0]/relation: element 'destname' 'lista' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'acb-eiras' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'orf-acb-devedores-eiras' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'meio conego da se de coimbra' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'eiras'
+    - [0]/[0]/[1]/ls: element 'date' '17850000' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'acb-eiras' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'residencia'
+    - [0]/[0]/[1]/ls: element 'tipo' 'cargo' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'valor' 'eiras' != None
+    ... and 336 more
+
+[FAIL] varia/auc-alunos-264605-A-140337-140771.xml — 71841 difference(s)
+    - fonte: element 'date' '15370000.19191114' != None
+    - fonte: element 'year' '"PT/AUC/ELU/UC-AUC/B/001-001"' != None
+    - fonte: element 'obs' '"""\n       Âmbito e conteúdo\n\n       O índice de alunos da Universidade de Coimbra, também conhecido, apenas, como ficheiro de alunos, foi elaborado entre 1940 e 1950, pelos funcionários do Arquivo, por decisão do doutor Mário Brandão, então diretor do Arquivo da Universidade, como o atestam os relatórios de atividades enviados anualmente ao reitor da Universidade (v. Correspondência expedida do Arquivo (SR), cx.2 (1942-1947) e cx. 3 (1948-1951) – cota AUC-IV-2.ªE-10-2-18 e 19).\n       Os citados relatórios revelam, por exemplo, que em 1941-1942 foram elaboradas fichas relativas aos livros de matrículas de 1720 a 1756, num total de 23.400 verbetes, em 1942-1943 foram elaboradas fichas dos livros de 1685 a 1719 num total de 25.000 verbetes, etc.\n       Engloba dados relativos aos alunos que frequentaram a Universidade, com menção da sua naturalidade e filiação (apenas o nome do pai). No caso de alunos de ordens religiosas apenas apresentam a indicação da ordem religiosa a que pertenciam (por vezes, de forma generalizada, como, por exemplo “religioso de Santa cruz, religioso de S. Bento”) uma vez que os dados de naturalidade e de filiação destes alunos não ficaram registados nos livros originais de matrículas ou de livros de atos e graus e provas de curso.\n       Inclui as datas de matrícula na Universidade, desde 1537, na cadeira de Instituta (a partir de 1772, deixa de existir esta cadeira) e nas diversas faculdades: Teologia, Cânones, Leis, Medicina; em 1772 foram criadas a Faculdade de Matemática e a Faculdade de Filosofia e a partir de 1834 a Faculdade de Cânones e a Faculdade de Leis fundiram-se, dando origem à Faculdade de Direito. Inclui também datas de provas de curso e datas de exames e graus.\n       Estes dados foram recolhidos na série documental de livros de matrículas que existem entre 1573 e 1908. Para os anos anteriores, os dados foram recolhidos em livros que incluem registos de diversos atos, nomeadamente: matrículas, atos e graus e de provas de curso, entre 1537 e 1572. Registe-se que figuram no índice apenas dois alunos anteriores a 1537: Luís Aires e Rodrigo de Gaia que frequentaram a Universidade desde 1536. Depois de 1908 figuram alguns alunos, nomeadamente o aluno Domingos Luiselo Alves Moreira (1915-1919) pois os seus dados foram incluídos posteriormente à elaboração do ficheiro original.\n       Compreende os referidos dados redigidos em fichas individuais manuscritas, em trabalho cuja coordenação poderá ser atribuída ao Dr. António Gomes da Rocha Madahil, conservador do Arquivo e cuja elaboração pode ser atribuída aos funcionários que trabalharam no Arquivo, entre 1940 e 1950: António da Costa Rodrigues, Diamantino Ramos, António dos Santos Bernardino, Guilherme Flóreo dos Santos Bernardino, Francisco Ferrer Mendes da Silva.\n       O último livro em que foram colhidos dados para o Índice de alunos é o volume 129 da série de Livros de Matrículas (cota: AUC-IV-1ªD-2-5-68).\n       Este volume reporta-se ao ano lectivo de 1906-1907, com matrículas para as Faculdades de Teologia, Direito, Medicina, Matemática e Filosofia. No entanto, apesar de se destinar a este ano lectivo de 1906-1907 foram acrescentados alguns registos até 1911.\n\n       Sistema de organização\n\n       O índice foi elaborado em fichas individuais, apresentando em primeiro lugar o nome completo do aluno, tendo sido ordenado alfabeticamente pelo último apelido ou pelo nome dos dois últimos apelidos, no caso de nomes espanhóis ou de nomes compostos (ex. Castelo Branco, Lopes Júnior, etc.).\n       Existem algumas fichas que são apenas remissivas para a forma completa do nome do aluno.\n       Os dados do índice foram lançados na plataforma informática Archeevo, numa adaptação desta às necessidades imediatas de divulgação da informação, de forma a permitir um acesso mais rápido aos livros de matrículas e aos livros de atos e graus e provas de curso. Foi feita a atualização ortográfica dos nomes, como por exemplo Souza - Sousa, Paes - Pais, etc., bem como a atualização toponímica como, por exemplo, nos seguintes casos Punhete - Constância, Lavarrabos - São João do Campo, Farinha Podre - São Pedro de Alva.\n       Ao fazer o registo informático, das fichas do índice, tornou-se necessário, para agilizar a pesquisa, reunir cada grupo de fichas com a mesma letra inicial dos apelidos como se se tratasse de uma unidade de instalação, desta forma o número de unidades de instalação corresponde ao das letras do alfabeto. Por outro lado, dentro de cada unidade de instalação (ou seja cada letra do alfabeto) ficou registada cada ficha como um documento simples.\n       NOTA: Reconhece-se a existência de algumas lacunas na elaboração deste índice, no entanto, este é tornado público para facilitar a pesquisa dos investigadores.\n       As correcções serão feitas pontualmente.\n\n       URL: http://pesquisa.auc.uc.pt/details?id=264605\n   """' != '"""       Âmbito e conteúdo       O índice de alunos da Universidade de Coimbra, também conhecido, apenas, como ficheiro de alunos, foi elaborado entre 1940 e 1950, pelos funcionários do Arquivo, por decisão do doutor Mário Brandão, então diretor do Arquivo da Universidade, como o atestam os relatórios de atividades enviados anualmente ao reitor da Universidade (v. Correspondência expedida do Arquivo (SR), cx.2 (1942-1947) e cx. 3 (1948-1951) – cota AUC-IV-2.ªE-10-2-18 e 19).       Os citados relatórios revelam, por exemplo, que em 1941-1942 foram elaboradas fichas relativas aos livros de matrículas de 1720 a 1756, num total de 23.400 verbetes, em 1942-1943 foram elaboradas fichas dos livros de 1685 a 1719 num total de 25.000 verbetes, etc.       Engloba dados relativos aos alunos que frequentaram a Universidade, com menção da sua naturalidade e filiação (apenas o nome do pai). No caso de alunos de ordens religiosas apenas apresentam a indicação da ordem religiosa a que pertenciam (por vezes, de forma generalizada, como, por exemplo “religioso de Santa cruz, religioso de S. Bento”) uma vez que os dados de naturalidade e de filiação destes alunos não ficaram registados nos livros originais de matrículas ou de livros de atos e graus e provas de curso.       Inclui as datas de matrícula na Universidade, desde 1537, na cadeira de Instituta (a partir de 1772, deixa de existir esta cadeira) e nas diversas faculdades: Teologia, Cânones, Leis, Medicina; em 1772 foram criadas a Faculdade de Matemática e a Faculdade de Filosofia e a partir de 1834 a Faculdade de Cânones e a Faculdade de Leis fundiram-se, dando origem à Faculdade de Direito. Inclui também datas de provas de curso e datas de exames e graus.       Estes dados foram recolhidos na série documental de livros de matrículas que existem entre 1573 e 1908. Para os anos anteriores, os dados foram recolhidos em livros que incluem registos de diversos atos, nomeadamente: matrículas, atos e graus e de provas de curso, entre 1537 e 1572. Registe-se que figuram no índice apenas dois alunos anteriores a 1537: Luís Aires e Rodrigo de Gaia que frequentaram a Universidade desde 1536. Depois de 1908 figuram alguns alunos, nomeadamente o aluno Domingos Luiselo Alves Moreira (1915-1919) pois os seus dados foram incluídos posteriormente à elaboração do ficheiro original.       Compreende os referidos dados redigidos em fichas individuais manuscritas, em trabalho cuja coordenação poderá ser atribuída ao Dr. António Gomes da Rocha Madahil, conservador do Arquivo e cuja elaboração pode ser atribuída aos funcionários que trabalharam no Arquivo, entre 1940 e 1950: António da Costa Rodrigues, Diamantino Ramos, António dos Santos Bernardino, Guilherme Flóreo dos Santos Bernardino, Francisco Ferrer Mendes da Silva.       O último livro em que foram colhidos dados para o Índice de alunos é o volume 129 da série de Livros de Matrículas (cota: AUC-IV-1ªD-2-5-68).       Este volume reporta-se ao ano lectivo de 1906-1907, com matrículas para as Faculdades de Teologia, Direito, Medicina, Matemática e Filosofia. No entanto, apesar de se destinar a este ano lectivo de 1906-1907 foram acrescentados alguns registos até 1911.       Sistema de organização       O índice foi elaborado em fichas individuais, apresentando em primeiro lugar o nome completo do aluno, tendo sido ordenado alfabeticamente pelo último apelido ou pelo nome dos dois últimos apelidos, no caso de nomes espanhóis ou de nomes compostos (ex. Castelo Branco, Lopes Júnior, etc.).       Existem algumas fichas que são apenas remissivas para a forma completa do nome do aluno.       Os dados do índice foram lançados na plataforma informática Archeevo, numa adaptação desta às necessidades imediatas de divulgação da informação, de forma a permitir um acesso mais rápido aos livros de matrículas e aos livros de atos e graus e provas de curso. Foi feita a atualização ortográfica dos nomes, como por exemplo Souza - Sousa, Paes - Pais, etc., bem como a atualização toponímica como, por exemplo, nos seguintes casos Punhete - Constância, Lavarrabos - São João do Campo, Farinha Podre - São Pedro de Alva.       Ao fazer o registo informático, das fichas do índice, tornou-se necessário, para agilizar a pesquisa, reunir cada grupo de fichas com a mesma letra inicial dos apelidos como se se tratasse de uma unidade de instalação, desta forma o número de unidades de instalação corresponde ao das letras do alfabeto. Por outro lado, dentro de cada unidade de instalação (ou seja cada letra do alfabeto) ficou registada cada ficha como um documento simples.       NOTA: Reconhece-se a existência de algumas lacunas na elaboração deste índice, no entanto, este é tornado público para facilitar a pesquisa dos investigadores.       As correcções serão feitas pontualmente.       URL: http://pesquisa.auc.uc.pt/details?id=264605   """'
+    - [0]/lista: element 'date' '20200211' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/lista: child count 501 != 755
+    - [0]/[0]/n: element 'nome' 'António Pinto Abadeço' != None
+    - [0]/[0]/n: element 'sexo' 'm' != None
+    - [0]/[0]/n: element 'obs' '"""\n\n            Id: 140337\n            Código de referência: PT/AUC/ELU/UC-AUC/B/001-001/A/000001\n\n            Nome        : António Pinto Abadeço\n            Data inicial: 1705-10-01\n            Data final  : 1710-10-01\n            Filiação: António Pinto\n\n            Naturalidade: Abrantes\n            Faculdade: Cânones\n\n            Matrícula(s): 01.10.1705\n            01.10.1706\n            01.01.1707\n            01.10.1708\n            01.10.1709\n            01.10.1710\n            Instituta:\n            Bacharel: 28.06.1709\n            Formatura:\n            Licenciado:\n            Doutor:\n\n            Outras informações:\n        """' != '"""            Id: 140337            Código de referência: PT/AUC/ELU/UC-AUC/B/001-001/A/000001            Nome        : António Pinto Abadeço            Data inicial: 1705-10-01            Data final  : 1710-10-01            Filiação: António Pinto            Naturalidade: Abrantes            Faculdade: Cânones            Matrícula(s): 01.10.1705            01.10.1706            01.01.1707            01.10.1708            01.10.1709            01.10.1710            Instituta:            Bacharel: 28.06.1709            Formatura:            Licenciado:            Doutor:            Outras informações:        """'
+    - [0]/[0]/n: element 'name' None != 'António Pinto Abadeço'
+    - [0]/[0]/n: child count 35 != 33
+    - [0]/[0]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[0]/[0]/relation: id 'auc-alumni-A-140337-140771-rela1' != '140337-04-atr' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != '"PT/AUC/ELU/UC-AUC/B/001-001/A/000001"'
+    - [0]/[0]/[0]/relation: element 'date' '20200211' != '2021-05-17'
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'código-de-referência'
+    - [0]/[0]/[0]/relation: element 'destname' 'lista' != None
+    - [0]/[0]/[0]/relation: element 'origin' '140337' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'auc-alumni-A-140337-140771' != None
+    - [0]/[0]/[1]/atr: id '140337-04-atr' != '140337-05-atr' (normalized)
+    - [0]/[0]/[1]/atr: element 'valor' '"PT/AUC/ELU/UC-AUC/B/001-001/A/000001"' != None
+    - [0]/[0]/[1]/atr: element 'data' '2021-05-17' != None
+    - [0]/[0]/[1]/atr: element 'value' None != '2021-05-17'
+    - [0]/[0]/[1]/atr: element 'date' None != '2021-05-17'
+    - [0]/[0]/[1]/atr: element 'entity' '140337' != None
+    ... and 71816 more
+
+[FAIL] varia/auc_cartulario18.xml — 8512 difference(s)
+    - fonte: element 'date' '0' != None
+    - [0]/escritura: element 'date' '15170609' != None
+    - [0]/escritura: element 'type' 'escritura' != None
+    - [0]/[0]/senhoria: element 'sex' 'f' != None
+    - [0]/[0]/senhoria: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'esc1517-e1-rela1' != 'esc1517-e1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'senhoria' != 'abadessa'
+    - [0]/[0]/[0]/relation: element 'date' '15170609' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'cargo'
+    - [0]/[0]/[0]/relation: element 'destname' 'escritura' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'esc1517-e1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'esc1517-e1' != None
+    - [0]/[1]/foreiro: element 'sex' 'm' != None
+    - [0]/[1]/foreiro: child count 3 != 2
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'esc1517-e1-rela2' != 'esc1517-e1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'foreiro' != 'moleiro'
+    - [0]/[1]/[0]/relation: element 'date' '15170609' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'profissao'
+    - [0]/[1]/[0]/relation: element 'destname' 'escritura' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'esc1517-e1-per2' != None
+    - [0]/[1]/[0]/relation: element 'destination' 'esc1517-e1' != None
+    - [0]/[1]/[1]/ls: element 'valor' 'moleiro' != None
+    - [0]/[1]/[1]/ls: element 'value' None != 'crota junto de portunhos, termo da vila de anca'
+    ... and 8487 more
+
+[FAIL] varia/avexplorfa.xml — 2388 difference(s)
+    - fonte: id 'sj-avexplorfa' != 'avexplorfa' (normalized)
+    - fonte: element 'loc' 'cx.5, mc.27, n.620' != 'cx.5, mc.27, n.620;cx.4, mc.23, n.462;cx.2, mc.9, n.172;cx.1, mc.5, n.121;cx.1, mc.5, n.123;cx.4, mc.23, n.459;cx.1, mc.5, n.124;cx.4, mc.25, n.519;cx.6, mc.33, n.755;cx.4, mc.25, n.498;cx.1, mc.6, n.140'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'type' 'emprazamentos' != None
+    - fonte: element 'year' '1322-1348' != None
+    - fonte: element 'tipo' None != '1322-1348'
+    - [0]/escritura: id 'sj-cex1322.1' != 'cex1322.1' (normalized)
+    - [0]/escritura: element 'date' '13220618' != None
+    - [0]/escritura: element 'type' 'escritura' != None
+    - [0]/escritura: child count 10 != 12
+    - [0]/[0]/senhorio: id 'sj-1322.e1.colsj' != '1322.e1.colsj' (normalized)
+    - [0]/[0]/senhorio: element 'sex' 'm' != None
+    - [0]/[0]/senhorio: child count 2 != 0
+    - [0]/[1]/procurador: group name 'procurador' != 'referido'
+    - [0]/[1]/procurador: id 'sj-1322.e1.martim' != '1322.e1.priorfafonso' (normalized)
+    - [0]/[1]/procurador: element 'sex' 'm' != None
+    - [0]/[1]/procurador: element 'nome' 'martim peres' != 'francisco afonso'
+    - [0]/[1]/procurador: child count 3 != 1
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'sj-cex1322.1-rela3' != '1322.e1.priorfafonso-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'procurador' != 'prior de santa justa'
+    - [0]/[1]/[0]/relation: element 'date' '13220618' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'cargo'
+    - [0]/[1]/[0]/relation: element 'destname' 'escritura' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'sj-1322.e1.martim' != None
+    ... and 2363 more
+
+[FAIL] varia/cartas.xml — 47 difference(s)
+    - fonte: element 'tipo' None != 'documentação avulsa'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' 'documentação avulsa' != None
+    - [0]/carta: id 'Carta do Padre Henrique Henriquez para os padres e irmãos do colégio de Coimbra' != 'cartas-his1' (normalized)
+    - [0]/carta: element 'titulo' None != 'Carta do Padre Henrique Henriquez para os padres e irmãos do colégio de Coimbra'
+    - [0]/carta: element 'loc' 'AHM, microfilm' != None
+    - [0]/carta: element 'type' 'carta' != None
+    - [0]/carta: element 'ref' None != 'AHM, microfilm'
+    - [0]/carta: element 'date' '15481112' != None
+    - [0]/carta: element 'obs' '"""\n \n         Carta del pe. emrrique emrriquez para los padres y hermanos del collegio de Jesus de coimbra escrita em goa a xij dias de nouiembre de 1548. [A. 21v.]\n \n            [\n             Descreve a viagem para a Índia Wicki 3\n \n             3. Aussendung, 1546, Abfahrt 8. April\n \n             auf Schiff Flor de la Mar:\n             * P. Francisco Henriques, Port.\n             * P. Francisco Perez, Span.\n             *  Ir. Adam Francisco, Port.\n \n             auf Schiff Vitöria:\n             * P. Henrique Henriques, Port. (é o autor da carta)\n             * P. Nuno Ribeiro, Port.\n             * Ir. Manuel de Morais, jr., Port,\n \n             auf Schiff S. Espirito:\n             * P. Alfonso Cipriän, Span.\n             * Ir. Nicolau Nunes, Port.\n             * Ir. Baltasar Nunes, Port.\n             ]\n \n \n          P. Nuno Ribeiro, Port. (Algumas vezes vino também mal dispostos\n          Ir. Manuel de Morais, jr., Port (sempre veio bem, deus seja louvado)\n \n          Chegaram a Goa a 17 de setembro de 1546 onde foram recebido pelo padre Nicolau \n          e pelo Padre Ms Paulo e achamos já cá a francisco Henriques, francisco Pérez e \n          Adão que chegaram havia 8 dias.\n \n          Assistiram na igreja a uma predica na língua nativa "Vimos estar predicando a uno de la Tierra destas que aqui se criam y estas en casa en Su misma lengua a los xpianos naturales dela tierra, ver a estos muchachos desta casa que fueron gentiles officiar una missa y rezar sus vésperas todo entonado es mucho para alabar a dios N.S. ny ceo[?] charissimos hermanos glo podrieis ver quanto no llorasseis de plazer en ver q los q eran gentiles y ministros del demonio y q aviam de ser sacerdotes delos idolos\n \n          nos incitem aloar a dios N.S. do destos estan em casa q todos los domingos ala tarde sucessivamente precicam en su lenguanatural no por q ellos tengam letras para predicar entendem bien latim y aqui em casa les dizen algunos puntos sobre el evangello para que prediquem y hazendo muy bien dios sea loado. \n \n          Quien \xa0pudesse hermanos mios, \n          manifestarvos la extrema necessidade q aca ay por todas estas partes de siervos\n          de dios ciertamente que llorarieis y llorariam todos aqllos q de alguna maneira zela la honra\n          del senhor quien no llorara en ver qu muchhos se converteriam ala fe y no ave\n          quien les preqidue y enseñe y de buen exemplo em Moçambique me contaram \n          como cosa cierta q en la isla de S.Lourenço receberiam facilmente la fe si mor? esse opezarios\n          y un hombre dino de fe me dixo q platicando con el rey de aqlla tierra le dixera \n          [21v]\n          el dixo rey boluros? aca y mandare hazer algu lugar apartado adonde ensenareis\n          cinco hijos q tenes? vernan tambem otros muchacos  y estaram apartados\n          para q melhor aprendam lo q les ensenardes a questa isla de S.Lourneço dizer ser de \n          300 léguas. En Cosotora tanbien me dizeram q se converteriam facilmente proque\n          snedo em todos sus costumbres y conocimento de dios getiles todavia tienen nouiembrey dizem se xpianos, por amor de dios os pido hermanos que aquantos vieredes idoneos incitteis\n          que vengam servir al sor ala India y q no dexem perecer tantos millares de animas\n          tan caramente compradas plugielse a dios q algunos delos que estan presos del amor de xº supiessem\n          bien la verdade destas partes la grandissima necessidade que aca ay no dudo que dexan\n          to odo imitariam siquiero alos del mundo q tantos trabalhos parece por lvel de aca\n          dinero  y se veniam a estas partes, pidoos hermanos muos que lhoreis mucho delante la divina\n          magestade q se acuerde de tantas anumas que mqua? los coracones de sus servos para que\n          van ala India que mvena§ los coracones de los portugueses q aca andam q den buen exemplo\n          a los gentiles de verdadeiros xptianos y alos novamente convertidos muy dichosos\n          cierto sereis cos que aca fueredes embiados, da os prisa a los estudios acabad presto\n          mas sea cor que dar dostos juntamente en el xpto? creciendo siempre la charidad y humildad\n          con las letras, acabad presto y venid hermanos a estas partes y vereis tanta nizas?\n          q os spantareis. Daqui a mas de mil leguos en uma provincia que llhama china q es\n          un reyno muy grande tienen una profecia e aqllas tierras an de ser tomadas por lo\n          ql se guardan much en no dexar entrar ninguna pa estrangera esta gente es\n          blanca y para q los estrangeros sean conoscidos quado alguna vez entrassen andanto\n          dos los de aql reyno con los cabellos muy largos assi hombres como mujeres si algu\n          estrangeo entra catianco tienen entre si hombres recosidos como religiosos y hazen\n          profission con quemar una mano o un dedo todos son gentiles adoram idolos rogad al sor\n          que de nos vamos alla y nos cativem y assi les demos tal exemplo con q tomen el camino\n          de vedad. "\n """' != '"""         Carta del pe. emrrique emrriquez para los padres y hermanos del collegio de Jesus de coimbra escrita em goa a xij dias de nouiembre de 1548. [A. 21v.]            [             Descreve a viagem para a Índia Wicki 3             3. Aussendung, 1546, Abfahrt 8. April             auf Schiff Flor de la Mar:             * P. Francisco Henriques, Port.             * P. Francisco Perez, Span.             *  Ir. Adam Francisco, Port.             auf Schiff Vitöria:             * P. Henrique Henriques, Port. (é o autor da carta)             * P. Nuno Ribeiro, Port.             * Ir. Manuel de Morais, jr., Port,             auf Schiff S. Espirito:             * P. Alfonso Cipriän, Span.             * Ir. Nicolau Nunes, Port.             * Ir. Baltasar Nunes, Port.             ]          P. Nuno Ribeiro, Port. (Algumas vezes vino também mal dispostos          Ir. Manuel de Morais, jr., Port (sempre veio bem, deus seja louvado)          Chegaram a Goa a 17 de setembro de 1546 onde foram recebido pelo padre Nicolau           e pelo Padre Ms Paulo e achamos já cá a francisco Henriques, francisco Pérez e           Adão que chegaram havia 8 dias.          Assistiram na igreja a uma predica na língua nativa "Vimos estar predicando a uno de la Tierra destas que aqui se criam y estas en casa en Su misma lengua a los xpianos naturales dela tierra, ver a estos muchachos desta casa que fueron gentiles officiar una missa y rezar sus vésperas todo entonado es mucho para alabar a dios N.S. ny ceo[?] charissimos hermanos glo podrieis ver quanto no llorasseis de plazer en ver q los q eran gentiles y ministros del demonio y q aviam de ser sacerdotes delos idolos          nos incitem aloar a dios N.S. do destos estan em casa q todos los domingos ala tarde sucessivamente precicam en su lenguanatural no por q ellos tengam letras para predicar entendem bien latim y aqui em casa les dizen algunos puntos sobre el evangello para que prediquem y hazendo muy bien dios sea loado.           Quien \xa0pudesse hermanos mios,           manifestarvos la extrema necessidade q aca ay por todas estas partes de siervos          de dios ciertamente que llorarieis y llorariam todos aqllos q de alguna maneira zela la honra          del senhor quien no llorara en ver qu muchhos se converteriam ala fe y no ave          quien les preqidue y enseñe y de buen exemplo em Moçambique me contaram           como cosa cierta q en la isla de S.Lourenço receberiam facilmente la fe si mor? esse opezarios          y un hombre dino de fe me dixo q platicando con el rey de aqlla tierra le dixera           [21v]          el dixo rey boluros? aca y mandare hazer algu lugar apartado adonde ensenareis          cinco hijos q tenes? vernan tambem otros muchacos  y estaram apartados          para q melhor aprendam lo q les ensenardes a questa isla de S.Lourneço dizer ser de           300 léguas. En Cosotora tanbien me dizeram q se converteriam facilmente proque          snedo em todos sus costumbres y conocimento de dios getiles todavia tienen nouiembrey dizem se xpianos, por amor de dios os pido hermanos que aquantos vieredes idoneos incitteis          que vengam servir al sor ala India y q no dexem perecer tantos millares de animas          tan caramente compradas plugielse a dios q algunos delos que estan presos del amor de xº supiessem          bien la verdade destas partes la grandissima necessidade que aca ay no dudo que dexan          to odo imitariam siquiero alos del mundo q tantos trabalhos parece por lvel de aca          dinero  y se veniam a estas partes, pidoos hermanos muos que lhoreis mucho delante la divina          magestade q se acuerde de tantas anumas que mqua? los coracones de sus servos para que          van ala India que mvena§ los coracones de los portugueses q aca andam q den buen exemplo          a los gentiles de verdadeiros xptianos y alos novamente convertidos muy dichosos          cierto sereis cos que aca fueredes embiados, da os prisa a los estudios acabad presto          mas sea cor que dar dostos juntamente en el xpto? creciendo siempre la charidad y humildad          con las letras, acabad presto y venid hermanos a estas partes y vereis tanta nizas?          q os spantareis. Daqui a mas de mil leguos en uma provincia que llhama china q es          un reyno muy grande tienen una profecia e aqllas tierras an de ser tomadas por lo          ql se guardan much en no dexar entrar ninguna pa estrangera esta gente es          blanca y para q los estrangeros sean conoscidos quado alguna vez entrassen andanto          dos los de aql reyno con los cabellos muy largos assi hombres como mujeres si algu          estrangeo entra catianco tienen entre si hombres recosidos como religiosos y hazen          profission con quemar una mano o un dedo todos son gentiles adoram idolos rogad al sor          que de nos vamos alla y nos cativem y assi les demos tal exemplo con q tomen el camino          de vedad. " """'
+    - [1]/carta: id 'Carta de renunciação do irmão Sebastião Fernandes' != 'cartas-his2' (normalized)
+    - [1]/carta: element 'titulo' None != 'Carta de renunciação do irmão Sebastião Fernandes'
+    - [1]/carta: element 'date' '16000118' != None
+    - [1]/carta: element 'type' 'carta' != None
+    - [1]/carta: element 'resumo' '"""\n       renuncia a herança, na Companhia de Jesus, na mão do Padre Manuel Dias\n          Reitor do Colégio de Macau. "rogando ao d.to P.e que se lhe parecer maior\n          serviço de Deus, que applique ou toda, ou p.te della à Miss-ao\n          da China, e constituo para isso por meo procurador abast.e o P.e Miguel \n          Aires[?] Procurador do Japão, e por eu tenho alguã obrigação a h~u menino\n          por nome Sebastião e huma menina por p. nome Anna, filhos de huã Catarina de Mendonça\n          q hora estão em casa onde Antº Ferr[?], meu cunhado, ou de meo pay[?],\n          peço ao P.e R.tor M.el Dias que lhes aplique alguã p.te da minha herança\n          p.a sua sostentação de ambos, que lhe parecer q for serviço de Deos, e"\n          indica ainda outros cunhados que podem receber o dinheiro pelas crianças,\n          Tomé Pereira ou Gaspar Ferreira, e indica que este dinheiro não deve passar\n          pelo juiz dos órfãos ou outro oficial do rei, e ainda se algum dos meninos\n          morrer antes da idade de receber o dinheiro deve o mesmo reverter para a Companhia\n          de Jesus. "E p. q.to ao presente estou em Nanquim, onde não há cópia de Tabelião,\n          ou outro qlqr. official del Rey algum, fiz esta secdula de doação de minha\n          propria letra, e assinada do meo proprio sinal para\n          que em Macao se faça instrum.to publico, com forma das constituiçoes do\n          Reyno de Portugal"\n       \n          doc. 9 Declaração de Manuel Dias dizendo que recebeu de Pedro Fernandes\n          seu pai, 436 reis de prata da seda[?] que lhe pertencia da legitima de sua\n          mãe, dos quais deu de esmola aos dois meninos 125 taeis[?] a Sebastiaõ 40\n          e a Anna 85, com a condição que o doador especificou, \n          que "morrendo algum delles antes de ser de idade para testar\n          o dito dinheiro fique aos nossos Padres da Missão da China"\n          "a qual prata entreguei a António Fernandes [agora por extenso]"\n          \n          "Era neste tempo governador do Bispado Frei Miguel dos Santos\n          Religioso Agostinho e Capitão Mor de Macao D. Paulo de Portugal."\n          \n          "Estas são as notícias q achei do anno de 1600, José Montanha"\n          "\n          \n          \n \n       """' != '"""       renuncia a herança, na Companhia de Jesus, na mão do Padre Manuel Dias          Reitor do Colégio de Macau. "rogando ao d.to P.e que se lhe parecer maior          serviço de Deus, que applique ou toda, ou p.te della à Miss-ao          da China, e constituo para isso por meo procurador abast.e o P.e Miguel           Aires[?] Procurador do Japão, e por eu tenho alguã obrigação a h~u menino          por nome Sebastião e huma menina por p. nome Anna, filhos de huã Catarina de Mendonça          q hora estão em casa onde Antº Ferr[?], meu cunhado, ou de meo pay[?],          peço ao P.e R.tor M.el Dias que lhes aplique alguã p.te da minha herança          p.a sua sostentação de ambos, que lhe parecer q for serviço de Deos, e"          indica ainda outros cunhados que podem receber o dinheiro pelas crianças,          Tomé Pereira ou Gaspar Ferreira, e indica que este dinheiro não deve passar          pelo juiz dos órfãos ou outro oficial do rei, e ainda se algum dos meninos          morrer antes da idade de receber o dinheiro deve o mesmo reverter para a Companhia          de Jesus. "E p. q.to ao presente estou em Nanquim, onde não há cópia de Tabelião,          ou outro qlqr. official del Rey algum, fiz esta secdula de doação de minha          propria letra, e assinada do meo proprio sinal para          que em Macao se faça instrum.to publico, com forma das constituiçoes do          Reyno de Portugal"          doc. 9 Declaração de Manuel Dias dizendo que recebeu de Pedro Fernandes          seu pai, 436 reis de prata da seda[?] que lhe pertencia da legitima de sua          mãe, dos quais deu de esmola aos dois meninos 125 taeis[?] a Sebastiaõ 40          e a Anna 85, com a condição que o doador especificou,           que "morrendo algum delles antes de ser de idade para testar          o dito dinheiro fique aos nossos Padres da Missão da China"          "a qual prata entreguei a António Fernandes [agora por extenso]"          "Era neste tempo governador do Bispado Frei Miguel dos Santos          Religioso Agostinho e Capitão Mor de Macao D. Paulo de Portugal."          "Estas são as notícias q achei do anno de 1600, José Montanha"          "       """'
+    - [1]/carta: child count 1 != 8
+    - [1]/[0]/emissor: element 'sex' 'm' != None
+    - [1]/[0]/emissor: child count 12 != 4
+    - [1]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [1]/[0]/[0]/relation: id 'Carta de renunciação do irmão Sebastião Fernandes-rela1' != 'avulso-sebastiao-fernandes-att1' (normalized)
+    - [1]/[0]/[0]/relation: element 'value' 'emissor' != 'Companhia de Jesus'
+    - [1]/[0]/[0]/relation: element 'date' '16000118' != None
+    - [1]/[0]/[0]/relation: element 'type' 'function-in-act' != 'ordem'
+    - [1]/[0]/[0]/relation: element 'destname' 'carta' != None
+    - [1]/[0]/[0]/relation: element 'origin' 'avulso-sebastiao-fernandes' != None
+    ... and 22 more
+
+[FAIL] varia/dehergne-residences.xml — 8 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-residences' != 'root-lin3-69' (normalized)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1644' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'type' 'geoinformation' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: child count 2 != 0
+
+[FAIL] varia/dev1692.xml — 1439 difference(s)
+    - fonte: element 'date' '16920000' != None
+    - [0]/devassa: element 'date' '16920410' != None
+    - [0]/devassa: element 'type' 'devassa' != None
+    - [0]/devassa: child count 86 != 304
+    - [0]/[0]/testo: element 'sex' 'm' != None
+    - [0]/[0]/testo: child count 7 != 4
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'devassa1692-rela1' != 'dev1692-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'testo' != 's'
+    - [0]/[0]/[0]/relation: element 'date' '16920410' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'ec'
+    - [0]/[0]/[0]/relation: element 'destname' 'devassa' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'dev1692-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'devassa1692' != None
+    - [0]/[0]/[1]/ls: element 'valor' 's' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'soure'
+    - [0]/[0]/[1]/ls: element 'date' '16920410' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'dev1692-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'residencia'
+    - [0]/[0]/[1]/ls: element 'tipo' 'ec' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'valor' 'soure' != None
+    - [0]/[0]/[2]/ls: element 'value' None != '24'
+    - [0]/[0]/[2]/ls: element 'date' '16920410' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'dev1692-per1' != None
+    ... and 1414 more
+
+[FAIL] varia/eleicoes1.xml — 5062 difference(s)
+    - fonte: element 'date' '0' != None
+    - [0]/amz: element 'date' '16840702' != None
+    - [0]/amz: element 'type' 'amz' != None
+    - [0]/amz: child count 23 != 24
+    - [0]/[0]/eleitor: element 'sex' 'm' != None
+    - [0]/[0]/eleitor: child count 1 != 0
+    - [0]/[1]/eleitor: element 'sex' 'm' != None
+    - [0]/[1]/eleitor: child count 3 != 2
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'amz1-rela2' != 'amz1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'eleitor' != 'padre'
+    - [0]/[1]/[0]/relation: element 'date' '16840702' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'profissao'
+    - [0]/[1]/[0]/relation: element 'destname' 'amz' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'amz1-per2' != None
+    - [0]/[1]/[0]/relation: element 'destination' 'amz1' != None
+    - [0]/[1]/[1]/ls: element 'valor' 'padre' != None
+    - [0]/[1]/[1]/ls: element 'value' None != 'solteiro'
+    - [0]/[1]/[1]/ls: element 'date' '16840702' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'amz1-per2' != None
+    - [0]/[1]/[1]/ls: element 'type' None != 'ec'
+    - [0]/[1]/[1]/ls: element 'tipo' 'profissao' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/eleitor: element 'sex' 'm' != None
+    - [0]/[2]/eleitor: child count 1 != 0
+    ... and 5037 more
+
+[FAIL] varia/glopes-lap1561.xml — 14015 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' '1561a' != None
+    - [0]/pas: element 'date' '15610102' != None
+    - [0]/pas: element 'type' 'pas' != None
+    - [0]/pas: child count 8 != 4
+    - [0]/[0]/mestre: element 'sex' 'm' != None
+    - [0]/[0]/mestre: child count 1 != 0
+    - [0]/[1]/n: element 'sex' 'm' != None
+    - [0]/[1]/n: element 'nome' 'gaspar de arguijo' != None
+    - [0]/[1]/n: element 'name' None != 'gaspar de arguijo'
+    - [0]/[1]/n: child count 5 != 2
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'p-733-rela2' != 'p-733-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'n' != 'tenerife'
+    - [0]/[1]/[0]/relation: element 'date' '15610102' != None
+    - [0]/[1]/[0]/relation: element 'type' 'function-in-act' != 'naturalidade'
+    - [0]/[1]/[0]/relation: element 'destname' 'pas' != None
+    - [0]/[1]/[0]/relation: element 'origin' 'p-733-per2' != None
+    - [0]/[1]/[0]/relation: element 'destination' 'p-733' != None
+    - [0]/[1]/[1]/ls: element 'valor' 'tenerife' != None
+    - [0]/[1]/[1]/ls: element 'value' None != 'sim'
+    - [0]/[1]/[1]/ls: element 'date' '15610102' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'p-733-per2' != None
+    - [0]/[1]/[1]/ls: element 'type' None != 'viaja'
+    - [0]/[1]/[1]/ls: element 'tipo' 'naturalidade' != None
+    ... and 13990 more
+
+[FAIL] varia/ivcc.xml — 540 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'obs' '"""\n      Franco (S.I.), Antonio, Imagem da virtude em o noviciado da Companhia de\n      Jesus no Real Collegio de Jesus de Coimbra em Portugal\n      (Évora: na Officina da Universidade, 1719)\n\n      Inicialmente fez-se uma experiência de descrição detalhada,\n      com a vida de Gonçalo da Silveira.\n\n      Depois focamos nos missionários para a China."""' != '"""      Franco (S.I.), Antonio, Imagem da virtude em o noviciado da Companhia de      Jesus no Real Collegio de Jesus de Coimbra em Portugal      (Évora: na Officina da Universidade, 1719)      Inicialmente fez-se uma experiência de descrição detalhada,      com a vida de Gonçalo da Silveira.      Depois focamos nos missionários para a China."""'
+    - [0]/lista: element 'date' '17190000' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/lista: child count 4 != 10
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'Colégio de Coimbra' != None
+    - [0]/[0]/n: element 'name' None != 'Colégio de Coimbra'
+    - [0]/[0]/n: child count 15 != 7
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'ivc-c1-rela1' != 'colegio-coimbra-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'start'
+    - [0]/[0]/[0]/relation: element 'date' '17190000' != '15470414'
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'construction'
+    - [0]/[0]/[0]/relation: element 'obs' None != 'p.3'
+    - [0]/[0]/[0]/relation: element 'destname' 'lista' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'colegio-coimbra' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'ivc-c1' != None
+    - [0]/[0]/[1]/ls: element 'data' '15470414' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'Constituições do Colégio de Coimbra 1547'
+    - [0]/[0]/[1]/ls: element 'type' None != 'regulations'
+    - [0]/[0]/[1]/ls: element 'date' None != '15531100'
+    - [0]/[0]/[1]/ls: element 'tipo' 'construction' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":15470414},\n  "original":"15470414",\n  "type":"single",\n  "value":"15470414"\n}' != None
+    - [0]/[0]/[1]/ls: element 'obs' 'p.3' != '"""            Publication and start of application of the constitutions of the            Coimbra College.            Start of separation of the "noviços" from the other brothers."""'
+    ... and 515 more
+
+[FAIL] varia/lrazao516pe.xml — 18139 difference(s)
+    - fonte: element 'date' '17660610.17690811' != None
+    - [0]/lcc: element 'date' '17660610' != None
+    - [0]/lcc: element 'type' 'lcc' != None
+    - [0]/lcc: child count 615 != 746
+    - [0]/[0]/n: element 'nome' 'caetana isabel de melo' != None
+    - [0]/[0]/n: element 'sexo' 'f' != None
+    - [0]/[0]/n: element 'name' None != 'caetana isabel de melo'
+    - [0]/[0]/n: child count 8 != 5
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'livrz516-1-rela1' != 'livrz516-1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'direcao de pernambuco da cgpp'
+    - [0]/[0]/[0]/relation: element 'date' '17660610' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'local_registro'
+    - [0]/[0]/[0]/relation: element 'destname' 'lcc' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'livrz516-1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'livrz516-1' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'direcao de pernambuco da cgpp' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'conta razao'
+    - [0]/[0]/[1]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'posicao'
+    - [0]/[0]/[1]/ls: element 'tipo' 'local_registro' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'valor' 'conta razao' != None
+    - [0]/[0]/[2]/ls: element 'value' None != 'viuva'
+    ... and 18114 more
+
+[FAIL] varia/misMesa.xml — 6963 difference(s)
+    - fonte: element 'date' '0' != None
+    - [0]/amz: element 'date' '16831003' != None
+    - [0]/amz: element 'type' 'amz' != None
+    - [0]/[0]/referido: element 'sex' 'm' != None
+    - [0]/[0]/referido: child count 3 != 2
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'amz1-rela1' != 'amz1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'referido' != 'capelao da missa quotidiana'
+    - [0]/[0]/[0]/relation: element 'date' '16831003' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'cargo'
+    - [0]/[0]/[0]/relation: element 'destname' 'amz' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'amz1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'amz1' != None
+    - [0]/[0]/[1]/ls: element 'valor' 'capelao da missa quotidiana' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'antes'
+    - [0]/[0]/[1]/ls: element 'date' '16831003' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'amz1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'morto'
+    - [0]/[0]/[1]/ls: element 'tipo' 'cargo' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/eleito: element 'sex' 'm' != None
+    - [0]/[1]/eleito: child count 3 != 2
+    - [0]/[1]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[1]/[0]/relation: id 'amz1-rela2' != 'amz1-per2-att1' (normalized)
+    - [0]/[1]/[0]/relation: element 'value' 'eleito' != 'capelao da missa quotidiana'
+    ... and 6938 more
+
+[FAIL] varia/mp758-santiago-beduido.xml — 236 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'loc' None != 'memorias paroquiais de 1758'
+    - fonte: element 'type' 'memorias paroquiais de 1758' != None
+    - fonte: element 'year' '1758' != None
+    - fonte: element 'tipo' None != '1758'
+    - [0]/memoria58: element 'date' '17580000' != None
+    - [0]/memoria58: element 'type' 'memoria58' != None
+    - [0]/[0]/freguesia: element 'type' 'freguesia' != None
+    - [0]/[0]/freguesia: child count 36 != 35
+    - [0]/[0]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[0]/[0]/relation: id 'mp58-santbed-rela1' != 'mp58-santbed-geo82-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'freguesia' != '564'
+    - [0]/[0]/[0]/relation: element 'date' '17580000' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'vizinhos'
+    - [0]/[0]/[0]/relation: element 'destname' 'memoria58' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'mp58-santbed' != None
+    - [0]/[0]/[1]/atr: element 'valor' '564' != None
+    - [0]/[0]/[1]/atr: element 'value' None != '1490'
+    - [0]/[0]/[1]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[1]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[1]/atr: element 'type' None != 'maiores'
+    - [0]/[0]/[1]/atr: element 'tipo' 'vizinhos' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/atr: element 'valor' '1490' != None
+    ... and 211 more
+
+[FAIL] varia/nommiz.xml — 9373 difference(s)
+    - fonte: element 'date' '0' != None
+    - [0]/nom: element 'date' '17290703' != None
+    - [0]/nom: element 'type' 'nom' != None
+    - [0]/nom: child count 1 != 2
+    - [0]/[0]/n: element 'sex' 'm' != None
+    - [0]/[0]/n: element 'nome' 'leonardo de sa' != None
+    - [0]/[0]/n: element 'name' None != 'leonardo de sa'
+    - [0]/[0]/n: child count 3 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'nom1a-rela1' != 'nom1a-r1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'irmao de maior condicao'
+    - [0]/[0]/[0]/relation: element 'date' '17290703' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'titulo'
+    - [0]/[0]/[0]/relation: element 'obs' None != 'o termo esta riscado nao se dizendo a razao porque foi riscado'
+    - [0]/[0]/[0]/relation: element 'destname' 'nom' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'nom1a-r1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'nom1a' != None
+    - [1]/nom: element 'date' '17290703' != None
+    - [1]/nom: element 'type' 'nom' != None
+    - [1]/[0]/referido: element 'sex' 'm' != None
+    - [1]/[0]/referido: child count 3 != 2
+    - [1]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [1]/[0]/[0]/relation: id 'nom1-rela3' != 'nom1-per1-att1' (normalized)
+    - [1]/[0]/[0]/relation: element 'value' 'referido' != 'padre'
+    - [1]/[0]/[0]/relation: element 'date' '17290703' != None
+    ... and 9348 more
+
+[FAIL] varia/quotes.xml — 17 difference(s)
+    - fonte: element 'date' '20200000' != None
+    - [0]/lista: element 'date' '20220204' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/[0]/n: element 'nome' 'John Smith' != None
+    - [0]/[0]/n: element 'sexo' 'm' != None
+    - [0]/[0]/n: element 'obs' '""" \n\n\n        "a quotes line inside triple quote"\n        \'a single quoted line inside triple quotes\'\n        " a multi line segment\n        inside\n        triple quotes"\n        \' a multi line\n        single quote\n        segment inside triple quotes\'\n        and some free text\n\n        \n    """' != '"""         "a quotes line inside triple quote"        \'a single quoted line inside triple quotes\'        " a multi line segment        inside        triple quotes"        \' a multi line        single quote        segment inside triple quotes\'        and some free text    """'
+    - [0]/[0]/n: element 'name' None != 'John Smith'
+    - [0]/[0]/n: child count 2 != 1
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'quotesl-rela1' != 'quotesl-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != 'tester'
+    - [0]/[0]/[0]/relation: element 'date' '20220204' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'profession'
+    - [0]/[0]/[0]/relation: element 'obs' None != '"a multi  line double  (returns should be removed)"'
+    - [0]/[0]/[0]/relation: element 'destname' 'lista' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'quotesl-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'quotesl' != None
+
+[FAIL] varia/sourecoimbrabispcoimbra_apontamentosd.xml — 128 difference(s)
+    - fonte: element 'date' '0' != None
+    - fonte: element 'year' 'sd' != None
+    - fonte: element 'tipo' None != 'sd'
+    - fonte: element 'loc' None != 'apontamentos sem data'
+    - fonte: element 'type' 'apontamentos sem data' != None
+    - [0]/apontamentosd: element 'date' '0' != None
+    - [0]/apontamentosd: element 'type' 'apontamentosd' != None
+    - [0]/[0]/freguesia: element 'type' 'freguesia' != None
+    - [0]/[0]/freguesia: child count 13 != 12
+    - [0]/[0]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[0]/[0]/relation: id 'apsd-soure-coimbra-bispcoimbra-rela1' != 'apsd-soure-coimbra-bispcoimbra-geo1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'freguesia' != 'vila'
+    - [0]/[0]/[0]/relation: element 'date' '0' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'tipo'
+    - [0]/[0]/[0]/relation: element 'obs' None != 'titulo de um condado'
+    - [0]/[0]/[0]/relation: element 'destname' 'apontamentosd' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'apsd-soure-coimbra-bispcoimbra' != None
+    - [0]/[0]/[1]/atr: element 'valor' 'vila' != None
+    - [0]/[0]/[1]/atr: element 'value' None != 'sim'
+    - [0]/[0]/[1]/atr: element 'date' '0' != None
+    - [0]/[0]/[1]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[1]/atr: element 'type' None != 'misericordia'
+    - [0]/[0]/[1]/atr: element 'tipo' 'tipo' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    ... and 103 more
+
+[FAIL] varia/test-atr-date.xml — 298 difference(s)
+    - fonte: element 'date' '15370000.19191114' != None
+    - fonte: element 'year' '"PT/AUC/ELU/UC-AUC/B/001-001"' != None
+    - [0]/lista: element 'date' '20200211' != None
+    - [0]/lista: element 'type' 'lista' != None
+    - [0]/lista: child count 1 != 2
+    - [0]/[0]/n: element 'sexo' 'm' != None
+    - [0]/[0]/n: element 'nome' 'António Pinto Abadeço' != None
+    - [0]/[0]/n: element 'name' None != 'António Pinto Abadeço'
+    - [0]/[0]/n: child count 37 != 35
+    - [0]/[0]/[0]/relation: group name 'relation' != 'atr'
+    - [0]/[0]/[0]/relation: id 'lista-test-atr-dates-rela1' != 't140337-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'n' != '"PT/AUC/ELU/UC-AUC/B/001-001/A/000001"'
+    - [0]/[0]/[0]/relation: element 'date' '20200211' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'código-de-referência'
+    - [0]/[0]/[0]/relation: element 'destname' 'lista' != None
+    - [0]/[0]/[0]/relation: element 'origin' 't140337' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'lista-test-atr-dates' != None
+    - [0]/[0]/[1]/atr: element 'valor' '"PT/AUC/ELU/UC-AUC/B/001-001/A/000001"' != None
+    - [0]/[0]/[1]/atr: element 'value' None != '2018-04-19 14:32:42'
+    - [0]/[0]/[1]/atr: element 'date' '20200211' != None
+    - [0]/[0]/[1]/atr: element 'entity' 't140337' != None
+    - [0]/[0]/[1]/atr: element 'type' None != 'data-do-registo'
+    - [0]/[0]/[1]/atr: element 'tipo' 'código-de-referência' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/atr: element 'valor' '2018-04-19 14:32:42' != None
+    ... and 273 more
+
+[FAIL] varia/vereacao.xml — 204 difference(s)
+    - fonte: id 'cbr-vereacao' != 'vereacao' (normalized)
+    - fonte: element 'date' '17930000' != None
+    - fonte: element 'year' 'Não sabemos' != None
+    - [0]/acto: id 'cbr-v1793-1' != 'v1793-1' (normalized)
+    - [0]/acto: element 'date' '17930221' != None
+    - [0]/acto: element 'type' 'acto' != None
+    - [0]/acto: child count 25 != 13
+    - [0]/[0]/presente: id 'cbr-v1793-1-per1' != 'v1793-1-per1' (normalized)
+    - [0]/[0]/presente: element 'sex' 'm' != None
+    - [0]/[0]/presente: child count 9 != 3
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'cbr-v1793-1-rela1' != 'v1793-1-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'value' 'presente' != 'preside a vereacao'
+    - [0]/[0]/[0]/relation: element 'date' '17930221' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'cargo'
+    - [0]/[0]/[0]/relation: element 'destname' 'acto' != None
+    - [0]/[0]/[0]/relation: element 'origin' 'cbr-v1793-1-per1' != None
+    - [0]/[0]/[0]/relation: element 'destination' 'cbr-v1793-1' != None
+    - [0]/[0]/[1]/ls: id 'cbr-v1793-1-per1-att1' != 'v1793-1-per1-att2' (normalized)
+    - [0]/[0]/[1]/ls: element 'valor' 'preside a vereacao' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'juiz de fora (servindo de ....)'
+    - [0]/[0]/[1]/ls: element 'date' '17930221' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'cbr-v1793-1-per1' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'cargo'
+    - [0]/[0]/[1]/ls: element 'tipo' 'cargo' != None
+    ... and 179 more
+
+[SKIP] varia/xpto_comuns_soure.xml — no Python XML at xpto_comuns_soure.xml
+
+[SKIP] yaml/jcatalog.xml — no Python XML at jcatalog.xml
+
+[SKIP] yaml/pt-groups.xml — no Python XML at pt-groups.xml

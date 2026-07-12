@@ -646,3 +646,141 @@ class TestJsonExporter:
         assert element['core'] == "John"
         assert element['original'] == "Johann"
         assert element['comment'] == "comment"
+
+
+class TestFunctionInActRelations:
+    """Tests for auto-generated function-in-act relation groups.
+
+    Mirrors process_function_in_act/2 (gactoxml.pl:962-1005): every
+    person/object inside an act gets a relation child linking them to
+    the act with type=function-in-act.
+    """
+
+    GACTO2 = Path("tests/kleio-home/structures/gacto2.str.yaml")
+
+    @pytest.fixture
+    def temp_dir(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            yield Path(tmpdir)
+
+    @pytest.fixture
+    def schema(self):
+        if not self.GACTO2.exists():
+            pytest.skip("gacto2.str.yaml not found")
+        from kleio.errors import ErrorAccumulator
+        s = SchemaRegistry()
+        s.load(self.GACTO2, ErrorAccumulator())
+        return s
+
+    def _export(self, schema, src, temp_dir, name="t"):
+        """Translate a source string and export to XML."""
+        from kleio.parser.builder import translate_string
+        from kleio.errors import ErrorAccumulator
+        errors = ErrorAccumulator()
+        groups = translate_string(src, schema, errors)
+        exporter = XmlExporter()
+        exporter.init(source_file=f"{name}.cli", output_dir=temp_dir,
+                      schema=schema, structure_file="gacto2.str")
+        for g in groups:
+            exporter.export_group(g)
+        exporter.close()
+        tree = ET.parse(temp_dir / f"{name}.xml")
+        return tree.getroot()
+
+    def test_function_in_act_relation_generated(self, schema, temp_dir):
+        """A person (n$) inside an act (bap$) gets a function-in-act
+        relation child with type=function-in-act, value=<group-name>,
+        origin=<person-id>, destination=<act-id>."""
+        src = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      bap$b1/1/1/1714\n"
+            "         n$joao/m/id=c1\n"
+        )
+        root = self._export(schema, src, temp_dir)
+
+        # Find the person group (n).
+        persons = [g for g in root.iter("GROUP") if g.get("NAME") == "n"]
+        assert len(persons) == 1
+        person = persons[0]
+        person_id = person.get("ID")
+        assert person_id == "c1"
+
+        # Find relation children of the person.
+        relations = [g for g in person.findall("GROUP") if g.get("NAME") == "relation"]
+        assert len(relations) == 1
+        rel = relations[0]
+
+        assert rel.get("CLASS") == "relation"
+        # Check the key elements.
+        def _elem_val(parent, name):
+            for el in parent.findall("ELEMENT"):
+                if el.get("NAME") == name:
+                    core = el.find("CORE")
+                    if core is None:
+                        core = el.find("core")
+                    return core.text if core is not None else ""
+            return None
+
+        assert _elem_val(rel, "type") == "function-in-act"
+        assert _elem_val(rel, "value") == "n"
+        assert _elem_val(rel, "origin") == person_id
+        assert _elem_val(rel, "destination") == "b1"
+
+    def test_no_relation_outside_act(self, schema, temp_dir):
+        """A person NOT inside an act does NOT get a function-in-act
+        relation."""
+        # n$ at top level (no enclosing act).
+        src = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      n$joao/m/id=c1\n"
+        )
+        root = self._export(schema, src, temp_dir)
+
+        persons = [g for g in root.iter("GROUP") if g.get("NAME") == "n"]
+        assert len(persons) == 1
+        person = persons[0]
+        # No relation children.
+        relations = [g for g in person.findall("GROUP") if g.get("NAME") == "relation"]
+        assert len(relations) == 0
+
+    def test_relation_id_format(self, schema, temp_dir):
+        """The relation id follows the <person-id>-rel<n> pattern."""
+        src = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      bap$b1/1/1/1714\n"
+            "         n$joao/m/id=c1\n"
+        )
+        root = self._export(schema, src, temp_dir)
+
+        person = [g for g in root.iter("GROUP") if g.get("NAME") == "n"][0]
+        rel = [g for g in person.findall("GROUP") if g.get("NAME") == "relation"][0]
+        rel_id = rel.get("ID")
+        # Prolog uses gensymbol_local(rela, ...) with the ACT's id as base:
+        # format is <act_id>-rela<n> (gactoxml.pl:963-964,975).
+        assert rel_id.startswith("b1-rela"), f"expected b1-rela..., got {rel_id}"
+
+    def test_multiple_persons_each_get_relation(self, schema, temp_dir):
+        """Multiple persons inside the same act each get their own
+        function-in-act relation."""
+        src = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      bap$b1/1/1/1714\n"
+            "         n$joao/m/id=c1\n"
+            "            pai$pedro/id=p1\n"
+            "            mae$ana/id=m1\n"
+        )
+        root = self._export(schema, src, temp_dir)
+
+        # Every person group should have exactly one relation child.
+        persons = [g for g in root.iter("GROUP") if g.get("NAME") in ("n", "pai", "mae")]
+        assert len(persons) == 3
+        for person in persons:
+            rels = [g for g in person.findall("GROUP") if g.get("NAME") == "relation"]
+            assert len(rels) == 1, (
+                f"person {person.get('NAME')}({person.get('ID')}) should have "
+                f"exactly 1 relation child, got {len(rels)}"
+            )

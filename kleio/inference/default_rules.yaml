@@ -65,9 +65,13 @@ rules:
   - name: parents_couple
     description: "Generate husband relation from pai to mae (parents as couple)"
     priority: 0
-    when:
-      - sequence: any
-      - group: {name: pai, bind: father_id}
+    when_any:
+      - - sequence: any
+        - extends: {base: actorm, bind: child_id}
+        - group: {name: pai, bind: father_id}
+      - - sequence: any
+        - extends: {base: actorm, bind: child_id}
+        - group: {name: mae, bind: mother_id}
     then:
       - relation: {type: parentesco, value: marido, origin: father_id, dest: mother_id}
       - attribute: {entity: father_id, type: ec, value: c}
@@ -164,26 +168,26 @@ rules:
       - relation: {type: parentesco, value: pai, origin: parent_id, dest: son_id}
 
   - name: paternal_grandmother
-    description: "Generate mother relation from paternal grandmother (pmae) to father"
+    description: "Generate mother relation from paternal grandmother (mpai) to father"
     priority: 0
     when:
       - sequence: any
       - group: {name: pai, bind: son_id}
-      - group: {name: pmae, bind: parent_id}
+      - group: {name: mpai, bind: parent_id}
     then:
       - relation: {type: parentesco, value: mae, origin: parent_id, dest: son_id}
 
   # ============================================
   # Grandmother relationships (maternal)
   # ============================================
-  
+
   - name: maternal_grandfather
-    description: "Generate father relation from maternal grandfather (mpai) to mother"
+    description: "Generate father relation from maternal grandfather (pmae) to mother"
     priority: 0
     when:
       - sequence: any
       - group: {name: mae, bind: son_id}
-      - group: {name: mpai, bind: parent_id}
+      - group: {name: pmae, bind: parent_id}
     then:
       - relation: {type: parentesco, value: pai, origin: parent_id, dest: son_id}
 
@@ -204,10 +208,13 @@ rules:
   - name: marriage_groom_bride
     description: "Generate husband relation between groom (noivo) and bride (noiva)"
     priority: 0
-    when:
-      - sequence: any
-      - group: {name: cas}
-      - group: {name: noivo, bind: groom_id}
+    when_any:
+      - - sequence: any
+        - group: {name: cas, bind: cas_id}
+        - group: {name: noivo, bind: groom_id}
+      - - sequence: any
+        - group: {name: cas, bind: cas_id}
+        - group: {name: noiva, bind: bride_id}
     then:
       - relation: {type: parentesco, value: marido, origin: groom_id, dest: bride_id}
       - attribute: {entity: groom_id, type: ec, value: c}
@@ -216,10 +223,13 @@ rules:
   - name: marriage_bride_groom
     description: "Generate wife relation between bride (noiva) and groom (noivo)"
     priority: 0
-    when:
-      - sequence: any
-      - group: {name: cas}
-      - group: {name: noiva, bind: bride_id}
+    when_any:
+      - - sequence: any
+        - group: {name: cas, bind: cas_id}
+        - group: {name: noiva, bind: bride_id}
+      - - sequence: any
+        - group: {name: cas, bind: cas_id}
+        - group: {name: noivo, bind: groom_id}
     then:
       - relation: {type: parentesco, value: mulher, origin: bride_id, dest: groom_id}
       - attribute: {entity: bride_id, type: ec, value: c}

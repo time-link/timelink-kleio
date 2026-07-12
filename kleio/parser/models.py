@@ -128,6 +128,68 @@ class ParsedGroup:
         return el.get_core_text() if el else ""
 
 
+def build_tree(groups: list[ParsedGroup]) -> list[ParsedGroup]:
+    """Assemble a parent -> children tree from a flat list of groups.
+
+    The parser/builder produces a flat list where each group's nesting is
+    recorded in its ``path`` attribute (a list of ``(name, id)`` ancestor
+    tuples) rather than in a populated ``children`` list. This helper
+    reconstructs the tree by:
+
+    1. Grouping groups by their immediate parent id (the last entry of
+       ``path``), or treating them as roots when ``path`` is empty.
+    2. Appending each child to its parent's ``children`` list.
+
+    Roots (groups with empty ``path``) are returned as the top-level list.
+    Non-root groups also appear inside their parent's ``children``, so the
+    returned list contains only the true roots.
+
+    The input list is not consumed; each group's ``children`` list is
+    rebuilt from ``path`` metadata. If the groups already have
+    ``children`` populated and none of them carry ``path`` metadata
+    (e.g. hand-built test fixtures), the input is returned unchanged so
+    that manually-constructed trees are preserved.
+
+    Args:
+        groups: Flat list of parsed groups (as produced by
+            :func:`kleio.parser.builder.translate_file`), or an
+            already-assembled tree (hand-built fixtures).
+
+    Returns:
+        List of root groups with ``children`` populated recursively.
+    """
+    # If no group carries path metadata, the caller has either passed a
+    # flat list with no nesting information or an already-assembled tree.
+    # In the former case there is nothing to rebuild; in the latter we
+    # must not clobber existing children. Either way, return as-is.
+    if not any(g.path for g in groups):
+        return list(groups)
+
+    # Reset children to make the function idempotent.
+    for g in groups:
+        g.children = []
+
+    children_map: dict[str, list[ParsedGroup]] = {}
+    root_groups: list[ParsedGroup] = []
+
+    for group in groups:
+        if group.path:
+            parent_name, parent_id = group.path[-1]
+            children_map.setdefault(parent_id, []).append(group)
+        else:
+            root_groups.append(group)
+
+    # Attach children to their parents. Iterating over the full list
+    # (rather than just roots) lets nested groups receive their own
+    # children, recursively, in a single pass since parents are emitted
+    # before children by the builder.
+    for group in groups:
+        if group.id in children_map:
+            group.children.extend(children_map[group.id])
+
+    return root_groups
+
+
 # Action types produced by the syntax parser
 # These represent the parser's internal actions during token processing
 

@@ -90,14 +90,30 @@ class GroupBuilder:
         self.schema = schema
         self.errors = errors
         self.on_group_complete = on_group_complete
-        
+
         # Initialize state
         self.state = ParserState()
         self.group_counters: dict[str, int] = {}
         self.completed_groups: list[ParsedGroup] = []
         self.line_number: int = 0
         self.line_text: str = ""
-        
+
+        # Id namespace prefix from the top-level ``kleio$`` group's ``prefix``
+        # element (gactoxml.pl:432-433). When set, every generated or explicit
+        # id is prefixed with ``<id_prefix>-`` so that files from different
+        # transcribers don't collide in the database. The pretty-printer
+        # strips this prefix back off when writing the .ids file
+        # (remove_id_prefix/2, gactoxml.pl:1506-1512).
+        self._id_prefix: str = ""
+        self._use_id_prefix: bool = False
+
+        # Translation count from the ``kleio$`` group's ``translations``
+        # element, incremented by 1 at the start of each translation
+        # (gactoxml.pl:442-444). When > 1, appended to auto-generated ids
+        # only (gactoxml.pl:1482-1484). 0 means the kleio group hasn't been
+        # seen yet; once seen it becomes >= 1.
+        self._translation_count: int = 0
+
         # Initialize group counters
         self._init_group_counters()
     
@@ -320,24 +336,59 @@ class GroupBuilder:
     
     def _flush_group(self) -> None:
         """Finalize the current group.
-        
+
         From dataCode.pl flushGroup/0. Ends the current element, generates
         an ID, checks guaranteed elements, creates the ParsedGroup, and
         invokes the callback.
         """
         if not self.state.current_group:
             return
-        
+
         # End current element
         self._end_element()
-        
+
+        # If this is the top-level kleio group, read its ``prefix`` element
+        # and register the id namespace prefix (gactoxml.pl:415,432-433).
+        # The prefix is applied to every subsequent id via _apply_id_prefix.
+        #
+        # Also read the ``translations`` element (the translation count),
+        # increment it by 1 unconditionally (gactoxml.pl:442-444), and store
+        # the new value. The incremented count is appended to auto-generated
+        # ids (NOT explicit ids) when > 1, so that groups inserted after the
+        # first pass get fresh ids and don't collide with previously-assigned
+        # ones (gactoxml.pl:1482-1484). The pretty-printer writes the
+        # incremented value back as /translations=<N> on the kleio$ header.
+        if self.state.current_group == "kleio":
+            prefix_el = None
+            translations_el = None
+            for el in self.state.elements:
+                if el.name == "prefix":
+                    prefix_el = el
+                elif el.name == "translations":
+                    translations_el = el
+            if prefix_el is not None:
+                prefix_value = prefix_el.get_core_text().strip()
+                if prefix_value:
+                    self._id_prefix = prefix_value
+                    self._use_id_prefix = True
+            if translations_el is not None:
+                tc_text = translations_el.get_core_text().strip()
+                try:
+                    self._translation_count = int(tc_text) + 1
+                except ValueError:
+                    self._translation_count = 1
+            else:
+                # No translations= element on the header: first translation
+                # of this file, so the count becomes 1 (gactoxml.pl:439,444).
+                self._translation_count = 1
+
         # Generate ID
         group_id = self._make_id()
         self.state.current_group_id = group_id
-        
+
         # Check guaranteed elements
         self._check_elements(self.state.current_group, group_id)
-        
+
         # Create ParsedGroup
         group = ParsedGroup(
             name=self.state.current_group,
@@ -348,14 +399,43 @@ class GroupBuilder:
             line_text=self.line_text,
             level=len(self.state.path),
         )
-        
+
         # Store and callback
         self.completed_groups.append(group)
         if self.on_group_complete:
             self.on_group_complete(group)
-        
+
         # Clear current group to prevent double-flushing
         self.state.current_group = ""
+
+    def _apply_id_prefix(self, raw_id: str) -> str:
+        """Prepend the kleio id-namespace prefix to ``raw_id``.
+
+        Mirrors check_id_prefix/2 (gactoxml.pl:1500-1504). The ``kleio$``
+        group itself is never prefixed (its own id is irrelevant and has
+        no parent). Explicit and auto-generated ids alike get the prefix
+        so the database sees a single, consistent namespace.
+        """
+        if not self._use_id_prefix or not raw_id:
+            return raw_id
+        if self.state.current_group == "kleio":
+            return raw_id
+        return f"{self._id_prefix}-{raw_id}"
+
+    def _strip_id_prefix(self, group_id: str) -> str:
+        """Remove the kleio id-namespace prefix from ``group_id``.
+
+        Inverse of :meth:`_apply_id_prefix`, mirroring remove_id_prefix/2
+        (gactoxml.pl:1506-1512). Used when building a hierarchical id from
+        the parent's stored id, so the prefix is applied exactly once
+        rather than accumulating down the tree.
+        """
+        if not self._use_id_prefix or not group_id:
+            return group_id
+        prefix_with_dash = f"{self._id_prefix}-"
+        if group_id.startswith(prefix_with_dash):
+            return group_id[len(prefix_with_dash):]
+        return group_id
     
     def _make_id(self) -> str:
         """Generate an ID for the current group.
@@ -372,6 +452,16 @@ class GroupBuilder:
              yielding globally-unique IDs. This is what prevents the exporter's
              tree-builder from conflating groups that share a flat idprefix.
 
+        The kleio namespace prefix (``prefix`` element on the ``kleio$``
+        group) is applied to the final id via :meth:`_apply_id_prefix`,
+        mirroring check_id_prefix/2 (gactoxml.pl:1500-1504).
+
+        The translation count (``translations`` element on ``kleio$``,
+        incremented at the start of each pass) is appended to **auto-generated
+        ids only** when > 1 (gactoxml.pl:1482-1484). Explicit ids are never
+        suffixed. This ensures groups inserted after the first pass get fresh
+        ids and don't collide with previously-assigned ones.
+
         Returns:
             The generated ID string.
         """
@@ -381,13 +471,14 @@ class GroupBuilder:
         if group_def is None:
             return ""
 
-        # 1. Explicit ID from an identification=sic element.
+        # 1. Explicit ID from an identification=sic element. Explicit ids
+        #    get the namespace prefix but NOT the translation-count suffix.
         for element in self.state.elements:
             element_def = self.schema.get_element(element.name)
             if element_def and element_def.identification == "sic":
                 core_text = element.get_core_text()
                 if core_text:
-                    return core_text
+                    return self._apply_id_prefix(core_text)
 
         # 2. Hierarchical counter-based ID: <parentId>-<signum><counter>.
         idprefix = group_def.idprefix or group_name
@@ -395,11 +486,26 @@ class GroupBuilder:
 
         # The parent ID is the ID of the immediately-enclosing group, available
         # from the current path. Root groups (no parent) get a flat idprefix-N.
+        #
+        # When a kleio namespace prefix is in use, the parent's stored id is
+        # already prefixed; we must build the hierarchical id from the parent's
+        # *un-prefixed* id and then apply the prefix exactly once at the end.
+        # Otherwise the prefix would accumulate down the tree
+        # (e.g. ``lousa-lousa-b1-per1-per1``). The Prolog check_id_prefix/2
+        # has the same single-application semantics.
         if self.state.path:
             parent_id = self.state.path[-1][1]
             if parent_id:
-                return f"{parent_id}-{idprefix}{count}"
-        return f"{idprefix}-{count}"
+                parent_id = self._strip_id_prefix(parent_id)
+                raw = f"{parent_id}-{idprefix}{count}"
+        else:
+            raw = f"{idprefix}-{count}"
+
+        # Apply the translation-count suffix to auto-generated ids only,
+        # when the count > 1 (gactoxml.pl:1482-1484).
+        if self._translation_count > 1:
+            raw = f"{raw}-{self._translation_count}"
+        return self._apply_id_prefix(raw)
     
     def _check_elements(self, group: str, group_id: str) -> None:
         """Verify that guaranteed (certe) elements are present.

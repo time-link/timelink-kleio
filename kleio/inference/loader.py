@@ -13,6 +13,23 @@ The YAML format follows the structure:
           - group: {name: pai, bind: father_id}
         then:
           - relation: {type: parentesco, value: pai, origin: father_id, dest: child_id}
+
+A rule may also express a cross-path conjunction (``and`` between several
+sub-paths) using ``when_any:`` instead of ``when:``. Each entry under
+``when_any:`` is itself a list of conditions describing one sub-path. The
+sub-paths are matched independently and joined on any shared ``bind``
+variable names:
+
+    - name: parents_couple
+      when_any:
+        - - sequence: any
+          - extends: {base: actorm, bind: child_id}
+          - group: {name: pai, bind: father_id}
+        - - sequence: any
+          - extends: {base: actorm, bind: child_id}
+          - group: {name: mae, bind: mother_id}
+      then:
+        - relation: {type: parentesco, value: marido, origin: father_id, dest: mother_id}
 """
 from __future__ import annotations
 
@@ -95,14 +112,32 @@ def _parse_rule(data: dict[str, Any]) -> InferenceRule | None:
         priority=data.get('priority', 0)
     )
     
-    # Parse conditions
+    # Parse cross-path conjunction (when_any: list of sub-paths).
+    # Each sub-path is itself a list of condition dicts. When present,
+    # this takes precedence over `when:` and is stored in
+    # `rule.condition_paths`; the engine then joins the sub-paths by
+    # their shared bind_var names.
+    when_any_data = data.get('when_any')
+    if isinstance(when_any_data, list):
+        for sub_path_data in when_any_data:
+            if not isinstance(sub_path_data, list):
+                continue
+            sub_path: list[Condition] = []
+            for cond_data in sub_path_data:
+                condition = _parse_condition(cond_data)
+                if condition:
+                    sub_path.append(condition)
+            if sub_path:
+                rule.condition_paths.append(sub_path)
+
+    # Parse conditions (single-path form)
     when_data = data.get('when', [])
     if isinstance(when_data, list):
         for cond_data in when_data:
             condition = _parse_condition(cond_data)
             if condition:
                 rule.conditions.append(condition)
-    
+
     # Parse actions
     then_data = data.get('then', [])
     if isinstance(then_data, list):
@@ -110,7 +145,7 @@ def _parse_rule(data: dict[str, Any]) -> InferenceRule | None:
             action = _parse_action(action_data)
             if action:
                 rule.actions.append(action)
-    
+
     return rule
 
 
@@ -255,22 +290,34 @@ def save_rules_to_yaml(rules: list[InferenceRule], filepath: Path) -> None:
             'name': rule.name,
             'description': rule.description,
             'priority': rule.priority,
-            'when': [],
             'then': []
         }
-        
-        # Serialize conditions
-        for cond in rule.conditions:
-            cond_data = _serialize_condition(cond)
-            if cond_data:
-                rule_data['when'].append(cond_data)
-        
+
+        if rule.condition_paths:
+            # Cross-path conjunction: emit when_any as a list of sub-paths,
+            # each a list of condition dicts.
+            when_any: list[list[dict[str, Any]]] = []
+            for sub_path in rule.condition_paths:
+                sub_data: list[dict[str, Any]] = []
+                for cond in sub_path:
+                    cond_data = _serialize_condition(cond)
+                    if cond_data:
+                        sub_data.append(cond_data)
+                when_any.append(sub_data)
+            rule_data['when_any'] = when_any
+        else:
+            rule_data['when'] = []
+            for cond in rule.conditions:
+                cond_data = _serialize_condition(cond)
+                if cond_data:
+                    rule_data['when'].append(cond_data)
+
         # Serialize actions
         for action in rule.actions:
             action_data = _serialize_action(action)
             if action_data:
                 rule_data['then'].append(action_data)
-        
+
         data['rules'].append(rule_data)
     
     with open(filepath, 'w', encoding='utf-8') as f:

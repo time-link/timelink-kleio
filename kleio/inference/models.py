@@ -67,18 +67,42 @@ class Action:
 @dataclass
 class InferenceRule:
     """A complete inference rule with conditions and actions.
-    
+
     Rules follow the pattern: if [conditions] then [actions]
-    
-    Example:
-        if [sequence(_), extends(actorm, N), pai(P)] 
-        then relation(parentesco, pai, P, N)
-        
-    This generates a father relationship from P (pai) to N (child).
+
+    Two forms are supported:
+
+    1. Single-path (default): ``conditions`` is a flat ordered list of
+       conditions matched against one root-to-node path.
+
+       Example:
+           if [sequence(_), extends(actorm, N), pai(P)]
+           then relation(parentesco, pai, P, N)
+
+       This generates a father relationship from P (pai) to N (child).
+
+    2. Multi-path (cross-path ``and``): ``condition_paths`` is a list of
+       sub-paths, each a list of conditions. Every sub-path must match
+       somewhere in the group tree, and the resulting bindings must
+       unify (shared ``bind_var`` names must agree). For each consistent
+       joint binding the actions fire once.
+
+       Example (Prolog: ``if [seq,extends(actorm,N),pai(P)] and
+       [seq,extends(actorm,N),mae(M)] then ...``)::
+
+           condition_paths = [
+               [SEQUENCE, EXTENDS(actorm, child_id), GROUP(pai, father_id)],
+               [SEQUENCE, EXTENDS(actorm, child_id), GROUP(mae, mother_id)],
+           ]
+
+       Here ``child_id`` is the join variable: both sub-paths must bind
+       it to the same actorm id. When non-empty, ``condition_paths``
+       takes precedence and ``conditions`` is ignored by the engine.
     """
     name: str
     conditions: list[Condition] = field(default_factory=list)
     actions: list[Action] = field(default_factory=list)
+    condition_paths: list[list[Condition]] = field(default_factory=list)
     priority: int = 0
     description: str = ""
 

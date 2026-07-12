@@ -1,0 +1,298 @@
+kleio$gacto.str/translations=1
+
+   fonte$inference-test/loc=auditorio/tipo=teste/obs="""
+      Fonte sintetica para exercer cada regra de inferencia em kleio/inference/default_rules.yaml
+
+      =======================================================================
+      Act 1: baptism of a male child (n$m) with father (pai) and
+             mother (mae) as groups inside n.
+      Rules exercised:
+        - father_of_male_actor : pai$f1 -> n$c1 actorm
+        - mother_of_male_actor : mae$m1 -> n$c1 actorm
+        - parents_couple       : pai$f1 + mae$m1 same child -> marido f1->m1
+      =======================================================================
+      """
+      bap$inf-1/1/1/1800/fl.1/igreja matriz/joze priest(padre)
+
+         n$joao/m/id=inf-1-c
+
+            pai$pedro/id=inf-1-f
+               ls$morada/vila
+
+            mae$ana/id=inf-1-m
+   
+            bap$inf-2/2/1/1800/fl.2/igreja matriz/joze priest(padre)
+               /obs="""
+               =======================================================================
+               Act 2: baptism of a female child (na$) with father (pai) and
+                      mother (mae) as groups inside na.
+               Rules exercised:
+                 - father_of_female_actor : pai$f2 -> na$c2 actorf
+                 - mother_of_female_actor : mae$m2 -> na$c2 actorf
+                 - parents_couple         : pai$f2 + mae$m2 same child -> marido f2->m2
+               =======================================================================
+         """
+         na$francisca/id=inf-2-c
+
+            pai$antonio/id=inf-2-f
+
+            mae$leonarda/id=inf-2-m
+
+            
+            rol$inf-3/3/1/1800/fl.3
+            /obs="""
+            =======================================================================
+            Act 3: rol/family with a person containing a son (filho), a daughter
+                   (filha), a brother (irmao) and a sister (irma).
+            Rules exercised:
+              - son_of_person    : filho$s1 -> parent person
+              - daughter_of_person: filha$d1 -> parent person
+              - brother_of_person : irmao$b1 -> parent person
+              - sister_of_person  : irma$i1 -> parent person
+            =======================================================================
+            """
+            fogo$f3-1/obs="familia para teste filho/filha/irmao/irma"
+
+            n$joao pessoa/id=inf-3-p
+
+               filho$pedro/id=inf-3-filho
+
+               filha$beatriz/id=inf-3-filha
+
+               irmao$tome/id=inf-3-irmao
+
+               irma$catarina/id=inf-3-irma
+
+         rol$inf-4/4/1/1800/fl.4
+            /obs="""
+      =======================================================================
+      Act 4: male actor (actorm) with a wife (mulher).
+      - male_actor_with_wife : actorm husband h1 + mulher w1
+                                  -> marido h1->w1, ec=c on both
+      =======================================================================
+"""
+         fogo$f4-1
+
+            n$manuel husband/m/id=inf-4-h
+
+               mulher$ana wife/id=inf-4-w
+
+         rol$inf-5/5/1/1800/fl.5
+            /obs="""
+      =======================================================================
+      Act 5: female actor (na$) with a husband (marido).
+      Rules exercised:
+        - female_actor_with_husband : na wife w5 + marido h5
+                                       -> mulher w5->h5, ec=c on both
+      =======================================================================
+            """
+         fogo$f5-1
+
+            na$maria/id=inf-5-w
+
+               marido$joze/id=inf-5-h
+
+      po$inf-6/cx. 202, p.4/17150000/obs=ordens menores
+         /obs="""
+      =======================================================================
+      Act 6: ordenacao record (po$) with a person (n$) whose father (pai$)
+             and mother (mae$) each carry grandparent groups: ppai/mpai
+             inside pai, pmae/mmae inside mae.
+      Source: modelled on more_sources/soure/documents/ordenacoes/po01.cli.
+
+      Rules exercised:
+        - father_of_male_actor : pai$f6 -> n$c6 actorm
+        - mother_of_male_actor : mae$m6 -> n$c6 actorm
+        - parents_couple       : pai$f6 + mae$m6 same child -> marido f6->m6
+
+      NOTE: the four grandparent rules (paternal_grandfather,
+      paternal_grandmother, maternal_grandfather, maternal_grandmother)
+      currently do NOT fire. Their conditions require ppai/pmae/mpai/mmae
+      to be children of pai/mae (path [sequence, group(pai), group(ppai)]),
+      but the gacto2 schema flattens these into siblings under n. This is
+      a rule/schema mismatch tracked separately.
+      =======================================================================
+      """
+         n$antonio manhos de abreu/id=inf-6-c
+            ls$residencia/soure
+
+            pai$antonio manhos de abreu/id=inf-6-f
+               ls$titulo/doutor
+               ls$residencia/soure
+
+               ppai$mateus manhos de abreu/id=inf-6-ppai
+                  ls$residencia/soure
+
+               mpai$maria leao/id=inf-6-mpai
+
+            mae$simoa da rosa godinho/id=inf-6-m
+
+               pmae$manuel simoes godinho/id=inf-6-pmae
+                  ls$residencia/condeixa-a-nova
+                  ls$cargo/familiar do santo oficio
+
+               mmae$cristina antunes/id=inf-6-mmae
+
+      cas$inf-8/8/1/1800/fl.8/igreja matriz/joze priest(padre)
+         /obs="""
+      =======================================================================
+      Act 8: marriage record (cas) with groom (noivo) and bride (noiva)
+             at the same level under cas.
+      Rules exercised:
+        - marriage_groom_bride : cas c8 with noivo g8 + noiva b8
+                                  -> marido g8->b8, ec=c on both
+        - marriage_bride_groom : same cas c8 with noiva b8 + noivo g8
+                                  -> mulher b8->g8, ec=c on both
+      =======================================================================
+      """
+         noivo$pedro groom/id=inf-8-g
+
+         noiva$beatriz bride/id=inf-8-b
+
+      rol$inf-9/9/1/1800/fl.9
+         /obs="""
+      =======================================================================
+      Act 9: male actor (actorm) with a deceased previous wife (mulher1).
+      Rules exercised:
+        - previous_wife_1 : actorm husband h9 + mulher1 w9
+                            -> foi-marido h9->w9, morta=antes on w9
+      =======================================================================
+      """
+         fogo$f9-1
+
+            n$joze widower/m/id=inf-9-h
+
+               mulher1$ines former-wife/id=inf-9-w1
+
+      rol$inf-10/10/1/1800/fl.10
+         /obs="""
+      =======================================================================
+      Act 10: female actor (na$) with a deceased previous husband (marido1).
+      Rules exercised:
+        - previous_husband_1 : na wife w10 + marido1 h10
+                               -> foi-mulher w10->h10, morto=antes on h10
+      =======================================================================
+      """
+         fogo$f10-1
+
+            na$catarina/id=inf-10-w
+
+               marido1$manuel/id=inf-10-h1
+
+      bap$inf-11/11/1/1800/fl.11/igreja matriz/joze priest(padre)
+         /obs="""
+      =======================================================================
+      Act 11: a historical-act (bap) to fire the scope-reset rule.
+      Rules exercised:
+        - new_scope_historical_act : entering a bap (extends historical-act)
+                                     resets the inference scope
+      =======================================================================
+      """
+         n$ana/f/id=inf-11-n
+
+
+               po$po2/cx. 683, p.10/16610000/obs=ordens menores. Data de entrada do processo 2-10-1661
+               /obs="""
+               act with pai-ppai-mpai and mae-pmae-mmae
+               """
+
+         n$joao manhos/obs=inclui o baptisado do ordenando po2-b1661/id=po2-per1
+            ls$residencia/soure
+
+            pai$antonio manhos de abreu/id=po2-per1-per2
+               ls$residencia/soure
+
+               ppai$luis manhos de abreu/id=po2-per1-per2-per3
+                  ls$residencia/soure
+
+               mpai$catarina nunes/id=po2-per1-per2-per4
+
+            mae$luisa de matos/id=po2-per1-per5
+
+               pmae$antonio de matos/id=po2-per1-per5-per6
+                  ls$residencia/soure
+                  ls$cargo/familiar do santo oficio
+
+               mmae$francisca pereira/id=po2-per1-per5-per7
+
+         po$po38/cx. 1604, p.6/17380000
+            /obs="""
+            act with pai-ppai-pppai etc... 
+            (great grand parents)
+            """
+
+         n$pedro barbosa canais/obs=bacharel formado pela universidade de coimbra na faculdade dos sagrados canones/id=po38-per1
+            ls$residencia/soure
+
+            pai$luis barbosa canais/id=po38-per1-per2
+               ls$residencia/soure
+
+               ppai$jose de barbosa canais/id=po38-per1-per2-per3
+                  ls$naturalidade/granja do ulmeiro
+
+                  pppai$manuel ferreira canais/id=po38-per1-per2-per3-per4
+                     ls$cargo/sargento mor
+
+                  mppai$francisca/id=po38-per1-per2-per3-per5
+                     ls$titulo/dona
+
+               mpai$antonia teresa/id=po38-per1-per2-per6
+                  ls$naturalidade/soure
+
+            mae$iria seabra jacques/id=po38-per1-per7
+               ls$residencia/soure
+               ls$naturalidade/soure
+
+               pmae$luis de seabra jacques/id=po38-per1-per7-per8
+                  ls$residencia/soure
+                  ls$naturalidade/soure
+
+                  ppmae$joao de seabra jacques/id=po38-per1-per7-per8-per9
+                     ls$morto/antes
+
+                  mpmae$maria cardoso/id=po38-per1-per7-per8-per10
+
+               mmae$maria de jesus/id=po38-per1-per7-per11
+
+                  pmmae$manuel goncalves/id=po38-per1-per7-per11-per12
+
+                  mmmae$isabel gomes/id=po38-per1-per7-per11-per13
+                     ls$residencia/amoreira
+
+                          cas$c1720.1/2/1/1720/igreja matriz/manuel rodrigues (vigario)
+
+         noivo$manuel madeira/id=c1720.1-per1
+
+            pnoivo$jorge vaz/id=c1720.1-per2
+               ls$morto/antes
+               ls$residencia/venda nova, freguesia de tapeus
+               ls$freguesia/tapeus
+
+            mnoivo$maria madeira/id=c1720.1-per3
+               ls$residencia/venda nova, freguesia de tapeus
+               ls$freguesia/tapeus
+
+         noiva$isabel alvares/id=c1720.1-per4
+
+            pnoiva$vicente rodrigues/id=c1720.1-per5
+               ls$residencia/quinta de porto coelheiro
+               ls$morto/antes
+
+            mnoiva$maria alvares/id=c1720.1-per6
+               ls$morta/antes
+
+         test$afonso lopes/id=c1720.1-per7
+            ls$residencia/laranjeira, freguesia de tapeus
+            ls$freguesia/tapeus
+
+         test$antonio rodrigues/id=ctest02011720
+            ls$residencia/quinta#[de porto coelheiro]
+
+         test$domingas da costa/id=c1720.1-per8
+            rel$parentesco/mulher/antonio rodrigues/ctest02011720
+
+         test$isabel tome/id=ctest02011720b
+
+         referido$antonio nunes/id=c1720.1-per9
+            ls$residencia/casal da tojeira
+            rel$parentesco/marido/isabel tome/ctest02011720b

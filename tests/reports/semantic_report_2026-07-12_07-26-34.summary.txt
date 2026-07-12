@@ -1,0 +1,106 @@
+Kleio Python vs Prolog semantic comparison — summary
+Generated: 2026-07-12T07:26:37.761035
+==============================================================================
+Total reference files : 55
+Passing (zero diffs)  : 1
+Failing               : 50
+Skipped (no Py XML)   : 4
+
+Per-file status (diff count; 0 = pass, -1 = skipped):
+  [FAIL] 27590  varia/auc-alunos-264605-A-140337-140771.xml
+  [FAIL] 10935  roisdeconfessados/coja-rol-1841.xml
+  [FAIL]  7407  varia/lrazao516pe.xml
+  [FAIL]  5105  paroquiais/baptismos/bapteirasproblem2.xml
+  [FAIL]  4424  varia/glopes-lap1561.xml
+  [FAIL]  3864  paroquiais/casamentos/cas1714-1722.xml
+  [FAIL]  3514  varia/nommiz.xml
+  [FAIL]  3189  paroquiais/baptismos/bapteirasproblem1.xml
+  [FAIL]  2919  varia/auc_cartulario18.xml
+  [FAIL]  2586  varia/eleicoes1.xml
+  [FAIL]  2470  notariais/perdoes.xml
+  [FAIL]  2092  varia/misMesa.xml
+  [FAIL]  1870  notariais/notlousa1.xml
+  [FAIL]  1814  paroquiais/baptismos/bapt1714.xml
+  [FAIL]  1806  notariais/notarial80.xml
+  [FAIL]  1439  varia/dev1692.xml
+  [FAIL]  1225  varia/avexplorfa.xml
+  [FAIL]  1168  roisdeconfessados/rol1.xml
+  [FAIL]   911  roisdeconfessados/rol2.xml
+  [FAIL]   904  roisdeconfessados/rol3.xml
+  [FAIL]   682  paroquiais/obitos/obiteirasproblem.xml
+  [FAIL]   526  paroquiais/obitos/ob1688.xml
+  [FAIL]   526  paroquiais/obitos/ob1688b.xml
+  [FAIL]   260  identifications/mhk_identification_toliveira.xml
+  [FAIL]   238  paroquiais/obitos/obit1714.xml
+  [FAIL]   209  varia/ivcc.xml
+  [FAIL]   105  varia/mp758-santiago-beduido.xml
+  [FAIL]    99  varia/Devedores.xml
+  [FAIL]    97  paroquiais/baptismos/bap-com-celebrantes.xml
+  [FAIL]    77  varia/test-atr-date.xml
+  [FAIL]    73  varia/vereacao.xml
+  [FAIL]    66  paroquiais/casamentos/cas1714-1722-com-celebrante.xml
+  [FAIL]    47  paroquiais/baptismos/bug_mesmo_que.xml
+  [FAIL]    46  varia/sourecoimbrabispcoimbra_apontamentosd.xml
+  [FAIL]    45  varia/cartas.xml
+  [FAIL]    43  paroquiais/obitos/testeParentescos.xml
+  [FAIL]    42  paroquiais/crisma/crisma1753.xml
+  [FAIL]    19  paroquiais/obitos/obitoShort.xml
+  [FAIL]    18  notariais/docsregiospontepisc.xml
+  [FAIL]    18  paroquiais/obitos/obitoShort_id.xml
+  [FAIL]    17  paroquiais/obitos/obitoShort_id_id.xml
+  [FAIL]    10  linked_data/dehergne-a.xml
+  [FAIL]    10  linked_data/dehergne-locations-1644.xml
+  [FAIL]    10  linked_data/multiplelinks.xml
+  [FAIL]     8  bugs/bugs.xml
+  [FAIL]     8  paroquiais/baptismos/rogeriodomingos_bap_problem.xml
+  [FAIL]     8  varia/dehergne-residences.xml
+  [FAIL]     4  varia/quotes.xml
+  [FAIL]     2  issues/issue21.xml
+  [FAIL]     2  linked_data/linked-datanw.xml
+  [PASS]     0  paroquiais/baptismos/lousa-bap-encadeado.xml
+  [SKIP]     -  locate_stru_file/default-stru.xml
+  [SKIP]     -  varia/xpto_comuns_soure.xml
+  [SKIP]     -  yaml/jcatalog.xml
+  [SKIP]     -  yaml/pt-groups.xml
+
+Difference categories (most common first):
+   27791  element:entity
+   27785  element:date_extra_info
+   16669  element:date
+   12940  id-mismatch
+    1433  element:origin
+    1151  child-count
+     732  element:obs
+     324  element:nome
+     291  element:destination
+     209  group-name
+     150  element:valor
+     148  element:value
+     124  element:tipo
+     122  element:type
+     116  element:iddest
+      93  element:sex
+      65  element:the_class
+      65  element:user
+      65  element:description
+      54  element:idcaso
+      52  element:destname
+      27  element:fol
+      27  element:ano
+      23  element:dia
+      19  element:mes
+      17  element:resumo
+       8  element:nomedest
+       7  element:sexo
+       6  element:sumario
+       5  element:shortname
+       5  element:urlpattern
+       5  element:literal
+       4  element:origem
+       3  element:data
+       3  element:loc
+       3  element:year
+       3  element:dian
+       2  element:mesmo_que
+       1  element:substitui
+

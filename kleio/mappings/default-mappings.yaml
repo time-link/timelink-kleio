@@ -1,0 +1,421 @@
+# Default database mappings for Kleio groups.
+#
+# Ported from src/mappings.pl. Each "mapping" entry maps a Kleio group name
+# to a database class. Each "class" entry defines the database table and
+# columns for that class, following the schema proposed in
+# https://github.com/time-link/timelink-kleio/issues/24.
+#
+# Attribute fields: name (group element name), column (DB column), baseclass
+# (canonical element class), coltype (SQL type), colsize, colprecision, pkey
+# (primary-key position; 0 = not a key).
+
+# ============================================
+# Group → class mappings
+# ============================================
+mappings:
+  # --- Builtin entity types ---
+  - {name: geoentity, class: geoentity}
+  - {name: 'historical-source', class: source}
+  - {name: 'historical-act', class: act}
+  - {name: person, class: person}
+  - {name: object, class: object}
+  - {name: abstraction, class: object}
+  - {name: relation, class: relation}
+  - {name: attribute, class: attribute}
+  - {name: 'group-element', class: group_element}
+
+  # --- Authority register entities ---
+  - {name: 'authority-register', class: aregister}
+  - {name: rentity, class: rentity}
+  - {name: rperson, class: rperson}
+  - {name: robject, class: robject}
+
+  # --- Portuguese-specific source types ---
+  - {name: item, class: item}
+  - {name: proparr, class: proparr}
+  - {name: rmerce, class: 'registo-merces'}
+  - {name: acta, class: acta}
+  - {name: amz, class: acta}
+  - {name: fogo, class: household}
+  - {name: escritura, class: escritura}
+  - {name: bem, class: good}
+  - {name: divida, class: divida}
+  - {name: siza, class: siza}
+  - {name: aforamento, class: aforamento}
+  - {name: escambo, class: escambo}
+  - {name: caso, class: caso}
+  - {name: acus, class: acusacao}
+  - {name: cartaperdao, class: cartaperdao}
+  - {name: crime, class: crime}
+  - {name: perdao, class: perdao}
+  - {name: carta, class: carta}
+  - {name: event, class: event}
+  - {name: adenda, class: adenda}
+  - {name: topico, class: topico}
+
+# ============================================
+# Class → table/column definitions
+# ============================================
+classes:
+  # --- Builtin classes ---
+
+  - name: geoentity
+    super: entity
+    table: geoentities
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: source
+    super: entity
+    table: sources
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: value, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: ref, column: ref, baseclass: ref, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: kleiofile, column: kleiofile, baseclass: kleiofile, coltype: varchar, colsize: 512, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 32768, colprecision: 0, pkey: 0}
+      - {name: replace, column: replaces, baseclass: replace, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+
+  - name: act
+    super: entity
+    table: acts
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: ref, column: ref, baseclass: ref, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: person
+    super: entity
+    table: persons
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: sex, column: sex, baseclass: sex, coltype: char, colsize: 1, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: object
+    super: entity
+    table: objects
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: relation
+    super: entity
+    table: relations
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: origin, column: origin, baseclass: origin, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: destination, column: destination, baseclass: destination, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: value, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: attribute
+    super: entity
+    table: attributes
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: entity, column: entity, baseclass: entity, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 512, colprecision: 0, pkey: 0}
+      - {name: value, column: the_value, baseclass: value, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: group_element
+    super: entity
+    table: gelement
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: value, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  # --- Authority register classes ---
+
+  - name: aregister
+    super: entity
+    table: aregisters
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: user, column: user, baseclass: user, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: dbase, column: dbase, baseclass: dbase, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: mode, column: replace_mode, baseclass: mode, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: rentity
+    super: entity
+    table: rentities
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: the_class, column: the_class, baseclass: the_class, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: name, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: user, column: user, baseclass: user, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: status, column: status, baseclass: status, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: rperson
+    super: rentity
+    table: rpersons
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: seq, column: seq, baseclass: seq, coltype: int, colsize: 10, colprecision: 0, pkey: 0}
+      - {name: sname, column: sname, baseclass: name, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: user, column: user, baseclass: user, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: status, column: status, baseclass: status, coltype: varchar, colsize: 1, colprecision: 0, pkey: 0}
+      - {name: sex, column: sex, baseclass: sex, coltype: varchar, colsize: 1, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: robject
+    super: rentity
+    table: robjects
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: seq, column: seq, baseclass: seq, coltype: int, colsize: 10, colprecision: 0, pkey: 0}
+      - {name: sname, column: sname, baseclass: name, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: user, column: user, baseclass: user, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: status, column: status, baseclass: status, coltype: varchar, colsize: 1, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: the_type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  # --- Portuguese-specific classes ---
+
+  - name: item
+    super: object
+    table: items
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: titulo, column: titulo, baseclass: titulo, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: resumo, column: resumo, baseclass: resumo, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: proparr
+    super: object
+    table: prop_arrem
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: valor, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: condicao, column: condicao, baseclass: condicao, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: 'registo-merces'
+    super: act
+    table: rmerces
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: cota, column: ref, baseclass: ref, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: merce, column: merce, baseclass: merce, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: acta
+    super: act
+    table: actas
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: fol, column: fol, baseclass: fol, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: resumo, column: resumo, baseclass: resumo, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: household
+    super: object
+    table: households
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: escritura
+    super: act
+    table: escrituras
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: fol, column: fol, baseclass: fol, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: sumario, column: summary, baseclass: summary, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: good
+    super: object
+    table: goods
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: description, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: divida
+    super: object
+    table: dividas
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: valor, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: valorn, column: valorn, baseclass: valorn, coltype: numeric, colsize: 12, colprecision: 2, pkey: 0}
+      - {name: moeda, column: moeda, baseclass: moeda, coltype: varchar, colsize: 12, colprecision: 0, pkey: 0}
+      - {name: prazo, column: prazo, baseclass: prazo, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: juro, column: juro, baseclass: juro, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: siza
+    super: object
+    table: sizas
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: valor, column: the_value, baseclass: value, coltype: varchar, colsize: 254, colprecision: 0, pkey: 0}
+      - {name: juiz, column: juiz, baseclass: juiz, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: escrivao, column: escrivao, baseclass: escrivao, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: depositario, column: depositario, baseclass: depositario, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: data, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: aforamento
+    super: good
+    table: aforamentos
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: description, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: escambo
+    super: good
+    table: escambos
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: name, column: name, baseclass: name, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: description, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: caso
+    super: object
+    table: casos
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: type, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: acusacao
+    super: object
+    table: acusacoes
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: idcaso, column: idcaso, baseclass: idcaso, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: literal, column: literal, baseclass: literal, coltype: varchar, colsize: 6000, colprecision: 0, pkey: 0}
+      - {name: origem, column: origem, baseclass: origem, coltype: varchar, colsize: 6000, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16000, colprecision: 0, pkey: 0}
+
+  - name: cartaperdao
+    super: act
+    table: perdoes
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: cota, column: cota, baseclass: ref, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: local, column: local, baseclass: loc, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: tipo, column: the_type, baseclass: type, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: tabeliao, column: tabeliao, baseclass: tabeliao, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: crime
+    super: object
+    table: cartas_de_perdao
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: forma, column: forma, baseclass: forma, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: tipo, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: subtipo, column: subtipo, baseclass: subtipo, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: objecto, column: objecto, baseclass: objecto, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: local, column: local, baseclass: loc, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: descricao, column: descricao, baseclass: descricao, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: tempo, column: tempo, baseclass: tempo, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: instrumento, column: instrumento, baseclass: objecto, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: pronuncia, column: pronuncia, baseclass: pronuncia, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: ocorrencia, column: ocorrencia, baseclass: ocorrencia, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: situacao, column: situacao, baseclass: situacao, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: perdao
+    super: abstraction
+    table: perdoes
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: dia, column: the_day, baseclass: day, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: mes, column: the_month, baseclass: month, coltype: numeric, colsize: 2, colprecision: 0, pkey: 0}
+      - {name: ano, column: the_year, baseclass: year, coltype: numeric, colsize: 4, colprecision: 0, pkey: 0}
+      - {name: tipo, column: the_type, baseclass: type, coltype: varchar, colsize: 32, colprecision: 0, pkey: 0}
+      - {name: descricao, column: descricao, baseclass: descricao, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: carta
+    super: act
+    table: cartas
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 128, colprecision: 0, pkey: 0}
+      - {name: resumo, column: resumo, baseclass: resumo, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+      - {name: refere, column: refere, baseclass: refere, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: event
+    super: act
+    table: events
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: description, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: adenda
+    super: act
+    table: adendas
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: date, column: the_date, baseclass: date, coltype: varchar, colsize: 24, colprecision: 0, pkey: 0}
+      - {name: loc, column: loc, baseclass: loc, coltype: varchar, colsize: 64, colprecision: 0, pkey: 0}
+      - {name: resumo, column: resumo, baseclass: resumo, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+      - {name: refere, column: refere, baseclass: refere, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}
+
+  - name: topico
+    super: object
+    table: topicos
+    attributes:
+      - {name: id, column: id, baseclass: id, coltype: varchar, colsize: 64, colprecision: 0, pkey: 1}
+      - {name: subject, column: subject, baseclass: subject, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: description, column: description, baseclass: description, coltype: varchar, colsize: 1024, colprecision: 0, pkey: 0}
+      - {name: obs, column: obs, baseclass: obs, coltype: varchar, colsize: 16654, colprecision: 0, pkey: 0}

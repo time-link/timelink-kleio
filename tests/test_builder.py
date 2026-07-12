@@ -80,7 +80,9 @@ class TestGroupBuilderBasic:
         
         group = builder.completed_groups[0]
         assert group.name == "bap"
-        assert group.id == "bap-1"
+        # Explicit id (b1) is preserved per identification=sic (matches
+        # Prolog mkid_el_id, dataCDS.pl:473-478).
+        assert group.id == "b1"
         assert len(group.elements) == 4  # id, dia, mes, ano
         
         # Check elements
@@ -160,15 +162,16 @@ class TestGroupBuilderBasic:
         ]
         builder.process_actions(actions2)
         
-        # Should have one completed group from callback
+        # Should have one completed group from callback.
+        # Explicit id (b1) is preserved per identification=sic.
         assert len(completed) == 1
-        assert completed[0].id == "bap-1"
+        assert completed[0].id == "b1"
         
         builder.close()
         
-        # Now should have two
+        # Now should have two. Second bap's explicit id (b2) is preserved.
         assert len(completed) == 2
-        assert completed[1].id == "bap-2"
+        assert completed[1].id == "b2"
 
 
 class TestPathManagement:
@@ -270,7 +273,9 @@ class TestPathManagement:
         b_group = builder.completed_groups[1]
         assert len(b_group.path) == 1
         assert b_group.path[0][0] == "bap"
-        assert b_group.path[0][1] == "bap-1"
+        # The bap group's id is the explicit id supplied (b1), per
+        # identification=sic in the schema (matches Prolog mkid_el_id).
+        assert b_group.path[0][1] == "b1"
     
     def test_path_cut_when_ancestor_found(self, schema, errors):
         """Test that path is cut when an ancestor is found.
@@ -312,10 +317,11 @@ class TestPathManagement:
         
         builder.close()
         
-        # Third group (bap-2) should have empty path
+        # Third group (second bap) should have empty path
         bap2 = builder.completed_groups[2]
         assert bap2.path == []
-        assert bap2.id == "bap-2"
+        # Explicit id (b2) is used per identification=sic.
+        assert bap2.id == "b2"
 
 
 class TestIDGeneration:
@@ -334,10 +340,37 @@ class TestIDGeneration:
         return ErrorAccumulator()
     
     def test_id_generation_with_prefix(self, schema, errors):
-        """Test ID generation using idprefix."""
+        """Test ID generation using idprefix.
+
+        When no explicit id is supplied (the id positional slot is empty),
+        the builder falls back to ``<idprefix>-<counter>`` — ``bap-1`` here.
+        The leading slash skips the id slot (baptismos.yaml has
+        ``position: [id, dia, mes, ano, ...]`` with ``id`` marked
+        ``identification: sic``).
+        """
+        builder = GroupBuilder(schema, errors)
+        builder.set_context(1, "bap$/1/1/1714")
+
+        actions = [
+            NewGroup("bap"),
+            EndElement(),  # id slot empty -> skip it
+            StoreCore("1"), EndElement(),
+            StoreCore("1"), EndElement(),
+            StoreCore("1714"),
+        ]
+        builder.process_actions(actions)
+        builder.close()
+
+        group = builder.completed_groups[0]
+        assert group.id == "bap-1"  # idprefix is "bap"
+
+    def test_explicit_id_is_preserved(self, schema, errors):
+        """When an explicit id is supplied via the identification=sic
+        element, it is used verbatim (matches Prolog mkid_el_id/3,
+        dataCDS.pl:473-478). The idprefix+counter form is NOT used."""
         builder = GroupBuilder(schema, errors)
         builder.set_context(1, "bap$b1/1/1/1714")
-        
+
         actions = [
             NewGroup("bap"),
             StoreCore("b1"), EndElement(),
@@ -347,97 +380,102 @@ class TestIDGeneration:
         ]
         builder.process_actions(actions)
         builder.close()
-        
+
         group = builder.completed_groups[0]
-        assert group.id == "bap-1"  # idprefix is "bap"
+        assert group.id == "b1"
     
     def test_id_generation_counter_increments(self, schema, errors):
-        """Test that ID counter increments correctly."""
+        """Test that ID counter increments correctly when no explicit id
+        is supplied."""
         builder = GroupBuilder(schema, errors)
-        
-        # First group
-        builder.set_context(1, "bap$b1/1/1/1714")
+
+        # First group (no explicit id)
+        builder.set_context(1, "bap$/1/1/1714")
         builder.process_actions([
             NewGroup("bap"),
-            StoreCore("b1"), EndElement(),
+            EndElement(),  # id slot empty
             StoreCore("1"), EndElement(),
             StoreCore("1"), EndElement(),
             StoreCore("1714"),
         ])
-        
-        # Second group
-        builder.set_context(2, "bap$b2/2/2/1715")
+
+        # Second group (no explicit id)
+        builder.set_context(2, "bap$/2/2/1715")
         builder.process_actions([
             NewGroup("bap"),
-            StoreCore("b2"), EndElement(),
+            EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("1715"),
         ])
-        
+
         builder.close()
-        
+
         assert builder.completed_groups[0].id == "bap-1"
         assert builder.completed_groups[1].id == "bap-2"
     
     def test_subgroup_counter_reset(self, schema, errors):
-        """Test that subgroup counters are reset when parent is encountered.
-        
-        Note: This test uses 'b' group as a simulated "subgroup" to test
-        counter reset logic. In the baptismos schema, both 'bap' and 'b' 
-        have idprefix='bap', so they share counter state.
+        """Test that subgroup counters are reset when a new parent is
+        encountered.
+
+        Uses 'b' group (contained by 'bap' in baptismos.yaml) as a child
+        with no explicit id, so its auto-id is ``<bap_id>-<b_idprefix><n>``.
+        A new bap should reset the b counter.
         """
         builder = GroupBuilder(schema, errors)
-        
-        # bap-1
-        builder.set_context(1, "bap$b1/1/1/1714")
+
+        # bap-1 (no explicit id)
+        builder.set_context(1, "bap$/1/1/1714")
         builder.process_actions([
             NewGroup("bap"),
-            StoreCore("b1"), EndElement(),
+            EndElement(),
             StoreCore("1"), EndElement(),
             StoreCore("1"), EndElement(),
             StoreCore("1714"),
         ])
-        
-        # b-1 (simulating a "subgroup" - same idprefix as bap)
-        builder.set_context(2, "b$1/2/2/1714/extra=value")
+
+        # b child (no explicit id) -> bap-1-b1
+        builder.set_context(2, "b$/2/2/1714/extra=value")
         builder.process_actions([
             NewGroup("b"),
-            StoreCore("1"), EndElement(),
+            EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("1714"), EndElement(),
             StoreCore("value"),
         ])
-        
-        # bap-2 (should reset b counter since bap contains b in schema)
-        builder.set_context(3, "bap$b2/2/2/1715")
+
+        # bap-2 (new parent)
+        builder.set_context(3, "bap$/2/2/1715")
         builder.process_actions([
             NewGroup("bap"),
-            StoreCore("b2"), EndElement(),
+            EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("2"), EndElement(),
             StoreCore("1715"),
         ])
-        
-        # b-1 again (counter should have been reset by bap-2)
-        builder.set_context(4, "b$2/3/3/1715/other=test")
+
+        # b child again (counter reset) -> bap-2-b1
+        builder.set_context(4, "b$/3/3/1715/other=test")
         builder.process_actions([
             NewGroup("b"),
-            StoreCore("2"), EndElement(),
+            EndElement(),
             StoreCore("3"), EndElement(),
             StoreCore("3"), EndElement(),
             StoreCore("1715"), EndElement(),
             StoreCore("test"),
         ])
-        
+
         builder.close()
-        
+
         # Find b groups
         b_groups = [g for g in builder.completed_groups if g.name == "b"]
         assert len(b_groups) == 2
-        assert b_groups[0].id == "bap-1"  # First b gets idprefix bap-1
-        assert b_groups[1].id == "bap-1"  # Counter was reset by bap-2
+        # The 'b' group shares idprefix 'bap' with 'bap' in the schema.
+        # First b is child of bap-1: <bap-1>-<b_idprefix><n> = bap-1-bap1
+        assert b_groups[0].id == "bap-1-bap1"
+        # Second b is child of bap-2; counter was reset -> bap1 again.
+        assert b_groups[1].id == "bap-2-bap1"
 
 
 class TestElementValidation:
@@ -608,17 +646,19 @@ class TestTranslateString:
         """Test translating a simple Kleio string."""
         source = """bap$b1/1/1/1714
    b$child/2/2/1714/extra=x"""
-        
+
         groups = translate_string(source, schema, errors)
-        
+
         assert len(groups) == 2
-        
-        # First group: bap
+
+        # First group: bap. The explicit id (b1) is preserved per
+        # identification=sic in the schema (matches Prolog mkid_el_id).
         bap = groups[0]
         assert bap.name == "bap"
-        assert bap.id == "bap-1"
-        
-        # Second group: b (child of bap per schema)
+        assert bap.id == "b1"
+
+        # Second group: b (child of bap per schema). It has an explicit
+        # id (child) which is likewise preserved.
         b = groups[1]
         assert b.name == "b"
         assert b.path[0][0] == "bap"

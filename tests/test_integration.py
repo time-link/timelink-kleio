@@ -122,12 +122,14 @@ class TestEndToEndTranslation:
         """Test translating a simple baptism record."""
         source = """bap$b1/1/1/1714
    b$child/2/2/1714/extra=x"""
-        
+
         groups = translate_string(source, baptismos_schema, error_accumulator)
-        
+
         assert len(groups) == 2
         assert groups[0].name == "bap"
-        assert groups[0].id == "bap-1"
+        # Explicit id (b1) is preserved per identification=sic (matches
+        # Prolog mkid_el_id, dataCDS.pl:473-478).
+        assert groups[0].id == "b1"
         assert groups[1].name == "b"
         assert groups[1].path[0][0] == "bap"
         
@@ -301,17 +303,18 @@ bap$b2/4/4/1715"""
         assert groups[1].name == "b"
         assert len(groups[1].path) == 1
         assert groups[1].path[0][0] == "bap"
-        assert groups[1].path[0][1] == "bap-1"
-        
+        # First bap's id is the explicit id (b1) per identification=sic.
+        assert groups[1].path[0][1] == "b1"
+
         # Second b - sibling of first b
         assert groups[2].name == "b"
         assert len(groups[2].path) == 1
         assert groups[2].path[0][0] == "bap"
-        
-        # Second bap - resets hierarchy
+
+        # Second bap - resets hierarchy. Explicit id (b2) is preserved.
         assert groups[3].name == "bap"
         assert groups[3].path == []
-        assert groups[3].id == "bap-2"
+        assert groups[3].id == "b2"
     
     def test_builder_generates_correct_ids(self, error_accumulator):
         """Test that builder generates correct IDs with prefix."""
@@ -328,12 +331,14 @@ bap$second/2/2/1715
 bap$third/3/3/1716"""
         
         groups = translate_string(source, schema, error_accumulator)
-        
+
         assert len(groups) == 3
-        # ID prefix is "bap" in baptismos schema
-        assert groups[0].id == "bap-1"
-        assert groups[1].id == "bap-2"
-        assert groups[2].id == "bap-3"
+        # Explicit ids (first, second, third) are preserved per
+        # identification=sic in the baptismos schema (matches Prolog
+        # mkid_el_id, dataCDS.pl:473-478).
+        assert groups[0].id == "first"
+        assert groups[1].id == "second"
+        assert groups[2].id == "third"
 
 
 # =============================================================================

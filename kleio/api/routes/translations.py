@@ -75,6 +75,7 @@ async def _do_translation(
     structure_path: Path | None,
     output_dir: Path,
     config: KleioConfig,
+    token_info: TokenInfo | None,
     echo: bool = False,
 ) -> None:
     """Execute translation in background.
@@ -82,17 +83,25 @@ async def _do_translation(
     Args:
         job_id: The job ID for tracking.
         source_path: Absolute path to the source file.
-        structure_path: Optional path to structure file.
+        structure_path: Optional path to structure file (already resolved and
+            token-scoped by the caller when ``body.structure`` was supplied).
         output_dir: Directory for output files.
         config: Server configuration.
+        token_info: The caller's token info. Only consulted by the structure
+            resolver's default-fallback branch (per-token ``structures`` dir);
+            path-mirroring clauses use the global structures root, matching the
+            Prolog behavior. May be ``None`` for unauthenticated/internal calls.
         echo: If True, echo every source line into the .rpt report file.
     """
     from kleio.schema.registry import SchemaRegistry
     from kleio.parser.builder import translate_file
     from kleio.export.xml_exporter import XmlExporter
     from kleio.export.report_writer import ReportWriter
+    from kleio.export.cliopp import ClioPrettyPrinter
+    from kleio.export.rename import promote_ids_on_success
     from kleio.inference.engine import InferenceEngine
     from kleio.inference.rules import get_default_rules
+    from kleio.mappings import get_default_mapping_store
     from kleio.errors import ErrorAccumulator
 
     task_info = _translation_tasks[job_id]
@@ -108,16 +117,20 @@ async def _do_translation(
         if structure_path and structure_path.exists():
             schema.load(structure_path, errors)
         else:
-            # Use default structure. The Python loader reads YAML only (legacy
-            # .str files are deprecated), so default to sources-structure.yaml.
-            for candidate in ("sources-structure.yaml", "gacto2.str.yaml"):
-                default_stru = config.structures_dir / candidate
-                if default_stru.exists():
-                    schema.load(default_stru, errors)
-                    structure_path = default_stru
-                    break
-            else:
+            # No explicit structure was supplied: resolve one from the source
+            # file using the Prolog get_stru_for_file precedence (directive
+            # in the source, then path/name conventions, then default). The
+            # default fallback honors a per-token structures dir; the
+            # path-mirroring clauses use the global structures root (matching
+            # Prolog, which hardcodes the sources->structures swap).
+            from kleio.schema.resolver import resolve_structure_for_source
+            resolved = resolve_structure_for_source(
+                source_path, config, token_info=token_info, override=None
+            )
+            if resolved is None or not resolved.exists():
                 raise ValueError("No structure file available")
+            schema.load(resolved, errors)
+            structure_path = resolved
 
         # Create report writer (.rpt/.err). It collects group markers and,
         # when echo=True, an echo of every source line. The schema is passed so
@@ -132,21 +145,36 @@ async def _do_translation(
             structure_file=str(structure_path) if structure_path else "",
         )
 
-        # Create exporter
+        # Create exporter with the default mapping store (ports mappings.pl).
+        # The mapping store resolves group→database-class (e.g. historical-source
+        # → source) and provides class definitions for <CLASS> block emission.
+        mapping_store = get_default_mapping_store()
+
         exporter = XmlExporter()
         exporter.init(
             source_file=str(source_path),
             output_dir=output_dir,
             schema=schema,
-            structure_file=str(structure_path) if structure_path else ""
+            structure_file=str(structure_path) if structure_path else "",
+            mapping_store=mapping_store,
         )
 
-        # Translate file. Both the XML exporter and the report writer receive
-        # group-completion callbacks; the report writer also receives per-line
-        # callbacks for the optional echo.
+        # Create the .ids pretty-printer (ports clioPP.pl). It receives each
+        # completed group and writes a copy of the source with explicit ids
+        # to <source>.ids, in the same directory as the .xml/.rpt outputs.
+        cliopp = ClioPrettyPrinter(
+            source_file=str(source_path),
+            output_dir=output_dir,
+            schema=schema,
+        )
+
+        # Translate file. The XML exporter, report writer and .ids printer
+        # all receive group-completion callbacks; the report writer also
+        # receives per-line callbacks for the optional echo.
         def _on_group(group):
             exporter.export_group(group)
             report.on_group(group)
+            cliopp.on_group(group)
 
         groups = translate_file(
             source_path,
@@ -178,6 +206,17 @@ async def _do_translation(
 
         # Close report writer (writes .rpt + .err)
         output_files.extend(report.close())
+
+        # Close the .ids pretty-printer (writes <source>.ids)
+        output_files.extend(cliopp.close())
+
+        # On a successful translation (no errors), promote the .ids to .cli
+        # and preserve the originals as .org/.old (ports rename_files/4 in
+        # gactoxml.pl:264-317). This is what keeps database imports stable
+        # across re-translations: the explicit ids pin every entity.
+        rename_result = promote_ids_on_success(source_path, errors.error_count)
+        if rename_result:
+            task_info["rename"] = rename_result
 
         # Update task info
         task_info["status"] = "completed"
@@ -253,6 +292,7 @@ async def start_translation(
         structure_path,
         output_dir,
         config,
+        token_info,
         echo_flag,
     )
     

@@ -631,3 +631,573 @@ class TestComplexScenarios:
         assert results.relations[0].value == "marido"
         assert len(results.attributes) == 1
         assert results.attributes[0].attr_type == "ec"
+
+
+class TestMultiPathConditions:
+    """Tests for cross-path AND rules (condition_paths)."""
+
+    def create_group(self, name: str, id: str, children: list = None) -> ParsedGroup:
+        """Helper to create a ParsedGroup."""
+        return ParsedGroup(
+            name=name,
+            id=id,
+            children=children or []
+        )
+
+    def _parents_couple_rule(self) -> InferenceRule:
+        """A cross-path parents_couple rule joining on child_id."""
+        return InferenceRule(
+            name="parents_couple",
+            condition_paths=[
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                    Condition(type=ConditionType.GROUP, group_name="pai", bind_var="father_id"),
+                ],
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                    Condition(type=ConditionType.GROUP, group_name="mae", bind_var="mother_id"),
+                ],
+            ],
+            actions=[
+                Action(
+                    type=ActionType.RELATION,
+                    relation_type="parentesco",
+                    relation_value="marido",
+                    origin_var="father_id",
+                    dest_var="mother_id",
+                ),
+                Action(
+                    type=ActionType.ATTRIBUTE,
+                    attr_entity_var="father_id",
+                    attr_type="ec",
+                    attr_value="c",
+                ),
+                Action(
+                    type=ActionType.ATTRIBUTE,
+                    attr_entity_var="mother_id",
+                    attr_type="ec",
+                    attr_value="c",
+                ),
+            ],
+        )
+
+    def test_multi_path_parents_couple(self):
+        """actorm with both pai and mae -> marido relation + ec=c on both."""
+        engine = InferenceEngine()
+        engine.register_rule(self._parents_couple_rule())
+
+        pai = self.create_group("pai", "p1")
+        mae = self.create_group("mae", "m1")
+        actor = self.create_group("actorm", "a1", [pai, mae])
+        root = self.create_group("fonte", "f1", [actor])
+
+        results = engine.apply_rules([root], None)
+
+        assert len(results.relations) == 1
+        rel = results.relations[0]
+        assert rel.rel_type == "parentesco"
+        assert rel.value == "marido"
+        assert rel.origin_id == "p1"
+        assert rel.dest_id == "m1"
+
+        # Both parents get ec=c
+        ec_entities = {a.entity_id for a in results.attributes if a.attr_type == "ec"}
+        assert ec_entities == {"p1", "m1"}
+
+    def test_multi_path_parents_couple_no_mae(self):
+        """Without mae the cross-path rule must not fire."""
+        engine = InferenceEngine()
+        engine.register_rule(self._parents_couple_rule())
+
+        pai = self.create_group("pai", "p1")
+        actor = self.create_group("actorm", "a1", [pai])
+        root = self.create_group("fonte", "f1", [actor])
+
+        results = engine.apply_rules([root], None)
+        assert results.relations == []
+        assert results.attributes == []
+
+    def test_multi_path_join_on_shared_ancestor(self):
+        """Two actorm siblings each with pai+mae: father must link only to
+        the mother of the *same* child (join via child_id)."""
+        engine = InferenceEngine()
+        engine.register_rule(self._parents_couple_rule())
+
+        a1 = self.create_group("actorm", "a1", [
+            self.create_group("pai", "p1"),
+            self.create_group("mae", "m1"),
+        ])
+        a2 = self.create_group("actorm", "a2", [
+            self.create_group("pai", "p2"),
+            self.create_group("mae", "m2"),
+        ])
+        root = self.create_group("fonte", "f1", [a1, a2])
+
+        results = engine.apply_rules([root], None)
+
+        marido_pairs = {
+            (r.origin_id, r.dest_id)
+            for r in results.relations
+            if r.value == "marido"
+        }
+        assert marido_pairs == {("p1", "m1"), ("p2", "m2")}
+
+    def test_multi_path_marriage_groom_bride(self):
+        """cas with noivo+noiva -> marido/mulher relations joining on cas."""
+        rule = InferenceRule(
+            name="marriage_groom_bride",
+            condition_paths=[
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.GROUP, group_name="cas", bind_var="cas_id"),
+                    Condition(type=ConditionType.GROUP, group_name="noivo", bind_var="groom_id"),
+                ],
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.GROUP, group_name="cas", bind_var="cas_id"),
+                    Condition(type=ConditionType.GROUP, group_name="noiva", bind_var="bride_id"),
+                ],
+            ],
+            actions=[
+                Action(
+                    type=ActionType.RELATION,
+                    relation_type="parentesco",
+                    relation_value="marido",
+                    origin_var="groom_id",
+                    dest_var="bride_id",
+                ),
+            ],
+        )
+        engine = InferenceEngine()
+        engine.register_rule(rule)
+
+        cas = self.create_group("cas", "c1", [
+            self.create_group("noivo", "g1"),
+            self.create_group("noiva", "b1"),
+        ])
+        root = self.create_group("fonte", "f1", [cas])
+
+        results = engine.apply_rules([root], None)
+        assert len(results.relations) == 1
+        rel = results.relations[0]
+        assert rel.value == "marido"
+        assert rel.origin_id == "g1"
+        assert rel.dest_id == "b1"
+
+    def test_unbound_variable_skips_action(self):
+        """A rule that references an unbound variable in `then` must emit
+        nothing (rather than using the literal var name as an id)."""
+        rule = InferenceRule(
+            name="rule_with_unbound_var",
+            conditions=[
+                Condition(type=ConditionType.SEQUENCE),
+                Condition(type=ConditionType.GROUP, group_name="pai", bind_var="father_id"),
+            ],
+            # mother_id is never bound by any condition
+            actions=[
+                Action(
+                    type=ActionType.RELATION,
+                    relation_type="parentesco",
+                    relation_value="marido",
+                    origin_var="father_id",
+                    dest_var="mother_id",
+                ),
+            ],
+        )
+        engine = InferenceEngine()
+        engine.register_rule(rule)
+
+        pai = self.create_group("pai", "p1")
+        root = self.create_group("fonte", "f1", [pai])
+
+        results = engine.apply_rules([root], None)
+        assert results.relations == []
+        assert results.attributes == []
+
+
+class TestYAMLWhenAnyLoader:
+    """Tests for loading/saving the when_any (cross-path) YAML form."""
+
+    def test_load_when_any_rule(self, tmp_path):
+        """A YAML rule with when_any is parsed into condition_paths."""
+        from kleio.inference.loader import load_rules_from_yaml
+
+        yaml_text = """
+rules:
+  - name: parents_couple
+    when_any:
+      - - sequence: any
+        - extends: {base: actorm, bind: child_id}
+        - group: {name: pai, bind: father_id}
+      - - sequence: any
+        - extends: {base: actorm, bind: child_id}
+        - group: {name: mae, bind: mother_id}
+    then:
+      - relation: {type: parentesco, value: marido, origin: father_id, dest: mother_id}
+"""
+        path = tmp_path / "rules.yaml"
+        path.write_text(yaml_text)
+
+        rules = load_rules_from_yaml(path)
+        assert len(rules) == 1
+        rule = rules[0]
+        assert rule.name == "parents_couple"
+        assert len(rule.condition_paths) == 2
+        # The flat conditions list is empty (no when: key was given)
+        assert rule.conditions == []
+        # Join variable is present in both sub-paths
+        sub0_vars = {c.bind_var for c in rule.condition_paths[0]}
+        sub1_vars = {c.bind_var for c in rule.condition_paths[1]}
+        assert "child_id" in sub0_vars
+        assert "child_id" in sub1_vars
+
+    def test_save_and_load_when_any_roundtrip(self, tmp_path):
+        """A rule with condition_paths survives save/load round-trip."""
+        from kleio.inference.loader import load_rules_from_yaml, save_rules_to_yaml
+
+        original = InferenceRule(
+            name="rt_rule",
+            condition_paths=[
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                    Condition(type=ConditionType.GROUP, group_name="pai", bind_var="father_id"),
+                ],
+                [
+                    Condition(type=ConditionType.SEQUENCE),
+                    Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                    Condition(type=ConditionType.GROUP, group_name="mae", bind_var="mother_id"),
+                ],
+            ],
+            actions=[
+                Action(
+                    type=ActionType.RELATION,
+                    relation_type="parentesco",
+                    relation_value="marido",
+                    origin_var="father_id",
+                    dest_var="mother_id",
+                ),
+            ],
+        )
+        path = tmp_path / "rules.yaml"
+        save_rules_to_yaml([original], path)
+        reloaded = load_rules_from_yaml(path)
+
+        assert len(reloaded) == 1
+        r = reloaded[0]
+        assert r.name == "rt_rule"
+        assert len(r.condition_paths) == 2
+        assert r.condition_paths[0][1].group_name == "actorm"
+        assert r.condition_paths[0][2].group_name == "pai"
+
+    def test_default_rules_contain_multi_path_rules(self):
+        """The packaged default rules now use when_any for the three
+        previously-broken cross-path rules."""
+        from kleio.inference import get_default_rules
+
+        names = {r.name: r for r in get_default_rules()}
+        for expected in ("parents_couple", "marriage_groom_bride", "marriage_bride_groom"):
+            assert expected in names, f"missing rule {expected}"
+            assert len(names[expected].condition_paths) >= 2, (
+                f"{expected} should have >=2 sub-paths"
+            )
+
+
+class TestGroupExtends:
+    """Tests for InferenceEngine._group_extends source-chain resolution.
+
+    The inference rules use ``extends: {base: <class>}`` conditions. The
+    engine must walk the full ``source`` (fons) inheritance chain so that
+    e.g. ``n`` (which extends ``actorm -> male -> person -> entity``) is
+    recognised as extending ``actorm``, ``male``, ``person`` and
+    ``entity``.
+    """
+
+    def create_group(self, name: str, id: str = "x") -> ParsedGroup:
+        return ParsedGroup(name=name, id=id, children=[])
+
+    def test_no_schema_fallback_map(self):
+        """Without a schema, the built-in fallback map covers the core
+        actor classes and their ancestor chain."""
+        engine = InferenceEngine()
+        # n extends the full male lineage
+        for base in ("actorm", "male", "person", "entity"):
+            assert engine._group_extends(self.create_group("n"), base, None) is True
+        # n does NOT extend the female lineage
+        assert engine._group_extends(self.create_group("n"), "actorf", None) is False
+        assert engine._group_extends(self.create_group("n"), "female", None) is False
+        # actorf extends the female lineage
+        for base in ("actorf", "female", "person", "entity"):
+            assert engine._group_extends(self.create_group("actorf"), base, None) is True
+        # actorf does NOT extend the male lineage
+        assert engine._group_extends(self.create_group("actorf"), "actorm", None) is False
+
+    def test_chain_walk_with_synthetic_schema(self):
+        """A custom schema: n -> actorm -> male -> person -> entity.
+        Every ancestor in the chain must be matched; an unrelated class
+        must not."""
+        from kleio.schema.models import StructureDef, GroupDef
+
+        struct = StructureDef()
+        chain = {
+            "n": "actorm",
+            "actorm": "male",
+            "male": "person",
+            "person": "entity",
+            "entity": "",
+        }
+        struct.groups = {name: GroupDef(name=name, source=src) for name, src in chain.items()}
+
+        engine = InferenceEngine()
+        for ancestor in ("actorm", "male", "person", "entity"):
+            assert engine._group_extends(self.create_group("n"), ancestor, struct) is True
+        # Direct name match also works
+        assert engine._group_extends(self.create_group("n"), "n", struct) is True
+        # Unrelated class
+        assert engine._group_extends(self.create_group("n"), "actorf", struct) is False
+
+    def test_chain_walk_with_base_class_field(self):
+        """If the schema only has the pre-resolved ``base_class`` field
+        (e.g. base_class='person' on a group whose source chain is
+        incomplete), it is still treated as an ancestor."""
+        from kleio.schema.models import StructureDef, GroupDef
+
+        struct = StructureDef()
+        # n -> actorm -> (actorm.source='' so chain would stop), but
+        # actorm.base_class='person' is pre-resolved.
+        struct.groups = {
+            "n": GroupDef(name="n", source="actorm", base_class="person"),
+            "actorm": GroupDef(name="actorm", source="", base_class="person"),
+        }
+
+        engine = InferenceEngine()
+        # Reaches 'person' via actorm.base_class even though source is empty
+        assert engine._group_extends(self.create_group("n"), "person", struct) is True
+        assert engine._group_extends(self.create_group("n"), "actorm", struct) is True
+
+    def test_chain_walk_handles_cycles(self):
+        """A cycle in the ``source`` chain must terminate, not hang."""
+        from kleio.schema.models import StructureDef, GroupDef
+
+        struct = StructureDef()
+        struct.groups = {
+            "a": GroupDef(name="a", source="b"),
+            "b": GroupDef(name="b", source="a"),
+        }
+        engine = InferenceEngine()
+        # Should return False quickly without infinite-looping.
+        assert engine._group_extends(self.create_group("a"), "zzz", struct) is False
+
+    def test_chain_walk_handles_missing_intermediate(self, caplog):
+        """If an intermediate group is absent from the schema, the walk
+        stops gracefully at that point without raising, and a warning is
+        emitted naming the missing group."""
+        import logging
+        from kleio.schema.models import StructureDef, GroupDef
+
+        struct = StructureDef()
+        # zz -> actorm, but 'actorm' is not in the schema and the
+        # group is not in the fallback map either.
+        struct.groups = {"zz": GroupDef(name="zz", source="actorm")}
+        engine = InferenceEngine()
+        with caplog.at_level(logging.WARNING, logger="kleio.inference.engine"):
+            # 'actorm' is still matched because it is the direct source of zz.
+            assert engine._group_extends(self.create_group("zz"), "actorm", struct) is True
+            # Beyond 'actorm' the chain is unknown; an unrelated class is False.
+            assert engine._group_extends(self.create_group("zz"), "person", struct) is False
+
+        # The missing intermediate ('actorm') must be reported once.
+        warnings = [r for r in caplog.records if r.levelno == logging.WARNING]
+        assert any("actorm" in r.getMessage() and "not defined" in r.getMessage()
+                   for r in warnings), (
+            f"expected a warning about missing 'actorm'; got: {[r.getMessage() for r in warnings]}"
+        )
+
+    def test_missing_intermediate_warning_emitted_once(self, caplog):
+        """The missing-intermediate warning is deduplicated: calling the
+        engine on many paths that hit the same missing group emits the
+        warning only once per engine."""
+        import logging
+        from kleio.schema.models import StructureDef, GroupDef
+
+        struct = StructureDef()
+        # a -> missing, b -> missing
+        struct.groups = {
+            "a": GroupDef(name="a", source="missing-parent"),
+            "b": GroupDef(name="b", source="missing-parent"),
+        }
+        engine = InferenceEngine()
+        with caplog.at_level(logging.WARNING, logger="kleio.inference.engine"):
+            # Hit the same missing parent from two different starting groups.
+            engine._group_extends(self.create_group("a"), "zzz", struct)
+            engine._group_extends(self.create_group("a"), "zzz", struct)
+            engine._group_extends(self.create_group("b"), "zzz", struct)
+
+        warnings = [r for r in caplog.records
+                    if r.levelno == logging.WARNING and "missing-parent" in r.getMessage()]
+        assert len(warnings) == 1, (
+            f"expected exactly one warning for 'missing-parent'; got {len(warnings)}"
+        )
+
+    def test_gacto2_schema_full_chain(self):
+        """Against the real gacto2.str.yaml, ``n`` extends the full male
+        lineage and ``bap`` extends ``historical-act``."""
+        from kleio.schema.registry import SchemaRegistry
+        from kleio.errors import ErrorAccumulator
+
+        schema = SchemaRegistry()
+        errors = ErrorAccumulator()
+        gacto2 = Path("tests/kleio-home/structures/gacto2.str.yaml")
+        if not gacto2.exists():
+            pytest.skip("gacto2.str.yaml not found")
+        schema.load(gacto2, errors)
+
+        engine = InferenceEngine()
+        struct = schema.structure
+        # n extends every male ancestor
+        for ancestor in ("actorm", "male", "person"):
+            assert engine._group_extends(self.create_group("n"), ancestor, struct) is True
+        # n does not extend female ancestors
+        assert engine._group_extends(self.create_group("n"), "actorf", struct) is False
+        assert engine._group_extends(self.create_group("n"), "female", struct) is False
+        # bap extends historical-act (bap -> pt-acto -> historical-act)
+        assert engine._group_extends(self.create_group("bap"), "historical-act", struct) is True
+
+
+class TestSubgroupFieldMerging:
+    """Tests for the loader merging all subgroup fields (part/arbitrary/
+    always/only/contains) into a single containment set.
+
+    The Prolog parser used pars/repetitio/semper/solum with subtle
+    distinctions; in the Python version these are treated as synonyms
+    at this stage, merged into ``group_def.contains`` at load time.
+    This fixes the root cause where ``pai.part: [ppai, mpai]`` in
+    gacto2 was being ignored and the parser produced flat sibling
+    paths instead of the Prolog-style nested paths.
+    """
+
+    def test_loader_merges_all_subgroup_fields(self):
+        """``part``, ``arbitrary``, ``always``, ``only`` and ``contains``
+        all contribute to ``group_def.contains`` after loading gacto2."""
+        from kleio.schema.registry import SchemaRegistry
+        from kleio.errors import ErrorAccumulator
+
+        schema = SchemaRegistry()
+        errors = ErrorAccumulator()
+        gacto2 = Path("tests/kleio-home/structures/gacto2.str.yaml")
+        if not gacto2.exists():
+            pytest.skip("gacto2.str.yaml not found")
+        schema.load(gacto2, errors)
+
+        # pai uses the YAML "part:" field for its subgroups.
+        pai = schema.structure.groups.get("pai")
+        assert pai is not None
+        assert "ppai" in pai.contains, "pai.contains should include ppai (from part:)"
+        assert "mpai" in pai.contains, "pai.contains should include mpai (from part:)"
+
+        # mae uses "part:" too.
+        mae = schema.structure.groups.get("mae")
+        assert mae is not None
+        assert "pmae" in mae.contains
+        assert "mmae" in mae.contains
+
+        # contained_by sees the merged set.
+        assert schema.contained_by("ppai", "pai") is True
+        assert schema.contained_by("mpai", "pai") is True
+        assert schema.contained_by("pmae", "mae") is True
+        assert schema.contained_by("mmae", "mae") is True
+
+        # Groups defined with "arbitrary:" still have their subgroups in contains.
+        # (n inherits actorm's arbitrary list.)
+        n = schema.structure.groups.get("n")
+        assert n is not None
+        assert "pai" in n.contains
+
+    def test_parser_nests_ppai_under_pai(self):
+        """With the loader fix, the parser attaches ppai as a child of
+        pai (Prolog-style longest-path attachment), not as a flat
+        sibling under n."""
+        from kleio.schema.registry import SchemaRegistry
+        from kleio.parser.builder import translate_string
+        from kleio.errors import ErrorAccumulator
+
+        schema = SchemaRegistry()
+        errors = ErrorAccumulator()
+        gacto2 = Path("tests/kleio-home/structures/gacto2.str.yaml")
+        if not gacto2.exists():
+            pytest.skip("gacto2.str.yaml not found")
+        schema.load(gacto2, errors)
+
+        source = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      bap$b1/1/1/1800\n"
+            "         n$joao/m/id=c1\n"
+            "            pai$pedro/id=f1\n"
+            "               ppai$luis/id=gf1\n"
+        )
+        groups = translate_string(source, schema, errors)
+
+        # Find the ppai group and check its path ends in pai, not n.
+        ppai = next(g for g in groups if g.name == "ppai")
+        ancestor_names = [name for name, _ in ppai.path]
+        assert ancestor_names[-1] == "pai", (
+            f"ppai should be nested under pai, but path ends in "
+            f"{ancestor_names[-1]!r}; full path: {ancestor_names}"
+        )
+
+    def test_grandparent_rules_fire_on_nested_structure(self):
+        """End-to-end: the four grandparent rules fire on a po-style
+        act where pai contains ppai/mpai and mae contains pmae/mmae.
+
+        Group-name semantics (per inference.pl:247-258):
+          - ppai = father of pai -> relation(pai, ppai, pai)
+          - mpai = mother of pai -> relation(mae, mpai, pai)
+          - pmae = father of mae -> relation(pai, pmae, mae)
+          - mmae = mother of mae -> relation(mae, mmae, mae)
+        """
+        from kleio.schema.registry import SchemaRegistry
+        from kleio.parser.builder import translate_string
+        from kleio.errors import ErrorAccumulator
+
+        schema = SchemaRegistry()
+        errors = ErrorAccumulator()
+        gacto2 = Path("tests/kleio-home/structures/gacto2.str.yaml")
+        if not gacto2.exists():
+            pytest.skip("gacto2.str.yaml not found")
+        schema.load(gacto2, errors)
+
+        source = (
+            "kleio$gacto2.str\n"
+            "   fonte$test\n"
+            "      po$p1/cx.1/18000000\n"
+            "         n$joao/m/id=c1\n"
+            "            pai$pedro/id=f1\n"
+            "               ppai$luis/id=gf1\n"
+            "               mpai$rita/id=gm1\n"
+            "            mae$ana/id=m1\n"
+            "               pmae$jose/id=gf2\n"
+            "               mmae$clara/id=gm2\n"
+        )
+        groups = translate_string(source, schema, errors)
+
+        engine = InferenceEngine()
+        for r in get_default_rules():
+            engine.register_rule(r)
+        results = engine.apply_rules(groups, schema.structure)
+
+        grandparent_rels = {
+            (r.source_rule, r.value, r.origin_id, r.dest_id)
+            for r in results.relations
+            if r.source_rule in (
+                "paternal_grandfather", "paternal_grandmother",
+                "maternal_grandfather", "maternal_grandmother",
+            )
+        }
+        # Each grandparent rule fires once with the right origin/dest.
+        assert ("paternal_grandfather", "pai", "gf1", "f1") in grandparent_rels
+        assert ("paternal_grandmother", "mae", "gm1", "f1") in grandparent_rels
+        assert ("maternal_grandfather", "pai", "gf2", "m1") in grandparent_rels
+        assert ("maternal_grandmother", "mae", "gm2", "m1") in grandparent_rels

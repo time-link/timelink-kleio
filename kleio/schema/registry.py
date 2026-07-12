@@ -279,35 +279,19 @@ class SchemaRegistry:
         return element
     
     def _get_parts(self, group: str) -> list[str]:
-        """Get all parts (subgroups) of a group from contains, repeat, always, only."""
+        """Get all parts (subgroups) of a group.
+
+        At load time the subgroup fields ``contains``/``pars``/``part``/
+        ``repeat``/``arbitrary``/``always``/``only`` are merged into a
+        single set on ``group_def.contains`` (see kleio.schema.loader).
+        ``_get_parts`` therefore just returns that merged list. The
+        Prolog-style constraints implied by the distinct field names
+        are deferred to a later stage.
+        """
         group_def = self.get_group(group)
         if group_def is None:
             return []
-        
-        parts = list(group_def.contains)
-        
-        # Add from repeat (arbitrary)
-        for item in group_def.repeat:
-            if isinstance(item, str):
-                parts.append(item)
-            elif isinstance(item, (list, tuple)) and len(item) > 0:
-                parts.append(item[0])
-        
-        # Add from always (semper)
-        for item in group_def.always:
-            if isinstance(item, str):
-                parts.append(item)
-            elif isinstance(item, (list, tuple)) and len(item) > 0:
-                parts.append(item[0])
-        
-        # Add from only (solum)
-        for item in group_def.only:
-            if isinstance(item, str):
-                parts.append(item)
-            elif isinstance(item, (list, tuple)) and len(item) > 0:
-                parts.append(item[0])
-        
-        return parts
+        return list(group_def.contains)
     
     def contained_by(self, group: str, ancestor: str) -> bool:
         """Check if group is contained by ancestor (directly or via inheritance chain).

@@ -1,0 +1,16 @@
+Kleio Python vs Prolog semantic comparison (structural)
+Generated: 2026-07-11T21:42:04.188338
+Reference (Prolog): /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/reference_translations
+Test (Python)     : /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/test_translations
+Files considered  : 1
+==============================================================================
+
+[FAIL] varia/quotes.xml — 8 difference(s)
+    - fonte: group name 'fonte' != 'kleio'
+    - fonte: id 'quotes' != 'kle-1' (normalized)
+    - fonte: element 'obs' None != '"""    Generated from Archeevo export file:  database/other_exports/ficheiro-alunos-auc/PT-AUC-ELU-UC-AUC-B-001-001.CSV dated 2022-02-03 14:43"""'
+    - fonte: element 'data' '20200000' != None
+    - fonte: element 'date' '20200000' != None
+    - fonte: element 'structure' None != 'gacto2.str'
+    - fonte: element 'translations' None != '7'
+    - fonte: child count 0 != 1

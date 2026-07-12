@@ -1,0 +1,124 @@
+Kleio Python vs Prolog semantic comparison — summary
+Generated: 2026-07-11T21:43:42.569856
+==============================================================================
+Total reference files : 55
+Passing (zero diffs)  : 0
+Failing               : 49
+Skipped (no Py XML)   : 6
+
+Per-file status (diff count; 0 = pass, -1 = skipped):
+  [FAIL] 71841  varia/auc-alunos-264605-A-140337-140771.xml
+  [FAIL] 18139  varia/lrazao516pe.xml
+  [FAIL] 14015  varia/glopes-lap1561.xml
+  [FAIL]  9373  varia/nommiz.xml
+  [FAIL]  8648  paroquiais/casamentos/cas1714-1722.xml
+  [FAIL]  8512  varia/auc_cartulario18.xml
+  [FAIL]  6963  varia/misMesa.xml
+  [FAIL]  6918  roisdeconfessados/coja-rol-1841.xml
+  [FAIL]  6742  notariais/perdoes.xml
+  [FAIL]  5280  notariais/notlousa1.xml
+  [FAIL]  5062  varia/eleicoes1.xml
+  [FAIL]  4056  notariais/notarial80.xml
+  [FAIL]  3157  paroquiais/baptismos/bapt1714.xml
+  [FAIL]  2388  varia/avexplorfa.xml
+  [FAIL]  2042  roisdeconfessados/rol3.xml
+  [FAIL]  1941  roisdeconfessados/rol1.xml
+  [FAIL]  1918  roisdeconfessados/rol2.xml
+  [FAIL]  1713  paroquiais/obitos/obiteirasproblem.xml
+  [FAIL]  1596  paroquiais/obitos/ob1688.xml
+  [FAIL]  1596  paroquiais/obitos/ob1688b.xml
+  [FAIL]  1439  varia/dev1692.xml
+  [FAIL]   712  paroquiais/obitos/obit1714.xml
+  [FAIL]   540  varia/ivcc.xml
+  [FAIL]   361  varia/Devedores.xml
+  [FAIL]   298  varia/test-atr-date.xml
+  [FAIL]   260  identifications/mhk_identification_toliveira.xml
+  [FAIL]   236  varia/mp758-santiago-beduido.xml
+  [FAIL]   204  varia/vereacao.xml
+  [FAIL]   173  paroquiais/baptismos/bap-com-celebrantes.xml
+  [FAIL]   149  paroquiais/casamentos/cas1714-1722-com-celebrante.xml
+  [FAIL]   128  varia/sourecoimbrabispcoimbra_apontamentosd.xml
+  [FAIL]   109  paroquiais/obitos/testeParentescos.xml
+  [FAIL]    52  notariais/docsregiospontepisc.xml
+  [FAIL]    47  varia/cartas.xml
+  [FAIL]    34  paroquiais/crisma/crisma1753.xml
+  [FAIL]    33  paroquiais/obitos/obitoShort_id_id.xml
+  [FAIL]    32  paroquiais/baptismos/lousa-bap-encadeado.xml
+  [FAIL]    29  paroquiais/obitos/obitoShort.xml
+  [FAIL]    29  paroquiais/obitos/obitoShort_id.xml
+  [FAIL]    18  paroquiais/baptismos/bug_mesmo_que.xml
+  [FAIL]    17  varia/quotes.xml
+  [FAIL]    13  paroquiais/baptismos/rogeriodomingos_bap_problem.xml
+  [FAIL]    10  linked_data/dehergne-a.xml
+  [FAIL]    10  linked_data/dehergne-locations-1644.xml
+  [FAIL]    10  linked_data/multiplelinks.xml
+  [FAIL]     9  issues/issue21.xml
+  [FAIL]     8  bugs/bugs.xml
+  [FAIL]     8  linked_data/linked-datanw.xml
+  [FAIL]     8  varia/dehergne-residences.xml
+  [SKIP]     -  locate_stru_file/default-stru.xml
+  [SKIP]     -  paroquiais/baptismos/bapteirasproblem1.xml
+  [SKIP]     -  paroquiais/baptismos/bapteirasproblem2.xml
+  [SKIP]     -  varia/xpto_comuns_soure.xml
+  [SKIP]     -  yaml/jcatalog.xml
+  [SKIP]     -  yaml/pt-groups.xml
+
+Difference categories (most common first):
+   20650  element:type
+   18909  element:date
+   18704  id-mismatch
+   18245  element:value
+   11314  element:entity
+   11247  element:tipo
+   11153  element:valor
+   10929  element:date_extra_info
+    9707  group-name
+    8665  child-count
+    7082  element:data
+    6398  element:destname
+    6398  element:destination
+    6302  element:origin
+    5541  element:sex
+    5282  element:nome
+    4490  element:obs
+    2119  element:name
+    1116  element:local
+    1115  element:sexo
+     204  element:loc
+     194  element:nomedest
+     194  element:iddest
+     133  element:xmesmo_que
+      71  element:description
+      65  element:user
+      65  element:the_class
+      59  element:celebrante
+      54  element:idcaso
+      50  element:dia
+      49  element:mes
+      48  element:ano
+      44  element:descricao
+      34  element:mesmo_que
+      26  element:forma
+      26  element:pronuncia
+      26  element:subtipo
+      24  element:juro
+      24  element:objecto
+      21  element:year
+      16  element:tempo
+      14  element:ocorrencia
+       9  element:titulo
+       7  element:resumo
+       6  element:depositario
+       6  element:escrivao
+       6  element:juiz
+       6  element:instrumento
+       6  element:sumario
+       5  element:urlpattern
+       5  element:shortname
+       5  element:literal
+       4  element:origem
+       1  element:substitui
+       1  element:dian
+       1  element:UNDEFINED
+       1  element:ref
+

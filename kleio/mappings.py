@@ -48,11 +48,28 @@ class MappingStore:
 
     def _load_yaml_mapping(self, filepath: Path) -> None:
         """Load a YAML mapping file.
-        
-        Handles the Kleio mapping YAML format which contains:
-        - mapping entries: {name: group_name, class: class_name}
-        - class definitions with attributes
-        
+
+        Handles two YAML formats:
+
+        1. **Issue #24 two-section format** (top-level dict with
+           ``mappings:`` and ``classes:`` keys) — the canonical format
+           for ``default-mappings.yaml``::
+
+               mappings:
+                 - {name: person, class: person}
+               classes:
+                 - name: person
+                   super: entity
+                   table: persons
+                   attributes: [...]
+
+        2. **Legacy list format** (top-level list of items, each shaped
+           ``{"mapping": {...}}`` or ``{"class": {...}}``) — used by
+           older test fixtures like ``person-mapping.yml``.
+
+        3. **Simple key-value dict** — treated as a named value-mapping
+           (not a class mapping).
+
         Args:
             filepath: Path to the YAML file.
         """
@@ -68,12 +85,27 @@ class MappingStore:
         if data is None:
             return
 
-        # Handle list format (standard Kleio mapping files)
-        if isinstance(data, list):
+        # Format 1: issue #24 two-section dict.
+        if isinstance(data, dict) and ('mappings' in data or 'classes' in data):
+            for mapping_item in data.get('mappings', []):
+                name = mapping_item.get('name', '')
+                cls = mapping_item.get('class', '')
+                if name and cls:
+                    self._class_mappings[name] = cls
+                    logger.debug(f"Loaded mapping: {name} -> {cls}")
+            for class_def in data.get('classes', []):
+                class_name = class_def.get('name', '')
+                if class_name:
+                    self._class_definitions[class_name] = class_def
+                    logger.debug(f"Loaded class definition: {class_name}")
+
+        # Format 2: legacy list of {"mapping": ...} / {"class": ...} items.
+        elif isinstance(data, list):
             for item in data:
                 self._process_mapping_item(item)
+
+        # Format 3: simple key-value dict.
         elif isinstance(data, dict):
-            # Simple key-value mapping
             mapping_name = filepath.stem
             self._mappings[mapping_name] = data
 
@@ -143,15 +175,59 @@ class MappingStore:
         return mapping.get(value, value)
 
     def get_class_for_group(self, group_name: str) -> Optional[str]:
-        """Get the mapped class name for a group.
-        
+        """Get the mapped class name for a group (direct lookup only).
+
         Args:
             group_name: The source group name.
-        
+
         Returns:
             The mapped class name, or None if not found.
         """
         return self._class_mappings.get(group_name)
+
+    def resolve_class_for_group(
+        self,
+        group_name: str,
+        schema: Optional[Any] = None,
+    ) -> Optional[str]:
+        """Resolve a group to its database class, with inheritance fallback.
+
+        Mirrors the Prolog group→class resolution (gactoxml.pl:494-498,
+        source_db_mappings_semantics.md §"Mapping Group to Database
+        class"):
+
+        1. If ``group_name`` has a direct mapping, return it.
+        2. Otherwise, walk the group's ``source`` (fons) inheritance chain
+           via ``schema.super_groups(group_name)`` and return the first
+           ancestor that has a direct mapping.
+
+        For example, ``amz`` is directly mapped to ``acta``; but ``bap``
+        (which extends ``pt-acto → historical-act``) is not directly
+        mapped, so step 2 walks ``bap → pt-acto → historical-act`` and
+        finds ``mapping historical-act to class act`` → returns ``act``.
+
+        Args:
+            group_name: The source group name.
+            schema: Optional SchemaRegistry for inheritance-chain walking.
+                If None, only direct lookups are attempted.
+
+        Returns:
+            The resolved class name, or None if no mapping exists in the
+            chain.
+        """
+        # 1. Direct lookup.
+        cls = self._class_mappings.get(group_name)
+        if cls:
+            return cls
+
+        # 2. Walk the inheritance chain.
+        if schema is not None:
+            for ancestor in schema.super_groups(group_name):
+                cls = self._class_mappings.get(ancestor)
+                if cls:
+                    return cls
+
+        return None
 
     def get_class_definition(self, class_name: str) -> Optional[dict[str, Any]]:
         """Get the definition of a mapped class.
@@ -199,3 +275,27 @@ class MappingStore:
         self._mappings.clear()
         self._class_mappings.clear()
         self._class_definitions.clear()
+
+
+def get_default_mappings_path() -> Path:
+    """Return the path to the packaged ``default-mappings.yaml``.
+
+    Mirrors ``kleio/inference/rules.py:get_default_rules`` — the YAML
+    file lives alongside this module under
+    ``kleio/mappings/default-mappings.yaml``.
+    """
+    return Path(__file__).parent / "mappings" / "default-mappings.yaml"
+
+
+def get_default_mapping_store() -> MappingStore:
+    """Return a MappingStore loaded with the packaged default mappings.
+
+    Convenience wrapper: loads ``default-mappings.yaml`` into a fresh
+    MappingStore and returns it. If the file is missing, returns an empty
+    store (callers should fall back to schema-only class resolution).
+    """
+    store = MappingStore()
+    path = get_default_mappings_path()
+    if path.exists():
+        store.load_mapping_file(path)
+    return store

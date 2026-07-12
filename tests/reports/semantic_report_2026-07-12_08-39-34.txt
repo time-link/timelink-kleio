@@ -1,0 +1,1212 @@
+Kleio Python vs Prolog semantic comparison (structural)
+Generated: 2026-07-12T08:39:34.647428
+Reference (Prolog): /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/reference_translations
+Test (Python)     : /Users/jrc/develop/timelink-kleio-worktrees/develop/tests/kleio-home/sources/test_translations
+Files considered  : 55
+==============================================================================
+
+[FAIL] bugs/bugs.xml — 8 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'bugs' != 'root-lin2-44' (normalized)
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'data' '2024' != None
+    - fonte: element 'obs' 'testing' != None
+    - fonte: element 'date' '20240000' != None
+    - fonte: child count 1 != 0
+
+[FAIL] identifications/mhk_identification_toliveira.xml — 260 difference(s)
+    - [0]/rperson: element 'user' 'toliveira' != None
+    - [0]/rperson: element 'description' 'Agostinho de Barros' != None
+    - [0]/rperson: element 'the_class' 'rperson' != None
+    - [0]/rperson: child count 0 != 2
+    - [1]/rperson: element 'user' 'toliveira' != None
+    - [1]/rperson: element 'description' 'Alessandro Cicero' != None
+    - [1]/rperson: element 'the_class' 'rperson' != None
+    - [1]/rperson: child count 0 != 4
+    - [2]/rperson: element 'user' 'toliveira' != None
+    - [2]/rperson: element 'description' 'Alessandro Valignano' != None
+    - [2]/rperson: element 'the_class' 'rperson' != None
+    - [2]/rperson: child count 0 != 4
+    - [3]/rperson: element 'user' 'toliveira' != None
+    - [3]/rperson: element 'description' 'Álvaro da Silveira' != None
+    - [3]/rperson: element 'the_class' 'rperson' != None
+    - [3]/rperson: child count 0 != 4
+    - [4]/rperson: element 'user' 'toliveira' != None
+    - [4]/rperson: element 'description' 'André da Costa' != None
+    - [4]/rperson: element 'the_class' 'rperson' != None
+    - [4]/rperson: child count 0 != 3
+    - [5]/rperson: element 'user' 'toliveira' != None
+    - [5]/rperson: element 'description' 'André Fernandes' != None
+    - [5]/rperson: element 'the_class' 'rperson' != None
+    - [5]/rperson: child count 0 != 3
+    - [6]/rperson: element 'user' 'toliveira' != None
+    ... and 235 more
+
+[FAIL] issues/issue21.xml — 2 difference(s)
+    - fonte: element 'date' '0' != '19730000'
+    - [0]/[0]/n: child count 2 != 1
+
+[FAIL] linked_data/dehergne-a.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-a' != 'kle-1-175-lin1-175' (normalized)
+    - fonte: element 'tipo' 'Dicionário Biográfico' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'data' '1973' != None
+    - fonte: element 'date' '19730000' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'loc' 'Online archive.org:details:bhsi37' != None
+    - fonte: element 'obs' 'Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973. Letra A' != None
+    - fonte: child count 3 != 0
+
+[FAIL] linked_data/dehergne-locations-1644.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-locations-1644' != 'kle-1-46-lin1-46' (normalized)
+    - fonte: element 'tipo' 'geoinformation' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'substitui' 'dehergne-map-1644' != None
+    - fonte: element 'date' '0' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'year' '1644' != None
+    - fonte: element 'obs' '"""\n      Planche: Carte des Chrétientés Chinoises de la fin des Ming (1644).p. 353\n\n      _Diocèse_\n      Depuis 1514, l\'évêché de Funchal (île de Madère)\n      s\'étend jusqu\'aux extrémi-\n      tés de l\'Asie. Depuis le 3 nov. 1534 est\n      créé l\'évêché de Goa, dont est déta-\n      ché, le 23 janv. 1576, le diocèse de\n      Macao, qui sera amputé, 14 février\n      1588, du Japon (évêché de Funai):\n      l\'évêché de Macao comprend théori-\n      quement tout l\'empire de Chine.\n\n      _Provinces Jésuites_\n\n      la vice-province du Japon (province en\n      1611); en 1623, la vice-province de Chine\n      indépendante du Japon en est déta-\n      chée; mais un visiteur jésuite contrôle\n      l\'une et l\'autre.\n\n      La Chine impériale distingue dans chaque province civile les _fou_, préfec-\n      tures ou villes de premier ordre, dont dépendent les _tcheou_ et les _hien_. D\'au-\n      tres agglomérations importantes comme Tientsin (alors wei) ou encore Amoy\n      et Fatshan n\'ont pas reçu le titre de hien. Dans notre tableau, les villes autres\n      que les fou sont mises en italiques, et la capitale de chaque province, en\n      majuscule. Sur la carte, nous mettons en lettres majuscules les seuls fou et\n      tcheou possédant une chrétienté (pour les tcheou, majuscules penchées); les\n      hien, en lettres ordinaires, et nous n\'inscrivons (en petites lettres) que les\n      bourgs et demeures chrétiennes antérieures à la persécution de 1615.\n         Pour les jésuites de l\'époque, le mot collège désigne une résidence prin-\n      cipale d\'où dépendent (d\'un point de vue économique beaucoup plus que juri-\n      dique), un certain nombre de petites résidences qui lui sont rattachées. La\n      carte, qui accompagne ces pages comme celle des résidences en 1701, est due au\n      Père Pierre Moreau, SJ., et nous lui exprimons ici nos remerciements.\n         Une résidence est une maison propriété de la mission: elle est soit occupée\n      par un ou plusieurs missionnaire (ici: R) ou cette anné-là, sans prêtre\n      à demeure (R\'); tandis que le mot église s\'applique à une chapelle, un oratoire\n      ou un temple plus important ; d\'autres fois, le prêtre dit la messe chez des fidè-\n      les, dans leur propre maison. Toute résidence possède une église ou oratoire.\n      Sur la carte, les Résidences sont marquées par un cercle. Résidences et chré-\n      tientés sont, à l\'époque, presque toutes aux Jésuites. Dans le cas contraire,\n      nous faisons suivre le nom de la localité de la mention de l\'Ordre qui les pos-\n      sède: (OP), Dominicains; (OFM), Franciscains; (OESA), Augustins.\n         On observera que le cours du Fleuve Jaune n\'était pas le même qu\'actuel-\n      lement, et que les chrétientés se sont développées le long des grandes routes\n      (le fait est frappant pour la région du Kiangnan). Pour les chrétientés an-\n      ciennes des Ming voir aussi MS XVI, 1957 (avec carte en couleurs).\n\n      N.B. N.B. Pour compléter ce tableau des antiquités chrétiennes de la Chine, rap-\n      pelons qu\'en Mongolie à Olon-Sume, ancienne capitale des Ongiit nestoriens,\n      il y eut, outre une église nestorienne, une église catholique de Giovanni de Mon-\n      tecorvino (1247-1328) « le plus ancien exemple de sanctuaire catholique en Ex-\n      trême-Orient » Egami, Namio dans Journal Asiatique, CCXL 1952, 155-167 cf NZM\n      1954, p. 56); du même, Découverte \'l\'église romaine\' établie au XIII\' siècle\n      en Mongolie, Conferenze, Rome, 1955, 41-55; cf BernahdC-Maitrb], Henri, La dé-\n      couverte des Nestoriens Mongols aux Ordos et l\'Histoire ancienne du Christia-\n      nisme en Extrême-Orient, Tientsin, 1935. — Les ruines de l\'église franciscaine\n      de Nankin au XIV* siècle ont été décrites par Prip-Molleb dans la revue\n      danoise Artes; résumé dans Chinese Recorder, 1935, 654-656 et hors-texte 641.\n      Etc.\n\n      NOTA TRANSCRIÇÃO\n\n      "geo1$ = Provincia"\n      "geo2$ = fou (perfeitura ou cidade de 1ª ordem)"\n      "geo3$ = tcheou-hien"\n\n      Em cada entrada o formato é\n\n         "geoN$Nome geográfico/Tipo (província, fou, tcheou-hien)/id=deh-r1644-nome"\n\n      Exº\n         "geo1$Chekiang#Zhejiang/província/deh-r1644-chekiang"\n         "geo2$Hangchou#Hangzhou/capital provincial/deh-r1644-hangzhou"\n         "geo3$Fuyang/tchou-hien/deh-r1644-fuyang"\n\n      Nos locais onde há presença de missionários:\n\n         "atr$residencia-missao/Jesuíta/16110000 (onde aparece R)"\n         "atr$residencia-missao/Dominicanos%OP/16560000"\n                        (quando passa a residência de outra ordem\n                         ver abreviaturas na legenda do mapa, exº p.354 em Kinhua)\n         "atr$activa/sim/16110000"         (onde só aparece uma data)\n\n      edited by Skye\n      and Joaquim Carvalho\n      and Alicia\n      """' != None
+    - fonte: child count 1 != 0
+
+[FAIL] linked_data/linked-datanw.xml — 2 difference(s)
+    - fonte: element 'date' '0' != '19730000'
+    - [0]/[0]/n: child count 2 != 1
+
+[FAIL] linked_data/multiplelinks.xml — 10 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'multiplelinks' != 'kle-1-2-lin1-2' (normalized)
+    - fonte: element 'tipo' 'Dicionário Biográfico' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'date' '0' != None
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'year' '1973' != None
+    - fonte: element 'loc' 'Internet Archive' != None
+    - fonte: element 'obs' 'Dehergne, Joseph, Répertoire des Jésuites de Chine, de 1542 à 1800, 1973.' != None
+    - fonte: child count 3 != 0
+
+[SKIP] locate_stru_file/default-stru.xml — no Python XML at default-stru.xml
+
+[FAIL] notariais/docsregiospontepisc.xml — 18 difference(s)
+    - fonte: element 'date' '17800000' != '1780'
+    - [1]/[1]/[1]/ls: element 'date' '13400101' != None
+    - [1]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[1]/[1]/ls: element 'entity' 'docpapal-1-per1' != None
+    - [1]/[3]/[1]/[0]/relation: id 'docpapal-1-per3-rela10' != 'docpapal-1-rela10' (normalized)
+    - [1]/[3]/[1]/[1]/ls: element 'date' '13400101' != None
+    - [1]/[3]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[3]/[1]/[1]/ls: element 'entity' 'docpapal-1-per3-per4' != None
+    - [2]/[1]/[1]/ls: element 'date' '17680101' != None
+    - [2]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[1]/[1]/ls: element 'entity' 'docepis-1-per1' != None
+    - [2]/[3]/[1]/[0]/relation: id 'docepis-1-per3-rela15' != 'docepis-1-rela15' (normalized)
+    - [2]/[3]/[1]/[1]/ls: element 'date' '17680101' != None
+    - [2]/[3]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[3]/[1]/[1]/ls: element 'entity' 'docepis-1-per3-per4' != None
+    - [2]/[3]/[1]/[2]/ls: element 'date' '17680101' != None
+    - [2]/[3]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[3]/[1]/[2]/ls: element 'entity' 'docepis-1-per3-per4' != None
+
+[FAIL] notariais/notarial80.xml — 1806 difference(s)
+    - fonte: element 'date' '17800000' != '1780'
+    - [0]/[0]/[1]/ls: element 'date' '17800116' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'not1780-e1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '17800116' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'not1780-e1-per1' != None
+    - [0]/[0]/[3]/ls: element 'date' '17800116' != None
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/ls: element 'entity' 'not1780-e1-per1' != None
+    - [0]/[1]/[1]/ls: element 'date' '17800116' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'not1780-e1-per2' != None
+    - [0]/[1]/[2]/ls: element 'date' '17800116' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' 'not1780-e1-per2' != None
+    - [0]/[1]/[3]/ls: element 'date' '17800116' != None
+    - [0]/[1]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[3]/ls: element 'entity' 'not1780-e1-per2' != None
+    - [0]/[2]/[1]/ls: element 'date' '17800116' != None
+    - [0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[1]/ls: element 'entity' 'not1780-e1-per3' != None
+    - [0]/[2]/[2]/ls: element 'date' '17800116' != None
+    - [0]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[2]/ls: element 'entity' 'not1780-e1-per3' != None
+    ... and 1781 more
+
+[FAIL] notariais/notlousa1.xml — 1870 difference(s)
+    - fonte: element 'date' '0' != '17280000'
+    - [0]/[0]/[1]/atr: element 'date' '17280522' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/atr: element 'entity' 'lnot95-1-per1' != None
+    - [0]/[1]/[1]/atr: element 'date' '17280522' != None
+    - [0]/[1]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/atr: element 'entity' 'lnot95-1-per2' != None
+    - [1]/[1]/[1]/atr: element 'date' '17280522' != None
+    - [1]/[1]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [1]/[1]/[1]/atr: element 'entity' 'lnot95-2-per2' != None
+    - [2]/[1]/[1]/atr: element 'date' '17280620' != None
+    - [2]/[1]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [2]/[1]/[1]/atr: element 'entity' 'lnot92-3-per2' != None
+    - [3]/[0]/[1]/atr: element 'date' '17280630' != None
+    - [3]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [3]/[0]/[1]/atr: element 'entity' 'lnot95-4-per1' != None
+    - [3]/[0]/[2]/atr: element 'date' '17280630' != None
+    - [3]/[0]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [3]/[0]/[2]/atr: element 'entity' 'lnot95-4-per1' != None
+    - [3]/[0]/[3]/atr: element 'date' '17280630' != None
+    - [3]/[0]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [3]/[0]/[3]/atr: element 'entity' 'lnot95-4-per1' != None
+    - [3]/[1]/[1]/atr: element 'date' '17280630' != None
+    - [3]/[1]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [3]/[1]/[1]/atr: element 'entity' 'lnot95-4-per2' != None
+    ... and 1845 more
+
+[FAIL] notariais/perdoes.xml — 2470 difference(s)
+    - [0]/[0]/[1]/ls: element 'date' '15951204' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' '14g61-perd1' != None
+    - [0]/[0]/[2]/ls: element 'date' '15951204' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' '14g61-perd1' != None
+    - [0]/[0]/[3]/ls: element 'date' '15951204' != None
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/ls: element 'entity' '14g61-perd1' != None
+    - [0]/[0]/[4]/ls: element 'date' '15951204' != None
+    - [0]/[0]/[4]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[4]/ls: element 'entity' '14g61-perd1' != None
+    - [0]/[0]/[5]/rel: element 'origin' '14g61-perd1' != None
+    - [0]/[0]/[5]/rel: element 'date' '15951204' != None
+    - [0]/[1]/[1]/ls: element 'date' '15951204' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' '14g61-perd2' != None
+    - [0]/[1]/[2]/ls: element 'date' '15951204' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' '14g61-perd2' != None
+    - [0]/[1]/[3]/ls: element 'date' '15951204' != None
+    - [0]/[1]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[3]/ls: element 'entity' '14g61-perd2' != None
+    - [0]/[1]/[4]/rel: element 'origin' '14g61-perd2' != None
+    - [0]/[1]/[4]/rel: element 'date' '15951204' != None
+    ... and 2445 more
+
+[FAIL] paroquiais/baptismos/bap-com-celebrantes.xml — 97 difference(s)
+    - [0]/bap: child count 10 != 2
+    - [0]/[0]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'lousa-b1714-1-per1' != None
+    - [0]/[1]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'lousa-b1714-1-per1b' != None
+    - [0]/[1]/[1]/ls: element 'obs' '"""\n            segundo um assento na margem do baptismo: \n            a mae da baptizada mudou no santo crisma o nome\n            de Filipa em Constancia e que justificou ante \n            o vigario gheral desta vila por cujo despacho \n            fiz esta declaração. assina: Padre Tavares"""' != '"""            segundo um assento na margem do baptismo:             a mae da baptizada mudou no santo crisma o nome            de Filipa em Constancia e que justificou ante             o vigario gheral desta vila por cujo despacho             fiz esta declaração. assina: Padre Tavares"""'
+    - [0]/[1]/[2]/[0]/relation: id 'lousa-b1714-1-per1b-rela3' != 'lousa-b1714-1-rela3' (normalized)
+    - [0]/[1]/[2]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/[1]/ls: element 'entity' 'lousa-b1714-1-per2' != None
+    - [0]/[1]/[2]/[2]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/[2]/ls: element 'entity' 'lousa-b1714-1-per2' != None
+    - [0]/[1]/[3]/[0]/relation: id 'lousa-b1714-1-per1b-rela4' != 'lousa-b1714-1-rela4' (normalized)
+    - [0]/[1]/[4]/[0]/relation: id 'lousa-b1714-1-per1b-rela5' != 'lousa-b1714-1-rela5' (normalized)
+    - [0]/[1]/[4]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[4]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[4]/[1]/ls: element 'entity' 'lousa-b1714-1-per4' != None
+    - [0]/[1]/[4]/[2]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[4]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[4]/[2]/ls: element 'entity' 'lousa-b1714-1-per4' != None
+    - [0]/[1]/[4]/[3]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[4]/[3]/ls: element 'date_extra_info' '{}' != None
+    ... and 72 more
+
+[FAIL] paroquiais/baptismos/bapt1714.xml — 1814 difference(s)
+    - [0]/bap: child count 10 != 2
+    - [0]/[0]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'lousa-b1714-1-per1-2' != None
+    - [0]/[1]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'lousa-b1714-1-per1' != None
+    - [0]/[1]/[2]/[0]/relation: id 'lousa-b1714-1-per1-rela3' != 'lousa-b1714-1-rela3' (normalized)
+    - [0]/[1]/[2]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/[1]/ls: element 'entity' 'lousa-b1714-1-per2' != None
+    - [0]/[1]/[2]/[2]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/[2]/ls: element 'entity' 'lousa-b1714-1-per2' != None
+    - [0]/[1]/[3]/[0]/relation: id 'lousa-b1714-1-per1-rela4' != 'lousa-b1714-1-rela4' (normalized)
+    - [0]/[1]/[4]/[0]/relation: id 'lousa-b1714-1-per1-rela5' != 'lousa-b1714-1-rela5' (normalized)
+    - [0]/[1]/[4]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[4]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[4]/[1]/ls: element 'entity' 'lousa-b1714-1-per4' != None
+    - [0]/[1]/[4]/[2]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[4]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[4]/[2]/ls: element 'entity' 'lousa-b1714-1-per4' != None
+    - [0]/[1]/[5]/[0]/relation: id 'lousa-b1714-1-per1-rela6' != 'lousa-b1714-1-rela6' (normalized)
+    - [0]/[1]/[5]/[1]/ls: element 'date' '17140106' != None
+    - [0]/[1]/[5]/[1]/ls: element 'date_extra_info' '{}' != None
+    ... and 1789 more
+
+[FAIL] paroquiais/baptismos/bapteirasproblem1.xml — 3189 difference(s)
+    - fonte: element 'date' '17870000.17920000' != '1787:1792'
+    - [0]/b: child count 14 != 3
+    - [0]/[0]/[1]/ls: element 'date' '17870729' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' '1787-b1112-jose' != None
+    - [0]/[0]/[2]/[0]/relation: id '1787-b1112-jose-rela2' != 'b1787.1112-rela2' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17870729' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' '1787-b1112-jose-per1' != None
+    - [0]/[0]/[2]/[2]/[0]/relation: id '1787-b1112-jose-per1-rela3' != 'b1787.1112-rela3' (normalized)
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'date' '17870729' != None
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'entity' '1787-b1112-jose-per2' != None
+    - [0]/[0]/[2]/[3]/[0]/relation: id '1787-b1112-jose-per1-rela4' != 'b1787.1112-rela4' (normalized)
+    - [0]/[0]/[3]/[0]/relation: id '1787-b1112-jose-rela5' != 'b1787.1112-rela5' (normalized)
+    - [0]/[0]/[3]/[1]/[0]/relation: id '1787-b1112-jose-per4-rela6' != 'b1787.1112-rela6' (normalized)
+    - [0]/[0]/[3]/[1]/[1]/ls: element 'date' '17870729' != None
+    - [0]/[0]/[3]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/[1]/[1]/ls: element 'entity' '1787-b1112-jose-per5' != None
+    - [0]/[0]/[3]/[2]/[0]/relation: id '1787-b1112-jose-per4-rela7' != 'b1787.1112-rela7' (normalized)
+    - [0]/[0]/[4]/[0]/relation: id '1787-b1112-jose-rela8' != 'b1787.1112-rela8' (normalized)
+    - [0]/[0]/[4]/[1]/[0]/relation: id 'b1787.1112-per7-rela9' != 'b1787.1112-rela9' (normalized)
+    - [0]/[0]/[4]/[1]/[1]/ls: element 'date' '17870729' != None
+    - [0]/[0]/[4]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[4]/[1]/[1]/ls: element 'entity' 'b1787.1112-per8' != None
+    ... and 3164 more
+
+[FAIL] paroquiais/baptismos/bapteirasproblem2.xml — 5105 difference(s)
+    - fonte: element 'date' '17520000.17530000' != '1752:1753'
+    - [0]/b: child count 14 != 3
+    - [0]/[0]/[1]/[0]/relation: id 'b1759.512-per1-rela2' != 'b1759.512-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'b1759.512-per1-per2' != None
+    - [0]/[0]/[1]/[2]/[0]/relation: id 'b1759.512-per1-per2-rela3' != 'b1759.512-rela3' (normalized)
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'entity' 'b1759.512-per1-per3' != None
+    - [0]/[0]/[1]/[3]/[0]/relation: id 'b1759.512-per1-per2-rela4' != 'b1759.512-rela4' (normalized)
+    - [0]/[0]/[1]/[3]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[1]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[3]/[1]/ls: element 'entity' 'b1759.512-per1-per4' != None
+    - [0]/[0]/[2]/[0]/relation: id 'b1759.512-per1-rela5' != 'b1759.512-rela5' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'b1759.512-per1-per5' != None
+    - [0]/[0]/[2]/[2]/[0]/relation: id 'b1759.512-per1-per5-rela6' != 'b1759.512-rela6' (normalized)
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[2]/[1]/ls: element 'entity' 'b1759.512-per1-per6' != None
+    - [0]/[0]/[2]/[3]/[0]/relation: id 'b1759.512-per1-per5-rela7' != 'b1759.512-rela7' (normalized)
+    - [0]/[0]/[2]/[3]/[1]/ls: element 'date' '17590125' != None
+    - [0]/[0]/[2]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    ... and 5080 more
+
+[FAIL] paroquiais/baptismos/bug_mesmo_que.xml — 47 difference(s)
+    - fonte: element 'date' '20240000' != '2024'
+    - [0]/[0]/[1]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'b1759.514-per1' != None
+    - [0]/[0]/[2]/[0]/relation: id 'b1759.514-per1-rela2' != 'b1759.514-rela2' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'b1759.514-per1-per2' != None
+    - [0]/[0]/[2]/[2]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[2]/ls: element 'entity' 'b1759.514-per1-per2' != None
+    - [0]/[0]/[2]/[3]/[0]/relation: id 'b1759.514-per1-per2-rela3' != 'b1759.514-rela3' (normalized)
+    - [0]/[0]/[2]/[3]/[1]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[2]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[3]/[1]/ls: element 'entity' 'b1759.514-per1-per3' != None
+    - [0]/[0]/[2]/[3]/[2]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[2]/[3]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[3]/[2]/ls: element 'entity' 'b1759.514-per1-per3' != None
+    - [0]/[0]/[2]/[4]/[0]/relation: id 'b1759.514-per1-per2-rela5' != 'b1759.514-rela4' (normalized)
+    - [0]/[0]/[2]/[4]/[1]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[2]/[4]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[4]/[1]/ls: element 'entity' 'b1759.514-per1-per4' != None
+    - [0]/[0]/[3]/[0]/relation: id 'b1759.514-per1-rela6' != 'b1759.514-rela5' (normalized)
+    - [0]/[0]/[3]/[1]/ls: element 'date' '17590213' != None
+    - [0]/[0]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    ... and 22 more
+
+[PASS] paroquiais/baptismos/lousa-bap-encadeado.xml
+
+[FAIL] paroquiais/baptismos/rogeriodomingos_bap_problem.xml — 8 difference(s)
+    - [0]/[0]/[1]/[0]/relation: id 'rd-b1714-1b-per1-rela2' != 'rd-b1714-1b-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/[0]/relation: id 'rd-quelfes1800-b4-antonio-rela3' != 'rd-b1714-1b-rela3' (normalized)
+    - [0]/[0]/[1]/[2]/[0]/relation: id 'rd-quelfes1800-b4-antonio-rela4' != 'rd-b1714-1b-rela4' (normalized)
+    - [0]/[0]/[2]/[0]/relation: id 'rd-b1714-1b-per1-rela5' != 'rd-b1714-1b-rela5' (normalized)
+    - [0]/[0]/[2]/[1]/rel: element 'origin' 'rd-b1714-1b-per1-per4' != None
+    - [0]/[0]/[2]/[1]/rel: element 'iddest' 'rd-quelfes1800-b4-antonio' != 'quelfes1800-b4-antonio'
+    - [0]/[0]/[2]/[1]/rel: element 'date' '17140106' != None
+    - [0]/[0]/[2]/[1]/rel: child count 3 != 0
+
+[FAIL] paroquiais/casamentos/cas1714-1722-com-celebrante.xml — 66 difference(s)
+    - [0]/cas: child count 14 != 3
+    - [0]/[1]/[1]/[0]/relation: id 'c1714-1-per2-rela3' != 'c1714-1-rela3' (normalized)
+    - [0]/[1]/[1]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[1]/ls: element 'entity' 'c1714-1-per3' != None
+    - [0]/[1]/[1]/[2]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[2]/ls: element 'entity' 'c1714-1-per3' != None
+    - [0]/[1]/[1]/[3]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[1]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[3]/ls: element 'entity' 'c1714-1-per3' != None
+    - [0]/[1]/[2]/[0]/relation: id 'c1714-1-per2-rela4' != 'c1714-1-rela4' (normalized)
+    - [0]/[1]/[2]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/[1]/ls: element 'entity' 'c1714-1-per4' != None
+    - [0]/[2]/[1]/[0]/relation: id 'c1714-1-per5-rela6' != 'c1714-1-rela6' (normalized)
+    - [0]/[2]/[1]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[2]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[1]/[1]/ls: element 'entity' 'c1714-1-per6' != None
+    - [0]/[2]/[1]/[2]/ls: element 'date' '17140208' != None
+    - [0]/[2]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[1]/[2]/ls: element 'entity' 'c1714-1-per6' != None
+    - [0]/[2]/[2]/[0]/relation: id 'c1714-1-per5-rela7' != 'c1714-1-rela7' (normalized)
+    - [1]/[0]/[0]/relation: id 'c1714-2-rela17' != 'c1714-2-rela8' (normalized)
+    - [1]/[1]/[0]/relation: id 'c1714-2-rela18' != 'c1714-2-rela9' (normalized)
+    ... and 41 more
+
+[FAIL] paroquiais/casamentos/cas1714-1722.xml — 3864 difference(s)
+    - [0]/cas: child count 11 != 2
+    - [0]/[0]/[1]/[0]/relation: id 'c1714-1-per1-rela2' != 'c1714-1-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'c1714-1-per2' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date' '17140208' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/ls: element 'entity' 'c1714-1-per2' != None
+    - [0]/[0]/[1]/[3]/ls: element 'date' '17140208' != None
+    - [0]/[0]/[1]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[3]/ls: element 'entity' 'c1714-1-per2' != None
+    - [0]/[0]/[2]/[0]/relation: id 'c1714-1-per1-rela3' != 'c1714-1-rela3' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'c1714-1-per3' != None
+    - [0]/[1]/[1]/[0]/relation: id 'c1714-1-per4-rela5' != 'c1714-1-rela5' (normalized)
+    - [0]/[1]/[1]/[1]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[1]/ls: element 'entity' 'c1714-1-per5' != None
+    - [0]/[1]/[1]/[2]/ls: element 'date' '17140208' != None
+    - [0]/[1]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[2]/ls: element 'entity' 'c1714-1-per5' != None
+    - [0]/[1]/[2]/[0]/relation: id 'c1714-1-per4-rela6' != 'c1714-1-rela6' (normalized)
+    - [1]/cas: child count 19 != 5
+    - [1]/[0]/[0]/relation: id 'c1714-2-rela14' != 'c1714-2-rela7' (normalized)
+    ... and 3839 more
+
+[FAIL] paroquiais/crisma/crisma1753.xml — 42 difference(s)
+    - [0]/[0]/[1]/[0]/relation: id 'quelfes-cr1753-per1-rela2' != 'quelfes-cr1753-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17531228' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'quelfes-cr1753-per1-per2' != None
+    - [0]/[0]/[2]/[0]/relation: id 'quelfes-cr1753-per1-rela3' != 'quelfes-cr1753-rela3' (normalized)
+    - [0]/[0]/[3]/[0]/relation: id 'quelfes-cr1753-per1-rela4' != 'quelfes-cr1753-rela4' (normalized)
+    - [0]/[0]/[3]/[1]/[0]/relation: id 'quelfes-cr1753-per4-rela5' != 'quelfes-cr1753-rela5' (normalized)
+    - [0]/[1]/[1]/[0]/relation: id 'quelfes-cr1753-per6-rela7' != 'quelfes-cr1753-rela7' (normalized)
+    - [0]/[1]/[1]/[1]/ls: element 'date' '17531228' != None
+    - [0]/[1]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/[1]/ls: element 'entity' 'quelfes-cr1753-per6-per7' != None
+    - [0]/[1]/[2]/[0]/relation: id 'quelfes-cr1753-per6-rela8' != 'quelfes-cr1753-rela8' (normalized)
+    - [0]/[1]/[3]/[0]/relation: id 'quelfes-cr1753-per6-rela9' != 'quelfes-cr1753-rela9' (normalized)
+    - [0]/[1]/[3]/[1]/ls: element 'date' '17531228' != None
+    - [0]/[1]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[3]/[1]/ls: element 'entity' 'quelfes-cr1753-per9' != None
+    - [0]/[1]/[3]/[2]/ls: element 'date' '17531228' != None
+    - [0]/[1]/[3]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[3]/[2]/ls: element 'entity' 'quelfes-cr1753-per9' != None
+    - [0]/[2]/[1]/[0]/relation: id 'quelfes-cr1753-per10-rela11' != 'quelfes-cr1753-rela11' (normalized)
+    - [0]/[2]/[1]/[1]/ls: element 'date' '17531228' != None
+    - [0]/[2]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[1]/[1]/ls: element 'entity' 'quelfes-cr1753-per10-per11' != None
+    - [0]/[2]/[2]/[0]/relation: id 'quelfes-cr1753-per10-rela12' != 'quelfes-cr1753-rela12' (normalized)
+    - [0]/[2]/[3]/[0]/relation: id 'quelfes-cr1753-per10-rela13' != 'quelfes-cr1753-rela13' (normalized)
+    ... and 17 more
+
+[FAIL] paroquiais/obitos/ob1688.xml — 526 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/o: child count 5 != 2
+    - [0]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[3]/[0]/relation: id 'obitos 1688-his1-per1-rela2' != 'obitos 1688-his1-rela2' (normalized)
+    - [0]/[0]/[3]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/[1]/ls: element 'entity' 'obitos 1688-his1-per1-per2' != None
+    - [0]/[0]/[3]/[2]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[3]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/[2]/ls: element 'entity' 'obitos 1688-his1-per1-per2' != None
+    - [1]/[0]/[0]/relation: id 'obitos 1688-his2-rela4' != 'obitos 1688-his2-rela3' (normalized)
+    - [1]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [1]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/ls: element 'entity' 'obitos 1688-his2-per1' != None
+    - [1]/[2]/locs: id 'obitos 1688-his2-gro2' != 'obitos 1688-his2-gro1' (normalized)
+    - [1]/[3]/oficios: id 'obitos 1688-his2-gro3' != 'obitos 1688-his2-gro1' (normalized)
+    - [2]/[0]/[0]/relation: id 'obitos 1688-his3-rela5' != 'obitos 1688-his3-rela4' (normalized)
+    - [2]/[0]/[1]/ls: element 'date' '16880103' != None
+    - [2]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[1]/ls: element 'entity' 'obitos 1688-his3-per1' != None
+    ... and 501 more
+
+[FAIL] paroquiais/obitos/ob1688b.xml — 526 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/o: child count 5 != 2
+    - [0]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'obitos 1688-his1-per1' != None
+    - [0]/[0]/[3]/[0]/relation: id 'obitos 1688-his1-per1-rela2' != 'obitos 1688-his1-rela2' (normalized)
+    - [0]/[0]/[3]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/[1]/ls: element 'entity' 'obitos 1688-his1-per1-per2' != None
+    - [0]/[0]/[3]/[2]/ls: element 'date' '16880101' != None
+    - [0]/[0]/[3]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/[2]/ls: element 'entity' 'obitos 1688-his1-per1-per2' != None
+    - [1]/[0]/[0]/relation: id 'obitos 1688-his2-rela4' != 'obitos 1688-his2-rela3' (normalized)
+    - [1]/[0]/[1]/ls: element 'date' '16880101' != None
+    - [1]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/ls: element 'entity' 'obitos 1688-his2-per1' != None
+    - [1]/[2]/locs: id 'obitos 1688-his2-gro2' != 'obitos 1688-his2-gro1' (normalized)
+    - [1]/[3]/oficios: id 'obitos 1688-his2-gro3' != 'obitos 1688-his2-gro1' (normalized)
+    - [2]/[0]/[0]/relation: id 'obitos 1688-his3-rela5' != 'obitos 1688-his3-rela4' (normalized)
+    - [2]/[0]/[1]/ls: element 'date' '16880103' != None
+    - [2]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[1]/ls: element 'entity' 'obitos 1688-his3-per1' != None
+    ... and 501 more
+
+[FAIL] paroquiais/obitos/obit1714.xml — 238 difference(s)
+    - [0]/obito: child count 5 != 4
+    - [0]/[0]/[1]/ls: element 'date' '17140130' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'o1714-1-per1' != None
+    - [0]/[2]/testamento: id 'o1714-1-gro2' != 'o1714-1-gro1' (normalized)
+    - [0]/[3]/locs: id 'o1714-1-gro3' != 'o1714-1-gro1' (normalized)
+    - [1]/obito: child count 5 != 4
+    - [1]/[0]/[1]/ls: element 'date' '17140205' != None
+    - [1]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/ls: element 'entity' 'o1714-2-per1' != None
+    - [1]/[2]/testamento: id 'o1714-2-gro2' != 'o1714-2-gro1' (normalized)
+    - [1]/[3]/locs: id 'o1714-2-gro3' != 'o1714-2-gro1' (normalized)
+    - [2]/obito: child count 8 != 4
+    - [2]/[0]/[1]/ls: element 'date' '17140206' != None
+    - [2]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[1]/ls: element 'entity' 'o1714-3-per1' != None
+    - [2]/[0]/[2]/[0]/relation: id 'o1714-3-per1-rela4' != 'o1714-3-rela4' (normalized)
+    - [2]/[2]/testamento: id 'o1714-3-gro2' != 'o1714-3-gro1' (normalized)
+    - [2]/[3]/locs: id 'o1714-3-gro3' != 'o1714-3-gro1' (normalized)
+    - [3]/obito: child count 5 != 4
+    - [3]/[0]/[0]/relation: id 'o1714-4-rela6' != 'o1714-4-rela5' (normalized)
+    - [3]/[0]/[1]/ls: element 'date' '17140215' != None
+    - [3]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [3]/[0]/[1]/ls: element 'entity' 'o1714-p1' != None
+    - [3]/[0]/[2]/ls: element 'date' '17140215' != None
+    ... and 213 more
+
+[FAIL] paroquiais/obitos/obiteirasproblem.xml — 682 difference(s)
+    - [0]/obito: child count 8 != 2
+    - [0]/[0]/[1]/pai: child count 2 != 3
+    - [0]/[0]/[1]/[0]/relation: id 'o1740.1-per1-rela2' != 'o1740.1-rela2' (normalized)
+    - [0]/[0]/[1]/[0]/relation: element 'origin' 'o1740.1-per1-per2' != 'o1740.1-per1-per1'
+    - [0]/[0]/[1]/[1]/ls: id 'o1740.1-per1-per2-att1' != 'o1740.1-per1-per1-att1' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17400123' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'o1740.1-per1-per2' != None
+    - [0]/[0]/[2]/mae: child count 2 != 3
+    - [0]/[0]/[2]/[0]/relation: id 'o1740.1-per1-rela3' != 'o1740.1-rela3' (normalized)
+    - [0]/[0]/[2]/[0]/relation: element 'origin' 'o1740.1-per1-per3' != 'o1740.1-per1-per1'
+    - [0]/[0]/[2]/[1]/ls: id 'o1740.1-per1-per3-att2' != 'o1740.1-per1-per1-att1' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17400123' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'o1740.1-per1-per3' != None
+    - [1]/obito: child count 9 != 5
+    - [1]/[0]/[0]/relation: id 'o1740.2-rela7' != 'o1740.2-rela4' (normalized)
+    - [1]/[0]/[1]/[0]/relation: id 'o1740.2-per1-rela8' != 'o1740.2-rela5' (normalized)
+    - [1]/[0]/[1]/[0]/relation: element 'origin' 'o1740.2-per1-per2' != 'o1740.2-per1-per1'
+    - [1]/[0]/[1]/[1]/ls: id 'o1740.2-per1-per2-att1' != 'o1740.2-per1-per1-att3' (normalized)
+    - [1]/[0]/[1]/[1]/ls: element 'date' '17400127' != None
+    - [1]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/[1]/ls: element 'entity' 'o1740.2-per1-per2' != None
+    - [1]/[2]/locs: id 'o1740.2-gro2' != 'o1740.2-gro1' (normalized)
+    - [1]/[3]/oficios: id 'o1740.2-gro3' != 'o1740.2-gro1' (normalized)
+    ... and 657 more
+
+[FAIL] paroquiais/obitos/obitoShort.xml — 19 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/[0]/[1]/[0]/relation: id 'soure-1740-o12-luisa-rela2' != 'soure-o1740.12-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'origin' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'iddest' 'soure-1740-o12-luisa' != '1740-o12-luisa'
+    - [0]/[0]/[1]/[3]/rel: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[0]/relation: id 'soure-1740-o12-luisa-rela3' != 'soure-o1740.12-rela3' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per2' != None
+    - [0]/[2]/sacr: id 'soure-o1740.12-gro2' != 'soure-o1740.12-gro1' (normalized)
+    - [0]/[3]/locf: id 'soure-o1740.12-gro3' != 'soure-o1740.12-gro1' (normalized)
+    - [0]/[3]/locf: element 'value' 'torre de vilela' != 'torre de vilela;e mais nao disse;e al nao disse'
+    - [0]/[3]/locf: child count 4 != 0
+
+[FAIL] paroquiais/obitos/obitoShort_id.xml — 18 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/[0]/[1]/[0]/relation: id 'soure-1740-o12-luisa-rela2' != 'soure-obitoShort_id_id-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'origin' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'iddest' 'soure-1740-o12-luisa' != '1740-o12-luisa'
+    - [0]/[0]/[1]/[3]/rel: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[0]/relation: id 'soure-1740-o12-luisa-rela3' != 'soure-obitoShort_id_id-rela3' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per2' != None
+    - [0]/[2]/sacr: id 'soure-obitoShort_id_id-gro2' != 'soure-obitoShort_id_id-gro1' (normalized)
+    - [0]/[3]/locf: id 'soure-obitoShort_id_id-gro3' != 'soure-obitoShort_id_id-gro1' (normalized)
+    - [0]/[3]/locf: child count 4 != 0
+
+[FAIL] paroquiais/obitos/obitoShort_id_id.xml — 17 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/[0]/[1]/[0]/relation: id 'soure-1740-o12-luisa-rela2' != 'soure-o1740.12-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/ls: element 'entity' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'origin' 'soure-1740-o12-luisa-per1' != None
+    - [0]/[0]/[1]/[3]/rel: element 'iddest' 'soure-1740-o12-luisa' != '1740-o12-luisa'
+    - [0]/[0]/[1]/[3]/rel: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[0]/relation: id 'soure-1740-o12-luisa-rela3' != 'soure-o1740.12-rela3' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17401007' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'soure-1740-o12-luisa-per2' != None
+    - [0]/[2]/sacr: id 'soure-o1740.12-gro2' != 'soure-o1740.12-gro1' (normalized)
+    - [0]/[2]/sacr: child count 4 != 0
+
+[FAIL] paroquiais/obitos/testeParentescos.xml — 43 difference(s)
+    - fonte: element 'date' '16880000' != '1688'
+    - [0]/obito: child count 7 != 5
+    - [0]/[2]/locf: id 'ox-1-gro2' != 'ox-1-gro1' (normalized)
+    - [0]/[3]/[1]/ls: element 'date' '16880101' != None
+    - [0]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[3]/[1]/ls: element 'entity' 'ox-1-per2' != None
+    - [0]/[3]/[2]/ls: element 'date' '16880101' != None
+    - [0]/[3]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[3]/[2]/ls: element 'entity' 'ox-1-per2' != None
+    - [0]/[4]/locs: id 'ox-1-gro3' != 'ox-1-gro1' (normalized)
+    - [1]/obito: child count 7 != 5
+    - [1]/[0]/[0]/relation: id 'ox-2-rela4' != 'ox-2-rela3' (normalized)
+    - [1]/[2]/locs: id 'ox-2-gro2' != 'ox-2-gro1' (normalized)
+    - [1]/[3]/locf: id 'ox-2-gro3' != 'ox-2-gro1' (normalized)
+    - [1]/[4]/[0]/relation: id 'ox-2-rela5' != 'ox-2-rela4' (normalized)
+    - [1]/[4]/[1]/ls: element 'date' '16880101' != None
+    - [1]/[4]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[4]/[1]/ls: element 'entity' 'ox-2-per2' != None
+    - [1]/[4]/[2]/ls: element 'date' '16880101' != None
+    - [1]/[4]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[4]/[2]/ls: element 'entity' 'ox-2-per2' != None
+    - [2]/obito: child count 7 != 5
+    - [2]/[0]/[0]/relation: id 'ox-3-rela7' != 'ox-3-rela5' (normalized)
+    - [2]/[2]/locs: id 'ox-3-gro2' != 'ox-3-gro1' (normalized)
+    - [2]/[3]/locf: id 'ox-3-gro3' != 'ox-3-gro1' (normalized)
+    ... and 18 more
+
+[FAIL] roisdeconfessados/coja-rol-1841.xml — 10935 difference(s)
+    - fonte: element 'date' '0' != '18410000'
+    - [0]/[0]/[1]/[0]/relation: id 'fogo1-rela2' != 'rol1-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/atr: element 'entity' 'fogo1-per7' != None
+    - [0]/[0]/[1]/[2]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/atr: element 'entity' 'fogo1-per7' != None
+    - [0]/[0]/[1]/[3]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[3]/atr: element 'entity' 'fogo1-per7' != None
+    - [0]/[0]/[1]/[4]/[0]/relation: id 'fogo1-per7-rela3' != 'rol1-rela3' (normalized)
+    - [0]/[0]/[1]/[4]/[1]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[4]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[4]/[1]/atr: element 'entity' 'fogo1-per8' != None
+    - [0]/[0]/[1]/[4]/[2]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[4]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[4]/[2]/atr: element 'entity' 'fogo1-per8' != None
+    - [0]/[0]/[1]/[4]/[3]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[4]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[4]/[3]/atr: element 'entity' 'fogo1-per8' != None
+    - [0]/[0]/[1]/[5]/[0]/relation: id 'fogo1-per7-rela4' != 'rol1-rela4' (normalized)
+    - [0]/[0]/[1]/[5]/[1]/atr: element 'date' '18410928' != None
+    - [0]/[0]/[1]/[5]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[5]/[1]/atr: element 'entity' 'fogo1-per9' != None
+    ... and 10910 more
+
+[FAIL] roisdeconfessados/rol1.xml — 1168 difference(s)
+    - [0]/[0]/fogo: child count 2 != 3
+    - [0]/[0]/[1]/n: child count 11 != 4
+    - [0]/[0]/[1]/[0]/relation: id 'r1775-f1-rela2' != 'r1775-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17750505' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'r1775-f1-per1' != None
+    - [0]/[0]/[1]/[2]/[0]/relation: id 'r1775-f1-per1-rela3' != 'r1775-rela3' (normalized)
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date' '17750505' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'entity' 'r1775-f1-per1-per2' != None
+    - [0]/[0]/[1]/[2]/[2]/[0]/relation: id 'r1775-f1-per1-per2-rela4' != 'r1775-rela4' (normalized)
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date' '17750505' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'entity' 'r1775-f1-per1-per3' != None
+    - [0]/[0]/[1]/[2]/[3]/[0]/relation: id 'r1775-f1-per1-per2-rela5' != 'r1775-rela5' (normalized)
+    - [0]/[0]/[1]/[2]/[4]/[0]/relation: id 'r1775-f1-per1-per2-rela6' != 'r1775-rela6' (normalized)
+    - [0]/[0]/[1]/[3]/[0]/relation: id 'r1775-f1-per1-rela7' != 'r1775-rela7' (normalized)
+    - [0]/[1]/fogo: child count 2 != 3
+    - [0]/[1]/[0]/relation: id 'r1775-rela13' != 'r1775-rela8' (normalized)
+    - [0]/[1]/[1]/n: child count 7 != 2
+    - [0]/[1]/[1]/[0]/relation: id 'r1775-f2-rela14' != 'r1775-rela9' (normalized)
+    - [0]/[1]/[1]/[1]/[0]/relation: id 'r1775-f2-per7-rela15' != 'r1775-rela10' (normalized)
+    - [0]/[1]/[1]/[1]/[1]/[0]/relation: id 'r1775-f2-per7-per8-rela16' != 'r1775-rela11' (normalized)
+    - [0]/[2]/[0]/relation: id 'r1775-rela20' != 'r1775-rela12' (normalized)
+    - [0]/[2]/[1]/[0]/relation: id 'r1775-f3-rela21' != 'r1775-rela13' (normalized)
+    ... and 1143 more
+
+[FAIL] roisdeconfessados/rol2.xml — 911 difference(s)
+    - [0]/[0]/[1]/[0]/relation: id 'r1776-f1-rela2' != 'r1776-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17760511' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'r1776-f1-per1' != None
+    - [0]/[0]/[1]/[2]/[0]/relation: id 'r1776-f1-per1-rela3' != 'r1776-rela3' (normalized)
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date' '17760511' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'entity' 'r1776-f1-per1-per2' != None
+    - [0]/[0]/[1]/[2]/[2]/[0]/relation: id 'r1776-f1-per1-per2-rela4' != 'r1776-rela4' (normalized)
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date' '17760511' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'entity' 'r1776-f1-per1-per3' != None
+    - [0]/[0]/[1]/[2]/[3]/[0]/relation: id 'r1776-f1-per1-per2-rela5' != 'r1776-rela5' (normalized)
+    - [0]/[0]/[1]/[2]/[4]/[0]/relation: id 'r1776-f1-per1-per2-rela6' != 'r1776-rela6' (normalized)
+    - [0]/[0]/[1]/[2]/[5]/[0]/relation: id 'r1776-f1-per1-per2-rela7' != 'r1776-rela7' (normalized)
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'date' '17760511' != None
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'entity' 'r1776-f1-maria' != None
+    - [0]/[0]/[1]/[3]/[0]/relation: id 'r1776-f1-per1-rela8' != 'r1776-rela8' (normalized)
+    - [0]/[0]/[1]/[3]/[1]/rel: element 'origin' 'r1776-f1-per1-per6' != None
+    - [0]/[0]/[1]/[3]/[1]/rel: element 'date' '17760511' != None
+    - [0]/[0]/[1]/[4]/[0]/relation: id 'r1776-f1-per1-rela9' != 'r1776-rela9' (normalized)
+    - [0]/[1]/[1]/[0]/relation: id 'r1776-f2-rela11' != 'r1776-rela11' (normalized)
+    - [0]/[1]/[1]/[1]/[0]/relation: id 'r1776-f2-per8-rela12' != 'r1776-rela12' (normalized)
+    - [0]/[2]/[1]/[0]/relation: id 'r1776-f3-rela14' != 'r1776-rela14' (normalized)
+    ... and 886 more
+
+[FAIL] roisdeconfessados/rol3.xml — 904 difference(s)
+    - [0]/[0]/[1]/[0]/relation: id 'r1777-f1-rela2' != 'r1777-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '17770505' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'r1777-f1-per1' != None
+    - [0]/[0]/[1]/[2]/[0]/relation: id 'r1777-f1-per1-rela3' != 'r1777-rela3' (normalized)
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date' '17770505' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[1]/ls: element 'entity' 'r1777-f1-per1-per2' != None
+    - [0]/[0]/[1]/[2]/[2]/[0]/relation: id 'r1777-f1-per1-per2-rela4' != 'r1777-rela4' (normalized)
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date' '17770505' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[2]/[1]/ls: element 'entity' 'r1777-f1-per1-per2-per3' != None
+    - [0]/[0]/[1]/[2]/[3]/[0]/relation: id 'r1777-f1-per1-per2-rela5' != 'r1777-rela5' (normalized)
+    - [0]/[0]/[1]/[2]/[4]/[0]/relation: id 'r1777-f1-per1-per2-rela6' != 'r1777-rela6' (normalized)
+    - [0]/[0]/[1]/[2]/[5]/[0]/relation: id 'r1777-f1-per1-per2-rela7' != 'r1777-rela7' (normalized)
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'date' '17770505' != None
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[2]/[5]/[1]/ls: element 'entity' 'r1777-f1-maria' != None
+    - [0]/[0]/[1]/[3]/[0]/relation: id 'r1777-f1-per1-rela8' != 'r1777-rela8' (normalized)
+    - [0]/[0]/[1]/[3]/[1]/rel: element 'origin' 'r1777-f1-per1-per6' != None
+    - [0]/[0]/[1]/[3]/[1]/rel: element 'date' '17770505' != None
+    - [0]/[1]/[1]/[0]/relation: id 'r1777-f2-rela10' != 'r1777-rela10' (normalized)
+    - [0]/[1]/[1]/[1]/[0]/relation: id 'r1777-f2-per7-rela11' != 'r1777-rela11' (normalized)
+    - [0]/[2]/[1]/[0]/relation: id 'r1777-f3-rela13' != 'r1777-rela13' (normalized)
+    - [0]/[2]/[1]/[1]/[0]/relation: id 'r1777-f3-per9-rela14' != 'r1777-rela14' (normalized)
+    ... and 879 more
+
+[FAIL] varia/Devedores.xml — 99 difference(s)
+    - fonte: element 'date' '0' != '17850000'
+    - [0]/[0]/[1]/ls: element 'date' '17850000' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'acb-eiras' != None
+    - [0]/[0]/[2]/ls: element 'date' '17850000' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'acb-eiras' != None
+    - [0]/[0]/[3]/ls: element 'date' '17850000' != None
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/ls: element 'entity' 'acb-eiras' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17781208},\n  "original":"17781208",\n  "type":"single",\n  "value":"17781208"\n}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'orf-acb-devedores-eiras-per1' != None
+    - [0]/[1]/[2]/rel: element 'origin' 'orf-acb-devedores-eiras-per1' != None
+    - [0]/[1]/[2]/rel: element 'date' '17781208' != None
+    - [0]/[2]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17731124},\n  "original":"1773-11-24",\n  "type":"single",\n  "value":"17731124"\n}' != None
+    - [0]/[2]/[1]/ls: element 'entity' 'orf-alex' != None
+    - [0]/[2]/[2]/ls: element 'date' '17850000' != None
+    - [0]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[2]/ls: element 'entity' 'orf-alex' != None
+    - [0]/[2]/[3]/rel: element 'origin' 'orf-alex' != None
+    - [0]/[2]/[3]/rel: element 'date' '17731124' != None
+    - [0]/[3]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17721127},\n  "original":"17721127",\n  "type":"single",\n  "value":"17721127"\n}' != None
+    - [0]/[3]/[1]/ls: element 'entity' 'orf-acb-devedores-eiras-per2' != None
+    - [0]/[3]/[2]/rel: element 'origin' 'orf-acb-devedores-eiras-per2' != None
+    - [0]/[3]/[2]/rel: element 'date' '17721127' != None
+    ... and 74 more
+
+[FAIL] varia/auc-alunos-264605-A-140337-140771.xml — 27590 difference(s)
+    - fonte: element 'date' '15370000.19191114' != '1537-00-00:1919-11-14'
+    - fonte: element 'obs' '"""\n       Âmbito e conteúdo\n\n       O índice de alunos da Universidade de Coimbra, também conhecido, apenas, como ficheiro de alunos, foi elaborado entre 1940 e 1950, pelos funcionários do Arquivo, por decisão do doutor Mário Brandão, então diretor do Arquivo da Universidade, como o atestam os relatórios de atividades enviados anualmente ao reitor da Universidade (v. Correspondência expedida do Arquivo (SR), cx.2 (1942-1947) e cx. 3 (1948-1951) – cota AUC-IV-2.ªE-10-2-18 e 19).\n       Os citados relatórios revelam, por exemplo, que em 1941-1942 foram elaboradas fichas relativas aos livros de matrículas de 1720 a 1756, num total de 23.400 verbetes, em 1942-1943 foram elaboradas fichas dos livros de 1685 a 1719 num total de 25.000 verbetes, etc.\n       Engloba dados relativos aos alunos que frequentaram a Universidade, com menção da sua naturalidade e filiação (apenas o nome do pai). No caso de alunos de ordens religiosas apenas apresentam a indicação da ordem religiosa a que pertenciam (por vezes, de forma generalizada, como, por exemplo “religioso de Santa cruz, religioso de S. Bento”) uma vez que os dados de naturalidade e de filiação destes alunos não ficaram registados nos livros originais de matrículas ou de livros de atos e graus e provas de curso.\n       Inclui as datas de matrícula na Universidade, desde 1537, na cadeira de Instituta (a partir de 1772, deixa de existir esta cadeira) e nas diversas faculdades: Teologia, Cânones, Leis, Medicina; em 1772 foram criadas a Faculdade de Matemática e a Faculdade de Filosofia e a partir de 1834 a Faculdade de Cânones e a Faculdade de Leis fundiram-se, dando origem à Faculdade de Direito. Inclui também datas de provas de curso e datas de exames e graus.\n       Estes dados foram recolhidos na série documental de livros de matrículas que existem entre 1573 e 1908. Para os anos anteriores, os dados foram recolhidos em livros que incluem registos de diversos atos, nomeadamente: matrículas, atos e graus e de provas de curso, entre 1537 e 1572. Registe-se que figuram no índice apenas dois alunos anteriores a 1537: Luís Aires e Rodrigo de Gaia que frequentaram a Universidade desde 1536. Depois de 1908 figuram alguns alunos, nomeadamente o aluno Domingos Luiselo Alves Moreira (1915-1919) pois os seus dados foram incluídos posteriormente à elaboração do ficheiro original.\n       Compreende os referidos dados redigidos em fichas individuais manuscritas, em trabalho cuja coordenação poderá ser atribuída ao Dr. António Gomes da Rocha Madahil, conservador do Arquivo e cuja elaboração pode ser atribuída aos funcionários que trabalharam no Arquivo, entre 1940 e 1950: António da Costa Rodrigues, Diamantino Ramos, António dos Santos Bernardino, Guilherme Flóreo dos Santos Bernardino, Francisco Ferrer Mendes da Silva.\n       O último livro em que foram colhidos dados para o Índice de alunos é o volume 129 da série de Livros de Matrículas (cota: AUC-IV-1ªD-2-5-68).\n       Este volume reporta-se ao ano lectivo de 1906-1907, com matrículas para as Faculdades de Teologia, Direito, Medicina, Matemática e Filosofia. No entanto, apesar de se destinar a este ano lectivo de 1906-1907 foram acrescentados alguns registos até 1911.\n\n       Sistema de organização\n\n       O índice foi elaborado em fichas individuais, apresentando em primeiro lugar o nome completo do aluno, tendo sido ordenado alfabeticamente pelo último apelido ou pelo nome dos dois últimos apelidos, no caso de nomes espanhóis ou de nomes compostos (ex. Castelo Branco, Lopes Júnior, etc.).\n       Existem algumas fichas que são apenas remissivas para a forma completa do nome do aluno.\n       Os dados do índice foram lançados na plataforma informática Archeevo, numa adaptação desta às necessidades imediatas de divulgação da informação, de forma a permitir um acesso mais rápido aos livros de matrículas e aos livros de atos e graus e provas de curso. Foi feita a atualização ortográfica dos nomes, como por exemplo Souza - Sousa, Paes - Pais, etc., bem como a atualização toponímica como, por exemplo, nos seguintes casos Punhete - Constância, Lavarrabos - São João do Campo, Farinha Podre - São Pedro de Alva.\n       Ao fazer o registo informático, das fichas do índice, tornou-se necessário, para agilizar a pesquisa, reunir cada grupo de fichas com a mesma letra inicial dos apelidos como se se tratasse de uma unidade de instalação, desta forma o número de unidades de instalação corresponde ao das letras do alfabeto. Por outro lado, dentro de cada unidade de instalação (ou seja cada letra do alfabeto) ficou registada cada ficha como um documento simples.\n       NOTA: Reconhece-se a existência de algumas lacunas na elaboração deste índice, no entanto, este é tornado público para facilitar a pesquisa dos investigadores.\n       As correcções serão feitas pontualmente.\n\n       URL: http://pesquisa.auc.uc.pt/details?id=264605\n   """' != '"""       Âmbito e conteúdo       O índice de alunos da Universidade de Coimbra, também conhecido, apenas, como ficheiro de alunos, foi elaborado entre 1940 e 1950, pelos funcionários do Arquivo, por decisão do doutor Mário Brandão, então diretor do Arquivo da Universidade, como o atestam os relatórios de atividades enviados anualmente ao reitor da Universidade (v. Correspondência expedida do Arquivo (SR), cx.2 (1942-1947) e cx. 3 (1948-1951) – cota AUC-IV-2.ªE-10-2-18 e 19).       Os citados relatórios revelam, por exemplo, que em 1941-1942 foram elaboradas fichas relativas aos livros de matrículas de 1720 a 1756, num total de 23.400 verbetes, em 1942-1943 foram elaboradas fichas dos livros de 1685 a 1719 num total de 25.000 verbetes, etc.       Engloba dados relativos aos alunos que frequentaram a Universidade, com menção da sua naturalidade e filiação (apenas o nome do pai). No caso de alunos de ordens religiosas apenas apresentam a indicação da ordem religiosa a que pertenciam (por vezes, de forma generalizada, como, por exemplo “religioso de Santa cruz, religioso de S. Bento”) uma vez que os dados de naturalidade e de filiação destes alunos não ficaram registados nos livros originais de matrículas ou de livros de atos e graus e provas de curso.       Inclui as datas de matrícula na Universidade, desde 1537, na cadeira de Instituta (a partir de 1772, deixa de existir esta cadeira) e nas diversas faculdades: Teologia, Cânones, Leis, Medicina; em 1772 foram criadas a Faculdade de Matemática e a Faculdade de Filosofia e a partir de 1834 a Faculdade de Cânones e a Faculdade de Leis fundiram-se, dando origem à Faculdade de Direito. Inclui também datas de provas de curso e datas de exames e graus.       Estes dados foram recolhidos na série documental de livros de matrículas que existem entre 1573 e 1908. Para os anos anteriores, os dados foram recolhidos em livros que incluem registos de diversos atos, nomeadamente: matrículas, atos e graus e de provas de curso, entre 1537 e 1572. Registe-se que figuram no índice apenas dois alunos anteriores a 1537: Luís Aires e Rodrigo de Gaia que frequentaram a Universidade desde 1536. Depois de 1908 figuram alguns alunos, nomeadamente o aluno Domingos Luiselo Alves Moreira (1915-1919) pois os seus dados foram incluídos posteriormente à elaboração do ficheiro original.       Compreende os referidos dados redigidos em fichas individuais manuscritas, em trabalho cuja coordenação poderá ser atribuída ao Dr. António Gomes da Rocha Madahil, conservador do Arquivo e cuja elaboração pode ser atribuída aos funcionários que trabalharam no Arquivo, entre 1940 e 1950: António da Costa Rodrigues, Diamantino Ramos, António dos Santos Bernardino, Guilherme Flóreo dos Santos Bernardino, Francisco Ferrer Mendes da Silva.       O último livro em que foram colhidos dados para o Índice de alunos é o volume 129 da série de Livros de Matrículas (cota: AUC-IV-1ªD-2-5-68).       Este volume reporta-se ao ano lectivo de 1906-1907, com matrículas para as Faculdades de Teologia, Direito, Medicina, Matemática e Filosofia. No entanto, apesar de se destinar a este ano lectivo de 1906-1907 foram acrescentados alguns registos até 1911.       Sistema de organização       O índice foi elaborado em fichas individuais, apresentando em primeiro lugar o nome completo do aluno, tendo sido ordenado alfabeticamente pelo último apelido ou pelo nome dos dois últimos apelidos, no caso de nomes espanhóis ou de nomes compostos (ex. Castelo Branco, Lopes Júnior, etc.).       Existem algumas fichas que são apenas remissivas para a forma completa do nome do aluno.       Os dados do índice foram lançados na plataforma informática Archeevo, numa adaptação desta às necessidades imediatas de divulgação da informação, de forma a permitir um acesso mais rápido aos livros de matrículas e aos livros de atos e graus e provas de curso. Foi feita a atualização ortográfica dos nomes, como por exemplo Souza - Sousa, Paes - Pais, etc., bem como a atualização toponímica como, por exemplo, nos seguintes casos Punhete - Constância, Lavarrabos - São João do Campo, Farinha Podre - São Pedro de Alva.       Ao fazer o registo informático, das fichas do índice, tornou-se necessário, para agilizar a pesquisa, reunir cada grupo de fichas com a mesma letra inicial dos apelidos como se se tratasse de uma unidade de instalação, desta forma o número de unidades de instalação corresponde ao das letras do alfabeto. Por outro lado, dentro de cada unidade de instalação (ou seja cada letra do alfabeto) ficou registada cada ficha como um documento simples.       NOTA: Reconhece-se a existência de algumas lacunas na elaboração deste índice, no entanto, este é tornado público para facilitar a pesquisa dos investigadores.       As correcções serão feitas pontualmente.       URL: http://pesquisa.auc.uc.pt/details?id=264605   """'
+    - [0]/lista: element 'date' '20200211' != '2020-02-11'
+    - [0]/[0]/n: element 'obs' '"""\n\n            Id: 140337\n            Código de referência: PT/AUC/ELU/UC-AUC/B/001-001/A/000001\n\n            Nome        : António Pinto Abadeço\n            Data inicial: 1705-10-01\n            Data final  : 1710-10-01\n            Filiação: António Pinto\n\n            Naturalidade: Abrantes\n            Faculdade: Cânones\n\n            Matrícula(s): 01.10.1705\n            01.10.1706\n            01.01.1707\n            01.10.1708\n            01.10.1709\n            01.10.1710\n            Instituta:\n            Bacharel: 28.06.1709\n            Formatura:\n            Licenciado:\n            Doutor:\n\n            Outras informações:\n        """' != '"""            Id: 140337            Código de referência: PT/AUC/ELU/UC-AUC/B/001-001/A/000001            Nome        : António Pinto Abadeço            Data inicial: 1705-10-01            Data final  : 1710-10-01            Filiação: António Pinto            Naturalidade: Abrantes            Faculdade: Cânones            Matrícula(s): 01.10.1705            01.10.1706            01.01.1707            01.10.1708            01.10.1709            01.10.1710            Instituta:            Bacharel: 28.06.1709            Formatura:            Licenciado:            Doutor:            Outras informações:        """'
+    - [0]/[0]/[0]/relation: element 'date' '20200211' != '2020-02-11'
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":20210517},\n  "original":"2021-05-17",\n  "type":"single",\n  "value":"20210517"\n}' != None
+    - [0]/[0]/[1]/atr: element 'entity' '140337' != None
+    - [0]/[0]/[2]/atr: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":20210517},\n  "original":"2021-05-17",\n  "type":"single",\n  "value":"20210517"\n}' != None
+    - [0]/[0]/[2]/atr: element 'entity' '140337' != None
+    - [0]/[0]/[3]/atr: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":20210517},\n  "original":"2021-05-17",\n  "type":"single",\n  "value":"20210517"\n}' != None
+    - [0]/[0]/[3]/atr: element 'entity' '140337' != None
+    - [0]/[0]/[4]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[4]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[5]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17101001},\n  "original":"1710-10-01",\n  "type":"single",\n  "value":"17101001"\n}' != None
+    - [0]/[0]/[5]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[6]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[6]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[7]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17101001},\n  "original":"1710-10-01",\n  "type":"single",\n  "value":"17101001"\n}' != None
+    - [0]/[0]/[7]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[8]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[8]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[9]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[9]/ls: element 'entity' '140337' != None
+    - [0]/[0]/[10]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[10]/ls: element 'entity' '140337' != None
+    ... and 27565 more
+
+[FAIL] varia/auc_cartulario18.xml — 2919 difference(s)
+    - [0]/[0]/[1]/ls: element 'date' '15170609' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'esc1517-e1-per1' != None
+    - [0]/[1]/[1]/ls: element 'date' '15170609' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'esc1517-e1-per2' != None
+    - [0]/[1]/[2]/ls: element 'date' '15170609' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' 'esc1517-e1-per2' != None
+    - [0]/[2]/[1]/rel: element 'origin' 'esc1517-e1-per3' != None
+    - [0]/[2]/[1]/rel: element 'date' '15170609' != None
+    - [0]/[6]/[1]/atr: element 'date' '15170609' != None
+    - [0]/[6]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[1]/atr: element 'entity' 'esc1517-e1-obj4-3' != None
+    - [0]/[6]/[2]/atr: element 'date' '15170609' != None
+    - [0]/[6]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[2]/atr: element 'entity' 'esc1517-e1-obj4-3' != None
+    - [0]/[6]/[3]/atr: element 'date' '15170609' != None
+    - [0]/[6]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[3]/atr: element 'entity' 'esc1517-e1-obj4-3' != None
+    - [0]/[6]/[4]/atr: element 'date' '15170609' != None
+    - [0]/[6]/[4]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[4]/atr: element 'entity' 'esc1517-e1-obj4-3' != None
+    - [0]/[6]/[5]/atr: element 'date' '15170609' != None
+    - [0]/[6]/[5]/atr: element 'date_extra_info' '{}' != None
+    ... and 2894 more
+
+[FAIL] varia/avexplorfa.xml — 1225 difference(s)
+    - fonte: element 'loc' 'cx.5, mc.27, n.620' != 'cx.5, mc.27, n.620;cx.4, mc.23, n.462;cx.2, mc.9, n.172;cx.1, mc.5, n.121;cx.1, mc.5, n.123;cx.4, mc.23, n.459;cx.1, mc.5, n.124;cx.4, mc.25, n.519;cx.6, mc.33, n.755;cx.4, mc.25, n.498;cx.1, mc.6, n.140'
+    - [0]/[0]/[1]/[0]/relation: id 'sj-1322.e1.colsj-rela2' != 'sj-cex1322.1-rela2' (normalized)
+    - [0]/[0]/[1]/[1]/ls: element 'date' '13220618' != None
+    - [0]/[0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/[1]/ls: element 'entity' 'sj-1322.e1.priorfafonso' != None
+    - [0]/[1]/[1]/ls: element 'date' '13220618' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'sj-1322.e1.martim' != None
+    - [0]/[1]/[2]/rel: element 'origin' 'sj-1322.e1.martim' != None
+    - [0]/[1]/[2]/rel: element 'iddest' 'sj-1322.e1.priorfafonso' != '1322.e1.priorfafonso'
+    - [0]/[1]/[2]/rel: element 'date' '13220618' != None
+    - [0]/[2]/[1]/ls: element 'date' '13220618' != None
+    - [0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[1]/ls: element 'entity' 'sj-1322.e1.joao' != None
+    - [0]/[2]/[2]/ls: element 'date' '13220618' != None
+    - [0]/[2]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[2]/[2]/ls: element 'entity' 'sj-1322.e1.joao' != None
+    - [0]/[3]/[1]/ls: element 'date' '13220618' != None
+    - [0]/[3]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[3]/[1]/ls: element 'entity' 'sj-1322.e1.maria' != None
+    - [0]/[3]/[2]/rel: element 'origin' 'sj-1322.e1.maria' != None
+    - [0]/[3]/[2]/rel: element 'iddest' 'sj-1322.e1.joao' != '1322.e1.joao'
+    - [0]/[3]/[2]/rel: element 'date' '13220618' != None
+    - [0]/[4]/[1]/ls: element 'date' '13220618' != None
+    - [0]/[4]/[1]/ls: element 'date_extra_info' '{}' != None
+    ... and 1200 more
+
+[FAIL] varia/cartas.xml — 45 difference(s)
+    - [0]/carta: element 'obs' '"""\n \n         Carta del pe. emrrique emrriquez para los padres y hermanos del collegio de Jesus de coimbra escrita em goa a xij dias de nouiembre de 1548. [A. 21v.]\n \n            [\n             Descreve a viagem para a Índia Wicki 3\n \n             3. Aussendung, 1546, Abfahrt 8. April\n \n             auf Schiff Flor de la Mar:\n             * P. Francisco Henriques, Port.\n             * P. Francisco Perez, Span.\n             *  Ir. Adam Francisco, Port.\n \n             auf Schiff Vitöria:\n             * P. Henrique Henriques, Port. (é o autor da carta)\n             * P. Nuno Ribeiro, Port.\n             * Ir. Manuel de Morais, jr., Port,\n \n             auf Schiff S. Espirito:\n             * P. Alfonso Cipriän, Span.\n             * Ir. Nicolau Nunes, Port.\n             * Ir. Baltasar Nunes, Port.\n             ]\n \n \n          P. Nuno Ribeiro, Port. (Algumas vezes vino também mal dispostos\n          Ir. Manuel de Morais, jr., Port (sempre veio bem, deus seja louvado)\n \n          Chegaram a Goa a 17 de setembro de 1546 onde foram recebido pelo padre Nicolau \n          e pelo Padre Ms Paulo e achamos já cá a francisco Henriques, francisco Pérez e \n          Adão que chegaram havia 8 dias.\n \n          Assistiram na igreja a uma predica na língua nativa "Vimos estar predicando a uno de la Tierra destas que aqui se criam y estas en casa en Su misma lengua a los xpianos naturales dela tierra, ver a estos muchachos desta casa que fueron gentiles officiar una missa y rezar sus vésperas todo entonado es mucho para alabar a dios N.S. ny ceo[?] charissimos hermanos glo podrieis ver quanto no llorasseis de plazer en ver q los q eran gentiles y ministros del demonio y q aviam de ser sacerdotes delos idolos\n \n          nos incitem aloar a dios N.S. do destos estan em casa q todos los domingos ala tarde sucessivamente precicam en su lenguanatural no por q ellos tengam letras para predicar entendem bien latim y aqui em casa les dizen algunos puntos sobre el evangello para que prediquem y hazendo muy bien dios sea loado. \n \n          Quien \xa0pudesse hermanos mios, \n          manifestarvos la extrema necessidade q aca ay por todas estas partes de siervos\n          de dios ciertamente que llorarieis y llorariam todos aqllos q de alguna maneira zela la honra\n          del senhor quien no llorara en ver qu muchhos se converteriam ala fe y no ave\n          quien les preqidue y enseñe y de buen exemplo em Moçambique me contaram \n          como cosa cierta q en la isla de S.Lourenço receberiam facilmente la fe si mor? esse opezarios\n          y un hombre dino de fe me dixo q platicando con el rey de aqlla tierra le dixera \n          [21v]\n          el dixo rey boluros? aca y mandare hazer algu lugar apartado adonde ensenareis\n          cinco hijos q tenes? vernan tambem otros muchacos  y estaram apartados\n          para q melhor aprendam lo q les ensenardes a questa isla de S.Lourneço dizer ser de \n          300 léguas. En Cosotora tanbien me dizeram q se converteriam facilmente proque\n          snedo em todos sus costumbres y conocimento de dios getiles todavia tienen nouiembrey dizem se xpianos, por amor de dios os pido hermanos que aquantos vieredes idoneos incitteis\n          que vengam servir al sor ala India y q no dexem perecer tantos millares de animas\n          tan caramente compradas plugielse a dios q algunos delos que estan presos del amor de xº supiessem\n          bien la verdade destas partes la grandissima necessidade que aca ay no dudo que dexan\n          to odo imitariam siquiero alos del mundo q tantos trabalhos parece por lvel de aca\n          dinero  y se veniam a estas partes, pidoos hermanos muos que lhoreis mucho delante la divina\n          magestade q se acuerde de tantas anumas que mqua? los coracones de sus servos para que\n          van ala India que mvena§ los coracones de los portugueses q aca andam q den buen exemplo\n          a los gentiles de verdadeiros xptianos y alos novamente convertidos muy dichosos\n          cierto sereis cos que aca fueredes embiados, da os prisa a los estudios acabad presto\n          mas sea cor que dar dostos juntamente en el xpto? creciendo siempre la charidad y humildad\n          con las letras, acabad presto y venid hermanos a estas partes y vereis tanta nizas?\n          q os spantareis. Daqui a mas de mil leguos en uma provincia que llhama china q es\n          un reyno muy grande tienen una profecia e aqllas tierras an de ser tomadas por lo\n          ql se guardan much en no dexar entrar ninguna pa estrangera esta gente es\n          blanca y para q los estrangeros sean conoscidos quado alguna vez entrassen andanto\n          dos los de aql reyno con los cabellos muy largos assi hombres como mujeres si algu\n          estrangeo entra catianco tienen entre si hombres recosidos como religiosos y hazen\n          profission con quemar una mano o un dedo todos son gentiles adoram idolos rogad al sor\n          que de nos vamos alla y nos cativem y assi les demos tal exemplo con q tomen el camino\n          de vedad. "\n """' != '"""         Carta del pe. emrrique emrriquez para los padres y hermanos del collegio de Jesus de coimbra escrita em goa a xij dias de nouiembre de 1548. [A. 21v.]            [             Descreve a viagem para a Índia Wicki 3             3. Aussendung, 1546, Abfahrt 8. April             auf Schiff Flor de la Mar:             * P. Francisco Henriques, Port.             * P. Francisco Perez, Span.             *  Ir. Adam Francisco, Port.             auf Schiff Vitöria:             * P. Henrique Henriques, Port. (é o autor da carta)             * P. Nuno Ribeiro, Port.             * Ir. Manuel de Morais, jr., Port,             auf Schiff S. Espirito:             * P. Alfonso Cipriän, Span.             * Ir. Nicolau Nunes, Port.             * Ir. Baltasar Nunes, Port.             ]          P. Nuno Ribeiro, Port. (Algumas vezes vino também mal dispostos          Ir. Manuel de Morais, jr., Port (sempre veio bem, deus seja louvado)          Chegaram a Goa a 17 de setembro de 1546 onde foram recebido pelo padre Nicolau           e pelo Padre Ms Paulo e achamos já cá a francisco Henriques, francisco Pérez e           Adão que chegaram havia 8 dias.          Assistiram na igreja a uma predica na língua nativa "Vimos estar predicando a uno de la Tierra destas que aqui se criam y estas en casa en Su misma lengua a los xpianos naturales dela tierra, ver a estos muchachos desta casa que fueron gentiles officiar una missa y rezar sus vésperas todo entonado es mucho para alabar a dios N.S. ny ceo[?] charissimos hermanos glo podrieis ver quanto no llorasseis de plazer en ver q los q eran gentiles y ministros del demonio y q aviam de ser sacerdotes delos idolos          nos incitem aloar a dios N.S. do destos estan em casa q todos los domingos ala tarde sucessivamente precicam en su lenguanatural no por q ellos tengam letras para predicar entendem bien latim y aqui em casa les dizen algunos puntos sobre el evangello para que prediquem y hazendo muy bien dios sea loado.           Quien \xa0pudesse hermanos mios,           manifestarvos la extrema necessidade q aca ay por todas estas partes de siervos          de dios ciertamente que llorarieis y llorariam todos aqllos q de alguna maneira zela la honra          del senhor quien no llorara en ver qu muchhos se converteriam ala fe y no ave          quien les preqidue y enseñe y de buen exemplo em Moçambique me contaram           como cosa cierta q en la isla de S.Lourenço receberiam facilmente la fe si mor? esse opezarios          y un hombre dino de fe me dixo q platicando con el rey de aqlla tierra le dixera           [21v]          el dixo rey boluros? aca y mandare hazer algu lugar apartado adonde ensenareis          cinco hijos q tenes? vernan tambem otros muchacos  y estaram apartados          para q melhor aprendam lo q les ensenardes a questa isla de S.Lourneço dizer ser de           300 léguas. En Cosotora tanbien me dizeram q se converteriam facilmente proque          snedo em todos sus costumbres y conocimento de dios getiles todavia tienen nouiembrey dizem se xpianos, por amor de dios os pido hermanos que aquantos vieredes idoneos incitteis          que vengam servir al sor ala India y q no dexem perecer tantos millares de animas          tan caramente compradas plugielse a dios q algunos delos que estan presos del amor de xº supiessem          bien la verdade destas partes la grandissima necessidade que aca ay no dudo que dexan          to odo imitariam siquiero alos del mundo q tantos trabalhos parece por lvel de aca          dinero  y se veniam a estas partes, pidoos hermanos muos que lhoreis mucho delante la divina          magestade q se acuerde de tantas anumas que mqua? los coracones de sus servos para que          van ala India que mvena§ los coracones de los portugueses q aca andam q den buen exemplo          a los gentiles de verdadeiros xptianos y alos novamente convertidos muy dichosos          cierto sereis cos que aca fueredes embiados, da os prisa a los estudios acabad presto          mas sea cor que dar dostos juntamente en el xpto? creciendo siempre la charidad y humildad          con las letras, acabad presto y venid hermanos a estas partes y vereis tanta nizas?          q os spantareis. Daqui a mas de mil leguos en uma provincia que llhama china q es          un reyno muy grande tienen una profecia e aqllas tierras an de ser tomadas por lo          ql se guardan much en no dexar entrar ninguna pa estrangera esta gente es          blanca y para q los estrangeros sean conoscidos quado alguna vez entrassen andanto          dos los de aql reyno con los cabellos muy largos assi hombres como mujeres si algu          estrangeo entra catianco tienen entre si hombres recosidos como religiosos y hazen          profission con quemar una mano o un dedo todos son gentiles adoram idolos rogad al sor          que de nos vamos alla y nos cativem y assi les demos tal exemplo con q tomen el camino          de vedad. " """'
+    - [1]/carta: element 'resumo' '"""\n       renuncia a herança, na Companhia de Jesus, na mão do Padre Manuel Dias\n          Reitor do Colégio de Macau. "rogando ao d.to P.e que se lhe parecer maior\n          serviço de Deus, que applique ou toda, ou p.te della à Miss-ao\n          da China, e constituo para isso por meo procurador abast.e o P.e Miguel \n          Aires[?] Procurador do Japão, e por eu tenho alguã obrigação a h~u menino\n          por nome Sebastião e huma menina por p. nome Anna, filhos de huã Catarina de Mendonça\n          q hora estão em casa onde Antº Ferr[?], meu cunhado, ou de meo pay[?],\n          peço ao P.e R.tor M.el Dias que lhes aplique alguã p.te da minha herança\n          p.a sua sostentação de ambos, que lhe parecer q for serviço de Deos, e"\n          indica ainda outros cunhados que podem receber o dinheiro pelas crianças,\n          Tomé Pereira ou Gaspar Ferreira, e indica que este dinheiro não deve passar\n          pelo juiz dos órfãos ou outro oficial do rei, e ainda se algum dos meninos\n          morrer antes da idade de receber o dinheiro deve o mesmo reverter para a Companhia\n          de Jesus. "E p. q.to ao presente estou em Nanquim, onde não há cópia de Tabelião,\n          ou outro qlqr. official del Rey algum, fiz esta secdula de doação de minha\n          propria letra, e assinada do meo proprio sinal para\n          que em Macao se faça instrum.to publico, com forma das constituiçoes do\n          Reyno de Portugal"\n       \n          doc. 9 Declaração de Manuel Dias dizendo que recebeu de Pedro Fernandes\n          seu pai, 436 reis de prata da seda[?] que lhe pertencia da legitima de sua\n          mãe, dos quais deu de esmola aos dois meninos 125 taeis[?] a Sebastiaõ 40\n          e a Anna 85, com a condição que o doador especificou, \n          que "morrendo algum delles antes de ser de idade para testar\n          o dito dinheiro fique aos nossos Padres da Missão da China"\n          "a qual prata entreguei a António Fernandes [agora por extenso]"\n          \n          "Era neste tempo governador do Bispado Frei Miguel dos Santos\n          Religioso Agostinho e Capitão Mor de Macao D. Paulo de Portugal."\n          \n          "Estas são as notícias q achei do anno de 1600, José Montanha"\n          "\n          \n          \n \n       """' != '"""       renuncia a herança, na Companhia de Jesus, na mão do Padre Manuel Dias          Reitor do Colégio de Macau. "rogando ao d.to P.e que se lhe parecer maior          serviço de Deus, que applique ou toda, ou p.te della à Miss-ao          da China, e constituo para isso por meo procurador abast.e o P.e Miguel           Aires[?] Procurador do Japão, e por eu tenho alguã obrigação a h~u menino          por nome Sebastião e huma menina por p. nome Anna, filhos de huã Catarina de Mendonça          q hora estão em casa onde Antº Ferr[?], meu cunhado, ou de meo pay[?],          peço ao P.e R.tor M.el Dias que lhes aplique alguã p.te da minha herança          p.a sua sostentação de ambos, que lhe parecer q for serviço de Deos, e"          indica ainda outros cunhados que podem receber o dinheiro pelas crianças,          Tomé Pereira ou Gaspar Ferreira, e indica que este dinheiro não deve passar          pelo juiz dos órfãos ou outro oficial do rei, e ainda se algum dos meninos          morrer antes da idade de receber o dinheiro deve o mesmo reverter para a Companhia          de Jesus. "E p. q.to ao presente estou em Nanquim, onde não há cópia de Tabelião,          ou outro qlqr. official del Rey algum, fiz esta secdula de doação de minha          propria letra, e assinada do meo proprio sinal para          que em Macao se faça instrum.to publico, com forma das constituiçoes do          Reyno de Portugal"          doc. 9 Declaração de Manuel Dias dizendo que recebeu de Pedro Fernandes          seu pai, 436 reis de prata da seda[?] que lhe pertencia da legitima de sua          mãe, dos quais deu de esmola aos dois meninos 125 taeis[?] a Sebastiaõ 40          e a Anna 85, com a condição que o doador especificou,           que "morrendo algum delles antes de ser de idade para testar          o dito dinheiro fique aos nossos Padres da Missão da China"          "a qual prata entreguei a António Fernandes [agora por extenso]"          "Era neste tempo governador do Bispado Frei Miguel dos Santos          Religioso Agostinho e Capitão Mor de Macao D. Paulo de Portugal."          "Estas são as notícias q achei do anno de 1600, José Montanha"          "       """'
+    - [1]/[0]/[1]/ls: element 'date' '16000118' != None
+    - [1]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/ls: element 'entity' 'avulso-sebastiao-fernandes' != None
+    - [1]/[0]/[2]/ls: element 'date' '16000118' != None
+    - [1]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[2]/ls: element 'entity' 'avulso-sebastiao-fernandes' != None
+    - [1]/[0]/[3]/ls: element 'date' '16000118' != None
+    - [1]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[3]/ls: element 'entity' 'avulso-sebastiao-fernandes' != None
+    - [1]/[0]/[4]/ls: element 'date' '16000118' != None
+    - [1]/[0]/[4]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[4]/ls: element 'entity' 'avulso-sebastiao-fernandes' != None
+    - [1]/[0]/[5]/[0]/relation: id 'avulso-sebastiao-fernandes-rela2' != 'Carta de renunciação do irmão Sebastião Fernandes-rela2' (normalized)
+    - [1]/[0]/[6]/[0]/relation: id 'avulso-sebastiao-fernandes-rela3' != 'Carta de renunciação do irmão Sebastião Fernandes-rela3' (normalized)
+    - [1]/[0]/[7]/[0]/relation: id 'avulso-sebastiao-fernandes-rela4' != 'Carta de renunciação do irmão Sebastião Fernandes-rela4' (normalized)
+    - [1]/[0]/[7]/[1]/rel: element 'origin' 'avulso-antonio-fernandes' != None
+    - [1]/[0]/[7]/[1]/rel: element 'date' '16000118' != None
+    - [1]/[0]/[8]/[0]/relation: id 'avulso-sebastiao-fernandes-rela5' != 'Carta de renunciação do irmão Sebastião Fernandes-rela5' (normalized)
+    - [1]/[0]/[8]/[1]/ls: element 'date' '16000118' != None
+    - [1]/[0]/[8]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[8]/[1]/ls: element 'entity' 'avulso-manuel-aires' != None
+    - [1]/[0]/[9]/[0]/relation: id 'avulso-sebastiao-fernandes-rela6' != 'Carta de renunciação do irmão Sebastião Fernandes-rela6' (normalized)
+    - [1]/[0]/[9]/[1]/ls: element 'date' '16000118' != None
+    ... and 20 more
+
+[FAIL] varia/dehergne-residences.xml — 8 difference(s)
+    - fonte: group name 'fonte' != 'link'
+    - fonte: id 'dehergne-residences' != 'root-lin3-69' (normalized)
+    - fonte: element 'urlpattern' None != '"https://www.wikidata.org/wiki/$1"'
+    - fonte: element 'year' '1644' != None
+    - fonte: element 'shortname' None != 'wikidata'
+    - fonte: element 'type' 'geoinformation' != None
+    - fonte: element 'date' '0' != None
+    - fonte: child count 2 != 0
+
+[FAIL] varia/dev1692.xml — 1439 difference(s)
+    - fonte: element 'date' '16920000' != None
+    - [0]/devassa: element 'date' '16920410' != None
+    - [0]/devassa: element 'type' 'devassa' != None
+    - [0]/devassa: child count 86 != 304
+    - [0]/[0]/testo: element 'sex' 'm' != None
+    - [0]/[0]/testo: child count 7 != 4
+    - [0]/[0]/[0]/relation: group name 'relation' != 'ls'
+    - [0]/[0]/[0]/relation: id 'devassa1692-rela1' != 'dev1692-per1-att1' (normalized)
+    - [0]/[0]/[0]/relation: element 'origin' 'dev1692-per1' != None
+    - [0]/[0]/[0]/relation: element 'type' 'function-in-act' != 'ec'
+    - [0]/[0]/[0]/relation: element 'date' '16920410' != None
+    - [0]/[0]/[0]/relation: element 'value' 'testo' != 's'
+    - [0]/[0]/[0]/relation: element 'destination' 'devassa1692' != None
+    - [0]/[0]/[0]/relation: element 'destname' 'devassa' != None
+    - [0]/[0]/[1]/ls: element 'tipo' 'ec' != None
+    - [0]/[0]/[1]/ls: element 'date' '16920410' != None
+    - [0]/[0]/[1]/ls: element 'type' None != 'residencia'
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'valor' 's' != None
+    - [0]/[0]/[1]/ls: element 'value' None != 'soure'
+    - [0]/[0]/[1]/ls: element 'entity' 'dev1692-per1' != None
+    - [0]/[0]/[2]/ls: element 'tipo' 'residencia' != None
+    - [0]/[0]/[2]/ls: element 'date' '16920410' != None
+    - [0]/[0]/[2]/ls: element 'type' None != 'idade'
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    ... and 1414 more
+
+[FAIL] varia/eleicoes1.xml — 2586 difference(s)
+    - fonte: child count 28 != 55
+    - [0]/[1]/[1]/ls: element 'date' '16840702' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'amz1-per2' != None
+    - [0]/[1]/[2]/ls: element 'date' '16840702' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' 'amz1-per2' != None
+    - [0]/[6]/[1]/ls: element 'date' '16840702' != None
+    - [0]/[6]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[1]/ls: element 'entity' 'amz1-per7' != None
+    - [0]/[8]/[1]/ls: element 'date' '16840702' != None
+    - [0]/[8]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[8]/[1]/ls: element 'entity' 'amz1-per9' != None
+    - [0]/[8]/[2]/ls: element 'date' '16840702' != None
+    - [0]/[8]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[8]/[2]/ls: element 'entity' 'amz1-per9' != None
+    - [0]/[8]/[3]/ls: element 'date' '16840702' != None
+    - [0]/[8]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[8]/[3]/ls: element 'entity' 'amz1-per9' != None
+    - [0]/[10]/[1]/ls: element 'date' '16840702' != None
+    - [0]/[10]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[10]/[1]/ls: element 'entity' 'amz1-per11' != None
+    - [0]/[10]/[2]/ls: element 'date' '16840702' != None
+    - [0]/[10]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[10]/[2]/ls: element 'entity' 'amz1-per11' != None
+    ... and 2561 more
+
+[FAIL] varia/glopes-lap1561.xml — 4424 difference(s)
+    - [0]/pas: child count 8 != 2
+    - [0]/[1]/[1]/ls: element 'date' '15610102' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'p-733-per2' != None
+    - [0]/[1]/[2]/ls: element 'date' '15610102' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' 'p-733-per2' != None
+    - [0]/[1]/[3]/[0]/relation: id 'p-733-per2-rela3' != 'p-733-rela3' (normalized)
+    - [0]/[1]/[4]/[0]/relation: id 'p-733-per2-rela4' != 'p-733-rela4' (normalized)
+    - [1]/pas: child count 17 != 2
+    - [1]/[0]/[0]/relation: id 'p-736-rela9' != 'p-736-rela5' (normalized)
+    - [1]/[1]/[0]/relation: id 'p-736-rela10' != 'p-736-rela6' (normalized)
+    - [1]/[1]/[1]/ls: element 'date' '15610103' != None
+    - [1]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[1]/[1]/ls: element 'entity' 'p-736-per2' != None
+    - [1]/[1]/[2]/ls: element 'date' '15610103' != None
+    - [1]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[1]/[2]/ls: element 'entity' 'p-736-per2' != None
+    - [1]/[1]/[3]/ls: element 'date' '15610103' != None
+    - [1]/[1]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[1]/[3]/ls: element 'entity' 'p-736-per2' != None
+    - [1]/[1]/[4]/[0]/relation: id 'p-736-per2-rela11' != 'p-736-rela7' (normalized)
+    - [1]/[1]/[5]/[0]/relation: id 'p-736-per2-rela12' != 'p-736-rela8' (normalized)
+    - [1]/[1]/[5]/[1]/ls: element 'date' '15610103' != None
+    - [1]/[1]/[5]/[1]/ls: element 'date_extra_info' '{}' != None
+    ... and 4399 more
+
+[FAIL] varia/ivcc.xml — 209 difference(s)
+    - fonte: element 'date' '0' != '17190000'
+    - fonte: element 'obs' '"""\n      Franco (S.I.), Antonio, Imagem da virtude em o noviciado da Companhia de\n      Jesus no Real Collegio de Jesus de Coimbra em Portugal\n      (Évora: na Officina da Universidade, 1719)\n\n      Inicialmente fez-se uma experiência de descrição detalhada,\n      com a vida de Gonçalo da Silveira.\n\n      Depois focamos nos missionários para a China."""' != '"""      Franco (S.I.), Antonio, Imagem da virtude em o noviciado da Companhia de      Jesus no Real Collegio de Jesus de Coimbra em Portugal      (Évora: na Officina da Universidade, 1719)      Inicialmente fez-se uma experiência de descrição detalhada,      com a vida de Gonçalo da Silveira.      Depois focamos nos missionários para a China."""'
+    - fonte: child count 9 != 3
+    - [0]/lista: child count 4 != 3
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":15470414},\n  "original":"15470414",\n  "type":"single",\n  "value":"15470414"\n}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ym","value":15531100},\n  "original":"15531100",\n  "type":"single",\n  "value":"15531100"\n}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[2]/ls: element 'obs' '"""\n            Publication and start of application of the constitutions of the\n            Coimbra College.\n            Start of separation of the "noviços" from the other brothers."""' != '"""            Publication and start of application of the constitutions of the            Coimbra College.            Start of separation of the "noviços" from the other brothers."""'
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ym","value":15550400},\n  "original":"15550400",\n  "type":"single",\n  "value":"15550400"\n}' != None
+    - [0]/[0]/[3]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[3]/ls: element 'obs' '"""\n            Modo de proceder dos noviços, enviadas a\n            S.Francisco de Borja, que segundo o a. deram\n            origem a todos as outras"""' != '"""            Modo de proceder dos noviços, enviadas a            S.Francisco de Borja, que segundo o a. deram            origem a todos as outras"""'
+    - [0]/[0]/[4]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"y","value":16190000},\n  "original":"16190000",\n  "type":"single",\n  "value":"16190000"\n}' != None
+    - [0]/[0]/[4]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[4]/ls: element 'obs' '"""\n            Se juntaram todos os noviços da província na casa do Monte Olivete e Lisboa,\n            que então começou a ser habitada"""' != '"""            Se juntaram todos os noviços da província na casa do Monte Olivete e Lisboa,            que então começou a ser habitada"""'
+    - [0]/[0]/[5]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"y","value":16300000},\n  "original":"16300000",\n  "type":"single",\n  "value":"16300000"\n}' != None
+    - [0]/[0]/[5]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[6]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"y","value":16380000},\n  "original":"16380000",\n  "type":"single",\n  "value":"16380000"\n}' != None
+    - [0]/[0]/[6]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[7]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":16780202},\n  "original":"16780202",\n  "type":"single",\n  "value":"16780202"\n}' != None
+    - [0]/[0]/[7]/ls: element 'entity' 'colegio-coimbra' != None
+    - [0]/[0]/[7]/ls: element 'obs' '"""\n            An imagem of Our Lady that was in Saint Inácio Cell in Rome come to the\n            Coimbra College\n            \'na Capela da Senhora do Bom Despacho, que é a que está no corredor,\n            em um nicho, que está onde se reveste o sacerdote, uma imagemn com Nossa\n            Senhora com um menino em pé, que tem um livro nas mãos, e a Senhora apontando\n            nele com as mãos.\'\n            The story is told in p.7-8"""' != '"""            An imagem of Our Lady that was in Saint Inácio Cell in Rome come to the            Coimbra College            \'na Capela da Senhora do Bom Despacho, que é a que está no corredor,            em um nicho, que está onde se reveste o sacerdote, uma imagemn com Nossa            Senhora com um menino em pé, que tem um livro nas mãos, e a Senhora apontando            nele com as mãos.\'            The story is told in p.7-8"""'
+    - [0]/[0]/[8]/[0]/relation: id 'colegio-coimbra-rela2' != 'ivc-c1-rela2' (normalized)
+    - [0]/[0]/[8]/[1]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ym","value":15550400},\n  "original":"15550400",\n  "type":"single",\n  "value":"15550400"\n}' != None
+    - [0]/[0]/[8]/[1]/ls: element 'entity' 'ivc-francisco-de-borja' != None
+    ... and 184 more
+
+[FAIL] varia/lrazao516pe.xml — 7407 difference(s)
+    - fonte: element 'date' '17660610.17690811' != '17660610:17690811'
+    - [0]/lcc: child count 615 != 592
+    - [0]/[0]/[1]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[3]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[4]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[4]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[4]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[5]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[5]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[5]/ls: element 'entity' 'livrz516-1-per1' != None
+    - [0]/[0]/[6]/[0]/relation: id 'livrz516-1-per1-rela2' != 'livrz516-1-rela2' (normalized)
+    - [0]/[0]/[6]/[1]/ls: element 'date' '17660610' != None
+    - [0]/[0]/[6]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[6]/[1]/ls: element 'entity' 'livrz516-1-per1-per1' != None
+    - [0]/[0]/[6]/[2]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17660610},\n  "original":"17660610",\n  "type":"single",\n  "value":"17660610"\n}' != None
+    - [0]/[0]/[6]/[2]/ls: element 'entity' 'livrz516-1-per1-per1' != None
+    - [0]/[0]/[7]/[0]/relation: id 'livrz516-1-per1-rela3' != 'livrz516-1-rela3' (normalized)
+    - [0]/[0]/[7]/[1]/rel: element 'origin' 'livrz516-1-per1-per2' != None
+    ... and 7382 more
+
+[FAIL] varia/misMesa.xml — 2092 difference(s)
+    - [0]/[0]/[1]/ls: element 'date' '16831003' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'amz1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '16831003' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'amz1-per1' != None
+    - [0]/[1]/[1]/ls: element 'date' '16831003' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'amz1-per2' != None
+    - [0]/[1]/[2]/ls: element 'date' '16831003' != None
+    - [0]/[1]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[2]/ls: element 'entity' 'amz1-per2' != None
+    - [2]/[1]/[1]/ls: element 'date' '16840702' != None
+    - [2]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[1]/[1]/ls: element 'entity' 'amz3-per2' != None
+    - [2]/[7]/[1]/ls: element 'date' '16840702' != None
+    - [2]/[7]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[7]/[1]/ls: element 'entity' 'amz3-per8' != None
+    - [2]/[7]/[2]/ls: element 'date' '16840702' != None
+    - [2]/[7]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[7]/[2]/ls: element 'entity' 'amz3-per8' != None
+    - [2]/[9]/[1]/ls: element 'date' '16840702' != None
+    - [2]/[9]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[9]/[1]/ls: element 'entity' 'amz3-per10' != None
+    - [2]/[9]/[2]/ls: element 'date' '16840702' != None
+    ... and 2067 more
+
+[FAIL] varia/mp758-santiago-beduido.xml — 105 difference(s)
+    - fonte: element 'date' '0' != '17580000'
+    - [0]/[0]/[1]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[2]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[3]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[4]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[4]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[4]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[5]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[5]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[5]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[6]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[6]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[6]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[7]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[7]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[7]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    - [0]/[0]/[8]/atr: element 'date' '17580000' != None
+    - [0]/[0]/[8]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[8]/atr: element 'entity' 'mp58-santbed-geo82' != None
+    ... and 80 more
+
+[FAIL] varia/nommiz.xml — 3514 difference(s)
+    - [0]/[0]/[1]/ls: element 'date' '17290703' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'nom1a-r1' != None
+    - [0]/[0]/[2]/[0]/relation: id 'nom1a-r1-rela2' != 'nom1a-rela2' (normalized)
+    - [0]/[0]/[2]/[1]/ls: element 'date' '17290703' != None
+    - [0]/[0]/[2]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/[1]/ls: element 'entity' 'nom1a-r1-per1' != None
+    - [0]/[0]/[2]/[2]/rel: element 'origin' 'nom1a-r1-per1' != None
+    - [0]/[0]/[2]/[2]/rel: element 'date' '17290703' != None
+    - [1]/[0]/[1]/ls: element 'date' '17290703' != None
+    - [1]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[1]/ls: element 'entity' 'nom1-per1' != None
+    - [1]/[0]/[2]/ls: element 'date' '17290703' != None
+    - [1]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [1]/[0]/[2]/ls: element 'entity' 'nom1-per1' != None
+    - [2]/[0]/[1]/ls: element 'date' '17300702' != None
+    - [2]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[1]/ls: element 'entity' 'nom2-per1' != None
+    - [2]/[0]/[2]/ls: element 'date' '17300702' != None
+    - [2]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[2]/ls: element 'entity' 'nom2-per1' != None
+    - [2]/[0]/[3]/ls: element 'date' '17300702' != None
+    - [2]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [2]/[0]/[3]/ls: element 'entity' 'nom2-per1' != None
+    - [2]/[0]/[4]/rel: element 'origin' 'nom2-per1' != None
+    ... and 3489 more
+
+[FAIL] varia/quotes.xml — 4 difference(s)
+    - [0]/[0]/n: element 'obs' '""" \n\n\n        "a quotes line inside triple quote"\n        \'a single quoted line inside triple quotes\'\n        " a multi line segment\n        inside\n        triple quotes"\n        \' a multi line\n        single quote\n        segment inside triple quotes\'\n        and some free text\n\n        \n    """' != '"""         "a quotes line inside triple quote"        \'a single quoted line inside triple quotes\'        " a multi line segment        inside        triple quotes"        \' a multi line        single quote        segment inside triple quotes\'        and some free text    """'
+    - [0]/[0]/[1]/ls: element 'date' '20220204' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'quotesl-per1' != None
+
+[FAIL] varia/sourecoimbrabispcoimbra_apontamentosd.xml — 46 difference(s)
+    - [0]/[0]/[1]/atr: element 'date' '0' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[2]/atr: element 'date' '0' != None
+    - [0]/[0]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[3]/atr: element 'date' '0' != None
+    - [0]/[0]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[4]/atr: element 'date' '0' != None
+    - [0]/[0]/[4]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[4]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[5]/atr: element 'date' '0' != None
+    - [0]/[0]/[5]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[5]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[6]/rel: element 'origin' 'apsd-soure-coimbra-bispcoimbra-geo1' != None
+    - [0]/[0]/[6]/rel: element 'date' '0' != None
+    - [0]/[0]/[7]/[0]/relation: id 'apsd-soure-coimbra-bispcoimbra-geo1-rela2' != 'apsd-soure-coimbra-bispcoimbra-rela2' (normalized)
+    - [0]/[0]/[8]/[0]/relation: id 'apsd-soure-coimbra-bispcoimbra-geo1-rela3' != 'apsd-soure-coimbra-bispcoimbra-rela3' (normalized)
+    - [0]/[0]/[9]/[0]/relation: id 'apsd-soure-coimbra-bispcoimbra-geo1-rela4' != 'apsd-soure-coimbra-bispcoimbra-rela4' (normalized)
+    - [0]/[0]/[9]/[1]/atr: element 'date' '0' != None
+    - [0]/[0]/[9]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[9]/[1]/atr: element 'entity' 'apsd-soure-coimbra-bispcoimbra-geo1-geo3' != None
+    - [0]/[0]/[9]/[2]/atr: element 'date' '0' != None
+    - [0]/[0]/[9]/[2]/atr: element 'date_extra_info' '{}' != None
+    ... and 21 more
+
+[FAIL] varia/test-atr-date.xml — 77 difference(s)
+    - fonte: element 'date' '15370000.19191114' != '1537-00-00:1919-11-14'
+    - [0]/[0]/[1]/atr: element 'date' '20200211' != None
+    - [0]/[0]/[1]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/atr: element 'entity' 't140337' != None
+    - [0]/[0]/[2]/atr: element 'date' '20200211' != None
+    - [0]/[0]/[2]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/atr: element 'entity' 't140337' != None
+    - [0]/[0]/[3]/atr: element 'date' '20200211' != None
+    - [0]/[0]/[3]/atr: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/atr: element 'entity' 't140337' != None
+    - [0]/[0]/[4]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[4]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[5]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17101001},\n  "original":"1710-10-01",\n  "type":"single",\n  "value":"17101001"\n}' != None
+    - [0]/[0]/[5]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[6]/ls: element 'date' '20200211' != None
+    - [0]/[0]/[6]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[6]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[7]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[7]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[8]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17101001},\n  "original":"1710-10-01",\n  "type":"single",\n  "value":"17101001"\n}' != None
+    - [0]/[0]/[8]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[9]/ls: element 'date_extra_info' '{\n  "date": {\n    "from": {"subtype":"ymd","value":17051001},\n    "subtype":"from_to",\n    "to": {"subtype":"ymd","value":17101001}\n  },\n  "original":"1705-10-01:1710-10-01",\n  "type":"range",\n  "value":"17051001.17101001"\n}' != None
+    - [0]/[0]/[9]/ls: element 'entity' 't140337' != None
+    - [0]/[0]/[10]/ls: element 'date_extra_info' '{\n  "date": {"subtype":"ymd","value":17051001},\n  "original":"1705-10-01",\n  "type":"single",\n  "value":"17051001"\n}' != None
+    - [0]/[0]/[10]/ls: element 'entity' 't140337' != None
+    ... and 52 more
+
+[FAIL] varia/vereacao.xml — 73 difference(s)
+    - [0]/acto: child count 25 != 8
+    - [0]/[0]/[1]/ls: element 'date' '17930221' != None
+    - [0]/[0]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[1]/ls: element 'entity' 'cbr-v1793-1-per1' != None
+    - [0]/[0]/[2]/ls: element 'date' '17930221' != None
+    - [0]/[0]/[2]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[2]/ls: element 'entity' 'cbr-v1793-1-per1' != None
+    - [0]/[0]/[3]/ls: element 'date' '17930221' != None
+    - [0]/[0]/[3]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[0]/[3]/ls: element 'entity' 'cbr-v1793-1-per1' != None
+    - [0]/[0]/[4]/[0]/relation: id 'cbr-v1793-1-per1-rela2' != 'cbr-v1793-1-rela2' (normalized)
+    - [0]/[0]/[5]/[0]/relation: id 'cbr-v1793-1-per1-rela3' != 'cbr-v1793-1-rela3' (normalized)
+    - [0]/[0]/[6]/[0]/relation: id 'cbr-v1793-1-per1-rela4' != 'cbr-v1793-1-rela4' (normalized)
+    - [0]/[0]/[7]/[0]/relation: id 'cbr-v1793-1-per1-rela5' != 'cbr-v1793-1-rela5' (normalized)
+    - [0]/[0]/[8]/[0]/relation: id 'cbr-v1793-1-per1-rela6' != 'cbr-v1793-1-rela6' (normalized)
+    - [0]/[1]/[1]/ls: element 'date' '17930221' != None
+    - [0]/[1]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[1]/[1]/ls: element 'entity' 'cbr-v1793-1-per2' != None
+    - [0]/[5]/[1]/ls: element 'date' '17930221' != None
+    - [0]/[5]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[5]/[1]/ls: element 'entity' 'cbr-v1793-1-per6' != None
+    - [0]/[6]/[1]/ls: element 'date' '17930221' != None
+    - [0]/[6]/[1]/ls: element 'date_extra_info' '{}' != None
+    - [0]/[6]/[1]/ls: element 'entity' 'cbr-v1793-1-per7' != None
+    - [0]/[7]/[1]/[0]/relation: id 'cbr-v1793-1-obj1-rela14' != 'cbr-v1793-1-rela14' (normalized)
+    ... and 48 more
+
+[SKIP] varia/xpto_comuns_soure.xml — no Python XML at xpto_comuns_soure.xml
+
+[SKIP] yaml/jcatalog.xml — no Python XML at jcatalog.xml
+
+[SKIP] yaml/pt-groups.xml — no Python XML at pt-groups.xml

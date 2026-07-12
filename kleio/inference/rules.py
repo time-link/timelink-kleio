@@ -122,32 +122,41 @@ def _get_programmatic_rules() -> list[InferenceRule]:
         ]
     ))
     
-    # Parents as a couple: pai(P) and mae(M) -> relation(parentesco,marido,P,M)
-    # This is a compound rule that requires both pai and mae in the same path
+    # Parents as a couple: pai(P) and mae(M) sharing the same actorm child.
+    # Cross-path rule: each sub-path anchors on the same actorm (joined via
+    # the shared bind_var "child_id") and contributes one parent.
     rules.append(InferenceRule(
-        name="parents_couple_pai",
+        name="parents_couple",
         description="Generate husband relation from pai to mae (parents as couple)",
-        conditions=[
-            Condition(type=ConditionType.SEQUENCE),
-            Condition(type=ConditionType.GROUP, group_name="pai", bind_var="P"),
+        condition_paths=[
+            [
+                Condition(type=ConditionType.SEQUENCE),
+                Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                Condition(type=ConditionType.GROUP, group_name="pai", bind_var="father_id"),
+            ],
+            [
+                Condition(type=ConditionType.SEQUENCE),
+                Condition(type=ConditionType.EXTENDS, group_name="actorm", bind_var="child_id"),
+                Condition(type=ConditionType.GROUP, group_name="mae", bind_var="mother_id"),
+            ],
         ],
         actions=[
             Action(
                 type=ActionType.RELATION,
                 relation_type="parentesco",
                 relation_value="marido",
-                origin_var="P",
-                dest_var="M"
+                origin_var="father_id",
+                dest_var="mother_id"
             ),
             Action(
                 type=ActionType.ATTRIBUTE,
-                attr_entity_var="P",
+                attr_entity_var="father_id",
                 attr_type="ec",
                 attr_value="c"
             ),
             Action(
                 type=ActionType.ATTRIBUTE,
-                attr_entity_var="M",
+                attr_entity_var="mother_id",
                 attr_type="ec",
                 attr_value="c"
             )
@@ -319,14 +328,14 @@ def _get_programmatic_rules() -> list[InferenceRule]:
         ]
     ))
     
-    # Grandmother relations (pmae = paternal grandmother)
+    # Paternal grandmother (mpai = mother of father)
     rules.append(InferenceRule(
         name="paternal_grandmother",
         description="Generate mother relation from paternal grandmother to father",
         conditions=[
             Condition(type=ConditionType.SEQUENCE),
             Condition(type=ConditionType.GROUP, group_name="pai", bind_var="Son"),
-            Condition(type=ConditionType.GROUP, group_name="pmae", bind_var="Parent"),
+            Condition(type=ConditionType.GROUP, group_name="mpai", bind_var="Parent"),
         ],
         actions=[
             Action(
@@ -338,15 +347,15 @@ def _get_programmatic_rules() -> list[InferenceRule]:
             )
         ]
     ))
-    
-    # Maternal grandfather (mpai)
+
+    # Maternal grandfather (pmae = father of mother)
     rules.append(InferenceRule(
         name="maternal_grandfather",
         description="Generate father relation from maternal grandfather to mother",
         conditions=[
             Condition(type=ConditionType.SEQUENCE),
             Condition(type=ConditionType.GROUP, group_name="mae", bind_var="Son"),
-            Condition(type=ConditionType.GROUP, group_name="mpai", bind_var="Parent"),
+            Condition(type=ConditionType.GROUP, group_name="pmae", bind_var="Parent"),
         ],
         actions=[
             Action(
@@ -379,32 +388,41 @@ def _get_programmatic_rules() -> list[InferenceRule]:
         ]
     ))
     
-    # Marriage: noivo (groom) and noiva (bride)
+    # Marriage: noivo (groom) and noiva (bride) under the same cas record.
+    # Cross-path rule: each sub-path anchors on the same cas (joined via
+    # the shared bind_var "cas_id") and contributes one spouse.
     rules.append(InferenceRule(
         name="marriage_groom_bride",
         description="Generate husband relation between groom and bride",
-        conditions=[
-            Condition(type=ConditionType.SEQUENCE),
-            Condition(type=ConditionType.GROUP, group_name="cas"),
-            Condition(type=ConditionType.GROUP, group_name="noivo", bind_var="Noivo"),
+        condition_paths=[
+            [
+                Condition(type=ConditionType.SEQUENCE),
+                Condition(type=ConditionType.GROUP, group_name="cas", bind_var="cas_id"),
+                Condition(type=ConditionType.GROUP, group_name="noivo", bind_var="groom_id"),
+            ],
+            [
+                Condition(type=ConditionType.SEQUENCE),
+                Condition(type=ConditionType.GROUP, group_name="cas", bind_var="cas_id"),
+                Condition(type=ConditionType.GROUP, group_name="noiva", bind_var="bride_id"),
+            ],
         ],
         actions=[
             Action(
                 type=ActionType.RELATION,
                 relation_type="parentesco",
                 relation_value="marido",
-                origin_var="Noivo",
-                dest_var="Noiva"
+                origin_var="groom_id",
+                dest_var="bride_id"
             ),
             Action(
                 type=ActionType.ATTRIBUTE,
-                attr_entity_var="Noivo",
+                attr_entity_var="groom_id",
                 attr_type="ec",
                 attr_value="c"
             ),
             Action(
                 type=ActionType.ATTRIBUTE,
-                attr_entity_var="Noiva",
+                attr_entity_var="bride_id",
                 attr_type="ec",
                 attr_value="c"
             )
