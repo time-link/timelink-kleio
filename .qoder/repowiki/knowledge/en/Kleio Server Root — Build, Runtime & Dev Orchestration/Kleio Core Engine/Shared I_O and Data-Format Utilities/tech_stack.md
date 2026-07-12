@@ -1,0 +1,1 @@
+SWI-Prolog — uses `library(http/json)` for JSON, `library(yaml)` for YAML, `library(pprint)` for pretty-printing, and the built-in `with_output_to(string/2)` / `format(string/...)` idiom for in-memory string construction.

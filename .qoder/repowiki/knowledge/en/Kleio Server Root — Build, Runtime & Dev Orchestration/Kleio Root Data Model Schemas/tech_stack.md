@@ -1,0 +1,1 @@
+YAML + JSON data-only schemas consumed by the kleio-schema toolchain (not compiled here); the two formats encode the same model so the `.json` files are generated artifacts while the `.yaml` files are the authoring surface.

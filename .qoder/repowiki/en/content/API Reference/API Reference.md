@@ -3,621 +3,556 @@
 <cite>
 **Referenced Files in This Document**
 - [restServer.pl](file://src/restServer.pl)
+- [apiCommon.pl](file://src/apiCommon.pl)
+- [apiSources.pl](file://src/apiSources.pl)
+- [apiDirectories.pl](file://src/apiDirectories.pl)
 - [apiStructures.pl](file://src/apiStructures.pl)
 - [apiTranslations.pl](file://src/apiTranslations.pl)
-- [apiSources.pl](file://src/apiSources.pl)
-- [apiTokens.pl](file://src/apiTokens.pl)
-- [apiGit.pl](file://src/apiGit.pl)
-- [kleioFiles.pl](file://src/kleioFiles.pl)
-- [tokens.pl](file://src/tokens.pl)
-- [apiCommon.pl](file://src/apiCommon.pl)
 - [apiExports.pl](file://src/apiExports.pl)
-- [apiDirectories.pl](file://src/apiDirectories.pl)
-- [docServer.pl](file://src/docServer.pl)
-- [api/postman/api.json](file://api/postman/api.json)
-- [api/postman/environment.json](file://api/postman/environment.json)
+- [apiReports.pl](file://src/apiReports.pl)
+- [apiIdentifications.pl](file://src/apiIdentifications.pl)
+- [apiGit.pl](file://src/apiGit.pl)
+- [apiLog.pl](file://src/apiLog.pl)
+- [tokens.pl](file://src/tokens.pl)
+- [serverStart.pl](file://src/serverStart.pl)
 - [README.md](file://README.md)
-- [docs/doc/client_setup.md](file://docs/doc/client_setup.md)
-- [docs/doc/stru_file_location.md](file://docs/doc/stru_file_location.md)
 </cite>
 
-## Update Summary
-**Changes Made**
-- Added comprehensive documentation for the new Structures API endpoint
-- Enhanced documentation generation system coverage
-- Updated file resolution capabilities documentation
-- Added authentication validation and testing infrastructure details
-
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Project Structure](#project-structure)
-3. [Core Components](#core-components)
-4. [Architecture Overview](#architecture-overview)
-5. [Detailed Component Analysis](#detailed-component-analysis)
-6. [Dependency Analysis](#dependency-analysis)
-7. [Performance Considerations](#performance-considerations)
-8. [Troubleshooting Guide](#troubleshooting-guide)
-9. [Conclusion](#conclusion)
-10. [Appendices](#appendices)
+1. Introduction
+2. Project Structure
+3. Core Components
+4. Architecture Overview
+5. Detailed Component Analysis
+6. Dependency Analysis
+7. Performance Considerations
+8. Troubleshooting Guide
+9. Conclusion
+10. Appendices
 
 ## Introduction
-This document provides comprehensive API documentation for the REST and JSON-RPC endpoints exposed by the kleio-server. It covers authentication via bearer tokens, endpoint semantics, request/response schemas, parameter validation, error handling, and operational guidance. It focuses on the following endpoint groups:
-- Structures service: GET /structures, POST /structures/get
-- Translations service: POST /translations, GET /translations/:id
-- Sources management: GET /sources, POST /sources/upload
-- File operations: GET /files/*, POST /files/copy
-- Token management: POST /tokens/generate, POST /tokens/invalidate
-- Git integration: POST /git/pull, POST /git/push
+This document provides comprehensive API documentation for the Kleio translation services, covering both REST endpoints and JSON-RPC methods. It details HTTP methods, URL patterns, request/response schemas, authentication, error handling, security considerations, rate limiting, versioning, common use cases, client implementation guidelines, performance optimization tips, debugging tools, monitoring approaches, migration notes, and backwards compatibility guidance.
 
-The server supports both REST and JSON-RPC protocols. Authentication is mandatory and enforced via bearer tokens issued by the server.
+The server exposes a unified REST/JSON-RPC interface to manage sources, structures, translations, exports, reports, identifications, directories, tokens, git operations, and logging utilities.
 
 ## Project Structure
-The API surface is implemented across modular Prolog modules. The REST dispatcher routes requests to entity-specific handlers, which validate tokens, resolve paths, and execute operations. Supporting modules provide token management, file resolution, and Git utilities.
+The API is implemented as a set of Prolog modules that register HTTP handlers and dispatch requests to entity-specific handlers. The core server registers routes for /rest/* and /json/*. Each entity (sources, directories, structures, translations, exports, reports, identifications, versions, tokens, users, client_log) has its own module implementing method handlers and result formatters.
 
 ```mermaid
 graph TB
-Client["Client"]
-REST["REST Dispatcher<br/>process_rest/1"]
-Tokens["Token Decoder<br/>tokens:decode_token/3"]
-Structures["Structures Handler<br/>apiStructures:structures/5"]
-Sources["Sources Handler<br/>apiSources:sources/5"]
-Translations["Translations Handler<br/>apiTranslations:translations/5"]
-TokensAPI["Tokens Handler<br/>apiTokens:tokens/5"]
-GitAPI["Git Handler<br/>apiGit:versions/5"]
-Files["File Resolution<br/>kleioFiles:*"]
-Git["Git Utilities<br/>gitUtilities:*"]
-Client --> REST
-REST --> Tokens
-REST --> Structures
-REST --> Sources
-REST --> Translations
-REST --> TokensAPI
-REST --> GitAPI
-Sources --> Files
-Translations --> Files
-GitAPI --> Git
+Client["Client"] --> Dispatcher["REST/JSON-RPC Dispatcher<br/>/rest/* and /json/*"]
+Dispatcher --> Sources["apiSources"]
+Dispatcher --> Directories["apiDirectories"]
+Dispatcher --> Structures["apiStructures"]
+Dispatcher --> Translations["apiTranslations"]
+Dispatcher --> Exports["apiExports"]
+Dispatcher --> Reports["apiReports"]
+Dispatcher --> Identifications["apiIdentifications"]
+Dispatcher --> Git["apiGit"]
+Dispatcher --> LogAPI["apiLog"]
+Dispatcher --> TokensCore["tokens"]
 ```
 
 **Diagram sources**
-- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
-- [apiStructures.pl:1-21](file://src/apiStructures.pl#L1-L21)
-- [apiSources.pl:28-174](file://src/apiSources.pl#L28-L174)
-- [apiTranslations.pl:34-82](file://src/apiTranslations.pl#L34-L82)
-- [apiTokens.pl:18-28](file://src/apiTokens.pl#L18-L28)
-- [apiGit.pl:23-108](file://src/apiGit.pl#L23-L108)
-- [kleioFiles.pl:753-800](file://src/kleioFiles.pl#L753-L800)
-- [tokens.pl:141-151](file://src/tokens.pl#L141-L151)
+- [restServer.pl:304-308](file://src/restServer.pl#L304-L308)
+- [apiCommon.pl:90-99](file://src/apiCommon.pl#L90-L99)
 
 **Section sources**
-- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
-- [apiCommon.pl:28-76](file://src/apiCommon.pl#L28-L76)
+- [restServer.pl:304-308](file://src/restServer.pl#L304-L308)
+- [apiCommon.pl:1-101](file://src/apiCommon.pl#L1-L101)
 
 ## Core Components
-- REST Dispatcher: Parses requests, extracts Authorization, resolves entity/object/method, validates uploads, and invokes handlers.
-- Token System: Validates bearer tokens and enforces API permissions per token.
-- Entity Handlers: Implement specific operations for structures, sources, translations, tokens, directories, exports, and git.
-- File Utilities: Resolve relative paths to absolute locations under the configured home directory and enforce security by returning relative paths in responses.
-- Git Utilities: Provide repository status, remotes, pull, push, commit, set user info, and reset operations.
+- REST Server and JSON-RPC dispatcher: Registers routes, decodes requests, enforces CORS, handles token authorization, and formats responses.
+- Entity modules: Implement per-entity operations (get/post/put/delete), parameter parsing, permission checks, and result formatting.
+- Token management: Generates, validates, and invalidates tokens; supports admin token and bootstrap flow.
+- Utilities: Logging, persistence, file resolution, MIME mapping, shared counters, and worker pool integration.
 
-Key behaviors:
-- Authentication: All endpoints require a valid bearer token; missing or invalid tokens cause HTTP 400 or 403 responses.
-- CORS: Enabled globally with configurable allowed origins via environment variable.
-- Uploads: Multipart POST/PUT for file uploads; upload permission is validated per token.
-- JSON vs REST: JSON-RPC uses method names and params; REST uses resource paths and query parameters.
+Key responsibilities:
+- Authentication via Bearer token or query parameter token for forms.
+- Authorization via token-scoped API permissions.
+- Path resolution relative to user’s source/structure directories.
+- Consistent response envelope for REST and JSON-RPC.
 
 **Section sources**
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
 - [restServer.pl:553-579](file://src/restServer.pl#L553-L579)
-- [restServer.pl:590-600](file://src/restServer.pl#L590-L600)
-- [tokens.pl:141-151](file://src/tokens.pl#L141-L151)
-- [kleioFiles.pl:753-800](file://src/kleioFiles.pl#L753-L800)
+- [restServer.pl:656-674](file://src/restServer.pl#L656-L674)
+- [tokens.pl:141-152](file://src/tokens.pl#L141-L152)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
 
 ## Architecture Overview
-The server exposes a unified REST interface with JSON-RPC support. Requests are authenticated centrally, routed to entity handlers, and executed with appropriate permission checks. Responses are formatted consistently, and file downloads are served directly when requested.
+The server uses SWI-Prolog HTTP server with thread workers. Requests are dispatched by path prefix and HTTP method to entity handlers. JSON-RPC requests are handled at /json/ and support single and batch calls.
 
 ```mermaid
 sequenceDiagram
 participant C as "Client"
-participant D as "REST Dispatcher"
-participant T as "Token Validator"
-participant H as "Entity Handler"
-participant F as "File Resolver"
-participant G as "Git Utils"
-C->>D : "HTTP Request (Authorization : Bearer)"
-D->>T : "Decode token and validate"
-T-->>D : "Token info or error"
-alt "Valid token"
-D->>H : "Invoke handler (entity, method, object)"
-opt "Structures/Sources/Translations"
-H->>F : "Resolve relative path"
-F-->>H : "Absolute path or error"
-end
-opt "Git"
-H->>G : "Execute git operation"
-G-->>H : "Result or error"
-end
-H-->>D : "Success result"
-D-->>C : "200 OK (JSON or file)"
-else "Invalid token"
-D-->>C : "400 Bad Request or 403 Forbidden"
-end
+participant S as "REST/JSON-RPC Server"
+participant E as "Entity Handler"
+participant T as "Tokens"
+participant FS as "Filesystem"
+C->>S : POST /json/ {method, params{token,...}}
+S->>S : parse JSON, decode command
+S->>T : decode_token(token)
+T-->>S : user,options
+S->>E : json_exec(method,json,id,params)
+E->>FS : resolve paths, read/write files
+E-->>S : results
+S-->>C : JSON-RPC response {result,id}
 ```
 
 **Diagram sources**
-- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
-- [restServer.pl:553-579](file://src/restServer.pl#L553-L579)
-- [tokens.pl:141-151](file://src/tokens.pl#L141-L151)
-- [apiStructures.pl:38-66](file://src/apiStructures.pl#L38-L66)
-- [apiSources.pl:28-104](file://src/apiSources.pl#L28-L104)
-- [apiTranslations.pl:34-82](file://src/apiTranslations.pl#L34-L82)
-- [apiGit.pl:23-108](file://src/apiGit.pl#L23-L108)
+- [restServer.pl:656-674](file://src/restServer.pl#L656-L674)
+- [restServer.pl:757-766](file://src/restServer.pl#L757-L766)
+- [restServer.pl:777-779](file://src/restServer.pl#L777-L779)
+- [tokens.pl:141-152](file://src/tokens.pl#L141-L152)
+
+**Section sources**
+- [restServer.pl:304-308](file://src/restServer.pl#L304-L308)
+- [restServer.pl:656-674](file://src/restServer.pl#L656-L674)
+- [restServer.pl:757-766](file://src/restServer.pl#L757-L766)
 
 ## Detailed Component Analysis
 
-### Structures Service
-- Endpoint: GET /rest/structures/:path
-  - Purpose: Retrieve structure file information or list structure files in a directory.
-  - Authentication: Requires token with files permission.
-  - Parameters:
-    - kleio: Optional path to a Kleio source file to find its associated structure.
-    - recurse: yes/no for recursive directory listing.
-  - Response: Single file info or directory listing with structure files (.str, .yaml, .srpt).
+### Authentication and Security
+- Authentication:
+  - Bearer token in Authorization header.
+  - Query parameter token for form-based flows.
+- Authorization:
+  - Token carries an api list of allowed endpoints.
+  - Admin token can be provided via environment variable or file.
+- Bootstrap flow:
+  - On startup, if no tokens exist and no admin token is configured, a temporary bootstrap token is generated and persisted for initial token creation.
 
-- Endpoint: POST /rest/structures/get
-  - Purpose: JSON-RPC method to retrieve structure information.
-  - Authentication: Requires token with files permission.
-  - Parameters:
-    - path: Structure file or directory path.
-    - kleio: Optional Kleio source file path for structure resolution.
-    - recurse: yes/no for recursive directory listing.
-  - Response: Dictionary containing structure information.
+Security considerations:
+- Validate token presence and validity on every request.
+- Enforce endpoint-level permissions before executing operations.
+- Use HTTPS in production; restrict CORS origins.
+- Avoid exposing sensitive logs or stack traces to clients.
 
-**Updated** Added comprehensive structures endpoint with file resolution capabilities and authentication validation.
+Rate limiting:
+- No built-in rate limiter is present. Implement at reverse proxy or gateway layer if needed.
 
-```mermaid
-flowchart TD
-Start(["GET /rest/structures/:path"]) --> Validate["Validate token and permissions"]
-Validate --> CheckKleio{"kleio parameter?"}
-CheckKleio --> |Yes| ResolveKleio["Resolve Kleio file path"]
-ResolveKleio --> FindStru["Find associated structure file"]
-FindStru --> ReturnKleio["Return kleio + structure pair"]
-CheckKleio --> |No| ResolvePath["Resolve structure path"]
-ResolvePath --> CheckType{"File or Directory?"}
-CheckType --> |File| FileInfo["Return file attributes"]
-CheckType --> |Directory| DirList["List structure files"]
-DirList --> ReturnDir["Return directory + files"]
-```
+Versioning:
+- No explicit API versioning in URLs. Version info is available via server home page and configuration output.
 
-**Diagram sources**
-- [apiStructures.pl:38-66](file://src/apiStructures.pl#L38-L66)
-- [apiStructures.pl:77-92](file://src/apiStructures.pl#L77-L92)
-- [apiStructures.pl:94-134](file://src/apiStructures.pl#L94-L134)
+Backwards compatibility:
+- Legacy JSON-RPC signatures are supported but deprecated; prefer new signatures.
+
+**Section sources**
+- [restServer.pl:619-624](file://src/restServer.pl#L619-L624)
+- [restServer.pl:270-292](file://src/restServer.pl#L270-L292)
+- [tokens.pl:153-176](file://src/tokens.pl#L153-L176)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+
+### Common Request/Response Patterns
+- REST:
+  - Base path: /rest/<entity>/<path>
+  - Parameters via query string or multipart for uploads.
+  - Response format depends on Accept header or json parameter.
+- JSON-RPC:
+  - Endpoint: /json/
+  - Payload: {id, method, params{token,path,...}}
+  - Batch requests supported.
+
+Error handling:
+- REST errors return HTTP status codes and include Request-id header.
+- JSON-RPC errors follow JSON-RPC 2.0 error structure.
+
+**Section sources**
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [restServer.pl:553-579](file://src/restServer.pl#L553-L579)
+- [restServer.pl:676-683](file://src/restServer.pl#L676-L683)
+
+### Sources API
+Operations:
+- GET /rest/sources/<path>
+  - If <path> is a file: returns file content (binary/text) or download link in JSON.
+  - If <path> is a directory: lists .cli/.kleio files; optional recurse=yes; url=yes to return links.
+- POST /rest/sources/<path> (multipart)
+  - Upload new file; destination must not exist.
+- PUT /rest/sources/<path> (multipart)
+  - Update existing file; destination must exist.
+- POST /rest/sources/<path>?origin=<source_path>
+  - Copy file from origin to destination.
+- PUT /rest/sources/<path>?origin=<source_path>
+  - Move file from origin to destination.
+- DELETE /rest/sources/<path>
+  - Delete file or directory (optionally recurse).
+
+JSON-RPC methods:
+- sources_get(params{path})
+- sources_delete(params{path})
+- sources_copy(params{path,origin})
+- sources_move(params{path,origin})
+
+Permissions:
+- files for GET; upload for POST/PUT; delete for DELETE.
+
+Notes:
+- File downloads in REST return appropriate MIME types.
+- In JSON mode, GET returns a download URL under /sources/.
+
+**Section sources**
+- [apiSources.pl:28-87](file://src/apiSources.pl#L28-L87)
+- [apiSources.pl:89-104](file://src/apiSources.pl#L89-L104)
+- [apiSources.pl:109-123](file://src/apiSources.pl#L109-L123)
+- [apiSources.pl:125-177](file://src/apiSources.pl#L125-L177)
+- [apiSources.pl:179-210](file://src/apiSources.pl#L179-L210)
+- [apiSources.pl:212-245](file://src/apiSources.pl#L212-L245)
+- [apiSources.pl:257-285](file://src/apiSources.pl#L257-L285)
+
+### Directories API
+Operations:
+- GET /rest/directories/<path>?recurse=yes|no
+  - Lists subdirectories under path.
+- POST /rest/directories/<path>
+  - Create directory.
+- POST /rest/directories/<path>?origin=<source_dir>
+  - Copy directory from origin to path.
+- DELETE /rest/directories/<path>?force=yes|no
+  - Remove directory; force=yes deletes contents recursively.
+
+JSON-RPC methods:
+- directories_get(params{path,recurse})
+- directories_create(params{path})
+- directories_copy(params{path,origin})
+- directories_delete(params{path,force})
+
+Permissions:
+- files for GET; mkdir for create/copy; delete for remove.
+
+Errors:
+- Not found if path does not exist.
+- Conflict if target already exists.
+- Failure if directory not empty and force=no.
+
+**Section sources**
+- [apiDirectories.pl:18-35](file://src/apiDirectories.pl#L18-L35)
+- [apiDirectories.pl:37-45](file://src/apiDirectories.pl#L37-L45)
+- [apiDirectories.pl:47-70](file://src/apiDirectories.pl#L47-L70)
+- [apiDirectories.pl:73-88](file://src/apiDirectories.pl#L73-L88)
+- [apiDirectories.pl:93-147](file://src/apiDirectories.pl#L93-L147)
+
+### Structures API
+Operations:
+- GET /rest/structures/<path>?kleio=<kleio_file>&recurse=yes|no
+  - If kleio param provided: resolves associated structure for the given Kleio file.
+  - Otherwise: returns metadata for a structure file or lists structure files (.str,.yaml,.srpt) in a directory.
+
+JSON-RPC methods:
+- structures_get(params{path,kleio,recurse})
+
+Behavior:
+- Resolves structure using same logic as translation association.
+- Directory listing includes recursive search when requested.
 
 **Section sources**
 - [apiStructures.pl:22-66](file://src/apiStructures.pl#L22-L66)
 - [apiStructures.pl:71-92](file://src/apiStructures.pl#L71-L92)
 - [apiStructures.pl:94-144](file://src/apiStructures.pl#L94-L144)
-- [kleioFiles.pl:26-28](file://src/kleioFiles.pl#L26-L28)
+- [apiStructures.pl:146-188](file://src/apiStructures.pl#L146-L188)
 
-Practical examples:
-- Get structure for a specific Kleio file (JSON-RPC):
-  - {"jsonrpc":"2.0","method":"structures_get","params":{"kleio":"sources/api/paroquiais/baptismos/bapt1714.cli"},"id":1,"token":"YOUR_TOKEN"}
-- List structure files in a directory (REST):
-  - curl -X GET "http://localhost:8088/rest/structures/structures" -H "Authorization: Bearer YOUR_TOKEN" -H "Content-Type: application/json" -d '{"recurse":"yes"}'
-- Get single structure file info (REST):
-  - curl -X GET "http://localhost:8088/rest/structures/system/conf/kleio/stru/gacto2.str" -H "Authorization: Bearer YOUR_TOKEN"
+### Translations API
+Operations:
+- POST /rest/translations/<path>
+  - Start translation for file(s) under path.
+  - Options: structure, echo, recurse, spawn, status filter.
+- GET /rest/translations/<path>
+  - Get translation status/results for file(s) under path.
+  - Supports filtering by status and caching for large sets.
+- DELETE /rest/translations/<path>
+  - Clean translation artifacts for file(s) under path.
 
-### Translations Service
-- Endpoint: POST /rest/translations/:path
-  - Purpose: Start translation for a file or directory.
-  - Authentication: Requires token with translations permission.
-  - Parameters:
-    - structure: Optional structure file to use.
-    - echo: Include source lines in report if yes.
-    - recurse: Descend into subdirectories if yes.
-    - spawn: Distribute jobs across workers if yes; otherwise single-worker mode.
-    - status: Filter by translation status (when used with GET).
-  - Response: List of jobs with associated files.
-  - Notes: Supports both REST and JSON-RPC (translations_translate).
+JSON-RPC methods:
+- translations_translate(params{path,structure,echo,recurse,spawn,status})
+- translations_get(params{path,status,recurse})
+- translations_delete(params{path})
 
-- Endpoint: GET /rest/translations/:path
-  - Purpose: Retrieve translation status/results (kleio_set).
-  - Authentication: Requires files permission.
-  - Parameters:
-    - recurse: yes/no.
-    - status: Filter by status.
-    - url: yes to return URLs for retrieval.
-  - Response: List of files with status, timestamps, sizes, and derived URLs.
+Translation status fields:
+- name, path, source_url, status, modified timestamps, size, directory, processing/queue times, errors, warnings, version, rpt_url, xml_url.
 
-- Endpoint: DELETE /rest/translations/:path
-  - Purpose: Clear translation results (derived files).
-  - Authentication: Requires translations permission.
-  - Behavior: Deletes rpt, err, xml, ids, files.json, old; preserves original.
+Parallelism:
+- spawn=yes distributes work across workers; spawn=no processes sequentially with shared structure loading.
 
-```mermaid
-flowchart TD
-Start(["POST /rest/translations/:path"]) --> Validate["Validate token and permissions"]
-Validate --> Resolve["Resolve path to absolute"]
-Resolve --> Decide{"Spawn enabled?"}
-Decide --> |Yes| Spawn["Distribute jobs across workers"]
-Decide --> |No| Single["Single-worker processing"]
-Spawn --> Jobs["Build job list"]
-Single --> Jobs
-Jobs --> Result["Return job list"]
-```
-
-**Diagram sources**
-- [apiTranslations.pl:52-82](file://src/apiTranslations.pl#L52-L82)
-- [apiTranslations.pl:241-253](file://src/apiTranslations.pl#L241-L253)
+Caching:
+- Status cache avoids recomputation for repeated queries within configurable age thresholds.
 
 **Section sources**
-- [apiTranslations.pl:34-139](file://src/apiTranslations.pl#L34-L139)
-- [apiTranslations.pl:141-163](file://src/apiTranslations.pl#L141-L163)
-- [apiTranslations.pl:86-123](file://src/apiTranslations.pl#L86-L123)
-- [apiTranslations.pl:124-139](file://src/apiTranslations.pl#L124-L139)
-- [kleioFiles.pl:53-92](file://src/kleioFiles.pl#L53-L92)
+- [apiTranslations.pl:35-83](file://src/apiTranslations.pl#L35-L83)
+- [apiTranslations.pl:87-123](file://src/apiTranslations.pl#L87-L123)
+- [apiTranslations.pl:125-139](file://src/apiTranslations.pl#L125-L139)
+- [apiTranslations.pl:142-164](file://src/apiTranslations.pl#L142-L164)
+- [apiTranslations.pl:169-233](file://src/apiTranslations.pl#L169-L233)
+- [apiTranslations.pl:236-240](file://src/apiTranslations.pl#L236-L240)
+- [apiTranslations.pl:242-260](file://src/apiTranslations.pl#L242-L260)
+- [apiTranslations.pl:264-418](file://src/apiTranslations.pl#L264-L418)
+- [apiTranslations.pl:494-577](file://src/apiTranslations.pl#L494-L577)
+- [apiTranslations.pl:581-596](file://src/apiTranslations.pl#L581-L596)
+- [apiTranslations.pl:598-611](file://src/apiTranslations.pl#L598-L611)
+- [apiTranslations.pl:614-643](file://src/apiTranslations.pl#L614-L643)
+- [apiTranslations.pl:646-723](file://src/apiTranslations.pl#L646-L723)
+- [apiTranslations.pl:724-767](file://src/apiTranslations.pl#L724-L767)
 
-Practical examples:
-- Start translation for a directory (REST):
-  - curl -X POST "http://localhost:8088/rest/translations/sources/api/paroquiais" -H "Authorization: Bearer YOUR_TOKEN" -H "Content-Type: application/json" -d '{"recurse":"yes","spawn":"yes"}'
-- Start translation for a file (JSON-RPC):
-  - {"jsonrpc":"2.0","method":"translations_translate","params":{"path":"sources/api/paroquiais/baptismos/bapt1714.cli","echo":"no","structure":"system/conf/kleio/stru/gacto2.str"},"id":1,"token":"YOUR_TOKEN"}
+### Exports API
+Operations:
+- GET /rest/exports/<path>
+  - Retrieve XML export file or list exports under directory.
 
-### Sources Management
-- Endpoint: GET /rest/sources/:path
-  - Purpose: Download a file or list files in a directory.
-  - Authentication: Requires files permission.
-  - Parameters:
-    - url: yes to return URLs instead of raw content.
-    - recurse: yes to recurse into subdirectories.
-  - Response: File content (binary) or list of files/URLs.
+JSON-RPC methods:
+- exports_get(params{path})
 
-- Endpoint: POST /rest/sources/:path (multipart/form-data)
-  - Purpose: Upload a new file to :path.
-  - Authentication: Requires upload permission.
-  - Constraints: Destination must not exist; directory must exist.
-  - Response: Success result.
-
-- Endpoint: PUT /rest/sources/:path (multipart/form-data)
-  - Purpose: Replace an existing file at :path.
-  - Authentication: Requires upload permission.
-  - Constraints: Destination must exist; directory must exist.
-  - Response: Success result.
-
-- Endpoint: POST /rest/sources/:path?origin=:dest (copy)
-  - Purpose: Copy an existing file to a new location.
-  - Authentication: Requires upload permission.
-  - Constraints: Destination must not exist; directory must exist.
-  - Response: Success result.
-
-- Endpoint: PUT /rest/sources/:path?origin=:dest (move)
-  - Purpose: Move an existing file to a new location.
-  - Authentication: Requires upload permission.
-  - Constraints: Destination must not exist; directory must exist.
-  - Response: Success result.
-
-- Endpoint: DELETE /rest/sources/:path
-  - Purpose: Delete a file or directory (recursively).
-  - Authentication: Requires delete permission.
-  - Constraints: Cannot delete files currently queued or processing; deletes derived artifacts.
-  - Response: List of deleted items.
-
-```mermaid
-sequenceDiagram
-participant C as "Client"
-participant S as "Sources Handler"
-participant FS as "File Resolver"
-C->>S : "POST /rest/sources/ : path (multipart)"
-S->>FS : "Resolve destination path"
-FS-->>S : "Absolute path"
-S-->>C : "200 OK or error"
-```
-
-**Diagram sources**
-- [apiSources.pl:125-142](file://src/apiSources.pl#L125-L142)
-- [apiSources.pl:324-352](file://src/apiSources.pl#L324-L352)
+Implementation note:
+- Delegates to sources get behavior.
 
 **Section sources**
-- [apiSources.pl:28-104](file://src/apiSources.pl#L28-L104)
-- [apiSources.pl:109-124](file://src/apiSources.pl#L109-L124)
-- [apiSources.pl:145-173](file://src/apiSources.pl#L145-L173)
-- [apiSources.pl:324-411](file://src/apiSources.pl#L324-L411)
-- [kleioFiles.pl:111-144](file://src/kleioFiles.pl#L111-L144)
+- [apiExports.pl:1-21](file://src/apiExports.pl#L1-L21)
 
-Practical examples:
-- Upload a file (REST):
-  - curl -X POST "http://localhost:8088/rest/sources/myfolder/newfile.cli" -H "Authorization: Bearer YOUR_TOKEN" -F "file=@/path/to/local/file.cli"
-- Copy a file (REST):
-  - curl -X POST "http://localhost:8088/rest/sources/target.cli?origin=sources/original.cli" -H "Authorization: Bearer YOUR_TOKEN"
-- Delete a directory (REST):
-  - curl -X DELETE "http://localhost:8088/rest/sources/myfolder" -H "Authorization: Bearer YOUR_TOKEN"
+### Reports API
+Operations:
+- GET /rest/reports/<path>
+  - Retrieve translation report file or list reports under directory.
 
-### File Operations
-- Endpoint: GET /rest/files/*
-  - Purpose: Download a file by constructing a sources URL.
-  - Authentication: Requires files permission.
-  - Behavior: Returns file content directly or a redirect to a signed URL.
+JSON-RPC methods:
+- reports_get(params{path})
 
-- Endpoint: POST /rest/files/copy
-  - Purpose: Copy a file from origin to destination.
-  - Authentication: Requires upload permission.
-  - Parameters: origin, destination.
-  - Response: Success result.
-
-- Endpoint: POST /rest/files/move
-  - Purpose: Move a file from origin to destination.
-  - Authentication: Requires upload permission.
-  - Parameters: origin, destination.
-  - Response: Success result.
-
-Notes:
-- The server constructs URLs for file retrieval using the sources base path and returns relative paths to avoid exposing absolute filesystem locations.
+Implementation note:
+- Delegates to sources get behavior.
 
 **Section sources**
-- [apiExports.pl:14-19](file://src/apiExports.pl#L14-L19)
-- [apiSources.pl:354-411](file://src/apiSources.pl#L354-L411)
-- [kleioFiles.pl:753-800](file://src/kleioFiles.pl#L753-L800)
+- [apiReports.pl:1-21](file://src/apiReports.pl#L1-L21)
 
-### Token Management
-- Endpoint: POST /rest/tokens/generate
-  - Purpose: Generate a new token for a user.
-  - Authentication: Requires token with generate_token permission.
-  - Parameters:
-    - user: Username.
-    - info: JSON object with comment, api permissions, structures, sources.
-  - Response: New token string.
+### Identifications API
+Operations:
+- GET /rest/identifications/<path>
+  - Retrieve identification files (mhk_identification*.json) or list them under directory.
 
-- Endpoint: POST /rest/tokens/invalidate
-  - Purpose: Invalidate a specific token.
-  - Authentication: Requires token with invalidate_token permission.
-  - Parameters:
-    - user_token: Token to invalidate.
-  - Response: The invalidated token.
+JSON-RPC methods:
+- identifications_get(params{path,recurse,url})
 
-- Endpoint: DELETE /rest/users/:token
-  - Purpose: Invalidate all tokens for a user.
-  - Authentication: Requires token with invalidate_user permission.
-  - Response: The user whose tokens were invalidated.
-
-```mermaid
-sequenceDiagram
-participant C as "Client"
-participant T as "Tokens Handler"
-participant TK as "Token Store"
-C->>T : "POST /rest/tokens/generate"
-T->>TK : "Generate token with options"
-TK-->>T : "New token"
-T-->>C : "200 OK with token"
-```
-
-**Diagram sources**
-- [apiTokens.pl:22-28](file://src/apiTokens.pl#L22-L28)
-- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
-- [tokens.pl:104-139](file://src/tokens.pl#L104-L139)
+Behavior:
+- Similar to sources listing but filters by identification pattern.
 
 **Section sources**
-- [apiTokens.pl:18-28](file://src/apiTokens.pl#L18-L28)
-- [apiTokens.pl:38-39](file://src/apiTokens.pl#L38-L39)
-- [apiTokens.pl:71-122](file://src/apiTokens.pl#L71-L122)
-- [tokens.pl:104-139](file://src/tokens.pl#L104-L139)
+- [apiIdentifications.pl:20-38](file://src/apiIdentifications.pl#L20-L38)
+- [apiIdentifications.pl:40-42](file://src/apiIdentifications.pl#L40-L42)
+- [apiIdentifications.pl:45-78](file://src/apiIdentifications.pl#L45-L78)
+- [apiIdentifications.pl:80-105](file://src/apiIdentifications.pl#L80-L105)
 
-Practical examples:
-- Generate a token (JSON-RPC via Postman collection):
-  - Method: tokens_generate
-  - Params: {user: "tester", info: {api: ["sources","translations","upload","delete"], sources:"sources/api_tests"}, token:"ADMIN_TOKEN"}
-- Invalidate a token (REST):
-  - curl -X DELETE "http://localhost:8088/rest/tokens/ABC123" -H "Authorization: Bearer ADMIN_TOKEN" -H "Content-Type: application/json" -d '{"user_token":"ABC123"}'
+### Git Operations API (versions)
+Pseudo-paths map to git operations:
+- GET /rest/versions/status/global/<path>
+  - Global repository status.
+- GET /rest/versions/remotes/branches/<path>
+  - List remote branches.
+- GET /rest/versions/user-info/<path>
+  - Get configured user name/email.
+- GET /rest/versions/pull/<path>
+  - Pull from remote (note: internally mapped to PUT semantics).
+- PUT /rest/versions/push/<path>
+  - Push to remote.
+- PUT /rest/versions/commit/<path>
+  - Commit changes with add_files, commit_files, commit_message.
+- PUT /rest/versions/set-user-info/<path>
+  - Set user name/email.
+- DELETE /rest/versions/reset/<path>
+  - Reset repository to commit_ref with reset_mode.
 
-### Git Integration
-- Endpoint: GET /rest/versions/status/global/:path
-  - Purpose: Retrieve global repository status.
-  - Authentication: Requires files permission.
-  - Response: Structured status object.
+JSON-RPC methods:
+- versions_get_global_status(params{path})
+- versions_get_remotes_branches(params{path})
+- versions_get_user_info(params{path})
+- versions_pull(params{path})
+- versions_push(params{path})
+- versions_commit(params{path,add_files,commit_files,commit_message})
+- versions_set_user_info(params{path,user_name,user_email})
+- versions_reset(params{path,reset_mode,commit_ref})
 
-- Endpoint: GET /rest/versions/remotes/branches/:path
-  - Purpose: List remote branches.
-  - Authentication: Requires files permission.
-  - Response: Branch list.
-
-- Endpoint: GET /rest/versions/user-info/:path
-  - Purpose: Get configured user name/email.
-  - Authentication: Requires files permission.
-  - Response: {git_user_name, git_user_email}.
-
-- Endpoint: GET /rest/versions/pull/:path
-  - Purpose: Perform pull from remote.
-  - Authentication: Requires files permission.
-  - Response: {git_output, git_error, git_exit_status}.
-
-- Endpoint: PUT /rest/versions/push/:path
-  - Purpose: Perform push to remote.
-  - Authentication: Requires files permission.
-  - Response: {git_output, git_error, git_exit_status}.
-
-- Endpoint: PUT /rest/versions/commit/:path
-  - Purpose: Commit staged/changed files.
-  - Authentication: Requires files permission.
-  - Parameters: commit_files, add_files, commit_message.
-  - Response: {git_output, git_error, git_exit_status}.
-
-- Endpoint: PUT /rest/versions/set-user-info/:path
-  - Purpose: Set user name/email.
-  - Authentication: Requires files permission.
-  - Parameters: user_name, user_email.
-  - Response: {git_output, git_error, git_exit_status}.
-
-- Endpoint: DELETE /rest/versions/reset/:path
-  - Purpose: Reset working tree to a commit.
-  - Authentication: Requires files permission.
-  - Parameters: reset_mode, commit_ref.
-  - Response: {git_output, git_error, git_exit_status}.
-
-```mermaid
-flowchart TD
-Start(["PUT /rest/versions/commit/:path"]) --> Validate["Validate token and permissions"]
-Validate --> Resolve["Resolve repo path"]
-Resolve --> Commit["Run commit with params"]
-Commit --> Result["Return git output/error/status"]
-```
-
-**Diagram sources**
-- [apiGit.pl:110-124](file://src/apiGit.pl#L110-L124)
-- [apiGit.pl:126-154](file://src/apiGit.pl#L126-L154)
+Permissions:
+- files required for all operations.
 
 **Section sources**
-- [apiGit.pl:23-108](file://src/apiGit.pl#L23-L108)
+- [apiGit.pl:23-154](file://src/apiGit.pl#L23-L154)
 - [apiGit.pl:156-189](file://src/apiGit.pl#L156-L189)
+- [apiGit.pl:192-198](file://src/apiGit.pl#L192-L198)
 
-Practical examples:
-- Pull (REST):
-  - curl -X GET "http://localhost:8088/rest/versions/pull/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN"
-- Push (REST):
-  - curl -X PUT "http://localhost:8088/rest/versions/push/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN"
-- Commit (REST):
-  - curl -X PUT "http://localhost:8088/rest/versions/commit/sources/api_tests" -H "Authorization: Bearer YOUR_TOKEN" -H "Content-Type: application/json" -d '{"add_files":".","commit_files":".","commit_message":"Update"}'
+### Tokens and Users API
+Operations:
+- POST /rest/tokens/<user>
+  - Generate token for user with options (api list, data_dir, stru_dir, life_span, etc.).
+- DELETE /rest/tokens/<token>
+  - Invalidate a specific token.
+- DELETE /rest/users/<token>
+  - Invalidate all tokens for a user.
+
+JSON-RPC methods:
+- tokens_generate(params{user,info{...},token})
+- tokens_invalidate(params{token,user_token})
+- users_invalidate(params{user,token})
+
+Permissions:
+- generate_token to create tokens.
+- invalidate_token/invalidate_user to revoke.
+
+Admin token:
+- Can be provided via KLEIO_ADMIN_TOKEN env var or file; grants full privileges.
+
+**Section sources**
+- [apiTokens.pl:18-29](file://src/apiTokens.pl#L18-L29)
+- [apiTokens.pl:30-39](file://src/apiTokens.pl#L30-L39)
+- [apiTokens.pl:41-88](file://src/apiTokens.pl#L41-L88)
+- [apiTokens.pl:90-122](file://src/apiTokens.pl#L90-L122)
+- [tokens.pl:104-139](file://src/tokens.pl#L104-L139)
+- [tokens.pl:153-176](file://src/tokens.pl#L153-L176)
+
+### Client Log API
+Operations:
+- POST /rest/client_log
+  - Send debug message to server logs.
+
+JSON-RPC methods:
+- client_log_send(params{message,level})
+
+Permissions:
+- files privilege required.
+
+**Section sources**
+- [apiLog.pl:15-27](file://src/apiLog.pl#L15-L27)
+- [apiLog.pl:30-33](file://src/apiLog.pl#L30-L33)
+
+### Error Handling Strategies
+- REST:
+  - Throws http_reply exceptions with status codes (not_found, forbidden, bad_request, method_not_allowed).
+  - Includes Request-id header for correlation.
+- JSON-RPC:
+  - Wraps errors into JSON-RPC error objects with code/message.
+  - Parse errors map to standard JSON-RPC codes.
+
+Examples of error conditions:
+- Missing token or invalid token.
+- Forbidden due to insufficient permissions.
+- Destination file exists (POST upload) or missing (PUT update).
+- Directory not empty when deleting without force.
+
+**Section sources**
+- [restServer.pl:553-579](file://src/restServer.pl#L553-L579)
+- [restServer.pl:676-683](file://src/restServer.pl#L676-L683)
+- [apiSources.pl:125-177](file://src/apiSources.pl#L125-L177)
+- [apiDirectories.pl:93-147](file://src/apiDirectories.pl#L93-L147)
+
+### Monitoring and Debugging
+- Home page shows server stats, configuration, and processing status.
+- Shared counters track REST and JSON-RPC request counts.
+- Logging levels configurable; debug mode prints detailed request logs.
+- Idle detection allows auto-stopping servers after inactivity.
+
+**Section sources**
+- [restServer.pl:424-447](file://src/restServer.pl#L424-L447)
+- [restServer.pl:375-386](file://src/restServer.pl#L375-L386)
+- [restServer.pl:358-367](file://src/restServer.pl#L358-L367)
+- [serverStart.pl:74-91](file://src/serverStart.pl#L74-L91)
 
 ## Dependency Analysis
-The following diagram shows key dependencies among modules involved in API handling.
+High-level dependencies among API modules and core components:
 
 ```mermaid
 graph LR
-RS["restServer.pl"]
-AST["apiStructures.pl"]
-ATS["apiTranslations.pl"]
-AS["apiSources.pl"]
-AT["apiTokens.pl"]
-AG["apiGit.pl"]
-AKF["kleioFiles.pl"]
-TOK["tokens.pl"]
-AEXP["apiExports.pl"]
-AD["apiDirectories.pl"]
-RS --> AS
-RS --> AST
-RS --> ATS
-RS --> AT
-RS --> AG
-AS --> AKF
-AST --> AKF
-ATS --> AKF
-AG --> AKF
-AT --> TOK
-AEXP --> AS
+RS["restServer"] --> AC["apiCommon"]
+AC --> AS["apiSources"]
+AC --> AD["apiDirectories"]
+AC --> AST["apiStructures"]
+AC --> AT["apiTranslations"]
+AC --> AE["apiExports"]
+AC --> AR["apiReports"]
+AC --> AI["apiIdentifications"]
+AC --> AG["apiGit"]
+AC --> AL["apiLog"]
+RS --> TK["tokens"]
+AT --> AS
+AST --> AT
 ```
 
 **Diagram sources**
-- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
-- [apiStructures.pl:1-21](file://src/apiStructures.pl#L1-L21)
-- [apiSources.pl:28-104](file://src/apiSources.pl#L28-L104)
-- [apiTranslations.pl:34-82](file://src/apiTranslations.pl#L34-L82)
-- [apiTokens.pl:18-28](file://src/apiTokens.pl#L18-L28)
-- [apiGit.pl:23-108](file://src/apiGit.pl#L23-L108)
-- [kleioFiles.pl:753-800](file://src/kleioFiles.pl#L753-L800)
-- [tokens.pl:141-151](file://src/tokens.pl#L141-L151)
-- [apiExports.pl:14-19](file://src/apiExports.pl#L14-L19)
+- [apiCommon.pl:90-99](file://src/apiCommon.pl#L90-L99)
+- [apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [apiStructures.pl:16-20](file://src/apiStructures.pl#L16-L20)
+- [restServer.pl:151-162](file://src/restServer.pl#L151-L162)
 
 **Section sources**
-- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
-- [apiCommon.pl:78-88](file://src/apiCommon.pl#L78-L88)
+- [apiCommon.pl:90-99](file://src/apiCommon.pl#L90-L99)
+- [apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [apiStructures.pl:16-20](file://src/apiStructures.pl#L16-L20)
+- [restServer.pl:151-162](file://src/restServer.pl#L151-L162)
 
 ## Performance Considerations
-- Concurrency: The server uses worker threads configured via environment variable. Adjust workers to balance throughput and resource usage.
-- Translation scheduling: Use spawn=yes for parallel processing; spawn=no reduces contention for shared resources.
-- Caching: Translations GET caches status results for repeated queries to reduce load.
-- File serving: Binary file downloads are streamed directly by the server to minimize memory overhead.
-- Structures resolution: Directory traversal uses efficient file filtering to minimize I/O operations.
+- Worker threads: Configurable via KLEIO_SERVER_WORKERS; affects concurrency for translations and general requests.
+- Translation parallelism: spawn=yes distributes jobs across workers; spawn=no serializes with shared structure loading.
+- Status caching: translations_get caches results for large sets with adjustable max_age thresholds.
+- Timeouts: Server timeout configurable via KLEIO_IDLE_TIMEOUT; request time limits enforced per handler.
+- I/O: File operations are direct; ensure adequate disk throughput and avoid excessive recursion on large trees.
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
 Common issues and resolutions:
-- Authentication failures:
-  - Cause: Missing or invalid Authorization header.
-  - Resolution: Obtain a valid token from the admin and include "Authorization: Bearer YOUR_TOKEN".
-- Permission denied:
-  - Cause: Token lacks required API permission (e.g., upload, delete, translations, files).
-  - Resolution: Generate a token with appropriate api permissions.
-- File not found:
-  - Cause: Path does not exist or is outside the configured sources area.
-  - Resolution: Verify relative path under sources and ensure directories exist.
-- Upload conflicts:
-  - Cause: Destination file exists for POST or missing for PUT.
-  - Resolution: Use POST for new files, PUT for replacement, or delete the destination first.
-- Git errors:
-  - Cause: Invalid repository path or credentials.
-  - Resolution: Ensure path resolves to a valid Git repository and credentials are configured.
-- Structures resolution failures:
-  - Cause: Invalid structure file path or missing associated structure.
-  - Resolution: Verify structure file exists and is accessible to the requesting user.
+- Missing token: Ensure Authorization header contains Bearer token or pass token parameter for forms.
+- Forbidden: Verify token has required api permissions for the endpoint.
+- Bad request: Check multipart uploads include file field; validate destination existence for PUT.
+- Not found: Confirm path resolution and that referenced files/directories exist.
+- Directory not empty: Use force=yes when deleting directories.
 
-Monitoring:
-- Server logs: Enable debug mode via environment variable to capture detailed logs.
-- Health endpoint: The server's home page displays request counts and processing status.
+Debugging steps:
+- Enable debug logging and inspect server logs.
+- Use client_log_send to inject messages into server logs.
+- Check home page for server status and counters.
+- Use Postman collection and tests for validation.
 
 **Section sources**
-- [restServer.pl:553-579](file://src/restServer.pl#L553-L579)
-- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
-- [kleioFiles.pl:284-292](file://src/kleioFiles.pl#L284-L292)
-- [README.md:125-146](file://README.md#L125-L146)
+- [restServer.pl:619-624](file://src/restServer.pl#L619-L624)
+- [apiSources.pl:125-177](file://src/apiSources.pl#L125-L177)
+- [apiDirectories.pl:93-147](file://src/apiDirectories.pl#L93-L147)
+- [apiLog.pl:15-27](file://src/apiLog.pl#L15-L27)
+- [restServer.pl:424-447](file://src/restServer.pl#L424-L447)
 
 ## Conclusion
-The kleio-server provides a robust REST and JSON-RPC interface for managing Kleio sources, translations, tokens, and Git operations. By enforcing bearer token authentication, validating permissions, and offering flexible parameterization, it enables secure and scalable integrations. The addition of the structures endpoint enhances the server's capability to manage and resolve structure files efficiently. Use the examples and guidelines above to implement clients and automate workflows effectively.
+The Kleio translation services provide a robust REST/JSON-RPC API for managing sources, structures, translations, exports, reports, identifications, directories, tokens, git operations, and logging. The design emphasizes secure token-based access control, consistent error handling, and flexible request/response formats. For production deployments, configure CORS, enforce HTTPS, and consider external rate limiting. Use the provided debugging and monitoring features to maintain operational visibility.
 
 [No sources needed since this section summarizes without analyzing specific files]
 
 ## Appendices
 
-### Authentication and Authorization
-- Header: Authorization: Bearer YOUR_TOKEN
-- Token validation occurs centrally; handlers rely on decoded token info to enforce permissions.
-- Admin token: Set via environment variable or generated automatically at startup.
+### Environment Variables and Configuration
+- KLEIO_HOME_DIR: Base directory.
+- KLEIO_SOURCE_DIR: Default sources directory.
+- KLEIO_CONF_DIR: Configuration directory.
+- KLEIO_STRU_DIR: Structures directory.
+- KLEIO_TOKEN_DB: Token database file.
+- KLEIO_DEFAULT_STRU: Default structure file.
+- KLEIO_DEBUGGER_PORT: Debug server port.
+- KLEIO_SERVER_PORT: REST server port.
+- KLEIO_SERVER_WORKERS: Number of worker threads.
+- KLEIO_IDLE_TIMEOUT: Idle timeout seconds.
+- KLEIO_ADMIN_TOKEN: Admin token value.
+- KLEIO_CORS_SITES: Allowed CORS sites.
 
 **Section sources**
-- [restServer.pl:615-624](file://src/restServer.pl#L615-L624)
-- [tokens.pl:141-151](file://src/tokens.pl#L141-L151)
-- [README.md:92-112](file://README.md#L92-L112)
+- [restServer.pl:107-118](file://src/restServer.pl#L107-L118)
+- [restServer.pl:175-184](file://src/restServer.pl#L175-L184)
+- [serverStart.pl:101-139](file://src/serverStart.pl#L101-L139)
 
-### CORS Configuration
-- Configure allowed origins via environment variable; defaults allow all when not set.
-- Preflight OPTIONS requests are supported.
+### Migration Notes and Backwards Compatibility
+- Deprecated JSON-RPC signatures: Old style method(RequestId,Params,Results) is still supported but deprecated; prefer new style method(json,Id,Params).
+- Versions pull pseudo-path: Internally maps to PUT semantics; clients should treat it as a write operation.
+- Result envelopes: Both REST and JSON-RPC use default_results for consistent formatting; ensure clients parse accordingly.
 
 **Section sources**
-- [restServer.pl:183-184](file://src/restServer.pl#L183-L184)
-- [restServer.pl:492-496](file://src/restServer.pl#L492-L496)
+- [restServer.pl:650-654](file://src/restServer.pl#L650-L654)
+- [apiGit.pl:70-82](file://src/apiGit.pl#L70-L82)
 
-### Rate Limiting
-- No built-in rate limiting is implemented in the server code. Consider deploying behind a reverse proxy with rate limiting policies if needed.
+### Client Implementation Guidelines
+- Always include token in requests; prefer Authorization header.
+- Handle HTTP status codes and JSON-RPC error objects.
+- For uploads, use multipart/form-data with file field.
+- For directory listings, use recurse=yes when needed; consider url=yes to receive download links.
+- For translations, use spawn=yes for parallel processing in multi-user environments; otherwise use spawn=no for efficiency.
 
 [No sources needed since this section provides general guidance]
-
-### Practical Examples and Postman
-- Postman collection and environment files demonstrate typical workflows and token usage patterns.
-
-**Section sources**
-- [api/postman/api.json:1-800](file://api/postman/api.json#L1-L800)
-- [api/postman/environment.json:1-109](file://api/postman/environment.json#L1-L109)
-
-### Client Setup
-- Discover server parameters (URL, admin token) via the generated configuration file or environment variables.
-
-**Section sources**
-- [docs/doc/client_setup.md:1-284](file://docs/doc/client_setup.md#L1-L284)
-- [README.md:64-66](file://README.md#L64-L66)
-
-### Documentation Generation System
-- The server includes a built-in documentation generation system using SWI-Prolog's PlDoc.
-- Access documentation server at localhost:4040 for local code documentation.
-- Documentation can be started with the docServer.pl script in development environments.
-
-**Section sources**
-- [docServer.pl:1-20](file://src/docServer.pl#L1-L20)
-
-### Structure File Location Strategy
-- Structure files (.str, .yaml, .srpt) can be located in multiple positions relative to source files.
-- Priority order for structure resolution:
-  1. `structures/SUBPATH/FILENAME.str` (file-specific)
-  2. `structures/SUBPATH2/gacto2.str` (parent directory)
-  3. `structures/DIRECTORYNAME.str` (directory-specific)
-  4. `structures/gacto2.str` (global default)
-
-**Section sources**
-- [docs/doc/stru_file_location.md:1-34](file://docs/doc/stru_file_location.md#L1-L34)
-- [apiTranslations.pl:384-417](file://src/apiTranslations.pl#L384-L417)

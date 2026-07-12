@@ -1,0 +1,1 @@
+Prolog-based compiler front-end that tokenizes Kleio input, parses data-file lines into element/aspect entries, and derives genealogical relations from declared attributes.

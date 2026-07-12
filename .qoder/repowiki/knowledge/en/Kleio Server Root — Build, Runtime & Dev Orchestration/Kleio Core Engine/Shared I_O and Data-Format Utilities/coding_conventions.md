@@ -1,0 +1,4 @@
+- Public predicates are declared explicitly in the `:- module(Name, [Pred/Arity|...])` directive rather than relying on dynamic exports.
+- Module documentation follows the `/** <module> ... */` JSDoc-style comment placed immediately after the module declaration.
+- YAML command dispatch uses a single `process_str_command/2` predicate with multiple clauses keyed on the first argument, each guarded by a cut to commit to the matching command.
+- File-processing state is threaded through SWI's global value store via `put_value/2`, `get_value/2`, and `set_prop/3` instead of being passed as extra arguments.

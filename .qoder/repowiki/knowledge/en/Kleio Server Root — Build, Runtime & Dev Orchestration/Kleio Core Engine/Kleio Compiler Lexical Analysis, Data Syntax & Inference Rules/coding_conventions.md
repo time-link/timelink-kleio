@@ -1,0 +1,6 @@
+- Lexical classification uses a single `chartype(+Ascii,+Type)` predicate with head-order cuts (`:-!.`) and a final catch-all clause mapping unknown codes to themselves.
+- Tokenization grammar is written as DCGs (`toks/2`, `tok/2`, `num/1`, `names/1`, `dqstring/1`, `tquote/1`) where each terminal guards with `{!,...}` cut-guarded goals to commit to the first matching alternative.
+- Data-file syntax distinguishes two quoting modes via boolean flags stored in the global value store (`tquoteOn/Off`, `dquoteOn/Off`); both follow the same Enter/Exit/Clear three-predicate pattern.
+- Configurable data flags are encoded as integer-numbered `data_flag(N,CharName)` facts with a special case for N=8 resolved dynamically through `get_data_flag(df8,_)`, allowing the semicolon delimiter to be reconfigured at runtime.
+- Inference rules are written as top-level `if [...] then ... and ... .` clauses using the locally declared infix operators, with path patterns built from `sequence(_)/1`, `extends(Class,ID)/2`, and attribute selectors like `pai/1`, `mae/1`, `mulher/1`.
+- Generated ancestor-level rules are grouped under `/* BEGIN Auto-relation <rel> (levels N) v2.1 16-5-2005 */` … `/* END ... */` comment blocks, making them easy to locate and regenerate.

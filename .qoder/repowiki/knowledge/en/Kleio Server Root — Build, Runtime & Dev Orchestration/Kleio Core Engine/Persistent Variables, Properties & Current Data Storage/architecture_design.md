@@ -1,0 +1,6 @@
+Three cooperating modules form the in-memory persistence layer:
+- `persistence.pl` is the base store: thread-local `put_value`/`get_value` backed by `utilities`'s `remember2`/`recall2`, and a global dynamic predicate `prop_/3` (guarded by `with_mutex(prop_mutex, ...)`) for cross-thread properties. It also exposes list/set helpers (`add_value`/`remove_value`/`replace_value`) and a stack API (`push`/`pop`/`peek`).
+- `counters.pl` builds on `persistence` by naming counters `<counter>_counter_` via `atom_concat` and wrapping `setcount`/`inccount`/`deccount` (thread-local) and `_shared_count` variants (global).
+- `dataCDS.pl` defines the Current Data Storage as a SWI `record cdsr(...)` plus an opaque `cds/14` term; it persists each field as a separate property of the atom `cds` through `set_prop`/`get_prop` from `persistence`. High-level accessors `getCDS`/`setCDS`/`createCD`/`delCD`/`cleanCD`/`setCDField`/`getCDField` are thin wrappers around those property calls, with record-based `getCDSR`/`setCDSR`/`getCDRField`/`setCDRField` generated alongside.
+
+Dependency direction is one-way: `counters` → `persistence`; `dataCDS` → `persistence` (+ `dataCode`, `dataDictionary`, `errors`, `utilities`, `library(record)`). No other module in this scope depends back on `dataCDS` or `counters`.

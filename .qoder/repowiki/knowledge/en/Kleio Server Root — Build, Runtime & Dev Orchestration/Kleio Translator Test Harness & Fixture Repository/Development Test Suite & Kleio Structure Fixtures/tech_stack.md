@@ -1,0 +1,1 @@
+SWI-Prolog with `library(plunit)` and `library(test_wizard)` for unit testing; Kleio structure fixtures are declared in YAML (preferred) and legacy STR/SRPT formats.

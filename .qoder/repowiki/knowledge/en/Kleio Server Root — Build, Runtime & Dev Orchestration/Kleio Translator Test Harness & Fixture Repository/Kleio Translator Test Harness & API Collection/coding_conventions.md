@@ -1,0 +1,4 @@
+- All path and configuration constants are declared as `export` variables in `env_tests.sh` and consumed exclusively via `source scripts/env_tests.sh` rather than inline definitions.
+- Each executable script begins with a comment block stating its purpose, required prerequisites (e.g. `swipl`), and the working-directory constraint (`run this from clio/tests directory`).
+- Long-running side effects (server start/stop, report generation) are isolated into dedicated helper scripts (`kleio_start_server.sh`, `kleio_stop_server.sh`, `compare_test_results.sh`) and composed by the top-level `run_tests.sh`.
+- Regression reports are written to `reports/test_report_<YYYY-MM-DD_HH:MM:SS>.diff` so each run produces a uniquely named artifact without overwriting previous results.

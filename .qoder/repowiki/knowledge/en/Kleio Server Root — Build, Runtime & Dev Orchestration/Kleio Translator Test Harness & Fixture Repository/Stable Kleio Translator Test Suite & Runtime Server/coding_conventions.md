@@ -1,0 +1,6 @@
+- Each API entity lives in its own `api*.pl` module and is re-exported centrally through `apiCommon.pl` using `:-reexport('apiXxx').` rather than importing individual predicates.
+- REST handlers follow a uniform signature `entity(Method, Path, Mode, Id, Params)` where `Method` is `get|post|put|delete` and `Mode` is `json|html`, with separate `*_results` predicates for formatting responses.
+- JSON-RPC methods are dispatched dynamically via `json_exec/4` using `..` term construction (`Goal =.. [Method,json,Id,Param,Results]`) so new endpoints need no central registration beyond defining the predicate.
+- Per-structure entities (groups, elements) are stored as dynamic thread-local facts (`clioGroup_/2`, `clioElement_/2`, `clioStru_/1`) paired with property bags accessed through `set_prop/get_prop/del_props` from `persistence.pl`.
+- Authorization is enforced uniformly by extracting `token(Token)` from `Params` and calling `is_api_allowed(Token, files|upload|delete)` before performing any mutation.
+- Configuration values are resolved through `default_value(Key, Default)` clauses that first check the corresponding `KLEIO_*` environment variable, falling back to a hard-coded default.

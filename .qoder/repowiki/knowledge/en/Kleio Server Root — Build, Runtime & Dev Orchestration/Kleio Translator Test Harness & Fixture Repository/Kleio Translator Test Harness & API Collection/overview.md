@@ -1,0 +1,1 @@
+Shell-driven test harness that translates reference sources with both a stable and the current Kleio translator (local + server modes), compares outputs, and includes a Postman collection for REST/JSON-RPC API tests.

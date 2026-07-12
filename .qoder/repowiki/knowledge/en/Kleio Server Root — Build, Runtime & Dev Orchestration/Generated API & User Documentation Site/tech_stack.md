@@ -1,0 +1,1 @@
+Bootstrap 4 + Font Awesome + jQuery mCustomScrollbar + bootstrap-treeview for the rendered API page; Postman API theme stylesheets (`postman.css`, `postman-api.css`) provide the request/response layout. The Markdown index is produced by `thedevsaddam/docgen` (see footer timestamp).

@@ -1,0 +1,8 @@
+This module is a full Kleio `kleio-home` tree rooted at `.kleio.json`, which pins `kleio_home`, `kleio_conf_dir`, admin token path, URL (`http://localhost:8088`) and log location so the test harness can start the real server against it.
+
+- `structures/` holds the canonical schema layer: `gacto2.str` (the built-in Source-Act-Person model with `part`s like `historical-source`, `geoentity`, `authority-register`, `identifications`, `link`, `property`) plus national variants under `pt-*` and per-API fixtures under `api/` and `in_process/`. The same structure is also mirrored in `system/conf/kleio/stru/` and `users/tester/stru/` to exercise user/system-level loading paths.
+- `sources/` is the data layer split into `api/` (live bug-repro cases), `more_sources/` (large historical corpora — `paroquiais/`, `notariais/`, `chancelarias/`, `roisdeconfessados/`, `soure/documents/`, `yaml/`, `yaml-str-checked/`), `reference_sources/` and `reference_translations/` (golden inputs), and `test_translations/` (expected golden outputs: `.org`, `.xml`, `.rpt`, `.err`, `.files.json`).
+- `extras/scripts/` provides helper tooling (`extract-same-source.py`, `stru_to_markdown.py`, `yaml_remove_key.py`) used to regenerate or diff fixtures.
+- `identifications/` and `inferences/` hold authority-register and inference samples consumed by translation runs.
+
+Dependency direction is one-way: tests invoke the running server against this home; the home contains no executable code, only Kleio configuration, schemas, source files, and golden artifacts.

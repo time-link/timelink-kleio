@@ -2,12 +2,12 @@
 
 <cite>
 **Referenced Files in This Document**
+- [restServer.pl](file://src/restServer.pl)
 - [tokens.pl](file://src/tokens.pl)
 - [apiTokens.pl](file://src/apiTokens.pl)
-- [restServer.pl](file://src/restServer.pl)
-- [logging.pl](file://src/logging.pl)
 - [kleioFiles.pl](file://src/kleioFiles.pl)
-- [errors.pl](file://src/errors.pl)
+- [persistence.pl](file://src/persistence.pl)
+- [serverStart.pl](file://src/serverStart.pl)
 </cite>
 
 ## Table of Contents
@@ -20,350 +20,419 @@
 7. [Performance Considerations](#performance-considerations)
 8. [Troubleshooting Guide](#troubleshooting-guide)
 9. [Conclusion](#conclusion)
+10. [Appendices](#appendices)
 
 ## Introduction
-This document describes the authentication and security model for the Timelink Kleio server. The system uses token-based authentication to protect access to the REST and JSON-RPC APIs. Tokens are stored in a persistent database and validated on every request. The server enforces a granular permission model per token, supports token lifecycle management (generation, invalidation, rotation), and provides CORS configuration for web application integration. Security logging and error handling are integrated throughout the request pipeline.
+This document explains the authentication and security model for Kleio translation services. It covers token-based authentication, token lifecycle management, permission models, user administration, CORS configuration, access control mechanisms, bootstrap token generation, token invalidation, session management, production hardening guidance, custom authentication provider considerations, and monitoring of security events. The goal is to provide both a conceptual overview and code-level details so that operators and developers can secure deployments effectively.
 
 ## Project Structure
-The authentication and security functionality is implemented across several modules:
-- Token management and persistence
-- REST and JSON-RPC request decoding and validation
-- Logging and error reporting
-- File system access controls and path resolution
-- CORS configuration for cross-origin requests
+The authentication and security features are implemented across several core modules:
+- REST/JSON-RPC server entry points and request processing
+- Token persistence and validation
+- API endpoints for token and user administration
+- File path resolution and isolation
+- Shared state and persistence utilities
+- Server startup and environment configuration
 
 ```mermaid
 graph TB
-subgraph "Security Modules"
-T["tokens.pl<br/>Token generation, validation, lifecycle"]
-RT["restServer.pl<br/>Request decoding, CORS, error handling"]
-LG["logging.pl<br/>Security logging"]
-KL["kleioFiles.pl<br/>Path resolution, access controls"]
-ER["errors.pl<br/>Error templates and reporting"]
-end
-subgraph "API Layer"
-AT["apiTokens.pl<br/>Token management endpoints"]
-end
-AT --> T
-RT --> T
-RT --> KL
-T --> LG
-RT --> LG
-RT --> ER
+Client["Client"] --> RS["REST/JSON-RPC Server<br/>restServer.pl"]
+RS --> Auth["Token Decode & Admin Fallback<br/>tokens.pl"]
+RS --> API_T["Token/User Admin API<br/>apiTokens.pl"]
+RS --> FS["File Path Resolution<br/>kleioFiles.pl"]
+RS --> Persist["Shared State/Persistence<br/>persistence.pl"]
+RS --> Start["Server Startup & Config<br/>serverStart.pl"]
 ```
 
 **Diagram sources**
-- [tokens.pl](file://src/tokens.pl#L1-L426)
-- [restServer.pl](file://src/restServer.pl#L1-L1802)
-- [logging.pl](file://src/logging.pl#L1-L161)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L1-L933)
-- [errors.pl](file://src/errors.pl#L1-L220)
-- [apiTokens.pl](file://src/apiTokens.pl#L1-L125)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [apiTokens.pl:18-40](file://src/apiTokens.pl#L18-L40)
+- [kleioFiles.pl:773-797](file://src/kleioFiles.pl#L773-L797)
+- [persistence.pl:55-66](file://src/persistence.pl#L55-L66)
+- [serverStart.pl:165-188](file://src/serverStart.pl#L165-L188)
 
 **Section sources**
-- [tokens.pl](file://src/tokens.pl#L1-L426)
-- [restServer.pl](file://src/restServer.pl#L1-L1802)
-- [logging.pl](file://src/logging.pl#L1-L161)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L1-L933)
-- [errors.pl](file://src/errors.pl#L1-L220)
-- [apiTokens.pl](file://src/apiTokens.pl#L1-L125)
+- [restServer.pl:131-162](file://src/restServer.pl#L131-L162)
+- [tokens.pl:1-47](file://src/tokens.pl#L1-L47)
+- [apiTokens.pl:1-16](file://src/apiTokens.pl#L1-L16)
+- [kleioFiles.pl:468-504](file://src/kleioFiles.pl#L468-L504)
+- [persistence.pl:21-31](file://src/persistence.pl#L21-L31)
+- [serverStart.pl:1-11](file://src/serverStart.pl#L1-L11)
 
 ## Core Components
-- Token database: Persistent store for tokens and user options, managed via SWI-Prolog persistence.
-- Token generation: Creates unique tokens with embedded metadata and optional lifetime.
-- Token validation: Decodes tokens, verifies permissions, and enforces expiration.
-- Permission model: Per-token API endpoint allowances and directory scoping.
-- Request pipeline: REST and JSON-RPC handlers enforce token presence and permissions.
-- CORS: Configurable cross-origin policies for browser clients.
-- Logging and errors: Structured logging and standardized error responses.
+- Token-based authentication: Every request must include an Authorization header with a Bearer token or a JSON-RPC parameter named token. Tokens map to a username and options (API permissions, data/structure directories).
+- Permission model: Each token carries an api list of allowed operations. Endpoints check permissions before executing actions.
+- Bootstrap token: On first run without admin token, the server creates a short-lived bootstrap token to allow initial token creation.
+- User administration: Admin-capable tokens can generate new tokens and invalidate existing ones or revoke all tokens for a user.
+- CORS: The server enables Cross-Origin Resource Sharing based on configuration.
+- Access control: Uploads require explicit upload permission; file paths are resolved relative to token-scoped directories.
+
+Key responsibilities by module:
+- restServer.pl: Request routing, CORS, token extraction, authorization checks, error handling, and response formatting.
+- tokens.pl: Token storage, decoding, expiration checks, admin fallback, and permission evaluation.
+- apiTokens.pl: REST endpoints for token and user administration.
+- kleioFiles.pl: Resolves absolute vs relative paths and enforces per-token directory scoping.
+- persistence.pl: Thread-safe shared properties and values used for bootstrap tokens and runtime state.
+- serverStart.pl: Environment setup and server initialization.
 
 **Section sources**
-- [tokens.pl](file://src/tokens.pl#L54-L139)
-- [restServer.pl](file://src/restServer.pl#L491-L579)
-- [restServer.pl](file://src/restServer.pl#L183-L184)
-- [logging.pl](file://src/logging.pl#L98-L119)
-- [errors.pl](file://src/errors.pl#L1413-L1586)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [restServer.pl:615-625](file://src/restServer.pl#L615-L625)
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
+- [kleioFiles.pl:773-797](file://src/kleioFiles.pl#L773-L797)
+- [persistence.pl:55-66](file://src/persistence.pl#L55-L66)
+- [serverStart.pl:165-188](file://src/serverStart.pl#L165-L188)
 
 ## Architecture Overview
-The authentication flow integrates with the REST and JSON-RPC request processors. Requests must include a Bearer token; otherwise, they are rejected. The token is decoded to retrieve user identity and options, including allowed API endpoints and directory scopes. Permissions are enforced per operation, and file paths are resolved relative to user-scoped directories to prevent unauthorized access.
+The request flow integrates authentication, authorization, and resource access controls.
 
 ```mermaid
 sequenceDiagram
-participant Client as "Client"
-participant REST as "restServer.process_rest"
-participant TOK as "tokens.decode_token"
-participant AUTH as "permissions check"
-participant FS as "kleioFiles.resolve"
-participant LOG as "logging"
-Client->>REST : "HTTP request with Authorization : Bearer <token>"
-REST->>REST : "cors_enable()"
-REST->>REST : "rest_decode_command()"
-REST->>TOK : "decode_token(token)"
-TOK-->>REST : "user, options"
-REST->>AUTH : "is_api_allowed(token, method)"
-AUTH-->>REST : "allowed?"
-alt "allowed"
-REST->>FS : "resolve paths using options"
-FS-->>REST : "absolute paths"
-REST-->>Client : "Response"
-else "forbidden"
-REST->>LOG : "log_error(...)"
-REST-->>Client : "HTTP 403/JSON error"
+participant C as "Client"
+participant S as "REST/JSON-RPC Server<br/>restServer.pl"
+participant T as "Token Module<br/>tokens.pl"
+participant A as "Admin API<br/>apiTokens.pl"
+participant F as "File Resolver<br/>kleioFiles.pl"
+C->>S : HTTP Request with Authorization : Bearer <token>
+S->>S : Extract token from header or params
+S->>T : decode_token(Token)
+alt Valid token
+T-->>S : {username, options}
+S->>A : If endpoint requires admin (e.g., generate/invalidate)
+A->>T : is_api_allowed(Token, operation)
+T-->>A : true/false
+A-->>S : Proceed or throw method_not_allowed
+S->>F : Resolve file paths using token options
+F-->>S : Relative paths within scoped dirs
+S-->>C : Response
+else Invalid/expired token
+T-->>S : fail
+S-->>C : 400 bad_request or forbidden
 end
 ```
 
 **Diagram sources**
-- [restServer.pl](file://src/restServer.pl#L491-L579)
-- [restServer.pl](file://src/restServer.pl#L1413-L1586)
-- [tokens.pl](file://src/tokens.pl#L141-L151)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L752-L781)
-- [logging.pl](file://src/logging.pl#L98-L119)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [restServer.pl:615-625](file://src/restServer.pl#L615-L625)
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
+- [kleioFiles.pl:773-797](file://src/kleioFiles.pl#L773-L797)
 
 ## Detailed Component Analysis
 
-### Token Management and Lifecycle
-- Generation: Creates a unique token derived from user, timestamp, and random data, hashed and stored with creation metadata and options. Enforces uniqueness per user.
-- Validation: Extracts user and options from the token database and rejects expired tokens automatically.
-- Invalidation: Supports revocation of individual tokens or all tokens for a user.
-- Persistence: Attaches to a configurable token database file; defaults to a path under the configuration directory.
-- Admin bootstrap: Supports an environment-based admin token and a bootstrap token for initial setup.
+### Token Lifecycle Management
+- Generation: Admin-capable tokens call the token generation endpoint to create a new token bound to a user and options (API permissions, data/structure directories, optional expiry).
+- Decoding: Incoming requests are decoded to extract username and options. An admin fallback allows a special environment-provided token to act as KLEIO_ADMIN.
+- Expiration: Tokens may carry a life_span; expired tokens are automatically invalidated upon use.
+- Invalidation: Individual tokens or all tokens for a user can be revoked.
 
 ```mermaid
 flowchart TD
-Start(["Generate Token"]) --> CheckUser["Check existing token for user"]
-CheckUser --> Exists{"Existing token?"}
-Exists --> |Yes| ThrowError["Throw duplicate user error"]
-Exists --> |No| BuildSeed["Build seed from user + timestamp + random"]
-BuildSeed --> Hash["SHA hash and atom conversion"]
-Hash --> AttachDB["Ensure token DB attached"]
-AttachDB --> Store["Assert token with options"]
-Store --> Sync["db_sync()"]
-Sync --> End(["Token Ready"])
+Start(["Request Received"]) --> CheckToken["Extract Token"]
+CheckToken --> Decode{"decode_token succeeds?"}
+Decode -- "Yes" --> Options["Get Options (api, dirs, expiry)"]
+Options --> ExpCheck{"Expired?"}
+ExpCheck -- "Yes" --> Invalidate["Invalidate Token"]
+Invalidate --> Deny["Return Error"]
+ExpCheck -- "No" --> Allow["Proceed with Permissions"]
+Decode -- "No" --> AdminFallback{"KLEIO_ADMIN_TOKEN matches?"}
+AdminFallback -- "Yes" --> AdminOptions["Load Admin Options"]
+AdminOptions --> Allow
+AdminFallback -- "No" --> Deny
 ```
 
 **Diagram sources**
-- [tokens.pl](file://src/tokens.pl#L111-L139)
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [tokens.pl:259-281](file://src/tokens.pl#L259-L281)
+- [restServer.pl:615-625](file://src/restServer.pl#L615-L625)
 
 **Section sources**
-- [tokens.pl](file://src/tokens.pl#L54-L139)
-- [tokens.pl](file://src/tokens.pl#L187-L198)
-- [tokens.pl](file://src/tokens.pl#L263-L282)
-- [restServer.pl](file://src/restServer.pl#L411-L421)
+- [tokens.pl:104-139](file://src/tokens.pl#L104-L139)
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [tokens.pl:259-281](file://src/tokens.pl#L259-L281)
+- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
 
 ### Permission Model and Access Control
-- API endpoints: Tokens carry an API list indicating allowed operations (e.g., files, structures, translations, upload, sources, generate_token, invalidate_token, invalidate_user, delete, mkdir, rmdir).
-- Directory scoping: Tokens can specify user-specific sources and structures directories; all file operations resolve paths relative to these scopes.
-- Enforcement: REST and JSON-RPC handlers validate token presence and permissions before executing operations.
+- Each token includes an api list of permitted operations. Endpoints verify permissions via is_api_allowed before execution.
+- Uploads require explicit upload permission; otherwise, a forbidden response is returned.
+- Directory scoping: Paths are resolved relative to token-scoped directories to prevent cross-user access.
 
 ```mermaid
 classDiagram
-class TokenOptions {
-+api(list)
-+data_dir(path)
-+structures_dir(path)
-+life_span(seconds)
-+created(timestamp)
+class Token {
++string token
++string username
++string[] api
++string data_dir
++string stru_dir
++float created
++float life_span
 }
-class RESTHandler {
-+rest_decode_command()
-+is_api_allowed(token, method)
-+upload_allowed(token)
+class RestServer {
++extract_token(Request) string
++check_permission(Token, Operation) bool
++resolve_paths(TokenOptions) string
 }
-class TokenDB {
-+decode_token(token,user,options)
-+expired_token(token)
-+invalidate_token(token)
-+invalidate_user(user)
+class ApiEndpoints {
++generate_token(...)
++invalidate_token(...)
++invalidate_user(...)
 }
-RESTHandler --> TokenDB : "validate & authorize"
-RESTHandler --> TokenOptions : "read permissions"
+Token <.. RestServer : "decoded"
+RestServer --> ApiEndpoints : "calls after authz"
 ```
 
 **Diagram sources**
-- [tokens.pl](file://src/tokens.pl#L249-L257)
-- [restServer.pl](file://src/restServer.pl#L553-L579)
-- [restServer.pl](file://src/restServer.pl#L590-L600)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+- [restServer.pl:590-600](file://src/restServer.pl#L590-L600)
+- [kleioFiles.pl:773-797](file://src/kleioFiles.pl#L773-L797)
 
 **Section sources**
-- [apiTokens.pl](file://src/apiTokens.pl#L50-L70)
-- [tokens.pl](file://src/tokens.pl#L249-L257)
-- [restServer.pl](file://src/restServer.pl#L553-L579)
-- [restServer.pl](file://src/restServer.pl#L590-L600)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+- [restServer.pl:590-600](file://src/restServer.pl#L590-L600)
+- [kleioFiles.pl:773-797](file://src/kleioFiles.pl#L773-L797)
 
-### Token Database and Storage
-- Persistence: Uses SWI-Prolog persistence to store token-to-user mappings and options.
-- Attachment: Supports attaching to a specific file or defaulting to a configuration-managed path.
-- Initialization: On startup, ensures the token database exists and is attached; creates bootstrap/admin tokens if needed.
-
-```mermaid
-flowchart TD
-Init(["Server Startup"]) --> EnsureDB["ensure_db()"]
-EnsureDB --> Attach["attach_token_db(file)"]
-Attach --> Exists{"DB exists?"}
-Exists --> |No| Create["Create DB file"]
-Exists --> |Yes| Ready["DB Ready"]
-Create --> Ready
-```
-
-**Diagram sources**
-- [tokens.pl](file://src/tokens.pl#L88-L102)
-- [tokens.pl](file://src/tokens.pl#L64-L85)
-- [restServer.pl](file://src/restServer.pl#L394-L421)
-
-**Section sources**
-- [tokens.pl](file://src/tokens.pl#L54-L85)
-- [tokens.pl](file://src/tokens.pl#L88-L102)
-- [restServer.pl](file://src/restServer.pl#L394-L421)
-
-### CORS Configuration for Web Applications
-- Configuration: The server reads a comma-separated list of allowed origins from an environment variable and sets the CORS policy accordingly.
-- Behavior: Applies CORS preflight handling for REST and JSON-RPC endpoints, enabling cross-origin browser requests.
-
-```mermaid
-flowchart TD
-Env["KLEIO_CORS_SITES"] --> Parse["Parse comma-separated list"]
-Parse --> SetPolicy["http:set_setting(cors, List)"]
-SetPolicy --> Handlers["REST/JSON handlers enable cors_enable()"]
-```
-
-**Diagram sources**
-- [restServer.pl](file://src/restServer.pl#L183-L184)
-- [restServer.pl](file://src/restServer.pl#L338-L339)
-- [restServer.pl](file://src/restServer.pl#L492-L495)
-- [restServer.pl](file://src/restServer.pl#L662-L665)
-
-**Section sources**
-- [restServer.pl](file://src/restServer.pl#L183-L184)
-- [restServer.pl](file://src/restServer.pl#L338-L339)
-- [restServer.pl](file://src/restServer.pl#L492-L495)
-- [restServer.pl](file://src/restServer.pl#L662-L665)
-
-### Secure File Access and Path Resolution
-- Path resolution: All file operations resolve paths relative to user-specified sources or structures directories, preventing traversal attacks.
-- Safe output: File listings and metadata are normalized to relative paths derived from token options.
-- Upload restrictions: Uploads require explicit upload permission and are validated for allowed file types.
-
-```mermaid
-flowchart TD
-Req["Request with token"] --> Resolve["Resolve paths using token options"]
-Resolve --> Scope{"Within user scope?"}
-Scope --> |Yes| Proceed["Proceed with operation"]
-Scope --> |No| Deny["Reject with 403/JSON error"]
-```
-
-**Diagram sources**
-- [kleioFiles.pl](file://src/kleioFiles.pl#L752-L781)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L94-L109)
-- [restServer.pl](file://src/restServer.pl#L590-L600)
-
-**Section sources**
-- [kleioFiles.pl](file://src/kleioFiles.pl#L752-L781)
-- [kleioFiles.pl](file://src/kleioFiles.pl#L94-L109)
-- [restServer.pl](file://src/restServer.pl#L590-L600)
-
-### Audit Logging and Security Event Tracking
-- Logging: Centralized logging with levels and structured output; logs are written to a configured directory or stdout.
-- Error handling: Standardized error responses for REST and JSON-RPC, including context and request IDs.
-- Security events: Authentication failures, permission denials, and invalid tokens are logged and surfaced as HTTP 401/403 or JSON error codes.
-
-```mermaid
-sequenceDiagram
-participant REST as "restServer"
-participant LOG as "logging"
-participant ERR as "errors"
-REST->>LOG : "log_error(message, args)"
-REST->>ERR : "return_error(format, error)"
-ERR-->>REST : "formatted response"
-REST-->>Client : "HTTP/JSON error"
-```
-
-**Diagram sources**
-- [logging.pl](file://src/logging.pl#L98-L119)
-- [restServer.pl](file://src/restServer.pl#L1413-L1586)
-- [errors.pl](file://src/errors.pl#L1413-L1586)
-
-**Section sources**
-- [logging.pl](file://src/logging.pl#L98-L119)
-- [restServer.pl](file://src/restServer.pl#L1413-L1586)
-- [errors.pl](file://src/errors.pl#L1413-L1586)
-
-### Token-Based Authentication Endpoints
-- Token generation: Requires a token with generate_token permission; accepts user and info parameters.
-- Token invalidation: Supports revoking a specific token or all tokens for a user.
-- User-level invalidation: Revokes all tokens associated with a user.
+### User Administration APIs
+- Generate token: Requires generate_token permission. Accepts user name and info dict including api permissions and optional directories. After successful generation, if a bootstrap token exists, it is invalidated and cleared.
+- Invalidate token: Requires invalidate_token permission. Validates target token existence and revokes it.
+- Invalidate user: Requires invalidate_user permission. Revokes all tokens associated with a user.
 
 ```mermaid
 sequenceDiagram
 participant Admin as "Admin Client"
-participant API as "apiTokens.tokens/post"
-participant TOK as "tokens.generate_token"
-participant RESP as "restServer.default_results"
-Admin->>API : "POST /rest/tokens with token"
-API->>TOK : "tokens_generate(ResultType, Id, Params)"
-TOK-->>API : "New token"
-API->>RESP : "default_results(...)"
-RESP-->>Admin : "Token response"
+participant RS as "REST Server"
+participant AT as "apiTokens"
+participant TK as "tokens"
+Admin->>RS : POST /json/ {method : "tokens", params : {user, info}}
+RS->>AT : tokens(post,...)
+AT->>TK : is_api_allowed(Token, generate_token)
+TK-->>AT : true
+AT->>TK : generate_token(UserName, Info, NewToken)
+AT->>AT : If bootstrap_token present -> invalidate and clear
+AT-->>RS : NewToken
+RS-->>Admin : {result : NewToken}
+Admin->>RS : POST /json/ {method : "tokens", params : {token, user_token}}
+RS->>AT : tokens(delete,...)
+AT->>TK : is_api_allowed(Token, invalidate_token)
+TK-->>AT : true
+AT->>TK : invalidate_token(user_token)
+AT-->>RS : OK
+RS-->>Admin : {result : OK}
+Admin->>RS : POST /json/ {method : "users", params : {user, token}}
+RS->>AT : users(delete,...)
+AT->>TK : is_api_allowed(Token, invalidate_user)
+TK-->>AT : true
+AT->>TK : invalidate_user(User)
+AT-->>RS : OK
+RS-->>Admin : {result : OK}
 ```
 
 **Diagram sources**
-- [apiTokens.pl](file://src/apiTokens.pl#L22-L28)
-- [apiTokens.pl](file://src/apiTokens.pl#L71-L88)
-- [restServer.pl](file://src/restServer.pl#L826-L841)
+- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
+- [apiTokens.pl:94-122](file://src/apiTokens.pl#L94-L122)
+- [tokens.pl:104-139](file://src/tokens.pl#L104-L139)
+- [tokens.pl:187-198](file://src/tokens.pl#L187-L198)
 
 **Section sources**
-- [apiTokens.pl](file://src/apiTokens.pl#L18-L39)
-- [apiTokens.pl](file://src/apiTokens.pl#L71-L122)
+- [apiTokens.pl:18-40](file://src/apiTokens.pl#L18-L40)
+- [apiTokens.pl:71-88](file://src/apiTokens.pl#L71-L88)
+- [apiTokens.pl:94-122](file://src/apiTokens.pl#L94-L122)
+- [tokens.pl:187-198](file://src/tokens.pl#L187-L198)
 
-## Dependency Analysis
-The authentication system relies on a small set of tightly coupled modules:
-- restServer depends on tokens for validation and on kleioFiles for path resolution.
-- tokens depends on persistence and logging.
-- apiTokens depends on tokens and restServer for results formatting.
-- errors and logging provide shared infrastructure for consistent error handling and logging.
+### Bootstrap Token Generation
+- On startup, if no admin token is configured and no tokens exist, the server generates a bootstrap token with administrative privileges and writes it to a file. This bootstrap token has a limited life span and is intended solely for creating the first operational token.
+- Once a new token is generated via the admin API, the bootstrap token is automatically invalidated and removed from shared state.
 
 ```mermaid
-graph LR
-RS["restServer.pl"] --> TK["tokens.pl"]
-RS --> KL["kleioFiles.pl"]
-RS --> ER["errors.pl"]
-RS --> LG["logging.pl"]
-AT["apiTokens.pl"] --> TK
-AT --> RS
-TK --> LG
+flowchart TD
+BootStart["Server Start"] --> CheckEnv{"KLEIO_ADMIN_TOKEN set?"}
+CheckEnv -- "Yes" --> SkipBootstrap["Skip bootstrap token"]
+CheckEnv -- "No" --> CreateBootstrap["Create bootstrap token with admin perms"]
+CreateBootstrap --> WriteFile["Write .admin_token file"]
+WriteFile --> Ready["Ready for first token generation"]
+Ready --> FirstGen["Generate operational token via API"]
+FirstGen --> InvalidateBoot["Invalidate bootstrap token"]
+InvalidateBoot --> NormalOps["Normal operations"]
 ```
 
 **Diagram sources**
-- [restServer.pl](file://src/restServer.pl#L152-L162)
-- [tokens.pl](file://src/tokens.pl#L49-L52)
-- [apiTokens.pl](file://src/apiTokens.pl#L7-L9)
+- [restServer.pl:408-421](file://src/restServer.pl#L408-L421)
+- [apiTokens.pl:82-88](file://src/apiTokens.pl#L82-L88)
 
 **Section sources**
-- [restServer.pl](file://src/restServer.pl#L152-L162)
-- [tokens.pl](file://src/tokens.pl#L49-L52)
-- [apiTokens.pl](file://src/apiTokens.pl#L7-L9)
+- [restServer.pl:408-421](file://src/restServer.pl#L408-L421)
+- [apiTokens.pl:82-88](file://src/apiTokens.pl#L82-L88)
+
+### CORS Configuration
+- The server enables CORS for REST and JSON-RPC endpoints. Default allowed sites can be configured via environment variables; otherwise, defaults apply.
+- OPTIONS preflight responses are handled to support cross-origin requests.
+
+```mermaid
+sequenceDiagram
+participant Browser as "Browser"
+participant RS as "REST/JSON-RPC Server"
+Browser->>RS : OPTIONS /rest/...
+RS->>RS : cors_enable(methods=[get,post,delete,put])
+RS-->>Browser : 204 No Content with CORS headers
+Browser->>RS : Actual Request with Origin
+RS->>RS : cors_enable(methods=[get,post,delete,put])
+RS-->>Browser : Response with CORS headers
+```
+
+**Diagram sources**
+- [restServer.pl:492-496](file://src/restServer.pl#L492-L496)
+- [restServer.pl:498-509](file://src/restServer.pl#L498-L509)
+- [restServer.pl:662-674](file://src/restServer.pl#L662-L674)
+
+**Section sources**
+- [restServer.pl:183-184](file://src/restServer.pl#L183-L184)
+- [restServer.pl:492-496](file://src/restServer.pl#L492-L496)
+- [restServer.pl:498-509](file://src/restServer.pl#L498-L509)
+- [restServer.pl:662-674](file://src/restServer.pl#L662-L674)
+
+### Session Management
+- Stateless design: There is no persistent session store. Authentication relies on tokens included in each request.
+- Shared state: The server uses shared properties/values for bootstrap tokens and runtime counters. These are process-scoped and not persisted across restarts.
+
+```mermaid
+stateDiagram-v2
+[*] --> Idle
+Idle --> Processing : "Request with token"
+Processing --> Authorized : "Valid token"
+Processing --> Unauthorized : "Invalid/expired token"
+Authorized --> Idle : "Response sent"
+Unauthorized --> Idle : "Error response"
+```
+
+**Diagram sources**
+- [persistence.pl:55-66](file://src/persistence.pl#L55-L66)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+
+**Section sources**
+- [persistence.pl:55-66](file://src/persistence.pl#L55-L66)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+
+### Security Best Practices and Production Hardening
+- Use HTTPS in front of the server (reverse proxy) to protect tokens in transit.
+- Configure CORS explicitly to restrict origins rather than allowing all.
+- Set KLEIO_ADMIN_TOKEN securely via environment variables or secret managers; avoid storing plaintext tokens in files unless necessary.
+- Limit token lifetimes using life_span options when generating tokens.
+- Restrict upload permissions to trusted clients only.
+- Ensure token database file permissions are restrictive.
+- Monitor logs for failed authentication attempts and unauthorized access.
+
+[No sources needed since this section provides general guidance]
+
+### Custom Authentication Providers
+- Current implementation supports token-based authentication and an admin fallback via environment variable or file. Extending to external providers would require modifying token decoding and permission evaluation logic.
+- Integration points:
+  - Token decoding: tokens.pl decode_token/3 and get_kleio_admin/3
+  - Permission checks: tokens.pl is_api_allowed/2
+  - Request parsing: restServer.pl get_authorization_token/2 and json_decode_command/3
+
+```mermaid
+flowchart TD
+Entry["Incoming Request"] --> Parse["Parse Authorization/Header or Params"]
+Parse --> Decode["Decode Token (tokens.pl)"]
+Decode --> Provider{"Custom Provider?"}
+Provider -- "Yes" --> ExternalAuth["Call External Auth Service"]
+ExternalAuth --> Validate["Validate & Map to Options"]
+Provider -- "No" --> LocalAuth["Local Token DB / Admin Fallback"]
+Validate --> Perms["Permission Check (is_api_allowed)"]
+LocalAuth --> Perms
+Perms --> Route["Route to Endpoint"]
+```
+
+**Diagram sources**
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+- [restServer.pl:615-625](file://src/restServer.pl#L615-L625)
+
+**Section sources**
+- [tokens.pl:141-176](file://src/tokens.pl#L141-L176)
+- [tokens.pl:249-257](file://src/tokens.pl#L249-L257)
+- [restServer.pl:615-625](file://src/restServer.pl#L615-L625)
+
+### Monitoring Security Events
+- Logging: The server logs debug information for incoming requests and errors. Errors are captured and formatted for JSON-RPC and REST responses.
+- Counters: Shared counters track REST and JSON-RPC request counts for observability.
+- Recommendations:
+  - Enable structured logging to a centralized system.
+  - Alert on repeated 401/403 responses indicating potential brute-force or misconfiguration.
+  - Track token generation and invalidation events for audit trails.
+
+**Section sources**
+- [restServer.pl:504-509](file://src/restServer.pl#L504-L509)
+- [restServer.pl:679-683](file://src/restServer.pl#L679-L683)
+- [restServer.pl:434-437](file://src/restServer.pl#L434-L437)
+
+## Dependency Analysis
+The following diagram shows key dependencies among authentication and security components.
+
+```mermaid
+graph TB
+RS["restServer.pl"] --> TK["tokens.pl"]
+RS --> AT["apiTokens.pl"]
+RS --> KF["kleioFiles.pl"]
+RS --> PS["persistence.pl"]
+RS --> SS["serverStart.pl"]
+TK --> PS
+AT --> TK
+KF --> PS
+```
+
+**Diagram sources**
+- [restServer.pl:131-162](file://src/restServer.pl#L131-L162)
+- [tokens.pl:49-52](file://src/tokens.pl#L49-L52)
+- [apiTokens.pl:7-9](file://src/apiTokens.pl#L7-L9)
+- [kleioFiles.pl:35-39](file://src/kleioFiles.pl#L35-L39)
+- [persistence.pl:17-18](file://src/persistence.pl#L17-L18)
+- [serverStart.pl:1-4](file://src/serverStart.pl#L1-L4)
+
+**Section sources**
+- [restServer.pl:131-162](file://src/restServer.pl#L131-L162)
+- [tokens.pl:49-52](file://src/tokens.pl#L49-L52)
+- [apiTokens.pl:7-9](file://src/apiTokens.pl#L7-L9)
+- [kleioFiles.pl:35-39](file://src/kleioFiles.pl#L35-L39)
+- [persistence.pl:17-18](file://src/persistence.pl#L17-L18)
+- [serverStart.pl:1-4](file://src/serverStart.pl#L1-L4)
 
 ## Performance Considerations
-- Token validation overhead: Each request performs a database lookup and permission check; caching options are minimal due to the lightweight persistence model.
-- Concurrency: Token operations are protected by a mutex to ensure atomic updates to the token database.
-- CORS overhead: Preflight OPTIONS requests are handled efficiently; ensure CORS lists are minimized to reduce wildcard usage.
-- Logging: Logging is enabled by default; tune log levels to balance observability and performance.
+- Token decoding and permission checks are lightweight but executed per request; ensure efficient token storage and minimal overhead in decode_token.
+- Avoid excessive logging in high-throughput environments; tune log levels appropriately.
+- Use appropriate worker thread counts to balance concurrency and resource usage.
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
 Common issues and resolutions:
-- Missing token: Requests without a Bearer token receive a “token missing” error; ensure clients include Authorization headers.
-- Bad token: Malformed or invalid tokens trigger “bad token” errors; regenerate tokens using the token management endpoints.
-- Insufficient privileges: Attempts to call disallowed API endpoints return 403/JSON error; adjust token options to include required permissions.
-- Expired token: Tokens with exceeded lifespans are invalidated automatically; regenerate tokens with appropriate lifetimes.
-- CORS errors: Configure KLEIO_CORS_SITES to include the origin of the requesting client; verify wildcard usage and allowed methods.
-- Bootstrap/admin token problems: If the bootstrap token expires or the admin token environment variable is invalid, the server blocks token generation until corrected.
+- Missing token: Requests without Authorization header or token parameter return bad_request. Ensure clients send Bearer tokens correctly.
+- Invalid token: decode_token fails; verify token validity and expiration.
+- Forbidden uploads: Missing upload permission; grant upload capability to the token.
+- Bootstrap token expired: If bootstrap token expires before first operational token is created, set KLEIO_ADMIN_TOKEN or delete token_db to reset.
 
 **Section sources**
-- [restServer.pl](file://src/restServer.pl#L1593-L1648)
-- [restServer.pl](file://src/restServer.pl#L1413-L1586)
-- [tokens.pl](file://src/tokens.pl#L263-L282)
-- [restServer.pl](file://src/restServer.pl#L411-L421)
+- [restServer.pl:560-562](file://src/restServer.pl#L560-L562)
+- [restServer.pl:590-600](file://src/restServer.pl#L590-L600)
+- [restServer.pl:408-421](file://src/restServer.pl#L408-L421)
 
 ## Conclusion
-Timelink Kleio’s authentication system centers on token-based access control with strong enforcement of permissions and directory scoping. Tokens are persisted securely and validated on every request, while CORS support enables modern web integrations. The system provides robust error handling and logging to aid in monitoring and troubleshooting. For production deployments, carefully manage token lifetimes, restrict CORS origins, and monitor logs for security events.
+Kleio’s authentication and security model centers on token-based access with fine-grained permissions, robust bootstrap provisioning, and strict path scoping. By configuring CORS carefully, securing admin tokens, limiting token lifetimes, and monitoring security events, operators can deploy Kleio securely in production environments. Extensibility points exist for integrating custom authentication providers while maintaining consistent permission checks and request handling.
+
+[No sources needed since this section summarizes without analyzing specific files]
+
+## Appendices
+
+### Environment Variables and Configuration
+- KLEIO_ADMIN_TOKEN: Provides an administrative token fallback.
+- KLEIO_CORS_SITES: Configures allowed CORS origins.
+- KLEIO_SERVER_PORT, KLEIO_DEBUGGER_PORT, KLEIO_SERVER_WORKERS, KLEIO_IDLE_TIMEOUT: Server runtime settings.
+- KLEIO_HOME_DIR, KLEIO_CONF_DIR, KLEIO_SOURCE_DIR, KLEIO_STRU_DIR, KLEIO_TOKEN_DB, KLEIO_DEFAULT_STRU: Directory and structure configuration.
+
+**Section sources**
+- [restServer.pl:175-184](file://src/restServer.pl#L175-L184)
+- [kleioFiles.pl:468-504](file://src/kleioFiles.pl#L468-L504)
+- [serverStart.pl:165-188](file://src/serverStart.pl#L165-L188)

@@ -1,0 +1,1 @@
+Provides Kleio file-system utilities (home/source/structure resolution, translation artifact management) and linked-data annotation parsing/generation for external URIs.

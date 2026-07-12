@@ -1,0 +1,1 @@
+Python 3 recursive-descent SAX parser (no external parsing library); YAML-based schema definitions consumed by the broader Timelink pipeline; EBNF grammar as human-readable spec.

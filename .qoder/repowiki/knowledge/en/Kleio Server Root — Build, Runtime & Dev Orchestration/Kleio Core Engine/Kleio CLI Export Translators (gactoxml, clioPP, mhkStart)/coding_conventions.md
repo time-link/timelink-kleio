@@ -1,0 +1,5 @@
+- Export entry points follow the Clio contract: every translator exposes `db_init/0`, `db_store/0`, `db_close/0` as the lifecycle predicates called by the Clio translator.
+- Group-type dispatch is centralized in a single `group_export(+Group,+ID)` predicate whose clauses match either the exact group name or a derived class via `group_derived/2` against the gacto2 schema, with a cut after each successful clause.
+- Derived-group matching uses `group_derived(G,S) :- clio_extends(G,S).` so new Kleio types only need to extend an existing abstract group to be handled automatically.
+- Translation state is kept in two parallel stores: per-thread local flags declared with `?-thread_local(...)` for cross-group caches (e.g. `same_as_cached/8`) and per-translation properties set via `set_prop`/`get_prop` (e.g. `act`, `person`, `autorels`).
+- XML emission goes through `xml_write/1` and `xml_nl` rather than string concatenation, and attribute values are always passed through `xml_quote_attribute_list/3` before embedding.

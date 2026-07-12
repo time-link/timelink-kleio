@@ -1,0 +1,1 @@
+SWI-Prolog core that wires Kleio's structure/schema, lexical/parser, persistence, and server/CLI entrypoints into a single process via a shared global state.

@@ -1,0 +1,4 @@
+- Server configuration values are read through a uniform `default_value(Key,Default)` predicate that first checks the corresponding `KLEIO_*` environment variable and falls back to a hard-coded default.
+- HTTP handlers are registered declaratively at load time with `:- http_handler(root(...), Handler, Options).` directives rather than being mounted imperatively at runtime.
+- Request handling follows a decode → execute → return pattern: a `process_*_request` predicate parses the wire format, calls a dynamic dispatcher (`rest_exec` / `json_exec`) that constructs a goal via `..`, and finally delegates output to `return_sucess/5` which looks up a `Method_results` predicate.
+- Authorization is extracted uniformly from either the `Authorization: Bearer` header or a `token=` search parameter, decoded via `tokens:decode_token/3`, and attached as `token_info` in the params list passed to handlers.

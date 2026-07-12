@@ -1,0 +1,1 @@
+SWI-Prolog with `library(http/*)` (threaded HTTP server, JSON, multipart, CORS), `library(prolog_server)`, `library(pprint)`, and `library(test_wizard)` for unit testing; JSON/YAML serialization via `library(http/json)` and `library(yaml)`.

@@ -1,0 +1,5 @@
+- Schema entries use a `source:` field to express specialization/inheritance (e.g. `historical-source` extends `entity`, `rperson` extends `rentity`), rather than duplication.
+- Each YAML fragment begins with a `- file:` header naming itself and documenting its role, then uses `- include:` to compose larger structures from smaller pieces.
+- Prolog command processing follows a fixed lifecycle: `init_command(C)` sets defaults, `execParam(C,P,V)` accumulates parameters as properties on atom `C`, and `close_command(C,S)` runs `check_complete` before persisting via `dataDictionary`.
+- Parameter validation is dual-declared: `params(Command,[...])` lists allowed names for the DCG, while `requiredParams(Command,List)` enumerates mandatory ones for completeness checks.
+- Unknown or missing parameters are rejected through a catch-all clause guarded by `\+ member_check(...)` that emits an error via `error_out/2` instead of silently ignoring them.

@@ -1,0 +1,1 @@
+Defines Kleio schema elements and groups (YAML + legacy .str) and parses structure files into an internal dictionary via a Prolog DCG grammar.

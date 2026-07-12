@@ -1,0 +1,1 @@
+Defines the Kleio data notation grammar (EBNF + Python SAX parser) and the core schema of elements, groups, and source structures used to model historical records.

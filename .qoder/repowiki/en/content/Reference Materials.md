@@ -2,18 +2,20 @@
 
 <cite>
 **Referenced Files in This Document**
-- [kleioExport.xsd](file://src/kleioExport.xsd)
-- [yamlSupport.pl](file://src/yamlSupport.pl)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl)
-- [dataDictionary.pl](file://src/dataDictionary.pl)
+- [README.md](file://README.md)
+- [.env-sample](file://.env-sample)
+- [serverStart.pl](file://src/serverStart.pl)
+- [restServer.pl](file://src/restServer.pl)
+- [apiTranslations.pl](file://src/apiTranslations.pl)
+- [kleioFiles.pl](file://src/kleioFiles.pl)
+- [linkedData.pl](file://src/linkedData.pl)
 - [errors.pl](file://src/errors.pl)
-- [stru/system.yaml](file://src/stru/system.yaml)
-- [stru/groups.yaml](file://src/stru/groups.yaml)
-- [stru/elements.yaml](file://src/stru/elements.yaml)
-- [stru/sources-structure.yaml](file://src/stru/sources-structure.yaml)
-- [struCode.pl](file://src/struCode.pl)
-- [struSyntax.pl](file://src/struSyntax.pl)
-- [tests/kleio-home/structures/sample-str.yaml](file://tests/kleio-home/structures/sample-str.yaml)
+- [kleioExport.xsd](file://src/kleioExport.xsd)
+- [translation_results.md](file://docs/doc/translation_results.md)
+- [stru_file_location.md](file://docs/doc/stru_file_location.md)
+- [linked_data.md](file://docs/doc/linked_data.md)
+- [README_KLEIO_NOTATION.md](file://README_KLEIO_NOTATION.md)
+- [api.json](file://api/postman/api.json)
 </cite>
 
 ## Table of Contents
@@ -29,491 +31,414 @@
 10. [Appendices](#appendices)
 
 ## Introduction
-This document provides comprehensive reference materials for the Timelink Kleio system. It focuses on:
-- XSD schema for Kleio export formats, including data types, validation rules, and structure definitions
-- YAML configuration format for structure definitions, including supported options, syntax rules, and validation requirements
-- JSON utilities and data conversion processes for different output formats
-- Data dictionary definitions, field descriptions, and data type specifications
-- Error codes, warning messages, and diagnostic information with explanations and resolution steps
-- Migration guidance for version upgrades, breaking changes, and deprecated features
-- Glossary of specialized terminology
-- Configuration file formats, environment variable specifications, and system property definitions
-- Data format specifications, encoding requirements, and internationalization considerations
-- Quick reference guides for common operations, frequently used commands, and standard configurations
+This document provides comprehensive reference materials for the Kleio translation system, including configuration options, environment variables, command-line parameters, API response schemas, error message catalog, file format specifications, glossary, technical specifications for Kleio notation, XSD schema for export formats, linked data integration patterns, location handling, translation result formats, troubleshooting guides, performance considerations, and compatibility notes.
+
+The Kleio server exposes REST and JSON-RPC endpoints to translate Kleio source files (.cli/.kleio), manage sources and structures, handle tokens and users, and produce normalized XML output conforming to an XSD schema. It also supports linked data annotations to connect values to external identifiers (e.g., Wikidata).
 
 ## Project Structure
-The repository organizes Kleio-related artifacts into modules and structure definitions:
-- XSD schema for export validation
-- YAML-based structure definitions for groups and elements
-- Prolog modules for YAML processing, JSON utilities, data dictionary, and error reporting
-- Sample structure files demonstrating typical usage
+At a high level:
+- Server entry points and runtime configuration are implemented in Prolog modules under src/.
+- Documentation is provided under docs/doc/.
+- Postman API collection and tests are under api/postman/.
+- XSD schema for exported XML is at src/kleioExport.xsd.
+- Notation specification is at README_KLEIO_NOTATION.md.
 
 ```mermaid
 graph TB
-subgraph "Schema and Export"
-XSD["kleioExport.xsd"]
-end
-subgraph "YAML Structure Definitions"
-SYS["stru/system.yaml"]
-GRP["stru/groups.yaml"]
-ELM["stru/elements.yaml"]
-SRC["stru/sources-structure.yaml"]
-SAMPLE["tests/kleio-home/structures/sample-str.yaml"]
-end
-subgraph "Processing Modules"
-YAM["yamlSupport.pl"]
-STRUCODE["struCode.pl"]
-STRUSYNTAX["struSyntax.pl"]
-DDICT["dataDictionary.pl"]
-ERR["errors.pl"]
-JUTIL["jsonUtilities.pl"]
-end
-SYS --> GRP
-SYS --> ELM
-GRP --> STRUCODE
-ELM --> STRUCODE
-SRC --> STRUCODE
-SAMPLE --> STRUCODE
-STRUCODE --> STRUSYNTAX
-STRUCODE --> DDICT
-YAM --> STRUCODE
-YAM --> STRUSYNTAX
-DDICT --> JUTIL
-DDICT --> ERR
+Client["Client"] --> REST["REST Server<br/>/rest/*"]
+Client --> JSONRPC["JSON-RPC Server<br/>/json/*"]
+REST --> Dispatch["Request Dispatcher<br/>rest_exec/3"]
+JSONRPC --> JDispatch["JSON-RPC Dispatcher<br/>json_exec/4"]
+Dispatch --> TransAPI["translations API<br/>apiTranslations.pl"]
+JDispatch --> TransAPI
+TransAPI --> Files["File Utilities<br/>kleioFiles.pl"]
+TransAPI --> Errors["Error Handling<br/>errors.pl"]
+TransAPI --> Linked["Linked Data<br/>linkedData.pl"]
+TransAPI --> Export["Export Schema<br/>kleioExport.xsd"]
 ```
 
 **Diagram sources**
-- [kleioExport.xsd](file://src/kleioExport.xsd#L1-L78)
-- [stru/system.yaml](file://src/stru/system.yaml#L1-L4)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
-- [stru/sources-structure.yaml](file://src/stru/sources-structure.yaml#L1-L800)
-- [tests/kleio-home/structures/sample-str.yaml](file://tests/kleio-home/structures/sample-str.yaml#L1-L25)
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [errors.pl](file://src/errors.pl#L1-L220)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
+- [restServer.pl:300-360](file://src/restServer.pl#L300-L360)
+- [apiTranslations.pl:35-84](file://src/apiTranslations.pl#L35-L84)
+- [kleioFiles.pl:53-113](file://src/kleioFiles.pl#L53-L113)
+- [errors.pl:77-113](file://src/errors.pl#L77-L113)
+- [linkedData.pl:51-108](file://src/linkedData.pl#L51-L108)
+- [kleioExport.xsd:1-78](file://src/kleioExport.xsd#L1-L78)
 
 **Section sources**
-- [kleioExport.xsd](file://src/kleioExport.xsd#L1-L78)
-- [stru/system.yaml](file://src/stru/system.yaml#L1-L4)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
-- [stru/sources-structure.yaml](file://src/stru/sources-structure.yaml#L1-L800)
-- [tests/kleio-home/structures/sample-str.yaml](file://tests/kleio-home/structures/sample-str.yaml#L1-L25)
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [errors.pl](file://src/errors.pl#L1-L220)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
+- [README.md:50-66](file://README.md#L50-L66)
+- [serverStart.pl:13-26](file://src/serverStart.pl#L13-L26)
+- [restServer.pl:107-128](file://src/restServer.pl#L107-L128)
 
 ## Core Components
-This section documents the primary building blocks used by Kleio for structure definition, processing, and export.
-
-- XSD Schema for Export
-  - Defines the XML structure for Kleio exports, including CLASS and GROUP elements, attributes, and validation constraints.
-  - Provides a formal contract for export formats ensuring consistent serialization.
-
-- YAML Structure Definitions
-  - Groups and elements are defined via YAML files with hierarchical composition and inheritance.
-  - Supports include directives, file metadata, and structured parameterization.
-
-- YAML Processing Module
-  - Reads and validates YAML structure files, processes commands, and manages includes and file contexts.
-  - Sanitizes values and enforces command correctness.
-
-- Structure Code and Syntax
-  - Implements command parsing, parameter validation, and execution hooks for structure definitions.
-  - Bridges YAML processing to internal data dictionary structures.
-
-- Data Dictionary
-  - Stores and manipulates structure definitions, groups, and elements.
-  - Provides utilities for hierarchy traversal, containment checks, and JSON/YAML generation.
-
-- JSON Utilities
-  - Converts Prolog terms to JSON-compatible dictionaries and writes JSON output.
-  - Includes deprecated conversion helpers retained for compatibility.
-
-- Error Reporting
-  - Centralized error and warning reporting with counts, context-aware messages, and optional termination thresholds.
+- Server startup and configuration:
+  - Entry points for debug and production servers, environment defaults, worker pool setup, CORS, token database initialization, and config persistence.
+- REST and JSON-RPC dispatchers:
+  - Route /rest/* and /json/* requests, decode commands, enforce authorization via tokens, parse multipart uploads, and call domain handlers.
+- Translation API:
+  - Start translations, list translation status, delete results; resolve structure files per source; spawn parallel workers; return relative paths safely.
+- File utilities:
+  - Compute related file sets (.xml, .rpt, .err, .org, .old, .ids, .files.json), determine translation status, clean/delete artifacts.
+- Linked data:
+  - Declare link$ patterns and annotate values with @short-name:id to generate attributes with resolved URIs.
+- Error reporting:
+  - Centralized error/warning output with context (file, line numbers, surrounding lines), counters, and max-error abort behavior.
+- Export schema:
+  - XSD defining the exported XML structure for classes, groups, elements, and attributes.
 
 **Section sources**
-- [kleioExport.xsd](file://src/kleioExport.xsd#L1-L78)
-- [stru/system.yaml](file://src/stru/system.yaml#L1-L4)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
-- [errors.pl](file://src/errors.pl#L1-L220)
+- [serverStart.pl:13-26](file://src/serverStart.pl#L13-L26)
+- [restServer.pl:175-185](file://src/restServer.pl#L175-L185)
+- [restServer.pl:330-349](file://src/restServer.pl#L330-L349)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [restServer.pl:656-743](file://src/restServer.pl#L656-L743)
+- [apiTranslations.pl:35-84](file://src/apiTranslations.pl#L35-L84)
+- [apiTranslations.pl:87-124](file://src/apiTranslations.pl#L87-L124)
+- [kleioFiles.pl:53-113](file://src/kleioFiles.pl#L53-L113)
+- [kleioFiles.pl:167-200](file://src/kleioFiles.pl#L167-L200)
+- [linkedData.pl:51-108](file://src/linkedData.pl#L51-L108)
+- [errors.pl:77-113](file://src/errors.pl#L77-L113)
+- [kleioExport.xsd:1-78](file://src/kleioExport.xsd#L1-L78)
 
 ## Architecture Overview
-The architecture integrates YAML-based structure definitions with Prolog modules that parse, validate, and transform them into internal data structures. Export and JSON utilities consume these structures for downstream processing.
+The server runs on SWI-Prolog with HTTP/JSON support. Clients interact via REST or JSON-RPC. The dispatcher validates tokens, decodes requests, and delegates to module-specific handlers. Translation jobs may be spawned across workers. Results include XML conforming to kleioExport.xsd and auxiliary reports.
 
 ```mermaid
 sequenceDiagram
-participant YAML as "YAML File"
-participant YAM as "yamlSupport.pl"
-participant SYNTAX as "struSyntax.pl"
-participant CODE as "struCode.pl"
-participant DD as "dataDictionary.pl"
-participant JU as "jsonUtilities.pl"
-YAML->>YAM : "read_yaml_str/2"
-YAM->>SYNTAX : "compile_command/2"
-SYNTAX->>CODE : "init_command/1"
-SYNTAX->>CODE : "execParam/3"
-SYNTAX->>CODE : "close_command/2"
-CODE->>DD : "create_stru/1"
-DD-->>JU : "make_json_yaml_*"
-JU-->>YAM : "dict_json_string/2"
+participant C as "Client"
+participant R as "REST Server"
+participant D as "Dispatcher"
+participant T as "translations API"
+participant F as "File Utils"
+participant L as "Linked Data"
+participant E as "Errors"
+C->>R : POST /rest/translations/<path>?token=...&spawn=yes
+R->>D : process_rest(Request)
+D->>T : translations(post, Path, Mode, Id, Params)
+T->>F : kleio_resolve_source_file(Path, AbsPath, TokenInfo)
+T->>T : get_strus(AbsFiles, Params, Id, StruFiles)
+alt spawn=yes
+T->>T : spawn_work(Spawn, AbsFiles, StruFiles, Echo, Jobs)
+else spawn=no
+T->>T : single-worker translation
+end
+T->>L : detect_xlink/generate_xlink (if annotations present)
+T-->>D : Results (relative paths, statuses)
+D-->>C : JSON/REST response
+Note over T,E : Errors/warnings tracked and reported
 ```
 
 **Diagram sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L46-L96)
-- [struSyntax.pl](file://src/struSyntax.pl#L48-L101)
-- [struCode.pl](file://src/struCode.pl#L91-L118)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L117-L125)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L11-L13)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [apiTranslations.pl:53-84](file://src/apiTranslations.pl#L53-L84)
+- [kleioFiles.pl:53-113](file://src/kleioFiles.pl#L53-L113)
+- [linkedData.pl:92-108](file://src/linkedData.pl#L92-L108)
+- [errors.pl:77-113](file://src/errors.pl#L77-L113)
 
 ## Detailed Component Analysis
 
-### XSD Schema for Kleio Export Formats
-The XSD defines the XML envelope for Kleio exports, including:
-- Root element KLEIO with attributes for structure metadata
-- CLASS elements for typed definitions with ATTRIBUTE children
-- GROUP elements with ELEMENT and ATTRIBUTE children
-- Validation constraints on attribute types and presence
+### Configuration and Environment Variables
+Key environment variables (defaults shown where applicable):
+- KLEIO_HOME_DIR: Root working directory (default varies by detection logic).
+- KLEIO_SOURCE_DIR: Base directory for Kleio sources (default KLEIO_HOME/sources).
+- KLEIO_CONF_DIR: Configuration directory (default KLEIO_HOME/system/conf/kleio).
+- KLEIO_STRU_DIR: Global structure files directory (default KLEIO_CONF_DIR/stru).
+- KLEIO_TOKEN_DB: Token database path (default KLEIO_CONF_DIR/token_db).
+- KLEIO_DEFAULT_STRU: Default structure file (default KLEIO_CONF_DIR/stru/gacto2.str).
+- KLEIO_SERVER_PORT: REST server port (default 8088).
+- KLEIO_DEBUGGER_PORT: Debug server port (default 4000).
+- KLEIO_SERVER_WORKERS: Number of worker threads (default 3).
+- KLEIO_IDLE_TIMEOUT: Connection timeout seconds (default 900).
+- KLEIO_ADMIN_TOKEN: Admin token string (optional).
+- KLEIO_CORS_SITES: Allowed CORS sites (default "*").
+- KLEIO_DEBUG: Enable debug logging (default false).
 
-Key characteristics:
-- Root attributes: STRUCTURE, SOURCE, TRANSLATOR, WHEN, OBS, SPACE
-- CLASS attributes: NAME, SUPER, TABLE, GROUP
-- GROUP attributes: ID, NAME, CLASS, ORDER, LEVEL, LINE, SUPER, TABLE, GROUP
-- ATTRIBUTE children support NAME, COLUMN, CLASS, TYPE, SIZE, PRECISION, PKEY
-
-Validation rules:
-- Choice of CLASS or GROUP at the root level
-- Optional sequences of ATTRIBUTE within CLASS and GROUP
-- SimpleContent extension for ATTRIBUTE values with string base type and typed attributes
-
-```mermaid
-classDiagram
-class KLEIORoot {
-+string STRUCTURE
-+string SOURCE
-+string TRANSLATOR
-+string WHEN
-+string OBS
-+string SPACE
-}
-class CLASS {
-+string NAME
-+string SUPER
-+string TABLE
-+string GROUP
-}
-class GROUP {
-+string ID
-+string NAME
-+string CLASS
-+byte ORDER
-+byte LEVEL
-+byte LINE
-+string SUPER
-+string TABLE
-+string GROUP
-}
-class ATTRIBUTE {
-+string NAME
-+string COLUMN
-+string CLASS
-+string TYPE
-+short SIZE
-+byte PRECISION
-+byte PKEY
-}
-KLEIORoot --> CLASS : "contains"
-KLEIORoot --> GROUP : "contains"
-CLASS --> ATTRIBUTE : "has many"
-GROUP --> ATTRIBUTE : "has many"
-```
-
-**Diagram sources**
-- [kleioExport.xsd](file://src/kleioExport.xsd#L1-L78)
+These are read by default_value predicates and used during server startup and request processing.
 
 **Section sources**
-- [kleioExport.xsd](file://src/kleioExport.xsd#L1-L78)
+- [.env-sample:1-119](file://.env-sample#L1-L119)
+- [restServer.pl:175-185](file://src/restServer.pl#L175-L185)
+- [restServer.pl:107-128](file://src/restServer.pl#L107-L128)
 
-### YAML Configuration Format
-The YAML configuration format defines groups and elements with structured parameters and supports includes and file metadata.
-
-Supported constructs:
-- file: metadata block with name and description
-- include: references to other YAML files
-- group: group definitions with:
-  - name, description, idprefix, position, guaranteed, also, arbitrary, part, source
-- element: element definitions with:
-  - name, description, type, identification, source
-
-Processing pipeline:
-- yamlSupport.pl reads YAML files, tracks include stacks, sanitizes values, and dispatches commands to struCode.pl
-- struSyntax.pl compiles commands and validates parameters against predefined grammars
-- struCode.pl executes command handlers, sets defaults, and persists structure definitions
-- dataDictionary.pl maintains internal structures and provides hierarchy utilities
-
-```mermaid
-flowchart TD
-Start(["YAML File"]) --> Read["read_yaml_str/2"]
-Read --> Inspect["inspect_yaml_str/1"]
-Inspect --> Cmd["process_str_command/2"]
-Cmd --> Init["init_command/1"]
-Cmd --> Exec["execParam/3"]
-Exec --> Close["close_command/2"]
-Close --> Persist["create_stru/1"]
-Persist --> Done(["Structure Ready"])
-```
-
-**Diagram sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L46-L96)
-- [struSyntax.pl](file://src/struSyntax.pl#L48-L101)
-- [struCode.pl](file://src/struCode.pl#L91-L118)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L117-L125)
+### Command-Line Parameters and Startup Modes
+- run_debug_server: Starts both debug and REST servers; prints configuration.
+- run_server: Starts REST server only.
+- run_from_mhk_home(MH, P): Starts server using MHK home layout and optional port.
+- setup_and_run_server(RunCommand, Setup): Applies env/home/source/conf/strus/tokens/dstru/port/workers before running a server predicate.
+- stop_server/stop_debug_server: Stops running servers.
 
 **Section sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [stru/system.yaml](file://src/stru/system.yaml#L1-L4)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
-- [tests/kleio-home/structures/sample-str.yaml](file://tests/kleio-home/structures/sample-str.yaml#L1-L25)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
+- [serverStart.pl:13-26](file://src/serverStart.pl#L13-L26)
+- [serverStart.pl:41-48](file://src/serverStart.pl#L41-L48)
+- [serverStart.pl:145-188](file://src/serverStart.pl#L145-L188)
+- [serverStart.pl:189-201](file://src/serverStart.pl#L189-L201)
 
-### JSON Utilities and Data Conversion
-JSON utilities provide conversion and serialization capabilities:
-- dict_json_string/2 converts a dictionary to a JSON string
-- prolog_to_json/2 offers a deprecated conversion path for Prolog lists and terms
-- Integration with SWI-Prolog JSON library for writing JSON output
+### REST API Endpoints
+Base path: /rest/
+Authentication: Authorization header Bearer <token> or parameter token in JSON-RPC.
 
-Typical usage:
-- Convert internal structures to JSON dictionaries
-- Serialize dictionaries to strings for export or API responses
+Common entities and operations:
+- translations
+  - POST translations/<path>: Start translation(s). Options include structure, echo, recurse, spawn, status.
+  - GET translations/<path>: List translation status for files/directories.
+  - DELETE translations/<path>: Delete translation results.
+- sources, structures, files, upload, delete, mkdir, rmdir, kleioset, tokens, users (via JSON-RPC primarily).
 
-```mermaid
-sequenceDiagram
-participant DD as "dataDictionary.pl"
-participant JU as "jsonUtilities.pl"
-participant Out as "Output Stream"
-DD->>JU : "make_json_yaml_*"
-JU->>JU : "dict_json_string/2"
-JU->>Out : "json_write/2"
-Out-->>DD : "JSON string"
-```
+Notes:
+- Multipart POST supported for uploads.
+- JSON output requested via Accept: application/json or json=true.
 
-**Diagram sources**
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L11-L13)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L34-L36)
+For full endpoint definitions and examples, see the Postman collection.
 
 **Section sources**
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L34-L36)
+- [restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [restServer.pl:547-579](file://src/restServer.pl#L547-L579)
+- [api.json:1-200](file://api/postman/api.json#L1-L200)
 
-### Data Dictionary Definitions and Field Specifications
-The data dictionary manages structure definitions and exposes utilities for hierarchy and JSON/YAML generation:
-- create_stru/1, clean_stru/1, clioStru/1, clioGroup/2, clioElement/2
-- contained_by/2, subgroups/2, element_of/2, group_elements/2
-- set_group_prop/3, set_element_prop/3, get_group_prop/3, get_element_prop/3
-- make_json_yaml_str/3, make_json_yaml_hierarchy/3, make_json_yaml_hierarchy/4
+### JSON-RPC API
+Base path: /json/
+Protocol: JSON-RPC 2.0
+Methods include:
+- generate_token(params: {user, info, token})
+- invalidate_token(params: {token})
+- invalidate_user(params: {user, token})
+- translations_translate(params: {path, ...})
+- translations_get(params: {path, ...})
+- translations_delete(params: {path, ...})
+- Other methods for sources, structures, files, etc.
 
-Field descriptions and data types:
-- Elements commonly include identifiers (id), textual fields (name, description, obs), categorical fields (type, class), temporal fields (day, month, year, date), locational fields (loc), reference fields (ref, page, pages), and linkage fields (same_as, xsame_as, entity, origin, destination, destname)
-- Groups define containment and positioning rules, inheritance via source, and identification prefixes
-
-```mermaid
-classDiagram
-class Group {
-+string name
-+string description
-+string idprefix
-+list position
-+list guaranteed
-+list also
-+list arbitrary
-+list part
-+string source
-}
-class Element {
-+string name
-+string description
-+string type
-+boolean identification
-+string source
-}
-class DataDictionary {
-+create_stru/1
-+clean_stru/1
-+clioGroup/2
-+clioElement/2
-+make_json_yaml_str/3
-+make_json_yaml_hierarchy/3
-}
-DataDictionary --> Group : "manages"
-DataDictionary --> Element : "manages"
-```
-
-**Diagram sources**
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
+Responses follow JSON-RPC 2.0 with id, method, params, result fields.
 
 **Section sources**
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
+- [restServer.pl:656-743](file://src/restServer.pl#L656-L743)
+- [api.json:1-200](file://api/postman/api.json#L1-L200)
 
-### Error Codes, Warning Messages, and Diagnostics
-Error reporting provides:
-- error_out/1, error_out/2 for fatal errors
-- warning_out/1, warning_out/2 for warnings
-- error_count/1, warning_count/1 for totals
-- check_continuation/0 to enforce maximum error thresholds
-- Context-aware messages with file, line number, and surrounding text
-
-Diagnostic information:
-- Messages include file context, command context, and line-level details
-- Counts are maintained and printed via perror_count/0
-
-**Section sources**
-- [errors.pl](file://src/errors.pl#L1-L220)
-
-### Migration and Version Upgrade Guidance
-- YAML structure files support include directives and layered composition; ensure include paths resolve correctly across environments
-- Structure definitions rely on group and element inheritance via source; verify inherited properties remain compatible
-- JSON utilities include deprecated conversion helpers; prefer dictionary-based conversions using dict_json_string/2
-- Error thresholds and reporting can be tuned via max_errors and related controls
-
-[No sources needed since this section provides general guidance]
-
-### Glossary
-- CLASS: Typed definition container in the export XSD
-- GROUP: Logical grouping of elements with containment rules
-- ELEMENT: Atomic data field with type and semantics
-- IDENTIFICATION: Flag indicating an element serves as an identifier
-- POSITION: Ordered list of elements for positional parsing
-- GUARANTEED: Required elements for a group
-- ALSO: Optional elements for a group
-- ARBITRARY: Additional elements allowed in a group
-- SOURCE: Inheritance relationship for groups and elements
-- INCLUDE: Directive to incorporate external YAML files
-- FILE: Metadata block for YAML structure files
-
-[No sources needed since this section provides general definitions]
-
-### Configuration File Formats and System Properties
-- YAML structure files:
-  - file: name, description
-  - include: path to other YAML files
-  - group: name, description, idprefix, position, guaranteed, also, arbitrary, part, source
-  - element: name, description, type, identification, source
-- System-level properties:
-  - Structure name and metadata are stored as properties during processing
-  - Error and warning counts are tracked and can influence continuation behavior
+### Translation API Details
+- POST translations/<path>
+  - Options:
+    - structure: explicit stru file path
+    - echo: yes/no to include source lines in rpt
+    - recurse: descend into subdirectories
+    - status: filter by translation status
+    - spawn: distribute work across workers
+  - Behavior:
+    - Resolves absolute paths based on token permissions.
+    - Determines appropriate structure file(s) per source.
+    - Optionally spawns parallel workers.
+    - Returns relative paths for safety.
+- GET translations/<path>
+  - Lists translation status with caching for large sets.
+- DELETE translations/<path>
+  - Cleans translation artifacts.
 
 **Section sources**
-- [stru/system.yaml](file://src/stru/system.yaml#L1-L4)
-- [stru/groups.yaml](file://src/stru/groups.yaml#L1-L259)
-- [stru/elements.yaml](file://src/stru/elements.yaml#L1-L221)
-- [yamlSupport.pl](file://src/yamlSupport.pl#L28-L43)
-- [errors.pl](file://src/errors.pl#L62-L198)
+- [apiTranslations.pl:35-84](file://src/apiTranslations.pl#L35-L84)
+- [apiTranslations.pl:87-124](file://src/apiTranslations.pl#L87-L124)
+- [apiTranslations.pl:125-140](file://src/apiTranslations.pl#L125-L140)
 
-### Data Format Specifications, Encoding, and Internationalization
-- Date formats: YYYYMMDD or YYYY-MM-DD; ranges and relative dates supported
-- String sizes: string64 and string256 for identifiers and names
-- Text fields: text for longer descriptions
-- Encoding: YAML and JSON are UTF-8 compatible; ensure source files are saved accordingly
+### File Formats and Artifacts
+After translating a Kleio file, the following artifacts may be produced alongside the original:
+- .xml: Normalized person-oriented data for import.
+- .rpt: Human-readable translation report.
+- .err: Summary counts of errors and warnings.
+- .org: Original source snapshot before first translation.
+- .old: Previous version if ids regeneration failed.
+- .ids: Intermediate file with explicit ids.
+- .files.json: Manifest of files involved and counts.
 
-**Section sources**
-- [stru/elements.yaml](file://src/stru/elements.yaml#L69-L77)
-
-### Quick Reference Guides
-- Common YAML commands:
-  - file: define metadata
-  - include: import other YAML files
-  - group: define groups with parameters
-  - element: define elements with parameters
-- Common Prolog predicates:
-  - stru_yaml/1: load a YAML structure file
-  - dict_json_string/2: serialize dictionary to JSON string
-  - create_stru/1: finalize structure definition
-  - error_out/1, warning_out/1: emit diagnostics
+Status determination considers timestamps and presence of artifacts.
 
 **Section sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L28-L43)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L11-L13)
-- [struCode.pl](file://src/struCode.pl#L105-L118)
-- [errors.pl](file://src/errors.pl#L85-L113)
+- [translation_results.md:1-81](file://docs/doc/translation_results.md#L1-L81)
+- [kleioFiles.pl:53-113](file://src/kleioFiles.pl#L53-L113)
+- [kleioFiles.pl:167-200](file://src/kleioFiles.pl#L167-L200)
+
+### Linked Data Integration Patterns
+- Declaration:
+  - In kleio$ group, define link$short-name/"url-pattern" with $1 placeholder.
+- Annotation:
+  - Use # @short-name:id in element comments to link values.
+- Output:
+  - Generates additional attribute with resolved URI and observation text.
+
+**Section sources**
+- [linked_data.md:1-55](file://docs/doc/linked_data.md#L1-L55)
+- [linkedData.pl:51-108](file://src/linkedData.pl#L51-L108)
+
+### Location Handling for Structure Files
+Structure files can be located near sources to support multiple schemas:
+- For sources/SUBPATH/FILENAME.cli, default stru resolution order includes:
+  - structures/SUBPATH/FILENAME.str
+  - structures/SUBPATH2/gacto2.str (parent directories)
+  - structures/DIRNAME.str
+  - structures/gacto2.str (or sources.str)
+
+**Section sources**
+- [stru_file_location.md:1-34](file://docs/doc/stru_file_location.md#L1-L34)
+
+### Kleio Notation Technical Specification
+- Groups represent entities; Elements represent attributes; Aspects include core, original, comment.
+- Special characters: $, =, /, %, #, |, ;, ", """.
+- Group and element names start with a letter and allow digits, hyphens, underscores.
+- Whitespace collapsed except within quoted strings.
+- Schema files define allowed groups, hierarchy, elements, and positional named elements.
+
+**Section sources**
+- [README_KLEIO_NOTATION.md:1-125](file://README_KLEIO_NOTATION.md#L1-L125)
+
+### API Response Schemas
+- JSON-RPC responses:
+  - Standard fields: jsonrpc, id, result or error.
+  - Methods return structured results depending on operation (e.g., lists of file sets, statuses).
+- REST responses:
+  - Content-Type application/json when requested; otherwise HTML/text.
+  - Errors returned as HTTP replies with context.
+
+For concrete examples and payloads, refer to the Postman collection.
+
+**Section sources**
+- [api.json:1-200](file://api/postman/api.json#L1-L200)
+- [restServer.pl:518-543](file://src/restServer.pl#L518-L543)
+
+### Error Message Catalog
+- Errors and warnings are emitted with context:
+  - Source file, line number, current and previous lines.
+- Counters track total errors and warnings; translation aborts after max_errors (default 100).
+- Common categories:
+  - Parse errors, missing tokens, forbidden access, invalid parameters, maximum errors reached.
+
+**Section sources**
+- [errors.pl:77-113](file://src/errors.pl#L77-L113)
+- [errors.pl:181-199](file://src/errors.pl#L181-L199)
+
+### XSD Schema for Exported XML
+The exported XML conforms to kleioExport.xsd, defining:
+- Root element KLEIO with attributes (STRUCTURE, SOURCE, TRANSLATOR, WHEN, OBS, SPACE).
+- CLASS elements with ATTRIBUTE children and attributes (NAME, COLUMN, CLASS, TYPE, SIZE, PRECISION, PKEY).
+- GROUP elements with ELEMENT and ATTRIBUTE children and attributes (ID, NAME, CLASS, ORDER, LEVEL, LINE, SUPER, TABLE, GROUP).
+
+**Section sources**
+- [kleioExport.xsd:1-78](file://src/kleioExport.xsd#L1-L78)
 
 ## Dependency Analysis
-This section maps dependencies among core modules and their roles in the processing pipeline.
+High-level dependencies among key modules:
+- restServer.pl depends on threadSupport, reports, kleioFiles, utilities, persistence, logging, topLevel, tokens, errors, counters, apiCommon.
+- apiTranslations.pl depends on apiSources, restServer, logging, kleioFiles, tokens, threadSupport, reports, utilities, persistence, topLevel, errors, counters.
+- kleioFiles.pl depends on shellUtil, persistence, utilities, logging.
+- linkedData.pl depends on library(pcre), errors.
+- errors.pl depends on utilities, counters, persistence, reports.
 
 ```mermaid
-graph TB
-YAM["yamlSupport.pl"] --> SYNTAX["struSyntax.pl"]
-SYNTAX --> CODE["struCode.pl"]
-CODE --> DD["dataDictionary.pl"]
-DD --> JU["jsonUtilities.pl"]
-DD --> ERR["errors.pl"]
+graph LR
+RS["restServer.pl"] --> TS["threadSupport.pl"]
+RS --> REP["reports.pl"]
+RS --> KF["kleioFiles.pl"]
+RS --> UT["utilities.pl"]
+RS --> PER["persistence.pl"]
+RS --> LOG["logging.pl"]
+RS --> TL["topLevel.pl"]
+RS --> TOK["tokens.pl"]
+RS --> ERR["errors.pl"]
+RS --> CNT["counters.pl"]
+AT["apiTranslations.pl"] --> AS["apiSources.pl"]
+AT --> RS
+AT --> KF
+AT --> TOK
+AT --> TS
+AT --> REP
+AT --> UT
+AT --> PER
+AT --> TL
+AT --> ERR
+AT --> CNT
+KF --> SU["shellUtil.pl"]
+KF --> PER
+KF --> UT
+KF --> LOG
+LD["linkedData.pl"] --> PCRE["library(pcre)"]
+LD --> ERR
+ERR --> UT
+ERR --> CNT
+ERR --> PER
+ERR --> REP
 ```
 
 **Diagram sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
-- [errors.pl](file://src/errors.pl#L1-L220)
+- [restServer.pl:151-163](file://src/restServer.pl#L151-L163)
+- [apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [kleioFiles.pl:35-39](file://src/kleioFiles.pl#L35-L39)
+- [linkedData.pl:42-45](file://src/linkedData.pl#L42-L45)
+- [errors.pl:57-60](file://src/errors.pl#L57-L60)
 
 **Section sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L1-L273)
-- [struSyntax.pl](file://src/struSyntax.pl#L1-L200)
-- [struCode.pl](file://src/struCode.pl#L1-L200)
-- [dataDictionary.pl](file://src/dataDictionary.pl#L1-L800)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L1-L89)
-- [errors.pl](file://src/errors.pl#L1-L220)
+- [restServer.pl:151-163](file://src/restServer.pl#L151-L163)
+- [apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [kleioFiles.pl:35-39](file://src/kleioFiles.pl#L35-L39)
+- [linkedData.pl:42-45](file://src/linkedData.pl#L42-L45)
+- [errors.pl:57-60](file://src/errors.pl#L57-L60)
 
 ## Performance Considerations
-- YAML processing includes stack-based include handling; avoid deeply nested includes to prevent excessive recursion
-- Structure validation and caching of containment relations reduce repeated computation
-- JSON serialization leverages optimized SWI-Prolog JSON library for efficient output
+- Worker threads:
+  - Controlled by KLEIO_SERVER_WORKERS; higher values increase concurrency but require sufficient resources.
+- Idle timeout:
+  - KLEIO_IDLE_TIMEOUT controls connection keep-alive; increase for large XML downloads.
+- Spawn mode:
+  - spawn=yes distributes translation jobs across workers; use spawn=no in multi-user environments to share workers more evenly.
+- Status caching:
+  - translations_get caches status results for large sets with configurable max ages to reduce overhead.
+- Logging:
+  - KLEIO_DEBUG enables detailed logs; disable in production for performance.
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
-Common issues and resolutions:
-- Unknown or misspelled YAML commands: Verify command names and parameters; check spelling and capitalization
-- Missing required elements in groups: Ensure guaranteed elements are present according to group definitions
-- Duplicate group or element definitions: Merge properties or adjust definitions to avoid conflicts
-- Exceeded maximum errors: Review error counts and fix underlying issues; adjust max_errors if necessary
-- JSON serialization failures: Ensure dictionaries are properly formed; use dict_json_string/2 for reliable serialization
+- Authentication issues:
+  - Ensure Authorization header contains Bearer token or pass token in JSON-RPC params.
+  - Check token permissions for requested API methods.
+- Forbidden access:
+  - Verify token has required API permissions (e.g., translations, upload, delete).
+- Token database:
+  - On startup, server initializes token DB; bootstrap token may be generated if no tokens exist and admin token not set.
+- Translation failures:
+  - Inspect .rpt and .err files; check .files.json for summary.
+  - Validate structure file selection and syntax.
+- Linked data warnings:
+  - If link$ definition missing, warnings indicate unresolved short-name.
+- Max errors:
+  - Translation aborts after reaching max_errors; fix top errors first.
 
 **Section sources**
-- [yamlSupport.pl](file://src/yamlSupport.pl#L149-L154)
-- [errors.pl](file://src/errors.pl#L186-L198)
-- [jsonUtilities.pl](file://src/jsonUtilities.pl#L11-L13)
+- [restServer.pl:389-422](file://src/restServer.pl#L389-L422)
+- [apiTranslations.pl:53-84](file://src/apiTranslations.pl#L53-L84)
+- [translation_results.md:1-81](file://docs/doc/translation_results.md#L1-L81)
+- [linkedData.pl:92-108](file://src/linkedData.pl#L92-L108)
+- [errors.pl:181-199](file://src/errors.pl#L181-L199)
 
 ## Conclusion
-This reference consolidates the XSD export schema, YAML structure definitions, processing modules, and utilities that underpin the Timelink Kleio system. By adhering to the documented formats, validations, and procedures, users can reliably define structures, process data, and produce standardized exports with robust error handling and diagnostics.
+The Kleio translation system provides robust REST and JSON-RPC services for translating historical source documents into normalized XML. It supports flexible configuration, secure token-based access, linked data integration, and clear error reporting. By adhering to the documented environment variables, API contracts, and file formats, integrators can reliably automate transcription workflows and maintain consistent data quality.
 
 [No sources needed since this section summarizes without analyzing specific files]
 
 ## Appendices
-- Sample structure file demonstrating group and element definitions
-- Additional structure examples for reference and testing
+
+### Glossary of Terms
+- Kleio: A notation for transcribing historical sources.
+- Group: An entity in Kleio notation.
+- Element: An attribute of a group.
+- Aspect: Representation variants (core, original, comment).
+- Structure (str): Schema file defining allowed groups, elements, and hierarchy.
+- Translation: Process converting Kleio files to normalized XML and reports.
+- Linked data: External identifier annotations linking values to authoritative sources.
+
+[No sources needed since this section provides general definitions]
+
+### Compatibility Notes
+- Platform: SWI-Prolog-based server; Docker images available.
+- Dependencies: SWI-Prolog HTTP libraries, PCRE for linked data parsing.
+- Ports: Default REST port 8088; debug port 4000.
+- CORS: Configurable via KLEIO_CORS_SITES.
 
 **Section sources**
-- [tests/kleio-home/structures/sample-str.yaml](file://tests/kleio-home/structures/sample-str.yaml#L1-L25)
-- [stru/sources-structure.yaml](file://src/stru/sources-structure.yaml#L1-L800)
+- [README.md:147-161](file://README.md#L147-L161)
+- [restServer.pl:175-185](file://src/restServer.pl#L175-L185)
+- [linkedData.pl:42-45](file://src/linkedData.pl#L42-L45)

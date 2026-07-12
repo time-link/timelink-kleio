@@ -1,0 +1,1 @@
+Top-level orchestrator that builds, tags and runs the SWI-Prolog Kleio server via Docker, wires versioning/env/config into every child artifact, and exposes unified make targets for dev/test/release.

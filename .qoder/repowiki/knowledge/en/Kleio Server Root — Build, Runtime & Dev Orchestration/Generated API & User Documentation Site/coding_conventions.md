@@ -1,0 +1,2 @@
+- Every asset file ships a paired `.min` variant (e.g. `main.min.css`, `bootstrap-treeview.min.js`) while keeping the unminified source alongside it.
+- API endpoints in the generated HTML follow a uniform template: a method badge, a lock icon for protected calls, a `{{endpoint}}` placeholder URL, a description block, a HEADERS table, and a raw JSON-RPC body snippet with matching example request/response panels.

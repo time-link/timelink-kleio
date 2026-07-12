@@ -1,0 +1,5 @@
+- Elements and groups extend others via a `source:` key pointing to a previously declared name rather than duplicating fields.
+- Schema fragments are composed into a top-level document using `- include: <file>` directives instead of monolithic files.
+- Group declarations use the four-part field set `position`, `guaranteed`, `also`, `contains` (plus optional `idprefix`) to describe allowed element order, requiredness, optionality, and containment.
+- The Python parser's special characters live in a single `TOKENS` dict that mirrors the EBNF named tokens, so grammar changes propagate to both specs.
+- Language-specific extensions (Portuguese) are kept in separate `pt-*.yaml` files included by the default `sources-structure.yaml`, keeping the base schema neutral.

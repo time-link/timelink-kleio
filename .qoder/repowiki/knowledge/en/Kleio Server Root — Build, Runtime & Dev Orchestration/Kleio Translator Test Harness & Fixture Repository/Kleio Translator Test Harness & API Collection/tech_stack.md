@@ -1,0 +1,1 @@
+POSIX shell (`bash`/`sh`) invoking SWI-Prolog-based Kleio translators (`swiStart.pl`, `gacto2.str`); diff/grep for regression comparison; Postman collection schema v2.1 for HTTP/JSON-RPC API testing against the Kleio server on localhost:8088.

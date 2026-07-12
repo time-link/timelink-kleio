@@ -1,0 +1,4 @@
+- Each Prolog file declares a single module via `:-module(Name,[...]).` at the top of the file.
+- Unit tests are written as `:- begin_tests(GroupName). ... test(Name, Goal). ... :- end_tests(GroupName).` blocks, grouped per target module.
+- REST/JSON-RPC entities are split into one `api*.pl` module per entity, with a central `apiCommon.pl` re-exporting them and documenting the HTTP→JSON-RPC mapping in the module comment.
+- Kleio structure fixtures live under `stru/` and are referenced by relative paths from `kleio_home_dir/`, with YAML files (`*.yaml`) preferred over legacy `.str`/`.srpt`.

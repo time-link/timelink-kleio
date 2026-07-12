@@ -1,0 +1,1 @@
+Static documentation site hosting a Postman-style HTML API reference (generated from a Postman collection) alongside human-authored developer notes.

@@ -1,0 +1,1 @@
+Self-contained Kleio server home directory providing sample .kleio sources, YAML structures, Prolog .str schemas, and expected outputs used by the project's integration tests.

@@ -1,0 +1,1 @@
+Pure SWI-Prolog (uses `phrase/2` DCGs, `re_replace/3` regex, `bagof/3`, `member_check/2`, `atom_codes/2`, `char_type/2`, `put_value/get_value` global store); operators `if/1`, `then/1`, `and/1`, `or/1` are declared locally so rules read like natural-language clauses.

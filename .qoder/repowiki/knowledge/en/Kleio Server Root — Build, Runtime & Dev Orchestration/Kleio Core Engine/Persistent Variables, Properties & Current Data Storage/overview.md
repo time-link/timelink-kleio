@@ -1,0 +1,1 @@
+Thread-local and shared key-value storage with atom property maps plus a typed CDS record that holds the current input document's group/element/entry state.

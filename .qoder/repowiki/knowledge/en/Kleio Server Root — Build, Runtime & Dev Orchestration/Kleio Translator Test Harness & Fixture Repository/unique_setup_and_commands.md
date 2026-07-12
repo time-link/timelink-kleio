@@ -1,0 +1,1 @@
+Run the full regression suite from `tests/` via `scripts/run_tests.sh` (boots server, executes dev + stable suites, compares results); use `scripts/run_stable_translations.sh` / `scripts/run_remote_translations.sh` to isolate the stable or remote translation paths; `scripts/clean_tests.sh` resets the `kleio-home/` state between runs.

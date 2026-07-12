@@ -1,0 +1,1 @@
+Cross-cutting Prolog helpers for character-level input, JSON serialization, and YAML structure-file parsing used by the Kleio core engine.

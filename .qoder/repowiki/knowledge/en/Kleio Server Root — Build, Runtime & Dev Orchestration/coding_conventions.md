@@ -1,0 +1,3 @@
+- Version numbers are stored as plain text files (`kleio.version.number`, `kleio.patch.number`, `kleio.build.number`, `kleio.build.date`) and injected into source artifacts via `sed` during `make prepare` rather than computed at runtime.
+- Structure YAML definitions live under `tests/kleio-home/structures/` and are copied into `src/stru/` at build time via `make yaml-stru-cpy`, keeping the runtime schema in sync with the test fixtures.
+- All runtime configuration flows through environment variables prefixed with `KLEIO_` sourced from a local `.env` file, never hard-coded in the image.

@@ -1,0 +1,264 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: yaml_str
+nodes_managed: true
+exported_at: "2026-07-12T02:46:07Z"
+modules:
+    "":
+        dir_name: Kleio Server Root — Build, Runtime & Dev Orchestration
+        title: Kleio Server Root — Build, Runtime & Dev Orchestration
+        scope:
+            - README.md
+            - README_DEV.md
+            - README_KLEIO_NOTATION.md
+            - .kleio.json
+            - Dockerfile
+            - docker-compose.yaml
+            - Makefile
+            - .install.sh
+            - .env-sample
+            - .flake8
+            - .pylintrc
+            - AGENTS.md
+            - CLAUDE.md
+            - kleio.build.date
+            - .dockerignore
+            - .gitignore
+            - README_mesmo_que_script.md
+            - actorm.json
+            - build-number
+            - convert_actorm_compact.py
+            - convert_to_compact.py
+            - improved_zprofile
+            - improved_zshrc
+            - kleio.build.number
+            - kleio.patch.number
+            - kleio.version.number
+            - parentem.yaml
+            - pt-acts.yaml
+            - remove_duplicate_entries.py
+            - remove_duplicates.py
+            - update_mesmo_que.py
+            - yaml_reorder.py
+        source_files: []
+        children:
+            - core_engine
+            - documentation
+            - root_data_models
+            - syntax_definitions
+            - tests_and_fixtures
+        depends_on: []
+        related_to: []
+    core_engine:
+        dir_name: Kleio Core Engine
+        title: Kleio Core Engine
+        scope:
+            - src/
+        source_files: []
+        children:
+            - core_engine/cli_translators
+            - core_engine/core_runtime
+            - core_engine/kleio_compiler
+            - core_engine/linked_data_export
+            - core_engine/persistence_layer
+            - core_engine/server_entrypoints
+            - core_engine/shared_utilities
+            - core_engine/source_processing
+            - core_engine/structure_definitions
+        depends_on: []
+        related_to: []
+    core_engine/cli_translators:
+        dir_name: Kleio CLI Export Translators (gactoxml, clioPP, mhkStart)
+        title: Kleio CLI Export Translators (gactoxml, clioPP, mhkStart)
+        scope:
+            - src/clioPP.pl
+            - src/gactoxml.pl
+            - src/mhkStart.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/core_runtime:
+        dir_name: Kleio Translator Core Runtime
+        title: Kleio Translator Core Runtime
+        scope:
+            - src/topLevel.pl
+            - src/errors.pl
+            - src/utilities.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/kleio_compiler:
+        dir_name: Kleio Compiler Lexical Analysis, Data Syntax & Inference Rules
+        title: 'Kleio Compiler: Lexical Analysis, Data Syntax & Inference Rules'
+        scope:
+            - src/lexical.pl
+            - src/dataSyntax.pl
+            - src/inference.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/linked_data_export:
+        dir_name: Linked Data & Kleio File Utilities
+        title: Linked Data & Kleio File Utilities
+        scope:
+            - src/linkedData.pl
+            - src/kleioFiles.pl
+            - src/apiExports.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/persistence_layer:
+        dir_name: Persistent Variables, Properties & Current Data Storage
+        title: Persistent Variables, Properties & Current Data Storage
+        scope:
+            - src/persistence.pl
+            - src/dataCDS.pl
+            - src/counters.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/server_entrypoints:
+        dir_name: Server Entrypoints & HTTP Bootstrapping
+        title: Server Entrypoints & HTTP Bootstrapping
+        scope:
+            - src/serverStart.pl
+            - src/restServer.pl
+            - src/docServer.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/shared_utilities:
+        dir_name: Shared I_O and Data-Format Utilities
+        title: Shared I/O and Data-Format Utilities
+        scope:
+            - src/basicio.pl
+            - src/jsonUtilities.pl
+            - src/yamlSupport.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/source_processing:
+        dir_name: Source Files & Token-Based API Access
+        title: Source Files & Token-Based API Access
+        scope:
+            - src/apiSources.pl
+            - src/apiIdentifications.pl
+            - src/tokens.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    core_engine/structure_definitions:
+        dir_name: Kleio Structure Schema & Parser
+        title: Kleio Structure Schema & Parser
+        scope:
+            - src/stru/
+            - src/struCode.pl
+            - src/struSyntax.pl
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    documentation:
+        dir_name: Generated API & User Documentation Site
+        title: Generated API & User Documentation Site
+        scope:
+            - docs/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    root_data_models:
+        dir_name: Kleio Root Data Model Schemas
+        title: Kleio Root Data Model Schemas
+        scope:
+            - objects.yaml
+            - actorm.yaml
+            - acts.yaml
+            - pt-actorf.json
+            - pt-actorm.json
+            - acts.json
+            - objects.json
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    syntax_definitions:
+        dir_name: Kleio Notation Grammar & Structure Definitions
+        title: Kleio Notation Grammar & Structure Definitions
+        scope:
+            - syntax/
+            - src/stru/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    tests_and_fixtures:
+        dir_name: Kleio Translator Test Harness & Fixture Repository
+        title: Kleio Translator Test Harness & Fixture Repository
+        scope:
+            - tests/
+            - api/postman/
+        source_files: []
+        children:
+            - tests_and_fixtures/dev_tests
+            - tests_and_fixtures/kleio_home_fixtures
+            - tests_and_fixtures/postman_api_collection
+            - tests_and_fixtures/stable_tests
+            - tests_and_fixtures/test_scripts_and_reports
+        depends_on: []
+        related_to: []
+    tests_and_fixtures/dev_tests:
+        dir_name: Development Test Suite & Kleio Structure Fixtures
+        title: Development Test Suite & Kleio Structure Fixtures
+        scope:
+            - tests/dev/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    tests_and_fixtures/kleio_home_fixtures:
+        dir_name: KLEIO Test Home & Fixture Repository
+        title: KLEIO Test Home & Fixture Repository
+        scope:
+            - tests/kleio-home/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    tests_and_fixtures/postman_api_collection:
+        dir_name: Kleio Server Postman API Collection & Test Suite
+        title: Kleio Server Postman API Collection & Test Suite
+        scope:
+            - api/postman/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    tests_and_fixtures/stable_tests:
+        dir_name: Stable Kleio Translator Test Suite & Runtime Server
+        title: Stable Kleio Translator Test Suite & Runtime Server
+        scope:
+            - tests/stable/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    tests_and_fixtures/test_scripts_and_reports:
+        dir_name: Kleio Translator Test Harness & API Collection
+        title: Kleio Translator Test Harness & API Collection
+        scope:
+            - tests/scripts/
+            - tests/reports/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

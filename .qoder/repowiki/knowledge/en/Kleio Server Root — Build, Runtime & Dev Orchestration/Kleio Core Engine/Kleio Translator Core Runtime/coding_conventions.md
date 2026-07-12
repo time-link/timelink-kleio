@@ -1,0 +1,5 @@
+- Public APIs are declared explicitly in `:-module(Name,[Pred/Arity,...]).` headers rather than relying on implicit exports.
+- Global state is accessed through `persistence`'s `get_value/2`, `put_value/2`, `get_prop/2`, `set_prop/2` and `counters`' `getcount/2`, `inccount/2`, `setcount/2` instead of raw Prolog variables or dynamic tables.
+- Error/warning emission goes exclusively through `errors:error_out/1,2` and `errors:warning_out/1,2`, which increment counts and delegate to `p_error_warn_context/3` for formatting; callers never write directly to output streams.
+- Gensymbol generation comes in paired thread-local and shared variants (`gensymbol_local/2` vs `gensymbol/2`, `setgensymbol_local/2` vs `setgensymbol/2`) sharing the same `current_num` key scheme.
+- Version strings use build-time placeholder tokens (`@@VERSION@@`, `@@BUILD@@`, `@@DATE@@`) replaced by the external build script rather than hard-coded literals.

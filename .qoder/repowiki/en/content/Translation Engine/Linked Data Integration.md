@@ -3,17 +3,9 @@
 <cite>
 **Referenced Files in This Document**
 - [linkedData.pl](file://src/linkedData.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [gacto2.str](file://src/stru/gacto2.str)
 - [linked_data.md](file://docs/doc/linked_data.md)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli)
-- [linked-datanw.cli](file://tests/kleio-home/sources/reference_sources/linked_data/linked-datanw.cli)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli)
-- [mappings.pl](file://src/mappings.pl)
-- [vocabularies.pl](file://src/vocabularies.pl)
-- [externals.pl](file://src/externals.pl)
-- [apiTranslations.pl](file://src/apiTranslations.pl)
-- [README.md](file://README.md)
-- [test_report_2025-06-24_12:36:15.diff](file://tests/reports/test_report_2025-06-24_12:36:15.diff)
-- [test_report_2025-12-11_18:28:25.diff](file://tests/reports/test_report_2025-12-11_18:28:25.diff)
 </cite>
 
 ## Table of Contents
@@ -26,259 +18,291 @@
 7. [Performance Considerations](#performance-considerations)
 8. [Troubleshooting Guide](#troubleshooting-guide)
 9. [Conclusion](#conclusion)
+10. [Appendices](#appendices)
 
 ## Introduction
-This document explains the linked data integration subsystem that connects historical entities in the system to external knowledge bases and semantic web resources. It covers how the system declares external sources, resolves historical references to standardized identifiers, generates URIs, and enriches translation outputs with external context such as locations, biographical facts, and institutional affiliations. It also documents configuration of external knowledge base connections, handling of network failures and timeouts, and strategies for maintaining data quality. Privacy and licensing considerations and their impact on translation performance are addressed.
+This document explains the linked data integration capabilities of the translation engine, focusing on how external identifiers are resolved, how semantic links are represented in XML output, and how the system implements a lightweight, standards-aligned approach to linking Kleio data items to external knowledge bases (e.g., Wikidata). It covers:
+- Link declaration via kleio$ link$ entries
+- Annotation syntax for values and types using @shortname:id comments
+- URI generation strategies and pattern substitution
+- Cross-reference management and attribute duplication with semantic attributes
+- XML export behavior for database import and downstream processing
+- Performance considerations and troubleshooting techniques
 
 ## Project Structure
-The linked data capability is implemented as a small set of cooperating modules and is exercised by representative test sources:
-- Core predicate library for linked data handling
-- Documentation describing the notation and expected behavior
-- Test sources demonstrating declarations and annotations
-- Supporting modules for mappings, vocabularies, and translation orchestration
-- Reports and diffs validating behavior across test runs
+The linked data feature spans three main areas:
+- Configuration schema that defines the link group and elements
+- The linked data module that parses annotations and generates URIs
+- The XML exporter that integrates linked data into the generated XML
 
 ```mermaid
 graph TB
-subgraph "Linked Data Core"
-LD["linkedData.pl"]
-DOC["linked_data.md"]
-end
-subgraph "Test Sources"
-DHA["dehergne-a.cli"]
-DNW["linked-datanw.cli"]
-MLN["multiplelinks.cli"]
-end
-subgraph "Support Modules"
-MAP["mappings.pl"]
-VOC["vocabularies.pl"]
-EXT["externals.pl"]
-API["apiTranslations.pl"]
-end
-subgraph "Validation"
-REP1["test_report_2025-06-24.diff"]
-REP2["test_report_2025-12-11.diff"]
-end
-DHA --> LD
-DNW --> LD
-MLN --> LD
-LD --> MAP
-LD --> VOC
-LD --> EXT
-API --> LD
-DOC --> LD
-REP1 --> DHA
-REP2 --> DNW
-REP2 --> MLN
+A["gacto2.str<br/>Defines 'link' group and elements"] --> B["gactoxml.pl<br/>Processes groups and exports XML"]
+B --> C["linkedData.pl<br/>Parses annotations and builds URIs"]
+B --> D["XML Output<br/>KLEIO structure with linked attributes"]
 ```
 
 **Diagram sources**
-- [linkedData.pl](file://src/linkedData.pl#L1-L116)
-- [linked_data.md](file://docs/doc/linked_data.md#L1-L55)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-- [linked-datanw.cli](file://tests/kleio-home/sources/reference_sources/linked_data/linked-datanw.cli#L1-L6)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli#L1-L9)
-- [mappings.pl](file://src/mappings.pl#L1-L200)
-- [vocabularies.pl](file://src/vocabularies.pl#L1-L76)
-- [externals.pl](file://src/externals.pl#L1-L200)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L1-L200)
-- [test_report_2025-06-24_12:36:15.diff](file://tests/reports/test_report_2025-06-24_12:36:15.diff#L200-L226)
-- [test_report_2025-12-11_18:28:25.diff](file://tests/reports/test_report_2025-12-11_18:28:25.diff#L179-L217)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [linkedData.pl:1-48](file://src/linkedData.pl#L1-L48)
 
 **Section sources**
-- [linkedData.pl](file://src/linkedData.pl#L1-L116)
-- [linked_data.md](file://docs/doc/linked_data.md#L1-L55)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-- [linked-datanw.cli](file://tests/kleio-home/sources/reference_sources/linked_data/linked-datanw.cli#L1-L6)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli#L1-L9)
-- [mappings.pl](file://src/mappings.pl#L1-L200)
-- [vocabularies.pl](file://src/vocabularies.pl#L1-L76)
-- [externals.pl](file://src/externals.pl#L1-L200)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L1-L200)
-- [test_report_2025-06-24_12:36:15.diff](file://tests/reports/test_report_2025-06-24_12:36:15.diff#L200-L226)
-- [test_report_2025-12-11_18:28:25.diff](file://tests/reports/test_report_2025-12-11_18:28:25.diff#L179-L217)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [linkedData.pl:1-48](file://src/linkedData.pl#L1-L48)
 
 ## Core Components
-- Linked data declaration and URI generation
-  - Declaring external sources via link$ attributes in the kleio$ group
-  - Extracting and validating external annotations in element comments
-  - Replacing placeholders in URL patterns to produce URIs
-- Translation-time enrichment
-  - Generating additional attributes enriched with external URIs during translation
-  - Managing warnings for missing link$ definitions without failing the process
-- Validation and reporting
-  - Using test reports to confirm expected behavior and detect regressions
+- Link declaration schema: The link group is defined in the structure file with shortname and urlpattern elements. This allows users to register external targets such as wikidata or geonames.
+- Annotation parsing and URI generation: The linked data module detects annotations of the form @shortname:id within element comments and constructs URIs by substituting id into the registered urlpattern.
+- Exporter integration: The XML exporter processes attributes and other elements, extracts type/value comments, resolves linked data, and emits additional attributes carrying the generated URIs.
 
-Key behaviors and mechanisms:
-- Declaration format: link$short-name/"url-pattern" with $1 placeholder
-- Annotation format: # @short-name:id in element comments
-- Output enrichment: Additional attributes carrying resolved URIs and preserved metadata
+Key responsibilities:
+- Store and clear link patterns per translation run
+- Detect annotations in text
+- Replace placeholders in URL patterns
+- Integrate linked attributes into exported XML
 
 **Section sources**
-- [linkedData.pl](file://src/linkedData.pl#L11-L116)
-- [linked_data.md](file://docs/doc/linked_data.md#L8-L55)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-- [linked-datanw.cli](file://tests/kleio-home/sources/reference_sources/linked_data/linked-datanw.cli#L1-L6)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli#L1-L9)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
 
 ## Architecture Overview
-The linked data pipeline integrates with the translation process to resolve annotations and produce enriched outputs. The flow below maps to actual predicates and test sources.
+The end-to-end flow from source annotation to XML output:
 
 ```mermaid
 sequenceDiagram
-participant Src as "Source File<br/>dehergne-a.cli"
-participant LD as "linkedData.pl"
-participant API as "apiTranslations.pl"
-participant Out as "Translation Output"
-Src->>LD : "link$short-name/'url-pattern'"
-Src->>LD : "# @short-name : id" in element comments
-LD->>LD : "detect_xlink(Text,ShortName,Id)"
-LD->>LD : "replace_xid(Pattern,Id,Link)"
-LD-->>Out : "Additional attribute with URI"
-API-->>Out : "Translation results including linked data"
+participant User as "User Source"
+participant Schema as "gacto2.str"
+participant Exporter as "gactoxml.pl"
+participant LDM as "linkedData.pl"
+participant XML as "XML Output"
+User->>Schema : Define link$shortname/urlpattern
+Exporter->>Exporter : Process kleio$ group
+Exporter->>LDM : store_xlink_pattern(shortname,urlpattern)
+Exporter->>Exporter : Process attribute/type/value comments
+Exporter->>LDM : detect_xlink(comment_text)
+LDM-->>Exporter : (shortname,id)
+Exporter->>LDM : generate_xlink(comment_text,uri,shortname,id)
+LDM-->>Exporter : uri
+Exporter->>XML : Emit attribute(s) with uri and metadata
 ```
 
 **Diagram sources**
-- [linkedData.pl](file://src/linkedData.pl#L68-L108)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
 
 ## Detailed Component Analysis
 
+### Link Declaration Schema
+The link group defines:
+- shortname: a human-readable alias for an external target
+- urlpattern: a URL template containing a placeholder for the external identifier
+
+These definitions are consumed during translation to build URIs.
+
+**Section sources**
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+
 ### Linked Data Module (linkedData.pl)
 Responsibilities:
-- Store and manage external source patterns (link$ short-name -> url-pattern)
-- Detect external annotations in text comments
-- Generate URIs by replacing placeholders in patterns
-- Provide cleanup predicates for patterns and stored link data
+- Register link patterns: store_xlink_pattern/2 persists shortname-urlpattern pairs
+- Clear patterns: clear_xlink_patterns/0 resets state at start of translation
+- Detect annotations: detect_xlink/3 parses @shortname:id from comment text
+- Generate URIs: generate_xlink/4 substitutes id into urlpattern and returns the final URI
+- Utility: replace_xid/3 performs placeholder replacement; clear_xlink_data/0 clears auxiliary storage
 
-Processing logic:
-- Pattern storage replaces previous entries for the same short name
-- Detection uses pattern matching to extract short-name and id from annotations
-- URI generation requires a matching pattern; otherwise a warning is issued
+Implementation notes:
+- Patterns are stored dynamically and thread-local to avoid cross-run contamination
+- Regex-based detection supports flexible whitespace and allowed characters in ids
+- Warnings are emitted when a link$ definition is missing for a referenced shortname
 
 ```mermaid
 flowchart TD
-Start(["Annotation Detected"]) --> Parse["Parse annotation for short-name and id"]
-Parse --> Lookup{"Pattern exists?"}
-Lookup --> |Yes| Replace["Replace $1 with id in url-pattern"]
-Lookup --> |No| Warn["Issue warning about missing link$ definition"]
-Replace --> Emit["Emit enriched attribute with URI"]
-Warn --> End(["Continue translation"])
-Emit --> End
+Start(["Start"]) --> Store["store_xlink_pattern(shortname,urlpattern)"]
+Store --> Detect["detect_xlink(text) -> (shortname,id)"]
+Detect --> Exists{"Pattern exists?"}
+Exists -- Yes --> Replace["replace_xid(urlpattern,id) -> uri"]
+Exists -- No --> Warn["warning_out(missing link$ definition)"]
+Replace --> End(["Return uri"])
+Warn --> End
 ```
 
 **Diagram sources**
-- [linkedData.pl](file://src/linkedData.pl#L68-L108)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
 
 **Section sources**
-- [linkedData.pl](file://src/linkedData.pl#L51-L116)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
 
-### Documentation and Notation (linked_data.md)
-Guidelines:
-- Declaring external sources with link$ short-name and quoted url-pattern
-- Annotating element values with # @short-name:id
-- Expected output enrichment with additional attributes carrying URIs
+### XML Exporter Integration (gactoxml.pl)
+Integration points:
+- Initialization: clears link patterns at the start of translation
+- Processing link declarations: when encountering a link group, stores the pattern
+- Attribute processing: inspects type and value comments for annotations
+- Generating linked attributes:
+  - For type annotations: duplicates the attribute with a new type representing the external property and sets its value to the generated URI
+  - For value annotations: creates a new attribute whose type encodes the original type plus the external target, and whose value is the generated URI
+- Error handling: emits warnings/errors if link$ definitions are missing or URI generation fails
 
-Examples:
-- Multiple external sources declared and used in a single file
-- Mixed annotations with and without link$ definitions
+```mermaid
+sequenceDiagram
+participant G as "gactoxml.pl"
+participant L as "linkedData.pl"
+participant X as "XML"
+G->>G : group_export(link) -> store_xlink_pattern
+G->>G : process attribute (type/value comments)
+G->>L : generate_xlink(comment, uri, shortname, id)
+alt Type annotation present
+G->>X : emit attribute with type=external_property&value=uri
+else Value annotation present
+G->>X : emit attribute with type=original_type@target&value=uri
+end
+```
 
-**Section sources**
-- [linked_data.md](file://docs/doc/linked_data.md#L8-L55)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli#L1-L9)
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-
-### Test Sources and Behavior
-Representative test sources demonstrate:
-- Declaring multiple external sources (wikidata, bnportugal, archive, bdconline)
-- Annotating elements with external identifiers
-- Handling missing link$ definitions with warnings instead of errors
-
-Validation:
-- Test reports compare reference outputs with generated outputs
-- Differences indicate expected vs. actual behavior for linked data enrichment
-
-**Section sources**
-- [dehergne-a.cli](file://tests/kleio-home/sources/reference_sources/linked_data/dehergne-a.cli#L1-L120)
-- [linked-datanw.cli](file://tests/kleio-home/sources/reference_sources/linked_data/linked-datanw.cli#L1-L6)
-- [multiplelinks.cli](file://tests/kleio-home/sources/reference_sources/linked_data/multiplelinks.cli#L1-L9)
-- [test_report_2025-06-24_12:36:15.diff](file://tests/reports/test_report_2025-06-24_12:36:15.diff#L200-L226)
-- [test_report_2025-12-11_18:28:25.diff](file://tests/reports/test_report_2025-12-11_18:28:25.diff#L179-L217)
-
-### Supporting Modules
-- Mappings (mappings.pl): Defines schema mappings for entities and attributes; indirectly supports enrichment by structuring output.
-- Vocabularies (vocabularies.pl): Manages vocabulary initialization and storage; useful for controlled terms in enrichment contexts.
-- Externals (externals.pl): Provides predicates for accessing current group, elements, aspects, and baseclass relationships; helpful for translation-time context.
-- API Translations (apiTranslations.pl): Orchestrates translation jobs and manages parameters; ensures linked data enrichment participates in translation runs.
+**Diagram sources**
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
 
 **Section sources**
-- [mappings.pl](file://src/mappings.pl#L1-L200)
-- [vocabularies.pl](file://src/vocabularies.pl#L1-L76)
-- [externals.pl](file://src/externals.pl#L1-L200)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
+
+### Identifier Resolution Workflow
+The resolution workflow proceeds as follows:
+1. Parse element comments to find annotations of the form @shortname:id
+2. Look up the registered urlpattern for shortname
+3. Substitute id into the urlpattern to produce the final URI
+4. Attach the URI to the appropriate attribute(s) in the XML output
+
+```mermaid
+flowchart TD
+A["Element comment text"] --> B["detect_xlink(text)"]
+B --> C{"Found @shortname:id?"}
+C -- No --> D["Skip linked data processing"]
+C -- Yes --> E["Lookup xlink_pattern(shortname)"]
+E --> F{"Pattern found?"}
+F -- No --> G["warning_out(missing link$)"]
+F -- Yes --> H["replace_xid(urlpattern,id) -> uri"]
+H --> I["Attach uri to attribute(s)"]
+```
+
+**Diagram sources**
+- [linkedData.pl:73-108](file://src/linkedData.pl#L73-L108)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
+
+**Section sources**
+- [linkedData.pl:73-108](file://src/linkedData.pl#L73-L108)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)
+
+### Semantic Web Standards Alignment
+- Identifiers: Uses standard URI-based identifiers for external entities
+- Property modeling: External properties can be modeled by generating attributes whose types encode the external property reference
+- Observability: Original comments and values are preserved alongside generated attributes, aiding traceability
+- Interoperability: The resulting XML is suitable for import into databases and for further transformation into RDF triples by downstream tools
+
+Note: The current implementation focuses on embedding linked data references in XML attributes rather than emitting native RDF triples directly.
+
+[No sources needed since this section provides general guidance]
+
+### Examples of Linked Data Patterns
+- Declaring a target:
+  - link$wikidata/"http://wikidata.org/wiki/$1"
+- Annotating a value:
+  - ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
+- Resulting attribute:
+  - An additional attribute is added with the generated URI and metadata about the original value and comment
+
+For more examples and usage guidance, see the linked data documentation.
+
+**Section sources**
+- [linked_data.md:10-55](file://docs/doc/linked_data.md#L10-L55)
 
 ## Dependency Analysis
-Linked data predicates depend on:
-- Dynamic storage of link patterns (thread-local)
-- Regular expression utilities for parsing annotations
-- Optional warnings for missing link$ definitions
+High-level dependencies among components:
 
 ```mermaid
 graph LR
-LD["linkedData.pl"] --> PCRE["library(pcre)"]
-LD --> ERR["errors"]
-LD --> PAT["xlink_pattern/2 (dynamic)"]
-LD --> DATA["xlink_data/2 (dynamic)"]
-LD --> MAP["mappings.pl"]
-LD --> VOC["vocabularies.pl"]
-LD --> EXT["externals.pl"]
-API["apiTranslations.pl"] --> LD
+S["gacto2.str"] --> E["gactoxml.pl"]
+E --> L["linkedData.pl"]
+E --> O["XML Output"]
 ```
 
 **Diagram sources**
-- [linkedData.pl](file://src/linkedData.pl#L42-L48)
-- [mappings.pl](file://src/mappings.pl#L1-L200)
-- [vocabularies.pl](file://src/vocabularies.pl#L1-L76)
-- [externals.pl](file://src/externals.pl#L1-L200)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
 
 **Section sources**
-- [linkedData.pl](file://src/linkedData.pl#L42-L48)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
+- [gacto2.str:168-187](file://src/stru/gacto2.str#L168-L187)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
 
 ## Performance Considerations
-- Pattern lookup and replacement are linear in the number of declared link$ sources; keep the number reasonable.
-- Regular expressions are used for detection; ensure patterns avoid excessive backtracking.
-- Translation performance is primarily influenced by the volume of annotations and the number of link$ sources; batching and caching of link$ definitions help.
-- Warnings for missing link$ definitions avoid aborting translation, reducing runtime failures but potentially increasing report verbosity.
+- Pattern registration cost: Minimal; link$ entries are processed once per translation run
+- Annotation detection: Regex-based scanning occurs per attribute/comment; keep annotations concise
+- URI generation: Simple string substitution; negligible overhead
+- XML emission: Additional attributes increase output size; consider batching or filtering large datasets if necessary
+- Thread-local storage: Prevents contention across concurrent runs; ensure proper cleanup between translations
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
 Common issues and resolutions:
-- Missing link$ definition
-  - Symptom: Warning emitted instead of error
-  - Resolution: Add link$short-name with a valid url-pattern containing $1
-- Invalid annotation format
-  - Symptom: Annotation not recognized
-  - Resolution: Ensure annotation follows # @short-name:id
-- Placeholder mismatch
-  - Symptom: URI generation fails silently
-  - Resolution: Confirm url-pattern contains exactly one $1 placeholder
-- Network failures and timeouts
-  - Observation: Linked data enrichment is local; remote resolution is not performed by the system
-  - Strategy: Validate URIs locally; external resolution is outside the scope of this module
+- Missing link$ definition:
+  - Symptom: Warning indicating a missing link$ definition for a shortname
+  - Action: Ensure kleio$ includes a matching link$shortname/urlpattern entry
+- Invalid annotation format:
+  - Symptom: No linked attribute generated
+  - Action: Verify the annotation follows @shortname:id syntax and contains allowed characters
+- Placeholder not substituted:
+  - Symptom: Generated URI lacks expected id
+  - Action: Confirm urlpattern contains the $1 placeholder and id is non-empty
+- Multiple annotations:
+  - Symptom: Only one link applied
+  - Action: Use separate annotations for type and value as documented; ensure each has a valid link$ definition
 
-Evidence from repository:
-- Version notes indicate fixes for handling linked data notation with no link$ statement and improved warnings
-- Test reports show differences between reference and generated outputs, highlighting expected behavior
+Operational checks:
+- Confirm link patterns are cleared at translation start
+- Validate that link groups are processed before attributes referencing them
 
 **Section sources**
-- [README.md](file://README.md#L408-L442)
-- [linkedData.pl](file://src/linkedData.pl#L96-L108)
-- [test_report_2025-06-24_12:36:15.diff](file://tests/reports/test_report_2025-06-24_12:36:15.diff#L200-L226)
-- [test_report_2025-12-11_18:28:25.diff](file://tests/reports/test_report_2025-12-11_18:28:25.diff#L179-L217)
+- [linkedData.pl:96-108](file://src/linkedData.pl#L96-L108)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1142-1151](file://src/gactoxml.pl#L1142-L1151)
 
 ## Conclusion
-The linked data integration provides a lightweight, declarative mechanism to connect historical entities to external knowledge bases. By declaring link$ patterns and annotating elements with @short-name:id, the system generates enriched attributes with standardized URIs during translation. The design emphasizes robustness with warnings for missing configurations and focuses on local URI generation without performing remote resolution. Together with supporting modules and validated test sources, this subsystem enables high-quality, interoperable historical data outputs aligned with global knowledge graphs.
+The translation engine’s linked data integration enables robust linkage of Kleio data to external knowledge bases through a simple, declarative mechanism. By registering link targets and annotating values and types, the system automatically generates URIs and embeds semantic attributes into the XML output. This design balances ease of use with extensibility, allowing downstream systems to transform the XML into RDF or other semantic formats while preserving provenance and original content.
+
+[No sources needed since this section summarizes without analyzing specific files]
+
+## Appendices
+
+### API Reference Summary
+- linkedData.pl
+  - store_xlink_pattern/2: Register a shortname-urlpattern pair
+  - clear_xlink_patterns/0: Reset all registered patterns
+  - detect_xlink/3: Parse @shortname:id from text
+  - generate_xlink/4: Build URI from pattern and id
+  - replace_xid/3: Perform placeholder substitution
+  - clear_xlink_data/0: Clear auxiliary link data
+- gactoxml.pl
+  - group_export(link): Process link$ declarations
+  - Attribute processing: Extract type/value comments and generate linked attributes
+  - Error/warning reporting for missing definitions or failed generation
+
+**Section sources**
+- [linkedData.pl:1-48](file://src/linkedData.pl#L1-L48)
+- [linkedData.pl:51-116](file://src/linkedData.pl#L51-L116)
+- [gactoxml.pl:483-489](file://src/gactoxml.pl#L483-L489)
+- [gactoxml.pl:780-819](file://src/gactoxml.pl#L780-L819)
+- [gactoxml.pl:1116-1151](file://src/gactoxml.pl#L1116-L1151)

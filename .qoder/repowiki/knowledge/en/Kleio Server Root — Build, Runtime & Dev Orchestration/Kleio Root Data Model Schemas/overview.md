@@ -1,0 +1,1 @@
+Declarative YAML/JSON schema definitions for the Kleio core ontology — entities, actors, and historical acts — consumed by the kleio-schema toolchain to generate typed code.

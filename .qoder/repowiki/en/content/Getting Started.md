@@ -3,253 +3,366 @@
 <cite>
 **Referenced Files in This Document**
 - [README.md](file://README.md)
-- [.env-sample](file://.env-sample)
-- [docker-compose.yaml](file://docker-compose.yaml)
 - [Dockerfile](file://Dockerfile)
+- [docker-compose.yaml](file://docker-compose.yaml)
+- [.env-sample](file://.env-sample)
 - [Makefile](file://Makefile)
-- [.install.sh](file://.install.sh)
 - [src/serverStart.pl](file://src/serverStart.pl)
 - [src/restServer.pl](file://src/restServer.pl)
 - [src/apiTokens.pl](file://src/apiTokens.pl)
 - [src/apiTranslations.pl](file://src/apiTranslations.pl)
-- [api/postman/api.json](file://api/postman/api.json)
-- [api/postman/environment.json](file://api/postman/environment.json)
-- [api/postman/tests.postman_environment.json](file://api/postman/tests.postman_environment.json)
+- [src/apiSources.pl](file://src/apiSources.pl)
+- [docs/doc/client_setup.md](file://docs/doc/client_setup.md)
+- [tests/README.md](file://tests/README.md)
 </cite>
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [System Requirements](#system-requirements)
-3. [Installation Approaches](#installation-approaches)
-4. [Running the Server Locally](#running-the-server-locally)
-5. [Environment Variables](#environment-variables)
-6. [Accessing the API](#accessing-the-api)
-7. [Basic API Usage Examples](#basic-api-usage-examples)
-8. [Practical Examples](#practical-examples)
-9. [Troubleshooting Guide](#troubleshooting-guide)
-10. [Conclusion](#conclusion)
+1. Introduction
+2. Project Structure
+3. Core Components
+4. Architecture Overview
+5. Detailed Component Analysis
+6. Dependency Analysis
+7. Performance Considerations
+8. Troubleshooting Guide
+9. Conclusion
+10. Appendices
 
 ## Introduction
-This guide helps you quickly set up and use the Timelink Kleio server. It covers:
-- System requirements and recommended tools
-- Multiple installation approaches: Docker, local SWI-Prolog, and development setup
-- How to run the server locally, configure environment variables, and access the API
-- Practical examples for authentication, uploading source files, and requesting translations
-- Troubleshooting and environment-specific considerations
+This guide helps you quickly install, configure, and run the Kleio translation services, upload sample Kleio files, perform translations, and access results. It covers Docker-based installation, local development with SWI-Prolog, environment configuration, token setup, and a basic workflow from source file to translated XML output. The content is designed for beginners while providing enough technical depth for experienced developers.
 
-## System Requirements
-- SWI-Prolog runtime to run the server locally
-- Docker for containerized deployment
-- Recommended developer tools:
-  - VSCode with the VSC-Prolog extension for editing and debugging
-  - Postman for API exploration and testing
-- Optional: Newman CLI for running Postman test collections from the command line
+## Project Structure
+At a high level:
+- Docker image and compose definitions build and run the server.
+- Environment variables control ports, tokens, workers, and paths.
+- The Prolog server exposes REST and JSON-RPC endpoints for sources, translations, and tokens.
+- Sample data and tests are provided under tests/.
 
-These tools are referenced in the project’s documentation and development setup.
+```mermaid
+graph TB
+A["Host"] --> B["Docker Engine"]
+B --> C["Container 'kleio'"]
+C --> D["SWI-Prolog Server<br/>restServer + api modules"]
+C --> E["/kleio-home (mapped volume)"]
+E --> F["system/conf/kleio<br/>tokens, logs, stru"]
+E --> G["sources/<br/>.cli / .kleio files"]
+E --> H["exports/<br/>.xml outputs"]
+E --> I["reports/<br/>.rpt/.err reports"]
+```
 
-**Section sources**
-- [README.md](file://README.md#L149-L160)
-
-## Installation Approaches
-You can deploy the Kleio server using one of the following methods:
-
-### Option A: Docker Deployment (recommended for most users)
-- Pull or build the image and run via Docker Compose
-- Configure environment variables using a .env file
-- Expose the server on a desired host port
-
-Key references:
-- Docker Compose configuration and environment variables
-- Makefile targets for running the server with Docker
-- Sample environment variables
+**Diagram sources**
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [src/restServer.pl:330-350](file://src/restServer.pl#L330-L350)
 
 **Section sources**
-- [README.md](file://README.md#L68-L146)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [.env-sample](file://.env-sample#L1-L119)
-- [Makefile](file://Makefile#L161-L217)
+- [README.md:68-146](file://README.md#L68-L146)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [.env-sample:1-119](file://.env-sample#L1-L119)
 
-### Option B: Local SWI-Prolog Installation
-- Install SWI-Prolog locally
-- Open the server startup file in VSCode and load it
-- Set environment variables and start the server in debug mode
+## Core Components
+- REST/JSON-RPC server: starts HTTP servers, handles requests, dispatches to API modules, manages tokens and workers.
+- API modules:
+  - Sources: list, download, upload, copy, move, delete files.
+  - Translations: start translation jobs, get status, clean results.
+  - Tokens: generate, invalidate tokens; manage users.
+- Configuration and persistence:
+  - Token database, admin token bootstrap, runtime config written to .kleio.json.
+  - Paths for home, conf, sources, structures.
 
-**Section sources**
-- [README.md](file://README.md#L162-L179)
-- [src/serverStart.pl](file://src/serverStart.pl#L19-L26)
-
-### Option C: Development Environment Setup
-- Use VSCode with VSC-Prolog
-- Optionally run the server inside the Docker container for debugging
-- Configure MHK integration if needed
-
-**Section sources**
-- [README.md](file://README.md#L179-L240)
-
-## Running the Server Locally
-Follow these steps to run the server locally for development and debugging:
-
-1. Install SWI-Prolog and VSCode with VSC-Prolog
-2. Open the server startup file in VSCode
-3. Load the file in the Prolog REPL
-4. Set the admin token and start the debug server
-
-Notes:
-- The local server does not read the .env file
-- Use spy points to debug predicates
-- Tokens configured this way can be used by clients
+Key responsibilities:
+- Authentication via bearer tokens.
+- File operations within KLEIO_SOURCE_DIR.
+- Translation orchestration using structure definitions (.str or YAML).
+- Exported XML and reports.
 
 **Section sources**
-- [README.md](file://README.md#L162-L179)
-- [src/serverStart.pl](file://src/serverStart.pl#L19-L26)
+- [src/restServer.pl:107-128](file://src/restServer.pl#L107-L128)
+- [src/restServer.pl:330-350](file://src/restServer.pl#L330-L350)
+- [src/restServer.pl:389-422](file://src/restServer.pl#L389-L422)
+- [src/apiSources.pl:28-88](file://src/apiSources.pl#L28-L88)
+- [src/apiTranslations.pl:35-84](file://src/apiTranslations.pl#L35-L84)
+- [src/apiTokens.pl:18-88](file://src/apiTokens.pl#L18-L88)
 
-## Environment Variables
-Configure the server using environment variables. The server reads the following variables at runtime:
+## Architecture Overview
+The server runs inside a container, exposing REST and JSON-RPC endpoints. Clients authenticate with tokens and interact with sources and translations.
 
-- KLEIO_HOME_DIR: Base working directory for the server
-- KLEIO_SOURCE_DIR: Directory for source files to be translated
-- KLEIO_CONF_DIR: Directory for configuration files and tokens
-- KLEIO_STRU_DIR: Directory for global structure files
-- KLEIO_DEFAULT_STRU: Default structure file used by default
-- KLEIO_TOKEN_DB: Path to the token database
-- KLEIO_SERVER_PORT: Port for the REST server (default 8088)
-- KLEIO_SERVER_WORKERS: Number of worker threads
-- KLEIO_IDLE_TIMEOUT: Connection idle timeout
-- KLEIO_DEBUG: Enable debug logs
-- KLEIO_ADMIN_TOKEN: Admin token with full privileges
-- KLEIO_CORS_SITES: Allowed origins for CORS
+```mermaid
+sequenceDiagram
+participant Client as "Client"
+participant Server as "REST/JSON-RPC Server"
+participant API as "API Modules"
+participant FS as "/kleio-home"
+Client->>Server : POST /json/ {method : "translations_translate", params : {token, path}}
+Server->>API : json_exec("translations_translate")
+API->>FS : resolve source paths
+API->>API : select structure file
+API->>API : queue/execute translation job(s)
+API-->>Server : job ids and relative paths
+Server-->>Client : JSON-RPC response
+Client->>Server : GET /rest/sources/{path}?token=...
+Server->>API : sources_get
+API-->>Server : file listing or content
+Server-->>Client : text or JSON
+Client->>Server : GET /rest/exports/{xml_path}?token=...
+Server-->>Client : XML export
+```
 
-For Docker Compose, variables are passed from the .env file and mapped into the container.
+**Diagram sources**
+- [src/restServer.pl:656-748](file://src/restServer.pl#L656-L748)
+- [src/apiTranslations.pl:146-164](file://src/apiTranslations.pl#L146-L164)
+- [src/apiSources.pl:179-200](file://src/apiSources.pl#L179-L200)
 
-**Section sources**
-- [src/restServer.pl](file://src/restServer.pl#L107-L119)
-- [.env-sample](file://.env-sample#L52-L119)
-- [docker-compose.yaml](file://docker-compose.yaml#L16-L21)
+## Detailed Component Analysis
 
-## Accessing the API
-The server exposes:
-- REST endpoints for file operations and metadata
-- JSON-RPC endpoints for token and user management
-
-Endpoints overview:
-- REST: GET/POST/DELETE operations on files, directories, and translation status
-- JSON-RPC: Methods for token generation/invalidation and user management
-
-Reference collections and environments for Postman are included in the repository.
-
-**Section sources**
-- [README.md](file://README.md#L50-L62)
-- [api/postman/api.json](file://api/postman/api.json#L1-L200)
-- [api/postman/environment.json](file://api/postman/environment.json#L1-L109)
-- [api/postman/tests.postman_environment.json](file://api/postman/tests.postman_environment.json#L1-L119)
-
-## Basic API Usage Examples
-Below are practical examples of common tasks using the API. Replace placeholders with your actual values.
-
-### 1) Authentication with Tokens
-- Obtain an admin token (either generated at startup or provided via environment variable)
-- Use the token in the Authorization header for bearer authentication
-
-References:
-- Token generation and invalidation endpoints
-- Example JSON-RPC calls in the Postman collection
-
-**Section sources**
-- [README.md](file://README.md#L92-L112)
-- [src/apiTokens.pl](file://src/apiTokens.pl#L41-L88)
-- [api/postman/api.json](file://api/postman/api.json#L11-L130)
-
-### 2) Uploading Source Files
-- Use the files endpoint to upload source files
-- Ensure the target directory is within the configured source directory
-
-References:
-- Files API endpoints and directory management
-- Postman environment variables for endpoints and tokens
-
-**Section sources**
-- [api/postman/api.json](file://api/postman/api.json#L1-L200)
-- [api/postman/environment.json](file://api/postman/environment.json#L1-L109)
-
-### 3) Requesting Translations
-- Call the translations endpoint to start translation of a file or directory
-- Optionally enable recursion and echo inclusion
-- Retrieve translation status and results
-
-References:
-- Translation API methods and parameters
-- Status caching behavior and filtering
-
-**Section sources**
-- [src/apiTranslations.pl](file://src/apiTranslations.pl#L34-L82)
-- [src/apiTranslations.pl](file://src/apiTranslations.pl#L86-L122)
-
-## Practical Examples
-### Example A: Start the Server with Docker
-- Copy the sample environment file to .env and adjust variables
-- Use Makefile targets to run the server with Docker Compose
+### Installation with Docker
+- Run latest image with a mapped working directory and port mapping.
+- Optionally set an admin token via environment variable.
+- If not provided, the server generates a bootstrap token and writes it to a file.
 
 Steps:
-- Prepare environment variables
-- Build or pull the image
-- Start the service with docker compose
+1. Create a local directory for your Kleio workspace (e.g., my-kleio-home).
+2. Start the server:
+   - Use docker run or docker compose.
+   - Map your host directory to /kleio-home.
+   - Expose the server port (default 8088).
+3. Configure environment variables:
+   - KLEIO_ADMIN_TOKEN (optional but recommended).
+   - KLEIO_HOME_DIR (if not using default).
+   - KLEIO_SERVER_PORT and KLEIO_EXTERNAL_PORT.
+   - KLEIO_DEBUG, KLEIO_SERVER_WORKERS, etc.
+4. Retrieve the admin token if not set:
+   - Check .kleio.json at the root of your mapped directory.
+   - Or use the generated bootstrap token file path.
+
+Notes:
+- On Linux, run as current user to avoid permission issues.
+- CORS can be configured via KLEIO_CORS_SITES.
 
 **Section sources**
-- [README.md](file://README.md#L125-L146)
-- [Makefile](file://Makefile#L161-L217)
-- [.env-sample](file://.env-sample#L1-L119)
+- [README.md:68-146](file://README.md#L68-L146)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [.env-sample:18-50](file://.env-sample#L18-L50)
+- [src/restServer.pl:389-422](file://src/restServer.pl#L389-L422)
+- [docs/doc/client_setup.md:15-88](file://docs/doc/client_setup.md#L15-L88)
 
-### Example B: Local Development with VSCode
-- Install SWI-Prolog and VSC-Prolog
-- Load the server startup file in VSCode
-- Set the admin token and run the debug server
+### Local Development with SWI-Prolog
+- Install SWI-Prolog and optionally VSCode with VSC-Prolog extension.
+- Load serverStart.pl and start the debug or normal server.
+- Set KLEIO_ADMIN_TOKEN in the Prolog session or via environment.
+- Access the server on the configured port.
+
+Useful commands:
+- Start debug server and print configuration.
+- Start production server and hold process.
+- Stop servers by port.
 
 **Section sources**
-- [README.md](file://README.md#L162-L179)
-- [src/serverStart.pl](file://src/serverStart.pl#L19-L26)
+- [README.md:195-212](file://README.md#L195-L212)
+- [src/serverStart.pl:13-26](file://src/serverStart.pl#L13-L26)
+- [src/serverStart.pl:50-67](file://src/serverStart.pl#L50-L67)
+- [src/serverStart.pl:189-201](file://src/serverStart.pl#L189-L201)
 
-### Example C: Using Postman Collections
-- Import the Postman collection and environment files
-- Configure the endpoint and token variables
-- Run requests to test authentication, uploads, and translations
+### Environment Configuration
+Key variables:
+- KLEIO_HOME_DIR: root working directory (mapped to /kleio-home in container).
+- KLEIO_CONF_DIR: configuration directory (defaults inside system/conf/kleio).
+- KLEIO_SOURCE_DIR: base directory for source files.
+- KLEIO_STRU_DIR: global structure files directory.
+- KLEIO_DEFAULT_STRU: default structure file.
+- KLEIO_TOKEN_DB: token database path.
+- KLEIO_SERVER_PORT: internal server port.
+- KLEIO_EXTERNAL_PORT: exposed port when running Docker.
+- KLEIO_ADMIN_TOKEN: initial admin token.
+- KLEIO_SERVER_WORKERS: number of worker threads.
+- KLEIO_IDLE_TIMEOUT: connection idle timeout.
+- KLEIO_DEBUG: enable debug logging.
+- KLEIO_CORS_SITES: allowed CORS sites.
+
+Tips:
+- Use .env with docker compose to centralize settings.
+- For MHK integration, ensure mhk.kleio.service points to the correct URL.
 
 **Section sources**
-- [README.md](file://README.md#L153-L159)
-- [api/postman/api.json](file://api/postman/api.json#L1-L200)
-- [api/postman/environment.json](file://api/postman/environment.json#L1-L109)
-- [api/postman/tests.postman_environment.json](file://api/postman/tests.postman_environment.json#L1-L119)
+- [.env-sample:18-119](file://.env-sample#L18-L119)
+- [src/restServer.pl:107-128](file://src/restServer.pl#L107-L128)
+- [docs/doc/client_setup.md:151-209](file://docs/doc/client_setup.md#L151-L209)
+
+### Initial Token Setup
+- If KLEIO_ADMIN_TOKEN is set, it is used directly.
+- Otherwise, the server bootstraps a temporary admin token and writes it to a file.
+- You can generate a new token via the tokens API using the bootstrap token.
+- Invalidate tokens or users as needed.
+
+Workflow:
+1. Start server without KLEIO_ADMIN_TOKEN to auto-generate bootstrap token.
+2. Read the generated token from the file path indicated in .kleio.json.
+3. Call tokens_generate to create a long-lived token with desired permissions.
+4. Optionally invalidate the bootstrap token.
+
+**Section sources**
+- [src/restServer.pl:389-422](file://src/restServer.pl#L389-L422)
+- [src/apiTokens.pl:41-88](file://src/apiTokens.pl#L41-L88)
+- [docs/doc/client_setup.md:31-88](file://docs/doc/client_setup.md#L31-L88)
+
+### Quick Start Examples
+
+#### Run the server
+- Using docker compose with .env:
+  - Copy .env-sample to .env and adjust variables.
+  - Run make kleio-run-latest or docker compose up.
+- Using docker run:
+  - Map a host directory to /kleio-home.
+  - Set KLEIO_ADMIN_TOKEN if desired.
+  - Map external port to internal server port.
+
+**Section sources**
+- [README.md:68-146](file://README.md#L68-L146)
+- [Makefile:165-204](file://Makefile#L165-L204)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+
+#### Upload sample Kleio files
+- Use the sources API to upload or copy files into KLEIO_SOURCE_DIR.
+- Ensure your token has upload permission.
+- Supported methods:
+  - POST multipart to upload.
+  - PUT multipart to update existing file.
+  - POST with origin to copy.
+  - PUT with origin to move.
+
+**Section sources**
+- [src/apiSources.pl:125-177](file://src/apiSources.pl#L125-L177)
+
+#### Perform translations
+- Start a translation job:
+  - POST translations with path pointing to a file or directory.
+  - Optional parameters: structure, echo, recurse, spawn, status.
+- Get translation status:
+  - GET translations with path and optional filters.
+- Clean translation results:
+  - DELETE translations for a file or directory.
+
+**Section sources**
+- [src/apiTranslations.pl:35-84](file://src/apiTranslations.pl#L35-L84)
+- [src/apiTranslations.pl:87-140](file://src/apiTranslations.pl#L87-L140)
+
+#### Access results
+- Download exported XML:
+  - GET /rest/exports/{xml_path} with token.
+- View reports:
+  - GET /rest/reports/{rpt_path} with token.
+- List sources:
+  - GET /rest/sources/{path} with token.
+
+**Section sources**
+- [src/apiTranslations.pl:529-577](file://src/apiTranslations.pl#L529-L577)
+- [src/apiSources.pl:89-107](file://src/apiSources.pl#L89-L107)
+
+### Basic Workflow: Source File to Translated XML
+```mermaid
+flowchart TD
+Start(["Start"]) --> Prepare["Prepare .env and /kleio-home"]
+Prepare --> RunServer["Run server (Docker or local)"]
+RunServer --> Upload["Upload .cli/.kleio files to sources/"]
+Upload --> Translate["POST translations with path and token"]
+Translate --> Status["GET translations to check status"]
+Status --> Results{"Translation complete?"}
+Results --> |No| Wait["Wait and retry status"]
+Results --> |Yes| Export["GET exports XML and reports"]
+Export --> End(["Done"])
+```
+
+[No sources needed since this diagram shows conceptual workflow, not actual code structure]
+
+## Dependency Analysis
+High-level dependencies among core components:
+- restServer depends on api modules (sources, translations, tokens), utilities, persistence, logging, tokens, threadSupport.
+- apiTranslations uses apiSources, kleioFiles, tokens, threadSupport, reports, persistence, topLevel, errors, counters.
+- apiSources uses kleioFiles, tokens, threadSupport, persistence.
+- apiTokens uses tokens, persistence, logging.
+
+```mermaid
+graph LR
+RS["restServer.pl"] --> AT["apiTranslations.pl"]
+RS --> AS["apiSources.pl"]
+RS --> AP["apiTokens.pl"]
+AT --> AS
+AT --> KF["kleioFiles.pl"]
+AT --> TK["tokens.pl"]
+AT --> TS["threadSupport.pl"]
+AT --> RP["reports.pl"]
+AT --> P["persistence.pl"]
+AT --> TL["topLevel.pl"]
+AT --> ER["errors.pl"]
+AT --> CT["counters.pl"]
+AS --> KF
+AS --> TK
+AS --> TS
+AS --> P
+AP --> TK
+AP --> P
+AP --> LG["logging.pl"]
+```
+
+**Diagram sources**
+- [src/restServer.pl:151-166](file://src/restServer.pl#L151-L166)
+- [src/apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [src/apiSources.pl:19-26](file://src/apiSources.pl#L19-L26)
+- [src/apiTokens.pl:7-9](file://src/apiTokens.pl#L7-L9)
+
+**Section sources**
+- [src/restServer.pl:151-166](file://src/restServer.pl#L151-L166)
+- [src/apiTranslations.pl:22-33](file://src/apiTranslations.pl#L22-L33)
+- [src/apiSources.pl:19-26](file://src/apiSources.pl#L19-L26)
+- [src/apiTokens.pl:7-9](file://src/apiTokens.pl#L7-L9)
+
+## Performance Considerations
+- Workers: Adjust KLEIO_SERVER_WORKERS to balance concurrency and resource usage.
+- Idle timeout: Increase KLEIO_IDLE_TIMEOUT for large file downloads or slow clients.
+- Spawn mode: In translations, spawn=yes distributes work across workers; spawn=no processes with a single worker and shared structure processing.
+- Cache: Translation status responses may be cached internally to reduce overhead on repeated calls.
+
+[No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
 Common issues and resolutions:
-
-- Permission errors on Linux with Docker
-  - Run the container under the current user to avoid root-owned files
-  - Reference: user override in Docker Compose
-
-- Admin token not set
-  - If not provided, the server generates an admin token at startup
-  - Retrieve it from the configuration directory
-
-- CORS issues
-  - Configure allowed origins via KLEIO_CORS_SITES
-
-- Long-running translation timeouts
-  - Increase KLEIO_IDLE_TIMEOUT for large XML exports
-
-- Running the server locally without .env
-  - The local debug server does not read .env; set variables manually in the Prolog REPL
+- Permission errors on Linux:
+  - Run container as current user to avoid root-owned files.
+- Missing admin token:
+  - Provide KLEIO_ADMIN_TOKEN or read the bootstrap token from .kleio.json or the generated file path.
+- CORS errors:
+  - Set KLEIO_CORS_SITES appropriately.
+- Port conflicts:
+  - Change KLEIO_EXTERNAL_PORT and KLEIO_SERVER_PORT in .env.
+- Debugging locally:
+  - Use serverStart.pl to start debug server and inspect logs.
+- Testing:
+  - Use semantic and API tests to validate behavior.
 
 **Section sources**
-- [README.md](file://README.md#L113-L124)
-- [README.md](file://README.md#L125-L146)
-- [README.md](file://README.md#L174-L179)
-- [src/restServer.pl](file://src/restServer.pl#L183-L184)
-- [docker-compose.yaml](file://docker-compose.yaml#L7-L10)
+- [README.md:113-146](file://README.md#L113-L146)
+- [README.md:195-212](file://README.md#L195-L212)
+- [tests/README.md:102-112](file://tests/README.md#L102-L112)
 
 ## Conclusion
-You now have multiple paths to deploy and use the Timelink Kleio server:
-- Docker for quick, reproducible deployments
-- Local SWI-Prolog for development and debugging
-- Postman and Newman for API exploration and automation
+You now have the essentials to install, configure, and operate the Kleio translation services. With Docker or local SWI-Prolog, you can upload Kleio files, trigger translations, and retrieve XML outputs and reports. Use the provided environment variables and Make targets to streamline setup and testing.
 
-Use the environment variables to tailor the server to your setup, and refer to the API documentation and Postman collections for hands-on examples.
+[No sources needed since this section summarizes without analyzing specific files]
+
+## Appendices
+
+### Make Targets for Running and Testing
+- Build and run:
+  - make build-local
+  - make kleio-run-latest
+  - make kleio-run-current
+- Stop:
+  - make kleio-stop
+- Tests:
+  - make test-semantics
+  - make test-api
+
+**Section sources**
+- [Makefile:165-204](file://Makefile#L165-L204)
+- [Makefile:256-271](file://Makefile#L256-L271)

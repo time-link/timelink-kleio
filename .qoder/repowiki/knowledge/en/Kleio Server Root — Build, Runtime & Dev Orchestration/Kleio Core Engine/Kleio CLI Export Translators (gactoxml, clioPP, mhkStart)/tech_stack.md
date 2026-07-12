@@ -1,0 +1,1 @@
+SWI-Prolog with `library(sgml)` for XML generation, `library(http/json)` for JSON metadata output, and `library(filesex)` for filesystem helpers; relies on external `rm/cp` via `shellUtil:shell_to_list` for atomic file renames on Windows.

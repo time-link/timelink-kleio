@@ -1,0 +1,1 @@
+SWI-Prolog only — all children are Prolog modules sharing the same process space; JSON/YAML parsing and HTTP serving come from SWI libraries consumed uniformly across children.

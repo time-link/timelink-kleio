@@ -1,0 +1,4 @@
+- Each `.kleio` source file has a sibling set of golden artifacts named `<base>.org`, `<base>.xml`, `<base>.rpt`, `<base>.err`, `<base>.files.json` placed alongside it (or under `test_translations/...`) to assert deterministic translation output.
+- Structure files ship in parallel forms: the native `.str` Prolog format plus generated `.str.yaml` and `.str.json` copies under `structures/api/<suite>/` for machine consumption.
+- Bug-fix fixtures are grouped under `sources/api/bugs/` and `structures/api/issues/<issue-number>/` using a single descriptive filename that encodes the issue or scenario being tested.
+- Large historical corpora are organized by record type subdirectory (`baptismos/`, `casamentos/`, `obitos/`, `devassas/`, etc.) with each fixture consisting of a minimal `.cli` driver plus its golden outputs.

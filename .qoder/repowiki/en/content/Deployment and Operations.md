@@ -9,404 +9,372 @@
 - [README.md](file://README.md)
 - [src/serverStart.pl](file://src/serverStart.pl)
 - [src/restServer.pl](file://src/restServer.pl)
+- [src/threadSupport.pl](file://src/threadSupport.pl)
 - [src/logging.pl](file://src/logging.pl)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl)
-- [.kleio.json](file://.kleio.json)
-- [tests/scripts/kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh)
-- [tests/scripts/kleio_stop_server.sh](file://tests/scripts/kleio_stop_server.sh)
+- [src/apiCommon.pl](file://src/apiCommon.pl)
 </cite>
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Project Structure](#project-structure)
-3. [Core Components](#core-components)
-4. [Architecture Overview](#architecture-overview)
-5. [Detailed Component Analysis](#detailed-component-analysis)
-6. [Dependency Analysis](#dependency-analysis)
-7. [Performance Considerations](#performance-considerations)
-8. [Troubleshooting Guide](#troubleshooting-guide)
-9. [Conclusion](#conclusion)
-10. [Appendices](#appendices)
+1. Introduction
+2. Project Structure
+3. Core Components
+4. Architecture Overview
+5. Detailed Component Analysis
+6. Dependency Analysis
+7. Performance Considerations
+8. Troubleshooting Guide
+9. Conclusion
+10. Appendices
 
 ## Introduction
-This document provides comprehensive guidance for deploying and operating the Timelink Kleio server in production environments. It covers containerization with Docker, configuration management, volume mounting strategies, production topologies (single-node and clustered), operational procedures for health monitoring and maintenance, configuration of environment variables and SSL, backup and recovery, scaling and performance optimization, and troubleshooting for common operational issues. Security hardening and audit logging practices are included to support compliance requirements.
+This document provides comprehensive deployment and operations guidance for the Kleio translation services. It covers production deployment using Docker containers, environment configuration, scaling considerations, monitoring and logging, performance tuning, resource management, backup and disaster recovery, health checks, operational automation, container orchestration with Docker Compose, Kubernetes deployment patterns, cloud platform integration, capacity planning, load balancing, and high availability configurations.
 
 ## Project Structure
-The repository includes everything needed to build, run, and operate the Kleio server:
-- Containerization: Dockerfile and docker-compose.yaml define the image and runtime orchestration.
-- Configuration: .env-sample documents environment variables and defaults.
-- Build and automation: Makefile provides targets for building images, tagging, running, and testing.
-- Server runtime: src/serverStart.pl and src/restServer.pl implement the REST and JSON-RPC server, environment variable handling, and logging.
-- Logging and diagnostics: src/logging.pl manages log destinations and levels; .kleio.json captures runtime configuration and tokens.
-- Operational scripts: tests/scripts provide helpers for starting and stopping the server in development/testing contexts.
+The project ships a Prolog-based REST/JSON-RPC server packaged as a Docker image. The runtime entrypoint starts the server process that listens on an HTTP port and exposes REST and JSON-RPC endpoints. Configuration is primarily driven by environment variables and a persistent home directory mounted into the container.
 
 ```mermaid
 graph TB
-subgraph "Container Runtime"
-DC["docker-compose.yaml"]
-IMG["Dockerfile"]
+A["Client"] --> B["Kleio Server (REST/JSON-RPC)"]
+B --> C["Worker Pool / Message Queue"]
+B --> D["Filesystem: /kleio-home"]
+B --> E["Logs"]
+subgraph "Container"
+B
+C
+D
+E
 end
-subgraph "Server Runtime"
-SS["src/serverStart.pl"]
-RS["src/restServer.pl"]
-LOG["src/logging.pl"]
-KF["src/kleioFiles.pl"]
-end
-subgraph "Config & Automation"
-ENV[".env-sample"]
-MK["Makefile"]
-KJSON[".kleio.json"]
-end
-DC --> IMG
-DC --> SS
-SS --> RS
-RS --> LOG
-RS --> KF
-ENV --> RS
-MK --> DC
-SS --> KJSON
 ```
 
 **Diagram sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [Dockerfile](file://Dockerfile#L1-L22)
-- [src/serverStart.pl](file://src/serverStart.pl#L1-L200)
-- [src/restServer.pl](file://src/restServer.pl#L1-L200)
-- [src/logging.pl](file://src/logging.pl#L1-L161)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L1-L200)
-- [.env-sample](file://.env-sample#L1-L119)
-- [Makefile](file://Makefile#L1-L286)
-- [.kleio.json](file://.kleio.json#L1-L13)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [src/serverStart.pl:50-66](file://src/serverStart.pl#L50-L66)
+- [src/restServer.pl:330-349](file://src/restServer.pl#L330-L349)
+- [src/threadSupport.pl:41-62](file://src/threadSupport.pl#L41-L62)
+- [src/logging.pl:132-148](file://src/logging.pl#L132-L148)
 
 **Section sources**
-- [Dockerfile](file://Dockerfile#L1-L22)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [.env-sample](file://.env-sample#L1-L119)
-- [Makefile](file://Makefile#L1-L286)
-- [README.md](file://README.md#L68-L146)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [README.md:68-146](file://README.md#L68-L146)
 
 ## Core Components
-- Docker image and containerization
-  - Base image: Debian-based SWI-Prolog runtime.
-  - Installed tools: Git for repository operations.
-  - Working directory and environment: Copies server source into /usr/local/timelink/clio/src and sets KLEIO_LOG_STDOUT to route logs to stdout.
-  - Entrypoint: Starts the server via SWI-Prolog with serverStart.pl and run_server_forever.
-- Docker Compose orchestration
-  - Service definition with image selection via KLEIO_SERVER_IMAGE.
-  - Volume mapping: KLEIO_HOME_DIR mounted to /kleio-home inside the container.
-  - Port mapping: configurable KLEIO_EXTERNAL_PORT to KLEIO_SERVER_PORT.
-  - Environment propagation: KLEIO_DEBUG, KLEIO_SERVER_WORKERS, KLEIO_SERVER_PORT, KLEIO_ADMIN_TOKEN, and KLEIO_LOG_STDOUT.
-  - User override: user KLEIO_USER to avoid root-owned files on Linux hosts.
-  - Restart policy: unless-stopped.
-- Configuration management
-  - .env-sample defines environment variables for image selection, endpoints, ports, workers, timeouts, CORS, paths, and debug toggles.
-  - Makefile targets automate image building, tagging, running, and testing; also generate tokens and manage bootstrap tokens.
-- Server runtime and configuration
-  - src/serverStart.pl: starts the REST server and supports debug modes and forever loops.
-  - src/restServer.pl: reads environment variables for ports, workers, idle timeout, CORS, and admin token; exposes configuration printing and JSON-RPC handlers.
-  - src/logging.pl: manages log destinations (stdout or file), log levels, and formatting.
-  - src/kleioFiles.pl: resolves directories for configuration, sources, structures, logs, and tokens; supports file status and cleanup.
-  - .kleio.json: records runtime configuration, admin token path, and log location after server initialization.
+- Container image and entrypoint: The Docker image installs Git, copies the server source, sets log output to stdout, and runs the server forever.
+- Orchestration: docker-compose.yaml defines service exposure, volume mapping, user identity, and environment variables.
+- Server bootstrap: serverStart.pl initializes debug or production server modes and keeps the process alive.
+- HTTP server: restServer.pl implements REST and JSON-RPC handlers, worker pool initialization, CORS, token bootstrap, and request routing.
+- Concurrency: threadSupport.pl manages worker pools and job queues.
+- Logging: logging.pl writes logs to file or stdout based on configuration.
+
+Key environment variables include KLEIO_SERVER_PORT, KLEIO_EXTERNAL_PORT, KLEIO_SERVER_WORKERS, KLEIO_IDLE_TIMEOUT, KLEIO_ADMIN_TOKEN, KLEIO_CORS_SITES, and KLEIO_HOME_DIR.
 
 **Section sources**
-- [Dockerfile](file://Dockerfile#L1-L22)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [.env-sample](file://.env-sample#L1-L119)
-- [Makefile](file://Makefile#L103-L216)
-- [src/serverStart.pl](file://src/serverStart.pl#L50-L67)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
-- [src/logging.pl](file://src/logging.pl#L27-L161)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L16-L33)
-- [.kleio.json](file://.kleio.json#L1-L13)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [src/serverStart.pl:50-66](file://src/serverStart.pl#L50-L66)
+- [src/restServer.pl:175-184](file://src/restServer.pl#L175-L184)
+- [src/threadSupport.pl:41-62](file://src/threadSupport.pl#L41-L62)
+- [src/logging.pl:132-148](file://src/logging.pl#L132-L148)
+- [.env-sample:1-119](file://.env-sample#L1-L119)
 
 ## Architecture Overview
-The production runtime architecture centers on a single-node Dockerized server with optional clustering behind a reverse proxy. The server exposes a REST/JSON-RPC API and manages file-based configuration and translation artifacts under /kleio-home.
+The system consists of a single-process server with internal threading for concurrency. Clients interact via REST or JSON-RPC. The server persists state under a mapped home directory and can optionally write logs to stdout or a file.
 
 ```mermaid
-graph TB
-subgraph "Production Topology"
-RP["Reverse Proxy / Load Balancer"]
-S1["Kleio Server (Node 1)"]
-S2["Kleio Server (Node 2)"]
-VOL["Shared Storage (/kleio-home)"]
-DB["Optional: Database / Search Index"]
-end
-RP --> S1
-RP --> S2
-S1 --> VOL
-S2 --> VOL
-S1 --> DB
-S2 --> DB
+sequenceDiagram
+participant Client as "Client"
+participant HTTP as "HTTP Server"
+participant Router as "REST/JSON-RPC Router"
+participant Worker as "Worker Pool"
+participant FS as "Filesystem (/kleio-home)"
+participant Log as "Logging"
+Client->>HTTP : POST /json/ or GET /rest/...
+HTTP->>Router : parse request, auth, params
+Router->>Worker : post_job(Goal)
+Worker-->>Router : execute Goal
+Router-->>HTTP : return result
+HTTP-->>Client : response
+Note over Worker,FS : Reads/writes sources, structures, translations
+Note over Router,Log : Logs requests and errors
 ```
 
 **Diagram sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L16-L33)
+- [src/restServer.pl:330-349](file://src/restServer.pl#L330-L349)
+- [src/restServer.pl:491-515](file://src/restServer.pl#L491-L515)
+- [src/threadSupport.pl:104-124](file://src/threadSupport.pl#L104-L124)
+- [src/logging.pl:132-148](file://src/logging.pl#L132-L148)
 
 ## Detailed Component Analysis
 
-### Docker Containerization
-- Image building
-  - Base: Debian-based SWI-Prolog image.
-  - Tools: Installs Git; cleans package cache to minimize image size.
-  - Source inclusion: Copies src tree into /usr/local/timelink/clio/src.
-  - Environment: Sets KLEIO_LOG_STDOUT to route logs to stdout.
-  - Entrypoint: Launches SWI-Prolog with serverStart.pl and run_server_forever.
-- Orchestration with Docker Compose
-  - Image selection via KLEIO_SERVER_IMAGE.
-  - Volume mapping: KLEIO_HOME_DIR to /kleio-home with cached driver.
-  - Port mapping: KLEIO_EXTERNAL_PORT to KLEIO_SERVER_PORT.
-  - Environment propagation: KLEIO_DEBUG, KLEIO_SERVER_WORKERS, KLEIO_SERVER_PORT, KLEIO_ADMIN_TOKEN, KLEIO_LOG_STDOUT.
-  - User override: user KLEIO_USER to avoid root-owned files on Linux.
-  - Restart policy: unless-stopped.
+### Container Image and Entrypoint
+- Base image: swipl
+- Installs git for repository operations
+- Copies server source into the image
+- Sets KLEIO_LOG_STDOUT=true to stream logs to stdout
+- CMD runs the server in a loop
 
-Operational guidance:
-- Build locally: make build-local or use docker build with the prepared Dockerfile.
-- Multi-platform builds: make build-multi for ARM64 and AMD64 with buildx.
-- Tagging: make tag-local-stable or make tag-multi-stable for versioned releases.
-- Run with compose: make kleio-run-latest or docker compose up -d after setting .env.
+Operational implications:
+- Use stdout/stderr for centralized log collection
+- Ensure the host has sufficient disk space for /kleio-home
+- Tag images with semantic versions for reproducibility
 
 **Section sources**
-- [Dockerfile](file://Dockerfile#L1-L22)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [Makefile](file://Makefile#L103-L148)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
 
-### Configuration Management
-Key environment variables and their roles:
-- KLEIO_SERVER_IMAGE: Selects the image to run.
-- KLEIO_END_POINT: Service endpoint for clients.
-- KLEIO_SERVER_PORT: Internal server port (default 8088).
-- KLEIO_EXTERNAL_PORT: Host port exposed by Docker (default 8088).
-- KLEIO_SERVER_WORKERS: Worker threads for parallel translations.
-- KLEIO_IDLE_TIMEOUT: Connection idle timeout in seconds (default 900).
-- KLEIO_ADMIN_TOKEN: Admin token for privileged operations.
-- KLEIO_CORS_SITES: Allowed origins for CORS; use "*" for all.
-- KLEIO_HOME_DIR: Root working directory mapped to /kleio-home.
-- KLEIO_CONF_DIR, KLEIO_SOURCE_DIR, KLEIO_STRU_DIR, KLEIO_TOKEN_DB: Paths for configuration, sources, structures, and token database.
-- KLEIO_DEFAULT_STRU: Default structure file.
-- KLEIO_DEBUG: Enables debug logging.
+### Docker Compose Orchestration
+- Service name: kleio
+- Image: configurable via KLEIO_SERVER_IMAGE
+- User: configurable via KLEIO_USER to avoid root-owned files
+- Volume: KLEIO_HOME_DIR mapped to /kleio-home
+- Port mapping: external KLEIO_EXTERNAL_PORT to internal KLEIO_SERVER_PORT
+- Environment: KLEIO_DEBUG, KLEIO_SERVER_WORKERS, KLEIO_SERVER_PORT, KLEIO_ADMIN_TOKEN, KLEIO_LOG_STDOUT
+- Restart policy: unless-stopped
 
-Notes:
-- The server reads these variables at startup and applies defaults when not set.
-- KLEIO_LOG_STDOUT is set by the Dockerfile to route logs to stdout for container log collection.
+Best practices:
+- Pin image tags in production
+- Provide secrets via orchestrator secret stores instead of plain env
+- Use named volumes for durability if needed
 
 **Section sources**
-- [.env-sample](file://.env-sample#L1-L119)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
-- [Dockerfile](file://Dockerfile#L19-L21)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [.env-sample:1-119](file://.env-sample#L1-L119)
 
-### Production Deployment Topologies
-- Single-node deployment
-  - Recommended for development, staging, and small-scale production.
-  - Use docker-compose with a single service and a local or mounted volume for /kleio-home.
-  - Configure KLEIO_EXTERNAL_PORT to match the host port.
-- Clustered deployment
-  - Scale horizontally behind a reverse proxy or load balancer.
-  - Ensure shared storage for /kleio-home across nodes to maintain consistent configuration and translation artifacts.
-  - Consider sticky sessions if stateful session behavior is required; otherwise rely on shared storage and idempotent operations.
-  - Use KLEIO_SERVER_WORKERS to balance CPU utilization per node.
+### Server Bootstrap and Lifecycle
+- run_server_forever initializes either debug or production server and sleeps indefinitely
+- print_server_config prints version, ports, workers, timeout, CORS, paths, and logging destination
+- save_kleio_config writes runtime configuration to .kleio.json inside the home directory
 
-Security considerations:
-- Restrict inbound access to the server port via firewall rules.
-- Use HTTPS termination at the reverse proxy with TLS certificates managed externally.
-- Enforce CORS policies via KLEIO_CORS_SITES.
+Operational notes:
+- Use KLEIO_DEBUG=true for verbose logs during troubleshooting
+- Inspect .kleio.json for admin token and URLs after startup
+- Stop server via API or orchestrator signals
 
 **Section sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
+- [src/serverStart.pl:50-66](file://src/serverStart.pl#L50-L66)
+- [src/restServer.pl:186-226](file://src/restServer.pl#L186-L226)
+- [src/restServer.pl:228-267](file://src/restServer.pl#L228-L267)
 
-### Operational Procedures
-- Health checks
-  - REST endpoint: Use the JSON-RPC endpoint to probe availability and basic functionality.
-  - Logs: Monitor container logs for errors and warnings; enable KLEIO_DEBUG for verbose logs.
-- Monitoring and metrics
-  - Collect container logs and integrate with centralized logging (e.g., ELK, Loki).
-  - Track CPU, memory, and disk usage of the container and host.
-- Maintenance tasks
-  - Rotate logs regularly to prevent disk pressure.
-  - Clean stale translation artifacts periodically using file management APIs or filesystem cleanup.
-  - Validate configuration and structure files under /kleio-home.
+### REST and JSON-RPC Endpoints
+- REST prefix: /rest/
+- JSON-RPC endpoint: /json/
+- CORS support via KLEIO_CORS_SITES
+- Token-based authorization; bootstrap token generation when no tokens exist and admin token not provided
+- Home page at root shows status and configuration summary
+
+API surface includes entities such as sources, directories, structures, translations, exports, reports, identifications, versions, tokens, users, and client_log.
 
 **Section sources**
-- [src/logging.pl](file://src/logging.pl#L27-L161)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L111-L144)
+- [src/restServer.pl:304-308](file://src/restServer.pl#L304-L308)
+- [src/restServer.pl:389-421](file://src/restServer.pl#L389-L421)
+- [src/restServer.pl:424-447](file://src/restServer.pl#L424-L447)
+- [src/apiCommon.pl:1-101](file://src/apiCommon.pl#L1-L101)
 
-### Backup and Recovery
-Backup scope:
-- Configuration: KLEIO_CONF_DIR and KLEIO_STRU_DIR.
-- Sources: KLEIO_SOURCE_DIR.
-- Tokens: KLEIO_TOKEN_DB.
-- Logs: Optional, depending on retention policy.
+### Concurrency Model and Scaling
+- Workers are created at startup based on KLEIO_SERVER_WORKERS
+- Two modes supported: message queue and thread pool
+- Jobs are queued and executed asynchronously
+- Idle detection supports auto-stop scenarios
 
-Backup strategies:
-- File-level snapshots of /kleio-home.
-- Periodic tar.gz archives with timestamps.
-- Offsite replication to remote storage.
-
-Recovery procedure:
-- Restore /kleio-home from the latest backup.
-- Verify directory ownership and permissions (especially on Linux hosts).
-- Restart the container and confirm service availability.
+Scaling guidance:
+- Tune KLEIO_SERVER_WORKERS according to CPU cores and workload characteristics
+- Increase KLEIO_IDLE_TIMEOUT for large file transfers
+- Monitor queue depth and processing time to right-size workers
 
 **Section sources**
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L16-L33)
-- [docker-compose.yaml](file://docker-compose.yaml#L12-L13)
+- [src/restServer.pl:175-184](file://src/restServer.pl#L175-L184)
+- [src/threadSupport.pl:41-62](file://src/threadSupport.pl#L41-L62)
+- [src/threadSupport.pl:104-124](file://src/threadSupport.pl#L104-L124)
+- [src/restServer.pl:351-367](file://src/restServer.pl#L351-L367)
 
-### Scaling Strategies and Performance Optimization
-- Horizontal scaling
-  - Add nodes behind a reverse proxy; ensure shared storage for /kleio-home.
-- Vertical scaling
-  - Increase KLEIO_SERVER_WORKERS to utilize more CPU cores.
-  - Adjust KLEIO_IDLE_TIMEOUT for long-running operations.
-- Resource management
-  - Limit container CPU/memory via compose or orchestrator settings.
-  - Use cached volume drivers for /kleio-home to improve I/O performance.
-- Network optimization
-  - Place the server close to clients to reduce latency.
-  - Use compression and chunked transfer for large XML exports.
+### Logging and Observability
+- Log levels: emerg, alert, crit, err, warning, notice, info, debug
+- Destination: file under KLEIO_CONF_DIR/logs or stdout when configured
+- Server prints configuration and counts on the home page
+- Shared counters track REST and JSON-RPC request totals
 
-**Section sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L12-L21)
-- [src/restServer.pl](file://src/restServer.pl#L177-L182)
-- [Makefile](file://Makefile#L103-L148)
-
-### Security Hardening and Audit Logging
-- Access control
-  - Set KLEIO_ADMIN_TOKEN at deployment time; rotate tokens regularly.
-  - Use API tokens for client applications; enforce token invalidation and regeneration.
-- Transport security
-  - Terminate TLS at a reverse proxy; configure strong ciphers and protocols.
-  - Restrict inbound ports to trusted networks.
-- Audit logging
-  - Enable KLEIO_DEBUG for detailed logs during incidents; disable in production for performance.
-  - Centralize logs and retain them per compliance requirements.
-- File system permissions
-  - Use user KLEIO_USER to avoid root-owned files on Linux hosts.
-  - Ensure /kleio-home is writable by the container user.
+Operational tips:
+- Stream logs to stdout for containerized environments
+- Centralize logs with a log aggregator
+- Set KLEIO_DEBUG=true only when diagnosing issues
 
 **Section sources**
-- [.env-sample](file://.env-sample#L42-L46)
-- [src/restServer.pl](file://src/restServer.pl#L116-L118)
-- [src/logging.pl](file://src/logging.pl#L89-L112)
-- [docker-compose.yaml](file://docker-compose.yaml#L7-L10)
+- [src/logging.pl:25-113](file://src/logging.pl#L25-L113)
+- [src/logging.pl:132-148](file://src/logging.pl#L132-L148)
+- [src/restServer.pl:186-226](file://src/restServer.pl#L186-L226)
+- [src/restServer.pl:424-447](file://src/restServer.pl#L424-L447)
+
+### Health Checks and Readiness
+- Root path returns HTML with version, time, request counts, and configuration summary
+- No dedicated /health endpoint is implemented; use the root path for liveness/readiness probes
+- Idle detection predicate exists for auto-stop scenarios
+
+Implementation guidance:
+- Configure orchestrators to probe the root path and expect 200 OK
+- For readiness, verify that the token database is attached and admin token is available
+
+**Section sources**
+- [src/restServer.pl:424-447](file://src/restServer.pl#L424-L447)
+- [src/restServer.pl:389-421](file://src/restServer.pl#L389-L421)
+- [src/restServer.pl:351-367](file://src/restServer.pl#L351-L367)
+
+### Security and Authentication
+- Authorization via bearer tokens
+- Admin token can be provided via KLEIO_ADMIN_TOKEN or bootstrapped once
+- Upload permissions are enforced per token
+- CORS sites configurable via KLEIO_CORS_SITES
+
+Security recommendations:
+- Always set KLEIO_ADMIN_TOKEN in production
+- Restrict CORS to known origins
+- Store tokens securely and rotate regularly
+
+**Section sources**
+- [src/restServer.pl:389-421](file://src/restServer.pl#L389-L421)
+- [src/restServer.pl:590-600](file://src/restServer.pl#L590-L600)
+- [src/restServer.pl:183-184](file://src/restServer.pl#L183-L184)
+- [.env-sample:42-50](file://.env-sample#L42-L50)
 
 ## Dependency Analysis
-The server’s runtime depends on environment variables, file system locations, and optional external services. The following diagram maps key dependencies:
+The server depends on SWI-Prolog libraries for HTTP, JSON, and threading. External dependencies include Git for repository operations.
 
 ```mermaid
 graph LR
-ENV["Environment Variables<br/>.env-sample"] --> RS["restServer.pl"]
-RS --> SS["serverStart.pl"]
-RS --> LOG["logging.pl"]
-RS --> KF["kleioFiles.pl"]
-SS --> KJSON[".kleio.json"]
-DC["docker-compose.yaml"] --> RS
-IMG["Dockerfile"] --> SS
+A["Dockerfile"] --> B["swipl base image"]
+A --> C["git package"]
+D["docker-compose.yaml"] --> E["Image tag and env"]
+F["src/restServer.pl"] --> G["threading and http libs"]
+F --> H["logging module"]
+F --> I["threadSupport module"]
+J["src/serverStart.pl"] --> F
+K["src/threadSupport.pl"] --> L["message_queue / thread_pool"]
 ```
 
 **Diagram sources**
-- [.env-sample](file://.env-sample#L1-L119)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
-- [src/serverStart.pl](file://src/serverStart.pl#L50-L67)
-- [src/logging.pl](file://src/logging.pl#L27-L161)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L16-L33)
-- [.kleio.json](file://.kleio.json#L1-L13)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [Dockerfile](file://Dockerfile#L1-L22)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
+- [src/restServer.pl:131-148](file://src/restServer.pl#L131-L148)
+- [src/threadSupport.pl:41-62](file://src/threadSupport.pl#L41-L62)
+- [src/serverStart.pl:50-66](file://src/serverStart.pl#L50-L66)
 
 **Section sources**
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
-- [src/serverStart.pl](file://src/serverStart.pl#L50-L67)
-- [src/logging.pl](file://src/logging.pl#L27-L161)
-- [src/kleioFiles.pl](file://src/kleioFiles.pl#L16-L33)
-- [.kleio.json](file://.kleio.json#L1-L13)
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [Dockerfile](file://Dockerfile#L1-L22)
+- [Dockerfile:1-22](file://Dockerfile#L1-L22)
+- [src/restServer.pl:131-148](file://src/restServer.pl#L131-L148)
+- [src/threadSupport.pl:41-62](file://src/threadSupport.pl#L41-L62)
 
 ## Performance Considerations
-- Optimize worker count: Increase KLEIO_SERVER_WORKERS to match CPU cores while avoiding contention.
-- Tune timeouts: Raise KLEIO_IDLE_TIMEOUT for clients fetching large XML exports.
-- Volume performance: Use cached or delegated volume drivers for /kleio-home.
-- Logging overhead: Disable KLEIO_DEBUG in production; enable only during troubleshooting.
-- Network: Minimize hops between clients and the server; consider local caching for repeated translations.
+- Workers: Adjust KLEIO_SERVER_WORKERS to match CPU capacity and expected concurrency. Start with number of cores and tune based on queue depth and latency.
+- Timeouts: Increase KLEIO_IDLE_TIMEOUT for large uploads/downloads to avoid premature disconnects.
+- Memory: SWI-Prolog stack sizes are configured in the worker pool creation; monitor memory usage and adjust if necessary.
+- Disk I/O: Keep /kleio-home on fast storage; consider SSDs for heavy translation workloads.
+- Logging: Avoid debug level in production due to overhead; enable selectively.
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
-Common operational issues and resolutions:
-- Permission errors on Linux hosts
-  - Cause: Container runs as root; files created under /kleio-home are owned by root.
-  - Resolution: Set user KLEIO_USER to the current user’s UID:GID in docker-compose.
-- Long-running connections timing out
-  - Cause: Default KLEIO_IDLE_TIMEOUT too low for large downloads.
-  - Resolution: Increase KLEIO_IDLE_TIMEOUT in .env and restart the container.
-- Missing admin token
-  - Symptom: No KLEIO_ADMIN_TOKEN configured.
-  - Resolution: Generate a token with make gen-token and set KLEIO_ADMIN_TOKEN; or use bootstrap token flow documented in the Makefile targets.
-- CORS failures
-  - Symptom: Cross-origin requests blocked.
-  - Resolution: Set KLEIO_CORS_SITES to the appropriate origin(s) or "*" for development.
-- Container logs not visible
-  - Symptom: Logs not appearing in docker logs.
-  - Resolution: Ensure KLEIO_LOG_STDOUT is set (already set by Dockerfile) and that the container is running with stdout enabled.
-
-Development and debugging aids:
-- Start a temporary debug server for interactive testing using tests/scripts/kleio_start_server.sh.
-- Stop the debug server after idle using tests/scripts/kleio_stop_server.sh.
+- Verify server configuration by accessing the root path to view version, ports, workers, and logging destination.
+- Check logs:
+  - If KLEIO_LOG_STDOUT=true, inspect container logs.
+  - Otherwise, check the log file under the configured log directory.
+- Validate token setup:
+  - If KLEIO_ADMIN_TOKEN is unset, ensure the bootstrap token was generated and saved.
+- Inspect worker activity:
+  - Use shared counters and idle detection to determine if the server is busy.
+- Reproduce issues locally:
+  - Use Make targets to build and run specific image tags and test suites.
 
 **Section sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L7-L10)
-- [src/restServer.pl](file://src/restServer.pl#L177-L184)
-- [Makefile](file://Makefile#L151-L152)
-- [tests/scripts/kleio_start_server.sh](file://tests/scripts/kleio_start_server.sh#L1-L22)
-- [tests/scripts/kleio_stop_server.sh](file://tests/scripts/kleio_stop_server.sh#L1-L6)
+- [src/restServer.pl:186-226](file://src/restServer.pl#L186-L226)
+- [src/restServer.pl:424-447](file://src/restServer.pl#L424-L447)
+- [src/restServer.pl:389-421](file://src/restServer.pl#L389-L421)
+- [src/restServer.pl:351-367](file://src/restServer.pl#L351-L367)
+- [Makefile:165-227](file://Makefile#L165-L227)
 
 ## Conclusion
-Deploying the Timelink Kleio server in production requires careful attention to containerization, configuration, and operational hygiene. Use the provided Dockerfile and docker-compose.yaml for consistent builds and runtime, manage configuration via .env-sample and Makefile targets, and adopt robust logging, backup, and scaling practices. Harden security with strict access controls, TLS termination, and audit logging, and troubleshoot efficiently using the guidance provided.
+Kleio’s translation services are designed for containerized deployment with clear environment-driven configuration. Production deployments should pin image tags, manage secrets securely, configure CORS and tokens appropriately, and tune workers and timeouts based on workload. Centralized logging and simple health probing via the root endpoint facilitate observability and reliability.
 
 [No sources needed since this section summarizes without analyzing specific files]
 
 ## Appendices
 
-### Appendix A: Environment Variables Reference
-- KLEIO_SERVER_IMAGE: Image to run.
-- KLEIO_END_POINT: Service endpoint for clients.
-- KLEIO_SERVER_PORT: Internal server port.
-- KLEIO_EXTERNAL_PORT: Host port exposed by Docker.
-- KLEIO_SERVER_WORKERS: Worker threads.
-- KLEIO_IDLE_TIMEOUT: Connection idle timeout.
-- KLEIO_ADMIN_TOKEN: Admin token.
-- KLEIO_CORS_SITES: Allowed CORS origins.
-- KLEIO_HOME_DIR: Root working directory mapped to /kleio-home.
-- KLEIO_CONF_DIR, KLEIO_SOURCE_DIR, KLEIO_STRU_DIR, KLEIO_TOKEN_DB: Paths for configuration, sources, structures, and token database.
-- KLEIO_DEFAULT_STRU: Default structure file.
-- KLEIO_DEBUG: Enable debug logging.
+### Production Deployment Strategies
+
+- Docker-only
+  - Build and push multi-architecture images using Make targets.
+  - Run with docker-compose, mounting a persistent home directory and setting required environment variables.
+  - Use restart policies and health checks at the orchestrator layer.
+
+- Kubernetes
+  - Create a Deployment with replicas scaled to desired concurrency.
+  - Mount PersistentVolumeClaims for /kleio-home to persist data across pods.
+  - Expose via a Service and Ingress; configure TLS termination at the ingress.
+  - Use ConfigMaps for non-secret settings and Secrets for tokens and sensitive values.
+  - Add liveness and readiness probes against the root path.
+  - Set resource requests/limits aligned with worker count and memory profile.
+
+- Cloud Platforms
+  - AWS ECS/Fargate: define task definitions with environment variables and EFS for /kleio-home.
+  - Google Cloud Run: mount Cloud Storage via gcsfuse or use sidecar for persistence.
+  - Azure Container Apps: use managed disks or blob storage with appropriate drivers.
+
+[No sources needed since this section provides general guidance]
+
+### Environment Configuration Reference
+- KLEIO_SERVER_IMAGE: Image to run
+- KLEIO_USER: UID:GID to avoid root-owned files
+- KLEIO_HOME_DIR: Host path mapped to /kleio-home
+- KLEIO_SERVER_PORT: Internal HTTP port
+- KLEIO_EXTERNAL_PORT: Mapped external port
+- KLEIO_SERVER_WORKERS: Number of concurrent workers
+- KLEIO_IDLE_TIMEOUT: Connection keep-alive seconds
+- KLEIO_ADMIN_TOKEN: Initial admin token
+- KLEIO_CORS_SITES: Allowed CORS origins
+- KLEIO_DEBUG: Enable debug logging
+- KLEIO_LOG_STDOUT: Stream logs to stdout
 
 **Section sources**
-- [.env-sample](file://.env-sample#L1-L119)
-- [src/restServer.pl](file://src/restServer.pl#L107-L184)
+- [.env-sample:1-119](file://.env-sample#L1-L119)
+- [docker-compose.yaml:1-22](file://docker-compose.yaml#L1-L22)
 
-### Appendix B: Server Startup Flow
-```mermaid
-sequenceDiagram
-participant User as "Operator"
-participant Compose as "docker-compose"
-participant Container as "Kleio Container"
-participant SWI as "SWI-Prolog"
-participant Server as "serverStart.pl"
-participant REST as "restServer.pl"
-User->>Compose : "docker compose up -d"
-Compose->>Container : "Start container with env and volumes"
-Container->>SWI : "Execute entrypoint"
-SWI->>Server : "Load serverStart.pl"
-Server->>REST : "start_rest_server"
-REST-->>Server : "Server ready on configured port"
-Server-->>Container : "Logging and configuration printed"
-```
+### Operational Automation
+- Build and tag images:
+  - make build-local, make build-multi
+- Run servers:
+  - make kleio-run-latest, make kleio-run-current, make kleio-run-tag
+- Stop servers:
+  - make kleio-stop
+- Generate tokens:
+  - make gen-token
+- Bootstrap initial admin token:
+  - make bootstrap-token
 
-**Diagram sources**
-- [docker-compose.yaml](file://docker-compose.yaml#L1-L22)
-- [Dockerfile](file://Dockerfile#L19-L21)
-- [src/serverStart.pl](file://src/serverStart.pl#L50-L67)
-- [src/restServer.pl](file://src/restServer.pl#L186-L200)
+**Section sources**
+- [Makefile:107-163](file://Makefile#L107-L163)
+- [Makefile:165-227](file://Makefile#L165-L227)
+- [Makefile:229-252](file://Makefile#L229-L252)
+
+### Backup and Disaster Recovery
+- Back up /kleio-home regularly, including:
+  - Sources and translations
+  - Structures and configuration
+  - Token database and .kleio.json
+- Use consistent snapshots or incremental backups depending on RPO/RTO requirements.
+- Test restore procedures periodically to validate integrity.
+
+[No sources needed since this section provides general guidance]
+
+### Capacity Planning and Load Balancing
+- Estimate workers based on CPU cores and translation complexity.
+- Monitor queue depth and processing times to scale horizontally.
+- Place a reverse proxy or ingress in front of multiple replicas for load distribution.
+- Use sticky sessions only if necessary; prefer stateless design with shared storage.
+
+[No sources needed since this section provides general guidance]
+
+### High Availability Configurations
+- Deploy multiple replicas behind a load balancer.
+- Use shared persistent storage for /kleio-home accessible by all replicas.
+- Configure rolling updates to maintain availability during upgrades.
+- Implement graceful shutdown hooks if needed to finish in-flight jobs.
+
+[No sources needed since this section provides general guidance]

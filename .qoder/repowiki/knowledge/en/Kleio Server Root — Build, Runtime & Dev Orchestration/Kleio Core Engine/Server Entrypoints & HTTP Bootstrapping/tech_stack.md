@@ -1,0 +1,1 @@
+SWI-Prolog `library(http/thread_httpd)` + `http_dispatch` for the REST/JSON-RPC server; `prolog_server` for the interactive debug REPL; `pldoc`'s `doc_server/2` for the documentation server.

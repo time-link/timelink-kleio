@@ -1,0 +1,1 @@
+Prolog export translators that convert Kleio source transcriptions into XML/JSON and pretty-printed Kleio files with stable auto-generated IDs for safe reimport.

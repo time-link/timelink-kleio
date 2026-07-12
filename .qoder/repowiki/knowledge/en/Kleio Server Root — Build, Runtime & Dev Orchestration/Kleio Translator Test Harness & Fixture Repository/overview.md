@@ -1,0 +1,1 @@
+Top-level test harness that boots a Kleio server, runs the dev and stable Prolog suites against shared fixtures, compares outputs, and ships a Postman collection for API validation.

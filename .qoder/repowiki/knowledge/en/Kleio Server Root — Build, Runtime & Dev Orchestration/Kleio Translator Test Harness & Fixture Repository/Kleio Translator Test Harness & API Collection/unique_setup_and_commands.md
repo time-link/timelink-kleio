@@ -1,0 +1,1 @@
+Requires `swipl` on PATH and must be executed from the `tests/` directory. Typical flow: `./scripts/run_tests.sh` (or `make test-semantics` as noted in the script header). The server mode needs the dev code tree at `../src/` and writes its home into `kleio-home/`; the Postman collection expects an admin token and a running server at `{{endpoint}}` (default `localhost:8088`).

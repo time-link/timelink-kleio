@@ -1,0 +1,1 @@
+SWI-Prolog plunit for functional tests; shell scripts as the orchestration layer; Postman collection + environment files for REST/JSON-RPC smoke tests; all tests share one `kleio-home/` fixture repository.

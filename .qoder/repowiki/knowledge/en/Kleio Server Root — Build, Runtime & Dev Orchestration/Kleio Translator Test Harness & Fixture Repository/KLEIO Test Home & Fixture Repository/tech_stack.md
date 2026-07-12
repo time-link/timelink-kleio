@@ -1,0 +1,1 @@
+KLEIO Prolog-based parser/translator ecosystem: `.str` Prolog structure files, `.kleio` source DSL, YAML structure definitions, and golden-output formats `.org` / `.xml` / `.rpt` / `.err` / `.files.json` produced by the server.

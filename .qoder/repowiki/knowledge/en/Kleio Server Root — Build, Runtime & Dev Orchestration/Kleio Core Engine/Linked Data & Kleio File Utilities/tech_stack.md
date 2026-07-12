@@ -1,0 +1,1 @@
+Pure SWI-Prolog using `library(pcre)` for regex-based linked-data annotation parsing and `library(filesex)` plus shell `find`/`cat` calls (via `shellUtil`) for filesystem scanning and `.err` metadata extraction.

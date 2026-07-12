@@ -1,0 +1,1 @@
+SWI-Prolog (runtime) packaged into multi-arch Docker images via `docker buildx`; build/versioning driven by plain text files (`kleio.*.number`) and `sed`; API docs generated from a Postman collection via `postman_doc_gen`; linting shared across Prolog and Python helpers via `.flake8` and `.pylintrc`.

@@ -1,0 +1,1 @@
+SWI-Prolog DCG grammar (`phrase/2`) with `thread_local` dynamic storage for multi-command parsing state; YAML schema files parsed by the surrounding Kleio loader.

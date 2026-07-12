@@ -1,0 +1,1 @@
+Postman Collection Format v2.1 (`https://schema.getpostman.com/json/collection/v2.1.0/collection.json`) with embedded JavaScript test scripts using the Postman `pm.*` runtime and Chai assertion library; targets the Kleio server's dual transport surface of JSON-RPC 2.0 over POST `/json/` and REST over `/rest/*`.

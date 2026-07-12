@@ -1,0 +1,3 @@
+- Each test scenario lives under `kleio-home/sources/<category>/` paired with its expected output under `kleio-home/reference_sources/<category>/` or `kleio-home/test_translations/<category>/` so diff-based comparison is deterministic.
+- Prolog test modules mirror the production package layout (e.g. `apiSources.pl`, `dataDictionary.pl`, `struSyntax.pl`) inside both `dev/` and `stable/` so the harness can swap implementations without changing test entry points.
+- Shell harness scripts follow a fixed lifecycle: start server → run suite → stop server → diff → report, and are invoked uniformly by `run_tests.sh` regardless of whether the target is the local dev build or the stable snapshot.

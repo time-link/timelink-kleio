@@ -1,0 +1,1 @@
+Single entry point is `make`: `make build-local` (builds tagged image), `make kleio-run-current|latest|tag=...` (boots via docker-compose using `.env`), `make test-semantics` (semantic diff against stable baseline), `make test-api` (newman against live server), `make bootstrap-token` (one-shot admin token generation), `make current-to-stable` (snapshot src into tests/stable).

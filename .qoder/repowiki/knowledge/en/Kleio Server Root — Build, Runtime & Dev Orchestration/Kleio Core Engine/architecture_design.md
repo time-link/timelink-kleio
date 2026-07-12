@@ -1,0 +1,5 @@
+The engine is organized as a layered Prolog monolith under `src/` with one central orchestration point:
+- `topLevel.pl` exposes the public API (`clio_init/0`, `stru/1`, `dat/1`) and drives the two-phase pipeline: first `stru` loads a YAML/.str schema (via `structure_definitions` + `shared_utilities`), then `dat` tokenizes/parses data files through `kleio_compiler` into the CDS record in `persistence_layer`.
+- All layers communicate exclusively through SWI-Prolog globals (`put_value`/`get_value` — echo, max_errors, stru_file, data_file) and the thread-local CDS record; there is no message bus or IPC between children.
+- Server and CLI faces are thin bootstrappers (`server_entrypoints`: `restServer.pl`, `docServer.pl`, `swiStart.pl`; `cli_translators`: `gactoxml.pl`, `clioPP.pl`, `mhkStart.pl`) that call into `topLevel` after loading the same modules.
+- Cross-cutting concerns (`errors.pl`, `logging.pl`, `counters.pl`, `utilities.pl`, `basicio.pl`) are imported by every child, making them the de-facto shared boundary contract rather than an explicit package.

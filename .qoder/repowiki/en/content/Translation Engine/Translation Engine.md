@@ -2,20 +2,20 @@
 
 <cite>
 **Referenced Files in This Document**
+- [README.md](file://README.md)
+- [README_KLEIO_NOTATION.md](file://README_KLEIO_NOTATION.md)
 - [topLevel.pl](file://src/topLevel.pl)
-- [apiTranslations.pl](file://src/apiTranslations.pl)
-- [dataSyntax.pl](file://src/dataSyntax.pl)
-- [struSyntax.pl](file://src/struSyntax.pl)
 - [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
 - [dataCode.pl](file://src/dataCode.pl)
-- [dataCDS.pl](file://src/dataCDS.pl)
-- [mappings.pl](file://src/mappings.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
 - [inference.pl](file://src/inference.pl)
 - [linkedData.pl](file://src/linkedData.pl)
-- [xref_kleio.pl](file://src/xref_kleio.pl)
-- [person-mapping.yml](file://tests/kleio-home/mappings/person-mapping.yml)
-- [sample-mapping.yml](file://tests/kleio-home/mappings/sample-mapping.yml)
-- [inference_sample.yml](file://tests/kleio-home/inferences/inference_sample.yml)
+- [errors.pl](file://src/errors.pl)
+- [serverStart.pl](file://src/serverStart.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [mappings.pl](file://src/mappings.pl)
+- [vocabularies.pl](file://src/vocabularies.pl)
 </cite>
 
 ## Table of Contents
@@ -31,419 +31,394 @@
 10. [Appendices](#appendices)
 
 ## Introduction
-This document describes the translation engine of the Timelink Kleio system, focusing on the end-to-end workflow that transforms raw Kleio input into structured, validated, mapped, inferred, and linked data. The engine comprises:
-- Syntax parsing for structure (.str/.yaml) and data (.cli) files
-- Semantic validation and integrity checks
-- Mapping application to align source groups to target classes and attributes
-- Inference processing to discover relationships and enrich missing information
-- Linked data integration to connect entities to external knowledge bases
-- Cross-referencing and normalization via Contextual Data Structures (CDS)
-
-The goal is to explain how each stage operates, how they interact, and how to configure and troubleshoot them effectively.
+This document explains the Kleio translation engine that converts Kleio notation files into normalized data and XML for Timelink. It covers the full pipeline from lexical analysis through syntax parsing, semantic processing, normalization, context-aware inference, linked data integration, and XML generation. It also documents error handling, warnings, debugging techniques, performance optimization, parallel processing, custom mappings, vocabulary management, extension points, and the relationship between Kleio notation and Timelink database schema mapping.
 
 ## Project Structure
-The translation engine spans several modules:
-- Top-level orchestration and file processing
-- Lexical analysis and syntax parsing
-- Data compilation and CDS management
-- Structure definition processing
-- Mapping and inference engines
-- Linked data linking utilities
-- API entry points for translation jobs
+The translation engine is implemented in SWI-Prolog with a modular architecture:
+- Top-level orchestration and file I/O
+- Lexical analyzer (tokenizer)
+- Syntax analyzer (parser)
+- Semantic processor (group/element handling, validation, path resolution)
+- Exporter to XML and auxiliary outputs
+- Inference rules for automatic relations and attributes
+- Linked data annotation support
+- Error/warning reporting
+- REST server entry point and worker pool for parallel processing
+- Mappings to Timelink database classes and tables
+- Vocabulary tracking utilities
 
 ```mermaid
 graph TB
-subgraph "Orchestration"
-TL["topLevel.pl"]
-API["apiTranslations.pl"]
-end
-subgraph "Lexical & Syntax"
-LX["lexical.pl"]
-DS["dataSyntax.pl"]
-SS["struSyntax.pl"]
-end
-subgraph "Data Processing"
-DC["dataCode.pl"]
-CDS["dataCDS.pl"]
-end
-subgraph "Schema & Rules"
-SC["struCode.pl"]
-MP["mappings.pl"]
-IF["inference.pl"]
-LD["linkedData.pl"]
-end
-API --> TL
-TL --> LX
-TL --> DS
-TL --> SS
-DS --> DC
-SS --> SC
-DC --> CDS
-DC --> MP
-DC --> IF
-DC --> LD
+A["REST Server<br/>serverStart.pl"] --> B["Top Level<br/>topLevel.pl"]
+B --> C["Lexical Analyzer<br/>lexical.pl"]
+B --> D["Syntax Analyzer<br/>dataSyntax.pl"]
+D --> E["Semantic Processor<br/>dataCode.pl"]
+E --> F["XML Exporter<br/>gactoxml.pl"]
+F --> G["Inference Rules<br/>inference.pl"]
+F --> H["Linked Data<br/>linkedData.pl"]
+F --> I["Mappings to DB Schema<br/>mappings.pl"]
+B --> J["Errors & Warnings<br/>errors.pl"]
+A --> K["Thread Pool / Workers<br/>threadSupport.pl"]
+F --> L["Vocabulary Tracking<br/>vocabularies.pl"]
 ```
 
 **Diagram sources**
-- [topLevel.pl](file://src/topLevel.pl#L165-L282)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L433-L482)
-- [lexical.pl](file://src/lexical.pl#L27-L73)
-- [dataSyntax.pl](file://src/dataSyntax.pl#L38-L62)
-- [struSyntax.pl](file://src/struSyntax.pl#L12-L51)
-- [dataCode.pl](file://src/dataCode.pl#L49-L79)
-- [dataCDS.pl](file://src/dataCDS.pl#L1-L80)
-- [struCode.pl](file://src/struCode.pl#L49-L120)
-- [mappings.pl](file://src/mappings.pl#L1-L35)
-- [inference.pl](file://src/inference.pl#L1-L35)
-- [linkedData.pl](file://src/linkedData.pl#L1-L41)
+- [serverStart.pl](file://src/serverStart.pl)
+- [topLevel.pl](file://src/topLevel.pl)
+- [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+- [dataCode.pl](file://src/dataCode.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [inference.pl](file://src/inference.pl)
+- [linkedData.pl](file://src/linkedData.pl)
+- [mappings.pl](file://src/mappings.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [vocabularies.pl](file://src/vocabularies.pl)
 
 **Section sources**
-- [topLevel.pl](file://src/topLevel.pl#L1-L286)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L1-L120)
+- [README.md](file://README.md)
+- [README_KLEIO_NOTATION.md](file://README_KLEIO_NOTATION.md)
 
 ## Core Components
-- Lexical analyzer: tokenizes input streams for both commands and data.
-- Data syntax parser: recognizes group/element/aspects and builds calls to store data.
-- Structure syntax parser: validates and executes schema commands.
-- Data code: orchestrates group lifecycle, flushing, and database storage hooks.
-- CDS: in-memory staging area for current group data and metadata.
-- Mappings: define how source groups/classes map to target relational classes and attributes.
-- Inference: declarative rules to infer relations and attributes from context.
-- Linked data: declares external link patterns and generates URIs for entities.
+- Top-level driver: initializes environment, reads files line-by-line, dispatches tokens to parser, and coordinates lifecycle hooks for export modules.
+- Lexical analyzer: tokenizes input according to Kleio special characters and configurable multi-entry separator; supports quoted strings and triple-quoted multiline blocks.
+- Syntax analyzer: parses tokens into structured events (new group, new element, aspects, entries), accumulates element data per group, and flushes groups at boundaries.
+- Semantic processor: validates elements against structure definitions, resolves implicit positional elements, maintains group hierarchy paths, and stores intermediate data structures.
+- XML exporter: transforms processed groups into XML, applies linked data annotations, generates IDs, writes pretty-printed intermediates, and finalizes output.
+- Inference engine: declarative rules derive relations and attributes based on group context and patterns.
+- Linked data module: recognizes link declarations and inline annotations to produce external URIs.
+- Error reporting: centralized error and warning logging with line context and counts.
+- Parallel execution: thread pool or message queue workers execute translations concurrently.
+- Mappings: declarative mapping from Kleio groups/classes to Timelink database tables and columns.
+- Vocabularies: tracks attribute and relation value vocabularies for validation and reporting.
 
 **Section sources**
-- [lexical.pl](file://src/lexical.pl#L27-L73)
-- [dataSyntax.pl](file://src/dataSyntax.pl#L38-L62)
-- [struSyntax.pl](file://src/struSyntax.pl#L12-L51)
-- [dataCode.pl](file://src/dataCode.pl#L49-L79)
-- [dataCDS.pl](file://src/dataCDS.pl#L16-L81)
-- [mappings.pl](file://src/mappings.pl#L1-L35)
-- [inference.pl](file://src/inference.pl#L1-L35)
-- [linkedData.pl](file://src/linkedData.pl#L11-L41)
+- [topLevel.pl](file://src/topLevel.pl)
+- [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+- [dataCode.pl](file://src/dataCode.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [inference.pl](file://src/inference.pl)
+- [linkedData.pl](file://src/linkedData.pl)
+- [errors.pl](file://src/errors.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [mappings.pl](file://src/mappings.pl)
+- [vocabularies.pl](file://src/vocabularies.pl)
 
 ## Architecture Overview
-The translation pipeline is file-centric. For structure files (.str/.yaml), the system parses commands and builds an internal schema representation. For data files (.cli), it lexes, parses, compiles, and stages data in CDS, then persists it through database hooks.
+The translation pipeline follows a classic compiler-like flow:
+- Input files are read line by line.
+- Each line is tokenized by the lexical analyzer.
+- Tokens are parsed into semantic actions.
+- Actions update an internal current data structure and group path.
+- On group completion, the exporter receives callbacks to generate XML and perform inference.
+- Linked data annotations are resolved to URIs.
+- Errors and warnings are recorded with contextual information.
+- The REST server can dispatch multiple translations via a worker pool.
 
 ```mermaid
 sequenceDiagram
 participant Client as "Client"
-participant API as "apiTranslations.pl"
-participant TL as "topLevel.pl"
-participant LX as "lexical.pl"
-participant DS as "dataSyntax.pl"
-participant DC as "dataCode.pl"
-participant CDS as "dataCDS.pl"
-Client->>API : "POST translations" with parameters
-API->>TL : "translate/3" for each file
-TL->>LX : "get_tokens/3" (dat)
-LX-->>TL : "Tokens"
-TL->>DS : "compile_data/1"
-DS-->>DC : "storeEls([...])"
-DC->>CDS : "setCDS/getCDS, setCDField/getCDField"
-DC-->>TL : "flushGroup/db_store"
-TL-->>API : "report/close"
-API-->>Client : "Job IDs and status"
+participant Server as "REST Server<br/>serverStart.pl"
+participant Worker as "Worker<br/>threadSupport.pl"
+participant Top as "Top Level<br/>topLevel.pl"
+participant Lex as "Lexer<br/>lexical.pl"
+participant Par as "Parser<br/>dataSyntax.pl"
+participant Sem as "Semantics<br/>dataCode.pl"
+participant Exp as "Exporter<br/>gactoxml.pl"
+participant Inf as "Inference<br/>inference.pl"
+participant LD as "Linked Data<br/>linkedData.pl"
+Client->>Server : POST translate(file, stru)
+Server->>Worker : post_job(translate_goal)
+Worker->>Top : run translation
+Top->>Lex : tokenize(line)
+Lex-->>Top : tokens
+Top->>Par : compile_data(tokens)
+Par->>Sem : newGroup/newElement/storeCore...
+Sem-->>Exp : db_store(group)
+Exp->>LD : process_linked_data()
+Exp->>Inf : do_auto_rels()
+Exp-->>Worker : XML + reports
+Worker-->>Server : result
+Server-->>Client : JSON response
 ```
 
 **Diagram sources**
-- [apiTranslations.pl](file://src/apiTranslations.pl#L433-L482)
-- [topLevel.pl](file://src/topLevel.pl#L165-L282)
-- [lexical.pl](file://src/lexical.pl#L27-L73)
-- [dataSyntax.pl](file://src/dataSyntax.pl#L38-L62)
-- [dataCode.pl](file://src/dataCode.pl#L75-L152)
-- [dataCDS.pl](file://src/dataCDS.pl#L153-L214)
+- [serverStart.pl](file://src/serverStart.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [topLevel.pl](file://src/topLevel.pl)
+- [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+- [dataCode.pl](file://src/dataCode.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [inference.pl](file://src/inference.pl)
+- [linkedData.pl](file://src/linkedData.pl)
 
 ## Detailed Component Analysis
 
-### Syntax Parsing and Compilation
-- Lexical analysis converts input characters into typed tokens depending on file type (cmd/dat).
-- Data syntax grammar recognizes groups, elements, aspects, and entries, generating calls to dataCode predicates.
-- Structure syntax grammar validates commands and delegates execution to struCode.
+### Pipeline Orchestration (Top-Level)
+Responsibilities:
+- Initialize translator state and counters.
+- Read structure and data files line by line.
+- Dispatch lines to lexer and parser.
+- Manage command vs data modes.
+- Coordinate lifecycle hooks for exporters.
 
-```mermaid
-flowchart TD
-A["Read line"] --> B["get_tokens/3"]
-B --> C{"File type?"}
-C --> |cmd| D["struSyntax.compile_command/2"]
-C --> |dat| E["dataSyntax.compile_data/1"]
-E --> F["storeEls([...])"]
-F --> G["dataCode.newGroup/newElement/..."]
-G --> H["CDS updates"]
-```
-
-**Diagram sources**
-- [lexical.pl](file://src/lexical.pl#L27-L73)
-- [struSyntax.pl](file://src/struSyntax.pl#L48-L51)
-- [dataSyntax.pl](file://src/dataSyntax.pl#L57-L62)
-- [dataCode.pl](file://src/dataCode.pl#L75-L121)
+Key behaviors:
+- Initializes error counting and report settings.
+- For structure files, processes commands and builds dictionary.
+- For data files, opens input, sets up compiler, reads lines, and closes resources.
+- Maintains line number and text properties for diagnostics.
 
 **Section sources**
-- [lexical.pl](file://src/lexical.pl#L27-L73)
-- [dataSyntax.pl](file://src/dataSyntax.pl#L38-L62)
-- [struSyntax.pl](file://src/struSyntax.pl#L12-L51)
+- [topLevel.pl](file://src/topLevel.pl)
 
-### Semantic Validation and Integrity Checks
-- Group initialization resets path and counters, saving line metadata for diagnostics.
-- On group end, the system finalizes elements, enforces “certe” requirements, computes IDs, and invokes persistence hooks.
-- Missing mandatory elements produce errors with contextual line information.
+### Lexical Analyzer
+Responsibilities:
+- Classify characters into types.
+- Tokenize Kleio input for both commands and data.
+- Support dynamic data flags (e.g., configurable multi-entry separator).
+- Handle double quotes and triple-quoted multiline strings.
 
-```mermaid
-flowchart TD
-Start(["flushGroup"]) --> CheckEmpty{"Has current group?"}
-CheckEmpty --> |No| End(["Exit"])
-CheckEmpty --> |Yes| EndElem["endElement"]
-EndElem --> MakeID["makeID/1"]
-MakeID --> CheckElems["check_elements/2"]
-CheckElems --> |Missing| Err["error_out with line info"]
-CheckElems --> |OK| Store["db_store"]
-Store --> End
-```
+Normalization rules:
+- Whitespace collapsed to single space except inside quoted regions.
+- Special characters mapped to data flags (e.g., $, =, /, %, #, ; or configured char).
+- Numbers preserved as atoms to avoid trailing zero loss.
 
-**Diagram sources**
-- [dataCode.pl](file://src/dataCode.pl#L140-L168)
+Extensibility:
+- Data flag 8 can be remapped via property multiple-entry-flag.
 
 **Section sources**
-- [dataCode.pl](file://src/dataCode.pl#L178-L200)
+- [lexical.pl](file://src/lexical.pl)
 
-### Mapping Application
-Mappings define how source groups and elements map to target classes and attributes. They support:
-- Class declarations with table names and attribute schemas
-- Inheritance via “extends”
-- Attribute metadata (column, type, size, primary key)
+### Syntax Analyzer
+Responsibilities:
+- Parse token streams into semantic actions.
+- Recognize groups, explicit elements, end-of-element markers, aspects (original/comment), and multiple entries.
+- Manage quoting contexts and pass raw content for preservation.
 
-Examples:
-- YAML mapping for a person class with id/name/sex/obs attributes
-- YAML mapping for minutes extending act with day/month/year/summary/pages/obs
-
-```mermaid
-classDiagram
-class Mapping {
-+mapping(name, class)
-+class(name, extends, table, attributes)
-+attribute(name, column, class, type, size, pkey)
-}
-Mapping --> Mapping : "extends"
-```
-
-**Diagram sources**
-- [mappings.pl](file://src/mappings.pl#L24-L518)
-- [person-mapping.yml](file://tests/kleio-home/mappings/person-mapping.yml#L1-L15)
-- [sample-mapping.yml](file://tests/kleio-home/mappings/sample-mapping.yml#L7-L23)
+Processing logic:
+- Accumulate element data until endElement.
+- Use locus lists to infer implicit element names when not explicitly provided.
+- Flush accumulated calls to storeEls after each line.
 
 **Section sources**
-- [mappings.pl](file://src/mappings.pl#L1-L35)
-- [person-mapping.yml](file://tests/kleio-home/mappings/person-mapping.yml#L1-L15)
-- [sample-mapping.yml](file://tests/kleio-home/mappings/sample-mapping.yml#L1-L24)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+
+### Semantic Processor
+Responsibilities:
+- Maintain current group, element, and aspect state.
+- Validate elements against structure definitions.
+- Resolve hierarchical group paths and detect recursion.
+- Store core/original/comment aspects and multiple entries.
+
+Normalization and validation:
+- Trim leading spaces in values.
+- Check required elements (certe) and warn about missing ones.
+- Generate IDs and manage counters for subgroups.
+
+Path resolution:
+- Link new groups to the longest possible ancestor path.
+- Prevent recursive nesting by checking existing path members.
+
+**Section sources**
+- [dataCode.pl](file://src/dataCode.pl)
+
+### XML Exporter
+Responsibilities:
+- Receive group callbacks and emit XML nodes.
+- Apply same-as linking, auto-relation generation, and linked data processing.
+- Write pretty-printed intermediate files and finalize XML.
+- Report translation summaries and auxiliary metadata.
+
+Key flows:
+- Group dispatch selects specialized exporters based on derived class.
+- Person/object/geoentity processors add inferred attributes (e.g., sex, type).
+- Attribute caching supports later linkage and cross-group references.
+
+**Section sources**
+- [gactoxml.pl](file://src/gactoxml.pl)
 
 ### Inference Engine
-Inference rules automatically discover relationships and attributes from context. The engine supports:
-- Path expressions: sequence, group, extends, and clause
-- Actions: relation creation, attribute addition, and scope management
+Responsibilities:
+- Declarative rules derive relations and attributes from group context.
+- Support sequence matching, class extension checks, and nested scopes.
 
-Example rule sets demonstrate parent-child relationships and marital relations across multiple generations.
+Examples:
+- Parent-child relationships inferred from actor roles.
+- Spousal relations inferred from marriage constructs.
+- Sibling relations inferred from shared parents.
 
-```mermaid
-flowchart TD
-R["Rule: if PATH then ACTION"] --> Match["Match context"]
-Match --> |Success| Apply["Apply ACTION"]
-Apply --> Emit["Emit relation/attribute"]
-Match --> |Failure| Next["Try next rule"]
-```
-
-**Diagram sources**
-- [inference.pl](file://src/inference.pl#L11-L34)
-- [inference_sample.yml](file://tests/kleio-home/inferences/inference_sample.yml#L28-L93)
+Extension points:
+- Add new if/then rules to extend behavior without changing core code.
 
 **Section sources**
-- [inference.pl](file://src/inference.pl#L1-L35)
-- [inference_sample.yml](file://tests/kleio-home/inferences/inference_sample.yml#L1-L100)
+- [inference.pl](file://src/inference.pl)
 
 ### Linked Data Integration
-Linked data enables mapping Kleio entities to external identifiers. The process involves:
-- Declaring link patterns per external source
-- Annotating elements with external IDs
-- Generating URIs from patterns and annotations
+Responsibilities:
+- Declare external sources with short-name and URL pattern placeholders.
+- Detect inline annotations in comments or values.
+- Generate URIs by substituting identifiers into patterns.
 
-```mermaid
-sequenceDiagram
-participant User as "User"
-participant LD as "linkedData.pl"
-User->>LD : "store_xlink_pattern(shortName, urlPattern)"
-User->>LD : "generate_xlink(text, Uri, S, I)"
-LD-->>User : "Uri or warning"
-```
-
-**Diagram sources**
-- [linkedData.pl](file://src/linkedData.pl#L51-L108)
+Workflow:
+- Process kleio$ link$ declarations to register patterns.
+- Scan comment/value aspects for @shortname:id annotations.
+- Emit linked data links and warnings if patterns are missing.
 
 **Section sources**
-- [linkedData.pl](file://src/linkedData.pl#L11-L41)
+- [linkedData.pl](file://src/linkedData.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
 
-### Contextual Data Structures (CDS) Processing
-CDS is the in-memory staging area for current group data:
-- Fields include path, group, group ID, element lists, entry lists, and aspects
-- Predicates set/get CDS, manage fields, compute IDs, and print diagnostics
-- Supports both property-based and record-based access
+### Error Handling and Warnings
+Responsibilities:
+- Centralized error and warning output with file and line context.
+- Counters for errors and warnings; abort after threshold.
+- Provide near-line context for better diagnostics.
 
-```mermaid
-classDiagram
-class CDS {
-+cpath
-+cgroup
-+cgroupID
-+locusCount
-+elementList
-+celement
-+entryList
-+coreEntryList
-+originalEntryList
-+commentEntryList
-+caspect
-+ccore
-+coriginal
-+ccomment
-}
-class CDSR {
-+cpath
-+cgroup
-+cgroupID
-+locusCount
-+elementList
-+celement
-+entryList
-+coreEntryList
-+originalEntryList
-+commentEntryList
-+caspect
-+ccore
-+coriginal
-+ccomment
-}
-CDS <.. CDSR : "record variant"
-```
-
-**Diagram sources**
-- [dataCDS.pl](file://src/dataCDS.pl#L91-L104)
-- [dataCDS.pl](file://src/dataCDS.pl#L153-L214)
+Usage:
+- Call error_out/warning_out throughout pipeline.
+- Context options include file, line_number, line_text, last_line_text.
 
 **Section sources**
-- [dataCDS.pl](file://src/dataCDS.pl#L16-L81)
+- [errors.pl](file://src/errors.pl)
 
-### Cross-Reference Mechanisms and Normalization
-Cross-references are supported through:
-- Group path tracking in CDS for ancestry resolution
-- ID generation with configurable prefixes and counters
-- Element-level aspect handling (core/original/comment)
+### REST Server and Parallel Processing
+Responsibilities:
+- Start REST server and debug endpoints.
+- Configure environment variables and ports.
+- Create worker pools or message queues for concurrent translations.
 
-Normalization occurs at:
-- Group boundaries (flushGroup)
-- Element completion (endElement)
-- ID computation (makeID)
-
-**Section sources**
-- [dataCDS.pl](file://src/dataCDS.pl#L436-L456)
-- [dataCode.pl](file://src/dataCode.pl#L49-L79)
-
-### API Translation Workflow
-The API layer coordinates translation jobs:
-- Authentication and authorization checks
-- File discovery and structure resolution
-- Job spawning (single or parallel)
-- Status reporting and filtering
-- Cleanup of derived artifacts
-
-```mermaid
-sequenceDiagram
-participant Client as "Client"
-participant API as "apiTranslations.pl"
-participant TL as "topLevel.pl"
-Client->>API : "POST translations"
-API->>API : "get_stru_for_file/3"
-API->>API : "spawn_work/4"
-API->>TL : "translate/3"
-TL-->>API : "status updates"
-Client->>API : "GET translations"
-API-->>Client : "Filtered status list"
-```
-
-**Diagram sources**
-- [apiTranslations.pl](file://src/apiTranslations.pl#L52-L82)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L295-L324)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L241-L260)
-- [topLevel.pl](file://src/topLevel.pl#L139-L160)
+Parallel capabilities:
+- Thread pool mode or message queue mode.
+- Jobs queued and executed by workers; status tracked for queued and processing jobs.
 
 **Section sources**
-- [apiTranslations.pl](file://src/apiTranslations.pl#L34-L82)
-- [topLevel.pl](file://src/topLevel.pl#L139-L160)
+- [serverStart.pl](file://src/serverStart.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+
+### Mappings to Timelink Database Schema
+Responsibilities:
+- Declarative mapping from Kleio groups/classes to Timelink entities and tables.
+- Define column types, sizes, precision, primary keys, and inheritance.
+
+Relationships:
+- Base classes like entity, act, object provide common fields.
+- Specific classes (person, source, relation, attribute, etc.) map to corresponding tables.
+
+**Section sources**
+- [mappings.pl](file://src/mappings.pl)
+
+### Vocabulary Management
+Responsibilities:
+- Track attribute and relation value vocabularies during translation.
+- Initialize, store, and list observed values for validation and reporting.
+
+Use cases:
+- Identify unexpected values.
+- Summarize domain usage across datasets.
+
+**Section sources**
+- [vocabularies.pl](file://src/vocabularies.pl)
 
 ## Dependency Analysis
-The translation engine exhibits layered dependencies:
-- Orchestration depends on lexical and syntax modules
-- Data compilation depends on CDS and database hooks
-- Schema processing depends on dictionary and code modules
-- Mapping and inference depend on data structures and persistence
-- Linked data depends on pattern storage and utilities
+High-level dependencies:
+- serverStart depends on restServer and threadSupport.
+- topLevel orchestrates lexical, syntax, semantics, and exporter.
+- gactoxml integrates inference, linked data, mappings, and vocabularies.
+- errors provides centralized diagnostics used across modules.
 
 ```mermaid
 graph LR
-API["apiTranslations.pl"] --> TL["topLevel.pl"]
-TL --> LX["lexical.pl"]
-TL --> DS["dataSyntax.pl"]
-TL --> SS["struSyntax.pl"]
-DS --> DC["dataCode.pl"]
-DC --> CDS["dataCDS.pl"]
-DC --> MP["mappings.pl"]
-DC --> IF["inference.pl"]
-DC --> LD["linkedData.pl"]
-SS --> SC["struCode.pl"]
+serverStart["serverStart.pl"] --> threadSupport["threadSupport.pl"]
+topLevel["topLevel.pl"] --> lexical["lexical.pl"]
+topLevel --> dataSyntax["dataSyntax.pl"]
+dataSyntax --> dataCode["dataCode.pl"]
+dataCode --> gactoxml["gactoxml.pl"]
+gactoxml --> inference["inference.pl"]
+gactoxml --> linkedData["linkedData.pl"]
+gactoxml --> mappings["mappings.pl"]
+gactoxml --> vocabularies["vocabularies.pl"]
+topLevel --> errors["errors.pl"]
 ```
 
 **Diagram sources**
-- [xref_kleio.pl](file://src/xref_kleio.pl#L7-L35)
+- [serverStart.pl](file://src/serverStart.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [topLevel.pl](file://src/topLevel.pl)
+- [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+- [dataCode.pl](file://src/dataCode.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [inference.pl](file://src/inference.pl)
+- [linkedData.pl](file://src/linkedData.pl)
+- [mappings.pl](file://src/mappings.pl)
+- [vocabularies.pl](file://src/vocabularies.pl)
+- [errors.pl](file://src/errors.pl)
 
 **Section sources**
-- [xref_kleio.pl](file://src/xref_kleio.pl#L1-L77)
+- [serverStart.pl](file://src/serverStart.pl)
+- [threadSupport.pl](file://src/threadSupport.pl)
+- [topLevel.pl](file://src/topLevel.pl)
+- [lexical.pl](file://src/lexical.pl)
+- [dataSyntax.pl](file://src/dataSyntax.pl)
+- [dataCode.pl](file://src/dataCode.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
+- [inference.pl](file://src/inference.pl)
+- [linkedData.pl](file://src/linkedData.pl)
+- [mappings.pl](file://src/mappings.pl)
+- [vocabularies.pl](file://src/vocabularies.pl)
+- [errors.pl](file://src/errors.pl)
 
 ## Performance Considerations
-- Parallel translation: use the spawn option to distribute work across workers; otherwise, a single worker processes multiple files with shared structure initialization.
-- Caching: translation status is cached to reduce repeated computation for large sets.
-- Echo mode: enabling echo writes source lines to reports, increasing I/O overhead.
-- Error limits: maximum errors are configurable to prevent runaway processing.
-- Thread safety: synchronization via mutexes around structure and data files to avoid concurrent writes.
+- Parallelization: Use thread pool or message queue workers to process multiple files concurrently. Tune worker count via environment variables.
+- Quoting overhead: Triple-quoted blocks preserve content verbatim; minimize unnecessary large blocks where possible.
+- Inference rules: Keep rule sets focused; excessive complex rules may increase processing time.
+- Linked data lookups: Cache patterns and reuse them; avoid repeated regex operations by leveraging built-in facilities.
+- File I/O: Pretty-printing and auxiliary files (.ids, .srpt, .files.json) add overhead; consider disabling pretty-printing for batch runs if needed.
+- Memory: Monitor Prolog stacks and limits; adjust stack sizes for deep hierarchies or large documents.
 
 [No sources needed since this section provides general guidance]
 
 ## Troubleshooting Guide
 Common issues and remedies:
-- Syntax errors in data files: review line numbers and texts captured during lexical and syntax phases; errors are emitted with context.
-- Missing elements: “certe” element enforcement triggers errors listing required elements.
-- Structure resolution failures: verify structure file existence and path resolution logic.
-- Mapping mismatches: ensure mapping names align with source group/class names and attribute definitions are correct.
-- Inference misses: adjust rule conditions to match context; verify group names and relationships.
-- Linked data URIs: confirm link pattern definitions and annotation syntax (@shortName:id).
+- Unknown element errors: Ensure element names are defined in structure and match locus ordering if implicit.
+- Missing required elements: Check certe constraints in structure definitions.
+- Recursion detected in group nesting: Adjust hierarchy to avoid cycles.
+- Linked data warnings: Verify link$ declarations and ensure @shortname:id annotations match registered patterns.
+- Maximum errors reached: Reduce noisy inputs or fix structural issues; review error logs with line context.
+- Permission errors on generated files: Ensure write permissions for output directories.
+
+Debugging techniques:
+- Enable debug logging via environment variable.
+- Use server test helpers to run specific files and inspect results.
+- Inspect generated .ids, .srpt, and .files.json for detailed traces.
+- Review error messages with near-line context for precise localization.
 
 **Section sources**
-- [dataSyntax.pl](file://src/dataSyntax.pl#L54-L62)
-- [dataCode.pl](file://src/dataCode.pl#L154-L168)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L272-L293)
-- [linkedData.pl](file://src/linkedData.pl#L96-L108)
+- [errors.pl](file://src/errors.pl)
+- [serverStart.pl](file://src/serverStart.pl)
+- [gactoxml.pl](file://src/gactoxml.pl)
 
 ## Conclusion
-The Timelink Kleio translation engine integrates lexical analysis, syntax parsing, semantic validation, mapping, inference, and linked data linking into a cohesive pipeline. Its modular design enables extensibility through mappings and inference rules, while robust APIs and caching support scalable batch processing. Proper configuration of structure files, mappings, and inference rules ensures accurate transformation of historical data into enriched, interconnected knowledge.
+The Kleio translation engine provides a robust, extensible pipeline for converting historical source transcriptions into normalized, linked, and queryable data. Its modular design separates concerns across lexing, parsing, semantics, inference, and export, while offering powerful features such as context-aware normalization, linked data integration, and parallel processing. With clear extension points for mappings and inference rules, it adapts well to diverse historical domains and evolving requirements.
 
 [No sources needed since this section summarizes without analyzing specific files]
 
 ## Appendices
 
-### Configuration Options
-- Structure selection: explicit structure file or default resolution
-- Echo mode: include source lines in reports
-- Spawn mode: parallel vs. sequential processing
-- Status filtering: filter by translation status
-- Multiple-entry flag: dynamic data flag for entries
+### Kleio Notation Basics
+- Groups represent entities; elements represent attributes; aspects capture core, original wording, and comments.
+- Special characters define structure and semantics; whitespace normalization occurs outside quoted regions.
+- Multiple values supported via configurable separators.
 
 **Section sources**
-- [apiTranslations.pl](file://src/apiTranslations.pl#L42-L49)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L74-L76)
-- [apiTranslations.pl](file://src/apiTranslations.pl#L598-L610)
-- [lexical.pl](file://src/lexical.pl#L65-L71)
+- [README_KLEIO_NOTATION.md](file://README_KLEIO_NOTATION.md)
+
+### Relationship Between Kleio Notation and Timelink Schema Mapping
+- Kleio groups/classes map to Timelink entities and tables via declarative mappings.
+- Common base classes standardize fields like id, date, type, obs.
+- Specific classes model persons, acts, relations, attributes, and domain-specific records.
+
+**Section sources**
+- [mappings.pl](file://src/mappings.pl)

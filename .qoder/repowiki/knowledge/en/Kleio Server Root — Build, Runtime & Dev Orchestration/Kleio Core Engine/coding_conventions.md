@@ -1,0 +1,3 @@
+- Public entry points are declared via `:-module(Name,[pred/Arity,...]).` and other children reach them through `:-use_module(Name).` rather than dynamic calls.
+- Global configuration and per-run state flow through SWI `put_value`/`get_value` (e.g. `echo`, `max_errors`, `stru_file`, `data_file`) instead of passing context arguments.
+- Error reporting is centralized through `reports.pl` predicates (`report/1`, `error_out/1`) and counters in `counters.pl`, never direct `write/1` to stdout.
