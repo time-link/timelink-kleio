@@ -17,14 +17,31 @@
     position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 
-- group: 
+- group:
     name: n
     description: >
-        Pessoa genérica ou principal actor de um acto 
+        Pessoa genérica ou principal actor de um acto
         (e.g. criança em baptismo).
         Sexo deve registado depois do nome.
     source: pt-actorm
-    contains: [referido, referida]
+    contains: [pt-kin-m,pt-kin-f,referido, referida]
+    arbitrary: [pevent, pevento, viagem, estadia, atr, ls, rel, referido,
+        referida, pai, ppai, pppai, ppppai, mpppai, mppai, pmppai,
+        mmppai, mpai, pmpai, ppmpai, mpmpai, mmpai, pmmpai, mmmpai,
+        mae, pmae, ppmae, pppmae, mppmae, mpmae, pmpmae, mmpmae,
+        mmae, pmmae, ppmmae, mpmmae, mmmae, pmmmae, mmmmae, filho,
+        fofilho, fafilho, merfilho, mrfafilho, merfofilho, filha, fofilha, fafilha,
+        mrfilha, mrfafilha, merfofilha, irmao, irma, mulher, pmulher,
+        ppmulher, pppmulher, mppmulher, mpmulher, pmpmulher, mmpmulher, mmulher, pmmulher,
+        ppmmulher, mpmmulher, mmmulher, pmmmulher, mmmmulher, noiva, pnoiva, ppnoiva,
+        pppnoiva, mppnoiva, mpnoiva, pmpnoiva, mmpnoiva, mnoiva, pmnoiva, ppmnoiva,
+        mpmnoiva, mmnoiva, pmmnoiva, mmmnoiva, marido, pmarido, ppmarido, pppmarido,
+        mppmarido, mpmarido, pmpmarido, mmpmarido, mmarido, pmmarido, ppmmarido, mpmmarido,
+        mmmarido, pmmmarido, mmmmarido, noivo, pnoivo, ppnoivo, pppnoivo, mppnoivo,
+        mpnoivo, pmpnoivo, mmpnoivo, mnoivo, pmnoivo, ppmnoivo, mpmnoivo, mmnoivo,
+        pmmnoivo, mmmnoivo, irmao, irma, sogra, sogro, genro, nora,
+        sobrinho, sobrinha, afilhado, afilhada, neto, neta, criada, criado,
+        engeitada, engeitado]
     position: [nome, sexo]
 
 - group: 
