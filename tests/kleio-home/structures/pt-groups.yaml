@@ -68,6 +68,18 @@
     contains: [actorm,actorf,item]
     idprefix: his
 
+# Portuguese specialization of geodesc: overrides the generic (system-level)
+# geodesc from groups.yaml with Portuguese date elements (dia/mes/ano) and
+# sources the Portuguese act pt-acto instead of historical-act. The geoentity
+# parts are re-declared because source: pt-acto copies pt-acto's contains.
+- group:
+    name: geodesc
+    source: pt-acto
+    position: [id, dia, mes, ano, fol]
+    guaranteed: [id]
+    also: [obs]
+    contains: [geo1, geo2, geo3, geo4, atr, rel]
+
 - group:
     name: fim
     description: >
