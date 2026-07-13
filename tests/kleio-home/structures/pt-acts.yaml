@@ -209,7 +209,7 @@
       description: "Casamentos "
       name: cas
       source: pt-acto
-      position: [id, dia, mes, ano, fol, local, celebrante]
+      position: [id, dia, mes, ano, fol, loc, celebrante]
       contains:
           - celebrante
           - test
@@ -469,7 +469,7 @@
       description:
           Baptismos (variante usada nos registos da Lousa por Rosario Campos
           e em Óbidos )
-      position: [id, dia, mes, ano, fol, local, celebrante]
+      position: [id, dia, mes, ano, fol, loc, celebrante]
       contains:
           - celebrante
           - n
@@ -480,7 +480,7 @@
       name: b
       source: pt-acto
       description: "Baptimos ,versao original usada em Soure. "
-      position: [id, dia, mes, ano, celebrante]
+      position: [id, dia, mes, ano, dian, mesn, anon, celebrante]
       arbitrary:
           - celebrante
           - n
@@ -491,7 +491,7 @@
       name: obito
       source: pt-acto
       description: "Obitos "
-      position: [id, dia, mes, ano, fol, local, celebrante]
+      position: [id, dia, mes, ano, fol, celebrante]
       contains:
           - celebrante
           - n
