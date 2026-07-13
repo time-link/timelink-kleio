@@ -26,7 +26,7 @@
     position: [nome, sexo]
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 
-- group: {description: '', name: parentem, source: kin-m}
+- group: {description: '', name: parentem, source: kin-m, position: [nome, sexo]}
 - group: {description: '', name: pai, part: [ppai, mpai], source: pt-kin-father}
 - group: {description: '', name: ppai, part: [pppai, mppai], source: pt-kin-father}
 - group: {description: '', name: pppai, part: [ppppai, mpppai], source: pt-kin-father}

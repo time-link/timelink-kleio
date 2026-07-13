@@ -637,8 +637,8 @@
       name: geodesc
       description: "A Hierarchical group for geoentities. "
       source: historical-act
-      position: [id, day, month, year]
-      guaranteed: [id, day, month, year] # TODO change to date
+      position: [id, dia, mes, ano, fol]
+      guaranteed: [id] # TODO change to date
       contains:
           - geo1
           - atr

@@ -27,7 +27,7 @@
     also: [sexo, obs, mesmo_que, xmesmo_que, id]
 
 
-- group: {name: parentef, description: '', source: pt-kin-f}
+- group: {name: parentef, description: '', source: pt-kin-f, position: [nome, sexo]}
 - group: {name: mppai, description: '', source: pt-kin-mother, part: [pmppai, mmppai]}
 - group: {name: mpai, description: '', source: pt-kin-mother, part: [pmpai, mmpai]}
 - group: {name: mmpai, description: '', source: pt-kin-mother, part: [pmmpai, mmmpai]}
