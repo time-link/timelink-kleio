@@ -58,27 +58,32 @@ note ================================================
 note Other base elements.
 note    By declaring them here we allow national
 note    language variations to be declared later on.
+note
+note    An explicit source= is set on the elements below so that their
+note    SUPER_CLASS resolves to a concrete base type (string256, text, id)
+note    instead of the implicit 'core' default. This keeps the stable
+note    structure in step with the YAML port (elements.yaml).
 note ================================================
 element name=id; identification=yes
 element name=same_as
 element name=xsame_as
 element name=entity
-element name=type;
+element name=type; source=string256
 element name=class
 element name=ref
-element name=loc
+element name=loc; source=string256
 element name=page
 note pages in the document
 element name=pages
 element name=name
 element name=sex
-element name=obs
+element name=obs; source=text
 element name=description
 element name=summary
-element name=value
+element name=value; source=text
 element name=origin
-element name=destination
-element name=destname
+element name=destination; source=id
+element name=destname; source=string256
 element name=replace
 element name=inside
 element name=groupname
