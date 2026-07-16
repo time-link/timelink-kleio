@@ -11,13 +11,28 @@
     source: day
     type: number
 - element:
+    name: dian
+    description: Dia normalizado, sinónimo de day
+    source: day
+    type: number
+- element:
     name: mes
     description: Sinónimo de month
     source: month
     type: number
 - element:
+    name: mesn
+    description: Mês normalizado, sinónimo de month
+    source: month
+    type: number
+- element:
     name: ano
     description: Sinónimo de year
+    source: year
+    type: number
+- element:
+    name: anon
+    description: Ano normalizado, sinónimo de year
     source: year
     type: number
 - element:
@@ -87,8 +102,12 @@
     source: pages
 - element:
     name: fol
-    description: Fólio, equivalente de pagina, usado em documentos manuscritos
-    source: page
+    description: >
+      Fólio, usado em documentos manuscritos como referência de documento
+      (equivalente de ref). Nota: no gacto2.str estável o 'fol' é redefinido
+      com source=ref numa secção de documentos notariais e essa definição
+      sobrepõe-se à de source=page; aqui reflectimos a definição efectiva.
+    source: ref
 - element:
     name: fols
     description: Fólios, equivalente de pages, usado em documentos manuscritos
