@@ -23,6 +23,15 @@ Current time:
 ^(?!diff)\s[A-Za-z0-9/\._\-]*test_translations/
 ^(?!Only)\sreference_translations
 ^(?!Only)\stest_translations
+# WARNING:/ERROR: lines that differ only by absolute vs relative .cli path.
+# Stable emits a bare relative filename (e.g. 'WARNING: obiteirasproblem.cli
+# line 33 ...'), the dev translator emits an absolute path under
+# .../test_translations/. The error/warning content after the path is
+# identical, so these are path-format differences only. Filter both sides:
+# the > side by its absolute test_translations path, the < side by a bare
+# relative filename (no '/' before .cli) so the paired hunk disappears cleanly.
+^[<>]\s*(WARNING|ERROR):\s.*test_translations/
+^[<]\s*(WARNING|ERROR):\s[A-Za-z0-9._-]+\.cli\s
 ID="[A-Za-z0-9\.\-]*-[a-z0-9]*"
 # <ELEMENT NAME
 <ELEMENT NAME="id"\ CLASS="id"><core>[A-Za-z0-9\ \.\-]*-[a-z0-9]*<\/core><\/ELEMENT>
