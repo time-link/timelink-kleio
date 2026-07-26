@@ -19,17 +19,22 @@ Current time:
 <ELEMENT NAME="order" CLASS="order"><core>[0-9]*</core></ELEMENT>
 <core><!\[CDATA\[[A-Za-z0-9\/\._\-]*reference_translations/
 <core><!\[CDATA\[[A-Za-z0-9\/\._\-]*test_translations/
-^(?!diff)\s[A-Za-z0-9/\._\-]*reference_translations/
-^(?!diff)\s[A-Za-z0-9/\._\-]*test_translations/
-^(?!Only)\sreference_translations
-^(?!Only)\stest_translations
+# Source-path echo lines (leading whitespace plus path). The original patterns
+# used negative-lookahead PCRE syntax, which is invalid in ERE and made
+# grep -E abort the whole filter run (silently dumping the unfiltered diff).
+# Rewritten in ERE: require leading whitespace, which inherently excludes the
+# diff -r and Only in headers (those start at column 0).
+^\s+[A-Za-z0-9/\._\-]*reference_translations/
+^\s+[A-Za-z0-9/\._\-]*test_translations/
+^\s+reference_translations
+^\s+test_translations
 # WARNING:/ERROR: lines that differ only by absolute vs relative .cli path.
-# Stable emits a bare relative filename (e.g. 'WARNING: obiteirasproblem.cli
-# line 33 ...'), the dev translator emits an absolute path under
+# Stable emits a bare relative filename like 'WARNING: obiteirasproblem.cli
+# line 33 ...', the dev translator emits an absolute path under
 # .../test_translations/. The error/warning content after the path is
 # identical, so these are path-format differences only. Filter both sides:
 # the > side by its absolute test_translations path, the < side by a bare
-# relative filename (no '/' before .cli) so the paired hunk disappears cleanly.
+# relative filename with no '/' before .cli so the paired hunk disappears.
 ^[<>]\s*(WARNING|ERROR):\s.*test_translations/
 ^[<]\s*(WARNING|ERROR):\s[A-Za-z0-9._-]+\.cli\s
 ID="[A-Za-z0-9\.\-]*-[a-z0-9]*"
