@@ -68,8 +68,11 @@ Temp file with ids:
 # Timestamps in .err/.rpt files (YYYY-MM-DD HH:MM:SS)
 [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\s[0-9][0-9]:[0-9][0-9]:[0-9][0-9]
 # Header format differences between stable and dev translators
-^< Structure: gacto2.str$
-^> Declared structure: gacto2.str$
+# Note: stable emits 'Structure: <file>', dev emits 'Declared structure: <file>'
+# plus a 'Used structure: <abs-path>' line. These are cosmetic report-format
+# differences, not translation differences. Match any .str/.yaml filename.
+^< Structure: [a-zA-Z0-9_./-]+\.(str|yaml)$
+^> Declared structure: [a-zA-Z0-9_./-]+\.(str|yaml)$
 ^> Used structure:
 # Extra blank lines introduced by dev header format
 ^> $
