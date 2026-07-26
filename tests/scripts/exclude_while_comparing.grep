@@ -1,8 +1,18 @@
+# Patterns excluded from the semantic-test comparison report.
+#
+# Format: one POSIX ERE pattern per line. Lines starting with '#' and blank
+# lines are treated as documentation and stripped by compare_test_results.sh
+# before being passed to grep -f (which otherwise parses every non-empty
+# line, including comments, as a regex).
+#
+# Patterns MUST be valid POSIX ERE so the filter works identically on BSD
+# grep (macOS) and GNU grep (Linux). In particular: use [[:space:]] not \s,
+# and [[:space:]][[:space:]]* not \s+ .
 -att[0-9]*-
 ^[0-9]*c[0-9]*
 ^[0-9]*,[0-9]*c[0-9]*,[0-9]*
 ---
-ClioInput\s-\sversion
+ClioInput[[:space:]]-[[:space:]]version
 KleioTranslator\ -\ server\ version
 <KLEIO STRUCTURE="
 CLASS="relation"
@@ -14,7 +24,7 @@ Processed file-
 Original file-
 Previous version-
 Temp file with ids-
-[0-9]*-[0-9]*-[0-9]*\s[0-9]*-[0-9]*
+[0-9]*-[0-9]*-[0-9]*[[:space:]][0-9]*-[0-9]*
 Current time:
 <ELEMENT NAME="order" CLASS="order"><core>[0-9]*</core></ELEMENT>
 <core><!\[CDATA\[[A-Za-z0-9\/\._\-]*reference_translations/
@@ -24,10 +34,10 @@ Current time:
 # grep -E abort the whole filter run (silently dumping the unfiltered diff).
 # Rewritten in ERE: require leading whitespace, which inherently excludes the
 # diff -r and Only in headers (those start at column 0).
-^\s+[A-Za-z0-9/\._\-]*reference_translations/
-^\s+[A-Za-z0-9/\._\-]*test_translations/
-^\s+reference_translations
-^\s+test_translations
+^[[:space:]][[:space:]]*[A-Za-z0-9/\._\-]*reference_translations/
+^[[:space:]][[:space:]]*[A-Za-z0-9/\._\-]*test_translations/
+^[[:space:]][[:space:]]*reference_translations
+^[[:space:]][[:space:]]*test_translations
 # WARNING:/ERROR: lines that differ only by absolute vs relative .cli path.
 # Stable emits a bare relative filename like 'WARNING: obiteirasproblem.cli
 # line 33 ...', the dev translator emits an absolute path under
@@ -35,8 +45,8 @@ Current time:
 # identical, so these are path-format differences only. Filter both sides:
 # the > side by its absolute test_translations path, the < side by a bare
 # relative filename with no '/' before .cli so the paired hunk disappears.
-^[<>]\s*(WARNING|ERROR):\s.*test_translations/
-^[<]\s*(WARNING|ERROR):\s[A-Za-z0-9._-]+\.cli\s
+^[<>][[:space:]]*(WARNING|ERROR):[[:space:]].*test_translations/
+^[<][[:space:]]*(WARNING|ERROR):[[:space:]][A-Za-z0-9._-]+\.cli[[:space:]]
 ID="[A-Za-z0-9\.\-]*-[a-z0-9]*"
 # <ELEMENT NAME
 <ELEMENT NAME="id"\ CLASS="id"><core>[A-Za-z0-9\ \.\-]*-[a-z0-9]*<\/core><\/ELEMENT>
@@ -56,7 +66,7 @@ ID="[A-Za-z0-9\.\-]*-[a-z0-9]*"
 # and the bclass logic is back-ported to stable.
 # Caveat: a genuinely-wrong SUPER_CLASS would not be flagged here, but would
 # still surface via the element's TYPE=/SIZE= and <core> length lines.
-^[<>-]\s*<ELEMENT NAME="[a-z0-9_]*"\ SUPER_CLASS="[a-z0-9_]*"\ BASE_CLASS="[a-z0-9_]*"\ CLASS="[a-z0-9_]*">\s*$
+^[<>-][[:space:]]*<ELEMENT NAME="[a-z0-9_]*"\ SUPER_CLASS="[a-z0-9_]*"\ BASE_CLASS="[a-z0-9_]*"\ CLASS="[a-z0-9_]*">[[:space:]]*$
 TYPE="varchar"\ SIZE="[0-9]*"
 "kleio_file":
 "kleio_original":
@@ -88,7 +98,7 @@ Previous version:
 Temp file with ids:
 -renamed to-
 # Timestamps in .err/.rpt files (YYYY-MM-DD HH:MM:SS)
-[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\s[0-9][0-9]:[0-9][0-9]:[0-9][0-9]
+[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][[:space:]][0-9][0-9]:[0-9][0-9]:[0-9][0-9]
 # Header format differences between stable and dev translators
 # Note: stable emits 'Structure: <file>', dev emits 'Declared structure: <file>'
 # plus a 'Used structure: <abs-path>' line. These are cosmetic report-format
