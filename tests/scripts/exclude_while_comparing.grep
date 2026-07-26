@@ -51,6 +51,14 @@ TYPE="varchar"\ SIZE="[0-9]*"
 "stru":
 "stru_json":
 "stru_rpt":
+# Structure error/warning counts: emitted only by the dev (YAML) translator's
+# .files.json. The stable translator does not emit these keys. The warnings
+# currently reflect known duplicate include:/group-definition issues in the
+# YAML structures (tracked separately); filtering the count lines here keeps
+# them out of the comparison report. Remove these if those counts should
+# become part of the regression signal.
+"stru_errors":
+"stru_warnings":
 Groups in this file:
 Elements in this file:
 Structure file:
