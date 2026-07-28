@@ -403,6 +403,20 @@
     description: >
         A female person related by kin to an actor in an act or event.
 - group:
+    name: notkin-m
+    source: male
+    description: >
+        A male person that is not kin but can be part of an actor
+        in an act or event (e.g. servants, slaves, foundlings,
+        persons referred to but not present).
+- group:
+    name: notkin-g
+    source: female
+    description: >
+        A female person that is not kin but can be part of an actor
+        in an act or event (e.g. servants, slaves, foundlings,
+        persons referred to but not present).
+- group:
     name: kin-father
     source: kin-m
     description: >
