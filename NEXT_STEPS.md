@@ -250,7 +250,52 @@ column, not to something keyed off `BASE_CLASS` alone).
 
 ---
 
-## 8. Verification
+## 8. Priority 7: `fonte$` backward-compatibility scanner (script needed)
+
+### What the issue is
+The `fonte` group no longer assumes any positional element beyond `id`
+(see commit `1c9b5fe`: `position: [id]`, with `tipo` moved to `also:`).
+Every field after `fonte$ID/` must now be declared explicitly
+(`loc=`, `data=`, `tipo=`, `ano=`, ...). This is a **serious backward-
+compatibility break**: many old transcriptions put very different kinds of
+information in the second positional slot of `fonte$` without qualifying
+the element name, e.g.:
+
+```
+fonte$bapt1714/a.u.c./tipo=bapt/obs=...     <- old: bare "a.u.c." positional
+fonte$obiteirasproblem/1740-1745/loc=auc/... <- old: bare date positional
+```
+
+With the new schema the bare positional becomes an `UNDEFINED` element
+and the file errors out. Each old `.cli` that relies on this must be
+migrated to name its elements explicitly.
+
+### What is needed
+A script that scans `.cli`/`.kleio` files for `fonte$ID/SOMETHING/`
+lines where `SOMETHING` is a bare positional value (not an
+`element=value` pair), so old sources can be detected and migrated
+before being processed by this version. The script should:
+
+1. Find lines matching `fonte$<id>/<token>/` where `<token>` does not
+   contain `=` (i.e. is positional, not `name=value`).
+2. Report the file, line number, and the offending positional value.
+3. (Optionally) suggest the likely intended element name based on the
+   value's shape: a date `YYYY/YYYY` or `YYYY` -> `data=`, a location
+   string -> `loc=`, a type word -> `tipo=`, etc.
+
+### Where to put it
+`tests/scripts/` or `utilities/` (a small standalone tool, not part of
+the translator). Can be awk/grep/python; should run over a directory tree.
+
+### How to verify
+Run it against the existing `tests/kleio-home/sources/` tree; the known
+offenders (the paroquiais files already migrated in `1c9b5fe`) should
+come up clean, while untouched historical sources should be flagged.
+
+---
+
+## 9. Verification
+
 
 ### Full semantic test run
 ```bash
@@ -284,7 +329,7 @@ python .qoder/skills/interpret-kleio-xml-diff/scripts/diff_xml_groups.py \
 
 ---
 
-## 9. Expansion
+## 10. Expansion
 
 Once `dehergne-a.xml` (the linked-data reference file) passes cleanly:
 

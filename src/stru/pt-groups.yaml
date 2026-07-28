@@ -31,12 +31,14 @@
 
         1. Segundo campo posicional
 
-        Atualmente o segundo campo posicional, a seguir ao 
-        "id" é "tipo" ("registos paroquiais", "vereações", etc). 
-        Ficheiros que assumam "data" ou "ano" necessitam de ser
-        modificados, usar a variante fonted$ ouusar um 
-        ficheiro de estrutura que altere o parâmentro "pos"  de fonte$
-        para correcta interpretação e mapeamento para a base de dados.
+        O ficheiro gacto2.str definia um segundo campo posicional "tipo"
+        a seguir a "idd". Na realidade diferentes fontes colocavam diferentes 
+        campos como segundo posicional, por exemplo "data", "ano" ou "loc". 
+        
+        Este ficheiro de estrutura não define um segundo campo posicional e 
+        obriga que os elementos a seguir a "id"
+        tenham os elementos explicitamente definidos.    
+
 
         2. Utilização do campo "ano"
 
@@ -45,8 +47,8 @@
         necessidade de introdução de zeros para o mês e ano.
         
     guaranteed: [id]
-    position: [id, tipo]
-    also: [ data, ano, localizacao, loc, ref, obs, substitui]
+    position: [id]
+    also: [tipo, data, ano, localizacao, loc, ref, obs, substitui]
     idprefix: fon
 
 - group:

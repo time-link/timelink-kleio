@@ -20,6 +20,7 @@
 - element: {name: tabeliao, source: name}
 - element: {name: celebrante, source: name}
 - element: {name: visdor, source: name}
+- element: {name: paroco, source: name}
 
 
 - group:
@@ -49,7 +50,7 @@
         incluem acusacoes (acus$) de casos (caso$)
       source: pt-acto
       position: [id, dia, mes, ano]
-      also: [folio, fol, visdor, obs]
+      also: [folio, fol, visdor, paroco, obs]
       contains:
           - testo
           - testa
@@ -143,6 +144,9 @@
 - group:
       name: hab
       source: pt-acto
+      position: [id, cota, data]
+      guaranteed: [id, cota, data]
+      also: [obs]
       arbitrary:
           - n
           - referido
@@ -153,7 +157,9 @@
           act ).
 - group:
       name: proc
-      source: hab
+      source: pt-acto
+      position: [id,cota,data]
+      description: "Processos de ordenacao sacerdotal, usado em Soure"
       arbitrary:
           - n
           - referido
@@ -162,6 +168,8 @@
 - group:
       name: po
       source: hab
+      position: [id, cota,data]
+      guaranteed: [id, cota, data]
       arbitrary:
           - n
           - referido
@@ -176,12 +184,13 @@
 - group:
       name: chanc
       source: pt-acto
+      position: [id, dia, mes, ano, fol]
       arbitrary:
           - n
           - referido
           - referida
           - item
-      description: "Chancelarias "
+      description: "Chancelarias régias"
 - group:
       name: encarte
       source: chanc
@@ -476,6 +485,8 @@
           - test
           - referido
           - referida
+          - procurador-pad
+          - procurador-mad
 - group:
       name: b
       source: pt-acto
@@ -1345,6 +1356,7 @@
 - group:
       name: wviagem
       source: pt-acto
+      position: [id, dia, mes, ano, barco]
       arbitrary:
           - n
           - referido
