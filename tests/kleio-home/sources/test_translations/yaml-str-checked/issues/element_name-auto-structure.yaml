@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/element_name-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/element_name.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/element_name-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -80,6 +80,14 @@
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -208,6 +216,23 @@
       '
     prefix: non
     source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: urlpattern
+    note: 'Patter of a URL in linked data, use "$1" in place of linked id.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: shortname
+    note: short pattern of a URL in linked data, used in the link group.
+    prefix: non
     suffix: non
 - element:
     description:
@@ -347,6 +372,20 @@
     source: entity
 - group:
     also:
+    - id
+    - obs
+    counter: 1
+    idprefix: lin
+    name: link
+    note: "Defines a shortcut for insert links to external data\nas comments in the
+      kleio file.\n\nA link can be recorded as @shortcut:external-id\n\nExample: link$wikidata/\"https://www.wikidata.org/wiki/$1\"\n\nAnd
+      then annotate element values in comments\n\n ls$place-of-stay/Canton#@wikidata:Q16572\n\nSee
+      https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/\n"
+    position:
+    - shortname
+    - urlpattern
+- group:
+    also:
     - loc
     - ref
     - obs
@@ -442,6 +481,39 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 2
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
 - element:
     description:
     identification: non

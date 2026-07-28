@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/bugs/bugs-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/bugs/bugs.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/bugs/bugs-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -80,6 +80,14 @@
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -208,6 +216,23 @@
       '
     prefix: non
     source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: urlpattern
+    note: 'Patter of a URL in linked data, use "$1" in place of linked id.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: shortname
+    note: short pattern of a URL in linked data, used in the link group.
+    prefix: non
     suffix: non
 - element:
     description:
@@ -347,6 +372,20 @@
     source: entity
 - group:
     also:
+    - id
+    - obs
+    counter: 1
+    idprefix: lin
+    name: link
+    note: "Defines a shortcut for insert links to external data\nas comments in the
+      kleio file.\n\nA link can be recorded as @shortcut:external-id\n\nExample: link$wikidata/\"https://www.wikidata.org/wiki/$1\"\n\nAnd
+      then annotate element values in comments\n\n ls$place-of-stay/Canton#@wikidata:Q16572\n\nSee
+      https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/\n"
+    position:
+    - shortname
+    - urlpattern
+- group:
+    also:
     - loc
     - ref
     - obs
@@ -380,6 +419,38 @@
     - id
     - type
     - date
+    source: event
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    counter: 0
+    guaranteed:
+    - description
+    idprefix: evt
+    name: pevent
+    note: "A Personal event, can be contained inside person, as opposed to a cevent
+      that is used to record events in the sources. cevent contain people and objects,
+      while pevent is contained in people and objects. This class should be specialized
+      with a specific list of contained groups, to avoid recursive sequences of person-pevent-person-pevent-...
+      \ \n"
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - end
+    position:
+    - date
+    - loc
+    - description
     source: event
 - group:
     also:
@@ -442,6 +513,39 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 2
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
 - element:
     description:
     identification: non
@@ -596,7 +700,7 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 1
+    counter: 2
     guaranteed:
     - name
     idprefix: mper
@@ -677,37 +781,77 @@
     source: historical-act
 - group:
     also:
-    - data
     - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
-    - resumo
-    - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
+    - data
     counter: 1
     guaranteed:
     - id
+    - tipo
     - dia
     - mes
     - ano
-    idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    idprefix: act
+    name: acto
+    note: "Actos genericos, servem para vereacoes etc.\nTem id, tipo, dia, mes, ano,
+      loc e obs.\nDistinguem-se de pt-acto por terem o tipo como obrigatório\nCompostos
+      por items e por pessoas\nExemplo:\n\nacto$v1793-2/juramento de posse dos almotaces/1/3/1793/f.18v/para
+      os meses de marco e abril\n\n    presente$francisco quaresma\n        ls$titulo/bacharel\n
+      \       ls$cargo/almotace/obs=marco e abril\n        ls$assina/sim\n\n    presente$jose
+      joaquim de araujo tavares\n        ls$titulo/bacharel\n        ls$cargo/almotace/obs=marco
+      e abril\n        ls$assina/sim\n\n    presente$domingos de macedo e fretias\n
+      \       ls$cargo/escrivao da camara/obs=com comissao\n"
     part:
     - actorm
     - actorf
     - item
     position:
     - id
+    - tipo
     - dia
     - mes
     - ano
+    - loc
+    - obs
     source: pt-acto
+- group:
+    also:
+    - obs
+    - id
+    counter: 2
+    guaranteed:
+    - description
+    idprefix: via
+    name: viagem
+    note: Viagem, enquanto evento pessoal, parte de uma pessoa
+    part:
+    - viajante
+    - referido
+    - referida
+    position:
+    - description
+    - dia
+    - mes
+    - ano
+    source: pevent
+- group:
+    also:
+    - id
+    - obs
+    - same_as
+    - xsame_as
+    counter: 2
+    guaranteed:
+    - nome
+    idprefix: vjt
+    name: viajante
+    note: 'Uma pessoa que viaja, parte de um evento pessoal
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: person

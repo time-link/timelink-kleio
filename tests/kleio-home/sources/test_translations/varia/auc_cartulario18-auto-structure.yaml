@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/auc_cartulario18-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/auc_cartulario18.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/auc_cartulario18-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -75,11 +75,27 @@
     suffix: non
 - element:
     description:
+    identification: yes
+    name: destination
+    note: id of the destination of a relation
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
     identification: non
     name: type
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -105,6 +121,14 @@
     identification: non
     name: description
     note: Similar to name, but for objects or events
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destname
+    note: Name of destination in a relation
     prefix: non
     source: string256
     suffix: non
@@ -411,6 +435,25 @@
     counter: 0
     guaranteed:
     - name
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
     idprefix: mper
     name: male
     note: A Male person. Groups based on this have male gender
@@ -421,6 +464,69 @@
     position:
     - name
     source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: notkin-m
+    note: 'A male person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: notkin-f
+    note: 'A female person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: actorf
+    note: A female person. Groups based on this have female gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
 - group:
     also:
     - obs
@@ -442,6 +548,132 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - type
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: obj
+    name: object
+    note: 'Anything that is not a person or geoentity, includes abstractions, animals,
+      plants, objects, etc.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    - type
+    source: entity
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 467
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 351
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: atr
+    note: Alias for attribute
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: relation
+    note: 'A relation between two or more entities, such as people, objects, geoentities,
+      etc.
+
+      Relation have a type (kinship, professional...) and a value (e.g. "father",
+      "mother", "colleague", etc.).
+
+      Some special relations are generated automatically by the parser, such as "identification"
+      relations to register that two entities are the same (generated from "same_as"
+      and "xsame_as" elements), and "function-in-act" relations to register the function
+      of an entity in an act.
+
+      '
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - date
+- group:
+    also:
+    - obs
+    - data
+    - id
+    counter: 194
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: rel
+    note: Short hand for relation Portuguese Override to have data= instead of date=
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - data
+    source: relation
 - element:
     description:
     identification: non
@@ -492,6 +724,14 @@
     description:
     identification: non
     name: localizacao
+    note: No sentido de local
+    prefix: non
+    source: loc
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: local
     note: No sentido de local
     prefix: non
     source: loc
@@ -551,6 +791,16 @@
     suffix: non
 - element:
     description:
+    identification: non
+    name: desc
+    note: 'Usado para descrever o conteúdo de um elemento
+
+      '
+    prefix: non
+    source: descricao
+    suffix: non
+- element:
+    description:
     identification: yes
     name: substitui
     note: 'Usado em fontes para indicar que a fonte corrente deve substituir our com
@@ -568,6 +818,48 @@
     prefix: non
     source: summary
     suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-notkin-f
+    note: A portuguese female non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-notkin-m
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-m
 - group:
     also:
     - sexo
@@ -596,24 +888,173 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 1
+    counter: 41
     guaranteed:
     - name
     idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
+    name: referido
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
 
       '
     part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 92
+    guaranteed:
+    - name
+    idprefix: mper
+    name: foreiro
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
     position:
     - nome
     - sexo
     source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 2
+    guaranteed:
+    - name
+    idprefix: mper
+    name: renunciante
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 186
+    guaranteed:
+    - name
+    idprefix: mper
+    name: test
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-actorf
+    note: A portuguese female actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: actorf
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 13
+    guaranteed:
+    - name
+    idprefix: fper
+    name: referida
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
+
+      '
+    part:
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 59
+    guaranteed:
+    - name
+    idprefix: fper
+    name: foreira
+    note: A portuguese female actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorf
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 61
+    guaranteed:
+    - name
+    idprefix: fper
+    name: senhoria
+    note: A portuguese female actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorf
 - group:
     also:
     - tipo
@@ -677,6 +1118,28 @@
     source: historical-act
 - group:
     also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: bem
+    name: bem
+    note: Um bem móvel ou imóvel, por exemplo um edifício, um terreno, um objecto,
+      etc.
+    part:
+    - atr
+    - rel
+    - local
+    position:
+    - name
+    - tipo
+    source: object
+- group:
+    also:
     - data
     - ref
     - loc
@@ -685,29 +1148,172 @@
     - sumario
     - resumo
     - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
+    counter: 61
     guaranteed:
     - id
     - dia
     - mes
     - ano
     idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    name: escritura
+    note: Uma escritura notarial
     part:
-    - actorm
-    - actorf
+    - abonador
+    - abonadora
+    - acusacao
+    - aforamento
+    - apelacao
+    - apelado
+    - apelante
+    - apelantef
+    - apresentado
+    - arrematante
+    - arrematantef
+    - arrendamento
+    - arrendataria
+    - arrendatario
+    - atr
+    - autor
+    - autoridade
+    - bem
+    - beneficiaria
+    - beneficiario
+    - comprador
+    - compradora
+    - confirmante
+    - constituinte
+    - constituintef
+    - contraente
+    - contraentef
+    - credor
+    - credora
+    - defesa
+    - demanda
+    - demandado
+    - demandador
+    - demandadora
+    - destinatario
+    - devedor
+    - devedora
+    - divida
+    - doacao
+    - doador
+    - doadora
+    - donataria
+    - donatario
+    - dotada
+    - dotado
+    - dotante
+    - dotantef
+    - enfiteuta
+    - enfiteutaf
+    - escambador
+    - escambadora
+    - escambo
+    - escrivao
+    - escrivao
+    - fiador
+    - fiadora
+    - fianca
+    - foreira
+    - foreiro
+    - garantia
+    - inquiricao
+    - inquirida
+    - inquirido
+    - inquiridor
     - item
+    - juiz
+    - louvado
+    - ls
+    - obra
+    - outorgante
+    - outorgantef
+    - padroeiro
+    - prazo
+    - procurador
+    - procuradora
+    - quitada
+    - quitado
+    - quitante
+    - quitantef
+    - referida
+    - referido
+    - renda
+    - rendeira
+    - rendeiro
+    - renunciante
+    - renunciantef
+    - requerente
+    - requerido
+    - reu
+    - reuf
+    - senhoria
+    - senhorio
+    - sentenca
+    - sisa
+    - siza
+    - subenfiteuta
+    - subenfiteutaf
+    - tabeliao
+    - test
+    - testador
+    - testadora
+    - testamentaria
+    - testamentario
+    - testamenteira
+    - testamenteiro
+    - vedor
+    - vendedor
+    - vendedora
     position:
     - id
     - dia
     - mes
     - ano
+    - tipo
     source: pt-acto
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    counter: 56
+    guaranteed:
+    - name
+    idprefix: bem
+    name: aforamento
+    note: Um bem móvel ou imóvel, por exemplo um edifício, um terreno, um objecto,
+      etc.
+    part:
+    - atr
+    - rel
+    - local
+    position:
+    - name
+    - tipo
+    source: bem
+- group:
+    also:
+    - desc
+    - tipo
+    - id
+    - obs
+    - local
+    counter: 43
+    guaranteed:
+    - name
+    idprefix: bem
+    name: prazo
+    note: Um bem móvel ou imóvel, por exemplo um edifício, um terreno, um objecto,
+      etc.
+    part:
+    - atr
+    - rel
+    - local
+    position:
+    - name
+    - tipo
+    source: aforamento

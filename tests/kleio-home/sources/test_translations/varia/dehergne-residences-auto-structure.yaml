@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/dehergne-residences-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/dehergne-residences.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/dehergne-residences-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -84,6 +84,14 @@
 - element:
     description:
     identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
     name: loc
     note: 'Location (place) of an entity or act. Sometimes in sources it is used to
       register the location of the source (archive, library, etc).
@@ -107,14 +115,6 @@
     note: Similar to name, but for objects or events
     prefix: non
     source: string256
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: sex
-    note: Gender of a person
-    prefix: non
-    source: string64
     suffix: non
 - element:
     description:
@@ -208,6 +208,23 @@
       '
     prefix: non
     source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: urlpattern
+    note: 'Patter of a URL in linked data, use "$1" in place of linked id.
+
+      '
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: shortname
+    note: short pattern of a URL in linked data, used in the link group.
+    prefix: non
     suffix: non
 - element:
     description:
@@ -347,6 +364,20 @@
     source: entity
 - group:
     also:
+    - id
+    - obs
+    counter: 3
+    idprefix: lin
+    name: link
+    note: "Defines a shortcut for insert links to external data\nas comments in the
+      kleio file.\n\nA link can be recorded as @shortcut:external-id\n\nExample: link$wikidata/\"https://www.wikidata.org/wiki/$1\"\n\nAnd
+      then annotate element values in comments\n\n ls$place-of-stay/Canton#@wikidata:Q16572\n\nSee
+      https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/\n"
+    position:
+    - shortname
+    - urlpattern
+- group:
+    also:
     - loc
     - ref
     - obs
@@ -390,58 +421,151 @@
     counter: 0
     guaranteed:
     - name
-    - sex
-    idprefix: per
-    name: person
-    note: A person.
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - name
-    - sex
-    source: entity
-- group:
-    also:
-    - obs
-    - id
-    - same_as
-    - xsame_as
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: mper
-    name: male
-    note: A Male person. Groups based on this have male gender
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - name
-    source: person
-- group:
-    also:
-    - obs
-    - id
-    - same_as
-    - xsame_as
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: mper
-    name: actorm
-    note: 'A male actor in an act or event.
+    idprefix: geo
+    name: geoentity
+    note: 'An entity that endures due to a specific position location in space, in
+      spite of changes in its caracteristics and specific boundaries.
+
+      Examples of geoentities are: a parish, a place, a region, a country, etc. See
+      wikidata:Q56061  Administrative Territorial Entity and wikidata:Q486972 Human
+      Settlement
 
       '
     part:
     - attribute
     - relation
-    - pevent
+    - atr
+    - rel
+    - ls
     position:
     - name
-    source: male
+    - type
+    source: entity
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 3
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: atr
+    note: Alias for attribute
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    counter: 1
+    guaranteed:
+    - id
+    idprefix: his
+    name: geodesc
+    note: A Portuguese act. Abstract class.
+    part:
+    - geo1
+    - geo2
+    - geo3
+    - geo4
+    - atr
+    - rel
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    - fol
+    source: pt-acto
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: geo1
+    name: geo1
+    note: 'A geographical entity of level 1. Levels geo1 to geo4 are defined. '
+    part:
+    - geo2
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: geo2
+    name: geo2
+    note: 'A geographical entity of level 2. Levels geo1 to geo4 are defined. '
+    part:
+    - geo3
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
+- group:
+    also:
+    - same_as
+    - xsame_as
+    - obs
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: geo3
+    name: geo3
+    note: 'A geographical entity of level 3. Levels geo1 to geo4 are defined. '
+    part:
+    - geo4
+    - atr
+    - attr
+    - attribute
+    - rel
+    - relation
+    position:
+    - name
+    - type
+    - id
+    source: geoentity
 - element:
     description:
     identification: non
@@ -499,38 +623,6 @@
 - element:
     description:
     identification: non
-    name: nome
-    note:
-    prefix: non
-    source: name
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: mesmo_que
-    note: Id de  outra ocorrência da mesma entidade no mesmo ficheiro
-    prefix: non
-    source: same_as
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: xmesmo_que
-    note: Indica outra ocorrência desta entidade em outro ficheiro
-    prefix: non
-    source: xsame_as
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: sexo
-    note: Sinónimo de sexo (género)
-    prefix: non
-    source: sex
-    suffix: non
-- element:
-    description:
-    identification: non
     name: sumario
     note: Resumo de um documento, usar triplas aspas para textos longos multi linha
     prefix: non
@@ -568,52 +660,6 @@
     prefix: non
     source: summary
     suffix: non
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: mper
-    name: pt-actorm
-    note: A portuguese male actor
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - nome
-    - sexo
-    source: actorm
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 1
-    guaranteed:
-    - name
-    idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
-
-      '
-    part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
-    position:
-    - nome
-    - sexo
-    source: pt-actorm
 - group:
     also:
     - tipo
@@ -675,39 +721,3 @@
     - mes
     - ano
     source: historical-act
-- group:
-    also:
-    - data
-    - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
-    - resumo
-    - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
-    guaranteed:
-    - id
-    - dia
-    - mes
-    - ano
-    idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
-    part:
-    - actorm
-    - actorf
-    - item
-    position:
-    - id
-    - dia
-    - mes
-    - ano
-    source: pt-acto

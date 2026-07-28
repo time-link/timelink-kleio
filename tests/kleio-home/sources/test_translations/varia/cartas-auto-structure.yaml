@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/cartas-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/cartas.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/cartas-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -75,11 +75,27 @@
     suffix: non
 - element:
     description:
+    identification: yes
+    name: destination
+    note: id of the destination of a relation
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
     identification: non
     name: type
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -105,6 +121,14 @@
     identification: non
     name: description
     note: Similar to name, but for objects or events
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destname
+    note: Name of destination in a relation
     prefix: non
     source: string256
     suffix: non
@@ -411,6 +435,25 @@
     counter: 0
     guaranteed:
     - name
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
     idprefix: mper
     name: male
     note: A Male person. Groups based on this have male gender
@@ -421,6 +464,112 @@
     position:
     - name
     source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-m
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-f
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: notkin-m
+    note: 'A male person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-father
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-m
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-mother
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-f
 - group:
     also:
     - obs
@@ -442,6 +591,91 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 11
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: relation
+    note: 'A relation between two or more entities, such as people, objects, geoentities,
+      etc.
+
+      Relation have a type (kinship, professional...) and a value (e.g. "father",
+      "mother", "colleague", etc.).
+
+      Some special relations are generated automatically by the parser, such as "identification"
+      relations to register that two entities are the same (generated from "same_as"
+      and "xsame_as" elements), and "function-in-act" relations to register the function
+      of an entity in an act.
+
+      '
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - date
+- group:
+    also:
+    - obs
+    - data
+    - id
+    counter: 1
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: rel
+    note: Short hand for relation Portuguese Override to have data= instead of date=
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - data
+    source: relation
 - element:
     description:
     identification: non
@@ -563,11 +797,122 @@
 - element:
     description:
     identification: non
+    name: titulo
+    note: title of a work (e.g. a book)
+    prefix: non
+    source: title
+    suffix: non
+- element:
+    description:
+    identification: non
     name: resumo
     note: Summary of a document, use triplas aspas for long multi line texts
     prefix: non
     source: summary
     suffix: non
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-kin-mother
+    note: A portuguese mother
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-mother
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: fper
+    name: mae
+    note:
+    part:
+    - pmae
+    - mmae
+    position:
+    - nome
+    - sexo
+    source: pt-kin-mother
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-notkin-m
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-father
+    note: A portuguese father
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-father
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pai
+    note:
+    part:
+    - ppai
+    - mpai
+    position:
+    - nome
+    - sexo
+    source: pt-kin-father
 - group:
     also:
     - sexo
@@ -596,20 +941,40 @@
     - mesmo_que
     - xmesmo_que
     - id
+    counter: 5
+    guaranteed:
+    - name
+    idprefix: mper
+    name: referido
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
+
+      '
+    part:
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
     counter: 1
     guaranteed:
     - name
     idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
-
-      '
+    name: emissor
+    note: A portuguese male actor
     part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
+    - attribute
+    - relation
+    - pevent
     position:
     - nome
     - sexo
@@ -685,29 +1050,32 @@
     - sumario
     - resumo
     - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
+    counter: 2
     guaranteed:
-    - id
+    - titulo
     - dia
     - mes
     - ano
     idprefix: his
-    name: lista
+    name: carta
     note: A Portuguese act. Abstract class.
     part:
+    - celebrante
     - actorm
     - actorf
-    - item
+    - object
+    - abstraction
+    - ls
+    - rel
+    - receptor
+    - emissor
+    - evento
+    - topico
+    - emissor-representante
     position:
-    - id
+    - titulo
     - dia
     - mes
     - ano
+    - ref
     source: pt-acto

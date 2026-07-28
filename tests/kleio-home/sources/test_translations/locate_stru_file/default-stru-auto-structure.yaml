@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/locate_stru_file/default-stru-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/locate_stru_file/default-stru.kleio
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/locate_stru_file/default-stru-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -387,7 +387,7 @@
     - obs
     - same_as
     - xsame_as
-    counter: 0
+    counter: 1
     guaranteed:
     - name
     - sex
@@ -408,12 +408,12 @@
     - id
     - same_as
     - xsame_as
-    counter: 0
+    counter: 1
     guaranteed:
     - name
-    idprefix: mper
-    name: male
-    note: A Male person. Groups based on this have male gender
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
     part:
     - attribute
     - relation
@@ -421,27 +421,6 @@
     position:
     - name
     source: person
-- group:
-    also:
-    - obs
-    - id
-    - same_as
-    - xsame_as
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: mper
-    name: actorm
-    note: 'A male actor in an act or event.
-
-      '
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - name
-    source: male
 - element:
     description:
     identification: non
@@ -499,38 +478,6 @@
 - element:
     description:
     identification: non
-    name: nome
-    note:
-    prefix: non
-    source: name
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: mesmo_que
-    note: Id de  outra ocorrência da mesma entidade no mesmo ficheiro
-    prefix: non
-    source: same_as
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: xmesmo_que
-    note: Indica outra ocorrência desta entidade em outro ficheiro
-    prefix: non
-    source: xsame_as
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: sexo
-    note: Sinónimo de sexo (género)
-    prefix: non
-    source: sex
-    suffix: non
-- element:
-    description:
-    identification: non
     name: sumario
     note: Resumo de um documento, usar triplas aspas para textos longos multi linha
     prefix: non
@@ -568,52 +515,6 @@
     prefix: non
     source: summary
     suffix: non
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: mper
-    name: pt-actorm
-    note: A portuguese male actor
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - nome
-    - sexo
-    source: actorm
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 1
-    guaranteed:
-    - name
-    idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
-
-      '
-    part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
-    position:
-    - nome
-    - sexo
-    source: pt-actorm
 - group:
     also:
     - tipo
@@ -677,37 +578,35 @@
     source: historical-act
 - group:
     also:
-    - data
     - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
-    - resumo
-    - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
+    - data
     counter: 1
     guaranteed:
     - id
+    - tipo
     - dia
     - mes
     - ano
-    idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    idprefix: act
+    name: acto
+    note: "Actos genericos, servem para vereacoes etc.\nTem id, tipo, dia, mes, ano,
+      loc e obs.\nDistinguem-se de pt-acto por terem o tipo como obrigatório\nCompostos
+      por items e por pessoas\nExemplo:\n\nacto$v1793-2/juramento de posse dos almotaces/1/3/1793/f.18v/para
+      os meses de marco e abril\n\n    presente$francisco quaresma\n        ls$titulo/bacharel\n
+      \       ls$cargo/almotace/obs=marco e abril\n        ls$assina/sim\n\n    presente$jose
+      joaquim de araujo tavares\n        ls$titulo/bacharel\n        ls$cargo/almotace/obs=marco
+      e abril\n        ls$assina/sim\n\n    presente$domingos de macedo e fretias\n
+      \       ls$cargo/escrivao da camara/obs=com comissao\n"
     part:
     - actorm
     - actorf
     - item
     position:
     - id
+    - tipo
     - dia
     - mes
     - ano
+    - loc
+    - obs
     source: pt-acto

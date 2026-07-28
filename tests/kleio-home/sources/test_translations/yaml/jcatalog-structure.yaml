@@ -1,0 +1,70 @@
+- file:
+    name: jcatalog-structure.yaml
+    description: >
+      Structure for Jesuit catalogues.
+- include: structures.groups.yaml
+- group:
+    name: source
+    source: historical-source
+    description: |
+      A specific Jesuit Catalog.
+
+      id format:
+        `YYYY-T-PROV-VOL-FOL` where
+          T is one of
+            T1 = type 1
+            T2 = type 2 (secret)
+            T3 = domus (no names, just "houses")
+            T4 = "brevis" the communities with the names, no numbers, no assessment
+            T5 = index of type 1
+            T6,T7 = suplements to type 1 and type 2,
+                    with new entries
+            T8 = list of deaths, expulsions, abandons
+            T9 = list of people in missions
+            T10 = list with specific scope
+                  e.g. "lista dos que acabaram o curso de Artes no ano de 1565"
+            T11 = varia
+
+          Add "P" to type if catalog is partial (e.g. one single comunity)
+        PROV = three letter abreviation of province, e.g. LUS for Lusitania
+        VOL = volume (in the collection of the specified province)
+        FOL = starting page (fólio)
+
+        Example: 1587-T1-LUS-44I-1
+
+- group:
+    name: jcatalog
+    source: ulist  # a list with unique names
+    description: >
+      A specific Jesuit Catalog
+
+      Elements:
+        id: an unique id for the catalog in the form
+        `YYYY-T-PROV-VOL-FOL` where
+        YYYY is the year
+        T is the type T1, T2, T3... see
+    position: [id, province, year, type]
+    arbitrary: [comunity]
+
+- element:
+    name: province
+    source: loc
+
+- group:
+    name: comunity
+    source: attribute-list
+    contains: [father, brother, member, group]
+
+- group:
+    name: group  # a group inside the comunit
+    source: attribute-list
+    contains: [father, brother, member]
+
+- group:
+    name: [father, brother, member]
+    source: male
+    position: [number, name]
+
+- element:
+    name: status
+    source: type

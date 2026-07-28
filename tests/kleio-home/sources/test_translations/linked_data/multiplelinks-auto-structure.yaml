@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-06
+  - date: 2026-07-28
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/multiplelinks-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/multiplelinks.cli
@@ -195,6 +195,7 @@
     source: string256
     suffix: non
 - group:
+    abstract: true
     also:
     - obs
     - same_as
@@ -351,6 +352,7 @@
     suffix: non
 - group:
     also:
+    - tipo
     - data
     - ano
     - localizacao
@@ -365,13 +367,13 @@
     name: fonte
     note: "Este constitui o grupo principal para os documentos\nhistoricos portugueses.
       Admite qualquer dos grupos\nque tenham \"acto\" ou \"evento\" como fonte.\n\nNotas\n\n1.
-      Segundo campo posicional\n\nAtualmente o segundo campo posicional, a seguir
-      ao \n\"id\" é \"tipo\" (\"registos paroquiais\", \"vereações\", etc). \nFicheiros
-      que assumam \"data\" ou \"ano\" necessitam de ser\nmodificados, usar a variante
-      fonted$ ouusar um \nficheiro de estrutura que altere o parâmentro \"pos\"  de
-      fonte$\npara correcta interpretação e mapeamento para a base de dados.\n\n2.
-      Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado uma vez que
-      o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
+      Segundo campo posicional\n\nO ficheiro gacto2.str definia um segundo campo posicional
+      \"tipo\"\na seguir a \"idd\". Na realidade diferentes fontes colocavam diferentes
+      \ncampos como segundo posicional, por exemplo \"data\", \"ano\" ou \"loc\".
+      \n\nEste ficheiro de estrutura não define um segundo campo posicional e \nobriga
+      que os elementos a seguir a \"id\"\ntenham os elementos explicitamente definidos.
+      \   \n\n\n2. Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado
+      uma vez que o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
       de introdução de zeros para o mês e ano.\n"
     part:
     - historical-act
@@ -379,5 +381,4 @@
     - text
     position:
     - id
-    - tipo
     source: historical-source

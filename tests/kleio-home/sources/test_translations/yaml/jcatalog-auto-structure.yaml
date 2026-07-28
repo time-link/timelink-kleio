@@ -1,10 +1,18 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
-    stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml/jcatalog-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml/jcatalog.kleio
+    stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml/jcatalog-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml/jcatalog-auto-structure.yaml
+- element:
+    abstract: true
+    description:
+    identification: non
+    name: number
+    note: Any number
+    prefix: non
+    suffix: non
 - element:
     description:
     identification: non
@@ -80,6 +88,14 @@
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -347,6 +363,40 @@
     source: entity
 - group:
     also:
+    - date
+    - year
+    - obs
+    - replace
+    - kleiofile
+    counter: 1
+    guaranteed:
+    - id
+    idprefix: his
+    name: source
+    note: "A specific Jesuit Catalog.\n\nid format:\n  `YYYY-T-PROV-VOL-FOL` where\n
+      \   T is one of\n      T1 = type 1\n      T2 = type 2 (secret)\n      T3 = domus
+      (no names, just \"houses\")\n      T4 = \"brevis\" the communities with the
+      names, no numbers, no assessment\n      T5 = index of type 1\n      T6,T7 =
+      suplements to type 1 and type 2,\n              with new entries\n      T8 =
+      list of deaths, expulsions, abandons\n      T9 = list of people in missions\n
+      \     T10 = list with specific scope\n            e.g. \"lista dos que acabaram
+      o curso de Artes no ano de 1565\"\n      T11 = varia\n\n    Add \"P\" to type
+      if catalog is partial (e.g. one single comunity)\n  PROV = three letter abreviation
+      of province, e.g. LUS for Lusitania\n  VOL = volume (in the collection of the
+      specified province)\n  FOL = starting page (fólio)\n\n  Example: 1587-T1-LUS-44I-1\n"
+    part:
+    - historical-act
+    - event
+    - text
+    position:
+    - id
+    - year
+    - type
+    - loc
+    - ref
+    source: historical-source
+- group:
+    also:
     - loc
     - ref
     - obs
@@ -381,6 +431,43 @@
     - type
     - date
     source: event
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    - summary
+    counter: 0
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: ul
+    name: ulist
+    note: 'A list of unique people, objects, geoentities, abstractions, etc. "Unique"
+      means that the same person, object, geoentity, abstraction, etc. is not repeated
+      in the list. Use case: prosopographies, biographical dicionaries, etc. household
+      lists, etc.
+
+      '
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - cevent
+    - end
+    position:
+    - id
+    - type
+    - date
+    source: historical-act
 - group:
     also:
     - id
@@ -423,6 +510,7 @@
     source: person
 - group:
     also:
+    - type
     - obs
     - id
     - same_as
@@ -430,9 +518,10 @@
     counter: 0
     guaranteed:
     - name
-    idprefix: mper
-    name: actorm
-    note: 'A male actor in an act or event.
+    idprefix: obj
+    name: object
+    note: 'Anything that is not a person or geoentity, includes abstractions, animals,
+      plants, objects, etc.
 
       '
     part:
@@ -441,273 +530,186 @@
     - pevent
     position:
     - name
-    source: male
+    - type
+    source: entity
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: obj
+    name: abstraction
+    note: An abstraction, such as a concept, idea, or event.
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    - type
+    source: object
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 11
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - id
+    - date
+    - obs
+    - loc
+    - ref
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: alist
+    name: attribute-list
+    note: "A list, similar to an act, enclosing people, objects, geoentities, abstractions,
+      etc. which will receive automatically a predefined attribute with type and value
+      defined in the enclosing group.\nalist$cat1/1611-04-01/jesuit-province/Portugal\n
+      \   person$Francisco de Sousa\n    person$João da Silva\n\nafter processing,
+      the people will have\n    person$Francisco de Sousa\n        ls$jesuit-province/Portugal/1611-04-01\n
+      \   person$João da Silva\n        ls$jesuit-province/Portugal/1611-04-01\n"
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - attribute-list
+    position:
+    - type
+    - value
+    source: abstraction
+- group:
+    also:
+    - loc
+    - ref
+    - obs
+    - day
+    - month
+    - year
+    - summary
+    arbitrary:
+    - comunity
+    counter: 1
+    guaranteed:
+    - id
+    - type
+    - date
+    idprefix: ul
+    name: jcatalog
+    note: "A specific Jesuit Catalog\nElements:\n  id: an unique id for the catalog
+      in the form\n  `YYYY-T-PROV-VOL-FOL` where\n  YYYY is the year\n  T is the type
+      T1, T2, T3... see\n"
+    part:
+    - person
+    - object
+    - geoentity
+    - abstraction
+    - ls
+    - atr
+    - rel
+    - cevent
+    - end
+    position:
+    - id
+    - province
+    - year
+    - type
+    source: ulist
 - element:
     description:
     identification: non
-    name: dia
-    note: Sinónimo de day
-    prefix: non
-    source: day
-    suffix: non
-    type: number
-- element:
-    description:
-    identification: non
-    name: mes
-    note: Sinónimo de month
-    prefix: non
-    source: month
-    suffix: non
-    type: number
-- element:
-    description:
-    identification: non
-    name: ano
-    note: Sinónimo de year
-    prefix: non
-    source: year
-    suffix: non
-    type: number
-- element:
-    description:
-    identification: non
-    name: data
-    note: Sinónimo de date
-    prefix: non
-    source: date
-    suffix: non
-    type: number
-- element:
-    description:
-    identification: non
-    name: tipo
-    note: 'Sinónimo de Type, tipo em atributos, relações e actos, entre outros.
+    name: province
+    note: 'Location (place) of an entity or act. Sometimes in sources it is used to
+      register the location of the source (archive, library, etc).
 
       '
-    prefix: non
-    source: type
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: localizacao
-    note: No sentido de local
     prefix: non
     source: loc
     suffix: non
-- element:
-    description:
-    identification: non
-    name: nome
-    note:
-    prefix: non
-    source: name
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: mesmo_que
-    note: Id de  outra ocorrência da mesma entidade no mesmo ficheiro
-    prefix: non
-    source: same_as
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: xmesmo_que
-    note: Indica outra ocorrência desta entidade em outro ficheiro
-    prefix: non
-    source: xsame_as
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: sexo
-    note: Sinónimo de sexo (género)
-    prefix: non
-    source: sex
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: sumario
-    note: Resumo de um documento, usar triplas aspas para textos longos multi linha
-    prefix: non
-    source: summary
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: fol
-    note: 'Fólio, usado em documentos manuscritos como referência de documento (equivalente
-      de ref). Nota: no gacto2.str estável o ''fol'' é redefinido com source=ref numa
-      secção de documentos notariais e essa definição sobrepõe-se à de source=page;
-      aqui reflectimos a definição efectiva.
-
-      '
-    prefix: non
-    source: ref
-    suffix: non
-- element:
-    description:
-    identification: yes
-    name: substitui
-    note: 'Usado em fontes para indicar que a fonte corrente deve substituir our com
-      o id igual ao valor deste element. Usado para mudar o id de fontes ja importadas
-
-      '
-    prefix: non
-    source: replaces
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: resumo
-    note: Summary of a document, use triplas aspas for long multi line texts
-    prefix: non
-    source: summary
-    suffix: non
 - group:
     also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
     - id
-    counter: 0
+    - date
+    - obs
+    - loc
+    - ref
+    counter: 2
+    guaranteed:
+    - type
+    - value
+    idprefix: alist
+    name: comunity
+    note: "A list, similar to an act, enclosing people, objects, geoentities, abstractions,
+      etc. which will receive automatically a predefined attribute with type and value
+      defined in the enclosing group.\nalist$cat1/1611-04-01/jesuit-province/Portugal\n
+      \   person$Francisco de Sousa\n    person$João da Silva\n\nafter processing,
+      the people will have\n    person$Francisco de Sousa\n        ls$jesuit-province/Portugal/1611-04-01\n
+      \   person$João da Silva\n        ls$jesuit-province/Portugal/1611-04-01\n"
+    part:
+    - father
+    - brother
+    - member
+    - group
+    position:
+    - type
+    - value
+    source: attribute-list
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 1
     guaranteed:
     - name
     idprefix: mper
-    name: pt-actorm
-    note: A portuguese male actor
+    name: father
+    note: A Male person. Groups based on this have male gender
     part:
     - attribute
     - relation
     - pevent
     position:
-    - nome
-    - sexo
-    source: actorm
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 1
-    guaranteed:
+    - number
     - name
-    idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
-
-      '
-    part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
-    position:
-    - nome
-    - sexo
-    source: pt-actorm
-- group:
-    also:
-    - tipo
-    - data
-    - ano
-    - localizacao
-    - loc
-    - ref
-    - obs
-    - substitui
-    counter: 1
-    guaranteed:
-    - id
-    idprefix: fon
-    name: fonte
-    note: "Este constitui o grupo principal para os documentos\nhistoricos portugueses.
-      Admite qualquer dos grupos\nque tenham \"acto\" ou \"evento\" como fonte.\n\nNotas\n\n1.
-      Segundo campo posicional\n\nO ficheiro gacto2.str definia um segundo campo posicional
-      \"tipo\"\na seguir a \"idd\". Na realidade diferentes fontes colocavam diferentes
-      \ncampos como segundo posicional, por exemplo \"data\", \"ano\" ou \"loc\".
-      \n\nEste ficheiro de estrutura não define um segundo campo posicional e \nobriga
-      que os elementos a seguir a \"id\"\ntenham os elementos explicitamente definidos.
-      \   \n\n\n2. Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado
-      uma vez que o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
-      de introdução de zeros para o mês e ano.\n"
-    part:
-    - historical-act
-    - event
-    - text
-    position:
-    - id
-    source: historical-source
-- group:
-    also:
-    - data
-    - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
-    - resumo
-    - obs
-    counter: 0
-    guaranteed:
-    - id
-    - dia
-    - mes
-    - ano
-    idprefix: his
-    name: pt-acto
-    note: A Portuguese act. Abstract class.
-    part:
-    - actorm
-    - actorf
-    - item
-    position:
-    - id
-    - dia
-    - mes
-    - ano
-    source: historical-act
-- group:
-    also:
-    - data
-    - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
-    - resumo
-    - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
-    guaranteed:
-    - id
-    - dia
-    - mes
-    - ano
-    idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
-    part:
-    - actorm
-    - actorf
-    - item
-    position:
-    - id
-    - dia
-    - mes
-    - ano
-    source: pt-acto
+    source: male

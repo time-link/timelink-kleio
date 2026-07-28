@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/eleicoes1-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/eleicoes1.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/eleicoes1-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -80,6 +80,14 @@
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -442,6 +450,64 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - id
+    counter: 0
+    idprefix: end
+    name: end
+    note: "Used to mark the end of the enclosing group. Useful in 2 cenarios:\n\n1)
+      To prevent that subsequent groups to be interpreted as subgroups\n   of the
+      current group in structures where there is ambiguity.\n\nletter$from x to y/2025-07-26\n
+      \   /obs=João reports meeting Joaquim and Maria the day before\n         and
+      Joaquim said he met António on 25-6\n    author$João\n    mentioned$Joaquim/obs=described
+      yesterday meeting\n        cevent$meeting/2025-06-25\n            mentioned$António\n
+      \           end$ends cevent, further mentions\n    mentioned$Maria\n\n2) To
+      trigger the processing and exporting of groups in acts with\n   long list of
+      groups.\n\nInference rules, that infer relations such as kinship and attributes\nsuch
+      as civil status are normally triggered by the end of an act such as\na marriage,
+      baptism, or burial.\n\nSome acts or events however contain a large number of
+      items that are\nindependent one from the other and do not need to be processed\ntogether.\n\nHousehold
+      list (róis de confessados) are an example of this,\nwhere each item is independent
+      from the others and inference rules\napply to each household item independently.\n\nBy
+      adding an \"end\" group after each household item, the inference rules\nare
+      triggered and context information is cleared, so that the next item\ncan be
+      processed independently.\n\nExample:\n    end$end of household 3\n"
+    position:
+    - obs
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 493
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
 - element:
     description:
     identification: non
@@ -596,20 +662,37 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 1
+    counter: 342
     guaranteed:
     - name
     idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
-
-      '
+    name: eleito
+    note: A portuguese male actor
     part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 226
+    guaranteed:
+    - name
+    idprefix: mper
+    name: eleitor
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
     position:
     - nome
     - sexo
@@ -677,37 +760,59 @@
     source: historical-act
 - group:
     also:
-    - data
-    - ref
-    - loc
-    - fol
-    - tipo
-    - sumario
+    - id
+    - obs
+    counter: 27
+    idprefix: end
+    name: fim
+    note: 'Fim de um acto ou de parte de um acto que pode ser processada para inferir
+      valores, por exemplo o fim de um fogo num longo rol de confessados (acto)
+
+      '
+    position:
+    - id
+    prefix: non
+    source: end
+    suffix: non
+- group:
+    also:
+    - sub
+    - esmola
     - resumo
     - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
+    counter: 28
     guaranteed:
     - id
     - dia
     - mes
     - ano
     idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    name: amz
+    note: Assentos da mesa numa misericordia (A particular historical act )
     part:
-    - actorm
-    - actorf
-    - item
+    - eleito
+    - eleitor
+    - referido
     position:
     - id
     - dia
     - mes
     - ano
+    - fol
     source: pt-acto
+- element:
+    description:
+    identification: non
+    name: sub
+    note: Longer strings, like names or short descriptions.
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: esmola
+    note: Longer strings, like names or short descriptions.
+    prefix: non
+    source: string256
+    suffix: non

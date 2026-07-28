@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -675,6 +675,14 @@
     - mes
     - ano
     source: historical-act
+- element:
+    description:
+    identification: non
+    name: celebrante
+    note: name, normally of a person
+    prefix: non
+    source: name
+    suffix: non
 - group:
     also:
     - data
@@ -685,13 +693,6 @@
     - sumario
     - resumo
     - obs
-    arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
     counter: 1
     guaranteed:
     - id
@@ -699,15 +700,29 @@
     - mes
     - ano
     idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    name: obito
+    note: 'Obitos '
     part:
-    - actorm
-    - actorf
-    - item
+    - celebrante
+    - n
+    - marido
+    - mulher
+    - pai
+    - mae
+    - referido
+    - referida
+    - sacr
+    - testamento
+    - testamenteiro
+    - locs
+    - locf
+    - causa
+    - oficios
     position:
     - id
     - dia
     - mes
     - ano
+    - fol
+    - celebrante
     source: pt-acto

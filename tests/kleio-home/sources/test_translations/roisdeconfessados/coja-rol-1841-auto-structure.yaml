@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-a-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-a.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-a-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/roisdeconfessados/coja-rol-1841-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -236,23 +236,6 @@
 - element:
     description:
     identification: non
-    name: urlpattern
-    note: 'Patter of a URL in linked data, use "$1" in place of linked id.
-
-      '
-    prefix: non
-    source: string256
-    suffix: non
-- element:
-    description:
-    identification: non
-    name: shortname
-    note: short pattern of a URL in linked data, used in the link group.
-    prefix: non
-    suffix: non
-- element:
-    description:
-    identification: non
     name: kleiofile
     note: Path of the file where the entity is registered
     prefix: non
@@ -386,20 +369,6 @@
     - loc
     - ref
     source: entity
-- group:
-    also:
-    - id
-    - obs
-    counter: 4
-    idprefix: lin
-    name: link
-    note: "Defines a shortcut for insert links to external data\nas comments in the
-      kleio file.\n\nA link can be recorded as @shortcut:external-id\n\nExample: link$wikidata/\"https://www.wikidata.org/wiki/$1\"\n\nAnd
-      then annotate element values in comments\n\n ls$place-of-stay/Canton#@wikidata:Q16572\n\nSee
-      https://time-link.github.io/timelink-docs/Appendixes/B_Linked_Data/B.1%20Linked%20data%20providers/\n"
-    position:
-    - shortname
-    - urlpattern
 - group:
     also:
     - loc
@@ -568,6 +537,28 @@
     counter: 0
     guaranteed:
     - name
+    idprefix: fper
+    name: notkin-f
+    note: 'A female person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
     idprefix: mper
     name: kin-father
     note: 'A male person related by kin to an actor in an act or event.
@@ -611,6 +602,90 @@
     guaranteed:
     - name
     idprefix: mper
+    name: kin-husband
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-m
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-wife
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-f
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-son
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-m
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: kin-daughter
+    note: 'A female person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-f
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
     name: actorm
     note: 'A male actor in an act or event.
 
@@ -622,6 +697,30 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - type
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: obj
+    name: object
+    note: 'Anything that is not a person or geoentity, includes abstractions, animals,
+      plants, objects, etc.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    - type
+    source: entity
 - group:
     also:
     - obs
@@ -643,13 +742,13 @@
     - obs
     - date
     - id
-    counter: 1110
+    counter: 3086
     guaranteed:
     - type
     - value
     idprefix: att
-    name: ls
-    note: Alias for attribute, short for "life story".
+    name: atr
+    note: Alias for attribute
     position:
     - type
     - value
@@ -691,7 +790,7 @@
     - obs
     - data
     - id
-    counter: 27
+    counter: 19
     guaranteed:
     - type
     - value
@@ -757,6 +856,14 @@
     description:
     identification: non
     name: localizacao
+    note: No sentido de local
+    prefix: non
+    source: loc
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: local
     note: No sentido de local
     prefix: non
     source: loc
@@ -844,6 +951,48 @@
     guaranteed:
     - name
     idprefix: fper
+    name: pt-kin-f
+    note: A portuguese female kin
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-notkin-f
+    note: A portuguese female non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
     name: pt-kin-mother
     note: A portuguese mother
     part:
@@ -861,7 +1010,70 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 4
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-kin-wife
+    note: A portuguese wife
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-wife
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: pt-kin-daughter
+    note: A portuguese daughter
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-daughter
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: parentef
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 5
     guaranteed:
     - name
     idprefix: fper
@@ -874,6 +1086,196 @@
     - nome
     - sexo
     source: pt-kin-mother
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 229
+    guaranteed:
+    - name
+    idprefix: fper
+    name: mulher
+    note:
+    part:
+    - pmulher
+    - mmulher
+    - filha
+    - filho
+    position:
+    - nome
+    - sexo
+    source: pt-kin-wife
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 20
+    guaranteed:
+    - name
+    idprefix: fper
+    name: irma
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: parentef
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 409
+    guaranteed:
+    - name
+    idprefix: fper
+    name: filha
+    note:
+    part:
+    - fofilha
+    - fafilha
+    - mrfilha
+    position:
+    - nome
+    - sexo
+    source: pt-kin-daughter
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 15
+    guaranteed:
+    - name
+    idprefix: fper
+    name: neta
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 6
+    guaranteed:
+    - name
+    idprefix: fper
+    name: sogra
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: fper
+    name: afilhada
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 9
+    guaranteed:
+    - name
+    idprefix: fper
+    name: sobrinha
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 4
+    guaranteed:
+    - name
+    idprefix: fper
+    name: nora
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-m
+    note: A portuguese male kin
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-m
 - group:
     also:
     - sexo
@@ -918,6 +1320,48 @@
     source: kin-father
 - group:
     also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-husband
+    note: A portuguese husband
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-husband
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-son
+    note: A portuguese son
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-son
+- group:
+    also:
     - obs
     - id
     - same_as
@@ -943,7 +1387,7 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 5
+    counter: 1
     guaranteed:
     - name
     idprefix: mper
@@ -963,26 +1407,47 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 1
+    counter: 13
     guaranteed:
     - name
     idprefix: mper
-    name: pmae
+    name: marido
     note:
     part:
-    - ppmae
-    - mpmae
+    - pmarido
+    - mmarido
     position:
     - nome
     - sexo
-    source: pt-kin-father
+    source: pt-kin-husband
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 392
+    guaranteed:
+    - name
+    idprefix: mper
+    name: filho
+    note:
+    part:
+    - fofilho
+    - fafilho
+    - merfilho
+    position:
+    - nome
+    - sexo
+    source: pt-kin-son
 - group:
     also:
     - obs
     - id
     - same_as
     - xsame_as
-    counter: 1
+    counter: 7
     guaranteed:
     - name
     idprefix: mper
@@ -996,6 +1461,111 @@
     - nome
     - sexo
     source: parentem
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 14
+    guaranteed:
+    - name
+    idprefix: mper
+    name: neto
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: mper
+    name: afilhado
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 2
+    guaranteed:
+    - name
+    idprefix: mper
+    name: sogro
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 7
+    guaranteed:
+    - name
+    idprefix: mper
+    name: sobrinho
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 5
+    guaranteed:
+    - name
+    idprefix: mper
+    name: genro
+    note:
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-kin-m
 - group:
     also:
     - sexo
@@ -1024,7 +1594,7 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 64
+    counter: 380
     guaranteed:
     - name
     idprefix: mper
@@ -1049,7 +1619,7 @@
     - mesmo_que
     - xmesmo_que
     - id
-    counter: 43
+    counter: 10
     guaranteed:
     - name
     idprefix: mper
@@ -1066,6 +1636,135 @@
     - nome
     - sexo
     source: pt-notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 46
+    guaranteed:
+    - name
+    idprefix: mper
+    name: criado
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 2
+    guaranteed:
+    - name
+    idprefix: mper
+    name: engeitado
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: mper
+    name: escravo
+    note: A portuguese male actor
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 9
+    guaranteed:
+    - name
+    idprefix: fper
+    name: referida
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
+
+      '
+    part:
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 48
+    guaranteed:
+    - name
+    idprefix: fper
+    name: criada
+    note: A portuguese female non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: fper
+    name: engeitada
+    note: A portuguese female non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-f
 - group:
     also:
     - tipo
@@ -1129,6 +1828,43 @@
     source: historical-act
 - group:
     also:
+    - type
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 380
+    guaranteed:
+    - id
+    - local
+    idprefix: obj
+    name: fogo
+    note: 'Um fogo, ou agregado familiar, no sentido de "household", em que n$ é
+
+      a cabeça do agregado, com os parentes enumerados em relação
+
+      a n$ e outros membros do agregado, por exemplo criados.
+
+      '
+    part:
+    - n
+    - criado
+    - criada
+    - engeitado
+    - engeitada
+    - enjeitado
+    - enjeitada
+    - escravo
+    - escrava
+    - referido
+    - referida
+    - fim
+    position:
+    - id
+    - local
+    source: object
+- group:
+    also:
     - data
     - ref
     - loc
@@ -1138,12 +1874,7 @@
     - resumo
     - obs
     arbitrary:
-    - n
-    - referido
-    - referida
-    - celebrante
-    - evento
-    - colega
+    - fogo
     counter: 1
     guaranteed:
     - id
@@ -1151,7 +1882,7 @@
     - mes
     - ano
     idprefix: his
-    name: lista
+    name: rol
     note: A Portuguese act. Abstract class.
     part:
     - actorm

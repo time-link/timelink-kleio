@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-06
+  - date: 2026-07-28
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/dehergne-locations-1644.cli
@@ -284,6 +284,7 @@
     - description
     - date
 - group:
+    abstract: true
     also:
     - obs
     - same_as
@@ -543,35 +544,27 @@
     source: relation
 - group:
     also:
-    - loc
-    - ref
     - obs
-    - day
-    - month
-    - year
-    - summary
     counter: 1
     guaranteed:
     - id
-    - day
-    - month
-    - year
-    idprefix: hac
+    idprefix: his
     name: geodesc
-    note: 'A Hierarchical group for geoentities. '
+    note: A Portuguese act. Abstract class.
     part:
     - geo1
+    - geo2
+    - geo3
+    - geo4
     - atr
-    - attr
-    - attribute
     - rel
-    - relation
     position:
     - id
-    - day
-    - month
-    - year
-    source: historical-act
+    - dia
+    - mes
+    - ano
+    - fol
+    source: pt-acto
 - group:
     also:
     - same_as
@@ -644,6 +637,24 @@
 - element:
     description:
     identification: non
+    name: dia
+    note: Sinónimo de day
+    prefix: non
+    source: day
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
+    name: mes
+    note: Sinónimo de month
+    prefix: non
+    source: month
+    suffix: non
+    type: number
+- element:
+    description:
+    identification: non
     name: ano
     note: Sinónimo de year
     prefix: non
@@ -679,6 +690,27 @@
     suffix: non
 - element:
     description:
+    identification: non
+    name: sumario
+    note: Resumo de um documento, usar triplas aspas para textos longos multi linha
+    prefix: non
+    source: summary
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: fol
+    note: 'Fólio, usado em documentos manuscritos como referência de documento (equivalente
+      de ref). Nota: no gacto2.str estável o ''fol'' é redefinido com source=ref numa
+      secção de documentos notariais e essa definição sobrepõe-se à de source=page;
+      aqui reflectimos a definição efectiva.
+
+      '
+    prefix: non
+    source: ref
+    suffix: non
+- element:
+    description:
     identification: yes
     name: substitui
     note: 'Usado em fontes para indicar que a fonte corrente deve substituir our com
@@ -688,8 +720,17 @@
     prefix: non
     source: replaces
     suffix: non
+- element:
+    description:
+    identification: non
+    name: resumo
+    note: Summary of a document, use triplas aspas for long multi line texts
+    prefix: non
+    source: summary
+    suffix: non
 - group:
     also:
+    - tipo
     - data
     - ano
     - localizacao
@@ -704,13 +745,13 @@
     name: fonte
     note: "Este constitui o grupo principal para os documentos\nhistoricos portugueses.
       Admite qualquer dos grupos\nque tenham \"acto\" ou \"evento\" como fonte.\n\nNotas\n\n1.
-      Segundo campo posicional\n\nAtualmente o segundo campo posicional, a seguir
-      ao \n\"id\" é \"tipo\" (\"registos paroquiais\", \"vereações\", etc). \nFicheiros
-      que assumam \"data\" ou \"ano\" necessitam de ser\nmodificados, usar a variante
-      fonted$ ouusar um \nficheiro de estrutura que altere o parâmentro \"pos\"  de
-      fonte$\npara correcta interpretação e mapeamento para a base de dados.\n\n2.
-      Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado uma vez que
-      o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
+      Segundo campo posicional\n\nO ficheiro gacto2.str definia um segundo campo posicional
+      \"tipo\"\na seguir a \"idd\". Na realidade diferentes fontes colocavam diferentes
+      \ncampos como segundo posicional, por exemplo \"data\", \"ano\" ou \"loc\".
+      \n\nEste ficheiro de estrutura não define um segundo campo posicional e \nobriga
+      que os elementos a seguir a \"id\"\ntenham os elementos explicitamente definidos.
+      \   \n\n\n2. Utilização do campo \"ano\"\n\nO campo \"ano\" deve ser evitado
+      uma vez que o campo\n\"data\" permite o registo de datas só com o ano, sem\nnecessidade
       de introdução de zeros para o mês e ano.\n"
     part:
     - historical-act
@@ -718,5 +759,33 @@
     - text
     position:
     - id
-    - tipo
     source: historical-source
+- group:
+    also:
+    - data
+    - ref
+    - loc
+    - fol
+    - tipo
+    - sumario
+    - resumo
+    - obs
+    counter: 0
+    guaranteed:
+    - id
+    - dia
+    - mes
+    - ano
+    idprefix: his
+    name: pt-acto
+    note: A Portuguese act. Abstract class.
+    part:
+    - actorm
+    - actorf
+    - item
+    position:
+    - id
+    - dia
+    - mes
+    - ano
+    source: historical-act

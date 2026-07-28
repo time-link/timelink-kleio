@@ -1,0 +1,365 @@
+- file:
+  - date: 2026-07-28
+    description: Automatically generated structure file
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/identifications/mhk_identification_toliveira-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/identifications/mhk_identification_toliveira.cli
+    stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/identifications/mhk_identification_toliveira-auto-structure.yaml
+- element:
+    description:
+    identification: non
+    name: date
+    note: "Date in the format YYYYMMDD or YYYY-MM-DD.\nAlso allows ranges like 2021-01-01:2021-01-31\nand
+      relative dates like >2021-01-01\n\nFor more information on date formats see:\n
+      \ see: https://github.com/time-link/timelink-kleio/issues/1\n"
+    prefix: non
+    suffix: non
+- element:
+    description:
+    identification: yes
+    name: id
+    note: 'The id of the entity. This element is used to identify the entity in the
+      database. It is used to link entities in the database. It is a string64 element.
+
+      '
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: type
+    note: The type of an attribute, relation, act or other entity.
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: name
+    note: name, normally of a person
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: description
+    note: Similar to name, but for objects or events
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sname
+    note: 'Standard name of an entity, used to register the name of an entity in a
+      standard way. Used in real entities to register the canonical name when name
+      of occurences vary.
+
+      '
+    prefix: non
+    source: name
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: sex
+    note: Gender of a person
+    prefix: non
+    source: string64
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: obs
+    note: observations, comments, notes, etc. Use triplas aspas for long multi line
+      texts
+    prefix: non
+    source: text
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: autorels
+    note: 'determines the mode of generation of automatic relations. Curremtçy unused
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: prefix
+    note: 'Prefix all ids in the current file with this prefix. Used to avoid duplicate
+      ids in different files. Equivalent to the concept of namespace.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: structure
+    note: 'Path to the structure (schema) to be used.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translations
+    note: 'Number of times this file was translated. Used in the generation of automatic
+      ids when a file is translated, then edited, and new ids need to be generated.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: translator
+    note: 'Name of the translator, in the sense of a module that takes the source
+      data and maps it to a person oriented database. Originally to allow diferent
+      target databases currently unused.
+
+      '
+    prefix: non
+    source: control
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: atype
+    prefix: non
+    suffix: non
+    type: string256
+- element:
+    description:
+    identification: non
+    name: dbase
+    prefix: non
+    suffix: non
+    type: string256
+- element:
+    description:
+    identification: non
+    name: func
+    prefix: non
+    suffix: non
+    type: string256
+- element:
+    description:
+    identification: non
+    name: mode
+    prefix: non
+    suffix: non
+    type: string256
+- element:
+    description:
+    identification: non
+    name: occurrence
+    prefix: non
+    suffix: non
+    type: id
+- element:
+    description:
+    identification: non
+    name: status
+    prefix: non
+    suffix: non
+    type: string256
+- element:
+    description:
+    identification: non
+    name: user
+    prefix: non
+    suffix: non
+    type: string256
+- group:
+    also:
+    - structure
+    - translator
+    - autorels
+    - obs
+    - prefix
+    - translations
+    counter: 1
+    idprefix: kle
+    name: kleio
+    note: 'This is the top level group of Kleio files.
+
+      It serves as a container for historical sources,
+
+      authority registers, and other processing related
+
+      groups.
+
+
+      I has no representation in the database (person oriented model)
+
+      '
+    part:
+    - historical-source
+    - authority-register
+    - link
+    - property
+    position:
+    - structure
+    - translator
+    - obs
+- group:
+    also:
+    - date
+    - user
+    - dbase
+    counter: 0
+    guaranteed:
+    - id
+    - name
+    - date
+    - user
+    - dbase
+    idprefix: aut
+    name: authority-register
+    note: 'An authority register is container for authority records. Authority records
+      in Timelink are similar to authory records in library systems. They are used
+      to register identification of real entities (people, objects, etc.) and to link
+      them.
+
+      Currently the only authority register defined is the "identifications" register,
+      which is used to record the real entities (people or objects) that aggregate
+      occurrences in the source.
+
+      This is an "abstract" group, meaning that it is not intended to be used directly,
+      but rather extended by other groups that define specific authority registers.
+
+      '
+    part:
+    - authority-record
+    position:
+    - id
+    - name
+- group:
+    also:
+    - obs
+    counter: 1
+    guaranteed:
+    - id
+    - name
+    - date
+    - user
+    - dbase
+    - mode
+    idprefix: ids
+    name: identifications
+    note: 'Identifications are authority-registers for record linking. They contain
+      real-entity records (people or objects ) that aggregate occurrences in the source
+      pertaining to the same person or entity.
+
+      '
+    part:
+    - rentity
+    - rperson
+    - robject
+    position:
+    - id
+    - name
+    source: authority-register
+- group:
+    also:
+    - name
+    - obs
+    - date
+    - user
+    - dbase
+    counter: 0
+    guaranteed:
+    - id
+    idprefix: arc
+    name: authority-record
+    note: 'An authority record is an entry in an authority register. This is an "abstract"
+      group, meaning that it is not intended to be used directly
+
+      '
+    position:
+    - id
+- group:
+    also:
+    - status
+    - user
+    - obs
+    counter: 0
+    guaranteed:
+    - id
+    - description
+    - type
+    idprefix: ren
+    name: rentity
+    note: 'Rentity contains information about a real entity. Defines the standart
+      name for the entity and what are the occurences, in `occ `subgroups.
+
+      '
+    part:
+    - occ
+    position:
+    - id
+    - description
+    - type
+    source: authority-record
+- group:
+    also:
+    - status
+    - user
+    - obs
+    counter: 65
+    guaranteed:
+    - id
+    - sname
+    - sex
+    idprefix: rpe
+    name: rperson
+    note: 'Contains information about a real person. Only occurs inside the identifications
+      authority register.
+
+      '
+    part:
+    - occ
+    - ls
+    - atr
+    - rel
+    - attribute
+    - relation
+    position:
+    - id
+    - sname
+    - sex
+    source: rentity
+- group:
+    also:
+    - name
+    - atype
+    - func
+    - date
+    - id
+    - obs
+    counter: 190
+    guaranteed:
+    - occurrence
+    idprefix: occ
+    name: occ
+    note: 'Contains the ids of the occurrences of a real entity. Only occurs inside
+      the identifications authority register.
+
+      '
+    position:
+    - occurrence
+    - atype
+    - func
+    - date
+    - name

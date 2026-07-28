@@ -1,10 +1,10 @@
 - file:
   - date: 2026-07-28
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure.kleio
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -411,6 +411,25 @@
     counter: 0
     guaranteed:
     - name
+    idprefix: fper
+    name: female
+    note: A female person. Groups based on this have female gender
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: person
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
     idprefix: mper
     name: male
     note: A Male person. Groups based on this have male gender
@@ -431,8 +450,9 @@
     guaranteed:
     - name
     idprefix: mper
-    name: actorm
-    note: 'A male actor in an act or event.
+    name: notkin-m
+    note: 'A male person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
 
       '
     part:
@@ -442,6 +462,28 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: fper
+    name: notkin-f
+    note: 'A female person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: female
 - element:
     description:
     identification: non
@@ -578,9 +620,9 @@
     counter: 0
     guaranteed:
     - name
-    idprefix: mper
-    name: pt-actorm
-    note: A portuguese male actor
+    idprefix: fper
+    name: pt-notkin-f
+    note: A portuguese female non-kin person (servant, slave, foundling, referred)
     part:
     - attribute
     - relation
@@ -588,7 +630,52 @@
     position:
     - nome
     - sexo
-    source: actorm
+    source: notkin-f
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-notkin-m
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 10
+    guaranteed:
+    - name
+    idprefix: mper
+    name: referido
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
+
+      '
+    part:
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
 - group:
     also:
     - sexo
@@ -599,21 +686,20 @@
     counter: 1
     guaranteed:
     - name
-    idprefix: mper
-    name: n
-    note: 'Pessoa genérica ou principal actor de um acto (e.g. criança em baptismo).
-      Sexo deve registado depois do nome.
+    idprefix: fper
+    name: referida
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
 
       '
     part:
-    - kin-m
-    - kin-f
-    - notkin-m
-    - notkin-f
+    - attribute
+    - relation
     position:
     - nome
     - sexo
-    source: pt-actorm
+    source: pt-notkin-f
 - group:
     also:
     - tipo
@@ -689,18 +775,16 @@
     - n
     - referido
     - referida
-    - celebrante
-    - evento
-    - colega
-    counter: 1
+    - item
+    counter: 351
     guaranteed:
     - id
     - dia
     - mes
     - ano
     idprefix: his
-    name: lista
-    note: A Portuguese act. Abstract class.
+    name: chanc
+    note: Chancelarias régias
     part:
     - actorm
     - actorf
@@ -710,4 +794,5 @@
     - dia
     - mes
     - ano
+    - fol
     source: pt-acto
