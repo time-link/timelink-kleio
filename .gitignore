@@ -50,3 +50,9 @@ __pycache__/
 
 
 postman_doc_gen
+
+# Local agent/session state
+.zcode/
+
+# Runtime Kleio server state (logs, tokens, caches)
+tests/kleio-home/.kleio/
