@@ -157,9 +157,7 @@
           act ).
 - group:
       name: proc
-      source: pt-acto
-      position: [id,cota,data]
-      description: "Processos de ordenacao sacerdotal, usado em Soure"
+      source: hab
       arbitrary:
           - n
           - referido
