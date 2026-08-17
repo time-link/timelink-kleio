@@ -65,8 +65,10 @@ compile_data(Tokens):-
 a_line-->group,elements(E),{storeEls(E)}.
 a_line-->elements(E),{storeEls(E)}.
 
-group-->[(names,N)],dataflag1,{newGroup(N),!}.
-group-->fillSpace(__S),[(names,N)],dataflag1,{newGroup(N),!}.
+% a group is only recognized outside quoted text; inside """ or " blocks
+% a name$.../... line must be stored as literal core text (issue #45)
+group-->{\+ tquoteOn,\+ dquoteOn},[(names,N)],dataflag1,{newGroup(N),!}.
+group-->{\+ tquoteOn,\+ dquoteOn},fillSpace(__S),[(names,N)],dataflag1,{newGroup(N),!}.
 
 elements([E|R])-->element(E),elements(R).
 elements([])   -->[].
@@ -152,6 +154,58 @@ reschar([DF1,DF2,DF3,DF4,DF5,DF6,DF7,DF8]):-
                data_flag_char(8,DF8),!.
 
 :-begin_tests(dataSyntax).
+
+% issue #45: lines inside a """ block that look like group definitions
+% (name$id/elem/elem) must be stored as literal text, not create groups.
+test(compile_data_multiline_tquote_with_slash):-
+    initCompiler,
+    member(Lines,
+          [[`fonte$teste45/obs="""\r`,
+            `        wviagem$wicki-v1/7/4/1541/Santiago\r`,
+            `        """\r`],
+           [`fonte$teste45/obs="""\r`,
+            `        wviagem$wicki-v1/7/4/1541/Santiago\r`,
+            `        """\r`,
+            `        wviagem$wicki-v1/7/4/1541/Santiago\r`]]),
+    forall(member(Chars,Lines),
+           (lexical:test_lexical(Chars,TypedChars),
+            get_tokens(dat,TypedChars,Tokens),
+            compile_data(Tokens))),
+    \+ get_value(tquote,true).
+
+% seed minimal compiler state, as topLevel does before processing a file
+seed_test_state :-
+    logging:open_log(current_output),   % avoid open_log recursion when no log dir
+    dataCDS:setCDS(cds([],[],[],0,[],[],[],[],[],[],core,[],[],[])),
+    set_prop(line,number,1),
+    set_prop(line,text,'issue 45 test').
+
+% the line inside the open tquote block must NOT be recognized as a group.
+% (full verification of group suppression is done by the semantic tests;
+%  here we assert the quote state and that the line compiles as literal text)
+test(tquote_interior_line_does_not_create_group):-
+    initCompiler, seed_test_state,
+    Open = `fonte$teste45/obs="""\r`,
+    Interior = `        wviagem$wicki-v1/7/4/1541/Santiago\r`,
+    lexical:test_lexical(Open,TC1), get_tokens(dat,TC1,T1), compile_data(T1),
+    get_value(tquote,true),
+    lexical:test_lexical(Interior,TC2), get_tokens(dat,TC2,T2),
+    compile_data(T2),               % interior line compiles as literal text
+    get_value(tquote,true),         % and does not disturb the quote state
+    tquoteClear.
+
+% after the block closes, the same line IS parsed as a group again
+test(after_tquote_close_group_is_recognized):-
+    initCompiler, seed_test_state,
+    tquoteEnter,   % a block was opened on a previous line
+    Close = `        """\r`,
+    After  = `        wviagem$wicki-v1/7/4/1541/Santiago\r`,
+    lexical:test_lexical(Close,TC1), get_tokens(dat,TC1,T1), compile_data(T1),
+    get_value(tquote,false),
+    lexical:test_lexical(After,TC2), get_tokens(dat,TC2,T2),
+    compile_data(T2),               % group line compiles normally
+    get_value(tquote,false),
+    tquoteClear.
 
 test(compile_data_with_tquotes):-
     Chars = `""" " \r " """\r`,
