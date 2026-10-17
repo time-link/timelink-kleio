@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-28
+  - date: 2026-10-17
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/roisdeconfessados/rol3-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/roisdeconfessados/rol3.cli
@@ -664,25 +664,6 @@
     counter: 0
     guaranteed:
     - name
-    idprefix: fper
-    name: actorf
-    note: A female person. Groups based on this have female gender
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - name
-    source: female
-- group:
-    also:
-    - obs
-    - id
-    - same_as
-    - xsame_as
-    counter: 0
-    guaranteed:
-    - name
     idprefix: mper
     name: actorm
     note: 'A male actor in an act or event.
@@ -692,6 +673,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - name
     source: male
@@ -1226,6 +1211,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -1302,7 +1291,6 @@
     source: pt-notkin-m
 - group:
     also:
-    - sexo
     - obs
     - mesmo_que
     - xmesmo_que
@@ -1312,7 +1300,7 @@
     - name
     idprefix: mper
     name: escravo
-    note: A portuguese male actor
+    note: A Male person. Groups based on this have male gender
     part:
     - attribute
     - relation
@@ -1320,28 +1308,7 @@
     position:
     - nome
     - sexo
-    source: pt-actorm
-- group:
-    also:
-    - sexo
-    - obs
-    - mesmo_que
-    - xmesmo_que
-    - id
-    counter: 0
-    guaranteed:
-    - name
-    idprefix: fper
-    name: pt-actorf
-    note: A portuguese female actor
-    part:
-    - attribute
-    - relation
-    - pevent
-    position:
-    - nome
-    - sexo
-    source: actorf
+    source: male
 - group:
     also:
     - sexo
@@ -1389,7 +1356,6 @@
     source: pt-notkin-f
 - group:
     also:
-    - sexo
     - obs
     - mesmo_que
     - xmesmo_que
@@ -1399,7 +1365,7 @@
     - name
     idprefix: fper
     name: escrava
-    note: A portuguese female actor
+    note: A female person. Groups based on this have female gender
     part:
     - attribute
     - relation
@@ -1407,7 +1373,7 @@
     position:
     - nome
     - sexo
-    source: pt-actorf
+    source: female
 - group:
     also:
     - tipo

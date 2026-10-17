@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-28
+  - date: 2026-10-17
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/wicki-jesuiten-indienfahrer-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/wicki-jesuiten-indienfahrer.cli
@@ -450,6 +450,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - name
     source: male
@@ -629,6 +633,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -733,7 +741,7 @@
     - n
     - referido
     - referida
-    counter: 4
+    counter: 2
     guaranteed:
     - id
     - dia

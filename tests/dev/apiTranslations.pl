@@ -69,9 +69,11 @@ translations(post,Path,Mode,Id,Params):-
         ;
         apiSources:sources_in_dir(Path,Params,Files)
     ),
-    % TODO: if there is status(S) a filter is necessary, must do kleio_translation_status
-    %       and filter_translations
-    get_absolute_paths(Files,AbsFiles,TokenInfo),
+    %% Filter by translation status if status(S) was requested.
+    %% Applies uniformly to both single-file and directory requests so that
+    %% ?status=T can express "translate only what needs translation".
+    filter_files_by_status(Files,Params,TokenInfo,Files1),
+    get_absolute_paths(Files1,AbsFiles,TokenInfo),
     option(echo(Echo),Params,no),
     option(spawn(Spawn),Params,no),
     % get the structure (schema) definition files for each kleio file to translate
@@ -611,6 +613,40 @@ filter_translations(Filters,[_|More],MoreFiltered):-
     !.
 
 
+%% filter_files_by_status(+Files,+Params,+TokenInfo,-FilteredFiles) is det.
+%
+%  Used by the translate (POST) handler to honour a status(S) filter before
+%  files are queued for translation, mirroring the GET handler's behaviour.
+%
+%  If Params carries status(S) with S \= no, the current translation status of
+%  each file is computed (via get_translation_status/3, which operates on the
+%  relative file paths returned by sources_in_dir/3) and only the files whose
+%  status equals S are kept. The surviving relative path/1 values are extracted
+%  so they feed straight into get_absolute_paths/3.
+%
+%  If no status filter is present, Files is passed through unchanged: computing
+%  status is per-file I/O (kleio_file_set_relative/3) and must not run on every
+%  plain translate request.
+%
+filter_files_by_status(Files,Params,TokenInfo,FilteredFiles):-
+    (   option(status(S),Params,no),
+        S \= no
+    ->  get_translation_status(Files,RSets,TokenInfo),
+        filter_translations_by_status(Params,RSets,FilteredRSets),
+        filtered_file_paths(FilteredRSets,FilteredFiles)
+    ;   FilteredFiles = Files
+    ).
+
+%% filtered_file_paths(+FilteredRSets,-Paths) is det.
+%
+%  Paths is the list of relative path/1 values carried by each surviving
+%  translation-status option list, in order. Entries without a path/1 option
+%  are skipped.
+%
+filtered_file_paths(FilteredRSets,Paths):-
+    findall(P,(member(St,FilteredRSets),option(path(P),St)),Paths).
+
+
 %! translation_results(+Mode,+Id,+Params,+Jobs) is det.
 %
 % Outputs the result of the translations call which is a list of job ids and files associated with the job.
@@ -778,3 +814,75 @@ test(get_stru,[setup(kleiofiles:kleio_default_stru(DefaultStru)),
     get_stru_for_file(File,DefaultStru,StruFile).
 
 :-end_tests(get_stru).
+
+
+%% Unit tests for the status filtering used by the translate (POST) handler.
+%%
+%% These exercise the pure filtering pieces directly with synthetic
+%% translation-status option lists, so they need no live file sets. The
+%% status option list format matches what kleio_translation_status/3 emits:
+%% a list containing path(P) and status(S) among other fields, where the
+%% status value is an atom (quoted: 'T','V','E','W','P','Q').
+:-begin_tests(translation_status_filter).
+
+% filter_translations/3 -------------------------------------------------
+
+% No status filter (no) passes all records through unchanged.
+test(filter_no_status_passes_all, [true(R == Ts)]):-
+    Ts = [ [path(a),status('T')]
+         , [path(b),status('V')]
+         , [path(c),status('E')]
+         ],
+    filter_translations(no, Ts, R).
+
+% With a status filter, only matching records survive.
+test(filter_keeps_matching_status, [true(R == [[path(b),status('E')]])]):-
+    Ts = [ [path(a),status('T')]
+         , [path(b),status('E')]
+         , [path(c),status('V')]
+         ],
+    filter_translations('E', Ts, R).
+
+% Multiple matching records are all kept.
+test(filter_keeps_only_matching, [true(R == [[path(a),status('W')],[path(b),status('W')]])]):-
+    Ts = [ [path(a),status('W')]
+         , [path(b),status('W')]
+         , [path(c),status('V')]
+         ],
+    filter_translations('W', Ts, R).
+
+% Empty input -> empty output.
+test(filter_empty_input, [true(R == [])]):-
+    filter_translations('T', [], R).
+
+% filtered_file_paths/2 -------------------------------------------------
+
+% Paths extracted in order.
+test(paths_extracted_in_order, [true(Ps == [x,y,z])]):-
+    RSets = [ [path(x),status('T')]
+            , [path(y),status('V')]
+            , [path(z),status('E')]
+            ],
+    filtered_file_paths(RSets, Ps).
+
+% Entries without path/1 are skipped.
+test(paths_skip_entries_without_path, [true(Ps == [y])]):-
+    RSets = [ [status('T')]            %% no path/1 -> skipped
+            , [path(y),status('V')]
+            , [status('E')]            %% no path/1 -> skipped
+            ],
+    filtered_file_paths(RSets, Ps).
+
+% Empty input -> empty output.
+test(paths_empty_input, [true(Ps == [])]):-
+    filtered_file_paths([], Ps).
+
+% filter_files_by_status/4 ---------------------------------------------
+% Params with no status(S) must pass Files through untouched without touching
+% the filesystem, so get_translation_status/3 must never be called.
+
+test(filter_files_no_status_passes_through, [true(R == Files)]) :-
+    Files = [a,b,c],
+    filter_files_by_status(Files, [], no_token_info, R).
+
+:-end_tests(translation_status_filter).

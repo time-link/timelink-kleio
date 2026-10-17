@@ -1,5 +1,5 @@
 KleioTranslator - server version @@VERSION@@ - build @@BUILD@@ @@DATE@@
-2026-07-06 08:54:11
+2026-10-17 08:34:52
 
 
 Processing YAML structure (schema):
@@ -22,8 +22,6 @@ Creating new structure definition for: kleio
 
        == File name: elements.yml
             from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/elements.yaml 
-
-WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/elements.yaml Command terminus  Undefined source/fons element "string64ma"" in definition of sex
        -- Inspected /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/elements.yaml
     << Included file: elements.yaml
          from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml 
@@ -144,6 +142,9 @@ WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/s
 
                 == File name: pt-actorm.yaml
                      from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-actorm.yaml 
+
+WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure.kleio line 726 copy_fons - undefined fons/source grouppt-actorf
+Near lines: 726 Near lines: 727 
                 -- Inspected /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-actorm.yaml
              << Included file: pt-actorm.yaml
                   from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-parentem.yaml 
@@ -169,8 +170,11 @@ WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/s
           << Included file: pt-parents.yaml
                from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-actorf.yaml 
 
-WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli line 5 Group rel already defined (/Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml) command properties will be merged.
-Near lines: 5         /obs=should generate a warning, not an error on missing bdcconline.Near lines: 6         /obs=should generate a warning, not an error on missing bdcconline.
+WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure.kleio line 726 Group geodesc already defined (/Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml) command properties will be merged.
+Near lines: 726 Near lines: 727 
+
+WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/xpto_comuns_soure.kleio line 726 Group rel already defined (/Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml) command properties will be merged.
+Near lines: 726 Near lines: 727 
           -- Inspected /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-parents.yaml
        << Included file: pt-groups.yaml
             from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-sources-structure.yaml 
@@ -195,9 +199,6 @@ WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/s
 WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml Command include Ignoring previously processed file: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml
           << Included file: pt-groups.yaml
                from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-elements.yaml 
-
-WARNING: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/linked_data/linked-datanw.cli line 5 copy_fons - undefined fons/source groupmemoria58
-Near lines: 5         /obs=should generate a warning, not an error on missing bdcconline.Near lines: 6         /obs=should generate a warning, not an error on missing bdcconline.
           -- Inspected /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-groups.yaml
        << Included file: pt-acts.yaml
             from /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/pt-parents.yaml 

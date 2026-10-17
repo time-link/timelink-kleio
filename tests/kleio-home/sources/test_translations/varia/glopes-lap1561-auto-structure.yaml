@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-28
+  - date: 2026-10-17
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/glopes-lap1561-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/glopes-lap1561.cli
@@ -694,6 +694,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - name
     source: male
@@ -1368,6 +1372,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -1538,17 +1546,16 @@
     source: pt-acto
 - group:
     also:
-    - sexo
     - obs
-    - mesmo_que
-    - xmesmo_que
     - id
+    - same_as
+    - xsame_as
     counter: 210
     guaranteed:
     - name
     idprefix: mper
     name: mestre
-    note: A portuguese male actor
+    note: A Male person. Groups based on this have male gender
     part:
     - attribute
     - relation
@@ -1556,7 +1563,7 @@
     position:
     - nome
     - sexo
-    source: pt-actorm
+    source: male
 - element:
     description:
     identification: non

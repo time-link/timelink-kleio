@@ -1,5 +1,5 @@
 - file:
-  - date: 2026-07-28
+  - date: 2026-10-17
     description: Automatically generated structure file
     json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/avexplorfa-auto-structure.json
     origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/varia/avexplorfa.cli
@@ -524,6 +524,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - name
     source: female
@@ -545,6 +549,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - name
     source: male
@@ -877,6 +885,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -922,6 +934,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -943,6 +959,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -964,6 +984,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -985,23 +1009,26 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
     source: pt-actorm
 - group:
     also:
-    - sexo
     - obs
-    - mesmo_que
-    - xmesmo_que
     - id
+    - same_as
+    - xsame_as
     counter: 35
     guaranteed:
     - name
     idprefix: mper
     name: test
-    note: A portuguese male actor
+    note: A Male person. Groups based on this have male gender
     part:
     - attribute
     - relation
@@ -1009,7 +1036,7 @@
     position:
     - nome
     - sexo
-    source: pt-actorm
+    source: male
 - group:
     also:
     - sexo
@@ -1027,6 +1054,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -1072,6 +1103,10 @@
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo

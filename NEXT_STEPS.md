@@ -175,78 +175,79 @@ Two warnings remain during structure loading:
 
 ---
 
-## 7. Priority 6: SUPER_CLASS / BASE_CLASS semantics (needs importer review)
+## 7. Priority 6: SUPER_CLASS / BASE_CLASS semantics — solution 3 (issue #58)
 
-### What the issue is
-The XML export emits two attributes on each `<ELEMENT>` that describe the
-element's type lineage:
+**Status: analysis complete, solution 3 adopted.** The element-side change is
+implemented (see git history for `elements.yaml`); the notes below record the
+full audit that justified it.
 
-- `SUPER_CLASS` — the **direct** source/parent of the element
-  (`clio_element_super/2` in `src/externals.pl:174`, i.e. the immediate `fons`).
-- `BASE_CLASS` — the **root base class** of the element
-  (`clio_element_bclass/2`).
+### Background
+`BASE_CLASS` (`clio_element_bclass/2`) is the significant base class used for
+linked-data attribute types (`Group:Element@source`, e.g.
+`historical-source:loc@wikidata`) and the `BASE_CLASS` XML attribute. The YAML
+schemas rooted every element in a data type (`loc → string256`) and every group
+in `entity`, so the old walk-to-root bclass produced meaningless types
+(`entity:string256@wikidata`). Issue #58 fixed this in the dev engine by
+skipping abstract classes; solution 3 removes the offending roots from the
+schemas themselves.
 
-These were made self-consistent for `SUPER_CLASS` by adding explicit
-`source=` to the bare base elements (`type`, `loc`, `obs`, `value`,
-`destination`, `destname`) in `tests/stable/gacto2.str` and
-`src/stru/gacto2.str`. **However the meaning of `BASE_CLASS` changed between
-the stable engine and the dev engine (issue #58), so the two attributes are no
-longer self-evident and must be reconciled against the downstream importer.**
+### Why solution 3 is safe — verified audit (2026-10 session)
+1. **DB mapping never uses data types.** `src/mappings.pl` has zero
+   `baseclass string256/text/...` values — all baseclasses are semantic
+   element names (`id`, `obs`, `loc`, `type`, ...). The `<ATTRIBUTE
+   TYPE/SIZE>` XML lines are emitted verbatim from `mappings.pl`
+   (`rattribute2_xml`, gactoxml.pl:2249). No code parses sizes from
+   data-type names.
+2. **Export date/id detection anchors on semantic elements, never data
+   types.** `get_date/1,2` (gactoxml.pl:1208) asks
+   `clio_belement_aspect(core, date, ...)`; `get_y_m_d` (:1446) asks
+   `day`/`month`/`year`; both match by name or semantic chain
+   (`data → date`, `dia → day`), and validate numbers on the **value**
+   (`is_a_number`), not the `number` type. Id detection:
+   `get_group_id` (:1470) uses name-based `clio_aspect(core,id,...)`;
+   the `.cli` re-export `clioPP_check_id_element` (clioPP.pl:192) uses
+   `clio_element_bclass(L,id)` — `id` is a semantic element (not abstract,
+   `identification: yes`), and chains into `id` (`same_as → id`,
+   `mesmo_que → same_as → id`) are preserved. A grep for any detection
+   anchored on a data type (`number|string64|string256|text|json|control`)
+   returns zero hits.
+3. **Importer exposure is confined to SUPER_CLASS.** `BASE_CLASS` and the
+   linked-data types already agree between stable (reverted to bare elements)
+   and dev, and equal the element name — what production stable has always
+   emitted. Under solution 3 dev's `SUPER_CLASS` for base elements becomes
+   `core` — the value production stable has always emitted. Remaining check:
+   grep timelink-py's XML converter for `SUPER_CLASS`/`BASE_CLASS` usage
+   (expected: none load-bearing).
 
-### What changed and why the values diverge
-The dev engine (`src/externals.pl:196`, referencing issue #58) treats the
-abstract data types (`string256`, `text`, `number`, `string64`, `id`, ... —
-those marked `abstract: true` in `elements.yaml`) as **abstract**, and stops the
-base-class chain *before* them. The old stable engine
-(`tests/stable/externals.pl:146`) walks the chain to its absolute root.
+### Implementation (element side)
+In `elements.yaml` (both `src/stru/` and `tests/kleio-home/structures/`):
+- Removed `source: <datatype>` from the base elements (day/month/year →
+  number; id/class/sex/page/pages/groupname → string64; type/loc/name/
+  description/destname/ref/urlpattern/kleiofile → string256; value/obs/
+  summary/title → text; date_extra_info → json; autorels/prefix/structure/
+  translations/translator → control; level/line → number).
+- The information is preserved declaratively as `data_type: <type>`
+  (nothing consumes it today; it is documentation + a future hook).
+- The 6 abstract data-type definitions stay (harmless; documents the type
+  system).
+- **Group side**: the 4 `source: entity` roots in `groups.yaml` stay —
+  `entity` is marked abstract and bclass already skips it. Removing them is
+  optional per issue #58 and requires first auditing `clio_extends(_,entity)`
+  consumers (`group_derived`, `contained_by`).
+- `src/stru/gacto2.str` reverted to bare base elements (matching
+  `tests/stable/gacto2.str`): the `.str` path has no abstract marking, so
+  `source=string256` there would produce chain-root bclass values.
 
-Concrete example for `loc` (chain: `loc → string256`):
-
-| engine | `SUPER_CLASS` | `BASE_CLASS` |
-|---|---|---|
-| stable (old) | `string256` | `string256` (chain root) |
-| dev / YAML (issue #58) | `string256` | `loc` (last non-abstract) |
-
-The dev behaviour is the intended one per the comment at `src/externals.pl:194`
-(`clio_element_bclass(loc) = loc`), but it means `BASE_CLASS` is no longer "the
-concrete DB column type" — it is now "the element's own logical class". Whether
-that distinction matters depends on what consumes the XML.
-
-### Where in the code to look
-- Emission: `src/gactoxml.pl:2459-2483`
-  (`clio_element_bclass/2` → `BASE_CLASS`; `clio_element_super/2` → `SUPER_CLASS`).
-- Old vs new base-class logic:
-  - old — `tests/stable/externals.pl:146` (`\+ clio_element_super(_,Bclass)`).
-  - new — `src/externals.pl:196` + `last_non_abstract_el/3`
-    (`clio_element_abstract_class/1`, `abstractus` flag).
-- Abstract type declarations: `tests/kleio-home/structures/elements.yaml`
-  (`abstract: true` on the data types).
-- Structure definitions: `tests/stable/gacto2.str` and `src/stru/gacto2.str`.
-
-### Why this needs the upstream importer
-The Python importer that consumes these XML files relies on `BASE_CLASS` /
-`SUPER_CLASS` to decide DB column types and table mapping. Before treating the
-issue-#58 `BASE_CLASS` change as "correct and final", we must confirm the
-importer still derives the right column type from the new values (e.g. that
-`BASE_CLASS="loc"` with `SUPER_CLASS="string256"` maps to a `varchar(256)`
-column, not to something keyed off `BASE_CLASS` alone).
-
-### Suggested approach
-1. Locate the importer code that reads `BASE_CLASS` / `SUPER_CLASS` from the XML.
-2. Determine which attribute(s) it uses for: column type, column length,
-   join/table mapping.
-3. If it keys off `BASE_CLASS` for the concrete type, the new values will break
-   it — either fix the importer to read `SUPER_CLASS` (the abstract root is now
-   reachable only by following the chain), or revert/adjust the `bclass` logic.
-4. Add a test fixture whose XML exercises a sourced element so the importer
-   path is covered.
-
-### How to verify
-- Translate a fixture and confirm the importer produces the expected table DDL
-  / ORM mapping for elements like `loc`, `type`, `obs`.
-- After any importer change, re-run `make test-semantics`; the `BASE_CLASS`
-  lines should no longer diverge once stable is moved to the issue-#58 engine
-  (`make current-to-stable`).
+### Guardrails for future schema edits
+1. Never mark the detection anchors abstract: `id`, `date`, `day`, `month`,
+   `year`, `type`, `value`, `same_as`, `destname`, `page`, `name`, `loc`,
+   `obs`, `ref`, `sex`, `summary` — bclass comparisons depend on them.
+2. Keep the semantic chains in the PT packs (`dia → day`, `data → date`,
+   `tipo → type`, `mesmo_que → same_as`, ...): every PT date/id/name
+   detection goes through them.
+3. The declarative precedent already existed: `.str` uses `type=number`
+   on `day/month/year` (nothing reads it); `pt-elements.yaml` carries
+   `type: number` alongside `source: day`. Solution 3 unifies on this style.
 
 ---
 

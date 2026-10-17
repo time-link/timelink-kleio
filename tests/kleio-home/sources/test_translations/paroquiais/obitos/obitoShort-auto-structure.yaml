@@ -1,10 +1,10 @@
 - file:
-  - date: 2026-07-28
+  - date: 2026-10-17
     description: Automatically generated structure file
-    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21-auto-structure.json
-    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21.cli
+    json_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort-auto-structure.json
+    origin: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort.cli
     stru: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/structures/sources-structure.yaml
-    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/yaml-str-checked/issues/issue21-auto-structure.yaml
+    yaml_path: /Users/jrc/develop/timelink-kleio-worktrees/yaml_str/tests/kleio-home/sources/test_translations/paroquiais/obitos/obitoShort-auto-structure.yaml
 - element:
     description:
     identification: non
@@ -75,11 +75,27 @@
     suffix: non
 - element:
     description:
+    identification: yes
+    name: destination
+    note: id of the destination of a relation
+    prefix: non
+    source: id
+    suffix: non
+- element:
+    description:
     identification: non
     name: type
     note: The type of an attribute, relation, act or other entity.
     prefix: non
     source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: value
+    note: The value of an attribute or relation
+    prefix: non
+    source: text
     suffix: non
 - element:
     description:
@@ -105,6 +121,14 @@
     identification: non
     name: description
     note: Similar to name, but for objects or events
+    prefix: non
+    source: string256
+    suffix: non
+- element:
+    description:
+    identification: non
+    name: destname
+    note: Name of destination in a relation
     prefix: non
     source: string256
     suffix: non
@@ -431,8 +455,8 @@
     guaranteed:
     - name
     idprefix: mper
-    name: actorm
-    note: 'A male actor in an act or event.
+    name: kin-m
+    note: 'A male person related by kin to an actor in an act or event.
 
       '
     part:
@@ -442,6 +466,178 @@
     position:
     - name
     source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: notkin-m
+    note: 'A male person that is not kin but can be part of an actor in an act or
+      event (e.g. servants, slaves, foundlings, persons referred to but not present).
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: kin-husband
+    note: 'A male person related by kin to an actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - name
+    source: kin-m
+- group:
+    also:
+    - obs
+    - id
+    - same_as
+    - xsame_as
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: actorm
+    note: 'A male actor in an act or event.
+
+      '
+    part:
+    - attribute
+    - relation
+    - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
+    position:
+    - name
+    source: male
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: attribute
+    note: Registers time varying attributes of people, objects, geoentities, etc.
+    position:
+    - type
+    - value
+    - date
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 3
+    guaranteed:
+    - type
+    - value
+    idprefix: att
+    name: ls
+    note: Alias for attribute, short for "life story".
+    position:
+    - type
+    - value
+    - date
+    source: attribute
+- group:
+    also:
+    - obs
+    - date
+    - id
+    counter: 0
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: relation
+    note: 'A relation between two or more entities, such as people, objects, geoentities,
+      etc.
+
+      Relation have a type (kinship, professional...) and a value (e.g. "father",
+      "mother", "colleague", etc.).
+
+      Some special relations are generated automatically by the parser, such as "identification"
+      relations to register that two entities are the same (generated from "same_as"
+      and "xsame_as" elements), and "function-in-act" relations to register the function
+      of an entity in an act.
+
+      '
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - date
+- group:
+    also:
+    - obs
+    - data
+    - id
+    counter: 1
+    guaranteed:
+    - type
+    - value
+    - destname
+    - destination
+    idprefix: rel
+    name: rel
+    note: Short hand for relation Portuguese Override to have data= instead of date=
+    position:
+    - type
+    - value
+    - destname
+    - destination
+    - data
+    source: relation
+- group:
+    counter: 0
+    guaranteed:
+    - value
+    idprefix: gev
+    name: group-element
+    note: "A group whose name correspondes to the name of an element of the enclosig
+      group. During import the value of the first element of the group is used as
+      the value of the element in the enclosing group.\nFor example, if the enclosing
+      group is \"burial\" with an element \"place_of_burial\", one can use\nburial$1580-01-01/place_of_death=Canton/place_of_burial=Macao\n
+      \   /masses=9\n    n$Mary Smith\n      husband$John Smith\n        ls$residence/Zhuhai\n
+      \       ls$profession/merchant\n\nif in the sources the values of the elements
+      appear later in the source, one can use the group-element as such:\nburial$1580-01-01\n
+      \   n$Mary Smith\n      husband$John Smith\n        ls$residence/Zhuhai\n        ls$profession/merchant\n
+      \   place_of_death$Canton\n    place_of_burial$Macao\n    masses$9\n\nwith place_of_death,
+      place_of_burial and masses being group-elements, which will be processed as
+      elements of the enclosing group \"burial\".\n"
+    position:
+    - value
 - element:
     description:
     identification: non
@@ -579,12 +775,78 @@
     guaranteed:
     - name
     idprefix: mper
+    name: pt-notkin-m
+    note: A portuguese male non-kin person (servant, slave, foundling, referred)
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: notkin-m
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
+    name: pt-kin-husband
+    note: A portuguese husband
+    part:
+    - attribute
+    - relation
+    - pevent
+    position:
+    - nome
+    - sexo
+    source: kin-husband
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: mper
+    name: marido
+    note:
+    part:
+    - pmarido
+    - mmarido
+    position:
+    - nome
+    - sexo
+    source: pt-kin-husband
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 0
+    guaranteed:
+    - name
+    idprefix: mper
     name: pt-actorm
     note: A portuguese male actor
     part:
     - attribute
     - relation
     - pevent
+    - kin-m
+    - kin-f
+    - notkin-m
+    - notkin-f
     position:
     - nome
     - sexo
@@ -614,6 +876,30 @@
     - nome
     - sexo
     source: pt-actorm
+- group:
+    also:
+    - sexo
+    - obs
+    - mesmo_que
+    - xmesmo_que
+    - id
+    counter: 1
+    guaranteed:
+    - name
+    idprefix: mper
+    name: referido
+    note: 'Pessoa referida num acto, não necessariamente presente. Estas pessoas não
+      podem incluir eventos pessoais "pevent",  para evitar sequências recursivas
+      de pessoa-pevent-pessoa-pevent-...
+
+      '
+    part:
+    - attribute
+    - relation
+    position:
+    - nome
+    - sexo
+    source: pt-notkin-m
 - group:
     also:
     - tipo
@@ -726,3 +1012,39 @@
     - fol
     - celebrante
     source: pt-acto
+- group:
+    also:
+    - obs
+    counter: 1
+    guaranteed:
+    - value
+    idprefix: sac
+    name: sacr
+    note: Sacramentos em registos de óbito
+    position:
+    - value
+    source: group-element
+- group:
+    also:
+    - obs
+    counter: 1
+    guaranteed:
+    - value
+    idprefix: lcs
+    name: locs
+    note: Local de sepultura
+    position:
+    - value
+    source: group-element
+- group:
+    also:
+    - obs
+    counter: 1
+    guaranteed:
+    - value
+    idprefix: lcf
+    name: locf
+    note: Local de falecimento
+    position:
+    - value
+    source: group-element
