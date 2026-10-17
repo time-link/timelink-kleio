@@ -68,15 +68,15 @@
 - element:
     name: day
     description: two digit representation of the day
-    source: number
+    data_type: number
 - element:
     name: month
     description: two digit representation of the month
-    source: number
+    data_type: number
 - element:
     name: year
     description: four digit representation of the year
-    source: number
+    data_type: number
 - element:
     name: date
     description: |
@@ -88,7 +88,7 @@
           see: https://github.com/time-link/timelink-kleio/issues/1
 - element:
     name: date_extra_info
-    source: json
+    data_type: json
     description:
         Used internally to represent complex dates.
 # Unique identification elements
@@ -100,7 +100,7 @@
         the entity in the database. It is used to link entities
         in the database. It is a string64 element.
     identification: yes
-    source: string64
+    data_type: string64
 
 - element:
     name: same_as
@@ -139,36 +139,36 @@
 - element:
     name: type
     description: The type of an attribute, relation, act or other entity.
-    source: string256
+    data_type: string256
 - element:
     name: value
     description: The value of an attribute or relation
-    source: text
+    data_type: text
 - element:
     name: class
     description: The class of an entity (e.g. person, object)
-    source: string64
+    data_type: string64
 - element:
     name: loc
     description: >
         Location (place) of an entity or act.
         Sometimes in sources it is used to register the location
         of the source (archive, library, etc).
-    source: string256
+    data_type: string256
 
 #  People and objects
 - element:
     name: name
     description: name, normally of a person
-    source: string256
+    data_type: string256
 - element:
     name: description
     description: Similar to name, but for objects or events
-    source: string256
+    data_type: string256
 - element:
     name: destname
     description: Name of destination in a relation
-    source: string256
+    data_type: string256
 - element:
     name: sname
     description: >
@@ -180,17 +180,17 @@
 - element:
     name: sex
     description: Gender of a person
-    source: string64
+    data_type: string64
 
 #  elements for longer texts
 - element:
     name: obs
     description: observations, comments, notes, etc. Use triplas aspas for long multi line texts
-    source: text
+    data_type: text
 - element:
     name: summary
     description: Summary of a document, use triplas aspas for long multi line texts
-    source: text
+    data_type: text
 
 # Elements used for registering the origin of information in sources
 # ==================================================================
@@ -200,19 +200,19 @@
     description: >
         Call number of any reference to document in archive
         or libraries.
-    source: string256
+    data_type: string256
 
 - element:
     name: page
     description: Page in document
-    source: string64
+    data_type: string64
 - element:
     name: pages
     description: page range
-    source: string64
+    data_type: string64
 - element:
     name: title
-    source: text
+    data_type: text
     description: Title of a work (e.g. a book)
 
 # Elements related to the processing of files
@@ -235,7 +235,7 @@
 
 - element:
      name: autorels
-     source: control
+     data_type: control
      description: >
         determines the mode of generation of
         automatic relations. Curremtçy unused
@@ -246,13 +246,13 @@
         with this prefix. Used to avoid duplicate ids
         in different files. Equivalent to the concept
         of namespace.
-    source: control
+    data_type: control
 
 - element:
     name: structure
     description: >
         Path to the structure (schema) to be used.
-    source: control
+    data_type: control
 
 - element:
     name: translations
@@ -261,7 +261,7 @@
         Used in the generation of automatic ids
         when a file is translated, then edited,
         and new ids need to be generated.
-    source: control
+    data_type: control
 
 - element:
     name: translator
@@ -271,14 +271,14 @@
         maps it to a person oriented database.
         Originally to allow diferent target databases
         currently unused.
-    source: control
+    data_type: control
 
 - element:
     name: urlpattern
     description: >
         Patter of a URL in linked data, use "$1" in place of linked id.
 
-    source: string256
+    data_type: string256
 
 - element:
     name: shortname
@@ -296,19 +296,19 @@
         Name of the Kleio group used to register an entity.
         For instance, people are registere under diferent Kleio groups.
         automatic.
-    source: string64
+    data_type: string64
 - element:
     name: level
     description: Level of nesting of the entity in the source text
-    source: number
+    data_type: number
 - element:
     name: line
     description: Line in the source text where the entity is registered
-    source: number
+    data_type: number
 - element:
     name: kleiofile
     description: Path of the file where the entity is registered
-    source: string256
+    data_type: string256
 
 # Elements associated with authority registers and records
 - element: {name: atype, type: string256}
