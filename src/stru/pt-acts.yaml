@@ -1460,7 +1460,8 @@
 
 - group:
     name: mestre
-    source: pt-actorm
+    source: male
+    position: [nome, sexo]
 
 - element: {name: destino, source: local}
 - element: {name: num, source: number}

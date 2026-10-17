@@ -455,11 +455,13 @@
     source: female
     decription: >
         A female actor in an act or event.
+    contains: [attribute, relation, pevent, kin-m, kin-f, notkin-m, notkin-f]
 - group:
     name: actorm
     source: male
     description: >
         A male actor in an act or event.
+    contains: [attribute, relation, pevent, kin-m, kin-f, notkin-m, notkin-f]
 #
 - group:
     name: object
