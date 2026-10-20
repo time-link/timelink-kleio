@@ -87,13 +87,13 @@ These items are planned for a later stage:
 - **Kleio grammar for Linguist** — Kleio is not yet registered in
   [Linguist](https://github.com/github-linguist/linguist), so `` ```kleio ``
   renders as plain text on GitHub and the doc code blocks are left
-  uncolored. **The submission is prepared** in the standalone grammar repo
+  uncolored. **Submission prepared and held**: grammar repo
   [time-link/kleio-grammar](https://github.com/time-link/kleio-grammar)
-  (local: `/Users/jrc/develop/kleio-grammar`, MIT): fixed grammar, sample,
-  verified no `.kleio`/`.cli` extension conflicts, free color `#5c7f81`,
-  `languages.yml` entry, `add-grammar` steps, usage-evidence queries and
-  PR draft — see its
-  [docs/linguist-submission.md](https://github.com/time-link/kleio-grammar/blob/main/docs/linguist-submission.md).
-  Remaining steps: gather the usage evidence (2,000+ files/year is the
-  likely bar), open the Linguist PR; after merge, switch the doc code
-  fences to `kleio`.
+  (MIT) and a complete PR branch
+  (`joaquimrcarvalho/linguist` → `kleio-language`) are ready; opening is
+  deferred until Kleio usage on GitHub spreads beyond the
+  `time-link`/personal repos (currently ~1,160 `.cli` files in ~13 repos,
+  which fails Linguist's popularity bar). Full status, PR body and the
+  one-command open procedure:
+  [linguist-submission.md](https://github.com/time-link/kleio-grammar/blob/main/docs/linguist-submission.md).
+  After merge and deploy, switch the doc code fences to `kleio`.
